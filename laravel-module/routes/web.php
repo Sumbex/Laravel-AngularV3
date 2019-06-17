@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//testgit
 Route::get('/auth', function (){
     if(!auth::check()){
         $user = App\User::find(1);

@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', 'AuthController@login');
+
+//CUANDO SE AUTORIZA UN USUARIO
+Route::group(['middleware' => 'jwt.auth'], function(){
+
+	//rutas con auth (loged)
+	Route::get('loged', function(){ return "loged"; });
+	Route::get('auth/logout','AuthController@logout');
+
+});

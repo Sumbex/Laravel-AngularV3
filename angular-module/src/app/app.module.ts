@@ -6,13 +6,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './public-master/login/login.component';
 import { UsuarioService } from './servicios/usuarios.service';
+import { PublicMasterComponent } from './public-master/public-master.component';
+import { AboutComponent } from './public-master/about/about.component';
+import { AuthMasterComponent } from './auth-master/auth-master.component';
+import { CuentaSindicalComponent } from './auth-master/cuenta-sindical/cuenta-sindical.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PublicMasterComponent,
+    AboutComponent,
+    AuthMasterComponent,
+    CuentaSindicalComponent
   ],
   imports: [
     BrowserModule,

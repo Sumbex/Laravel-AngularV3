@@ -12,6 +12,8 @@ import { PublicMasterComponent } from './public-master/public-master.component';
 import { AboutComponent } from './public-master/about/about.component';
 import { AuthMasterComponent } from './auth-master/auth-master.component';
 import { CuentaSindicalComponent } from './auth-master/cuenta-sindical/cuenta-sindical.component';
+import { FormularioSindicalComponent } from './auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component';
+import { TablaSindicalComponent } from './auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CuentaSindicalComponent } from './auth-master/cuenta-sindical/cuenta-si
     PublicMasterComponent,
     AboutComponent,
     AuthMasterComponent,
-    CuentaSindicalComponent
+    CuentaSindicalComponent,
+    FormularioSindicalComponent,
+    TablaSindicalComponent
   ],
   imports: [
     BrowserModule,

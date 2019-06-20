@@ -30,11 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<!--<router-outlet></router-outlet>-->\n<div class=\"container\">\n<router-outlet></router-outlet>\n</div>\n"
-=======
 module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"container\">\r\n<router-outlet></router-outlet>\r\n</div>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -56,11 +52,7 @@ module.exports = "<router-outlet></router-outlet>"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\n<app-tabla-bienestar></app-tabla-bienestar>"
-=======
 module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\r\n<app-tabla-bienestar></app-tabla-bienestar>"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -71,11 +63,7 @@ module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\r\n<app-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  formulario-bienestar works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  formulario-bienestar works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -86,11 +74,7 @@ module.exports = "<p>\r\n  formulario-bienestar works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  tabla-bienestar works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  tabla-bienestar works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -101,11 +85,7 @@ module.exports = "<p>\r\n  tabla-bienestar works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\n<app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>"
-=======
 module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n<app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -116,11 +96,7 @@ module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n<
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  formulario-fondo-mutuo works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  formulario-fondo-mutuo works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -131,11 +107,7 @@ module.exports = "<p>\r\n  formulario-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  tabla-fondo-mutuo works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -146,11 +118,7 @@ module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<app-navbar></app-navbar>\n<app-formulario-sindical></app-formulario-sindical>\n<app-tabla-sindical></app-tabla-sindical>"
-=======
 module.exports = "<app-navbar></app-navbar>\r\n<app-formulario-sindical></app-formulario-sindical>\r\n<app-tabla-sindical></app-tabla-sindical>"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -161,11 +129,7 @@ module.exports = "<app-navbar></app-navbar>\r\n<app-formulario-sindical></app-fo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<br><div>\n  <div class=\"card\">\n    <div class=\"card-header\">\n      <strong>Cuenta Sindical</strong>\n    </div>\n    <div class=\"card-body\">\n\n      <div class=\"row\">\n      \n         <div class=\"col-sm-6 col-md-3 col-lg-4\"> <br><label><strong>Calendario</strong></label>\n          <select class=\"form-control\">\n              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-3 col-md-3 col-lg-4\">\n          <br><label><strong>N° de Documento</strong></label><input class=\"form-control\">\n        </div>\n      \n        <div class=\"col-sm-3 col-md-3 col-lg-4\">\n          <br><label><strong>Subir Documento</strong></label>\n          <button class=\"btn btn-primary btn-block\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span> Subir Documento</button>\n        </div>\n    </div><br>\n\n      <div class=\"row\">\n        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n          <select class=\"form-control\">\n              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\n          </select>\n        </div><br>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Detalle Tipo</strong></label>\n          <select class=\"form-control\">\n            <option *ngFor=\"let detalle of selectDetalleTipo\">{{detalle.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control\">\n          </div>\n      </div><br>\n      <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n              <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control\">\n            </div>\n        <div class=\"col-sm-6 col-md-3 col-lg-3\">\n            <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\n          <button class=\"btn btn-primary btn-block\">Guardar</button>\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"btnDetalle\">\n        <div class=\"col-sm-6 col-md-8 col-lg-8\"><br>\n          <textarea class=\"form-control\" rows=\"3\"></textarea>\n        </div>\n      </div><br>\n    </div>\n  </div>\n</div>\n\n"
-=======
 module.exports = "<br><div>\r\n  <div class=\"card\">\r\n    <div class=\"card-header\">\r\n      <strong>Cuenta Sindical</strong>\r\n    </div>\r\n    <div class=\"card-body\">\r\n\r\n      <div class=\"row\">\r\n      \r\n         <div class=\"col-sm-6 col-md-3 col-lg-4\"> <br><label><strong>Calendario</strong></label>\r\n          <select class=\"form-control\">\r\n              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-3 col-md-3 col-lg-4\">\r\n          <br><label><strong>N° de Documento</strong></label><input class=\"form-control\">\r\n        </div>\r\n      \r\n        <div class=\"col-sm-3 col-md-3 col-lg-4\">\r\n          <br><label><strong>Subir Documento</strong></label>\r\n          <button class=\"btn btn-primary btn-block\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span> Subir Documento</button>\r\n        </div>\r\n    </div><br>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n          <select class=\"form-control\">\r\n              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div><br>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Detalle Tipo</strong></label>\r\n          <select class=\"form-control\">\r\n            <option *ngFor=\"let detalle of selectDetalleTipo\">{{detalle.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control\">\r\n          </div>\r\n      </div><br>\r\n      <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n              <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control\">\r\n            </div>\r\n        <div class=\"col-sm-6 col-md-3 col-lg-3\">\r\n            <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\r\n          <button class=\"btn btn-primary btn-block\">Guardar</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\" *ngIf=\"btnDetalle\">\r\n        <div class=\"col-sm-6 col-md-8 col-lg-8\"><br>\r\n          <textarea class=\"form-control\" rows=\"3\"></textarea>\r\n        </div>\r\n      </div><br>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -176,11 +140,7 @@ module.exports = "<br><div>\r\n  <div class=\"card\">\r\n    <div class=\"card-h
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  tabla-sindical works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  tabla-sindical works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -191,11 +151,7 @@ module.exports = "<p>\r\n  tabla-sindical works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Cuenta Binestar</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Cuenta Fondo Mutuo</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Grafico</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link Disabled\" href=\"#\">Ingreso Socios</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
-=======
 module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Cuenta Binestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" href=\"#\">Ingreso Socios</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -206,11 +162,7 @@ module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  no-encontrado works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  no-encontrado works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -221,11 +173,7 @@ module.exports = "<p>\r\n  no-encontrado works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<p>\n  about works!\n</p>\n"
-=======
 module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -236,11 +184,7 @@ module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<div><br>\n  <div class=\"card\">\n    <div class=\"container\">\n      <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n        <div class=\"form-group\"><br>\n          <label for=\"email\"><strong>Correo Electronico</strong></label>\n          <input \n            type=\"email\" \n            class=\"form-control\" \n            placeholder=\"Enter email\" \n            name=\"email\" \n            #email=\"ngModel\" \n            [(ngModel)]=\"usuario.email\"\n            required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\n            <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\n              El correo ingresado no es valido\n            </small>\n        </div>\n      \n        <div class=\"form-group\">\n          <label for=\"password\"><strong>Contraseña</strong></label>\n          <input \n            type=\"password\" \n            class=\"form-control\" \n            placeholder=\"Password\"\n            name=\"password\"\n            #password=\"ngModel\"\n            [(ngModel)]=\"usuario.password\"\n            required>\n            <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\n              Ingrese una pass valida\n            </small>\n        </div>\n      \n        <input \n          type=\"submit\" \n          value=\"Identificarse\" \n          class=\"btn btn-success\"\n          [disabled]=\"loginForm.invalid\">\n      </form><br>\n    </div>\n  </div>\n</div>"
-=======
 module.exports = "<div><br>\r\n  <div class=\"card\">\r\n    <div class=\"container\">\r\n      <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n        <div class=\"form-group\"><br>\r\n          <label for=\"email\"><strong>Correo Electronico</strong></label>\r\n          <input \r\n            type=\"email\" \r\n            class=\"form-control\" \r\n            placeholder=\"Enter email\" \r\n            name=\"email\" \r\n            #email=\"ngModel\" \r\n            [(ngModel)]=\"usuario.email\"\r\n            required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\r\n            <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\r\n              El correo ingresado no es valido\r\n            </small>\r\n        </div>\r\n      \r\n        <div class=\"form-group\">\r\n          <label for=\"password\"><strong>Contraseña</strong></label>\r\n          <input \r\n            type=\"password\" \r\n            class=\"form-control\" \r\n            placeholder=\"Password\"\r\n            name=\"password\"\r\n            #password=\"ngModel\"\r\n            [(ngModel)]=\"usuario.password\"\r\n            required>\r\n            <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\r\n              Ingrese una pass valida\r\n            </small>\r\n        </div>\r\n      \r\n        <input \r\n          type=\"submit\" \r\n          value=\"Identificarse\" \r\n          class=\"btn btn-success\"\r\n          [disabled]=\"loginForm.invalid\">\r\n      </form><br>\r\n    </div>\r\n  </div>\r\n</div>"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -251,11 +195,7 @@ module.exports = "<div><br>\r\n  <div class=\"card\">\r\n    <div class=\"contai
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<h1>Public</h1>\n<router-outlet></router-outlet>"
-=======
 module.exports = "<h1>Public</h1>\r\n<router-outlet></router-outlet>"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -326,11 +266,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
-=======
 module.exports = "\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 /***/ }),
 
@@ -1102,24 +1038,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _modelos_usuarios_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modelos/usuarios.model */ "./src/app/modelos/usuarios.model.ts");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
-<<<<<<< HEAD
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
-=======
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 
 
 
 var LoginComponent = /** @class */ (function () {
-<<<<<<< HEAD
     function LoginComponent(_userService, router) {
         this._userService = _userService;
         this.router = router;
-=======
-    function LoginComponent(_userService) {
-        this._userService = _userService;
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
         this.usuario = new _modelos_usuarios_model__WEBPACK_IMPORTED_MODULE_2__["Usuario"]();
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -1128,10 +1056,7 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this._userService.login(this.usuario).subscribe(function (response) {
             console.log(response);
-<<<<<<< HEAD
             _this.router.navigate(['AuthMaster/CuentaSindical']);
-=======
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
         }, function (error) {
             _this.status = error;
             console.log(error);
@@ -1144,11 +1069,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/public-master/login/login.component.css")]
         }),
-<<<<<<< HEAD
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
-=======
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"]])
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1330,11 +1251,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/main.ts */"./src/main.ts");
-=======
 module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 
 /***/ })

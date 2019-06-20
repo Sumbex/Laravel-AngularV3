@@ -27,3 +27,8 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 	Route::get('auth/logout','AuthController@logout');
 
 });
+
+Route::post('guardar_inicio_mensual','CuentasindicatoControlle@guardar_inicio_mensual');
+Route::post('guardar_item_c_s','CuentasindicatoControlle@guardar_item_cuenta_sindicato');
+Route::get('listar_c_s/{anio}/{mes}','CuentasindicatoControlle@listar_cuenta_sindicato');
+Route::get('calcular_cm/{anio}/{mes}','CuentasindicatoControlle@calcular_cierre_e_inicio_mensual');

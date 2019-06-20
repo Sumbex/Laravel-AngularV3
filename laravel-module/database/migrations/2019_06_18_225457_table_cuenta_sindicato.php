@@ -17,6 +17,7 @@ class TableCuentaSindicato extends Migration
             $table->bigIncrements('id');
             $table->date('anio_id');
             $table->date('mes_id');
+            $table->integer('dia');
             $table->bigInteger('numero_documento');
             $table->text('archivo_documento')->nullable();
             $table->integer('tipo_cuenta_sindicato');
@@ -24,6 +25,8 @@ class TableCuentaSindicato extends Migration
             $table->bigInteger('monto_ingreso')->nullable();
             $table->bigInteger('monto_egreso')->nullable();
             $table->bigInteger('saldo_actual')->nullable();
+            $table->integer('definicion');
+            $table->integer('user_crea');
             $table->char('activo', 1);
             $table->timestamps();
         });

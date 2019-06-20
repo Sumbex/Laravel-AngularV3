@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this._userService.login(this.usuario).subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['AuthMaster/CuentaSindical']);
+        this.router.navigate(['AuthMaster']);
       },
       error => {
         this.status = error;

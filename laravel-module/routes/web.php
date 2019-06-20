@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('{angular?}', function() {
+    return File::get(public_path().'/app/index.html');
+})->where('angular', '.*');
 
 Auth::routes();
 

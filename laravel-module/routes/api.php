@@ -27,3 +27,4 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 	Route::get('auth/logout','AuthController@logout');
 
 });
+//tengo miedo

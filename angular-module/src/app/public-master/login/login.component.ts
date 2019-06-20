@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../modelos/usuarios.model';
-import { UsuarioService } from '../servicios/usuarios.service';
+import { Usuario } from '../../modelos/usuarios.model';
+import { UsuarioService } from '../../servicios/usuarios.service';
+import { Router } from '@angular/router';
  
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   public usuario: Usuario;
   public status: string;
 
-  constructor(private _userService: UsuarioService) {
+  constructor(private _userService: UsuarioService, private router: Router) {
     this.usuario = new Usuario();
   }
 
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     this._userService.login(this.usuario).subscribe(
       response => {
         console.log(response);
+        this.router.navigate(['AuthMaster/CuentaSindical']);
       },
       error => {
         this.status = error;

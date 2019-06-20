@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AnioTableSeeder::class);
         $this->call(DefinicionTableSeeder::class);
         $this->call(MesTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
         $this->call(TipoCuentaSindicatoTableSeeder::class);
+        $this->call(PermisosTableSeeder::class);
     }
 }

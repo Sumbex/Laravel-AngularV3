@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableRoles extends Migration
+class CreatePermisoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class TableRoles extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
+        Schema::create('permiso', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('descripcion');
             $table->char('activo',1);
@@ -28,6 +28,6 @@ class TableRoles extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('permiso');
     }
 }

@@ -20,6 +20,13 @@
       <li class="nav-item">
         <a class="nav-link Disabled" [routerLink]="['/AuthMaster/CuentaSindical']">Ingreso Socios</a>
       </li>
+      <li *ngIf="isLogged" ngbDropdown class="d-inline-block">
+        <button class="btn nav-link" ngbDropdownToggle>{{usuario}}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Configuracion Cuenta</button>
+          <button ngbDropdownItem>Cerrar Sesion</button>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

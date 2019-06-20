@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public usuario: Usuario;
   public status: string;
+  public token: string;
 
   constructor(private _userService: UsuarioService, private router: Router) {
     this.usuario = new Usuario();
@@ -20,17 +21,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form){
-    this._userService.login(this.usuario).subscribe(
+    this._userService.login(this.usuario, true).subscribe(
       response => {
-        console.log(response);
+        this.token = response.token;
+        localStorage.setItem('token', JSON.stringify(this.token));
+        localStorage.setItem('usuario', JSON.stringify(this.usuario.email))
         this.router.navigate(['AuthMaster']);
       },
       error => {
         this.status = error;
-        console.log(<any>error);
+        this.router.navigate(['**']);
       }
     );
-    console.log(this.usuario);
   }
 
 }

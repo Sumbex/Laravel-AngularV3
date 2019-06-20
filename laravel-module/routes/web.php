@@ -20,7 +20,7 @@ Route::get('{angular?}', function() {
 })->where('angular', '.*');
 
 Auth::routes();
-
+//testgit
 Route::get('/auth', function (){
     if(!auth::check()){
         $user = App\User::find(1);

@@ -1,3 +1,60 @@
-<p>
-  formulario-sindical works!
-</p>
+<div>
+  <div class="card">
+    <div class="card-header">
+      <strong>Cuenta Sindical</strong>
+    </div>
+    <div class="card-body">
+
+      <div class="row">
+      
+         <div class="col-sm-6 col-md-3 col-lg-4"> <br><label><strong>Calendario</strong></label>
+          <select class="form-control">
+              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-3 col-md-3 col-lg-4">
+          <br><label><strong>N° de Documento</strong></label><input class="form-control">
+        </div>
+      
+        <div class="col-sm-3 col-md-3 col-lg-4">
+          <br><label><strong>Subir Documento</strong></label>
+          <button class="btn btn-primary btn-block"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Subir Documento</button>
+        </div>
+    </div><br>
+
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
+          <select class="form-control">
+              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+          </select>
+        </div><br>
+
+        <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Detalle Tipo</strong></label>
+          <select class="form-control">
+            <option *ngFor="let detalle of selectDetalleTipo">{{detalle.descripcion}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <br><label><strong>Ingrese Monto</strong></label><input class="form-control">
+          </div>
+      </div><br>
+      <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Ingrese Monto</strong></label><input class="form-control">
+            </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <br><label><strong>Guardar Cuenta Sindical</strong></label><br>
+          <button class="btn btn-primary btn-block">Guardar</button>
+        </div>
+      </div>
+      <div class="row" *ngIf="btnDetalle">
+        <div class="col-sm-6 col-md-8 col-lg-8"><br>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+      </div><br>
+    </div>
+  </div>
+</div>
+

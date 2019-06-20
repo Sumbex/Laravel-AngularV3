@@ -14,6 +14,7 @@ import { AuthMasterComponent } from './auth-master/auth-master.component';
 import { CuentaSindicalComponent } from './auth-master/cuenta-sindical/cuenta-sindical.component';
 import { FormularioSindicalComponent } from './auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component';
 import { TablaSindicalComponent } from './auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { CuentaBienestarComponent } from './auth-master/cuenta-bienestar/cuenta-bienestar.component';
 import { FormularioBienestarComponent } from './auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component';
 import { TablaBienestarComponent } from './auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component';
@@ -32,6 +33,7 @@ import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
     CuentaSindicalComponent,
     FormularioSindicalComponent,
     TablaSindicalComponent,
+    NavbarComponent,
     CuentaBienestarComponent,
     FormularioBienestarComponent,
     TablaBienestarComponent,

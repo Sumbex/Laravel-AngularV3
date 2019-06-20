@@ -14,6 +14,13 @@ import { AuthMasterComponent } from './auth-master/auth-master.component';
 import { CuentaSindicalComponent } from './auth-master/cuenta-sindical/cuenta-sindical.component';
 import { FormularioSindicalComponent } from './auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component';
 import { TablaSindicalComponent } from './auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component';
+import { CuentaBienestarComponent } from './auth-master/cuenta-bienestar/cuenta-bienestar.component';
+import { FormularioBienestarComponent } from './auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component';
+import { TablaBienestarComponent } from './auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component';
+import { CuentaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component';
+import { FormularioFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component';
+import { TablaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component';
+import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,14 @@ import { TablaSindicalComponent } from './auth-master/cuenta-sindical/tabla-sind
     AuthMasterComponent,
     CuentaSindicalComponent,
     FormularioSindicalComponent,
-    TablaSindicalComponent
+    TablaSindicalComponent,
+    CuentaBienestarComponent,
+    FormularioBienestarComponent,
+    TablaBienestarComponent,
+    CuentaFondoMutuoComponent,
+    FormularioFondoMutuoComponent,
+    TablaFondoMutuoComponent,
+    NoEncontradoComponent
   ],
   imports: [
     BrowserModule,

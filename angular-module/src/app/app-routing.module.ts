@@ -8,6 +8,7 @@ import { CuentaSindicalComponent } from './auth-master/cuenta-sindical/cuenta-si
 import { CuentaBienestarComponent } from './auth-master/cuenta-bienestar/cuenta-bienestar.component';
 import { CuentaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component';
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
+import { AuthGuardService } from './guardianes/auth.guard.service';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -15,7 +16,7 @@ const routes: Routes = [
       { path: 'about', component: AboutComponent }
   ]},
 
-  { path: 'AuthMaster', component: AuthMasterComponent, children:[
+  { path: 'AuthMaster', component: AuthMasterComponent, canActivate: [AuthGuardService], children:[
     { path: 'CuentaSindical', component: CuentaSindicalComponent },
     { path: 'CuentaBienestar', component: CuentaBienestarComponent },
     { path: 'CuentaFondoMutuo', component: CuentaFondoMutuoComponent }

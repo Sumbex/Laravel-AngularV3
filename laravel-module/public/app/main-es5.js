@@ -41,7 +41,7 @@ module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"contain
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>"
+module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -118,7 +118,7 @@ module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\r\n<app-formulario-sindical></app-formulario-sindical>\r\n<app-tabla-sindical></app-tabla-sindical>"
+module.exports = "<app-formulario-sindical></app-formulario-sindical>\r\n<app-tabla-sindical></app-tabla-sindical>"
 
 /***/ }),
 
@@ -151,7 +151,7 @@ module.exports = "<p>\r\n  tabla-sindical works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Cuenta Binestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" href=\"#\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" href=\"#\">Ingreso Socios</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Binestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\r\n      </li>\r\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\r\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n          <button ngbDropdownItem>Configuracion Cuenta</button>\r\n          <button ngbDropdownItem>Cerrar Sesion</button>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -901,12 +901,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent() {
+    function NavbarComponent(_userService) {
+        this._userService = _userService;
     }
     NavbarComponent.prototype.ngOnInit = function () {
+        this.usuario = this._userService.getUsuario();
+        if (this.usuario != null) {
+            this.isLogged = true;
+        }
+        else {
+            this.isLogged = false;
+        }
     };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -914,7 +924,7 @@ var NavbarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1054,14 +1064,15 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.onSubmit = function (form) {
         var _this = this;
-        this._userService.login(this.usuario).subscribe(function (response) {
-            console.log(response);
-            _this.router.navigate(['AuthMaster/CuentaSindical']);
+        this._userService.login(this.usuario, true).subscribe(function (response) {
+            _this.token = response.token;
+            localStorage.setItem('token', JSON.stringify(_this.token));
+            localStorage.setItem('usuario', JSON.stringify(_this.usuario.email));
+            _this.router.navigate(['AuthMaster']);
         }, function (error) {
             _this.status = error;
-            console.log(error);
+            _this.router.navigate(['**']);
         });
-        console.log(this.usuario);
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1178,6 +1189,26 @@ var UsuarioService = /** @class */ (function () {
         //let params = 'json='+json;
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
+    };
+    UsuarioService.prototype.getToken = function () {
+        var token = localStorage.getItem('token');
+        if (token && token != "undefinided") {
+            this.token = token;
+        }
+        else {
+            this.token = null;
+        }
+        return this.token;
+    };
+    UsuarioService.prototype.getUsuario = function () {
+        var user = localStorage.getItem('usuario');
+        if (user && user != "undefinided") {
+            this.usuario = user;
+        }
+        else {
+            this.usuario = null;
+        }
+        return this.usuario;
     };
     UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),

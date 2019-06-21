@@ -33,3 +33,5 @@ Route::post('guardar_item_c_s','CuentasindicatoControlle@guardar_item_cuenta_sin
 Route::get('listar_c_s/{anio}/{mes}','CuentasindicatoControlle@listar_cuenta_sindicato');
 Route::get('calcular_cm/{anio}/{mes}','CierreMensualController@calcular_cierre_e_inicio_mensual');
 
+require 'Rutas_api/alejandro_api.php';
+require 'Rutas_api/bryan_api.php';

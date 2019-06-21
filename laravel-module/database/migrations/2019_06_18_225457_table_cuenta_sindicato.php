@@ -15,8 +15,8 @@ class TableCuentaSindicato extends Migration
     {
         Schema::create('cuenta_sindicato', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('anio_id');
-            $table->date('mes_id');
+            $table->integer('anio_id');
+            $table->integer('mes_id');
             $table->integer('dia');
             $table->bigInteger('numero_documento');
             $table->text('archivo_documento')->nullable();

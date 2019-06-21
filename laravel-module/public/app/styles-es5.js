@@ -18,37 +18,7 @@ module.exports = [[module.i, "/*!\n * Bootstrap v4.3.1 (https://getbootstrap.com
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RSIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cclxuIl19 */", '', '']]
-
-/***/ }),
-
-/***/ "./node_modules/bootstrap/dist/css/bootstrap.min.css":
-/*!***********************************************************!*\
-  !*** ./node_modules/bootstrap/dist/css/bootstrap.min.css ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../../../postcss-loader/src??embedded!./bootstrap.min.css */ "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/bootstrap/dist/css/bootstrap.min.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
+module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RSIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cbiJdfQ== */", '', '']]
 
 /***/ }),
 
@@ -628,13 +598,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/styles.css */"./src/styles.css");
 module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-=======
-__webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Laravel-AngularV3\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
->>>>>>> ed531301e6d5cef1c5f9808de3511b1af7ae2131
 
 
 /***/ })

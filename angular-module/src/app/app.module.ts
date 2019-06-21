@@ -22,6 +22,8 @@ import { CuentaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/cuen
 import { FormularioFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component';
 import { TablaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component';
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
+import { AuthGuardService } from './guardianes/auth.guard.service';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -47,10 +49,13 @@ import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
-    UsuarioService
+    UsuarioService,
+    AuthGuardService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Sindicado CMPC</a>
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-success">
+  <a class="navbar-brand" style="color: aliceblue">Sindicado CMPC</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,7 +24,7 @@
         <button class="btn nav-link" ngbDropdownToggle>{{usuario}}</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <button ngbDropdownItem>Configuracion Cuenta</button>
-          <button ngbDropdownItem>Cerrar Sesion</button>
+          <button ngbDropdownItem (click)="logOut()">Cerrar Sesion</button>
         </div>
       </li>
     </ul>

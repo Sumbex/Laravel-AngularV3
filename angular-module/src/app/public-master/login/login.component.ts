@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../modelos/usuarios.model';
 import { UsuarioService } from '../../servicios/usuarios.service';
 import { Router } from '@angular/router';
- 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,15 +12,20 @@ export class LoginComponent implements OnInit {
   public usuario: Usuario;
   public status: string;
   public token: string;
+  public loading: boolean = false;
 
   constructor(private _userService: UsuarioService, private router: Router) {
     this.usuario = new Usuario();
   }
 
   ngOnInit() {
+    this.token = localStorage.getItem('token');
+    if (this.token != null) {
+      this.router.navigate(['AuthMaster']);
+    }
   }
 
-  onSubmit(form){
+  onSubmit(form) {
     this._userService.login(this.usuario, true).subscribe(
       response => {
         this.token = response.token;
@@ -33,6 +38,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['**']);
       }
     );
+    this.loading = true;
+    console.log(this.loading);
   }
 
 }

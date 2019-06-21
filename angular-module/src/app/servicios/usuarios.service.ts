@@ -1,30 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Usuario } from '../modelos/usuarios.model';
 import { global } from './global';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable()
-export class UsuarioService{
+export class UsuarioService {
     public url: string;
     public token: string;
     public usuario: string;
 
-    constructor(public _http: HttpClient){
+    constructor(public _http: HttpClient, public jwtHelper: JwtHelperService, private router: Router) {
         this.url = global.url;
     }
 
-    register(user): Observable<any>{
+    register(user): Observable<any> {
         let json = JSON.stringify(user);
-        let params = 'json='+json;
+        let params = 'json=' + json;
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 
-        return this._http.post(this.url+'register', params, {headers: headers});
+        return this._http.post(this.url + 'register', params, { headers: headers });
     }
 
-    login(user, getToken = null): Observable<any>{
-        if(getToken != null){
+    login(user, getToken = null): Observable<any> {
+        if (getToken != null) {
             user.getToken = 'true';
         }
 
@@ -33,29 +34,40 @@ export class UsuarioService{
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 
-        return this._http.post(this.url+'login?', "email=" + user.email + "&" + "password=" + user.password, {headers: headers});
+        return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
     }
 
-    getToken(){
+    getToken() {
         let token = localStorage.getItem('token');
-        if(token && token != "undefinided"){
+        if (token && token != "undefinided") {
             this.token = token;
-        }else{
+        } else {
             this.token = null;
         }
 
         return this.token;
     }
 
-    getUsuario(){
+    getUsuario() {
         let user = localStorage.getItem('usuario');
-        if(user && user != "undefinided"){
+        if (user && user != "undefinided") {
             this.usuario = user;
-        }else{
+        } else {
             this.usuario = null;
         }
 
         return this.usuario;
+    }
+
+    isAuthenticated(): boolean {
+        const token = localStorage.getItem('token');    // Check whether the token is expired and return
+        // true or false
+        return !this.jwtHelper.isTokenExpired(token);
+    }
+
+    logOut(){
+        localStorage.clear();
+        this.router.navigate(['']);
     }
 
 }

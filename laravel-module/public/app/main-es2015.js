@@ -41,7 +41,11 @@ module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"contain
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
+module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>"
+=======
 module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>"
+>>>>>>> bryanm
 
 /***/ }),
 
@@ -118,7 +122,11 @@ module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
+module.exports = "<app-formulario-sindical></app-formulario-sindical>\n<app-tabla-sindical></app-tabla-sindical>"
+=======
 module.exports = "<app-formulario-sindical></app-formulario-sindical>\r\n<app-tabla-sindical></app-tabla-sindical>"
+>>>>>>> bryanm
 
 /***/ }),
 
@@ -151,7 +159,11 @@ module.exports = "<p>\r\n  tabla-sindical works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Binestar</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\n      </li>\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n          <button ngbDropdownItem>Configuracion Cuenta</button>\n          <button ngbDropdownItem>Cerrar Sesion</button>\n        </div>\n      </li>\n    </ul>\n  </div>\n</nav>"
+=======
 module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Binestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\r\n      </li>\r\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\r\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n          <button ngbDropdownItem>Configuracion Cuenta</button>\r\n          <button ngbDropdownItem>Cerrar Sesion</button>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
+>>>>>>> bryanm
 
 /***/ }),
 

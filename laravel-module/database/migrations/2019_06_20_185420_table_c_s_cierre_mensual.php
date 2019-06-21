@@ -15,8 +15,8 @@ class TableCSCierreMensual extends Migration
     {
         Schema::create('c_s_cierre_mensual', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('anio_id');
-            $table->date('mes_id');
+            $table->integer('anio_id');
+            $table->integer('mes_id');
             $table->bigInteger('inicio_mensual')->nullable();
             $table->bigInteger('cierre_mensual')->nullable();
             $table->char('activo',1);

@@ -1,26 +1,37 @@
-<br><div>
-  <div class="card">
+<br>
+ <div>
+   <div class="card">
       <div class="card-header">
         <strong>Cuenta Sindical</strong>
-      </div>
+      </div> 
       <form action="">
           <div class="card-body">
+            <!--Boton Para llamar al Modal-->
               <div class="row">
-                 <div class="col-sm-6 col-md-3 col-lg-4"> <br><label><strong>Fecha</strong></label> <br>
-                  
-                <input type="text" ngbDatepicker #d="ngbDatepicker"/>
-                <button (click)="d.toggle()">Ingrese</button>
+                  <div class="col-sm-6 col-md-3 col-lg-3">
+                    <br><label><strong>Inicio y Cierre Mensual</strong></label><br>
+                    <button class="btn btn btn-success btn-block btn-sm" (click)="openLg(content)" style="background: #229954">Ingresar</button>
+                  </div>
+              </div><hr>
+              <!--Formulario para ingresar una cuenta sindical-->
+              <div class="row">
+                 
+                <div class="col-sm-3 col-md-4 col-lg-4"> 
+                  <br><label><strong>Ingrese Fecha</strong></label> <br>
+                  <input class="form-control-sm" type="text" ngbDatepicker #d="ngbDatepicker"/>
+                  <button (click)="d.toggle()" class="btn btn-success btn-sm" style="background: #229954">Seleccione Fecha</button>
                 </div>
         
-                <div class="col-sm-3 col-md-3 col-lg-4">
-                  <br><label><strong>N° de Documento</strong></label><input class="form-control form-control-sm">
+                <div class="col-sm-3 col-md-4 col-lg-4">
+                     <br><label><strong>N° de Documento</strong></label>
+                     <input class="form-control form-control-sm">
                 </div>
               
-                <div class="col-sm-3 col-md-3 col-lg-4">
+                <div class="col-sm-3 col-md-4 col-lg-4">
                   <br><label><strong>Subir Documento</strong></label>
-                  <input type="file" (change)="cargandoImagen($event.target.files)" multiple>
+                  <input class="form-control-file" type="file">
                 </div>
-            </div><br>
+               </div><br>
         
               <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
@@ -36,23 +47,105 @@
                 </div>
         
                 <div class="col-sm-6 col-md-4 col-lg-4">
-                    <br><label><strong>Ingrese Descripcion del Tipo</strong></label><input class="form-control form-control-sm">
+                    <br><label><strong>Ingrese Descripcion del Tipo</strong></label>
+                    <textarea class="form-control" rows="3"></textarea>
+                    
                   </div>
               </div><br>
+
               <div class="row">
                   <div class="col-sm-6 col-md-4 col-lg-4">
-                      <br><label><strong>Ingrese Monto</strong></label><input class="form-control form-control-sm">
-                    </div>
-                <div class="col-sm-6 col-md-3 col-lg-3">
+                    <br><label><strong>Ingrese Monto</strong></label><input class="form-control form-control-sm">
+                  </div>
+
+                  <div class="col-sm-6 col-md-3 col-lg-3">
                     <br><label><strong>Guardar Cuenta Sindical</strong></label><br>
-                  <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
-                </div>
+                    <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
+                  </div>
               </div><br>
         
             </div>
       </form>
 
+      <!--Modal para el inicio y cierre mensual-->
+      <ng-template #content let-modal>
+          <form action="">
+              <div class="modal-header">
+                  <h4 class="modal-title"><strong>Inicio y Cierre Mensual</strong></h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!--Cuerpo del body-->
+                <div class="modal-body">
 
-  </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Año</strong></label>
+                          <select class="form-control form-control-sm">
+                              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Mes</strong></label>
+                          <select class="form-control form-control-sm">
+                              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <br><label><strong>Calcular monto</strong></label><br>
+                          <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Calcular</button>
+                        </div>
+
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <br><label><strong>Monto Inicial</strong></label><input class="form-control form-control-sm">
+                          </div>
+
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <br><label><strong>Guardar Monto</strong></label><br>
+                          <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
+                        </div>
+                    </div>
+
+                    <br><hr><!--Tabla del Modal Inicio y cierre mensual-->
+
+                    <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
+                      <select class="form-control form-control-sm">
+                          <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+                      </select>
+                    </div> <br>
+
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-sm">
+                        <thead text-sm class="text-center">
+                          <tr style="background:#229954;color:#FDFEFE">
+                            <th scope="col" colspan="12"><h4>Movimiento Mensual Mayo 2019</h4><th>
+                          </tr>
+                          <tr>
+                            <th scope="col" colspan="3" style="background: #138D75">Año</th>
+                            <th scope="col" colspan="3" style="background: #138D75">Mes</th>
+                            <th scope="col" colspan="3" style="background: #138D75">Monto</th>
+                            <th scope="col" colspan="3" style="background: #138D75">Inicial</th>
+                         </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-center">
+                              <td scope="col" colspan="3">2019</td>
+                              <td scope="col" colspan="3">Enero</td>
+                              <td scope="col" colspan="3">50000</td>
+                              <td scope="col" colspan="3">120000</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div><br>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical </button>
+                </div>
+          </form>
+      </ng-template>
+
+    </div>
 </div>
 

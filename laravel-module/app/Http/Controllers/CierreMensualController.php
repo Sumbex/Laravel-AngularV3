@@ -5,6 +5,35 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class CierreMensualController extends Controller
 {
+	public function guardar_inicio_mensual(Request $r)
+    {
+    	$existe = DB::table('c_s_cierre_mensual')->where([
+    		'activo' => 'S',
+    		'anio_id' => $r->anio,
+    		'mes_id' => $r->mes,
+    	])->first();
+
+
+    	if (!empty($existe)) { //si existe un monto en este mes
+    		$update = DB::table('c_s_cierre_mensual')->where([
+    		'activo' => 'S',
+    		'anio_id' => $r->anio,
+    		'mes_id' => $r->mes,
+    		])->update(['inicio_mensual'=>$r->cierre_mensual]);
+    		return response()->json($update);
+
+    	}else{
+    		$insert = DB::table('c_s_cierre_mensual')->insert([
+	    		'anio_id' => $r->anio,
+	    		'mes_id' => $r->mes,
+	    		'inicio_mensual' => $r->cierre_mensual,
+	    		'activo' => 'S'
+	        ]);
+
+	        return response()->json($insert);
+    	}
+	
+    }
     public function calcular_cierre_e_inicio_mensual($anio, $mes)
     {
     	$mes = $mes - 1;

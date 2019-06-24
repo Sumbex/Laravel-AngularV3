@@ -24,6 +24,7 @@ import { TablaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/tabla
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 import { AuthGuardService } from './guardianes/auth.guard.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { AniosService } from './servicios/anios.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     UsuarioService,
     AuthGuardService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-        JwtHelperService
+    JwtHelperService,
+    AniosService
   ],
   bootstrap: [AppComponent]
 })

@@ -93,7 +93,6 @@ class CuentaSindicatoController extends Controller
 	{
 
 		$cm_txt = 'c_s_cierre_mensual';
-		//$anio = $this->anio_tipo_id($f['anio']);
 		
 		$c_m = DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes,
 	    	])->first();

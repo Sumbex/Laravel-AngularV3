@@ -41,11 +41,7 @@ module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"contain
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>"
-=======
 module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>"
->>>>>>> bryanm
 
 /***/ }),
 
@@ -122,11 +118,7 @@ module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<app-formulario-sindical></app-formulario-sindical>\n<app-tabla-sindical></app-tabla-sindical>"
-=======
 module.exports = "<app-formulario-sindical></app-formulario-sindical>\r\n<app-tabla-sindical></app-tabla-sindical>"
->>>>>>> bryanm
 
 /***/ }),
 
@@ -137,7 +129,7 @@ module.exports = "<app-formulario-sindical></app-formulario-sindical>\r\n<app-ta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br><div>\r\n  <div class=\"card\">\r\n    <div class=\"card-header\">\r\n      <strong>Cuenta Sindical</strong>\r\n    </div>\r\n    <div class=\"card-body\">\r\n\r\n      <div class=\"row\">\r\n      \r\n         <div class=\"col-sm-6 col-md-3 col-lg-4\"> <br><label><strong>Calendario</strong></label>\r\n          <select class=\"form-control\">\r\n              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-3 col-md-3 col-lg-4\">\r\n          <br><label><strong>N° de Documento</strong></label><input class=\"form-control\">\r\n        </div>\r\n      \r\n        <div class=\"col-sm-3 col-md-3 col-lg-4\">\r\n          <br><label><strong>Subir Documento</strong></label>\r\n          <button class=\"btn btn-primary btn-block\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span> Subir Documento</button>\r\n        </div>\r\n    </div><br>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n          <select class=\"form-control\">\r\n              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div><br>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Detalle Tipo</strong></label>\r\n          <select class=\"form-control\">\r\n            <option *ngFor=\"let detalle of selectDetalleTipo\">{{detalle.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control\">\r\n          </div>\r\n      </div><br>\r\n      <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n              <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control\">\r\n            </div>\r\n        <div class=\"col-sm-6 col-md-3 col-lg-3\">\r\n            <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\r\n          <button class=\"btn btn-primary btn-block\">Guardar</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\" *ngIf=\"btnDetalle\">\r\n        <div class=\"col-sm-6 col-md-8 col-lg-8\"><br>\r\n          <textarea class=\"form-control\" rows=\"3\"></textarea>\r\n        </div>\r\n      </div><br>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<br>\r\n <div>\r\n   <div class=\"card\">\r\n      <div class=\"card-header\">\r\n        <strong>Cuenta Sindical</strong>\r\n      </div> \r\n      <form action=\"\">\r\n          <div class=\"card-body\">\r\n            <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n              <div class=\"row\">\r\n                  <div class=\"col-sm-6 col-md-3 col-lg-3\">\r\n                    <br><label><strong>Inicio y Cierre Mensual</strong></label><br>\r\n                    <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\" style=\"background: #229954\">Ingresar</button>\r\n                  </div>\r\n\r\n               <!--Boton Para llamar al modal caja chica-->\r\n                  <div class=\"col-sm-6 col-md-3 col-lg-3\">\r\n                    <br><label><strong>Caja Chica</strong></label><br>\r\n                    <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\" style=\"background: #229954\">Ingresar</button>\r\n                  </div>\r\n              </div><hr>\r\n\r\n              <!--Formulario para ingresar una cuenta sindical-->\r\n              <div class=\"row\">\r\n                 \r\n                <div class=\"col-sm-3 col-md-4 col-lg-4\"> \r\n                  <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n                      <div class=\"input-group\">\r\n                        <input class=\"form-control form-control-sm\" placeholder=\"yyyy-mm-dd\"\r\n                               name=\"d2\" #c2=\"ngModel\" [(ngModel)]=\"model2\" ngbDatepicker #d2=\"ngbDatepicker\">\r\n                        <div class=\"input-group-append\">\r\n                          <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\r\n                        </div>\r\n                      </div> \r\n                </div>\r\n        \r\n                <div class=\"col-sm-3 col-md-4 col-lg-4\">\r\n                     <br><label><strong>N° de Documento</strong></label>\r\n                     <input class=\"form-control form-control-sm\">\r\n                </div>\r\n              \r\n                <div class=\"col-sm-3 col-md-4 col-lg-4\">\r\n                  <br><label><strong>Subir Documento</strong></label>\r\n                  <input class=\"form-control-file\" type=\"file\">\r\n                </div>\r\n               </div><br>\r\n        \r\n              <div class=\"row\">\r\n                <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n                  <select class=\"form-control form-control-sm\">\r\n                      <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                  </select>\r\n                </div><br>\r\n        \r\n                <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Detalle Tipo</strong></label>\r\n                  <select class=\"form-control form-control-sm\">\r\n                    <option *ngFor=\"let detalle of selectDetalleTipo\">{{detalle.descripcion}}</option>\r\n                  </select>\r\n                </div>\r\n        \r\n                <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                    <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\r\n                    <textarea class=\"form-control\" rows=\"3\"></textarea>\r\n                    \r\n                  </div>\r\n              </div><br>\r\n\r\n              <div class=\"row\">\r\n                  <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                    <br><label><strong>Ingrese Monto</strong></label><input class=\"form-control form-control-sm\">\r\n                  </div>\r\n\r\n                  <div class=\"col-sm-6 col-md-3 col-lg-3\">\r\n                    <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\r\n                    <button class=\"btn btn btn-success btn-block btn-sm\" style=\"background: #229954\">Guardar</button>\r\n                  </div>\r\n              </div><br>\r\n        \r\n            </div>\r\n      </form>\r\n\r\n      <!--Modal para el inicio y cierre mensual-->\r\n      <ng-template #Mensual let-modal>\r\n          <form action=\"\">\r\n              <div class=\"modal-header\">\r\n                  <h4 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h4>\r\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <!--Cuerpo del body-->\r\n                <div class=\"modal-body\">\r\n\r\n                    <div class=\"row\">\r\n                        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\r\n                          <select class=\"form-control form-control-sm\">\r\n                              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                          </select>\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\r\n                          <select class=\"form-control form-control-sm\">\r\n                              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                          </select>\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                            <br><label><strong>Calcular monto</strong></label><br>\r\n                          <button class=\"btn btn btn-success btn-block btn-sm\" style=\"background: #229954\">Calcular</button>\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                            <br><label><strong>Monto Inicial</strong></label><input class=\"form-control form-control-sm\">\r\n                          </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                            <br><label><strong>Guardar Monto</strong></label><br>\r\n                          <button class=\"btn btn btn-success btn-block btn-sm\" style=\"background: #229954\">Guardar</button>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <br><hr><!--Tabla del Modal Inicio y cierre mensual-->\r\n\r\n                    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n                      <select class=\"form-control form-control-sm\">\r\n                          <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                      </select>\r\n                    </div><br>\r\n\r\n                  <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-sm\">\r\n                        <thead text-sm class=\"text-center\">\r\n                          <tr style=\"background:#229954;color:#FDFEFE\">\r\n                            <th scope=\"col\" colspan=\"12\"><h4>Movimiento Mensual Mayo 2019</h4><th>\r\n                          </tr>\r\n                          <tr>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Año</th>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Mes</th>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Monto</th>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Inicial</th>\r\n                         </tr>\r\n                          </thead>\r\n                          <tbody>\r\n                            <tr class=\"text-center\">\r\n                              <td scope=\"col\" colspan=\"3\">2019</td>\r\n                              <td scope=\"col\" colspan=\"3\">Enero</td>\r\n                              <td scope=\"col\" colspan=\"3\">50000</td>\r\n                              <td scope=\"col\" colspan=\"3\">120000</td>\r\n                            </tr>\r\n                        </tbody>\r\n                      </table>\r\n                    </div><br>\r\n\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                  <button type=\"button\" class=\"btn btn-light\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical </button>\r\n                </div>\r\n          </form>\r\n      </ng-template>\r\n\r\n      <!--Modal caja chica-->\r\n      <ng-template #CajaChica let-modal>\r\n          <form action=\"\">\r\n              <div class=\"modal-header\">\r\n                  <h4 class=\"modal-title\"><strong>Caja Chica</strong></h4>\r\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <!--Cuerpo del body-->\r\n                <div class=\"modal-body\">\r\n                    <div class=\"row\">\r\n\r\n                        <div class=\"col-sm-3 col-md-4 col-lg-4\"> \r\n                            <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n                            <div class=\"form-group\">\r\n                                <div class=\"input-group\">\r\n                                  <input class=\"form-control form-control-sm\" placeholder=\"yyyy-mm-dd\"\r\n                                         name=\"d2\" #c2=\"ngModel\" [(ngModel)]=\"model2\" ngbDatepicker #d2=\"ngbDatepicker\">\r\n                                  <div class=\"input-group-append\">\r\n                                    <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\r\n                                  </div>\r\n                                </div>\r\n                              </div> \r\n                          </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                          <br><label><strong>Ingrese Detalle</strong></label><input class=\"form-control form-control-sm\">\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                          <br><label><strong>Igrese Monto</strong></label><input class=\"form-control form-control-sm\">\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                            <br><label><strong>Igrese N° Documento</strong></label><input class=\"form-control form-control-sm\">\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-3 col-md-4 col-lg-4\">\r\n                          <br><label><strong>Subir Documento</strong></label>\r\n                          <input class=\"form-control-file\" type=\"file\">\r\n                        </div>\r\n\r\n\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n                          <select class=\"form-control form-control-sm\">\r\n                              <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                          </select>\r\n                        </div>\r\n                        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n                            <br><label><strong>Guardar Caja Chica</strong></label><br>\r\n                          <button class=\"btn btn btn-success btn-block btn-sm\" style=\"background: #229954\">Guardar</button>\r\n                        </div>\r\n                     </div>\r\n\r\n                    <hr><!--Tabla del Modal Inicio y cierre mensual-->\r\n\r\n                   <div class=\"row\">\r\n                      <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n                        <select class=\"form-control form-control-sm\">\r\n                            <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                        </select>\r\n                      </div>\r\n\r\n                      <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n                        <select class=\"form-control form-control-sm\">\r\n                            <option *ngFor=\"let mes of selectDetalleMes\">{{mes.descripcion}}</option>\r\n                        </select>\r\n                      </div>\r\n                   </div> <hr>\r\n\r\n                  <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-sm\">\r\n                        <thead text-sm class=\"text-center\">\r\n                          <tr style=\"background:#229954;color:#FDFEFE\">\r\n                            <th scope=\"col\" colspan=\"12\"><h4>Movimiento Mensual Mayo 2019</h4><th>\r\n                          </tr>\r\n                          <tr>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Año</th>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Mes</th>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Monto</th>\r\n                            <th scope=\"col\" colspan=\"3\" style=\"background: #138D75\">Inicial</th>\r\n                         </tr>\r\n                          </thead>\r\n                          <tbody>\r\n                            <tr class=\"text-center\">\r\n                              <td scope=\"col\" colspan=\"3\">2019</td>\r\n                              <td scope=\"col\" colspan=\"3\">Enero</td>\r\n                              <td scope=\"col\" colspan=\"3\">50000</td>\r\n                              <td scope=\"col\" colspan=\"3\">120000</td>\r\n                            </tr>\r\n                        </tbody>\r\n                      </table>\r\n                    </div><br>\r\n\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                  <button type=\"button\" class=\"btn btn-light\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical </button>\r\n                </div>\r\n          </form>\r\n      </ng-template>\r\n\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -148,7 +140,7 @@ module.exports = "<br><div>\r\n  <div class=\"card\">\r\n    <div class=\"card-h
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  tabla-sindical works!\r\n</p>\r\n"
+module.exports = "\r\n<br> \r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-striped table-bordered table-sm\">\r\n      <thead text-sm>\r\n        <tr class=\" text-center\" style=\"background:#229954;color:#FDFEFE\">\r\n          <th colspan=\"12\"><h4>Movimiento Mensual Mayo 2019</h4><th>\r\n        </tr>\r\n        <tr>\r\n          <th scope=\"col\" colspan=\"2\">Desde:</th>\r\n          <th scope=\"col\" colspan=\"2\"><input class=\"form-control form-control-sm\"></th>\r\n        </tr>\r\n        <tr>\r\n          <th scope=\"col\" colspan=\"2\">Hasta:</th>\r\n          <th scope=\"col\" colspan=\"2\"><input class=\"form-control form-control-sm\"></th>\r\n        </tr>\r\n        <tr class=\"text-center\">\r\n          <th scope=\"col\" colspan=\"2\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\r\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\r\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Documento PDF</th>\r\n          <th scope=\"col\" colspan=\"5\"style=\"background: #138D75\">Cuenta Sindicado</th>\r\n\r\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\r\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\r\n          <th scope=\"col\" rowspan=\"2\" style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Abril</th>\r\n        </tr>\r\n        <tr class=\"text-center\" style=\"background: #138D75;color:#FDFEFE\"> <th scope=\"col\" colspan=\"5\">Ingresos y Egresos Fijos</th></tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr>\r\n          <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n          <td scope=\"col\" class=\"text-center\">88970</td>\r\n          <td scope=\"col\" class=\"text-center\"></td>\r\n          <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n          <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n            <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n            <td scope=\"col\" class=\"text-center\">88970</td>\r\n            <td scope=\"col\" class=\"text-center\"></td>\r\n            <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n            <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n            <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n            <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          </tr>\r\n\r\n          <tr>\r\n              <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n              <td scope=\"col\" class=\"text-center\">88970</td>\r\n              <td scope=\"col\" class=\"text-center\"></td>\r\n              <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n              <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n              <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n              <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n            </tr>\r\n\r\n            <tr>\r\n                <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                <td scope=\"col\" class=\"text-center\">88970</td>\r\n                <td scope=\"col\" class=\"text-center\"></td>\r\n                <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n              </tr>\r\n      </tbody>\r\n    </table>\r\n  </div> <br>\r\n"
 
 /***/ }),
 
@@ -159,11 +151,7 @@ module.exports = "<p>\r\n  tabla-sindical works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Binestar</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\n      </li>\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n          <button ngbDropdownItem>Configuracion Cuenta</button>\n          <button ngbDropdownItem>Cerrar Sesion</button>\n        </div>\n      </li>\n    </ul>\n  </div>\n</nav>"
-=======
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n  <a class=\"navbar-brand\" href=\"#\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Binestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\r\n      </li>\r\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\r\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n          <button ngbDropdownItem>Configuracion Cuenta</button>\r\n          <button ngbDropdownItem>Cerrar Sesion</button>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
->>>>>>> bryanm
+module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg-success\">\r\n  <a class=\"navbar-brand\" style=\"color: aliceblue\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Binestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\r\n      </li>\r\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\r\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n          <button ngbDropdownItem>Configuracion Cuenta</button>\r\n          <button ngbDropdownItem (click)=\"logOut()\">Cerrar Sesion</button>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -196,7 +184,7 @@ module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div><br>\r\n  <div class=\"card\">\r\n    <div class=\"container\">\r\n      <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n        <div class=\"form-group\"><br>\r\n          <label for=\"email\"><strong>Correo Electronico</strong></label>\r\n          <input \r\n            type=\"email\" \r\n            class=\"form-control\" \r\n            placeholder=\"Enter email\" \r\n            name=\"email\" \r\n            #email=\"ngModel\" \r\n            [(ngModel)]=\"usuario.email\"\r\n            required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\r\n            <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\r\n              El correo ingresado no es valido\r\n            </small>\r\n        </div>\r\n      \r\n        <div class=\"form-group\">\r\n          <label for=\"password\"><strong>Contraseña</strong></label>\r\n          <input \r\n            type=\"password\" \r\n            class=\"form-control\" \r\n            placeholder=\"Password\"\r\n            name=\"password\"\r\n            #password=\"ngModel\"\r\n            [(ngModel)]=\"usuario.password\"\r\n            required>\r\n            <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\r\n              Ingrese una pass valida\r\n            </small>\r\n        </div>\r\n      \r\n        <input \r\n          type=\"submit\" \r\n          value=\"Identificarse\" \r\n          class=\"btn btn-success\"\r\n          [disabled]=\"loginForm.invalid\">\r\n      </form><br>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div><br>\r\n  <div class=\"card\">\r\n    <div class=\"container\">\r\n      <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n        <div class=\"form-group\"><br>\r\n          <label for=\"email\"><strong>Correo Electronico</strong></label>\r\n          <input \r\n            type=\"email\" \r\n            class=\"form-control\" \r\n            placeholder=\"Enter email\" \r\n            name=\"email\" \r\n            #email=\"ngModel\" \r\n            [(ngModel)]=\"usuario.email\"\r\n            required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\r\n            <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\r\n              El correo ingresado no es valido\r\n            </small>\r\n        </div>\r\n      \r\n        <div class=\"form-group\">\r\n          <label for=\"password\"><strong>Contraseña</strong></label>\r\n          <input \r\n            type=\"password\" \r\n            class=\"form-control\" \r\n            placeholder=\"Password\"\r\n            name=\"password\"\r\n            #password=\"ngModel\"\r\n            [(ngModel)]=\"usuario.password\"\r\n            required>\r\n            <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\r\n              Ingrese una pass valida\r\n            </small>\r\n        </div>\r\n      \r\n        <input \r\n          type=\"submit\" \r\n          value=\"Identificarse\" \r\n          class=\"btn btn-success\"\r\n          [disabled]=\"loginForm.invalid\">\r\n      </form><br>\r\n    </div>\r\n  </div>\r\n  <div *ngIf=\"loading\" class=\"col-12 text-center\">\r\n    <img src=\"/assets/loading.gif\" alt=\"cargando\">\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -232,6 +220,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/cuenta-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.ts");
 /* harmony import */ var _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component */ "./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.ts");
 /* harmony import */ var _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./no-encontrado/no-encontrado.component */ "./src/app/no-encontrado/no-encontrado.component.ts");
+/* harmony import */ var _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./guardianes/auth.guard.service */ "./src/app/guardianes/auth.guard.service.ts");
+
 
 
 
@@ -248,7 +238,7 @@ var routes = [
             { path: '', component: _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
             { path: 'about', component: _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_5__["AboutComponent"] }
         ] },
-    { path: 'AuthMaster', component: _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_6__["AuthMasterComponent"], children: [
+    { path: 'AuthMaster', component: _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_6__["AuthMasterComponent"], canActivate: [_guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_11__["AuthGuardService"]], children: [
             { path: 'CuentaSindical', component: _auth_master_cuenta_sindical_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_7__["CuentaSindicalComponent"] },
             { path: 'CuentaBienestar', component: _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_8__["CuentaBienestarComponent"] },
             { path: 'CuentaFondoMutuo', component: _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_9__["CuentaFondoMutuoComponent"] }
@@ -353,6 +343,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component */ "./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.ts");
 /* harmony import */ var _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.ts");
 /* harmony import */ var _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./no-encontrado/no-encontrado.component */ "./src/app/no-encontrado/no-encontrado.component.ts");
+/* harmony import */ var _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./guardianes/auth.guard.service */ "./src/app/guardianes/auth.guard.service.ts");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+
+
 
 
 
@@ -405,10 +399,13 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"]
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
             ],
             providers: [
-                _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"]
+                _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"],
+                _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
+                { provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"], useValue: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"] },
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JwtHelperService"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
@@ -787,7 +784,7 @@ var CuentaSindicalComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9mb3JtdWxhcmlvLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color: #292b2c;\r\n      color: white;\r\n    }\r\n    .dark-modal .close {\r\n      color: white;\r\n    }\r\n    .light-blue-backdrop {\r\n      background-color: #5cb3fd;\r\n    }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtNQUNFLHlCQUF5QjtNQUN6QixZQUFZO0lBQ2Q7SUFDQTtNQUNFLFlBQVk7SUFDZDtJQUNBO01BQ0UseUJBQXlCO0lBQzNCIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XHJcbiAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIH1cclxuICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XHJcbiAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIH1cclxuICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcclxuICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgIH1cclxuIl19 */"
 
 /***/ }),
 
@@ -803,12 +800,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSindicalComponent", function() { return FormularioSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+
 
 
 var FormularioSindicalComponent = /** @class */ (function () {
-    function FormularioSindicalComponent() {
+    function FormularioSindicalComponent(modalService) {
+        this.modalService = modalService;
     }
     FormularioSindicalComponent.prototype.ngOnInit = function () {
+    };
+    FormularioSindicalComponent.prototype.openMensual = function (Mensual) {
+        this.modalService.open(Mensual, { size: 'lg' });
+    };
+    FormularioSindicalComponent.prototype.openCajaChica = function (CajaChica) {
+        this.modalService.open(CajaChica, { size: 'lg' });
     };
     FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -816,7 +822,7 @@ var FormularioSindicalComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./formulario-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.html"),
             styles: [__webpack_require__(/*! ./formulario-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
     ], FormularioSindicalComponent);
     return FormularioSindicalComponent;
 }());
@@ -864,6 +870,47 @@ var TablaSindicalComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], TablaSindicalComponent);
     return TablaSindicalComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/guardianes/auth.guard.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/guardianes/auth.guard.service.ts ***!
+  \**************************************************/
+/*! exports provided: AuthGuardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuardService", function() { return AuthGuardService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+
+
+
+
+var AuthGuardService = /** @class */ (function () {
+    function AuthGuardService(auth, router) {
+        this.auth = auth;
+        this.router = router;
+    }
+    AuthGuardService.prototype.canActivate = function () {
+        if (!this.auth.isAuthenticated()) {
+            this.router.navigate(['']);
+            return false;
+        }
+        return true;
+    };
+    AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AuthGuardService);
+    return AuthGuardService;
 }());
 
 
@@ -929,6 +976,9 @@ var NavbarComponent = /** @class */ (function () {
         else {
             this.isLogged = false;
         }
+    };
+    NavbarComponent.prototype.logOut = function () {
+        this._userService.logOut();
     };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1070,9 +1120,14 @@ var LoginComponent = /** @class */ (function () {
     function LoginComponent(_userService, router) {
         this._userService = _userService;
         this.router = router;
+        this.loading = false;
         this.usuario = new _modelos_usuarios_model__WEBPACK_IMPORTED_MODULE_2__["Usuario"]();
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this.token = localStorage.getItem('token');
+        if (this.token != null) {
+            this.router.navigate(['AuthMaster']);
+        }
     };
     LoginComponent.prototype.onSubmit = function (form) {
         var _this = this;
@@ -1085,6 +1140,8 @@ var LoginComponent = /** @class */ (function () {
             _this.status = error;
             _this.router.navigate(['**']);
         });
+        this.loading = true;
+        console.log(this.loading);
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1177,13 +1234,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 
 
 var UsuarioService = /** @class */ (function () {
-    function UsuarioService(_http) {
+    function UsuarioService(_http, jwtHelper, router) {
         this._http = _http;
+        this.jwtHelper = jwtHelper;
+        this.router = router;
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     UsuarioService.prototype.register = function (user) {
@@ -1222,9 +1285,18 @@ var UsuarioService = /** @class */ (function () {
         }
         return this.usuario;
     };
+    UsuarioService.prototype.isAuthenticated = function () {
+        var token = localStorage.getItem('token'); // Check whether the token is expired and return
+        // true or false
+        return !this.jwtHelper.isTokenExpired(token);
+    };
+    UsuarioService.prototype.logOut = function () {
+        localStorage.clear();
+        this.router.navigate(['']);
+    };
     UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], UsuarioService);
     return UsuarioService;
 }());
@@ -1294,7 +1366,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

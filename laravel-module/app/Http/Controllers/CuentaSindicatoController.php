@@ -80,7 +80,7 @@ class CuentaSindicatoController extends Controller
 			}
 			$cs->activo = 'S';
 			$cs->definicion = $r->definicion;
-			$cs->user_crea = '1'/*Auth::user()->id*/;
+			$cs->user_crea = Auth::user()->id;
 			if ($cs->save()) {
 				return "success";
 			}
@@ -100,7 +100,7 @@ class CuentaSindicatoController extends Controller
 
 		if(!empty($c_m->inicio_mensual)){
 			$s_a = $c_m->inicio_mensual;
-			$listar = CuentaSindicato::where(['anio_id' => $anio, 'mes_id' => $mes])->get();
+			$listar = CuentaSindicato::where(['activo'=>'S','anio_id' => $anio, 'mes_id' => $mes])->get();
 
 			$tomar = true;
 

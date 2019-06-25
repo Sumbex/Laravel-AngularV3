@@ -34,4 +34,11 @@ export class FormularioSindicalComponent implements OnInit {
   openCajaChica(CajaChica) {
     this.modalService.open(CajaChica, { size: 'lg' });
   }
+  openPrestamo(Prestamo) {
+    this.modalService.open(Prestamo, { size: 'lg' });
+  }
+
+  openCamping(Camping) {
+    this.modalService.open(Camping, { size: 'lg' });
+  }
 }

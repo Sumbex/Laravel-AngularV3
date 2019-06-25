@@ -18,6 +18,19 @@
                 <br><label><strong>Caja Chica</strong></label><br>
                 <button class="btn btn btn-success btn-block btn-sm" (click)="openCajaChica(CajaChica)">Ingresar</button>
               </div>
+
+              <!--Boton Para llamar al modal caja chica-->
+              <div class="col-sm-6 col-md-3 col-lg-3">
+                <br><label><strong>Prestamos</strong></label><br>
+                <button class="btn btn btn-success btn-block btn-sm" (click)="openPrestamo(Prestamo)">Ingresar</button>
+              </div>
+              
+              <!--Boton Para llamar al modal camping-->
+              <div class="col-sm-6 col-md-3 col-lg-3">
+              <br><label><strong>Camping</strong></label><br>
+              <button class="btn btn btn-success btn-block btn-sm" (click)="openCamping(Camping)">Ingresar</button>
+            </div>
+
             </div>
           </div>
       </form>
@@ -87,7 +100,6 @@
       </form>
     </div>
     
-
     <!--Modal para el inicio y cierre mensual-->
     <ng-template #Mensual let-modal>
       <form action="">
@@ -97,7 +109,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-                <!--Cuerpo del body-->
+                <!--Cuerpo del body inicio y cierre mensual-->
                 <div class="modal-body">
 
                     <div class="row">
@@ -135,7 +147,7 @@
                           <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
                       </select>
                     </div><br>
-
+                    <!--tabla del modal inicio y cierre mensual-->
                   <div class="table-responsive">
                     <table class="table table-bordered table-sm">
                         <thead text-sm class="text-center">
@@ -163,6 +175,7 @@
                     </div><br>
 
                 </div>
+                <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical </button>
                 </div>
@@ -171,169 +184,16 @@
 
     <!--Modal caja chica-->
     <ng-template #CajaChica let-modal>
-          <form action="">
-              <div class="modal-header">
-                  <h4 class="modal-title"><strong>Caja Chica</strong></h4>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <!--Cuerpo del body-->
-                <div class="modal-body">
-                    <div class="row">
-
-                        <div class="col-sm-3 col-md-4 col-lg-4"> 
-                            <br><label><strong>Ingrese Fecha</strong></label> <br>
-                            <div class="form-group">
-                                <div class="input-group">
-                                  <input class="form-control form-control-sm" placeholder="yyyy-mm-dd"
-                                         name="d2" #c2="ngModel" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
-                                  <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
-                                  </div>
-                                </div>
-                              </div> 
-                          </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                          <br><label><strong>Ingrese Detalle</strong></label><input class="form-control form-control-sm">
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                          <br><label><strong>Igrese Monto</strong></label><input class="form-control form-control-sm">
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <br><label><strong>Igrese N° Documento</strong></label><input class="form-control form-control-sm">
-                        </div>
-
-                        <div class="col-sm-3 col-md-4 col-lg-4">
-                          <br><label><strong>Subir Documento</strong></label>
-                          <input class="form-control-file" type="file">
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-                          <select class="form-control form-control-sm">
-                              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
-                          </select>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <br><label><strong>Guardar Caja Chica</strong></label><br>
-                          <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
-                        </div>
-                     </div>
-
-                    <hr><!--Tabla del Modal Inicio y cierre mensual-->
-
-                   <div class="row">
-                      <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-                        <select class="form-control form-control-sm">
-                            <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
-                        </select>
-                      </div>
-
-                      <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
-                        <select class="form-control form-control-sm">
-                            <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
-                        </select>
-                      </div>
-                   </div> <hr>
-
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-sm">
-                        <thead text-sm class="text-center">
-                          <tr style="background:#229954;color:#FDFEFE">
-                            <th scope="col" colspan="12"><h4>Movimiento Mensual Mayo 2019</h4><th>
-                          </tr>
-                          <tr>
-                            <th scope="col" colspan="3" style="background: #138D75">Año</th>
-                            <th scope="col" colspan="3" style="background: #138D75">Mes</th>
-                            <th scope="col" colspan="3" style="background: #138D75">Monto</th>
-                            <th scope="col" colspan="3" style="background: #138D75">Inicial</th>
-                         </tr>
-                          </thead>
-                          <tbody>
-                            <tr class="text-center">
-                              <td scope="col" colspan="3">2019</td>
-                              <td scope="col" colspan="3">Enero</td>
-                              <td scope="col" colspan="3">50000</td>
-                              <td scope="col" colspan="3">120000</td>
-                            </tr>
-                        </tbody>
-                      </table>
-                    </div><br>
-
-            <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Mes</strong></label>
-              <select class="form-control form-control-sm">
-                <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
-              </select>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <br><label><strong>Calcular monto</strong></label><br>
-              <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Calcular</button>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <br><label><strong>Monto Inicial</strong></label><input class="form-control form-control-sm">
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <br><label><strong>Guardar Monto</strong></label><br>
-              <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
-            </div>
-          </div>
-
-          <br><hr>
-
-          <!--Tabla del Modal Inicio y cierre mensual-->
-          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
-            </select>
-          </div><br>
-
-          <div class="table-responsive">
-            <table class="table table-bordered table-sm">
-              <thead text-sm class="text-center">
-                <tr>
-                  <th scope="col" colspan="3" style="background: #138D75">Año</th>
-                  <th scope="col" colspan="3" style="background: #138D75">Mes</th>
-                  <th scope="col" colspan="3" style="background: #138D75">Monto</th>
-                  <th scope="col" colspan="3" style="background: #138D75">Inicial</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-center">
-                  <td scope="col" colspan="3">2019</td>
-                  <td scope="col" colspan="3">Enero</td>
-                  <td scope="col" colspan="3">50000</td>
-                  <td scope="col" colspan="3">120000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div><br>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
-          </button>
-        </div>
-      </form>
-    </ng-template>
-
-    <!--Modal caja chica-->
-    <ng-template #CajaChica let-modal>
       <!--form del modal caja chica-->
       <form action="">
-        <!--Cabezal del modal-->
+        <!--Cabezal del modal caja chica-->
         <div class="modal-header">
           <h4 class="modal-title"><strong>Caja Chica</strong></h4>
           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <!--Cuerpo del body-->
+        <!--Cuerpo del body caja chica-->
         <div class="modal-body">
           <div class="row">
 
@@ -423,7 +283,7 @@
           </div><br>
           <hr>
 
-          <!--Formulario para enviar el monto a la cuenta sindical-->
+          <!--Formulario para enviar el monto de caja chica a la cuenta sindical-->
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
               <label><strong>Ingreso</strong></label><input class="form-control form-control-sm">
@@ -455,7 +315,289 @@
           </div>
         </div>
 
-        <!--Boton para salir del modal-->
+        <!--Boton para salir del modal caja chica-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+          </button>
+        </div>
+      </form>
+    </ng-template>
+
+    <!--Modal prestamo-->
+    <ng-template #Prestamo let-modal>
+      <!--form del modal prestamo-->
+      <form action="">
+        <!--Cabezal del modal prestamo-->
+        <div class="modal-header">
+          <h4 class="modal-title"><strong>Prestamo</strong></h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!--Cuerpo del body prestamo-->
+        <div class="modal-body">
+          <div class="row">
+
+            <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
+                    [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Ingrese Detalle</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Igrese Monto</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Igrese N° Documento</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-3 col-md-4 col-lg-4">
+              <br><label><strong>Subir Documento</strong></label>
+              <input class="form-control-file" type="file">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
+              <select class="form-control form-control-sm">
+                <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Guardar Prestamo</strong></label><br>
+              <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
+            </div>
+
+          </div>
+
+          <hr>
+          <!--Tabla del Modal Prestamo-->
+          <div class="row">
+            <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
+              <select class="form-control form-control-sm">
+                <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
+              <select class="form-control form-control-sm">
+                <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+              </select>
+            </div>
+          </div><br>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-sm">
+              <thead text-sm class="text-center">
+                <tr>
+                  <th colspan="2" style="background: #138D75">Fecha</th>
+                  <th colspan="2" style="background: #138D75">N° de Doc</th>
+                  <th colspan="2" style="background: #138D75">PDF</th>
+                  <th colspan="3" style="background: #138D75">Detalle</th>
+                  <th colspan="2" style="background: #138D75">Ingreso</th>
+                  <th colspan="2" style="background: #138D75">Egreso</th>
+                  <th colspan="2" style="background: #138D75">Actual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center">
+                  <td colspan="2">24-06-2019</td>
+                  <td colspan="2">358969</td>
+                  <td colspan="2">PDF</td>
+                  <td colspan="3">Se presto x dinero a juanito perez</td>
+                  <td colspan="2">0</td>
+                  <td colspan="2">4000</td>
+                  <td colspan="2">100000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><br>
+          <hr>
+
+          <!--Formulario para enviar el monto del prestamo a la cuenta sindical-->
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <label><strong>Ingreso</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <label><strong>Egreso</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <label><strong>Total</strong></label><input class="form-control form-control-sm">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Codigo General</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Descripcion del prestamo</strong></label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>
+              <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+        <!--Boton para salir del modal prestamo-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+          </button>
+        </div>
+      </form>
+    </ng-template>
+
+    <!--Modal camping-->
+    <ng-template #Camping let-modal>
+      <!--form del modal camping-->
+      <form action="">
+        <!--Cabezal del modal camping-->
+        <div class="modal-header">
+          <h4 class="modal-title"><strong>Camping</strong></h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!--Cuerpo del body camping-->
+        <div class="modal-body">
+          <div class="row">
+
+            <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
+                    [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Ingrese Detalle</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Igrese Monto</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Igrese N° Documento</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-3 col-md-4 col-lg-4">
+              <br><label><strong>Subir Documento</strong></label>
+              <input class="form-control-file" type="file">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
+              <select class="form-control form-control-sm">
+                <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Guardar Camping</strong></label><br>
+              <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
+            </div>
+
+          </div>
+
+          <hr>
+          <!--Tabla del Modal camping-->
+          <div class="row">
+            <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
+              <select class="form-control form-control-sm">
+                <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
+              <select class="form-control form-control-sm">
+                <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+              </select>
+            </div>
+          </div><br>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-sm">
+              <thead text-sm class="text-center">
+                <tr>
+                  <th colspan="2" style="background: #138D75">Fecha</th>
+                  <th colspan="2" style="background: #138D75">N° de Doc</th>
+                  <th colspan="2" style="background: #138D75">PDF</th>
+                  <th colspan="3" style="background: #138D75">Detalle</th>
+                  <th colspan="2" style="background: #138D75">Ingreso</th>
+                  <th colspan="2" style="background: #138D75">Egreso</th>
+                  <th colspan="2" style="background: #138D75">Actual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center">
+                  <td colspan="2">24-06-2019</td>
+                  <td colspan="2">358969</td>
+                  <td colspan="2">PDF</td>
+                  <td colspan="3">arriendo del sitio para carpas</td>
+                  <td colspan="2">0</td>
+                  <td colspan="2">4000</td>
+                  <td colspan="2">100000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><br>
+          <hr>
+
+          <!--Formulario para enviar el monto del camping a la cuenta sindical-->
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <label><strong>Ingreso</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <label><strong>Egreso</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <label><strong>Total</strong></label><input class="form-control form-control-sm">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Codigo General</strong></label><input class="form-control form-control-sm">
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Descripcion del camping</strong></label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>
+              <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+        <!--Boton para salir del modal camping-->
         <div class="modal-footer">
           <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
           </button>

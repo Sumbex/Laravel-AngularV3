@@ -10,5 +10,8 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-/public/app/*
+/public/app/main-es2015.js                                                                                                        
+/public/app/main-es2015.js.map                                                                                                    
+/public/app/main-es5.js                                                                                                           
+/public/app/main-es5.js.map     
 

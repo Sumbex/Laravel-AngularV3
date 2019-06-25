@@ -293,7 +293,9 @@ var AppComponent = /** @class */ (function () {
         this.http = http;
         this.title = 'angular-module';
     }
-    AppComponent.prototype.ngOnInit = function () { };
+    AppComponent.prototype.ngOnInit = function () {
+        console.log(window.location);
+    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
@@ -1500,7 +1502,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/main.ts */"./src/main.ts");
+=======
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/src/main.ts */"./src/main.ts");
+>>>>>>> 05215731dc751f950c4d532dd959f288bafa5708
 
 
 /***/ })

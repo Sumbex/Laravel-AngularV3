@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    console.log(window.location);
+  }
 
 }

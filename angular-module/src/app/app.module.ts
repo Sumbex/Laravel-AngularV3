@@ -25,6 +25,7 @@ import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 import { AuthGuardService } from './guardianes/auth.guard.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AniosService } from './servicios/anios.service';
+import { TipoCuentasService } from './servicios/tipo-cuentas.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AniosService } from './servicios/anios.service';
     AuthGuardService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
-    AniosService
+    AniosService,
+    TipoCuentasService
   ],
   bootstrap: [AppComponent]
 })

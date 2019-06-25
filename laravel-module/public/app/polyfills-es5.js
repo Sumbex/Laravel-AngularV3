@@ -12519,17 +12519,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
 __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js");
 __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/polyfills.ts */"./src/polyfills.ts");
 module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
-=======
-__webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
-__webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js");
-__webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/src/polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
->>>>>>> 05215731dc751f950c4d532dd959f288bafa5708
 
 
 /***/ })

@@ -40,7 +40,7 @@
     <div class="card">
       <div class="card-header" id="demoFont"><strong class="text-center"><h6>Cuenta Sindical</h6></strong>
       </div>
-      <form action="">
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <div class="card-body">
         <div class="row">
 
@@ -57,7 +57,16 @@
 
           <div class="col-sm-3 col-md-4 col-lg-4">
             <br><label><strong>N° de Documento</strong></label>
-            <input class="form-control form-control-sm">
+            <input 
+              type="number"
+              class="form-control form-control-sm"
+              name="nDocumento"
+              #nDocumento
+              [(ngModel)]=sindical.nDocumento
+              required>
+              <small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                El N° de Documento ingresado no es valido
+              </small> 
           </div>
 
           <div class="col-sm-3 col-md-4 col-lg-4">

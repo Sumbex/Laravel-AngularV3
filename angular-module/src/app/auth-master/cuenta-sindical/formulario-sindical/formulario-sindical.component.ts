@@ -5,6 +5,7 @@ import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
+import { Sindical } from 'src/app/modelos/sindical.model';
 
 @Component({
   selector: 'app-formulario-sindical',
@@ -16,6 +17,14 @@ export class FormularioSindicalComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
+  datoSindical: Sindical[];
+  datosSindicales: Sindical ={
+    fecha: '',
+    nDocumento: '',
+    archivo: '',
+    descripcion: '',
+    monto: 0
+  }
 
   constructor(private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService) {
   }
@@ -47,5 +56,13 @@ export class FormularioSindicalComponent implements OnInit {
 
   openCamping(Camping) {
     this.modalService.open(Camping, { size: 'lg' });
+  }
+
+  onSubmit({valid}: {valid: boolean}) {
+    if(!valid){
+      console.log("Ingreso no valido revisar campos");
+    }else{
+      console.log("Ingreso validado es el gato tom");
+    }
   }
 }

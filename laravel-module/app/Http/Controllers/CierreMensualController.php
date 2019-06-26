@@ -8,6 +8,7 @@ class CierreMensualController extends Controller
 {   //cierre mensual referencia a cuenta sindical
 	public function guardar_inicio_mensual(Request $r)
     {
+    	//($r);
     	$existe = DB::table('c_s_cierre_mensual')->where([
     		'activo' => 'S',
     		'anio_id' => $r->anio,
@@ -86,11 +87,12 @@ class CierreMensualController extends Controller
     	
     }
 
-    public function listar_cierre_mensual_cs($anio, $mes)
+    public function listar_cierre_mensual_cs($anio)
     {
     	// '1' => id que trabaja en ambito sindical
+    
 
-    	return CierreMensualSindical::listar_cierre_mensual_cs($anio, $mes,'1');
+    	return CierreMensualSindical::listar_cierre_mensual_cs($anio,'1');
     }
 
     //cierre mensual referencia a cuenta sindical

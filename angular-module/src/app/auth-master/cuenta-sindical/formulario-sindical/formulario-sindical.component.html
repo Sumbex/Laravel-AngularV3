@@ -136,7 +136,7 @@
 
   <!--Modal para el inicio y cierre mensual-->
   <ng-template #Mensual let-modal>
-    <form action="">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <div class="modal-header">
         <h4 class="modal-title"><strong>Inicio y Cierre Mensual</strong></h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -165,7 +165,11 @@
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Monto Inicial</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Monto Inicial</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            type="number"
+             required>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
@@ -224,7 +228,7 @@
   <!--Modal caja chica-->
   <ng-template #CajaChica let-modal>
     <!--form del modal caja chica-->
-    <form action="">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <!--Cabezal del modal caja chica-->
       <div class="modal-header">
         <h4 class="modal-title"><strong>Caja Chica</strong></h4>
@@ -249,7 +253,10 @@
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Ingrese Detalle</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Ingrese Detalle</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            required>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">

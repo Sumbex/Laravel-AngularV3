@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers;
+use App\CierreMensualSindical;
 use App\Cuentasindicato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class CierreMensualController extends Controller
-{
+{   //cierre mensual referencia a cuenta sindical
 	public function guardar_inicio_mensual(Request $r)
     {
+    	//($r);
     	$existe = DB::table('c_s_cierre_mensual')->where([
     		'activo' => 'S',
     		'anio_id' => $r->anio,
@@ -44,7 +46,7 @@ class CierreMensualController extends Controller
     	])->first();
     	 //dd($existe);
     	 if (!empty($existe)) { //si existe un monto en este mes
-    		$s_a = $existe->inicio_mensual;
+    		$s_a = $existe->inicio_mensual; //saldo actual de mes <
     		$listar = Cuentasindicato::where(['anio_id' => $anio, 'mes_id' => $mes])->get();
 			$tomar = true;
 			$ultimo_valor =0;
@@ -84,4 +86,14 @@ class CierreMensualController extends Controller
     	}
     	
     }
+
+    public function listar_cierre_mensual_cs($anio)
+    {
+    	// '1' => id que trabaja en ambito sindical
+    
+
+    	return CierreMensualSindical::listar_cierre_mensual_cs($anio,'1');
+    }
+
+    //cierre mensual referencia a cuenta sindical
 }

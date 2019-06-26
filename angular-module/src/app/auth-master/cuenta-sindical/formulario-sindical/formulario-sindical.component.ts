@@ -39,6 +39,7 @@ export class FormularioSindicalComponent implements OnInit {
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService) {
     config.backdrop = 'static';
     config.keyboard = false;
+    
   }
 
   ngOnInit() {

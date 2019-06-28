@@ -2,9 +2,8 @@ export class Sindical{
     id?: number;
     fecha: string;
     nDocumento: string;
-    archivo: string;
+    tipoCuentaSindicato: string;
     descripcion: string;
+    definicion: string;
     monto: number;
-    ingreso?: string;
-    egreso?: string;
 }

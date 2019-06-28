@@ -51,8 +51,14 @@
           <div class="col-sm-3 col-md-4 col-lg-4">
             <br><label><strong>Ingrese Fecha</strong></label> <br>
             <div class="input-group">
-              <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
-                [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+              <input 
+              class="form-control form-control-sm" 
+              placeholder="yyyy-mm-dd" 
+              name="fecha" 
+              #fecha="ngModel"
+              [(ngModel)]="datosSindicales.fecha" 
+              ngbDatepicker 
+              #d2="ngbDatepicker">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
               </div>
@@ -81,14 +87,14 @@
 
         <div class="row">
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+            <select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
+              <option *ngFor="let tipo of selectDefinicion">{{tipo.descripcion}}</option>
             </select>
           </div><br>
 
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Detalle Tipo</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let detalle of selectDetalleTipo">{{detalle.descripcion}}</option>
+            <select (change)="tipoOperacionDetalle($event)" class="form-control form-control-sm">
+              <option *ngFor="let detalle of selectDetalle">{{detalle.descripcion}}</option>
             </select>
           </div>
 
@@ -136,9 +142,9 @@
 
   <!--Modal para el inicio y cierre mensual-->
   <ng-template #Mensual let-modal>
-    <form action="">
-      <div class="modal-header">
-        <h4 class="modal-title"><strong>Inicio y Cierre Mensual</strong></h4>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong>Inicio y Cierre Mensual</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -161,16 +167,20 @@
 
           <div class="col-sm-6 col-md-4 col-lg-4">
             <br><label><strong>Calcular monto</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Calcular</button>
+            <button class="btn btn btn-success btn-block btn-sm">Calcular</button>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Monto Inicial</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Monto Inicial</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            type="number"
+             required>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
             <br><label><strong>Guardar Monto</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
+            <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
           </div>
         </div>
 
@@ -195,10 +205,10 @@
               </tr>
 
               <tr>
-                <th scope="col" colspan="3" style="background: #138D75">Año</th>
-                <th scope="col" colspan="3" style="background: #138D75">Mes</th>
-                <th scope="col" colspan="3" style="background: #138D75">Monto</th>
-                <th scope="col" colspan="3" style="background: #138D75">Inicial</th>
+                <th scope="col" colspan="3">Año</th>
+                <th scope="col" colspan="3">Mes</th>
+                <th scope="col" colspan="3">Monto</th>
+                <th scope="col" colspan="3">Inicial</th>
               </tr>
             </thead>
             <tbody>
@@ -215,7 +225,7 @@
       </div>
       <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
         </button>
       </div>
     </form>
@@ -224,10 +234,10 @@
   <!--Modal caja chica-->
   <ng-template #CajaChica let-modal>
     <!--form del modal caja chica-->
-    <form action="">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <!--Cabezal del modal caja chica-->
-      <div class="modal-header">
-        <h4 class="modal-title"><strong>Caja Chica</strong></h4>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong>Caja Chica</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -249,7 +259,10 @@
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Ingrese Detalle</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Ingrese Detalle</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            required>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
@@ -273,7 +286,7 @@
 
           <div class="col-sm-6 col-md-4 col-lg-4">
             <br><label><strong>Guardar Caja Chica</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
+            <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
           </div>
 
         </div>
@@ -298,13 +311,13 @@
           <table class="table table-bordered table-sm">
             <thead text-sm class="text-center">
               <tr>
-                <th colspan="2" style="background: #138D75">Fecha</th>
-                <th colspan="2" style="background: #138D75">N° de Doc</th>
-                <th colspan="2" style="background: #138D75">PDF</th>
-                <th colspan="3" style="background: #138D75">Detalle</th>
-                <th colspan="2" style="background: #138D75">Ingreso</th>
-                <th colspan="2" style="background: #138D75">Egreso</th>
-                <th colspan="2" style="background: #138D75">Actual</th>
+                <th colspan="2">Fecha</th>
+                <th colspan="2">N° de Doc</th>
+                <th colspan="2">PDF</th>
+                <th colspan="3">Detalle</th>
+                <th colspan="2">Ingreso</th>
+                <th colspan="2">Egreso</th>
+                <th colspan="2">Actual</th>
               </tr>
             </thead>
             <tbody>
@@ -349,14 +362,14 @@
 
           <div class="col-sm-6 col-md-4 col-lg-4">
             <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm" style="background: #229954">Guardar</button>
+            <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
           </div>
         </div>
       </div>
 
       <!--Boton para salir del modal caja chica-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
         </button>
       </div>
     </form>
@@ -365,10 +378,10 @@
   <!--Modal prestamo-->
   <ng-template #Prestamo let-modal>
     <!--form del modal prestamo-->
-    <form action="">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <!--Cabezal del modal prestamo-->
-      <div class="modal-header">
-        <h4 class="modal-title"><strong>Prestamo</strong></h4>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong>Prestamo</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -439,13 +452,13 @@
           <table class="table table-bordered table-sm">
             <thead text-sm class="text-center">
               <tr>
-                <th colspan="2" style="background: #138D75">Fecha</th>
-                <th colspan="2" style="background: #138D75">N° de Doc</th>
-                <th colspan="2" style="background: #138D75">PDF</th>
-                <th colspan="3" style="background: #138D75">Detalle</th>
-                <th colspan="2" style="background: #138D75">Ingreso</th>
-                <th colspan="2" style="background: #138D75">Egreso</th>
-                <th colspan="2" style="background: #138D75">Actual</th>
+                <th colspan="2">Fecha</th>
+                <th colspan="2">N° de Doc</th>
+                <th colspan="2">PDF</th>
+                <th colspan="3">Detalle</th>
+                <th colspan="2">Ingreso</th>
+                <th colspan="2">Egreso</th>
+                <th colspan="2">Actual</th>
               </tr>
             </thead>
             <tbody>
@@ -497,7 +510,7 @@
 
       <!--Boton para salir del modal prestamo-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
         </button>
       </div>
     </form>
@@ -506,10 +519,10 @@
   <!--Modal camping-->
   <ng-template #Camping let-modal>
     <!--form del modal camping-->
-    <form action="">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <!--Cabezal del modal camping-->
-      <div class="modal-header">
-        <h4 class="modal-title"><strong>Camping</strong></h4>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong>Camping</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -580,13 +593,13 @@
           <table class="table table-bordered table-sm">
             <thead text-sm class="text-center">
               <tr>
-                <th colspan="2" style="background: #138D75">Fecha</th>
-                <th colspan="2" style="background: #138D75">N° de Doc</th>
-                <th colspan="2" style="background: #138D75">PDF</th>
-                <th colspan="3" style="background: #138D75">Detalle</th>
-                <th colspan="2" style="background: #138D75">Ingreso</th>
-                <th colspan="2" style="background: #138D75">Egreso</th>
-                <th colspan="2" style="background: #138D75">Actual</th>
+                <th colspan="2">Fecha</th>
+                <th colspan="2">N° de Doc</th>
+                <th colspan="2">PDF</th>
+                <th colspan="3">Detalle</th>
+                <th colspan="2">Ingreso</th>
+                <th colspan="2">Egreso</th>
+                <th colspan="2">Actual</th>
               </tr>
             </thead>
             <tbody>
@@ -638,7 +651,7 @@
 
       <!--Boton para salir del modal camping-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
         </button>
       </div>
     </form>

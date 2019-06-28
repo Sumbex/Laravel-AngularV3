@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
 import { Definicion } from 'src/app/modelos/definicion.model';
+import { Detalle } from "src/app/modelos/detalle.model";
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Sindical } from 'src/app/modelos/sindical.model';
+import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
+import { SindicalService } from 'src/app/servicios/sindical.service';
 
 @Component({
   selector: 'app-formulario-sindical',
@@ -17,16 +20,31 @@ export class FormularioSindicalComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
+  selectDetalle: Detalle[] = [];
+
   datoSindical: Sindical[];
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
-    archivo: '',
+    tipoCuentaSindicato: '1',
     descripcion: '',
+    definicion: '',
     monto: 0
   }
 
-  constructor(private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService) {
+  datoCajaChica: cajaChicaSindical[];
+  datosCajaChica: cajaChicaSindical ={
+    numero_documento:0,
+    archivo_documento:'',
+    descripcion:'',
+    monto_ingreso:0,
+    monto_egreso:0
+  }
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService, private _sindicalService: SindicalService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+    
   }
 
   ngOnInit() {
@@ -42,6 +60,10 @@ export class FormularioSindicalComponent implements OnInit {
     this._tiposService.getDefinicion().subscribe((res : any[]) => {
       this.selectDefinicion = res;
     });
+    //Cargar Detalles
+    this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
+      this.selectDetalle = res;
+    })
   }
 
   openMensual(Mensual) {
@@ -58,11 +80,23 @@ export class FormularioSindicalComponent implements OnInit {
     this.modalService.open(Camping, { size: 'lg' });
   }
 
-  onSubmit({valid}: {valid: boolean}) {
+  onSubmit({value, valid}: {value: Sindical, valid: boolean}) {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
       console.log("Ingreso validado es el gato tom");
+      console.log(this.datosSindicales);
+      this._sindicalService.ingresarValor(value);
     }
+  }
+
+  tipoOperacionDefinicion(evento){
+    this.datosSindicales.tipoCuentaSindicato = evento.target.selectedIndex+1;
+    console.log(this.datosSindicales.tipoCuentaSindicato);
+  }
+
+  tipoOperacionDetalle(evento){
+    this.datosSindicales.definicion = evento.target.selectedIndex+1;
+    console.log(this.datosSindicales.definicion);
   }
 }

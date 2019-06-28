@@ -100,40 +100,56 @@ class CuentaSindicatoController extends Controller
 
 		if(!empty($c_m->inicio_mensual)){
 			$s_a = $c_m->inicio_mensual;
-			$listar = CuentaSindicato::where(['activo'=>'S','anio_id' => $anio, 'mes_id' => $mes])->get();
+
+			$data = $this->cuenta_sindical($s_a, $anio, $mes);
+		    
+
+			return $data;
+		}
+	}
+
+	public function cuenta_sindical($s_a, $anio, $mes)
+	{
+		$listar = CuentaSindicato::where([
+			'activo'=>'S',
+			'anio_id' => $anio, 
+			'mes_id' => $mes,
+			//'tipo_cuenta_sindicato' => $tipo
+			])->orderBy('tipo_cuenta_sindicato','asc')->get();
 
 			$tomar = true;
 
 			for ($i=0; $i < count($listar); $i++) { 
 			
-				switch ($listar[$i]->definicion) {
-					case '1':  
-						if ($tomar == true) {
-							$listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
-							$tomar = false;
+						switch ($listar[$i]->definicion) {
+							case '1':  
+								if ($tomar == true) {
+									$listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
+									$tomar = false;
 
-						}else{
-							$listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw  + $listar[$i]->monto_ingreso;
+								}else{
+									$listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw  + $listar[$i]->monto_ingreso;
+								}
 
+							break;
+							case '2':  
+								if ($tomar == true) {
+									$listar[$i]->saldo_actual_raw = $s_a - $listar[$i]->monto_egreso;
+									$tomar = false;
+									$ultimo_valor = $listar[$i]->saldo_actual_raw;
+
+								}else{
+									
+									$listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw - $listar[$i]->monto_egreso;
+
+								}
+							break;
 						}
-
-					break;
-					case '2':  
-						if ($tomar == true) {
-							$listar[$i]->saldo_actual_raw = $s_a - $listar[$i]->monto_egreso;
-							$tomar = false;
-
-						}else{
-							
-							$listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw - $listar[$i]->monto_egreso;
-
-						}
-					break;
-				}
 			}
 
-			return $listar;
-		}
+			return [
+				'json'=>$listar,
+			];
 	}
 
 

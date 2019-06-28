@@ -51,8 +51,14 @@
           <div class="col-sm-3 col-md-4 col-lg-4">
             <br><label><strong>Ingrese Fecha</strong></label> <br>
             <div class="input-group">
-              <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
-                [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+              <input 
+              class="form-control form-control-sm" 
+              placeholder="yyyy-mm-dd" 
+              name="fecha" 
+              #fecha="ngModel"
+              [(ngModel)]="datosSindicales.fecha" 
+              ngbDatepicker 
+              #d2="ngbDatepicker">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
               </div>
@@ -81,14 +87,14 @@
 
         <div class="row">
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let mes of selectDetalleMes">{{mes.descripcion}}</option>
+            <select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
+              <option *ngFor="let tipo of selectDefinicion">{{tipo.descripcion}}</option>
             </select>
           </div><br>
 
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Detalle Tipo</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let detalle of selectDetalleTipo">{{detalle.descripcion}}</option>
+            <select (change)="tipoOperacionDetalle($event)" class="form-control form-control-sm">
+              <option *ngFor="let detalle of selectDetalle">{{detalle.descripcion}}</option>
             </select>
           </div>
 

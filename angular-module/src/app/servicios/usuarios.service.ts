@@ -34,6 +34,7 @@ export class UsuarioService {
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 
+        console.log(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password)
         return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
     }
 

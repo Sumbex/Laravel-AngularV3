@@ -8,7 +8,7 @@ Route::get('mes_actual','DatosBasicosController@mes_actual');
 Route::get('listar_definicion','DatosBasicosController@listar_definicion');
 Route::get('listar_tipo_cuenta_sindicato','DatosBasicosController@listar_tipo_cuenta_sindicato');
 
-Route::get('listar_inicio_y_cierre_mensual_cs/{anio}/{mes}','CierreMensualController@listar_cierre_mensual_cs');
+Route::get('listar_inicio_y_cierre_mensual_cs/{anio}','CierreMensualController@listar_cierre_mensual_cs');
 
 Route::get('insertar','DatosBasicosController@insertar');
 

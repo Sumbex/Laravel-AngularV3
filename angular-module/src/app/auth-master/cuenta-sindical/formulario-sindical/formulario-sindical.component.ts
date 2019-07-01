@@ -28,7 +28,7 @@ export class FormularioSindicalComponent implements OnInit {
     nDocumento: '',
     tipoCuentaSindicato: '1',
     descripcion: '',
-    definicion: '',
+    definicion: '1',
     monto: 0
   }
 
@@ -59,6 +59,7 @@ export class FormularioSindicalComponent implements OnInit {
     //Cargar Definiciones
     this._tiposService.getDefinicion().subscribe((res : any[]) => {
       this.selectDefinicion = res;
+      console.log(res);
     });
     //Cargar Detalles
     this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
@@ -84,19 +85,24 @@ export class FormularioSindicalComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
-      console.log("Ingreso validado es el gato tom");
-      console.log(this.datosSindicales);
-      this._sindicalService.ingresarValor(value);
+      this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
     }
   }
 
   tipoOperacionDefinicion(evento){
-    this.datosSindicales.tipoCuentaSindicato = evento.target.selectedIndex+1;
+    this.datosSindicales.tipoCuentaSindicato = evento.target.value;
     console.log(this.datosSindicales.tipoCuentaSindicato);
   }
 
   tipoOperacionDetalle(evento){
-    this.datosSindicales.definicion = evento.target.selectedIndex+1;
+    this.datosSindicales.definicion = evento.target.value;
     console.log(this.datosSindicales.definicion);
   }
 }

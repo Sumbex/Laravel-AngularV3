@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('a_paterno');
             $table->string('a_materno');
             $table->string('email')->unique();
+            $table->bigInteger('rut');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

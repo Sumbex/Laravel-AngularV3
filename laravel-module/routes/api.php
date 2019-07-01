@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login', 'AuthController@login');
+Route::post('login_rut', 'AuthController@login_rut');
 
 //CUANDO SE AUTORIZA UN USUARIO
 Route::group(['middleware' => 'jwt.auth'], function(){

@@ -97,12 +97,12 @@ export class FormularioSindicalComponent implements OnInit {
   }
 
   tipoOperacionDefinicion(evento){
-    this.datosSindicales.tipoCuentaSindicato = evento.target.value;
+    this.datosSindicales.definicion = evento.target.value;
     console.log(this.datosSindicales.tipoCuentaSindicato);
   }
 
   tipoOperacionDetalle(evento){
-    this.datosSindicales.definicion = evento.target.value;
+    this.datosSindicales.tipoCuentaSindicato = evento.target.value;
     console.log(this.datosSindicales.definicion);
   }
 }

@@ -37,6 +37,7 @@ export class FormularioSindicalComponent implements OnInit {
     numero_documento:0,
     archivo_documento:'',
     descripcion:'',
+    definicion:'',
     monto_ingreso:0,
     monto_egreso:0
   }

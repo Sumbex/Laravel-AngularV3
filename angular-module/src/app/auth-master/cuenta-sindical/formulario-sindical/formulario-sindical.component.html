@@ -88,13 +88,13 @@
         <div class="row">
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
             <select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
-              <option *ngFor="let tipo of selectDefinicion">{{tipo.descripcion}}</option>
+              <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
             </select>
           </div><br>
 
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Detalle Tipo</strong></label>
             <select (change)="tipoOperacionDetalle($event)" class="form-control form-control-sm">
-              <option *ngFor="let detalle of selectDetalle">{{detalle.descripcion}}</option>
+              <option *ngFor="let detalle of selectDetalle" [value]="detalle.id">{{detalle.descripcion}}</option>
             </select>
           </div>
 

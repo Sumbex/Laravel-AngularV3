@@ -4,7 +4,7 @@
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <!--Cabezal del modal caja chica-->
       <div class="modal-header" id="demoFont">
-        <h6 class="modal-title"><strong>Caja Chica</strong></h6>
+        <h6 class="modal-title"><strong>Detalle Caja Chica</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,11 +16,10 @@
           <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>
             <div class="form-group">
               <div class="input-group">
-                <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
-                  [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
-                </div>
+                <input 
+                type="date"
+                class="form-control form-control-sm" 
+                name="fecha">
               </div>
             </div>
           </div>
@@ -88,36 +87,8 @@
         <!--Tabla del Modal Caja Chica-->
         <app-tabla-caja-chica></app-tabla-caja-chica>
 
-        <!--Formulario para enviar el monto de caja chica a la cuenta sindical-->
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <label><strong>Ingreso</strong></label><input class="form-control form-control-sm">
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <label><strong>Egreso</strong></label><input class="form-control form-control-sm">
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <label><strong>Total</strong></label><input class="form-control form-control-sm">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Codigo General</strong></label><input class="form-control form-control-sm">
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Descripcion de la caja chica</strong></label>
-            <textarea class="form-control" rows="3"></textarea>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
-          </div>
-        </div>
+        <!--Tabla del total Modal Caja Chica-->
+        <app-total-caja-chica></app-total-caja-chica>
       </div>
 
       <!--Boton para salir del modal caja chica-->

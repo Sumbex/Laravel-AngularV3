@@ -6,6 +6,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
+import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -15,17 +16,17 @@ import { Definicion } from 'src/app/modelos/definicion.model';
 export class ModalCajaChicaComponent implements OnInit {
   selectDefinicion: Definicion[] = [];
 
-  datoCajaChica: cajaChicaSindical[];
   datosCajaChica: cajaChicaSindical ={
     numero_documento:0,
     archivo_documento:'',
+    fecha:'',
     descripcion:'',
-    definicion:'',
+    definicion:'1',
     monto_ingreso:0,
     monto_egreso:0
   }
   
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _tiposService: TipoCuentasService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _tiposService: TipoCuentasService, private _cajaChicaService: CajaChicaService) {
     config.backdrop = 'static';
     config.keyboard = false;
     
@@ -46,6 +47,21 @@ export class ModalCajaChicaComponent implements OnInit {
   tipoOperacionDefinicion(evento){
     this.datosCajaChica.definicion = evento.target.value;
     console.log(this.datosCajaChica.definicion);
+  }
+
+  onSubmit({value, valid}: {value: cajaChicaSindical, valid: boolean}) {
+    if(!valid){
+      console.log("Ingreso no valido revisar campos");
+    }else{
+      this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+    }
   }
 
 }

@@ -68,20 +68,6 @@ export class FormularioSindicalComponent implements OnInit {
     })
   }
 
-  openMensual(Mensual) {
-    this.modalService.open(Mensual, { size: 'lg' });
-  }
-  openCajaChica(CajaChica) {
-    this.modalService.open(CajaChica, { size: 'lg' });
-  }
-  openPrestamo(Prestamo) {
-    this.modalService.open(Prestamo, { size: 'lg' });
-  }
-
-  openCamping(Camping) {
-    this.modalService.open(Camping, { size: 'lg' });
-  }
-
   onSubmit({value, valid}: {value: Sindical, valid: boolean}) {
     if(!valid){
       console.log("Ingreso no valido revisar campos");

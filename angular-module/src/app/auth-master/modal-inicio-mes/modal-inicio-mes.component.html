@@ -1,3 +1,63 @@
-<p>
-  modal-inicio-mes works!
-</p>
+ <!--Modal para el inicio y cierre mensual-->
+ <ng-template #Mensual let-modal>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong>Inicio y Cierre Mensual</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo del body inicio y cierre mensual-->
+    <div class="modal-body">
+
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Año</strong></label>
+          <select class="form-control form-control-sm">
+            <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Mes</strong></label>
+          <select class="form-control form-control-sm">
+            <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+          </select>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <br><label><strong>Calcular monto</strong></label><br>
+          <button class="btn btn btn-success btn-block btn-sm">Calcular</button>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <br><label><strong>Monto Inicial</strong></label>
+          <input 
+          class="form-control form-control-sm"
+          type="number"
+           required>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <br><label><strong>Guardar Monto</strong></label><br>
+          <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
+        </div>
+      </div>
+  
+      <!--Tabla del Modal Inicio y cierre mensual-->
+      <app-tabla-inicio-mes></app-tabla-inicio-mes>
+    </div>
+
+      
+    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+      </button>
+    </div>
+
+  </form>
+</ng-template>
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+  <label><strong>Inicio y Cierre Mensual</strong></label><br>
+  <button class="btn btn btn-success btn-block btn-sm" (click)="openMensual(Mensual)">Ingresar</button>
+
+  

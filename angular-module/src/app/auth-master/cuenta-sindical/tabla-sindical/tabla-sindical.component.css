@@ -10,3 +10,7 @@ label,input, button{
     color: #d9d9d9;
     background: #4B94AD;
     }
+
+  .tablaDerecha{
+    float: right;
+  }

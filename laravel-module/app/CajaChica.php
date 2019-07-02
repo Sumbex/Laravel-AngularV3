@@ -5,21 +5,53 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CuentaSindicatoController;
+
 class CajaChica extends Model
 {
     protected $table = "cs_caja_chica";
 
+    protected function div_fecha($value)//funciona con input type date 
+    {
+    	$fecha = $value;
+		$ano = substr($fecha, -10, 4);
+		$mes = substr($fecha, -5, 2);
+		$dia = substr($fecha, -2, 2);
+		return [
+			'anio' => $ano, 'mes' => $mes, 'dia' => $dia
+		];
+    }
+    protected function anio_tipo_id($value)
+    {
+    	return DB::table('anio')->where('descripcion', $value)->first();
+    }
+
     protected function ingresarCajaChica($request){
         $caja = new CajaChica;
 
-        $caja->anio_id = $request->anio_id;
-        $caja->mes_id = $request->mes_id;
-        $caja->dia = $request->dia;
+        $fecha = $this->div_fecha($request->fecha);
+
+        $anio = $this->anio_tipo_id($fecha['anio']);
+
+        $caja->anio_id = $anio->id;
+        $caja->mes_id = $fecha['mes'];
+        $caja->dia = $fecha['dia'];
         $caja->numero_documento = $request->numero_documento;
         $caja->archivo_documento = '/doc/archivo.pdf';
         $caja->descripcion = $request->descripcion;
-        $caja->monto_egreso =  $request->monto_egreso;
-        $caja->definicion = 3;
+
+        switch ($request->definicion) {
+            case '1':  
+                $caja->monto_ingreso = $request->monto; 
+              //  $cs->saldo_actual = $s_a + $r->monto;
+            break;
+            case '2':  
+                $caja->monto_egreso = $request->monto; 
+               // $cs->saldo_actual = $s_a - $r->monto;
+            break;
+        }
+
+        $caja->definicion = $request->definicion;
         $caja->user_crea = Auth::user()->id;
         $caja->activo = "S";
 

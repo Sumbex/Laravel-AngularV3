@@ -32,6 +32,7 @@ import { TablaCajaChicaComponent } from './auth-master/modal-caja-chica/tabla-ca
 import { TotalCajaChicaComponent } from './auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component';
 import { ModalInicioMesComponent } from './auth-master/modal-inicio-mes/modal-inicio-mes.component';
 import { TablaInicioMesComponent } from './auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component';
+import { ConfiguracionesComponent } from './auth-master/configuraciones/configuraciones.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { TablaInicioMesComponent } from './auth-master/modal-inicio-mes/tabla-in
     TablaCajaChicaComponent,
     TotalCajaChicaComponent,
     ModalInicioMesComponent,
-    TablaInicioMesComponent
+    TablaInicioMesComponent,
+    ConfiguracionesComponent
   ],
   imports: [
     BrowserModule,

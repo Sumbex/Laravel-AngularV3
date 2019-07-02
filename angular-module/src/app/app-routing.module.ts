@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PublicMasterComponent } from './public-master/public-master.component';
 import { LoginComponent } from './public-master/login/login.component';
@@ -9,6 +9,7 @@ import { CuentaBienestarComponent } from './auth-master/cuenta-bienestar/cuenta-
 import { CuentaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component';
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 import { AuthGuardService } from './guardianes/auth.guard.service';
+import { ConfiguracionesComponent } from './auth-master/configuraciones/configuraciones.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -19,8 +20,8 @@ const routes: Routes = [
   { path: 'AuthMaster', component: AuthMasterComponent, canActivate: [AuthGuardService], children:[
     { path: 'CuentaSindical', component: CuentaSindicalComponent },
     { path: 'CuentaBienestar', component: CuentaBienestarComponent },
-    { path: 'CuentaFondoMutuo', component: CuentaFondoMutuoComponent }
-
+    { path: 'CuentaFondoMutuo', component: CuentaFondoMutuoComponent },
+    { path: 'Configuracion', component: ConfiguracionesComponent }
   ]},
 
   { path: '**', component: NoEncontradoComponent }

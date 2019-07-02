@@ -7,7 +7,6 @@ import { Definicion } from 'src/app/modelos/definicion.model';
 import { Detalle } from "src/app/modelos/detalle.model";
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Sindical } from 'src/app/modelos/sindical.model';
-import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 
 @Component({
@@ -32,19 +31,8 @@ export class FormularioSindicalComponent implements OnInit {
     monto: 0
   }
 
-  datoCajaChica: cajaChicaSindical[];
-  datosCajaChica: cajaChicaSindical ={
-    numero_documento:0,
-    archivo_documento:'',
-    descripcion:'',
-    monto_ingreso:0,
-    monto_egreso:0
-  }
-
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService, private _sindicalService: SindicalService) {
-    config.backdrop = 'static';
-    config.keyboard = false;
-    
+  constructor(private _aniosService: AniosService, private _tiposService: TipoCuentasService, private _sindicalService: SindicalService) {
+  
   }
 
   ngOnInit() {
@@ -65,20 +53,6 @@ export class FormularioSindicalComponent implements OnInit {
     this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
       this.selectDetalle = res;
     })
-  }
-
-  openMensual(Mensual) {
-    this.modalService.open(Mensual, { size: 'lg' });
-  }
-  openCajaChica(CajaChica) {
-    this.modalService.open(CajaChica, { size: 'lg' });
-  }
-  openPrestamo(Prestamo) {
-    this.modalService.open(Prestamo, { size: 'lg' });
-  }
-
-  openCamping(Camping) {
-    this.modalService.open(Camping, { size: 'lg' });
   }
 
   onSubmit({value, valid}: {value: Sindical, valid: boolean}) {

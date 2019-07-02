@@ -50,10 +50,22 @@
             #monto="ngModel"
             [(ngModel)]="datosCajaChica.monto_egreso"
             required>
+            <small *ngIf="!monto.valid && monto.touched" class="invalid-feedback d-block">
+              Compruebe que el monto ingresado solo contiene numeros y no este vacio
+            </small>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Igrese N° Documento</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Igrese N° Documento</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            name="nDocumento"
+            #nDocumento="ngModel"
+            [(ngModel)]="datosCajaChica.numero_documento"
+            required>
+            <small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+              Compruebe que el N° Documento ingresado solo contiene numeros y no este vacio
+            </small>
           </div>
 
           <div class="col-sm-3 col-md-4 col-lg-4">

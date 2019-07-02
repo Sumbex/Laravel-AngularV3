@@ -13,9 +13,6 @@ import { Definicion } from 'src/app/modelos/definicion.model';
   styleUrls: ['./modal-caja-chica.component.css']
 })
 export class ModalCajaChicaComponent implements OnInit {
-
-  selectAnio: Anios[] = [];
-  selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
 
   datoCajaChica: cajaChicaSindical[];
@@ -28,21 +25,13 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso:0
   }
   
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _tiposService: TipoCuentasService) {
     config.backdrop = 'static';
     config.keyboard = false;
     
   }
 
   ngOnInit() {
-    //Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
-    //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
     //Cargar Definiciones
     this._tiposService.getDefinicion().subscribe((res : any[]) => {
       this.selectDefinicion = res;

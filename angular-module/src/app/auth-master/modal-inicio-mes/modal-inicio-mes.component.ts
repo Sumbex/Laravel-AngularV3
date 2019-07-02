@@ -3,6 +3,7 @@ import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { InicioCierre } from 'src/app/modelos/inicioCierre.model';
 
 @Component({
   selector: 'app-modal-inicio-mes',
@@ -12,6 +13,13 @@ import { AniosService } from 'src/app/servicios/anios.service';
 export class ModalInicioMesComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
+
+  datosInicioMes: InicioCierre ={
+     anio: '',
+     mes: '',
+     monto: '',
+     inicial: ''
+  }
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService) {
     config.backdrop = 'static';

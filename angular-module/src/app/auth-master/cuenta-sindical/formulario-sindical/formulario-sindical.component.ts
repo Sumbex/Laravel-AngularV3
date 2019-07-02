@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
@@ -15,13 +14,11 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
   styleUrls: ['./formulario-sindical.component.css']
 })
 export class FormularioSindicalComponent implements OnInit {
-  model2: Date;
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
   selectDetalle: Detalle[] = [];
 
-  datoSindical: Sindical[];
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',

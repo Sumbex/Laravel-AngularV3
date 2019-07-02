@@ -11,7 +11,7 @@ class CajaChica extends Model
 {
     protected $table = "cs_caja_chica";
 
-    protected function div_fecha($value)//funciona con input type date 
+    protected function div_fecha($value)
     {
     	$fecha = $value;
 		$ano = substr($fecha, -10, 4);
@@ -94,7 +94,8 @@ class CajaChica extends Model
     		DB::raw("concat(cc.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
     		'cc.numero_documento',
     		'cc.archivo_documento',
-    		'cc.descripcion',
+            'cc.descripcion',
+            'cc.monto_ingreso',
     		'cc.monto_egreso'
         ])
         ->join('anio as a','a.id','anio_id')

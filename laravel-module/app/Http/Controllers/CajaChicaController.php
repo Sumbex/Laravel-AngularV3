@@ -9,7 +9,7 @@ use App\CajaChica;
 class CajaChicaController extends Controller
 {
     public function IngresarCajaChica(Request $request){
-        CajaChica::ingresarCajaChica($request);
+        return CajaChica::ingresarCajaChica($request);
     }
 
     public function ExisteCajaChica($anio, $mes){

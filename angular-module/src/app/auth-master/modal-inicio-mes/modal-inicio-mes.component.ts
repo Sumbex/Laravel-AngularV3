@@ -5,11 +5,11 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 
 @Component({
-  selector: 'app-tabla-sindical',
-  templateUrl: './tabla-sindical.component.html',
-  styleUrls: ['./tabla-sindical.component.css']
+  selector: 'app-modal-inicio-mes',
+  templateUrl: './modal-inicio-mes.component.html',
+  styleUrls: ['./modal-inicio-mes.component.css']
 })
-export class TablaSindicalComponent implements OnInit {
+export class ModalInicioMesComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
 
@@ -30,9 +30,8 @@ export class TablaSindicalComponent implements OnInit {
     });
   }
 
-  openTablaSindical(TablaSindical) {
-    this.modalService.open(TablaSindical, { size: 'lg' });
+  openMensual(Mensual) {
+    this.modalService.open(Mensual, { size: 'lg' });
   }
-
 
 }

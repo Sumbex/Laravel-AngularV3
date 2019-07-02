@@ -19,4 +19,13 @@ export class TipoCuentasService{
             }
         )});
     }
+
+    getTipoCuenta(){
+        return this._http.get(this.url + "listar_tipo_cuenta_sindicato", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 }

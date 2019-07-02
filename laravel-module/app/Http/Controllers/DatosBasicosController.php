@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\TipoCUentaSindicato;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class DatosBasicosController extends Controller
 {
@@ -39,19 +43,6 @@ class DatosBasicosController extends Controller
     }
 
 
-    // public function insertar()
-    // {
-    // 	$tcs = new TipoCUentaSindicato;
-    // 	//$tcs->id='4';
-    // 	$tcs->descripcion = 'Caja grande';
-    // 	$tcs->activo = 'S';
-
-    // 	if($tcs->save()){
-    // 		return "success";
-    // 	}
-    // }
-
-
     public function get_mes($id)
     {
     	 switch ($id) {
@@ -72,5 +63,60 @@ class DatosBasicosController extends Controller
     	}
 
     	return $mes;
+    }
+
+    public function confirmar_usuario(Request $r)
+    {
+        $user = User::where('email', $r->rut)->orWhere('rut', $r->rut)->first();
+
+        if (Hash::check($r->password, $user->password)) {
+            return $user->id;
+        }
+        return 0;
+    }
+
+    public function cambiar_password(Request $r)
+    {
+        $validar = $this->validar_password($r);
+
+        if ($validar['estado'] == true) {
+
+                $user = User::find(Auth::user()->id);
+
+                if (Hash::check($r->password, $user->password)) {
+                    $user->password = bcrypt($r->new_password);
+                    if ($user->save()) {
+                        return ['estado'=>'success'];
+                    }else{
+                        return ['estado'=>'filed'];
+                    }
+                }
+        }else{
+            return $this->validar_password($r);
+        }
+       
+
+    }
+
+    public function validar_password($request)
+    {
+         $validator = Validator::make($request->all(), 
+            [
+                'password' => 'required|required_with:confirm_password|same:confirm_password',
+                'confirm_password' => 'required',
+                'new_password' => 'required'
+               
+            ],
+            [
+                'password.required' => 'La contraseña es necesaria',
+                'password.same' => 'La contraseña actual con la  confirmacion no son iguales',
+                'confirm_password.required' => 'Confirme su contraseña',
+                'new_password.required' => 'La nueva contraseña es necesaria',
+               
+            ]);
+
+ 
+            if ($validator->fails()){ return ['estado' => false, 'mensaje' => $validator->errors()];}
+            return ['estado' => true, 'mensaje' => 'success'];
     }
 }

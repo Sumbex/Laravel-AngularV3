@@ -26,6 +26,12 @@ import { AuthGuardService } from './guardianes/auth.guard.service';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AniosService } from './servicios/anios.service';
 import { TipoCuentasService } from './servicios/tipo-cuentas.service';
+import { SindicalService } from './servicios/sindical.service';
+import { ModalCajaChicaComponent } from './auth-master/modal-caja-chica/modal-caja-chica.component';
+import { TablaCajaChicaComponent } from './auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component';
+import { TotalCajaChicaComponent } from './auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component';
+import { ModalInicioMesComponent } from './auth-master/modal-inicio-mes/modal-inicio-mes.component';
+import { TablaInicioMesComponent } from './auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,12 @@ import { TipoCuentasService } from './servicios/tipo-cuentas.service';
     CuentaFondoMutuoComponent,
     FormularioFondoMutuoComponent,
     TablaFondoMutuoComponent,
-    NoEncontradoComponent
+    NoEncontradoComponent,
+    ModalCajaChicaComponent,
+    TablaCajaChicaComponent,
+    TotalCajaChicaComponent,
+    ModalInicioMesComponent,
+    TablaInicioMesComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,8 @@ import { TipoCuentasService } from './servicios/tipo-cuentas.service';
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     AniosService,
-    TipoCuentasService
+    TipoCuentasService,
+    SindicalService
   ],
   bootstrap: [AppComponent]
 })

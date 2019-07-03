@@ -3,6 +3,7 @@ export class cajaChicaSindical{
     anio_id?: number;
     mes_id?: number;
     dia?:number;
+    fecha:string;
     numero_documento:number;
     archivo_documento: string;
     descripcion: string;

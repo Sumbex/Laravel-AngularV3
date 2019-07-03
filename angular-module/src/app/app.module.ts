@@ -33,6 +33,7 @@ import { TotalCajaChicaComponent } from './auth-master/modal-caja-chica/total-ca
 import { ModalInicioMesComponent } from './auth-master/modal-inicio-mes/modal-inicio-mes.component';
 import { TablaInicioMesComponent } from './auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component';
 import { ConfiguracionesComponent } from './auth-master/configuraciones/configuraciones.component';
+import { CajaChicaService } from './servicios/caja-chica.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ConfiguracionesComponent } from './auth-master/configuraciones/configur
     JwtHelperService,
     AniosService,
     TipoCuentasService,
-    SindicalService
+    SindicalService,
+    CajaChicaService
   ],
   bootstrap: [AppComponent]
 })

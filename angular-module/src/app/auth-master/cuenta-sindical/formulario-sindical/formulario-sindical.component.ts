@@ -28,12 +28,12 @@ export class FormularioSindicalComponent implements OnInit {
     monto: 0
   }
 
-  constructor(private _aniosService: AniosService, private _tiposService: TipoCuentasService, private _sindicalService: SindicalService) {
+  constructor(private _sindicalService: SindicalService) {
   
   }
 
   ngOnInit() {
-    //Cargar Años
+    /*//Cargar Años
     this._aniosService.getAnios().subscribe((res : any[]) => {
       this.selectAnio = res;
     });
@@ -49,7 +49,18 @@ export class FormularioSindicalComponent implements OnInit {
     //Cargar Detalles
     this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
       this.selectDetalle = res;
-    })
+    });*/
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Cargar definiciones
+    this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+
+    //Cargar detalles
+    this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
   }
 
   onSubmit({value, valid}: {value: Sindical, valid: boolean}) {

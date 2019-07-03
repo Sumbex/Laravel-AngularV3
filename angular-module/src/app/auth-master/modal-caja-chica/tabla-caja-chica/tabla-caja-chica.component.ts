@@ -12,17 +12,14 @@ export class TablaCajaChicaComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
 
-  constructor(private _aniosService: AniosService) { }
+  constructor() { }
 
   ngOnInit() {
     //Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
     //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
 }

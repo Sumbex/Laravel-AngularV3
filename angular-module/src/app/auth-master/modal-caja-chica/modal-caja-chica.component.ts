@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Anios } from 'src/app/modelos/anios.model';
-import { Meses } from 'src/app/modelos/meses.model';
 import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AniosService } from 'src/app/servicios/anios.service';
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
@@ -26,18 +23,15 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso:0
   }
   
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _tiposService: TipoCuentasService, private _cajaChicaService: CajaChicaService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService) {
     config.backdrop = 'static';
     config.keyboard = false;
     
   }
 
   ngOnInit() {
-    //Cargar Definiciones
-    this._tiposService.getDefinicion().subscribe((res : any[]) => {
-      this.selectDefinicion = res;
-      console.log(res);
-    });
+    //Cargar definiciones
+    this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
   }
 
   openCajaChica(CajaChica) {

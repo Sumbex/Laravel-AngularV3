@@ -20,6 +20,7 @@ export class CambioContraseniaComponent implements OnInit {
   success_visible:boolean = false;
   fail_visible:boolean = false;
   success_texto:string = "";
+
   password:string = '';
   confirm_password:string = '';
   new_password:string = '';

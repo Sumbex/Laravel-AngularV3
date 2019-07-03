@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<router-outlet></router-outlet>-->\n<div class=\"container\">\n<router-outlet></router-outlet>\n</div>\n"
+module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"container\">\r\n<router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<!--<router-outlet></router-outlet>-->\n<div class=\"container
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>"
+module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -52,7 +52,7 @@ module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\n<app-tabla-bienestar></app-tabla-bienestar>"
+module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\r\n<app-tabla-bienestar></app-tabla-bienestar>"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\n<app-ta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  formulario-bienestar works!\n</p>\n"
+module.exports = "<p>\r\n  formulario-bienestar works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -74,7 +74,7 @@ module.exports = "<p>\n  formulario-bienestar works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  tabla-bienestar works!\n</p>\n"
+module.exports = "<p>\r\n  tabla-bienestar works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -85,7 +85,7 @@ module.exports = "<p>\n  tabla-bienestar works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\n<app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>"
+module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n<app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>"
 
 /***/ }),
 
@@ -96,7 +96,7 @@ module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\n<ap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  formulario-fondo-mutuo works!\n</p>\n"
+module.exports = "<p>\r\n  formulario-fondo-mutuo works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -107,7 +107,7 @@ module.exports = "<p>\n  formulario-fondo-mutuo works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  tabla-fondo-mutuo works!\n</p>\n"
+module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -118,7 +118,7 @@ module.exports = "<p>\n  tabla-fondo-mutuo works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\n<app-formulario-sindical></app-formulario-sindical>\n<app-tabla-sindical></app-tabla-sindical>"
+module.exports = "<br>\r\n<app-formulario-sindical></app-formulario-sindical>\r\n"
 
 /***/ }),
 
@@ -129,7 +129,7 @@ module.exports = "<br>\n<app-formulario-sindical></app-formulario-sindical>\n<ap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\n  <!--Formulario de otras cuentas-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\n        <h6>Otras Cuentas</h6>\n      </strong>\n    </div>\n    <form action=\"\">\n      <div class=\"card-body\">\n        <!--Boton Para llamar al Modal inicio y cierre mensual-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\">\n            <br><label><strong>Inicio y Cierre Mensual</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\n          </div>\n\n          <!--Boton Para llamar al modal caja chica-->\n          <div class=\"col-sm-6 col-md-3 col-lg-3\">\n            <br><label><strong>Caja Chica</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\n          </div>\n\n          <!--Boton Para llamar al modal caja chica-->\n          <div class=\"col-sm-6 col-md-3 col-lg-3\">\n            <br><label><strong>Prestamos</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openPrestamo(Prestamo)\">Ingresar</button>\n          </div>\n\n          <!--Boton Para llamar al modal camping-->\n          <div class=\"col-sm-6 col-md-3 col-lg-3\">\n            <br><label><strong>Camping</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCamping(Camping)\">Ingresar</button>\n          </div>\n\n        </div>\n      </div>\n    </form>\n  </div><br>\n\n  <!--Formulario para ingresar una cuenta sindical-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\n        <h6>Cuenta Sindical</h6>\n      </strong>\n    </div>\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <div class=\"card-body\">\n        <div class=\"row\">\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Fecha</strong></label> <br>\n            <div class=\"input-group\">\n              <input \n              class=\"form-control form-control-sm\" \n              placeholder=\"yyyy-mm-dd\" \n              name=\"fecha\" \n              #fecha=\"ngModel\"\n              [(ngModel)]=\"datosSindicales.fecha\" \n              ngbDatepicker \n              #d2=\"ngbDatepicker\">\n              <div class=\"input-group-append\">\n                <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>N° de Documento</strong></label>\n            <input \n            type=\"number\" \n            class=\"form-control form-control-sm\"\n            name=\"nDocumento\" \n            #nDocumento=\"ngModel\"\n            [(ngModel)]=\"datosSindicales.nDocumento\" \n            required>\n            <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\n              Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\n            </small>\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>Subir Documento</strong></label>\n            <input class=\"form-control-file\" type=\"file\">\n          </div>\n        </div><br>\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n            <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\n              <option *ngFor=\"let tipo of selectDefinicion\">{{tipo.descripcion}}</option>\n            </select>\n          </div><br>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Detalle Tipo</strong></label>\n            <select (change)=\"tipoOperacionDetalle($event)\" class=\"form-control form-control-sm\">\n              <option *ngFor=\"let detalle of selectDetalle\">{{detalle.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\n            <textarea \n              class=\"form-control\" \n              rows=\"3\"\n              minlength=\"5\"\n              maxlength=\"80\"\n              name=\"descripcion\" \n              #descripcion=\"ngModel\"\n              [(ngModel)]=\"datosSindicales.descripcion\" \n              required>\n            </textarea>\n            <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\n              Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\n            </small>\n          </div>\n        </div><br>\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Monto</strong></label>\n            <input \n            type=\"number\"\n            class=\"form-control form-control-sm\"\n            name=\"monto\" \n            #monto=\"ngModel\"\n            [(ngModel)]=\"datosSindicales.monto\" \n            required>\n          </div>\n          <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\n            Compruebe que el monto ingresado solo contenga numeros\n          </small>\n          <div class=\"col-sm-6 col-md-3 col-lg-3\">\n            <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\n              [disabled]=\"loginForm.invalid\">Guardar</button>\n          </div>\n        </div><br>\n      </div>\n    </form>\n  </div>\n\n  <!--Modal para el inicio y cierre mensual-->\n  <ng-template #Mensual let-modal>\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <!--Cuerpo del body inicio y cierre mensual-->\n      <div class=\"modal-body\">\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Calcular monto</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Calcular</button>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Monto Inicial</strong></label>\n            <input \n            class=\"form-control form-control-sm\"\n            type=\"number\"\n             required>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Guardar Monto</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n        </div>\n\n        <br>\n        <hr>\n        <!--Tabla del Modal Inicio y cierre mensual-->\n\n        <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n          <select class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n          </select>\n        </div><br>\n        <!--tabla del modal inicio y cierre mensual-->\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n\n              <tr>\n                <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n                  <h6>Movimiento mensual Mayo 2019</h6>\n                </th>\n              </tr>\n\n              <tr>\n                <th scope=\"col\" colspan=\"3\">Año</th>\n                <th scope=\"col\" colspan=\"3\">Mes</th>\n                <th scope=\"col\" colspan=\"3\">Monto</th>\n                <th scope=\"col\" colspan=\"3\">Inicial</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr class=\"text-center\">\n                <td scope=\"col\" colspan=\"3\">2019</td>\n                <td scope=\"col\" colspan=\"3\">Enero</td>\n                <td scope=\"col\" colspan=\"3\">50000</td>\n                <td scope=\"col\" colspan=\"3\">120000</td>\n              </tr>\n            </tbody>\n          </table>\n        </div><br>\n\n      </div>\n      <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n\n  <!--Modal caja chica-->\n  <ng-template #CajaChica let-modal>\n    <!--form del modal caja chica-->\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <!--Cabezal del modal caja chica-->\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Caja Chica</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <!--Cuerpo del body caja chica-->\n      <div class=\"modal-body\">\n        <div class=\"row\">\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\n            <div class=\"form-group\">\n              <div class=\"input-group\">\n                <input class=\"form-control form-control-sm\" placeholder=\"yyyy-mm-dd\" name=\"d2\" #c2=\"ngModel\"\n                  [(ngModel)]=\"model2\" ngbDatepicker #d2=\"ngbDatepicker\">\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Detalle</strong></label>\n            <input \n            class=\"form-control form-control-sm\"\n            required>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese Monto</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese N° Documento</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>Subir Documento</strong></label>\n            <input class=\"form-control-file\" type=\"file\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let tipo of selectDefinicion\">{{tipo.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Guardar Caja Chica</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n\n        </div>\n\n        <hr>\n        <!--Tabla del Modal Caja Chica-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n              <tr>\n                <th colspan=\"2\">Fecha</th>\n                <th colspan=\"2\">N° de Doc</th>\n                <th colspan=\"2\">PDF</th>\n                <th colspan=\"3\">Detalle</th>\n                <th colspan=\"2\">Ingreso</th>\n                <th colspan=\"2\">Egreso</th>\n                <th colspan=\"2\">Actual</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr class=\"text-center\">\n                <td colspan=\"2\">24-06-2019</td>\n                <td colspan=\"2\">35869</td>\n                <td colspan=\"2\">PDF</td>\n                <td colspan=\"3\">Se compro una resma de hojas</td>\n                <td colspan=\"2\">0</td>\n                <td colspan=\"2\">4000</td>\n                <td colspan=\"2\">100000</td>\n              </tr>\n            </tbody>\n          </table>\n        </div><br>\n        <hr>\n\n        <!--Formulario para enviar el monto de caja chica a la cuenta sindical-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Ingreso</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Egreso</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Total</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Codigo General</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Descripcion de la caja chica</strong></label>\n            <textarea class=\"form-control\" rows=\"3\"></textarea>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n        </div>\n      </div>\n\n      <!--Boton para salir del modal caja chica-->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n\n  <!--Modal prestamo-->\n  <ng-template #Prestamo let-modal>\n    <!--form del modal prestamo-->\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <!--Cabezal del modal prestamo-->\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Prestamo</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <!--Cuerpo del body prestamo-->\n      <div class=\"modal-body\">\n        <div class=\"row\">\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\n            <div class=\"form-group\">\n              <div class=\"input-group\">\n                <input class=\"form-control form-control-sm\" placeholder=\"yyyy-mm-dd\" name=\"d2\" #c2=\"ngModel\"\n                  [(ngModel)]=\"model2\" ngbDatepicker #d2=\"ngbDatepicker\">\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Detalle</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese Monto</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese N° Documento</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>Subir Documento</strong></label>\n            <input class=\"form-control-file\" type=\"file\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let tipo of selectDefinicion\">{{tipo.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Guardar Prestamo</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n\n        </div>\n\n        <hr>\n        <!--Tabla del Modal Prestamo-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n              <tr>\n                <th colspan=\"2\">Fecha</th>\n                <th colspan=\"2\">N° de Doc</th>\n                <th colspan=\"2\">PDF</th>\n                <th colspan=\"3\">Detalle</th>\n                <th colspan=\"2\">Ingreso</th>\n                <th colspan=\"2\">Egreso</th>\n                <th colspan=\"2\">Actual</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr class=\"text-center\">\n                <td colspan=\"2\">24-06-2019</td>\n                <td colspan=\"2\">358969</td>\n                <td colspan=\"2\">PDF</td>\n                <td colspan=\"3\">Se presto x dinero a juanito perez</td>\n                <td colspan=\"2\">0</td>\n                <td colspan=\"2\">4000</td>\n                <td colspan=\"2\">100000</td>\n              </tr>\n            </tbody>\n          </table>\n        </div><br>\n        <hr>\n\n        <!--Formulario para enviar el monto del prestamo a la cuenta sindical-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Ingreso</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Egreso</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Total</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Codigo General</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Descripcion del prestamo</strong></label>\n            <textarea class=\"form-control\" rows=\"3\"></textarea>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n        </div>\n      </div>\n\n      <!--Boton para salir del modal prestamo-->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n\n  <!--Modal camping-->\n  <ng-template #Camping let-modal>\n    <!--form del modal camping-->\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <!--Cabezal del modal camping-->\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Camping</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <!--Cuerpo del body camping-->\n      <div class=\"modal-body\">\n        <div class=\"row\">\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\n            <div class=\"form-group\">\n              <div class=\"input-group\">\n                <input class=\"form-control form-control-sm\" placeholder=\"yyyy-mm-dd\" name=\"d2\" #c2=\"ngModel\"\n                  [(ngModel)]=\"model2\" ngbDatepicker #d2=\"ngbDatepicker\">\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Detalle</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese Monto</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese N° Documento</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>Subir Documento</strong></label>\n            <input class=\"form-control-file\" type=\"file\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let tipo of selectDefinicion\">{{tipo.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Guardar Camping</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n\n        </div>\n\n        <hr>\n        <!--Tabla del Modal camping-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n              <tr>\n                <th colspan=\"2\">Fecha</th>\n                <th colspan=\"2\">N° de Doc</th>\n                <th colspan=\"2\">PDF</th>\n                <th colspan=\"3\">Detalle</th>\n                <th colspan=\"2\">Ingreso</th>\n                <th colspan=\"2\">Egreso</th>\n                <th colspan=\"2\">Actual</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr class=\"text-center\">\n                <td colspan=\"2\">24-06-2019</td>\n                <td colspan=\"2\">358969</td>\n                <td colspan=\"2\">PDF</td>\n                <td colspan=\"3\">arriendo del sitio para carpas</td>\n                <td colspan=\"2\">0</td>\n                <td colspan=\"2\">4000</td>\n                <td colspan=\"2\">100000</td>\n              </tr>\n            </tbody>\n          </table>\n        </div><br>\n        <hr>\n\n        <!--Formulario para enviar el monto del camping a la cuenta sindical-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Ingreso</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Egreso</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <label><strong>Total</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Codigo General</strong></label><input class=\"form-control form-control-sm\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Descripcion del camping</strong></label>\n            <textarea class=\"form-control\" rows=\"3\"></textarea>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n          </div>\n        </div>\n      </div>\n\n      <!--Boton para salir del modal camping-->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n\n</div>"
+module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Otras Cuentas</h6></strong></div>\r\n    <form action=\"\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n              <!--Boton Para llamar modals-->\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-inicio-mes></app-modal-inicio-mes> </div>\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-caja-chica></app-modal-caja-chica> </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Cuenta Sindical</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n                <div class=\"input-group\">\r\n                  <input \r\n                  class=\"form-control form-control-sm\" \r\n                  placeholder=\"yyyy-mm-dd\" \r\n                  name=\"fecha\" \r\n                  #fecha=\"ngModel\"\r\n                  [(ngModel)]=\"datosSindicales.fecha\" \r\n                  ngbDatepicker \r\n                  #d2=\"ngbDatepicker\">\r\n                  <div class=\"input-group-append\">\r\n                    <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>N° de Documento</strong></label>\r\n                <input \r\n                type=\"number\" \r\n                class=\"form-control form-control-sm\"\r\n                name=\"nDocumento\" \r\n                #nDocumento=\"ngModel\"\r\n                [(ngModel)]=\"datosSindicales.nDocumento\" \r\n                required>\r\n                <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                </small>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label><strong>Subir Documento</strong></label>\r\n                <input class=\"form-control-file\" type=\"file\">\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\r\n                <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\r\n                  <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\r\n                </select>\r\n              </div><br>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\r\n                <select (change)=\"tipoOperacionDetalle($event)\" class=\"form-control form-control-sm\">\r\n                  <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\r\n                </select>\r\n              </div>\r\n\r\n                <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                    <br><label><strong>Ingrese Monto</strong></label>\r\n                    <input \r\n                    type=\"number\"\r\n                    class=\"form-control form-control-sm\"\r\n                    name=\"monto\" \r\n                    #monto=\"ngModel\"\r\n                    [(ngModel)]=\"datosSindicales.monto\" \r\n                    required>\r\n                  <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\r\n                    Compruebe que el monto ingresado solo contenga numeros\r\n                  </small>\r\n                </div>\r\n\r\n\r\n                  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\r\n                      <input \r\n                        class=\"form-control\" \r\n                        minlength=\"5\"\r\n                        maxlength=\"80\"\r\n                        name=\"descripcion\" \r\n                        #descripcion=\"ngModel\"\r\n                        [(ngModel)]=\"datosSindicales.descripcion\" \r\n                        required>\r\n                      <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\r\n                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\r\n                      </small>\r\n                    </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\r\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                  [disabled]=\"loginForm.invalid\">Guardar</button>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Visualizar Tabla Sindical</strong></label><br>\r\n                <app-tabla-sindical></app-tabla-sindical>\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -140,7 +140,62 @@ module.exports = "<div>\n\n  <!--Formulario de otras cuentas-->\n  <div class=\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<br> \n<div class=\"table-responsive\">\n  <table class=\"table table-striped table-bordered table-sm\">\n      <thead text-sm>\n        <tr>\n          <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Mayo 2019</h6></th>\n        </tr>\n        <tr>\n            <th scope=\"col\" colspan=\"2\">Desde:</th>\n            <th scope=\"col\" colspan=\"2\"><input class=\"form-control form-control-sm\"></th>\n        </tr>\n        <tr>\n          <th scope=\"col\" colspan=\"2\">Hasta:</th>\n          <th scope=\"col\" colspan=\"2\"><input class=\"form-control form-control-sm\"></th>\n        </tr>\n        <tr class=\"text-center\">\n          <th scope=\"col\" colspan=\"2\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Documento PDF</th>\n          <th scope=\"col\" colspan=\"5\"style=\"background: #138D75\">Cuenta Sindicado</th>\n\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\n          <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\n          <th scope=\"col\" rowspan=\"2\" style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Abril</th>\n        </tr>\n        <tr class=\"text-center\" style=\"background: #138D75;color:#FDFEFE\"> <th scope=\"col\" colspan=\"5\">Ingresos y Egresos Fijos</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n          <td scope=\"col\" class=\"text-center\">88970</td>\n          <td scope=\"col\" class=\"text-center\"></td>\n          <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\n          <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        </tr>\n\n        <tr>\n            <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n            <td scope=\"col\" class=\"text-center\">88970</td>\n            <td scope=\"col\" class=\"text-center\"></td>\n            <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\n            <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n            <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n            <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          </tr>\n\n          <tr>\n              <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n              <td scope=\"col\" class=\"text-center\">88970</td>\n              <td scope=\"col\" class=\"text-center\"></td>\n              <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\n              <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n              <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n              <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n            </tr>\n\n            <tr>\n                <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n                <td scope=\"col\" class=\"text-center\">88970</td>\n                <td scope=\"col\" class=\"text-center\"></td>\n                <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\n                <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n              </tr>\n      </tbody>\n    </table>\n  </div> <br>\n"
+module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template #TablaSindical let-modal>\r\n    <form>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Tabla Sindical</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n       <!--Cuerpo del body inicio y cierre mensual-->\r\n       <div class=\"modal-body\">\r\n        <br> \r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n              <thead text-sm>\r\n                <tr>\r\n                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Mayo 2019</h6></th>\r\n                </tr>\r\n                <tr>\r\n                    <th scope=\"col\" colspan=\"2\">Desde:</th>\r\n                    <th scope=\"col\" colspan=\"2\"><input class=\"form-control form-control-sm\"></th>\r\n                </tr>\r\n                <tr>\r\n                  <th scope=\"col\" colspan=\"2\">Hasta:</th>\r\n                  <th scope=\"col\" colspan=\"2\"><input class=\"form-control form-control-sm\"></th>\r\n                </tr>\r\n                <tr class=\"text-center\">\r\n                  <th scope=\"col\" colspan=\"2\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Documento PDF</th>\r\n                  <th scope=\"col\" colspan=\"5\"style=\"background: #138D75\">Cuenta Sindicado</th>\r\n\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\r\n                  <th scope=\"col\" rowspan=\"2\" style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Abril</th>\r\n                </tr>\r\n                <tr class=\"text-center\" style=\"background: #138D75;color:#FDFEFE\"> <th scope=\"col\" colspan=\"5\">Ingresos y Egresos Fijos</th></tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                  <td scope=\"col\" class=\"text-center\">88970</td>\r\n                  <td scope=\"col\" class=\"text-center\"></td>\r\n                  <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                    <td scope=\"col\" class=\"text-center\">88970</td>\r\n                    <td scope=\"col\" class=\"text-center\"></td>\r\n                    <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  </tr>\r\n\r\n                  <tr>\r\n                      <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                      <td scope=\"col\" class=\"text-center\">88970</td>\r\n                      <td scope=\"col\" class=\"text-center\"></td>\r\n                      <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    </tr>\r\n\r\n                    <tr>\r\n                        <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                        <td scope=\"col\" class=\"text-center\">88970</td>\r\n                        <td scope=\"col\" class=\"text-center\"></td>\r\n                        <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      </tr>\r\n              </tbody>\r\n            </table>\r\n        </div> \r\n        <br>\r\n       </div>\r\n\r\n     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n     <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  \r\n          \r\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openTablaSindical(TablaSindical)\">Ver Tabla</button>\r\n\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "  <!--Modal caja chica-->\r\n  <ng-template #CajaChica let-modal>\r\n    <!--form del modal caja chica-->\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <!--Cabezal del modal caja chica-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Caja Chica</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body caja chica-->\r\n      <div class=\"modal-body\">\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n            <div class=\"form-group\">\r\n              <div class=\"input-group\">\r\n                <input class=\"form-control form-control-sm\" placeholder=\"yyyy-mm-dd\" name=\"d2\" #c2=\"ngModel\"\r\n                  [(ngModel)]=\"model2\" ngbDatepicker #d2=\"ngbDatepicker\">\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-outline-secondary calendar\" (click)=\"d2.toggle()\" type=\"button\"></button>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Ingrese Detalle</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            required>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Igrese Monto</strong></label><input class=\"form-control form-control-sm\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Igrese N° Documento</strong></label><input class=\"form-control form-control-sm\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\r\n            <br><label><strong>Subir Documento</strong></label>\r\n            <input class=\"form-control-file\" type=\"file\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let tipo of selectDefinicion\">{{tipo.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Guardar Caja Chica</strong></label><br>\r\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\r\n          </div>\r\n\r\n        </div>\r\n        <!--Tabla del Modal Caja Chica-->\r\n        <app-tabla-caja-chica></app-tabla-caja-chica>\r\n\r\n        <!--Formulario para enviar el monto de caja chica a la cuenta sindical-->\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <label><strong>Ingreso</strong></label><input class=\"form-control form-control-sm\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <label><strong>Egreso</strong></label><input class=\"form-control form-control-sm\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <label><strong>Total</strong></label><input class=\"form-control form-control-sm\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Codigo General</strong></label><input class=\"form-control form-control-sm\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Descripcion de la caja chica</strong></label>\r\n            <textarea class=\"form-control\" rows=\"3\"></textarea>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>\r\n            <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!--Boton para salir del modal caja chica-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n\r\n  <!--Boton Para llamar al modal caja chica-->\r\n    <label><strong>Caja Chica</strong></label><br>\r\n    <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<hr>\r\n<!--Tabla del Modal Caja Chica-->\r\n<div class=\"row\">\r\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n    <select class=\"form-control form-control-sm\">\r\n      <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n    <select class=\"form-control form-control-sm\">\r\n      <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n    </select>\r\n  </div>\r\n</div><br>\r\n\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-sm\">\r\n    <thead text-sm class=\"text-center\">\r\n      <tr>\r\n        <th colspan=\"2\">Fecha</th>\r\n        <th colspan=\"2\">N° de Doc</th>\r\n        <th colspan=\"2\">PDF</th>\r\n        <th colspan=\"3\">Detalle</th>\r\n        <th colspan=\"2\">Ingreso</th>\r\n        <th colspan=\"2\">Egreso</th>\r\n        <th colspan=\"2\">Actual</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr class=\"text-center\">\r\n        <td colspan=\"2\">24-06-2019</td>\r\n        <td colspan=\"2\">35869</td>\r\n        <td colspan=\"2\">PDF</td>\r\n        <td colspan=\"3\">Se compro una resma de hojas</td>\r\n        <td colspan=\"2\">0</td>\r\n        <td colspan=\"2\">4000</td>\r\n        <td colspan=\"2\">100000</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div><br>\r\n<hr>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  total-caja-chica works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template #Mensual let-modal>\r\n  <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n    <div class=\"modal-header\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <!--Cuerpo del body inicio y cierre mensual-->\r\n    <div class=\"modal-body\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\r\n          <select class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\r\n          <select class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Calcular monto</strong></label><br>\r\n          <button class=\"btn btn btn-success btn-block btn-sm\">Calcular</button>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Monto Inicial</strong></label>\r\n          <input \r\n          class=\"form-control form-control-sm\"\r\n          type=\"number\"\r\n           required>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Guardar Monto</strong></label><br>\r\n          <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\r\n        </div>\r\n      </div>\r\n  \r\n      <!--Tabla del Modal Inicio y cierre mensual-->\r\n      <app-tabla-inicio-mes></app-tabla-inicio-mes>\r\n    </div>\r\n\r\n      \r\n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n    <div class=\"modal-footer\">\r\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n      </button>\r\n    </div>\r\n\r\n  </form>\r\n</ng-template>\r\n\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\r\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\r\n\r\n  \r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<br> <hr>\r\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n  <select class=\"form-control form-control-sm\">\r\n    <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n  </select>\r\n</div><br>\r\n<!--tabla del modal inicio y cierre mensual-->\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-sm\">\r\n    <thead text-sm class=\"text-center\">\r\n\r\n      <tr>\r\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\r\n          <h6>Movimiento mensual Mayo 2019</h6>\r\n        </th>\r\n      </tr>\r\n\r\n      <tr>\r\n        <th scope=\"col\" colspan=\"3\">Año</th>\r\n        <th scope=\"col\" colspan=\"3\">Mes</th>\r\n        <th scope=\"col\" colspan=\"3\">Monto</th>\r\n        <th scope=\"col\" colspan=\"3\">Inicial</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr class=\"text-center\">\r\n        <td scope=\"col\" colspan=\"3\">2019</td>\r\n        <td scope=\"col\" colspan=\"3\">Enero</td>\r\n        <td scope=\"col\" colspan=\"3\">50000</td>\r\n        <td scope=\"col\" colspan=\"3\">120000</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div><br>\r\n"
 
 /***/ }),
 
@@ -151,7 +206,7 @@ module.exports = "\n<br> \n<div class=\"table-responsive\">\n  <table class=\"ta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg-success\">\n  <a class=\"navbar-brand\" style=\"color: aliceblue\">Sindicado CMPC</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Bienestar</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\n      </li>\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n          <button ngbDropdownItem>Configuracion Cuenta</button>\n          <button ngbDropdownItem (click)=\"logOut()\">Cerrar Sesion</button>\n        </div>\n      </li>\n    </ul>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg-success\">\r\n  <a class=\"navbar-brand\" style=\"color: aliceblue\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Bienestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\r\n      </li>\r\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\r\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n          <button ngbDropdownItem>Configuracion Cuenta</button>\r\n          <button ngbDropdownItem (click)=\"logOut()\">Cerrar Sesion</button>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -162,7 +217,7 @@ module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  no-encontrado works!\n</p>\n"
+module.exports = "<p>\r\n  no-encontrado works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -173,7 +228,7 @@ module.exports = "<p>\n  no-encontrado works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  about works!\n</p>\n"
+module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -184,7 +239,7 @@ module.exports = "<p>\n  about works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div><br>\n  <div class=\"card margen\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Iniciar Sesión</h6></strong></div>\n        <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n          <div class=\"card-body\">\n\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\n                <label for=\"email\"><strong>Correo Electronico</strong></label>\n                <input \n                  type=\"email\" \n                  class=\"form-control\" \n                  placeholder=\"ejemplo@gmail.com\" \n                  name=\"email\" \n                  #email=\"ngModel\" \n                  [(ngModel)]=\"usuario.email\"\n                  required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\n                  <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\n                    El correo ingresado no es valido\n                  </small> \n              </div><br>\n\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\n                <label for=\"password\"><strong>Contraseña</strong></label>\n                <input \n                  type=\"password\" \n                  class=\"form-control\" \n                  placeholder=\"********\"\n                  name=\"password\"\n                  #password=\"ngModel\"\n                  [(ngModel)]=\"usuario.password\"\n                  required>\n                  <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\n                    Ingrese una pass valida\n                  </small>\n              </div><br>\n\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\n                <input \n                type=\"submit\" \n                value=\"Identificarse\" \n                class=\"btn btn-success\"\n                [disabled]=\"loginForm.invalid\">\n              </div>\n\n          </div>\n        </form><br>\n    </div><br>\n  \n  <div *ngIf=\"loading\" class=\"col-xs-12 text-center\">\n    <img src=\"/assets/loading.gif\"  width=\"100\" height=\"100\" alt=\"cargando\">\n  </div>\n</div>"
+module.exports = "<div><br>\r\n  <div class=\"card margen\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Iniciar Sesión</h6></strong></div>\r\n        <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n          <div class=\"card-body\">\r\n\r\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\r\n                <label for=\"email\"><strong>Correo Electronico</strong></label>\r\n                <input \r\n                  type=\"email\" \r\n                  class=\"form-control\" \r\n                  placeholder=\"ejemplo@gmail.com\" \r\n                  name=\"email\" \r\n                  #email=\"ngModel\" \r\n                  [(ngModel)]=\"usuario.email\"\r\n                  required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\r\n                  <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\r\n                    El correo ingresado no es valido\r\n                  </small> \r\n              </div><br>\r\n\r\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\r\n                <label for=\"password\"><strong>Contraseña</strong></label>\r\n                <input \r\n                  type=\"password\" \r\n                  class=\"form-control\" \r\n                  placeholder=\"********\"\r\n                  name=\"password\"\r\n                  #password=\"ngModel\"\r\n                  [(ngModel)]=\"usuario.password\"\r\n                  required>\r\n                  <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\r\n                    Ingrese una pass valida\r\n                  </small>\r\n              </div><br>\r\n\r\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\r\n                <input \r\n                type=\"submit\" \r\n                value=\"Identificarse\" \r\n                class=\"btn btn-success\"\r\n                [disabled]=\"loginForm.invalid\">\r\n              </div>\r\n\r\n          </div>\r\n        </form><br>\r\n    </div><br>\r\n  \r\n  <div *ngIf=\"loading\" class=\"col-xs-12 text-center\">\r\n    <img src=\"/assets/loading.gif\"  width=\"100\" height=\"100\" alt=\"cargando\">\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -195,7 +250,7 @@ module.exports = "<div><br>\n  <div class=\"card margen\">\n    <div class=\"car
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<hr><h1 class=\"text-center\"><strong>Bienvenido Sindicato CMPC</strong></h1><hr>\n<router-outlet></router-outlet>"
+module.exports = "<hr><h1 class=\"text-center\"><strong>Bienvenido Sindicato CMPC</strong></h1><hr>\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -268,7 +323,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "body {\r\n    background-color: #F1F5FC;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7RUFDM0IiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YxRjVGQztcclxuICB9Il19 */"
 
 /***/ }),
 
@@ -300,6 +355,7 @@ var AppComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -350,6 +406,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
 /* harmony import */ var _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
+/* harmony import */ var _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./auth-master/modal-caja-chica/modal-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.ts");
+/* harmony import */ var _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts");
+/* harmony import */ var _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.ts");
+/* harmony import */ var _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./auth-master/modal-inicio-mes/modal-inicio-mes.component */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.ts");
+/* harmony import */ var _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.ts");
+
+
+
+
+
 
 
 
@@ -400,7 +466,12 @@ var AppModule = /** @class */ (function () {
                 _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_20__["CuentaFondoMutuoComponent"],
                 _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__["FormularioFondoMutuoComponent"],
                 _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__["TablaFondoMutuoComponent"],
-                _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"]
+                _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"],
+                _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__["ModalCajaChicaComponent"],
+                _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__["TablaCajaChicaComponent"],
+                _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
+                _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
+                _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -435,7 +506,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2F1dGgtbWFzdGVyLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2F1dGgtbWFzdGVyLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -750,7 +821,7 @@ var TablaFondoMutuoComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "label,input, button{\n    font-size: 12px;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2N1ZW50YS1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9jdWVudGEtc2luZGljYWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b257XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICB9Il19 */"
+module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2N1ZW50YS1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9jdWVudGEtc2luZGljYWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbiAgfSJdfQ== */"
 
 /***/ }),
 
@@ -795,7 +866,7 @@ var CuentaSindicalComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    .dark-modal .modal-content {\n      background-color: #292b2c;\n      color: white;\n    }\n    .dark-modal .close {\n      color: white;\n    }\n    .light-blue-backdrop {\n      background-color: #5cb3fd;\n    }\n    label,input, button{\n      font-size: 12px;\n    }\n    tr,th{\n      font-size: 12px;\n    }\n    th{\n      color: white;\n      background: #138D75;\n    }\n    #demoFont {\n      text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n      color: #d9d9d9;\n      background: #4B94AD;\n      }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtNQUNFLHlCQUF5QjtNQUN6QixZQUFZO0lBQ2Q7SUFDQTtNQUNFLFlBQVk7SUFDZDtJQUNBO01BQ0UseUJBQXlCO0lBQzNCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBQ0E7TUFDRSxZQUFZO01BQ1osbUJBQW1CO0lBQ3JCO0lBRUE7TUFDRSwwR0FBMEc7TUFDMUcsY0FBYztNQUNkLG1CQUFtQjtNQUNuQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9mb3JtdWxhcmlvLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICBjb2xvcjogd2hpdGU7XG4gICAgfVxuICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICBjb2xvcjogd2hpdGU7XG4gICAgfVxuICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XG4gICAgfVxuXG4gICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICB9XG5cbiAgICB0cix0aHtcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICB9XG4gICAgdGh7XG4gICAgICBjb2xvcjogd2hpdGU7XG4gICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xuICAgIH1cbiAgICBcbiAgICAjZGVtb0ZvbnQge1xuICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcbiAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcbiAgICAgIH1cbiJdfQ== */"
+module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color: #292b2c;\r\n      color: white;\r\n    }\r\n    .dark-modal .close {\r\n      color: white;\r\n    }\r\n    .light-blue-backdrop {\r\n      background-color: #5cb3fd;\r\n    }\r\n    label,input, button{\r\n      font-size: 12px;\r\n    }\r\n    tr,th{\r\n      font-size: 12px;\r\n    }\r\n    th{\r\n      color: white;\r\n      background: #138D75;\r\n    }\r\n    #demoFont {\r\n      text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n      color: #d9d9d9;\r\n      background: #4B94AD;\r\n      }\r\n    .margen{\r\n        display: flex;\r\n        justify-content: center;\r\n        width: 100%;\r\n      }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtNQUNFLHlCQUF5QjtNQUN6QixZQUFZO0lBQ2Q7SUFDQTtNQUNFLFlBQVk7SUFDZDtJQUNBO01BQ0UseUJBQXlCO0lBQzNCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBQ0E7TUFDRSxZQUFZO01BQ1osbUJBQW1CO0lBQ3JCO0lBRUE7TUFDRSwwR0FBMEc7TUFDMUcsY0FBYztNQUNkLG1CQUFtQjtNQUNuQjtJQUNBO1FBQ0UsYUFBYTtRQUNiLHVCQUF1QjtRQUN2QixXQUFXO01BQ2IiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC9mb3JtdWxhcmlvLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgfVxyXG4gICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgfVxyXG4gICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG4gICAgfVxyXG5cclxuICAgIGxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgIH1cclxuXHJcbiAgICB0cix0aHtcclxuICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgfVxyXG4gICAgdGh7XHJcbiAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgI2RlbW9Gb250IHtcclxuICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XHJcbiAgICAgIH1cclxuICAgICAgLm1hcmdlbntcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICB9XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -836,13 +907,14 @@ var FormularioSindicalComponent = /** @class */ (function () {
             nDocumento: '',
             tipoCuentaSindicato: '1',
             descripcion: '',
-            definicion: '',
+            definicion: '1',
             monto: 0
         };
         this.datosCajaChica = {
             numero_documento: 0,
             archivo_documento: '',
             descripcion: '',
+            definicion: '',
             monto_ingreso: 0,
             monto_egreso: 0
         };
@@ -862,23 +934,12 @@ var FormularioSindicalComponent = /** @class */ (function () {
         //Cargar Definiciones
         this._tiposService.getDefinicion().subscribe(function (res) {
             _this.selectDefinicion = res;
+            console.log(res);
         });
         //Cargar Detalles
         this._tiposService.getTipoCuenta().subscribe(function (res) {
             _this.selectDetalle = res;
         });
-    };
-    FormularioSindicalComponent.prototype.openMensual = function (Mensual) {
-        this.modalService.open(Mensual, { size: 'lg' });
-    };
-    FormularioSindicalComponent.prototype.openCajaChica = function (CajaChica) {
-        this.modalService.open(CajaChica, { size: 'lg' });
-    };
-    FormularioSindicalComponent.prototype.openPrestamo = function (Prestamo) {
-        this.modalService.open(Prestamo, { size: 'lg' });
-    };
-    FormularioSindicalComponent.prototype.openCamping = function (Camping) {
-        this.modalService.open(Camping, { size: 'lg' });
     };
     FormularioSindicalComponent.prototype.onSubmit = function (_a) {
         var value = _a.value, valid = _a.valid;
@@ -886,17 +947,19 @@ var FormularioSindicalComponent = /** @class */ (function () {
             console.log("Ingreso no valido revisar campos");
         }
         else {
-            console.log("Ingreso validado es el gato tom");
-            console.log(this.datosSindicales);
-            this._sindicalService.ingresarValor(value);
+            this._sindicalService.ingresarValor(this.datosSindicales).subscribe(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log(error);
+            });
         }
     };
     FormularioSindicalComponent.prototype.tipoOperacionDefinicion = function (evento) {
-        this.datosSindicales.tipoCuentaSindicato = evento.target.selectedIndex + 1;
+        this.datosSindicales.definicion = evento.target.value;
         console.log(this.datosSindicales.tipoCuentaSindicato);
     };
     FormularioSindicalComponent.prototype.tipoOperacionDetalle = function (evento) {
-        this.datosSindicales.definicion = evento.target.selectedIndex + 1;
+        this.datosSindicales.tipoCuentaSindicato = evento.target.value;
         console.log(this.datosSindicales.definicion);
     };
     FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -921,7 +984,7 @@ var FormularioSindicalComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "label,input, button{\n    font-size: 12px;\n  }\n  tr,th{\n      font-size: 12px;\n  }\n  #demoFont {\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n    color: #d9d9d9;\n    background: #4B94AD;\n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCO0VBQ0E7TUFDSSxlQUFlO0VBQ25CO0VBRUY7SUFDSSwwR0FBMEc7SUFDMUcsY0FBYztJQUNkLG1CQUFtQjtJQUNuQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC90YWJsYS1zaW5kaWNhbC90YWJsYS1zaW5kaWNhbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cbiAgdHIsdGh7XG4gICAgICBmb250LXNpemU6IDEycHg7XG4gIH1cblxuI2RlbW9Gb250IHtcbiAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xuICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XG4gICAgfSJdfQ== */"
+module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n  tr,th{\r\n      font-size: 12px;\r\n  }\r\n  #demoFont {\r\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n    color: #d9d9d9;\r\n    background: #4B94AD;\r\n    }\r\n  .tablaDerecha{\r\n    float: right;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCO0VBQ0E7TUFDSSxlQUFlO0VBQ25CO0VBRUY7SUFDSSwwR0FBMEc7SUFDMUcsY0FBYztJQUNkLG1CQUFtQjtJQUNuQjtFQUVGO0lBQ0UsWUFBWTtFQUNkIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgZm9udC1zaXplOiAxMnB4O1xyXG4gIH1cclxuICB0cix0aHtcclxuICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gIH1cclxuXHJcbiNkZW1vRm9udCB7XHJcbiAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xyXG4gICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgfVxyXG5cclxuICAudGFibGFEZXJlY2hhe1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gIH0iXX0= */"
 
 /***/ }),
 
@@ -937,12 +1000,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaSindicalComponent", function() { return TablaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+
+
 
 
 var TablaSindicalComponent = /** @class */ (function () {
-    function TablaSindicalComponent() {
+    function TablaSindicalComponent(config, modalService, _aniosService) {
+        this.modalService = modalService;
+        this._aniosService = _aniosService;
+        this.selectAnio = [];
+        this.selectMes = [];
+        config.backdrop = 'static';
+        config.keyboard = false;
     }
     TablaSindicalComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        //Cargar Años
+        this._aniosService.getAnios().subscribe(function (res) {
+            _this.selectAnio = res;
+        });
+        //Cargar Meses
+        this._aniosService.getMeses().subscribe(function (res) {
+            _this.selectMes = res;
+        });
+    };
+    TablaSindicalComponent.prototype.openTablaSindical = function (TablaSindical) {
+        this.modalService.open(TablaSindical, { size: 'lg' });
     };
     TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -950,9 +1035,299 @@ var TablaSindicalComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./tabla-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.html"),
             styles: [__webpack_require__(/*! ./tabla-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
     ], TablaSindicalComponent);
     return TablaSindicalComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css":
+/*!*****************************************************************************!*\
+  !*** ./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS9tb2RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLDBHQUEwRztRQUMxRyxjQUFjO1FBQ2QsbUJBQW1CO1FBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS9tb2RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAiXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: ModalCajaChicaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalCajaChicaComponent", function() { return ModalCajaChicaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var src_app_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
+
+
+
+
+
+var ModalCajaChicaComponent = /** @class */ (function () {
+    function ModalCajaChicaComponent(config, modalService, _aniosService, _tiposService) {
+        this.modalService = modalService;
+        this._aniosService = _aniosService;
+        this._tiposService = _tiposService;
+        this.selectAnio = [];
+        this.selectMes = [];
+        this.selectDefinicion = [];
+        this.datosCajaChica = {
+            numero_documento: 0,
+            archivo_documento: '',
+            descripcion: '',
+            definicion: '',
+            monto_ingreso: 0,
+            monto_egreso: 0
+        };
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ModalCajaChicaComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        //Cargar Años
+        this._aniosService.getAnios().subscribe(function (res) {
+            _this.selectAnio = res;
+        });
+        //Cargar Meses
+        this._aniosService.getMeses().subscribe(function (res) {
+            _this.selectMes = res;
+        });
+        //Cargar Definiciones
+        this._tiposService.getDefinicion().subscribe(function (res) {
+            _this.selectDefinicion = res;
+            console.log(res);
+        });
+    };
+    ModalCajaChicaComponent.prototype.openCajaChica = function (CajaChica) {
+        this.modalService.open(CajaChica, { size: 'lg' });
+    };
+    ModalCajaChicaComponent.prototype.tipoOperacionDefinicion = function (evento) {
+        this.datosCajaChica.definicion = evento.target.value;
+        console.log(this.datosCajaChica.definicion);
+    };
+    ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./modal-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./modal-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], src_app_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_4__["TipoCuentasService"]])
+    ], ModalCajaChicaComponent);
+    return ModalCajaChicaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css":
+/*!**********************************************************************************************!*\
+  !*** ./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS90YWJsYS1jYWphLWNoaWNhL3RhYmxhLWNhamEtY2hpY2EuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9tb2RhbC1jYWphLWNoaWNhL3RhYmxhLWNhamEtY2hpY2EvdGFibGEtY2FqYS1jaGljYS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgdHIsdGh7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgICAgIHRoe1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAjZGVtb0ZvbnQge1xyXG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XHJcbiAgICAgICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcclxuICAgICAgICB9XHJcbiAgIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts ***!
+  \*********************************************************************************************/
+/*! exports provided: TablaCajaChicaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaCajaChicaComponent", function() { return TablaCajaChicaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TablaCajaChicaComponent = /** @class */ (function () {
+    function TablaCajaChicaComponent() {
+    }
+    TablaCajaChicaComponent.prototype.ngOnInit = function () {
+    };
+    TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./tabla-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaCajaChicaComponent);
+    return TablaCajaChicaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css":
+/*!**********************************************************************************************!*\
+  !*** ./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL21vZGFsLWNhamEtY2hpY2EvdG90YWwtY2FqYS1jaGljYS90b3RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.ts":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.ts ***!
+  \*********************************************************************************************/
+/*! exports provided: TotalCajaChicaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TotalCajaChicaComponent", function() { return TotalCajaChicaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TotalCajaChicaComponent = /** @class */ (function () {
+    function TotalCajaChicaComponent() {
+    }
+    TotalCajaChicaComponent.prototype.ngOnInit = function () {
+    };
+    TotalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-total-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./total-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./total-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TotalCajaChicaComponent);
+    return TotalCajaChicaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css":
+/*!*****************************************************************************!*\
+  !*** ./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy9tb2RhbC1pbmljaW8tbWVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLDBHQUEwRztRQUMxRyxjQUFjO1FBQ2QsbUJBQW1CO1FBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy9tb2RhbC1pbmljaW8tbWVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAiXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: ModalInicioMesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalInicioMesComponent", function() { return ModalInicioMesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+
+
+
+
+var ModalInicioMesComponent = /** @class */ (function () {
+    function ModalInicioMesComponent(config, modalService, _aniosService) {
+        this.modalService = modalService;
+        this._aniosService = _aniosService;
+        this.selectAnio = [];
+        this.selectMes = [];
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ModalInicioMesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        //Cargar Años
+        this._aniosService.getAnios().subscribe(function (res) {
+            _this.selectAnio = res;
+        });
+        //Cargar Meses
+        this._aniosService.getMeses().subscribe(function (res) {
+            _this.selectMes = res;
+        });
+    };
+    ModalInicioMesComponent.prototype.openMensual = function (Mensual) {
+        this.modalService.open(Mensual, { size: 'lg' });
+    };
+    ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-inicio-mes',
+            template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
+            styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+    ], ModalInicioMesComponent);
+    return ModalInicioMesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css":
+/*!**********************************************************************************************!*\
+  !*** ./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy90YWJsYS1pbmljaW8tbWVzL3RhYmxhLWluaWNpby1tZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9tb2RhbC1pbmljaW8tbWVzL3RhYmxhLWluaWNpby1tZXMvdGFibGEtaW5pY2lvLW1lcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgdHIsdGh7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgICAgIHRoe1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAjZGVtb0ZvbnQge1xyXG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XHJcbiAgICAgICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcclxuICAgICAgICB9XHJcbiAgIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.ts":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.ts ***!
+  \*********************************************************************************************/
+/*! exports provided: TablaInicioMesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaInicioMesComponent", function() { return TablaInicioMesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TablaInicioMesComponent = /** @class */ (function () {
+    function TablaInicioMesComponent() {
+    }
+    TablaInicioMesComponent.prototype.ngOnInit = function () {
+    };
+    TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-inicio-mes',
+            template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaInicioMesComponent);
+    return TablaInicioMesComponent;
 }());
 
 
@@ -1175,7 +1550,7 @@ var AboutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#demoFont {\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n    color: #d9d9d9;\n    background: #4B94AD;\n    }\nlabel,input, button{\n     font-size: 12px;\n    }\n.margen{\n    width: 18rem;\n    height: 21rem;\n    margin:auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEdBQTBHO0lBQzFHLGNBQWM7SUFDZCxtQkFBbUI7SUFDbkI7QUFDSjtLQUNLLGVBQWU7SUFDaEI7QUFDSjtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsV0FBVztBQUNmIiwiZmlsZSI6InNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2RlbW9Gb250IHtcbiAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xuICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XG4gICAgfVxubGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgIH1cbi5tYXJnZW57XG4gICAgd2lkdGg6IDE4cmVtO1xuICAgIGhlaWdodDogMjFyZW07XG4gICAgbWFyZ2luOmF1dG87XG59XG4iXX0= */"
+module.exports = "#demoFont {\r\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n    color: #d9d9d9;\r\n    background: #4B94AD;\r\n    }\r\nlabel,input, button{\r\n     font-size: 12px;\r\n    }\r\n.margen{\r\n    width: 18rem;\r\n    height: 21rem;\r\n    margin:auto;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEdBQTBHO0lBQzFHLGNBQWM7SUFDZCxtQkFBbUI7SUFDbkI7QUFDSjtLQUNLLGVBQWU7SUFDaEI7QUFDSjtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsV0FBVztBQUNmIiwiZmlsZSI6InNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2RlbW9Gb250IHtcclxuICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XHJcbiAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XHJcbiAgICB9XHJcbmxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgfVxyXG4ubWFyZ2Vue1xyXG4gICAgd2lkdGg6IDE4cmVtO1xyXG4gICAgaGVpZ2h0OiAyMXJlbTtcclxuICAgIG1hcmdpbjphdXRvO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -1384,12 +1759,25 @@ __webpack_require__.r(__webpack_exports__);
 var SindicalService = /** @class */ (function () {
     function SindicalService(_http) {
         this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     SindicalService.prototype.ingresarValor = function (form) {
         var json = JSON.stringify(form);
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
-        return this._http.post(this.url + 'guardar_item_c_s?', "fecha=" + form.fecha.year + "-" + form.fecha.month + "&" + "n_documento=" + form.nDocumento + "&" + "tipo_cuenta_sindicato=" + form.tipoCuentaSindicato + "&" + "descripcion=" + form.descripcion + "&" + "definicion=" + form.definicion + "&" + "monto=" + form.monto, { headers: headers });
+        /*let body = new FormData();
+        body.append('fecha', form.fecha.year.value);
+        body.append('n_documento', form.nDocumento.value);
+        body.append('tipo_cuenta_sindicato', form.tipoCuentaSindicato.value);
+        body.append('descripcion', form.fecha.descripcion.value);
+        body.append('definicion', form.definicion.value);
+        body.append('monto', form.monto.value);
+        */
+        //console.log('fecha=' + form.fecha.year + '-' + form.fecha.month + '-' + form.fecha.day + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto );
+        console.log(form.definicion);
+        return this._http.post(this.url + "guardar_item_c_s?", 'fecha= 2019-01-01' + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }) });
     };
     SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -1492,6 +1880,7 @@ var UsuarioService = /** @class */ (function () {
         var json = JSON.stringify(user);
         //let params = 'json='+json;
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+        console.log(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password);
         return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
     };
     UsuarioService.prototype.getToken = function () {
@@ -1595,7 +1984,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

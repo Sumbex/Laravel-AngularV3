@@ -79,7 +79,7 @@ class DatosBasicosController extends Controller
     {
         $validar = $this->validar_password($r);
 
-        if ($validar['estado'] == true) {
+        if ($validar['estado'] == "true") {
 
                 $user = User::find(Auth::user()->id);
 
@@ -91,7 +91,7 @@ class DatosBasicosController extends Controller
                         return ['estado'=>'filed'];
                     }
                 }else{
-                    return ['estado' => false, 'mensaje' =>'Contraseña actual no valida'];
+                    return ['estado' => "false", 'mensaje' =>'Contraseña actual no valida'];
                 }
         }else{
             return $this->validar_password($r);
@@ -118,7 +118,7 @@ class DatosBasicosController extends Controller
             ]);
 
  
-            if ($validator->fails()){ return ['estado' => false, 'mensaje' => $validator->errors()];}
-            return ['estado' => true, 'mensaje' => 'success'];
+            if ($validator->fails()){ return ['estado' => "false", 'mensaje' => $validator->errors()];}
+            return ['estado' => "true", 'mensaje' => 'success'];
     }
 }

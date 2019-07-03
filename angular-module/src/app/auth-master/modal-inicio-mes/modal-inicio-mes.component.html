@@ -10,6 +10,12 @@
     <!--Cuerpo del body inicio y cierre mensual-->
     <div class="modal-body">
 
+        <p>
+            <ngb-alert type="danger" [dismissible]="false">
+              <small><strong>Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>
+            </ngb-alert>
+          </p>
+
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Año</strong></label>
           <select class="form-control form-control-sm">
@@ -18,14 +24,17 @@
         </div>
 
         <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Mes</strong></label>
-          <select class="form-control form-control-sm">
-            <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+          <select class="form-control form-control-sm" #selectOptionMes>
+            <option *ngFor="let mes of selectMes"  [value]="mes.id">{{mes.descripcion}}</option>
           </select>
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-4">
           <br><label><strong>Calcular monto</strong></label><br>
-          <button class="btn btn btn-success btn-block btn-sm">Calcular</button>
+          <button type="submit" name="botonCalcular" class="btn btn btn-success btn-block btn-sm" [disabled]="selectOptionMes.value == '1'">Calcular</button>
+          <small *ngIf="selectOptionMes.value == '1'" class="invalid-feedback d-block">
+            El primer mes de cada año se debe ingresar el monto incial de forma manual
+          </small>
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-4">

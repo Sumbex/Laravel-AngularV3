@@ -33,15 +33,12 @@ import { TotalCajaChicaComponent } from './auth-master/modal-caja-chica/total-ca
 import { ModalInicioMesComponent } from './auth-master/modal-inicio-mes/modal-inicio-mes.component';
 import { TablaInicioMesComponent } from './auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component';
 import { ConfiguracionesComponent } from './auth-master/configuraciones/configuraciones.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import { CambioContraseniaComponent } from './auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component';
-=======
+
 import { CajaChicaService } from './servicios/caja-chica.service';
->>>>>>> bryanv
-=======
+
 import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component';
->>>>>>> david
 
 @NgModule({
   declarations: [
@@ -67,11 +64,11 @@ import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/tota
     ModalInicioMesComponent,
     TablaInicioMesComponent,
     ConfiguracionesComponent,
-<<<<<<< HEAD
-    CambioContraseniaComponent
-=======
+
+    CambioContraseniaComponent,
+
     TotalCuentaSindicalComponent
->>>>>>> david
+
   ],
   imports: [
     BrowserModule,

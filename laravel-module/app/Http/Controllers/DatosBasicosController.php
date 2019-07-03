@@ -90,6 +90,8 @@ class DatosBasicosController extends Controller
                     }else{
                         return ['estado'=>'filed'];
                     }
+                }else{
+                    return ['estado' => false, 'mensaje' =>'Contraseña actual no valida'];
                 }
         }else{
             return $this->validar_password($r);

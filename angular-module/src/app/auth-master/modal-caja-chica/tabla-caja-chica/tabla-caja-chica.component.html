@@ -18,12 +18,17 @@
   <table class="table table-bordered table-sm">
     <thead text-sm class="text-center">
       <tr>
+        <th colspan="11" class="ColorThCS">Tabla caja chica</th>
+        <th colspan="2" class="ColorThCS">Monto Inicial</th>
+        <td colspan="2"><strong>{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+      </tr>
+      <tr>
         <th colspan="2">Fecha</th>
         <th colspan="2">N° de Doc</th>
         <th colspan="2">PDF</th>
         <th colspan="3">Detalle</th>
-        <th colspan="2">Ingreso</th>
-        <th colspan="2">Egreso</th>
+        <th colspan="2">Ingresos</th>
+        <th colspan="2">Egresos</th>
         <th colspan="2">Actual</th>
       </tr>
     </thead>
@@ -33,11 +38,10 @@
         <td colspan="2">35869</td>
         <td colspan="2">PDF</td>
         <td colspan="3">Se compro una resma de hojas</td>
-        <td colspan="2">0</td>
-        <td colspan="2">4000</td>
-        <td colspan="2">100000</td>
+        <td colspan="2">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+        <td colspan="2">{{ 4000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+        <td colspan="2">{{ 96000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
       </tr>
     </tbody>
   </table>
-</div><br>
-<hr>
+</div>

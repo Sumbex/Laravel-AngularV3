@@ -31,14 +31,12 @@ class CajaChica extends Model
         return DB::table('mes')->where('id', $value)->first();
     }
 
-    protected function validarNumDoc($numDoc, $anio, $mes){
+    protected function validarNumDoc($numDoc){
         $caja = DB::table('cs_caja_chica')
             ->select('numero_documento')
             ->where([
                 'numero_documento' => $numDoc,
                 'activo' => 'S',
-                'anio_id' => $anio,
-                'mes_id' => $mes,
             ])
             ->first();
 
@@ -59,7 +57,7 @@ class CajaChica extends Model
         $mes = $this->mes_tipo_id($fecha['mes']);
 
         $existe = $this->existeCajaChica($anio->id, $mes->id);
-        $nDoc = $this->validarNumDoc($request->numero_documento, $anio->id, $mes->id);
+        $nDoc = $this->validarNumDoc($request->numero_documento);
 
         if ($existe['estado'] == 'success') {
 

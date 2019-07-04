@@ -239,19 +239,27 @@ class CuentaSindicatoController extends Controller
 
 	public function existe_item_caja_chica($anio, $mes, $tipo_cuenta)
 	{
+
 		if($tipo_cuenta == 3){
+
 			$existe = Cuentasindicato::where([
-				'activo' => 'S', 'tipo_cuenta_sindicato' => $tipo_cuenta ,//caja_chica
+				'activo' => 'S', 
+				'tipo_cuenta_sindicato' => $tipo_cuenta ,//caja_chica
 				'mes_id' => $mes, 'anio_id' => $anio
 			])->first();
 
-			
+			//dd(empty($existe));
 
-			if ($existe->tipo_cuenta_sindicato == 3/*cajachica*/) {
-				return true;
-			}else{
-				return false;
+			if (!empty($existe)) {
+				if ($existe->tipo_cuenta_sindicato == 3/*cajachica*/) {
+					return true;
+				}else{
+					return false;
+				}
 			}
+			return false;
+
+			
 		}else{
 			return false;
 		}

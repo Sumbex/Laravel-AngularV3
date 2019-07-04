@@ -41,7 +41,7 @@ module.exports = "<!--<router-outlet></router-outlet>-->\n<div class=\"container
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>"
+module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n<!--MODAL DE ESPERA CARGA DATOS-->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <div class=\"modal-header\">\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Cargando el sistema</h4>\n                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                        <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                </div>\n                <div class=\"modal-body\">\n                    <p>Espere unos segundos mientras carga el sistema</p>\n                </div>\n                <div class=\"col-xs-12 text-center\">\n                    <img src=\"/assets/loading_system.gif\" width=\"250\" height=\"250\" alt=\"cargando\">\n                </div>\n                <div class=\"modal-footer\" [hidden]=\"true\">\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\n                </div>\n            </div>\n        </div>\n    </div>\n</ng-template>\n<button id=\"openModalButton\" class=\"btn btn-lg btn-outline-primary\" [hidden]=\"true\" (click)=\"open(content)\">Launch demo\n    modal</button>\n<!--MODAL DE ESPERA CARGA DATOS-->"
 
 /***/ }),
 
@@ -217,7 +217,7 @@ module.exports = "<div class=\"table-responsive\">\n    <table class=\"table tab
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n  <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!--Cuerpo del body inicio y cierre mensual-->\n    <div class=\"modal-body\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n          <select class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n          <select class=\"form-control form-control-sm\">\n            <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Calcular monto</strong></label><br>\n          <button class=\"btn btn btn-success btn-block btn-sm\">Calcular</button>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Monto Inicial</strong></label>\n          <input \n          class=\"form-control form-control-sm\"\n          type=\"number\"\n          name=\"montoInicial\"\n          #montoInicial=\"ngModel\"\n          [(ngModel)]=\"datosInicioMes.montoInicial\"\n          minlength=\"1\"\n          required>\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\n          </small>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Guardar Monto</strong></label><br>\n          <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n        </div>\n      </div>\n  \n      <!--Tabla del Modal Inicio y cierre mensual-->\n      <app-tabla-inicio-mes></app-tabla-inicio-mes>\n    </div>\n\n      \n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n      </button>\n    </div>\n\n  </form>\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\n\n  \n"
+module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!--Cuerpo del body inicio y cierre mensual-->\n    <div class=\"modal-body\">\n  \n        <p>\n            <ngb-alert type=\"danger\" [dismissible]=\"false\">\n              <small><strong>Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>\n            </ngb-alert>\n          </p>\n\n      <div class=\"row\">\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n          <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n          <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\n            <option *ngFor=\"let mes of selectMes\"  [value]=\"mes.id\">{{mes.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Calcular monto</strong></label><br>\n          <button (click)=\"calcular_cierre_mensual()\"  type=\"submit\" name=\"botonCalcular\" class=\"btn btn btn-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\">Calcular</button>\n          <!-- <small *ngIf=\"selectOptionMes.value == '1'\" class=\"invalid-feedback d-block\">\n            El primer mes de cada año se debe ingresar el monto incial de forma manual\n          </small> -->\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Monto Inicial</strong></label>\n          <input \n          class=\"form-control form-control-sm\"\n          type=\"number\"\n          name=\"montoInicial\"\n          #montoInicial=\"ngModel\"\n          [(ngModel)]=\"monto\"\n          minlength=\"1\"\n          required>\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\n          </small>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Guardar Monto</strong></label><br>\n          <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"guardar()\">Guardar</button>\n        </div>\n      </div>\n  \n      <!--Tabla del Modal Inicio y cierre mensual-->\n      <app-tabla-inicio-mes></app-tabla-inicio-mes>\n    </div>\n\n      \n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n      </button>\n    </div>\n\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\n\n  \n"
 
 /***/ }),
 
@@ -228,7 +228,7 @@ module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br> <hr>\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n  <select class=\"form-control form-control-sm\">\n    <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n  </select>\n</div><br>\n<!--tabla del modal inicio y cierre mensual-->\n<div class=\"table-responsive\">\n  <table class=\"table table-bordered table-sm\">\n    <thead text-sm class=\"text-center\">\n\n      <tr>\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n          <h6>Movimiento mensual Mayo 2019</h6>\n        </th>\n      </tr>\n\n      <tr>\n        <th scope=\"col\" colspan=\"3\">Año</th>\n        <th scope=\"col\" colspan=\"3\">Mes</th>\n        <th scope=\"col\" colspan=\"3\">Monto</th>\n        <th scope=\"col\" colspan=\"3\">Inicial</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"text-center\">\n        <td scope=\"col\" colspan=\"3\">2019</td>\n        <td scope=\"col\" colspan=\"3\">Enero</td>\n        <td scope=\"col\" colspan=\"3\">50000</td>\n        <td scope=\"col\" colspan=\"3\">120000</td>\n      </tr>\n    </tbody>\n  </table>\n</div><br>\n"
+module.exports = "<br> <hr>\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n  <select [(ngModel)]=\"anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n    <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\" >{{anio.descripcion}}</option>\n  </select>\n</div><br>\n<!--tabla del modal inicio y cierre mensual-->\n<div class=\"table-responsive\">\n  <table class=\"table table-bordered table-sm\">\n    <thead text-sm class=\"text-center\">\n\n      <tr>\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n          <h6>Movimiento mensual Mayo 2019</h6>\n        </th>\n      </tr>\n\n      <tr>\n        <th scope=\"col\" colspan=\"3\">Año</th>\n        <th scope=\"col\" colspan=\"3\">Mes</th>\n        <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n        <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n        <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n      </tr>\n    </tbody>\n  </table>\n</div><br>\n"
 
 /***/ }),
 
@@ -375,18 +375,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(http) {
-        this.http = http;
+    function AppComponent() {
         this.title = 'angular-module';
     }
-    AppComponent.prototype.ngOnInit = function () {
-        console.log(window.location);
-    };
+    AppComponent.prototype.ngOnInit = function () { };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
@@ -394,7 +389,7 @@ var AppComponent = /** @class */ (function () {
             encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], AppComponent);
     return AppComponent;
 }());
@@ -570,12 +565,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthMasterComponent", function() { return AuthMasterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
+/* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+
+
+
 
 
 var AuthMasterComponent = /** @class */ (function () {
-    function AuthMasterComponent() {
+    function AuthMasterComponent(_tipoCuentas, _getAnios, config, modalService) {
+        this._tipoCuentas = _tipoCuentas;
+        this._getAnios = _getAnios;
+        this.modalService = modalService;
+        config.backdrop = 'static';
+        config.keyboard = false;
     }
     AuthMasterComponent.prototype.ngOnInit = function () {
+        //Guardar definicion
+        this._tipoCuentas.getDefinicion().subscribe(function (res) {
+            localStorage.setItem('definicion', JSON.stringify(res));
+        });
+        //Guardar Detalle
+        this._tipoCuentas.getTipoCuenta().subscribe(function (res) {
+            localStorage.setItem('detalle', JSON.stringify(res));
+        });
+        //Guardar Anios
+        this._getAnios.getAnios().subscribe(function (res) {
+            localStorage.setItem('anios', JSON.stringify(res));
+        });
+        //Guardar Meses
+        this._getAnios.getMeses().subscribe(function (res) {
+            localStorage.setItem('meses', JSON.stringify(res));
+        });
+        document.getElementById("openModalButton").click();
+        this.verificarCarga();
+    };
+    AuthMasterComponent.prototype.verificarCarga = function () {
+        if (localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null) {
+            console.log("Se estan cargando los datos en memoria");
+        }
+    };
+    AuthMasterComponent.prototype.open = function (content) {
+        this.modalService.open(content, { centered: true });
     };
     AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -583,7 +615,7 @@ var AuthMasterComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./auth-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html"),
             styles: [__webpack_require__(/*! ./auth-master.component.css */ "./src/app/auth-master/auth-master.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
     ], AuthMasterComponent);
     return AuthMasterComponent;
 }());
@@ -1088,18 +1120,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSindicalComponent", function() { return FormularioSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var src_app_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
-/* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
-
-
+/* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 
 
 
 var FormularioSindicalComponent = /** @class */ (function () {
-    function FormularioSindicalComponent(_aniosService, _tiposService, _sindicalService) {
-        this._aniosService = _aniosService;
-        this._tiposService = _tiposService;
+    function FormularioSindicalComponent(_sindicalService) {
         this._sindicalService = _sindicalService;
         this.selectAnio = [];
         this.selectMes = [];
@@ -1115,24 +1141,31 @@ var FormularioSindicalComponent = /** @class */ (function () {
         };
     }
     FormularioSindicalComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        //Cargar Años
-        this._aniosService.getAnios().subscribe(function (res) {
-            _this.selectAnio = res;
+        /*//Cargar Años
+        this._aniosService.getAnios().subscribe((res : any[]) => {
+          this.selectAnio = res;
         });
         //Cargar Meses
-        this._aniosService.getMeses().subscribe(function (res) {
-            _this.selectMes = res;
+        this._aniosService.getMeses().subscribe((res : any[]) => {
+          this.selectMes = res;
         });
         //Cargar Definiciones
-        this._tiposService.getDefinicion().subscribe(function (res) {
-            _this.selectDefinicion = res;
-            console.log(res);
+        this._tiposService.getDefinicion().subscribe((res : any[]) => {
+          this.selectDefinicion = res;
+          console.log(res);
         });
         //Cargar Detalles
-        this._tiposService.getTipoCuenta().subscribe(function (res) {
-            _this.selectDetalle = res;
-        });
+        this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
+          this.selectDetalle = res;
+        });*/
+        //Cargar Años
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+        //Cargar Meses
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
+        //Cargar definiciones
+        this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+        //Cargar detalles
+        this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
     };
     FormularioSindicalComponent.prototype.onSubmit = function (_a) {
         var value = _a.value, valid = _a.valid;
@@ -1161,7 +1194,7 @@ var FormularioSindicalComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./formulario-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.html"),
             styles: [__webpack_require__(/*! ./formulario-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"], src_app_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_3__["TipoCuentasService"], src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_4__["SindicalService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"]])
     ], FormularioSindicalComponent);
     return FormularioSindicalComponent;
 }());
@@ -1194,30 +1227,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-
 
 
 
 var TablaSindicalComponent = /** @class */ (function () {
-    function TablaSindicalComponent(config, modalService, _aniosService) {
+    function TablaSindicalComponent(config, modalService) {
         this.modalService = modalService;
-        this._aniosService = _aniosService;
         this.selectAnio = [];
         this.selectMes = [];
         config.backdrop = 'static';
         config.keyboard = false;
     }
     TablaSindicalComponent.prototype.ngOnInit = function () {
-        var _this = this;
         //Cargar Años
-        this._aniosService.getAnios().subscribe(function (res) {
-            _this.selectAnio = res;
-        });
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
-        this._aniosService.getMeses().subscribe(function (res) {
-            _this.selectMes = res;
-        });
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
     };
     TablaSindicalComponent.prototype.openTablaSindical = function (TablaSindical) {
         this.modalService.open(TablaSindical, { size: 'lg' });
@@ -1228,7 +1253,7 @@ var TablaSindicalComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./tabla-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.html"),
             styles: [__webpack_require__(/*! ./tabla-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
     ], TablaSindicalComponent);
     return TablaSindicalComponent;
 }());
@@ -1306,17 +1331,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var src_app_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
-/* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
-
+/* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
 
 
 
 
 var ModalCajaChicaComponent = /** @class */ (function () {
-    function ModalCajaChicaComponent(config, modalService, _tiposService, _cajaChicaService) {
+    function ModalCajaChicaComponent(config, modalService, _cajaChicaService) {
         this.modalService = modalService;
-        this._tiposService = _tiposService;
         this._cajaChicaService = _cajaChicaService;
         this.selectDefinicion = [];
         this.datosCajaChica = {
@@ -1332,12 +1354,8 @@ var ModalCajaChicaComponent = /** @class */ (function () {
         config.keyboard = false;
     }
     ModalCajaChicaComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        //Cargar Definiciones
-        this._tiposService.getDefinicion().subscribe(function (res) {
-            _this.selectDefinicion = res;
-            console.log(res);
-        });
+        //Cargar definiciones
+        this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
     };
     ModalCajaChicaComponent.prototype.openCajaChica = function (CajaChica) {
         this.modalService.open(CajaChica, { size: 'lg' });
@@ -1365,7 +1383,7 @@ var ModalCajaChicaComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./modal-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html"),
             styles: [__webpack_require__(/*! ./modal-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_3__["TipoCuentasService"], src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_4__["CajaChicaService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__["CajaChicaService"]])
     ], ModalCajaChicaComponent);
     return ModalCajaChicaComponent;
 }());
@@ -1397,26 +1415,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaCajaChicaComponent", function() { return TablaCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-
 
 
 var TablaCajaChicaComponent = /** @class */ (function () {
-    function TablaCajaChicaComponent(_aniosService) {
-        this._aniosService = _aniosService;
+    function TablaCajaChicaComponent() {
         this.selectAnio = [];
         this.selectMes = [];
     }
     TablaCajaChicaComponent.prototype.ngOnInit = function () {
-        var _this = this;
         //Cargar Años
-        this._aniosService.getAnios().subscribe(function (res) {
-            _this.selectAnio = res;
-        });
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
-        this._aniosService.getMeses().subscribe(function (res) {
-            _this.selectMes = res;
-        });
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
     };
     TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1424,7 +1434,7 @@ var TablaCajaChicaComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./tabla-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html"),
             styles: [__webpack_require__(/*! ./tabla-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], TablaCajaChicaComponent);
     return TablaCajaChicaComponent;
 }());
@@ -1502,15 +1512,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
+
+//import-------------
 
 
 var ModalInicioMesComponent = /** @class */ (function () {
-    function ModalInicioMesComponent(config, modalService, _aniosService) {
+    //-------------------------
+    function ModalInicioMesComponent(config, modalService, _http) {
         this.modalService = modalService;
-        this._aniosService = _aniosService;
+        this._http = _http;
         this.selectAnio = [];
         this.selectMes = [];
         this.datosInicioMes = {
@@ -1519,22 +1533,68 @@ var ModalInicioMesComponent = /** @class */ (function () {
             monto: '',
             inicial: ''
         };
+        //variables-----------------
+        this.monto = '';
+        this.anio = '';
+        this.mes = '';
+        this.tabla = [];
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         config.backdrop = 'static';
         config.keyboard = false;
+        //global---------------
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+        //---------------------
     }
     ModalInicioMesComponent.prototype.ngOnInit = function () {
-        var _this = this;
         //Cargar Años
-        this._aniosService.getAnios().subscribe(function (res) {
-            _this.selectAnio = res;
-        });
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
-        this._aniosService.getMeses().subscribe(function (res) {
-            _this.selectMes = res;
-        });
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
     };
     ModalInicioMesComponent.prototype.openMensual = function (Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
+        this.anio_actual();
+        this.mes_actual();
+        //console.log(document.getElementById('anio').options.value);
+    };
+    //metodos---------------------------------------------------------------------------------------
+    ModalInicioMesComponent.prototype.calcular_cierre_mensual = function (anio, mes) {
+        var _this = this;
+        this._http.get(this.url + "calcular_cm/" + this.anio + "/" + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.monto = val;
+            console.log(val);
+        }, function (response) { console.log("POST call in error", response); }, function () {
+            console.log("The POST success.");
+        });
+    };
+    ModalInicioMesComponent.prototype.anio_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.anio = val.id;
+        }, function (response) { console.log("POST call in error", response); }, function () {
+            console.log("The POST success.");
+        });
+    };
+    ModalInicioMesComponent.prototype.mes_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.mes = val.id;
+        }, function (response) { console.log("POST call in error", response); }, function () {
+            console.log("The POST success.");
+        });
+    };
+    ModalInicioMesComponent.prototype.guardar = function () {
+        var _this = this;
+        var formData = new FormData();
+        formData.append('anio', this.anio);
+        formData.append('mes', this.mes);
+        formData.append('cierre_mensual', this.monto);
+        this._http.post(this.url + "guardar_inicio_mensual/", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.monto = val + '';
+            console.log(val);
+        }, function (response) { console.log("POST call in error", response); }, function () {
+            console.log("The POST success.");
+        });
     };
     ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1542,7 +1602,7 @@ var ModalInicioMesComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
             styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
     ], ModalInicioMesComponent);
     return ModalInicioMesComponent;
 }());
@@ -1574,21 +1634,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaInicioMesComponent", function() { return TablaInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
+//import-------------
 
+
+/////////////////////
 var TablaInicioMesComponent = /** @class */ (function () {
-    function TablaInicioMesComponent(_aniosService) {
-        this._aniosService = _aniosService;
+    //-------------------------
+    function TablaInicioMesComponent(_http) {
+        this._http = _http;
         this.selectAnio = [];
+        //variables-----------------
+        this.anio = '';
+        this.tabla = [];
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        //global---------------
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+        //---------------------
     }
     TablaInicioMesComponent.prototype.ngOnInit = function () {
-        var _this = this;
         //Cargar Años
-        this._aniosService.getAnios().subscribe(function (res) {
-            _this.selectAnio = res;
+        this.anio_actual();
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    };
+    //metodos---------------------------------------------------------------------------------------
+    TablaInicioMesComponent.prototype.anio_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.anio = val.id;
+            _this.listar_tabla();
+        }, function (response) { console.log("POST call in error", response); }, function () {
+            console.log("The POST success.");
         });
+    };
+    TablaInicioMesComponent.prototype.listar_tabla = function () {
+        var _this = this;
+        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/" + this.anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.tabla = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
+            console.log("The POST success.");
+        });
+    };
+    TablaInicioMesComponent.prototype.cambiar_anio = function () {
+        this.listar_tabla();
     };
     TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1596,7 +1687,7 @@ var TablaInicioMesComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
             styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], TablaInicioMesComponent);
     return TablaInicioMesComponent;
 }());
@@ -1870,7 +1961,6 @@ var LoginComponent = /** @class */ (function () {
             _this.router.navigate(['**']);
         });
         this.loading = true;
-        console.log(this.loading);
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1953,30 +2043,33 @@ __webpack_require__.r(__webpack_exports__);
 var AniosService = /** @class */ (function () {
     function AniosService(_http) {
         this._http = _http;
-        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     AniosService.prototype.getAnios = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_anios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
     };
     AniosService.prototype.getMeses = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_meses", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
     };
     AniosService.prototype.getAnioActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
     };
     AniosService.prototype.getMesActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
     };
@@ -2087,7 +2180,7 @@ var SindicalService = /** @class */ (function () {
         */
         //console.log('fecha=' + form.fecha.year + '-' + form.fecha.month + '-' + form.fecha.day + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto );
         console.log(form.definicion);
-        return this._http.post(this.url + "guardar_item_c_s?", 'fecha= 2019-01-01' + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        return this._http.post(this.url + "guardar_item_c_s?", 'fecha=' + form.fecha + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }) });
@@ -2124,18 +2217,21 @@ __webpack_require__.r(__webpack_exports__);
 var TipoCuentasService = /** @class */ (function () {
     function TipoCuentasService(_http) {
         this._http = _http;
-        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.selectDefinicion = [];
+        this.selectDetalle = [];
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     TipoCuentasService.prototype.getDefinicion = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_definicion", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
     };
     TipoCuentasService.prototype.getTipoCuenta = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_tipo_cuenta_sindicato", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
     };
@@ -2193,7 +2289,6 @@ var UsuarioService = /** @class */ (function () {
         var json = JSON.stringify(user);
         //let params = 'json='+json;
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
-        console.log(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password);
         return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
     };
     UsuarioService.prototype.getToken = function () {

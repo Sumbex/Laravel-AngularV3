@@ -19,8 +19,9 @@ class DatosBasicosController extends Controller
     public function anio_actual()	
     {
     	$anio = DB::select("select date_part('year',now()) as anio");
-
-    	return $anio[0]->anio;
+        $anio_db = DB::table('anio')->select(['id','descripcion'])
+        ->where(['activo'=>'S', 'descripcion'=>$anio[0]->anio])->first();
+    	return response()->json($anio_db);
     }
 
     public function listar_meses()

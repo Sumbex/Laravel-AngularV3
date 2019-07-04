@@ -19,7 +19,7 @@ export class UsuarioService {
         let json = JSON.stringify(user);
         let params = 'json=' + json;
 
-        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
         return this._http.post(this.url + 'register', params, { headers: headers });
     }
@@ -32,9 +32,8 @@ export class UsuarioService {
         let json = JSON.stringify(user);
         //let params = 'json='+json;
 
-        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-        console.log(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password)
         return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
     }
 

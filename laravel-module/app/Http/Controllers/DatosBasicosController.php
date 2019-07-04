@@ -19,8 +19,9 @@ class DatosBasicosController extends Controller
     public function anio_actual()	
     {
     	$anio = DB::select("select date_part('year',now()) as anio");
-
-    	return $anio[0]->anio;
+        $anio_db = DB::table('anio')->select(['id','descripcion'])
+        ->where(['activo'=>'S', 'descripcion'=>$anio[0]->anio])->first();
+    	return response()->json($anio_db);
     }
 
     public function listar_meses()
@@ -79,7 +80,7 @@ class DatosBasicosController extends Controller
     {
         $validar = $this->validar_password($r);
 
-        if ($validar['estado'] == true) {
+        if ($validar['estado'] == "true") {
 
                 $user = User::find(Auth::user()->id);
 
@@ -90,6 +91,8 @@ class DatosBasicosController extends Controller
                     }else{
                         return ['estado'=>'filed'];
                     }
+                }else{
+                    return ['estado' => "false", 'mensaje' =>'Contraseña actual no valida'];
                 }
         }else{
             return $this->validar_password($r);
@@ -116,7 +119,7 @@ class DatosBasicosController extends Controller
             ]);
 
  
-            if ($validator->fails()){ return ['estado' => false, 'mensaje' => $validator->errors()];}
-            return ['estado' => true, 'mensaje' => 'success'];
+            if ($validator->fails()){ return ['estado' => "false", 'mensaje' => $validator->errors()];}
+            return ['estado' => "true", 'mensaje' => 'success'];
     }
 }

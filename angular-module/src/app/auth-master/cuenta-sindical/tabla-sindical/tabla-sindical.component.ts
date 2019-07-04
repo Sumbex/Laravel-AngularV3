@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AniosService } from 'src/app/servicios/anios.service';
 
 @Component({
   selector: 'app-tabla-sindical',
@@ -13,7 +12,7 @@ export class TablaSindicalComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
     config.keyboard = false;
     
@@ -21,13 +20,10 @@ export class TablaSindicalComponent implements OnInit {
 
   ngOnInit() {
     //Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
     //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
   openTablaSindical(TablaSindical) {

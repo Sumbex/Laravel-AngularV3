@@ -21,7 +21,7 @@ export class ModalInicioMesComponent implements OnInit {
      inicial: ''
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
     config.keyboard = false;
     
@@ -29,13 +29,10 @@ export class ModalInicioMesComponent implements OnInit {
 
   ngOnInit() {
     //Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
     //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
   openMensual(Mensual) {

@@ -10,13 +10,11 @@ import { AniosService } from 'src/app/servicios/anios.service';
 export class TablaInicioMesComponent implements OnInit {
   selectAnio: Anios[] = [];
 
-  constructor(private _aniosService: AniosService) { }
+  constructor() { }
 
   ngOnInit() {
     //Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-    this.selectAnio = res;
-    });
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
   }
 
 }

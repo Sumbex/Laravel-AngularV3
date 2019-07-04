@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabla-bienestar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaBienestarComponent implements OnInit {
 
-  constructor() { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+    
+  }
 
   ngOnInit() {
+  }
+
+  openTablaBienestar(TablaBienestar) {
+    this.modalService.open(TablaBienestar, { size: 'lg' });
   }
 
 }

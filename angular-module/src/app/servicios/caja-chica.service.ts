@@ -23,4 +23,14 @@ export class CajaChicaService{
         )});
     }
 
+    getCajaChica(form): Observable<any>{
+        console.log(form);
+        return this._http.get(this.url + "traer_caja_chica/" + form + '/' + form, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         this.status = error;
         this.router.navigate(['**']);
         this.lockLogin = false;
+        console.log(this.status);
       }
     );
     this.loading = true;

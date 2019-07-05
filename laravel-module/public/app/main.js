@@ -52,7 +52,7 @@ module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openMensual(Mensual)\" >Cambiar contraseña</button>\n\n\n<!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n  <div>\n  \t<div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><i class=\"fas fa-key\"></i> <strong> Cambiar contraseña<a href=\"\"></a></strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"close();modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n  \t<div class=\"modal-body\">\n  \t\t<form>\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #confirm_password   class=\"form-control form-control-sm\" placeholder=\"Confirmar contraseña actual\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\"  placeholder=\"nueva contraseña\" type=\"password\" name=\"\"><br>\n  \t\t\t<button class=\"btn btn-success\" (click)=\"send(password,confirm_password,new_password)\" >Actualizar contraseña</button>\n  \t\t\t<img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  \t\t</form>\n      <br>\n\t\t<div *ngIf=\"success_visible\"  class=\"alert alert-primary\" role=\"alert\">\n\t\t  {{ success_texto }}\n\t\t</div>\n    <br>\n\t\t<div *ngIf=\"fail_visible\"  class=\"alert alert-danger\" role=\"alert\">\n\t\t  {{ success_texto | json }}\n\t\t</div>\n  \t</div>\n  </div>\n</ng-template>"
+module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openMensual(Mensual)\" >Cambiar contraseña</button>\n\n\n<!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n  <div>\n  \t<div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><i class=\"fas fa-key\"></i> <strong> Cambiar contraseña<a href=\"\"></a></strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"close();modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n  \t<div class=\"modal-body\">\n  \t\t<form>\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\" placeholder=\"Nueva contraseña\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #conf_new_password   class=\"form-control form-control-sm\"  placeholder=\"Confirmar nueva contraseña\" type=\"password\" name=\"\"><br>\n  \t\t\t<button class=\"btn btn-success\" (click)=\"send(password,new_password,conf_new_password)\" >Actualizar contraseña</button>\n  \t\t\t<img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  \t\t</form>\n      <br>\n\t\t<div *ngIf=\"success_visible\"  class=\"alert alert-primary\" role=\"alert\">\n\t\t  {{ success_texto }}\n\t\t</div>\n    <br>\n\t\t<div *ngIf=\"fail_visible\"  class=\"alert alert-danger\" role=\"alert\">\n\t\t  {{ success_texto | json }}\n\t\t</div>\n  \t</div>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -673,22 +673,22 @@ class CambioContraseniaComponent {
     openMensual(Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
     }
-    send(password, confirm_password, new_password) {
+    send(password, new_password, conf_new_password) {
         this.load = true;
         var pass = password.value;
-        var confirm_pass = confirm_password.value;
         var new_pass = new_password.value;
+        var conf_new_pass = conf_new_password.value;
         const formData = new FormData();
         formData.append('password', pass);
-        formData.append('confirm_password', confirm_pass);
         formData.append('new_password', new_pass);
+        formData.append('conf_new_password', conf_new_pass);
         this._http.post(this.url + "cambiar_password", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) }).subscribe((val) => {
             //console.log(val.estado);
             if (val.estado == "success") {
                 password.value = '';
-                confirm_password.value = '';
+                conf_new_pass.value = '';
                 new_password.value = '';
                 this.success_visible = true;
                 this.fail_visible = false;

@@ -575,10 +575,6 @@ let AuthMasterComponent = class AuthMasterComponent {
         config.keyboard = false;
     }
     ngOnInit() {
-        //DomContentLoaded
-        window.addEventListener('load', (event) => {
-            document.getElementById("closeModalButton").click();
-        });
         //Guardar definicion
         this._tipoCuentas.getDefinicion().subscribe((res) => {
             localStorage.setItem('definicion', JSON.stringify(res));
@@ -594,9 +590,14 @@ let AuthMasterComponent = class AuthMasterComponent {
         //Guardar Meses
         this._getAnios.getMeses().subscribe((res) => {
             localStorage.setItem('meses', JSON.stringify(res));
+            document.getElementById("closeModalButton").click();
         });
         document.getElementById("openModalButton").click();
         this.verificarCarga();
+        //DomContentLoaded
+        // window.addEventListener('load', (event) => {
+        // document.getElementById("closeModalButton").click();   
+        // });
     }
     verificarCarga() {
         if (localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null) {

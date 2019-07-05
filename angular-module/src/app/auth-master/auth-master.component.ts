@@ -11,18 +11,15 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AuthMasterComponent implements OnInit {
 
   constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, config: NgbModalConfig, private modalService: NgbModal) {
+
     config.backdrop = 'static';
-    config.keyboard = false;
+    config.keyboard = false;  
+    
    }
 
   ngOnInit() {
 
-    //DomContentLoaded
-    window.addEventListener('load', (event) => {
-    document.getElementById("closeModalButton").click();
-      
-  });
-
+  
     //Guardar definicion
     this._tipoCuentas.getDefinicion().subscribe((res) => {
       localStorage.setItem('definicion', JSON.stringify(res));
@@ -38,10 +35,17 @@ export class AuthMasterComponent implements OnInit {
     //Guardar Meses
     this._getAnios.getMeses().subscribe((res) => {
       localStorage.setItem('meses', JSON.stringify(res));
+      document.getElementById("closeModalButton").click();
     });
 
     document.getElementById("openModalButton").click();
     this.verificarCarga();
+
+        //DomContentLoaded
+       // window.addEventListener('load', (event) => {
+      // document.getElementById("closeModalButton").click();   
+     // });
+        
   }
 
   verificarCarga(){

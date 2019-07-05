@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
       }
     );
     this.loading = true;
-    console.log(this.loading);
   }
 
 }

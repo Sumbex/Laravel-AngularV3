@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { global } from './global'; 
+import { global } from './global';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AniosService{
@@ -11,37 +12,42 @@ export class AniosService{
         this.url = global.url;
     }
 
+
     getAnios(){
-        return this._http.get(this.url + "listar_anios", {headers: new HttpHeaders(
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "listar_anios", {headers: new HttpHeaders(
             {
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }
         )});
     }
 
     getMeses(){
-        return this._http.get(this.url + "listar_meses", {headers: new HttpHeaders(
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "listar_meses", {headers: new HttpHeaders(
             {
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }
         )});
     }
 
     getAnioActual(){
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "anio_actual", {headers: new HttpHeaders(
             {
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }
         )});
     }
     
     getMesActual(){
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "mes_actual", {headers: new HttpHeaders(
             {
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }
         )});

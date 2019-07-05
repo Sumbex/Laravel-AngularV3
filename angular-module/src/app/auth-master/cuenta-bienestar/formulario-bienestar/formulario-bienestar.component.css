@@ -1,0 +1,35 @@
+
+    .dark-modal .modal-content {
+        background-color: #292b2c;
+        color: white;
+      }
+      .dark-modal .close {
+        color: white;
+      }
+      .light-blue-backdrop {
+        background-color: #5cb3fd;
+      }
+  
+      label,input, button{
+        font-size: 12px;
+      }
+  
+      tr,th{
+        font-size: 12px;
+      }
+      th{
+        color: white;
+        background: #138D75;
+      }
+      
+      #demoFont {
+        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);
+        color: #d9d9d9;
+        background: #4B94AD;
+        }
+        .margen{
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+  

@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Anios } from 'src/app/modelos/anios.model';
-import { Meses } from 'src/app/modelos/meses.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AniosService } from 'src/app/servicios/anios.service';
-import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
+import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -14,6 +11,8 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
   styleUrls: ['./modal-caja-chica.component.css']
 })
 export class ModalCajaChicaComponent implements OnInit {
+  @ViewChild(TablaCajaChicaComponent, {static: false}) private tablaComponent : TablaCajaChicaComponent;
+
   selectDefinicion: Definicion[] = [];
 
   datosCajaChica: cajaChicaSindical ={
@@ -26,18 +25,15 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso:0
   }
   
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _tiposService: TipoCuentasService, private _cajaChicaService: CajaChicaService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService) {
     config.backdrop = 'static';
     config.keyboard = false;
     
   }
 
   ngOnInit() {
-    //Cargar Definiciones
-    this._tiposService.getDefinicion().subscribe((res : any[]) => {
-      this.selectDefinicion = res;
-      console.log(res);
-    });
+    //Cargar definiciones
+    this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
   }
 
   openCajaChica(CajaChica) {
@@ -53,14 +49,15 @@ export class ModalCajaChicaComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
-      this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+      /*this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
           console.log(response);
         },
         error => {
           console.log(<any>error);
         }
-      );
+      );*/
+      this.tablaComponent.refrescarCajaChica();
     }
   }
 

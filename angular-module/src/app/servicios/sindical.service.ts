@@ -26,7 +26,7 @@ export class SindicalService{
         //console.log('fecha=' + form.fecha.year + '-' + form.fecha.month + '-' + form.fecha.day + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto );
         console.log(form.definicion);
 
-        return this._http.post(this.url + "guardar_item_c_s?", 'fecha= 2019-01-01' + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto , {headers: new HttpHeaders(
+        return this._http.post(this.url + "guardar_item_c_s?", 'fecha=' + form.fecha + '&' + 'n_documento=' + form.nDocumento + '&' + 'tipo_cuenta_sindicato=' + form.tipoCuentaSindicato + '&' + 'descripcion=' + form.descripcion + '&' + 'definicion=' + form.definicion + '&' + 'monto=' + form.monto , {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'application/x-www-form-urlencoded'

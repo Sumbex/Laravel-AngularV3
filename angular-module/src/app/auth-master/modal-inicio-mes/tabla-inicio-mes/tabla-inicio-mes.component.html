@@ -1,10 +1,10 @@
-<br> <hr>
+<!-- <br> <hr>
 <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-  <select class="form-control form-control-sm">
-    <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+  <select [(ngModel)]="anio" (change)="cambiar_anio()" class="form-control form-control-sm">
+    <option *ngFor="let anio of selectAnio" [value]="anio.id" >{{anio.descripcion}}</option>
   </select>
 </div><br>
-<!--tabla del modal inicio y cierre mensual-->
+
 <div class="table-responsive">
   <table class="table table-bordered table-sm">
     <thead text-sm class="text-center">
@@ -18,17 +18,18 @@
       <tr>
         <th scope="col" colspan="3">Año</th>
         <th scope="col" colspan="3">Mes</th>
-        <th scope="col" colspan="3">Monto</th>
-        <th scope="col" colspan="3">Inicial</th>
+        <th scope="col" colspan="3">Monto inicial(mes anterior)</th>
+        <th scope="col" colspan="3">Monto de cierre</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="text-center">
-        <td scope="col" colspan="3">2019</td>
-        <td scope="col" colspan="3">Enero</td>
-        <td scope="col" colspan="3">50000</td>
-        <td scope="col" colspan="3">120000</td>
+      <tr class="text-center" *ngFor="let t of tabla">
+        <td scope="col" colspan="3">{{ t.anio }}</td>
+        <td scope="col" colspan="3">{{ t.mes }}</td>
+        <td scope="col" colspan="3">{{ t.inicio_mensual_m }}</td>
+        <td scope="col" colspan="3">{{ t.cierre_mensual_m }}</td>
       </tr>
     </tbody>
   </table>
 </div><br>
+ -->

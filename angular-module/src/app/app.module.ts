@@ -40,6 +40,7 @@ import { CajaChicaService } from './servicios/caja-chica.service';
 
 import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

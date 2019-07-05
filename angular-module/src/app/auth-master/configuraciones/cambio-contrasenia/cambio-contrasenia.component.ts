@@ -10,15 +10,21 @@ import { global } from '../../../servicios/global';
   templateUrl: './cambio-contrasenia.component.html',
   styleUrls: ['./cambio-contrasenia.component.css']
 })
+
+// class Abc {
+//     private noLiterals: undefined;
+//     constructor(public estado: string, mensaje:string) { }
+// }
 export class CambioContraseniaComponent implements OnInit {
   load:boolean = false;
   success_visible:boolean = false;
   fail_visible:boolean = false;
-  success_texto:string = '';
+  success_texto:string = "";
+
   password:string = '';
   confirm_password:string = '';
   new_password:string = '';
-
+  //res :Abc = new Abc( "","");
   public url: string;
   token = localStorage.getItem('token').replace(/['"]+/g, '');
 
@@ -64,19 +70,19 @@ export class CambioContraseniaComponent implements OnInit {
                 'Authorization': 'Bearer' + this.token,
                 //'Content-Type': 'application/form-data'
             }
-    )}).subscribe((val) => {
-
+    )}).subscribe((val : {'estado','mensaje'} ) => {
+    			//console.log(val.estado);
             if (val.estado == "success") {
-            	this.password = '';
-				this.confirm_password = '';
-				this.new_password = '';
-				this.success_visible = true;
-				this.fail_visible = false;
-				this.success_texto = 'Se ha actualizado la contraseña!.';
-				this.load = false;
+            	  password.value = '';
+				        confirm_password.value = '';
+				        new_password.value = '';
+				        this.success_visible = true;
+				        this.fail_visible = false;
+				        this.success_texto = 'Se ha actualizado la contraseña!.';
+				        this.load = false;
             	
             }
-            if (val.estado == false) {
+            if (val.estado == "false") {
             	this.fail_visible = true;
             	this.success_visible = false;
             	

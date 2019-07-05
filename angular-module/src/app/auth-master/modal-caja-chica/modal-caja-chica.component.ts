@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
+import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -11,6 +11,8 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
   styleUrls: ['./modal-caja-chica.component.css']
 })
 export class ModalCajaChicaComponent implements OnInit {
+  @ViewChild(TablaCajaChicaComponent, {static: false}) private tablaComponent : TablaCajaChicaComponent;
+
   selectDefinicion: Definicion[] = [];
 
   datosCajaChica: cajaChicaSindical ={
@@ -50,6 +52,7 @@ export class ModalCajaChicaComponent implements OnInit {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
           console.log(response);
+          this.tablaComponent.refrescarCajaChica();
         },
         error => {
           console.log(<any>error);

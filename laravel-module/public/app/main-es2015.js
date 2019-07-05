@@ -1315,6 +1315,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
+/* harmony import */ var _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla-caja-chica/tabla-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts");
+
 
 
 
@@ -1354,12 +1356,17 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         else {
             this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(response => {
                 console.log(response);
+                this.tablaComponent.refrescarCajaChica();
             }, error => {
                 console.log(error);
             });
         }
     }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
+], ModalCajaChicaComponent.prototype, "tablaComponent", void 0);
 ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-modal-caja-chica',
@@ -1413,6 +1420,11 @@ let TablaCajaChicaComponent = class TablaCajaChicaComponent {
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         //Cargar Caja chica
+        this.refrescarCajaChica();
+    }
+    refrescarCajaChica() {
+        //Cargar Caja chica
+        console.log("refrescando caja chica");
         this._cajaChicaService.getCajaChica('1').subscribe(response => {
             this.cajaChica = response;
             console.log(this.cajaChica);
@@ -2010,6 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
 let AniosService = class AniosService {
     constructor(_http) {
         this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     getAnios() {
@@ -2109,8 +2122,8 @@ CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "global", function() { return global; });
 var global = {
-    url: 'http://127.0.0.1:8000/api/'
-    //url:'/api/'
+    //url: 'http://127.0.0.1:8000/api/'
+    url: '/api/'
 };
 
 

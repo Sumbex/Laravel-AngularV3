@@ -10,36 +10,11 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
   styleUrls: ['./tabla-caja-chica.component.css']
 })
 export class TablaCajaChicaComponent implements OnInit {
-  selectAnio: Anios[] = [];
-  selectMes: Meses[] = [];
-  cajaChica: cajaChicaSindical[] = [];
 
   constructor(private _cajaChicaService : CajaChicaService) { }
 
   ngOnInit() {
-    //Cargar Años
-    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
-    //Cargar Meses
-    this.selectMes = JSON.parse(localStorage.getItem('meses'));
-
-    //Cargar Caja chica
-    this.refrescarCajaChica();
-
-  }
-
-  refrescarCajaChica(){
-    //Cargar Caja chica
-    console.log("refrescando caja chica");
-    this._cajaChicaService.getCajaChica('1').subscribe(
-      response => {
-        this.cajaChica = response;
-        console.log(this.cajaChica);
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 
 }

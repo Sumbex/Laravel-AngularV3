@@ -9,6 +9,8 @@ use App\Http\Controllers\CuentaSindicatoController;
 
 class CajaChica extends Model
 {
+    protected  $saldo = 100000;
+
     protected $table = "cs_caja_chica";
 
     protected function div_fecha($value)
@@ -31,6 +33,50 @@ class CajaChica extends Model
         return DB::table('mes')->where('id', $value)->first();
     }
 
+    protected function validarNumDoc($numDoc){
+        $caja = DB::table('cs_caja_chica')
+            ->select('numero_documento')
+            ->where([
+                'numero_documento' => $numDoc,
+                'activo' => 'S',
+            ])
+            ->first();
+
+            if (empty($caja)) {
+                return ['estado' => 'success', 'mensaje' => 'Todo bien.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El numero de documento ya existe.'];
+            }
+    }
+
+    protected function saldoActualCaja($anio, $mes){
+
+        $caja = $this->traerCajaChica($anio, $mes);
+            $tomar = true;
+
+            for ($i = 0; $i < count($caja); $i++) {
+                switch ($caja[$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
+                        }
+                        break;
+                }
+            }
+        return $caja;
+    }
+
     protected function ingresarCajaChica($request)
     {
         $caja = new CajaChica;
@@ -39,42 +85,58 @@ class CajaChica extends Model
 
         $anio = $this->anio_tipo_id($fecha['anio']);
         $mes = $this->mes_tipo_id($fecha['mes']);
+
+        $existe = $this->existeCajaChica($anio->id, $mes->id);
+        $nDoc = $this->validarNumDoc($request->numero_documento);
+        $total = $this->saldoActualCaja($anio->id, $mes->id);
+
+        foreach ($total as $key => $value) {
+            $key = $value;
+        }
+        //dd($request->monto < $key->saldo_actual);
+
+        if ($existe['estado'] == 'success') {
+
+            if($nDoc['estado'] == 'success'){
+
+                if($request->monto < $key->saldo_actual){
+
+                    $caja->anio_id = $anio->id;
+                    $caja->mes_id = $fecha['mes'];
+                    $caja->dia = $fecha['dia'];
+                    $caja->numero_documento = $request->numero_documento;
+                    $caja->archivo_documento = '/doc/archivo.pdf';
+                    $caja->descripcion = $request->descripcion;
         
-        $existe = $this->existeCajaChica($anio->id,$mes->id);
-
-        if($existe['estado'] == 'success'){
-
-            $caja->anio_id = $anio->id;
-            $caja->mes_id = $fecha['mes'];
-            $caja->dia = $fecha['dia'];
-            $caja->numero_documento = $request->numero_documento;
-            $caja->archivo_documento = '/doc/archivo.pdf';
-            $caja->descripcion = $request->descripcion;
-
-            switch ($request->definicion) {
-                case '1':
-                    $caja->monto_ingreso = $request->monto;
-                    break;
-                case '2':
-                    $caja->monto_egreso = $request->monto;
-                    break;
-            }
-
-            $caja->definicion = $request->definicion;
-            $caja->user_crea = Auth::user()->id;
-            $caja->activo = "S";
-
-            if ($caja->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Insertado'];
+                    switch ($request->definicion) {
+                        case '1':
+                            $caja->monto_ingreso = $request->monto;
+                            break;
+                        case '2':
+                            $caja->monto_egreso = $request->monto;
+                            break;
+                    }
+        
+                    $caja->definicion = $request->definicion;
+                    $caja->user_crea = Auth::user()->id;
+                    $caja->activo = "S";
+        
+                    if ($caja->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Insertado'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No Insertado'];
+                    }
+                }else{
+                    return ['estado' => 'failed', 'mensaje' => 'El monto ingresado excede al valor en Caja Chica'];
+                }
+               
             }else{
-                return ['estado' => 'faile', 'mensaje' => 'No Insertado'];
+                return $nDoc;
             }
-
-        }else{
+            
+        } else {
             return $existe;
         }
-
-        
     }
 
     protected function existeCajaChica($anio, $mes)
@@ -128,8 +190,10 @@ class CajaChica extends Model
 
     protected function totalIngEgre($anio, $mes)
     {
-        $total = 0;
-        $caja = DB::table('cs_caja_chica')
+        $existe = $this->existeCajaChica($anio, $mes);
+
+        if($existe['estado'] == 'success'){
+            $caja = DB::table('cs_caja_chica')
             ->select(DB::raw('sum(monto_ingreso) as total_ingreso, sum(monto_egreso) as total_egreso'))
             ->where([
                 'activo' => 'S',
@@ -138,7 +202,15 @@ class CajaChica extends Model
             ])
             ->get();
 
-        return $caja;
+            if($caja[0]->total_ingreso == 0){
+                $caja[0]->total = $caja[0]->total_egreso;
+            }else{
+                $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+            }
+            return $caja;
+        }else{
+            return $existe;
+        }
+        
     }
-
 }

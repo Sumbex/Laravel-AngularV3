@@ -103,17 +103,18 @@ class DatosBasicosController extends Controller
 
     public function validar_password($request)
     {
+
          $validator = Validator::make($request->all(), 
             [
-                'password' => 'required|required_with:confirm_password|same:confirm_password',
-                'confirm_password' => 'required',
-                'new_password' => 'required'
+                'password' => 'required',
+                'new_password' => 'required|required_with:conf_new_password|same:conf_new_password',
+                'conf_new_password' => 'required'
                
             ],
             [
-                'password.required' => 'La contraseña es necesaria',
-                'password.same' => 'La contraseña actual con la  confirmacion no son iguales',
-                'confirm_password.required' => 'Confirme su contraseña',
+                'password.required' => 'La contraseña actual es necesaria',
+                'new_password.same' => 'La nueva contraseña con la confirmacion no son iguales',
+                'conf_new_password.required' => 'Confirme su nueva contraseña',
                 'new_password.required' => 'La nueva contraseña es necesaria',
                
             ]);
@@ -121,5 +122,10 @@ class DatosBasicosController extends Controller
  
             if ($validator->fails()){ return ['estado' => "false", 'mensaje' => $validator->errors()];}
             return ['estado' => "true", 'mensaje' => 'success'];
+    }
+    public function usuario_logeado()
+    {
+        $user = User::find(Auth::user()->id);
+        return $user;
     }
 }

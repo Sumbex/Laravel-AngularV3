@@ -24,6 +24,13 @@ export class TablaCajaChicaComponent implements OnInit {
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
 
     //Cargar Caja chica
+    this.refrescarCajaChica();
+
+  }
+
+  refrescarCajaChica(){
+    //Cargar Caja chica
+    console.log("refrescando caja chica");
     this._cajaChicaService.getCajaChica('1').subscribe(
       response => {
         this.cajaChica = response;
@@ -33,7 +40,6 @@ export class TablaCajaChicaComponent implements OnInit {
         console.log(error);
       }
     );
-
   }
 
 }

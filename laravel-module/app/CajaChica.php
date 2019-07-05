@@ -148,7 +148,6 @@ class CajaChica extends Model
 
     protected function totalIngEgre($anio, $mes)
     {
-        $total = 0;
         $caja = DB::table('cs_caja_chica')
             ->select(DB::raw('sum(monto_ingreso) as total_ingreso, sum(monto_egreso) as total_egreso'))
             ->where([
@@ -158,6 +157,11 @@ class CajaChica extends Model
             ])
             ->get();
 
+        if($caja[0]->total_ingreso == 0){
+            $caja[0]->total = $caja[0]->total_egreso;
+        }else{
+            $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+        }
         return $caja;
     }
 }

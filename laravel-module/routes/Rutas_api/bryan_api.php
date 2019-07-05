@@ -3,7 +3,7 @@
 Route::post('/ingresar_caja_chica', 'CajaChicaController@IngresarCajaChica');
 Route::get('/existe_caja_chica/{anio}/{mes}', 'CajaChicaController@ExisteCajaChica');
 Route::get('/traer_caja_chica/{anio}/{mes}', 'CajaChicaController@TraerCajaChica');
-Route::get('/total/{anio}/{mes}', 'CajaChicaController@TotalIngEgre');
+Route::get('/totales_caja_chica/{anio}/{mes}', 'CajaChicaController@TotalIngEgre');
 
 //Route::get('/testeo', function() {
 //   return "kkck";

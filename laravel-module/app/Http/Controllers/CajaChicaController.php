@@ -8,7 +8,7 @@ use App\CajaChica;
 
 class CajaChicaController extends Controller
 {
-    public  $saldo = 100000;
+    //public  $saldo = 100000;
 
     public function IngresarCajaChica(Request $request)
     {
@@ -25,7 +25,7 @@ class CajaChicaController extends Controller
         $existe = $this->ExisteCajaChica($anio, $mes);
 
         if ($existe['estado'] == 'success') {
-            $caja = CajaChica::saldoActualCaja($anio, $mes, $this->saldo);
+            $caja = CajaChica::saldoActualCaja($anio, $mes);
             return $caja;
         } else {
             return $existe;

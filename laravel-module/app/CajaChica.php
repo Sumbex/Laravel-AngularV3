@@ -9,6 +9,8 @@ use App\Http\Controllers\CuentaSindicatoController;
 
 class CajaChica extends Model
 {
+    protected  $saldo = 100000;
+
     protected $table = "cs_caja_chica";
 
     protected function div_fecha($value)
@@ -47,7 +49,7 @@ class CajaChica extends Model
             }
     }
 
-    protected function saldoActualCaja($anio, $mes, $saldo){
+    protected function saldoActualCaja($anio, $mes){
 
         $caja = $this->traerCajaChica($anio, $mes);
             $tomar = true;
@@ -56,7 +58,7 @@ class CajaChica extends Model
                 switch ($caja[$i]->definicion) {
                     case 1:
                         if ($tomar == true) {
-                            $caja[$i]->saldo_actual = $saldo + $caja[$i]->monto_ingreso;
+                            $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
                             $tomar = false;
                         } else {
                             $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
@@ -64,7 +66,7 @@ class CajaChica extends Model
                         break;
                     case 2:
                         if ($tomar == true) {
-                            $caja[$i]->saldo_actual = $saldo - $caja[$i]->monto_egreso;
+                            $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
                             $tomar = false;
                         } else {
                             $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
@@ -86,36 +88,48 @@ class CajaChica extends Model
 
         $existe = $this->existeCajaChica($anio->id, $mes->id);
         $nDoc = $this->validarNumDoc($request->numero_documento);
+        $total = $this->saldoActualCaja($anio->id, $mes->id);
+
+        foreach ($total as $key => $value) {
+            $key = $value;
+        }
+        //dd($request->monto < $key->saldo_actual);
 
         if ($existe['estado'] == 'success') {
 
             if($nDoc['estado'] == 'success'){
 
-                $caja->anio_id = $anio->id;
-                $caja->mes_id = $fecha['mes'];
-                $caja->dia = $fecha['dia'];
-                $caja->numero_documento = $request->numero_documento;
-                $caja->archivo_documento = '/doc/archivo.pdf';
-                $caja->descripcion = $request->descripcion;
-    
-                switch ($request->definicion) {
-                    case '1':
-                        $caja->monto_ingreso = $request->monto;
-                        break;
-                    case '2':
-                        $caja->monto_egreso = $request->monto;
-                        break;
+                if($request->monto < $key->saldo_actual){
+
+                    $caja->anio_id = $anio->id;
+                    $caja->mes_id = $fecha['mes'];
+                    $caja->dia = $fecha['dia'];
+                    $caja->numero_documento = $request->numero_documento;
+                    $caja->archivo_documento = '/doc/archivo.pdf';
+                    $caja->descripcion = $request->descripcion;
+        
+                    switch ($request->definicion) {
+                        case '1':
+                            $caja->monto_ingreso = $request->monto;
+                            break;
+                        case '2':
+                            $caja->monto_egreso = $request->monto;
+                            break;
+                    }
+        
+                    $caja->definicion = $request->definicion;
+                    $caja->user_crea = Auth::user()->id;
+                    $caja->activo = "S";
+        
+                    if ($caja->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Insertado'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No Insertado'];
+                    }
+                }else{
+                    return ['estado' => 'failed', 'mensaje' => 'El monto ingresado excede al valor en Caja Chica'];
                 }
-    
-                $caja->definicion = $request->definicion;
-                $caja->user_crea = Auth::user()->id;
-                $caja->activo = "S";
-    
-                if ($caja->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Insertado'];
-                } else {
-                    return ['estado' => 'failed', 'mensaje' => 'No Insertado'];
-                }
+               
             }else{
                 return $nDoc;
             }

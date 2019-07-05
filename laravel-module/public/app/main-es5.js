@@ -697,7 +697,7 @@ var CambioContraseniaComponent = /** @class */ (function () {
             //console.log(val.estado);
             if (val.estado == "success") {
                 password.value = '';
-                conf_new_pass.value = '';
+                conf_new_password.value = '';
                 new_password.value = '';
                 _this.success_visible = true;
                 _this.fail_visible = false;

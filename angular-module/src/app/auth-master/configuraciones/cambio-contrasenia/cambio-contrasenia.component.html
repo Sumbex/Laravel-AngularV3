@@ -5,7 +5,7 @@
  <ng-template #Mensual let-modal>
   <div>
   	<div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><strong>>Cambiar contraseña<a href=""></a></strong></h6>
+      <h6 class="modal-title"><i class="fas fa-key"></i> <strong> Cambiar contraseña<a href=""></a></strong></h6>
       <button type="button" class="close" aria-label="Close" (click)="close();modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -18,10 +18,11 @@
   			<button class="btn btn-success" (click)="send(password,confirm_password,new_password)" >Actualizar contraseña</button>
   			<img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
   		</form>
+      <br>
 		<div *ngIf="success_visible"  class="alert alert-primary" role="alert">
 		  {{ success_texto }}
 		</div>
-
+    <br>
 		<div *ngIf="fail_visible"  class="alert alert-danger" role="alert">
 		  {{ success_texto | json }}
 		</div>

@@ -113,23 +113,6 @@ export class ModalInicioMesComponent implements OnInit {
           });
   }
   guardar(){
-<<<<<<< HEAD
-        const formData = new FormData();
-        formData.append('anio', this.anio);
-        formData.append('mes', this.mes );
-        formData.append('cierre_mensual', this.monto);
-        this._http.post(this.url + "guardar_inicio_mensual", formData,
-                    {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
-          ).subscribe((val) => {
-              this.monto = val+'';
-              console.log(val);
-              
-          }, response => {console.log("POST call in error", response);},() => {
-                 console.log("The POST success.");
-          });
-=======
->>>>>>> alejandro
-
 
             const formData = new FormData();
             formData.append('anio', this.anio);

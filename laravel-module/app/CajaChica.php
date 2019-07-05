@@ -47,6 +47,34 @@ class CajaChica extends Model
             }
     }
 
+    protected function saldoActualCaja($anio, $mes, $saldo){
+
+        $caja = $this->traerCajaChica($anio, $mes);
+            $tomar = true;
+
+            for ($i = 0; $i < count($caja); $i++) {
+                switch ($caja[$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $saldo + $caja[$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $saldo - $caja[$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
+                        }
+                        break;
+                }
+            }
+        return $caja;
+    }
+
     protected function ingresarCajaChica($request)
     {
         $caja = new CajaChica;

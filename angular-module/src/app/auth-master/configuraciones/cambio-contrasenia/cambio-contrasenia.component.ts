@@ -50,19 +50,19 @@ export class CambioContraseniaComponent implements OnInit {
     this.modalService.open(Mensual, { size: 'lg' });
   }
 
-  send(password, confirm_password, new_password){
+  send(password, new_password, conf_new_password){
 
   	this.load = true;
 
   	var pass = password.value;
-  	var confirm_pass = confirm_password.value;
   	var new_pass = new_password.value;
+  	var conf_new_pass = conf_new_password.value;
 
   	
   	const formData = new FormData();
   	formData.append('password', pass);
-  	formData.append('confirm_password', confirm_pass );
-  	formData.append('new_password', new_pass);
+  	formData.append('new_password', new_pass );
+  	formData.append('conf_new_password', conf_new_pass);
 
 
     this._http.post(this.url + "cambiar_password", formData,{headers: new HttpHeaders(
@@ -73,13 +73,13 @@ export class CambioContraseniaComponent implements OnInit {
     )}).subscribe((val : {'estado','mensaje'} ) => {
     			//console.log(val.estado);
             if (val.estado == "success") {
-            	this.password = '';
-				this.confirm_password = '';
-				this.new_password = '';
-				this.success_visible = true;
-				this.fail_visible = false;
-				this.success_texto = 'Se ha actualizado la contraseña!.';
-				this.load = false;
+            	  password.value = '';
+				        conf_new_pass.value = '';
+				        new_password.value = '';
+				        this.success_visible = true;
+				        this.fail_visible = false;
+				        this.success_texto = 'Se ha actualizado la contraseña!.';
+				        this.load = false;
             	
             }
             if (val.estado == "false") {

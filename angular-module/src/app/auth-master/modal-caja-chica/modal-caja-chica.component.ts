@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
+import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
+import { Anios } from 'src/app/modelos/anios.model';
+import { Meses } from 'src/app/modelos/meses.model';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -11,6 +13,12 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
   styleUrls: ['./modal-caja-chica.component.css']
 })
 export class ModalCajaChicaComponent implements OnInit {
+  @ViewChild(TablaCajaChicaComponent, {static: false}) private tablaComponent : TablaCajaChicaComponent;
+
+  selectAnio: Anios[] = [];
+  selectMes: Meses[] = [];
+  cajaChica: cajaChicaSindical[] = [];
+
   selectDefinicion: Definicion[] = [];
 
   datosCajaChica: cajaChicaSindical ={
@@ -30,6 +38,16 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Cargar Caja chica
+    this.refrescarCajaChica();
+
     //Cargar definiciones
     this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
   }
@@ -50,12 +68,27 @@ export class ModalCajaChicaComponent implements OnInit {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
           console.log(response);
+          this.refrescarCajaChica();
         },
         error => {
           console.log(<any>error);
         }
       );
     }
+  }
+
+  refrescarCajaChica(){
+    //Cargar Caja chica
+    console.log("refrescando caja chica");
+    this._cajaChicaService.getCajaChica('1').subscribe(
+      response => {
+        this.cajaChica = response;
+        console.log(this.cajaChica);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

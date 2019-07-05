@@ -19,8 +19,9 @@ class DatosBasicosController extends Controller
     public function anio_actual()	
     {
     	$anio = DB::select("select date_part('year',now()) as anio");
-
-    	return $anio[0]->anio;
+        $anio_db = DB::table('anio')->select(['id','descripcion'])
+        ->where(['activo'=>'S', 'descripcion'=>$anio[0]->anio])->first();
+    	return response()->json($anio_db);
     }
 
     public function listar_meses()
@@ -79,7 +80,7 @@ class DatosBasicosController extends Controller
     {
         $validar = $this->validar_password($r);
 
-        if ($validar['estado'] == true) {
+        if ($validar['estado'] == "true") {
 
                 $user = User::find(Auth::user()->id);
 
@@ -90,6 +91,8 @@ class DatosBasicosController extends Controller
                     }else{
                         return ['estado'=>'filed'];
                     }
+                }else{
+                    return ['estado' => "false", 'mensaje' =>'Contraseña actual no valida'];
                 }
         }else{
             return $this->validar_password($r);
@@ -100,23 +103,29 @@ class DatosBasicosController extends Controller
 
     public function validar_password($request)
     {
+
          $validator = Validator::make($request->all(), 
             [
-                'password' => 'required|required_with:confirm_password|same:confirm_password',
-                'confirm_password' => 'required',
-                'new_password' => 'required'
+                'password' => 'required',
+                'new_password' => 'required|required_with:conf_new_password|same:conf_new_password',
+                'conf_new_password' => 'required'
                
             ],
             [
-                'password.required' => 'La contraseña es necesaria',
-                'password.same' => 'La contraseña actual con la  confirmacion no son iguales',
-                'confirm_password.required' => 'Confirme su contraseña',
+                'password.required' => 'La contraseña actual es necesaria',
+                'new_password.same' => 'La nueva contraseña con la confirmacion no son iguales',
+                'conf_new_password.required' => 'Confirme su nueva contraseña',
                 'new_password.required' => 'La nueva contraseña es necesaria',
                
             ]);
 
  
-            if ($validator->fails()){ return ['estado' => false, 'mensaje' => $validator->errors()];}
-            return ['estado' => true, 'mensaje' => 'success'];
+            if ($validator->fails()){ return ['estado' => "false", 'mensaje' => $validator->errors()];}
+            return ['estado' => "true", 'mensaje' => 'success'];
+    }
+    public function usuario_logeado()
+    {
+        $user = User::find(Auth::user()->id);
+        return $user;
     }
 }

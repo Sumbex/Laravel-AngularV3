@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { global } from './global';
 import { Definicion } from '../modelos/definicion.model';
 import { Detalle } from '../modelos/detalle.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TipoCuentasService{
@@ -16,7 +17,7 @@ export class TipoCuentasService{
 
     getDefinicion(){
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "listar_definicion", {headers: new HttpHeaders(
+        return this._http.get<any>(this.url + "listar_definicion", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ export class TipoCuentasService{
 
     getTipoCuenta(){
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "listar_tipo_cuenta_sindicato", {headers: new HttpHeaders(
+        return this._http.get<any>(this.url + "listar_tipo_cuenta_sindicato", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'

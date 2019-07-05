@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   public token: string;
   public loading: boolean = false;
 
+  public lockLogin: boolean = false;
+
   constructor(private _userService: UsuarioService, private router: Router) {
     this.usuario = new Usuario();
   }
@@ -26,6 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
+    if(this.lockLogin == false){
+    this.lockLogin = true;
     this._userService.login(this.usuario, true).subscribe(
       response => {
         this.token = response.token;
@@ -36,9 +40,12 @@ export class LoginComponent implements OnInit {
       error => {
         this.status = error;
         this.router.navigate(['**']);
+        this.lockLogin = false;
+        console.log(this.status);
       }
     );
     this.loading = true;
+  }
   }
 
 }

@@ -3,12 +3,12 @@
 
 <!--MODAL DE ESPERA CARGA DATOS-->
 <ng-template #content let-c="close" let-d="dismiss">
-    <div class="container">
+    
         <div class="row">
             <div class="col">
-                <div class="modal-header">
+                <div class="modal-header text-center" id="demoFont">
                     <h4 class="modal-title" id="modal-basic-title">Cargando el sistema</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <button style="display: none" id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 </ng-template>
 <button id="openModalButton" class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="open(content)">Launch demo
     modal</button>

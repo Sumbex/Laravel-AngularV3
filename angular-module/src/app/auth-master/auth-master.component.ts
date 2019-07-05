@@ -16,20 +16,27 @@ export class AuthMasterComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    //DomContentLoaded
+    window.addEventListener('load', (event) => {
+    document.getElementById("closeModalButton").click();
+      
+  });
+
     //Guardar definicion
-    this._tipoCuentas.getDefinicion().subscribe((res: any[]) => {
+    this._tipoCuentas.getDefinicion().subscribe((res) => {
       localStorage.setItem('definicion', JSON.stringify(res));
     });
     //Guardar Detalle
-    this._tipoCuentas.getTipoCuenta().subscribe((res: any[]) => {
+    this._tipoCuentas.getTipoCuenta().subscribe((res) => {
       localStorage.setItem('detalle', JSON.stringify(res));
     });
     //Guardar Anios
-    this._getAnios.getAnios().subscribe((res: any[]) => {
+    this._getAnios.getAnios().subscribe((res) => {
       localStorage.setItem('anios', JSON.stringify(res));
     });
     //Guardar Meses
-    this._getAnios.getMeses().subscribe((res: any[]) => {
+    this._getAnios.getMeses().subscribe((res) => {
       localStorage.setItem('meses', JSON.stringify(res));
     });
 

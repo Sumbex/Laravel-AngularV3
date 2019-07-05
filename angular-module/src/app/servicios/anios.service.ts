@@ -1,18 +1,21 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { global } from './global'; 
+import { global } from './global';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AniosService{
     public url: string;
+    token = localStorage.getItem('token').replace(/['"]+/g, '');
 
     constructor(public _http: HttpClient){
         this.url = global.url;
     }
 
+
     getAnios(){
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "listar_anios", {headers: new HttpHeaders(
+        return this._http.get<any>(this.url + "listar_anios", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
@@ -22,7 +25,7 @@ export class AniosService{
 
     getMeses(){
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "listar_meses", {headers: new HttpHeaders(
+        return this._http.get<any>(this.url + "listar_meses", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'

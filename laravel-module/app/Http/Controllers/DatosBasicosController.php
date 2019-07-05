@@ -122,4 +122,9 @@ class DatosBasicosController extends Controller
             if ($validator->fails()){ return ['estado' => "false", 'mensaje' => $validator->errors()];}
             return ['estado' => "true", 'mensaje' => 'success'];
     }
+    public function usuario_logeado()
+    {
+        $user = User::find(Auth::user()->id);
+        return $user;
+    }
 }

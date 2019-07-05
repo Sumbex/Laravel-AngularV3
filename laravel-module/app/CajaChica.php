@@ -148,7 +148,10 @@ class CajaChica extends Model
 
     protected function totalIngEgre($anio, $mes)
     {
-        $caja = DB::table('cs_caja_chica')
+        $existe = $this->existeCajaChica($anio, $mes);
+
+        if($existe['estado'] == 'success'){
+            $caja = DB::table('cs_caja_chica')
             ->select(DB::raw('sum(monto_ingreso) as total_ingreso, sum(monto_egreso) as total_egreso'))
             ->where([
                 'activo' => 'S',
@@ -157,11 +160,15 @@ class CajaChica extends Model
             ])
             ->get();
 
-        if($caja[0]->total_ingreso == 0){
-            $caja[0]->total = $caja[0]->total_egreso;
+            if($caja[0]->total_ingreso == 0){
+                $caja[0]->total = $caja[0]->total_egreso;
+            }else{
+                $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+            }
+            return $caja;
         }else{
-            $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+            return $existe;
         }
-        return $caja;
+        
     }
 }

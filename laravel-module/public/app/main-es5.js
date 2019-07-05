@@ -582,10 +582,6 @@ var AuthMasterComponent = /** @class */ (function () {
         config.keyboard = false;
     }
     AuthMasterComponent.prototype.ngOnInit = function () {
-        //DomContentLoaded
-        window.addEventListener('load', function (event) {
-            document.getElementById("closeModalButton").click();
-        });
         //Guardar definicion
         this._tipoCuentas.getDefinicion().subscribe(function (res) {
             localStorage.setItem('definicion', JSON.stringify(res));
@@ -601,9 +597,14 @@ var AuthMasterComponent = /** @class */ (function () {
         //Guardar Meses
         this._getAnios.getMeses().subscribe(function (res) {
             localStorage.setItem('meses', JSON.stringify(res));
+            document.getElementById("closeModalButton").click();
         });
         document.getElementById("openModalButton").click();
         this.verificarCarga();
+        //DomContentLoaded
+        // window.addEventListener('load', (event) => {
+        // document.getElementById("closeModalButton").click();   
+        // });
     };
     AuthMasterComponent.prototype.verificarCarga = function () {
         if (localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null) {
@@ -696,7 +697,7 @@ var CambioContraseniaComponent = /** @class */ (function () {
             //console.log(val.estado);
             if (val.estado == "success") {
                 password.value = '';
-                conf_new_pass.value = '';
+                conf_new_password.value = '';
                 new_password.value = '';
                 _this.success_visible = true;
                 _this.fail_visible = false;

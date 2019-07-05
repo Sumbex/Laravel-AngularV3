@@ -103,7 +103,7 @@ export class ModalInicioMesComponent implements OnInit {
         formData.append('anio', this.anio);
         formData.append('mes', this.mes );
         formData.append('cierre_mensual', this.monto);
-        this._http.post(this.url + "guardar_inicio_mensual/", formData,
+        this._http.post(this.url + "guardar_inicio_mensual", formData,
                     {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
           ).subscribe((val) => {
               this.monto = val+'';

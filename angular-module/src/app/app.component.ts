@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { TipoCuentasService } from './servicios/tipo-cuentas.service';
 
 @Component({
   selector: 'app-root',

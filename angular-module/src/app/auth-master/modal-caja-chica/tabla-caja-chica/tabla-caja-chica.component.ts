@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
-import { AniosService } from 'src/app/servicios/anios.service';
+import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
+import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 
 @Component({
   selector: 'app-tabla-caja-chica',
@@ -11,8 +12,9 @@ import { AniosService } from 'src/app/servicios/anios.service';
 export class TablaCajaChicaComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
+  cajaChica: cajaChicaSindical[] = [];
 
-  constructor() { }
+  constructor(private _cajaChicaService : CajaChicaService) { }
 
   ngOnInit() {
     //Cargar Años
@@ -20,6 +22,24 @@ export class TablaCajaChicaComponent implements OnInit {
 
     //Cargar Meses
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Cargar Caja chica
+    this.refrescarCajaChica();
+
+  }
+
+  refrescarCajaChica(){
+    //Cargar Caja chica
+    console.log("refrescando caja chica");
+    this._cajaChicaService.getCajaChica('1').subscribe(
+      response => {
+        this.cajaChica = response;
+        console.log(this.cajaChica);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

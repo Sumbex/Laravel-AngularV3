@@ -39,54 +39,61 @@
 
                   <th scope="col" rowspan="2"style="background: #138D75">Ingresos</th>
                   <th scope="col" rowspan="2"style="background: #138D75">Egresos</th>
-                  <th scope="col" rowspan="2" style="background: #229954; color:#FDFEFE">Cierre Mensual Mes Abril</th>
+                  <th scope="col" style="background: #229954; color:#FDFEFE">Cierre Mensual Mes Abril</th>
                 </tr>
-                <tr class="text-center" style="background: #138D75;color:#FDFEFE"> <th scope="col" colspan="5">Ingresos y Egresos Fijos</th></tr>
+                <tr class="text-center" > 
+                  <th scope="col" colspan="5" style="background: #138D75;color:#FDFEFE">Ingresos y Egresos Fijos</th>
+                  <td scope="col" class="text-center"><strong>{{ 5000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>            
+                </tr>
               </thead>
               <tbody>
                 <tr>
                   <td scope="col" colspan="2" class="text-center">20-06-2019</td>
                   <td scope="col" class="text-center">88970</td>
-                  <td scope="col" class="text-center"></td>
-                  <td scope="col" colspan="5">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>
-                  <td scope="col" class="text-center">{{ 10000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                  <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                  <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td scope="col" class="text-center">PDF</td>
+                  <td scope="col" colspan="5">Pago cuota sindical</td>
+                  <td scope="col" class="text-center">{{ 11000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td scope="col" class="text-center">{{ 16000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                 </tr>
 
                 <tr>
                     <td scope="col" colspan="2" class="text-center">20-06-2019</td>
                     <td scope="col" class="text-center">88970</td>
-                    <td scope="col" class="text-center"></td>
-                    <td scope="col" colspan="5">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>
-                    <td scope="col" class="text-center">{{ 10000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                    <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                    <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                    <td scope="col" class="text-center">PDF</td>
+                    <td scope="col" colspan="5">Arriendo oficina edif. comunidad plaza fundacion</td>
+                    <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                    <td scope="col" class="text-center">{{ 220000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                    <td scope="col" class="text-center">{{ 15780000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                   </tr>
 
                   <tr>
                       <td scope="col" colspan="2" class="text-center">20-06-2019</td>
                       <td scope="col" class="text-center">88970</td>
-                      <td scope="col" class="text-center"></td>
-                      <td scope="col" colspan="5">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>
-                      <td scope="col" class="text-center">{{ 10000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                      <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                      <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">PDF</td>
+                      <td scope="col" colspan="5">Pago celulares planes movistar S.A.</td>
+                      <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ 1872883 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ 13907117 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     </tr>
 
                     <tr>
                         <td scope="col" colspan="2" class="text-center">20-06-2019</td>
                         <td scope="col" class="text-center">88970</td>
-                        <td scope="col" class="text-center"></td>
-                        <td scope="col" colspan="5">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>
-                        <td scope="col" class="text-center">{{ 10000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                        <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                        <td scope="col" class="text-center">{{ 1000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td scope="col" class="text-center">PDF</td>
+                        <td scope="col" colspan="5">Remuneracion Secretaria</td>
+                        <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td scope="col" class="text-center">{{ 350319 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td scope="col" class="text-center">{{ 13556798 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      </tr>
+                      <tr>
+                        <th colspan="11" class="text-right">Total Cierre del Mes</th>
+                        <td scope="col" class="text-center"><strong>{{ 13556798 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                       </tr>
               </tbody>
             </table>
         </div> 
-        <br>
+        <app-total-cuenta-sindical></app-total-cuenta-sindical>
        </div>
 
      <!--boton para volver a cuenta sindical del inicio y cierre mensual-->

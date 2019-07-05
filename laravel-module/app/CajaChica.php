@@ -31,6 +31,22 @@ class CajaChica extends Model
         return DB::table('mes')->where('id', $value)->first();
     }
 
+    protected function validarNumDoc($numDoc){
+        $caja = DB::table('cs_caja_chica')
+            ->select('numero_documento')
+            ->where([
+                'numero_documento' => $numDoc,
+                'activo' => 'S',
+            ])
+            ->first();
+
+            if (empty($caja)) {
+                return ['estado' => 'success', 'mensaje' => 'Todo bien.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El numero de documento ya existe.'];
+            }
+    }
+
     protected function ingresarCajaChica($request)
     {
         $caja = new CajaChica;
@@ -39,42 +55,46 @@ class CajaChica extends Model
 
         $anio = $this->anio_tipo_id($fecha['anio']);
         $mes = $this->mes_tipo_id($fecha['mes']);
-        
-        $existe = $this->existeCajaChica($anio->id,$mes->id);
 
-        if($existe['estado'] == 'success'){
+        $existe = $this->existeCajaChica($anio->id, $mes->id);
+        $nDoc = $this->validarNumDoc($request->numero_documento);
 
-            $caja->anio_id = $anio->id;
-            $caja->mes_id = $fecha['mes'];
-            $caja->dia = $fecha['dia'];
-            $caja->numero_documento = $request->numero_documento;
-            $caja->archivo_documento = '/doc/archivo.pdf';
-            $caja->descripcion = $request->descripcion;
+        if ($existe['estado'] == 'success') {
 
-            switch ($request->definicion) {
-                case '1':
-                    $caja->monto_ingreso = $request->monto;
-                    break;
-                case '2':
-                    $caja->monto_egreso = $request->monto;
-                    break;
-            }
+            if($nDoc['estado'] == 'success'){
 
-            $caja->definicion = $request->definicion;
-            $caja->user_crea = Auth::user()->id;
-            $caja->activo = "S";
-
-            if ($caja->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Insertado'];
+                $caja->anio_id = $anio->id;
+                $caja->mes_id = $fecha['mes'];
+                $caja->dia = $fecha['dia'];
+                $caja->numero_documento = $request->numero_documento;
+                $caja->archivo_documento = '/doc/archivo.pdf';
+                $caja->descripcion = $request->descripcion;
+    
+                switch ($request->definicion) {
+                    case '1':
+                        $caja->monto_ingreso = $request->monto;
+                        break;
+                    case '2':
+                        $caja->monto_egreso = $request->monto;
+                        break;
+                }
+    
+                $caja->definicion = $request->definicion;
+                $caja->user_crea = Auth::user()->id;
+                $caja->activo = "S";
+    
+                if ($caja->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Insertado'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'No Insertado'];
+                }
             }else{
-                return ['estado' => 'faile', 'mensaje' => 'No Insertado'];
+                return $nDoc;
             }
-
-        }else{
+            
+        } else {
             return $existe;
         }
-
-        
     }
 
     protected function existeCajaChica($anio, $mes)
@@ -140,5 +160,4 @@ class CajaChica extends Model
 
         return $caja;
     }
-
 }

@@ -17,3 +17,4 @@ Route::post('cambiar_password', 'DatosBasicosController@cambiar_password');
 Route::post('insertar_cs_prestamo', 'PrestamosController@insertar_cs');
 Route::get('listar_cs_prestamo/{anio}/{mes}', 'PrestamosController@listar_cs_prestamo');
 
+Route::get('usuario_logeado','DatosBasicosController@usuario_logeado');

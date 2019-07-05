@@ -30,40 +30,40 @@ export class TablaInicioMesComponent implements OnInit {
 
   ngOnInit() {
     //Cargar Años
-    this.anio_actual();
-    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    //this.anio_actual();
+    //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
   }
 
 
   //metodos---------------------------------------------------------------------------------------
-		anio_actual(){
-				this._http.get(this.url + "anio_actual",
-			  		    	  {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
-			  	).subscribe((val : { id, descripcion } ) => {
+		// anio_actual(){
+		// 		this._http.get(this.url + "anio_actual",
+		// 	  		    	  {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
+		// 	  	).subscribe((val : { id, descripcion } ) => {
 
-			    			this.anio = val.id;
-			    			this.listar_tabla();
+		// 	    			this.anio = val.id;
+		// 	    			this.listar_tabla();
 			        
-			    }, response => {console.log("POST call in error", response);},() => {
-			           console.log("The POST success.");
-			    });
-		}
+		// 	    }, response => {console.log("POST call in error", response);},() => {
+		// 	           console.log("The POST success.");
+		// 	    });
+		// }
 
 
-	  	listar_tabla() {
-		  	this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/"+this.anio ,{headers: new HttpHeaders(
-		            {'Authorization': 'Bearer' + this.token})}
-		  	).subscribe((val : object ) => {
+	 //  	listar_tabla() {
+		//   	this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/"+this.anio ,{headers: new HttpHeaders(
+		//             {'Authorization': 'Bearer' + this.token})}
+		//   	).subscribe((val : object ) => {
 		     		
-		     		this.tabla = val;
+		//      		this.tabla = val;
 
-		    }, response => {console.log("POST call in error", response);},() => {
-		           console.log("The POST success.");
-		    });
-	  	}
+		//     }, response => {console.log("POST call in error", response);},() => {
+		//            console.log("The POST success.");
+		//     });
+	 //  	}
 
-		cambiar_anio(){
-		  	this.listar_tabla();
-		}
+		// cambiar_anio(){
+		//   	this.listar_tabla();
+		// }
 }

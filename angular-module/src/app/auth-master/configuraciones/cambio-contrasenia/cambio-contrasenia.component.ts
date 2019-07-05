@@ -73,13 +73,13 @@ export class CambioContraseniaComponent implements OnInit {
     )}).subscribe((val : {'estado','mensaje'} ) => {
     			//console.log(val.estado);
             if (val.estado == "success") {
-            	this.password = '';
-				this.confirm_password = '';
-				this.new_password = '';
-				this.success_visible = true;
-				this.fail_visible = false;
-				this.success_texto = 'Se ha actualizado la contraseña!.';
-				this.load = false;
+            	  password.value = '';
+				        confirm_password.value = '';
+				        new_password.value = '';
+				        this.success_visible = true;
+				        this.fail_visible = false;
+				        this.success_texto = 'Se ha actualizado la contraseña!.';
+				        this.load = false;
             	
             }
             if (val.estado == "false") {

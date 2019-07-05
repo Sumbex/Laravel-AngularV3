@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { global } from './global';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UsuarioService {
@@ -34,7 +35,7 @@ export class UsuarioService {
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-        return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
+        return this._http.post(this.url + 'login_rut?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers })
     }
 
     getToken() {

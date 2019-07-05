@@ -88,11 +88,75 @@
           </div>
 
         </div>
+        <hr>
         <!--Tabla del Modal Caja Chica-->
-        <app-tabla-caja-chica></app-tabla-caja-chica>
+        <div class="row">
+          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
+            <select class="form-control form-control-sm">
+              <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+            </select>
+          </div>
+
+          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
+            <select class="form-control form-control-sm">
+              <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead text-sm class="text-center">
+              <tr>
+                <th colspan="11" class="ColorThCS">Tabla caja chica</th>
+                <th colspan="2" class="ColorThCS">Monto Inicial</th>
+                <td colspan="2"><strong>{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+              <tr>
+                <th colspan="2">Fecha</th>
+                <th colspan="2">N° de Doc</th>
+                <th colspan="2">PDF</th>
+                <th colspan="3">Detalle</th>
+                <th colspan="2">Ingresos</th>
+                <th colspan="2">Egresos</th>
+                <th colspan="2">Actual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cajaChica" class="text-center">
+                <td colspan="2">{{item.fecha}}</td>
+                <td colspan="2">{{item.numero_documento}}</td>
+                <td colspan="2">{{item.archivo_documento}}</td>
+                <td colspan="3">{{item.descripcion}}</td>
+                <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <td colspan="2">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <!--Tabla del total Modal Caja Chica-->
-        <app-total-caja-chica></app-total-caja-chica>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead text-sm class="text-center">
+              <tr>
+                <th col>INGRESOS</th>
+                <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+      
+              <tr>
+                <th col>EGRESOS</th>
+                <td col><strong>{{ 90000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+              <tr>
+                <th col>CIERRE DEL MES</th>
+                <td col><strong>{{ 10000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
       </div>
 
       <!--Boton para salir del modal caja chica-->
@@ -103,6 +167,6 @@
     </form>
   </ng-template>
 
-  <!--Boton Para llamar al modal caja chica-->
-    <label><strong>Caja Chica</strong></label><br>
-    <button class="btn btn btn-success btn-block btn-sm" (click)="openCajaChica(CajaChica)">Ingresar</button>
+      <!--Boton Para llamar al modal caja chica-->
+      <label><strong>Caja Chica</strong></label><br>
+      <button class="btn btn btn-success btn-block btn-sm" (click)="openCajaChica(CajaChica)">Ingresar</button>

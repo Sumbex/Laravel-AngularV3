@@ -4,6 +4,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
+import { Anios } from 'src/app/modelos/anios.model';
+import { Meses } from 'src/app/modelos/meses.model';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -12,6 +14,10 @@ import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.com
 })
 export class ModalCajaChicaComponent implements OnInit {
   @ViewChild(TablaCajaChicaComponent, {static: false}) private tablaComponent : TablaCajaChicaComponent;
+
+  selectAnio: Anios[] = [];
+  selectMes: Meses[] = [];
+  cajaChica: cajaChicaSindical[] = [];
 
   selectDefinicion: Definicion[] = [];
 
@@ -32,6 +38,16 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Cargar Caja chica
+    this.refrescarCajaChica();
+
     //Cargar definiciones
     this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
   }
@@ -49,16 +65,30 @@ export class ModalCajaChicaComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
-      /*this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+      this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
           console.log(response);
+          this.refrescarCajaChica();
         },
         error => {
           console.log(<any>error);
         }
-      );*/
-      this.tablaComponent.refrescarCajaChica();
+      );
     }
+  }
+
+  refrescarCajaChica(){
+    //Cargar Caja chica
+    console.log("refrescando caja chica");
+    this._cajaChicaService.getCajaChica('1').subscribe(
+      response => {
+        this.cajaChica = response;
+        console.log(this.cajaChica);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

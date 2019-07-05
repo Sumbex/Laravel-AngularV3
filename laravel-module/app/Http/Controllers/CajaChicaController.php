@@ -8,7 +8,7 @@ use App\CajaChica;
 
 class CajaChicaController extends Controller
 {
-    public  $saldo = 100000;
+    //public  $saldo = 100000;
 
     public function IngresarCajaChica(Request $request)
     {
@@ -25,29 +25,7 @@ class CajaChicaController extends Controller
         $existe = $this->ExisteCajaChica($anio, $mes);
 
         if ($existe['estado'] == 'success') {
-            $caja = CajaChica::traerCajaChica($anio, $mes);
-            $tomar = true;
-
-            for ($i = 0; $i < count($caja); $i++) {
-                switch ($caja[$i]->definicion) {
-                    case 1:
-                        if ($tomar == true) {
-                            $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
-                            $tomar = false;
-                        } else {
-                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
-                        }
-                        break;
-                    case 2:
-                        if ($tomar == true) {
-                            $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
-                            $tomar = false;
-                        } else {
-                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
-                        }
-                        break;
-                }
-            }
+            $caja = CajaChica::saldoActualCaja($anio, $mes);
             return $caja;
         } else {
             return $existe;
@@ -56,8 +34,7 @@ class CajaChicaController extends Controller
 
     public function TotalIngEgre($anio, $mes)
     {
-        //$totales = 0;
-        $caja = CajaChica::totalIngEgre($anio, $mes);
-        return $caja;
+        return CajaChica::totalIngEgre($anio, $mes);
+         
     }
 }

@@ -16,6 +16,13 @@ export class AuthMasterComponent implements OnInit {
    }
 
   ngOnInit() {
+
+    //DomContentLoaded
+    window.addEventListener('load', (event) => {
+    document.getElementById("closeModalButton").click();
+      
+  });
+
     //Guardar definicion
     this._tipoCuentas.getDefinicion().subscribe((res) => {
       localStorage.setItem('definicion', JSON.stringify(res));

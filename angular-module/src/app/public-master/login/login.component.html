@@ -7,13 +7,13 @@
               <div class="col-sm-6 col-md-12 col-lg-12">
                 <label for="email"><strong>Correo Electronico</strong></label>
                 <input 
-                  type="email" 
+                  type="text" 
                   class="form-control" 
-                  placeholder="ejemplo@gmail.com" 
+                  placeholder="Ingrese su rut sin guiones" 
                   name="email" 
                   #email="ngModel" 
                   [(ngModel)]="usuario.email"
-                  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                  required>
                   <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
                     El correo ingresado no es valido
                   </small> 

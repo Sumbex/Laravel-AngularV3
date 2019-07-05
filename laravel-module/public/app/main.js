@@ -30,7 +30,11 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"container\">\r\n<router-outlet></router-outlet>\r\n</div>\r\n"
+=======
+module.exports = "<!--<router-outlet></router-outlet>-->\n<div class=\"container\">\n<router-outlet></router-outlet>\n</div>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -41,7 +45,14 @@ module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"contain
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>\r\n\r\n<!--MODAL DE ESPERA CARGA DATOS-->\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n    \r\n        <div class=\"row\">\r\n            <div class=\"col\">\r\n                <div class=\"modal-header text-center\" id=\"demoFont\">\r\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Cargando el sistema</h4>\r\n                    <button style=\"display: none\" id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <p>Espere unos segundos mientras carga el sistema</p>\r\n                </div>\r\n                <div class=\"col-xs-12 text-center\">\r\n                    <img src=\"/assets/loading_system.gif\" width=\"250\" height=\"250\" alt=\"cargando\">\r\n                </div>\r\n                <div class=\"modal-footer\" [hidden]=\"true\">\r\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    \r\n</ng-template>\r\n<button id=\"openModalButton\" class=\"btn btn-lg btn-outline-primary\" [hidden]=\"true\" (click)=\"open(content)\">Launch demo\r\n    modal</button>\r\n<!--MODAL DE ESPERA CARGA DATOS-->\r\n"
+=======
+<<<<<<< HEAD
+module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>\r\n\r\n<!--MODAL DE ESPERA CARGA DATOS-->\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col\">\r\n                <div class=\"modal-header\">\r\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Cargando el sistema</h4>\r\n                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <p>Espere unos segundos mientras carga el sistema</p>\r\n                </div>\r\n                <div class=\"col-xs-12 text-center\">\r\n                    <img src=\"/assets/loading_system.gif\" width=\"250\" height=\"250\" alt=\"cargando\">\r\n                </div>\r\n                <div class=\"modal-footer\" [hidden]=\"true\">\r\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</ng-template>\r\n<button id=\"openModalButton\" class=\"btn btn-lg btn-outline-primary\" [hidden]=\"true\" (click)=\"open(content)\">Launch demo\r\n    modal</button>\r\n<!--MODAL DE ESPERA CARGA DATOS-->"
+=======
+module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n<!--MODAL DE ESPERA CARGA DATOS-->\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <div class=\"modal-header\">\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Cargando el sistema</h4>\n                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                        <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                </div>\n                <div class=\"modal-body\">\n                    <p>Espere unos segundos mientras carga el sistema</p>\n                </div>\n                <div class=\"col-xs-12 text-center\">\n                    <img src=\"/assets/loading_system.gif\" width=\"250\" height=\"250\" alt=\"cargando\">\n                </div>\n                <div class=\"modal-footer\" [hidden]=\"true\">\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\n                </div>\n            </div>\n        </div>\n    </div>\n</ng-template>\n<button id=\"openModalButton\" class=\"btn btn-lg btn-outline-primary\" [hidden]=\"true\" (click)=\"open(content)\">Launch demo\n    modal</button>\n<!--MODAL DE ESPERA CARGA DATOS-->"
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -52,7 +63,12 @@ module.exports = "<app-navbar></app-navbar>\r\n<router-outlet></router-outlet>\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openMensual(Mensual)\" >Cambiar contraseña</button>\r\n\r\n\r\n<!--Modal para el inicio y cierre mensual-->\r\n <ng-template #Mensual let-modal>\r\n  <div>\r\n  \t<div class=\"modal-header\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><i class=\"fas fa-key\"></i> <strong> Cambiar contraseña<a href=\"\"></a></strong></h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"close();modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n  \t<div class=\"modal-body\">\r\n  \t\t<form>\r\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\" name=\"\"><br>\r\n  \t\t\t<input #confirm_password   class=\"form-control form-control-sm\" placeholder=\"Confirmar contraseña actual\" type=\"password\" name=\"\"><br>\r\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\"  placeholder=\"nueva contraseña\" type=\"password\" name=\"\"><br>\r\n  \t\t\t<button class=\"btn btn-success\" (click)=\"send(password,confirm_password,new_password)\" >Actualizar contraseña</button>\r\n  \t\t\t<img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n  \t\t</form>\r\n      <br>\r\n\t\t<div *ngIf=\"success_visible\"  class=\"alert alert-primary\" role=\"alert\">\r\n\t\t  {{ success_texto }}\r\n\t\t</div>\r\n    <br>\r\n\t\t<div *ngIf=\"fail_visible\"  class=\"alert alert-danger\" role=\"alert\">\r\n\t\t  {{ success_texto | json }}\r\n\t\t</div>\r\n  \t</div>\r\n  </div>\r\n</ng-template>"
+=======
+module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openMensual(Mensual)\" >Cambiar contraseña</button>\n\n\n<!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n  <div>\n  \t<div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><i class=\"fas fa-key\"></i> <strong> Cambiar contraseña<a href=\"\"></a></strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"close();modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n  \t<div class=\"modal-body\">\n  \t\t<form>\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\" placeholder=\"Nueva contraseña\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #conf_new_password   class=\"form-control form-control-sm\"  placeholder=\"Confirmar nueva contraseña\" type=\"password\" name=\"\"><br>\n  \t\t\t<button class=\"btn btn-success\" (click)=\"send(password,new_password,conf_new_password)\" >Actualizar contraseña</button>\n  \t\t\t<img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  \t\t</form>\n      <br>\n\t\t<div *ngIf=\"success_visible\"  class=\"alert alert-primary\" role=\"alert\">\n\t\t  {{ success_texto }}\n\t\t</div>\n    <br>\n\t\t<div *ngIf=\"fail_visible\"  class=\"alert alert-danger\" role=\"alert\">\n\t\t  {{ success_texto | json }}\n\t\t</div>\n  \t</div>\n  </div>\n</ng-template>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -63,7 +79,15 @@ module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openMens
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div>\r\n\t<br>\r\n\t<div class=\"row justify-content-center\">\r\n\t\t<div class=\"col-md-6\">\r\n\t\t\t<div class=\"card\">\r\n\t\t\t\t<div class=\"card-header\">Configuracion</div>\r\n\r\n\t\t\t\t<div class=\"card-body\">\r\n\t\t\t\t\t<app-cambio-contrasenia></app-cambio-contrasenia>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n"
+=======
+<<<<<<< HEAD
+module.exports = "<p>\r\n  configuraciones works!\r\n</p>\r\n"
+=======
+module.exports = "<div>\n\t<br>\n\t<div class=\"row justify-content-center\">\n\t\t<div class=\"col-md-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">Configuracion</div>\n\n\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t<app-cambio-contrasenia></app-cambio-contrasenia>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -74,7 +98,15 @@ module.exports = "<div>\r\n\t<br>\r\n\t<div class=\"row justify-content-center\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n<br><app-formulario-bienestar></app-formulario-bienestar>"
+=======
+<<<<<<< HEAD
+module.exports = "<app-formulario-bienestar></app-formulario-bienestar>\r\n<app-tabla-bienestar></app-tabla-bienestar>"
+=======
+module.exports = "\n<br><app-formulario-bienestar></app-formulario-bienestar>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -85,7 +117,15 @@ module.exports = "\r\n<br><app-formulario-bienestar></app-formulario-bienestar>"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Otras Cuentas</h6></strong></div>\r\n    <form action=\"\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n              <!--Boton Para llamar modals-->\r\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Inicio y Cierre Mensual</div>\r\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Caja Chica</div>\r\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Fallecimiento</div>\r\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Nacimiento</div>\r\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Gastos Medicos</div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Cuenta Bienestar</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n                <div class=\"input-group\">\r\n                  <input\r\n                  type=\"date\" \r\n                  class=\"form-control form-control-sm\"  \r\n                  name=\"fecha\">\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>N° de Documento</strong></label>\r\n                <input \r\n                type=\"number\" \r\n                class=\"form-control form-control-sm\"\r\n                name=\"nDocumento\"  \r\n                required>\r\n                <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                </small>-->\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label><strong>Subir Documento</strong></label>\r\n                <input class=\"form-control-file\" type=\"file\">\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\r\n                <!--<select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\r\n                  <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\r\n                </select>-->\r\n                <select name=\"tipo\" id=\"tipo\" class=\"form-control form-control-sm\">\r\n                  <option value=\"0\">--Seleccione--</option>\r\n                  <option value=\"1\">Ingreso</option>\r\n                  <option value=\"2\">Egreso</option>\r\n                </select>\r\n              </div><br>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\r\n                <!--<select (change)=\"tipoOperacionDetalle($event)\" class=\"form-control form-control-sm\">\r\n                  <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\r\n                </select>-->\r\n                <select name=\"detalleTipo\" id=\"detalleTipo\" class=\"form-control form-control-sm\">\r\n                    <option value=\"0\">--Seleccione--</option>\r\n                    <option value=\"1\">Cuenta del Gas</option>\r\n                    <option value=\"2\">Inasistencia por Reunión</option>\r\n                    <option value=\"3\">Inasistencia por Votación</option>\r\n                    <option value=\"4\">Fallecimiento</option>\r\n                    <option value=\"5\">Nacimiento</option>\r\n                    <option value=\"6\">Detalle Caja Chica</option>\r\n                    <option value=\"7\">Gastos Medicos</option>\r\n                  </select>\r\n              </div>\r\n\r\n                <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                    <br><label><strong>Ingrese Monto</strong></label>\r\n                    <input \r\n                    type=\"number\"\r\n                    class=\"form-control form-control-sm\"\r\n                    name=\"monto\" \r\n                    required>\r\n                  <!--<small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\r\n                    Compruebe que el monto ingresado solo contenga numeros\r\n                  </small>-->\r\n                </div>\r\n\r\n\r\n                  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\r\n                      <input \r\n                        class=\"form-control\" \r\n                        minlength=\"5\"\r\n                        maxlength=\"80\"\r\n                        name=\"descripcion\"  \r\n                        required>\r\n                      <!--<small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\r\n                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\r\n                      </small>-->\r\n                    </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>\r\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                  [disabled]=\"loginForm.invalid\">Guardar</button>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>\r\n                <app-tabla-bienestar></app-tabla-bienestar>\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>"
+=======
+<<<<<<< HEAD
+module.exports = "<p>\r\n  formulario-bienestar works!\r\n</p>\r\n"
+=======
+module.exports = "<div class=\"container\">\n  <!--Formulario de otras cuentas-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Otras Cuentas</h6></strong></div>\n    <form action=\"\">\n      <div class=\"card-body\">\n        <div class=\"row\">\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n              <!--Boton Para llamar modals-->\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Inicio y Cierre Mensual</div>\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Caja Chica</div>\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Fallecimiento</div>\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Nacimiento</div>\n              <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Gastos Medicos</div>\n            </div>\n        </div>\n      </div>\n    </form>\n  </div><br>\n\n  <!--Formulario para ingresar una cuenta sindical-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\n        <h6>Cuenta Bienestar</h6>\n      </strong>\n    </div>\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <div class=\"card-body\">\n          <div class=\"row\">\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>Ingrese Fecha</strong></label> <br>\n                <div class=\"input-group\">\n                  <input\n                  type=\"date\" \n                  class=\"form-control form-control-sm\"  \n                  name=\"fecha\">\n                </div>\n              </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>N° de Documento</strong></label>\n                <input \n                type=\"number\" \n                class=\"form-control form-control-sm\"\n                name=\"nDocumento\"  \n                required>\n                <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\n                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\n                </small>-->\n              </div>\n\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                <br><label><strong>Subir Documento</strong></label>\n                <input class=\"form-control-file\" type=\"file\">\n              </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\n                <!--<select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\n                  <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\n                </select>-->\n                <select name=\"tipo\" id=\"tipo\" class=\"form-control form-control-sm\">\n                  <option value=\"0\">--Seleccione--</option>\n                  <option value=\"1\">Ingreso</option>\n                  <option value=\"2\">Egreso</option>\n                </select>\n              </div><br>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\n                <!--<select (change)=\"tipoOperacionDetalle($event)\" class=\"form-control form-control-sm\">\n                  <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\n                </select>-->\n                <select name=\"detalleTipo\" id=\"detalleTipo\" class=\"form-control form-control-sm\">\n                    <option value=\"0\">--Seleccione--</option>\n                    <option value=\"1\">Cuenta del Gas</option>\n                    <option value=\"2\">Inasistencia por Reunión</option>\n                    <option value=\"3\">Inasistencia por Votación</option>\n                    <option value=\"4\">Fallecimiento</option>\n                    <option value=\"5\">Nacimiento</option>\n                    <option value=\"6\">Detalle Caja Chica</option>\n                    <option value=\"7\">Gastos Medicos</option>\n                  </select>\n              </div>\n\n                <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                    <br><label><strong>Ingrese Monto</strong></label>\n                    <input \n                    type=\"number\"\n                    class=\"form-control form-control-sm\"\n                    name=\"monto\" \n                    required>\n                  <!--<small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\n                    Compruebe que el monto ingresado solo contenga numeros\n                  </small>-->\n                </div>\n\n\n                  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\n                      <input \n                        class=\"form-control\" \n                        minlength=\"5\"\n                        maxlength=\"80\"\n                        name=\"descripcion\"  \n                        required>\n                      <!--<small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\n                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\n                      </small>-->\n                    </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\n                  [disabled]=\"loginForm.invalid\">Guardar</button>\n              </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>\n                <app-tabla-bienestar></app-tabla-bienestar>\n              </div>\n\n            </div>\n          </div>\n      </div>\n    </form>\n  </div> <br>\n\n</div>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -96,7 +136,15 @@ module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template #TablaBienestar let-modal>\r\n    <form>\r\n      <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Tabla Bienestar</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n       <!--Cuerpo del body inicio y cierre mensual-->\r\n       <div class=\"modal-body\">\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        \r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        </div><br>\r\n\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n              <thead text-sm>\r\n                <tr>\r\n                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Julio 2019</h6></th>\r\n                </tr>\r\n\r\n                <tr class=\"text-center\">\r\n                  <th colspan=\"3\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\r\n                  <th rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\r\n                  <th rowspan=\"2\"style=\"background: #138D75\">PDF</th>\r\n                  <th colspan=\"4\"style=\"background: #138D75\">Cuenta Bienestar</th>\r\n\r\n                  <th rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\r\n                  <th rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\r\n                  <th style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Junio</th>\r\n                </tr>\r\n                <tr class=\"text-center\" > \r\n                  <!--cuenta del gas-->\r\n                  <th colspan=\"4\" style=\"background: #138D75;color:#FDFEFE\">Cuenta del Gas</th>\r\n                  <!--cuenta del cierre del mes actual-->\r\n                  <td class=\"text-center\"><strong>{{ 2000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>            \r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td colspan=\"3\" class=\"text-center\">20-06-2019</td>\r\n                  <td class=\"text-center\">88970</td>\r\n                  <td class=\"text-center\">PDF</td>\r\n                  <td colspan=\"4\">Ganacias final de 200 pesos por galon de gas vendido</td>\r\n                  <td class=\"text-center\">{{ 40000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <!--acumulado cierre del mes actual-->\r\n                  <td class=\"text-center\">{{ 2040000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                </tr>\r\n\r\n                <!--cuenta detalle caja chica-->\r\n                <tr class=\"text-center\">\r\n                  <th colspan=\"3\" style=\"background: #138D75\">Fecha</th>\r\n                  <th style=\"background: #138D75\">N° Doc</th>\r\n                  <th style=\"background: #138D75\">PDF</th>\r\n                  <th colspan=\"4\" style=\"background: #138D75;color:#FDFEFE\">Detalle Caja Chica</th>\r\n                  <th style=\"background: #138D75\">Ingresos</th>\r\n                  <th style=\"background: #138D75\">Egresos</th>\r\n                  <th></th>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td colspan=\"3\" class=\"text-center\">20-06-2019</td>\r\n                    <td scope=\"col\" class=\"text-center\">88970</td>\r\n                    <td scope=\"col\" class=\"text-center\">PDF</td>\r\n                    <td scope=\"col\" colspan=\"4\">caja chica</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <!--acumulado cierre del mes actual-->\r\n                    <td scope=\"col\" class=\"text-center\">{{ 1940000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  </tr>\r\n\r\n                  <!--cuenta Fallecimiento y nacimiento-->\r\n                <tr class=\"text-center\">\r\n                    <th colspan=\"3\" style=\"background: #138D75\">Fecha</th>\r\n                    <th style=\"background: #138D75\">N° Doc</th>\r\n                    <th style=\"background: #138D75\">PDF</th>\r\n                    <th colspan=\"4\" style=\"background: #138D75;color:#FDFEFE\">Fallecimiento y Nacimiento</th>\r\n                    <th style=\"background: #138D75\">Ingresos</th>\r\n                    <th style=\"background: #138D75\">Egresos</th>\r\n                    <th></th>\r\n                  </tr>\r\n  \r\n                  <tr>\r\n                      <td colspan=\"3\" class=\"text-center\">20-06-2019</td>\r\n                      <td scope=\"col\" class=\"text-center\">88970</td>\r\n                      <td scope=\"col\" class=\"text-center\">PDF</td>\r\n                      <td scope=\"col\" colspan=\"4\">Fallecio la suegra de Juan Perez</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 1190000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <!--acumulado cierre del mes actual-->\r\n                      <td scope=\"col\" class=\"text-center\">{{ 750000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    </tr>\r\n    \r\n  \r\n\r\n                      <tr>\r\n                        <th colspan=\"11\" class=\"text-right\">Total Cierre del Mes</th>\r\n                        <td scope=\"col\" class=\"text-center\"><strong>{{ 750000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n                      </tr>\r\n              </tbody>\r\n            </table>\r\n        </div> \r\n        <!--total del cierre de mes-->\r\n       </div>\r\n\r\n     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n     <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Bienestar\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  \r\n          \r\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openTablaBienestar(TablaBienestar)\">Ver Tabla</button>\r\n\r\n\r\n\r\n"
+=======
+<<<<<<< HEAD
+module.exports = "<p>\r\n  tabla-bienestar works!\r\n</p>\r\n"
+=======
+module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #TablaBienestar let-modal>\n    <form>\n      <div class=\"modal-header sticky-top\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Tabla Bienestar</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n       <!--Cuerpo del body inicio y cierre mensual-->\n       <div class=\"modal-body\">\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n        \n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-striped table-bordered table-sm\">\n              <thead text-sm>\n                <tr>\n                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Julio 2019</h6></th>\n                </tr>\n\n                <tr class=\"text-center\">\n                  <th colspan=\"3\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\n                  <th rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\n                  <th rowspan=\"2\"style=\"background: #138D75\">PDF</th>\n                  <th colspan=\"4\"style=\"background: #138D75\">Cuenta Bienestar</th>\n\n                  <th rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\n                  <th rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\n                  <th style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Junio</th>\n                </tr>\n                <tr class=\"text-center\" > \n                  <!--cuenta del gas-->\n                  <th colspan=\"4\" style=\"background: #138D75;color:#FDFEFE\">Cuenta del Gas</th>\n                  <!--cuenta del cierre del mes actual-->\n                  <td class=\"text-center\"><strong>{{ 2000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>            \n                </tr>\n              </thead>\n              <tbody>\n                <tr>\n                  <td colspan=\"3\" class=\"text-center\">20-06-2019</td>\n                  <td class=\"text-center\">88970</td>\n                  <td class=\"text-center\">PDF</td>\n                  <td colspan=\"4\">Ganacias final de 200 pesos por galon de gas vendido</td>\n                  <td class=\"text-center\">{{ 40000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                  <td class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                  <!--acumulado cierre del mes actual-->\n                  <td class=\"text-center\">{{ 2040000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                </tr>\n\n                <!--cuenta detalle caja chica-->\n                <tr class=\"text-center\">\n                  <th colspan=\"3\" style=\"background: #138D75\">Fecha</th>\n                  <th style=\"background: #138D75\">N° Doc</th>\n                  <th style=\"background: #138D75\">PDF</th>\n                  <th colspan=\"4\" style=\"background: #138D75;color:#FDFEFE\">Detalle Caja Chica</th>\n                  <th style=\"background: #138D75\">Ingresos</th>\n                  <th style=\"background: #138D75\">Egresos</th>\n                  <th></th>\n                </tr>\n\n                <tr>\n                    <td colspan=\"3\" class=\"text-center\">20-06-2019</td>\n                    <td scope=\"col\" class=\"text-center\">88970</td>\n                    <td scope=\"col\" class=\"text-center\">PDF</td>\n                    <td scope=\"col\" colspan=\"4\">caja chica</td>\n                    <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                    <td scope=\"col\" class=\"text-center\">{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                    <!--acumulado cierre del mes actual-->\n                    <td scope=\"col\" class=\"text-center\">{{ 1940000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                  </tr>\n\n                  <!--cuenta Fallecimiento y nacimiento-->\n                <tr class=\"text-center\">\n                    <th colspan=\"3\" style=\"background: #138D75\">Fecha</th>\n                    <th style=\"background: #138D75\">N° Doc</th>\n                    <th style=\"background: #138D75\">PDF</th>\n                    <th colspan=\"4\" style=\"background: #138D75;color:#FDFEFE\">Fallecimiento y Nacimiento</th>\n                    <th style=\"background: #138D75\">Ingresos</th>\n                    <th style=\"background: #138D75\">Egresos</th>\n                    <th></th>\n                  </tr>\n  \n                  <tr>\n                      <td colspan=\"3\" class=\"text-center\">20-06-2019</td>\n                      <td scope=\"col\" class=\"text-center\">88970</td>\n                      <td scope=\"col\" class=\"text-center\">PDF</td>\n                      <td scope=\"col\" colspan=\"4\">Fallecio la suegra de Juan Perez</td>\n                      <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                      <td scope=\"col\" class=\"text-center\">{{ 1190000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                      <!--acumulado cierre del mes actual-->\n                      <td scope=\"col\" class=\"text-center\">{{ 750000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                    </tr>\n    \n  \n\n                      <tr>\n                        <th colspan=\"11\" class=\"text-right\">Total Cierre del Mes</th>\n                        <td scope=\"col\" class=\"text-center\"><strong>{{ 750000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n                      </tr>\n              </tbody>\n            </table>\n        </div> \n        <!--total del cierre de mes-->\n       </div>\n\n     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n     <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Bienestar\n        </button>\n      </div>\n    </form>\n  </ng-template>\n  \n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\n  \n          \n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openTablaBienestar(TablaBienestar)\">Ver Tabla</button>\n\n\n\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -107,7 +155,11 @@ module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n<app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>"
+=======
+module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\n<app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -118,7 +170,11 @@ module.exports = "<app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n<
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<p>\r\n  formulario-fondo-mutuo works!\r\n</p>\r\n"
+=======
+module.exports = "<p>\n  formulario-fondo-mutuo works!\n</p>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -129,7 +185,11 @@ module.exports = "<p>\r\n  formulario-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
+=======
+module.exports = "<p>\n  tabla-fondo-mutuo works!\n</p>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -140,7 +200,11 @@ module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<br>\r\n<app-formulario-sindical></app-formulario-sindical>\r\n"
+=======
+module.exports = "<br>\n<app-formulario-sindical></app-formulario-sindical>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -151,7 +215,11 @@ module.exports = "<br>\r\n<app-formulario-sindical></app-formulario-sindical>\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Otras Cuentas</h6></strong></div>\r\n    <form action=\"\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n              <!--Boton Para llamar modals-->\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-inicio-mes></app-modal-inicio-mes> </div>\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-caja-chica></app-modal-caja-chica> </div>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Cuenta Sindical</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n                <div class=\"input-group\">\r\n                  <input\r\n                  type=\"date\" \r\n                  class=\"form-control form-control-sm\"  \r\n                  name=\"fecha\" \r\n                  #fecha=\"ngModel\"\r\n                  [(ngModel)]=\"datosSindicales.fecha\">\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>N° de Documento</strong></label>\r\n                <input \r\n                type=\"number\" \r\n                class=\"form-control form-control-sm\"\r\n                name=\"nDocumento\" \r\n                #nDocumento=\"ngModel\"\r\n                [(ngModel)]=\"datosSindicales.nDocumento\" \r\n                required>\r\n                <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                </small>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label><strong>Subir Documento</strong></label>\r\n                <input class=\"form-control-file\" type=\"file\">\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\r\n                <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\r\n                  <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\r\n                </select>\r\n              </div><br>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\r\n                <select (change)=\"tipoOperacionDetalle($event)\" class=\"form-control form-control-sm\">\r\n                  <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\r\n                </select>\r\n              </div>\r\n\r\n                <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                    <br><label><strong>Ingrese Monto</strong></label>\r\n                    <input \r\n                    type=\"number\"\r\n                    class=\"form-control form-control-sm\"\r\n                    name=\"monto\" \r\n                    #monto=\"ngModel\"\r\n                    [(ngModel)]=\"datosSindicales.monto\" \r\n                    required>\r\n                  <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\r\n                    Compruebe que el monto ingresado solo contenga numeros\r\n                  </small>\r\n                </div>\r\n\r\n\r\n                  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\r\n                      <input \r\n                        class=\"form-control\" \r\n                        minlength=\"5\"\r\n                        maxlength=\"80\"\r\n                        name=\"descripcion\" \r\n                        #descripcion=\"ngModel\"\r\n                        [(ngModel)]=\"datosSindicales.descripcion\" \r\n                        required>\r\n                      <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\r\n                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\r\n                      </small>\r\n                    </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\r\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                  [disabled]=\"loginForm.invalid\">Guardar</button>\r\n              </div>\r\n\r\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n                <br><label><strong>Visualizar Tabla Sindical</strong></label><br>\r\n                <app-tabla-sindical></app-tabla-sindical>\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>"
+=======
+module.exports = "<div class=\"container\">\n  <!--Formulario de otras cuentas-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Otras Cuentas</h6></strong></div>\n    <form action=\"\">\n      <div class=\"card-body\">\n        <div class=\"row\">\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n              <!--Boton Para llamar modals-->\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-inicio-mes></app-modal-inicio-mes> </div>\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-caja-chica></app-modal-caja-chica> </div>\n            </div>\n        </div>\n      </div>\n    </form>\n  </div><br>\n\n  <!--Formulario para ingresar una cuenta sindical-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\n        <h6>Cuenta Sindical</h6>\n      </strong>\n    </div>\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <div class=\"card-body\">\n          <div class=\"row\">\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>Ingrese Fecha</strong></label> <br>\n                <div class=\"input-group\">\n                  <input\n                  type=\"date\" \n                  class=\"form-control form-control-sm\"  \n                  name=\"fecha\" \n                  #fecha=\"ngModel\"\n                  [(ngModel)]=\"datosSindicales.fecha\">\n                </div>\n              </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>N° de Documento</strong></label>\n                <input \n                type=\"number\" \n                class=\"form-control form-control-sm\"\n                name=\"nDocumento\" \n                #nDocumento=\"ngModel\"\n                [(ngModel)]=\"datosSindicales.nDocumento\" \n                required>\n                <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\n                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\n                </small>\n              </div>\n\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                <br><label><strong>Subir Documento</strong></label>\n                <input class=\"form-control-file\" type=\"file\">\n              </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\n                <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\n                  <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\n                </select>\n              </div><br>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\n                <select (change)=\"tipoOperacionDetalle($event)\" class=\"form-control form-control-sm\">\n                  <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\n                </select>\n              </div>\n\n                <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                    <br><label><strong>Ingrese Monto</strong></label>\n                    <input \n                    type=\"number\"\n                    class=\"form-control form-control-sm\"\n                    name=\"monto\" \n                    #monto=\"ngModel\"\n                    [(ngModel)]=\"datosSindicales.monto\" \n                    required>\n                  <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\n                    Compruebe que el monto ingresado solo contenga numeros\n                  </small>\n                </div>\n\n\n                  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\n                      <input \n                        class=\"form-control\" \n                        minlength=\"5\"\n                        maxlength=\"80\"\n                        name=\"descripcion\" \n                        #descripcion=\"ngModel\"\n                        [(ngModel)]=\"datosSindicales.descripcion\" \n                        required>\n                      <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\n                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\n                      </small>\n                    </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>Guardar Cuenta Sindical</strong></label><br>\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\n                  [disabled]=\"loginForm.invalid\">Guardar</button>\n              </div>\n\n              <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n                <br><label><strong>Visualizar Tabla Sindical</strong></label><br>\n                <app-tabla-sindical></app-tabla-sindical>\n              </div>\n\n            </div>\n          </div>\n      </div>\n    </form>\n  </div> <br>\n\n</div>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -162,7 +230,14 @@ module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template #TablaSindical let-modal>\r\n    <form>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Tabla Sindical</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n       <!--Cuerpo del body inicio y cierre mensual-->\r\n       <div class=\"modal-body\">\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        \r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        </div><br>\r\n\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n              <thead text-sm>\r\n                <tr>\r\n                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Mayo 2019</h6></th>\r\n                </tr>\r\n\r\n                <tr class=\"text-center\">\r\n                  <th scope=\"col\" colspan=\"2\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Documento PDF</th>\r\n                  <th scope=\"col\" colspan=\"5\"style=\"background: #138D75\">Cuenta Sindicado</th>\r\n\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\r\n                  <th scope=\"col\" style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Abril</th>\r\n                </tr>\r\n                <tr class=\"text-center\" > \r\n                  <th scope=\"col\" colspan=\"5\" style=\"background: #138D75;color:#FDFEFE\">Ingresos y Egresos Fijos</th>\r\n                  <td scope=\"col\" class=\"text-center\"><strong>{{ 5000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>            \r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                  <td scope=\"col\" class=\"text-center\">88970</td>\r\n                  <td scope=\"col\" class=\"text-center\">PDF</td>\r\n                  <td scope=\"col\" colspan=\"5\">Pago cuota sindical</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 11000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 16000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                    <td scope=\"col\" class=\"text-center\">88970</td>\r\n                    <td scope=\"col\" class=\"text-center\">PDF</td>\r\n                    <td scope=\"col\" colspan=\"5\">Arriendo oficina edif. comunidad plaza fundacion</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 220000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 15780000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  </tr>\r\n\r\n                  <tr>\r\n                      <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                      <td scope=\"col\" class=\"text-center\">88970</td>\r\n                      <td scope=\"col\" class=\"text-center\">PDF</td>\r\n                      <td scope=\"col\" colspan=\"5\">Pago celulares planes movistar S.A.</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 1872883 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 13907117 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    </tr>\r\n\r\n                    <tr>\r\n                        <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                        <td scope=\"col\" class=\"text-center\">88970</td>\r\n                        <td scope=\"col\" class=\"text-center\">PDF</td>\r\n                        <td scope=\"col\" colspan=\"5\">Remuneracion Secretaria</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 350319 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 13556798 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <th colspan=\"11\" class=\"text-right\">Total Cierre del Mes</th>\r\n                        <td scope=\"col\" class=\"text-center\"><strong>{{ 13556798 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n                      </tr>\r\n              </tbody>\r\n            </table>\r\n        </div> \r\n        <app-total-cuenta-sindical></app-total-cuenta-sindical>\r\n       </div>\r\n\r\n     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n     <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  \r\n          \r\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openTablaSindical(TablaSindical)\">Ver Tabla</button>\r\n\r\n\r\n\r\n"
+=======
+<<<<<<< HEAD
+module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template #TablaSindical let-modal>\r\n    <form>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Tabla Sindical</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n       <!--Cuerpo del body inicio y cierre mensual-->\r\n       <div class=\"modal-body\">\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        \r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        </div><br>\r\n\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n              <thead text-sm>\r\n                <tr>\r\n                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Mayo 2019</h6></th>\r\n                </tr>\r\n\r\n                <tr class=\"text-center\">\r\n                  <th scope=\"col\" colspan=\"2\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Documento PDF</th>\r\n                  <th scope=\"col\" colspan=\"5\"style=\"background: #138D75\">Cuenta Sindicado</th>\r\n\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\r\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\r\n                  <th scope=\"col\" rowspan=\"2\" style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Abril</th>\r\n                </tr>\r\n                <tr class=\"text-center\" style=\"background: #138D75;color:#FDFEFE\"> <th scope=\"col\" colspan=\"5\">Ingresos y Egresos Fijos</th></tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                  <td scope=\"col\" class=\"text-center\">88970</td>\r\n                  <td scope=\"col\" class=\"text-center\"></td>\r\n                  <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                    <td scope=\"col\" class=\"text-center\">88970</td>\r\n                    <td scope=\"col\" class=\"text-center\"></td>\r\n                    <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                  </tr>\r\n\r\n                  <tr>\r\n                      <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                      <td scope=\"col\" class=\"text-center\">88970</td>\r\n                      <td scope=\"col\" class=\"text-center\"></td>\r\n                      <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                    </tr>\r\n\r\n                    <tr>\r\n                        <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\r\n                        <td scope=\"col\" class=\"text-center\">88970</td>\r\n                        <td scope=\"col\" class=\"text-center\"></td>\r\n                        <td scope=\"col\" colspan=\"5\">Lorem ipsum, obcaecati illo! Aut hic porro enim</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                        <td scope=\"col\" class=\"text-center\">{{ 1000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                      </tr>\r\n              </tbody>\r\n            </table>\r\n        </div> \r\n        <br>\r\n       </div>\r\n\r\n     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n     <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  \r\n          \r\n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openTablaSindical(TablaSindical)\">Ver Tabla</button>\r\n\r\n\r\n\r\n"
+=======
+module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #TablaSindical let-modal>\n    <form>\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Tabla Sindical</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n       <!--Cuerpo del body inicio y cierre mensual-->\n       <div class=\"modal-body\">\n\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n        \n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-striped table-bordered table-sm\">\n              <thead text-sm>\n                <tr>\n                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual Mayo 2019</h6></th>\n                </tr>\n\n                <tr class=\"text-center\">\n                  <th scope=\"col\" colspan=\"2\" rowspan=\"2\"style=\"background: #138D75\">Fecha</th>\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">N° Doc</th>\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Documento PDF</th>\n                  <th scope=\"col\" colspan=\"5\"style=\"background: #138D75\">Cuenta Sindicado</th>\n\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Ingresos</th>\n                  <th scope=\"col\" rowspan=\"2\"style=\"background: #138D75\">Egresos</th>\n                  <th scope=\"col\" style=\"background: #229954; color:#FDFEFE\">Cierre Mensual Mes Abril</th>\n                </tr>\n                <tr class=\"text-center\" > \n                  <th scope=\"col\" colspan=\"5\" style=\"background: #138D75;color:#FDFEFE\">Ingresos y Egresos Fijos</th>\n                  <td scope=\"col\" class=\"text-center\"><strong>{{ 5000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>            \n                </tr>\n              </thead>\n              <tbody>\n                <tr>\n                  <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n                  <td scope=\"col\" class=\"text-center\">88970</td>\n                  <td scope=\"col\" class=\"text-center\">PDF</td>\n                  <td scope=\"col\" colspan=\"5\">Pago cuota sindical</td>\n                  <td scope=\"col\" class=\"text-center\">{{ 11000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                  <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                  <td scope=\"col\" class=\"text-center\">{{ 16000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                </tr>\n\n                <tr>\n                    <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n                    <td scope=\"col\" class=\"text-center\">88970</td>\n                    <td scope=\"col\" class=\"text-center\">PDF</td>\n                    <td scope=\"col\" colspan=\"5\">Arriendo oficina edif. comunidad plaza fundacion</td>\n                    <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                    <td scope=\"col\" class=\"text-center\">{{ 220000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                    <td scope=\"col\" class=\"text-center\">{{ 15780000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                  </tr>\n\n                  <tr>\n                      <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n                      <td scope=\"col\" class=\"text-center\">88970</td>\n                      <td scope=\"col\" class=\"text-center\">PDF</td>\n                      <td scope=\"col\" colspan=\"5\">Pago celulares planes movistar S.A.</td>\n                      <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                      <td scope=\"col\" class=\"text-center\">{{ 1872883 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                      <td scope=\"col\" class=\"text-center\">{{ 13907117 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                    </tr>\n\n                    <tr>\n                        <td scope=\"col\" colspan=\"2\" class=\"text-center\">20-06-2019</td>\n                        <td scope=\"col\" class=\"text-center\">88970</td>\n                        <td scope=\"col\" class=\"text-center\">PDF</td>\n                        <td scope=\"col\" colspan=\"5\">Remuneracion Secretaria</td>\n                        <td scope=\"col\" class=\"text-center\">{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                        <td scope=\"col\" class=\"text-center\">{{ 350319 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                        <td scope=\"col\" class=\"text-center\">{{ 13556798 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                      </tr>\n                      <tr>\n                        <th colspan=\"11\" class=\"text-right\">Total Cierre del Mes</th>\n                        <td scope=\"col\" class=\"text-center\"><strong>{{ 13556798 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n                      </tr>\n              </tbody>\n            </table>\n        </div> \n        <app-total-cuenta-sindical></app-total-cuenta-sindical>\n       </div>\n\n     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n     <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n  \n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\n  \n          \n            <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openTablaSindical(TablaSindical)\">Ver Tabla</button>\n\n\n\n"
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -173,7 +248,12 @@ module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div class=\"table-responsive\">\r\n    <table class=\"table table-bordered table-sm\">\r\n      <thead text-sm class=\"text-center\">\r\n        <tr>\r\n          <th col>INGRESOS</th>\r\n          <td col><strong>{{ 11000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <th col>EGRESOS</th>\r\n          <td col><strong>{{ 2443202 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n        <tr>\r\n          <th col>CIERRE MENSUAL MES MAYO</th>\r\n          <td col><strong>{{ 8556798 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n      </thead>\r\n    </table>\r\n  </div>"
+=======
+module.exports = "<div class=\"table-responsive\">\n    <table class=\"table table-bordered table-sm\">\n      <thead text-sm class=\"text-center\">\n        <tr>\n          <th col>INGRESOS</th>\n          <td col><strong>{{ 11000000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        </tr>\n\n        <tr>\n          <th col>EGRESOS</th>\n          <td col><strong>{{ 2443202 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        </tr>\n        <tr>\n          <th col>CIERRE MENSUAL MES MAYO</th>\n          <td col><strong>{{ 8556798 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        </tr>\n      </thead>\n    </table>\n  </div>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -184,7 +264,15 @@ module.exports = "<div class=\"table-responsive\">\r\n    <table class=\"table t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "  <!--Modal caja chica-->\r\n  <ng-template #CajaChica let-modal>\r\n    <!--form del modal caja chica-->\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <!--Cabezal del modal caja chica-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Detalle Caja Chica</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body caja chica-->\r\n      <div class=\"modal-body\">\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n            <div class=\"form-group\">\r\n              <div class=\"input-group\">\r\n                <input \r\n                type=\"date\"\r\n                class=\"form-control form-control-sm\" \r\n                name=\"fecha\"\r\n                #fecha=\"ngModel\"\r\n                [(ngModel)]=\"datosCajaChica.fecha\"\r\n                required>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Ingrese Detalle</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            type=\"text\"\r\n            minlength=\"5\"\r\n            maxlength=\"80\"\r\n            name=\"descripcion\"\r\n            #descripcion=\"ngModel\"\r\n            [(ngModel)]=\"datosCajaChica.descripcion\"\r\n            required>\r\n            <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\r\n              Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\r\n            </small>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Igrese Monto</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            type=\"number\"\r\n            name=\"monto\"\r\n            #monto=\"ngModel\"\r\n            [(ngModel)]=\"datosCajaChica.monto_egreso\"\r\n            required>\r\n            <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\r\n              Compruebe que el monto ingresado solo contiene numeros y no este vacio\r\n            </small>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Igrese N° Documento</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            name=\"nDocumento\"\r\n            #nDocumento=\"ngModel\"\r\n            [(ngModel)]=\"datosCajaChica.numero_documento\"\r\n            required>\r\n            <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n              Compruebe que el N° Documento ingresado solo contiene numeros y no este vacio\r\n            </small>\r\n          </div>\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\r\n            <br><label><strong>Subir Documento</strong></label>\r\n            <input class=\"form-control-file\" type=\"file\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n            <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Guardar Caja Chica</strong></label><br>\r\n            <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n            [disabled]=\"loginForm.invalid\">Guardar</button>\r\n          </div>\r\n\r\n        </div>\r\n        <hr>\r\n        <!--Tabla del Modal Caja Chica-->\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n            <select class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        </div><br>\r\n\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-bordered table-sm\">\r\n            <thead text-sm class=\"text-center\">\r\n              <tr>\r\n                <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\r\n                <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\r\n                <td colspan=\"2\"><strong>{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n              <tr>\r\n                <th colspan=\"2\">Fecha</th>\r\n                <th colspan=\"2\">N° de Doc</th>\r\n                <th colspan=\"2\">PDF</th>\r\n                <th colspan=\"3\">Detalle</th>\r\n                <th colspan=\"2\">Ingresos</th>\r\n                <th colspan=\"2\">Egresos</th>\r\n                <th colspan=\"2\">Actual</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\r\n                <td colspan=\"2\">{{item.fecha}}</td>\r\n                <td colspan=\"2\">{{item.numero_documento}}</td>\r\n                <td colspan=\"2\">{{item.archivo_documento}}</td>\r\n                <td colspan=\"3\">{{item.descripcion}}</td>\r\n                <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                <td colspan=\"2\">{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div>\r\n\r\n        <!--Tabla del total Modal Caja Chica-->\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-bordered table-sm\">\r\n            <thead text-sm class=\"text-center\">\r\n              <tr>\r\n                <th col>INGRESOS</th>\r\n                <td col><strong>{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n      \r\n              <tr>\r\n                <th col>EGRESOS</th>\r\n                <td col><strong>{{ 90000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n              <tr>\r\n                <th col>CIERRE DEL MES</th>\r\n                <td col><strong>{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n            </thead>\r\n          </table>\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <!--Boton para salir del modal caja chica-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n\r\n      <!--Boton Para llamar al modal caja chica-->\r\n      <label><strong>Caja Chica</strong></label><br>\r\n      <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\r\n"
+=======
+<<<<<<< HEAD
+module.exports = "  <!--Modal caja chica-->\r\n  <ng-template #CajaChica let-modal>\r\n    <!--form del modal caja chica-->\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <!--Cabezal del modal caja chica-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Detalle Caja Chica</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body caja chica-->\r\n      <div class=\"modal-body\">\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n            <div class=\"form-group\">\r\n              <div class=\"input-group\">\r\n                <input \r\n                type=\"date\"\r\n                class=\"form-control form-control-sm\" \r\n                name=\"fecha\"\r\n                #fecha=\"ngModel\"\r\n                [(ngModel)]=\"datosCajaChica.fecha\"\r\n                required>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Ingrese Detalle</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            type=\"text\"\r\n            minlength=\"5\"\r\n            maxlength=\"80\"\r\n            name=\"descripcion\"\r\n            #descripcion=\"ngModel\"\r\n            [(ngModel)]=\"datosCajaChica.descripcion\"\r\n            required>\r\n            <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\r\n              Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\r\n            </small>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Igrese Monto</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            type=\"number\"\r\n            name=\"monto\"\r\n            #monto=\"ngModel\"\r\n            [(ngModel)]=\"datosCajaChica.monto_egreso\"\r\n            required>\r\n            <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\r\n              Compruebe que el monto ingresado solo contiene numeros y no este vacio\r\n            </small>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Igrese N° Documento</strong></label>\r\n            <input \r\n            class=\"form-control form-control-sm\"\r\n            name=\"nDocumento\"\r\n            #nDocumento=\"ngModel\"\r\n            [(ngModel)]=\"datosCajaChica.numero_documento\"\r\n            required>\r\n            <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n              Compruebe que el N° Documento ingresado solo contiene numeros y no este vacio\r\n            </small>\r\n          </div>\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\r\n            <br><label><strong>Subir Documento</strong></label>\r\n            <input class=\"form-control-file\" type=\"file\">\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n            <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n            <br><label><strong>Guardar Caja Chica</strong></label><br>\r\n            <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n            [disabled]=\"loginForm.invalid\">Guardar</button>\r\n          </div>\r\n\r\n        </div>\r\n        <!--Tabla del Modal Caja Chica-->\r\n        <app-tabla-caja-chica></app-tabla-caja-chica>\r\n\r\n        <!--Tabla del total Modal Caja Chica-->\r\n        <app-total-caja-chica></app-total-caja-chica>\r\n      </div>\r\n\r\n      <!--Boton para salir del modal caja chica-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n\r\n  <!--Boton Para llamar al modal caja chica-->\r\n    <label><strong>Caja Chica</strong></label><br>\r\n    <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\r\n"
+=======
+module.exports = "  <!--Modal caja chica-->\n  <ng-template #CajaChica let-modal>\n    <!--form del modal caja chica-->\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n      <!--Cabezal del modal caja chica-->\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Detalle Caja Chica</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <!--Cuerpo del body caja chica-->\n      <div class=\"modal-body\">\n        <div class=\"row\">\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br><label><strong>Ingrese Fecha</strong></label> <br>\n            <div class=\"form-group\">\n              <div class=\"input-group\">\n                <input \n                type=\"date\"\n                class=\"form-control form-control-sm\" \n                name=\"fecha\"\n                #fecha=\"ngModel\"\n                [(ngModel)]=\"datosCajaChica.fecha\"\n                required>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Ingrese Detalle</strong></label>\n            <input \n            class=\"form-control form-control-sm\"\n            type=\"text\"\n            minlength=\"5\"\n            maxlength=\"80\"\n            name=\"descripcion\"\n            #descripcion=\"ngModel\"\n            [(ngModel)]=\"datosCajaChica.descripcion\"\n            required>\n            <small *ngIf=\"!descripcion.valid && descripcion.touched\" class=\"invalid-feedback d-block\">\n              Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres\n            </small>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese Monto</strong></label>\n            <input \n            class=\"form-control form-control-sm\"\n            type=\"number\"\n            name=\"monto\"\n            #monto=\"ngModel\"\n            [(ngModel)]=\"datosCajaChica.monto_egreso\"\n            required>\n            <small *ngIf=\"!monto.valid && monto.touched\" class=\"invalid-feedback d-block\">\n              Compruebe que el monto ingresado solo contiene numeros y no este vacio\n            </small>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Igrese N° Documento</strong></label>\n            <input \n            class=\"form-control form-control-sm\"\n            name=\"nDocumento\"\n            #nDocumento=\"ngModel\"\n            [(ngModel)]=\"datosCajaChica.numero_documento\"\n            required>\n            <small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\n              Compruebe que el N° Documento ingresado solo contiene numeros y no este vacio\n            </small>\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\">\n            <br><label><strong>Subir Documento</strong></label>\n            <input class=\"form-control-file\" type=\"file\">\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n            <select (change)=\"tipoOperacionDefinicion($event)\" class=\"form-control form-control-sm\">\n              <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\">\n            <br><label><strong>Guardar Caja Chica</strong></label><br>\n            <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\n            [disabled]=\"loginForm.invalid\">Guardar</button>\n          </div>\n\n        </div>\n        <hr>\n        <!--Tabla del Modal Caja Chica-->\n        <div class=\"row\">\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n            <select class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n              <tr>\n                <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\n                <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\n                <td colspan=\"2\"><strong>{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n              <tr>\n                <th colspan=\"2\">Fecha</th>\n                <th colspan=\"2\">N° de Doc</th>\n                <th colspan=\"2\">PDF</th>\n                <th colspan=\"3\">Detalle</th>\n                <th colspan=\"2\">Ingresos</th>\n                <th colspan=\"2\">Egresos</th>\n                <th colspan=\"2\">Actual</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\n                <td colspan=\"2\">{{item.fecha}}</td>\n                <td colspan=\"2\">{{item.numero_documento}}</td>\n                <td colspan=\"2\">{{item.archivo_documento}}</td>\n                <td colspan=\"3\">{{item.descripcion}}</td>\n                <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                <td colspan=\"2\">{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n\n        <!--Tabla del total Modal Caja Chica-->\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n              <tr>\n                <th col>INGRESOS</th>\n                <td col><strong>{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n      \n              <tr>\n                <th col>EGRESOS</th>\n                <td col><strong>{{ 90000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n              <tr>\n                <th col>CIERRE DEL MES</th>\n                <td col><strong>{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n            </thead>\n          </table>\n        </div>\n\n      </div>\n\n      <!--Boton para salir del modal caja chica-->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n\n      <!--Boton Para llamar al modal caja chica-->\n      <label><strong>Caja Chica</strong></label><br>\n      <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -195,7 +283,15 @@ module.exports = "  <!--Modal caja chica-->\r\n  <ng-template #CajaChica let-mod
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<!--\r\n<hr>\r\nTabla del Modal Caja Chica\r\n<div class=\"row\">\r\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n    <select class=\"form-control form-control-sm\">\r\n      <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n    <select class=\"form-control form-control-sm\">\r\n      <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n    </select>\r\n  </div>\r\n</div><br>\r\n\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-sm\">\r\n    <thead text-sm class=\"text-center\">\r\n      <tr>\r\n        <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\r\n        <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\r\n        <td colspan=\"2\"><strong>{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n      </tr>\r\n      <tr>\r\n        <th colspan=\"2\">Fecha</th>\r\n        <th colspan=\"2\">N° de Doc</th>\r\n        <th colspan=\"2\">PDF</th>\r\n        <th colspan=\"3\">Detalle</th>\r\n        <th colspan=\"2\">Ingresos</th>\r\n        <th colspan=\"2\">Egresos</th>\r\n        <th colspan=\"2\">Actual</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\r\n        <td colspan=\"2\">{{item.fecha}}</td>\r\n        <td colspan=\"2\">{{item.numero_documento}}</td>\r\n        <td colspan=\"2\">{{item.archivo_documento}}</td>\r\n        <td colspan=\"3\">{{item.descripcion}}</td>\r\n        <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n-->"
+=======
+<<<<<<< HEAD
+module.exports = "<hr>\r\n<!--Tabla del Modal Caja Chica-->\r\n<div class=\"row\">\r\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n    <select class=\"form-control form-control-sm\">\r\n      <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\r\n    <select class=\"form-control form-control-sm\">\r\n      <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n    </select>\r\n  </div>\r\n</div><br>\r\n\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-sm\">\r\n    <thead text-sm class=\"text-center\">\r\n      <tr>\r\n        <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\r\n        <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\r\n        <td colspan=\"2\"><strong>{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n      </tr>\r\n      <tr>\r\n        <th colspan=\"2\">Fecha</th>\r\n        <th colspan=\"2\">N° de Doc</th>\r\n        <th colspan=\"2\">PDF</th>\r\n        <th colspan=\"3\">Detalle</th>\r\n        <th colspan=\"2\">Ingresos</th>\r\n        <th colspan=\"2\">Egresos</th>\r\n        <th colspan=\"2\">Actual</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\r\n        <td colspan=\"2\">{{item.fecha}}</td>\r\n        <td colspan=\"2\">{{item.numero_documento}}</td>\r\n        <td colspan=\"2\">{{item.archivo_documento}}</td>\r\n        <td colspan=\"3\">{{item.descripcion}}</td>\r\n        <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+=======
+module.exports = "<!--\n<hr>\nTabla del Modal Caja Chica\n<div class=\"row\">\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n    <select class=\"form-control form-control-sm\">\n      <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n    </select>\n  </div>\n\n  <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes</strong></label>\n    <select class=\"form-control form-control-sm\">\n      <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\n    </select>\n  </div>\n</div><br>\n\n<div class=\"table-responsive\">\n  <table class=\"table table-bordered table-sm\">\n    <thead text-sm class=\"text-center\">\n      <tr>\n        <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\n        <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\n        <td colspan=\"2\"><strong>{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n      </tr>\n      <tr>\n        <th colspan=\"2\">Fecha</th>\n        <th colspan=\"2\">N° de Doc</th>\n        <th colspan=\"2\">PDF</th>\n        <th colspan=\"3\">Detalle</th>\n        <th colspan=\"2\">Ingresos</th>\n        <th colspan=\"2\">Egresos</th>\n        <th colspan=\"2\">Actual</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\n        <td colspan=\"2\">{{item.fecha}}</td>\n        <td colspan=\"2\">{{item.numero_documento}}</td>\n        <td colspan=\"2\">{{item.archivo_documento}}</td>\n        <td colspan=\"3\">{{item.descripcion}}</td>\n        <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n-->"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -206,7 +302,15 @@ module.exports = "<!--\r\n<hr>\r\nTabla del Modal Caja Chica\r\n<div class=\"row
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<!--\r\n  <div class=\"table-responsive\">\r\n    <table class=\"table table-bordered table-sm\">\r\n      <thead text-sm class=\"text-center\">\r\n        <tr>\r\n          <th col>INGRESOS</th>\r\n          <td col><strong>{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <th col>EGRESOS</th>\r\n          <td col><strong>{{ 90000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n        <tr>\r\n          <th col>CIERRE DEL MES</th>\r\n          <td col><strong>{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n      </thead>\r\n    </table>\r\n  </div>\r\n-->"
+=======
+<<<<<<< HEAD
+module.exports = "<div class=\"table-responsive\">\r\n    <table class=\"table table-bordered table-sm\">\r\n      <thead text-sm class=\"text-center\">\r\n        <tr>\r\n          <th col>INGRESOS</th>\r\n          <td col><strong>{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <th col>EGRESOS</th>\r\n          <td col><strong>{{ 90000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n        <tr>\r\n          <th col>CIERRE DEL MES</th>\r\n          <td col><strong>{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n      </thead>\r\n    </table>\r\n  </div>"
+=======
+module.exports = "<!--\n  <div class=\"table-responsive\">\n    <table class=\"table table-bordered table-sm\">\n      <thead text-sm class=\"text-center\">\n        <tr>\n          <th col>INGRESOS</th>\n          <td col><strong>{{ 0 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        </tr>\n\n        <tr>\n          <th col>EGRESOS</th>\n          <td col><strong>{{ 90000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        </tr>\n        <tr>\n          <th col>CIERRE DEL MES</th>\n          <td col><strong>{{ 10000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        </tr>\n      </thead>\n    </table>\n  </div>\n-->"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -217,7 +321,15 @@ module.exports = "<!--\r\n  <div class=\"table-responsive\">\r\n    <table class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n  <ng-template #validar let-modal>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\r\n        <br>\r\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\r\n        <br>\r\n       <button class=\"btn btn-success btn-block btn-sm\"\r\n        (click)=\"btn_validar_usuario(rut,password,validar)\">\r\n        Validar\r\n        </button>\r\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n      </div>\r\n  </ng-template>\r\n\r\n <ng-template #Mensual let-modal>\r\n\r\n    <div class=\"modal-header\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Cuenta sindical / Inicio y Cierre Mensual</strong></h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <!--Cuerpo del body inicio y cierre mensual-->\r\n    <div class=\"modal-body\">\r\n  \r\n        <p>\r\n            <ngb-alert type=\"warning\" [dismissible]=\"false\">\r\n              <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>\r\n            </ngb-alert>\r\n          </p>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\r\n          <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\r\n          <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n            <option *ngFor=\"let mes of selectMes\"  [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Calcular monto</strong></label><br>\r\n          <button (click)=\"calcular_cierre_mensual()\"  type=\"submit\" name=\"botonCalcular\" class=\"btn btn btn-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\"><i class=\"fas fa-calculator\"></i> Calcular</button>\r\n          <!-- <small *ngIf=\"selectOptionMes.value == '1'\" class=\"invalid-feedback d-block\">\r\n            El primer mes de cada año se debe ingresar el monto incial de forma manual\r\n          </small> -->\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Monto Inicial</strong></label>\r\n          <input \r\n          class=\"form-control form-control-sm\"\r\n          type=\"number\"\r\n          name=\"montoInicial\"\r\n          #montoInicial=\"ngModel\"\r\n          [(ngModel)]=\"monto\"\r\n          minlength=\"1\"\r\n          required>\r\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\r\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\r\n          </small>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Guardar Monto</strong></label><br>\r\n          <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"validar_usuario(validar)\">\r\n            <i class=\"fas fa-save\"></i> Guardar</button>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <br> <hr>\r\n        <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n          <select [(ngModel)]=\"anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\" >{{anio.descripcion}}</option>\r\n          </select>\r\n        </div><br>\r\n        <!--tabla del modal inicio y cierre mensual-->\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-bordered table-sm\">\r\n            <thead text-sm class=\"text-center\">\r\n\r\n              <tr>\r\n                <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\r\n                  <h6>Movimiento anual</h6>\r\n                </th>\r\n              </tr>\r\n\r\n              <tr>\r\n                <th scope=\"col\" colspan=\"3\">Año</th>\r\n                <th scope=\"col\" colspan=\"3\">Mes</th>\r\n                <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\r\n                <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr class=\"text-center\" *ngFor=\"let t of tabla\">\r\n                <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\r\n                <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\r\n                <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\r\n                <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div><br>\r\n  \r\n      <!--Tabla del Modal Inicio y cierre mensual-->\r\n      <!-- <app-tabla-inicio-mes></app-tabla-inicio-mes> -->\r\n    </div>\r\n\r\n      \r\n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n    <div class=\"modal-footer\">\r\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n      </button>\r\n    </div>\r\n\r\n\r\n\r\n\r\n</ng-template>\r\n\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\r\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\r\n\r\n  \r\n"
+=======
+<<<<<<< HEAD
+module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n <ng-template #Mensual let-modal>\r\n  <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n    <div class=\"modal-header\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <!--Cuerpo del body inicio y cierre mensual-->\r\n    <div class=\"modal-body\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\r\n          <select class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\r\n          <select class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let mes of selectMes\">{{mes.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Calcular monto</strong></label><br>\r\n          <button class=\"btn btn btn-success btn-block btn-sm\">Calcular</button>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Monto Inicial</strong></label>\r\n          <input \r\n          class=\"form-control form-control-sm\"\r\n          type=\"number\"\r\n          name=\"montoInicial\"\r\n          #montoInicial=\"ngModel\"\r\n          [(ngModel)]=\"datosInicioMes.montoInicial\"\r\n          minlength=\"1\"\r\n          required>\r\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\r\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\r\n          </small>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\r\n          <br><label><strong>Guardar Monto</strong></label><br>\r\n          <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\r\n        </div>\r\n      </div>\r\n  \r\n      <!--Tabla del Modal Inicio y cierre mensual-->\r\n      <app-tabla-inicio-mes></app-tabla-inicio-mes>\r\n    </div>\r\n\r\n      \r\n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n    <div class=\"modal-footer\">\r\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n      </button>\r\n    </div>\r\n\r\n  </form>\r\n</ng-template>\r\n\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\r\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\r\n\r\n  \r\n"
+=======
+module.exports = " <!--Modal para el inicio y cierre mensual-->\n  <ng-template #validar let-modal>\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n       <button class=\"btn btn-success btn-block btn-sm\"\n        (click)=\"btn_validar_usuario(rut,password,validar)\">\n        Validar\n        </button>\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n      </div>\n  </ng-template>\n\n <ng-template #Mensual let-modal>\n\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Cuenta sindical / Inicio y Cierre Mensual</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!--Cuerpo del body inicio y cierre mensual-->\n    <div class=\"modal-body\">\n  \n        <p>\n            <ngb-alert type=\"warning\" [dismissible]=\"false\">\n              <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>\n            </ngb-alert>\n          </p>\n\n      <div class=\"row\">\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n          <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n          <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\n            <option *ngFor=\"let mes of selectMes\"  [value]=\"mes.id\">{{mes.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Calcular monto</strong></label><br>\n          <button (click)=\"calcular_cierre_mensual()\"  type=\"submit\" name=\"botonCalcular\" class=\"btn btn btn-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\"><i class=\"fas fa-calculator\"></i> Calcular</button>\n          <!-- <small *ngIf=\"selectOptionMes.value == '1'\" class=\"invalid-feedback d-block\">\n            El primer mes de cada año se debe ingresar el monto incial de forma manual\n          </small> -->\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Monto Inicial</strong></label>\n          <input \n          class=\"form-control form-control-sm\"\n          type=\"number\"\n          name=\"montoInicial\"\n          #montoInicial=\"ngModel\"\n          [(ngModel)]=\"monto\"\n          minlength=\"1\"\n          required>\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\n          </small>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Guardar Monto</strong></label><br>\n          <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"validar_usuario(validar)\">\n            <i class=\"fas fa-save\"></i> Guardar</button>\n        </div>\n      </div>\n\n\n      <br> <hr>\n        <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n          <select [(ngModel)]=\"anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\" >{{anio.descripcion}}</option>\n          </select>\n        </div><br>\n        <!--tabla del modal inicio y cierre mensual-->\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n\n              <tr>\n                <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n                  <h6>Movimiento anual</h6>\n                </th>\n              </tr>\n\n              <tr>\n                <th scope=\"col\" colspan=\"3\">Año</th>\n                <th scope=\"col\" colspan=\"3\">Mes</th>\n                <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n                <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n                <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n                <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n                <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n                <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n              </tr>\n            </tbody>\n          </table>\n        </div><br>\n  \n      <!--Tabla del Modal Inicio y cierre mensual-->\n      <!-- <app-tabla-inicio-mes></app-tabla-inicio-mes> -->\n    </div>\n\n      \n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n      </button>\n    </div>\n\n\n\n\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\n\n  \n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -228,7 +340,15 @@ module.exports = " <!--Modal para el inicio y cierre mensual-->\r\n  <ng-templat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<!-- <br> <hr>\r\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n  <select [(ngModel)]=\"anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\r\n    <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\" >{{anio.descripcion}}</option>\r\n  </select>\r\n</div><br>\r\n\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-sm\">\r\n    <thead text-sm class=\"text-center\">\r\n\r\n      <tr>\r\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\r\n          <h6>Movimiento mensual Mayo 2019</h6>\r\n        </th>\r\n      </tr>\r\n\r\n      <tr>\r\n        <th scope=\"col\" colspan=\"3\">Año</th>\r\n        <th scope=\"col\" colspan=\"3\">Mes</th>\r\n        <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\r\n        <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr class=\"text-center\" *ngFor=\"let t of tabla\">\r\n        <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\r\n        <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\r\n        <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\r\n        <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div><br>\r\n -->"
+=======
+<<<<<<< HEAD
+module.exports = "<br> <hr>\r\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\r\n  <select class=\"form-control form-control-sm\">\r\n    <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\r\n  </select>\r\n</div><br>\r\n<!--tabla del modal inicio y cierre mensual-->\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-sm\">\r\n    <thead text-sm class=\"text-center\">\r\n\r\n      <tr>\r\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\r\n          <h6>Movimiento mensual Mayo 2019</h6>\r\n        </th>\r\n      </tr>\r\n\r\n      <tr>\r\n        <th scope=\"col\" colspan=\"3\">Año</th>\r\n        <th scope=\"col\" colspan=\"3\">Mes</th>\r\n        <th scope=\"col\" colspan=\"3\">Monto</th>\r\n        <th scope=\"col\" colspan=\"3\">Inicial</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr class=\"text-center\">\r\n        <td scope=\"col\" colspan=\"3\">2019</td>\r\n        <td scope=\"col\" colspan=\"3\">Enero</td>\r\n        <td scope=\"col\" colspan=\"3\">50000</td>\r\n        <td scope=\"col\" colspan=\"3\">120000</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div><br>\r\n"
+=======
+module.exports = "<!-- <br> <hr>\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n  <select [(ngModel)]=\"anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n    <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\" >{{anio.descripcion}}</option>\n  </select>\n</div><br>\n\n<div class=\"table-responsive\">\n  <table class=\"table table-bordered table-sm\">\n    <thead text-sm class=\"text-center\">\n\n      <tr>\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n          <h6>Movimiento mensual Mayo 2019</h6>\n        </th>\n      </tr>\n\n      <tr>\n        <th scope=\"col\" colspan=\"3\">Año</th>\n        <th scope=\"col\" colspan=\"3\">Mes</th>\n        <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n        <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n        <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n      </tr>\n    </tbody>\n  </table>\n</div><br>\n -->"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -239,7 +359,11 @@ module.exports = "<!-- <br> <hr>\r\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg-success\">\r\n  <a class=\"navbar-brand\" style=\"color: aliceblue\">Sindicado CMPC</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Bienestar</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\r\n      </li>\r\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\r\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n          <button ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\">Configuracion Cuenta</button>\r\n          <button ngbDropdownItem (click)=\"logOut()\">Cerrar Sesion</button>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</nav>"
+=======
+module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg-success\">\n  <a class=\"navbar-brand\" style=\"color: aliceblue\">Sindicado CMPC</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">Cuenta Bienestar</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\">Cuenta Fondo Mutuo</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Grafico</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link Disabled\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">Ingreso Socios</a>\n      </li>\n      <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n        <button class=\"btn nav-link\" ngbDropdownToggle>{{usuario}}</button>\n        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n          <button ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\">Configuracion Cuenta</button>\n          <button ngbDropdownItem (click)=\"logOut()\">Cerrar Sesion</button>\n        </div>\n      </li>\n    </ul>\n  </div>\n</nav>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -250,7 +374,11 @@ module.exports = "<nav class=\"navbar navbar-expand-lg sticky-top navbar-dark bg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<p>\r\n  no-encontrado works!\r\n</p>\r\n"
+=======
+module.exports = "<p>\n  no-encontrado works!\n</p>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -261,7 +389,11 @@ module.exports = "<p>\r\n  no-encontrado works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
+=======
+module.exports = "<p>\n  about works!\n</p>\n"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -272,7 +404,11 @@ module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div><br>\r\n  <div class=\"card margen\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Iniciar Sesión</h6></strong></div>\r\n        <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n          <div class=\"card-body\">\r\n\r\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\r\n                <label for=\"email\"><strong>Correo Electronico</strong></label>\r\n                <input \r\n                  type=\"email\" \r\n                  class=\"form-control\" \r\n                  placeholder=\"ejemplo@gmail.com\" \r\n                  name=\"email\" \r\n                  #email=\"ngModel\" \r\n                  [(ngModel)]=\"usuario.email\"\r\n                  required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$\">\r\n                  <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\r\n                    El correo ingresado no es valido\r\n                  </small> \r\n              </div><br>\r\n\r\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\r\n                <label for=\"password\"><strong>Contraseña</strong></label>\r\n                <input \r\n                  type=\"password\" \r\n                  class=\"form-control\" \r\n                  placeholder=\"********\"\r\n                  name=\"password\"\r\n                  #password=\"ngModel\"\r\n                  [(ngModel)]=\"usuario.password\"\r\n                  required>\r\n                  <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\r\n                    Ingrese una pass valida\r\n                  </small>\r\n              </div><br>\r\n\r\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\r\n                <input \r\n                type=\"submit\" \r\n                value=\"Identificarse\" \r\n                class=\"btn btn-success\"\r\n                [disabled]=\"loginForm.invalid\">\r\n              </div>\r\n\r\n          </div>\r\n        </form><br>\r\n    </div><br>\r\n  \r\n  <div *ngIf=\"loading\" class=\"col-xs-12 text-center\">\r\n    <img src=\"/assets/loading.gif\"  width=\"100\" height=\"100\" alt=\"cargando\">\r\n  </div>\r\n</div>"
+=======
+module.exports = "<div><br>\n  <div class=\"card margen\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\"><h6>Iniciar Sesión</h6></strong></div>\n        <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n          <div class=\"card-body\">\n\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\n                <label for=\"email\"><strong>Correo Electronico</strong></label>\n                <input \n                  type=\"text\" \n                  class=\"form-control\" \n                  placeholder=\"Ingrese su rut sin guiones\" \n                  name=\"email\" \n                  #email=\"ngModel\" \n                  [(ngModel)]=\"usuario.email\"\n                  required>\n                  <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\">\n                    El correo ingresado no es valido\n                  </small> \n              </div><br>\n\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\n                <label for=\"password\"><strong>Contraseña</strong></label>\n                <input \n                  type=\"password\" \n                  class=\"form-control\" \n                  placeholder=\"********\"\n                  name=\"password\"\n                  #password=\"ngModel\"\n                  [(ngModel)]=\"usuario.password\"\n                  required>\n                  <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">\n                    Ingrese una pass valida\n                  </small>\n              </div><br>\n\n              <div class=\"col-sm-6 col-md-12 col-lg-12\">\n                <input \n                type=\"submit\" \n                value=\"Identificarse\" \n                class=\"btn btn-success\"\n                [disabled]=\"loginForm.invalid\">\n              </div>\n\n          </div>\n        </form><br>\n    </div><br>\n  \n  <div *ngIf=\"loading\" class=\"col-xs-12 text-center\">\n    <img src=\"/assets/loading.gif\"  width=\"100\" height=\"100\" alt=\"cargando\">\n  </div>\n</div>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -283,7 +419,11 @@ module.exports = "<div><br>\r\n  <div class=\"card margen\">\r\n    <div class=\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<hr><h1 class=\"text-center\"><strong>Bienvenido Sindicato CMPC</strong></h1><hr>\r\n<router-outlet></router-outlet>"
+=======
+module.exports = "<hr><h1 class=\"text-center\"><strong>Bienvenido Sindicato CMPC</strong></h1><hr>\n<router-outlet></router-outlet>"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -356,7 +496,11 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "body {\r\n    background-color: #F1F5FC;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7RUFDM0IiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YxRjVGQztcclxuICB9Il19 */"
+=======
+module.exports = "body {\n    background-color: #F1F5FC;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5QkFBeUI7RUFDM0IiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNGMUY1RkM7XG4gIH0iXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -439,11 +583,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./auth-master/modal-inicio-mes/modal-inicio-mes.component */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.ts");
 /* harmony import */ var _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.ts");
 /* harmony import */ var _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./auth-master/configuraciones/configuraciones.component */ "./src/app/auth-master/configuraciones/configuraciones.component.ts");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/* harmony import */ var _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
+=======
+>>>>>>> bryanv
 /* harmony import */ var _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.ts");
 /* harmony import */ var _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
 /* harmony import */ var _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.ts");
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 
 
@@ -506,9 +660,19 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
             _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
             _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
+<<<<<<< HEAD
             _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
             _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
             _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"]
+=======
+<<<<<<< HEAD
+            _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"]
+=======
+            _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
+            _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
+            _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"]
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -525,7 +689,15 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__["AniosService"],
             _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__["TipoCuentasService"],
             _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__["SindicalService"],
+<<<<<<< HEAD
             _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"]
+=======
+<<<<<<< HEAD
+            _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_35__["CajaChicaService"]
+=======
+            _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"]
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
@@ -542,7 +714,15 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n      .ColorThCS{\r\n    background: #1ABC66;\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvYXV0aC1tYXN0ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2F1dGgtbWFzdGVyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAuQ29sb3JUaENTe1xyXG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcclxuICB9XHJcbiJdfQ== */"
+=======
+<<<<<<< HEAD
+module.exports = "\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2F1dGgtbWFzdGVyLmNvbXBvbmVudC5jc3MifQ== */"
+=======
+module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2F1dGgtbWFzdGVyLmNvbXBvbmVudC5jc3MifQ== */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -620,6 +800,11 @@ AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> bryanv
 /***/ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css":
 /*!*************************************************************************************************!*\
   !*** ./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css ***!
@@ -627,7 +812,11 @@ AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY29uZmlndXJhY2lvbmVzL2NhbWJpby1jb250cmFzZW5pYS9jYW1iaW8tY29udHJhc2VuaWEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jb25maWd1cmFjaW9uZXMvY2FtYmlvLWNvbnRyYXNlbmlhL2NhbWJpby1jb250cmFzZW5pYS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgdHIsdGh7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgICAgIHRoe1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAjZGVtb0ZvbnQge1xyXG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XHJcbiAgICAgICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcclxuICAgICAgICB9XHJcbiAgIl19 */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY29uZmlndXJhY2lvbmVzL2NhbWJpby1jb250cmFzZW5pYS9jYW1iaW8tY29udHJhc2VuaWEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jb25maWd1cmFjaW9uZXMvY2FtYmlvLWNvbnRyYXNlbmlhL2NhbWJpby1jb250cmFzZW5pYS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgLmRhcmstbW9kYWwgLm1vZGFsLWNvbnRlbnQge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XG4gICAgICB9XG4gIFxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgICAgfVxuICBcbiAgICAgIHRyLHRoe1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gICAgICB0aHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xuICAgICAgfVxuICAgICAgXG4gICAgICAjZGVtb0ZvbnQge1xuICAgICAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcbiAgICAgICAgfVxuICAiXX0= */"
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -677,6 +866,7 @@ class CambioContraseniaComponent {
     openMensual(Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
     }
+<<<<<<< HEAD
     send(password, confirm_password, new_password) {
         this.load = true;
         var pass = password.value;
@@ -686,13 +876,28 @@ class CambioContraseniaComponent {
         formData.append('password', pass);
         formData.append('confirm_password', confirm_pass);
         formData.append('new_password', new_pass);
+=======
+    send(password, new_password, conf_new_password) {
+        this.load = true;
+        var pass = password.value;
+        var new_pass = new_password.value;
+        var conf_new_pass = conf_new_password.value;
+        const formData = new FormData();
+        formData.append('password', pass);
+        formData.append('new_password', new_pass);
+        formData.append('conf_new_password', conf_new_pass);
+>>>>>>> bryanv
         this._http.post(this.url + "cambiar_password", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) }).subscribe((val) => {
             //console.log(val.estado);
             if (val.estado == "success") {
                 password.value = '';
+<<<<<<< HEAD
                 confirm_password.value = '';
+=======
+                conf_new_pass.value = '';
+>>>>>>> bryanv
                 new_password.value = '';
                 this.success_visible = true;
                 this.fail_visible = false;
@@ -736,6 +941,10 @@ CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 /***/ "./src/app/auth-master/configuraciones/configuraciones.component.css":
 /*!***************************************************************************!*\
   !*** ./src/app/auth-master/configuraciones/configuraciones.component.css ***!
@@ -829,7 +1038,15 @@ CuentaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci9mb3JtdWxhcmlvLWJpZW5lc3Rhci9mb3JtdWxhcmlvLWJpZW5lc3Rhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtRQUNJLHlCQUF5QjtRQUN6QixZQUFZO01BQ2Q7TUFDQTtRQUNFLFlBQVk7TUFDZDtNQUNBO1FBQ0UseUJBQXlCO01BQzNCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BQ0E7UUFDRSxZQUFZO1FBQ1osbUJBQW1CO01BQ3JCO01BRUE7UUFDRSwwR0FBMEc7UUFDMUcsY0FBYztRQUNkLG1CQUFtQjtRQUNuQjtNQUNBO1VBQ0UsYUFBYTtVQUNiLHVCQUF1QjtVQUN2QixXQUFXO1FBQ2IiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtYmllbmVzdGFyL2Zvcm11bGFyaW8tYmllbmVzdGFyL2Zvcm11bGFyaW8tYmllbmVzdGFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAgICAgICAubWFyZ2Vue1xyXG4gICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgfVxyXG4gICJdfQ== */"
+=======
+<<<<<<< HEAD
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZm9ybXVsYXJpby1iaWVuZXN0YXIvZm9ybXVsYXJpby1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n      .margen{\n          display: flex;\n          justify-content: center;\n          width: 100%;\n        }\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci9mb3JtdWxhcmlvLWJpZW5lc3Rhci9mb3JtdWxhcmlvLWJpZW5lc3Rhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtRQUNJLHlCQUF5QjtRQUN6QixZQUFZO01BQ2Q7TUFDQTtRQUNFLFlBQVk7TUFDZDtNQUNBO1FBQ0UseUJBQXlCO01BQzNCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BQ0E7UUFDRSxZQUFZO1FBQ1osbUJBQW1CO01BQ3JCO01BRUE7UUFDRSwwR0FBMEc7UUFDMUcsY0FBYztRQUNkLG1CQUFtQjtRQUNuQjtNQUNBO1VBQ0UsYUFBYTtVQUNiLHVCQUF1QjtVQUN2QixXQUFXO1FBQ2IiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtYmllbmVzdGFyL2Zvcm11bGFyaW8tYmllbmVzdGFyL2Zvcm11bGFyaW8tYmllbmVzdGFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbiAgICAgIH1cbiAgXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gIFxuICAgICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgICAgIHRoe1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gICAgICB9XG4gICAgICBcbiAgICAgICNkZW1vRm9udCB7XG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xuICAgICAgICB9XG4gICAgICAgIC5tYXJnZW57XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgfVxuICAiXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -872,7 +1089,15 @@ FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n  tr,th{\r\n      font-size: 12px;\r\n  }\r\n  #demoFont {\r\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n    color: #d9d9d9;\r\n    background: #4B94AD;\r\n    }\r\n  .tablaDerecha{\r\n    float: right;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci90YWJsYS1iaWVuZXN0YXIvdGFibGEtYmllbmVzdGFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCO0VBQ0E7TUFDSSxlQUFlO0VBQ25CO0VBRUY7SUFDSSwwR0FBMEc7SUFDMUcsY0FBYztJQUNkLG1CQUFtQjtJQUNuQjtFQUVGO0lBQ0UsWUFBWTtFQUNkIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci90YWJsYS1iaWVuZXN0YXIvdGFibGEtYmllbmVzdGFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgZm9udC1zaXplOiAxMnB4O1xyXG4gIH1cclxuICB0cix0aHtcclxuICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gIH1cclxuXHJcbiNkZW1vRm9udCB7XHJcbiAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xyXG4gICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgfVxyXG5cclxuICAudGFibGFEZXJlY2hhe1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gIH0iXX0= */"
+=======
+<<<<<<< HEAD
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvdGFibGEtYmllbmVzdGFyL3RhYmxhLWJpZW5lc3Rhci5jb21wb25lbnQuY3NzIn0= */"
+=======
+module.exports = "label,input, button{\n    font-size: 12px;\n  }\n  tr,th{\n      font-size: 12px;\n  }\n  #demoFont {\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n    color: #d9d9d9;\n    background: #4B94AD;\n    }\n  .tablaDerecha{\n    float: right;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci90YWJsYS1iaWVuZXN0YXIvdGFibGEtYmllbmVzdGFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCO0VBQ0E7TUFDSSxlQUFlO0VBQ25CO0VBRUY7SUFDSSwwR0FBMEc7SUFDMUcsY0FBYztJQUNkLG1CQUFtQjtJQUNuQjtFQUVGO0lBQ0UsWUFBWTtFQUNkIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci90YWJsYS1iaWVuZXN0YXIvdGFibGEtYmllbmVzdGFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuICB0cix0aHtcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuXG4jZGVtb0ZvbnQge1xuICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgY29sb3I6ICNkOWQ5ZDk7XG4gICAgYmFja2dyb3VuZDogIzRCOTRBRDtcbiAgICB9XG5cbiAgLnRhYmxhRGVyZWNoYXtcbiAgICBmbG9hdDogcmlnaHQ7XG4gIH0iXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -888,6 +1113,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBienestarComponent", function() { return TablaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+<<<<<<< HEAD
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
+=======
+<<<<<<< HEAD
+>>>>>>> bryanv
+
+
+let TablaBienestarComponent = class TablaBienestarComponent {
+    constructor(config, modalService) {
+        this.modalService = modalService;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+<<<<<<< HEAD
+    openTablaBienestar(TablaBienestar) {
+        this.modalService.open(TablaBienestar, { size: 'lg' });
+    }
+=======
+=======
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
 
 
@@ -903,6 +1150,8 @@ let TablaBienestarComponent = class TablaBienestarComponent {
     openTablaBienestar(TablaBienestar) {
         this.modalService.open(TablaBienestar, { size: 'lg' });
     }
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 };
 TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -910,7 +1159,15 @@ TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./tabla-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.html"),
         styles: [__webpack_require__(/*! ./tabla-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.css")]
     }),
+<<<<<<< HEAD
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+=======
+<<<<<<< HEAD
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+=======
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 ], TablaBienestarComponent);
 
 
@@ -1053,7 +1310,11 @@ TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2N1ZW50YS1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9jdWVudGEtc2luZGljYWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICBmb250LXNpemU6IDEycHg7XHJcbiAgfSJdfQ== */"
+=======
+module.exports = "label,input, button{\n    font-size: 12px;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2N1ZW50YS1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9jdWVudGEtc2luZGljYWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b257XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICB9Il19 */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1096,7 +1357,11 @@ CuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color: #292b2c;\r\n      color: white;\r\n    }\r\n    .dark-modal .close {\r\n      color: white;\r\n    }\r\n    .light-blue-backdrop {\r\n      background-color: #5cb3fd;\r\n    }\r\n    label,input, button{\r\n      font-size: 12px;\r\n    }\r\n    tr,th{\r\n      font-size: 12px;\r\n    }\r\n    th{\r\n      color: white;\r\n      background: #138D75;\r\n    }\r\n    #demoFont {\r\n      text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n      color: #d9d9d9;\r\n      background: #4B94AD;\r\n      }\r\n    .margen{\r\n        display: flex;\r\n        justify-content: center;\r\n        width: 100%;\r\n      }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtNQUNFLHlCQUF5QjtNQUN6QixZQUFZO0lBQ2Q7SUFDQTtNQUNFLFlBQVk7SUFDZDtJQUNBO01BQ0UseUJBQXlCO0lBQzNCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBQ0E7TUFDRSxZQUFZO01BQ1osbUJBQW1CO0lBQ3JCO0lBRUE7TUFDRSwwR0FBMEc7TUFDMUcsY0FBYztNQUNkLG1CQUFtQjtNQUNuQjtJQUNBO1FBQ0UsYUFBYTtRQUNiLHVCQUF1QjtRQUN2QixXQUFXO01BQ2IiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC9mb3JtdWxhcmlvLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgfVxyXG4gICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgfVxyXG4gICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG4gICAgfVxyXG5cclxuICAgIGxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgIH1cclxuXHJcbiAgICB0cix0aHtcclxuICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgfVxyXG4gICAgdGh7XHJcbiAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcclxuICAgIH1cclxuICAgIFxyXG4gICAgI2RlbW9Gb250IHtcclxuICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XHJcbiAgICAgIH1cclxuICAgICAgLm1hcmdlbntcclxuICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICB9XHJcbiJdfQ== */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n      background-color: #292b2c;\n      color: white;\n    }\n    .dark-modal .close {\n      color: white;\n    }\n    .light-blue-backdrop {\n      background-color: #5cb3fd;\n    }\n    label,input, button{\n      font-size: 12px;\n    }\n    tr,th{\n      font-size: 12px;\n    }\n    th{\n      color: white;\n      background: #138D75;\n    }\n    #demoFont {\n      text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n      color: #d9d9d9;\n      background: #4B94AD;\n      }\n    .margen{\n        display: flex;\n        justify-content: center;\n        width: 100%;\n      }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2Zvcm11bGFyaW8tc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtNQUNFLHlCQUF5QjtNQUN6QixZQUFZO0lBQ2Q7SUFDQTtNQUNFLFlBQVk7SUFDZDtJQUNBO01BQ0UseUJBQXlCO0lBQzNCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBRUE7TUFDRSxlQUFlO0lBQ2pCO0lBQ0E7TUFDRSxZQUFZO01BQ1osbUJBQW1CO0lBQ3JCO0lBRUE7TUFDRSwwR0FBMEc7TUFDMUcsY0FBYztNQUNkLG1CQUFtQjtNQUNuQjtJQUNBO1FBQ0UsYUFBYTtRQUNiLHVCQUF1QjtRQUN2QixXQUFXO01BQ2IiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtc2luZGljYWwvZm9ybXVsYXJpby1zaW5kaWNhbC9mb3JtdWxhcmlvLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgIH1cbiAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgIH1cbiAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xuICAgIH1cblxuICAgIGxhYmVsLGlucHV0LCBidXR0b257XG4gICAgICBmb250LXNpemU6IDEycHg7XG4gICAgfVxuXG4gICAgdHIsdGh7XG4gICAgICBmb250LXNpemU6IDEycHg7XG4gICAgfVxuICAgIHRoe1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbiAgICB9XG4gICAgXG4gICAgI2RlbW9Gb250IHtcbiAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICBjb2xvcjogI2Q5ZDlkOTtcbiAgICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XG4gICAgICB9XG4gICAgICAubWFyZ2Vue1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG4iXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1200,7 +1465,11 @@ FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n  tr,th{\r\n      font-size: 12px;\r\n  }\r\n  #demoFont {\r\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n    color: #d9d9d9;\r\n    background: #4B94AD;\r\n    }\r\n  .tablaDerecha{\r\n    float: right;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCO0VBQ0E7TUFDSSxlQUFlO0VBQ25CO0VBRUY7SUFDSSwwR0FBMEc7SUFDMUcsY0FBYztJQUNkLG1CQUFtQjtJQUNuQjtFQUVGO0lBQ0UsWUFBWTtFQUNkIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgZm9udC1zaXplOiAxMnB4O1xyXG4gIH1cclxuICB0cix0aHtcclxuICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gIH1cclxuXHJcbiNkZW1vRm9udCB7XHJcbiAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xyXG4gICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgfVxyXG5cclxuICAudGFibGFEZXJlY2hhe1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gIH0iXX0= */"
+=======
+module.exports = "label,input, button{\n    font-size: 12px;\n  }\n  tr,th{\n      font-size: 12px;\n  }\n  #demoFont {\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n    color: #d9d9d9;\n    background: #4B94AD;\n    }\n  .tablaDerecha{\n    float: right;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCO0VBQ0E7TUFDSSxlQUFlO0VBQ25CO0VBRUY7SUFDSSwwR0FBMEc7SUFDMUcsY0FBYztJQUNkLG1CQUFtQjtJQUNuQjtFQUVGO0lBQ0UsWUFBWTtFQUNkIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsL3RhYmxhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuICB0cix0aHtcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuXG4jZGVtb0ZvbnQge1xuICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgY29sb3I6ICNkOWQ5ZDk7XG4gICAgYmFja2dyb3VuZDogIzRCOTRBRDtcbiAgICB9XG5cbiAgLnRhYmxhRGVyZWNoYXtcbiAgICBmbG9hdDogcmlnaHQ7XG4gIH0iXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1251,6 +1520,11 @@ TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> bryanv
 /***/ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.css":
 /*!*******************************************************************************************************!*\
   !*** ./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.css ***!
@@ -1258,7 +1532,11 @@ TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n      .ColorThCS{\r\n    background: #1ABC66;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RvdGFsLWN1ZW50YS1zaW5kaWNhbC90b3RhbC1jdWVudGEtc2luZGljYWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC90b3RhbC1jdWVudGEtc2luZGljYWwvdG90YWwtY3VlbnRhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAuQ29sb3JUaENTe1xyXG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcclxuICB9Il19 */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n      .ColorThCS{\n    background: #1ABC66;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL3RvdGFsLWN1ZW50YS1zaW5kaWNhbC90b3RhbC1jdWVudGEtc2luZGljYWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC90b3RhbC1jdWVudGEtc2luZGljYWwvdG90YWwtY3VlbnRhLXNpbmRpY2FsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbiAgICAgIH1cbiAgXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gIFxuICAgICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgICAgIHRoe1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gICAgICB9XG4gICAgICBcbiAgICAgICNkZW1vRm9udCB7XG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xuICAgICAgICB9XG4gIC5Db2xvclRoQ1N7XG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcbiAgfSJdfQ== */"
+>>>>>>> bryanv
 
 /***/ }),
 
@@ -1294,6 +1572,10 @@ TotalCuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 /***/ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css":
 /*!*****************************************************************************!*\
   !*** ./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css ***!
@@ -1301,7 +1583,11 @@ TotalCuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS9tb2RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLDBHQUEwRztRQUMxRyxjQUFjO1FBQ2QsbUJBQW1CO1FBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS9tb2RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAiXX0= */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS9tb2RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLDBHQUEwRztRQUMxRyxjQUFjO1FBQ2QsbUJBQW1CO1FBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS9tb2RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbiAgICAgIH1cbiAgXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gIFxuICAgICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgICAgIHRoe1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gICAgICB9XG4gICAgICBcbiAgICAgICNkZW1vRm9udCB7XG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xuICAgICAgICB9XG4gICJdfQ== */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1319,8 +1605,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
+<<<<<<< HEAD
 /* harmony import */ var _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla-caja-chica/tabla-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts");
 
+=======
+<<<<<<< HEAD
+=======
+/* harmony import */ var _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla-caja-chica/tabla-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts");
+
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 
 
 
@@ -1329,9 +1623,18 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
     constructor(config, modalService, _cajaChicaService) {
         this.modalService = modalService;
         this._cajaChicaService = _cajaChicaService;
+<<<<<<< HEAD
         this.selectAnio = [];
         this.selectMes = [];
         this.cajaChica = [];
+=======
+<<<<<<< HEAD
+=======
+        this.selectAnio = [];
+        this.selectMes = [];
+        this.cajaChica = [];
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
         this.selectDefinicion = [];
         this.datosCajaChica = {
             numero_documento: 0,
@@ -1346,12 +1649,21 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         config.keyboard = false;
     }
     ngOnInit() {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> bryanv
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         //Cargar Caja chica
         this.refrescarCajaChica();
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
         //Cargar definiciones
         this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
     }
@@ -1370,6 +1682,7 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
             /*this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
               response => {
                 console.log(response);
+<<<<<<< HEAD
               },
               error => {
                 console.log(<any>error);
@@ -1389,10 +1702,39 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         });
     }
 };
+=======
+<<<<<<< HEAD
+=======
+                this.refrescarCajaChica();
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+            }, error => {
+                console.log(error);
+            });
+        }
+    }
+<<<<<<< HEAD
+};
+=======
+    refrescarCajaChica() {
+        //Cargar Caja chica
+        console.log("refrescando caja chica");
+        this._cajaChicaService.getCajaChica('1').subscribe(response => {
+            this.cajaChica = response;
+            console.log(this.cajaChica);
+        }, error => {
+            console.log(error);
+        });
+    }
+};
+>>>>>>> bryanv
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
 ], ModalCajaChicaComponent.prototype, "tablaComponent", void 0);
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-modal-caja-chica',
@@ -1413,7 +1755,11 @@ ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n      .ColorThCS{\r\n    background: #1ABC66;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS90YWJsYS1jYWphLWNoaWNhL3RhYmxhLWNhamEtY2hpY2EuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL21vZGFsLWNhamEtY2hpY2EvdGFibGEtY2FqYS1jaGljYS90YWJsYS1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAuQ29sb3JUaENTe1xyXG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcclxuICB9Il19 */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n      .ColorThCS{\n    background: #1ABC66;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS90YWJsYS1jYWphLWNoaWNhL3RhYmxhLWNhamEtY2hpY2EuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL21vZGFsLWNhamEtY2hpY2EvdGFibGEtY2FqYS1jaGljYS90YWJsYS1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbiAgICAgIH1cbiAgXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gIFxuICAgICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgICAgIHRoe1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gICAgICB9XG4gICAgICBcbiAgICAgICNkZW1vRm9udCB7XG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xuICAgICAgICB9XG4gIC5Db2xvclRoQ1N7XG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcbiAgfSJdfQ== */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1436,6 +1782,7 @@ __webpack_require__.r(__webpack_exports__);
 let TablaCajaChicaComponent = class TablaCajaChicaComponent {
     constructor(_cajaChicaService) {
         this._cajaChicaService = _cajaChicaService;
+<<<<<<< HEAD
         this.selectAnio = [];
         this.selectMes = [];
         this.cajaChica = [];
@@ -1457,6 +1804,10 @@ let TablaCajaChicaComponent = class TablaCajaChicaComponent {
         }, error => {
             console.log(error);
         });
+=======
+    }
+    ngOnInit() {
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
     }
 };
 TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1479,7 +1830,11 @@ TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n      .ColorThCS{\r\n    background: #1ABC66;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS90b3RhbC1jYWphLWNoaWNhL3RvdGFsLWNhamEtY2hpY2EuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL21vZGFsLWNhamEtY2hpY2EvdG90YWwtY2FqYS1jaGljYS90b3RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAuQ29sb3JUaENTe1xyXG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcclxuICB9Il19 */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n      .ColorThCS{\n    background: #1ABC66;\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtY2FqYS1jaGljYS90b3RhbC1jYWphLWNoaWNhL3RvdGFsLWNhamEtY2hpY2EuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkI7TUFDTjtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL21vZGFsLWNhamEtY2hpY2EvdG90YWwtY2FqYS1jaGljYS90b3RhbC1jYWphLWNoaWNhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbiAgICAgIH1cbiAgXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gIFxuICAgICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgICAgIHRoe1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gICAgICB9XG4gICAgICBcbiAgICAgICNkZW1vRm9udCB7XG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xuICAgICAgICB9XG4gIC5Db2xvclRoQ1N7XG4gICAgYmFja2dyb3VuZDogIzFBQkM2NjtcbiAgfSJdfQ== */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1522,7 +1877,11 @@ TotalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy9tb2RhbC1pbmljaW8tbWVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLDBHQUEwRztRQUMxRyxjQUFjO1FBQ2QsbUJBQW1CO1FBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy9tb2RhbC1pbmljaW8tbWVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuICAiXX0= */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy9tb2RhbC1pbmljaW8tbWVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLDBHQUEwRztRQUMxRyxjQUFjO1FBQ2QsbUJBQW1CO1FBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy9tb2RhbC1pbmljaW8tbWVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIH1cbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbiAgICAgIH1cbiAgXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gIFxuICAgICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgICAgIHRoe1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gICAgICB9XG4gICAgICBcbiAgICAgICNkZW1vRm9udCB7XG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XG4gICAgICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xuICAgICAgICB9XG4gICJdfQ== */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1539,6 +1898,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+<<<<<<< HEAD
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+=======
+<<<<<<< HEAD
+>>>>>>> bryanv
+
+//import-------------
+
+
+let ModalInicioMesComponent = class ModalInicioMesComponent {
+    //-------------------------
+    constructor(config, modalService, _http) {
+        this.modalService = modalService;
+<<<<<<< HEAD
+        this._http = _http;
+        this.modalReference = null;
+=======
+=======
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 
@@ -1553,6 +1933,8 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
         this.modalService = modalService;
         this._http = _http;
         this.modalReference = null;
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
         this.selectAnio = [];
         this.selectMes = [];
         this.datosInicioMes = {
@@ -1561,6 +1943,13 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
             monto: '',
             inicial: ''
         };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        config.backdrop = 'static';
+        config.keyboard = false;
+=======
+>>>>>>> bryanv
         //variables-----------------
         this.load = false;
         this.monto = '';
@@ -1578,6 +1967,10 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
         //global---------------
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
         //---------------------
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
     }
     ngOnInit() {
         //Cargar Años
@@ -1587,6 +1980,11 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
     }
     openMensual(Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> bryanv
         this.anio_actual();
         this.mes_actual();
         this.usuario_logeado();
@@ -1680,6 +2078,10 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
         else {
             return `with: ${reason}`;
         }
+<<<<<<< HEAD
+=======
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
     }
 };
 ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1688,7 +2090,15 @@ ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
         styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
     }),
+<<<<<<< HEAD
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+=======
+<<<<<<< HEAD
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+=======
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 ], ModalInicioMesComponent);
 
 
@@ -1702,7 +2112,11 @@ ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy90YWJsYS1pbmljaW8tbWVzL3RhYmxhLWluaWNpby1tZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9tb2RhbC1pbmljaW8tbWVzL3RhYmxhLWluaWNpby1tZXMvdGFibGEtaW5pY2lvLW1lcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgdHIsdGh7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgICAgIHRoe1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAjZGVtb0ZvbnQge1xyXG4gICAgICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XHJcbiAgICAgICAgY29sb3I6ICNkOWQ5ZDk7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcclxuICAgICAgICB9XHJcbiAgIl19 */"
+=======
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbW9kYWwtaW5pY2lvLW1lcy90YWJsYS1pbmljaW8tbWVzL3RhYmxhLWluaWNpby1tZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9tb2RhbC1pbmljaW8tbWVzL3RhYmxhLWluaWNpby1tZXMvdGFibGEtaW5pY2lvLW1lcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgLmRhcmstbW9kYWwgLm1vZGFsLWNvbnRlbnQge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XG4gICAgICB9XG4gIFxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgICAgfVxuICBcbiAgICAgIHRyLHRoe1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gICAgICB0aHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xuICAgICAgfVxuICAgICAgXG4gICAgICAjZGVtb0ZvbnQge1xuICAgICAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcbiAgICAgICAgfVxuICAiXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1718,6 +2132,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaInicioMesComponent", function() { return TablaInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+<<<<<<< HEAD
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
+
+=======
+<<<<<<< HEAD
+>>>>>>> bryanv
+
+//import-------------
+
+
+/////////////////////
+let TablaInicioMesComponent = class TablaInicioMesComponent {
+    //-------------------------
+    constructor(_http) {
+        this._http = _http;
+        this.selectAnio = [];
+        //variables-----------------
+        this.anio = '';
+        this.tabla = [];
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        //global---------------
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+        //---------------------
+    }
+    ngOnInit() {
+        //Cargar Años
+<<<<<<< HEAD
+        //this.anio_actual();
+        //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+=======
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+=======
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
@@ -1743,6 +2190,8 @@ let TablaInicioMesComponent = class TablaInicioMesComponent {
         //Cargar Años
         //this.anio_actual();
         //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
     }
 };
 TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1751,7 +2200,15 @@ TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
         styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
     }),
+<<<<<<< HEAD
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+=======
+<<<<<<< HEAD
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+=======
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 ], TablaInicioMesComponent);
 
 
@@ -1964,7 +2421,11 @@ AboutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "#demoFont {\r\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n    color: #d9d9d9;\r\n    background: #4B94AD;\r\n    }\r\nlabel,input, button{\r\n     font-size: 12px;\r\n    }\r\n.margen{\r\n    width: 18rem;\r\n    height: 21rem;\r\n    margin:auto;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEdBQTBHO0lBQzFHLGNBQWM7SUFDZCxtQkFBbUI7SUFDbkI7QUFDSjtLQUNLLGVBQWU7SUFDaEI7QUFDSjtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsV0FBVztBQUNmIiwiZmlsZSI6InNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2RlbW9Gb250IHtcclxuICAgIHRleHQtc2hhZG93OiAtMXB4IC0xcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjEpLCAxcHggMXB4IDFweCByZ2JhKDAsMCwwLC41KSwgMnB4IDJweCAycHggcmdiYSgyMDYsODksNTUsMCk7XHJcbiAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XHJcbiAgICB9XHJcbmxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgfVxyXG4ubWFyZ2Vue1xyXG4gICAgd2lkdGg6IDE4cmVtO1xyXG4gICAgaGVpZ2h0OiAyMXJlbTtcclxuICAgIG1hcmdpbjphdXRvO1xyXG59XHJcbiJdfQ== */"
+=======
+module.exports = "#demoFont {\n    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n    color: #d9d9d9;\n    background: #4B94AD;\n    }\nlabel,input, button{\n     font-size: 12px;\n    }\n.margen{\n    width: 18rem;\n    height: 21rem;\n    margin:auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEdBQTBHO0lBQzFHLGNBQWM7SUFDZCxtQkFBbUI7SUFDbkI7QUFDSjtLQUNLLGVBQWU7SUFDaEI7QUFDSjtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsV0FBVztBQUNmIiwiZmlsZSI6InNyYy9hcHAvcHVibGljLW1hc3Rlci9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2RlbW9Gb250IHtcbiAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xuICAgIGNvbG9yOiAjZDlkOWQ5O1xuICAgIGJhY2tncm91bmQ6ICM0Qjk0QUQ7XG4gICAgfVxubGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgIH1cbi5tYXJnZW57XG4gICAgd2lkdGg6IDE4cmVtO1xuICAgIGhlaWdodDogMjFyZW07XG4gICAgbWFyZ2luOmF1dG87XG59XG4iXX0= */"
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 /***/ }),
 
@@ -1993,6 +2454,10 @@ let LoginComponent = class LoginComponent {
         this._userService = _userService;
         this.router = router;
         this.loading = false;
+<<<<<<< HEAD
+=======
+        this.lockLogin = false;
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
         this.usuario = new _modelos_usuarios_model__WEBPACK_IMPORTED_MODULE_2__["Usuario"]();
     }
     ngOnInit() {
@@ -2002,6 +2467,7 @@ let LoginComponent = class LoginComponent {
         }
     }
     onSubmit(form) {
+<<<<<<< HEAD
         this._userService.login(this.usuario, true).subscribe(response => {
             this.token = response.token;
             localStorage.setItem('token', JSON.stringify(this.token));
@@ -2012,6 +2478,23 @@ let LoginComponent = class LoginComponent {
             this.router.navigate(['**']);
         });
         this.loading = true;
+=======
+        if (this.lockLogin == false) {
+            this.lockLogin = true;
+            this._userService.login(this.usuario, true).subscribe(response => {
+                this.token = response.token;
+                localStorage.setItem('token', JSON.stringify(this.token));
+                localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
+                this.router.navigate(['AuthMaster']);
+            }, error => {
+                this.status = error;
+                this.router.navigate(['**']);
+                this.lockLogin = false;
+                console.log(this.status);
+            });
+            this.loading = true;
+        }
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
     }
 };
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2091,7 +2574,14 @@ __webpack_require__.r(__webpack_exports__);
 let AniosService = class AniosService {
     constructor(_http) {
         this._http = _http;
+<<<<<<< HEAD
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+=======
+<<<<<<< HEAD
+=======
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     getAnios() {
@@ -2191,8 +2681,18 @@ CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "global", function() { return global; });
 var global = {
+<<<<<<< HEAD
     //url: 'http://127.0.0.1:8000/api/'
     url: '/api/'
+=======
+<<<<<<< HEAD
+    url: 'http://127.0.0.1:8000/api/'
+    //url:'/api/'
+=======
+    //url: 'http://127.0.0.1:8000/api/'
+    url: '/api/'
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
+>>>>>>> bryanv
 };
 
 
@@ -2340,7 +2840,11 @@ let UsuarioService = class UsuarioService {
         let json = JSON.stringify(user);
         //let params = 'json='+json;
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+<<<<<<< HEAD
         return this._http.post(this.url + 'login?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
+=======
+        return this._http.post(this.url + 'login_rut?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
     }
     getToken() {
         let token = localStorage.getItem('token');
@@ -2442,7 +2946,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+=======
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/src/main.ts */"./src/main.ts");
+>>>>>>> 6587d728cd46cdbadb83b25718ca9730121bfa73
 
 
 /***/ })

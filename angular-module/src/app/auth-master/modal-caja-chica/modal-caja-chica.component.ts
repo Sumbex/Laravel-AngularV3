@@ -65,15 +65,15 @@ export class ModalCajaChicaComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
-      /*this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+      this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
           console.log(response);
+          this.refrescarCajaChica();
         },
         error => {
           console.log(<any>error);
         }
-      );*/
-      this.tablaComponent.refrescarCajaChica();
+      );
     }
   }
 

@@ -45,6 +45,17 @@ module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openMensual(Mensual)\" >Cambiar contraseña</button>\n\n\n<!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n  <div>\n  \t<div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong>>Cambiar contraseña<a href=\"\"></a></strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"close();modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n  \t<div class=\"modal-body\">\n  \t\t<form>\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #confirm_password   class=\"form-control form-control-sm\" placeholder=\"Confirmar contraseña actual\" type=\"password\" name=\"\"><br>\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\"  placeholder=\"nueva contraseña\" type=\"password\" name=\"\"><br>\n  \t\t\t<button class=\"btn btn-success\" (click)=\"send(password,confirm_password,new_password)\" >Actualizar contraseña</button>\n  \t\t\t<img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  \t\t</form>\n\t\t<div *ngIf=\"success_visible\"  class=\"alert alert-primary\" role=\"alert\">\n\t\t  {{ success_texto }}\n\t\t</div>\n\n\t\t<div *ngIf=\"fail_visible\"  class=\"alert alert-danger\" role=\"alert\">\n\t\t  {{ success_texto | json }}\n\t\t</div>\n  \t</div>\n  </div>\n</ng-template>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/configuraciones.component.html":
 /*!******************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/configuraciones/configuraciones.component.html ***!
@@ -52,7 +63,7 @@ module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  configuraciones works!\n</p>\n"
+module.exports = "<div>\n\t<br>\n\t<div class=\"row justify-content-center\">\n\t\t<div class=\"col-md-6\">\n\t\t\t<div class=\"card\">\n\t\t\t\t<div class=\"card-header\">Configuracion</div>\n\n\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t<app-cambio-contrasenia></app-cambio-contrasenia>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -206,7 +217,7 @@ module.exports = "<div class=\"table-responsive\">\n    <table class=\"table tab
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n  <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!--Cuerpo del body inicio y cierre mensual-->\n    <div class=\"modal-body\">\n\n        <p>\n            <ngb-alert type=\"danger\" [dismissible]=\"false\">\n              <small><strong>Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>\n            </ngb-alert>\n          </p>\n\n      <div class=\"row\">\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n          <select class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n          <select class=\"form-control form-control-sm\" #selectOptionMes>\n            <option *ngFor=\"let mes of selectMes\"  [value]=\"mes.id\">{{mes.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Calcular monto</strong></label><br>\n          <button type=\"submit\" name=\"botonCalcular\" class=\"btn btn btn-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\">Calcular</button>\n          <small *ngIf=\"selectOptionMes.value == '1'\" class=\"invalid-feedback d-block\">\n            El primer mes de cada año se debe ingresar el monto incial de forma manual\n          </small>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Monto Inicial</strong></label>\n          <input \n          class=\"form-control form-control-sm\"\n          type=\"number\"\n          name=\"montoInicial\"\n          #montoInicial=\"ngModel\"\n          [(ngModel)]=\"datosInicioMes.montoInicial\"\n          minlength=\"1\"\n          required>\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\n          </small>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Guardar Monto</strong></label><br>\n          <button class=\"btn btn btn-success btn-block btn-sm\">Guardar</button>\n        </div>\n      </div>\n  \n      <!--Tabla del Modal Inicio y cierre mensual-->\n      <app-tabla-inicio-mes></app-tabla-inicio-mes>\n    </div>\n\n      \n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n      </button>\n    </div>\n\n  </form>\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\n\n  \n"
+module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #Mensual let-modal>\n\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong>Inicio y Cierre Mensual</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!--Cuerpo del body inicio y cierre mensual-->\n    <div class=\"modal-body\">\n  \n        <p>\n            <ngb-alert type=\"danger\" [dismissible]=\"false\">\n              <small><strong>Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>\n            </ngb-alert>\n          </p>\n\n      <div class=\"row\">\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n          <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n          <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\n            <option *ngFor=\"let mes of selectMes\"  [value]=\"mes.id\">{{mes.descripcion}}</option>\n          </select>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Calcular monto</strong></label><br>\n          <button (click)=\"calcular_cierre_mensual()\"  type=\"submit\" name=\"botonCalcular\" class=\"btn btn btn-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\">Calcular</button>\n          <!-- <small *ngIf=\"selectOptionMes.value == '1'\" class=\"invalid-feedback d-block\">\n            El primer mes de cada año se debe ingresar el monto incial de forma manual\n          </small> -->\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Monto Inicial</strong></label>\n          <input \n          class=\"form-control form-control-sm\"\n          type=\"number\"\n          name=\"montoInicial\"\n          #montoInicial=\"ngModel\"\n          [(ngModel)]=\"monto\"\n          minlength=\"1\"\n          required>\n          <small *ngIf=\"!montoInicial.valid && montoInicial.touched\" class=\"invalid-feedback d-block\">\n            Compruebe que el monto ingresado solo contiene numeros y no este vacio\n          </small>\n        </div>\n\n        <div class=\"col-sm-6 col-md-4 col-lg-4\">\n          <br><label><strong>Guardar Monto</strong></label><br>\n          <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"guardar()\">Guardar</button>\n        </div>\n      </div>\n  \n      <!--Tabla del Modal Inicio y cierre mensual-->\n      <app-tabla-inicio-mes></app-tabla-inicio-mes>\n    </div>\n\n      \n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n      </button>\n    </div>\n\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n  <label><strong>Inicio y Cierre Mensual</strong></label><br>\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>\n\n  \n"
 
 /***/ }),
 
@@ -217,7 +228,7 @@ module.exports = " <!--Modal para el inicio y cierre mensual-->\n <ng-template #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br> <hr>\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n  <select class=\"form-control form-control-sm\">\n    <option *ngFor=\"let anio of selectAnio\">{{anio.descripcion}}</option>\n  </select>\n</div><br>\n<!--tabla del modal inicio y cierre mensual-->\n<div class=\"table-responsive\">\n  <table class=\"table table-bordered table-sm\">\n    <thead text-sm class=\"text-center\">\n\n      <tr>\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n          <h6>Movimiento mensual Mayo 2019</h6>\n        </th>\n      </tr>\n\n      <tr>\n        <th scope=\"col\" colspan=\"3\">Año</th>\n        <th scope=\"col\" colspan=\"3\">Mes</th>\n        <th scope=\"col\" colspan=\"3\">Monto</th>\n        <th scope=\"col\" colspan=\"3\">Inicial</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"text-center\">\n        <td scope=\"col\" colspan=\"3\">2019</td>\n        <td scope=\"col\" colspan=\"3\">Enero</td>\n        <td scope=\"col\" colspan=\"3\">50000</td>\n        <td scope=\"col\" colspan=\"3\">120000</td>\n      </tr>\n    </tbody>\n  </table>\n</div><br>\n"
+module.exports = "<br> <hr>\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n  <select [(ngModel)]=\"anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n    <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\" >{{anio.descripcion}}</option>\n  </select>\n</div><br>\n<!--tabla del modal inicio y cierre mensual-->\n<div class=\"table-responsive\">\n  <table class=\"table table-bordered table-sm\">\n    <thead text-sm class=\"text-center\">\n\n      <tr>\n        <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n          <h6>Movimiento mensual Mayo 2019</h6>\n        </th>\n      </tr>\n\n      <tr>\n        <th scope=\"col\" colspan=\"3\">Año</th>\n        <th scope=\"col\" colspan=\"3\">Mes</th>\n        <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n        <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n        <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n        <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n      </tr>\n    </tbody>\n  </table>\n</div><br>\n"
 
 /***/ }),
 
@@ -428,8 +439,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./auth-master/modal-inicio-mes/modal-inicio-mes.component */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.ts");
 /* harmony import */ var _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.ts");
 /* harmony import */ var _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./auth-master/configuraciones/configuraciones.component */ "./src/app/auth-master/configuraciones/configuraciones.component.ts");
-/* harmony import */ var _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.ts");
+/* harmony import */ var _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.ts");
 /* harmony import */ var _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
+/* harmony import */ var _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.ts");
+
 
 
 
@@ -494,7 +507,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
             _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
             _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
-            _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_35__["TotalCuentaSindicalComponent"]
+            _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
+            _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -597,6 +611,122 @@ AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
 ], AuthMasterComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css":
+/*!*************************************************************************************************!*\
+  !*** ./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\n        color: #d9d9d9;\n        background: #4B94AD;\n        }\n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY29uZmlndXJhY2lvbmVzL2NhbWJpby1jb250cmFzZW5pYS9jYW1iaW8tY29udHJhc2VuaWEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsMEdBQTBHO1FBQzFHLGNBQWM7UUFDZCxtQkFBbUI7UUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jb25maWd1cmFjaW9uZXMvY2FtYmlvLWNvbnRyYXNlbmlhL2NhbWJpby1jb250cmFzZW5pYS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgLmRhcmstbW9kYWwgLm1vZGFsLWNvbnRlbnQge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XG4gICAgICB9XG4gIFxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgICAgfVxuICBcbiAgICAgIHRyLHRoe1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG4gICAgICB0aHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xuICAgICAgfVxuICAgICAgXG4gICAgICAjZGVtb0ZvbnQge1xuICAgICAgICB0ZXh0LXNoYWRvdzogLTFweCAtMXB4IDFweCByZ2JhKDI1NSwyNTUsMjU1LC4xKSwgMXB4IDFweCAxcHggcmdiYSgwLDAsMCwuNSksIDJweCAycHggMnB4IHJnYmEoMjA2LDg5LDU1LDApO1xuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcbiAgICAgICAgYmFja2dyb3VuZDogIzRCOTRBRDtcbiAgICAgICAgfVxuICAiXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.ts":
+/*!************************************************************************************************!*\
+  !*** ./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.ts ***!
+  \************************************************************************************************/
+/*! exports provided: CambioContraseniaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CambioContraseniaComponent", function() { return CambioContraseniaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
+
+
+
+
+
+let CambioContraseniaComponent = 
+// class Abc {
+//     private noLiterals: undefined;
+//     constructor(public estado: string, mensaje:string) { }
+// }
+class CambioContraseniaComponent {
+    constructor(_http, config, modalService) {
+        this._http = _http;
+        this.modalService = modalService;
+        this.load = false;
+        this.success_visible = false;
+        this.fail_visible = false;
+        this.success_texto = "";
+        this.password = '';
+        this.confirm_password = '';
+        this.new_password = '';
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    openMensual(Mensual) {
+        this.modalService.open(Mensual, { size: 'lg' });
+    }
+    send(password, confirm_password, new_password) {
+        this.load = true;
+        var pass = password.value;
+        var confirm_pass = confirm_password.value;
+        var new_pass = new_password.value;
+        const formData = new FormData();
+        formData.append('password', pass);
+        formData.append('confirm_password', confirm_pass);
+        formData.append('new_password', new_pass);
+        this._http.post(this.url + "cambiar_password", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            }) }).subscribe((val) => {
+            //console.log(val.estado);
+            if (val.estado == "success") {
+                this.password = '';
+                this.confirm_password = '';
+                this.new_password = '';
+                this.success_visible = true;
+                this.fail_visible = false;
+                this.success_texto = 'Se ha actualizado la contraseña!.';
+                this.load = false;
+            }
+            if (val.estado == "false") {
+                this.fail_visible = true;
+                this.success_visible = false;
+                this.success_texto = val.mensaje;
+                this.load = false;
+            }
+        }, response => {
+            console.log("POST call in error", response);
+        }, () => {
+            console.log("The POST observable is now completed.");
+        });
+    }
+    close() {
+        this.success_visible = false;
+        this.fail_visible = false;
+    }
+};
+CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-cambio-contrasenia',
+        template: __webpack_require__(/*! raw-loader!./cambio-contrasenia.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html"),
+        styles: [__webpack_require__(/*! ./cambio-contrasenia.component.css */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css")]
+    })
+    // class Abc {
+    //     private noLiterals: undefined;
+    //     constructor(public estado: string, mensaje:string) { }
+    // }
+    ,
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+], CambioContraseniaComponent);
 
 
 
@@ -1224,12 +1354,15 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
             console.log("Ingreso no valido revisar campos");
         }
         else {
-            this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(response => {
+            /*this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+              response => {
                 console.log(response);
-                this.tablaComponent.refrescarCajaChica();
-            }, error => {
-                console.log(error);
-            });
+              },
+              error => {
+                console.log(<any>error);
+              }
+            );*/
+            this.tablaComponent.refrescarCajaChica();
         }
     }
 };
@@ -1383,12 +1516,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 
+
+
+//import-------------
 
 
 let ModalInicioMesComponent = class ModalInicioMesComponent {
-    constructor(config, modalService) {
+    //-------------------------
+    constructor(config, modalService, _http) {
         this.modalService = modalService;
+        this._http = _http;
         this.selectAnio = [];
         this.selectMes = [];
         this.datosInicioMes = {
@@ -1397,8 +1537,17 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
             monto: '',
             inicial: ''
         };
+        //variables-----------------
+        this.monto = '';
+        this.anio = '';
+        this.mes = '';
+        this.tabla = [];
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         config.backdrop = 'static';
         config.keyboard = false;
+        //global---------------
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+        //---------------------
     }
     ngOnInit() {
         //Cargar Años
@@ -1408,6 +1557,44 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
     }
     openMensual(Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
+        this.anio_actual();
+        this.mes_actual();
+        //console.log(document.getElementById('anio').options.value);
+    }
+    //metodos---------------------------------------------------------------------------------------
+    calcular_cierre_mensual(anio, mes) {
+        this._http.get(this.url + "calcular_cm/" + this.anio + "/" + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+            this.monto = val;
+            console.log(val);
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    anio_actual() {
+        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+            this.anio = val.id;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    mes_actual() {
+        this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+            this.mes = val.id;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    guardar() {
+        const formData = new FormData();
+        formData.append('anio', this.anio);
+        formData.append('mes', this.mes);
+        formData.append('cierre_mensual', this.monto);
+        this._http.post(this.url + "guardar_inicio_mensual/", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+            this.monto = val + '';
+            console.log(val);
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
     }
 };
 ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1416,7 +1603,7 @@ ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
         styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
 ], ModalInicioMesComponent);
 
 
@@ -1446,15 +1633,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaInicioMesComponent", function() { return TablaInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
+//import-------------
+
+
+/////////////////////
 let TablaInicioMesComponent = class TablaInicioMesComponent {
-    constructor() {
+    //-------------------------
+    constructor(_http) {
+        this._http = _http;
         this.selectAnio = [];
+        //variables-----------------
+        this.anio = '';
+        this.tabla = [];
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        //global---------------
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+        //---------------------
     }
     ngOnInit() {
         //Cargar Años
+        this.anio_actual();
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    }
+    //metodos---------------------------------------------------------------------------------------
+    anio_actual() {
+        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+            this.anio = val.id;
+            this.listar_tabla();
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    listar_tabla() {
+        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/" + this.anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+            this.tabla = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    cambiar_anio() {
+        this.listar_tabla();
     }
 };
 TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1463,7 +1685,7 @@ TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
         styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], TablaInicioMesComponent);
 
 

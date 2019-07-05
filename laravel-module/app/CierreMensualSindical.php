@@ -26,9 +26,17 @@ class CierreMensualSindical extends Model
 							inner join anio as a on a.id = cs_cm.anio_id
 							inner join mes as m on m.id = cs_cm.mes_id
 							where cs_cm.activo = ?
-							and cs_cm.anio_id = ?', ['S', $anio/*, $mes*/ ]);
+							and cs_cm.anio_id = ?
+							order by m.id asc
+						', ['S', $anio/*, $mes*/ ]);
 
     		foreach ($data as $key) {
+
+    			//$key->inicio_mensual = number_format( $key->inicio_mensual , 0, '.', ',');
+    			$key->inicio_mensual_m = (number_format( $key->inicio_mensual , 0, '.', ','));
+    			if ($key->cierre_mensual != null) {
+    				$key->cierre_mensual_m = (number_format( $key->cierre_mensual , 0, '.', ','));
+    			}
     			if ($key->cierre_mensual == null) {
     					$s_a = $key->inicio_mensual; //saldo actual de mes <
 
@@ -61,8 +69,9 @@ class CierreMensualSindical extends Model
 								break;
 							}
 						}
-    				$key->cierre_mensual = $ultimo_valor. "kkck";
+    				$key->cierre_mensual_m = number_format($ultimo_valor, 0, '.', ','). "(*)";
     			}
+    			
     		}
     		return $data;
     	}

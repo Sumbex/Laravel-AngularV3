@@ -11,6 +11,9 @@
       </div>
       <!--Cuerpo del body caja chica-->
       <div class="modal-body">
+          <ngb-alert *ngIf="cajaChicaError" [dismissible]="false">
+              <strong>¡No existen ingresos en esta echa!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong> sean los correctos.
+            </ngb-alert>
         <div class="row">
 
           <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>
@@ -76,7 +79,7 @@
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-            <select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
+            <select (change)="changeDefinicion($event)" class="form-control form-control-sm">
               <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
             </select>
           </div>

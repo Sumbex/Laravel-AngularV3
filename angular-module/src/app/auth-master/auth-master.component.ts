@@ -46,8 +46,8 @@ export class AuthMasterComponent implements OnInit {
       document.getElementById("closeModalButton").click();
     });
 
-    //document.getElementById("openModalButton").click();
-    //this.verificarCarga();
+    document.getElementById("openModalButton").click();
+    this.verificarCarga();
   }
 
   verificarCarga(){

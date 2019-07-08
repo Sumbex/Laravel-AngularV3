@@ -39,6 +39,7 @@ export class FormularioSociosComponent implements OnInit
 
   onSubmit(data)
   {
+<<<<<<< HEAD
     
     const form = new FormData();
     form.append('foto', this.selectedImage);
@@ -49,6 +50,13 @@ export class FormularioSociosComponent implements OnInit
     form.append('a_materno',this.a_materno);
     console.log(form);
     this._http.post(this.url + "ingresar_socio",form,{ headers: new HttpHeaders(
+=======
+    this.foto=data;
+    const formData = new FormData();
+    formData.append('foto',this.foto);
+    console.log(this.foto);
+    this._http.post(this.url + "ingresar_socio",formData,{headers: new HttpHeaders(
+>>>>>>> bryanv
       {
           'Authorization': 'Bearer' + this.token,
           // 'Content-Type': 'multipart/form-data'

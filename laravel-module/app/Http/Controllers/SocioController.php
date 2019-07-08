@@ -27,6 +27,8 @@ class SocioController extends Controller
     	// }
     }
 
+    {'foto':this.foto}
+
 
     public function subir_imagen($get_img,$url)
     {

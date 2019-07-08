@@ -33,7 +33,7 @@ export class FormularioSociosComponent implements OnInit
     this.foto=data;
     const formData = new FormData();
     formData.append('foto',this.foto);
-    //console.log(this.foto);
+    console.log(this.foto);
     this._http.post(this.url + "ingresar_socio",formData,{headers: new HttpHeaders(
       {
           'Authorization': 'Bearer' + this.token,

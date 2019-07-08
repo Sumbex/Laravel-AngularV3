@@ -20,6 +20,9 @@ export class ModalCajaChicaComponent implements OnInit {
   cajaChica: cajaChicaSindical[] = [];
   cajaChicaError: boolean = false;
 
+  errorIngreso = false;
+  IngresoStatus: string = '';
+
   selectDefinicion: Definicion[] = [];
 
   valorAnio: Anios = {
@@ -92,8 +95,11 @@ export class ModalCajaChicaComponent implements OnInit {
         response => {
           if(response.estado == 'failed'){
             console.log("Capturado el failed");
+            this.IngresoStatus = JSON.stringify(response.mensaje);
+            this.errorIngreso = true;
           }else{
             console.log("Ingreso correcto");
+            this.errorIngreso = false;
             this.refrescarCajaChica();
           }
             //console.log("test");

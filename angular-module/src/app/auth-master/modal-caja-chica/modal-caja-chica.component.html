@@ -90,16 +90,19 @@
         </div>
         <hr>
         <!--Tabla del Modal Caja Chica-->
+        <ngb-alert *ngIf="cajaChicaError" [dismissible]="false">
+          <strong>¡No existen ingresos en esta echa!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong> sean los correctos.
+        </ngb-alert>
         <div class="row">
           <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+            <select (change)="changeAnio($event)" class="form-control form-control-sm">
+              <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
             </select>
           </div>
 
           <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+            <select (change)="changeMes($event)" class="form-control form-control-sm">
+              <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
             </select>
           </div>
         </div><br>

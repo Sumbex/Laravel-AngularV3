@@ -54,27 +54,33 @@ class CajaChica extends Model
         $caja = $this->traerCajaChica($anio, $mes);
             $tomar = true;
 
-            for ($i = 0; $i < count($caja); $i++) {
-                switch ($caja[$i]->definicion) {
-                    case 1:
-                        if ($tomar == true) {
-                            $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
-                            $tomar = false;
-                        } else {
-                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
-                        }
-                        break;
-                    case 2:
-                        if ($tomar == true) {
-                            $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
-                            $tomar = false;
-                        } else {
-                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
-                        }
-                        break;
+            if (!$caja->isEmpty()) {
+                for ($i = 0; $i < count($caja); $i++) {
+                    switch ($caja[$i]->definicion) {
+                        case 1:
+                            if ($tomar == true) {
+                                $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
+                                $tomar = false;
+                            } else {
+                                $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
+                            }
+                            break;
+                        case 2:
+                            if ($tomar == true) {
+                                $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
+                                $tomar = false;
+                            } else {
+                                $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
+                            }
+                            break;
+                    }
                 }
+                return $caja;
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
             }
-        return $caja;
+            
+        
     }
 
     protected function ingresarCajaChica($request)
@@ -88,18 +94,25 @@ class CajaChica extends Model
 
         $existe = $this->existeCajaChica($anio->id, $mes->id);
         $nDoc = $this->validarNumDoc($request->numero_documento);
-        $total = $this->saldoActualCaja($anio->id, $mes->id);
-
-        foreach ($total as $key => $value) {
-            $key = $value;
-        }
-        //dd($request->monto < $key->saldo_actual);
 
         if ($existe['estado'] == 'success') {
 
             if($nDoc['estado'] == 'success'){
 
-                if($request->monto < $key->saldo_actual){
+                $total = $this->saldoActualCaja($anio->id, $mes->id);
+                
+                if(!empty($total['estado']) && $total['estado'] == "failed"){
+                    $sent = $request->monto < $this->saldo;
+                }else{
+                    foreach ($total as $key => $value) {
+                        $key = $value;
+                    }
+                    $sent = $request->monto < $key->saldo_actual;
+                }
+                //$request->monto < $this->saldo
+                //dd($request->monto < $key->saldo_actual);
+
+                if($sent){
 
                     $caja->anio_id = $anio->id;
                     $caja->mes_id = $fecha['mes'];

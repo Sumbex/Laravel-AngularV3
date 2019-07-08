@@ -16,8 +16,8 @@
                 <input class="form-control-file" 
                 type="file" 
                 name="foto"
-                [(ngModel)]="foto" 
-                required>
+                id="foto"
+                (change)="onSubmit($event)">
               </div>
 
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -87,8 +87,7 @@
               
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <br><label><strong>Guardar Socio</strong></label><br>
-                <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-                  [disabled]="loginForm.invalid">Guardar</button>
+                <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar">Guardar</button>
               </div>
 
             </div>

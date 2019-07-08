@@ -11,13 +11,14 @@ export class FormularioSociosComponent implements OnInit
 {
 
   url:string;
+  selectedImage:File;
 
   foto:File;
   rut:string;
-  fNacimiento:string;
-  nombre:string;
-  aPaterno:string;
-  aMaterno:string;
+  fecha_nacimiento:string;
+  nombres:string;
+  a_paterno:string;
+  a_materno:string;
 
   token = localStorage.getItem('token').replace(/['"]+/g, '');
 
@@ -28,16 +29,29 @@ export class FormularioSociosComponent implements OnInit
   ngOnInit() {
   }
 
+  onSelectImage(event) {
+    //console.log(event.srcElement.files[0])
+
+     this.selectedImage = event.srcElement.files[0];
+      //console.log(this.selectedImage);
+  }
+
+
   onSubmit(data)
   {
-    this.foto=data;
-    const formData = new FormData();
-    formData.append('foto',this.foto);
-    //console.log(this.foto);
-    this._http.post(this.url + "ingresar_socio",formData,{headers: new HttpHeaders(
+    
+    const form = new FormData();
+    form.append('foto', this.selectedImage);
+    form.append('rut',this.rut);
+    form.append('fecha_nacimiento', this.fecha_nacimiento);
+    form.append('nombres',this.nombres);
+    form.append('a_paterno', this.a_paterno);
+    form.append('a_materno',this.a_materno);
+    console.log(form);
+    this._http.post(this.url + "ingresar_socio",form,{ headers: new HttpHeaders(
       {
           'Authorization': 'Bearer' + this.token,
-          'Content-Type': 'multipart/form-data'
+          // 'Content-Type': 'multipart/form-data'
       }
     )}).subscribe((val : {'estado','mensaje'} ) => {
 

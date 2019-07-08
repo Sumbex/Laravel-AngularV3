@@ -43,7 +43,7 @@ export class ModalInicioMesComponent implements OnInit {
   password:string='';
   //-------------------------
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal,public _http: HttpClient) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal,public _http: HttpClient,public _anios: AniosService) {
 
     config.backdrop = 'static';
     config.keyboard = false;
@@ -55,16 +55,14 @@ export class ModalInicioMesComponent implements OnInit {
   }
 
   ngOnInit() {
-    //Cargar Años
-    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
-    //Cargar Meses
-    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
 
 
   }
 
   openMensual(Mensual) {
+    this.llenar_anio_y_mes();
     this.modalService.open(Mensual, { size: 'lg' });
     this.anio_actual();
     this.mes_actual();
@@ -73,6 +71,33 @@ export class ModalInicioMesComponent implements OnInit {
     //console.log(document.getElementById('anio').options.value);
     
   }
+  llenar_anio_y_mes(){
+
+
+       this._anios.getAnios().subscribe((val) => {
+              this.selectAnio = val;
+              
+              
+          }, response => {console.log("POST call in error", response);},() => {
+                 console.log("The POST success.");
+          });
+
+        this._anios.getMeses().subscribe((val) => {
+              this.selectMes = val;
+              
+              
+          }, response => {console.log("POST call in error", response);},() => {
+                 console.log("The POST success.");
+          });
+        
+
+       //Cargar Años
+    //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    //this.selectMes = JSON.parse(localStorage.getItem('meses'));
+  }
+
 
   //metodos---------------------------------------------------------------------------------------
   calcular_cierre_mensual(anio, mes){
@@ -113,7 +138,6 @@ export class ModalInicioMesComponent implements OnInit {
           });
   }
   guardar(){
-
 
             const formData = new FormData();
             formData.append('anio', this.anio);

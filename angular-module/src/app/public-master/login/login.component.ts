@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public status: string;
   public token: string;
   public loading: boolean = false;
+  public noEncontrado = false;
 
   public lockLogin: boolean = false;
 
@@ -32,18 +33,29 @@ export class LoginComponent implements OnInit {
     this.lockLogin = true;
     this._userService.login(this.usuario, true).subscribe(
       response => {
+        if(response.status == 'success'){
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
-        localStorage.setItem('usuario', JSON.stringify(this.usuario.email))
+        localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
+        console.log(response);
+        this.lockLogin = false;
         this.router.navigate(['AuthMaster']);
+      }else{
+        console.log("Revise que su usuario sea correcto");
+        this.lockLogin = false;
+        this.noEncontrado = true;
+        this.loading = false;
+      }
       },
       error => {
         this.status = error;
-        this.router.navigate(['**']);
+        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
-        console.log(this.status);
+        this.noEncontrado = true;
+        this.loading = false;
       }
     );
+    this.noEncontrado = false;
     this.loading = true;
   }
   }

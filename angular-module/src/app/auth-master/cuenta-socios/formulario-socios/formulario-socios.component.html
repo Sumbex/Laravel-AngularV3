@@ -1,0 +1,100 @@
+
+<div class="container">
+  <!--Formulario para ingresar una cuenta sindical-->
+  <div class="card">
+    <div class="card-header" id="demoFont"><strong class="text-center">
+        <h6>Resgistro de Socios</h6>
+      </strong>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
+      <div class="card-body">
+          <div class="row">
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <br><label><strong>Ingrese foto del socio</strong></label> <br>
+                <input class="form-control-file" 
+                type="file" 
+                name="foto"
+                [(ngModel)]="foto" 
+                required>
+              </div>
+
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                  <br><label><strong>Rut</strong></label>
+                  <input 
+                  type="string" 
+                  class="form-control form-control-sm"
+                  name="rut"
+                  placeholder="123456789"  
+                  [(ngModel)]="rut" 
+                  required>
+                  <!--<small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                    Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                  </small>-->
+                </div>
+              
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <br><label><strong>Fecha de Nacimiento</strong></label>
+                    <input 
+                    type="date" 
+                    class="form-control form-control-sm"
+                    name="fNacimiento"  
+                    required>
+                    <!--<small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                      Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                    </small>-->
+                  </div>
+
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                      <br><label><strong>Nombre</strong></label>
+                      <input 
+                      type="string" 
+                      class="form-control form-control-sm"
+                      name="nombre"  
+                      placeholder="ingrese nombre"
+                      required>
+                      <!--<small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                        Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                      </small>-->
+                    </div>
+      
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                        <br><label><strong>Apellido Paterno</strong></label>
+                        <input 
+                        type="string" 
+                        class="form-control form-control-sm"
+                        name="aPaterno"  
+                        placeholder="ingrese apellido paterno"
+                        required>
+                        <!--<small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                          Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                        </small>-->
+                      </div>
+      
+                      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                          <br><label><strong>Apellido Materno</strong></label>
+                          <input 
+                          type="string" 
+                          class="form-control form-control-sm"
+                          name="aMaterno"
+                          placeholder="ingrese apellido materno"  
+                          required>
+                          <!--<small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                            Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                          </small>-->
+                        </div>
+              
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <br><label><strong>Guardar Socio</strong></label><br>
+                <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
+                  [disabled]="loginForm.invalid">Guardar</button>
+              </div>
+
+            </div>
+          </div>
+      </div>
+    </form>
+  </div> <br>
+
+</div>

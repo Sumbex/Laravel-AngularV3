@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TipoCuentasService } from '../servicios/tipo-cuentas.service';
 import { AniosService } from '../servicios/anios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth-master',
@@ -9,6 +10,11 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./auth-master.component.css']
 })
 export class AuthMasterComponent implements OnInit {
+  anios;
+  filtroDefiniciones;
+  filtroDetalle;
+  filtroAnios;
+  filtroMeses;
 
   constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, config: NgbModalConfig, private modalService: NgbModal) {
 
@@ -18,34 +24,30 @@ export class AuthMasterComponent implements OnInit {
    }
 
   ngOnInit() {
-
-  
     //Guardar definicion
     this._tipoCuentas.getDefinicion().subscribe((res) => {
-      localStorage.setItem('definicion', JSON.stringify(res));
+      this.filtroDefiniciones = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('definicion', JSON.stringify(this.filtroDefiniciones));
     });
     //Guardar Detalle
     this._tipoCuentas.getTipoCuenta().subscribe((res) => {
-      localStorage.setItem('detalle', JSON.stringify(res));
+      this.filtroDetalle = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('detalle', JSON.stringify(this.filtroDetalle));
     });
     //Guardar Anios
     this._getAnios.getAnios().subscribe((res) => {
-      localStorage.setItem('anios', JSON.stringify(res));
+      this.filtroAnios = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('anios', JSON.stringify(this.filtroAnios));
     });
     //Guardar Meses
     this._getAnios.getMeses().subscribe((res) => {
-      localStorage.setItem('meses', JSON.stringify(res));
+      this.filtroMeses = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('meses', JSON.stringify(this.filtroMeses));
       document.getElementById("closeModalButton").click();
     });
 
-    document.getElementById("openModalButton").click();
-    this.verificarCarga();
-
-        //DomContentLoaded
-       // window.addEventListener('load', (event) => {
-      // document.getElementById("closeModalButton").click();   
-     // });
-        
+    //document.getElementById("openModalButton").click();
+    //this.verificarCarga();
   }
 
   verificarCarga(){

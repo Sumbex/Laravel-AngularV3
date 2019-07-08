@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class CierreMensualSindical extends Model
 {
+	//este modelo es solo para la cuenta sindical
     protected $table = "c_s_cierre_mensual";
 
 
@@ -75,5 +76,17 @@ class CierreMensualSindical extends Model
     		}
     		return $data;
     	}
+    }
+
+    protected function inicio_mensual($anio, $mes)
+    {
+    	$val = $this->select('inicio_mensual')->where([
+    		'mes_id' => $mes, 'anio_id' => $anio
+    	])->first();
+
+    	if ($val) {
+    		return ['estado' => 'success', $val];
+    	}
+    	return ['estado'=>'failed', 'mensaje' => 'no hay monto incial en este mes'];
     }
 }

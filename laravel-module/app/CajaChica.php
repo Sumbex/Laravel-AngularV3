@@ -6,12 +6,39 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CuentaSindicatoController;
+use Illuminate\Support\Facades\Validator;
 
 class CajaChica extends Model
 {
     protected  $saldo = 100000;
 
     protected $table = "cs_caja_chica";
+
+    public function validarDatos($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'monto' => 'required|integer|min:1|max:100000'
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento.required' => 'El numero de documento es necesario',
+	        	'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+                'monto.required' => 'El monto es necesario',
+                'monto.integer' => 'Debe ingresar solo numeros',
+                'monto.min' => 'El monto debe ser mayor a 0.',
+                'monto.max' => 'El monto no debe ser mayor a 100000 pesos.'
+	        ]);
+ 
+	        if ($validator->fails()){ return ['estado' => false, 'mensaje' => $validator->errors()];}
+	        return ['estado' => true, 'mensaje' => 'success'];
+	}
 
     protected function div_fecha($value)
     {
@@ -31,22 +58,6 @@ class CajaChica extends Model
     protected function mes_tipo_id($value)
     {
         return DB::table('mes')->where('id', $value)->first();
-    }
-
-    protected function validarNumDoc($numDoc){
-        $caja = DB::table('cs_caja_chica')
-            ->select('numero_documento')
-            ->where([
-                'numero_documento' => $numDoc,
-                'activo' => 'S',
-            ])
-            ->first();
-
-            if (empty($caja)) {
-                return ['estado' => 'success', 'mensaje' => 'Todo bien.'];
-            } else {
-                return ['estado' => 'failed', 'mensaje' => 'El numero de documento ya existe.'];
-            }
     }
 
     protected function saldoActualCaja($anio, $mes){
@@ -85,32 +96,31 @@ class CajaChica extends Model
 
     protected function ingresarCajaChica($request)
     {
-        $caja = new CajaChica;
+        $validarDatos = $this->validarDatos($request);
 
-        $fecha = $this->div_fecha($request->fecha);
+        if($validarDatos['estado'] == true){
+            
+            $caja = new CajaChica;
 
-        $anio = $this->anio_tipo_id($fecha['anio']);
-        $mes = $this->mes_tipo_id($fecha['mes']);
+            $fecha = $this->div_fecha($request->fecha);
 
-        $existe = $this->existeCajaChica($anio->id, $mes->id);
-        $nDoc = $this->validarNumDoc($request->numero_documento);
+            $anio = $this->anio_tipo_id($fecha['anio']);
+            $mes = $this->mes_tipo_id($fecha['mes']);
 
-        if ($existe['estado'] == 'success') {
+            $existe = $this->existeCajaChica($anio->id, $mes->id);
 
-            if($nDoc['estado'] == 'success'){
+            if($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
                 
                 if(!empty($total['estado']) && $total['estado'] == "failed"){
-                    $sent = $request->monto < $this->saldo;
+                    $sent = $request->monto <= $this->saldo;
                 }else{
                     foreach ($total as $key => $value) {
                         $key = $value;
                     }
-                    $sent = $request->monto < $key->saldo_actual;
+                    $sent = $request->monto <= $key->saldo_actual;
                 }
-                //$request->monto < $this->saldo
-                //dd($request->monto < $key->saldo_actual);
 
                 if($sent){
 
@@ -142,14 +152,13 @@ class CajaChica extends Model
                 }else{
                     return ['estado' => 'failed', 'mensaje' => 'El monto ingresado excede al valor en Caja Chica'];
                 }
-               
-            }else{
-                return $nDoc;
+            } else {
+                return $existe;
             }
-            
-        } else {
-            return $existe;
+        }else{
+            return $validarDatos;
         }
+
     }
 
     protected function existeCajaChica($anio, $mes)
@@ -215,12 +224,18 @@ class CajaChica extends Model
             ])
             ->get();
 
-            if($caja[0]->total_ingreso == 0){
-                $caja[0]->total = $caja[0]->total_egreso;
+            if(is_null($caja[0]->total_ingreso) && is_null($caja[0]->total_egreso)){
+                return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
             }else{
-                $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+                if($caja[0]->total_ingreso == 0){
+                    $caja[0]->total_ingreso = 0;
+                    $caja[0]->total = $caja[0]->total_egreso;
+                }else{
+                    $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+                }
+                return $caja;
             }
-            return $caja;
+            
         }else{
             return $existe;
         }

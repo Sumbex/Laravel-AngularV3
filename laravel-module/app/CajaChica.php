@@ -224,12 +224,18 @@ class CajaChica extends Model
             ])
             ->get();
 
-            if($caja[0]->total_ingreso == 0){
-                $caja[0]->total = $caja[0]->total_egreso;
+            if(is_null($caja[0]->total_ingreso) && is_null($caja[0]->total_egreso)){
+                return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
             }else{
-                $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+                if($caja[0]->total_ingreso == 0){
+                    $caja[0]->total_ingreso = 0;
+                    $caja[0]->total = $caja[0]->total_egreso;
+                }else{
+                    $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
+                }
+                return $caja;
             }
-            return $caja;
+            
         }else{
             return $existe;
         }

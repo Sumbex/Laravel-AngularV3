@@ -26,4 +26,4 @@ Route::get('usuario_logeado','DatosBasicosController@usuario_logeado');
 
 //CUENTA SOCIOS-------------------------------------------------------------------------------
 
-Route::get('ingresar_socio','SocioController@ingresar');
+Route::post('ingresar_socio','SocioController@ingresar');

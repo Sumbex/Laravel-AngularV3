@@ -1,6 +1,8 @@
 <?php 
 
 
+//CUENTA SINDICATO--------------------------------------------------------------------------------
+
 Route::get('listar_anios','DatosBasicosController@listar_anios');
 Route::get('anio_actual','DatosBasicosController@anio_actual');
 Route::get('listar_meses','DatosBasicosController@listar_meses');
@@ -19,3 +21,9 @@ Route::post('insertar_cs_prestamo', 'PrestamosController@insertar_cs');
 Route::get('listar_cs_prestamo/{anio}/{mes}', 'PrestamosController@listar_cs_prestamo');
 
 Route::get('usuario_logeado','DatosBasicosController@usuario_logeado');
+
+//-------------------------------------------------------------------------------------------------
+
+//CUENTA SOCIOS-------------------------------------------------------------------------------
+
+Route::get('ingresar_socio','SocioController@ingresar');

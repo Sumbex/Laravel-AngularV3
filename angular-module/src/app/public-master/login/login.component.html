@@ -5,7 +5,7 @@
           <div class="card-body">
 
               <div class="col-sm-6 col-md-12 col-lg-12">
-                <label for="email"><strong>Correo Electronico</strong></label>
+                <label for="email"><strong>Rut</strong></label>
                 <input 
                   type="text" 
                   class="form-control" 
@@ -15,7 +15,7 @@
                   [(ngModel)]="usuario.email"
                   required>
                   <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
-                    El correo ingresado no es valido
+                    El rut ingresado no es valido
                   </small> 
               </div><br>
 
@@ -45,8 +45,14 @@
           </div>
         </form><br>
     </div><br>
-  
-  <div *ngIf="loading" class="col-xs-12 text-center">
+
+    <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
+      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y <strong>contraseña</strong> sean las correctas e intente nuevamente.
+    </ngb-alert>
+
+    <div *ngIf="loading" class="loader">Loading...</div>
+
+  <!--<div *ngIf="loading" class="col-xs-12 text-center">
     <img src="/assets/loading.gif"  width="100" height="100" alt="cargando">
-  </div>
+  </div>-->
 </div>

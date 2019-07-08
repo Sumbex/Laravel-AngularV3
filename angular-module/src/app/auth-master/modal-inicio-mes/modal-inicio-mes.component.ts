@@ -16,6 +16,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ModalInicioMesComponent implements OnInit {
 
+  success_visible:boolean= false;
+  txt:string='';
+  failed_visible:boolean=false;
+
   modalReference = null; 
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
@@ -101,7 +105,9 @@ export class ModalInicioMesComponent implements OnInit {
 
   //metodos---------------------------------------------------------------------------------------
   calcular_cierre_mensual(anio, mes){
-
+        this.failed_visible = false;
+        this.success_visible = false;
+        
         this._http.get(this.url + "calcular_cm/"+this.anio+"/"+this.mes,
                     {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
           ).subscribe((val:string) => {
@@ -138,7 +144,8 @@ export class ModalInicioMesComponent implements OnInit {
           });
   }
   guardar(){
-
+            this.failed_visible = false;
+            this.success_visible = false;
             const formData = new FormData();
             formData.append('anio', this.anio);
             formData.append('mes', this.mes );
@@ -147,8 +154,22 @@ export class ModalInicioMesComponent implements OnInit {
                         {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
               ).subscribe((val) => {
                   
-                  this.listar_tabla();
-                  console.log("success_response");
+                  if (val['estado'] == 'failed'){ 
+                    console.log(val);
+                    this.failed_visible = true;
+                    this.success_visible = false;
+                    this.txt = val['mensaje'];
+                    this.listar_tabla();
+                 
+                  }
+                   if (val['estado'] == 'success'){ 
+                    console.log(val);
+                    this.failed_visible = false;
+                    this.success_visible = true;
+                    this.txt = val['mensaje'];
+                    this.listar_tabla();
+                 
+                  }
                   
               }, response => {console.log("POST call in error", response);},() => {
                      console.log("The POST success.");

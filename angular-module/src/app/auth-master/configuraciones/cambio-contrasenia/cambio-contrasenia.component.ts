@@ -74,7 +74,7 @@ export class CambioContraseniaComponent implements OnInit {
     			//console.log(val.estado);
             if (val.estado == "success") {
             	  password.value = '';
-				        conf_new_pass.value = '';
+				        conf_new_password.value = '';
 				        new_password.value = '';
 				        this.success_visible = true;
 				        this.fail_visible = false;

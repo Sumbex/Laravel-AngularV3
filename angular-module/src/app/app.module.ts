@@ -39,6 +39,9 @@ import { CambioContraseniaComponent } from './auth-master/configuraciones/cambio
 import { CajaChicaService } from './servicios/caja-chica.service';
 
 import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component';
+import { CuentaSociosComponent } from './auth-master/cuenta-socios/cuenta-socios.component';
+import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
+import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
 
 
 @NgModule({
@@ -68,7 +71,13 @@ import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/tota
 
     CambioContraseniaComponent,
 
-    TotalCuentaSindicalComponent
+    TotalCuentaSindicalComponent,
+
+    CuentaSociosComponent,
+
+    FormularioSociosComponent,
+
+    ListarSociosComponent
 
   ],
   imports: [

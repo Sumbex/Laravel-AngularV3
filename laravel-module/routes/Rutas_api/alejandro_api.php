@@ -9,6 +9,7 @@ Route::get('listar_definicion','DatosBasicosController@listar_definicion');
 Route::get('listar_tipo_cuenta_sindicato','DatosBasicosController@listar_tipo_cuenta_sindicato');
 
 Route::get('listar_inicio_y_cierre_mensual_cs/{anio}','CierreMensualController@listar_cierre_mensual_cs');
+Route::get('traer_monto_inicial_cs/{anio}/{mes}','CierreMensualController@traer_monto_inicial');
 
 Route::get('insertar','DatosBasicosController@insertar');
 Route::post('confirmar_usuario','DatosBasicosController@confirmar_usuario');

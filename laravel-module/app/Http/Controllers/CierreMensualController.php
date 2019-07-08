@@ -87,6 +87,12 @@ class CierreMensualController extends Controller
     	
     }
 
+    public function traer_monto_inicial($anio, $mes)
+    {
+    	
+    	 return CierreMensualSindical::inicio_mensual($anio, $mes);
+    }
+
     public function listar_cierre_mensual_cs($anio)
     {
     	// '1' => id que trabaja en ambito sindical

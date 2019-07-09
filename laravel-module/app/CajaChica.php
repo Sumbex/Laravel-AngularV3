@@ -68,6 +68,7 @@ class CajaChica extends Model
     {
 
         $caja = $this->traerCajaChica($anio, $mes);
+        dd($caja);
         $tomar = true;
 
         if (!$caja->isEmpty()) {
@@ -97,8 +98,14 @@ class CajaChica extends Model
         }
     }
 
+    protected function guardarArchivo($archivo){
+
+
+    }
+
     protected function ingresarCajaChica($request)
     {
+        //dd($request->archivo_documento);
         $validarDatos = $this->validarDatos($request);
 
         if ($validarDatos['estado'] == 'success') {
@@ -111,13 +118,14 @@ class CajaChica extends Model
             $mes = $this->mes_tipo_id($fecha['mes']);
 
             $existe = $this->existeCajaChica($anio->id, $mes->id);
+            
 
             if ($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
-
-
-                if (!empty($total['estado']) && $total['estado'] == false) {
+                //dd(!empty($total) && $total['estado'] == false);
+                
+                if (!empty($total) && $total['estado'] == false) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
                     foreach ($total as $key => $value) {
@@ -125,6 +133,7 @@ class CajaChica extends Model
                     }
                     $sent = $request->monto <= $key->saldo_actual;
                 }
+
 
                 if ($sent) {
 
@@ -148,6 +157,7 @@ class CajaChica extends Model
                     $caja->user_crea = Auth::user()->id;
                     $caja->activo = "S";
 
+                    
                     if ($caja->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Insertado'];
                     } else {

@@ -22,9 +22,8 @@ export class ModalCajaChicaComponent implements OnInit {
   cajaChicaError: boolean = false;
 
   errorIngreso = false;
-  ingresoCorrecto = false;
+  errorIngresoFecha = false;
   ingresoStatus:string='';
-  ingresoExitoso:string='';
 
   selectDefinicion: Definicion[] = [];
 
@@ -107,15 +106,10 @@ export class ModalCajaChicaComponent implements OnInit {
               this.errorIngreso = true;
               return false;
           }else{
-            //console.log("Ingreso correcto");
+            console.log("Ingreso correcto");
             this.errorIngreso = false;
             this.ingresoStatus ='';
-            
-            this.ingresoExitoso = ('Ingreso correcto');
-            this.ingresoCorrecto = true;
-            this.ingresoExitoso = '';
             this.refrescarCajaChica();
-            return false;
           }
             //console.log("test");
             //console.log(response);

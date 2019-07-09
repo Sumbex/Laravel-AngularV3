@@ -23,6 +23,7 @@ export class ModalCajaChicaComponent implements OnInit {
 
   errorIngreso = false;
   ingresoStatus;
+  ingresoFecha;
 
   selectDefinicion: Definicion[] = [];
 
@@ -94,11 +95,17 @@ export class ModalCajaChicaComponent implements OnInit {
     } else {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          if(response.estado == 'failed'){
+          if(response.estado == 'failed_v'){
             //console.log("Capturado el failed");
             this.ingresoStatus = response.mensaje;
             //console.log(this.ingresoStatus);
             this.errorIngreso = true;
+
+            if(response.estado == 'failed'){
+              this.ingresoFecha = response.mensaje;
+              console.log(this.ingresoFecha);
+              this.errorIngreso = true;
+            }
           }else{
             console.log("Ingreso correcto");
             this.errorIngreso = false;

@@ -13,15 +13,16 @@
       <div class="modal-body">
           <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
               <strong>
-                {{ingresoStatus.monto[0] | json}}  
+                {{ingresoStatus.monto[0] | json}}
+              </strong> <hr>
+              <strong>
+                {{ingresoStatus.numero_documento[0] | json}} 
+              </strong> <hr>
+                {{ingresoFecha.mensaje}}
+              <strong>
+
               </strong>
             </ngb-alert>
-
-            <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
-                <strong> 
-                {{ingresoStatus.numero_documento[0] | json}}
-              </strong>
-              </ngb-alert>
               
         <div class="row">
 

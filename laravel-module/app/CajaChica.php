@@ -40,7 +40,7 @@ class CajaChica extends Model
         );
 
         if ($validator->fails()) {
-            return ['estado' => 'failed', 'mensaje' => $validator->errors()];
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
         }
         return ['estado' => 'success', 'mensaje' => 'success'];
     }

@@ -96,7 +96,7 @@ class PrestamosController extends Controller
 
 
     public function calculo_cs_prestamo($anio, $mes)
-		{
+	{
 			$ingreso_total = Cs_prestamos::where(['activo'=>'S', 'anio_id' => $anio, 'mes_id' => $mes ])
 			->sum('monto_ingreso');
 			$egreso_total = Cs_prestamos::where(['activo'=>'S', 'anio_id' => $anio, 'mes_id' => $mes ])

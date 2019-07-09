@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
 import { Definicion } from 'src/app/modelos/definicion.model';
+import { Detalle } from "src/app/modelos/detalle.model";
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
+import { Sindical } from 'src/app/modelos/sindical.model';
+import { SindicalService } from 'src/app/servicios/sindical.service';
 
 @Component({
   selector: 'app-formulario-sindical',
@@ -12,40 +14,62 @@ import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
   styleUrls: ['./formulario-sindical.component.css']
 })
 export class FormularioSindicalComponent implements OnInit {
-  model2: Date;
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
+  selectDetalle: Detalle[] = [];
 
-  constructor(private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService) {
+  datosSindicales: Sindical ={
+    fecha: '',
+    nDocumento: '',
+    tipoCuentaSindicato: '1',
+    descripcion: '',
+    definicion: '1',
+    monto: 0
+  }
+
+  constructor(private _sindicalService: SindicalService) {
+  
   }
 
   ngOnInit() {
     //Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
     //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
-    //Cargar Definiciones
-    this._tiposService.getDefinicion().subscribe((res : any[]) => {
-      this.selectDefinicion = res;
-    });
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Cargar definiciones
+    this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+
+    //Cargar detalles
+    this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
+    console.log(this.selectDefinicion);
+    console.log(this.selectDetalle);
   }
 
-  openMensual(Mensual) {
-    this.modalService.open(Mensual, { size: 'lg' });
-  }
-  openCajaChica(CajaChica) {
-    this.modalService.open(CajaChica, { size: 'lg' });
-  }
-  openPrestamo(Prestamo) {
-    this.modalService.open(Prestamo, { size: 'lg' });
+  onSubmit({value, valid}: {value: Sindical, valid: boolean}) {
+    if(!valid){
+      console.log("Ingreso no valido revisar campos");
+    }else{
+      this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+    }
   }
 
-  openCamping(Camping) {
-    this.modalService.open(Camping, { size: 'lg' });
+  changeDefinicion(evento){
+    this.datosSindicales.definicion = evento.target.value;
+    console.log("ID Definicion: " + this.datosSindicales.definicion);
+  }
+
+  changeDetalle(evento){
+    this.datosSindicales.tipoCuentaSindicato = evento.target.value;
+    console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
   }
 }

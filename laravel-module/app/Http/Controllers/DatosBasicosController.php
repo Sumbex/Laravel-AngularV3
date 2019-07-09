@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\TipoCUentaSindicato;
+use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class DatosBasicosController extends Controller
 {
@@ -15,8 +20,9 @@ class DatosBasicosController extends Controller
     public function anio_actual()	
     {
     	$anio = DB::select("select date_part('year',now()) as anio");
-
-    	return $anio[0]->anio;
+        $anio_db = DB::table('anio')->select(['id','descripcion'])
+        ->where(['activo'=>'S', 'descripcion'=>$anio[0]->anio])->first();
+    	return response()->json($anio_db);
     }
 
     public function listar_meses()
@@ -39,19 +45,6 @@ class DatosBasicosController extends Controller
     }
 
 
-    // public function insertar()
-    // {
-    // 	$tcs = new TipoCUentaSindicato;
-    // 	//$tcs->id='4';
-    // 	$tcs->descripcion = 'Caja grande';
-    // 	$tcs->activo = 'S';
-
-    // 	if($tcs->save()){
-    // 		return "success";
-    // 	}
-    // }
-
-
     public function get_mes($id)
     {
     	 switch ($id) {
@@ -72,5 +65,76 @@ class DatosBasicosController extends Controller
     	}
 
     	return $mes;
+    }
+
+    public function confirmar_usuario(Request $r)
+    {
+        try{
+            $user = User::where('email', $r->rut)->orWhere('rut', $r->rut)->first();
+
+            if (Hash::check($r->password, $user->password)) {
+                return $user->id;
+            }
+            return 0;
+        
+        }catch(QueryException $e){
+            return 0;
+        }
+        catch(\Exception $e){
+            return 0;
+        }
+    }
+
+    public function cambiar_password(Request $r)
+    {
+        $validar = $this->validar_password($r);
+
+        if ($validar['estado'] == "true") {
+
+                $user = User::find(Auth::user()->id);
+
+                if (Hash::check($r->password, $user->password)) {
+                    $user->password = bcrypt($r->new_password);
+                    if ($user->save()) {
+                        return ['estado'=>'success'];
+                    }else{
+                        return ['estado'=>'filed'];
+                    }
+                }else{
+                    return ['estado' => "false", 'mensaje' =>'Contraseña actual no valida'];
+                }
+        }else{
+            return $this->validar_password($r);
+        }
+       
+
+    }
+
+    public function validar_password($request)
+    {
+
+         $validator = Validator::make($request->all(), 
+            [
+                'password' => 'required',
+                'new_password' => 'required|required_with:conf_new_password|same:conf_new_password',
+                'conf_new_password' => 'required'
+               
+            ],
+            [
+                'password.required' => 'La contraseña actual es necesaria',
+                'new_password.same' => 'La nueva contraseña con la confirmacion no son iguales',
+                'conf_new_password.required' => 'Confirme su nueva contraseña',
+                'new_password.required' => 'La nueva contraseña es necesaria',
+               
+            ]);
+
+ 
+            if ($validator->fails()){ return ['estado' => "false", 'mensaje' => $validator->errors()];}
+            return ['estado' => "true", 'mensaje' => 'success'];
+    }
+    public function usuario_logeado()
+    {
+        $user = User::find(Auth::user()->id);
+        return $user;
     }
 }

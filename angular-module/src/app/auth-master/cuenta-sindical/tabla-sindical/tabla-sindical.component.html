@@ -49,15 +49,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td colspan="3" class="text-center">20-06-2019</td>
-                  <td class="text-center">88970</td>
-                  <td class="text-center">PDF</td>
-                  <td colspan="4">Ganacias final de 200 pesos por galon de gas vendido</td>
-                  <td class="text-center">{{ 40000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                  <td class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <tr *ngFor="let itemFijo of fijos">
+                  <td colspan="3" class="text-center">{{itemFijo.fecha}}</td>
+                  <td class="text-center">{{itemFijo.numero_documento}}</td>
+                  <td class="text-center">{{itemFijo.archivo_documento}}</td>
+                  <td colspan="4">{{itemFijo.descripcion}}</td>
+                  <td class="text-center">{{ itemFijo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td class="text-center">{{ itemFijo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                   <!--acumulado cierre del mes actual-->
-                  <td class="text-center">{{ 2040000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td class="text-center">{{ itemFijo.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                 </tr>
 
                 <!--variables-->
@@ -71,15 +71,15 @@
                   <th></th>
                 </tr>
 
-                <tr>
-                    <td colspan="3" class="text-center">20-06-2019</td>
-                    <td scope="col" class="text-center">88970</td>
-                    <td scope="col" class="text-center">PDF</td>
-                    <td scope="col" colspan="4">caja chica</td>
-                    <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                    <td scope="col" class="text-center">{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <tr *ngFor="let itemVariable of variable"> 
+                    <td colspan="3" class="text-center">{{itemVariable.fecha}}</td>
+                    <td scope="col" class="text-center">{{itemVariable.numero_documento}}</td>
+                    <td scope="col" class="text-center">{{itemVariable.archivo_documento}}</td>
+                    <td scope="col" colspan="4">{{itemVariable.descripcion}}</td>
+                    <td scope="col" class="text-center">{{ itemVariable.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                    <td scope="col" class="text-center">{{ itemVariable.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     <!--acumulado cierre del mes actual-->
-                    <td scope="col" class="text-center">{{ 1940000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                    <td scope="col" class="text-center">{{ itemVariable.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                   </tr>
 
                   <!--caja chica-->
@@ -93,15 +93,15 @@
                     <th></th>
                   </tr>
   
-                  <tr>
-                      <td colspan="3" class="text-center">20-06-2019</td>
-                      <td scope="col" class="text-center">88970</td>
-                      <td scope="col" class="text-center">PDF</td>
-                      <td scope="col" colspan="4">Fallecio la suegra de Juan Perez</td>
-                      <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                      <td scope="col" class="text-center">{{ 1190000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <tr *ngFor="let itemCajaChica of cajaChica">
+                      <td colspan="3" class="text-center">{{itemCajaChica.fecha}}</td>
+                      <td scope="col" class="text-center">{{itemCajaChica.numero_documento}}</td>
+                      <td scope="col" class="text-center">{{itemCajaChica.archivo_documento}}</td>
+                      <td scope="col" colspan="4">{{itemCajaChica.descripcion}}</td>
+                      <td scope="col" class="text-center">{{ itemCajaChica.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ itemCajaChica.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <!--acumulado cierre del mes actual-->
-                      <td scope="col" class="text-center">{{ 750000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ itemCajaChica.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     </tr>
 
                      <!--Prestamos-->
@@ -115,15 +115,15 @@
                     <th></th>
                   </tr>
   
-                  <tr>
-                      <td colspan="3" class="text-center">20-06-2019</td>
-                      <td scope="col" class="text-center">88970</td>
-                      <td scope="col" class="text-center">PDF</td>
-                      <td scope="col" colspan="4">Fallecio la suegra de Juan Perez</td>
-                      <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                      <td scope="col" class="text-center">{{ 1190000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <tr *ngFor="let itemPrestamo of prestamo">
+                      <td colspan="3" class="text-center">{{itemPrestamo.fecha}}</td>
+                      <td scope="col" class="text-center">{{itemPrestamo.numero_documento}}</td>
+                      <td scope="col" class="text-center">{{itemPrestamo.archivo_documento}}</td>
+                      <td scope="col" colspan="4">{{itemPrestamo.descripcion}}</td>
+                      <td scope="col" class="text-center">{{ itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <!--acumulado cierre del mes actual-->
-                      <td scope="col" class="text-center">{{ 750000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ itemPrestamo.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     </tr>
 
                      <!--comite camping-->
@@ -137,15 +137,15 @@
                     <th></th>
                   </tr>
   
-                  <tr>
-                      <td colspan="3" class="text-center">20-06-2019</td>
-                      <td scope="col" class="text-center">88970</td>
-                      <td scope="col" class="text-center">PDF</td>
-                      <td scope="col" colspan="4">Fallecio la suegra de Juan Perez</td>
-                      <td scope="col" class="text-center">{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                      <td scope="col" class="text-center">{{ 1190000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <tr *ngFor="let itemCamping of camping">
+                      <td colspan="3" class="text-center">{{itemCamping.fecha}}</td>
+                      <td scope="col" class="text-center">{{itemCamping.numero_documento}}</td>
+                      <td scope="col" class="text-center">{{itemCamping.archivo_documento}}</td>
+                      <td scope="col" colspan="4">{{itemCamping.descripcion}}</td>
+                      <td scope="col" class="text-center">{{ itemCamping.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <!--acumulado cierre del mes actual-->
-                      <td scope="col" class="text-center">{{ 750000 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                      <td scope="col" class="text-center">{{ itemCamping.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     </tr>
     
   

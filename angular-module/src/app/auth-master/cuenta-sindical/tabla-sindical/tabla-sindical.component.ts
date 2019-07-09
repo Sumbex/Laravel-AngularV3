@@ -12,7 +12,14 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
 export class TablaSindicalComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
+  //TABLAS
   tablaSindical;
+  fijos;
+  variable;
+  cajaChica;
+  prestamo;
+  camping;
+
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService) {
     config.backdrop = 'static';
@@ -37,8 +44,12 @@ export class TablaSindicalComponent implements OnInit {
     this._sindicalService.getTablaSindical('1','1').subscribe(
       response => {
         this.tablaSindical = response;
+        this.fijos = this.tablaSindical.fijo;
+        this.variable = this.tablaSindical.variable;
+        this.cajaChica = this.tablaSindical.caja_chica;
+        this.prestamo = this.tablaSindical.prestamo;
+        this.camping = this.tablaSindical.camping;
         console.log(this.tablaSindical);
-        console.log(this.tablaSindical.prestamo);
       },
       error => {
         console.log(error);

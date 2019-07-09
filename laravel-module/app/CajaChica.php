@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CuentaSindicatoController;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class CajaChica extends Model
 {
@@ -68,7 +69,7 @@ class CajaChica extends Model
     {
 
         $caja = $this->traerCajaChica($anio, $mes);
-        dd($caja);
+        
         $tomar = true;
 
         if (!$caja->isEmpty()) {
@@ -98,14 +99,28 @@ class CajaChica extends Model
         }
     }
 
-    protected function guardarArchivo($archivo){
+    protected function guardarArchivo($archivo, $ruta){
+        
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename.'_'.time().'.'.$extension;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+
+        if($guardar){
+            return true;
+        }else{
+            return false;
+        }
 
 
     }
 
     protected function ingresarCajaChica($request)
     {
-        //dd($request->archivo_documento);
+        $test = $this->guardarArchivo($request->archivo_documento, 'ArchivosCajaChica/');
+        dd($test);
         $validarDatos = $this->validarDatos($request);
 
         if ($validarDatos['estado'] == 'success') {

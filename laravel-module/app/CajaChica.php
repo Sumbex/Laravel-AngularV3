@@ -39,7 +39,7 @@ class CajaChica extends Model
         );
 
         if ($validator->fails()) {
-            return ['estado' => false, 'mensaje' => $validator->errors()];
+            return ['estado' => 'failed', 'mensaje' => $validator->errors()];
         }
         return ['estado' => true, 'mensaje' => 'success'];
     }
@@ -115,6 +115,7 @@ class CajaChica extends Model
             if ($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
+                dd($total);
 
                 if (!empty($total['estado']) && $total['estado'] == "failed") {
                     $sent = $request->monto <= $this->saldo;

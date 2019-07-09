@@ -22,6 +22,7 @@ export class TablaSindicalComponent implements OnInit {
   cajaChica;
   prestamo;
   camping;
+  resultado;
 
   valorAnio: Anios = {
     descripcion: '1'
@@ -35,7 +36,7 @@ export class TablaSindicalComponent implements OnInit {
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _fechasService: AniosService) {
     config.backdrop = 'static';
     config.keyboard = false;
-    
+
   }
 
   ngOnInit() {
@@ -68,17 +69,19 @@ export class TablaSindicalComponent implements OnInit {
         console.log(error);
       }
     )
-    
+
   }
 
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
     console.log("ID anio: " + this.valorAnio.descripcion);
+    this.refrescarSindical();
   }
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
     console.log("ID mes: " + this.valorMes.descripcion);
+    this.refrescarSindical();
   }
 
   openTablaSindical(TablaSindical) {
@@ -86,16 +89,28 @@ export class TablaSindicalComponent implements OnInit {
     this.refrescarSindical();
   }
 
-  refrescarSindical(){
-    this._sindicalService.getTablaSindical('1','1').subscribe(
+  refrescarSindical() {
+    this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        this.tablaSindical = response;
-        this.fijos = this.tablaSindical.fijo;
-        this.variable = this.tablaSindical.variable;
-        this.cajaChica = this.tablaSindical.caja_chica;
-        this.prestamo = this.tablaSindical.prestamo;
-        this.camping = this.tablaSindical.camping;
-        console.log(this.tablaSindical);
+        if (response != null) {
+          this.tablaSindical = response;
+          this.fijos = this.tablaSindical.fijo;
+          this.variable = this.tablaSindical.variable;
+          this.cajaChica = this.tablaSindical.caja_chica;
+          this.prestamo = this.tablaSindical.prestamo;
+          this.camping = this.tablaSindical.camping;
+          this.resultado = this.tablaSindical.resultado;
+          console.log(this.tablaSindical);
+        }else{
+          console.log("datos nulos");
+          this.tablaSindical = [];
+          this.fijos = [];
+          this.variable = [];
+          this.cajaChica = [];
+          this.prestamo = [];
+          this.camping = [];
+          this.resultado = [];
+        }
       },
       error => {
         console.log(error);

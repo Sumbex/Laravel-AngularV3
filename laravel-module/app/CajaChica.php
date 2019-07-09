@@ -41,7 +41,7 @@ class CajaChica extends Model
         if ($validator->fails()) {
             return ['estado' => 'failed', 'mensaje' => $validator->errors()];
         }
-        return ['estado' => true, 'mensaje' => 'success'];
+        return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
     protected function div_fecha($value)
@@ -100,8 +100,9 @@ class CajaChica extends Model
     protected function ingresarCajaChica($request)
     {
         $validarDatos = $this->validarDatos($request);
+        
 
-        if ($validarDatos['estado'] == true) {
+        if ($validarDatos['estado'] == 'success') {
 
             $caja = new CajaChica;
 
@@ -115,7 +116,6 @@ class CajaChica extends Model
             if ($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
-                dd($total);
 
                 if (!empty($total['estado']) && $total['estado'] == "failed") {
                     $sent = $request->monto <= $this->saldo;

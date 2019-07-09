@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CuentaSindicatoController;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class CajaChica extends Model
 {
@@ -39,9 +40,9 @@ class CajaChica extends Model
         );
 
         if ($validator->fails()) {
-            return ['estado' => false, 'mensaje' => $validator->errors()];
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
         }
-        return ['estado' => true, 'mensaje' => 'success'];
+        return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
     protected function div_fecha($value)
@@ -68,6 +69,7 @@ class CajaChica extends Model
     {
 
         $caja = $this->traerCajaChica($anio, $mes);
+        
         $tomar = true;
 
         if (!$caja->isEmpty()) {
@@ -93,15 +95,34 @@ class CajaChica extends Model
             }
             return $caja;
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
+            return ['estado' =>  false, 'mensaje' => 'no hay ingresos en Caja Chica'];
         }
+    }
+
+    protected function guardarArchivo($archivo, $ruta){
+        
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename.'_'.time().'.'.$extension;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+
+        if($guardar){
+            return true;
+        }else{
+            return false;
+        }
+
+
     }
 
     protected function ingresarCajaChica($request)
     {
+        
         $validarDatos = $this->validarDatos($request);
 
-        if ($validarDatos['estado'] == true) {
+        if ($validarDatos['estado'] == 'success') {
 
             $caja = new CajaChica;
 
@@ -111,12 +132,14 @@ class CajaChica extends Model
             $mes = $this->mes_tipo_id($fecha['mes']);
 
             $existe = $this->existeCajaChica($anio->id, $mes->id);
+            
 
             if ($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
-
-                if (!empty($total['estado']) && $total['estado'] == "failed") {
+                //dd(!empty($total) && $total['estado'] == false);
+                
+                if (!empty($total) && $total['estado'] == false) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
                     foreach ($total as $key => $value) {
@@ -124,6 +147,7 @@ class CajaChica extends Model
                     }
                     $sent = $request->monto <= $key->saldo_actual;
                 }
+
 
                 if ($sent) {
 
@@ -147,6 +171,7 @@ class CajaChica extends Model
                     $caja->user_crea = Auth::user()->id;
                     $caja->activo = "S";
 
+                    
                     if ($caja->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Insertado'];
                     } else {

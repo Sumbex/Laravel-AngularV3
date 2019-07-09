@@ -93,14 +93,13 @@ class CajaChica extends Model
             }
             return $caja;
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
+            return ['estado' =>  false, 'mensaje' => 'no hay ingresos en Caja Chica'];
         }
     }
 
     protected function ingresarCajaChica($request)
     {
         $validarDatos = $this->validarDatos($request);
-        
 
         if ($validarDatos['estado'] == 'success') {
 
@@ -117,7 +116,8 @@ class CajaChica extends Model
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
 
-                if (!empty($total['estado']) && $total['estado'] == "failed") {
+
+                if (!empty($total['estado']) && $total['estado'] == false) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
                     foreach ($total as $key => $value) {

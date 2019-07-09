@@ -94,7 +94,7 @@ export class ModalCajaChicaComponent implements OnInit {
     } else {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          if(response.estado == 'failed'){
+          if(response.estado == 'failed' || response.estado == false){
             console.log("Capturado el failed");
             this.ingresoStatus = (response.mensaje);
             //console.log(response.mensaje);

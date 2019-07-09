@@ -12,7 +12,9 @@
       <!--Cuerpo del body caja chica-->
       <div class="modal-body">
           <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
-              <strong>{{ingresoStatus}}</strong> 
+              <strong *ngFor="let error of ingresoStatus">
+                {{error}}
+              </strong> 
             </ngb-alert>
         <div class="row">
 

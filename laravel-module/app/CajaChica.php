@@ -119,8 +119,7 @@ class CajaChica extends Model
 
     protected function ingresarCajaChica($request)
     {
-        $test = $this->guardarArchivo($request->archivo_documento, 'ArchivosCajaChica/');
-        dd($test);
+        
         $validarDatos = $this->validarDatos($request);
 
         if ($validarDatos['estado'] == 'success') {

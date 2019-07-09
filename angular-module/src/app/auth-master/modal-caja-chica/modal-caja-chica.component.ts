@@ -6,6 +6,7 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
+import { all } from 'q';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -19,6 +20,11 @@ export class ModalCajaChicaComponent implements OnInit {
   selectMes: Meses[] = [];
   cajaChica: cajaChicaSindical[] = [];
   cajaChicaError: boolean = false;
+
+  errorIngreso = false;
+  ingresoCorrecto = false;
+  ingresoStatus:string='';
+  ingresoExitoso:string='';
 
   selectDefinicion: Definicion[] = [];
 
@@ -35,7 +41,7 @@ export class ModalCajaChicaComponent implements OnInit {
     archivo_documento: '',
     fecha: '',
     descripcion: '',
-    definicion: '1',
+    definicion: '2',
     monto_ingreso: 0,
     monto_egreso: 0
   }
@@ -65,7 +71,7 @@ export class ModalCajaChicaComponent implements OnInit {
     this.modalService.open(CajaChica, { size: 'lg' });
   }
 
-  tipoOperacionDefinicion(evento) {
+  changeDefinicion(evento) {
     this.datosCajaChica.definicion = evento.target.value;
     console.log("ID definicion: " + this.datosCajaChica.definicion);
   }
@@ -85,13 +91,36 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: cajaChicaSindical, valid: boolean }) {
+
     if (!valid) {
       console.log("Ingreso no valido revisar campos");
     } else {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          console.log(response);
-          this.refrescarCajaChica();
+          if(response.estado == 'failed_v'){
+            this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
+            this.errorIngreso = true;
+            return false;
+
+          } if(response.estado == 'failed'){
+              this.ingresoStatus = response.mensaje;
+              this.errorIngreso = true;
+              return false;
+          }else{
+            //console.log("Ingreso correcto");
+            this.errorIngreso = false;
+            this.ingresoStatus ='';
+            
+            this.ingresoExitoso = ('Ingreso correcto');
+            this.ingresoCorrecto = true;
+            this.ingresoExitoso = '';
+            this.refrescarCajaChica();
+            return false;
+          }
+            //console.log("test");
+            //console.log(response);
+            //console.log(response.mensaje);
+            //console.log("test");
         },
         error => {
           console.log(<any>error);

@@ -6,6 +6,7 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
+import { all } from 'q';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -21,7 +22,7 @@ export class ModalCajaChicaComponent implements OnInit {
   cajaChicaError: boolean = false;
 
   errorIngreso = false;
-  IngresoStatus: string = '';
+  ingresoStatus;
 
   selectDefinicion: Definicion[] = [];
 
@@ -95,7 +96,8 @@ export class ModalCajaChicaComponent implements OnInit {
         response => {
           if(response.estado == 'failed'){
             console.log("Capturado el failed");
-            this.IngresoStatus = JSON.stringify(response.mensaje);
+            this.ingresoStatus = (response.mensaje);
+            //console.log(response.mensaje);
             this.errorIngreso = true;
           }else{
             console.log("Ingreso correcto");

@@ -22,9 +22,9 @@ export class FormularioSindicalComponent implements OnInit {
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
-    tipoCuentaSindicato: '1',
+    tipoCuentaSindicato: '2',
     descripcion: '',
-    definicion: '1',
+    definicion: '2',
     monto: 0
   }
 

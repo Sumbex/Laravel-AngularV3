@@ -1,3 +1,129 @@
-<p>
-  formulario-bienestar works!
-</p>
+<div class="container">
+  <!--Formulario de otras cuentas-->
+  <div class="card">
+    <div class="card-header" id="demoFont"><strong class="text-center"><h6>Otras Cuentas</h6></strong></div>
+    <form action="">
+      <div class="card-body">
+        <div class="row">
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+              <!--Boton Para llamar modals-->
+              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2">Inicio y Cierre Mensual</div>
+              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2">Caja Chica</div>
+              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2">Fallecimiento</div>
+              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2">Nacimiento</div>
+              <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2">Gastos Medicos</div>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div><br>
+
+  <!--Formulario para ingresar una cuenta sindical-->
+  <div class="card">
+    <div class="card-header" id="demoFont"><strong class="text-center">
+        <h6>Cuenta Bienestar</h6>
+      </strong>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <div class="card-body">
+          <div class="row">
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <br><label><strong>Ingrese Fecha</strong></label> <br>
+                <div class="input-group">
+                  <input
+                  type="date" 
+                  class="form-control form-control-sm"  
+                  name="fecha">
+                </div>
+              </div>
+
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <br><label><strong>N° de Documento</strong></label>
+                <input 
+                type="number" 
+                class="form-control form-control-sm"
+                name="nDocumento"  
+                required>
+                <!--<small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                </small>-->
+              </div>
+
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <br><label><strong>Subir Documento</strong></label>
+                <input class="form-control-file" type="file">
+              </div>
+
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>
+                <!--<select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
+                  <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
+                </select>-->
+                <select name="tipo" id="tipo" class="form-control form-control-sm">
+                  <option value="0">--Seleccione--</option>
+                  <option value="1">Ingreso</option>
+                  <option value="2">Egreso</option>
+                </select>
+              </div><br>
+
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Detalle Tipo</strong></label>
+                <!--<select (change)="tipoOperacionDetalle($event)" class="form-control form-control-sm">
+                  <option *ngFor="let detalle of selectDetalle" [value]="detalle.id">{{detalle.descripcion}}</option>
+                </select>-->
+                <select name="detalleTipo" id="detalleTipo" class="form-control form-control-sm">
+                    <option value="0">--Seleccione--</option>
+                    <option value="1">Cuenta del Gas</option>
+                    <option value="2">Inasistencia por Reunión</option>
+                    <option value="3">Inasistencia por Votación</option>
+                    <option value="4">Fallecimiento</option>
+                    <option value="5">Nacimiento</option>
+                    <option value="6">Detalle Caja Chica</option>
+                    <option value="7">Gastos Medicos</option>
+                  </select>
+              </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <br><label><strong>Ingrese Monto</strong></label>
+                    <input 
+                    type="number"
+                    class="form-control form-control-sm"
+                    name="monto" 
+                    required>
+                  <!--<small *ngIf="!monto.valid && monto.touched" class="invalid-feedback d-block">
+                    Compruebe que el monto ingresado solo contenga numeros
+                  </small>-->
+                </div>
+
+
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>
+                      <input 
+                        class="form-control" 
+                        minlength="5"
+                        maxlength="80"
+                        name="descripcion"  
+                        required>
+                      <!--<small *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback d-block">
+                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres
+                      </small>-->
+                    </div>
+
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>
+                <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
+                  [disabled]="loginForm.invalid">Guardar</button>
+              </div>
+
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>
+                <app-tabla-bienestar></app-tabla-bienestar>
+              </div>
+
+            </div>
+          </div>
+      </div>
+    </form>
+  </div> <br>
+
+</div>

@@ -8,15 +8,33 @@ use App\CajaChica;
 
 class CajaChicaController extends Controller
 {
-    public function IngresarCajaChica(Request $request){
+    //public  $saldo = 100000;
+
+    public function IngresarCajaChica(Request $request)
+    {
         return CajaChica::ingresarCajaChica($request);
     }
 
-    public function ExisteCajaChica($anio, $mes){
+    public function ExisteCajaChica($anio, $mes)
+    {
         return CajaChica::existeCajaChica($anio, $mes);
     }
 
-    public function TraerCajaChica($anio, $mes){
-        return CajaChica::traerCajaChica($anio, $mes);
+    public function TraerCajaChica($anio, $mes)
+    {
+        $existe = $this->ExisteCajaChica($anio, $mes);
+
+        if ($existe['estado'] == 'success') {
+            $caja = CajaChica::saldoActualCaja($anio, $mes);
+            return $caja;
+        } else {
+            return $existe;
+        }
+    }
+
+    public function TotalIngEgre($anio, $mes)
+    {
+        return CajaChica::totalIngEgre($anio, $mes);
+         
     }
 }

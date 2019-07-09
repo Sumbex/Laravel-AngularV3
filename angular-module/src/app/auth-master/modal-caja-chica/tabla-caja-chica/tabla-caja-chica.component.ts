@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Anios } from 'src/app/modelos/anios.model';
+import { Meses } from 'src/app/modelos/meses.model';
+import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
+import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 
 @Component({
   selector: 'app-tabla-caja-chica',
@@ -7,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaCajaChicaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _cajaChicaService : CajaChicaService) { }
 
   ngOnInit() {
+
   }
 
 }

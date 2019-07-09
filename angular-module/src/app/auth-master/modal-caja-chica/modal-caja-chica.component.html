@@ -4,7 +4,7 @@
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <!--Cabezal del modal caja chica-->
       <div class="modal-header" id="demoFont">
-        <h6 class="modal-title"><strong>Caja Chica</strong></h6>
+        <h6 class="modal-title"><strong>Detalle Caja Chica</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,11 +16,13 @@
           <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>
             <div class="form-group">
               <div class="input-group">
-                <input class="form-control form-control-sm" placeholder="yyyy-mm-dd" name="d2" #c2="ngModel"
-                  [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
-                </div>
+                <input 
+                type="date"
+                class="form-control form-control-sm" 
+                name="fecha"
+                #fecha="ngModel"
+                [(ngModel)]="datosCajaChica.fecha"
+                required>
               </div>
             </div>
           </div>
@@ -29,15 +31,43 @@
             <br><label><strong>Ingrese Detalle</strong></label>
             <input 
             class="form-control form-control-sm"
+            type="text"
+            minlength="5"
+            maxlength="80"
+            name="descripcion"
+            #descripcion="ngModel"
+            [(ngModel)]="datosCajaChica.descripcion"
             required>
+            <small *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback d-block">
+              Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres
+            </small>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Igrese Monto</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Igrese Monto</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            type="number"
+            name="monto"
+            #monto="ngModel"
+            [(ngModel)]="datosCajaChica.monto_egreso"
+            required>
+            <small *ngIf="!monto.valid && monto.touched" class="invalid-feedback d-block">
+              Compruebe que el monto ingresado solo contiene numeros y no este vacio
+            </small>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Igrese N° Documento</strong></label><input class="form-control form-control-sm">
+            <br><label><strong>Igrese N° Documento</strong></label>
+            <input 
+            class="form-control form-control-sm"
+            name="nDocumento"
+            #nDocumento="ngModel"
+            [(ngModel)]="datosCajaChica.numero_documento"
+            required>
+            <small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
+              Compruebe que el N° Documento ingresado solo contiene numeros y no este vacio
+            </small>
           </div>
 
           <div class="col-sm-3 col-md-4 col-lg-4">
@@ -46,50 +76,87 @@
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-            <select class="form-control form-control-sm">
-              <option *ngFor="let tipo of selectDefinicion">{{tipo.descripcion}}</option>
+            <select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
+              <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
             </select>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4">
             <br><label><strong>Guardar Caja Chica</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
+            <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
+            [disabled]="loginForm.invalid">Guardar</button>
           </div>
 
         </div>
+        <hr>
         <!--Tabla del Modal Caja Chica-->
-        <app-tabla-caja-chica></app-tabla-caja-chica>
-
-        <!--Formulario para enviar el monto de caja chica a la cuenta sindical-->
         <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <label><strong>Ingreso</strong></label><input class="form-control form-control-sm">
+          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
+            <select class="form-control form-control-sm">
+              <option *ngFor="let anio of selectAnio">{{anio.descripcion}}</option>
+            </select>
           </div>
 
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <label><strong>Egreso</strong></label><input class="form-control form-control-sm">
+          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
+            <select class="form-control form-control-sm">
+              <option *ngFor="let mes of selectMes">{{mes.descripcion}}</option>
+            </select>
           </div>
+        </div><br>
 
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <label><strong>Total</strong></label><input class="form-control form-control-sm">
-          </div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead text-sm class="text-center">
+              <tr>
+                <th colspan="11" class="ColorThCS">Tabla caja chica</th>
+                <th colspan="2" class="ColorThCS">Monto Inicial</th>
+                <td colspan="2"><strong>{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+              <tr>
+                <th colspan="2">Fecha</th>
+                <th colspan="2">N° de Doc</th>
+                <th colspan="2">PDF</th>
+                <th colspan="3">Detalle</th>
+                <th colspan="2">Ingresos</th>
+                <th colspan="2">Egresos</th>
+                <th colspan="2">Actual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cajaChica" class="text-center">
+                <td colspan="2">{{item.fecha}}</td>
+                <td colspan="2">{{item.numero_documento}}</td>
+                <td colspan="2">{{item.archivo_documento}}</td>
+                <td colspan="3">{{item.descripcion}}</td>
+                <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <td colspan="2">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="row">
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Codigo General</strong></label><input class="form-control form-control-sm">
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Descripcion de la caja chica</strong></label>
-            <textarea class="form-control" rows="3"></textarea>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <br><label><strong>Enviar a Cuenta Sindical</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm">Guardar</button>
-          </div>
+        <!--Tabla del total Modal Caja Chica-->
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead text-sm class="text-center">
+              <tr>
+                <th col>INGRESOS</th>
+                <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+      
+              <tr>
+                <th col>EGRESOS</th>
+                <td col><strong>{{ 90000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+              <tr>
+                <th col>CIERRE DEL MES</th>
+                <td col><strong>{{ 10000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              </tr>
+            </thead>
+          </table>
         </div>
+
       </div>
 
       <!--Boton para salir del modal caja chica-->
@@ -100,6 +167,6 @@
     </form>
   </ng-template>
 
-  <!--Boton Para llamar al modal caja chica-->
-    <label><strong>Caja Chica</strong></label><br>
-    <button class="btn btn btn-success btn-block btn-sm" (click)="openCajaChica(CajaChica)">Ingresar</button>
+      <!--Boton Para llamar al modal caja chica-->
+      <label><strong>Caja Chica</strong></label><br>
+      <button class="btn btn btn-success btn-block btn-sm" (click)="openCajaChica(CajaChica)">Ingresar</button>

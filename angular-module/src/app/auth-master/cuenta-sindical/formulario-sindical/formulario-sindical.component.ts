@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
@@ -7,7 +6,6 @@ import { Definicion } from 'src/app/modelos/definicion.model';
 import { Detalle } from "src/app/modelos/detalle.model";
 import { TipoCuentasService } from 'src/app/servicios/tipo-cuentas.service';
 import { Sindical } from 'src/app/modelos/sindical.model';
-import { cajaChicaSindical } from 'src/app/modelos/cajaChicaSindical.model';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 
 @Component({
@@ -16,13 +14,11 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
   styleUrls: ['./formulario-sindical.component.css']
 })
 export class FormularioSindicalComponent implements OnInit {
-  model2: Date;
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
   selectDetalle: Detalle[] = [];
 
-  datoSindical: Sindical[];
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
@@ -32,24 +28,12 @@ export class FormularioSindicalComponent implements OnInit {
     monto: 0
   }
 
-  datoCajaChica: cajaChicaSindical[];
-  datosCajaChica: cajaChicaSindical ={
-    numero_documento:0,
-    archivo_documento:'',
-    descripcion:'',
-    definicion:'',
-    monto_ingreso:0,
-    monto_egreso:0
-  }
-
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _aniosService: AniosService, private _tiposService: TipoCuentasService, private _sindicalService: SindicalService) {
-    config.backdrop = 'static';
-    config.keyboard = false;
-    
+  constructor(private _sindicalService: SindicalService) {
+  
   }
 
   ngOnInit() {
-    //Cargar Años
+    /*//Cargar Años
     this._aniosService.getAnios().subscribe((res : any[]) => {
       this.selectAnio = res;
     });
@@ -65,7 +49,18 @@ export class FormularioSindicalComponent implements OnInit {
     //Cargar Detalles
     this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
       this.selectDetalle = res;
-    })
+    });*/
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Cargar definiciones
+    this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+
+    //Cargar detalles
+    this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
   }
 
   onSubmit({value, valid}: {value: Sindical, valid: boolean}) {

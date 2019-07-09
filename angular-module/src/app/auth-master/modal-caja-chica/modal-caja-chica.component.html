@@ -12,10 +12,17 @@
       <!--Cuerpo del body caja chica-->
       <div class="modal-body">
           <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
-              <strong *ngFor="let error of ingresoStatus">
-                {{error}}
-              </strong> 
+              <strong>
+                {{ingresoStatus.monto[0] | json}}  
+              </strong>
             </ngb-alert>
+
+            <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
+                <strong> 
+                {{ingresoStatus.numero_documento[0] | json}}
+              </strong>
+              </ngb-alert>
+              
         <div class="row">
 
           <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>

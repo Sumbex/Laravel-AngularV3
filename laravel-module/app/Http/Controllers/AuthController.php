@@ -29,27 +29,36 @@ class AuthController extends Controller
 	}
 
 	public function login_rut(Request $request)
-	{
-		
-	    $user = User::where('email', $request->email)
-		            ->orWhere('rut', $request->email)->first();
+	{	
+		try{
+			if(!$this->valida_rut($request->email)){
+				return ['status'=>'failed', 'mensaje'=>'El rut no es valido'];
+			}
+			else{//rut si valido
 
-		if (Hash::check($request->password, $user->password)) {
-			 //$credentials = $request->only('email', 'password');
-		    if ( ! $token = JWTAuth::fromUser($user)) {
-		            return response([
-		                'status' => 'error',
-		                'error' => 'invalid.credentials',
-		                'msg' => 'Invalid Credentials.'
-		            ], 400);
-		    }
-		    return response([
-		            'status' => 'success',
-		            'token' => $token
-		        ])
-		        ->header('Authorization', $token);
+			
+			    $user = User::where('rut', $request->email)->first();
+
+				if (Hash::check($request->password, $user->password)) {
+					 //$credentials = $request->only('email', 'password');
+				    if ( ! $token = JWTAuth::fromUser($user)) {
+				            return response([
+				                'status' => 'error',
+				                'error' => 'invalid.credentials',
+				                'msg' => 'Invalid Credentials.'
+				            ], 400);
+				    }
+				    return response([
+				            'status' => 'success',
+				            'token' => $token
+				        ])
+				        ->header('Authorization', $token);
+				}
+				return response(['status'=>'failed', 'mensaje'=>'Contraseña no valida']);
+			}
+		}catch(\ErrorException $e){
+			return ['status'=>'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
 		}
-		return response(['status'=>'failed']);
 	}
 
 
@@ -61,5 +70,33 @@ class AuthController extends Controller
 	            'status' => 'success',
 	            'msg' => 'Logged out Successfully.'
 	        ], 200);
+	}
+
+	//validar rut metodo---------------------------
+
+	function valida_rut($rut)
+	{
+	    $rut = preg_replace('/[^k0-9]/i', '', $rut);
+	    $dv  = substr($rut, -1);
+	    $numero = substr($rut, 0, strlen($rut)-1);
+	    $i = 2;
+	    $suma = 0;
+	    foreach(array_reverse(str_split($numero)) as $v)
+	    {
+	        if($i==8)
+	            $i = 2;
+	        $suma += $v * $i;
+	        ++$i;
+	    }
+	    $dvr = 11 - ($suma % 11);
+	    
+	    if($dvr == 11)
+	        $dvr = 0;
+	    if($dvr == 10)
+	        $dvr = 'K';
+	    if($dvr == strtoupper($dv))
+	        return true;
+	    else
+	        return false;
 	}
 }

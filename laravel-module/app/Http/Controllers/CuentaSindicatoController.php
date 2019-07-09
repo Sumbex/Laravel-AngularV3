@@ -35,8 +35,8 @@ class CuentaSindicatoController extends Controller
 	        ]);
 
  
-	        if ($validator->fails()){ return ['estado' => false, 'mensaje' => $validator->errors()];}
-	        return ['estado' => true, 'mensaje' => 'success'];
+	        if ($validator->fails()){ return ['estado' => 'failed', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 	public function div_fecha($value)//funciona con input type date 
     {
@@ -45,138 +45,194 @@ class CuentaSindicatoController extends Controller
 		$mes = substr($fecha, -5, 2);
 		$dia = substr($fecha, -2, 2);
 		return [
-			'anio' => $ano, 'mes' => $mes, 'dia' => $dia
+			'anio' => $ano, 
+			'mes'  => $mes, 
+			'dia'  => $dia
 		];
     }
     public function anio_tipo_id($value)
     {
 
     	$data = DB::table('anio')->where('descripcion', $value)->first();
-    	 if(!empty($data)){
+
+    	if(!empty($data)){
+
     	 	return $data;
-    	 } 
+    	} 
     		
     }
     // guardando aqui desde el formulario de html
     public function guardar_item_cuenta_sindicato(Request $r)
 	{
-		$f = $this->div_fecha($r->fecha);
-		
-		$anio = $this->anio_tipo_id($f['anio']);
+		try{
+			$f = $this->div_fecha($r->fecha);
+			
+			$anio = $this->anio_tipo_id($f['anio']);
 
-		//si existe caja chica, no volver a ingresar
-		if($this->existe_item_caja_chica($anio->id, $f['mes'], $r->tipo_cuenta_sindicato))
-		{
+			//si existe caja chica, no volver a ingresar
+			if($this->existe_item_caja_chica($anio->id, $f['mes'], $r->tipo_cuenta_sindicato))
+			{
 			return [ 'estado' =>'failed', 'mensaje'=>'Ya existe item caja chica en este mes' ];
-		}
-		else{
 
-			$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+			}else{
 
+				$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
 
 				$validacion = $this->validar_datos_cs($r);
 
-				if($validacion['estado'] == true){
+				
+				if($validacion['estado'] == 'success'){
 
-						$c_m_txt = 'c_s_cierre_mensual';
+					$c_m_txt = 'c_s_cierre_mensual';
 
-						$anio = $this->anio_tipo_id($f['anio']);
+					$anio = $this->anio_tipo_id($f['anio']);
 
 						//verifico si existe un monto inicial en este mes
-						$exis_monto_init =  DB::table($c_m_txt)->where([
-												'activo' => 'S',
-												'anio_id' => $anio->id/*$f['anio']*/,
-												'mes_id' => $f['mes'],
-					    					])->first();
-						
-						// si no existe, primero calcular o insertar manual el monto inicial(toma de mes anterior)
-						if(empty($exis_monto_init)){
-
-							return ["estado"=>"failed", "mensaje" => "No existe monto inicial, primero calcule"];
-						}else{
-
-							$saldo_actual = Cuentasindicato::where([
-								'activo' => 'S',
-								'anio_id' => $anio->id /*$f['anio']*/,
-								'mes_id' => $f['mes']
-							])->orderby('created_at','DESC')->take(1)->get();
-
+					$exis_monto_init =  DB::table($c_m_txt)->where([
+											'activo'  => 'S',
+											'anio_id' => $anio->id/*$f['anio']*/,
+											'mes_id'  => $f['mes'],
+						    			])->first();
 							
-							
-							$c_m = DB::table($c_m_txt)->where(['activo' => 'S','anio_id' => $anio->id,'mes_id' => $f['mes'],
-						    	])->first();
-							
-							//valido si no hay registros en este mes (items)
-							$s_a = (empty($saldo_actual[0]['saldo_actual'])? $c_m->inicio_mensual : $saldo_actual[0]['saldo_actual']);
+					// si no existe, primero calcular o insertar manual el monto inicial(toma de mes anterior)
+					if(empty($exis_monto_init)){
 
-							
-							$cs = new Cuentasindicato;
-							$cs->anio_id = $anio->id/*$f['anio']*/;
-							$cs->mes_id = $f['mes'];
-							$cs->dia = $f['dia'];
-							$cs->numero_documento = $r->n_documento;
-							$cs->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
-							$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
-							$cs->descripcion = $r->descripcion;
-							switch ($r->definicion) {
-								case '1':  
-									$cs->monto_ingreso = $r->monto; 
-									$cs->saldo_actual = $s_a + $r->monto;
-								break;
-								case '2':  
+						return [
+							"estado"  => "failed", 
+							"mensaje" => "No existe monto inicial, primero calcule"
+						];
 
-									if ($r->tipo_cuenta_sindicato == 3 && $caja_ch_monto_anterior['estado'] == "success"){
-											if(($caja_ch_monto_anterior['monto'] + $r->monto) > $this->global_caja_chica ){
-												return [
-													'estado'=>'failed', 
-													'mensaje'=>'el valor ingresado supera los '.$this->global_caja_chica.', el monto anterior acumulado es de '.$caja_ch_monto_anterior['monto'].', debería ingresar '.($this->global_caja_chica - $caja_ch_monto_anterior['monto'])
-												];
-											}
+					}
+					else {
 
-											$cs->monto_egreso = $caja_ch_monto_anterior['monto'] + $r->monto; 
-											$cs->saldo_actual = $s_a - ($caja_ch_monto_anterior['monto'] + $r->monto); 
-											var_dump("paso por cuenta 3 con su monto");
-										}else{
-											$cs->monto_egreso = $r->monto; 
-											$cs->saldo_actual = $s_a - $r->monto;
-										}
+						$saldo_actual = Cuentasindicato::where([
+							'activo'  => 'S',
+							'anio_id' => $anio->id /*$f['anio']*/,
+							'mes_id'  => $f['mes']
+						])->orderby('created_at','DESC')->take(1)->get();
 
-								break;
-							}
-							$cs->activo = 'S';
-							$cs->definicion = $r->definicion;
-							$cs->user_crea = Auth::user()->id;
-							if ($cs->save()) {
-								return ['estado' => 'success', 'mensaje' => "Item de cuenta sindical añadido"];
-							}
-							return ['estado'=>'failed', 'mensaje'=> 'Algo salió mal, intente nuevamente'];
+								
+								
+						$c_m = DB::table($c_m_txt)->where([
+							'activo'  => 'S',
+							'anio_id' => $anio->id,
+							'mes_id'  => $f['mes'],
+						])->first();
+								
+								//valido si no hay registros en este mes (items)
+						$s_a = (empty($saldo_actual[0]['saldo_actual'])? $c_m->inicio_mensual : $saldo_actual[0]['saldo_actual']);
+
+								
+						$cs = new Cuentasindicato;
+						$cs->anio_id = $anio->id/*$f['anio']*/;
+						$cs->mes_id  = $f['mes'];
+						$cs->dia     = $f['dia'];
+						$cs->numero_documento  = $r->n_documento;
+						$cs->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
+						$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
+						$cs->descripcion = $r->descripcion;
+
+						switch ($r->definicion) {
+							case '1':  
+								$cs->monto_ingreso = $r->monto; 
+								$cs->saldo_actual  = $s_a + $r->monto;
+							break;
+
+							case '2':  
+
+								if ($r->tipo_cuenta_sindicato == 3 && $caja_ch_monto_anterior['estado'] == "success"){
+
+									if(($caja_ch_monto_anterior['monto'] + $r->monto) > $this->global_caja_chica ){
+										return [
+											'estado'  => 'failed', 
+											'mensaje' => 'el monto ingresado supera los '.$this->global_caja_chica.', el monto anterior acumulado es de '.$caja_ch_monto_anterior['monto'].', debería ingresar '.($this->global_caja_chica - $caja_ch_monto_anterior['monto'])
+										];
+									}
+
+									$cs->monto_egreso = $caja_ch_monto_anterior['monto'] + $r->monto; 
+									$cs->saldo_actual = $s_a - ($caja_ch_monto_anterior['monto'] + $r->monto); 
+												//var_dump("paso por cuenta 3 con su monto");
+								}
+								else{
+									$cs->monto_egreso = $r->monto; 
+									$cs->saldo_actual = $s_a - $r->monto;
+								}
+
+							break;
 						}
-				}else{
+
+						$cs->activo     = 'S';
+						$cs->definicion = $r->definicion;
+						$cs->user_crea  = Auth::user()->id;
+
+						if ($cs->save()) {
+							return [
+								'estado'  => 'success', 
+								'mensaje' => "Item de cuenta sindical añadido"
+							];
+						}
+						return [
+							'estado'  => 'failed', 
+							'mensaje' => 'Algo salió mal, intente nuevamente'];
+							}
+
+				}
+				else {
+
 					return $this->validar_datos_cs($r);
 				}
-	
+		
 
-				
+					
+			}
+		}catch(QueryException $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
 		}
+		catch(\Exception $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}
+		
 	}
-
 
 	public function listar_cuenta_sindicato($anio, $mes)
 	{
 
-		$cm_txt = 'c_s_cierre_mensual';
-		
-		$c_m = DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes,
-	    	])->first();
-		
+		try{
 
-		if(!empty($c_m->inicio_mensual)){
-			$s_a = $c_m->inicio_mensual;
+			$cm_txt = 'c_s_cierre_mensual';
+			
+			$c_m = DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes,
+		    	])->first();
+			
 
-			$data = $this->cuenta_sindical($s_a, $anio, $mes);
-		    
+			if(!empty($c_m->inicio_mensual)){
+				$s_a = $c_m->inicio_mensual;
 
-			return $data;
+				$data = $this->cuenta_sindical($s_a, $anio, $mes);
+			    
+
+				return $data;
+			}
+		}
+		catch(QueryException $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'QEx: No se ha podido traer la lista cuenta sindical',
+				'exception' => $e //este es solo pal desarrollador;
+			];
+		}
+		catch(\Exception $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'Ex: No se ha podido traer la lista cuenta sindical',
+				'exception' => $e //este es solo pal desarrollador;
+			];
 		}
 	}
 
@@ -268,7 +324,6 @@ class CuentaSindicatoController extends Controller
 	}
 
 
-
 	public function existe_dinero_mes_anterior_caja_chica($anio, $mes)
 	{
 
@@ -295,7 +350,7 @@ class CuentaSindicatoController extends Controller
 			}catch (\Exception $e)
 		    {
 
-		        return ['estado'=>"success",'monto'=>0];
+		        return ['estado'=>"failed",'monto'=>0];
 		    }
 
 		}
@@ -322,9 +377,6 @@ class CuentaSindicatoController extends Controller
 			return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
 		}
 		
-
-
-	
 
 	}
 

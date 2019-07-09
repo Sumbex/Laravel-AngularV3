@@ -20,6 +20,9 @@ export class ModalCajaChicaComponent implements OnInit {
   cajaChica: cajaChicaSindical[] = [];
   cajaChicaError: boolean = false;
 
+  errorIngreso = false;
+  IngresoStatus: string = '';
+
   selectDefinicion: Definicion[] = [];
 
   valorAnio: Anios = {
@@ -35,7 +38,7 @@ export class ModalCajaChicaComponent implements OnInit {
     archivo_documento: '',
     fecha: '',
     descripcion: '',
-    definicion: '1',
+    definicion: '2',
     monto_ingreso: 0,
     monto_egreso: 0
   }
@@ -65,7 +68,7 @@ export class ModalCajaChicaComponent implements OnInit {
     this.modalService.open(CajaChica, { size: 'lg' });
   }
 
-  tipoOperacionDefinicion(evento) {
+  changeDefinicion(evento) {
     this.datosCajaChica.definicion = evento.target.value;
     console.log("ID definicion: " + this.datosCajaChica.definicion);
   }
@@ -90,8 +93,19 @@ export class ModalCajaChicaComponent implements OnInit {
     } else {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          console.log(response);
-          this.refrescarCajaChica();
+          if(response.estado == 'failed'){
+            console.log("Capturado el failed");
+            this.IngresoStatus = JSON.stringify(response.mensaje);
+            this.errorIngreso = true;
+          }else{
+            console.log("Ingreso correcto");
+            this.errorIngreso = false;
+            this.refrescarCajaChica();
+          }
+            //console.log("test");
+            //console.log(response);
+            //console.log(response.mensaje);
+            //console.log("test");
         },
         error => {
           console.log(<any>error);

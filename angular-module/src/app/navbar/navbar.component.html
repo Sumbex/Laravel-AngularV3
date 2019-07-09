@@ -17,8 +17,12 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/AuthMaster/CuentaSindical']">Grafico</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link Disabled" [routerLink]="['/AuthMaster/CuentaSindical']">Ingreso Socios</a>
+      <li *ngIf="isLogged" ngbDropdown class="d-inline-block">
+        <button class="btn nav-link" ngbDropdownToggle>Socios</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a ngbDropdownItem [routerLink]="['/AuthMaster/RegistroSocios']">Registro de Socio</a>
+          <a ngbDropdownItem [routerLink]="['/AuthMaster/ListarSocios']">Listar Socio</a>
+        </div>
       </li>
       <li *ngIf="isLogged" ngbDropdown class="d-inline-block">
         <button class="btn nav-link" ngbDropdownToggle>{{usuario}}</button>
@@ -30,3 +34,4 @@
     </ul>
   </div>
 </nav>
+<br>

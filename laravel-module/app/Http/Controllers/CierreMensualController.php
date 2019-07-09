@@ -8,7 +8,10 @@ class CierreMensualController extends Controller
 {   //cierre mensual referencia a cuenta sindical
 	public function guardar_inicio_mensual(Request $r)
     {
-    	//($r);
+    	if($r->cierre_mensual == 0 || $r->cierre_mensual == ''){//si el calculo del monto es 0
+            return ['estado'=>'failed', 'mensaje'=> 'El monto de inicio mensual debe tener un valor'];
+        }
+
     	$existe = DB::table('c_s_cierre_mensual')->where([
     		'activo' => 'S',
     		'anio_id' => $r->anio,
@@ -22,7 +25,8 @@ class CierreMensualController extends Controller
     		'anio_id' => $r->anio,
     		'mes_id' => $r->mes,
     		])->update(['inicio_mensual'=>$r->cierre_mensual]);
-    		return response()->json($update);
+
+    		return ['estado'=>'success', 'mensaje'=>'Monto actualizado con exito'];
 
     	}else{
     		$insert = DB::table('c_s_cierre_mensual')->insert([
@@ -32,7 +36,7 @@ class CierreMensualController extends Controller
 	    		'activo' => 'S'
 	        ]);
 
-	        return response()->json($insert);
+	        return ['estado'=>'success', 'mensaje'=>'Monto insertado con exito'];
     	}
 	
     }
@@ -85,6 +89,12 @@ class CierreMensualController extends Controller
 			return $ultimo_valor;
     	}
     	
+    }
+
+    public function traer_monto_inicial($anio, $mes)
+    {
+    	
+    	 return CierreMensualSindical::inicio_mensual($anio, $mes);
     }
 
     public function listar_cierre_mensual_cs($anio)

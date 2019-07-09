@@ -10,6 +10,8 @@ import { CuentaFondoMutuoComponent } from './auth-master/cuenta-fondo-mutuo/cuen
 import { NoEncontradoComponent } from './no-encontrado/no-encontrado.component';
 import { AuthGuardService } from './guardianes/auth.guard.service';
 import { ConfiguracionesComponent } from './auth-master/configuraciones/configuraciones.component';
+import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
+import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -21,7 +23,10 @@ const routes: Routes = [
     { path: 'CuentaSindical', component: CuentaSindicalComponent },
     { path: 'CuentaBienestar', component: CuentaBienestarComponent },
     { path: 'CuentaFondoMutuo', component: CuentaFondoMutuoComponent },
-    { path: 'Configuracion', component: ConfiguracionesComponent }
+    { path: 'Configuracion', component: ConfiguracionesComponent },
+    { path: 'RegistroSocios', component: FormularioSociosComponent },
+    { path: 'ListarSocios', component: ListarSociosComponent }
+
   ]},
 
   { path: '**', component: NoEncontradoComponent }

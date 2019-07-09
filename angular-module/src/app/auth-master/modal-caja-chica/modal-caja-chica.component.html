@@ -13,16 +13,10 @@
       <div class="modal-body">
           <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
               <strong>
-                {{ingresoStatus.monto[0] | json}}
-              </strong> <hr>
-              <strong>
-                {{ingresoStatus.numero_documento[0] | json}} 
-              </strong> <hr>
-                {{ingresoFecha.mensaje}}
-              <strong>
-
-              </strong>
+                {{ ingresoStatus }}
+              </strong> 
             </ngb-alert>
+
               
         <div class="row">
 
@@ -99,6 +93,12 @@
             <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
             [disabled]="loginForm.invalid">Guardar</button>
           </div>
+
+          <ngb-alert *ngIf="ingresoExitoso" [dismissible]="false">
+              <strong>
+                {{ ingresoCorrecto }}
+              </strong> 
+            </ngb-alert>
 
         </div>
         <hr>

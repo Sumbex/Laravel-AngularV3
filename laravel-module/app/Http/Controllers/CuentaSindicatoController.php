@@ -35,7 +35,7 @@ class CuentaSindicatoController extends Controller
 	        ]);
 
  
-	        if ($validator->fails()){ return ['estado' => 'failed', 'mensaje' => $validator->errors()];}
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 	public function div_fecha($value)//funciona con input type date 
@@ -76,7 +76,9 @@ class CuentaSindicatoController extends Controller
 
 			}else{
 
-				$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+				//$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+
+				//dd($caja_ch_monto_anterior['monto']);
 
 				$validacion = $this->validar_datos_cs($r);
 
@@ -132,25 +134,39 @@ class CuentaSindicatoController extends Controller
 						$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
 						$cs->descripcion = $r->descripcion;
 
-						switch ($r->definicion) {
+						// dd($r->definicion);
+						switch ($r->definicion) {// si es ingreso o egreso
 							case '1':  
 								$cs->monto_ingreso = $r->monto; 
 								$cs->saldo_actual  = $s_a + $r->monto;
 							break;
 
 							case '2':  
-
-								if ($r->tipo_cuenta_sindicato == 3 && $caja_ch_monto_anterior['estado'] == "success"){
-
-									if(($caja_ch_monto_anterior['monto'] + $r->monto) > $this->global_caja_chica ){
+								
+								//si el item entrante es un caja
+								if ($r->tipo_cuenta_sindicato == 3){
+									
+									if($r->monto > $this->global_caja_chica ){
+									
 										return [
-											'estado'  => 'failed', 
-											'mensaje' => 'el monto ingresado supera los '.$this->global_caja_chica.', el monto anterior acumulado es de '.$caja_ch_monto_anterior['monto'].', debería ingresar '.($this->global_caja_chica - $caja_ch_monto_anterior['monto'])
+										'estado'  => 'failed', 
+										'mensaje' => 'el monto ingresado supera los '.number_format($this->global_caja_chica,0,'.',',').' pesos'
 										];
 									}
-
-									$cs->monto_egreso = $caja_ch_monto_anterior['monto'] + $r->monto; 
-									$cs->saldo_actual = $s_a - ($caja_ch_monto_anterior['monto'] + $r->monto); 
+									$cch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+									// dd("$r->monto > ".$cch_monto_anterior['monto'].'= '.$r->monto > $cch_monto_anterior['monto']);
+									if($r->monto > $cch_monto_anterior['monto']){
+										
+											$cs->monto_egreso = $r->monto; 
+											$cs->saldo_actual = $s_a - ($r->monto); 								
+										//return ['estado' => 'failed', 'mensaje'=>'el monto ingresado ('.$r->monto.')'];
+										
+									}else{
+										$cs->monto_egreso = /*$caja_ch_monto_anterior['monto'] +*/ $r->monto; 
+									
+										$cs->saldo_actual = $s_a - (/*$caja_ch_monto_anterior['monto'] +*/ $r->monto); 
+									}
+									
 												//var_dump("paso por cuenta 3 con su monto");
 								}
 								else{
@@ -324,13 +340,14 @@ class CuentaSindicatoController extends Controller
 	}
 
 
+	//este metodo recibe el año como tal
 	public function existe_dinero_mes_anterior_caja_chica($anio, $mes)
-	{
+	{	
 
 		$mes_anterior = $mes - 1;
 		$anio_anterior = $anio;
 
-		if ($mes_anterior == 0) { //tomar el valor del año pasado y ultimo mes
+		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;
 			$anio_anterior = $anio - 1;
 			
@@ -343,10 +360,16 @@ class CuentaSindicatoController extends Controller
 							'mes_id' => $mes_anterior
 						])->sum('monto_egreso');
 
-				$monto_sobrante = $this->global_caja_chica - $monto;
-				if (empty($monto)) {
-					return ['estado'=>"success",'monto'=>0];
+				$monto_a_guardar = $this->global_caja_chica - $monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
 				}
+
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
 			}catch (\Exception $e)
 		    {
 
@@ -358,24 +381,34 @@ class CuentaSindicatoController extends Controller
 		{
 			$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
 
+
+			//dd($anio->id.'; mes_id:'.$mes_anterior);
 			$monto = DB::table('cs_caja_chica')->where([
 						'activo' => 'S',
 						'anio_id' => $anio->id,
 						'mes_id' => $mes_anterior
 					])->sum('monto_egreso');
 
-			$monto_sobrante = $this->global_caja_chica - $monto;
-			if (empty($monto)) {
-				return ['estado'=>"success",'monto'=>0];
+
+
+			$monto_a_guardar = $this->global_caja_chica - $monto;
+			if ($monto_a_guardar == 100000) {
+				return ['estado'=>'success', 'monto'=>0];
 			}
+			return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+
+			// $monto_sobrante = $this->global_caja_chica - $monto;
+			// if (empty($monto)) {
+			// 	return ['estado'=>"success",'monto'=>0];
+			// }
 
 		}
 
-		if($monto_sobrante < $this->global_caja_chica ){
-			return ['estado'=>'success', 'monto'=>$monto_sobrante];
-		}else{
-			return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
-		}
+		// if($monto_sobrante < $this->global_caja_chica ){
+		// 	return ['estado'=>'success', 'monto'=>$monto_sobrante];
+		// }else{
+		// 	return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
+		// }
 		
 
 	}

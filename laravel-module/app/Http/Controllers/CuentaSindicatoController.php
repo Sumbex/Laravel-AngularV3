@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CuentaSindicatoController extends Controller
@@ -64,7 +65,18 @@ class CuentaSindicatoController extends Controller
     // guardando aqui desde el formulario de html
     public function guardar_item_cuenta_sindicato(Request $r)
 	{
+
 		try{
+
+			$file = $this->guardarArchivo($r->archivo,'arvhivos_sindical/');
+
+			if($file['estado'] == "success"){
+				$archivo = $file['archivo'];
+			}else{
+				return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+			}
+
+
 			$f = $this->div_fecha($r->fecha);
 			
 			$anio = $this->anio_tipo_id($f['anio']);
@@ -133,6 +145,8 @@ class CuentaSindicatoController extends Controller
 						$cs->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
 						$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
 						$cs->descripcion = $r->descripcion;
+
+						$cs->archivo_documento = $archivo; 
 
 						// dd($r->definicion);
 						switch ($r->definicion) {// si es ingreso o egreso
@@ -412,6 +426,25 @@ class CuentaSindicatoController extends Controller
 		
 
 	}
+
+	public function guardarArchivo($archivo, $ruta){
+        
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename.'_'.time().'.'.$extension;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+
+        $archivo = $ruta.$nombreArchivo;
+        if($guardar){
+            return [ 'estado'=>'success', 'archivo' => $archivo ];
+        }else{
+            return [ 'estado'=>'failed'];
+        }
+
+
+    }
 
 
 }

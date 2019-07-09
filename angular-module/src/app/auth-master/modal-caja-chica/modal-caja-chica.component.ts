@@ -6,6 +6,7 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
+import { all } from 'q';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -21,7 +22,9 @@ export class ModalCajaChicaComponent implements OnInit {
   cajaChicaError: boolean = false;
 
   errorIngreso = false;
-  IngresoStatus: string = '';
+  ingresoCorrecto = false;
+  ingresoStatus:string='';
+  ingresoExitoso:string='';
 
   selectDefinicion: Definicion[] = [];
 
@@ -88,19 +91,31 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: cajaChicaSindical, valid: boolean }) {
+
     if (!valid) {
       console.log("Ingreso no valido revisar campos");
     } else {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          if(response.estado == 'failed'){
-            console.log("Capturado el failed");
-            this.IngresoStatus = JSON.stringify(response.mensaje);
+          if(response.estado == 'failed_v'){
+            this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
             this.errorIngreso = true;
+            return false;
+
+          } if(response.estado == 'failed'){
+              this.ingresoStatus = response.mensaje;
+              this.errorIngreso = true;
+              return false;
           }else{
-            console.log("Ingreso correcto");
+            //console.log("Ingreso correcto");
             this.errorIngreso = false;
+            this.ingresoStatus ='';
+            
+            this.ingresoExitoso = ('Ingreso correcto');
+            this.ingresoCorrecto = true;
+            this.ingresoExitoso = '';
             this.refrescarCajaChica();
+            return false;
           }
             //console.log("test");
             //console.log(response);

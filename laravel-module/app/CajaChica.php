@@ -105,21 +105,19 @@ class CajaChica extends Model
         $filename = pathinfo($filenameext, PATHINFO_FILENAME);
         $extension = $archivo->getClientOriginalExtension();
         $nombreArchivo = $filename.'_'.time().'.'.$extension;
-
+        $rutaDB = $ruta.$nombreArchivo;
         $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
 
         if($guardar){
-            return true;
+            return ['estado' =>  'success', 'archivo' => $rutaDB];
         }else{
-            return false;
+            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
         }
-
-
     }
 
     protected function ingresarCajaChica($request)
     {
-        
+
         $validarDatos = $this->validarDatos($request);
 
         if ($validarDatos['estado'] == 'success') {
@@ -132,18 +130,18 @@ class CajaChica extends Model
             $mes = $this->mes_tipo_id($fecha['mes']);
 
             $existe = $this->existeCajaChica($anio->id, $mes->id);
-            
-
+            //dd($existe);
             if ($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
-                //dd(!empty($total) && $total['estado'] == false);
-                
-                if (!empty($total) && $total['estado'] == false) {
+                //dd(array_has($total, 'estado'));
+
+                if (array_has($total, 'estado')) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
-                    foreach ($total as $key => $value) {
-                        $key = $value;
+
+                    foreach ($total as $key) {
+                        
                     }
                     $sent = $request->monto <= $key->saldo_actual;
                 }
@@ -155,7 +153,15 @@ class CajaChica extends Model
                     $caja->mes_id = $fecha['mes'];
                     $caja->dia = $fecha['dia'];
                     $caja->numero_documento = $request->numero_documento;
-                    $caja->archivo_documento = '/doc/archivo.pdf';
+
+                    $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosCajaChica/');
+                    
+                    if($guardarArchivo['estado'] == "success"){
+                        $caja->archivo_documento = $guardarArchivo['archivo'];
+                    }else{
+                        return $guardarArchivo;
+                    }
+                    
                     $caja->descripcion = $request->descripcion;
 
                     switch ($request->definicion) {

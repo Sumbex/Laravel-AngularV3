@@ -144,8 +144,10 @@ export class ModalInicioMesComponent implements OnInit {
           });
   }
   guardar(){
+
             this.failed_visible = false;
             this.success_visible = false;
+
             const formData = new FormData();
             formData.append('anio', this.anio);
             formData.append('mes', this.mes );

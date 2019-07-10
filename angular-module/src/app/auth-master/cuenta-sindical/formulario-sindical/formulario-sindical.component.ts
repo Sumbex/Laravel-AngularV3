@@ -22,9 +22,9 @@ export class FormularioSindicalComponent implements OnInit {
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
-    tipoCuentaSindicato: '1',
+    tipoCuentaSindicato: '2',
     descripcion: '',
-    definicion: '1',
+    definicion: '2',
     monto: 0
   }
 
@@ -71,5 +71,10 @@ export class FormularioSindicalComponent implements OnInit {
   changeDetalle(evento){
     this.datosSindicales.tipoCuentaSindicato = evento.target.value;
     console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
+
+    //Captura del nuevo metodo janito
+    if(evento.target.value = 3){
+      console.log("llamar metodo");
+    }
   }
 }

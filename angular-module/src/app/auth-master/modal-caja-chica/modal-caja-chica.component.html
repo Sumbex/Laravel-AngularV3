@@ -1,7 +1,7 @@
   <!--Modal caja chica-->
   <ng-template #CajaChica let-modal>
     <!--form del modal caja chica-->
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
       <!--Cabezal del modal caja chica-->
       <div class="modal-header" id="demoFont">
         <h6 class="modal-title"><strong>Detalle Caja Chica</strong></h6>
@@ -12,8 +12,11 @@
       <!--Cuerpo del body caja chica-->
       <div class="modal-body">
           <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
-              <strong>¡Se ha detectado un error!</strong> {{ingresoStatus}}
+              <strong>
+                {{ ingresoStatus }}
+              </strong> 
             </ngb-alert>
+              
         <div class="row">
 
           <div class="col-sm-3 col-md-4 col-lg-4"> <br><label><strong>Ingrese Fecha</strong></label> <br>
@@ -74,8 +77,12 @@
           </div>
 
           <div class="col-sm-3 col-md-4 col-lg-4">
-            <br><label><strong>Subir Documento</strong></label>
-            <input class="form-control-file" type="file">
+              <br><label><strong>Ingrese el archivo comprobante</strong></label> <br>
+                <input class="form-control-file" 
+                type="file" 
+                
+                (change)="onSelectImage($event)"
+                required>
           </div>
 
           <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
@@ -98,13 +105,13 @@
         </ngb-alert>
         <div class="row">
           <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-            <select (change)="changeAnio($event)" class="form-control form-control-sm">
+            <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="valorAnio.descripcion" class="form-control form-control-sm">
               <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
             </select>
           </div>
 
           <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes</strong></label>
-            <select (change)="changeMes($event)" class="form-control form-control-sm">
+            <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="valorMes.descripcion" class="form-control form-control-sm">
               <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
             </select>
           </div>
@@ -164,6 +171,8 @@
         </div>
 
       </div>
+
+      <div *ngIf="loading" class="loader">Loading...</div>
 
       <!--Boton para salir del modal caja chica-->
       <div class="modal-footer">

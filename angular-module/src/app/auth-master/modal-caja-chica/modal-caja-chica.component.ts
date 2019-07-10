@@ -6,6 +6,8 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
+import { all } from 'q';
+import { AniosService } from 'src/app/servicios/anios.service';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -17,11 +19,18 @@ export class ModalCajaChicaComponent implements OnInit {
 
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
+  idAnioActual;
+  idMesActual;
+
+  selectedImage:File;
+
   cajaChica: cajaChicaSindical[] = [];
   cajaChicaError: boolean = false;
 
+  loading = false;
   errorIngreso = false;
-  IngresoStatus: string = '';
+  errorIngresoFecha = false;
+  ingresoStatus:string='';
 
   selectDefinicion: Definicion[] = [];
 
@@ -35,7 +44,7 @@ export class ModalCajaChicaComponent implements OnInit {
 
   datosCajaChica: cajaChicaSindical = {
     numero_documento: 0,
-    archivo_documento: '',
+    archivo_documento: null,
     fecha: '',
     descripcion: '',
     definicion: '2',
@@ -43,7 +52,7 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso: 0
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService) {
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -57,49 +66,79 @@ export class ModalCajaChicaComponent implements OnInit {
     //Cargar Meses
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
 
-    //Cargar Caja chica
-    this.refrescarCajaChica();
-
     //Cargar definiciones
     this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+
+    //Cargar id del Año actual
+    this._fechasService.getAnioActual().subscribe(
+      response => {
+        this.idAnioActual = response;
+        this.valorAnio.descripcion = this.idAnioActual.id;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+    //Cargar id del Mes actual
+    this._fechasService.getMesActual().subscribe(
+      response => {
+        this.idMesActual = response;
+        console.log(this.idMesActual);
+        this.valorMes.descripcion = this.idMesActual.id;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   openCajaChica(CajaChica) {
     this.modalService.open(CajaChica, { size: 'lg' });
+    //Cargar Caja chica
+    this.refrescarCajaChica();
   }
 
   changeDefinicion(evento) {
     this.datosCajaChica.definicion = evento.target.value;
-    console.log("ID definicion: " + this.datosCajaChica.definicion);
   }
 
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
-    console.log("ID anio: " + this.valorAnio.descripcion);
     this.cajaChicaError= false;
     this.refrescarCajaChica();
   }
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
-    console.log("ID mes: " + this.valorMes.descripcion);
     this.cajaChicaError= false;
     this.refrescarCajaChica();
   }
 
+  onSelectImage(event) {
+    this.datosCajaChica.archivo_documento = event.srcElement.files[0];
+  }
+
   onSubmit({ value, valid }: { value: cajaChicaSindical, valid: boolean }) {
+
     if (!valid) {
       console.log("Ingreso no valido revisar campos");
     } else {
       this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          if(response.estado == 'failed'){
-            console.log("Capturado el failed");
-            this.IngresoStatus = JSON.stringify(response.mensaje);
+          if(response.estado == 'failed_v'){
+            this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
             this.errorIngreso = true;
+            return false;
+
+          } if(response.estado == 'failed'){
+              this.ingresoStatus = response.mensaje;
+              this.errorIngreso = true;
+              return false;
           }else{
             console.log("Ingreso correcto");
             this.errorIngreso = false;
+            this.ingresoStatus ='';
             this.refrescarCajaChica();
           }
             //console.log("test");
@@ -116,21 +155,21 @@ export class ModalCajaChicaComponent implements OnInit {
 
   refrescarCajaChica() {
     //Cargar Caja chica
+    this.cajaChica = [];
     this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        if (response.estado != "failed") {
-          this.cajaChica = response;
-          console.log("refrescando caja chica");
-          console.log(this.cajaChica);
-        } else {
-          console.log(response);
+        if (response.estado == "failed" || response.estado == false) {
           this.cajaChicaError = true;
+        } else {
+          this.cajaChica = response;
         }
+        this.loading = false;
       },
       error => {
         console.log(error);
       }
     );
+    this.loading = true;
   }
 
 }

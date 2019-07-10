@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CuentaSindicatoController extends Controller
@@ -22,7 +23,8 @@ class CuentaSindicatoController extends Controller
 	            'descripcion' => 'required|min:0',
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_sindicato' => 'required',
-	            'monto' => 'required'
+	            'monto' => 'required',
+	            'archivo' => 'required|mimes:doc,pdf,docx',
 	        ],
 	        [
 	        	'fecha.required' => 'La fecha es necesaria',
@@ -35,7 +37,7 @@ class CuentaSindicatoController extends Controller
 	        ]);
 
  
-	        if ($validator->fails()){ return ['estado' => 'failed', 'mensaje' => $validator->errors()];}
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 	public function div_fecha($value)//funciona con input type date 
@@ -64,7 +66,18 @@ class CuentaSindicatoController extends Controller
     // guardando aqui desde el formulario de html
     public function guardar_item_cuenta_sindicato(Request $r)
 	{
+
 		try{
+
+			$file = $this->guardarArchivo($r->archivo,'arvhivos_sindical/');
+
+			if($file['estado'] == "success"){
+				$archivo = $file['archivo'];
+			}else{
+				return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+			}
+
+
 			$f = $this->div_fecha($r->fecha);
 			
 			$anio = $this->anio_tipo_id($f['anio']);
@@ -76,7 +89,9 @@ class CuentaSindicatoController extends Controller
 
 			}else{
 
-				$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+				//$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+
+				//dd($caja_ch_monto_anterior['monto']);
 
 				$validacion = $this->validar_datos_cs($r);
 
@@ -132,25 +147,41 @@ class CuentaSindicatoController extends Controller
 						$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
 						$cs->descripcion = $r->descripcion;
 
-						switch ($r->definicion) {
+						$cs->archivo_documento = $archivo; 
+
+						// dd($r->definicion);
+						switch ($r->definicion) {// si es ingreso o egreso
 							case '1':  
 								$cs->monto_ingreso = $r->monto; 
 								$cs->saldo_actual  = $s_a + $r->monto;
 							break;
 
 							case '2':  
-
-								if ($r->tipo_cuenta_sindicato == 3 && $caja_ch_monto_anterior['estado'] == "success"){
-
-									if(($caja_ch_monto_anterior['monto'] + $r->monto) > $this->global_caja_chica ){
+								
+								//si el item entrante es un caja
+								if ($r->tipo_cuenta_sindicato == 3){
+									
+									if($r->monto > $this->global_caja_chica ){
+									
 										return [
-											'estado'  => 'failed', 
-											'mensaje' => 'el monto ingresado supera los '.$this->global_caja_chica.', el monto anterior acumulado es de '.$caja_ch_monto_anterior['monto'].', debería ingresar '.($this->global_caja_chica - $caja_ch_monto_anterior['monto'])
+										'estado'  => 'failed', 
+										'mensaje' => 'el monto ingresado supera los '.number_format($this->global_caja_chica,0,'.',',').' pesos'
 										];
 									}
-
-									$cs->monto_egreso = $caja_ch_monto_anterior['monto'] + $r->monto; 
-									$cs->saldo_actual = $s_a - ($caja_ch_monto_anterior['monto'] + $r->monto); 
+									$cch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
+									// dd("$r->monto > ".$cch_monto_anterior['monto'].'= '.$r->monto > $cch_monto_anterior['monto']);
+									if($r->monto > $cch_monto_anterior['monto']){
+										
+											$cs->monto_egreso = $r->monto; 
+											$cs->saldo_actual = $s_a - ($r->monto); 								
+										//return ['estado' => 'failed', 'mensaje'=>'el monto ingresado ('.$r->monto.')'];
+										
+									}else{
+										$cs->monto_egreso = /*$caja_ch_monto_anterior['monto'] +*/ $r->monto; 
+									
+										$cs->saldo_actual = $s_a - (/*$caja_ch_monto_anterior['monto'] +*/ $r->monto); 
+									}
+									
 												//var_dump("paso por cuenta 3 con su monto");
 								}
 								else{
@@ -324,13 +355,14 @@ class CuentaSindicatoController extends Controller
 	}
 
 
+	//este metodo recibe el año como tal
 	public function existe_dinero_mes_anterior_caja_chica($anio, $mes)
-	{
+	{	
 
 		$mes_anterior = $mes - 1;
 		$anio_anterior = $anio;
 
-		if ($mes_anterior == 0) { //tomar el valor del año pasado y ultimo mes
+		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;
 			$anio_anterior = $anio - 1;
 			
@@ -343,10 +375,16 @@ class CuentaSindicatoController extends Controller
 							'mes_id' => $mes_anterior
 						])->sum('monto_egreso');
 
-				$monto_sobrante = $this->global_caja_chica - $monto;
-				if (empty($monto)) {
-					return ['estado'=>"success",'monto'=>0];
+				$monto_a_guardar = $this->global_caja_chica - $monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
 				}
+
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
 			}catch (\Exception $e)
 		    {
 
@@ -358,27 +396,243 @@ class CuentaSindicatoController extends Controller
 		{
 			$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
 
+
+			//dd($anio->id.'; mes_id:'.$mes_anterior);
 			$monto = DB::table('cs_caja_chica')->where([
 						'activo' => 'S',
 						'anio_id' => $anio->id,
 						'mes_id' => $mes_anterior
 					])->sum('monto_egreso');
 
-			$monto_sobrante = $this->global_caja_chica - $monto;
-			if (empty($monto)) {
-				return ['estado'=>"success",'monto'=>0];
+
+
+			$monto_a_guardar = $this->global_caja_chica - $monto;
+			if ($monto_a_guardar == 100000) {
+				return ['estado'=>'success', 'monto'=>0];
 			}
+			return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+
+			// $monto_sobrante = $this->global_caja_chica - $monto;
+			// if (empty($monto)) {
+			// 	return ['estado'=>"success",'monto'=>0];
+			// }
 
 		}
 
-		if($monto_sobrante < $this->global_caja_chica ){
-			return ['estado'=>'success', 'monto'=>$monto_sobrante];
-		}else{
-			return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
-		}
+		// if($monto_sobrante < $this->global_caja_chica ){
+		// 	return ['estado'=>'success', 'monto'=>$monto_sobrante];
+		// }else{
+		// 	return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
+		// }
 		
 
 	}
+
+	// public function guardarArchivo($archivo, $ruta){
+        
+ //        $filenameext = $archivo->getClientOriginalName();
+ //        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+ //        $extension = $archivo->getClientOriginalExtension();
+ //        $nombreArchivo = $filename.'_'.time().'.'.$extension;
+
+ //        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+
+ //        $archivo = $ruta.$nombreArchivo;
+ //        if($guardar){
+ //            return [ 'estado'=>'success', 'archivo' => $archivo ];
+ //        }else{
+ //            return [ 'estado'=>'failed'];
+ //        }
+
+
+ //    }
+
+     protected function guardarArchivo($archivo, $ruta)
+    {
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
+
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
+    }
+    public function DescargarArchivo($archivo)
+    {
+    
+
+    		return Storage::download($archivo);
+    		
+    
+    }
+
+    //metodos para actualizar datos en la cuenta sindical
+
+    //@ este metodo recibe desde el front-end Objeto [ string campo, Input input,  Integer id]
+    public function actualizar_dato_cs(Request $r)
+    {
+
+    	$cs = Cuentasindicato::where('id',$r->id)->first();
+    	//dd($cs);
+    	switch ($r->campo) {
+    		case 'fecha':
+
+    				$f = $this->div_fecha($r->input);
+    				$anio = $this->anio_tipo_id($f['anio']);
+
+    				if($cs->anio_id == $anio->id && $cs->mes_id == $f['mes']){
+
+    					$cs->anio_id = $anio->id/*$f['anio']*/;
+						$cs->mes_id  = $f['mes'];
+						$cs->dia     = $f['dia'];
+
+						if ($cs->save()) {
+							return ['estado'=>'success','mensaje'=>'Fecha actualizada'];
+						}
+						return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    				}else{
+    				return ['estado'=>'failed','mensaje'=>'La fecha ingresada no pertenece al mes correspondiente'];
+    				}
+						
+
+    		break;
+    		case 'numero_documento':
+
+    				$exist = Cuentasindicato::where([
+    					'activo'=>'S', 
+    					'numero_documento'=>$r->input,
+    					//'id'=>$r->id
+    				])->first();
+    				if(!empty($exist)){
+    					return ['estado'=>'failed','mensaje'=>'Error, ya existe este numero de documento en la base de datos'];
+    				}else{
+    					$cs->numero_documento = $r->input;
+    					if ($cs->save()) {
+    						return ['estado'=>'success','mensaje'=>'Numero de documento actualizado'];
+    					}
+    				}
+
+    				
+
+
+    		break;
+    		case 'tipo_cuenta_sindicato':
+    			
+    			$mes =	$cs->mes_id;
+    			$anio = $cs->anio_id;
+
+    			if ($r->input == 3) {//si el input viene como caja chica
+    				$verifi_cch = Cuentasindicato::where([
+    							'tipo_cuenta_sindicato' => 3, //caja chica
+    							'mes_id' => $mes,
+    							'anio_id' => $anio,
+    							'activo' => 'S'
+    						])->first();
+
+	    			//verificar que exista ya una caja chica en este mes
+	    			if(!empty($verifi_cch)){ // si existe
+	    				return ['estado'=>'failed','mensaje'=>'Error, ya existe una caja chica en este mes'];
+	    			}
+
+
+	    			$cs->tipo_cuenta_sindicato = $r->input;
+	    			if ($cs->save()) {
+	    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+	    			}
+	    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    			}
+    			else{
+
+    				$cs->tipo_cuenta_sindicato = $r->input;
+	    			if ($cs->save()) {
+	    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+	    			}
+	    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    			}
+
+    		break;
+    		case 'descripcion':
+    			
+    			$cs->descripcion = $r->input;
+    			if ($cs->save()) {
+    				return ['estado'=>'success','mensaje'=>'Descripción actualizada'];
+    			}
+    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    		break;
+    		case 'definicion':
+
+    			if ($r->input == 1) {
+    				$monto = $cs->monto_egreso;
+
+    				$cs->monto_ingreso = $monto;
+    				$cs->monto_egreso = null;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    			if ($r->input == 2) {
+    				$monto = $cs->monto_ingreso;
+
+    				$cs->monto_egreso = $monto;
+    				$cs->monto_ingreso = null;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			
+
+
+    		break;
+    		case 'monto':
+    			
+    			if ($cs->definicion == 1) {
+    				$cs->monto_ingreso = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			if ($cs->definicion == 2) {
+    				$cs->monto_egreso = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    		break;
+
+    		case 'archivo':
+    			
+
+
+    		break;
+
+    		
+    		default:
+    			# code...
+    			break;
+    	}
+    }
 
 
 }

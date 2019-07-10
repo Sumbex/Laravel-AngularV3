@@ -21,7 +21,7 @@
         <h6>Cuenta Sindical</h6>
       </strong>
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
       <div class="card-body">
           <div class="row">
             <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
@@ -41,20 +41,20 @@
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                 <br><label><strong>N° de Documento</strong></label>
                 <input 
-                type="number" 
+                type="text" 
                 class="form-control form-control-sm"
                 name="nDocumento" 
                 #nDocumento="ngModel"
                 [(ngModel)]="datosSindicales.nDocumento" 
                 required>
                 <small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
-                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
+                  Compruebe que el N° Documento no este vacio
                 </small>
               </div>
 
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <br><label><strong>Subir Documento</strong></label>
-                <input class="form-control-file" type="file">
+                <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
               </div>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>

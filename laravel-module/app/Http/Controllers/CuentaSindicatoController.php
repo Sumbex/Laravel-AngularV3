@@ -24,7 +24,7 @@ class CuentaSindicatoController extends Controller
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_sindicato' => 'required',
 	            'monto' => 'required',
-	            'archivo' => 'mimes:doc,pdf,docx',
+	            'archivo' => 'required|mimes:doc,pdf,docx',
 	        ],
 	        [
 	        	'fecha.required' => 'La fecha es necesaria',
@@ -449,19 +449,23 @@ class CuentaSindicatoController extends Controller
 
      protected function guardarArchivo($archivo, $ruta)
     {
-        $filenameext = $archivo->getClientOriginalName();
-        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
-        $extension = $archivo->getClientOriginalExtension();
-        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
-        $rutaDB = $ruta . $nombreArchivo;
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
 
-        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
 
-        if ($guardar) {
-            return ['estado' =>  'success', 'archivo' => $rutaDB];
-        } else {
-            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
-        }
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
     }
 
     //metodos para actualizar datos en la cuenta sindical

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CuentaSindicatoController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Dotenv\Regex\Success;
 
 class CajaChica extends Model
 {
@@ -156,7 +157,7 @@ class CajaChica extends Model
                     $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosCajaChica/');
 
                     if ($guardarArchivo['estado'] == "success") {
-                        $caja->archivo_documento = 'storage/'.$guardarArchivo['archivo'];
+                        $caja->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
                     } else {
                         return $guardarArchivo;
                     }
@@ -189,6 +190,102 @@ class CajaChica extends Model
             }
         } else {
             return $validarDatos;
+        }
+    }
+
+    protected function verificarAModificar($id)
+    {
+        $verificar = DB::table('cs_caja_chica')
+            ->where([
+                'id' => $id,
+                'activo' => 'S'
+            ])
+            ->first();
+        if ($verificar) {
+            return ['estado' => 'success', 'mensaje' => 'Todo Bien'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No Existe'];
+        }
+    }
+
+    protected function modificarDatos($request)
+    {
+
+        $verificar = $this->verificarAModificar($request->id);
+
+        if ($verificar['estado'] == 'success') {
+
+            $modificar = CajaChica::find($request->id);
+
+            switch ($request->campo) {
+                case 'fecha':
+                    $fecha = $this->div_fecha($request->input);
+
+                    $anio = $this->anio_tipo_id($fecha['anio']);
+                    $mes = $this->mes_tipo_id($fecha['mes']);
+
+                    if ($modificar->anio_id == $anio->id && $modificar->mes_id == $mes->id) {
+                        $modificar->dia = $fecha['dia'];
+
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Fecha actualizada'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'La fecha ingresada no pertenece al mes correspondiente'];
+                    }
+                    break;
+                case 'numero_documento':
+                    $modificar->numero_documento = $request->input;
+
+                    if ($modificar->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Numero de documento actualizado'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                    }
+                    break;
+                case 'archivo_documento':
+                    $ruta = substr($modificar->archivo_documento, 8);
+                    $borrar = Storage::delete($ruta);
+                    if($borrar){
+                        $guardarArchivo = $this->guardarArchivo($request->input, 'ArchivosCajaChica/');
+
+                    if ($guardarArchivo['estado'] == "success") {
+                        $modificar->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                            if ($modificar->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                    } else {
+                        return $guardarArchivo;
+                    }
+                    }else{
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo borrar el archivo'];
+                    }
+                    break;
+                case 'descripcion':
+                    $modificar->descripcion = $request->input;
+
+                    if ($modificar->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Descripcion actualizada'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                    }
+                    break;
+                case 'monto':
+                    $modificar->monto_egreso = $request->input;
+
+                    if ($modificar->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Monto actualizado'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                    }
+                    break;
+            }
+        } else {
+            return $verificar;
         }
     }
 

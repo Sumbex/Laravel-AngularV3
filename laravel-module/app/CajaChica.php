@@ -248,21 +248,22 @@ class CajaChica extends Model
                 case 'archivo_documento':
                     $ruta = substr($modificar->archivo_documento, 8);
                     $borrar = Storage::delete($ruta);
-                    if($borrar){
+
+                    if ($borrar) {
                         $guardarArchivo = $this->guardarArchivo($request->input, 'ArchivosCajaChica/');
 
-                    if ($guardarArchivo['estado'] == "success") {
-                        $modificar->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                        if ($guardarArchivo['estado'] == "success") {
+                            $modificar->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
                             if ($modificar->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
                             }
+                        } else {
+                            return $guardarArchivo;
+                        }
                     } else {
-                        return $guardarArchivo;
-                    }
-                    }else{
-                        return ['estado' => 'failed', 'mensaje' => 'No se pudo borrar el archivo'];
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
                     }
                     break;
                 case 'descripcion':

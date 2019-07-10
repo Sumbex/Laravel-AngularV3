@@ -12,20 +12,26 @@ export class CajaChicaService{
         this.url = global.url;
     }
 
-    ingresarValor(form): Observable<any>{
-        console.log(form.definicion);
+    ingresarValor(datos): Observable<any>{
 
-        return this._http.post(this.url + "ingresar_caja_chica?", 'fecha=' + form.fecha + '&' + 'numero_documento=' + form.numero_documento + '&' + 'descripcion=' + form.descripcion + '&' + 'monto=' + form.monto_egreso + '&' + 'definicion=' + form.definicion, {headers: new HttpHeaders(
+        console.log(datos);
+        const form = new FormData();
+        form.append('fecha', datos.fecha);
+        form.append('archivo_documento', datos.archivo_documento);
+        form.append('numero_documento', datos.numero_documento);
+        form.append('descripcion', datos.descripcion);
+        form.append('monto', datos.monto_egreso);
+        form.append('definicion', datos.definicion);
+
+        return this._http.post(this.url + "ingresar_caja_chica", form, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
-                'Content-Type': 'application/x-www-form-urlencoded'
             }
         )});
     }
 
-    getCajaChica(form): Observable<any>{
-        console.log(form);
-        return this._http.get(this.url + "traer_caja_chica/" + form + '/' + form, {headers: new HttpHeaders(
+    getCajaChica(anio: string, mes: string): Observable<any>{
+        return this._http.get(this.url + "traer_caja_chica/" + anio + '/' + mes, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'

@@ -22,9 +22,9 @@ export class FormularioSindicalComponent implements OnInit {
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
-    tipoCuentaSindicato: '1',
+    tipoCuentaSindicato: '2',
     descripcion: '',
-    definicion: '1',
+    definicion: '2',
     monto: 0
   }
 
@@ -33,23 +33,6 @@ export class FormularioSindicalComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*//Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
-    //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
-    //Cargar Definiciones
-    this._tiposService.getDefinicion().subscribe((res : any[]) => {
-      this.selectDefinicion = res;
-      console.log(res);
-    });
-    //Cargar Detalles
-    this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
-      this.selectDetalle = res;
-    });*/
     //Cargar Años
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
@@ -61,6 +44,8 @@ export class FormularioSindicalComponent implements OnInit {
 
     //Cargar detalles
     this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
+    console.log(this.selectDefinicion);
+    console.log(this.selectDetalle);
   }
 
   onSubmit({value, valid}: {value: Sindical, valid: boolean}) {
@@ -78,13 +63,18 @@ export class FormularioSindicalComponent implements OnInit {
     }
   }
 
-  tipoOperacionDefinicion(evento){
+  changeDefinicion(evento){
     this.datosSindicales.definicion = evento.target.value;
-    console.log(this.datosSindicales.tipoCuentaSindicato);
+    console.log("ID Definicion: " + this.datosSindicales.definicion);
   }
 
-  tipoOperacionDetalle(evento){
+  changeDetalle(evento){
     this.datosSindicales.tipoCuentaSindicato = evento.target.value;
-    console.log(this.datosSindicales.definicion);
+    console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
+
+    //Captura del nuevo metodo janito
+    if(evento.target.value = 3){
+      console.log("llamar metodo");
+    }
   }
 }

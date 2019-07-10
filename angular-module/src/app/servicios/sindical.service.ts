@@ -34,4 +34,13 @@ export class SindicalService{
         )});
     }
 
+    getTablaSindical(anio: string, mes: string): Observable<any>{
+        return this._http.get(this.url + "listar_c_s/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

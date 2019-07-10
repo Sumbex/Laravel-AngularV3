@@ -23,7 +23,8 @@ class CuentaSindicatoController extends Controller
 	            'descripcion' => 'required|min:0',
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_sindicato' => 'required',
-	            'monto' => 'required'
+	            'monto' => 'required',
+	            'archivo' => 'mimes:doc,pdf,docx',
 	        ],
 	        [
 	        	'fecha.required' => 'La fecha es necesaria',
@@ -427,23 +428,40 @@ class CuentaSindicatoController extends Controller
 
 	}
 
-	public function guardarArchivo($archivo, $ruta){
+	// public function guardarArchivo($archivo, $ruta){
         
+ //        $filenameext = $archivo->getClientOriginalName();
+ //        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+ //        $extension = $archivo->getClientOriginalExtension();
+ //        $nombreArchivo = $filename.'_'.time().'.'.$extension;
+
+ //        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+
+ //        $archivo = $ruta.$nombreArchivo;
+ //        if($guardar){
+ //            return [ 'estado'=>'success', 'archivo' => $archivo ];
+ //        }else{
+ //            return [ 'estado'=>'failed'];
+ //        }
+
+
+ //    }
+
+     protected function guardarArchivo($archivo, $ruta)
+    {
         $filenameext = $archivo->getClientOriginalName();
         $filename = pathinfo($filenameext, PATHINFO_FILENAME);
         $extension = $archivo->getClientOriginalExtension();
-        $nombreArchivo = $filename.'_'.time().'.'.$extension;
+        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+        $rutaDB = $ruta . $nombreArchivo;
 
-        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
 
-        $archivo = $ruta.$nombreArchivo;
-        if($guardar){
-            return [ 'estado'=>'success', 'archivo' => $archivo ];
-        }else{
-            return [ 'estado'=>'failed'];
+        if ($guardar) {
+            return ['estado' =>  'success', 'archivo' => $rutaDB];
+        } else {
+            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
         }
-
-
     }
 
     //metodos para actualizar datos en la cuenta sindical

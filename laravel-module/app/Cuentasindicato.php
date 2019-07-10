@@ -14,7 +14,7 @@ class Cuentasindicato extends Model
     {
     	$listar = $this::select([
     						'cuenta_sindicato.id',
-    						DB::raw("concat(cs.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+    						DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
     						'cuenta_sindicato.numero_documento',
     						'cuenta_sindicato.archivo_documento',
     						'cuenta_sindicato.tipo_cuenta_sindicato',

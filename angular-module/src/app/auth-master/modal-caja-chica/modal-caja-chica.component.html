@@ -139,7 +139,15 @@
               <tr *ngFor="let item of cajaChica" class="text-center">
                 <td colspan="2">{{item.fecha}}</td>
                 <td colspan="2">{{item.numero_documento}}</td>
-                <td colspan="2">{{item.archivo_documento}}</td>
+
+
+
+                <td colspan="2">
+                   <a href="{{  '../' + item.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                </td>
+
+
+
                 <td colspan="3">{{item.descripcion}}</td>
                 <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                 <td colspan="2">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>

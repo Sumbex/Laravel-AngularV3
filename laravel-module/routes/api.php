@@ -23,8 +23,6 @@ Route::post('login_rut', 'AuthController@login_rut');
 //CUANDO SE AUTORIZA UN USUARIO
 Route::group(['middleware' => ['jwt.auth','cors']], function(){
 
-	Route::get('storage/');
-
 	//rutas con auth (loged)
 	Route::get('loged', function(){ return "loged"; });
 	Route::get('auth/logout','AuthController@logout');

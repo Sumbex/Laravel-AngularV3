@@ -446,5 +446,130 @@ class CuentaSindicatoController extends Controller
 
     }
 
+    //metodos para actualizar datos en la cuenta sindical
+
+    //@ este metodo recibe desde el front-end Objeto [ string campo, Input input,  Integer id]
+    public function actualizar_dato_cs(Request $r)
+    {
+    	$cs = Cuentasindicato::find($r->id);
+
+    	switch ($r->campo) {
+    		case 'fecha':
+
+    				$f = $this->div_fecha($r->input);
+    				$anio = $this->anio_tipo_id($f['anio']);
+
+    				if($cs->anio_id == $anio->id && $cs->mes_id == $f['mes']){
+
+    					$cs->anio_id = $anio->id/*$f['anio']*/;
+						$cs->mes_id  = $f['mes'];
+						$cs->dia     = $f['dia'];
+
+						if ($cs->save()) {
+							return ['estado'=>'success','mensaje'=>'Fecha actualizada'];
+						}
+						return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    				}else{
+    				return ['estado'=>'failed','mensaje'=>'La fecha ingresada no pertenece al mes correspondiente'];
+    				}
+						
+
+    		break;
+    		case 'numero_documento':
+
+    				$exist = Cuentasindicato::where([
+    					'activo'=>'S', 
+    					'numero_documento'=>$r->input,
+    					'id'=>$r->id
+    				])->first();
+
+    				if ($exist) {
+    					$exist->numero_documento = $r->input;
+    					if ($exist->save()) {
+    						return ['estado'=>'success','mensaje'=>'Numero de documento actualizado'];
+    					}
+    					return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    				}
+
+
+    		break;
+    		case 'tipo_cuenta_sindicato':
+    			
+    			$cs->tipo_cuenta_sindicato = $r->input;
+    			if ($cs->save()) {
+    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+    			}
+    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    		break;
+    		case 'descripcion':
+    			
+    			$cs->descripcion = $r->input;
+    			if ($cs->save()) {
+    				return ['estado'=>'success','mensaje'=>'Descripción actualizada'];
+    			}
+    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    		break;
+    		case 'definicion':
+
+    			if ($r->input == 1) {
+    				$monto = $cs->monto_egreso;
+
+    				$cs->monto_ingreso = $monto;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    			if ($r->input == 2) {
+    				$monto = $cs->monto_ingreso;
+
+    				$cs->monto_egreso = $monto;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			
+
+
+    		break;
+    		case 'monto':
+    			
+    			if ($cs->definicion == 1) {
+    				$cs->monto_ingreso = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			if ($cs->definicion == 2) {
+    				$cs->monto_egreso = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    		break;
+
+    		case 'archivo':
+    			
+
+
+    		break;
+
+    		
+    		default:
+    			# code...
+    			break;
+    	}
+    }
+
 
 }

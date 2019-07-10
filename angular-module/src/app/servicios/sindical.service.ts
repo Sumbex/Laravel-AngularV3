@@ -15,12 +15,13 @@ export class SindicalService{
     ingresarValor(form): Observable<any>{
     
         const body = new FormData();
-        body.append('fecha', form.fecha.year.value);
-        body.append('n_documento', form.nDocumento.value);
-        body.append('tipo_cuenta_sindicato', form.tipoCuentaSindicato.value);
-        body.append('descripcion', form.fecha.descripcion.value);
-        body.append('definicion', form.definicion.value);
-        body.append('monto', form.monto.value);
+        body.append('fecha', form.fecha);
+        body.append('n_documento', form.nDocumento);
+        body.append('archivo', form.archivoDocumento);
+        body.append('tipo_cuenta_sindicato', form.tipoCuentaSindicato);
+        body.append('descripcion', form.descripcion);
+        body.append('definicion', form.definicion);
+        body.append('monto', form.monto);
         
         console.log(body);
 

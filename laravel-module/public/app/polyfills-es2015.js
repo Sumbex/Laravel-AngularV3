@@ -5982,6 +5982,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD:laravel-module/public/app/polyfills-es2015.js
 <<<<<<< HEAD:laravel-module/public/app/polyfills.js
 __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/polyfills.ts */"./src/polyfills.ts");
 module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
@@ -5989,6 +5990,10 @@ module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_de
 __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\polyfills.ts */"./src/polyfills.ts");
 module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 >>>>>>> bryanm:laravel-module/public/app/polyfills-es2015.js
+=======
+__webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+>>>>>>> bryanv:laravel-module/public/app/polyfills.js
 
 
 /***/ })

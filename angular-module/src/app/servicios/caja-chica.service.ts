@@ -39,4 +39,13 @@ export class CajaChicaService{
         )});
     }
 
+    getTotalesCajaChica(anio: string, mes:string): Observable<any>{
+        return this._http.get(this.url + "totales_caja_chica/" + anio + '/' + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

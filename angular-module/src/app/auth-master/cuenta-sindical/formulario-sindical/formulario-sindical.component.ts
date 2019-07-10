@@ -18,10 +18,12 @@ export class FormularioSindicalComponent implements OnInit {
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
   selectDetalle: Detalle[] = [];
+  selectedImage:File;
 
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
+    archivoDocumento: null,
     tipoCuentaSindicato: '2',
     descripcion: '',
     definicion: '2',
@@ -52,6 +54,7 @@ export class FormularioSindicalComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
+      console.log("Hola");
       this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
         response => {
           console.log(response);
@@ -61,6 +64,10 @@ export class FormularioSindicalComponent implements OnInit {
         }
       );
     }
+  }
+
+  onSelectImage(event) {
+    this.datosSindicales.archivoDocumento = event.srcElement.files[0];
   }
 
   changeDefinicion(evento){

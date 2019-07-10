@@ -26,7 +26,7 @@ export class SindicalService{
 
         return this._http.post(this.url + "guardar_item_c_s", body, {headers: new HttpHeaders(
             {
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + this.token
             }
         )});
     }

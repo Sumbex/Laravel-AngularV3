@@ -2600,7 +2600,7 @@ let SindicalService = class SindicalService {
         body.append('monto', form.monto.value);
         console.log(body);
         return this._http.post(this.url + "guardar_item_c_s", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
+                'Authorization': 'Bearer' + this.token
             }) });
     }
     getTablaSindical(anio, mes) {

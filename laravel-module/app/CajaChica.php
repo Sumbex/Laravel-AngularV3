@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CuentaSindicatoController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use Dotenv\Regex\Success;
 
 class CajaChica extends Model
 {

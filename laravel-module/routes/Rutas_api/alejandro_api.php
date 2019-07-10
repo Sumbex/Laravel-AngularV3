@@ -21,9 +21,10 @@ Route::post('insertar_cs_prestamo', 'PrestamosController@insertar_cs');
 Route::get('listar_cs_prestamo/{anio}/{mes}', 'PrestamosController@listar_cs_prestamo');
 
 Route::get('usuario_logeado','DatosBasicosController@usuario_logeado');
+Route::get('calcular_caja_chica_anterior_cs/{anio}/{mes}', 'CuentaSindicatoController@existe_dinero_mes_anterior_caja_chica');
 
 //-------------------------------------------------------------------------------------------------
 
 //CUENTA SOCIOS-------------------------------------------------------------------------------
 
-Route::get('ingresar_socio','SocioController@ingresar');
+Route::post('ingresar_socio','SocioController@ingresar');

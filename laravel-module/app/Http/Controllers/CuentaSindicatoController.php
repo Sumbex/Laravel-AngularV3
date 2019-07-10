@@ -467,14 +467,23 @@ class CuentaSindicatoController extends Controller
     			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
 		}
     }
+    public function DescargarArchivo($archivo)
+    {
+    
+
+    		return Storage::download($archivo);
+    		
+    
+    }
 
     //metodos para actualizar datos en la cuenta sindical
 
     //@ este metodo recibe desde el front-end Objeto [ string campo, Input input,  Integer id]
     public function actualizar_dato_cs(Request $r)
     {
-    	$cs = Cuentasindicato::find($r->id);
 
+    	$cs = Cuentasindicato::where('id',$r->id)->first();
+    	//dd($cs);
     	switch ($r->campo) {
     		case 'fecha':
 
@@ -503,26 +512,56 @@ class CuentaSindicatoController extends Controller
     				$exist = Cuentasindicato::where([
     					'activo'=>'S', 
     					'numero_documento'=>$r->input,
-    					'id'=>$r->id
+    					//'id'=>$r->id
     				])->first();
-
-    				if ($exist) {
-    					$exist->numero_documento = $r->input;
-    					if ($exist->save()) {
+    				if(!empty($exist)){
+    					return ['estado'=>'failed','mensaje'=>'Error, ya existe este numero de documento en la base de datos'];
+    				}else{
+    					$cs->numero_documento = $r->input;
+    					if ($cs->save()) {
     						return ['estado'=>'success','mensaje'=>'Numero de documento actualizado'];
     					}
-    					return ['estado'=>'failed','mensaje'=>'error al actualizar'];
     				}
+
+    				
 
 
     		break;
     		case 'tipo_cuenta_sindicato':
     			
-    			$cs->tipo_cuenta_sindicato = $r->input;
-    			if ($cs->save()) {
-    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+    			$mes =	$cs->mes_id;
+    			$anio = $cs->anio_id;
+
+    			if ($r->input == 3) {//si el input viene como caja chica
+    				$verifi_cch = Cuentasindicato::where([
+    							'tipo_cuenta_sindicato' => 3, //caja chica
+    							'mes_id' => $mes,
+    							'anio_id' => $anio,
+    							'activo' => 'S'
+    						])->first();
+
+	    			//verificar que exista ya una caja chica en este mes
+	    			if(!empty($verifi_cch)){ // si existe
+	    				return ['estado'=>'failed','mensaje'=>'Error, ya existe una caja chica en este mes'];
+	    			}
+
+
+	    			$cs->tipo_cuenta_sindicato = $r->input;
+	    			if ($cs->save()) {
+	    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+	    			}
+	    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
     			}
-    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			else{
+
+    				$cs->tipo_cuenta_sindicato = $r->input;
+	    			if ($cs->save()) {
+	    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+	    			}
+	    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    			}
 
     		break;
     		case 'descripcion':
@@ -540,6 +579,7 @@ class CuentaSindicatoController extends Controller
     				$monto = $cs->monto_egreso;
 
     				$cs->monto_ingreso = $monto;
+    				$cs->monto_egreso = null;
     				$cs->definicion = $r->input;
     				if ($cs->save()) {
     					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
@@ -551,6 +591,7 @@ class CuentaSindicatoController extends Controller
     				$monto = $cs->monto_ingreso;
 
     				$cs->monto_egreso = $monto;
+    				$cs->monto_ingreso = null;
     				$cs->definicion = $r->input;
     				if ($cs->save()) {
     					return ['estado'=>'success','mensaje'=>'Definición actualizada'];

@@ -25,6 +25,8 @@ Route::get('calcular_caja_chica_anterior_cs/{anio}/{mes}', 'CuentaSindicatoContr
 
 Route::post('actualizar_dato_cs','CuentaSindicatoController@actualizar_dato_cs');
 
+Route::get('descargar_archivo@DescargarArchivo');
+
 //-------------------------------------------------------------------------------------------------
 
 //CUENTA SOCIOS-------------------------------------------------------------------------------

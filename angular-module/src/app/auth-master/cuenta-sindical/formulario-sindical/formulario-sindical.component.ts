@@ -54,6 +54,7 @@ export class FormularioSindicalComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
+      console.log("Hola");
       this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
         response => {
           console.log(response);

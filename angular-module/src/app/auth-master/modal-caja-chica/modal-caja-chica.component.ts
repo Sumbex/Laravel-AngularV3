@@ -8,6 +8,7 @@ import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
 import { all } from 'q';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { cajaChicaSindicalTotales } from 'src/app/modelos/cajaChicaSindicalTotales';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -25,6 +26,11 @@ export class ModalCajaChicaComponent implements OnInit {
   selectedImage:File;
 
   cajaChica: cajaChicaSindical[] = [];
+  cajaChicaTotales: cajaChicaSindicalTotales = {
+    total_ingreso: null,
+    total_egreso: null,
+    total: null
+  }
   cajaChicaError: boolean = false;
 
   loading = false;
@@ -158,7 +164,7 @@ export class ModalCajaChicaComponent implements OnInit {
     this.cajaChica = [];
     this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        if (response.estado == "failed" || response.estado == false) {
+        if (response.estado == "failed" || response.estado == false || response.estado == "failed_v") {
           this.cajaChicaError = true;
         } else {
           this.cajaChica = response;
@@ -169,6 +175,20 @@ export class ModalCajaChicaComponent implements OnInit {
         console.log(error);
       }
     );
+    this._cajaChicaService.getTotalesCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == false || response.estado == "failed_v") {
+          this.cajaChicaError = true;
+        } else {
+          this.cajaChicaTotales = response;
+          console.log(this.cajaChicaTotales);
+        }
+        this.loading = false;
+      },
+      error => {
+        console.log(error);
+      }
+    )
     this.loading = true;
   }
 

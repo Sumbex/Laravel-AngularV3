@@ -25,7 +25,7 @@ export class FormularioSindicalComponent implements OnInit {
     tipoCuentaSindicato: '2',
     descripcion: '',
     definicion: '2',
-    monto: 0
+    monto: null
   }
 
   constructor(private _sindicalService: SindicalService) {

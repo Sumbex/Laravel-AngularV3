@@ -43,13 +43,13 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   datosCajaChica: cajaChicaSindical = {
-    numero_documento: 0,
+    numero_documento: null,
     archivo_documento: null,
     fecha: '',
     descripcion: '',
     definicion: '2',
-    monto_ingreso: 0,
-    monto_egreso: 0
+    monto_ingreso: null,
+    monto_egreso: null
   }
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService) {

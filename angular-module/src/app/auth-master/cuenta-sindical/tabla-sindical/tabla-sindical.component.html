@@ -160,6 +160,8 @@
         <!--total del cierre de mes-->
        </div>
 
+       <div *ngIf="loading" class="loader">Loading...</div>
+
      <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
      <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical

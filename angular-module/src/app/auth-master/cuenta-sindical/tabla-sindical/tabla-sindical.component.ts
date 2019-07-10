@@ -50,7 +50,6 @@ export class TablaSindicalComponent implements OnInit {
     this._fechasService.getAnioActual().subscribe(
       response => {
         this.idAnioActual = response;
-        console.log(this.idAnioActual);
         this.valorAnio.descripcion = this.idAnioActual.id;
       },
       error => {
@@ -62,7 +61,6 @@ export class TablaSindicalComponent implements OnInit {
     this._fechasService.getMesActual().subscribe(
       response => {
         this.idMesActual = response;
-        console.log(this.idMesActual);
         this.valorMes.descripcion = this.idMesActual.id;
       },
       error => {

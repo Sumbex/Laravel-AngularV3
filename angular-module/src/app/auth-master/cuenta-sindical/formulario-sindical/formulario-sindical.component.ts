@@ -71,10 +71,5 @@ export class FormularioSindicalComponent implements OnInit {
   changeDetalle(evento){
     this.datosSindicales.tipoCuentaSindicato = evento.target.value;
     console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
-
-    //Captura del nuevo metodo janito
-    if(evento.target.value = 3){
-      console.log("llamar metodo");
-    }
   }
 }

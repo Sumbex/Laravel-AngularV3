@@ -21,13 +21,18 @@ class CajaChica extends Model
             $request->all(),
             [
                 'fecha' => 'required',
+                'archivo_documento' => 'required|file|mimes:pdf',
                 'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
                 'descripcion' => 'required|min:0',
                 'definicion' => 'required|min:0',
                 'monto' => 'required|integer|min:1|max:100000'
+
             ],
             [
                 'fecha.required' => 'La fecha es necesaria',
+                'archivo_documento.required' => 'Debe seleccionar un archivo',
+                'archivo_documento.file' => 'Lo seleccionado debe ser un archivo',
+                'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
                 'numero_documento.required' => 'El numero de documento es necesario',
                 'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
                 'descripcion.required' => 'La descripcion es necesaria',
@@ -67,9 +72,8 @@ class CajaChica extends Model
 
     protected function saldoActualCaja($anio, $mes)
     {
-
         $caja = $this->traerCajaChica($anio, $mes);
-        
+
         $tomar = true;
 
         if (!$caja->isEmpty()) {
@@ -95,29 +99,29 @@ class CajaChica extends Model
             }
             return $caja;
         } else {
-            return ['estado' =>  false, 'mensaje' => 'no hay ingresos en Caja Chica'];
+            return ['estado' =>  'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
         }
     }
 
-    protected function guardarArchivo($archivo, $ruta){
-        
+    protected function guardarArchivo($archivo, $ruta)
+    {
         $filenameext = $archivo->getClientOriginalName();
         $filename = pathinfo($filenameext, PATHINFO_FILENAME);
         $extension = $archivo->getClientOriginalExtension();
-        $nombreArchivo = $filename.'_'.time().'.'.$extension;
-        $rutaDB = $ruta.$nombreArchivo;
-        $guardar = Storage::put($ruta . $nombreArchivo, $filename, 'public');
+        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+        $rutaDB = $ruta . $nombreArchivo;
 
-        if($guardar){
+        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+        if ($guardar) {
             return ['estado' =>  'success', 'archivo' => $rutaDB];
-        }else{
+        } else {
             return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
         }
     }
 
     protected function ingresarCajaChica($request)
     {
-
         $validarDatos = $this->validarDatos($request);
 
         if ($validarDatos['estado'] == 'success') {
@@ -130,22 +134,17 @@ class CajaChica extends Model
             $mes = $this->mes_tipo_id($fecha['mes']);
 
             $existe = $this->existeCajaChica($anio->id, $mes->id);
-            //dd($existe);
+
             if ($existe['estado'] == 'success') {
 
                 $total = $this->saldoActualCaja($anio->id, $mes->id);
-                //dd(array_has($total, 'estado'));
 
                 if (array_has($total, 'estado')) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
-
-                    foreach ($total as $key) {
-                        
-                    }
+                    foreach ($total as $key) { }
                     $sent = $request->monto <= $key->saldo_actual;
                 }
-
 
                 if ($sent) {
 
@@ -155,13 +154,13 @@ class CajaChica extends Model
                     $caja->numero_documento = $request->numero_documento;
 
                     $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosCajaChica/');
-                    
-                    if($guardarArchivo['estado'] == "success"){
-                        $caja->archivo_documento = $guardarArchivo['archivo'];
-                    }else{
+
+                    if ($guardarArchivo['estado'] == "success") {
+                        $caja->archivo_documento = 'storage/'.$guardarArchivo['archivo'];
+                    } else {
                         return $guardarArchivo;
                     }
-                    
+
                     $caja->descripcion = $request->descripcion;
 
                     switch ($request->definicion) {
@@ -177,7 +176,6 @@ class CajaChica extends Model
                     $caja->user_crea = Auth::user()->id;
                     $caja->activo = "S";
 
-                    
                     if ($caja->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Insertado'];
                     } else {

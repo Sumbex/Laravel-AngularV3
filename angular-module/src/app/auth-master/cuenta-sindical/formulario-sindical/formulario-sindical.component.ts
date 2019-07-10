@@ -18,10 +18,12 @@ export class FormularioSindicalComponent implements OnInit {
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
   selectDetalle: Detalle[] = [];
+  selectedImage:File;
 
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
+    archivoDocumento: null,
     tipoCuentaSindicato: '2',
     descripcion: '',
     definicion: '2',
@@ -61,6 +63,10 @@ export class FormularioSindicalComponent implements OnInit {
         }
       );
     }
+  }
+
+  onSelectImage(event) {
+    this.datosSindicales.archivoDocumento = event.srcElement.files[0];
   }
 
   changeDefinicion(evento){

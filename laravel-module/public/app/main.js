@@ -1178,7 +1178,7 @@ let FormularioSindicalComponent = class FormularioSindicalComponent {
             tipoCuentaSindicato: '2',
             descripcion: '',
             definicion: '2',
-            monto: 0
+            monto: null
         };
     }
     ngOnInit() {
@@ -1618,13 +1618,13 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
             descripcion: '1'
         };
         this.datosCajaChica = {
-            numero_documento: 0,
+            numero_documento: null,
             archivo_documento: null,
             fecha: '',
             descripcion: '',
             definicion: '2',
-            monto_ingreso: 0,
-            monto_egreso: 0
+            monto_ingreso: null,
+            monto_egreso: null
         };
         config.backdrop = 'static';
         config.keyboard = false;

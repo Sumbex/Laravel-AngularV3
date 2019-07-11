@@ -9,6 +9,8 @@ import { Meses } from 'src/app/modelos/meses.model';
 import { all } from 'q';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { cajaChicaSindicalTotales } from 'src/app/modelos/cajaChicaSindicalTotales';
+import { NgForm } from '@angular/forms';
+import { UsuarioService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -18,14 +20,17 @@ import { cajaChicaSindicalTotales } from 'src/app/modelos/cajaChicaSindicalTotal
 export class ModalCajaChicaComponent implements OnInit {
   @ViewChild(TablaCajaChicaComponent, { static: false }) private tablaComponent: TablaCajaChicaComponent;
 
+  //variables
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   idAnioActual;
   idMesActual;
+  modalReference = null;
 
-  selectedImage:File;
+  selectedImage: File;
 
   cajaChica: cajaChicaSindical[] = [];
+
   cajaChicaTotales: cajaChicaSindicalTotales = {
     total_ingreso: null,
     total_egreso: null,
@@ -33,11 +38,13 @@ export class ModalCajaChicaComponent implements OnInit {
   }
   cajaChicaError: boolean = false;
 
+  //iniciar loading
   loading = false;
   errorIngreso = false;
   errorIngresoFecha = false;
-  ingresoStatus:string='';
+  ingresoStatus: string = '';
 
+  //Valor de los select
   selectDefinicion: Definicion[] = [];
 
   valorAnio: Anios = {
@@ -48,8 +55,10 @@ export class ModalCajaChicaComponent implements OnInit {
     descripcion: '1'
   }
 
+  //ngModel de la caja chica
+
   datosCajaChica: cajaChicaSindical = {
-    numero_documento: null,
+    numero_documento: '',
     archivo_documento: null,
     fecha: '',
     descripcion: '',
@@ -58,7 +67,7 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso: null
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService) {
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -111,13 +120,13 @@ export class ModalCajaChicaComponent implements OnInit {
 
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
-    this.cajaChicaError= false;
+    this.cajaChicaError = false;
     this.refrescarCajaChica();
   }
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
-    this.cajaChicaError= false;
+    this.cajaChicaError = false;
     this.refrescarCajaChica();
   }
 
@@ -125,37 +134,41 @@ export class ModalCajaChicaComponent implements OnInit {
     this.datosCajaChica.archivo_documento = event.srcElement.files[0];
   }
 
-  onSubmit({ value, valid }: { value: cajaChicaSindical, valid: boolean }) {
+  onSubmit(valid) {  //{ valid }: { valid: boolean }
 
     if (!valid) {
       console.log("Ingreso no valido revisar campos");
     } else {
-      this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+      //llamar al modal
+      console.log("hola abro el modal");
+      document.getElementById("openModalButtonPass").click();
+    /*  this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
         response => {
-          if(response.estado == 'failed_v'){
+          if (response.estado == 'failed_v') {
             this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
             this.errorIngreso = true;
             return false;
 
-          } if(response.estado == 'failed'){
-              this.ingresoStatus = response.mensaje;
-              this.errorIngreso = true;
-              return false;
-          }else{
+          } if (response.estado == 'failed') {
+            this.ingresoStatus = response.mensaje;
+            this.errorIngreso = true;
+            return false;
+          } else {
             console.log("Ingreso correcto");
             this.errorIngreso = false;
-            this.ingresoStatus ='';
+            this.ingresoStatus = '';
+            this.datosCajaChica.numero_documento = '';
+            this.datosCajaChica.archivo_documento = null;
+            this.datosCajaChica.fecha = '';
+            this.datosCajaChica.descripcion = '';
+            this.datosCajaChica.monto_egreso = null;
             this.refrescarCajaChica();
           }
-            //console.log("test");
-            //console.log(response);
-            //console.log(response.mensaje);
-            //console.log("test");
         },
         error => {
           console.log(<any>error);
         }
-      );
+      );*/
     }
   }
 
@@ -190,6 +203,12 @@ export class ModalCajaChicaComponent implements OnInit {
       }
     )
     this.loading = true;
+  }
+
+  //Funciones del modal validacion de conraseña
+
+  openContraseniaModal(validar){
+    this.modalReference = this.modalService.open(validar, { size: 'sm' });
   }
 
 }

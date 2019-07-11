@@ -623,7 +623,7 @@ class CuentaSindicatoController extends Controller
     		break;
 
     		case 'archivo':
-    			$ruta = substr($cs->archivo_documento, 8);
+    			$ruta = $cs->archivo_documento;
                     $borrar = Storage::delete($ruta);
 
                     if ($borrar) {

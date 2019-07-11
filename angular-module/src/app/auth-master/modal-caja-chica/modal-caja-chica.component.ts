@@ -13,6 +13,7 @@ import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuarios.service';
 import { global } from '../../servicios/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -33,6 +34,14 @@ export class ModalCajaChicaComponent implements OnInit {
   usuario;
   rut: string = '';
   pass: string = "";
+
+  //variables para la edicion
+  idEdicion: string = '';
+  campoEdicion: string = '';
+  parametroEdicion: string = '';
+  varType: string = 'text';
+  edicionDocumento = false;
+  edicionArchivo;
 
   selectedImage: File;
 
@@ -142,6 +151,10 @@ export class ModalCajaChicaComponent implements OnInit {
     this.datosCajaChica.archivo_documento = event.srcElement.files[0];
   }
 
+  onSelectImageEdicion(event) {
+    this.edicionArchivo = event.srcElement.files[0];
+  }
+
   onSubmit(valid) {  //{ valid }: { valid: boolean }
 
     if (!valid) {
@@ -179,9 +192,49 @@ export class ModalCajaChicaComponent implements OnInit {
     this.loading = true;
   }
 
-  editarParametro(){
-    console.log("Hola amigos del youtube");
+  //Funciones para la edicion de los campos*********************************************************
+
+  editarParametro(id, campo, parametro){
+    this.idEdicion = id;
+    this.campoEdicion = campo;
+    this.parametroEdicion = parametro;
+    if(this.campoEdicion == 'fecha'){
+      this.varType = 'date';
+      this.edicionDocumento = false;
+    }else if (this.campoEdicion == 'archivo_documento'){
+      this.edicionDocumento = true;
+    }else{
+      this.varType = 'text';
+      this.edicionDocumento = false;
+    }
+    console.log("valoe vartype: " + this.varType);
+    //aqui modificar el input del modal edicion
+    document.getElementById("openModalButtonEdicion").click();
+    console.log("este es mi id: " + this.idEdicion + "este es mi campo: " + this.campoEdicion + "este es mi antiguo parametro: " + this.parametroEdicion);
   }
+
+  ingresarModificacion(input){
+
+    console.log("respuesta: " + this.edicionArchivo);
+    this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
+      response => {
+        console.log(response);
+        if(response.estado == "failed" || response.estado == "failed_v"){
+          console.log(response);
+        }else{
+          console.log("Edicion correcta");
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  openEdicionModal(edicion) {
+    this.modalReference = this.modalService.open(edicion, { size: 'sm' });
+  }
+
 
   //Funciones del modal validacion de conraseña++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

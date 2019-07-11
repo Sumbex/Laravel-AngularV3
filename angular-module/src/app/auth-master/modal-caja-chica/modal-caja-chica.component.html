@@ -106,21 +106,21 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of cajaChica" class="text-center">
-              <td colspan="2" (click)="editarParametro()">{{item.fecha}}</td>
-              <td colspan="2" (click)="editarParametro()">{{item.numero_documento}}</td>
+              <td colspan="2" (click)="editarParametro(item.id, 'fecha', item.fecha)">{{item.fecha}}</td>
+              <td colspan="2" (click)="editarParametro(item.id, 'numero_documento', item.numero_documento)">{{item.numero_documento}}</td>
 
 
 
               <td colspan="2">
-                <a href="{{  '../' + item.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                <a href="{{  '../' + item.archivo_documento}}" target="_blank" (click)="editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')"><i class="far fa-file-alt"></i></a>
               </td>
 
 
 
-              <td colspan="3" (click)="editarParametro()">{{item.descripcion}}</td>
-              <td colspan="2" (click)="editarParametro()">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-              <td colspan="2" (click)="editarParametro()">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-              <td colspan="2" (click)="editarParametro()">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)">{{item.descripcion}}</td>
+              <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             </tr>
           </tbody>
         </table>
@@ -158,6 +158,39 @@
     </div>
   </form>
 </ng-template>
+
+<!--MODAL PARA EDICION*********************************************************-->
+<ng-template #edicion let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modificar Campo</h4>
+    </div>
+    <div class="modal-body">
+      <form enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Valor Anterior</label>
+          <div class="input-group">
+            <input type="text" class="form-control"  value="{{parametroEdicion}}" disabled>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nuevo Valor</label>
+          <div class="input-group">
+            <input #nuevoValor *ngIf="!edicionDocumento" id="nuevoValor" type="{{varType}}" class="form-control" name="nuevoValor">
+            <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file" (change)="onSelectImageEdicion($event)" required>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+      <button *ngIf="!edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacion(nuevoValor.value)">Guardar</button>
+      <button *ngIf="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacion(nuevoDoc)">Guardar</button>
+    </div>
+  </ng-template>
+
+  <button id="openModalButtonEdicion" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openEdicionModal(edicion)">Launch demo modal</button>
+
+<!--MODAL PARA EDICION-->
 
 <!--Boton Para llamar al modal caja chica-->
 <label><strong>Caja Chica</strong></label><br>

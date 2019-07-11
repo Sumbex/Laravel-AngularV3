@@ -220,7 +220,8 @@ class CajaChica extends Model
                 if (array_has($total, 'estado')) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
-                    foreach ($total as $key) { }
+                    foreach ($total['caja'] as $key) { }
+                    
                     $sent = $request->monto <= $key->saldo_actual;
                 }
 
@@ -423,6 +424,7 @@ class CajaChica extends Model
                 'cc.anio_id' => $anio,
                 'cc.mes_id' => $mes,
             ])
+            ->orderby('cc.dia', 'ASC')
             ->get();
 
         return $caja;

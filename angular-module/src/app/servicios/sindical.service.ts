@@ -41,4 +41,30 @@ export class SindicalService{
         )});
     }
 
+    
+    getTablaSindicalMontoInicial(anio: string, mes: string): Observable<any>{
+        return this._http.get(this.url + "traer_monto_inicial_cs/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    getTablaSindicalActualizar(id,campo,input): Observable<any>{
+
+        const body = new FormData();
+        body.append('id', id);
+        body.append('campo', campo);
+        body.append('input', input);
+        console.log(body);
+
+        return this._http.post(this.url + "actualizar_dato_cs",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                //'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

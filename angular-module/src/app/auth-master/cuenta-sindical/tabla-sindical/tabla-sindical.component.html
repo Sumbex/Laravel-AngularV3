@@ -50,21 +50,124 @@
                   <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
                   <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
                   <!--cuenta del cierre del mes actual-->
-                  <td class="text-center"><strong>{{ 2000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>                
+                  <td class="text-center"><strong>{{ get_numero | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>                
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let itemFijo of fijos">
-                  <td colspan="3" class="text-center">{{itemFijo.fecha}}</td>
-                  <td class="text-center">{{itemFijo.numero_documento}}</td>
-                  <td class="text-center">
-                    <a href="{{  '../storage/' + itemFijo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                  <td colspan="3" class="text-center" (click)="openActualizar(fechaFijoModal)">
+                    {{itemFijo.fecha}}
+                    <ng-template #fechaFijoModal let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <label>Fecha Actual <strong>{{itemFijo.fecha}}</strong></label>
+                          <label>Nueva Fecha <input #fechaFijo type="date"></label>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'fecha',fechaFijo)">Guardar</button>
+                        </div>
+                    </ng-template> 
+                      
+
                   </td>
-                  <td colspan="4">{{itemFijo.descripcion}}</td>
-                  <td class="text-center">{{ itemFijo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                  <td class="text-center">{{ itemFijo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td class="text-center" (click)="openActualizar(numeroDocFijoModal)">
+                    {{itemFijo.numero_documento}}
+                    <ng-template #numeroDocFijoModal let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <input 
+                          #numeroDocFijo
+                          type="text">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'numero_documento',numeroDocFijo)">Guardar</button>
+                        </div>
+                    </ng-template> 
+                  </td>
+
+                  <td class="text-center" (click)="openActualizar(DocFijoModal)">
+                    <a href="{{  '../storage/' + itemFijo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                    <ng-template #DocFijoModal let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <input 
+                          #DocFijo
+                          type="file"
+                          (change)="onSelectImage($event)">
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'archivo',DocFijo)">Guardar</button>
+                        </div>
+                    </ng-template>
+                  </td>
+
+                  <td colspan="4" (click)="openActualizar(descripcionFijoModal)">
+                    {{itemFijo.descripcion}}
+                    <ng-template #descripcionFijoModal let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <input 
+                          #descripcionFijo
+                          type="text">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'descripcion',descripcionFijo)">Guardar</button>
+                        </div>
+                    </ng-template> 
+                  </td>
+
+                  <td class="text-center" (click)="openActualizar(montoFijoModal)">
+                    {{ itemFijo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                    <ng-template #montoFijoModal let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <select #definicionFijo class="form-control form-control-sm">
+                                <option value="">Seleccione</option>
+                                <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
+                              </select>
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'definicion',definicionFijo)">Guardar</button>
+                              <hr>
+                          <input 
+                          #montoFijo
+                          type="text">
+                          <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'monto',montoFijo)">Guardar</button>
+                        </div>
+                    </ng-template> 
+                  </td>
+
+                  <td class="text-center" (click)="openActualizar(montoFijoModal)">
+                    {{ itemFijo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                  </td>
                   <!--acumulado cierre del mes actual-->
-                  <td class="text-center">{{ itemFijo.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                  <td class="text-center">
+                    {{ itemFijo.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+                  </td>
                 </tr>
 
                 <!--variables-->
@@ -79,14 +182,94 @@
                 </tr>
 
                 <tr *ngFor="let itemVariable of variable"> 
-                    <td colspan="3" class="text-center">{{itemVariable.fecha}}</td>
-                    <td scope="col" class="text-center">{{itemVariable.numero_documento}}</td>
+                    <td colspan="3" class="text-center" (click)="openActualizar(fechaVariableModal)">
+                      {{itemVariable.fecha}}
+                      <ng-template #fechaVariableModal let-c="close" let-d="dismiss">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <input 
+                            #fechaVariable
+                            type="date">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemVariable.id,'fecha',fechaVariable)">Guardar</button>
+                          </div>
+                      </ng-template> 
+                    </td>
+
+                    <td scope="col" class="text-center" (click)="openActualizar(numeroDocVariableModal)">
+                      {{itemVariable.numero_documento}}
+                      <ng-template #numeroDocVariableModal let-c="close" let-d="dismiss">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <input 
+                            #numeroDocVariable
+                            type="text">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemVariable.id,'numero_documento',numeroDocVariable)">Guardar</button>
+                          </div>
+                      </ng-template> 
+                    </td>
+
                     <td scope="col" class="text-center">
                       <a href="{{  '../storage' + itemVariable.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                     </td>
-                    <td scope="col" colspan="4">{{itemVariable.descripcion}}</td>
-                    <td scope="col" class="text-center">{{ itemVariable.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                    <td scope="col" class="text-center">{{ itemVariable.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                    <td scope="col" colspan="4" (click)="openActualizar(descripcionVariableModal)">
+                      {{itemVariable.descripcion}}
+                      <ng-template #descripcionVariableModal let-c="close" let-d="dismiss">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <input 
+                            #descripcionVariable
+                            type="text">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemVariable.id,'descripcion',descripcionVariable)">Guardar</button>
+                          </div>
+                      </ng-template> 
+                    </td>
+
+                    <td scope="col" class="text-center" (click)="openActualizar(montoVariableModal)">
+                      {{ itemVariable.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                      <ng-template #montoVariableModal let-c="close" let-d="dismiss">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                              <select #definicionVariable class="form-control form-control-sm">
+                                  <option value="">Seleccione</option>
+                                  <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
+                                </select>
+                                <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemVariable.id,'definicion',definicionVariable)">Guardar</button>
+                                <hr>
+                              <label>Monto Actual: <strong>{{itemVariable.monto_ingreso}} {{itemVariable.monto_egreso}}</strong></label>
+                              <label>Nuevo Monto: <input #montoVariable type="text"></label>
+                            <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemVariable.id,'monto',montoVariable)">Guardar</button>
+                          </div>
+                      </ng-template> 
+                    </td>
+                    <td scope="col" class="text-center" (click)="openActualizar(montoVariableModal)">
+                      {{ itemVariable.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                    </td>
                     <!--acumulado cierre del mes actual-->
                     <td scope="col" class="text-center">{{ itemVariable.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                   </tr>
@@ -103,12 +286,63 @@
                   </tr>
   
                   <tr *ngFor="let itemCajaChica of cajaChica">
-                      <td colspan="3" class="text-center">{{itemCajaChica.fecha}}</td>
-                      <td scope="col" class="text-center">{{itemCajaChica.numero_documento}}</td>
+                      <td colspan="3" class="text-center" (click)="openActualizar(fechaCajaModal)">
+                        {{itemCajaChica.fecha}}
+                        <ng-template #fechaCajaModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <label>Fecha Actual <strong>{{itemCajaChica.fecha}}</strong></label>
+                              <label>Nueva Fecha <input #fechaCaja type="date"></label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCajaChica.id,'fecha',fechaCaja)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
+                      <td scope="col" class="text-center" (click)="openActualizar(numeroDocCajaModal)">
+                        {{itemCajaChica.numero_documento}}
+                        <ng-template #numeroDocCajaModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <label>Numero Documento Actual <strong>{{itemCajaChica.numero_documento}}</strong></label>
+                              <label>Nueva Numero Documento <input #numeroDocCaja type="text"></label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCajaChica.id,'numero_documento',numeroDocCaja)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
                       <td scope="col" class="text-center">
                           <a href="{{  '../storage' + itemCajaChica.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                       </td>
-                      <td scope="col" colspan="4">{{itemCajaChica.descripcion}}</td>
+                      <td scope="col" colspan="4" (click)="openActualizar(descripcionCajaModal)">
+                        {{itemCajaChica.descripcion}}
+                        <ng-template #descripcionCajaModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <label>Descripcion Actual <strong>{{itemCajaChica.descripcion}}</strong></label>
+                              <label>Nueva Descripcion <input #descripcionCaja type="text"></label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCajaChica.id,'descripcion',descripcionCaja)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
                       <td scope="col" class="text-center">{{ itemCajaChica.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <td scope="col" class="text-center">{{ itemCajaChica.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <!--acumulado cierre del mes actual-->
@@ -151,23 +385,99 @@
                   </tr>
   
                   <tr *ngFor="let itemCamping of camping">
-                      <td colspan="3" class="text-center">{{itemCamping.fecha}}</td>
-                      <td scope="col" class="text-center">{{itemCamping.numero_documento}}</td>
-                      <td scope="col" class="text-center">
+                      <td colspan="3" class="text-center" (click)="openActualizar(fechaCampingModal)">
+                        {{itemCamping.fecha}}
+                        <ng-template #fechaCampingModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <label>Fecha Actual <strong>{{itemCamping.fecha}}</strong></label>
+                              <label>Nueva Fecha <input #fechaCamping type="date"></label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCamping.id,'fecha',fechaCamping)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
+                      <td scope="col" class="text-center" (click)="openActualizar(numeroDocCampingModal)">
+                        {{itemCamping.numero_documento}}
+                        <ng-template #numeroDocCampingModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <label>Numero Documento Actual <strong>{{itemCamping.numero_documento}}</strong></label>
+                              <label>Nuevo Numero Documento <input #numeroDocCamping type="text"></label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCamping.id,'numero_documento',numeroDocCamping)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
+
+                      <td scope="col" class="text-center" (click)="openActualizar(descripcionCampingModal)">
                           <a href="{{  '../storage' + itemCamping.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                       </td>
-                      <td scope="col" colspan="4">{{itemCamping.descripcion}}</td>
-                      <td scope="col" class="text-center">{{ itemCamping.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                      <td scope="col" class="text-center">{{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+
+                      <td scope="col" colspan="4" (click)="openActualizar(descripcionCampingModal)">
+                        {{itemCamping.descripcion}}
+                        <ng-template #descripcionCampingModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <label>Descripcion Actual <strong>{{itemCamping.descripcion}}</strong></label>
+                              <label>Nueva Descripcion <input #descripcionCamping type="text"></label>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCamping.id,'descripcion',descripcionCamping)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
+                      <td scope="col" class="text-center" (click)="openActualizar(montoCampingModal)">
+                        {{ itemCamping.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <ng-template #montoCampingModal let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <select #definicionCamping class="form-control form-control-sm">
+                                    <option value="">Seleccione</option>
+                                    <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
+                                  </select> <br>
+                                  <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCamping.id,'definicion',definicionCamping)">Guardar</button>
+                                  <hr>
+
+                              <label>Monto Actual: <strong>{{itemCamping.monto_ingreso}} {{itemCamping.monto_egreso}}</strong></label>
+                              <label>Nuevo Monto: <input #montoCamping type="text"></label>
+                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCamping.id,'monto',montoCamping)">Guardar</button>
+                            </div>
+                        </ng-template> 
+                      </td>
+                      <td scope="col" class="text-center" (click)="openActualizar(montoCampingModal)">
+                        {{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                      </td>
                       <!--acumulado cierre del mes actual-->
                       <td scope="col" class="text-center">{{ itemCamping.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     </tr>
-    
-  
 
+                      <!--Cierre del mes-->
                       <tr>
                         <th colspan="11" class="text-right">Total Cierre del Mes</th>
-                        <td scope="col" class="text-center"><strong>{{ 750000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                        <td scope="col" class="text-center"><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                       </tr>
               </tbody>
             </table>
@@ -178,16 +488,16 @@
               <thead text-sm class="text-center">
                 <tr>
                   <th col>INGRESOS</th>
-                  <td col><strong>{{ 11000000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                  <td col><strong>{{ resultado.ingreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                 </tr>
         
                 <tr>
                   <th col>EGRESOS</th>
-                  <td col><strong>{{ 2443202 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                  <td col><strong>{{ resultado.egreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                 </tr>
                 <tr>
                   <th col>CIERRE MENSUAL MES MAYO</th>
-                  <td col><strong>{{ 8556798 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                  <td col><strong>{{ resultado.total_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                 </tr>
               </thead>
             </table>

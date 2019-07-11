@@ -173,21 +173,22 @@
       <div class="form-group">
         <label>rut</label>
         <div class="input-group">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control"  name="rut" #rut="ngModel" [(ngModel)]="usuario.rut" disabled>
         </div>
       </div>
       <div class="form-group">
         <label>contraseña</label>
         <div class="input-group">
-          <input type="pass" class="form-control">
+          <input #pass type="password" class="form-control" name="pass">
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+    <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Guardar</button>
   </div>
 </ng-template>
 
-<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="openContraseniaModal(validar)">Launch demo modal</button>
+<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" (click)="openContraseniaModal(validar)">Launch demo modal</button>
 <!--MODAL VALIDACION CON CONTRASEÑA-->

@@ -11,6 +11,8 @@ import { AniosService } from 'src/app/servicios/anios.service';
 import { cajaChicaSindicalTotales } from 'src/app/modelos/cajaChicaSindicalTotales';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuarios.service';
+import { global } from '../../servicios/global';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -21,11 +23,16 @@ export class ModalCajaChicaComponent implements OnInit {
   @ViewChild(TablaCajaChicaComponent, { static: false }) private tablaComponent: TablaCajaChicaComponent;
 
   //variables
+  url = global.url;
+  token = localStorage.getItem('token').replace(/['"]+/g, '');
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   idAnioActual;
   idMesActual;
   modalReference = null;
+  usuario;
+  rut: string = '';
+  pass: string = "";
 
   selectedImage: File;
 
@@ -67,7 +74,7 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso: null
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService, public _http: HttpClient) {
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -112,6 +119,7 @@ export class ModalCajaChicaComponent implements OnInit {
     this.modalService.open(CajaChica, { size: 'lg' });
     //Cargar Caja chica
     this.refrescarCajaChica();
+    this.usuarioLogeado();
   }
 
   changeDefinicion(evento) {
@@ -140,35 +148,9 @@ export class ModalCajaChicaComponent implements OnInit {
       console.log("Ingreso no valido revisar campos");
     } else {
       //llamar al modal
-      console.log("hola abro el modal");
+      console.log(this.datosCajaChica);
       document.getElementById("openModalButtonPass").click();
-    /*  this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
-        response => {
-          if (response.estado == 'failed_v') {
-            this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
-            this.errorIngreso = true;
-            return false;
-
-          } if (response.estado == 'failed') {
-            this.ingresoStatus = response.mensaje;
-            this.errorIngreso = true;
-            return false;
-          } else {
-            console.log("Ingreso correcto");
-            this.errorIngreso = false;
-            this.ingresoStatus = '';
-            this.datosCajaChica.numero_documento = '';
-            this.datosCajaChica.archivo_documento = null;
-            this.datosCajaChica.fecha = '';
-            this.datosCajaChica.descripcion = '';
-            this.datosCajaChica.monto_egreso = null;
-            this.refrescarCajaChica();
-          }
-        },
-        error => {
-          console.log(<any>error);
-        }
-      );*/
+      /*  */
     }
   }
 
@@ -205,10 +187,71 @@ export class ModalCajaChicaComponent implements OnInit {
     this.loading = true;
   }
 
-  //Funciones del modal validacion de conraseña
+  //Funciones del modal validacion de conraseña++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  openContraseniaModal(validar){
+  openContraseniaModal(validar) {
     this.modalReference = this.modalService.open(validar, { size: 'sm' });
+  }
+
+  usuarioLogeado() {
+    this._http.get(this.url + "usuario_logeado", {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    ).subscribe(
+      response => {
+        this.usuario = response;
+        this.rut = this.usuario.rut;
+        console.log(this.usuario);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  validarUsuario(pass){
+    console.log(this.rut + "+" + pass.value);
+    this._usuariosSevice.validarUsuario(this.rut, pass.value).subscribe(
+      response => {
+        if (response > 0){
+          console.log("Aquí va el ingreso")
+          console.log(this.rut + "+" + pass.value);
+          this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
+            response => {
+              if (response.estado == 'failed_v') {
+                this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
+                this.errorIngreso = true;
+                return false;
+    
+              } if (response.estado == 'failed') {
+                this.ingresoStatus = response.mensaje;
+                this.errorIngreso = true;
+                return false;
+              } else {
+                console.log("Ingreso correcto");
+                this.errorIngreso = false;
+                this.ingresoStatus = '';
+                this.datosCajaChica.numero_documento = '';
+                this.datosCajaChica.archivo_documento = null;
+                this.datosCajaChica.fecha = '';
+                this.datosCajaChica.descripcion = '';
+                this.datosCajaChica.monto_egreso = null;
+                this.refrescarCajaChica();
+              }
+            },
+            error => {
+              console.log(<any>error);
+            }
+          );
+        }else{
+          console.log("datos incorrectos");
+          console.log(this.rut + "+" + pass.value);
+          alert("Acceso denegado");
+              this.modalReference.close();
+        }
+      }
+    )
   }
 
 }

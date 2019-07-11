@@ -73,10 +73,12 @@ class CajaChica extends Model
     protected function saldoActualCaja($anio, $mes)
     {
         $caja = $this->traerCajaChica($anio, $mes);
-
         $tomar = true;
 
         if (!$caja->isEmpty()) {
+
+            $totales = $this->totalIngEgre($anio, $mes);
+
             for ($i = 0; $i < count($caja); $i++) {
                 switch ($caja[$i]->definicion) {
                     case 1:
@@ -97,7 +99,7 @@ class CajaChica extends Model
                         break;
                 }
             }
-            return $caja;
+            return ['caja' => $caja, 'totales' => $totales];
         } else {
             return ['estado' =>  'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
         }

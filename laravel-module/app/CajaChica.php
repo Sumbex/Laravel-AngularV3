@@ -19,84 +19,94 @@ class CajaChica extends Model
     {
         switch ($opcion) {
             case 1:
-            $validator = Validator::make(
-                $request->all(),
-                [
-                    'fecha' => 'required',
-                    'archivo_documento' => 'required|file|mimes:pdf',
-                    'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
-                    'descripcion' => 'required|min:0',
-                    'definicion' => 'required|min:0',
-                    'monto' => 'required|integer|min:1|max:100000',
-    
-                ],
-                [
-                    'fecha.required' => 'La fecha es necesaria',
-                    'archivo_documento.required' => 'Debe seleccionar un archivo',
-                    'archivo_documento.file' => 'Lo seleccionado debe ser un archivo',
-                    'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
-                    'numero_documento.required' => 'El numero de documento es necesario',
-                    'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
-                    'descripcion.required' => 'La descripcion es necesaria',
-                    'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
-                    'monto.required' => 'El monto es necesario',
-                    'monto.integer' => 'Debe ingresar solo numeros',
-                    'monto.min' => 'El monto debe ser mayor a 0.',
-                    'monto.max' => 'El monto no debe ser mayor a 100000 pesos.'
-                ]
-            );
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'fecha' => 'required',
+                        'archivo_documento' => 'required|file|mimes:pdf',
+                        'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
+                        'descripcion' => 'required|min:0',
+                        'definicion' => 'required|min:0',
+                        'monto' => 'required|integer|min:1|max:100000',
+
+                    ],
+                    [
+                        'fecha.required' => 'La fecha es necesaria',
+                        'archivo_documento.required' => 'Debe seleccionar un archivo',
+                        'archivo_documento.file' => 'Lo seleccionado debe ser un archivo',
+                        'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
+                        'numero_documento.required' => 'El numero de documento es necesario',
+                        'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
+                        'descripcion.required' => 'La descripcion es necesaria',
+                        'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+                        'monto.required' => 'El monto es necesario',
+                        'monto.integer' => 'Debe ingresar solo numeros',
+                        'monto.min' => 'El monto debe ser mayor a 0.',
+                        'monto.max' => 'El monto no debe ser mayor a 100000 pesos.'
+                    ]
+                );
                 break;
             case 2:
                 switch ($request->campo) {
                     case 'fecha':
                         $validator = Validator::make(
                             $request->all(),
-                            ['input' => 'required'
+                            [
+                                'input' => 'required'
                             ],
-                            ['input.required' => 'La fecha es necesaria'
+                            [
+                                'input.required' => 'La fecha es necesaria'
                             ]
                         );
                         break;
                     case 'numero_documento':
                         $validator = Validator::make(
                             $request->all(),
-                            ['input' => 'required|unique:cs_caja_chica,numero_documento'
+                            [
+                                'input' => 'required|unique:cs_caja_chica,numero_documento'
                             ],
-                            ['input.required' => 'El numero de documento es necesario',
-                            'input.unique' => 'El numero de documento ya existe en tus registros'
+                            [
+                                'input.required' => 'El numero de documento es necesario',
+                                'input.unique' => 'El numero de documento ya existe en tus registros'
                             ]
                         );
                         break;
                     case 'archivo_documento':
                         $validator = Validator::make(
                             $request->all(),
-                            ['input' => 'required|file|mimes:pdf'
+                            [
+                                'input' => 'required|file|mimes:pdf'
                             ],
-                            ['input.required' => 'Debe seleccionar un archivo',
-                            'input.file' => 'Lo seleccionado debe ser un archivo',
-                            'input.mimes' => 'El archivo debe ser extension PDF'
+                            [
+                                'input.required' => 'Debe seleccionar un archivo',
+                                'input.file' => 'Lo seleccionado debe ser un archivo',
+                                'input.mimes' => 'El archivo debe ser extension PDF'
                             ]
                         );
                         break;
                     case 'descripcion':
                         $validator = Validator::make(
                             $request->all(),
-                            ['input' => 'required|min:0'
+                            [
+                                'input' => 'required|min:0'
                             ],
-                            ['input.required' => 'La descripcion es necesaria'
+                            [
+                                'input.required' => 'La descripcion es necesaria'
                             ]
                         );
                         break;
                     case 'monto':
                         $validator = Validator::make(
                             $request->all(),
-                            ['input' => 'required|integer|min:1|max:100000'
+                            [
+                                'input' => 'required|integer|min:1|max:100000'
                             ],
-                            ['input.required' => 'El monto es necesario',
-                            'input.integer' => 'Debe ingresar solo numeros'
+                            [
+                                'input.required' => 'El monto es necesario',
+                                'input.integer' => 'Debe ingresar solo numeros'
                             ]
                         );
-                        break;    
+                        break;
                     default:
                         # code...
                         break;
@@ -159,6 +169,9 @@ class CajaChica extends Model
                         } else {
                             $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
                         }
+                        break;
+                    default:
+                        # code...
                         break;
                 }
             }
@@ -234,6 +247,9 @@ class CajaChica extends Model
                             break;
                         case '2':
                             $caja->monto_egreso = $request->monto;
+                            break;
+                        default:
+                            # code...
                             break;
                     }
 
@@ -351,11 +367,14 @@ class CajaChica extends Model
                             return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
                         }
                         break;
+                    default:
+                        # code...
+                        break;
                 }
             } else {
                 return $verificar;
             }
-        }else{
+        } else {
             return $validarDatos;
         }
     }
@@ -427,6 +446,7 @@ class CajaChica extends Model
                 return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
             } else {
                 if ($caja[0]->total_ingreso == 0) {
+                    $caja[0]->total_ingreso = 0;
                     $caja[0]->total = $caja[0]->total_egreso;
                 } else {
                     $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;

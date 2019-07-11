@@ -106,8 +106,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of cajaChica" class="text-center">
-              <td colspan="2">{{item.fecha}}</td>
-              <td colspan="2">{{item.numero_documento}}</td>
+              <td colspan="2" (click)="editarParametro()">{{item.fecha}}</td>
+              <td colspan="2" (click)="editarParametro()">{{item.numero_documento}}</td>
 
 
 
@@ -117,10 +117,10 @@
 
 
 
-              <td colspan="3">{{item.descripcion}}</td>
-              <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-              <td colspan="2">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-              <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="3" (click)="editarParametro()">{{item.descripcion}}</td>
+              <td colspan="2" (click)="editarParametro()">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="2" (click)="editarParametro()">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="2" (click)="editarParametro()">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             </tr>
           </tbody>
         </table>
@@ -132,16 +132,16 @@
           <thead text-sm class="text-center">
             <tr>
               <th col>INGRESOS</th>
-              <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <td col><strong>{{ cajaChicaTotales.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
             </tr>
 
             <tr>
               <th col>EGRESOS</th>
-              <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <td col><strong>{{ cajaChicaTotales.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
             </tr>
             <tr>
               <th col>CIERRE DEL MES</th>
-              <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <td col><strong>{{ cajaChicaTotales.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
             </tr>
           </thead>
         </table>
@@ -190,5 +190,5 @@
   </div>
 </ng-template>
 
-<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" (click)="openContraseniaModal(validar)">Launch demo modal</button>
+<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openContraseniaModal(validar)">Launch demo modal</button>
 <!--MODAL VALIDACION CON CONTRASEÑA-->

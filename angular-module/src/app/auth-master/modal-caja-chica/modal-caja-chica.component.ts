@@ -108,6 +108,7 @@ export class ModalCajaChicaComponent implements OnInit {
         this.idMesActual = response;
         console.log(this.idMesActual);
         this.valorMes.descripcion = this.idMesActual.id;
+        this.refrescarCajaChica();
       },
       error => {
         console.log(error);
@@ -118,7 +119,6 @@ export class ModalCajaChicaComponent implements OnInit {
   openCajaChica(CajaChica) {
     this.modalService.open(CajaChica, { size: 'lg' });
     //Cargar Caja chica
-    this.refrescarCajaChica();
     this.usuarioLogeado();
   }
 
@@ -159,10 +159,16 @@ export class ModalCajaChicaComponent implements OnInit {
     this.cajaChica = [];
     this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        if (response.estado == "failed" || response.estado == false || response.estado == "failed_v") {
+        console.log(response.caja);
+        if (response.estado == "failed" || response.estado == "failed_v") {
           this.cajaChicaError = true;
+          this.cajaChicaTotales.total = 0;
+          this.cajaChicaTotales.total_egreso = 0;
+          this.cajaChicaTotales.total_ingreso = 0;
         } else {
-          this.cajaChica = response;
+          this.cajaChica = response.caja;
+          this.cajaChicaTotales = response.totales[0];
+          console.log(this.cajaChicaTotales[0]);
         }
         this.loading = false;
       },
@@ -170,21 +176,11 @@ export class ModalCajaChicaComponent implements OnInit {
         console.log(error);
       }
     );
-    this._cajaChicaService.getTotalesCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
-      response => {
-        if (response.estado == "failed" || response.estado == false || response.estado == "failed_v") {
-          this.cajaChicaError = true;
-        } else {
-          this.cajaChicaTotales = response;
-          console.log(this.cajaChicaTotales);
-        }
-        this.loading = false;
-      },
-      error => {
-        console.log(error);
-      }
-    )
     this.loading = true;
+  }
+
+  editarParametro(){
+    console.log("Hola amigos del youtube");
   }
 
   //Funciones del modal validacion de conraseña++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -245,8 +241,6 @@ export class ModalCajaChicaComponent implements OnInit {
             }
           );
         }else{
-          console.log("datos incorrectos");
-          console.log(this.rut + "+" + pass.value);
           alert("Acceso denegado");
               this.modalReference.close();
         }

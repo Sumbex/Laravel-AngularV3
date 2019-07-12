@@ -227,6 +227,8 @@ export class ModalCajaChicaComponent implements OnInit {
           console.log(response);
         }else{
           console.log("Edicion correcta");
+          this.refrescarCajaChica();
+          document.getElementById("closeModalButtonEdicion").click();
         }
       },
       error => {
@@ -244,6 +246,8 @@ export class ModalCajaChicaComponent implements OnInit {
           console.log(response);
         }else{
           console.log("Edicion correcta");
+          this.refrescarCajaChica();
+          document.getElementById("closeModalButtonEdicion").click();
         }
       },
       error => {

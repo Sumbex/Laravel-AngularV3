@@ -623,14 +623,15 @@ class CuentaSindicatoController extends Controller
     		break;
 
     		case 'archivo':
-    			$ruta = $cs->archivo_documento;
+				$ruta = $cs->archivo_documento;
+					
                     $borrar = Storage::delete($ruta);
 
                     if ($borrar) {
                         $guardarArchivo = $this->guardarArchivo($r->input, 'archivos_sindical/');
 
                         if ($guardarArchivo['estado'] == "success") {
-                            $cs->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                            $cs->archivo_documento = $guardarArchivo['archivo'];
                             if ($cs->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
                             } else {

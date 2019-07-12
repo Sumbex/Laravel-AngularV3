@@ -41,6 +41,7 @@ export class ModalCajaChicaComponent implements OnInit {
   parametroEdicion: string = '';
   varType: string = 'text';
   edicionDocumento = false;
+  edicionTexto = false;
   edicionArchivo;
 
   selectedImage: File;
@@ -201,11 +202,14 @@ export class ModalCajaChicaComponent implements OnInit {
     if(this.campoEdicion == 'fecha'){
       this.varType = 'date';
       this.edicionDocumento = false;
+      this.edicionTexto = true;
     }else if (this.campoEdicion == 'archivo_documento'){
       this.edicionDocumento = true;
+      this.edicionTexto = false;
     }else{
       this.varType = 'text';
       this.edicionDocumento = false;
+      this.edicionTexto = true;
     }
     console.log("valoe vartype: " + this.varType);
     //aqui modificar el input del modal edicion
@@ -213,10 +217,27 @@ export class ModalCajaChicaComponent implements OnInit {
     console.log("este es mi id: " + this.idEdicion + "este es mi campo: " + this.campoEdicion + "este es mi antiguo parametro: " + this.parametroEdicion);
   }
 
-  ingresarModificacion(input){
+  ingresarModificacionDocumento(){
 
     console.log("respuesta: " + this.edicionArchivo);
     this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
+      response => {
+        console.log(response);
+        if(response.estado == "failed" || response.estado == "failed_v"){
+          console.log(response);
+        }else{
+          console.log("Edicion correcta");
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  ingresarModificacionTexto(input){
+    console.log("texto edicion: " + input);
+    this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, input).subscribe(
       response => {
         console.log(response);
         if(response.estado == "failed" || response.estado == "failed_v"){

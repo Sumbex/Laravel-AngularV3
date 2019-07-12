@@ -147,7 +147,7 @@ class CuentaSindicatoController extends Controller
 						$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
 						$cs->descripcion = $r->descripcion;
 
-						$cs->archivo_documento = $archivo; 
+						$cs->archivo_documento = 'storage/'.$archivo; 
 
 						// dd($r->definicion);
 						switch ($r->definicion) {// si es ingreso o egreso
@@ -631,7 +631,7 @@ class CuentaSindicatoController extends Controller
                         $guardarArchivo = $this->guardarArchivo($r->input, 'archivos_sindical/');
 
                         if ($guardarArchivo['estado'] == "success") {
-                            $cs->archivo_documento = $guardarArchivo['archivo'];
+                            $cs->archivo_documento = 'storage/'.$guardarArchivo['archivo'];
                             if ($cs->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
                             } else {

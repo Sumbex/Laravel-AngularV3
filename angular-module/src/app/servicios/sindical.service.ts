@@ -67,4 +67,13 @@ export class SindicalService{
         )});
     }
 
+    getCalcularCajaChica(anio: string, mes: string): Observable<any>{
+        return this._http.get(this.url + "calcular_caja_chica_anterior_cs/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

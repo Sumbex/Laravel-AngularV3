@@ -157,7 +157,6 @@ export class TablaSindicalComponent implements OnInit {
              // this.verify = true;
               this.cierreAnterior = response[0].inicio_mensual;
               this.get_numero = this.cierreAnterior;
-
               console.log("pasa el inicio_cierre");
             }
           }
@@ -166,6 +165,10 @@ export class TablaSindicalComponent implements OnInit {
 
   openActualizar(Actualizar) {
    this.modalActualizar = this.modalService.open(Actualizar,{ size: 'sm' });
+   
+  }
+  cerrarActualizar(){
+    this.modalActualizar.close();
   }
 
   //actualizar items

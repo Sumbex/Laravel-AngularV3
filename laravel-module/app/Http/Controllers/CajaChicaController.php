@@ -35,6 +35,10 @@ class CajaChicaController extends Controller
     public function TotalIngEgre($anio, $mes)
     {
         return CajaChica::totalIngEgre($anio, $mes);
-         
+    }
+    // Request $request,
+    public function ModificarDatos(Request $request)
+    {
+        return CajaChica::modificarDatos($request);
     }
 }

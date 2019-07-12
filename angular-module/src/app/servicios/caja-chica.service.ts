@@ -30,8 +30,31 @@ export class CajaChicaService{
         )});
     }
 
+    modificarValor(id, campo, nuevoValor): Observable<any>{
+        console.log(nuevoValor);
+        const form = new FormData();
+        form.append('id', id);
+        form.append('campo', campo);
+        form.append('input', nuevoValor);
+
+        return this._http.post(this.url + "modificar_caja_chica", form, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )});
+    }
+
     getCajaChica(anio: string, mes: string): Observable<any>{
         return this._http.get(this.url + "traer_caja_chica/" + anio + '/' + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    getTotalesCajaChica(anio: string, mes:string): Observable<any>{
+        return this._http.get(this.url + "totales_caja_chica/" + anio + '/' + mes, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'

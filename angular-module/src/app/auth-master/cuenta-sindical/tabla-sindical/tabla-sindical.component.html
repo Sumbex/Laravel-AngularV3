@@ -52,7 +52,9 @@
                 <tr *ngFor="let itemFijo of fijos">
                   <td colspan="3" class="text-center">{{itemFijo.fecha}}</td>
                   <td class="text-center">{{itemFijo.numero_documento}}</td>
-                  <td class="text-center">{{itemFijo.archivo_documento}}</td>
+                  <td class="text-center">
+                    <a href="{{  '../storage/' + itemFijo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                  </td>
                   <td colspan="4">{{itemFijo.descripcion}}</td>
                   <td class="text-center">{{ itemFijo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                   <td class="text-center">{{ itemFijo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -74,7 +76,9 @@
                 <tr *ngFor="let itemVariable of variable"> 
                     <td colspan="3" class="text-center">{{itemVariable.fecha}}</td>
                     <td scope="col" class="text-center">{{itemVariable.numero_documento}}</td>
-                    <td scope="col" class="text-center">{{itemVariable.archivo_documento}}</td>
+                    <td scope="col" class="text-center">
+                      <a href="{{  '../storage' + itemVariable.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                    </td>
                     <td scope="col" colspan="4">{{itemVariable.descripcion}}</td>
                     <td scope="col" class="text-center">{{ itemVariable.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                     <td scope="col" class="text-center">{{ itemVariable.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -96,7 +100,9 @@
                   <tr *ngFor="let itemCajaChica of cajaChica">
                       <td colspan="3" class="text-center">{{itemCajaChica.fecha}}</td>
                       <td scope="col" class="text-center">{{itemCajaChica.numero_documento}}</td>
-                      <td scope="col" class="text-center">{{itemCajaChica.archivo_documento}}</td>
+                      <td scope="col" class="text-center">
+                          <a href="{{  '../storage' + itemCajaChica.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                      </td>
                       <td scope="col" colspan="4">{{itemCajaChica.descripcion}}</td>
                       <td scope="col" class="text-center">{{ itemCajaChica.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <td scope="col" class="text-center">{{ itemCajaChica.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -118,7 +124,9 @@
                   <tr *ngFor="let itemPrestamo of prestamo">
                       <td colspan="3" class="text-center">{{itemPrestamo.fecha}}</td>
                       <td scope="col" class="text-center">{{itemPrestamo.numero_documento}}</td>
-                      <td scope="col" class="text-center">{{itemPrestamo.archivo_documento}}</td>
+                      <td scope="col" class="text-center">
+                          <a href="{{  '../storage' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                      </td>
                       <td scope="col" colspan="4">{{itemPrestamo.descripcion}}</td>
                       <td scope="col" class="text-center">{{ itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <td scope="col" class="text-center">{{ itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -140,7 +148,9 @@
                   <tr *ngFor="let itemCamping of camping">
                       <td colspan="3" class="text-center">{{itemCamping.fecha}}</td>
                       <td scope="col" class="text-center">{{itemCamping.numero_documento}}</td>
-                      <td scope="col" class="text-center">{{itemCamping.archivo_documento}}</td>
+                      <td scope="col" class="text-center">
+                          <a href="{{  '../storage' + itemCamping.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                      </td>
                       <td scope="col" colspan="4">{{itemCamping.descripcion}}</td>
                       <td scope="col" class="text-center">{{ itemCamping.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                       <td scope="col" class="text-center">{{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -159,6 +169,8 @@
         </div> 
         <!--total del cierre de mes-->
        </div>
+
+       <div *ngIf="loading" class="loader">Loading...</div>
 
      <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
      <div class="modal-footer">

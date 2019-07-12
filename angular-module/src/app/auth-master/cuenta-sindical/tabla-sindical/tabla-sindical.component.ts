@@ -15,6 +15,7 @@ export class TablaSindicalComponent implements OnInit {
   selectMes: Meses[] = [];
   idAnioActual;
   idMesActual;
+  loading = false;
   //TABLAS
   tablaSindical;
   fijos;
@@ -88,9 +89,24 @@ export class TablaSindicalComponent implements OnInit {
   }
 
   refrescarSindical() {
+    this.tablaSindical = [];
+          this.fijos = [];
+          this.variable = [];
+          this.cajaChica = [];
+          this.prestamo = [];
+          this.camping = [];
+          this.resultado = [];
     this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        if (response != null) {
+        if (response == null) {
+          this.tablaSindical = [];
+          this.fijos = [];
+          this.variable = [];
+          this.cajaChica = [];
+          this.prestamo = [];
+          this.camping = [];
+          this.resultado = [];
+        }else{
           this.tablaSindical = response;
           this.fijos = this.tablaSindical.fijo;
           this.variable = this.tablaSindical.variable;
@@ -99,21 +115,14 @@ export class TablaSindicalComponent implements OnInit {
           this.camping = this.tablaSindical.camping;
           this.resultado = this.tablaSindical.resultado;
           console.log(this.tablaSindical);
-        }else{
-          console.log("datos nulos");
-          this.tablaSindical = [];
-          this.fijos = [];
-          this.variable = [];
-          this.cajaChica = [];
-          this.prestamo = [];
-          this.camping = [];
-          this.resultado = [];
         }
+        this.loading = false;
       },
       error => {
         console.log(error);
       }
     );
+    this.loading = true;
   }
 
 }

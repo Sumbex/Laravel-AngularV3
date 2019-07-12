@@ -18,14 +18,16 @@ export class FormularioSindicalComponent implements OnInit {
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
   selectDetalle: Detalle[] = [];
+  selectedImage:File;
 
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
+    archivoDocumento: null,
     tipoCuentaSindicato: '2',
     descripcion: '',
     definicion: '2',
-    monto: 0
+    monto: null
   }
 
   constructor(private _sindicalService: SindicalService) {
@@ -52,15 +54,24 @@ export class FormularioSindicalComponent implements OnInit {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
+      console.log("Hola");
       this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
         response => {
           console.log(response);
+          this.datosSindicales.fecha = '';
+          this.datosSindicales.nDocumento = '';
+          this.datosSindicales.descripcion = '';
+          this.datosSindicales.monto = null;
         },
         error => {
           console.log(<any>error);
         }
       );
     }
+  }
+
+  onSelectImage(event) {
+    this.datosSindicales.archivoDocumento = event.srcElement.files[0];
   }
 
   changeDefinicion(evento){
@@ -71,10 +82,5 @@ export class FormularioSindicalComponent implements OnInit {
   changeDetalle(evento){
     this.datosSindicales.tipoCuentaSindicato = evento.target.value;
     console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
-
-    //Captura del nuevo metodo janito
-    if(evento.target.value = 3){
-      console.log("llamar metodo");
-    }
   }
 }

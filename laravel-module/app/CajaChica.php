@@ -15,34 +15,107 @@ class CajaChica extends Model
 
     protected $table = "cs_caja_chica";
 
-    public function validarDatos($request)
+    public function validarDatos($request, $opcion)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'fecha' => 'required',
-                'archivo_documento' => 'required|file|mimes:pdf',
-                'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
-                'descripcion' => 'required|min:0',
-                'definicion' => 'required|min:0',
-                'monto' => 'required|integer|min:1|max:100000'
+        switch ($opcion) {
+            case 1:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'fecha' => 'required',
+                        'archivo_documento' => 'required|file|mimes:pdf',
+                        'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
+                        'descripcion' => 'required|min:0',
+                        'definicion' => 'required|min:0',
+                        'monto' => 'required|integer|min:1|max:100000',
 
-            ],
-            [
-                'fecha.required' => 'La fecha es necesaria',
-                'archivo_documento.required' => 'Debe seleccionar un archivo',
-                'archivo_documento.file' => 'Lo seleccionado debe ser un archivo',
-                'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
-                'numero_documento.required' => 'El numero de documento es necesario',
-                'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
-                'descripcion.required' => 'La descripcion es necesaria',
-                'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
-                'monto.required' => 'El monto es necesario',
-                'monto.integer' => 'Debe ingresar solo numeros',
-                'monto.min' => 'El monto debe ser mayor a 0.',
-                'monto.max' => 'El monto no debe ser mayor a 100000 pesos.'
-            ]
-        );
+                    ],
+                    [
+                        'fecha.required' => 'La fecha es necesaria',
+                        'archivo_documento.required' => 'Debe seleccionar un archivo',
+                        'archivo_documento.file' => 'Lo seleccionado debe ser un archivo',
+                        'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
+                        'numero_documento.required' => 'El numero de documento es necesario',
+                        'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
+                        'descripcion.required' => 'La descripcion es necesaria',
+                        'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+                        'monto.required' => 'El monto es necesario',
+                        'monto.integer' => 'Debe ingresar solo numeros',
+                        'monto.min' => 'El monto debe ser mayor a 0.',
+                        'monto.max' => 'El monto no debe ser mayor a 100000 pesos.'
+                    ]
+                );
+                break;
+            case 2:
+                switch ($request->campo) {
+                    case 'fecha':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required'
+                            ],
+                            [
+                                'input.required' => 'La fecha es necesaria'
+                            ]
+                        );
+                        break;
+                    case 'numero_documento':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|unique:cs_caja_chica,numero_documento'
+                            ],
+                            [
+                                'input.required' => 'El numero de documento es necesario',
+                                'input.unique' => 'El numero de documento ya existe en tus registros'
+                            ]
+                        );
+                        break;
+                    case 'archivo_documento':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|file|mimes:pdf'
+                            ],
+                            [
+                                'input.required' => 'Debe seleccionar un archivo',
+                                'input.file' => 'Lo seleccionado debe ser un archivo',
+                                'input.mimes' => 'El archivo debe ser extension PDF'
+                            ]
+                        );
+                        break;
+                    case 'descripcion':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|min:0'
+                            ],
+                            [
+                                'input.required' => 'La descripcion es necesaria'
+                            ]
+                        );
+                        break;
+                    case 'monto':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|integer|min:1|max:100000'
+                            ],
+                            [
+                                'input.required' => 'El monto es necesario',
+                                'input.integer' => 'Debe ingresar solo numeros'
+                            ]
+                        );
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+                break;
+            default:
+                # code...
+                break;
+        }
 
         if ($validator->fails()) {
             return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
@@ -73,10 +146,12 @@ class CajaChica extends Model
     protected function saldoActualCaja($anio, $mes)
     {
         $caja = $this->traerCajaChica($anio, $mes);
-
         $tomar = true;
 
         if (!$caja->isEmpty()) {
+
+            $totales = $this->totalIngEgre($anio, $mes);
+
             for ($i = 0; $i < count($caja); $i++) {
                 switch ($caja[$i]->definicion) {
                     case 1:
@@ -95,9 +170,12 @@ class CajaChica extends Model
                             $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
                         }
                         break;
+                    default:
+                        # code...
+                        break;
                 }
             }
-            return $caja;
+            return ['caja' => $caja, 'totales' => $totales];
         } else {
             return ['estado' =>  'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
         }
@@ -122,7 +200,7 @@ class CajaChica extends Model
 
     protected function ingresarCajaChica($request)
     {
-        $validarDatos = $this->validarDatos($request);
+        $validarDatos = $this->validarDatos($request, 1);
 
         if ($validarDatos['estado'] == 'success') {
 
@@ -142,7 +220,8 @@ class CajaChica extends Model
                 if (array_has($total, 'estado')) {
                     $sent = $request->monto <= $this->saldo;
                 } else {
-                    foreach ($total as $key) { }
+                    foreach ($total['caja'] as $key) { }
+                    
                     $sent = $request->monto <= $key->saldo_actual;
                 }
 
@@ -169,6 +248,9 @@ class CajaChica extends Model
                             break;
                         case '2':
                             $caja->monto_egreso = $request->monto;
+                            break;
+                        default:
+                            # code...
                             break;
                     }
 
@@ -209,83 +291,92 @@ class CajaChica extends Model
 
     protected function modificarDatos($request)
     {
+        $validarDatos = $this->validarDatos($request, 2);
 
-        $verificar = $this->verificarAModificar($request->id);
+        if ($validarDatos['estado'] == 'success') {
 
-        if ($verificar['estado'] == 'success') {
+            $verificar = $this->verificarAModificar($request->id);
 
-            $modificar = CajaChica::find($request->id);
+            if ($verificar['estado'] == 'success') {
 
-            switch ($request->campo) {
-                case 'fecha':
-                    $fecha = $this->div_fecha($request->input);
+                $modificar = CajaChica::find($request->id);
 
-                    $anio = $this->anio_tipo_id($fecha['anio']);
-                    $mes = $this->mes_tipo_id($fecha['mes']);
+                switch ($request->campo) {
+                    case 'fecha':
+                        $fecha = $this->div_fecha($request->input);
 
-                    if ($modificar->anio_id == $anio->id && $modificar->mes_id == $mes->id) {
-                        $modificar->dia = $fecha['dia'];
+                        $anio = $this->anio_tipo_id($fecha['anio']);
+                        $mes = $this->mes_tipo_id($fecha['mes']);
 
-                        if ($modificar->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Fecha actualizada'];
-                        } else {
-                            return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
-                        }
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'La fecha ingresada no pertenece al mes correspondiente'];
-                    }
-                    break;
-                case 'numero_documento':
-                    $modificar->numero_documento = $request->input;
+                        if ($modificar->anio_id == $anio->id && $modificar->mes_id == $mes->id) {
+                            $modificar->dia = $fecha['dia'];
 
-                    if ($modificar->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Numero de documento actualizado'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
-                    }
-                    break;
-                case 'archivo_documento':
-                    $ruta = substr($modificar->archivo_documento, 8);
-                    $borrar = Storage::delete($ruta);
-
-                    if ($borrar) {
-                        $guardarArchivo = $this->guardarArchivo($request->input, 'ArchivosCajaChica/');
-
-                        if ($guardarArchivo['estado'] == "success") {
-                            $modificar->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
                             if ($modificar->save()) {
-                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                return ['estado' => 'success', 'mensaje' => 'Fecha actualizada'];
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
                             }
                         } else {
-                            return $guardarArchivo;
+                            return ['estado' => 'failed', 'mensaje' => 'La fecha ingresada no pertenece al mes correspondiente'];
                         }
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
-                    }
-                    break;
-                case 'descripcion':
-                    $modificar->descripcion = $request->input;
+                        break;
+                    case 'numero_documento':
+                        $modificar->numero_documento = $request->input;
 
-                    if ($modificar->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Descripcion actualizada'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
-                    }
-                    break;
-                case 'monto':
-                    $modificar->monto_egreso = $request->input;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Numero de documento actualizado'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                        }
+                        break;
+                    case 'archivo_documento':
+                        $ruta = substr($modificar->archivo_documento, 8);
+                        $borrar = Storage::delete($ruta);
 
-                    if ($modificar->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Monto actualizado'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
-                    }
-                    break;
+                        if ($borrar) {
+                            $guardarArchivo = $this->guardarArchivo($request->input, 'ArchivosCajaChica/');
+
+                            if ($guardarArchivo['estado'] == "success") {
+                                $modificar->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                                if ($modificar->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                                }
+                            } else {
+                                return $guardarArchivo;
+                            }
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                        }
+                        break;
+                    case 'descripcion':
+                        $modificar->descripcion = $request->input;
+
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Descripcion actualizada'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                        }
+                        break;
+                    case 'monto':
+                        $modificar->monto_egreso = $request->input;
+
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Monto actualizado'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                return $verificar;
             }
         } else {
-            return $verificar;
+            return $validarDatos;
         }
     }
 
@@ -333,6 +424,7 @@ class CajaChica extends Model
                 'cc.anio_id' => $anio,
                 'cc.mes_id' => $mes,
             ])
+            ->orderby('cc.dia', 'ASC')
             ->get();
 
         return $caja;
@@ -356,6 +448,7 @@ class CajaChica extends Model
                 return ['estado' => 'failed', 'mensaje' => 'no hay ingresos en Caja Chica'];
             } else {
                 if ($caja[0]->total_ingreso == 0) {
+                    $caja[0]->total_ingreso = 0;
                     $caja[0]->total = $caja[0]->total_egreso;
                 } else {
                     $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;

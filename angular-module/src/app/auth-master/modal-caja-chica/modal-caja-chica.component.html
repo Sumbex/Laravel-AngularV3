@@ -175,7 +175,7 @@
         <div class="form-group">
           <label>Nuevo Valor</label>
           <div class="input-group">
-            <input #nuevoValor *ngIf="!edicionDocumento" id="nuevoValor" type="{{varType}}" class="form-control" name="nuevoValor">
+            <input [hidden]="edicionDocumento" #nuevoValor id="nuevoValor" type="{{varType}}" class="form-control" name="nuevoValor">
             <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file" (change)="onSelectImageEdicion($event)" required>
           </div>
         </div>
@@ -183,8 +183,8 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
-      <button *ngIf="!edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacion(nuevoValor.value)">Guardar</button>
-      <button *ngIf="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacion(nuevoDoc)">Guardar</button>
+      <button [hidden]="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar</button>
+      <button *ngIf="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacionDocumento()">Guardar Documento</button>
     </div>
   </ng-template>
 

@@ -101,7 +101,7 @@
                   </td>
 
                   <td class="text-center" (click)="openActualizar(DocFijoModal)">
-                    <a href="{{  '../storage/' + itemFijo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                    <a href="{{  '../' + itemFijo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                     <ng-template #DocFijoModal let-c="close" let-d="dismiss">
                         <div class="modal-header">
                           <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
@@ -228,7 +228,7 @@
                     </td>
 
                     <td scope="col" class="text-center" (click)="openActualizar(DocVariableModal)">
-                      <a href="{{  '../storage' + itemVariable.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                      <a href="{{  '../' +  itemVariable.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                       <ng-template #DocVariableModal let-c="close" let-d="dismiss">
                           <div class="modal-header">
                             <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
@@ -345,7 +345,7 @@
                       </ng-template> 
                     </td>
                     <td scope="col" class="text-center" (click)="openActualizar(DocCajaChicaModal)">
-                        <a href="{{  '../storage' + itemCajaChica.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                        <a href="{{  '../' +  itemCajaChica.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                         <ng-template #DocCajaChicaModal let-c="close" let-d="dismiss">
                             <div class="modal-header">
                               <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
@@ -403,7 +403,7 @@
                     <td colspan="3" class="text-center">{{itemPrestamo.fecha}}</td>
                     <td scope="col" class="text-center">{{itemPrestamo.numero_documento}}</td>
                     <td scope="col" class="text-center">
-                        <a href="{{  '../storage' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                        <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                     </td>
                     <td scope="col" colspan="4">{{itemPrestamo.descripcion}}</td>
                     <td scope="col" class="text-center">{{ itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -462,7 +462,7 @@
                     </td>
 
                     <td scope="col" class="text-center" (click)="openActualizar(DocCampingModal)">
-                        <a href="{{  '../storage' + itemCamping.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                        <a href="{{  '../' + itemCamping.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                         <ng-template #DocCampingModal let-c="close" let-d="dismiss">
                             <div class="modal-header">
                               <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>

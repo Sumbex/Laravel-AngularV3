@@ -69,7 +69,7 @@ class CuentaSindicatoController extends Controller
 
 		try{
 
-			$file = $this->guardarArchivo($r->archivo,'arvhivos_sindical/');
+			$file = $this->guardarArchivo($r->archivo,'archivos_sindical/');
 
 			if($file['estado'] == "success"){
 				$archivo = $file['archivo'];
@@ -358,7 +358,7 @@ class CuentaSindicatoController extends Controller
 	//este metodo recibe el año como tal
 	public function existe_dinero_mes_anterior_caja_chica($anio, $mes)
 	{	
-
+		// dd($anio.'; '.$mes);
 		$mes_anterior = $mes - 1;
 		$anio_anterior = $anio;
 
@@ -375,7 +375,8 @@ class CuentaSindicatoController extends Controller
 							'mes_id' => $mes_anterior
 						])->sum('monto_egreso');
 
-				$monto_a_guardar = $this->global_caja_chica - $monto;
+
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
 				if ($monto_a_guardar == 100000) {
 					return ['estado'=>'success', 'monto'=>0];
 				}
@@ -406,7 +407,7 @@ class CuentaSindicatoController extends Controller
 
 
 
-			$monto_a_guardar = $this->global_caja_chica - $monto;
+			$monto_a_guardar = /*$this->global_caja_chica - */$monto;
 			if ($monto_a_guardar == 100000) {
 				return ['estado'=>'success', 'monto'=>0];
 			}
@@ -622,7 +623,25 @@ class CuentaSindicatoController extends Controller
     		break;
 
     		case 'archivo':
-    			
+    			$ruta = $cs->archivo_documento;
+                    $borrar = Storage::delete($ruta);
+
+                    if ($borrar) {
+                        $guardarArchivo = $this->guardarArchivo($r->input, 'archivos_sindical/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $cs->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                            if ($cs->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                        } else {
+                            return $guardarArchivo;
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                    }
 
 
     		break;

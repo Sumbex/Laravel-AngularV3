@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class UsuarioService {
     public url: string;
-    public token: string;
+    token = '';
     public usuario: string;
 
     constructor(public _http: HttpClient, public jwtHelper: JwtHelperService, private router: Router) {
@@ -66,9 +66,30 @@ export class UsuarioService {
         return !this.jwtHelper.isTokenExpired(token);
     }
 
-    logOut(){
+    logOut() {
         localStorage.clear();
         this.router.navigate(['']);
+    }
+
+    validarUsuario(user, password): Observable<any> {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+
+        const formData = new FormData();
+        formData.append('rut', user);
+        formData.append('password', password);
+
+        return this._http.post(this.url + "confirmar_usuario", formData, {headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token
+                }
+            )});
+    }
+
+    getUsuarioLogeado(){
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "usuario_logeado",{headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token})}
+    );
     }
 
 }

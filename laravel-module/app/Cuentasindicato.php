@@ -29,7 +29,9 @@ class Cuentasindicato extends Model
 							'cuenta_sindicato.activo'=>'S',
 							'cuenta_sindicato.anio_id' => $anio, 
 							'cuenta_sindicato.mes_id' => $mes,
-							])->orderBy('tipo_cuenta_sindicato','asc')->get();
+							])->orderBy('tipo_cuenta_sindicato','asc')
+				       		  ->orderBy('cuenta_sindicato.dia','asc')
+				       		  ->get();
 		return $listar;
     }
 
@@ -49,7 +51,8 @@ class Cuentasindicato extends Model
 				'ingreso_total' => $ingreso_total,
 				'egreso_total' => $egreso_total,
 				'total_actual' => $total,
-				'total_resumen' => $total.' + '. $anterior->inicio_mensual.' = '.($total + $anterior->inicio_mensual)
+				'total_resumen' => $total.' + '. $anterior->inicio_mensual.' = '.($total + $anterior->inicio_mensual),
+				'total_final' => ($total + $anterior->inicio_mensual)
 			];
 
 	}

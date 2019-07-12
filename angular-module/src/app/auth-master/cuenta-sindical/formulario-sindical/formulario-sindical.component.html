@@ -47,9 +47,6 @@
                 #nDocumento="ngModel"
                 [(ngModel)]="datosSindicales.nDocumento" 
                 required>
-                <small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
-                  Compruebe que el N° Documento no este vacio
-                </small>
               </div>
 
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -78,9 +75,6 @@
                     #monto="ngModel"
                     [(ngModel)]="datosSindicales.monto" 
                     required>
-                  <small *ngIf="!monto.valid && monto.touched" class="invalid-feedback d-block">
-                    Compruebe que el monto ingresado solo contenga numeros
-                  </small>
                 </div>
 
 
@@ -94,9 +88,6 @@
                         #descripcion="ngModel"
                         [(ngModel)]="datosSindicales.descripcion" 
                         required>
-                      <small *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback d-block">
-                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres
-                      </small>
                     </div>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">

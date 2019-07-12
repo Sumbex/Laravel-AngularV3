@@ -66,9 +66,21 @@ export class UsuarioService {
         return !this.jwtHelper.isTokenExpired(token);
     }
 
-    logOut(){
+    logOut() {
         localStorage.clear();
         this.router.navigate(['']);
+    }
+
+    validarUsuario(user, password): Observable<any> {
+        const formData = new FormData();
+        formData.append('rut', user.value);
+        formData.append('password', password.value);
+
+        return this._http.post(this.url + "confirmar_usuario", formData, {headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + this.token
+                }
+            )});
     }
 
 }

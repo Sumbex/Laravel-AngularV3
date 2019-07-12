@@ -7,29 +7,31 @@ use Illuminate\Support\Facades\DB;
 
 class Cuentasindicato extends Model
 {
-    protected $table = "cuenta_sindicato as cs";
+    protected $table = "cuenta_sindicato";
 
 
     protected function traer($anio, $mes)
     {
     	$listar = $this::select([
-    						'cs.id',
-    						DB::raw("concat(cs.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
-    						'cs.numero_documento',
-    						'cs.archivo_documento',
-    						'cs.tipo_cuenta_sindicato',
-    						'cs.descripcion',
-    						'cs.monto_ingreso',
-    						'cs.monto_egreso',
-    						'cs.definicion'
+    						'cuenta_sindicato.id',
+    						DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+    						'cuenta_sindicato.numero_documento',
+    						'cuenta_sindicato.archivo_documento',
+    						'cuenta_sindicato.tipo_cuenta_sindicato',
+    						'cuenta_sindicato.descripcion',
+    						'cuenta_sindicato.monto_ingreso',
+    						'cuenta_sindicato.monto_egreso',
+    						'cuenta_sindicato.definicion'
     					])
     				   ->join('anio as a','a.id','anio_id')
     				   ->join('mes as m','m.id','mes_id')
 				       ->where([
-							'cs.activo'=>'S',
-							'cs.anio_id' => $anio, 
-							'cs.mes_id' => $mes,
-							])->orderBy('tipo_cuenta_sindicato','asc')->get();
+							'cuenta_sindicato.activo'=>'S',
+							'cuenta_sindicato.anio_id' => $anio, 
+							'cuenta_sindicato.mes_id' => $mes,
+							])->orderBy('tipo_cuenta_sindicato','asc')
+				       		  ->orderBy('cuenta_sindicato.dia','asc')
+				       		  ->get();
 		return $listar;
     }
 
@@ -49,7 +51,8 @@ class Cuentasindicato extends Model
 				'ingreso_total' => $ingreso_total,
 				'egreso_total' => $egreso_total,
 				'total_actual' => $total,
-				'total_resumen' => $total.' + '. $anterior->inicio_mensual.' = '.($total + $anterior->inicio_mensual)
+				'total_resumen' => $total.' + '. $anterior->inicio_mensual.' = '.($total + $anterior->inicio_mensual),
+				'total_final' => ($total + $anterior->inicio_mensual)
 			];
 
 	}

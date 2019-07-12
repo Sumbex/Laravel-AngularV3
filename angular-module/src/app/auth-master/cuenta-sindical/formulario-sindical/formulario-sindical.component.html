@@ -1,7 +1,7 @@
 <div class="container">
   <!--Formulario de otras cuentas-->
   <div class="card">
-    <div class="card-header" id="demoFont"><strong class="text-center"><h6>Otras Cuentas</h6></strong></div>
+    <div class="card-header" id="demoFont"><strong class="text-center"><h6><i class="fas fa-file-invoice"></i> Otras Cuentas Sindicales</h6></strong></div>
     <form action="">
       <div class="card-body">
         <div class="row">
@@ -18,16 +18,19 @@
   <!--Formulario para ingresar una cuenta sindical-->
   <div class="card">
     <div class="card-header" id="demoFont"><strong class="text-center">
-        <h6>Cuenta Sindical</h6>
+        <h6><i class="fas fa-file-invoice-dollar"></i> Cuenta Sindical</h6>
       </strong>
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
       <div class="card-body">
           <div class="row">
             <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                <br><label><strong>Ingrese Fecha</strong></label> <br>
+                <br><label>
+                  <strong>Ingrese Fecha  </strong>
+                  <i class="fas fa-info-circle" placement="right" ngbTooltip="Recuerde ingresar un fecha."></i>
+                </label> <br>
                 <div class="input-group">
                   <input
                   type="date" 
@@ -39,38 +42,44 @@
               </div>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                <br><label><strong>N° de Documento</strong></label>
+                <br><label>
+                  <strong>N° de Documento  </strong>
+                  <i class="fas fa-info-circle" placement="right" ngbTooltip="El numero de documento puede ser alfa numerico."></i>
+                </label>
                 <input 
-                type="number" 
+                type="text" 
                 class="form-control form-control-sm"
                 name="nDocumento" 
                 #nDocumento="ngModel"
                 [(ngModel)]="datosSindicales.nDocumento" 
                 required>
-                <small *ngIf="!nDocumento.valid && nDocumento.touched" class="invalid-feedback d-block">
-                  Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio
-                </small>
               </div>
 
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                <br><label><strong>Subir Documento</strong></label>
-                <input class="form-control-file" type="file">
+                <br><label>
+                  <strong>Subir Documento  </strong>
+                  <i class="fas fa-info-circle" placement="right" ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+                </label>
+                <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
               </div>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>
-                <select (change)="tipoOperacionDefinicion($event)" class="form-control form-control-sm">
+                <select (change)="changeDefinicion($event)" class="form-control form-control-sm">
                   <option *ngFor="let tipo of selectDefinicion" [value]="tipo.id">{{tipo.descripcion}}</option>
                 </select>
               </div><br>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Detalle Tipo</strong></label>
-                <select (change)="tipoOperacionDetalle($event)" class="form-control form-control-sm">
+                <select (change)="changeDetalle($event)" class="form-control form-control-sm">
                   <option *ngFor="let detalle of selectDetalle" [value]="detalle.id">{{detalle.descripcion}}</option>
                 </select>
               </div>
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                    <br><label><strong>Ingrese Monto</strong></label>
+                    <br><label>
+                      <strong>Ingrese Monto  </strong>
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="El monto a ingresar no debe ser negativo."></i>
+                    </label>
                     <input 
                     type="number"
                     class="form-control form-control-sm"
@@ -78,14 +87,14 @@
                     #monto="ngModel"
                     [(ngModel)]="datosSindicales.monto" 
                     required>
-                  <small *ngIf="!monto.valid && monto.touched" class="invalid-feedback d-block">
-                    Compruebe que el monto ingresado solo contenga numeros
-                  </small>
                 </div>
 
 
                   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                      <br><label><strong>Ingrese Descripcion del Tipo</strong></label>
+                      <br><label>
+                        <strong>Ingrese Descripcion del Tipo  </strong>
+                        <i class="fas fa-info-circle" placement="right" ngbTooltip="El mínimo de caracteres debe ser de 5."></i>
+                      </label>
                       <input 
                         class="form-control" 
                         minlength="5"
@@ -94,15 +103,15 @@
                         #descripcion="ngModel"
                         [(ngModel)]="datosSindicales.descripcion" 
                         required>
-                      <small *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback d-block">
-                        Compruebe que la descripcion ingresada no se encuentre vacia y cumpla un minimo de 5 caracteres
-                      </small>
                     </div>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                <br><label><strong>Guardar Cuenta Sindical</strong></label><br>
+                <br><label>
+                  <strong>Guardar Cuenta Sindical  </strong>
+                  <i class="fas fa-info-circle" placement="right" ngbTooltip="Para guardar debe completar todos los campos."></i>
+                </label><br>
                 <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-                  [disabled]="loginForm.invalid">Guardar</button>
+                  [disabled]="loginForm.invalid"><i class="fas fa-save"></i> Guardar</button>
               </div>
 
               <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">

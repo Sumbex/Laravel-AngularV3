@@ -1,58 +1,84 @@
 <div><br>
-  <div class="card margen">
-    <div class="card-header" id="demoFont"><strong class="text-center"><h6>Iniciar Sesión</h6></strong></div>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-          <div class="card-body">
+  <div class="container">
+      <div class="row h-100 justify-content-center align-items-center">
+          <div class="col-sm-6 col-md-5 col-lg-5">
+            <div class="card">
+                <div class="card-header" id="demoFont"><strong class="text-center"><h6>Iniciar Sesión</h6></strong></div>
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                      <div class="card-body">
 
-              <div class="col-sm-6 col-md-12 col-lg-12">
-                <label for="email"><strong>Correo Electronico</strong></label>
-                <input 
-                  type="text" 
-                  class="form-control" 
-                  placeholder="Ingrese su rut sin guiones" 
-                  name="email" 
-                  #email="ngModel" 
-                  [(ngModel)]="usuario.email"
-                  required>
-                  <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
-                    El correo ingresado no es valido
-                  </small> 
-              </div><br>
+                          <tr>
+                            <td colspan="12">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <label><strong>Rut</strong></label> <br>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                          <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            placeholder="Ingrese su rut sin guiones" 
+                                            name="email" 
+                                            #email="ngModel" 
+                                            [(ngModel)]="usuario.email"
+                                            required>
+                                            <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                                              El rut ingresado no es valido
+                                            </small> 
+                                        </div>
+                                      </div>
+                                </div>
+      
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <label><strong>Contraseña</strong></label> <br>
+                                    <div class="form-group">
+                                        <div class="input-group"> 
+                                          <input 
+                                            type="password" 
+                                            class="form-control" 
+                                            placeholder="********"
+                                            name="password"
+                                            #password="ngModel"
+                                            [(ngModel)]="usuario.password"
+                                            required>
+                                            <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+                                              Ingrese una pass valida
+                                            </small>
+                                          </div>
+                                        </div>
+                                </div>
+                  
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                          <input 
+                                          type="submit" 
+                                          value="Identificarse" 
+                                          class="btn btn-success"
+                                          [disabled]="loginForm.invalid">
+                                        </div>  
+                                      </div>
+                                </div>
+                            </td>
 
-              <div class="col-sm-6 col-md-12 col-lg-12">
-                <label for="password"><strong>Contraseña</strong></label>
-                <input 
-                  type="password" 
-                  class="form-control" 
-                  placeholder="********"
-                  name="password"
-                  #password="ngModel"
-                  [(ngModel)]="usuario.password"
-                  required>
-                  <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
-                    Ingrese una pass valida
-                  </small>
-              </div><br>
+                            <td colspan="4">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                 <br> <img src="/assets/logo-sindicato.png"  width="150" height="150">
+                                </div>
+                            </td>
 
-              <div class="col-sm-6 col-md-12 col-lg-12">
-                <input 
-                type="submit" 
-                value="Identificarse" 
-                class="btn btn-success"
-                [disabled]="loginForm.invalid">
-              </div>
-
+                          </tr>
+                      </div>
+                    </form>     
+            </div>
           </div>
-        </form><br>
-    </div><br>
+      </div>
+  </div>
 
     <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
       <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y <strong>contraseña</strong> sean las correctas e intente nuevamente.
     </ngb-alert>
-
-    <div *ngIf="loading" class="loader">Loading...</div>
-
   <!--<div *ngIf="loading" class="col-xs-12 text-center">
     <img src="/assets/loading.gif"  width="100" height="100" alt="cargando">
   </div>-->
 </div>
+<div *ngIf="loading" class="loader">Loading...</div>

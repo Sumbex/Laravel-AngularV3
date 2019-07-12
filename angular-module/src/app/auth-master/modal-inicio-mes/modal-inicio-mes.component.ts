@@ -34,6 +34,7 @@ export class ModalInicioMesComponent implements OnInit {
   //variables-----------------
   load:boolean=false;
   monto:string='';
+  fil_anio:string='';
   anio:string='';
   mes:string='';
   public url: string;
@@ -124,6 +125,7 @@ export class ModalInicioMesComponent implements OnInit {
           ).subscribe((val : { id, descripcion } ) => {
 
                 this.anio = val.id;
+                this.fil_anio = val.id;
                 this.listar_tabla();
              
               
@@ -144,8 +146,10 @@ export class ModalInicioMesComponent implements OnInit {
           });
   }
   guardar(){
+
             this.failed_visible = false;
             this.success_visible = false;
+
             const formData = new FormData();
             formData.append('anio', this.anio);
             formData.append('mes', this.mes );
@@ -155,7 +159,8 @@ export class ModalInicioMesComponent implements OnInit {
               ).subscribe((val) => {
                   
                   if (val['estado'] == 'failed'){ 
-                    console.log(val);
+                    // console.log(val);
+                    this.monto ='';
                     this.failed_visible = true;
                     this.success_visible = false;
                     this.txt = val['mensaje'];
@@ -163,7 +168,8 @@ export class ModalInicioMesComponent implements OnInit {
                  
                   }
                    if (val['estado'] == 'success'){ 
-                    console.log(val);
+                    // console.log(val);
+                    this.monto = '';
                     this.failed_visible = false;
                     this.success_visible = true;
                     this.txt = val['mensaje'];
@@ -179,7 +185,7 @@ export class ModalInicioMesComponent implements OnInit {
   }
 
   listar_tabla() {
-        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/"+this.anio ,{headers: new HttpHeaders(
+        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/"+this.fil_anio ,{headers: new HttpHeaders(
                 {'Authorization': 'Bearer' + this.token})}
         ).subscribe((val : object ) => {
             
@@ -236,6 +242,11 @@ export class ModalInicioMesComponent implements OnInit {
         }, response => {console.log("POST call in error", response);},() => {
                console.log("The POST success.");
         });
+    }
+    quitar_alerts(){
+        this.success_visible = false;
+        this.txt = '';
+        this.failed_visible = false;
     }
 
     private getDismissReason(reason: any): string {

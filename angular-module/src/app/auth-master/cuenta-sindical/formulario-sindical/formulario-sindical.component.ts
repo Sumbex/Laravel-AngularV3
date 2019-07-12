@@ -18,14 +18,16 @@ export class FormularioSindicalComponent implements OnInit {
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
   selectDetalle: Detalle[] = [];
+  selectedImage:File;
 
   datosSindicales: Sindical ={
     fecha: '',
     nDocumento: '',
-    tipoCuentaSindicato: '1',
+    archivoDocumento: null,
+    tipoCuentaSindicato: '2',
     descripcion: '',
-    definicion: '1',
-    monto: 0
+    definicion: '2',
+    monto: null
   }
 
   constructor(private _sindicalService: SindicalService) {
@@ -33,23 +35,6 @@ export class FormularioSindicalComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*//Cargar Años
-    this._aniosService.getAnios().subscribe((res : any[]) => {
-      this.selectAnio = res;
-    });
-    //Cargar Meses
-    this._aniosService.getMeses().subscribe((res : any[]) => {
-      this.selectMes = res;
-    });
-    //Cargar Definiciones
-    this._tiposService.getDefinicion().subscribe((res : any[]) => {
-      this.selectDefinicion = res;
-      console.log(res);
-    });
-    //Cargar Detalles
-    this._tiposService.getTipoCuenta().subscribe((res : any[]) => {
-      this.selectDetalle = res;
-    });*/
     //Cargar Años
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
@@ -61,15 +46,23 @@ export class FormularioSindicalComponent implements OnInit {
 
     //Cargar detalles
     this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
+    console.log(this.selectDefinicion);
+    console.log(this.selectDetalle);
   }
 
   onSubmit({value, valid}: {value: Sindical, valid: boolean}) {
     if(!valid){
       console.log("Ingreso no valido revisar campos");
     }else{
+      console.log("Hola");
       this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
         response => {
           console.log(response);
+          this.datosSindicales.fecha = '';
+          this.datosSindicales.nDocumento = '';
+          this.datosSindicales.descripcion = '';
+          this.datosSindicales.monto = null;
+          alert("Guardado con exito");
         },
         error => {
           console.log(<any>error);
@@ -78,13 +71,37 @@ export class FormularioSindicalComponent implements OnInit {
     }
   }
 
-  tipoOperacionDefinicion(evento){
-    this.datosSindicales.definicion = evento.target.value;
-    console.log(this.datosSindicales.tipoCuentaSindicato);
+  onSelectImage(event) {
+    this.datosSindicales.archivoDocumento = event.srcElement.files[0];
   }
 
-  tipoOperacionDetalle(evento){
-    this.datosSindicales.tipoCuentaSindicato = evento.target.value;
-    console.log(this.datosSindicales.definicion);
+  changeDefinicion(evento){
+    this.datosSindicales.definicion = evento.target.value;
+    console.log("ID Definicion: " + this.datosSindicales.definicion);
   }
+
+  changeDetalle(evento){
+    this.datosSindicales.tipoCuentaSindicato = evento.target.value;
+    console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
+    if(this.datosSindicales.tipoCuentaSindicato == '3'){
+      var anio = this.datosSindicales.fecha.substring(0,4);
+      var mes = this.datosSindicales.fecha.substring(5,7);
+      this._sindicalService.getCalcularCajaChica(anio,mes).subscribe(
+        response => {
+          //console.log(response);
+          if(response.estado == "success"){
+            this.datosSindicales.monto = response.monto;
+          }else{
+            this.datosSindicales.monto = null;
+          }
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+    }else{
+      this.datosSindicales.monto = null;
+    }
+  }
+
 }

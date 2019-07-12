@@ -67,7 +67,7 @@
       <hr>
       <!--Tabla del Modal Caja Chica-->
       <ngb-alert *ngIf="cajaChicaError" [dismissible]="false">
-        <strong>¡No existen ingresos en esta echa!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong>
+        <strong>¡No existen ingresos en esta Fecha!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong>
         sean los correctos.
       </ngb-alert>
       <div class="row">
@@ -182,7 +182,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+      <button id="closeModalButtonEdicion" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
       <button [hidden]="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar</button>
       <button *ngIf="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacionDocumento()">Guardar Documento</button>
     </div>

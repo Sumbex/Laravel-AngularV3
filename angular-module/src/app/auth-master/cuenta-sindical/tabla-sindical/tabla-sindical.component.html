@@ -107,30 +107,9 @@
                     </ng-template> 
                   </td>
 
-<<<<<<< HEAD
-                  <td class="text-center" (click)="openActualizar(DocFijoModal)">
-                    <a href="{{  '../' + itemFijo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
-                    <ng-template #DocFijoModal let-c="close" let-d="dismiss">
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
-                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <input 
-                          #DocFijo
-                          type="file"
-                          (change)="onSelectImage($event)">
-                          
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemFijo.id,'archivo',DocFijo)">Guardar</button>
-                        </div>
-                    </ng-template>
-=======
+
                   <td class="text-center">
-                      <a href="{{  '../storage/' + itemFijo.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                      <a href="{{  '../' + itemFijo.archivo_documento}}" target="_blank" class="btn-primary-outline">
                         <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                       </a>&nbsp;
                       <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocFijoModal)">
@@ -156,7 +135,7 @@
                         </ng-template>
                         <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
                       </a>
->>>>>>> david
+
                   </td>
 
                   <td colspan="4" (click)="openActualizar(descripcionFijoModal)">
@@ -301,29 +280,9 @@
                       </ng-template> 
                     </td>
 
-<<<<<<< HEAD
-                    <td scope="col" class="text-center" (click)="openActualizar(DocVariableModal)">
-                      <a href="{{  '../' +  itemVariable.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
-                      <ng-template #DocVariableModal let-c="close" let-d="dismiss">
-                          <div class="modal-header">
-                            <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
-                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <input 
-                            #DocVariable
-                            type="file"
-                            (change)="onSelectImage($event)">  
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemVariable.id,'archivo',DocVariable)">Guardar</button>
-                          </div>
-                      </ng-template>
-=======
+
                     <td class="text-center">
-                        <a href="{{  '../storage/' + itemVariable.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <a href="{{  '../' + itemVariable.archivo_documento}}" target="_blank" class="btn-primary-outline">
                           <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                         </a>&nbsp;
                         <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocVariableModal)">
@@ -349,7 +308,7 @@
                           </ng-template>
                           <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
                         </a>
->>>>>>> david
+
                     </td>
 
                     <td scope="col" colspan="4" (click)="openActualizar(descripcionVariableModal)">
@@ -491,30 +450,10 @@
 
                       </ng-template> 
                     </td>
-<<<<<<< HEAD
-                    <td scope="col" class="text-center" (click)="openActualizar(DocCajaChicaModal)">
-                        <a href="{{  '../' +  itemCajaChica.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
-                        <ng-template #DocCajaChicaModal let-c="close" let-d="dismiss">
-                            <div class="modal-header">
-                              <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
-                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <input 
-                              #DocCajaChica
-                              type="file"
-                              (change)="onSelectImage($event)">  
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCajaChica.id,'archivo',DocCajaChica)">Guardar</button>
-                            </div>
-                        </ng-template>
-=======
+
 
                     <td class="text-center">
-                        <a href="{{  '../storage/' + itemCajaChica.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <a href="{{  '../' + itemCajaChica.archivo_documento}}" target="_blank" class="btn-primary-outline">
                           <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                         </a>&nbsp;
                         <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocCajaChicaModal)">
@@ -540,7 +479,7 @@
                           </ng-template>
                           <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
                         </a>
->>>>>>> david
+
                     </td>
 
                     <td scope="col" colspan="4" (click)="openActualizar(descripcionCajaModal)">
@@ -665,29 +604,9 @@
                       </ng-template> 
                     </td>
 
-<<<<<<< HEAD
-                    <td scope="col" class="text-center" (click)="openActualizar(DocCampingModal)">
-                        <a href="{{  '../' + itemCamping.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
-                        <ng-template #DocCampingModal let-c="close" let-d="dismiss">
-                            <div class="modal-header">
-                              <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
-                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <input 
-                              #DocCamping
-                              type="file"
-                              (change)="onSelectImage($event)">  
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-outline-dark" (click)="actualizar(itemCamping.id,'archivo',DocCamping)">Guardar</button>
-                            </div>
-                        </ng-template>
-=======
+
                     <td class="text-center">
-                        <a href="{{  '../storage/' + itemCamping.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <a href="{{  '../' + itemCamping.archivo_documento}}" target="_blank" class="btn-primary-outline">
                           <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                         </a>&nbsp;
                         <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocCampingModal)">
@@ -713,7 +632,6 @@
                           </ng-template>
                           <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
                         </a>
->>>>>>> david
                     </td>
 
                     <td scope="col" colspan="4" (click)="openActualizar(descripcionCampingModal)">
@@ -786,6 +704,7 @@
                             </div>
                       </ng-template> 
                     </td>
+                    
                     <td scope="col" class="text-center" (click)="openActualizar(montoCampingModal)">
                       {{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
                     </td>

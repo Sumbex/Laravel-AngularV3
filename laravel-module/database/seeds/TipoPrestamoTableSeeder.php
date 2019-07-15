@@ -12,9 +12,9 @@ class TipoPrestamoTableSeeder extends Seeder
     public function run()
     {
         DB::table('tipo_prestamo')->insert([
-            [ 'id' => '1', 'descripcion' => 'Salud', 'activo'=>'s' ],
-            [ 'id' => '2', 'descripcion' => 'Libre', 'activo'=>'s' ],
-            [ 'id' => '3', 'descripcion' => 'No Retornable', 'activo'=>'s' ]
+            [ 'id' => '1', 'descripcion' => 'Salud', 'activo'=>'S' ],
+            [ 'id' => '2', 'descripcion' => 'Libre', 'activo'=>'S' ],
+            [ 'id' => '3', 'descripcion' => 'No Retornable', 'activo'=>'S' ]
         ]);
     }
 }

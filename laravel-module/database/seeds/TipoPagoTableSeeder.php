@@ -12,8 +12,8 @@ class TipoPagoTableSeeder extends Seeder
     public function run()
     {
         DB::table('tipo_pago')->insert([
-            [ 'id' => '1', 'descripcion' => 'Cuotas', 'activo'=>'s' ],
-            [ 'id' => '2', 'descripcion' => 'Abono mas Cuotas', 'activo'=>'s' ]
+            [ 'id' => '1', 'descripcion' => 'Cuotas', 'activo'=>'S' ],
+            [ 'id' => '2', 'descripcion' => 'Abono mas Cuotas', 'activo'=>'S' ]
         ]);
     }
 }

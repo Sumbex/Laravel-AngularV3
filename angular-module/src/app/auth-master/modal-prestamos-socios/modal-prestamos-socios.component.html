@@ -11,25 +11,89 @@
       </div>
       <!--Cuerpo del body Prestamo-->
       <div class="modal-body">
-        
-        <div class="row">
-          <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
+        <div class="row justify-content-center">
+          <!--tipo prestamo socio-->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-center">
+                  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8"> 
+                    <div class="form-group">
+                      <label><strong>Buscar Socio</strong></label>
+                      <div class="input-group">
+                        <input class="form-control form-control-sm" placeholder="Buscar por rut del socio..." [(ngModel)]="search" >
+                        <span class="input-group-btn">
+                          <button class="btn btn-outline-success btn-sm"><i class="fas fa-search"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>           
+            </div>
+              
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2"><br>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="form-group">
+                      <img src="/assets/socio-default.png"  width="100px" height="100px" alt="Socio" class="img-thumbnail">
+                    </div>
+                </div>
+              </div>
+            </div>
+              
+            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+              <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+  
+                  <div class="form-group">
+                    <label><strong>Rut del socio</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="Rut del socio" disabled>
+                  </div>
+            
+                  <div class="form-group">
+                    <label><strong>Nombre Completo</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="Nombre del socio" disabled>
+                  </div>
+  
+                  <div class="form-group">
+                    <label><strong>Tipo de Prestamo</strong></label>
+                    <select class="form-control form-control-sm">
+                      <option value="">Seleccione</option>
+                      <option value="">Salud</option>
+                      <option value="">Retornable</option>
+                      <option value="">No Retornable</option>
+                    </select>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+          <!--prestamo retornable--> <hr>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>aqui van los retornables</p>
+              </div>
+            </div>
           </div>
+          <!--prestamo salud--> <hr>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>aqui van los de salud</p>  
+              </div>
+            </div>
+          </div>
+          <!--prestamo no retornable--> <hr>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>aqui van los no retornable</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-
-
       </div>
+
       <!--Boton para salir del modal Prestamo-->
       <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical

@@ -108,7 +108,7 @@
                   </td>
 
                   <td class="text-center">
-                      <a href="{{  '../storage/' + itemFijo.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                      <a href="{{  '../' + itemFijo.archivo_documento}}" target="_blank" class="btn-primary-outline">
                         <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                       </a>&nbsp;
                       <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocFijoModal)">
@@ -279,7 +279,7 @@
                     </td>
 
                     <td class="text-center">
-                        <a href="{{  '../storage/' + itemVariable.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <a href="{{  '../' + itemVariable.archivo_documento}}" target="_blank" class="btn-primary-outline">
                           <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                         </a>&nbsp;
                         <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocVariableModal)">
@@ -448,7 +448,7 @@
                     </td>
 
                     <td class="text-center">
-                        <a href="{{  '../storage/' + itemCajaChica.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <a href="{{  '../' + itemCajaChica.archivo_documento}}" target="_blank" class="btn-primary-outline">
                           <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                         </a>&nbsp;
                         <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocCajaChicaModal)">
@@ -527,7 +527,7 @@
                     <td colspan="3" class="text-center">{{itemPrestamo.fecha}}</td>
                     <td scope="col" class="text-center">{{itemPrestamo.numero_documento}}</td>
                     <td scope="col" class="text-center">
-                        <a href="{{  '../storage' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                        <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
                     </td>
                     <td scope="col" colspan="4">{{itemPrestamo.descripcion}}</td>
                     <td scope="col" class="text-center">{{ itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -599,7 +599,7 @@
                     </td>
 
                     <td class="text-center">
-                        <a href="{{  '../storage/' + itemCamping.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <a href="{{  '../' + itemCamping.archivo_documento}}" target="_blank" class="btn-primary-outline">
                           <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                         </a>&nbsp;
                         <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocCampingModal)">
@@ -697,6 +697,7 @@
                             </div>
                       </ng-template> 
                     </td>
+                    
                     <td scope="col" class="text-center" (click)="openActualizar(montoCampingModal)">
                       {{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
                     </td>

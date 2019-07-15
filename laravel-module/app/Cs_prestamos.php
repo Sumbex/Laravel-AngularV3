@@ -48,8 +48,6 @@ class Cs_prestamos extends Model
     protected function ingresarPrestamo($request)
     {
         $prestamo = new Cs_prestamos;
-
-        
     }
 
     protected function traerTipoPrestamos()
@@ -114,6 +112,10 @@ class Cs_prestamos extends Model
             ])
             ->get();
 
-        return $socio;
+        if (!$socio->isEmpty()) {
+            return $socio;
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no pertenece a ningun socio.'];
+        }
     }
 }

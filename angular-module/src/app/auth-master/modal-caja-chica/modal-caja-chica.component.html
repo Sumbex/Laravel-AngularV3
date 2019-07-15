@@ -67,7 +67,7 @@
       <hr>
       <!--Tabla del Modal Caja Chica-->
       <ngb-alert *ngIf="cajaChicaError" [dismissible]="false">
-        <strong>¡No existen ingresos en esta echa!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong>
+        <strong>¡No existen ingresos en esta Fecha!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong>
         sean los correctos.
       </ngb-alert>
       <div class="row">
@@ -106,20 +106,20 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of cajaChica" class="text-center">
-              <td colspan="2">{{item.fecha}}</td>
-              <td colspan="2">{{item.numero_documento}}</td>
+              <td colspan="2" (click)="editarParametro(item.id, 'fecha', item.fecha)">{{item.fecha}}</td>
+              <td colspan="2" (click)="editarParametro(item.id, 'numero_documento', item.numero_documento)">{{item.numero_documento}}</td>
 
 
 
               <td colspan="2">
-                <a href="{{  '../' + item.archivo_documento}}" target="_blank"><i class="far fa-file-alt"></i></a>
+                <a href="{{  '../' + item.archivo_documento}}" target="_blank" (click)="editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')"><i class="far fa-file-alt"></i></a>
               </td>
 
 
 
-              <td colspan="3">{{item.descripcion}}</td>
+              <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)">{{item.descripcion}}</td>
               <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-              <td colspan="2">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
               <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             </tr>
           </tbody>
@@ -132,16 +132,16 @@
           <thead text-sm class="text-center">
             <tr>
               <th col>INGRESOS</th>
-              <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <td col><strong>{{ cajaChicaTotales.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
             </tr>
 
             <tr>
               <th col>EGRESOS</th>
-              <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <td col><strong>{{ cajaChicaTotales.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
             </tr>
             <tr>
               <th col>CIERRE DEL MES</th>
-              <td col><strong>{{ 0 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <td col><strong>{{ cajaChicaTotales.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
             </tr>
           </thead>
         </table>
@@ -159,6 +159,39 @@
   </form>
 </ng-template>
 
+<!--MODAL PARA EDICION*********************************************************-->
+<ng-template #edicion let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modificar Campo</h4>
+    </div>
+    <div class="modal-body">
+      <form enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Valor Anterior</label>
+          <div class="input-group">
+            <input type="text" class="form-control"  value="{{parametroEdicion}}" disabled>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nuevo Valor</label>
+          <div class="input-group">
+            <input [hidden]="edicionDocumento" #nuevoValor id="nuevoValor" type="{{varType}}" class="form-control" name="nuevoValor">
+            <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file" (change)="onSelectImageEdicion($event)" required>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button id="closeModalButtonEdicion" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+      <button [hidden]="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar</button>
+      <button *ngIf="edicionDocumento" type="button" class="btn btn-outline-dark" (click)="ingresarModificacionDocumento()">Guardar Documento</button>
+    </div>
+  </ng-template>
+
+  <button id="openModalButtonEdicion" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openEdicionModal(edicion)">Launch demo modal</button>
+
+<!--MODAL PARA EDICION-->
+
 <!--Boton Para llamar al modal caja chica-->
 <label><strong>Caja Chica</strong></label><br>
 <button class="btn btn btn-success btn-block btn-sm" (click)="openCajaChica(CajaChica)">Ingresar</button>
@@ -173,21 +206,22 @@
       <div class="form-group">
         <label>rut</label>
         <div class="input-group">
-          <input type="text" class="form-control">
+          <input type="text" class="form-control"  name="rut" #rut="ngModel" [(ngModel)]="usuario.rut" disabled>
         </div>
       </div>
       <div class="form-group">
         <label>contraseña</label>
         <div class="input-group">
-          <input type="pass" class="form-control">
+          <input #pass type="password" class="form-control" name="pass">
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+    <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Guardar</button>
   </div>
 </ng-template>
 
-<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="openContraseniaModal(validar)">Launch demo modal</button>
+<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openContraseniaModal(validar)">Launch demo modal</button>
 <!--MODAL VALIDACION CON CONTRASEÑA-->

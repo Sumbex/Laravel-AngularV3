@@ -129,6 +129,7 @@ class PrestamosController extends Controller
 		return DB::table('anio')->where('descripcion', $value)->first();
 	}
 
+	//------------------------------------------------->BRYANM
 	public function TraerTipos()
 	{
 		return Cs_prestamos::traerTipos();

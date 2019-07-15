@@ -250,7 +250,7 @@ module.exports = "<!--\r\n  <div class=\"table-responsive\">\r\n    <table class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Modal camping-->\n<ng-template #Camping let-modal>\n    <!--form del modal camping-->\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\" enctype=\"multipart/form-data\">\n      <!--Cabezal del modal camping-->\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>Detalle camping</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <!--Cuerpo del body camping-->\n      <div class=\"modal-body\">\n        <p>kkck para el que lee</p>\n      </div>\n      <!--Boton para salir del modal camping-->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\n        </button>\n      </div>\n    </form>\n  </ng-template>\n  \n  <!--Boton Para llamar al modal caja chica-->\n  <label><strong>Detalle camping </strong></label><br>\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCamping(Camping)\">Ingresar</button>\n"
+module.exports = "<!--Modal camping-->\r\n<ng-template #Camping let-modal>\r\n    <!--form del modal camping-->\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\" enctype=\"multipart/form-data\">\r\n      <!--Cabezal del modal camping-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Detalle camping</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body camping-->\r\n      <div class=\"modal-body\">\r\n        <p>kkck para el que lee</p>\r\n      </div>\r\n      <!--Boton para salir del modal camping-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al modal caja chica-->\r\n  <label><strong>Detalle camping </strong></label><br>\r\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCamping(Camping)\">Ingresar</button>\r\n"
 
 /***/ }),
 
@@ -283,7 +283,7 @@ module.exports = "<!-- <br> <hr>\r\n<div class=\"col-sm-6 col-md-3 col-lg-3\"><b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  modal-prestamos-socios works!\n</p>\n"
+module.exports = "<p>\r\n  modal-prestamos-socios works!\r\n</p>\r\n"
 
 /***/ }),
 

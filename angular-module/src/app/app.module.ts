@@ -42,6 +42,8 @@ import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/tota
 import { CuentaSociosComponent } from './auth-master/cuenta-socios/cuenta-socios.component';
 import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
 import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
+import { ModalPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/modal-prestamos-socios.component';
+import { ModalCampingComponent } from './auth-master/modal-camping/modal-camping.component';
 
 
 @NgModule({
@@ -77,7 +79,11 @@ import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios
 
     FormularioSociosComponent,
 
-    ListarSociosComponent
+    ListarSociosComponent,
+
+    ModalPrestamosSociosComponent,
+
+    ModalCampingComponent
 
   ],
   imports: [

@@ -47,6 +47,21 @@ class SocioController extends Controller
     	}
     }
 
+    public function listar()
+    {
+        return Socios::all();
+    }
+
+    public function filtrar($search='')
+    {
+      
+        if ($search == '') {
+            $this->listar();
+        }
+        $return = Socios::filtrar($search);
+        return $return;
+    }
+
 
     public function subir_imagen($get_img,$url)
     {

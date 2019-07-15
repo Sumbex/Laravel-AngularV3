@@ -32,3 +32,5 @@ Route::get('descargar_archivo@DescargarArchivo');
 //CUENTA SOCIOS-------------------------------------------------------------------------------
 
 Route::post('ingresar_socio','SocioController@ingresar');
+Route::get('listar_socios','SocioController@listar');
+Route::get('filtrar_socios/{busca?}', 'SocioController@filtrar');

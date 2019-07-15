@@ -23,7 +23,7 @@
 
     <div class="modal-header" id="demoFont">
       <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Cuenta sindical / Inicio y Cierre Mensual</strong></h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <button type="button" class="close" aria-label="Close" (click)="quitar_alerts();modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -34,7 +34,7 @@
             <ngb-alert type="warning" [dismissible]="false">
               <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> El primer mes de cada año se debe ingresar el monto incial de forma manual.</small>
             </ngb-alert>
-          </p>
+        </p>
 
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6"><br><label><strong>Año</strong></label>
@@ -67,9 +67,9 @@
           [(ngModel)]="monto"
           minlength="1"
           required>
-          <small *ngIf="!montoInicial.valid && montoInicial.touched" class="invalid-feedback d-block">
+          <!-- <small *ngIf="!montoInicial.valid && montoInicial.touched" class="invalid-feedback d-block">
             Compruebe que el monto ingresado solo contiene numeros y no este vacio
-          </small>
+          </small> -->
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-4">
@@ -86,13 +86,16 @@
       <div *ngIf="failed_visible"  class="alert alert-danger" role="alert">
       {{ txt }}
       </div>
-
-      <br> <hr>
+      <hr>
+      <ngb-alert type="warning" [dismissible]="false">
+              <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Informativo!</strong> En el ítem <b>"Monto de cierre"</b> de la siguiente tabla cuando aparezca un <b>(*)</b>, aignifica que el monto aun no ha sido calculado, cuando avance en cada mes es necesario ir calculando de manera responsable sus inicios y cierres mensuales.</small>
+      </ngb-alert>
         <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-          <select [(ngModel)]="anio" (change)="cambiar_anio()" class="form-control form-control-sm">
+          <select [(ngModel)]="fil_anio" (change)="cambiar_anio()" class="form-control form-control-sm">
             <option *ngFor="let anio of selectAnio" [value]="anio.id" >{{anio.descripcion}}</option>
           </select>
-        </div><br>
+        </div>
+        <br>
         <!--tabla del modal inicio y cierre mensual-->
         <div class="table-responsive">
           <table class="table table-bordered table-sm">
@@ -129,7 +132,7 @@
       
     <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
     <div class="modal-footer">
-      <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+      <button type="button" class="btn btn-info" (click)="quitar_alerts();modal.close('Close click')">Volver a Cuenta Sindical
       </button>
     </div>
 

@@ -37,11 +37,11 @@ class DatosBasicosController extends Controller
     }
     public function listar_definicion()
     {
-    	return DB::table('definicion')->get();
+    	return DB::table('definicion')->where('activo','S')->get();
     }
     public function listar_tipo_cuenta_sindicato()
     {
-    	return DB::table('tipo_cuenta_sindicato')->get();
+    	return DB::table('tipo_cuenta_sindicato')->where('activo','S')->get();
     }
 
 

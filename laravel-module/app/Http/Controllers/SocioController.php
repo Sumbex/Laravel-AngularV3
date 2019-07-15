@@ -23,14 +23,16 @@ class SocioController extends Controller
 
     public function ingresar(Request $r)
     {
+
+        //dd($r->all());
     	// dd($r->file('foto'));
     	$s = new Socios;
-    	$valida_foto = $this->subir_imagen($r->file('foto'), 'storage/socios_fotos'); 
+    	// $valida_foto = $this->subir_imagen($r->file('foto'), 'storage/socios_fotos'); 
 
-    	if($valida_foto['estado'] == "true"){
+    	// if($valida_foto['estado'] == "true"){
 
-    		$s->foto = "storage/socios_fotos/".$valida_foto['nombre'];
-    	}
+    	// 	$s->foto = "storage/socios_fotos/".$valida_foto['nombre'];
+    	// }
     	
 
     	$s->nombres = $r->nombres;
@@ -43,6 +45,21 @@ class SocioController extends Controller
     	if ($s->save()) {
     		return ['estado'=>'success','mensaje'=>'Socio ingresado'];
     	}
+    }
+
+    public function listar()
+    {
+        return Socios::all();
+    }
+
+    public function filtrar($search='')
+    {
+      
+        if ($search == '') {
+            $this->listar();
+        }
+        $return = Socios::filtrar($search);
+        return $return;
     }
 
 

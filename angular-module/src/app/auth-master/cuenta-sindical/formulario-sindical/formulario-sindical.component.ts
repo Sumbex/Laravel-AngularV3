@@ -62,6 +62,7 @@ export class FormularioSindicalComponent implements OnInit {
           this.datosSindicales.nDocumento = '';
           this.datosSindicales.descripcion = '';
           this.datosSindicales.monto = null;
+          alert("Guardado con exito");
         },
         error => {
           console.log(<any>error);
@@ -82,5 +83,25 @@ export class FormularioSindicalComponent implements OnInit {
   changeDetalle(evento){
     this.datosSindicales.tipoCuentaSindicato = evento.target.value;
     console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
+    if(this.datosSindicales.tipoCuentaSindicato == '3'){
+      var anio = this.datosSindicales.fecha.substring(0,4);
+      var mes = this.datosSindicales.fecha.substring(5,7);
+      this._sindicalService.getCalcularCajaChica(anio,mes).subscribe(
+        response => {
+          //console.log(response);
+          if(response.estado == "success"){
+            this.datosSindicales.monto = response.monto;
+          }else{
+            this.datosSindicales.monto = null;
+          }
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+    }else{
+      this.datosSindicales.monto = null;
+    }
   }
+
 }

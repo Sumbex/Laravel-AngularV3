@@ -1,0 +1,26 @@
+<!--Modal camping-->
+<ng-template #Camping let-modal>
+    <!--form del modal camping-->
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
+      <!--Cabezal del modal camping-->
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong>Detalle camping</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Cuerpo del body camping-->
+      <div class="modal-body">
+        <p>kkck para el que lee</p>
+      </div>
+      <!--Boton para salir del modal camping-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+        </button>
+      </div>
+    </form>
+  </ng-template>
+  
+  <!--Boton Para llamar al modal caja chica-->
+  <label><strong>Detalle camping </strong></label><br>
+  <button class="btn btn btn-success btn-block btn-sm" (click)="openCamping(Camping)">Ingresar</button>

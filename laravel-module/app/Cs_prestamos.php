@@ -45,13 +45,117 @@ class Cs_prestamos extends Model
         return ['estado' => 'success', 'mensaje' => 'success'];
     } */
 
+    protected function div_fecha($value)
+    {
+        $fecha = $value;
+        $ano = substr($fecha, -10, 4);
+        $mes = substr($fecha, -5, 2);
+        $dia = substr($fecha, -2, 2);
+        return [
+            'anio' => $ano, 'mes' => $mes, 'dia' => $dia
+        ];
+    }
+    protected function anio_tipo_id($value)
+    {
+        return DB::table('anio')->where('descripcion', $value)->first();
+    }
+
+    protected function mes_tipo_id($value)
+    {
+        return DB::table('mes')->where('id', $value)->first();
+    }
+
     protected function ingresarPrestamo($request)
     {
+        return $request;
+        
         $prestamo = new Cs_prestamos;
+
+        $fecha = $this->div_fecha($request->fecha);
+
+        $anio = $this->anio_tipo_id($fecha['anio']);
+        $mes = $this->mes_tipo_id($fecha['mes']);
+
+        $select = Cs_prestamos::find($request->select_id);
+        $traerSocio = Cs_prestamos::find($request->socio_id);
+
+        //verificar campos
+
+        $prestamo->socio_id = $request->socio_id;
+        $prestamo->dia = $fecha['dia'];
+        $prestamo->mes_id = $mes->id;
+        $prestamo->anio_id = $anio->id;
+        $prestamo->numero_documento = $request->numero_documento;
+        $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
+        $prestamo->tipo_cuenta_sindicato = 4;
+
+        switch ($request->select_id) {
+            case 1:
+                //prestamo salud - retornable
+
+                    $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
+                    $prestamo->monto_egreso = $request->monto_total;
+                    $prestamo->definicion = 2;
+                    $prestamo->tipo_prestamo_id = $request->select_id;
+
+                if($request->checkAbono == true){
+
+                    $prestamo->tipo_pago_id = 2;
+                    $prestamo->user_crea = Auth::user()->id;
+                    $prestamo->cuota = $request->cuotas;
+
+                    //verificar todos los check de abono
+
+
+
+                }else{
+
+                    $prestamo->tipo_pago_id = 1;
+                    $prestamo->user_crea = Auth::user()->id;
+                    $prestamo->cuota = $request->cuotas;
+
+                    if($prestamo->save()){
+                        return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No Insertado salud cuotas'];
+                    }
+                }
+
+                break;
+
+            case 2:
+                //prestamo apuro economico - retornable
+                $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
+                $prestamo->monto_egreso = $request->monto_total;
+                $prestamo->definicion = 2;
+                $prestamo->tipo_prestamo_id = $request->select_id;
+                $prestamo->tipo_pago_id = $request->pago_id;
+                $prestamo->user_crea = Auth::user()->id;
+                $prestamo->cuota = 4;
+                break;
+
+            case 3:
+                //prestamo aporte economico - no retornable
+                //monto prestamo
+                $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
+                $prestamo->monto_egreso = $request->monto_total;
+                $prestamo->definicion = 2;
+                $prestamo->tipo_prestamo_id = $request->select_id;
+                $prestamo->tipo_pago_id = $request->pago_id;
+                $prestamo->user_crea = Auth::user()->id;
+                $prestamo->cuota = 0;
+
+                break;
+
+            default:
+                # code...
+                break;
+        }
     }
 
     protected function traerTipoPrestamos()
     {
+
         $tipo = DB::table('tipo_prestamo')
             ->select([
                 'id',
@@ -63,7 +167,7 @@ class Cs_prestamos extends Model
         return $tipo;
     }
 
-    protected function traerTipoPago()
+    /* protected function traerTipoPago()
     {
         $tipo = DB::table('tipo_pago')
             ->select([
@@ -74,17 +178,17 @@ class Cs_prestamos extends Model
             ->get();
 
         return $tipo;
-    }
+    } */
 
-    protected function traerTipos()
+    /* protected function traerTipos()
     {
         $tPre = $this->traerTipoPrestamos();
         $tPa = $this->traerTipoPago();
 
         return ['tipo_prestamo' => $tPre, 'tipo_pago' => $tPa];
-    }
+    } */
 
-    protected function traerTipoAbono()
+    /* protected function traerTipoAbono()
     {
         $tipoA = DB::table('tipo_abono_cuotas')
             ->select([
@@ -95,7 +199,7 @@ class Cs_prestamos extends Model
             ->where('activo', 'S')
             ->get();
         return $tipoA;
-    }
+    } */
 
     protected function traerSocio($rut)
     {

@@ -130,9 +130,9 @@ class PrestamosController extends Controller
 	}
 
 	//------------------------------------------------->BRYANM
-	public function TraerTipos()
+	public function TraerTipoPrestamos()
 	{
-		return Cs_prestamos::traerTipos();
+		return Cs_prestamos::traerTipoPrestamos();
 	}
 
 	public function TraerSocio($rut)

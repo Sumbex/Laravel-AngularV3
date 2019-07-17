@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class Cs_prestamos extends Model
 {
@@ -67,8 +68,8 @@ class Cs_prestamos extends Model
 
     protected function ingresarPrestamo($request)
     {
-        return $request;
-        
+        //return $request->all();
+
         $prestamo = new Cs_prestamos;
 
         $fecha = $this->div_fecha($request->fecha);
@@ -76,8 +77,24 @@ class Cs_prestamos extends Model
         $anio = $this->anio_tipo_id($fecha['anio']);
         $mes = $this->mes_tipo_id($fecha['mes']);
 
-        $select = Cs_prestamos::find($request->select_id);
-        $traerSocio = Cs_prestamos::find($request->socio_id);
+        $select = DB::table('tipo_prestamo')
+            ->select([
+                'id',
+                'descripcion'
+            ])
+            ->where([
+                'id' => $request->select_id,
+                'activo' => 'S'
+            ])
+            ->first();
+        
+        $traerSocio = DB::table('socios')
+        ->where([
+            'id' => $request->socio_id,
+            'activo' => 'S'
+        ])
+        ->first();
+
 
         //verificar campos
 
@@ -132,6 +149,12 @@ class Cs_prestamos extends Model
                 $prestamo->tipo_pago_id = $request->pago_id;
                 $prestamo->user_crea = Auth::user()->id;
                 $prestamo->cuota = 4;
+
+                if($prestamo->save()){
+                    return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
+                }else{
+                    return ['estado' => 'failed', 'mensaje' => 'No Insertado apuro cuotas'];
+                }
                 break;
 
             case 3:
@@ -141,10 +164,16 @@ class Cs_prestamos extends Model
                 $prestamo->monto_egreso = $request->monto_total;
                 $prestamo->definicion = 2;
                 $prestamo->tipo_prestamo_id = $request->select_id;
-                $prestamo->tipo_pago_id = $request->pago_id;
+                $prestamo->tipo_pago_id = 3;
                 $prestamo->user_crea = Auth::user()->id;
                 $prestamo->cuota = 0;
+                $prestamo->activo = 'S';
 
+                if($prestamo->save()){
+                    return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
+                }else{
+                    return ['estado' => 'failed', 'mensaje' => 'No Insertado aporte'];
+                }
                 break;
 
             default:

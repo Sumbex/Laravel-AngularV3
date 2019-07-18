@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-prestamos-socios',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalPrestamosSociosComponent implements OnInit {
 
-  constructor() { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
 
+  }
   ngOnInit() {
+  }
+
+  openPrestamo(Prestamo) {
+    this.modalService.open(Prestamo, { size: 'lg' });
   }
 
 }

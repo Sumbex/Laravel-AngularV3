@@ -1,7 +1,26 @@
 <!--Modal camping-->
+<ng-template #validar let-modal>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+        <br>
+        <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+        <br>
+       <button class="btn btn-success btn-block btn-sm"
+        (click)="btn_validar_usuario(rut,password,validar);">
+        Validar
+        </button>
+        <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </div>
+  </ng-template>
 <ng-template #Camping let-modal>
     <!--form del modal camping-->
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
+
       <!--Cabezal del modal camping-->
       <div class="modal-header" id="demoFont">
         <h6 class="modal-title"><strong>Detalle camping</strong></h6>
@@ -11,14 +30,76 @@
       </div>
       <!--Cuerpo del body camping-->
       <div class="modal-body">
-        <p>kkck para el que lee</p>
+          <br>
+         <!--  <div class="row">
+            <div class="col-md-3"><label>Añio:</label>
+              <select class="form-control form-control-sm" [(ngModel)]="anio" >
+                <option *ngFor="let a of anios" >{{ a.descripcion }}</option>
+              </select>
+            </div>
+            <div class="col-md-3"><label>Mes:</label>
+              <select class="form-control form-control-sm" [(ngModel)]="mes" >
+                <option *ngFor="let m of meses" >{{ m.descripcion }}</option>
+              </select>
+            </div>
+          </div> -->
+          <table class="table table-striped table-bordered table-sm">
+               <thead text-sm>
+                  <!--Titulo Tabla-->  
+                  <tr>
+                    <th colspan="14" class=" text-center"  id="demoFont"><h6>Detalle Comité Camping</h6></th>
+                  </tr>
+                 <tr >
+                  <th>
+                    <select id="anio_id" (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
+                      <option *ngFor="let a of anios" [value]="a.id">{{ a.descripcion }}</option>
+                    </select>
+                  </th>
+                  <th>
+                     <select (change)="change_mes()" class="form-control form-control-sm" [(ngModel)]="mes" >
+                      <option *ngFor="let m of meses" [value]="m.id" >{{ m.descripcion }}</option>
+                    </select>
+                  </th>
+                  <th class="text-right" style="background: #138D75" colspan="3">
+                      Cierre mensual acumulado:
+                  </th>
+                   <th style="background: #138D75">
+                      <input [(ngModel)]="monto" type="" name="" class="form-control form-control-sm" placeholder ="Ingrese un monto..">
+                   </th>
+                   <td style="background: #138D75" >
+                     <button (click)="validar_usuario(validar)" class="btn btn-light"><i class="far fa-save"></i></button>
+                   </td>
+                 </tr>
+                  <tr class="text-center">
+                      <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Fecha</th>
+                      <th style="background: #138D75"><i class="fas fa-id-card"></i> Nº Documento</th>
+                      <th style="background: #138D75"><i class="fas fa-user"></i> Detalle del camping</th>
+                      <th style="background: #138D75"><i class="fas fa-user"></i> Ingreso</th>
+                      <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Egreso</th>
+                      <th colspan="2" style="background: #138D75"><i class="fas fa-user-plus"></i> Monto actual</th>           
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of detallecamping">
+                  <td>{{ item.fecha }}</td>
+                  <td>{{ item.numero_documento }}</td>
+                  <td>{{ item.descripcion }}</td>
+                  <td>{{ item.monto_ingreso }}</td>
+                  <td>{{ item.monto_egreso }}</td>
+                  <td colspan="2">{{ item.saldo_actual_raw }}</td>
+                </tr>
+              </tbody>
+          </table>
+
+
+
       </div>
       <!--Boton para salir del modal camping-->
       <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
         </button>
       </div>
-    </form>
+    
   </ng-template>
   
   <!--Boton Para llamar al modal caja chica-->

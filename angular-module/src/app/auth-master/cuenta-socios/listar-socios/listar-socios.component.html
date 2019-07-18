@@ -63,8 +63,8 @@
 	                  	<th style="background: #138D75"><i class="fas fa-user"></i> Apellidos</th>
 	                  	<th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Fecha Nacimiento</th>
 	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> Fecha de ingreso</th>
-	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> Fecha de egreso</th>    
-	                  	<td style="background: #138D75"> Editar</td>           
+	                  	<th style="background: #138D75"><i class="fas fa-user-minus"></i> Fecha de egreso</th>    
+	                  	<th style="background: #138D75"><i class="fas fa-edit"></i> Editar</th>           
 	                </tr>
               </thead>
               <tbody>
@@ -79,7 +79,7 @@
 
               			<button class="btn btn-success btn-block btn-sm"
 				        (click)="modal_editar(editar);">
-				        Editar
+				        <i class="fas fa-pencil-alt"></i>
 				        </button>
               			
 
@@ -95,13 +95,13 @@
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Rut</label>
+										<label><strong>Rut</strong></label>
 						        		<input class="form-control form-control-sm" #rut [value]="item.rut">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'rut',rut)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>
@@ -109,78 +109,78 @@
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Nombres</label>
+										<label><strong>Nombres</strong></label>
 						        		<input class="form-control form-control-sm" #nombres [value]="item.nombres">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'nombres',nombres)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Apellido paterno</label>
+										<label><strong>Apellido paterno</strong></label>
 						        		<input class="form-control form-control-sm" #a_paterno [value]="item.a_paterno">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'a_paterno',a_paterno)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Apellido materno</label>
+										<label><strong>Apellido materno</strong></label>
 						        		<input class="form-control form-control-sm" #a_materno [value]="item.a_materno">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'a_materno',a_materno)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Fecha de nacimiento</label>
+										<label><strong>Fecha de nacimiento</strong></label>
 						       		 	<input type="date" class="form-control form-control-sm" #fecha_nacimiento [value]="item.fecha_nacimiento">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'fecha_nacimiento',fecha_nacimiento)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Fecha ingreso</label>
+										<label><strong>Fecha ingreso</strong></label>
 						        		<input type="date" class="form-control form-control-sm" #fecha_ingreso [value]="item.fecha_ingreso">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'fecha_ingreso',fecha_ingreso)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-11">
-										<label>Fecha egreso</label>
+										<label><strong>Fecha egreso</strong></label>
 						        		<input type="date" class="form-control form-control-sm" #fecha_egreso [value]="item.fecha_egreso">
 									</div>
 									<div class="col-md-1">
 										<br>
 										<button (click)="actualizar(item.id,'fecha_egreso',fecha_egreso)" class="btn btn-link" style="margin-left: -10px">
-											<i class="fas fa-edit fa-2x"></i>
+											<i class="fas fa-edit"></i>
 										</button>
 									</div>
 								</div>

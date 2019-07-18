@@ -105,7 +105,9 @@ class SocioController extends Controller
             'a_paterno',
             'a_materno'
 
-        ])->get();
+        ])
+        ->orderBy('fecha_ingreso','DESC')
+        ->get();
     }
 
     public function filtrar($search='')

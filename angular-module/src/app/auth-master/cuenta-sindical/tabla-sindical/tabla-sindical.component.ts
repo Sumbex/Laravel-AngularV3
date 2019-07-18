@@ -191,6 +191,8 @@ export class TablaSindicalComponent implements OnInit {
   }
   cerrarActualizar(){
     this.modalActualizar.close();
+    this.alertEstado = false;
+    this.alertMensaje = "";
   }
 
   //actualizar items
@@ -210,12 +212,17 @@ export class TablaSindicalComponent implements OnInit {
         if(response.estado == "success"){
           this.alertEstado = true;
           this.alertMensaje = response.mensaje;
-
           this.modalActualizar.close();
+          this.alertEstado = false;
+          this.alertMensaje = "";
         }
         if(response.estado == "failed"){
           this.alertEstado = true;
           this.alertMensaje = response.mensaje;
+          this.alertEstado = false;
+          this.alertMensaje = "";
+          
+          
         }
       }
     )

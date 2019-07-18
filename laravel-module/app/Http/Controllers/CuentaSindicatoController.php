@@ -656,4 +656,83 @@ class CuentaSindicatoController extends Controller
     }
 
 
+
+    public function dinero_mes_anterior_caja_chica_2($anio, $mes)
+	{	
+		
+		$convert = DB::table('anio')->where('id', $anio)->first();
+		$anio = $convert->descripcion;
+
+
+		$mes_anterior = $mes - 1;
+		$anio_anterior = $anio;
+
+		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
+			$mes_anterior = 12;
+			$anio_anterior = $anio - 1;
+			
+			try{
+				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
+				
+				$monto = DB::table('cs_caja_chica')->where([
+							'activo' => 'S',
+							'anio_id' => $anio->id,
+							'mes_id' => $mes_anterior
+						])->sum('monto_egreso');
+
+
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
+				}
+
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
+			}catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
+
+		}
+		else
+		{
+			$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
+
+
+			//dd($anio->id.'; mes_id:'.$mes_anterior);
+			$monto = DB::table('cs_caja_chica')->where([
+						'activo' => 'S',
+						'anio_id' => $anio->id,
+						'mes_id' => $mes_anterior
+					])->sum('monto_egreso');
+
+
+
+			$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+			if ($monto_a_guardar == 100000) {
+				return ['estado'=>'success', 'monto'=>0];
+			}
+			return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+
+			// $monto_sobrante = $this->global_caja_chica - $monto;
+			// if (empty($monto)) {
+			// 	return ['estado'=>"success",'monto'=>0];
+			// }
+
+		}
+
+		// if($monto_sobrante < $this->global_caja_chica ){
+		// 	return ['estado'=>'success', 'monto'=>$monto_sobrante];
+		// }else{
+		// 	return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
+		// }
+		
+
+	}
+
+
 }

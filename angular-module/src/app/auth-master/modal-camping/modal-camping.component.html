@@ -51,7 +51,7 @@
                   </tr>
                  <tr >
                   <th>
-                    <select (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
+                    <select id="anio_id" (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
                       <option *ngFor="let a of anios" [value]="a.id">{{ a.descripcion }}</option>
                     </select>
                   </th>

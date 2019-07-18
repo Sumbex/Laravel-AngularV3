@@ -12,17 +12,18 @@ class Cs_prestamos extends Model
 {
     protected $table = 'cs_prestamos';
 
-    /* public function validarDatos($request)
+    public function validarDatos($request)
     {
         $validator = Validator::make(
             $request->all(),
             [
                 'fecha' => 'required',
                 'archivo_documento' => 'required|file|mimes:pdf',
-                'numero_documento' => 'required|unique:cs_caja_chica,numero_documento',
-                'descripcion' => 'required|min:0',
-                'definicion' => 'required|min:0',
-                'monto' => 'required|integer|min:1|max:100000',
+                'numero_documento' => 'required|unique:cs_prestamos,numero_documento',
+                'select_id' => 'required|min:0',
+                'monto_total' => 'required|integer|min:1',
+                //'checkAbono' => 'required',
+                'cuotas' => 'required'
 
             ],
             [
@@ -32,12 +33,11 @@ class Cs_prestamos extends Model
                 'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
                 'numero_documento.required' => 'El numero de documento es necesario',
                 'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
-                'descripcion.required' => 'La descripcion es necesaria',
-                'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
-                'monto.required' => 'El monto es necesario',
-                'monto.integer' => 'Debe ingresar solo numeros',
+                'monto_total.required' => 'El monto es necesario',
+                'monto_total.integer' => 'Debe ingresar solo numeros',
                 'monto.min' => 'El monto debe ser mayor a 0.',
-                'monto.max' => 'El monto no debe ser mayor a 100000 pesos.'
+                'select_id.required' => 'Debe elegir el tipo de prestamo',
+                'cuotas.required' => 'Debe ingresar el numero de cuotas'
             ]
         );
 
@@ -45,7 +45,7 @@ class Cs_prestamos extends Model
             return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
         }
         return ['estado' => 'success', 'mensaje' => 'success'];
-    } */
+    }
 
     protected function div_fecha($value)
     {

@@ -30,7 +30,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
   mensajeError = '';
 
   //Variables prestamo de salud retornable
-  montoPrestamo: string = '';
+  inputMontoPrestamo: number = null;
   radioAbono = "false";
   checkDiaSueldo: boolean = false;
   checkTrimestral: boolean = false;
@@ -38,6 +38,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
   inputDiaSueldo: number = null;
   inputTrimestral: number = null;
   inputTerminoConflicto: number = null;
+  inputPrestamoRestante: number = null;
+  inputNumeroCuotas: number = null;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _sociosService: SociosService) {
     config.backdrop = 'static';
@@ -117,6 +119,10 @@ export class ModalPrestamosSociosComponent implements OnInit {
     }else if(val == 3){
       this.inputTerminoConflicto = null;
     }
+  }
+
+  onSubmit(res){
+    console.log(res);
   }
 
 }

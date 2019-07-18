@@ -42,6 +42,16 @@ export class SociosService {
                 'Authorization': 'Bearer' + this.token,
                 //'Content-Type': 'applcation/json'
             }
+            )});
+        }
+
+    getSocio(rut){
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "traer_socio/" + rut, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
         )});
     }
 }

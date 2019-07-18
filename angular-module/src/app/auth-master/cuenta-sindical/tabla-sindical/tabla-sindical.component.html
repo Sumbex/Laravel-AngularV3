@@ -74,6 +74,11 @@
 
                         </div>
                         <div class="modal-footer">
+
+                                <ngb-alert  *ngIf="alertEstado" [dismissible]="false">
+                                  <strong>{{alertMensaje}}</strong>
+                                </ngb-alert>
+
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                           <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'fecha',fechaFijo)">Guardar</button>
                         </div>

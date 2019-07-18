@@ -24,7 +24,7 @@ export class TablaSindicalComponent implements OnInit {
   cajaChica;
   prestamo;
   camping;
-  resultado;
+  resultado:any=["total_final"];
 
   verify:boolean = false;
   get_numero:number = 0;
@@ -48,7 +48,12 @@ export class TablaSindicalComponent implements OnInit {
   //actualizar caja chica
   actualizarMontoCajaChica;
 
-  empanada;
+  suc_res1 = false;
+  suc_res2 = false;
+
+  //mensajes de alerta
+  alertMensaje;
+  alertEstado = false;
 
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _fechasService: AniosService) {
@@ -67,12 +72,19 @@ export class TablaSindicalComponent implements OnInit {
     //Cargar definiciones
     this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
 
-    //Cargar id del Año actual
-    this._fechasService.getAnioActual().subscribe(
+  }
+
+  cargar_select(){
+
+     //Cargar id del Año actual
+     this._fechasService.getAnioActual().subscribe(
       response => {
         this.idAnioActual = response;
-        console.log(this.idAnioActual);
-        this.valorAnio.descripcion = this.idAnioActual.id;
+        this.valorAnio.descripcion = this.idAnioActual.id; 
+        this.suc_res1 = true;
+        
+        this.listo_para_listar(this.suc_res1, this.suc_res2);
+
       },
       error => {
         console.log(error);
@@ -83,8 +95,10 @@ export class TablaSindicalComponent implements OnInit {
     this._fechasService.getMesActual().subscribe(
       response => {
         this.idMesActual = response;
-        console.log(this.idMesActual);
         this.valorMes.descripcion = this.idMesActual.id;
+        this.suc_res2 = true;
+              
+        this.listo_para_listar(this.suc_res1, this.suc_res2);
       },
       error => {
         console.log(error);
@@ -93,9 +107,16 @@ export class TablaSindicalComponent implements OnInit {
 
   }
 
+  listo_para_listar(res1, res2){
+    if (res1 == true && res2 == true) {
+      this.refrescarSindical();
+      this.cierreMensualAnterior();
+    }
+  }
+
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
-    console.log("ID anio: " + this.valorAnio.descripcion);
+
     
     this.cierreMensualAnterior();
     this.refrescarSindical();
@@ -103,7 +124,7 @@ export class TablaSindicalComponent implements OnInit {
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
-    console.log("ID mes: " + this.valorMes.descripcion);
+
     
     this.cierreMensualAnterior();
     this.refrescarSindical();
@@ -111,9 +132,7 @@ export class TablaSindicalComponent implements OnInit {
 
   openTablaSindical(TablaSindical) {
     this.modalService.open(TablaSindical, { size: 'lg' });
-    
-    this.cierreMensualAnterior();
-    this.refrescarSindical();
+    this.cargar_select();
   }
 
   refrescarSindical() {
@@ -142,7 +161,6 @@ export class TablaSindicalComponent implements OnInit {
           this.prestamo = this.tablaSindical.prestamo;
           this.camping = this.tablaSindical.camping;
           this.resultado = this.tablaSindical.resultado;
-          console.log(this.tablaSindical);
         }
         this.loading = false;
       },
@@ -157,14 +175,11 @@ export class TablaSindicalComponent implements OnInit {
         this._sindicalService.getTablaSindicalMontoInicial(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
           response => {
             if (response['estado'] == "failed") {
-              console.log("NO pasa el inicio_cierre");
               this.get_numero = 0;
             }
             if(response['estado'] == "success"){
-             // this.verify = true;
               this.cierreAnterior = response[0].inicio_mensual;
               this.get_numero = this.cierreAnterior;
-              console.log("pasa el inicio_cierre");
             }
           }
         );
@@ -176,6 +191,8 @@ export class TablaSindicalComponent implements OnInit {
   }
   cerrarActualizar(){
     this.modalActualizar.close();
+    this.alertEstado = false;
+    this.alertMensaje = "";
   }
 
   //actualizar items
@@ -186,18 +203,26 @@ export class TablaSindicalComponent implements OnInit {
       this.entrada = input.value;
     }
     if(this.entrada == ''){
-      alert("ingrese datos");
+      this.alertEstado = true;
+      this.alertMensaje = ("ingrese datos porfavor!");
       return false;
     }
     this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
       response => {
-        console.log(response);
         if(response.estado == "success"){
-          alert(response.mensaje);
+          this.alertEstado = true;
+          this.alertMensaje = response.mensaje;
           this.modalActualizar.close();
+          this.alertEstado = false;
+          this.alertMensaje = "";
         }
         if(response.estado == "failed"){
-          alert(response.mensaje);
+          this.alertEstado = true;
+          this.alertMensaje = response.mensaje;
+          this.alertEstado = false;
+          this.alertMensaje = "";
+          
+          
         }
       }
     )

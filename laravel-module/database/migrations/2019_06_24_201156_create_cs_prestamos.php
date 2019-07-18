@@ -15,10 +15,11 @@ class CreateCsPrestamos extends Migration
     {
         Schema::create('cs_prestamos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('socio_id');
             $table->integer('dia');
             $table->integer('mes_id');
             $table->integer('anio_id');
-            $table->bigInteger('numero_documento');
+            $table->text('numero_documento');
             $table->text('archivo_documento');
             $table->integer('tipo_cuenta_sindicato');
             $table->text('descripcion');
@@ -26,7 +27,10 @@ class CreateCsPrestamos extends Migration
             $table->bigInteger('monto_egreso')->nullable();
             $table->bigInteger('saldo_actual')->nullable();
             $table->integer('definicion');
+            $table->integer('tipo_prestamo_id');
+            $table->integer('tipo_pago_id');
             $table->bigInteger('user_crea');
+            $table->bigInteger('cuota');
             $table->char('activo', 1);
             $table->timestamps();
         });

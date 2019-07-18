@@ -45,6 +45,11 @@ export class TablaSindicalComponent implements OnInit {
     descripcion: ''
   }
 
+  //actualizar caja chica
+  actualizarMontoCajaChica;
+
+  empanada;
+
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _fechasService: AniosService) {
     config.backdrop = 'static';
@@ -66,6 +71,7 @@ export class TablaSindicalComponent implements OnInit {
     this._fechasService.getAnioActual().subscribe(
       response => {
         this.idAnioActual = response;
+        console.log(this.idAnioActual);
         this.valorAnio.descripcion = this.idAnioActual.id;
       },
       error => {
@@ -77,6 +83,7 @@ export class TablaSindicalComponent implements OnInit {
     this._fechasService.getMesActual().subscribe(
       response => {
         this.idMesActual = response;
+        console.log(this.idMesActual);
         this.valorMes.descripcion = this.idMesActual.id;
       },
       error => {
@@ -202,6 +209,22 @@ export class TablaSindicalComponent implements OnInit {
 
   onSelectImage(event) {
      this.archivoDocumento = event.srcElement.files[0];
+  }
+
+  actualizarCaja(){
+    /*this._sindicalService.getCalcularCajaChica(this.selectAnio,this.selectMes).subscribe(
+      response => {
+        //console.log(response);
+        if(response.estado == "success"){
+          this.actualizarMontoCajaChica = response.monto;
+        }else{
+          this.actualizarMontoCajaChica = null;
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );*/
   }
 
 }

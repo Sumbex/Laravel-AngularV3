@@ -1,3 +1,10 @@
+.my-class { 
+  color: red;
+  font-size: 15px;
+  margin: 10px auto;
+  padding: 5px;
+}
+
 label,input, button{
     font-size: 12px;
   }

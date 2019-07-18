@@ -22,6 +22,8 @@ class CreateSociosTable extends Migration
             $table->date('fecha_nacimiento')->nullable();
             $table->char('activo', 1);
             $table->text('foto')->nullable();
+            $table->date('fecha_ingreso')->nullable();
+            $table->date('fecha_egreso')->nullable();
             $table->timestamps();
         });
     }

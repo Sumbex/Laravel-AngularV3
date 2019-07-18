@@ -120,95 +120,103 @@ class Cs_prestamos extends Model
 
                 if ($request->checkAbono == 'true') {
 
-                   //return 'paso if';
+                    //return 'paso if';
                     $prestamo->tipo_pago_id = 2;
                     $prestamo->user_crea = Auth::user()->id;
                     $prestamo->cuota = $request->cuotas;
                     $prestamo->activo = 'S';
 
                     if ($prestamo->save()) {
-                    
+
                         $ultimoPrestamo = Cs_prestamos::all()->last();
 
                         //verificar todos los check de abono
-                    $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
-                    $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
-                    $conflicto = array(['id' => 2, 'check' => $request->checkcon, 'monto' => $request->monto_con]);
+                        $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
+                        $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
+                        $conflicto = array(['id' => 2, 'check' => $request->checkcon, 'monto' => $request->monto_con]);
 
-                    $array = array_collapse([$dia, $trimestral, $conflicto]);
+                        $array = array_collapse([$dia, $trimestral, $conflicto]);
 
-                    //dd($array);
+                        //dd($array);
 
-                    $prestamoAbono = new Cs_prestamo_tipo_abono_cuotas;
+                        for ($i = 0; $i < count($array); $i++) {
 
-                    for ($i=0; $i < count($array) ; $i++) { 
+                            $prestamoAbono = new Cs_prestamo_tipo_abono_cuotas;
 
-                        switch ($array[$i]['id']) {
-                            case 1:
-                                if($array[$i]['check'] == 'true'){
-                                    $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
-                                    $prestamoAbono->tipo_abono_cuotas_id = 1;
-                                    $prestamoAbono->monto = $array[$i]['monto'];
-                                    $prestamoAbono->activo = 'S';
+                            switch ($array[$i]['id']) {
+                                case 1:
 
-                                    if($prestamoAbono->save()){
-                                        break;
-                                    }else{
-                                        break;
-                                    }
-                                }else{
-                                    break;
-                                }    
+                                    if ($array[$i]['check'] == 'true') {
+                                        $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                        $prestamoAbono->tipo_abono_cuotas_id = 1;
+                                        $prestamoAbono->monto = $array[$i]['monto'];
+                                        $prestamoAbono->activo = 'S';
 
-                                break;
-
-                            case 2:
-                                if($array[$i]['check'] == 'true'){
-                                    $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
-                                    $prestamoAbono->tipo_abono_cuotas_id = 2;
-                                    $prestamoAbono->monto = $array[$i]['monto'];
-                                    $prestamoAbono->activo = 'S';
-
-                                    if($prestamoAbono->save()){
-                                        break;
-                                    }else{
+                                        if ($prestamoAbono->save()) {
+                                            $array[$i]['paso'] = true;
+                                            break;
+                                        } else {
+                                            $array[$i]['paso'] = false;
+                                            break;
+                                        }
+                                    } else {
                                         break;
                                     }
-                                }else{
+
                                     break;
-                                }
-                                break;
 
-                            case 3:
-                                if($array[$i]['check'] == 'true'){
-                                    $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
-                                    $prestamoAbono->tipo_abono_cuotas_id = 3;
-                                    $prestamoAbono->monto = $array[$i]['monto'];
-                                    $prestamoAbono->activo = 'S';
+                                case 2:
 
-                                    if($prestamoAbono->save()){
-                                        break;
-                                    }else{
+                                    if ($array[$i]['check'] == 'true') {
+                                        $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                        $prestamoAbono->tipo_abono_cuotas_id = 2;
+                                        $prestamoAbono->monto = $array[$i]['monto'];
+                                        $prestamoAbono->activo = 'S';
+
+                                        if ($prestamoAbono->save()) {
+                                            $array[$i]['paso'] = true;
+                                            break;
+                                        } else {
+                                            $array[$i]['paso'] = false;
+                                            break;
+                                        }
+                                    } else {
                                         break;
                                     }
-                                }else{
+
                                     break;
-                                }
-                                break;
-                            
-                            default:
-                                # code...
-                                break;
+
+                                case 3:
+
+                                    if ($array[$i]['check'] == 'true') {
+                                        $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                        $prestamoAbono->tipo_abono_cuotas_id = 3;
+                                        $prestamoAbono->monto = $array[$i]['monto'];
+                                        $prestamoAbono->activo = 'S';
+
+                                        if ($prestamoAbono->save()) {
+                                            $array[$i]['paso'] = true;
+                                            break;
+                                        } else {
+                                            $array[$i]['paso'] = false;
+                                            break;
+                                        }
+                                    } else {
+                                        break;
+                                    }
+
+                                    break;
+
+                                default:
+                                    # code...
+                                    break;
+                            }
                         }
 
-                    }
-
-                    return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
-                    
+                        return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
                     } else {
                         return ['estado' => 'failed', 'mensaje' => 'No Insertado salud abono'];
                     }
-                  
                 } else {
                     //return 'paso else';
                     $prestamo->tipo_pago_id = 1;

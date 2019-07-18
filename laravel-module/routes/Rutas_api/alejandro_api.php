@@ -26,6 +26,9 @@ Route::get('calcular_caja_chica_anterior_cs/{anio}/{mes}', 'CuentaSindicatoContr
 Route::post('actualizar_dato_cs','CuentaSindicatoController@actualizar_dato_cs');
 
 Route::get('descargar_archivo@DescargarArchivo');
+Route::get('listar_detalle_camping/{anio}/{mes}/{monto?}','CsDetalleCampingController@listar_detalle_camping');
+Route::post('guardar_cierre_monto_detalle_camping_cs','CsDetalleCampingController@guardar_cierre_monto_detalle_camping_cs');
+Route::get('traer_cierre_monto_detalle_camping_cs/{anio}/{mes}','CsDetalleCampingController@traer_cierre_monto_detalle_camping_cs');
 
 //-------------------------------------------------------------------------------------------------
 
@@ -34,3 +37,5 @@ Route::get('descargar_archivo@DescargarArchivo');
 Route::post('ingresar_socio','SocioController@ingresar');
 Route::get('listar_socios','SocioController@listar');
 Route::get('filtrar_socios/{busca?}', 'SocioController@filtrar');
+Route::post('editar_socios', 'SocioController@actualizar_socio');
+

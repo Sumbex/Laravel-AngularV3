@@ -195,7 +195,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<div class=\"container\">\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Resgistro de Socios</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\" enctype=\"multipart/form-data\">\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n            <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n             <!--  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label><strong>Ingrese foto del socio</strong></label> <br>\r\n                <input class=\"form-control-file\" \r\n                type=\"file\" \r\n                \r\n                (change)=\"onSelectImage($event)\"\r\n                >\r\n              </div> -->\r\n\r\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                  <br><label><strong>Rut</strong></label>\r\n                  <input \r\n                  type=\"string\" \r\n                  class=\"form-control form-control-sm\"\r\n                  name=\"rut\"\r\n                  placeholder=\"123456789\"  \r\n                  [(ngModel)]=\"rut\" \r\n                  required>\r\n                  <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                    Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                  </small>-->\r\n                </div>\r\n              \r\n                <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                    <br><label><strong>Fecha de Nacimiento</strong></label>\r\n                    <input \r\n                    type=\"date\" \r\n                    class=\"form-control form-control-sm\"\r\n                    name=\"fNacimiento\"  \r\n                    [(ngModel)]=\"fecha_nacimiento\" \r\n                    required>\r\n                    <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                      Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                    </small>-->\r\n                  </div>\r\n\r\n                  <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                      <br><label><strong>Nombre</strong></label>\r\n                      <input \r\n                      type=\"string\" \r\n                      class=\"form-control form-control-sm\"\r\n                      name=\"nombre\"  \r\n                      placeholder=\"ingrese nombre\"\r\n                      [(ngModel)]=\"nombres\" \r\n                      required>\r\n                      <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                        Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                      </small>-->\r\n                    </div>\r\n      \r\n                    <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                        <br><label><strong>Apellido Paterno</strong></label>\r\n                        <input \r\n                        type=\"string\" \r\n                        class=\"form-control form-control-sm\"\r\n                        name=\"aPaterno\"  \r\n                        placeholder=\"ingrese apellido paterno\"\r\n                        [(ngModel)]=\"a_paterno\" \r\n                        required>\r\n                        <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                          Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                        </small>-->\r\n                      </div>\r\n      \r\n                      <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                          <br><label><strong>Apellido Materno</strong></label>\r\n                          <input \r\n                          type=\"string\" \r\n                          class=\"form-control form-control-sm\"\r\n                          name=\"aMaterno\"\r\n                          placeholder=\"ingrese apellido materno\"  \r\n                          [(ngModel)]=\"a_materno\" \r\n                          required>\r\n                          <!--<small *ngIf=\"!nDocumento.valid && nDocumento.touched\" class=\"invalid-feedback d-block\">\r\n                            Compruebe que el N° Documento ingresado solo contiene nuemeros y no este vacio\r\n                          </small>-->\r\n                        </div>\r\n              \r\n              <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label><strong>Guardar Socio</strong></label><br>\r\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\">Guardar</button>\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>\r\n"
+module.exports = "<br>\r\n<div class=\"container\">\r\n\r\n  \r\n  <ng-template #validar let-modal>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\r\n        <br>\r\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\r\n        <br>\r\n       <button class=\"btn btn-success btn-block btn-sm\"\r\n        (click)=\"btn_validar_usuario(rut,password,validar);\">\r\n        Validar\r\n        </button>\r\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n      </div>\r\n  </ng-template>\r\n\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Resgistro de Socios</h6>\r\n      </strong>\r\n    </div>\r\n    <form>\r\n      <div class=\"card-body\">\r\n\r\n        <div class=\"row\">\r\n            \r\n            <div class=\"col-md-6\">\r\n                <br><label><strong>Rut</strong></label>\r\n                  <input \r\n                  type=\"string\" \r\n                  class=\"form-control form-control-sm\"\r\n                  name=\"rut\"\r\n                  placeholder=\"123456789\"  \r\n                  [(ngModel)]=\"rut\" \r\n                  required>\r\n               <br>\r\n               <label><strong>Nombre</strong></label>\r\n                <input \r\n                type=\"string\" \r\n                class=\"form-control form-control-sm\"\r\n                name=\"nombre\"  \r\n                placeholder=\"ingrese nombre\"\r\n                [(ngModel)]=\"nombres\" \r\n                required>\r\n\r\n                 <br><label><strong>Apellido Paterno</strong></label>\r\n                 <input \r\n                 type=\"string\" \r\n                 class=\"form-control form-control-sm\"\r\n                 name=\"aPaterno\"  \r\n                 placeholder=\"ingrese apellido paterno\"\r\n                 [(ngModel)]=\"a_paterno\" \r\n                 required>\r\n\r\n                 <br><label><strong>Apellido Materno</strong></label>\r\n                 <input \r\n                 type=\"string\" \r\n                 class=\"form-control form-control-sm\"\r\n                 name=\"aPaterno\"  \r\n                 placeholder=\"ingrese apellido paterno\"\r\n                 [(ngModel)]=\"a_materno\" \r\n                 required>\r\n              \r\n\r\n\r\n            </div>\r\n            <div class=\"col-md-6\">\r\n              \r\n                <br><label><strong>Fecha de Nacimiento</strong></label>\r\n                    <input \r\n                    type=\"date\" \r\n                    class=\"form-control form-control-sm\"\r\n                    name=\"fNacimiento\"  \r\n                    [(ngModel)]=\"fecha_nacimiento\" \r\n                    required>\r\n\r\n                <br><label><strong>Fecha de ingreso</strong></label>\r\n                    <input \r\n                    type=\"date\" \r\n                    class=\"form-control form-control-sm\"\r\n                    name=\"fNacimiento\"  \r\n                    [(ngModel)]=\"fecha_ingreso\" \r\n                    required>\r\n\r\n              \r\n            </div>\r\n  \r\n           <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                        <br><label><strong>Guardar Socio</strong></label><br>\r\n                        <button \r\n                          class=\"btn btn btn-success btn-block btn-sm\" \r\n                          type=\"submit\" value=\"ingresar\"\r\n                          (click)=\"validar_usuario(validar)\"\r\n                          >Guardar\r\n                        </button>\r\n                      </div>\r\n\r\n\r\n\r\n        </div>\r\n\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -206,7 +206,7 @@ module.exports = "<br>\r\n<div class=\"container\">\r\n  <!--Formulario para ing
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<div>\r\n\t<div class=\"card\">\r\n\t\t<div class=\"card-header\" id=\"demoFont\">\r\n\t\t\t<strong class=\"text-center\">\r\n\t\t        <h6>Lista de Socios</h6>\r\n\t\t     </strong>\r\n\t\t</div>\r\n\t\t<div class=\"card-body\">\r\n\t\t\t <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n          \t\t <thead text-sm>\r\n\t                <!--Titulo Tabla-->  \r\n\t                <tr>\r\n\t                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Socios</h6></th>\r\n\t                </tr>\r\n\t                <tr>\r\n\t                \t<th style=\"background: #138D75\"><label class=\"centrar_txt\"> Buscar:</label></th>\r\n\t                \t<td style=\"background: #138D75\" colspan=\"2\">\r\n\t                \t\t<input \r\n\t                \t\t\tclass=\"form-control form-control-sm\" \r\n\t                \t\t\tplaceholder=\"Buscar por nombre......\"\r\n\t                \t\t\t[(ngModel)]=\"search\"\r\n\t                \t\t\t>\r\n\t                \t</td>\r\n\t                \t<td style=\"background: #138D75\" col>\r\n\t                \t\t<button (click)=\"filtrar()\" class=\"form-control form-cntrol-sm\" style=\"width: 35px\">\r\n\t                \t\t\t<i class=\"fas fa-search\"></i>\r\n\t                \t\t</button>\r\n\t                \t</td>\r\n\t                \t<td style=\"background: #138D75\" colspan=\"2\"> </td>\r\n\t                </tr>\r\n\t                <tr class=\"text-center\">\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> Rut</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> Nombres</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> Apellidos</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> Fecha Nacimiento</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user-plus\"></i> Fecha de registro</th>           \r\n\t                </tr>\r\n              </thead>\r\n              <tbody>\r\n              \t<tr *ngFor=\"let item of socios\">\r\n              \t\t<td>{{ item.rut }}</td>\r\n              \t\t<td>{{ item.nombres }}</td>\r\n              \t\t<td>{{ item.a_paterno+' '+item.a_materno }}</td>\r\n              \t\t<td>{{ item.fecha_nacimiento }}</td>\r\n              \t\t<td>{{ item.created_at }}</td>\r\n              \t</tr>\r\n              </tbody>\r\n          </table>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
+module.exports = "<br>\r\n<div>\r\n\t<!-- MODAL PARA VALIDAR USUARIO -->\r\n\t<ng-template #validar let-modal>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\r\n        <br>\r\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\r\n        <br>\r\n       <button class=\"btn btn-success btn-block btn-sm\"\r\n        (click)=\"btn_validar_usuario(rut,password,validar);\">\r\n        Validar\r\n        </button>\r\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n      </div>\r\n  \t</ng-template>\r\n\r\n  \t<!-- MODALS PARA EDITAR CAMPOS -->\r\n  \r\n\r\n\r\n\r\n<!-- HTML NORMAL EN VISTA -->\r\n\t<div class=\"card\">\r\n\t\t<div class=\"card-header\" id=\"demoFont\">\r\n\t\t\t<strong class=\"text-center\">\r\n\t\t        <h6>Lista de Socios</h6>\r\n\t\t     </strong>\r\n\t\t</div>\r\n\t\t<div class=\"card-body\">\r\n\t\t\t <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n          \t\t <thead text-sm>\r\n\t                <!--Titulo Tabla-->  \r\n\t                <tr>\r\n\t                  <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Socios</h6></th>\r\n\t                </tr>\r\n\t                <tr>\r\n\t                \t<th style=\"background: #138D75\"><label class=\"centrar_txt\"> Buscar:</label></th>\r\n\t                \t<td style=\"background: #138D75\" colspan=\"2\">\r\n\t                \t\t<input \r\n\t                \t\t\tclass=\"form-control form-control-sm\" \r\n\t                \t\t\tplaceholder=\"Buscar por nombre......\"\r\n\t                \t\t\t[(ngModel)]=\"search\"\r\n\t                \t\t\t>\r\n\t                \t</td>\r\n\t                \t<td style=\"background: #138D75\" col>\r\n\t                \t\t<button (click)=\"filtrar()\" class=\"form-control form-cntrol-sm\" style=\"width: 35px\">\r\n\t                \t\t\t<i class=\"fas fa-search\"></i>\r\n\t                \t\t</button>\r\n\t                \t</td>\r\n\t                \t<td style=\"background: #138D75\" colspan=\"3\"> </td>\r\n\t                </tr>\r\n\t                <tr class=\"text-center\">\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> Rut</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> Nombres</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> Apellidos</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> Fecha Nacimiento</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user-plus\"></i> Fecha de ingreso</th>\r\n\t                  \t<th style=\"background: #138D75\"><i class=\"fas fa-user-plus\"></i> Fecha de egreso</th>    \r\n\t                  \t<td style=\"background: #138D75\"> Editar</td>           \r\n\t                </tr>\r\n              </thead>\r\n              <tbody>\r\n              \t<tr *ngFor=\"let item of socios\">\r\n              \t\t<td>{{ item.rut }}</td>\r\n              \t\t<td>{{ item.nombres }}</td>\r\n              \t\t<td>{{ item.a_paterno+' '+item.a_materno }}</td>\r\n              \t\t<td>{{ item.fecha_nacimiento_view }}</td>\r\n              \t\t<td>{{ item.fecha_ingreso_view }}</td>\r\n              \t\t<td>{{ item.fecha_egreso_view }}</td>\r\n              \t\t<td>\r\n\r\n              \t\t\t<button class=\"btn btn-success btn-block btn-sm\"\r\n\t\t\t\t        (click)=\"modal_editar(editar);\">\r\n\t\t\t\t        Editar\r\n\t\t\t\t        </button>\r\n              \t\t\t\r\n\r\n              \t\t\t<ng-template #editar let-modal>\r\n\t\t\t\t\t\t     <div class=\"modal-header\" id=\"demoFont\">\r\n\t\t\t\t\t\t        <h6 class=\"modal-title\"><i class=\"fas fa-user-edit\"></i> <strong> Editar socio</strong></h6>\r\n\t\t\t\t\t\t        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"cerrar_editar()\">\r\n\t\t\t\t\t\t          <span aria-hidden=\"true\">&times;</span>\r\n\t\t\t\t\t\t        </button>\r\n\t\t\t\t\t\t      </div>\r\n\t\t\t\t\t\t      <div class=\"modal-body\">\r\n\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Rut</label>\r\n\t\t\t\t\t\t        \t\t<input class=\"form-control form-control-sm\" #rut [value]=\"item.rut\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'rut',rut)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Nombres</label>\r\n\t\t\t\t\t\t        \t\t<input class=\"form-control form-control-sm\" #nombres [value]=\"item.nombres\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'nombres',nombres)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Apellido paterno</label>\r\n\t\t\t\t\t\t        \t\t<input class=\"form-control form-control-sm\" #a_paterno [value]=\"item.a_paterno\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'a_paterno',a_paterno)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Apellido materno</label>\r\n\t\t\t\t\t\t        \t\t<input class=\"form-control form-control-sm\" #a_materno [value]=\"item.a_materno\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'a_materno',a_materno)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Fecha de nacimiento</label>\r\n\t\t\t\t\t\t       \t\t \t<input type=\"date\" class=\"form-control form-control-sm\" #fecha_nacimiento [value]=\"item.fecha_nacimiento\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'fecha_nacimiento',fecha_nacimiento)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Fecha ingreso</label>\r\n\t\t\t\t\t\t        \t\t<input type=\"date\" class=\"form-control form-control-sm\" #fecha_ingreso [value]=\"item.fecha_ingreso\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'fecha_ingreso',fecha_ingreso)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-11\">\r\n\t\t\t\t\t\t\t\t\t\t<label>Fecha egreso</label>\r\n\t\t\t\t\t\t        \t\t<input type=\"date\" class=\"form-control form-control-sm\" #fecha_egreso [value]=\"item.fecha_egreso\">\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"col-md-1\">\r\n\t\t\t\t\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t\t\t\t\t<button (click)=\"actualizar(item.id,'fecha_egreso',fecha_egreso)\" class=\"btn btn-link\" style=\"margin-left: -10px\">\r\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit fa-2x\"></i>\r\n\t\t\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t        \r\n\t\t\t\t\t\t      </div>\r\n\t\t\t\t\t\t  </ng-template>\r\n              \t\t</td>\r\n              \t</tr>\r\n              </tbody>\r\n          </table>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
 
 /***/ }),
 
@@ -250,7 +250,7 @@ module.exports = "<!--\r\n  <div class=\"table-responsive\">\r\n    <table class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Modal camping-->\r\n<ng-template #Camping let-modal>\r\n    <!--form del modal camping-->\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\" enctype=\"multipart/form-data\">\r\n      <!--Cabezal del modal camping-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Detalle camping</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body camping-->\r\n      <div class=\"modal-body\">\r\n        <p>kkck para el que lee</p>\r\n      </div>\r\n      <!--Boton para salir del modal camping-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    </form>\r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al modal caja chica-->\r\n  <label><strong>Detalle camping </strong></label><br>\r\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCamping(Camping)\">Ingresar</button>\r\n"
+module.exports = "<!--Modal camping-->\r\n<ng-template #validar let-modal>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\r\n        <br>\r\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\r\n        <br>\r\n       <button class=\"btn btn-success btn-block btn-sm\"\r\n        (click)=\"btn_validar_usuario(rut,password,validar);\">\r\n        Validar\r\n        </button>\r\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n      </div>\r\n  </ng-template>\r\n<ng-template #Camping let-modal>\r\n    <!--form del modal camping-->\r\n\r\n      <!--Cabezal del modal camping-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong>Detalle camping</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body camping-->\r\n      <div class=\"modal-body\">\r\n          <br>\r\n         <!--  <div class=\"row\">\r\n            <div class=\"col-md-3\"><label>Añio:</label>\r\n              <select class=\"form-control form-control-sm\" [(ngModel)]=\"anio\" >\r\n                <option *ngFor=\"let a of anios\" >{{ a.descripcion }}</option>\r\n              </select>\r\n            </div>\r\n            <div class=\"col-md-3\"><label>Mes:</label>\r\n              <select class=\"form-control form-control-sm\" [(ngModel)]=\"mes\" >\r\n                <option *ngFor=\"let m of meses\" >{{ m.descripcion }}</option>\r\n              </select>\r\n            </div>\r\n          </div> -->\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n               <thead text-sm>\r\n                  <!--Titulo Tabla-->  \r\n                  <tr>\r\n                    <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Detalle Comité Camping</h6></th>\r\n                  </tr>\r\n                 <tr >\r\n                  <th>\r\n                    <select (change)=\"change_anio()\" class=\"form-control form-control-sm\" [(ngModel)]=\"anio\" >\r\n                      <option *ngFor=\"let a of anios\" [value]=\"a.id\">{{ a.descripcion }}</option>\r\n                    </select>\r\n                  </th>\r\n                  <th>\r\n                     <select (change)=\"change_mes()\" class=\"form-control form-control-sm\" [(ngModel)]=\"mes\" >\r\n                      <option *ngFor=\"let m of meses\" [value]=\"m.id\" >{{ m.descripcion }}</option>\r\n                    </select>\r\n                  </th>\r\n                  <th class=\"text-right\" style=\"background: #138D75\" colspan=\"3\">\r\n                      Cierre mensual acumulado:\r\n                  </th>\r\n                   <th style=\"background: #138D75\">\r\n                      <input [(ngModel)]=\"monto\" type=\"\" name=\"\" class=\"form-control form-control-sm\" placeholder =\"Ingrese un monto..\">\r\n                   </th>\r\n                   <td style=\"background: #138D75\" >\r\n                     <button (click)=\"validar_usuario(validar)\" class=\"btn btn-light\"><i class=\"far fa-save\"></i></button>\r\n                   </td>\r\n                 </tr>\r\n                  <tr class=\"text-center\">\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> Fecha</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> Nº Documento</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> Detalle del camping</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> Ingreso</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> Egreso</th>\r\n                      <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user-plus\"></i> Monto actual</th>           \r\n                  </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngFor=\"let item of detallecamping\">\r\n                  <td>{{ item.fecha }}</td>\r\n                  <td>{{ item.numero_documento }}</td>\r\n                  <td>{{ item.descripcion }}</td>\r\n                  <td>{{ item.monto_ingreso }}</td>\r\n                  <td>{{ item.monto_egreso }}</td>\r\n                  <td colspan=\"2\">{{ item.saldo_actual_raw }}</td>\r\n                </tr>\r\n              </tbody>\r\n          </table>\r\n\r\n\r\n\r\n      </div>\r\n      <!--Boton para salir del modal camping-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    \r\n  </ng-template>\r\n  \r\n  <!--Boton Para llamar al modal caja chica-->\r\n  <label><strong>Detalle camping </strong></label><br>\r\n  <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCamping(Camping)\">Ingresar</button>\r\n"
 
 /***/ }),
 
@@ -1597,41 +1597,94 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSociosComponent", function() { return FormularioSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
+
+
 
 
 
 
 let FormularioSociosComponent = class FormularioSociosComponent {
-    constructor(_http) {
+    constructor(_http, _validarusuario, modalService) {
         this._http = _http;
+        this._validarusuario = _validarusuario;
+        this.modalService = modalService;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
-        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+        this.load = false;
+        this.modalReference = null;
+        this.user = [];
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
     }
     ngOnInit() {
+        this.usuario_logeado();
     }
     onSelectImage(event) {
         //console.log(event.srcElement.files[0])
         this.selectedImage = event.srcElement.files[0];
         //console.log(this.selectedImage);
     }
-    onSubmit(data) {
+    onSubmit() {
         const form = new FormData();
         form.append('foto', this.selectedImage);
         form.append('rut', this.rut);
         form.append('fecha_nacimiento', this.fecha_nacimiento);
+        form.append('fecha_ingreso', this.fecha_ingreso);
         form.append('nombres', this.nombres);
         form.append('a_paterno', this.a_paterno);
         form.append('a_materno', this.a_materno);
         console.log(form);
-        this._http.post(this.url + "ingresar_socio", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        this._http.post(this.url + "ingresar_socio", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) }).subscribe((val) => {
+            if (val.estado == "success") {
+                alert("" + val.mensaje + "");
+                return false;
+            }
+            if (val.estado == "failed") {
+                alert("" + val.mensaje + "");
+                return false;
+            }
+            if (val.estado == "failed_v") {
+                alert("" + val.mensaje + "");
+                return false;
+            }
         }, response => {
             console.log("POST call in error", response);
         }, () => {
             console.log("The POST observable is now completed.");
+        });
+    }
+    usuario_logeado() {
+        this._validarusuario.usuario_logeado().subscribe((val) => {
+            this.user = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    validar_usuario(validar) {
+        this.modalReference = this.modalService.open(validar, { size: 'sm' });
+    }
+    btn_validar_usuario($rut, $password, validar) {
+        this.load = true;
+        const formData = new FormData();
+        formData.append('rut', $rut.value);
+        formData.append('password', $password.value);
+        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            if (val > 0) { //si tiene acceso;
+                this.load = false;
+                this.modalReference.close();
+                this.onSubmit();
+            }
+            else {
+                alert("Acceso denegado");
+                this.load = false;
+                this.modalReference.close();
+            }
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
         });
     }
 };
@@ -1641,7 +1694,7 @@ FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./formulario-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.html"),
         styles: [__webpack_require__(/*! ./formulario-socios.component.css */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
 ], FormularioSociosComponent);
 
 
@@ -1672,12 +1725,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
+
+
 
 
 
 let ListarSociosComponent = class ListarSociosComponent {
-    constructor(_socios) {
+    constructor(_socios, _validarusuario, modalService) {
         this._socios = _socios;
+        this._validarusuario = _validarusuario;
+        this.modalService = modalService;
+        this.mod_editar = null;
+        this.mod_validar = null;
     }
     ngOnInit() {
         this.listar();
@@ -1694,6 +1755,28 @@ let ListarSociosComponent = class ListarSociosComponent {
             this.socios = response;
         });
     }
+    modal_editar(modal) {
+        this.mod_editar = this.modalService.open(modal, { size: 'lg' });
+    }
+    cerrar_editar(modal) {
+        this.mod_editar.close();
+    }
+    actualizar(id, campo, valor) {
+        const form = new FormData();
+        form.append('id', id);
+        form.append('campo', campo);
+        form.append('valor', valor.value);
+        this._socios.getEditar(form).subscribe(response => {
+            if (response.estado == "success") {
+                alert("" + response.mensaje + "");
+                this.listar();
+            }
+            if (response.estado == "failed") {
+                alert("" + response.mensaje + "");
+                return false;
+            }
+        });
+    }
 };
 ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1701,7 +1784,7 @@ ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./listar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.html"),
         styles: [__webpack_require__(/*! ./listar-socios.component.css */ "./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
 ], ListarSociosComponent);
 
 
@@ -2127,19 +2210,129 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/cs-detalle-camping.service */ "./src/app/servicios/cs-detalle-camping.service.ts");
+/* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
+
+
+
 
 
 
 let ModalCampingComponent = class ModalCampingComponent {
-    constructor(config, modalService) {
+    constructor(config, modalService, _anios, _camping, _validarusuario) {
         this.modalService = modalService;
+        this._anios = _anios;
+        this._camping = _camping;
+        this._validarusuario = _validarusuario;
+        this.suc_res1 = false;
+        this.suc_res2 = false;
+        this.anio = '';
+        this.mes = '';
+        this.modalReference = null;
+        this.load = false;
+        this.user = [];
         config.backdrop = 'static';
         config.keyboard = false;
     }
     ngOnInit() {
+        //Cargar Años
+        this.anios = JSON.parse(localStorage.getItem('anios'));
+        //Cargar Meses
+        this.meses = JSON.parse(localStorage.getItem('meses'));
     }
     openCamping(Camping) {
         this.modalService.open(Camping, { size: 'lg' });
+        this.cargar_select();
+        this.usuario_logeado();
+        //this.listo_para_listar();
+    }
+    cargar_select() {
+        this._anios.getAnioActual().subscribe((val) => {
+            this.anio = val.id;
+            this.suc_res1 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+        this._anios.getMesActual().subscribe((val) => {
+            this.mes = val.id;
+            this.suc_res2 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    listar_detalle_camping() {
+        // listar_detalle_camping/{anio}/{mes}
+        this._camping.getLista(this.anio, this.mes).subscribe((val) => {
+            this.detallecamping = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    traer_monto() {
+        this._camping.getMonto(this.anio, this.mes).subscribe((val) => {
+            this.monto = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    guarda_monto() {
+        this._camping.guardar(this.anio, this.mes, this.monto).subscribe((val) => {
+            //this.detallecamping = val;
+            if (val.estado == 'success') {
+                alert("" + val.mensaje + "");
+                this.listar_detalle_camping();
+            }
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    change_mes() {
+        this.traer_monto();
+        this.listar_detalle_camping();
+    }
+    change_anio() {
+        this.traer_monto();
+        this.listar_detalle_camping();
+    }
+    listo_para_listar(res1, res2) {
+        if (res1 == true && res2 == true) {
+            console.log("ready to get");
+            this.traer_monto();
+            this.listar_detalle_camping();
+        }
+    }
+    usuario_logeado() {
+        this._validarusuario.usuario_logeado().subscribe((val) => {
+            this.user = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    btn_validar_usuario($rut, $password, validar) {
+        this.load = true;
+        const formData = new FormData();
+        formData.append('rut', $rut.value);
+        formData.append('password', $password.value);
+        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            if (val > 0) { //si tiene acceso;
+                this.load = false;
+                this.modalReference.close();
+                this.guarda_monto();
+            }
+            else {
+                alert("Acceso denegado");
+                this.load = false;
+                this.modalReference.close();
+            }
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    validar_usuario(validar) {
+        this.modalReference = this.modalService.open(validar, { size: 'sm' });
     }
 };
 ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2148,7 +2341,11 @@ ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./modal-camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-camping/modal-camping.component.html"),
         styles: [__webpack_require__(/*! ./modal-camping.component.css */ "./src/app/auth-master/modal-camping/modal-camping.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+        _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+        _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"],
+        _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"]])
 ], ModalCampingComponent);
 
 
@@ -2956,6 +3153,63 @@ CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/servicios/cs-detalle-camping.service.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/servicios/cs-detalle-camping.service.ts ***!
+  \*********************************************************/
+/*! exports provided: CsDetalleCampingService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CsDetalleCampingService", function() { return CsDetalleCampingService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let CsDetalleCampingService = class CsDetalleCampingService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    getLista(anio, mes) {
+        return this._http.get(this.url + "listar_detalle_camping/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    guardar(anio, mes, monto) {
+        let data = new FormData();
+        data.append('anio', anio);
+        data.append('mes', mes);
+        data.append('monto', monto);
+        return this._http.post(this.url + "guardar_cierre_monto_detalle_camping_cs", data, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            }) });
+    }
+    getMonto(anio, mes) {
+        return this._http.get(this.url + "traer_cierre_monto_detalle_camping_cs/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+};
+CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], CsDetalleCampingService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/servicios/global.ts":
 /*!*************************************!*\
   !*** ./src/app/servicios/global.ts ***!
@@ -3084,6 +3338,11 @@ let SociosService = class SociosService {
         return this._http.get(this.url + "filtrar_socios/" + search, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
+            }) });
+    }
+    getEditar(form) {
+        return this._http.post(this.url + "editar_socios", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
             }) });
     }
 };
@@ -3239,6 +3498,48 @@ UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
 ], UsuarioService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/validar-usuario.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/servicios/validar-usuario.service.ts ***!
+  \******************************************************/
+/*! exports provided: ValidarUsuarioService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidarUsuarioService", function() { return ValidarUsuarioService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let ValidarUsuarioService = class ValidarUsuarioService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    usuario_logeado() {
+        return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
+    }
+    validar_usuario(formData) {
+        return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
+    }
+};
+ValidarUsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], ValidarUsuarioService);
 
 
 

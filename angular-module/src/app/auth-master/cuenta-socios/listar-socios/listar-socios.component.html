@@ -1,5 +1,32 @@
 <br>
 <div>
+	<!-- MODAL PARA VALIDAR USUARIO -->
+	<ng-template #validar let-modal>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+        <br>
+        <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+        <br>
+       <button class="btn btn-success btn-block btn-sm"
+        (click)="btn_validar_usuario(rut,password,validar);">
+        Validar
+        </button>
+        <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </div>
+  	</ng-template>
+
+  	<!-- MODALS PARA EDITAR CAMPOS -->
+  
+
+
+
+<!-- HTML NORMAL EN VISTA -->
 	<div class="card">
 		<div class="card-header" id="demoFont">
 			<strong class="text-center">
@@ -28,14 +55,16 @@
 	                			<i class="fas fa-search"></i>
 	                		</button>
 	                	</td>
-	                	<td style="background: #138D75" colspan="2"> </td>
+	                	<td style="background: #138D75" colspan="3"> </td>
 	                </tr>
 	                <tr class="text-center">
 	                  	<th style="background: #138D75"><i class="fas fa-id-card"></i> Rut</th>
 	                  	<th style="background: #138D75"><i class="fas fa-user"></i> Nombres</th>
 	                  	<th style="background: #138D75"><i class="fas fa-user"></i> Apellidos</th>
 	                  	<th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Fecha Nacimiento</th>
-	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> Fecha de registro</th>           
+	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> Fecha de ingreso</th>
+	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> Fecha de egreso</th>    
+	                  	<td style="background: #138D75"> Editar</td>           
 	                </tr>
               </thead>
               <tbody>
@@ -43,8 +72,122 @@
               		<td>{{ item.rut }}</td>
               		<td>{{ item.nombres }}</td>
               		<td>{{ item.a_paterno+' '+item.a_materno }}</td>
-              		<td>{{ item.fecha_nacimiento }}</td>
-              		<td>{{ item.created_at }}</td>
+              		<td>{{ item.fecha_nacimiento_view }}</td>
+              		<td>{{ item.fecha_ingreso_view }}</td>
+              		<td>{{ item.fecha_egreso_view }}</td>
+              		<td>
+
+              			<button class="btn btn-success btn-block btn-sm"
+				        (click)="modal_editar(editar);">
+				        Editar
+				        </button>
+              			
+
+              			<ng-template #editar let-modal>
+						     <div class="modal-header" id="demoFont">
+						        <h6 class="modal-title"><i class="fas fa-user-edit"></i> <strong> Editar socio</strong></h6>
+						        <button type="button" class="close" aria-label="Close" (click)="cerrar_editar()">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Rut</label>
+						        		<input class="form-control form-control-sm" #rut [value]="item.rut">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'rut',rut)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Nombres</label>
+						        		<input class="form-control form-control-sm" #nombres [value]="item.nombres">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'nombres',nombres)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Apellido paterno</label>
+						        		<input class="form-control form-control-sm" #a_paterno [value]="item.a_paterno">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'a_paterno',a_paterno)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Apellido materno</label>
+						        		<input class="form-control form-control-sm" #a_materno [value]="item.a_materno">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'a_materno',a_materno)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Fecha de nacimiento</label>
+						       		 	<input type="date" class="form-control form-control-sm" #fecha_nacimiento [value]="item.fecha_nacimiento">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'fecha_nacimiento',fecha_nacimiento)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Fecha ingreso</label>
+						        		<input type="date" class="form-control form-control-sm" #fecha_ingreso [value]="item.fecha_ingreso">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'fecha_ingreso',fecha_ingreso)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label>Fecha egreso</label>
+						        		<input type="date" class="form-control form-control-sm" #fecha_egreso [value]="item.fecha_egreso">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'fecha_egreso',fecha_egreso)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit fa-2x"></i>
+										</button>
+									</div>
+								</div>
+						        
+						      </div>
+						  </ng-template>
+              		</td>
               	</tr>
               </tbody>
           </table>

@@ -1,344 +1,379 @@
+<!--Modal Prestamo-->
+<ng-template #Prestamo let-modal>
+  <!--form del modal Prestamo-->
+    <!--Cabezal del modal Prestamo-->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong>Detalle Prestamo Socios</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo del body Prestamo-->
+    <form #prestamoForm="ngForm" (ngSubmit)="onSubmit(prestamoForm)">
+    <div class="modal-body">
+      <div class="row justify-content-center">
 
- <!--Modal Prestamo-->
-  <ng-template #Prestamo let-modal>
-    <!--form del modal Prestamo-->
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
-      <!--Cabezal del modal Prestamo-->
-      <div class="modal-header" id="demoFont">
-        <h6 class="modal-title"><strong>Detalle Prestamo Socios</strong></h6>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <!--Cuerpo del body Prestamo-->
-      <div class="modal-body">
-        <div class="row justify-content-center">
-      
-          <!--tipo prestamo socio-->
-          <div class="container-fluid">
-            <div class="row">
-
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="row justify-content-center">
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8"> 
-                      <div class="form-group">
-                        <label><strong>Buscar Socio</strong></label>
-                        <div class="input-group">
-                          <input class="form-control form-control-sm" placeholder="Buscar por rut del socio..." [(ngModel)]="search" >
-                          <span class="input-group-btn">
-                            <button class="btn btn-outline-success btn-sm"><i class="fas fa-search"></i></button>
-                          </span>
-                        </div>
-                      </div>
+        <!--tipo prestamo socio-->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="row justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                  <div class="form-group">
+                      <ngb-alert *ngIf="errorSocio" [dismissible]="false">
+                          <strong>
+                            {{mensajeError}}
+                          </strong>
+                        </ngb-alert>
+                    <label>
+                      <strong>Buscar Socio</strong>
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
+                    </label>
+                    <div class="input-group">
+                      <input type="number" class="form-control form-control-sm" placeholder="Ingrese rut del socio sin guion" name="rut"
+                        #rut="ngModel" [(ngModel)]="inputRut">
+                      <span class="input-group-btn">
+                        <button (click)="consultarSocio(rut.value)" class="btn btn-outline-success btn-sm"><i
+                            class="fas fa-search"></i></button>
+                      </span>
                     </div>
-                  </div>           
-              </div>
-                
-              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2"><br>
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="form-group">
-                        <img src="/assets/socio-default.png"  width="100px" height="100px" alt="Socio" class="img-thumbnail">
-                      </div>
                   </div>
                 </div>
               </div>
-                
-              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-                <div class="row">
-                  <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-    
-                    <div class="form-group">
-                      <label><strong>Rut del socio</strong></label>
-                      <input type="text" class="form-control form-control-sm" value="Rut del socio" disabled>
-                    </div>
-              
-                    <div class="form-group">
-                      <label><strong>Nombre Completo</strong></label>
-                      <input type="text" class="form-control form-control-sm" value="Nombre del socio" disabled>
-                    </div>
-    
-                    <div class="form-group">
-                      <label><strong>Tipo de Prestamo</strong></label>
-                      <select class="form-control form-control-sm">
-                        <option value="">Seleccione</option>
-                        <option value="">Salud - Retornable</option>
-                        <option value="">Apuro Economico - Retornable</option>
-                        <option value="">Aporte Economico - No Retornable</option>
-                      </select>
-                    </div>
-    
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2"><br>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="form-group">
+                    <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio" class="img-thumbnail">
                   </div>
                 </div>
               </div>
-
             </div>
-          </div>
 
-          <!--prestamo salud retornable--> 
-          <div class="container-fluid"> <hr>
-              <div class="modal-header" id="demoFont2"><h6 class="modal-title"><strong>Prestamo Salud - Retornable</strong></h6></div>
-            <div class="card">
-              <div class="row centrarPrestamo">
-                  <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-                      
-                    <!--monto del prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <div class="row justify-content-center">        
-                          <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br> 
-                            <label><strong>Monto del Prestamo</strong></label>
-                            <div class="input-group">
-                                <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                                <input type="text" class="form-control" placeholder="Ingrese monto">
-                              </div>
-                          </div> 
-                        </div>
-                    </div>
-                    <!--abono-->
-                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2"> 
-                      <div class="row justify-content-center">        
-                        <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9 col-xl-9"> <br> 
-          
-                            <div class="funkyradio">
-                            <strong>Abono</strong>
-          
-                              <div class="form-group">
-                                  <div class="funkyradio-success">
-                                      <input type="radio" name="radio" id="radio1" class="form-control form-control-sm"/>
-                                      <label for="radio1">Si</label>
-                                  </div>   
-          
-                                  <div class="funkyradio-success">
-                                      <input type="radio" name="radio" id="radio2" class="form-control form-control-sm"/>
-                                      <label for="radio2">No</label>
-                                  </div>
-                              </div>
-          
-                            </div>
-          
-                        </div> 
-                      </div>
-                    </div>
-                    <!--tipo de abono-->
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                      <div class="row justify-content-center">        
-                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br> 
-          
-                          <div class="funkyradio">
-                              <strong>Tipos de Abono</strong>
-                              
-                              <div class="funkyradio-success">
-                                  <input type="checkbox" name="checkbox" id="checkbox1" checked/>
-                                  <label for="checkbox1">Dia de Sueldo</label>
-                              </div>
-                              <div class="funkyradio-success">
-                                  <input type="checkbox" name="checkbox" id="checkbox2" checked/>
-                                  <label for="checkbox2">Trimestral</label>
-                              </div>
-                              <div class="funkyradio-success">
-                                  <input type="checkbox" name="checkbox" id="checkbox3" checked/>
-                                  <label for="checkbox3">Termino Conflicto</label>
-                              </div>
-          
-                          </div>
-          
-                        </div>
-                      </div>
-                    </div>
-                    <!--monto tipo de abono-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="row justify-content-center">        
-                          <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br> 
-          
-                            <label><strong>Monto de Abono</strong></label>
-                            <div class="form-group">
-                              <div class="input-group">
-                                <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                                <input type="text" class="form-control" placeholder="Monto Dia de Sueldo">
-                              </div>
-                            </div>
-          
-                              <div class="form-group">
-                              <div class="input-group">
-                                <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                                <input type="text" class="form-control" placeholder="Monto Trimestral">
-                              </div>
-                              </div>
-          
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                                  <input type="text" class="form-control" placeholder="Monto Termino Conflicto">
-                                  </div>      
-                              </div>                  
-          
-                          </div> 
-                        </div>
-                    </div>
-                    <!--prestamo restante / por n° de cuotas-->
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                      <div class="row justify-content-start">        
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8"> 
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+              <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
 
-                          <label><strong>Prestamo Restante</strong></label>
-                          <div class="input-group">
-                            <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto">
-                          </div> <br>
+                  <div class="form-group">
+                    <label><strong>Rut del socio</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="{{rutSocioTest}}" disabled>
+                  </div>
 
-                          <label><strong>Numero de Cuotas</strong></label>
-                          <div class="input-group">
-                            <button class="btn btn-success input-group-addon" disabled>/</button>
-                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas">
-                          </div>
+                  <div class="form-group">
+                    <label><strong>Nombre Completo</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="{{nombreSocioTest}}" disabled>
+                  </div>
 
-                        </div> 
-                      </div>
-                    </div>
-                    <!--boton Guardar Prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="row justify-content-center">        
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <br><br><br><br>
-                            <label><strong>Guardar Prestamo</strong></label>
-                            <div class="input-group">
-                              <button class="btn btn-block btn-outline-success">Guardar</button>
-                            </div>
+                  <div class="form-group">
+                      <label><strong>Fecha</strong></label>
+                    <input type="date" class="form-control form-control-sm">
+                  </div>
 
-                          </div> 
-                        </div>
-                    </div>
+                  <div class="form-group">
+                    <label><strong>N°Documento</strong></label>
+                    <input type="text" class="form-control form-control-sm">
+                  </div>
 
-                  </div> 
-              </div> <br>
+                  <div class="form-group">
+                      <label><strong>Comprobante</strong></label>
+                    <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label><strong>Tipo de Prestamo</strong></label>
+                    <select (change)="changeTipoPrestamo($event)" class="form-control form-control-sm">
+                      <option *ngFor="let tipo of selectTipoPrestamo" [value]="tipo.id">{{tipo.descripcion}}</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
             </div>
+
           </div>
-
-          <!--prestamo apuro economico retornable-->
-          <div class="container-fluid"> <hr>
-            <div class="modal-header" id="demoFont2"><h6 class="modal-title"><strong>Apuro Economico - Retornable</strong></h6></div>
-            <div class="card">
-              <div class="row centrarPrestamo">
-                  <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-                      
-                    <!--monto prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                      <div class="row justify-content-center">        
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                          <label><strong>Monto Prestamo</strong></label>
-                          <div class="input-group">
-                            <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto">
-                          </div>
-
-                        </div> 
-                      </div>
-                    </div>
-
-                    <!--n° de cuotas-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <div class="row justify-content-center">        
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                        <label><strong>Numero de Cuotas</strong></label>
-                        <div class="input-group">
-                          <button class="btn btn-success input-group-addon" disabled>/</button>
-                          <input type="text" class="form-control" placeholder="Ingrese n° cuotas">
-                        </div>
-
-                      </div> 
-                    </div>
-                    </div>
-
-                    <!--Interes de prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="row justify-content-center">        
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-    
-                            <label><strong>Interes del Prestamo (10%)</strong></label>
-                            <div class="input-group">
-                              <button class="btn btn-success input-group-addon" disabled>%</button>
-                              <input type="text" class="form-control" placeholder="Ingese Interes">
-                            </div>
-    
-                          </div> 
-                        </div>
-                    </div>
-
-                    <!--boton Guardar Prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="row justify-content-end">        
-                          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"> <br>
-
-                            <label><strong>Guardar Prestamo</strong></label>
-                            <div class="input-group">
-                              <button class="btn btn-block btn-outline-success">Guardar</button>
-                            </div>
-
-                          </div> 
-                        </div>
-                    </div>
-
-                  </div> 
-              </div> <br>
-            </div>
-          </div>
-
-          <!--prestamo aporte economico no retornable-->
-          <div class="container-fluid"> <hr>
-            <div class="modal-header" id="demoFont2"><h6 class="modal-title"><strong>Aporte Economico - No Retornable</strong></h6></div>
-            <div class="card">
-              <div class="row centrarPrestamo">
-                  <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                      
-                    <!--monto prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                      <div class="row justify-content-start">        
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                          <label><strong>Monto Prestamo</strong></label>
-                          <div class="input-group">
-                            <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto">
-                          </div>
-
-                        </div> 
-                      </div>
-                    </div>
-
-                    <!--boton guardar Prestamo-->
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                      <div class="row justify-content-end">        
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"> <br>
-
-                          <label><strong>Guardar Prestamo</strong></label>
-                          <div class="input-group">
-                            <button class="btn btn-block btn-outline-success">Guardar</button>
-                          </div>
-
-                        </div> 
-                      </div>
-                    </div>
-
-                  </div> 
-              </div> <br>
-            </div>
-          </div>
-
-          <!--Cierre del Cuerpo del body Prestamo-->
         </div>
-      </div>
+  <!--prestamo salud retornable-->
+  <div *ngIf="datosTipoPrestamo.descripcion == 'salud'" class="container-fluid">
+    <hr>
+    <div class="modal-header" id="demoFont2">
+      <h6 class="modal-title"><strong>Prestamo Salud - Retornable</strong></h6>
+    </div>
+    <div class="card">
+      <div class="row centrarPrestamo">
+        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
 
-      <!--Boton para salir del modal Prestamo-->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
-        </button>
-      </div>
-    </form>
-  </ng-template>
-    
-  <!--Boton Para llamar al modal Prestamo-->
-  <label><strong>Detalle Prestamo Socios </strong></label><br>
-  <button class="btn btn btn-success btn-block btn-sm" (click)="openPrestamo(Prestamo)">Ingresar</button>
+          <!--monto del prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <div class="row justify-content-center">
+              <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+                <label><strong>Monto del Prestamo</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
+                  <input type="number" class="form-control" placeholder="Ingrese monto" name="inputMontoPrestramo" [(ngModel)]="inputMontoPrestramo" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--abono-->
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <div class="row justify-content-center">
+              <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9 col-xl-9"> <br>
 
+                <div class="funkyradio">
+                  <strong>Abono</strong>
+
+                  <div class="form-group funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio1" value="true" class="form-control form-control-sm" name="abono"
+                      #abono="ngModel" [(ngModel)]="radioAbono" (click)="changeRadioAbono(true)"/>
+                      <label for="radio1">Si</label>
+                    </div>
+                    {{radioAbono}}
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio2" value="false" class="form-control form-control-sm" name="abono"
+                      #abono="ngModel" [(ngModel)]="radioAbono" (click)="changeRadioAbono(false)"/>
+                      <label for="radio2">No</label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--tipo de abono-->
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <div class="row justify-content-center">
+              <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                <div class="funkyradio">
+                  <strong>Tipos de Abono</strong>
+
+                  <div class="funkyradio-success">
+                    <input type="checkbox" name="checkDiaSueldo" [(ngModel)]="checkDiaSueldo" id="checkbox1" (click)="changeCheckAbono(1)" [disabled]="radioAbono == 'false'"/>
+                    <label for="checkbox1">Dia de Sueldo</label>
+                    <p>{{checkDiaSueldo}}</p>
+                  </div>
+                  <div class="funkyradio-success">
+                    <input type="checkbox" name="checkTrimestral" [(ngModel)]="checkTrimestral" id="checkbox2" (click)="changeCheckAbono(2)" [disabled]="radioAbono == 'false'"/>
+                    <label for="checkbox2">Trimestral</label>
+                    <p>{{checkTrimestral}}</p>
+                  </div>
+                  <div class="funkyradio-success">
+                    <input type="checkbox" name="checkTerminoConflicto" [(ngModel)]="checkTerminoConflicto" (click)="changeCheckAbono(3)" id="checkbox3" [disabled]="radioAbono == 'false'"/>
+                    <label for="checkbox3">Termino Conflicto</label>
+                    <p>{{checkTerminoConflicto}}</p>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--monto tipo de abono-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="row justify-content-center">
+              <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                <label><strong>Monto de Abono</strong></label>
+                <div class="form-group">
+                  <div class="input-group">
+                    <button class="btn btn-success input-group-addon" disabled><i
+                        class="fas fa-dollar-sign"></i></button>
+                    <input type="number" class="form-control" placeholder="Monto Dia de Sueldo" name="inputDiaSueldo" [(ngModel)]="inputDiaSueldo" [disabled]="!checkDiaSueldo">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <button class="btn btn-success input-group-addon" disabled><i
+                        class="fas fa-dollar-sign"></i></button>
+                    <input type="number" class="form-control" placeholder="Monto Trimestral" name="inputTrimestral" [(ngModel)]="inputTrimestral" [disabled]="!checkTrimestral">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <button class="btn btn-success input-group-addon" disabled><i
+                        class="fas fa-dollar-sign"></i></button>
+                    <input type="number" class="form-control" placeholder="Monto Termino Conflicto" name="inputTerminoConflicto" [(ngModel)]="inputTerminoConflicto" [disabled]="!checkTerminoConflicto">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--prestamo restante / por n° de cuotas-->
+          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="row justify-content-start">
+              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+
+                <label><strong>Prestamo Restante</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
+                  <input type="text" class="form-control" placeholder="Ingrese monto">
+                </div> <br>
+
+                <label><strong>Numero de Cuotas</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled>/</button>
+                  <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas" [(ngModel)]="inputNumeroCuotas">
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--boton Guardar Prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <br><br><br><br>
+                <label><strong>Guardar Prestamo</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-block btn-outline-success" [disabled]="prestamoForm.invalid">Guardar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> <br>
+    </div>
+  </div>
+
+  <!--prestamo apuro economico retornable-->
+  <div *ngIf="datosTipoPrestamo.descripcion == 'apuroEconomico'" class="container-fluid">
+    <hr>
+    <div class="modal-header" id="demoFont2">
+      <h6 class="modal-title"><strong>Apuro Economico - Retornable</strong></h6>
+    </div>
+    <div class="card">
+      <div class="row centrarPrestamo">
+        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+
+          <!--monto prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                <label><strong>Monto Prestamo</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
+                  <input type="text" class="form-control" placeholder="Ingrese monto">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!--n° de cuotas-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                <label><strong>Numero de Cuotas</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled>/</button>
+                  <input type="text" class="form-control" placeholder="Ingrese n° cuotas">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!--Interes de prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="row justify-content-center">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                <label><strong>Interes del Prestamo (10%)</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled>%</button>
+                  <input type="text" class="form-control" placeholder="Ingese Interes">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!--boton Guardar Prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-end">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"> <br>
+
+                <label><strong>Guardar Prestamo</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-block btn-outline-success">Guardar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> <br>
+    </div>
+  </div>
+
+  <!--prestamo aporte economico no retornable-->
+  <div *ngIf="datosTipoPrestamo.descripcion == 'aporteEconomico'" class="container-fluid">
+    <hr>
+    <div class="modal-header" id="demoFont2">
+      <h6 class="modal-title"><strong>Aporte Economico - No Retornable</strong></h6>
+    </div>
+    <div class="card">
+      <div class="row centrarPrestamo">
+        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+          <!--monto prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="row justify-content-start">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                <label><strong>Monto Prestamo</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
+                  <input type="text" class="form-control" placeholder="Ingrese monto">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!--boton guardar Prestamo-->
+          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="row justify-content-end">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"> <br>
+
+                <label><strong>Guardar Prestamo</strong></label>
+                <div class="input-group">
+                  <button class="btn btn-block btn-outline-success" type="submit" value="ingresar"
+                  [disabled]="prestamoForm.invalid">Guardar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div> <br>
+    </div>
+  </div>
+
+  <!--Cierre del Cuerpo del body Prestamo-->
+  </div>
+  </div>
+</form>
+
+  <!--Boton para salir del modal Prestamo-->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+    </button>
+  </div>
+</ng-template>
+
+<!--Boton Para llamar al modal Prestamo-->
+<label><strong>Detalle Prestamo Socios </strong></label><br>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openPrestamo(Prestamo)">Ingresar</button>

@@ -67,17 +67,15 @@
                           </button>
                         </div>
                         <div class="modal-body">
+                            <ngb-alert  *ngIf="alertEstado" [dismissible]="false">
+                                <label><strong>{{alertMensaje}}</strong></label>
+                              </ngb-alert>
 
                           <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm" value="{{itemFijo.fecha}}" disabled></label>
                           <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaFijo type="date"></label>
 
                         </div>
                         <div class="modal-footer">
-
-                                <ngb-alert  *ngIf="alertEstado" [dismissible]="false">
-                                  <strong>{{alertMensaje}}</strong>
-                                </ngb-alert>
-
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                           <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'fecha',fechaFijo)">Guardar</button>
                         </div>

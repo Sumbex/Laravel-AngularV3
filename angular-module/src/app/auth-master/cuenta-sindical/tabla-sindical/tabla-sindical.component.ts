@@ -212,7 +212,7 @@ export class TablaSindicalComponent implements OnInit {
         if(response.estado == "success"){
           this.alertEstado = true;
           this.alertMensaje = response.mensaje;
-          this.modalActualizar.close();
+          //this.modalActualizar.close();
           this.alertEstado = false;
           this.alertMensaje = "";
         }

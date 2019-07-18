@@ -22,6 +22,7 @@ Route::get('listar_cs_prestamo/{anio}/{mes}', 'PrestamosController@listar_cs_pre
 
 Route::get('usuario_logeado','DatosBasicosController@usuario_logeado');
 Route::get('calcular_caja_chica_anterior_cs/{anio}/{mes}', 'CuentaSindicatoController@existe_dinero_mes_anterior_caja_chica');
+Route::get('calcular_caja_chica_anterior_cs2/{anio}/{mes}','CuentaSindicatoController@dinero_mes_anterior_caja_chica_2');
 
 Route::post('actualizar_dato_cs','CuentaSindicatoController@actualizar_dato_cs');
 

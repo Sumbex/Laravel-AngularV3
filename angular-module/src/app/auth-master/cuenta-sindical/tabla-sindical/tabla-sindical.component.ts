@@ -237,10 +237,14 @@ export class TablaSindicalComponent implements OnInit {
   }
 
   actualizarCaja(){
-    /*this._sindicalService.getCalcularCajaChica(this.selectAnio,this.selectMes).subscribe(
+    this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion,this.valorMes.descripcion).subscribe(
       response => {
         //console.log(response);
         if(response.estado == "success"){
+          if(response.monto == 0){
+            alert("no existe monto el mes anterior");
+            response.monto = " ";
+          }
           this.actualizarMontoCajaChica = response.monto;
         }else{
           this.actualizarMontoCajaChica = null;
@@ -249,7 +253,7 @@ export class TablaSindicalComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    );*/
+    );
   }
 
 }

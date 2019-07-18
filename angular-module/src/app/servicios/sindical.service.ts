@@ -86,11 +86,25 @@ export class SindicalService{
     }
 
     getTipoPrestamo(){
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get<any>(this.url + "traer_tipo_prestamo", {headers: new HttpHeaders(
             {
-                'Authorization': 'Bearer' + token,
+                'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    setPrestamo(form): Observable<any>{
+
+        const body = new FormData();
+        body.append('id', form);
+        body.append('campo', form);
+        body.append('input', form);
+        console.log(body);
+
+        return this._http.post(this.url + "actualizar_dato_cs",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token
             }
         )});
     }

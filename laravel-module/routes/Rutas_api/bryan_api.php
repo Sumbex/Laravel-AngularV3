@@ -10,7 +10,7 @@ Route::get('/totales_caja_chica/{anio}/{mes}', 'CajaChicaController@TotalIngEgre
 
 //------------------------------------------>rutas prestamo 
 
-Route::get('/traer_tipo_prestamo_pago', 'PrestamosController@TraerTipos');
+Route::get('/traer_tipo_prestamo', 'PrestamosController@TraerTipoPrestamos');
 Route::get('traer_socio/{rut}', 'PrestamosController@TraerSocio');
 
 //Route::get('/testeo', function() {

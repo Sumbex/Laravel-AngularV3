@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Cs_prestamo_tipo_abono_cuotas;
 
 class Cs_prestamos extends Model
 {
@@ -87,13 +88,13 @@ class Cs_prestamos extends Model
                 'activo' => 'S'
             ])
             ->first();
-        
+
         $traerSocio = DB::table('socios')
-        ->where([
-            'id' => $request->socio_id,
-            'activo' => 'S'
-        ])
-        ->first();
+            ->where([
+                'id' => $request->socio_id,
+                'activo' => 'S'
+            ])
+            ->first();
 
 
         //verificar campos
@@ -103,35 +104,119 @@ class Cs_prestamos extends Model
         $prestamo->mes_id = $mes->id;
         $prestamo->anio_id = $anio->id;
         $prestamo->numero_documento = $request->numero_documento;
-        $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
         $prestamo->tipo_cuenta_sindicato = 4;
 
         switch ($request->select_id) {
             case 1:
                 //prestamo salud - retornable
 
-                    $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
-                    $prestamo->monto_egreso = $request->monto_total;
-                    $prestamo->definicion = 2;
-                    $prestamo->tipo_prestamo_id = $request->select_id;
+                //dd($request->all());
 
-                if($request->checkAbono == true){
+                $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
+                $prestamo->monto_egreso = $request->monto_total;
+                $prestamo->definicion = 2;
+                $prestamo->tipo_prestamo_id = $request->select_id;
+                $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
 
+                if ($request->checkAbono == 'true') {
+
+                   //return 'paso if';
                     $prestamo->tipo_pago_id = 2;
                     $prestamo->user_crea = Auth::user()->id;
                     $prestamo->cuota = $request->cuotas;
+                    $prestamo->activo = 'S';
 
-                    //verificar todos los check de abono
+                    if ($prestamo->save()) {
+                    
+                        $ultimoPrestamo = Cs_prestamos::all()->last();
 
+                        //verificar todos los check de abono
+                    $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
+                    $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
+                    $conflicto = array(['id' => 2, 'check' => $request->checkcon, 'monto' => $request->monto_con]);
 
+                    $array = array_collapse([$dia, $trimestral, $conflicto]);
 
-                }else{
+                    //dd($array);
 
+                    $prestamoAbono = new Cs_prestamo_tipo_abono_cuotas;
+
+                    for ($i=0; $i < count($array) ; $i++) { 
+
+                        switch ($array[$i]['id']) {
+                            case 1:
+                                if($array[$i]['check'] == 'true'){
+                                    $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                    $prestamoAbono->tipo_abono_cuotas_id = 1;
+                                    $prestamoAbono->monto = $array[$i]['monto'];
+                                    $prestamoAbono->activo = 'S';
+
+                                    if($prestamoAbono->save()){
+                                        break;
+                                    }else{
+                                        break;
+                                    }
+                                }else{
+                                    break;
+                                }    
+
+                                break;
+
+                            case 2:
+                                if($array[$i]['check'] == 'true'){
+                                    $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                    $prestamoAbono->tipo_abono_cuotas_id = 2;
+                                    $prestamoAbono->monto = $array[$i]['monto'];
+                                    $prestamoAbono->activo = 'S';
+
+                                    if($prestamoAbono->save()){
+                                        break;
+                                    }else{
+                                        break;
+                                    }
+                                }else{
+                                    break;
+                                }
+                                break;
+
+                            case 3:
+                                if($array[$i]['check'] == 'true'){
+                                    $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                    $prestamoAbono->tipo_abono_cuotas_id = 3;
+                                    $prestamoAbono->monto = $array[$i]['monto'];
+                                    $prestamoAbono->activo = 'S';
+
+                                    if($prestamoAbono->save()){
+                                        break;
+                                    }else{
+                                        break;
+                                    }
+                                }else{
+                                    break;
+                                }
+                                break;
+                            
+                            default:
+                                # code...
+                                break;
+                        }
+
+                    }
+
+                    return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
+                    
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No Insertado salud abono'];
+                    }
+                  
+                } else {
+                    //return 'paso else';
                     $prestamo->tipo_pago_id = 1;
                     $prestamo->user_crea = Auth::user()->id;
                     $prestamo->cuota = $request->cuotas;
+                    $prestamo->activo = 'S';
 
-                    if($prestamo->save()){
+                    if ($prestamo->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
                     } else {
                         return ['estado' => 'failed', 'mensaje' => 'No Insertado salud cuotas'];
@@ -142,17 +227,19 @@ class Cs_prestamos extends Model
 
             case 2:
                 //prestamo apuro economico - retornable
+                $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
                 $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
                 $prestamo->monto_egreso = $request->monto_total;
                 $prestamo->definicion = 2;
                 $prestamo->tipo_prestamo_id = $request->select_id;
-                $prestamo->tipo_pago_id = $request->pago_id;
+                $prestamo->tipo_pago_id = 1;
                 $prestamo->user_crea = Auth::user()->id;
                 $prestamo->cuota = 4;
+                $prestamo->activo = 'S';
 
-                if($prestamo->save()){
+                if ($prestamo->save()) {
                     return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
-                }else{
+                } else {
                     return ['estado' => 'failed', 'mensaje' => 'No Insertado apuro cuotas'];
                 }
                 break;
@@ -160,6 +247,7 @@ class Cs_prestamos extends Model
             case 3:
                 //prestamo aporte economico - no retornable
                 //monto prestamo
+                $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
                 $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno;
                 $prestamo->monto_egreso = $request->monto_total;
                 $prestamo->definicion = 2;
@@ -169,9 +257,9 @@ class Cs_prestamos extends Model
                 $prestamo->cuota = 0;
                 $prestamo->activo = 'S';
 
-                if($prestamo->save()){
+                if ($prestamo->save()) {
                     return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
-                }else{
+                } else {
                     return ['estado' => 'failed', 'mensaje' => 'No Insertado aporte'];
                 }
                 break;

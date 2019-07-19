@@ -6,7 +6,7 @@
         <h6><i class="fas fa-file-invoice"></i> Otras Cuentas Sindicales</h6>
       </strong>
     </div>
-    <form action="">
+    <form>
       <div class="card-body">
         <div class="row">
           <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
@@ -28,7 +28,7 @@
         <h6><i class="fas fa-file-invoice-dollar"></i> Cuenta Sindical</h6>
       </strong>
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
+    <form #loginForm="ngForm" (ngSubmit)="validar_usuario(modalUsuario)" enctype="multipart/form-data">
       <div class="card-body">
         <div class="row">
           <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
@@ -67,7 +67,7 @@
                 <strong>Subir Documento  </strong>
                 <i class="fas fa-info-circle" placement="right" ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
               </label>
-              <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
+              <input class="form-file-input" type="file" (change)="onSelectImage($event)" required>
             </div>
 
             <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>
@@ -131,4 +131,26 @@
     </form>
   </div><br>
 
+   <!--Modal validar user-->
+ <ng-template #modalUsuario let-modal>
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+    <br>
+    <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+    <br>
+  <button class="btn btn-success btn-block btn-sm"
+    (click)="btn_validar_usuario(rut,password,validar);">
+    Validar
+    </button>
+    <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+  </div>
+</ng-template>
+
 </div>
+

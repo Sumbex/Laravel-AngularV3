@@ -5,6 +5,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
+import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
 
 @Component({
   selector: 'app-tabla-sindical',
@@ -37,6 +38,7 @@ export class TablaSindicalComponent implements OnInit {
   selectDefinicion: Definicion[] = [];
   modalActualizar = null;
 
+
   valorAnio: Anios = {
     descripcion: ''
   }
@@ -52,11 +54,24 @@ export class TablaSindicalComponent implements OnInit {
   suc_res2 = false;
 
   //mensajes de alerta
-  alertMensaje;
+  alertMensajeSuccess;
+  alertMensajeFailed;
   alertEstado = false;
+  abrirTablaSindical = null;
+
+  //validar user 
+  user:object=[];
+  load:boolean=false;
+  validarModalActualizar = null;
 
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _fechasService: AniosService) {
+
+
+  constructor(config: NgbModalConfig, 
+     private modalService: NgbModal,
+     private _sindicalService: SindicalService, 
+     private _fechasService: AniosService,
+     private _validarusuario:ValidarUsuarioService) {
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -109,8 +124,9 @@ export class TablaSindicalComponent implements OnInit {
 
   listo_para_listar(res1, res2){
     if (res1 == true && res2 == true) {
-      this.refrescarSindical();
       this.cierreMensualAnterior();
+      this.refrescarSindical();
+      
     }
   }
 
@@ -129,9 +145,8 @@ export class TablaSindicalComponent implements OnInit {
     this.cierreMensualAnterior();
     this.refrescarSindical();
   }
-
-  openTablaSindical(TablaSindical) {
-    this.modalService.open(TablaSindical, { size: 'lg' });
+  verTablaSindical(tablaGeneral) {
+    this.abrirTablaSindical = this.modalService.open(tablaGeneral, { size: 'lg' });
     this.cargar_select();
   }
 
@@ -191,8 +206,6 @@ export class TablaSindicalComponent implements OnInit {
   }
   cerrarActualizar(){
     this.modalActualizar.close();
-    this.alertEstado = false;
-    this.alertMensaje = "";
   }
 
   //actualizar items
@@ -204,25 +217,18 @@ export class TablaSindicalComponent implements OnInit {
     }
     if(this.entrada == ''){
       this.alertEstado = true;
-      this.alertMensaje = ("ingrese datos porfavor!");
+      alert("ingrese datos porfavor!");
       return false;
     }
     this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
       response => {
         if(response.estado == "success"){
-          this.alertEstado = true;
-          this.alertMensaje = response.mensaje;
+          alert(response.mensaje);
           this.modalActualizar.close();
-          this.alertEstado = false;
-          this.alertMensaje = "";
         }
         if(response.estado == "failed"){
-          this.alertEstado = true;
-          this.alertMensaje = response.mensaje;
-          this.alertEstado = false;
-          this.alertMensaje = "";
-          
-          
+          alert(response.mensaje);
+          this.modalActualizar.close();   
         }
       }
     )
@@ -256,4 +262,44 @@ export class TablaSindicalComponent implements OnInit {
     );
   }
 
+  //validar usuario
+    usuario_logeado(){
+      
+    this._validarusuario.usuario_logeado().subscribe((val : object ) => {
+          
+          this.user = val;
+
+      }, response => {console.log("POST call in error", response);},() => {
+             console.log("The POST success.");
+      });
+      }
+
+    btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
+      this.load = true;
+      const formData = new FormData();
+      formData.append('rut', $rut.value);
+      formData.append('password', $password.value);
+
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+          
+          if(val > 0){//si tiene acceso;
+          
+            this.load = false;
+            //this.ingresoFormulario();
+            this.validarModalActualizar.close();
+          }else{
+            alert("Acceso denegado");
+            this.load = false;
+            this.validarModalActualizar.close();
+          }
+
+      }, response => {console.log("POST call in error", response);},() => {
+            console.log("The POST success.");
+      });
+    }
+
+    validar_usuario(modalUsuario){
+    this.validarModalActualizar = this.modalService.open(modalUsuario, { size: 'sm' });
+    }
+    
 }

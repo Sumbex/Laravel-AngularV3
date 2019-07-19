@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ValidarUsuarioService } from '../../../servicios/validar-usuario.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { ValidarUsuarioService } from '../../../servicios/validar-usuario.servic
   templateUrl: './listar-socios.component.html',
   styleUrls: ['./listar-socios.component.css']
 })
+
+
 export class ListarSociosComponent implements OnInit {
 
   socios;
@@ -24,10 +26,30 @@ export class ListarSociosComponent implements OnInit {
   fecha_ingreso;
   fecha_egreso;
 
-  constructor(private _socios:SociosService, public _validarusuario:ValidarUsuarioService,private modalService: NgbModal) { }
+  //para validar usuario
+   user:object=[];
+   load:boolean=false;
+   modalReference = null; 
+   m_val = null;
+
+   closeResult: string;
+   pass:string = '';
+   btn_validar:boolean = false;
+
+    currentLesson:string;
+  
+    buttonStatus = false;
+
+  constructor(private _socios:SociosService, public _validarusuario:ValidarUsuarioService,private modalService: NgbModal) {
+
+      //this.currentLesson=this.classes[0].currentLesson
+  }
 
   ngOnInit() {
   	this.listar();
+    this.usuario_logeado();
+
+  
   }
 
   listar(){
@@ -57,26 +79,142 @@ export class ListarSociosComponent implements OnInit {
   	this.mod_editar.close();
   }
 
-  actualizar(id, campo, valor){
+  actualizar(id, campo, valor, validar){  
 
-  	const form = new FormData();
-  	form.append('id', id);
-  	form.append('campo', campo);
-  	form.append('valor', valor.value);
+   
+    //this.modalReference = this.modalService.open(validar, { size: 'sm' });
+    this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        
+        this.m_val = this.modalService.open(validar, { size: 'sm' });
+        this.load = true;
+        this.buttonStatus = true;
 
-  	this._socios.getEditar(form).subscribe(
-	      response => {
-	        if (response.estado == "success") {
-	        	alert(""+response.mensaje+"");
-	        	this.listar();
-	        }
-	        if (response.estado == "failed") {
-	        	alert(""+response.mensaje+"");
-	        	return false;
-	        }
-	        
-	      }
-	    );
+        const formData = new FormData();
+        formData.append('rut', this.user['rut']);
+        formData.append('password', this.pass);
+
+        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+    
+           // var inputValue = (<HTMLInputElement>document.getElementById("password")).value;
+            
+            
+            if(val > 0){//si tiene acceso;
+            
+              this.load = false;
+              this.buttonStatus = false;
+              this.pass = "";
+              
+             this.m_val.close();
+             
+                  const form = new FormData();
+                  form.append('id', id);
+                  form.append('campo', campo);
+                  form.append('valor', valor.value);
+
+                  this._socios.getEditar(form).subscribe(
+                      response => {
+                        if (response.estado == "success") {
+                         alert(""+response.mensaje+"");
+                         this.listar();
+                         this.pass = "";
+                        }
+                        if (response.estado == "failed") {
+                         alert(""+response.mensaje+"");
+                         return false;
+                        }
+                        
+                      }
+                    );
+
+
+
+            }else{
+              alert("Acceso denegado");
+              this.load = false;
+              this.buttonStatus = false;
+              this.pass = "";
+              this.m_val.close();
+              return false;
+            }
+
+        }, response => {console.log("POST call in error", response);},() => {
+               console.log("The POST success.");
+        });
+        return false;
+
+      
+    }, (reason) => {
+      console.log(`${reason}`);
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+
+  }
+
+
+
+
+//metodos para validar usuario-------------------------------
+
+  usuario_logeado(){
+      
+      this._validarusuario.usuario_logeado().subscribe((val : object ) => {
+            
+            this.user = val;
+
+        }, response => {console.log("POST call in error", response);},() => {
+               console.log("The POST success.");
+        });
+  }
+
+  btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
+        this.load = true;
+        const formData = new FormData();
+        formData.append('rut', $rut.value);
+        formData.append('password', $password.value);
+
+        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            
+            if(val > 0){//si tiene acceso;
+            
+              this.load = false;
+              
+             this.modalReference.close();
+             return true;
+            }else{
+              alert("Acceso denegado");
+              this.load = false;
+              this.modalReference.close();
+              return false;
+            }
+
+        }, response => {console.log("POST call in error", response);},() => {
+               console.log("The POST success.");
+        });
+    }
+
+
+
+  validar_usuario(validar){
+       this.modalReference = this.modalService.open(validar, { size: 'sm' });
+        window.stop()
+  }
+
+  
+
+
+  // fin del metodo para validar usuario
+
+
+
+   private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
 }

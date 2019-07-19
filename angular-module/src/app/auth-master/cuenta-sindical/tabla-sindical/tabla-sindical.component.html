@@ -1,5 +1,5 @@
  <!--Modal para el inicio y cierre mensual-->
- <ng-template #TablaSindical let-modal>
+ <ng-template #tablaGeneral let-modal>
       <div class="modal-header sticky-top" id="demoFont">
         <h6 class="modal-title"><strong><i class="fas fa-table"></i>  Tabla Sindical</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -34,13 +34,13 @@
           <table class="table table-striped table-bordered table-sm">
               <thead text-sm>
                 <!--Titulo Tabla-->  
-                <tr>
+                <!--<tr>
                   <th colspan="14" class=" text-center"  id="demoFont"><h6>Movimiento mensual</h6></th>
-                </tr>
+                </tr>-->
                 <!--Cuenta Sindical-->
                 <tr class="text-center">
                     <th colspan="11" style="background: #138D75">Cuenta Sindical</th>
-                    <th style="background: #229954; color:#FDFEFE">Cierre Mensual Acumulado</th>
+                    <th style="background: #229954;">Cierre Mensual Acumulado</th>
                 </tr>
                 <!--Fijos-->
                 <tr class="text-center">  
@@ -48,7 +48,7 @@
                   <th style="background: #138D75">N° Doc</th>
                   <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
                   <!--fijos-->
-                  <th colspan="4" style="background: #138D75;color:#FDFEFE"><i class="fas fa-file-signature"></i> Ingresos y Egresos Fijos</th>
+                  <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Ingresos y Egresos Fijos</th>
                   <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
                   <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
                   <!--cuenta del cierre del mes actual-->
@@ -73,11 +73,6 @@
 
                         </div>
                         <div class="modal-footer">
-
-                                <ngb-alert  *ngIf="alertEstado" [dismissible]="false">
-                                  <strong>{{alertMensaje}}</strong>
-                                </ngb-alert>
-
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                           <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'fecha',fechaFijo)">Guardar</button>
                         </div>
@@ -225,7 +220,7 @@
                   <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
                   <th style="background: #138D75">N° Doc</th>
                   <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-                  <th colspan="4" style="background: #138D75;color:#FDFEFE"><i class="fas fa-file-signature"></i>  Ingresos y Egresos Variables</th>
+                  <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i>  Ingresos y Egresos Variables</th>
                   <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
                   <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
                   <td></td>
@@ -394,7 +389,7 @@
                     <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
                     <th style="background: #138D75">N° Doc</th>
                     <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-                    <th colspan="4" style="background: #138D75;color:#FDFEFE"><i class="fas fa-file-signature"></i>  Detalle Caja Chica</th>
+                    <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i>  Detalle Caja Chica</th>
                     <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
                     <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
                     <td></td>
@@ -562,7 +557,7 @@
                     <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
                     <th style="background: #138D75">N° Doc</th>
                     <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-                    <th colspan="4" style="background: #138D75;color:#FDFEFE"><i class="fas fa-file-signature"></i>  Prestamos Ingresos y Egresos</th>
+                    <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i>  Prestamos Ingresos y Egresos</th>
                     <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
                     <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
                     <td></td>
@@ -586,7 +581,7 @@
                     <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
                     <th style="background: #138D75">N° Doc</th>
                     <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-                    <th colspan="4" style="background: #138D75;color:#FDFEFE"><i class="fas fa-file-signature"></i>  Comite Camping</th>
+                    <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i>  Comite Camping</th>
                     <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
                     <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
                     <td></td>
@@ -752,55 +747,69 @@
 
                 <!--Cierre del mes-->
                 <tr>
-                  <th colspan="11" class="text-right">Total Cierre del Mes</th>
+                  <th colspan="11" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>  Total Cierre del Mes</th>
                   <td scope="col" class="text-center"><strong>{{ resultado.total_final | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                </tr>
+                <br><!--total del cierre de mes-->
+                <tr>
+                  <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i>  INGRESOS</th>
+                  <td colspan="2" class="text-center"><strong>{{ resultado.ingreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                </tr>
+        
+                <tr>
+                  <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i>  EGRESOS</th>
+                  <td colspan="2" class="text-center"><strong>{{ resultado.egreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                </tr>
+                <tr>
+                  <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>  CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
+                  <td colspan="2" class="text-center"><strong>{{ resultado.total_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                 </tr>
               </tbody>
             </table>
         </div> 
-        <!--total del cierre de mes-->
-        <div class="table-responsive">
-            <table class="table table-bordered table-sm">
-              <thead text-sm class="text-center">
-                <tr>
-                  <th col>INGRESOS</th>
-                  <td col><strong>{{ resultado.ingreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
-                </tr>
         
-                <tr>
-                  <th col>EGRESOS</th>
-                  <td col><strong>{{ resultado.egreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
-                </tr>
-                <tr>
-                  <th col>CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
-                  <td col><strong>{{ resultado.total_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
-                </tr>
-              </thead>
-            </table>
-        </div>   
-
        </div>
 
        <div *ngIf="loading" class="loader">Loading...</div>
 
      <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
      <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
-        </button>
-     </div>
-    
-    <button type="button" 
+        <button type="button" class="btn btn-success" 
     onclick="printJS({
       printable: 'printJS-table',
       type:'html',
-      style: '.table {font-family: Arial, Helvetica, sans-serif; border: 3px solid #24943A;width: 100%;height: 200px;text-align: center;} .table td, .table th {border: 1px solid #020202;padding: 3px 2px;} .table .tbody td {font-size: 13px;color: #656565;} .tbody tr{background:#3F9E6B;}'
+      style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
     })">
-    Print Form
+    <i class="fas fa-print"></i>  Imprimir Datos
     </button>
+
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i>  Volver a Cuenta Sindical
+    </button>
+     </div>
+  </ng-template>
+
+  <ng-template #modalUsuario let-modal>
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+      <br>
+      <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+      <br>
+    <button class="btn btn-success btn-block btn-sm"
+      (click)="btn_validar_usuario(rut,password,validar);">
+      Validar
+      </button>
+      <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    </div>
   </ng-template>
   
   <!--Boton Para llamar al Modal inicio y cierre mensual-->
-  <button class="btn btn btn-success btn-block btn-sm" (click)="openTablaSindical(TablaSindical)"><i class="fas fa-table"></i> Ver Tabla</button>
+  <button class="btn btn btn-success btn-block btn-sm" type="button" (click)="verTablaSindical(tablaGeneral)"><i class="fas fa-table"></i> Ver Tabla</button>
 
 
 

@@ -11,7 +11,8 @@ Route::get('/totales_caja_chica/{anio}/{mes}', 'CajaChicaController@TotalIngEgre
 //------------------------------------------>rutas prestamo 
 
 Route::get('/traer_tipo_prestamo', 'PrestamosController@TraerTipoPrestamos');
-Route::get('traer_socio/{rut}', 'PrestamosController@TraerSocio');
+Route::get('/traer_socio/{rut}', 'PrestamosController@TraerSocio');
+Route::post('/ingresar_prestamo', 'PrestamosController@IngresarPrestamo');
 
 //Route::get('/testeo', function() {
 //   return "kkck";

@@ -13,6 +13,7 @@ Route::get('/totales_caja_chica/{anio}/{mes}', 'CajaChicaController@TotalIngEgre
 Route::get('/traer_tipo_prestamo', 'PrestamosController@TraerTipoPrestamos');
 Route::get('/traer_socio/{rut}', 'PrestamosController@TraerSocio');
 Route::post('/ingresar_prestamo', 'PrestamosController@IngresarPrestamo');
+Route::get('/traer_prestamos/{anio}/{mes}', 'PrestamosController@TraerPrestamos');
 
 //Route::get('/testeo', function() {
 //   return "kkck";

@@ -1,3 +1,83 @@
-<p>
-  tabla-prestamos-socios works!
-</p>
+  <!--Tabla Del Prestamo Socios-->
+    <div class="modal-body"><br>
+      <table class="table table-striped table-bordered table-sm">
+        <!--titulo de la tabla-->
+        <thead text-sm>
+            <tr>
+              <th colspan="20" class="text-center" style="background: #138D75;" class="ColorThCS"><h4>Tabla Detalle Prestamo</h4></th>
+            </tr>
+        </thead>
+        <!--Tabla de Filtros-->
+        <thead text-sm>
+            <tr>
+              <!---Select Año-->
+              <th>
+                <select id="anio_id" (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
+                  <option *ngFor="let a of anios" [value]="a.id">{{ a.descripcion }}</option>
+                </select>
+              </th>
+              <!--Select Mes-->
+              <th>
+                  <select (change)="change_mes()" class="form-control form-control-sm" [(ngModel)]="mes" >
+                  <option *ngFor="let m of meses" [value]="m.id" >{{ m.descripcion }}</option>
+                </select>
+              </th>
+              <!--Buscar Socios-->
+              <th style="background: #138D75">
+                <label class="align-self-end"> Buscar:</label>
+              </th>
+              <td colspan="10" style="background: #138D75">
+                <input 
+                  class="form-control form-control-sm" 
+                  placeholder="Buscar por nombre..."
+                  [(ngModel)]="search"
+                  >
+              </td>
+              <td style="background: #138D75" colspan="2">
+                <a (click)="filtrar()" class="btn btn-outline-dark btn-sm" style="width: 35px; cursor: pointer;">
+                  <i class="fas fa-search" style="color:aliceblue; cursor: pointer;"></i>
+                </a>
+              </td>
+              <!--Ingresar Monto cierre mensual acumulado-->
+              <th class="text-right" style="background: #138D75" colspan="3">
+                  Cierre mensual acumulado:
+              </th>
+              <th style="background: #138D75">
+                <input [(ngModel)]="monto" type="" name="" class="form-control form-control-sm" placeholder ="Ingrese un monto...">
+              </th>
+              <td style="background: #138D75" >
+                <a (click)="validar_usuario(validar)" class="btn btn-outline-dark btn-sm" style="cursor: pointer;">
+                <i class="far fa-save" style="color:aliceblue; cursor: pointer;"></i></a>
+              </td>  
+
+            </tr>
+        </thead>
+        <!--Tabla del detalle prestamo-->
+        <thead text-sm>
+            <tr class="text-center">
+                <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i>  Fecha</th>
+                <th style="background: #138D75">Nº Doc</th>
+                <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i>  PDF</th>
+                <th colspan="6" style="background: #138D75;"><i class="fas fa-file-signature"></i>  Detalle</th>
+                <th style="background: #138D75">Nº Cuotas</th>
+                <th colspan="3" style="background: #138D75;"><i class="fas fa-plus-circle"></i>  Ingresos</th>
+                <th colspan="3" style="background: #138D75;"><i class="fas fa-minus-circle"></i>  Egresos</th>
+                <th colspan="3" style="background: #138D75;"><i class="fas fa-dollar-sign"></i>  Actual</th>          
+            </tr>
+        </thead>
+        <!--casillas para llenar de la BD-->
+        <tbody>
+          <tr *ngFor="let item of detallecamping">
+            <td colspan="2"></td>
+            <td></td>
+            <td colspan="2"></td>
+            <td colspan="6"></td>
+            <td></td>
+            <td colspan="2"></td>
+            <td colspan="2"></td>
+            <td colspan="3"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+

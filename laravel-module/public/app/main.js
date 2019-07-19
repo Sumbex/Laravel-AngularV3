@@ -1619,6 +1619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
+var _a;
 
 
 
@@ -1711,7 +1712,7 @@ FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./formulario-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.html"),
         styles: [__webpack_require__(/*! ./formulario-socios.component.css */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], typeof (_a = typeof _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] !== "undefined" && _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"]) === "function" ? _a : Object, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
 ], FormularioSociosComponent);
 
 
@@ -2319,6 +2320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/cs-detalle-camping.service */ "./src/app/servicios/cs-detalle-camping.service.ts");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
+var _a;
 
 
 
@@ -2449,8 +2451,7 @@ ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
         _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
         _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"],
-        _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"]])
+        _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"], typeof (_a = typeof _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] !== "undefined" && _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"]) === "function" ? _a : Object])
 ], ModalCampingComponent);
 
 

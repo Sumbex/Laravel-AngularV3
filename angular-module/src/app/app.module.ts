@@ -44,6 +44,7 @@ import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulari
 import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
 import { ModalPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/modal-prestamos-socios.component';
 import { ModalCampingComponent } from './auth-master/modal-camping/modal-camping.component';
+import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component';
 
 
 @NgModule({
@@ -83,7 +84,9 @@ import { ModalCampingComponent } from './auth-master/modal-camping/modal-camping
 
     ModalPrestamosSociosComponent,
 
-    ModalCampingComponent
+    ModalCampingComponent,
+
+    TablaPrestamosSociosComponent
 
   ],
   imports: [

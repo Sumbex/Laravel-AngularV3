@@ -9,7 +9,7 @@
       </button>
     </div>
     <!--Cuerpo del body Prestamo-->
-    <form #prestamoForm="ngForm" (ngSubmit)="onSubmit(prestamoForm)">
+    <form #prestamoForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
     <div class="modal-body">
       <div class="row justify-content-center">
 
@@ -68,12 +68,15 @@
 
                   <div class="form-group">
                       <label><strong>Fecha</strong></label>
-                    <input type="date" class="form-control form-control-sm">
+                    <input type="date" class="form-control form-control-sm" name="fecha" #fecha="ngModel"
+                    [(ngModel)]="datosEnvioPrestamo.fecha" required>
+                    <p>{{datosEnvioPrestamo.fecha}}</p><!--**********************************-->
                   </div>
-
                   <div class="form-group">
                     <label><strong>N°Documento</strong></label>
-                    <input type="text" class="form-control form-control-sm">
+                    <input type="text" class="form-control form-control-sm" name="nDocumento" #nDocumento="ngModel"
+                    [(ngModel)]="datosEnvioPrestamo.numeroDocumento" required>
+                    <p>{{datosEnvioPrestamo.numeroDocumento}}</p><!--**********************************-->
                   </div>
 
                   <div class="form-group">
@@ -111,7 +114,8 @@
                 <label><strong>Monto del Prestamo</strong></label>
                 <div class="input-group">
                   <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                  <input type="number" class="form-control" placeholder="Ingrese monto" name="inputMontoPrestramo" [(ngModel)]="inputMontoPrestramo" required>
+                  <input type="number" class="form-control" placeholder="Ingrese monto" name="inputMontoPrestramo" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" required>
+                  <p>{{datosEnvioPrestamo.montoPrestamo}}</p><!--**********************************-->
                 </div>
               </div>
             </div>
@@ -127,13 +131,13 @@
                   <div class="form-group funkyradio">
                     <div class="funkyradio-success">
                       <input type="radio" name="radio" id="radio1" value="true" class="form-control form-control-sm" name="abono"
-                      #abono="ngModel" [(ngModel)]="radioAbono" (click)="changeRadioAbono(true)"/>
+                      #abono="ngModel" [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(true)"/>
                       <label for="radio1">Si</label>
+                      <p>{{datosEnvioPrestamo.checkAbono}}</p><!--**********************************-->
                     </div>
-                    {{radioAbono}}
                     <div class="funkyradio-success">
                       <input type="radio" name="radio" id="radio2" value="false" class="form-control form-control-sm" name="abono"
-                      #abono="ngModel" [(ngModel)]="radioAbono" (click)="changeRadioAbono(false)"/>
+                      #abono="ngModel" [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(false)"/>
                       <label for="radio2">No</label>
                     </div>
                   </div>
@@ -151,19 +155,19 @@
                   <strong>Tipos de Abono</strong>
 
                   <div class="funkyradio-success">
-                    <input type="checkbox" name="checkDiaSueldo" [(ngModel)]="checkDiaSueldo" id="checkbox1" (click)="changeCheckAbono(1)" [disabled]="radioAbono == 'false'"/>
+                    <input type="checkbox" name="datosEnvioPrestamo.checkDia" [(ngModel)]="datosEnvioPrestamo.checkDia" id="checkbox1" (click)="changeCheckAbono(1)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
                     <label for="checkbox1">Dia de Sueldo</label>
-                    <p>{{checkDiaSueldo}}</p>
+                    <p>{{datosEnvioPrestamo.checkDia}}</p>
                   </div>
                   <div class="funkyradio-success">
-                    <input type="checkbox" name="checkTrimestral" [(ngModel)]="checkTrimestral" id="checkbox2" (click)="changeCheckAbono(2)" [disabled]="radioAbono == 'false'"/>
+                    <input type="checkbox" name="datosEnvioPrestamo.checkTri" [(ngModel)]="datosEnvioPrestamo.checkTri" id="checkbox2" (click)="changeCheckAbono(2)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
                     <label for="checkbox2">Trimestral</label>
-                    <p>{{checkTrimestral}}</p>
+                    <p>{{datosEnvioPrestamo.checkTri}}</p>
                   </div>
                   <div class="funkyradio-success">
-                    <input type="checkbox" name="checkTerminoConflicto" [(ngModel)]="checkTerminoConflicto" (click)="changeCheckAbono(3)" id="checkbox3" [disabled]="radioAbono == 'false'"/>
+                    <input type="checkbox" name="datosEnvioPrestamo.checkCon" [(ngModel)]="datosEnvioPrestamo.checkCon" id="checkbox3" (click)="changeCheckAbono(3)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
                     <label for="checkbox3">Termino Conflicto</label>
-                    <p>{{checkTerminoConflicto}}</p>
+                    <p>{{datosEnvioPrestamo.checkCon}}</p>
                   </div>
 
                 </div>
@@ -181,7 +185,7 @@
                   <div class="input-group">
                     <button class="btn btn-success input-group-addon" disabled><i
                         class="fas fa-dollar-sign"></i></button>
-                    <input type="number" class="form-control" placeholder="Monto Dia de Sueldo" name="inputDiaSueldo" [(ngModel)]="inputDiaSueldo" [disabled]="!checkDiaSueldo">
+                    <input type="number" class="form-control" placeholder="Monto Dia de Sueldo" name="inputDiaSueldo" [(ngModel)]="datosEnvioPrestamo.montoDia" [disabled]="datosEnvioPrestamo.checkDia == false">
                   </div>
                 </div>
 
@@ -189,7 +193,7 @@
                   <div class="input-group">
                     <button class="btn btn-success input-group-addon" disabled><i
                         class="fas fa-dollar-sign"></i></button>
-                    <input type="number" class="form-control" placeholder="Monto Trimestral" name="inputTrimestral" [(ngModel)]="inputTrimestral" [disabled]="!checkTrimestral">
+                    <input type="number" class="form-control" placeholder="Monto Trimestral" name="inputTrimestral" [(ngModel)]="datosEnvioPrestamo.montoTri" [disabled]="datosEnvioPrestamo.checkTri == false">
                   </div>
                 </div>
 
@@ -197,7 +201,7 @@
                   <div class="input-group">
                     <button class="btn btn-success input-group-addon" disabled><i
                         class="fas fa-dollar-sign"></i></button>
-                    <input type="number" class="form-control" placeholder="Monto Termino Conflicto" name="inputTerminoConflicto" [(ngModel)]="inputTerminoConflicto" [disabled]="!checkTerminoConflicto">
+                    <input type="number" class="form-control" placeholder="Monto Termino Conflicto" name="inputTerminoConflicto" [(ngModel)]="datosEnvioPrestamo.montoCon" [disabled]="datosEnvioPrestamo.checkCon == false">
                   </div>
                 </div>
 

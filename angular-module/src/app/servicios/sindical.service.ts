@@ -95,14 +95,24 @@ export class SindicalService{
     }
 
     setPrestamo(form): Observable<any>{
-
         const body = new FormData();
-        body.append('id', form);
-        body.append('campo', form);
-        body.append('input', form);
+        body.append('fecha', form.fecha);
+        body.append('select_id', form.selectId);
+        body.append('socio_id', form.socioId);
+        body.append('numero_documento', form.numeroDocumento);
+        body.append('archivo_documento', form.archivoDocumento);
+        body.append('monto_total', form.montoPrestamo);
+        body.append('checkAbono', form.checkAbono);
+        body.append('cuotas', form.cuotas);
+        body.append('monto_dia', form.montoDia);
+        body.append('monto_tri', form.montoTri);
+        body.append('monto_con', form.montoCon);
+        body.append('checkdia', form.checkDia);
+        body.append('checktri', form.checkTri);
+        body.append('checkcon', form.checkCon);
         console.log(body);
 
-        return this._http.post(this.url + "actualizar_dato_cs",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "ingresar_prestamo",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token
             }

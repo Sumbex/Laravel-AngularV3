@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 import { SociosService } from 'src/app/servicios/socios.service';
+import { Prestamos } from 'src/app/modelos/prestamos.model';
 
 @Component({
   selector: 'app-modal-prestamos-socios',
@@ -30,7 +31,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
   mensajeError = '';
 
   //Variables prestamo de salud retornable
-  inputMontoPrestamo: number = null;
+  /*inputMontoPrestamo: number = null;
   radioAbono = "false";
   checkDiaSueldo: boolean = false;
   checkTrimestral: boolean = false;
@@ -39,7 +40,25 @@ export class ModalPrestamosSociosComponent implements OnInit {
   inputTrimestral: number = null;
   inputTerminoConflicto: number = null;
   inputPrestamoRestante: number = null;
-  inputNumeroCuotas: number = null;
+  inputNumeroCuotas: number = null;*/
+
+  //datos para enviar al formulario
+  datosEnvioPrestamo: Prestamos = {
+    fecha: "",
+    selectId: "",
+    socioId: "",
+    numeroDocumento: "",
+    archivoDocumento: "",
+    montoPrestamo: "",
+    checkAbono: "false",
+    cuotas: "",
+    montoDia: "",
+    montoTri: "",
+    montoCon: "",
+    checkDia: false,
+    checkTri: false,
+    checkCon: false
+  }
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _sociosService: SociosService) {
     config.backdrop = 'static';
@@ -102,27 +121,53 @@ export class ModalPrestamosSociosComponent implements OnInit {
   changeRadioAbono(val){
     console.log(val);
     if(val == false){
-      this.checkDiaSueldo = false;
-      this.checkTrimestral = false;
-      this.checkTerminoConflicto = false;
-      this.inputDiaSueldo = null;
-      this.inputTrimestral = null;
-      this.inputTerminoConflicto = null;
+      this.datosEnvioPrestamo.checkDia = false;
+      this.datosEnvioPrestamo.checkTri = false;
+      this.datosEnvioPrestamo.checkCon = false;
+      this.datosEnvioPrestamo.montoDia = "";
+      this.datosEnvioPrestamo.montoTri = "";
+      this.datosEnvioPrestamo.montoCon = "";
     }
   }
 
   changeCheckAbono(val){
     if(val == 1){
-      this.inputDiaSueldo = null;
+      console.log("monto del dia en 0");
+      this.datosEnvioPrestamo.montoDia = "";
     }else if(val == 2){
-      this.inputTrimestral = null;
+      this.datosEnvioPrestamo.montoTri = "";
     }else if(val == 3){
-      this.inputTerminoConflicto = null;
+      this.datosEnvioPrestamo.montoCon = "";
     }
   }
 
-  onSubmit(res){
-    console.log(res);
+  rellenarDatos(){
+    this.datosEnvioPrestamo.fecha = '2019-01-01';
+    this.datosEnvioPrestamo.selectId = '1';
+    this.datosEnvioPrestamo.socioId = '6';
+    this.datosEnvioPrestamo.numeroDocumento = '123321';
+    this.datosEnvioPrestamo.archivoDocumento = 'test';
+    this.datosEnvioPrestamo.montoPrestamo = '10000';
+    this.datosEnvioPrestamo.checkAbono = 'true';
+    this.datosEnvioPrestamo.cuotas = '5';
+    this.datosEnvioPrestamo.montoDia = '12000';
+    this.datosEnvioPrestamo.montoTri = '13000';
+    this.datosEnvioPrestamo.montoCon = '14000';
+    this.datosEnvioPrestamo.checkDia = false;
+    this.datosEnvioPrestamo.checkTri = false;
+    this.datosEnvioPrestamo.checkCon = false;
+  }
+
+  onSubmit(){
+    //this.rellenarDatos();
+    console.log(this.datosEnvioPrestamo);
+    this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
+      console.log(res);
+    },
+    error => {
+      console.log(error);
+    }
+   );
   }
 
 }

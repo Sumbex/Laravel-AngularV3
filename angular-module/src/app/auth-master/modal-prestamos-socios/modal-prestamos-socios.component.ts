@@ -45,7 +45,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
   //datos para enviar al formulario
   datosEnvioPrestamo: Prestamos = {
     fecha: "",
-    selectId: "",
+    selectId: "1",
     socioId: "",
     numeroDocumento: "",
     archivoDocumento: "",
@@ -83,8 +83,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
 
   changeTipoPrestamo(evento){
     this.datosTipoPrestamo.id = evento.target.value;
-    console.log(this.datosTipoPrestamo.id);
-    console.log(this.inputRut);
+    this.datosEnvioPrestamo.selectId = this.datosTipoPrestamo.id;
+    console.log(this.datosEnvioPrestamo.selectId);
     if(this.datosTipoPrestamo.id == 1){
       this.datosTipoPrestamo.descripcion = "salud";
     }else if(this.datosTipoPrestamo.id == 2){
@@ -107,9 +107,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
         this.datosSocio = res;
         this.nombreSocioTest = this.datosSocio[0].socio;
         this.rutSocioTest = this.datosSocio[0].rut;
+        this.datosEnvioPrestamo.socioId = this.datosSocio[0].id;
         this.errorSocio = false;
-        console.log(this.nombreSocioTest);
-        console.log(this.rutSocioTest);
       }
     },
     error => {
@@ -141,25 +140,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     }
   }
 
-  rellenarDatos(){
-    this.datosEnvioPrestamo.fecha = '2019-01-01';
-    this.datosEnvioPrestamo.selectId = '1';
-    this.datosEnvioPrestamo.socioId = '6';
-    this.datosEnvioPrestamo.numeroDocumento = '123321';
-    this.datosEnvioPrestamo.archivoDocumento = 'test';
-    this.datosEnvioPrestamo.montoPrestamo = '10000';
-    this.datosEnvioPrestamo.checkAbono = 'true';
-    this.datosEnvioPrestamo.cuotas = '5';
-    this.datosEnvioPrestamo.montoDia = '12000';
-    this.datosEnvioPrestamo.montoTri = '13000';
-    this.datosEnvioPrestamo.montoCon = '14000';
-    this.datosEnvioPrestamo.checkDia = false;
-    this.datosEnvioPrestamo.checkTri = false;
-    this.datosEnvioPrestamo.checkCon = false;
-  }
-
   onSubmit(){
-    //this.rellenarDatos();
     console.log(this.datosEnvioPrestamo);
     this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
       console.log(res);

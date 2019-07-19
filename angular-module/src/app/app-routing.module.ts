@@ -12,6 +12,7 @@ import { AuthGuardService } from './guardianes/auth.guard.service';
 import { ConfiguracionesComponent } from './auth-master/configuraciones/configuraciones.component';
 import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
 import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
+import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -25,7 +26,8 @@ const routes: Routes = [
     { path: 'CuentaFondoMutuo', component: CuentaFondoMutuoComponent },
     { path: 'Configuracion', component: ConfiguracionesComponent },
     { path: 'RegistroSocios', component: FormularioSociosComponent },
-    { path: 'ListarSocios', component: ListarSociosComponent }
+    { path: 'ListarSocios', component: ListarSociosComponent },
+    { path: 'TablaPrestamoSocios', component: TablaPrestamosSociosComponent }
 
   ]},
 

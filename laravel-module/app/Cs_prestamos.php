@@ -8,10 +8,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Cs_prestamo_tipo_abono_cuotas;
 use App\DetallePrestamo;
+use App\InteresPrestamo;
+use App\MontoCierrePrestamo;
 
 class Cs_prestamos extends Model
 {
     protected $table = 'cs_prestamos';
+
+    protected $interes = 0.10;
 
     public function validarDatos($request)
     {
@@ -227,7 +231,7 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto = $monto;
+                                $detalle->monto_egreso = $monto;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
 
@@ -256,7 +260,7 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto = $ultimoPrestamo->monto_egreso;
+                                $detalle->monto_egreso = $ultimoPrestamo->monto_egreso;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
 
@@ -275,6 +279,9 @@ class Cs_prestamos extends Model
 
                     case 2:
                         //prestamo apuro economico - retornable
+
+                        //añadir el interes
+
                         $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
                         $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno . ' ' . $traerSocio->a_materno;
                         $prestamo->monto_egreso = $request->monto_total;
@@ -285,22 +292,36 @@ class Cs_prestamos extends Model
                         $prestamo->cuota = 4;
                         $prestamo->activo = 'S';
                         $prestamo->estado_prestamo_id = 1;
+                        $prestamo->interes_prestamo = $request->monto_total * $this->interes;
 
                         if ($prestamo->save()) {
                             $ultimoPrestamo = Cs_prestamos::all()->last();
 
-                            $detalle = new DetallePrestamo;
+                            $prestamoInteres = new InteresPrestamo;
 
-                            $detalle->prestamo_id = $ultimoPrestamo->id;
-                            $detalle->anio_id = $ultimoPrestamo->anio_id;
-                            $detalle->mes_id = $ultimoPrestamo->mes_id;
-                            $detalle->dia = $ultimoPrestamo->dia;
-                            $detalle->monto = $ultimoPrestamo->monto_egreso;
-                            $detalle->activo = 'S';
-                            $detalle->user_crea = Auth::user()->id;
+                            $prestamoInteres->prestamo_id = $ultimoPrestamo->id;
+                            $prestamoInteres->interes = $ultimoPrestamo->interes_prestamo;
+                            $prestamoInteres->activo = 'S';
 
-                            if ($detalle->save()) {
-                                return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
+                            if ($prestamoInteres->save()) {
+
+                                $detalle = new DetallePrestamo;
+
+                                $monto_total = $ultimoPrestamo->monto_egreso * $this->interes;
+
+                                $detalle->prestamo_id = $ultimoPrestamo->id;
+                                $detalle->anio_id = $ultimoPrestamo->anio_id;
+                                $detalle->mes_id = $ultimoPrestamo->mes_id;
+                                $detalle->dia = $ultimoPrestamo->dia;
+                                $detalle->monto_egreso = $ultimoPrestamo->monto_egreso + $monto_total;
+                                $detalle->activo = 'S';
+                                $detalle->user_crea = Auth::user()->id;
+
+                                if ($detalle->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'No Insertado apuro cuotas'];
+                                }
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'No Insertado apuro cuotas'];
                             }
@@ -331,7 +352,7 @@ class Cs_prestamos extends Model
                             $detalle->anio_id = $ultimoPrestamo->anio_id;
                             $detalle->mes_id = $ultimoPrestamo->mes_id;
                             $detalle->dia = $ultimoPrestamo->dia;
-                            $detalle->monto = $ultimoPrestamo->monto_egreso;
+                            $detalle->monto_egreso = $ultimoPrestamo->monto_egreso;
                             $detalle->activo = 'S';
                             $detalle->user_crea = Auth::user()->id;
 
@@ -373,33 +394,31 @@ class Cs_prestamos extends Model
 
     protected function traerPrestamos($anio, $mes)
     {
-        /* //traer prestammos por tipos
-        $prestamo = DB::table('cs_prestamos as p')
+        $prestamo = DB::table('detalle_prestamo as pd')
             ->select([
-                'p.id',
+                'pd.id',
+                'pd.prestamo_id',
                 DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
                 'p.numero_documento',
-                'p.archivo_documento',
                 'p.descripcion',
                 'p.cuota',
-                'p.monto_egreso'
-
+                'ep.descripcion as estado',
+                'pd.monto_egreso',
+                'pd.monto_ingreso'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')
-            ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo_id')
+            ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
             ->where([
                 'p.activo' => 'S',
                 'p.anio_id' => $anio,
                 'p.mes_id' => $mes,
             ])
-            ->orderby('p.dia', 'ASC')
-            ->orderBy('tp.descripcion', 'ASC')
+            ->orderby('pd.dia', 'ASC')
             ->get();
 
-        return $prestamo; */
-
-
+        return $prestamo;
     }
 
     protected function verificarInicioMensual($anio, $mes)
@@ -439,6 +458,50 @@ class Cs_prestamos extends Model
             return $socio;
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no pertenece a ningun socio.'];
+        }
+    }
+
+    protected function guardarMontoCierrePrestamo($request)
+    {
+        $existe = MontoCierrePrestamo::where([
+            'anio_id' => $request->anio_id,
+            'mes_id' => $request->mes_id,
+            'activo' => 'S'
+        ])->first();
+
+        if (!empty($existe)) {
+            $existe->monto = $request->monto;
+            if ($existe->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Monto actualizado'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+            }
+        } else {
+            $montoCP = new MontoCierrePrestamo;
+            $montoCP->anio_id = $request->anio_id;
+            $montoCP->mes_id = $request->mes_id;
+            $montoCP->monto = $request->monto;
+
+            if ($montoCP->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Monto ingresado'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Error al insertar'];
+            }
+        }
+    }
+
+    protected function traerMontoCierrePrestamo($anio, $mes)
+    {
+        $monto = MontoCierrePrestamo::where([
+            'anio_id' => $anio,
+            'mes_id' => $mes,
+            'activo' => 'S'
+        ])->first();
+
+        if (!empty($monto)) {
+            return $monto->monto;
+        } else {
+            return ['estado' => 'failed', 'monto' => 0];
         }
     }
 }

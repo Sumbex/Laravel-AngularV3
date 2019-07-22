@@ -39,6 +39,7 @@ export class ListarSociosComponent implements OnInit {
     currentLesson:string;
   
     buttonStatus = false;
+    token = localStorage.getItem('token').replace(/['"]+/g, '');
 
   constructor(private _socios:SociosService, public _validarusuario:ValidarUsuarioService,private modalService: NgbModal) {
 
@@ -46,6 +47,14 @@ export class ListarSociosComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("a lo vio perro chuchetumareeee "+localStorage.getItem('token'));
+
+    if (localStorage.getItem('token') == '') {
+      alert("La sesión ya expiro!");
+
+      location.reload();
+    }
+
   	this.listar();
     this.usuario_logeado();
 

@@ -5,7 +5,7 @@ export class Prestamos{
     numeroDocumento: string;
     archivoDocumento: string;
     montoPrestamo: string;
-    checkAbono: string;
+    checkAbono: boolean;
     cuotas: string;
     montoDia: string;
     montoTri: string;

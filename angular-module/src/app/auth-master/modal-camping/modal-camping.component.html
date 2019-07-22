@@ -23,7 +23,7 @@
 
       <!--Cabezal del modal camping-->
       <div class="modal-header" id="demoFont">
-        <h6 class="modal-title"><strong>Detalle camping</strong></h6>
+        <h6 class="modal-title"><strong><i class="fas fa-box-open"></i> Cuenta sindical / Detalle camping</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -90,6 +90,31 @@
                 </tr>
               </tbody>
           </table>
+
+         <div style="width: 350px;">
+             <table class="table table-striped table-bordered table-sm">
+               <thead text-sm>
+                  <!--Titulo Tabla-->  
+                  <tr class="text-center">
+                    <th colspan="2" style="background: #138D75">Resumen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <th style="background: #138D75">Ingreso</th>
+                    <td>{{ resumen.ingreso }}</td>
+                  </tr>
+                  <tr class="text-center">
+                    <th style="background: #138D75">Egreso</th>
+                    <td>{{ resumen.egreso }}</td>
+                  </tr>
+                  <tr class="text-center">
+                    <th style="background: #138D75">Cierre mensual</th>
+                    <td>{{ resumen.total }}</td>
+                  </tr>
+                </tbody>
+          </table>
+         </div>
 
 
 

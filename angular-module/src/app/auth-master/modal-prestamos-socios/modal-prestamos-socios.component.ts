@@ -30,18 +30,6 @@ export class ModalPrestamosSociosComponent implements OnInit {
   errorSocio = false;
   mensajeError = '';
 
-  //Variables prestamo de salud retornable
-  /*inputMontoPrestamo: number = null;
-  radioAbono = "false";
-  checkDiaSueldo: boolean = false;
-  checkTrimestral: boolean = false;
-  checkTerminoConflicto: boolean = false;
-  inputDiaSueldo: number = null;
-  inputTrimestral: number = null;
-  inputTerminoConflicto: number = null;
-  inputPrestamoRestante: number = null;
-  inputNumeroCuotas: number = null;*/
-
   //datos para enviar al formulario
   datosEnvioPrestamo: Prestamos = {
     fecha: "",
@@ -50,7 +38,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     numeroDocumento: "",
     archivoDocumento: "",
     montoPrestamo: "",
-    checkAbono: "false",
+    checkAbono: false,
     cuotas: "",
     montoDia: "",
     montoTri: "",
@@ -59,6 +47,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
     checkTri: false,
     checkCon: false
   }
+
+  inputGanancia: number;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _sociosService: SociosService) {
     config.backdrop = 'static';
@@ -119,6 +109,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
 
   changeRadioAbono(val){
     console.log(val);
+    console.log(this.datosEnvioPrestamo.checkAbono);
     if(val == false){
       this.datosEnvioPrestamo.checkDia = false;
       this.datosEnvioPrestamo.checkTri = false;
@@ -149,6 +140,12 @@ export class ModalPrestamosSociosComponent implements OnInit {
       console.log(error);
     }
    );
+  }
+
+  calcular(event){
+    let valor = Math.ceil(event.target.value * 0.10);
+    this.inputGanancia = valor;
+    console.log(this.inputGanancia);
   }
 
 }

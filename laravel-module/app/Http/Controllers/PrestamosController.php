@@ -148,7 +148,7 @@ class PrestamosController extends Controller
 
 	public function TraerPrestamos($anio, $mes)
 	{
-		return Cs_prestamos::traerPrestamos($anio, $mes);
+		return Cs_prestamos::prestamosTotales($anio, $mes);
 	}
 
 	public function GuardarMontoCierrePrestamo(Request $request)

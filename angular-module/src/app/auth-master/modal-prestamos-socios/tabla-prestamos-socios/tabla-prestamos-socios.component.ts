@@ -3,6 +3,8 @@ import { Meses } from 'src/app/modelos/meses.model';
 import { Anios } from 'src/app/modelos/anios.model';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { HttpClient } from '@angular/common/http';
+import { Prestamos } from 'src/app/modelos/prestamos.model';
 
 @Component({
   selector: 'app-tabla-prestamos-socios',
@@ -17,9 +19,6 @@ export class TablaPrestamosSociosComponent implements OnInit {
   idAnioActual;
   idMesActual;
 
-  anio;
-  mes;
-
   valorAnio: Anios = {
     descripcion: ''
   }
@@ -27,12 +26,26 @@ export class TablaPrestamosSociosComponent implements OnInit {
   valorMes: Meses = {
     descripcion: ''
   }
-
-  //actualizar caja chica
-
-  suc_res1 = false;
-  suc_res2 = false;
   //VARIABLES PARA LOS SELECT
+
+  datosPrestamosSocios:Prestamos = {
+    fecha: '',
+    selectId: '',
+    socioId: '',
+    numeroDocumento: '',
+    archivoDocumento: '',
+    montoPrestamo: '',
+    checkAbono: null,
+    cuotas: '',
+    montoDia: '',
+    montoTri: '',
+    montoCon: '',
+    checkDia: null,
+    checkTri: null,
+    checkCon: null
+  };
+
+  valoresCajaChica;
 
   constructor(private _sindicalService: SindicalService, 
     private _fechasService: AniosService) { }
@@ -44,48 +57,40 @@ export class TablaPrestamosSociosComponent implements OnInit {
     //Cargar Meses
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
 
-    this.cargar_select();
-  }
-
-  cargar_select(){
-
     //Cargar id del Año actual
     this._fechasService.getAnioActual().subscribe(
-     response => {
-       this.anio = response;
-       this.valorAnio.descripcion = this.idAnioActual.id; 
-       this.suc_res1 = true;
-       
-       this.listo_para_listar(this.suc_res1, this.suc_res2);
+      response => {
+        this.idAnioActual = response;
+        this.valorAnio.descripcion = this.idAnioActual.id;
+      },
+      error => {
+        console.log(error);
+      }
+    )
 
-     },
-     error => {
-       console.log(error);
-     }
-   )
-
-   //Cargar id del Mes actual
-   this._fechasService.getMesActual().subscribe(
-     response => {
-       this.mes = response;
-       this.valorMes.descripcion = this.idMesActual.id;
-       this.suc_res2 = true;
-             
-       this.listo_para_listar(this.suc_res1, this.suc_res2);
-     },
-     error => {
-       console.log(error);
-     }
-   )
-
- }
-
-
- listo_para_listar(res1, res2){
-  if (res1 == true && res2 == true) {
-    //cargar tablitas funciones
-    
+    //Cargar id del Mes actual
+    this._fechasService.getMesActual().subscribe(
+      response => {
+        this.idMesActual = response;
+        this.valorMes.descripcion = this.idMesActual.id;
+        this.refrescarTablaPrestamosClientes();
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
-}
 
+  refrescarTablaPrestamosClientes(){
+    this._sindicalService.getPrestramosSocios('1','7').subscribe(
+      response => {
+        this.valoresCajaChica = response;
+        console.log(this.valoresCajaChica);
+        console.log(this.valoresCajaChica.fecha);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 }

@@ -12,13 +12,13 @@
             <tr>
               <!---Select Año-->
               <th>
-                <select id="anio_id" (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
+                <select id="anio_id" class="form-control form-control-sm" [(ngModel)]="valorAnio.descripcion">
                   <option *ngFor="let itemAnio of selectAnio" [value]="itemAnio.id">{{ itemAnio.descripcion }}</option>
                 </select>
               </th>
               <!--Select Mes-->
               <th>
-                  <select (change)="change_mes()" class="form-control form-control-sm" [(ngModel)]="mes" >
+                  <select class="form-control form-control-sm" [(ngModel)]="valorMes.descripcion" >
                   <option *ngFor="let itemMes of selectMes" [value]="itemMes.id" >{{ itemMes.descripcion }}</option>
                 </select>
               </th>
@@ -67,15 +67,15 @@
         </thead>
         <!--casillas para llenar de la BD-->
         <tbody>
-          <tr *ngFor="let item of detallecamping">
-            <td colspan="2"></td>
-            <td></td>
-            <td colspan="2"></td>
-            <td colspan="6"></td>
-            <td></td>
-            <td colspan="2"></td>
-            <td colspan="2"></td>
-            <td colspan="3"></td>
+          <tr *ngFor="let itemPrestamo of valoresCajaChica">
+            <td colspan="2">{{itemPrestamo.fecha}}</td>
+            <td>numero_documento</td>
+            <td colspan="2">null</td>
+            <td colspan="6">{{itemPrestamo.descripcion}}</td>
+            <td>{{itemPrestamo.cuota}}</td>
+            <td colspan="2">{{itemPrestamo.monto_ingreso}}</td>
+            <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+            <td colspan="3">{{itemPrestamo.fecha}}</td>
           </tr>
         </tbody>
       </table>

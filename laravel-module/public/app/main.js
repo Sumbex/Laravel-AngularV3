@@ -294,7 +294,7 @@ module.exports = "<!--Modal Prestamo-->\n<ng-template #Prestamo let-modal>\n  <!
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "  <!--Tabla Del Prestamo Socios-->\n    <div class=\"modal-body\"><br>\n      <table class=\"table table-striped table-bordered table-sm\">\n        <!--titulo de la tabla-->\n        <thead text-sm>\n            <tr>\n              <th colspan=\"20\" class=\"text-center\" style=\"background: #138D75;\" class=\"ColorThCS\"><h4>Tabla Detalle Prestamo</h4></th>\n            </tr>\n        </thead>\n        <!--Tabla de Filtros-->\n        <thead text-sm>\n            <tr>\n              <!---Select Año-->\n              <th>\n                <select id=\"anio_id\" (change)=\"change_anio()\" class=\"form-control form-control-sm\" [(ngModel)]=\"anio\" >\n                  <option *ngFor=\"let itemAnio of selectAnio\" [value]=\"itemAnio.id\">{{ itemAnio.descripcion }}</option>\n                </select>\n              </th>\n              <!--Select Mes-->\n              <th>\n                  <select (change)=\"change_mes()\" class=\"form-control form-control-sm\" [(ngModel)]=\"mes\" >\n                  <option *ngFor=\"let itemMes of selectMes\" [value]=\"itemMes.id\" >{{ itemMes.descripcion }}</option>\n                </select>\n              </th>\n              <!--Buscar Socios-->\n              <th style=\"background: #138D75\">\n                <!--<label class=\"align-self-end\"> Buscar:</label>-->\n              </th>\n              <td colspan=\"10\" style=\"background: #138D75\">\n               <!-- <input \n                  class=\"form-control form-control-sm\" \n                  placeholder=\"Buscar por nombre...\"\n                  [(ngModel)]=\"search\"\n                  >-->\n              </td>\n              <td style=\"background: #138D75\" colspan=\"2\">\n                <!--<a (click)=\"filtrar()\" class=\"btn btn-outline-dark btn-sm\" style=\"width: 35px; cursor: pointer;\">\n                  <i class=\"fas fa-search\" style=\"color:aliceblue; cursor: pointer;\"></i>\n                </a>-->\n              </td>\n              <!--Ingresar Monto cierre mensual acumulado-->\n              <th class=\"text-right\" style=\"background: #138D75\" colspan=\"3\">\n                  Cierre mensual acumulado:\n              </th>\n              <th style=\"background: #138D75\">\n                <input [(ngModel)]=\"monto\" type=\"\" name=\"\" class=\"form-control form-control-sm\" placeholder =\"Ingrese un monto...\">\n              </th>\n              <td style=\"background: #138D75\" >\n                <a (click)=\"validar_usuario(validar)\" class=\"btn btn-outline-dark btn-sm\" style=\"cursor: pointer;\">\n                <i class=\"far fa-save\" style=\"color:aliceblue; cursor: pointer;\"></i></a>\n              </td>  \n\n            </tr>\n        </thead>\n        <!--Tabla del detalle prestamo-->\n        <thead text-sm>\n            <tr class=\"text-center\">\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i>  Fecha</th>\n                <th style=\"background: #138D75\">Nº Doc</th>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i>  PDF</th>\n                <th colspan=\"6\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i>  Detalle</th>\n                <th style=\"background: #138D75\">Nº Cuotas</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i>  Ingresos</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i>  Egresos</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i>  Actual</th>          \n            </tr>\n        </thead>\n        <!--casillas para llenar de la BD-->\n        <tbody>\n          <tr *ngFor=\"let item of detallecamping\">\n            <td colspan=\"2\"></td>\n            <td></td>\n            <td colspan=\"2\"></td>\n            <td colspan=\"6\"></td>\n            <td></td>\n            <td colspan=\"2\"></td>\n            <td colspan=\"2\"></td>\n            <td colspan=\"3\"></td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n\n"
+module.exports = "  <!--Tabla Del Prestamo Socios-->\n    <div class=\"modal-body\"><br>\n      <table class=\"table table-striped table-bordered table-sm\">\n        <!--titulo de la tabla-->\n        <thead text-sm>\n            <tr>\n              <th colspan=\"20\" class=\"text-center\" style=\"background: #138D75;\" class=\"ColorThCS\"><h4>Tabla Detalle Prestamo</h4></th>\n            </tr>\n        </thead>\n        <!--Tabla de Filtros-->\n        <thead text-sm>\n            <tr>\n              <!---Select Año-->\n              <th>\n                <select id=\"anio_id\" class=\"form-control form-control-sm\" [(ngModel)]=\"valorAnio.descripcion\">\n                  <option *ngFor=\"let itemAnio of selectAnio\" [value]=\"itemAnio.id\">{{ itemAnio.descripcion }}</option>\n                </select>\n              </th>\n              <!--Select Mes-->\n              <th>\n                  <select class=\"form-control form-control-sm\" [(ngModel)]=\"valorMes.descripcion\" >\n                  <option *ngFor=\"let itemMes of selectMes\" [value]=\"itemMes.id\" >{{ itemMes.descripcion }}</option>\n                </select>\n              </th>\n              <!--Buscar Socios-->\n              <th style=\"background: #138D75\">\n                <!--<label class=\"align-self-end\"> Buscar:</label>-->\n              </th>\n              <td colspan=\"10\" style=\"background: #138D75\">\n               <!-- <input \n                  class=\"form-control form-control-sm\" \n                  placeholder=\"Buscar por nombre...\"\n                  [(ngModel)]=\"search\"\n                  >-->\n              </td>\n              <td style=\"background: #138D75\" colspan=\"2\">\n                <!--<a (click)=\"filtrar()\" class=\"btn btn-outline-dark btn-sm\" style=\"width: 35px; cursor: pointer;\">\n                  <i class=\"fas fa-search\" style=\"color:aliceblue; cursor: pointer;\"></i>\n                </a>-->\n              </td>\n              <!--Ingresar Monto cierre mensual acumulado-->\n              <th class=\"text-right\" style=\"background: #138D75\" colspan=\"3\">\n                  Cierre mensual acumulado:\n              </th>\n              <th style=\"background: #138D75\">\n                <input [(ngModel)]=\"monto\" type=\"\" name=\"\" class=\"form-control form-control-sm\" placeholder =\"Ingrese un monto...\">\n              </th>\n              <td style=\"background: #138D75\" >\n                <a (click)=\"validar_usuario(validar)\" class=\"btn btn-outline-dark btn-sm\" style=\"cursor: pointer;\">\n                <i class=\"far fa-save\" style=\"color:aliceblue; cursor: pointer;\"></i></a>\n              </td>  \n\n            </tr>\n        </thead>\n        <!--Tabla del detalle prestamo-->\n        <thead text-sm>\n            <tr class=\"text-center\">\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i>  Fecha</th>\n                <th style=\"background: #138D75\">Nº Doc</th>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i>  PDF</th>\n                <th colspan=\"6\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i>  Detalle</th>\n                <th style=\"background: #138D75\">Nº Cuotas</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i>  Ingresos</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i>  Egresos</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i>  Actual</th>          \n            </tr>\n        </thead>\n        <!--casillas para llenar de la BD-->\n        <tbody>\n          <tr *ngFor=\"let itemPrestamo of valoresCajaChica\">\n            <td colspan=\"2\">{{itemPrestamo.fecha}}</td>\n            <td>numero_documento</td>\n            <td colspan=\"2\">null</td>\n            <td colspan=\"6\">{{itemPrestamo.descripcion}}</td>\n            <td>{{itemPrestamo.cuota}}</td>\n            <td colspan=\"2\">{{itemPrestamo.monto_ingreso}}</td>\n            <td colspan=\"2\">{{itemPrestamo.monto_egreso}}</td>\n            <td colspan=\"3\">{{itemPrestamo.fecha}}</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n\n"
 
 /***/ }),
 
@@ -2928,7 +2928,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
-    //VARIABLES PARA LOS SELECT
     constructor(_sindicalService, _fechasService) {
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
@@ -2941,41 +2940,53 @@ let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
         this.valorMes = {
             descripcion: ''
         };
-        //actualizar caja chica
-        this.suc_res1 = false;
-        this.suc_res2 = false;
+        //VARIABLES PARA LOS SELECT
+        this.datosPrestamosSocios = {
+            fecha: '',
+            selectId: '',
+            socioId: '',
+            numeroDocumento: '',
+            archivoDocumento: '',
+            montoPrestamo: '',
+            checkAbono: null,
+            cuotas: '',
+            montoDia: '',
+            montoTri: '',
+            montoCon: '',
+            checkDia: null,
+            checkTri: null,
+            checkCon: null
+        };
     }
     ngOnInit() {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
-        this.cargar_select();
-    }
-    cargar_select() {
         //Cargar id del Año actual
         this._fechasService.getAnioActual().subscribe(response => {
-            this.anio = response;
+            this.idAnioActual = response;
             this.valorAnio.descripcion = this.idAnioActual.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
         }, error => {
             console.log(error);
         });
         //Cargar id del Mes actual
         this._fechasService.getMesActual().subscribe(response => {
-            this.mes = response;
+            this.idMesActual = response;
             this.valorMes.descripcion = this.idMesActual.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
+            this.refrescarTablaPrestamosClientes();
         }, error => {
             console.log(error);
         });
     }
-    listo_para_listar(res1, res2) {
-        if (res1 == true && res2 == true) {
-            //cargar tablitas funciones
-        }
+    refrescarTablaPrestamosClientes() {
+        this._sindicalService.getPrestramosSocios('1', '7').subscribe(response => {
+            this.valoresCajaChica = response;
+            console.log(this.valoresCajaChica);
+            console.log(this.valoresCajaChica.fecha);
+        }, error => {
+            console.log(error);
+        });
     }
 };
 TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3626,6 +3637,12 @@ let SindicalService = class SindicalService {
         console.log(body);
         return this._http.post(this.url + "ingresar_prestamo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
+            }) });
+    }
+    getPrestramosSocios(anio, mes) {
+        return this._http.get(this.url + "traer_prestamos/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
             }) });
     }
 };

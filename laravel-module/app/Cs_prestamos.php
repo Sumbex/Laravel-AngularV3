@@ -125,6 +125,7 @@ class Cs_prestamos extends Model
                             $prestamo->user_crea = Auth::user()->id;
                             $prestamo->cuota = $request->cuotas;
                             $prestamo->activo = 'S';
+                            $prestamo->estado_prestamo_id = 1;
 
                             if ($prestamo->save()) {
 
@@ -228,6 +229,7 @@ class Cs_prestamos extends Model
                                 $detalle->dia = $ultimoPrestamo->dia;
                                 $detalle->monto = $monto;
                                 $detalle->activo = 'S';
+                                $detalle->user_crea = Auth::user()->id;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
@@ -243,6 +245,7 @@ class Cs_prestamos extends Model
                             $prestamo->user_crea = Auth::user()->id;
                             $prestamo->cuota = $request->cuotas;
                             $prestamo->activo = 'S';
+                            $prestamo->estado_prestamo_id = 1;
 
                             if ($prestamo->save()) {
 
@@ -255,6 +258,7 @@ class Cs_prestamos extends Model
                                 $detalle->dia = $ultimoPrestamo->dia;
                                 $detalle->monto = $ultimoPrestamo->monto_egreso;
                                 $detalle->activo = 'S';
+                                $detalle->user_crea = Auth::user()->id;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
@@ -280,6 +284,7 @@ class Cs_prestamos extends Model
                         $prestamo->user_crea = Auth::user()->id;
                         $prestamo->cuota = 4;
                         $prestamo->activo = 'S';
+                        $prestamo->estado_prestamo_id = 1;
 
                         if ($prestamo->save()) {
                             $ultimoPrestamo = Cs_prestamos::all()->last();
@@ -292,6 +297,7 @@ class Cs_prestamos extends Model
                             $detalle->dia = $ultimoPrestamo->dia;
                             $detalle->monto = $ultimoPrestamo->monto_egreso;
                             $detalle->activo = 'S';
+                            $detalle->user_crea = Auth::user()->id;
 
                             if ($detalle->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
@@ -314,6 +320,7 @@ class Cs_prestamos extends Model
                         $prestamo->user_crea = Auth::user()->id;
                         $prestamo->cuota = 0;
                         $prestamo->activo = 'S';
+                        $prestamo->estado_prestamo_id = 1;
 
                         if ($prestamo->save()) {
                             $ultimoPrestamo = Cs_prestamos::all()->last();
@@ -326,6 +333,7 @@ class Cs_prestamos extends Model
                             $detalle->dia = $ultimoPrestamo->dia;
                             $detalle->monto = $ultimoPrestamo->monto_egreso;
                             $detalle->activo = 'S';
+                            $detalle->user_crea = Auth::user()->id;
 
                             if ($detalle->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
@@ -365,7 +373,7 @@ class Cs_prestamos extends Model
 
     protected function traerPrestamos($anio, $mes)
     {
-        //traer prestammos por tipos
+        /* //traer prestammos por tipos
         $prestamo = DB::table('cs_prestamos as p')
             ->select([
                 'p.id',
@@ -389,7 +397,9 @@ class Cs_prestamos extends Model
             ->orderBy('tp.descripcion', 'ASC')
             ->get();
 
-        return $prestamo;
+        return $prestamo; */
+
+
     }
 
     protected function verificarInicioMensual($anio, $mes)

@@ -226,15 +226,14 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto_egreso = $monto;
+                                $detalle->monto = $monto;
                                 $detalle->activo = 'S';
 
-                                if($detalle->save()){
+                                if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
-                                }else{
+                                } else {
                                     return ['estado' => 'failed', 'mensaje' => 'No Insertado salud abono'];
                                 }
-                                
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'No Insertado salud abono'];
                             }
@@ -246,7 +245,23 @@ class Cs_prestamos extends Model
                             $prestamo->activo = 'S';
 
                             if ($prestamo->save()) {
-                                return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
+
+                                $ultimoPrestamo = Cs_prestamos::all()->last();
+                                $detalle = new DetallePrestamo;
+
+                                $detalle->prestamo_id = $ultimoPrestamo->id;
+                                $detalle->anio_id = $ultimoPrestamo->anio_id;
+                                $detalle->mes_id = $ultimoPrestamo->mes_id;
+                                $detalle->dia = $ultimoPrestamo->dia;
+                                $detalle->monto = $ultimoPrestamo->monto_egreso;
+                                $detalle->activo = 'S';
+
+                                if ($detalle->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'No Insertado salud cuotas'];
+                                }
+                                //return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'No Insertado salud cuotas'];
                             }
@@ -267,7 +282,22 @@ class Cs_prestamos extends Model
                         $prestamo->activo = 'S';
 
                         if ($prestamo->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
+                            $ultimoPrestamo = Cs_prestamos::all()->last();
+
+                            $detalle = new DetallePrestamo;
+
+                            $detalle->prestamo_id = $ultimoPrestamo->id;
+                            $detalle->anio_id = $ultimoPrestamo->anio_id;
+                            $detalle->mes_id = $ultimoPrestamo->mes_id;
+                            $detalle->dia = $ultimoPrestamo->dia;
+                            $detalle->monto = $ultimoPrestamo->monto_egreso;
+                            $detalle->activo = 'S';
+
+                            if ($detalle->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No Insertado apuro cuotas'];
+                            }
                         } else {
                             return ['estado' => 'failed', 'mensaje' => 'No Insertado apuro cuotas'];
                         }
@@ -286,7 +316,22 @@ class Cs_prestamos extends Model
                         $prestamo->activo = 'S';
 
                         if ($prestamo->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
+                            $ultimoPrestamo = Cs_prestamos::all()->last();
+
+                            $detalle = new DetallePrestamo;
+
+                            $detalle->prestamo_id = $ultimoPrestamo->id;
+                            $detalle->anio_id = $ultimoPrestamo->anio_id;
+                            $detalle->mes_id = $ultimoPrestamo->mes_id;
+                            $detalle->dia = $ultimoPrestamo->dia;
+                            $detalle->monto = $ultimoPrestamo->monto_egreso;
+                            $detalle->activo = 'S';
+
+                            if ($detalle->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No Insertado aporte'];
+                            }
                         } else {
                             return ['estado' => 'failed', 'mensaje' => 'No Insertado aporte'];
                         }
@@ -330,7 +375,7 @@ class Cs_prestamos extends Model
                 'p.descripcion',
                 'p.cuota',
                 'p.monto_egreso'
-                
+
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')

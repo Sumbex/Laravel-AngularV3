@@ -87,8 +87,7 @@
       <!--Tabla del Modal Caja Chica-->
       <div id="printJS-table">
         <ngb-alert *ngIf="cajaChicaError" [dismissible]="false">
-          <strong>¡No existen ingresos en esta Fecha!</strong> Compruebe que el <strong>Año</strong> y <strong>mes</strong>
-          sean los correctos.
+          {{mensajeError}}
         </ngb-alert>
         <div class="row">
           <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año  <i class="fas fa-calendar-check"></i></strong></label>
@@ -112,7 +111,7 @@
               <tr>
                 <th colspan="11" style="background: #138D75;" class="ColorThCS">Tabla caja chica</th>
                 <th colspan="2" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
-                <td colspan="2"><strong>{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                <td colspan="2"><strong *ngIf="cajaChicaError">{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
               </tr>
               <tr>
                 <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i>  Fecha</th>
@@ -245,7 +244,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+    <button id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
     <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Guardar</button>
   </div>
 </ng-template>

@@ -380,7 +380,6 @@ class Cs_prestamos extends Model
 
     protected function traerTipoPrestamos()
     {
-
         $tipo = DB::table('tipo_prestamo')
             ->select([
                 'id',
@@ -392,13 +391,51 @@ class Cs_prestamos extends Model
         return $tipo;
     }
 
+    /* protected function prestamosTotales($anio, $mes)
+    {
+        $prestamos = $this->traerPrestamos($anio, $mes);
+        $tomar = true;
+
+        if ($prestamos['estado'] == 'success') {
+
+            $montoCierre =  $this->traerMontoCierrePrestamo($anio, $mes);
+
+            if($montoCierre['estado'] == 'success'){
+
+                for ($i = 0; $i < count($prestamos); $i++) {
+                    switch ($caja[$i]->definicion) {
+                        case 1:
+                            if ($tomar == true) {
+                                $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
+                                $tomar = false;
+                            } else {
+                                $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
+                            }
+                            break;
+                        case 2:
+                            if ($tomar == true) {
+                                $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
+                                $tomar = false;
+                            } else {
+                                $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
+                            }
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+                }
+            }
+        } else { }
+    } */
+
     protected function traerPrestamos($anio, $mes)
     {
         $prestamo = DB::table('detalle_prestamo as pd')
             ->select([
                 'pd.id',
                 'pd.prestamo_id',
-                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+                DB::raw("concat(pd.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
                 'p.numero_documento',
                 'p.descripcion',
                 'p.cuota',
@@ -411,14 +448,18 @@ class Cs_prestamos extends Model
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
             ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
             ->where([
-                'p.activo' => 'S',
-                'p.anio_id' => $anio,
-                'p.mes_id' => $mes,
+                'pd.activo' => 'S',
+                'pd.anio_id' => $anio,
+                'pd.mes_id' => $mes,
             ])
             ->orderby('pd.dia', 'ASC')
             ->get();
 
-        return $prestamo;
+        if (!$prestamo->isEmpty()) {
+            return ['estado' => 'success', 'prestamos' => $prestamo];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en este mes'];
+        }
     }
 
     protected function verificarInicioMensual($anio, $mes)
@@ -499,7 +540,7 @@ class Cs_prestamos extends Model
         ])->first();
 
         if (!empty($monto)) {
-            return $monto->monto;
+            return ['estado' => 'success', 'monto' => $monto->monto];
         } else {
             return ['estado' => 'failed', 'monto' => 0];
         }

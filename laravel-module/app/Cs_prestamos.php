@@ -231,7 +231,7 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto = $monto;
+                                $detalle->monto_egreso = $monto;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
 
@@ -260,7 +260,7 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto = $ultimoPrestamo->monto_egreso;
+                                $detalle->monto_egreso = $ultimoPrestamo->monto_egreso;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
 
@@ -313,7 +313,7 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto = $ultimoPrestamo->monto_egreso + $monto_total;
+                                $detalle->monto_egreso = $ultimoPrestamo->monto_egreso + $monto_total;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
 
@@ -352,7 +352,7 @@ class Cs_prestamos extends Model
                             $detalle->anio_id = $ultimoPrestamo->anio_id;
                             $detalle->mes_id = $ultimoPrestamo->mes_id;
                             $detalle->dia = $ultimoPrestamo->dia;
-                            $detalle->monto = $ultimoPrestamo->monto_egreso;
+                            $detalle->monto_egreso = $ultimoPrestamo->monto_egreso;
                             $detalle->activo = 'S';
                             $detalle->user_crea = Auth::user()->id;
 
@@ -394,31 +394,32 @@ class Cs_prestamos extends Model
 
     protected function traerPrestamos($anio, $mes)
     {
-        /* //traer prestammos por tipos
-        $prestamo = DB::table('cs_prestamos as p')
+        $prestamo = DB::table('detalle_prestamo as pd')
             ->select([
-                'p.id',
+                'pd.id',
+                'pd.prestamo_id',
                 DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
                 'p.numero_documento',
-                'p.archivo_documento',
                 'p.descripcion',
                 'p.cuota',
-                'p.monto_egreso'
-
+                'ep.descripcion as estado',
+                'pd.monto_egreso',
+                'pd.monto_ingreso'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')
-            ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo_id')
+            ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
             ->where([
                 'p.activo' => 'S',
                 'p.anio_id' => $anio,
                 'p.mes_id' => $mes,
             ])
-            ->orderby('p.dia', 'ASC')
-            ->orderBy('tp.descripcion', 'ASC')
+            ->orderby('pd.dia', 'ASC')
             ->get();
 
-        return $prestamo; */ }
+        return $prestamo;
+    }
 
     protected function verificarInicioMensual($anio, $mes)
     {

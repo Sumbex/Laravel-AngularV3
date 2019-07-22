@@ -150,4 +150,14 @@ class PrestamosController extends Controller
 	{
 		return Cs_prestamos::traerPrestamos($anio, $mes);
 	}
+
+	public function GuardarMontoCierrePrestamo(Request $request)
+	{
+		return Cs_prestamos::guardarMontoCierrePrestamo($request);
+	}
+
+	public function TraerMontoCierrePrestamo($anio, $mes)
+	{
+		return Cs_prestamos::traerMontoCierrePrestamo($anio, $mes);
+	}
 }

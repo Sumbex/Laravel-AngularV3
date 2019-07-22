@@ -13,30 +13,30 @@
               <!---Select Año-->
               <th>
                 <select id="anio_id" (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
-                  <option *ngFor="let a of anios" [value]="a.id">{{ a.descripcion }}</option>
+                  <option *ngFor="let itemAnio of selectAnio" [value]="itemAnio.id">{{ itemAnio.descripcion }}</option>
                 </select>
               </th>
               <!--Select Mes-->
               <th>
                   <select (change)="change_mes()" class="form-control form-control-sm" [(ngModel)]="mes" >
-                  <option *ngFor="let m of meses" [value]="m.id" >{{ m.descripcion }}</option>
+                  <option *ngFor="let itemMes of selectMes" [value]="itemMes.id" >{{ itemMes.descripcion }}</option>
                 </select>
               </th>
               <!--Buscar Socios-->
               <th style="background: #138D75">
-                <label class="align-self-end"> Buscar:</label>
+                <!--<label class="align-self-end"> Buscar:</label>-->
               </th>
               <td colspan="10" style="background: #138D75">
-                <input 
+               <!-- <input 
                   class="form-control form-control-sm" 
                   placeholder="Buscar por nombre..."
                   [(ngModel)]="search"
-                  >
+                  >-->
               </td>
               <td style="background: #138D75" colspan="2">
-                <a (click)="filtrar()" class="btn btn-outline-dark btn-sm" style="width: 35px; cursor: pointer;">
+                <!--<a (click)="filtrar()" class="btn btn-outline-dark btn-sm" style="width: 35px; cursor: pointer;">
                   <i class="fas fa-search" style="color:aliceblue; cursor: pointer;"></i>
-                </a>
+                </a>-->
               </td>
               <!--Ingresar Monto cierre mensual acumulado-->
               <th class="text-right" style="background: #138D75" colspan="3">

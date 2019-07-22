@@ -309,7 +309,7 @@
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
                             <input type="text" class="form-control" placeholder="Ingrese monto"
-                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo">
+                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcular($event)">
                           </div>
 
                         </div>
@@ -339,7 +339,7 @@
                           <label><strong>Interes del Prestamo (10%)</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled>%</button>
-                            <input type="text" class="form-control" placeholder="Ingese Interes" disabled>
+                            <input type="text" class="form-control" placeholder="Ingese Interes" name="inputGanancia" [(ngModel)]="inputGanancia" disabled>
                           </div>
 
                         </div>

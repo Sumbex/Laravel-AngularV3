@@ -6,6 +6,7 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
+import { SociosService } from 'src/app/servicios/socios.service';
 
 @Component({
   selector: 'app-tabla-sindical',
@@ -38,6 +39,8 @@ export class TablaSindicalComponent implements OnInit {
   selectDefinicion: Definicion[] = [];
   modalActualizar = null;
 
+  actualizarLoad:boolean=false;
+
 
   valorAnio: Anios = {
     descripcion: ''
@@ -64,6 +67,10 @@ export class TablaSindicalComponent implements OnInit {
   load:boolean=false;
   validarModalActualizar = null;
 
+  m_val = null;
+  closeResult: string;
+  pass:string = '';
+  buttonStatus = false;
 
 
 
@@ -71,7 +78,8 @@ export class TablaSindicalComponent implements OnInit {
      private modalService: NgbModal,
      private _sindicalService: SindicalService, 
      private _fechasService: AniosService,
-     private _validarusuario:ValidarUsuarioService) {
+     private _validarusuario:ValidarUsuarioService,
+     private _socios:SociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -202,47 +210,120 @@ export class TablaSindicalComponent implements OnInit {
 
   openActualizar(Actualizar) {
    this.modalActualizar = this.modalService.open(Actualizar,{ size: 'sm' });
+   this.usuario_logeado();
    
   }
   cerrarActualizar(){
     this.modalActualizar.close();
   }
 
+  //metodos para validar usuario-------------------------------
+
+  usuario_logeado(){
+      
+    this._validarusuario.usuario_logeado().subscribe((val : object ) => {
+          
+          this.user = val;
+
+      }, response => {console.log("POST call in error", response);},() => {
+             console.log("The POST success.");
+      });
+}
+
   //actualizar items
-  actualizar(id,campo,input){
+  actualizar(id,campo,input,validar){
     if(campo == "archivo"){
-     this.entrada = this.archivoDocumento; 
-    }else{
-      this.entrada = input.value;
-    }
-    if(this.entrada == ''){
-      this.alertEstado = true;
-      alert("ingrese datos porfavor!");
-      return false;
-    }
-    this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
-      response => {
-        if(response.estado == "success"){
-          alert(response.mensaje);
-          this.modalActualizar.close();
-        }
-        if(response.estado == "failed"){
-          alert(response.mensaje);
-          this.modalActualizar.close();   
-        }
+      if(campo == "undefined"){
+        alert("ingrese documento porfavor!")
+        return false;
       }
-    )
+      this.entrada = this.archivoDocumento; 
+     }else{
+       this.entrada = input.value;
+     }
+     if(this.entrada == ''){
+       alert("ingrese datos porfavor!");
+       return false;
+     }
+    this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
 
-    this.cierreMensualAnterior();
-    this.refrescarSindical();
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
 
-  }
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            
+          //si tiene acceso
+          if(val > 0){
+          
+            this.load = false;
+            this.buttonStatus = false;
+            this.pass = "";
+            
+           this.m_val.close();
+           
+                const form = new FormData();
+                form.append('id', id);
+                form.append('campo', campo);
+                form.append('valor', input.value);
 
-  onSelectImage(event) {
-     this.archivoDocumento = event.srcElement.files[0];
+                this.actualizarLoad = true;
+                this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
+                    response => {
+                      if (response.estado == "success") {
+                       alert(""+response.mensaje+"");
+                       this.modalActualizar.close();
+                       this.refrescarSindical();
+                       this.actualizarLoad = false;
+                       this.pass = "";
+                      }
+                      if (response.estado == "failed") {
+                       alert(""+response.mensaje+"");
+                       this.actualizarLoad = false;
+                       this.pass = "";
+                       return false;
+                      }
+                      
+                    }
+                  );
+
+
+
+          }else{
+            alert("Acceso denegado");
+            this.load = false;
+            this.buttonStatus = false;
+            this.pass = "";
+            this.m_val.close();
+            return false;
+          }
+
+      }, response => {console.log("POST call in error", response);},() => {
+             console.log("The POST success.");
+      });
+      return false;
+
+    
+  }, (reason) => {
+    console.log(`${reason}`);
+    //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+
+
+}
+
+
+//-------------------------------------------------------------------------------------------
+  onSelectImage(event) {  
+       this.archivoDocumento = event.srcElement.files[0];
   }
 
   actualizarCaja(){
+
     this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion,this.valorMes.descripcion).subscribe(
       response => {
         //console.log(response);
@@ -259,47 +340,7 @@ export class TablaSindicalComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    );
+    ); 
   }
 
-  //validar usuario
-    usuario_logeado(){
-      
-    this._validarusuario.usuario_logeado().subscribe((val : object ) => {
-          
-          this.user = val;
-
-      }, response => {console.log("POST call in error", response);},() => {
-             console.log("The POST success.");
-      });
-      }
-
-    btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
-      this.load = true;
-      const formData = new FormData();
-      formData.append('rut', $rut.value);
-      formData.append('password', $password.value);
-
-      this._validarusuario.validar_usuario(formData).subscribe((val) => {
-          
-          if(val > 0){//si tiene acceso;
-          
-            this.load = false;
-            //this.ingresoFormulario();
-            this.validarModalActualizar.close();
-          }else{
-            alert("Acceso denegado");
-            this.load = false;
-            this.validarModalActualizar.close();
-          }
-
-      }, response => {console.log("POST call in error", response);},() => {
-            console.log("The POST success.");
-      });
-    }
-
-    validar_usuario(modalUsuario){
-    this.validarModalActualizar = this.modalService.open(modalUsuario, { size: 'sm' });
-    }
-    
 }

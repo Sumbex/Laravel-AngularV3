@@ -131,7 +131,8 @@ class PrestamosController extends Controller
 
 	//------------------------------------------------->BRYANM
 
-	public function IngresarPrestamo(Request $request){
+	public function IngresarPrestamo(Request $request)
+	{
 		return Cs_prestamos::ingresarPrestamo($request);
 	}
 
@@ -143,5 +144,10 @@ class PrestamosController extends Controller
 	public function TraerSocio($rut)
 	{
 		return Cs_prestamos::traerSocio($rut);
+	}
+
+	public function TraerPrestamos($anio, $mes)
+	{
+		return Cs_prestamos::traerPrestamos($anio, $mes);
 	}
 }

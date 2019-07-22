@@ -130,13 +130,13 @@
 
                   <div class="form-group funkyradio">
                     <div class="funkyradio-success">
-                      <input type="radio" name="radio" id="radio1" value="true" class="form-control form-control-sm" name="abono"
+                      <input type="radio" name="radio" id="radio1" value=true class="form-control form-control-sm" name="abono"
                       #abono="ngModel" [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(true)"/>
                       <label for="radio1">Si</label>
                       <p>{{datosEnvioPrestamo.checkAbono}}</p><!--**********************************-->
                     </div>
                     <div class="funkyradio-success">
-                      <input type="radio" name="radio" id="radio2" value="false" class="form-control form-control-sm" name="abono"
+                      <input type="radio" name="radio" id="radio2" value=false class="form-control form-control-sm" name="abono"
                       #abono="ngModel" [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(false)"/>
                       <label for="radio2">No</label>
                     </div>
@@ -155,17 +155,17 @@
                   <strong>Tipos de Abono</strong>
 
                   <div class="funkyradio-success">
-                    <input type="checkbox" name="datosEnvioPrestamo.checkDia" [(ngModel)]="datosEnvioPrestamo.checkDia" id="checkbox1" (click)="changeCheckAbono(1)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
+                    <input [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'" type="checkbox" name="datosEnvioPrestamo.checkDia" [(ngModel)]="datosEnvioPrestamo.checkDia" id="checkbox1" (click)="changeCheckAbono(1)"/>
                     <label for="checkbox1">Dia de Sueldo</label>
                     <p>{{datosEnvioPrestamo.checkDia}}</p>
                   </div>
                   <div class="funkyradio-success">
-                    <input type="checkbox" name="datosEnvioPrestamo.checkTri" [(ngModel)]="datosEnvioPrestamo.checkTri" id="checkbox2" (click)="changeCheckAbono(2)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
+                    <input [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'" type="checkbox" name="datosEnvioPrestamo.checkTri" [(ngModel)]="datosEnvioPrestamo.checkTri" id="checkbox2" (click)="changeCheckAbono(2)"/>
                     <label for="checkbox2">Trimestral</label>
                     <p>{{datosEnvioPrestamo.checkTri}}</p>
                   </div>
                   <div class="funkyradio-success">
-                    <input type="checkbox" name="datosEnvioPrestamo.checkCon" [(ngModel)]="datosEnvioPrestamo.checkCon" id="checkbox3" (click)="changeCheckAbono(3)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
+                    <input [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'" type="checkbox" name="datosEnvioPrestamo.checkCon" [(ngModel)]="datosEnvioPrestamo.checkCon" id="checkbox3" (click)="changeCheckAbono(3)"/>
                     <label for="checkbox3">Termino Conflicto</label>
                     <p>{{datosEnvioPrestamo.checkCon}}</p>
                   </div>

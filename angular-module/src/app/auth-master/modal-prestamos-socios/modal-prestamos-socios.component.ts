@@ -50,7 +50,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     numeroDocumento: "",
     archivoDocumento: "",
     montoPrestamo: "",
-    checkAbono: "false",
+    checkAbono: false,
     cuotas: "",
     montoDia: "",
     montoTri: "",
@@ -119,6 +119,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
 
   changeRadioAbono(val){
     console.log(val);
+    console.log(this.datosEnvioPrestamo.checkAbono);
     if(val == false){
       this.datosEnvioPrestamo.checkDia = false;
       this.datosEnvioPrestamo.checkTri = false;

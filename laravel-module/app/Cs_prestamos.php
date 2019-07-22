@@ -395,7 +395,7 @@ class Cs_prestamos extends Model
         return $tipo;
     }
 
-    /* protected function prestamosTotales($anio, $mes)
+    protected function prestamosTotales($anio, $mes)
     {
         $prestamos = $this->traerPrestamos($anio, $mes);
         $tomar = true;
@@ -404,34 +404,37 @@ class Cs_prestamos extends Model
 
             $montoCierre =  $this->traerMontoCierrePrestamo($anio, $mes);
 
-            if($montoCierre['estado'] == 'success'){
+            // dd($montoCierre['monto']);
 
-                for ($i = 0; $i < count($prestamos); $i++) {
-                    switch ($caja[$i]->definicion) {
-                        case 1:
-                            if ($tomar == true) {
-                                $caja[$i]->saldo_actual = $this->saldo + $caja[$i]->monto_ingreso;
-                                $tomar = false;
-                            } else {
-                                $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
-                            }
-                            break;
-                        case 2:
-                            if ($tomar == true) {
-                                $caja[$i]->saldo_actual = $this->saldo - $caja[$i]->monto_egreso;
-                                $tomar = false;
-                            } else {
-                                $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
-                            }
-                            break;
-                        default:
-                            # code...
-                            break;
-                    }
+            for ($i = 0; $i < count($prestamos['prestamos']); $i++) {
+                switch ($prestamos['prestamos'][$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $prestamos['prestamos'][$i]->saldo_actual = $montoCierre['monto'] + $prestamos['prestamos'][$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $prestamos['prestamos'][$i]->saldo_actual = $prestamos['prestamos'][$i - 1]->saldo_actual +  $prestamos['prestamos'][$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $prestamos['prestamos'][$i]->saldo_actual = $montoCierre['monto'] -  $prestamos['prestamos'][$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $prestamos['prestamos'][$i]->saldo_actual =  $prestamos['prestamos'][$i - 1]->saldo_actual -  $prestamos['prestamos'][$i]->monto_egreso;
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
                 }
             }
-        } else { }
-    } */
+
+            return $prestamos['prestamos'];
+        } else {
+            return $prestamos;
+        }
+    }
 
     protected function traerPrestamos($anio, $mes)
     {

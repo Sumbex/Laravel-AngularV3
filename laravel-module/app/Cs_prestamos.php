@@ -234,6 +234,7 @@ class Cs_prestamos extends Model
                                 $detalle->monto_egreso = $monto;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
+                                $detalle->definicion = 2;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
@@ -263,6 +264,7 @@ class Cs_prestamos extends Model
                                 $detalle->monto_egreso = $ultimoPrestamo->monto_egreso;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
+                                $detalle->definicion = 2;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
@@ -316,6 +318,7 @@ class Cs_prestamos extends Model
                                 $detalle->monto_egreso = $ultimoPrestamo->monto_egreso + $monto_total;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
+                                $detalle->definicion = 2;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
@@ -355,6 +358,7 @@ class Cs_prestamos extends Model
                             $detalle->monto_egreso = $ultimoPrestamo->monto_egreso;
                             $detalle->activo = 'S';
                             $detalle->user_crea = Auth::user()->id;
+                            $detalle->definicion = 2;
 
                             if ($detalle->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
@@ -441,7 +445,8 @@ class Cs_prestamos extends Model
                 'p.cuota',
                 'ep.descripcion as estado',
                 'pd.monto_egreso',
-                'pd.monto_ingreso'
+                'pd.monto_ingreso',
+                'pd.definicion'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')

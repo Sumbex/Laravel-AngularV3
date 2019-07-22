@@ -37,6 +37,8 @@ class CsDetalleCampingController extends Controller
     		
 
     		$tomar = true;
+            $ingreso = 0;
+            $egreso = 0;
 
 			for ($i=0; $i < count($listar); $i++) { 
 						//dump('lol: '.$listar[$i]->definicion);
@@ -69,6 +71,11 @@ class CsDetalleCampingController extends Controller
 								}
 							break;
 						}
+
+                $ingreso = $ingreso + $listar[$i]->monto_ingreso;   
+                $egreso = $egreso + $listar[$i]->monto_egreso; 
+                $total = $listar[$i]->saldo_actual_raw ;   
+
 			}
 
 			foreach ($listar as $key) {
@@ -77,7 +84,14 @@ class CsDetalleCampingController extends Controller
     			$key['saldo_actual_raw'] = number_format($key->saldo_actual_raw,0,'.',',');
 
     		}
-    		return $listar;
+    		return [
+              'tabla' => $listar,
+              'resumen' => [
+                    'ingreso' => number_format($ingreso,0,'.',','),
+                    'egreso' => number_format($egreso,0,'.',','),
+                    'total' => number_format($total,0,'.',',')
+              ]
+            ];
     	}
     }
 

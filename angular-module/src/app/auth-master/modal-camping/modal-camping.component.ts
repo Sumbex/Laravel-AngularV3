@@ -19,6 +19,7 @@ export class ModalCampingComponent implements OnInit {
   meses;
 
   detallecamping;
+  resumen:any = [ "ingreso", "egreso","total" ];
   monto;
 
 
@@ -83,7 +84,8 @@ export class ModalCampingComponent implements OnInit {
   listar_detalle_camping(){
     // listar_detalle_camping/{anio}/{mes}
         this._camping.getLista(this.anio, this.mes).subscribe((val) => {
-              this.detallecamping = val;
+              this.detallecamping = val.tabla;
+              this.resumen = val.resumen;
                 
               
           }, response => {console.log("POST call in error", response);},() => {

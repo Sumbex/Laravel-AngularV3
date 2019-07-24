@@ -37,6 +37,8 @@ export class FormularioSindicalComponent implements OnInit {
   load:boolean=false;
   validarFormSindical = null;
 
+  loadCajaChica:boolean = false;
+
   constructor(private _sindicalService: SindicalService,
     private _validarusuario:ValidarUsuarioService,
     config: NgbModalConfig, 
@@ -106,13 +108,16 @@ export class FormularioSindicalComponent implements OnInit {
     if(this.datosSindicales.tipoCuentaSindicato == '3'){
       var anio = this.datosSindicales.fecha.substring(0,4);
       var mes = this.datosSindicales.fecha.substring(5,7);
+      this.loadCajaChica = true;
       this._sindicalService.getCalcularCajaChica(anio,mes).subscribe(
         response => {
           //console.log(response);
           if(response.estado == "success"){
             this.datosSindicales.monto = response.monto;
+            this.loadCajaChica = false;
           }else{
             this.datosSindicales.monto = null;
+            this.loadCajaChica = false;
           }
         },
         error => {

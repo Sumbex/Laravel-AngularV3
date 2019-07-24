@@ -12,7 +12,7 @@ class CsDetalleCampingController extends Controller
     public function listar_detalle_camping($anio, $mes, $monto = 0)
     {
     	$monto = $this->traer_cierre_monto_detalle_camping_cs($anio, $mes);
-    	
+    	$total = 0;
 
     	$listar = Cuentasindicato::select([
     			DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),

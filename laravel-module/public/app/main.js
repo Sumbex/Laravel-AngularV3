@@ -1796,6 +1796,12 @@ let FormularioSociosComponent = class FormularioSociosComponent {
             }) }).subscribe((val) => {
             if (val.estado == "success") {
                 alert("" + val.mensaje + "");
+                this.rut = '';
+                this.fecha_nacimiento = '';
+                this.fecha_ingreso = '';
+                this.nombres = '';
+                this.a_paterno = '';
+                this.a_materno = '';
                 return false;
             }
             if (val.estado == "failed") {

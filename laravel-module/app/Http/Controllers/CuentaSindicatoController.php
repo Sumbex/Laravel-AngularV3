@@ -24,7 +24,7 @@ class CuentaSindicatoController extends Controller
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_sindicato' => 'required',
 	            'monto' => 'required',
-	            'archivo' => 'required|mimes:doc,pdf,docx',
+	            'archivo' => 'required|mimes:pdf',
 	        ],
 	        [
 	        	'fecha.required' => 'La fecha es necesaria',

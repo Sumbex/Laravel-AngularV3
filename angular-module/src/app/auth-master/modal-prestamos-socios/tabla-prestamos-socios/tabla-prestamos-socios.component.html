@@ -12,14 +12,14 @@
             <tr>
               <!---Select Año-->
               <th>
-                <select id="anio_id" class="form-control form-control-sm" [(ngModel)]="valorAnio.descripcion">
-                  <option *ngFor="let itemAnio of selectAnio" [value]="itemAnio.id">{{ itemAnio.descripcion }}</option>
+                <select (change)="changeAnio($event)" class="form-control form-control-sm" [(ngModel)]="selectAnio.id">
+                  <option *ngFor="let itemAnio of selectAnio" [value]="itemAnio.id">{{itemAnio.descripcion}}</option>
                 </select>
               </th>
               <!--Select Mes-->
               <th>
-                  <select class="form-control form-control-sm" [(ngModel)]="valorMes.descripcion" >
-                  <option *ngFor="let itemMes of selectMes" [value]="itemMes.id" >{{ itemMes.descripcion }}</option>
+                  <select (change)="changeMes($event)" class="form-control form-control-sm" [(ngModel)]="selectMes.id" >
+                  <option *ngFor="let itemMes of selectMes" [value]="itemMes.id" >{{itemMes.descripcion}}</option>
                 </select>
               </th>
               <!--Buscar Socios-->
@@ -67,14 +67,14 @@
         </thead>
         <!--casillas para llenar de la BD-->
         <tbody>
-          <tr *ngFor="let itemPrestamo of valoresCajaChica">
+          <tr *ngFor="let itemPrestamo of valoresPrestamos">
             <td colspan="2">{{itemPrestamo.fecha}}</td>
-            <td>numero_documento</td>
+            <td>{{itemPrestamo.numero_documento}}</td>
             <td colspan="2">null</td>
             <td colspan="6">{{itemPrestamo.descripcion}}</td>
             <td>{{itemPrestamo.cuota}}</td>
-            <td colspan="2">{{itemPrestamo.monto_ingreso}}</td>
-            <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+            <td colspan="3">{{itemPrestamo.monto_ingreso}}</td>
+            <td colspan="3">{{itemPrestamo.monto_egreso}}</td>
             <td colspan="3">{{itemPrestamo.saldo_actual}}</td>
           </tr>
         </tbody>

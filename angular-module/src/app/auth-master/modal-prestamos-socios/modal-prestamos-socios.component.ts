@@ -79,6 +79,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
       this.datosTipoPrestamo.descripcion = "salud";
     }else if(this.datosTipoPrestamo.id == 2){
       this.datosTipoPrestamo.descripcion = "apuroEconomico";
+      this.datosEnvioPrestamo.montoPrestamo = "100000";
+      this.datosEnvioPrestamo.cuotas = "4";
     }else if(this.datosTipoPrestamo.id == 3){
       this.datosTipoPrestamo.descripcion = "aporteEconomico";
     }
@@ -142,10 +144,14 @@ export class ModalPrestamosSociosComponent implements OnInit {
    );
   }
 
-  calcular(event){
+  calcularInteres(event){
     let valor = Math.ceil(event.target.value * 0.10);
     this.inputGanancia = valor;
     console.log(this.inputGanancia);
+  }
+
+  calcularPrestamoRestante(event){
+    let valor = (this.datosEnvioPrestamo.montoPrestamo);
   }
 
 }

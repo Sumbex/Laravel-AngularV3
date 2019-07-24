@@ -13,55 +13,37 @@ import { Prestamos } from 'src/app/modelos/prestamos.model';
 })
 export class TablaPrestamosSociosComponent implements OnInit {
 
-  //VARIABLES PARA LOS SELECT
-  selectAnio: Anios[] = [];
-  selectMes: Meses[] = [];
-  idAnioActual;
-  idMesActual;
-
-  valorAnio: Anios = {
+  //objetos con valores de los select para ser manipulados
+  selectAnio = {
+    id: '1',
     descripcion: ''
   }
 
-  valorMes: Meses = {
+  selectMes = {
+    id: '1',
     descripcion: ''
   }
-  //VARIABLES PARA LOS SELECT
 
-  datosPrestamosSocios:Prestamos = {
-    fecha: '',
-    selectId: '',
-    socioId: '',
-    numeroDocumento: '',
-    archivoDocumento: '',
-    montoPrestamo: '',
-    checkAbono: null,
-    cuotas: '',
-    montoDia: '',
-    montoTri: '',
-    montoCon: '',
-    checkDia: null,
-    checkTri: null,
-    checkCon: null
-  };
+  //variable que almacena todos los prestamos que tiene el servidor
+  valoresPrestamos;
 
-  valoresCajaChica;
-
-  constructor(private _sindicalService: SindicalService, 
-    private _fechasService: AniosService) { }
+  constructor(private _sindicalService: SindicalService, private _fechasService: AniosService) { }
 
   ngOnInit() {
     //Cargar Años
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    this.selectAnio.id = '1';
 
     //Cargar Meses
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
+    this.selectMes.id = '1';
 
     //Cargar id del Año actual
     this._fechasService.getAnioActual().subscribe(
       response => {
-        this.idAnioActual = response;
-        this.valorAnio.descripcion = this.idAnioActual.id;
+        let AnioActual;
+        AnioActual = response;
+        this.selectAnio.id = AnioActual.id;
       },
       error => {
         console.log(error);
@@ -71,8 +53,9 @@ export class TablaPrestamosSociosComponent implements OnInit {
     //Cargar id del Mes actual
     this._fechasService.getMesActual().subscribe(
       response => {
-        this.idMesActual = response;
-        this.valorMes.descripcion = this.idMesActual.id;
+        let mesActual;
+        mesActual = response;
+        this.selectMes.id = mesActual.id;
         this.refrescarTablaPrestamosClientes();
       },
       error => {
@@ -81,16 +64,31 @@ export class TablaPrestamosSociosComponent implements OnInit {
     )
   }
 
-  refrescarTablaPrestamosClientes(){
-    this._sindicalService.getPrestramosSocios('1','7').subscribe(
+  refrescarTablaPrestamosClientes() {
+    this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(
       response => {
-        this.valoresCajaChica = response;
-        console.log(this.valoresCajaChica);
-        console.log(this.valoresCajaChica.fecha);
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.valoresPrestamos = null;
+          alert(response.mensaje);
+        } else {
+          this.valoresPrestamos = response;
+        }
       },
       error => {
         console.log(error);
       }
     )
+  }
+
+  changeAnio(evento) {
+    this.selectAnio.id = evento.target.value;
+    console.log(this.selectAnio.id);
+    this.refrescarTablaPrestamosClientes();
+  }
+
+  changeMes(evento) {
+    this.selectMes.id = evento.target.value;
+    console.log(this.selectMes.id);
+    this.refrescarTablaPrestamosClientes();
   }
 }

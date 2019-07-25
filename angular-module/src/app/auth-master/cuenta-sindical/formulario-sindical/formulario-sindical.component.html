@@ -44,7 +44,8 @@
                 class="form-control form-control-sm"  
                 name="fecha" 
                 #fecha="ngModel"
-                [(ngModel)]="datosSindicales.fecha">
+                [(ngModel)]="datosSindicales.fecha"
+                required>
               </div>
             </div>
 
@@ -94,6 +95,10 @@
                 #monto="ngModel"
                 [(ngModel)]="datosSindicales.monto" 
                 required>
+                <div *ngIf="loadCajaChica">
+                  <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                  <label>Calculando Monto...</label>
+              </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -117,7 +122,9 @@
                 <i class="fas fa-info-circle" placement="right" ngbTooltip="Para guardar debe completar todos los campos."></i>
               </label><br>
               <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-                [disabled]="loginForm.invalid"><i class="fas fa-save"></i> Guardar</button>
+                [disabled]="loginForm.invalid"><i class="fas fa-save"></i> Guardar
+                <img *ngIf="guardarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button>
             </div>
 
             <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3">
@@ -142,13 +149,13 @@
   <div class="modal-body">
     <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
     <br>
-    <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+    <input #password autocomplete="false" class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
     <br>
   <button class="btn btn-success btn-block btn-sm"
     (click)="btn_validar_usuario(rut,password,validar);">
     Validar
     </button>
-    <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    <img *ngIf="load" padding="50px" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
   </div>
 </ng-template>
 

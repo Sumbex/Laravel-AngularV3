@@ -6,6 +6,7 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Definicion } from 'src/app/modelos/definicion.model';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
+import { SociosService } from 'src/app/servicios/socios.service';
 
 @Component({
   selector: 'app-tabla-sindical',
@@ -38,6 +39,9 @@ export class TablaSindicalComponent implements OnInit {
   selectDefinicion: Definicion[] = [];
   modalActualizar = null;
 
+  actualizarLoad:boolean=false;
+  actualizarRecalcular:boolean = false;
+
 
   valorAnio: Anios = {
     descripcion: ''
@@ -64,6 +68,10 @@ export class TablaSindicalComponent implements OnInit {
   load:boolean=false;
   validarModalActualizar = null;
 
+  m_val = null;
+  closeResult: string;
+  pass:string = '';
+  buttonStatus = false;
 
 
 
@@ -71,7 +79,8 @@ export class TablaSindicalComponent implements OnInit {
      private modalService: NgbModal,
      private _sindicalService: SindicalService, 
      private _fechasService: AniosService,
-     private _validarusuario:ValidarUsuarioService) {
+     private _validarusuario:ValidarUsuarioService,
+     private _socios:SociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -132,16 +141,12 @@ export class TablaSindicalComponent implements OnInit {
 
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
-
-    
     this.cierreMensualAnterior();
     this.refrescarSindical();
   }
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
-
-    
     this.cierreMensualAnterior();
     this.refrescarSindical();
   }
@@ -158,6 +163,7 @@ export class TablaSindicalComponent implements OnInit {
           this.prestamo = [];
           this.camping = [];
           this.resultado = [];
+          this.actualizarMontoCajaChica = '';
     this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
         if (response == null) {
@@ -168,6 +174,7 @@ export class TablaSindicalComponent implements OnInit {
           this.prestamo = [];
           this.camping = [];
           this.resultado = [];
+          this.actualizarMontoCajaChica = '';
         }else{
           this.tablaSindical = response;
           this.fijos = this.tablaSindical.fijo;
@@ -202,68 +209,17 @@ export class TablaSindicalComponent implements OnInit {
 
   openActualizar(Actualizar) {
    this.modalActualizar = this.modalService.open(Actualizar,{ size: 'sm' });
+   this.usuario_logeado();
    
   }
   cerrarActualizar(){
     this.modalActualizar.close();
+    this.actualizarMontoCajaChica = '';
   }
 
-  //actualizar items
-  actualizar(id,campo,input){
-    if(campo == "archivo"){
-     this.entrada = this.archivoDocumento; 
-    }else{
-      this.entrada = input.value;
-    }
-    if(this.entrada == ''){
-      this.alertEstado = true;
-      alert("ingrese datos porfavor!");
-      return false;
-    }
-    this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
-      response => {
-        if(response.estado == "success"){
-          alert(response.mensaje);
-          this.modalActualizar.close();
-        }
-        if(response.estado == "failed"){
-          alert(response.mensaje);
-          this.modalActualizar.close();   
-        }
-      }
-    )
+  //metodos para validar usuario-------------------------------
 
-    this.cierreMensualAnterior();
-    this.refrescarSindical();
-
-  }
-
-  onSelectImage(event) {
-     this.archivoDocumento = event.srcElement.files[0];
-  }
-
-  actualizarCaja(){
-    this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion,this.valorMes.descripcion).subscribe(
-      response => {
-        //console.log(response);
-        if(response.estado == "success"){
-          if(response.monto == 0){
-            alert("no existe monto el mes anterior");
-            response.monto = " ";
-          }
-          this.actualizarMontoCajaChica = response.monto;
-        }else{
-          this.actualizarMontoCajaChica = null;
-        }
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
-  }
-
-  //validar usuario
-    usuario_logeado(){
+  usuario_logeado(){
       
     this._validarusuario.usuario_logeado().subscribe((val : object ) => {
           
@@ -272,34 +228,123 @@ export class TablaSindicalComponent implements OnInit {
       }, response => {console.log("POST call in error", response);},() => {
              console.log("The POST success.");
       });
-      }
+}
 
-    btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
+  //actualizar items
+  actualizar(id,campo,input,validar){
+    if(campo == "archivo"){
+      if(campo == "undefined"){
+        alert("ingrese documento porfavor!")
+        return false;
+      }
+      this.entrada = this.archivoDocumento; 
+     }else{
+       this.entrada = input.value;
+     }
+     if(this.entrada == ''){
+       alert("ingrese datos porfavor!");
+       return false;
+     }
+    this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
       this.load = true;
+      this.buttonStatus = true;
+
       const formData = new FormData();
-      formData.append('rut', $rut.value);
-      formData.append('password', $password.value);
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
 
       this._validarusuario.validar_usuario(formData).subscribe((val) => {
-          
-          if(val > 0){//si tiene acceso;
+            
+          //si tiene acceso
+          if(val > 0){
           
             this.load = false;
-            //this.ingresoFormulario();
-            this.validarModalActualizar.close();
+            this.buttonStatus = false;
+            this.pass = "";
+            
+           this.m_val.close();
+           
+                const form = new FormData();
+                form.append('id', id);
+                form.append('campo', campo);
+                form.append('valor', input.value);
+
+                this.actualizarLoad = true;
+                this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
+                    response => {
+                      if (response.estado == "success") {
+                       alert(""+response.mensaje+"");
+                       this.modalActualizar.close();
+                       this.refrescarSindical();
+                       this.actualizarLoad = false;
+                       this.pass = "";
+                      }
+                      if (response.estado == "failed") {
+                       alert(""+response.mensaje+"");
+                       this.actualizarLoad = false;
+                       this.pass = "";
+                       return false;
+                      }
+                      
+                    }
+                  );
+
+
+
           }else{
             alert("Acceso denegado");
             this.load = false;
-            this.validarModalActualizar.close();
+            this.buttonStatus = false;
+            this.pass = "";
+            this.m_val.close();
+            return false;
           }
 
       }, response => {console.log("POST call in error", response);},() => {
-            console.log("The POST success.");
+             console.log("The POST success.");
       });
-    }
+      return false;
 
-    validar_usuario(modalUsuario){
-    this.validarModalActualizar = this.modalService.open(modalUsuario, { size: 'sm' });
-    }
     
+  }, (reason) => {
+    console.log(`${reason}`);
+    //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+
+
+}
+
+
+//-------------------------------------------------------------------------------------------
+  onSelectImage(event) {  
+       this.archivoDocumento = event.srcElement.files[0];
+  }
+
+  actualizarCaja(){
+    
+    this.actualizarRecalcular = true;
+    this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion,this.valorMes.descripcion).subscribe(
+      response => {
+        //console.log(response);
+        if(response.estado == "success"){
+          if(response.monto == 0){
+            alert("no existe monto el mes anterior");
+            response.monto = " ";
+            this.actualizarRecalcular = false;
+          }
+          this.actualizarMontoCajaChica = response.monto;
+          this.actualizarRecalcular = false;
+        }else{
+          this.actualizarMontoCajaChica = null;
+          this.load = false;
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+  }
+
 }

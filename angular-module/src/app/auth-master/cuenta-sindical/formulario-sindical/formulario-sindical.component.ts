@@ -31,10 +31,13 @@ export class FormularioSindicalComponent implements OnInit {
     definicion: '2',
     monto: null
   }
+  guardarLoad:boolean=false;
 //validar user 
   user:object=[];
   load:boolean=false;
   validarFormSindical = null;
+
+  loadCajaChica:boolean = false;
 
   constructor(private _sindicalService: SindicalService,
     private _validarusuario:ValidarUsuarioService,
@@ -64,21 +67,31 @@ export class FormularioSindicalComponent implements OnInit {
   }
 
   ingresoFormulario() {
+    this.guardarLoad = true;
       this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
         response => {
-          console.log(response);
-          this.datosSindicales.fecha = '';
-          this.datosSindicales.nDocumento = '';
-          this.datosSindicales.descripcion = '';
-          this.datosSindicales.monto = null;
-          alert("Guardado con exito");
-        },
+          if(response.estado == "success"){
+            this.datosSindicales.fecha = '';
+            this.datosSindicales.nDocumento = '';
+            this.datosSindicales.descripcion = '';
+            this.datosSindicales.monto = null;
+            alert(response.mensaje);  
+            this.guardarLoad = false;
+
+          }if(response.estado == "failed"){
+            alert(response.mensaje);
+            this.guardarLoad = false;
+
+          }if(response.estado == "failed_v"){
+            alert("error de ingreso, verifique que los datos esten bien ingresados y no duplicados ya en la base de datos.");
+            this.guardarLoad = false;
+        }
         error => {
           console.log(<any>error);
         }
-      );
-    }
-  
+      }
+    ); 
+  }
 
   onSelectImage(event) {
     this.datosSindicales.archivoDocumento = event.srcElement.files[0];
@@ -95,13 +108,16 @@ export class FormularioSindicalComponent implements OnInit {
     if(this.datosSindicales.tipoCuentaSindicato == '3'){
       var anio = this.datosSindicales.fecha.substring(0,4);
       var mes = this.datosSindicales.fecha.substring(5,7);
+      this.loadCajaChica = true;
       this._sindicalService.getCalcularCajaChica(anio,mes).subscribe(
         response => {
           //console.log(response);
           if(response.estado == "success"){
             this.datosSindicales.monto = response.monto;
+            this.loadCajaChica = false;
           }else{
             this.datosSindicales.monto = null;
+            this.loadCajaChica = false;
           }
         },
         error => {
@@ -132,9 +148,9 @@ export class FormularioSindicalComponent implements OnInit {
         formData.append('password', $password.value);
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
-            
+
             if(val > 0){//si tiene acceso;
-            
+              
               this.load = false;
               this.ingresoFormulario(); 
               this.validarFormSindical.close();
@@ -152,7 +168,10 @@ export class FormularioSindicalComponent implements OnInit {
 
 
       validar_usuario(modalUsuario){
+      //var passwordVacio = <HTMLInputElement>document.getElementById('password');
+      //passwordVacio.value ='';
       this.validarFormSindical = this.modalService2.open(modalUsuario, { size: 'sm' });
+    
       }
 
 }

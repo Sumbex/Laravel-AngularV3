@@ -42,6 +42,8 @@
                     <th colspan="11" style="background: #138D75">Cuenta Sindical</th>
                     <th style="background: #229954;">Cierre Mensual Acumulado</th>
                 </tr>
+              </thead>
+              <thead>
                 <!--Fijos-->
                 <tr class="text-center">  
                   <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
@@ -74,7 +76,9 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'fecha',fechaFijo)">Guardar</button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'fecha',fechaFijo,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"> 
+                          </button>
                         </div>
                     </ng-template> 
                       
@@ -102,7 +106,9 @@
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                      <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'numero_documento',numeroDocFijo)">Guardar</button>
+                      <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'numero_documento',numeroDocFijo,modalUsuario)">Guardar
+                        <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                      </button>
                     </div>
                     </ng-template> 
                   </td>
@@ -129,7 +135,9 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'archivo',DocFijo)">Guardar</button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'archivo',DocFijo,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
                             </div>
                         </ng-template>
                         <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
@@ -159,7 +167,9 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'descripcion',descripcionFijo)">Guardar</button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'descripcion',descripcionFijo,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                          </button>
                         </div>
                     </ng-template> 
                   </td>
@@ -184,7 +194,9 @@
   
                             <div class="modal-footer">
                               <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'definicion',definicionFijo)">Guardar</button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'definicion',definicionFijo,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
                             </div> <hr>
   
                             <div class="form-group">
@@ -245,7 +257,9 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'fecha',fechaVariable)">Guardar</button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'fecha',fechaVariable,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
                             </div>
 
                       </ng-template> 
@@ -273,7 +287,9 @@
     
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'numero_documento',numeroDocVariable)">Guardar</button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'numero_documento',numeroDocVariable,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                          </button>
                         </div>
                       </ng-template> 
                     </td>
@@ -300,7 +316,9 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'archivo',DocVariable)">Guardar</button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'archivo',DocVariable,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
                               </div>
                           </ng-template>
                           <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
@@ -310,7 +328,7 @@
                     <td scope="col" colspan="4" (click)="openActualizar(descripcionVariableModal)">
                       {{itemVariable.descripcion}}
                       <ng-template #descripcionVariableModal let-c="close" let-d="dismiss">
-                          <div class="modal-header">
+                          <div class="modal-header" id="demoFont">
                             <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
                             <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                               <span aria-hidden="true">&times;</span>
@@ -330,7 +348,9 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                            <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'descripcion',descripcionVariable)">Guardar</button>
+                            <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'descripcion',descripcionVariable,modalUsuario)">Guardar
+                              <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </div>
                       </ng-template> 
                     </td>
@@ -355,7 +375,9 @@
     
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'definicion',definicionVariable)">Guardar</button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'definicion',definicionVariable,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
                               </div> <hr>
     
                               <div class="form-group">
@@ -369,7 +391,9 @@
     
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'monto',montoVariable)">Guardar</button>
+                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemVariable.id,'monto',montoVariable,modalUsuario)">Guardar
+                                    <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                  </button>
                               </div>
     
                             </div>
@@ -413,7 +437,9 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'fecha',fechaCaja)">Guardar</button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'fecha',fechaCaja,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
                             </div>
                       </ng-template> 
                     </td>
@@ -441,7 +467,9 @@
     
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'numero_documento',numeroDocCaja)">Guardar</button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'numero_documento',numeroDocCaja,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                          </button>
                         </div>
 
                       </ng-template> 
@@ -469,7 +497,9 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'archivo',DocCajaChica)">Guardar</button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'archivo',DocCajaChica,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
                               </div>
                           </ng-template>
                           <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
@@ -500,7 +530,9 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                            <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'descripcion',descripcionCaja)">Guardar</button>
+                            <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'descripcion',descripcionCaja,modalUsuario)">Guardar
+                              <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </div>
 
                       </ng-template> 
@@ -525,21 +557,22 @@
                               <div class="form-group">
                                 <label> <strong>Nuevo Monto</strong></label>
                               </div>
-                              <div class="input-group">     
-                                <div class="col-md-4">
-                                    <button type="button" class="btn btn-outline-success" (click)="actualizarCaja()">Calcular</button> 
+                              <div class="form-group">     
+                                    <button type="button" class="btn btn-outline-success" (click)="actualizarCaja()">Calcular
+                                      <img *ngIf="actualizarRecalcular" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>   
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="form-group">
                                     <input [(ngModel)]="actualizarMontoCajaChica" class="form-control form-control-sm" #montoCajaChica type="text" disabled>
                                 </div>
-                              </div> <br>
+                               <br>
                                 
-                           
-    
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'monto',montoCajaChica)">Guardar</button>
+                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'monto',montoCajaChica,modalUsuario)">Guardar
+                                    <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                  </button>
                               </div>
     
                             </div>
@@ -605,7 +638,9 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'fecha',fechaCamping)">Guardar</button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'fecha',fechaCamping,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
                             </div>
 
                       </ng-template> 
@@ -633,7 +668,9 @@
     
                         <div class="modal-footer">
                           <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'numero_documento',numeroDocCamping)">Guardar</button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'numero_documento',numeroDocCamping,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                          </button>
                         </div>
                       </ng-template> 
                     </td>
@@ -660,7 +697,9 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'archivo',DocCamping)">Guardar</button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'archivo',DocCamping,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
                               </div>
                           </ng-template>
                           <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
@@ -691,7 +730,9 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                            <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'descripcion',descripcionCamping)">Guardar</button>
+                            <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'descripcion',descripcionCamping,modalUsuario)">Guardar
+                              <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </div>
                       </ng-template> 
                     </td>
@@ -717,7 +758,9 @@
     
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'definicion',definicionCamping)">Guardar</button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'definicion',definicionCamping,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
                               </div> <hr>
     
                               <div class="form-group">
@@ -731,7 +774,9 @@
     
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'monto',montoCamping)">Guardar</button>
+                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'monto',montoCamping)">Guardar
+                                    <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                  </button>
                               </div>
     
                             </div>
@@ -798,12 +843,11 @@
     <div class="modal-body">
       <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
       <br>
-      <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+      <input #password [(ngModel)]="pass" class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
       <br>
-    <button class="btn btn-success btn-block btn-sm"
-      (click)="btn_validar_usuario(rut,password,validar);">
-      Validar
-      </button>
+      <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar (click)="modal.close('Save click')">
+        Validar
+        </button>
       <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </div>
   </ng-template>

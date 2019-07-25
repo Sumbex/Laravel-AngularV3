@@ -28,7 +28,6 @@ export class ModalPrestamosSociosComponent implements OnInit {
   nombreSocioTest = "";
   rutSocioTest = "";
   errorSocio = false;
-  mensajeError = '';
 
   //datos para enviar al formulario
   datosEnvioPrestamo: Prestamos = {
@@ -48,6 +47,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     checkCon: false
   }
 
+  blockPrestamo = false;
   inputPrestamoRestante: number;
   inputGanancia: number;
 
@@ -88,20 +88,21 @@ export class ModalPrestamosSociosComponent implements OnInit {
   }
 
   consultarSocio(rut){
-    console.log("estoy pasando por aquí: " + rut);
+    this.blockPrestamo = true;
     this._sociosService.getSocio(rut).subscribe((res) => {
       if(res.estado == 'failed'){
-        console.log(res.mensaje);
-        this.mensajeError = res.mensaje;
+        alert(res.mensaje);
         this.nombreSocioTest = "";
         this.rutSocioTest = "";
         this.errorSocio = true;
+        this.blockPrestamo = false;
       }else{
         this.datosSocio = res;
         this.nombreSocioTest = this.datosSocio[0].socio;
         this.rutSocioTest = this.datosSocio[0].rut;
         this.datosEnvioPrestamo.socioId = this.datosSocio[0].id;
         this.errorSocio = false;
+        this.blockPrestamo = false;
       }
     },
     error => {
@@ -135,9 +136,18 @@ export class ModalPrestamosSociosComponent implements OnInit {
   }
 
   onSubmit(){
+    this.blockPrestamo = true;
+    console.log(this.blockPrestamo);
     console.log(this.datosEnvioPrestamo);
     this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
       console.log(res);
+      if(res.estado == 'failed_v' || res.estado == 'failed'){
+        alert('ERROR: Compruebe que los valores ingresados son correctos');
+        this.blockPrestamo = false;
+      }else{
+        alert('Ingreso correcto');
+        this.blockPrestamo = false;
+      }
     },
     error => {
       console.log(error);

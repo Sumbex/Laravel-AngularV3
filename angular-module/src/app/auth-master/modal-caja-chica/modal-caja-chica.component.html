@@ -77,7 +77,7 @@
             <i class="fas fa-info-circle" placement="right" ngbTooltip="Para guardar debe completar todos los campos."></i>
           </label><br>
           <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-            [disabled]="loginForm.invalid"><i class="fas fa-save"></i>  Guardar</button>
+            [disabled]="loginForm.invalid || blockCajaChica"><i class="fas fa-save"></i>  Guardar</button>
         </div>
       </div>
   </div>
@@ -206,10 +206,10 @@
     </div>
     <div class="modal-footer">
       <button id="closeModalButtonEdicion" type="button" class="btn btn-info" (click)="modal.close('Save click')">Salir</button>
-      <button [hidden]="edicionDocumento" type="button" class="btn btn-outline-success" (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar
+      <button [hidden]="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success" (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar
         <img *ngIf="loadingModificacion" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
       </button>
-      <button *ngIf="edicionDocumento" type="button" class="btn btn-outline-success" (click)="ingresarModificacionDocumento()">Guardar Documento
+      <button *ngIf="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success" (click)="ingresarModificacionDocumento()">Guardar Documento
         <img *ngIf="loadingModificacion" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
       </button>
     </div>
@@ -245,7 +245,8 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salir</button>
+      <button id="closeModalButtonValidacion2" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click'); blockCajaChica = false">Salir</button>
+    <button hidden id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');">Salir</button>
     <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Guardar</button>
   </div>
 </ng-template>

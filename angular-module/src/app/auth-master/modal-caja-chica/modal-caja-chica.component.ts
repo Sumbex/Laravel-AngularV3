@@ -34,6 +34,8 @@ export class ModalCajaChicaComponent implements OnInit {
   usuario;
   rut: string = '';
   pass: string = "";
+  loadingModificacion = false;
+  blockCajaChica = false;
 
   //variables para la edicion
   idEdicion: string = '';
@@ -116,7 +118,6 @@ export class ModalCajaChicaComponent implements OnInit {
     this._fechasService.getMesActual().subscribe(
       response => {
         this.idMesActual = response;
-        console.log(this.idMesActual);
         this.valorMes.descripcion = this.idMesActual.id;
         this.refrescarCajaChica();
       },
@@ -138,13 +139,13 @@ export class ModalCajaChicaComponent implements OnInit {
 
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
-    this.cajaChicaError = false;
+    //this.cajaChicaError = false;
     this.refrescarCajaChica();
   }
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
-    this.cajaChicaError = false;
+    //this.cajaChicaError = false;
     this.refrescarCajaChica();
   }
 
@@ -159,10 +160,9 @@ export class ModalCajaChicaComponent implements OnInit {
   onSubmit(valid) {  //{ valid }: { valid: boolean }
 
     if (!valid) {
-      console.log("Ingreso no valido revisar campos");
     } else {
       //llamar al modal
-      console.log(this.datosCajaChica);
+      this.blockCajaChica = true;
       document.getElementById("openModalButtonPass").click();
       /*  */
     }
@@ -173,16 +173,16 @@ export class ModalCajaChicaComponent implements OnInit {
     this.cajaChica = [];
     this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        console.log(response.caja);
         if (response.estado == "failed" || response.estado == "failed_v") {
           this.cajaChicaError = true;
           this.cajaChicaTotales.total = 0;
           this.cajaChicaTotales.total_egreso = 0;
           this.cajaChicaTotales.total_ingreso = 0;
+          alert(response.mensaje);
         } else {
+          this.cajaChicaError = false;
           this.cajaChica = response.caja;
           this.cajaChicaTotales = response.totales[0];
-          console.log(this.cajaChicaTotales[0]);
         }
         this.loading = false;
       },
@@ -211,22 +211,23 @@ export class ModalCajaChicaComponent implements OnInit {
       this.edicionDocumento = false;
       this.edicionTexto = true;
     }
-    console.log("valoe vartype: " + this.varType);
     //aqui modificar el input del modal edicion
     document.getElementById("openModalButtonEdicion").click();
-    console.log("este es mi id: " + this.idEdicion + "este es mi campo: " + this.campoEdicion + "este es mi antiguo parametro: " + this.parametroEdicion);
   }
 
   ingresarModificacionDocumento(){
-
-    console.log("respuesta: " + this.edicionArchivo);
+    this.blockCajaChica = true;
+    this.loadingModificacion = true;
     this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
       response => {
-        console.log(response);
         if(response.estado == "failed" || response.estado == "failed_v"){
-          console.log(response);
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(response.mensaje.input[0] + "\n " + response.mensaje.input[1]);
         }else{
-          console.log("Edicion correcta");
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(response.mensaje);
           this.refrescarCajaChica();
           document.getElementById("closeModalButtonEdicion").click();
         }
@@ -238,14 +239,19 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   ingresarModificacionTexto(input){
-    console.log("texto edicion: " + input);
+    this.blockCajaChica = true;
+    this.loadingModificacion = true;
     this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, input).subscribe(
       response => {
-        console.log(response);
         if(response.estado == "failed" || response.estado == "failed_v"){
-          console.log(response);
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert("Compruebe que la fecha nueva corresponda al mes anterior, que el numero de documento no se encuentre duplicado o no ingresar valores negativos en egreso");
+          document.getElementById("closeModalButtonEdicion").click();
         }else{
-          console.log("Edicion correcta");
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(response.mensaje);
           this.refrescarCajaChica();
           document.getElementById("closeModalButtonEdicion").click();
         }
@@ -276,7 +282,6 @@ export class ModalCajaChicaComponent implements OnInit {
       response => {
         this.usuario = response;
         this.rut = this.usuario.rut;
-        console.log(this.usuario);
       },
       error => {
         console.log(error);
@@ -285,25 +290,28 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   validarUsuario(pass){
-    console.log(this.rut + "+" + pass.value);
     this._usuariosSevice.validarUsuario(this.rut, pass.value).subscribe(
       response => {
         if (response > 0){
-          console.log("Aquí va el ingreso")
-          console.log(this.rut + "+" + pass.value);
+          document.getElementById("closeModalButtonValidacion").click();
           this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
             response => {
               if (response.estado == 'failed_v') {
-                this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
+                this.blockCajaChica = false;
+                alert("ERROR: Compruebe que el número de documento no se encuentre duplicado o falte un campo en el formulario");
+                this.ingresoStatus = 'Se ha encontrado un error en el formulario, revisar que se encuentre todos los campos llenos y validados';
                 this.errorIngreso = true;
                 return false;
     
               } if (response.estado == 'failed') {
+                this.blockCajaChica = false;
+                alert(response.mensaje);
                 this.ingresoStatus = response.mensaje;
                 this.errorIngreso = true;
                 return false;
               } else {
-                console.log("Ingreso correcto");
+                this.blockCajaChica = false;
+                alert("¡Ingreso correcto!");
                 this.errorIngreso = false;
                 this.ingresoStatus = '';
                 this.datosCajaChica.numero_documento = '';
@@ -319,6 +327,7 @@ export class ModalCajaChicaComponent implements OnInit {
             }
           );
         }else{
+          this.blockCajaChica = false;
           alert("Acceso denegado");
               this.modalReference.close();
         }

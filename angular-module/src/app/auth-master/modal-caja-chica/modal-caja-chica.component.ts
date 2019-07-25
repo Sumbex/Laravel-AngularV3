@@ -84,6 +84,9 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso: null
   }
 
+  //Capturar mensaje de error servidor
+  mensajeError: string; 
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService, public _http: HttpClient) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -116,7 +119,6 @@ export class ModalCajaChicaComponent implements OnInit {
     this._fechasService.getMesActual().subscribe(
       response => {
         this.idMesActual = response;
-        console.log(this.idMesActual);
         this.valorMes.descripcion = this.idMesActual.id;
         this.refrescarCajaChica();
       },
@@ -159,10 +161,8 @@ export class ModalCajaChicaComponent implements OnInit {
   onSubmit(valid) {  //{ valid }: { valid: boolean }
 
     if (!valid) {
-      console.log("Ingreso no valido revisar campos");
     } else {
       //llamar al modal
-      console.log(this.datosCajaChica);
       document.getElementById("openModalButtonPass").click();
       /*  */
     }
@@ -173,16 +173,15 @@ export class ModalCajaChicaComponent implements OnInit {
     this.cajaChica = [];
     this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
-        console.log(response.caja);
         if (response.estado == "failed" || response.estado == "failed_v") {
           this.cajaChicaError = true;
           this.cajaChicaTotales.total = 0;
           this.cajaChicaTotales.total_egreso = 0;
           this.cajaChicaTotales.total_ingreso = 0;
+          this.mensajeError = response.mensaje;
         } else {
           this.cajaChica = response.caja;
           this.cajaChicaTotales = response.totales[0];
-          console.log(this.cajaChicaTotales[0]);
         }
         this.loading = false;
       },
@@ -211,22 +210,15 @@ export class ModalCajaChicaComponent implements OnInit {
       this.edicionDocumento = false;
       this.edicionTexto = true;
     }
-    console.log("valoe vartype: " + this.varType);
     //aqui modificar el input del modal edicion
     document.getElementById("openModalButtonEdicion").click();
-    console.log("este es mi id: " + this.idEdicion + "este es mi campo: " + this.campoEdicion + "este es mi antiguo parametro: " + this.parametroEdicion);
   }
 
   ingresarModificacionDocumento(){
-
-    console.log("respuesta: " + this.edicionArchivo);
     this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
       response => {
-        console.log(response);
         if(response.estado == "failed" || response.estado == "failed_v"){
-          console.log(response);
         }else{
-          console.log("Edicion correcta");
           this.refrescarCajaChica();
           document.getElementById("closeModalButtonEdicion").click();
         }
@@ -238,14 +230,10 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   ingresarModificacionTexto(input){
-    console.log("texto edicion: " + input);
     this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, input).subscribe(
       response => {
-        console.log(response);
         if(response.estado == "failed" || response.estado == "failed_v"){
-          console.log(response);
         }else{
-          console.log("Edicion correcta");
           this.refrescarCajaChica();
           document.getElementById("closeModalButtonEdicion").click();
         }
@@ -276,7 +264,6 @@ export class ModalCajaChicaComponent implements OnInit {
       response => {
         this.usuario = response;
         this.rut = this.usuario.rut;
-        console.log(this.usuario);
       },
       error => {
         console.log(error);
@@ -285,16 +272,18 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   validarUsuario(pass){
-    console.log(this.rut + "+" + pass.value);
     this._usuariosSevice.validarUsuario(this.rut, pass.value).subscribe(
       response => {
         if (response > 0){
-          console.log("Aquí va el ingreso")
-          console.log(this.rut + "+" + pass.value);
+          document.getElementById("closeModalButtonValidacion").click();
           this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(
             response => {
               if (response.estado == 'failed_v') {
-                this.ingresoStatus = 'Error, Compruebe que los datos ingresados sean correctos y no duplicados.';
+                this.ingresoStatus = 'Se ha encontrado un error en el formulario, revisar que se encuentre todos los campos llenos y validados';
+                /*this.ingresoStatus = JSON.stringify(response.mensaje).replace(/[{"]+/g, '');;
+                let str = "error de pruebas";
+                str = str.replace(/error|de|pruebas/gi, 'anal');
+                console.log(str);*/
                 this.errorIngreso = true;
                 return false;
     
@@ -303,7 +292,6 @@ export class ModalCajaChicaComponent implements OnInit {
                 this.errorIngreso = true;
                 return false;
               } else {
-                console.log("Ingreso correcto");
                 this.errorIngreso = false;
                 this.ingresoStatus = '';
                 this.datosCajaChica.numero_documento = '';

@@ -1,375 +1,429 @@
 <!--Modal Prestamo-->
 <ng-template #Prestamo let-modal>
   <!--form del modal Prestamo-->
-    <!--Cabezal del modal Prestamo-->
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><strong>Detalle Prestamo Socios</strong></h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <!--Cuerpo del body Prestamo-->
-    <form #prestamoForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-    <div class="modal-body">
-      <div class="row justify-content-center">
+  <!--Cabezal del modal Prestamo-->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong>Detalle Prestamo Socios</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+        aria-selected="true">Formulario</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        aria-selected="false">Tablas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+        aria-selected="false">Tercera Pestaña</a>
+    </li>
+  </ul>
 
-        <!--tipo prestamo socio-->
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <div class="row justify-content-center">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                  <div class="form-group">
-                      <ngb-alert *ngIf="errorSocio" [dismissible]="false">
+  <!--Cuerpo del body Prestamo-->
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <form #prestamoForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="modal-body">
+
+          <div class="row justify-content-center">
+
+            <!--tipo prestamo socio-->
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="row justify-content-center">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                      <div class="form-group">
+                        <ngb-alert *ngIf="errorSocio" [dismissible]="false">
                           <strong>
                             {{mensajeError}}
                           </strong>
                         </ngb-alert>
-                    <label>
-                      <strong>Buscar Socio</strong>
-                      <i class="fas fa-info-circle" placement="right" ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
-                    </label>
-                    <div class="input-group">
-                      <input type="number" class="form-control form-control-sm" placeholder="Ingrese rut del socio sin guion" name="rut"
-                        #rut="ngModel" [(ngModel)]="inputRut">
-                      <span class="input-group-btn">
-                        <button type="button"(click)="consultarSocio(rut.value)" class="btn btn-outline-success btn-sm"><i
-                            class="fas fa-search"></i></button>
-                      </span>
+                        <label>
+                          <strong>Ingrese rut del socio sin guiones</strong>
+                          <i class="fas fa-info-circle" placement="right"
+                            ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
+                        </label>
+                        <div class="input-group">
+                          <input type="number" class="form-control form-control-sm"
+                            placeholder="Ingrese rut del socio sin guion" name="rut" #rut="ngModel"
+                            [(ngModel)]="inputRut" required>
+                          <span class="input-group-btn">
+                            <button type="button" (click)="consultarSocio(rut.value)"
+                              class="btn btn-outline-success btn-sm"><i class="fas fa-search"></i></button>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2"><br>
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="form-group">
-                    <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio" class="img-thumbnail">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-              <div class="row">
-                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-
-                  <div class="form-group">
-                    <label><strong>Rut del socio</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{rutSocioTest}}" disabled>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Nombre Completo</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{nombreSocioTest}}" disabled>
-                  </div>
-
-                  <div class="form-group">
-                      <label><strong>Fecha</strong></label>
-                    <input type="date" class="form-control form-control-sm" name="fecha" #fecha="ngModel"
-                    [(ngModel)]="datosEnvioPrestamo.fecha" required>
-                    <p>{{datosEnvioPrestamo.fecha}}</p><!--**********************************-->
-                  </div>
-                  <div class="form-group">
-                    <label><strong>N°Documento</strong></label>
-                    <input type="text" class="form-control form-control-sm" name="nDocumento" #nDocumento="ngModel"
-                    [(ngModel)]="datosEnvioPrestamo.numeroDocumento" required>
-                    <p>{{datosEnvioPrestamo.numeroDocumento}}</p><!--**********************************-->
-                  </div>
-
-                  <div class="form-group">
-                      <label><strong>Comprobante</strong></label>
-                    <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label><strong>Tipo de Prestamo</strong></label>
-                    <select (change)="changeTipoPrestamo($event)" class="form-control form-control-sm">
-                      <option *ngFor="let tipo of selectTipoPrestamo" [value]="tipo.id">{{tipo.descripcion}}</option>
-                    </select>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-  <!--prestamo salud retornable-->
-  <div *ngIf="datosTipoPrestamo.descripcion == 'salud'" class="container-fluid">
-    <hr>
-    <div class="modal-header" id="demoFont2">
-      <h6 class="modal-title"><strong>Prestamo Salud - Retornable</strong></h6>
-    </div>
-    <div class="card">
-      <div class="row centrarPrestamo">
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-
-          <!--monto del prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-            <div class="row justify-content-center">
-              <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
-                <label><strong>Monto del Prestamo</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                  <input type="number" class="form-control" placeholder="Ingrese monto" name="inputMontoPrestramo" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" required>
-                  <p>{{datosEnvioPrestamo.montoPrestamo}}</p><!--**********************************-->
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--abono-->
-          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-            <div class="row justify-content-center">
-              <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9 col-xl-9"> <br>
-
-                <div class="funkyradio">
-                  <strong>Abono</strong>
-
-                  <div class="form-group funkyradio">
-                    <div class="funkyradio-success">
-                      <input type="radio" name="radio" id="radio1" value="true" class="form-control form-control-sm" name="abono"
-                      #abono="ngModel" [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(true)"/>
-                      <label for="radio1">Si</label>
-                      <p>{{datosEnvioPrestamo.checkAbono}}</p><!--**********************************-->
-                    </div>
-                    <div class="funkyradio-success">
-                      <input type="radio" name="radio" id="radio2" value="false" class="form-control form-control-sm" name="abono"
-                      #abono="ngModel" [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(false)"/>
-                      <label for="radio2">No</label>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2"><br>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="form-group">
+                        <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio"
+                          class="img-thumbnail">
+                      </div>
                     </div>
                   </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--tipo de abono-->
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-            <div class="row justify-content-center">
-              <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                <div class="funkyradio">
-                  <strong>Tipos de Abono</strong>
-
-                  <div class="funkyradio-success">
-                    <input type="checkbox" name="datosEnvioPrestamo.checkDia" [(ngModel)]="datosEnvioPrestamo.checkDia" id="checkbox1" (click)="changeCheckAbono(1)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
-                    <label for="checkbox1">Dia de Sueldo</label>
-                    <p>{{datosEnvioPrestamo.checkDia}}</p>
-                  </div>
-                  <div class="funkyradio-success">
-                    <input type="checkbox" name="datosEnvioPrestamo.checkTri" [(ngModel)]="datosEnvioPrestamo.checkTri" id="checkbox2" (click)="changeCheckAbono(2)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
-                    <label for="checkbox2">Trimestral</label>
-                    <p>{{datosEnvioPrestamo.checkTri}}</p>
-                  </div>
-                  <div class="funkyradio-success">
-                    <input type="checkbox" name="datosEnvioPrestamo.checkCon" [(ngModel)]="datosEnvioPrestamo.checkCon" id="checkbox3" (click)="changeCheckAbono(3)" [disabled]="datosEnvioPrestamo.checkAbono == false"/>
-                    <label for="checkbox3">Termino Conflicto</label>
-                    <p>{{datosEnvioPrestamo.checkCon}}</p>
-                  </div>
-
                 </div>
 
-              </div>
-            </div>
-          </div>
-          <!--monto tipo de abono-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="row justify-content-center">
-              <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
 
-                <label><strong>Monto de Abono</strong></label>
-                <div class="form-group">
-                  <div class="input-group">
-                    <button class="btn btn-success input-group-addon" disabled><i
-                        class="fas fa-dollar-sign"></i></button>
-                    <input type="number" class="form-control" placeholder="Monto Dia de Sueldo" name="inputDiaSueldo" [(ngModel)]="datosEnvioPrestamo.montoDia" [disabled]="datosEnvioPrestamo.checkDia == false">
-                  </div>
-                </div>
+                      <div class="form-group">
+                        <label><strong>Rut del socio</strong></label>
+                        <input type="text" class="form-control form-control-sm" value="{{rutSocioTest}}" required disabled>
+                      </div>
 
-                <div class="form-group">
-                  <div class="input-group">
-                    <button class="btn btn-success input-group-addon" disabled><i
-                        class="fas fa-dollar-sign"></i></button>
-                    <input type="number" class="form-control" placeholder="Monto Trimestral" name="inputTrimestral" [(ngModel)]="datosEnvioPrestamo.montoTri" [disabled]="datosEnvioPrestamo.checkTri == false">
-                  </div>
-                </div>
+                      <div class="form-group">
+                        <label><strong>Nombre Completo del socio</strong></label>
+                        <input type="text" class="form-control form-control-sm" value="{{nombreSocioTest}}" required disabled>
+                      </div>
 
-                <div class="form-group">
-                  <div class="input-group">
-                    <button class="btn btn-success input-group-addon" disabled><i
-                        class="fas fa-dollar-sign"></i></button>
-                    <input type="number" class="form-control" placeholder="Monto Termino Conflicto" name="inputTerminoConflicto" [(ngModel)]="datosEnvioPrestamo.montoCon" [disabled]="datosEnvioPrestamo.checkCon == false">
+                      <hr />
+
+                      <div class="form-group">
+                        <label><strong>Fecha del prestamo</strong></label>
+                        <input type="date" class="form-control form-control-sm" name="fecha" #fecha="ngModel"
+                          [(ngModel)]="datosEnvioPrestamo.fecha" required>
+                      </div>
+                      <div class="form-group">
+                        <label><strong>Ingre el N°Documento</strong></label>
+                        <input type="text" class="form-control form-control-sm" name="nDocumento" #nDocumento="ngModel"
+                          [(ngModel)]="datosEnvioPrestamo.numeroDocumento" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label><strong>Seleccione el comprobante</strong></label>
+                        <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label><strong>Seleccione el tipo de Prestamo</strong></label>
+                        <select (change)="changeTipoPrestamo($event)" class="form-control form-control-sm">
+                          <option *ngFor="let tipo of selectTipoPrestamo" [value]="tipo.id">{{tipo.descripcion}}
+                          </option>
+                        </select>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
 
               </div>
             </div>
-          </div>
-          <!--prestamo restante / por n° de cuotas-->
-          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-            <div class="row justify-content-start">
-              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <!--prestamo salud retornable-->
+            <div *ngIf="datosTipoPrestamo.descripcion == 'salud'" class="container-fluid">
+              <hr>
+              <div class="modal-header" id="demoFont2">
+                <h6 class="modal-title"><strong>Prestamo Salud - Retornable</strong></h6>
+              </div>
+              <div class="card">
+                <div class="row centrarPrestamo">
+                  <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
 
-                <label><strong>Prestamo Restante</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                  <input type="text" class="form-control" placeholder="Ingrese monto">
+                    <!--monto del prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+                          <label><strong>Monto del Prestamo</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled><i
+                                class="fas fa-dollar-sign"></i></button>
+                            <input type="number" class="form-control" placeholder="Ingrese monto"
+                              name="inputMontoPrestramo" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcularPrestamoRestante()" required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--abono-->
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9 col-xl-9"> <br>
+
+                          <div class="funkyradio">
+                            <strong>Abono</strong>
+
+                            <div class="form-group funkyradio">
+                              <div class="funkyradio-success">
+                                <input type="radio" name="radio" id="radio1" value=true
+                                  class="form-control form-control-sm" name="abono" #abono="ngModel"
+                                  [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(true); calcularPrestamoRestante()" [disabled]="datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null"/>
+                                <label for="radio1">Si</label>
+                              </div>
+                              <div class="funkyradio-success">
+                                <input type="radio" name="radio" id="radio2" value=false
+                                  class="form-control form-control-sm" name="abono" #abono="ngModel"
+                                  [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(false); calcularPrestamoRestante()" [disabled]="datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null"/>
+                                <label for="radio2">No</label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--tipo de abono-->
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                          <div class="funkyradio">
+                            <strong>Tipos de Abono</strong>
+
+                            <div class="funkyradio-success">
+                              <input
+                                [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'"
+                                type="checkbox" name="datosEnvioPrestamo.checkDia"
+                                [(ngModel)]="datosEnvioPrestamo.checkDia" id="checkbox1"
+                                (click)="changeCheckAbono(1); calcularPrestamoRestante()" />
+                              <label for="checkbox1">Dia de Sueldo</label>
+                            </div>
+                            <div class="funkyradio-success">
+                              <input
+                                [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'"
+                                type="checkbox" name="datosEnvioPrestamo.checkTri"
+                                [(ngModel)]="datosEnvioPrestamo.checkTri" id="checkbox2"
+                                (click)="changeCheckAbono(2); calcularPrestamoRestante()" />
+                              <label for="checkbox2">Trimestral</label>
+                            </div>
+                            <div class="funkyradio-success">
+                              <input
+                                [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'"
+                                type="checkbox" name="datosEnvioPrestamo.checkCon"
+                                [(ngModel)]="datosEnvioPrestamo.checkCon" id="checkbox3"
+                                (click)="changeCheckAbono(3); calcularPrestamoRestante()" />
+                              <label for="checkbox3">Termino Conflicto</label>
+                            </div>
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!--monto tipo de abono-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-10 col-sm-10 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                          <label><strong>Monto de Abono</strong></label>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <button class="btn btn-success input-group-addon" disabled><i
+                                  class="fas fa-dollar-sign"></i></button>
+                              <input type="number" (change)="calcularPrestamoRestante()" class="form-control" placeholder="Monto Dia de Sueldo"
+                                name="inputDiaSueldo" [(ngModel)]="datosEnvioPrestamo.montoDia"
+                                [disabled]="datosEnvioPrestamo.checkDia == false">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group">
+                              <button class="btn btn-success input-group-addon" disabled><i
+                                  class="fas fa-dollar-sign"></i></button>
+                              <input type="number" (change)="calcularPrestamoRestante()" class="form-control" placeholder="Monto Trimestral"
+                                name="inputTrimestral" [(ngModel)]="datosEnvioPrestamo.montoTri"
+                                [disabled]="datosEnvioPrestamo.checkTri == false">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group">
+                              <button class="btn btn-success input-group-addon" disabled><i
+                                  class="fas fa-dollar-sign"></i></button>
+                              <input type="number" (change)="calcularPrestamoRestante()" class="form-control" placeholder="Monto Termino Conflicto"
+                                name="inputTerminoConflicto" [(ngModel)]="datosEnvioPrestamo.montoCon"
+                                [disabled]="datosEnvioPrestamo.checkCon == false">
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!--prestamo restante / por n° de cuotas-->
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                      <div class="row justify-content-start">
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+
+                          <label><strong>Prestamo Restante</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled><i
+                                class="fas fa-dollar-sign"></i></button>
+                            <input type="text" class="form-control" placeholder="Ingrese monto" name="inputPrestamoRestante" [(ngModel)]="inputPrestamoRestante" disabled>
+                          </div> <br>
+
+                          <label><strong>Numero de Cuotas</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled>/</button>
+                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas"
+                              name="inputNumeroCuotas" [(ngModel)]="datosEnvioPrestamo.cuotas">
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!--boton Guardar Prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                          <br><br><br><br>
+                          <label><strong>Guardar Prestamo</strong></label>
+                          <div class="input-group">
+                            <button type="submit" class="btn btn-block btn-outline-success"
+                              [disabled]="prestamoForm.invalid">Guardar</button>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div> <br>
-
-                <label><strong>Numero de Cuotas</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled>/</button>
-                  <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas" [(ngModel)]="datosEnvioPrestamo.cuotas">
-                </div>
-
               </div>
             </div>
-          </div>
-          <!--boton Guardar Prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="row justify-content-center">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <br><br><br><br>
-                <label><strong>Guardar Prestamo</strong></label>
-                <div class="input-group">
-                  <button type="submit" class="btn btn-block btn-outline-success" [disabled]="prestamoForm.invalid">Guardar</button>
-                </div>
 
+            <!--prestamo apuro economico retornable-->
+            <div *ngIf="datosTipoPrestamo.descripcion == 'apuroEconomico'" class="container-fluid">
+              <hr>
+              <div class="modal-header" id="demoFont2">
+                <h6 class="modal-title"><strong>Apuro Economico - Retornable</strong></h6>
+              </div>
+              <div class="card">
+                <div class="row centrarPrestamo">
+                  <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+
+                    <!--monto prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                          <label><strong>Monto Prestamo</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled><i
+                                class="fas fa-dollar-sign"></i></button>
+                            <input type="text" class="form-control" placeholder="Ingrese monto"
+                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcularInteres($event)">
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--n° de cuotas-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                          <label><strong>Numero de Cuotas</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled>/</button>
+                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" disabled required>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--Interes de prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                      <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                          <label><strong>Interes del Prestamo (10%)</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled>%</button>
+                            <input type="text" class="form-control" placeholder="Ingese Interes" name="inputGanancia" [(ngModel)]="inputGanancia" disabled>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--boton Guardar Prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row justify-content-end">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"> <br>
+
+                          <label><strong>Guardar Prestamo</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-block btn-outline-success">Guardar</button>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div> <br>
               </div>
             </div>
-          </div>
 
+            <!--prestamo aporte economico no retornable-->
+            <div *ngIf="datosTipoPrestamo.descripcion == 'aporteEconomico'" class="container-fluid">
+              <hr>
+              <div class="modal-header" id="demoFont2">
+                <h6 class="modal-title"><strong>Aporte Economico - No Retornable</strong></h6>
+              </div>
+              <div class="card">
+                <div class="row centrarPrestamo">
+                  <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                    <!--monto prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                      <div class="row justify-content-start">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+
+                          <label><strong>Monto Prestamo</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-success input-group-addon" disabled><i
+                                class="fas fa-dollar-sign"></i></button>
+                            <input type="text" class="form-control" placeholder="Ingrese monto"
+                              name="inputMontoPrestramo3" [(ngModel)]="datosEnvioPrestamo.montoPrestamo">
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--boton guardar Prestamo-->
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                      <div class="row justify-content-end">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"> <br>
+
+                          <label><strong>Guardar Prestamo</strong></label>
+                          <div class="input-group">
+                            <button class="btn btn-block btn-outline-success" type="submit" value="ingresar"
+                              [disabled]="prestamoForm.invalid">Guardar</button>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div> <br>
+              </div>
+            </div>
+
+            <!--Cierre del Cuerpo del body Prestamo-->
+          </div>
         </div>
-      </div> <br>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <app-tabla-prestamos-socios></app-tabla-prestamos-socios>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <app-interes-prestamo-apuro-economico></app-interes-prestamo-apuro-economico>
     </div>
   </div>
-
-  <!--prestamo apuro economico retornable-->
-  <div *ngIf="datosTipoPrestamo.descripcion == 'apuroEconomico'" class="container-fluid">
-    <hr>
-    <div class="modal-header" id="demoFont2">
-      <h6 class="modal-title"><strong>Apuro Economico - Retornable</strong></h6>
-    </div>
-    <div class="card">
-      <div class="row centrarPrestamo">
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-
-          <!--monto prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="row justify-content-center">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                <label><strong>Monto Prestamo</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                  <input type="text" class="form-control" placeholder="Ingrese monto" name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo">
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!--n° de cuotas-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="row justify-content-center">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                <label><strong>Numero de Cuotas</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled>/</button>
-                  <input type="text" class="form-control" placeholder="Ingrese n° cuotas">
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!--Interes de prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="row justify-content-center">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                <label><strong>Interes del Prestamo (10%)</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled>%</button>
-                  <input type="text" class="form-control" placeholder="Ingese Interes">
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!--boton Guardar Prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="row justify-content-end">
-              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"> <br>
-
-                <label><strong>Guardar Prestamo</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-block btn-outline-success">Guardar</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div> <br>
-    </div>
-  </div>
-
-  <!--prestamo aporte economico no retornable-->
-  <div *ngIf="datosTipoPrestamo.descripcion == 'aporteEconomico'" class="container-fluid">
-    <hr>
-    <div class="modal-header" id="demoFont2">
-      <h6 class="modal-title"><strong>Aporte Economico - No Retornable</strong></h6>
-    </div>
-    <div class="card">
-      <div class="row centrarPrestamo">
-        <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-          <!--monto prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="row justify-content-start">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-
-                <label><strong>Monto Prestamo</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-success input-group-addon" disabled><i class="fas fa-dollar-sign"></i></button>
-                  <input type="text" class="form-control" placeholder="Ingrese monto">
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!--boton guardar Prestamo-->
-          <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-            <div class="row justify-content-end">
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"> <br>
-
-                <label><strong>Guardar Prestamo</strong></label>
-                <div class="input-group">
-                  <button class="btn btn-block btn-outline-success" type="submit" value="ingresar"
-                  [disabled]="prestamoForm.invalid">Guardar</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div> <br>
-    </div>
-  </div>
-
-  <!--Cierre del Cuerpo del body Prestamo-->
-  </div>
-  </div>
-</form>
 
   <!--Boton para salir del modal Prestamo-->
   <div class="modal-footer">

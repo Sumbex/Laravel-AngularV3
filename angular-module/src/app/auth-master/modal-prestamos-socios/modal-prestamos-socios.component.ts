@@ -30,18 +30,6 @@ export class ModalPrestamosSociosComponent implements OnInit {
   errorSocio = false;
   mensajeError = '';
 
-  //Variables prestamo de salud retornable
-  /*inputMontoPrestamo: number = null;
-  radioAbono = "false";
-  checkDiaSueldo: boolean = false;
-  checkTrimestral: boolean = false;
-  checkTerminoConflicto: boolean = false;
-  inputDiaSueldo: number = null;
-  inputTrimestral: number = null;
-  inputTerminoConflicto: number = null;
-  inputPrestamoRestante: number = null;
-  inputNumeroCuotas: number = null;*/
-
   //datos para enviar al formulario
   datosEnvioPrestamo: Prestamos = {
     fecha: "",
@@ -50,7 +38,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     numeroDocumento: "",
     archivoDocumento: "",
     montoPrestamo: "",
-    checkAbono: "false",
+    checkAbono: false,
     cuotas: "",
     montoDia: "",
     montoTri: "",
@@ -59,6 +47,9 @@ export class ModalPrestamosSociosComponent implements OnInit {
     checkTri: false,
     checkCon: false
   }
+
+  inputPrestamoRestante: number;
+  inputGanancia: number;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _sociosService: SociosService) {
     config.backdrop = 'static';
@@ -89,6 +80,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
       this.datosTipoPrestamo.descripcion = "salud";
     }else if(this.datosTipoPrestamo.id == 2){
       this.datosTipoPrestamo.descripcion = "apuroEconomico";
+      this.datosEnvioPrestamo.montoPrestamo = "100000";
+      this.datosEnvioPrestamo.cuotas = "4";
     }else if(this.datosTipoPrestamo.id == 3){
       this.datosTipoPrestamo.descripcion = "aporteEconomico";
     }
@@ -119,6 +112,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
 
   changeRadioAbono(val){
     console.log(val);
+    console.log(this.datosEnvioPrestamo.checkAbono);
     if(val == false){
       this.datosEnvioPrestamo.checkDia = false;
       this.datosEnvioPrestamo.checkTri = false;
@@ -149,6 +143,45 @@ export class ModalPrestamosSociosComponent implements OnInit {
       console.log(error);
     }
    );
+  }
+
+  calcularInteres(event){
+    let valor = Math.ceil(event.target.value * 0.10);
+    this.inputGanancia = valor;
+    console.log(this.inputGanancia);
+  }
+
+  calcularPrestamoRestante(){
+    let montoDia: number;
+    let montoTri: number;
+    let montoCon: number;
+
+    montoDia = parseInt(this.datosEnvioPrestamo.montoDia);
+    montoTri = parseInt(this.datosEnvioPrestamo.montoTri);
+    montoCon = parseInt(this.datosEnvioPrestamo.montoCon);
+
+    if(this.datosEnvioPrestamo.montoPrestamo == '' || this.datosEnvioPrestamo.montoPrestamo == null){
+      this.datosEnvioPrestamo.checkAbono = false;
+      this.changeRadioAbono(false);
+    }
+    if(this.datosEnvioPrestamo.montoDia == '' || this.datosEnvioPrestamo.montoDia == null){
+      montoDia = 0;
+      console.log("montoDia" + montoDia);
+    }
+    if(this.datosEnvioPrestamo.montoTri == '' || this.datosEnvioPrestamo.montoTri == null){
+      montoTri = 0;
+      console.log("montoTri" + montoTri);
+    }
+    if(this.datosEnvioPrestamo.montoCon == '' || this.datosEnvioPrestamo.montoCon == null){
+      montoCon = 0;
+      console.log("montoCon" + montoCon);
+    }
+
+    let valor = (parseInt(this.datosEnvioPrestamo.montoPrestamo) - montoDia - montoTri - montoCon);
+    if(valor < 0){
+      alert("monto restante negativo");
+    }
+    this.inputPrestamoRestante = valor;
   }
 
 }

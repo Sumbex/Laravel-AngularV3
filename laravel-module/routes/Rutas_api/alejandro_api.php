@@ -31,6 +31,8 @@ Route::get('listar_detalle_camping/{anio}/{mes}/{monto?}','CsDetalleCampingContr
 Route::post('guardar_cierre_monto_detalle_camping_cs','CsDetalleCampingController@guardar_cierre_monto_detalle_camping_cs');
 Route::get('traer_cierre_monto_detalle_camping_cs/{anio}/{mes}','CsDetalleCampingController@traer_cierre_monto_detalle_camping_cs');
 
+Route::get('listar_interes_prestamo/{anio}/{mes}','CuentaSindicatoController@listar_interes_prestamo');
+
 //-------------------------------------------------------------------------------------------------
 
 //CUENTA SOCIOS-------------------------------------------------------------------------------

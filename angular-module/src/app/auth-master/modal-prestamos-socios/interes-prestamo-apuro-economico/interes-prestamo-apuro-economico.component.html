@@ -1,3 +1,51 @@
-<p>
-  interes-prestamo-apuro-economico works!
-</p>
+<div class="container">
+	 <table class="table table-striped table-bordered table-sm">
+               <thead text-sm>
+                  <!--Titulo Tabla-->  
+                  <tr>
+                    <th colspan="14" class=" text-center"  id="demoFont"><h6>Intereses prestamo apuro economico</h6></th>
+                  </tr>
+                 <tr >
+                  <th>
+                    <select id="anio_id" (change)="change_anio()" class="form-control form-control-sm" [(ngModel)]="anio" >
+                      <option *ngFor="let a of anios" [value]="a.id">{{ a.descripcion }}</option>
+                    </select>
+                  </th>
+                  <th>
+                     <select (change)="change_mes()" class="form-control form-control-sm" [(ngModel)]="mes" >
+                      <option *ngFor="let m of meses" [value]="m.id" >{{ m.descripcion }}</option>
+                    </select>
+                  </th>
+                  <th class="text-right" style="background: #138D75" colspan="3">
+                      Cierre mensual acumulado:
+                  </th>
+                  
+                  
+                 </tr>
+                  <tr class="text-center">
+                      <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Fecha</th>
+                      <th style="background: #138D75"><i class="fas fa-id-card"></i> ID prestamo</th>
+                      <th style="background: #138D75"><i class="fas fa-file-alt"></i> Detalle del prestamo</th>
+                      <th style="background: #138D75"><i class="fas fa-file-alt"></i> Interes total estimado</th>
+                      <th style="background: #138D75"><i class="fas fa-arrow-down"></i> Interes mensual</th>
+                          
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tabla">
+                  <td>{{ item.fecha }}</td>
+                  <td>{{ item.prestamo_id }}</td>
+                  <td>{{ item.descripcion }}</td>
+                  <td>{{ item.interes_total }}</td>
+                  <td>{{ item.interes_mensual }}</td>
+           
+                </tr>
+              </tbody>
+              <tfoot>
+              	<tr>
+              		  <th class="text-right" colspan="4" style="background: #138D75"><i class="fas fa-dollar-sign"></i> Total Interes Mensual:</th>
+              		  <td>{{total}}</td>
+              	</tr>
+              </tfoot>
+          </table>
+</div>

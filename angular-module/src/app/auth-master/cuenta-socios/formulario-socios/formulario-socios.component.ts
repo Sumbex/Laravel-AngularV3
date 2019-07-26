@@ -64,7 +64,15 @@ export class FormularioSociosComponent implements OnInit
       }
     )}).subscribe((val : {'estado','mensaje'} ) => {
         if (val.estado == "success") {
-          alert(""+val.mensaje+""); return false;
+          alert(""+val.mensaje+""); 
+         this.rut = '';
+         this.fecha_nacimiento = '';
+         this.fecha_ingreso = '';
+         this.nombres = '';
+         this.a_paterno = '';
+         this.a_materno = '';
+          return false;
+
         }
         if (val.estado == "failed") {
           alert(""+val.mensaje+""); return false;

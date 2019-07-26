@@ -28,7 +28,6 @@ export class ModalPrestamosSociosComponent implements OnInit {
   nombreSocioTest = "";
   rutSocioTest = "";
   errorSocio = false;
-  mensajeError = '';
 
   //datos para enviar al formulario
   datosEnvioPrestamo: Prestamos = {
@@ -48,6 +47,8 @@ export class ModalPrestamosSociosComponent implements OnInit {
     checkCon: false
   }
 
+  blockPrestamo = false;
+  inputPrestamoRestante: number;
   inputGanancia: number;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _sindicalService: SindicalService, private _sociosService: SociosService) {
@@ -79,26 +80,29 @@ export class ModalPrestamosSociosComponent implements OnInit {
       this.datosTipoPrestamo.descripcion = "salud";
     }else if(this.datosTipoPrestamo.id == 2){
       this.datosTipoPrestamo.descripcion = "apuroEconomico";
+      this.datosEnvioPrestamo.montoPrestamo = "100000";
+      this.datosEnvioPrestamo.cuotas = "4";
     }else if(this.datosTipoPrestamo.id == 3){
       this.datosTipoPrestamo.descripcion = "aporteEconomico";
     }
   }
 
   consultarSocio(rut){
-    console.log("estoy pasando por aquí: " + rut);
+    this.blockPrestamo = true;
     this._sociosService.getSocio(rut).subscribe((res) => {
       if(res.estado == 'failed'){
-        console.log(res.mensaje);
-        this.mensajeError = res.mensaje;
+        alert(res.mensaje);
         this.nombreSocioTest = "";
         this.rutSocioTest = "";
         this.errorSocio = true;
+        this.blockPrestamo = false;
       }else{
         this.datosSocio = res;
         this.nombreSocioTest = this.datosSocio[0].socio;
         this.rutSocioTest = this.datosSocio[0].rut;
         this.datosEnvioPrestamo.socioId = this.datosSocio[0].id;
         this.errorSocio = false;
+        this.blockPrestamo = false;
       }
     },
     error => {
@@ -132,9 +136,18 @@ export class ModalPrestamosSociosComponent implements OnInit {
   }
 
   onSubmit(){
+    this.blockPrestamo = true;
+    console.log(this.blockPrestamo);
     console.log(this.datosEnvioPrestamo);
     this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
       console.log(res);
+      if(res.estado == 'failed_v' || res.estado == 'failed'){
+        alert('ERROR: Compruebe que los valores ingresados son correctos');
+        this.blockPrestamo = false;
+      }else{
+        alert('Ingreso correcto');
+        this.blockPrestamo = false;
+      }
     },
     error => {
       console.log(error);
@@ -142,10 +155,43 @@ export class ModalPrestamosSociosComponent implements OnInit {
    );
   }
 
-  calcular(event){
+  calcularInteres(event){
     let valor = Math.ceil(event.target.value * 0.10);
     this.inputGanancia = valor;
     console.log(this.inputGanancia);
+  }
+
+  calcularPrestamoRestante(){
+    let montoDia: number;
+    let montoTri: number;
+    let montoCon: number;
+
+    montoDia = parseInt(this.datosEnvioPrestamo.montoDia);
+    montoTri = parseInt(this.datosEnvioPrestamo.montoTri);
+    montoCon = parseInt(this.datosEnvioPrestamo.montoCon);
+
+    if(this.datosEnvioPrestamo.montoPrestamo == '' || this.datosEnvioPrestamo.montoPrestamo == null){
+      this.datosEnvioPrestamo.checkAbono = false;
+      this.changeRadioAbono(false);
+    }
+    if(this.datosEnvioPrestamo.montoDia == '' || this.datosEnvioPrestamo.montoDia == null){
+      montoDia = 0;
+      console.log("montoDia" + montoDia);
+    }
+    if(this.datosEnvioPrestamo.montoTri == '' || this.datosEnvioPrestamo.montoTri == null){
+      montoTri = 0;
+      console.log("montoTri" + montoTri);
+    }
+    if(this.datosEnvioPrestamo.montoCon == '' || this.datosEnvioPrestamo.montoCon == null){
+      montoCon = 0;
+      console.log("montoCon" + montoCon);
+    }
+
+    let valor = (parseInt(this.datosEnvioPrestamo.montoPrestamo) - montoDia - montoTri - montoCon);
+    if(valor < 0){
+      alert("monto restante negativo");
+    }
+    this.inputPrestamoRestante = valor;
   }
 
 }

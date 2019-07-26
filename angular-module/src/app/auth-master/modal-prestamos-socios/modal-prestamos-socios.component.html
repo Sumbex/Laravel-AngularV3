@@ -38,11 +38,6 @@
                   <div class="row justify-content-center">
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
                       <div class="form-group">
-                        <ngb-alert *ngIf="errorSocio" [dismissible]="false">
-                          <strong>
-                            {{mensajeError}}
-                          </strong>
-                        </ngb-alert>
                         <label>
                           <strong>Ingrese rut del socio sin guiones</strong>
                           <i class="fas fa-info-circle" placement="right"
@@ -53,8 +48,10 @@
                             placeholder="Ingrese rut del socio sin guion" name="rut" #rut="ngModel"
                             [(ngModel)]="inputRut" required>
                           <span class="input-group-btn">
-                            <button type="button" (click)="consultarSocio(rut.value)"
-                              class="btn btn-outline-success btn-sm"><i class="fas fa-search"></i></button>
+                            <button type="button" (click)="consultarSocio(rut.value)" [disabled]="blockPrestamo"
+                              class="btn btn-outline-success btn-sm"><i *ngIf="!blockPrestamo" class="fas fa-search"></i>
+                              <img *ngIf="blockPrestamo" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </span>
                         </div>
                       </div>
@@ -138,7 +135,7 @@
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
                             <input type="number" class="form-control" placeholder="Ingrese monto"
-                              name="inputMontoPrestramo" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" required>
+                              name="inputMontoPrestramo" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcularPrestamoRestante()" required>
                           </div>
                         </div>
                       </div>
@@ -155,13 +152,13 @@
                               <div class="funkyradio-success">
                                 <input type="radio" name="radio" id="radio1" value=true
                                   class="form-control form-control-sm" name="abono" #abono="ngModel"
-                                  [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(true)" />
+                                  [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(true); calcularPrestamoRestante()" [disabled]="datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null"/>
                                 <label for="radio1">Si</label>
                               </div>
                               <div class="funkyradio-success">
                                 <input type="radio" name="radio" id="radio2" value=false
                                   class="form-control form-control-sm" name="abono" #abono="ngModel"
-                                  [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(false)" />
+                                  [(ngModel)]="datosEnvioPrestamo.checkAbono" (click)="changeRadioAbono(false); calcularPrestamoRestante()" [disabled]="datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null"/>
                                 <label for="radio2">No</label>
                               </div>
                             </div>
@@ -183,7 +180,7 @@
                                 [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'"
                                 type="checkbox" name="datosEnvioPrestamo.checkDia"
                                 [(ngModel)]="datosEnvioPrestamo.checkDia" id="checkbox1"
-                                (click)="changeCheckAbono(1)" />
+                                (click)="changeCheckAbono(1); calcularPrestamoRestante()" />
                               <label for="checkbox1">Dia de Sueldo</label>
                             </div>
                             <div class="funkyradio-success">
@@ -191,7 +188,7 @@
                                 [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'"
                                 type="checkbox" name="datosEnvioPrestamo.checkTri"
                                 [(ngModel)]="datosEnvioPrestamo.checkTri" id="checkbox2"
-                                (click)="changeCheckAbono(2)" />
+                                (click)="changeCheckAbono(2); calcularPrestamoRestante()" />
                               <label for="checkbox2">Trimestral</label>
                             </div>
                             <div class="funkyradio-success">
@@ -199,7 +196,7 @@
                                 [disabled]="!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'"
                                 type="checkbox" name="datosEnvioPrestamo.checkCon"
                                 [(ngModel)]="datosEnvioPrestamo.checkCon" id="checkbox3"
-                                (click)="changeCheckAbono(3)" />
+                                (click)="changeCheckAbono(3); calcularPrestamoRestante()" />
                               <label for="checkbox3">Termino Conflicto</label>
                             </div>
 
@@ -218,7 +215,7 @@
                             <div class="input-group">
                               <button class="btn btn-success input-group-addon" disabled><i
                                   class="fas fa-dollar-sign"></i></button>
-                              <input type="number" class="form-control" placeholder="Monto Dia de Sueldo"
+                              <input type="number" (change)="calcularPrestamoRestante()" class="form-control" placeholder="Monto Dia de Sueldo"
                                 name="inputDiaSueldo" [(ngModel)]="datosEnvioPrestamo.montoDia"
                                 [disabled]="datosEnvioPrestamo.checkDia == false">
                             </div>
@@ -228,7 +225,7 @@
                             <div class="input-group">
                               <button class="btn btn-success input-group-addon" disabled><i
                                   class="fas fa-dollar-sign"></i></button>
-                              <input type="number" class="form-control" placeholder="Monto Trimestral"
+                              <input type="number" (change)="calcularPrestamoRestante()" class="form-control" placeholder="Monto Trimestral"
                                 name="inputTrimestral" [(ngModel)]="datosEnvioPrestamo.montoTri"
                                 [disabled]="datosEnvioPrestamo.checkTri == false">
                             </div>
@@ -238,7 +235,7 @@
                             <div class="input-group">
                               <button class="btn btn-success input-group-addon" disabled><i
                                   class="fas fa-dollar-sign"></i></button>
-                              <input type="number" class="form-control" placeholder="Monto Termino Conflicto"
+                              <input type="number" (change)="calcularPrestamoRestante()" class="form-control" placeholder="Monto Termino Conflicto"
                                 name="inputTerminoConflicto" [(ngModel)]="datosEnvioPrestamo.montoCon"
                                 [disabled]="datosEnvioPrestamo.checkCon == false">
                             </div>
@@ -256,7 +253,7 @@
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto">
+                            <input type="text" class="form-control" placeholder="Ingrese monto" name="inputPrestamoRestante" [(ngModel)]="inputPrestamoRestante" disabled>
                           </div> <br>
 
                           <label><strong>Numero de Cuotas</strong></label>
@@ -277,7 +274,9 @@
                           <label><strong>Guardar Prestamo</strong></label>
                           <div class="input-group">
                             <button type="submit" class="btn btn-block btn-outline-success"
-                              [disabled]="prestamoForm.invalid">Guardar</button>
+                              [disabled]="prestamoForm.invalid || blockPrestamo">Guardar
+                              <img *ngIf="blockPrestamo" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </div>
 
                         </div>
@@ -309,7 +308,7 @@
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
                             <input type="text" class="form-control" placeholder="Ingrese monto"
-                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcular($event)">
+                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcularInteres($event)">
                           </div>
 
                         </div>
@@ -324,7 +323,7 @@
                           <label><strong>Numero de Cuotas</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled>/</button>
-                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" required>
+                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" disabled required>
                           </div>
 
                         </div>
@@ -353,7 +352,9 @@
 
                           <label><strong>Guardar Prestamo</strong></label>
                           <div class="input-group">
-                            <button class="btn btn-block btn-outline-success">Guardar</button>
+                            <button class="btn btn-block btn-outline-success" [disabled]="prestamoForm.invalid || blockPrestamo">Guardar
+                              <img *ngIf="blockPrestamo" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </div>
 
                         </div>
@@ -400,7 +401,9 @@
                           <label><strong>Guardar Prestamo</strong></label>
                           <div class="input-group">
                             <button class="btn btn-block btn-outline-success" type="submit" value="ingresar"
-                              [disabled]="prestamoForm.invalid">Guardar</button>
+                              [disabled]="prestamoForm.invalid || blockPrestamo">Guardar
+                              <img *ngIf="blockPrestamo" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            </button>
                           </div>
 
                         </div>
@@ -421,7 +424,7 @@
       <app-tabla-prestamos-socios></app-tabla-prestamos-socios>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      Ñee tests
+      <app-interes-prestamo-apuro-economico></app-interes-prestamo-apuro-economico>
     </div>
   </div>
 

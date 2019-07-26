@@ -11,6 +11,7 @@ use App\DetallePrestamo;
 use App\InteresPrestamo;
 use App\MontoCierrePrestamo;
 
+
 class Cs_prestamos extends Model
 {
     protected $table = 'cs_prestamos';
@@ -398,38 +399,55 @@ class Cs_prestamos extends Model
     protected function prestamosTotales($anio, $mes)
     {
         $prestamos = $this->traerPrestamos($anio, $mes);
-        $tomar = true;
+        //$tomar = true;
 
         if ($prestamos['estado'] == 'success') {
-
-            $montoCierre =  $this->traerMontoCierrePrestamo($anio, $mes);
-
-            // dd($montoCierre['monto']);
-
             for ($i = 0; $i < count($prestamos['prestamos']); $i++) {
-                switch ($prestamos['prestamos'][$i]->definicion) {
-                    case 1:
-                        if ($tomar == true) {
-                            $prestamos['prestamos'][$i]->saldo_actual = $montoCierre['monto'] + $prestamos['prestamos'][$i]->monto_ingreso;
-                            $tomar = false;
-                        } else {
-                            $prestamos['prestamos'][$i]->saldo_actual = $prestamos['prestamos'][$i - 1]->saldo_actual +  $prestamos['prestamos'][$i]->monto_ingreso;
+                $abonos = $this->traerAbonos($prestamos['prestamos'][$i]->prestamo_id);
+
+                if ($abonos['estado'] == 'success') {
+                    for ($e = 0; $e < count($abonos['abonos']); $e++) {
+                        switch ($abonos['abonos'][$e]->tipo) {
+                            case 1:
+                                $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto;
+                                if (!array_has($prestamos['prestamos'][$i], 'conflicto')) {
+                                    $prestamos['prestamos'][$i]->conflicto = 0;
+                                }
+                                if (!array_has($prestamos['prestamos'][$i], 'trimestral')) {
+                                    $prestamos['prestamos'][$i]->trimestral = 0;
+                                }
+                                break;
+
+                            case 2:
+                                $prestamos['prestamos'][$i]->conflicto = $abonos['abonos'][$e]->monto;
+                                if (!array_has($prestamos['prestamos'][$i], 'sueldo')) {
+                                    $prestamos['prestamos'][$i]->sueldo = 0;
+                                }
+                                if (!array_has($prestamos['prestamos'][$i], 'trimestral')) {
+                                    $prestamos['prestamos'][$i]->trimestral = 0;
+                                }
+                                break;
+
+                            case 3:
+                                $prestamos['prestamos'][$i]->trimestral = $abonos['abonos'][$e]->monto;
+                                if (!array_has($prestamos['prestamos'][$i], 'sueldo')) {
+                                    $prestamos['prestamos'][$i]->sueldo = 0;
+                                }
+                                if (!array_has($prestamos['prestamos'][$i], 'conflicto')) {
+                                    $prestamos['prestamos'][$i]->conflicto = 0;
+                                }
+                                break;
+                            default:
+                                # code...
+                                break;
                         }
-                        break;
-                    case 2:
-                        if ($tomar == true) {
-                            $prestamos['prestamos'][$i]->saldo_actual = $montoCierre['monto'] -  $prestamos['prestamos'][$i]->monto_egreso;
-                            $tomar = false;
-                        } else {
-                            $prestamos['prestamos'][$i]->saldo_actual =  $prestamos['prestamos'][$i - 1]->saldo_actual -  $prestamos['prestamos'][$i]->monto_egreso;
-                        }
-                        break;
-                    default:
-                        # code...
-                        break;
+                    }
+                } else {
+                    $prestamos['prestamos'][$i]->sueldo = 0;
+                    $prestamos['prestamos'][$i]->conflicto = 0;
+                    $prestamos['prestamos'][$i]->trimestral = 0;
                 }
             }
-
             return $prestamos['prestamos'];
         } else {
             return $prestamos;
@@ -444,11 +462,13 @@ class Cs_prestamos extends Model
                 'pd.prestamo_id',
                 DB::raw("concat(pd.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
                 'p.numero_documento',
+                'p.archivo_documento',
                 'p.descripcion',
+                'p.monto_egreso as total prestamo',
                 'p.cuota',
-                'ep.descripcion as estado',
-                'pd.monto_egreso',
                 'pd.monto_ingreso',
+                'pd.monto_egreso',
+                'ep.descripcion as estado',
                 'pd.definicion'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
@@ -467,6 +487,27 @@ class Cs_prestamos extends Model
             return ['estado' => 'success', 'prestamos' => $prestamo];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en este mes'];
+        }
+    }
+
+    protected function traerAbonos($prestamo_id)
+    {
+        $abonos = DB::table('cs_prestamo_tipo_abono_cuotas')
+            ->select([
+                'cs_prestamo_id',
+                'monto',
+                'tipo_abono_cuotas_id as tipo',
+            ])
+            ->where([
+                'cs_prestamo_id' => $prestamo_id,
+                'activo' => 'S'
+            ])
+            ->get();
+
+        if (!$abonos->isEmpty()) {
+            return ['estado' => 'success', 'abonos' => $abonos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existe un Inicio mensual en este mes'];
         }
     }
 
@@ -495,7 +536,8 @@ class Cs_prestamos extends Model
                 'id',
                 'rut',
                 DB::raw("concat(nombres,' ',a_paterno,' ',a_materno) as socio"),
-                'foto'
+                'foto',
+                'fecha_egreso'
             ])
             ->where([
                 'rut' => $rut,
@@ -504,53 +546,13 @@ class Cs_prestamos extends Model
             ->get();
 
         if (!$socio->isEmpty()) {
-            return $socio;
+            if (is_null($socio[0]->fecha_egreso)) {
+                return $socio;
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El socio ya no se encuentra activo en el sindicato.'];
+            }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no pertenece a ningun socio.'];
-        }
-    }
-
-    protected function guardarMontoCierrePrestamo($request)
-    {
-        $existe = MontoCierrePrestamo::where([
-            'anio_id' => $request->anio_id,
-            'mes_id' => $request->mes_id,
-            'activo' => 'S'
-        ])->first();
-
-        if (!empty($existe)) {
-            $existe->monto = $request->monto;
-            if ($existe->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Monto actualizado'];
-            } else {
-                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
-            }
-        } else {
-            $montoCP = new MontoCierrePrestamo;
-            $montoCP->anio_id = $request->anio_id;
-            $montoCP->mes_id = $request->mes_id;
-            $montoCP->monto = $request->monto;
-
-            if ($montoCP->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Monto ingresado'];
-            } else {
-                return ['estado' => 'failed', 'mensaje' => 'Error al insertar'];
-            }
-        }
-    }
-
-    protected function traerMontoCierrePrestamo($anio, $mes)
-    {
-        $monto = MontoCierrePrestamo::where([
-            'anio_id' => $anio,
-            'mes_id' => $mes,
-            'activo' => 'S'
-        ])->first();
-
-        if (!empty($monto)) {
-            return ['estado' => 'success', 'monto' => $monto->monto];
-        } else {
-            return ['estado' => 'failed', 'monto' => 0];
         }
     }
 }

@@ -40,6 +40,7 @@ export class TablaSindicalComponent implements OnInit {
   modalActualizar = null;
 
   actualizarLoad:boolean=false;
+  actualizarRecalcular:boolean = false;
 
 
   valorAnio: Anios = {
@@ -140,16 +141,12 @@ export class TablaSindicalComponent implements OnInit {
 
   changeAnio(evento) {
     this.valorAnio.descripcion = evento.target.value;
-
-    
     this.cierreMensualAnterior();
     this.refrescarSindical();
   }
 
   changeMes(evento) {
     this.valorMes.descripcion = evento.target.value;
-
-    
     this.cierreMensualAnterior();
     this.refrescarSindical();
   }
@@ -166,6 +163,7 @@ export class TablaSindicalComponent implements OnInit {
           this.prestamo = [];
           this.camping = [];
           this.resultado = [];
+          this.actualizarMontoCajaChica = '';
     this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
         if (response == null) {
@@ -176,6 +174,7 @@ export class TablaSindicalComponent implements OnInit {
           this.prestamo = [];
           this.camping = [];
           this.resultado = [];
+          this.actualizarMontoCajaChica = '';
         }else{
           this.tablaSindical = response;
           this.fijos = this.tablaSindical.fijo;
@@ -215,6 +214,7 @@ export class TablaSindicalComponent implements OnInit {
   }
   cerrarActualizar(){
     this.modalActualizar.close();
+    this.actualizarMontoCajaChica = '';
   }
 
   //metodos para validar usuario-------------------------------
@@ -323,7 +323,8 @@ export class TablaSindicalComponent implements OnInit {
   }
 
   actualizarCaja(){
-
+    
+    this.actualizarRecalcular = true;
     this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion,this.valorMes.descripcion).subscribe(
       response => {
         //console.log(response);
@@ -331,10 +332,13 @@ export class TablaSindicalComponent implements OnInit {
           if(response.monto == 0){
             alert("no existe monto el mes anterior");
             response.monto = " ";
+            this.actualizarRecalcular = false;
           }
           this.actualizarMontoCajaChica = response.monto;
+          this.actualizarRecalcular = false;
         }else{
           this.actualizarMontoCajaChica = null;
+          this.load = false;
         }
       },
       error => {

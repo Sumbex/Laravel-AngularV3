@@ -557,18 +557,17 @@
                               <div class="form-group">
                                 <label> <strong>Nuevo Monto</strong></label>
                               </div>
-                              <div class="input-group">     
-                                <div class="col-md-4">
-                                    <button type="button" class="btn btn-outline-success" (click)="actualizarCaja()">Calcular</button> 
+                              <div class="form-group">     
+                                    <button type="button" class="btn btn-outline-success" (click)="actualizarCaja()">Calcular
+                                      <img *ngIf="actualizarRecalcular" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>   
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="form-group">
                                     <input [(ngModel)]="actualizarMontoCajaChica" class="form-control form-control-sm" #montoCajaChica type="text" disabled>
                                 </div>
-                              </div> <br>
+                               <br>
                                 
-                           
-    
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                                   <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCajaChica.id,'monto',montoCajaChica,modalUsuario)">Guardar

@@ -119,4 +119,13 @@ export class SindicalService{
         )});
     }
 
+    getPrestramosSocios(anio: string, mes: string): Observable<any>{
+        return this._http.get(this.url + "traer_prestamos/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

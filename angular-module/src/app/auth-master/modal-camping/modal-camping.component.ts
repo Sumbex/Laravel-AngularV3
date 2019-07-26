@@ -84,8 +84,15 @@ export class ModalCampingComponent implements OnInit {
   listar_detalle_camping(){
     // listar_detalle_camping/{anio}/{mes}
         this._camping.getLista(this.anio, this.mes).subscribe((val) => {
+            if(val.estado == "success"){
               this.detallecamping = val.tabla;
               this.resumen = val.resumen;
+            }
+            if(val.estado == "failed"){
+              alert("No existen registros en este periodo de tiempo");
+              this.detallecamping = val.tabla;
+              this.resumen = val.resumen;
+            }
                 
               
           }, response => {console.log("POST call in error", response);},() => {
@@ -94,6 +101,7 @@ export class ModalCampingComponent implements OnInit {
   }
   traer_monto(){
       this._camping.getMonto(this.anio, this.mes).subscribe((val) => {
+
               this.monto = val;
 
                             
@@ -116,12 +124,12 @@ export class ModalCampingComponent implements OnInit {
   }
 
   change_mes(){
-    this.traer_monto();
-    this.listar_detalle_camping();
+      this.traer_monto();
+      this.listar_detalle_camping();
   }
   change_anio(){
-    this.traer_monto();
-    this.listar_detalle_camping();
+      this.traer_monto();
+      this.listar_detalle_camping();
   }
 
   listo_para_listar(res1, res2){

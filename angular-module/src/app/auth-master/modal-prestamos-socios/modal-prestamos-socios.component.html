@@ -256,7 +256,7 @@
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto">
+                            <input type="text" class="form-control" placeholder="Ingrese monto" disabled>
                           </div> <br>
 
                           <label><strong>Numero de Cuotas</strong></label>
@@ -309,7 +309,7 @@
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
                             <input type="text" class="form-control" placeholder="Ingrese monto"
-                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcular($event)">
+                              name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcularInteres($event)">
                           </div>
 
                         </div>
@@ -324,7 +324,7 @@
                           <label><strong>Numero de Cuotas</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled>/</button>
-                            <input id="" type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" required>
+                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" disabled required>
                           </div>
 
                         </div>
@@ -421,7 +421,7 @@
       <app-tabla-prestamos-socios></app-tabla-prestamos-socios>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      Ñee tests
+      <app-interes-prestamo-apuro-economico></app-interes-prestamo-apuro-economico>
     </div>
   </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cuentasindicato;
+use App\Detalleinteresprestamo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -732,6 +733,11 @@ class CuentaSindicatoController extends Controller
 		// }
 		
 
+	}
+
+	public function listar_interes_prestamo($anio, $mes)
+	{
+		return Detalleinteresprestamo::traer_lista($anio, $mes);
 	}
 
 

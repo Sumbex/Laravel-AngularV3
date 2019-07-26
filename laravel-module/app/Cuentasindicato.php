@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Detalleinteresprestamo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Cuentasindicato extends Model
@@ -12,6 +14,50 @@ class Cuentasindicato extends Model
 
     protected function traer($anio, $mes)
     {
+    	$interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
+
+     	//dd($interes['monto_ingreso']);
+  //   	if($interes != null){ // si existe interes de prestamo
+		// 	$get_interes = $interes;
+		// 	$listar->push(collect($get_interes));// se agrega obeto a consulta (el item genberal de los intereses)
+
+	
+		// }
+		if($interes != null){ // si existe interes de prestamo
+			$verify_interes = $this->where([
+				'interes' => 'S',
+				'activo' => 'S',
+				'tipo_cuenta_sindicato' => '1',//cuenta tipo fijo
+				'anio_id' => $anio,
+				'mes_id' => $mes
+			])->first();
+
+			if(empty($verify_interes)){
+
+				$this->numero_documento = '--';
+				$this->archivo_documento = '--';
+				$this->tipo_cuenta_sindicato = 1; //fijo
+				$this->descripcion = $interes['descripcion'];
+				$this->monto_ingreso = $interes['monto_ingreso'];
+				$this->monto_egreso = null;
+				$this->saldo_actual = null;
+				$this->definicion = 1;
+				$this->user_crea = Auth::user()->id;
+				$this->activo = 'S';
+				$this->anio_id = $anio;
+				$this->mes_id = $mes;
+				$this->dia = '1';
+				$this->interes = 'S';
+				$this->save();
+
+			}else{
+
+				$verify_interes->monto_ingreso = $interes['monto_ingreso'];
+				$verify_interes->save();
+				
+			}
+		}
+
     	$listar = $this::select([
     						'cuenta_sindicato.id',
     						DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
@@ -32,7 +78,16 @@ class Cuentasindicato extends Model
 							])->orderBy('tipo_cuenta_sindicato','asc')
 				       		  ->orderBy('cuenta_sindicato.dia','asc')
 				       		  ->get();
-		return $listar;
+
+	    
+
+	    
+
+
+			       		  
+
+
+		return ($listar);
     }
 
     protected function resultado_cuenta_sindical($anio, $mes)

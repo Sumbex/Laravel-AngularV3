@@ -35,10 +35,11 @@ class CsDetalleCampingController extends Controller
     	if ($listar) {
     		//return $listar;
     		
-
+            $estado = 'failed';
     		$tomar = true;
             $ingreso = 0;
             $egreso = 0;
+            $total = 0;
 
 			for ($i=0; $i < count($listar); $i++) { 
 						//dump('lol: '.$listar[$i]->definicion);
@@ -75,6 +76,7 @@ class CsDetalleCampingController extends Controller
                 $ingreso = $ingreso + $listar[$i]->monto_ingreso;   
                 $egreso = $egreso + $listar[$i]->monto_egreso; 
                 $total = $listar[$i]->saldo_actual_raw ;   
+                $estado = "success";
 
 			}
 
@@ -85,6 +87,7 @@ class CsDetalleCampingController extends Controller
 
     		}
     		return [
+              'estado' => $estado,
               'tabla' => $listar,
               'resumen' => [
                     'ingreso' => number_format($ingreso,0,'.',','),

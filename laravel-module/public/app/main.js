@@ -668,18 +668,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+
 
 
 
 
 
 let AuthMasterComponent = class AuthMasterComponent {
-    constructor(_tipoCuentas, _getAnios, config, modalService) {
+    constructor(_tipoCuentas, _getAnios, _usuariosService, config, modalService) {
         this._tipoCuentas = _tipoCuentas;
         this._getAnios = _getAnios;
+        this._usuariosService = _usuariosService;
+        this.config = config;
         this.modalService = modalService;
         //Tiempo fuerra Loading
         this.tiempoEspera = 20;
+        this.tiempoEsperaToken = 1;
+        this.test2 = 1000;
         this.titleMensaje = 'Iniciando el sistema';
         this.bodyMensaje = 'Espere unos segundos mientras carga el sistema';
         config.backdrop = 'static';
@@ -709,6 +715,7 @@ let AuthMasterComponent = class AuthMasterComponent {
         });
         document.getElementById("openModalButton").click();
         this.startTimer();
+        this.startTimerToken();
         this.verificarCarga();
     }
     verificarCarga() {
@@ -731,6 +738,22 @@ let AuthMasterComponent = class AuthMasterComponent {
             }
         }, 1000);
     }
+    startTimerToken() {
+        setInterval(() => {
+            if (this.tiempoEsperaToken > 0) {
+                this.tiempoEsperaToken--;
+            }
+            else {
+                let estadoToken = this._usuariosService.isAuthenticated();
+                if (estadoToken == false) {
+                    window.location.reload();
+                }
+                else {
+                    this.tiempoEsperaToken = 1;
+                }
+            }
+        }, 1000);
+    }
 };
 AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -738,7 +761,7 @@ AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./auth-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html"),
         styles: [__webpack_require__(/*! ./auth-master.component.css */ "./src/app/auth-master/auth-master.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
 ], AuthMasterComponent);
 
 

@@ -69,7 +69,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
   }
 
   openPrestamo(Prestamo) {
-    this.modalService.open(Prestamo, { size: 'lg' });
+    this.modalService.open(Prestamo, { size: 'xl' });
   }
 
   changeTipoPrestamo(evento){

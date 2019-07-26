@@ -1,3 +1,5 @@
+.tableFixHead          { overflow-y: auto; height: 300px; }
+.tableFixHead thead th { position: sticky; top: 0; }
 
     .dark-modal .modal-content {
         background-color: #292b2c;

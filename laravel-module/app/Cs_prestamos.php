@@ -10,7 +10,7 @@ use App\Cs_prestamo_tipo_abono_cuotas;
 use App\DetallePrestamo;
 use App\InteresPrestamo;
 use App\MontoCierrePrestamo;
-
+use Illuminate\Support\Facades\Storage;
 
 class Cs_prestamos extends Model
 {
@@ -24,26 +24,26 @@ class Cs_prestamos extends Model
             $request->all(),
             [
                 'fecha' => 'required',
-                /* 'archivo_documento' => 'required|file|mimes:pdf', */
+                'archivo_documento' => 'required|file|mimes:pdf',
                 'numero_documento' => 'required|unique:cs_prestamos,numero_documento',
                 'select_id' => 'required|min:0',
                 'monto_total' => 'required|integer|min:1',
-                //'checkAbono' => 'required',
-                'cuotas' => 'required'
+                'cuotas' => 'required|integer'
 
             ],
             [
                 'fecha.required' => 'La fecha es necesaria',
-                /* 'archivo_documento.required' => 'Debe seleccionar un archivo',
+                'archivo_documento.required' => 'Debe seleccionar un archivo',
                 'archivo_documento.file' => 'Lo seleccionado debe ser un archivo',
-                'archivo_documento.mimes' => 'El archivo debe ser extension PDF', */
+                'archivo_documento.mimes' => 'El archivo debe ser extension PDF',
                 'numero_documento.required' => 'El numero de documento es necesario',
                 'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
                 'monto_total.required' => 'El monto es necesario',
                 'monto_total.integer' => 'Debe ingresar solo numeros',
                 'monto.min' => 'El monto debe ser mayor a 0.',
                 'select_id.required' => 'Debe elegir el tipo de prestamo',
-                'cuotas.required' => 'Debe ingresar el numero de cuotas'
+                'cuotas.required' => 'Debe ingresar el numero de cuotas',
+                'cuotas.integer' => 'Debe ingresar solo numeros'
             ]
         );
 
@@ -71,6 +71,23 @@ class Cs_prestamos extends Model
     protected function mes_tipo_id($value)
     {
         return DB::table('mes')->where('id', $value)->first();
+    }
+
+    protected function guardarArchivo($archivo, $ruta)
+    {
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+        $rutaDB = $ruta . $nombreArchivo;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+        if ($guardar) {
+            return ['estado' =>  'success', 'archivo' => $rutaDB];
+        } else {
+            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+        }
     }
 
     protected function ingresarPrestamo($request)
@@ -122,9 +139,16 @@ class Cs_prestamos extends Model
                         $prestamo->monto_egreso = $request->monto_total;
                         $prestamo->definicion = 2;
                         $prestamo->tipo_prestamo_id = $request->select_id;
-                        $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
 
                         if ($request->checkAbono == 'true') {
+
+                            $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosPrestamo/');
+
+                            if ($guardarArchivo['estado'] == "success") {
+                                $prestamo->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                            } else {
+                                return $guardarArchivo;
+                            }
 
                             $prestamo->tipo_pago_id = 2;
                             $prestamo->user_crea = Auth::user()->id;
@@ -252,6 +276,13 @@ class Cs_prestamos extends Model
                             $prestamo->cuota = $request->cuotas;
                             $prestamo->activo = 'S';
                             $prestamo->estado_prestamo_id = 1;
+                            $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosPrestamo/');
+
+                            if ($guardarArchivo['estado'] == "success") {
+                                $prestamo->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                            } else {
+                                return $guardarArchivo;
+                            }
 
                             if ($prestamo->save()) {
 
@@ -285,7 +316,13 @@ class Cs_prestamos extends Model
 
                         //añadir el interes
 
-                        $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
+                        $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosPrestamo/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $prestamo->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                        } else {
+                            return $guardarArchivo;
+                        }
                         $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno . ' ' . $traerSocio->a_materno;
                         $prestamo->monto_egreso = $request->monto_total;
                         $prestamo->definicion = 2;
@@ -336,7 +373,13 @@ class Cs_prestamos extends Model
 
                     case 3:
                         //prestamo aporte economico - no retornable
-                        $prestamo->archivo_documento = '/doc/archivo.pdf'; //valor por mientras
+                        $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosPrestamo/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $prestamo->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                        } else {
+                            return $guardarArchivo;
+                        }
                         $prestamo->descripcion = 'Prestamo ' . $select->descripcion . ' pedido por ' . $traerSocio->nombres . ' ' . $traerSocio->a_paterno . ' ' . $traerSocio->a_materno;
                         $prestamo->monto_egreso = $request->monto_total;
                         $prestamo->definicion = 2;
@@ -448,7 +491,33 @@ class Cs_prestamos extends Model
                     $prestamos['prestamos'][$i]->trimestral = 0;
                 }
             }
-            return $prestamos['prestamos'];
+
+            $return = [];
+            $return['salud'] = [];
+            $return['apuro'] = [];
+            $return['aporte'] = [];
+
+            foreach ($prestamos['prestamos'] as $key) {
+
+                switch ($key->tipo_prestamo_id) {
+                    case 1:
+                        $return['salud'][] = $key;
+                        break;
+
+                    case 2:
+                        $return['apuro'][] = $key;
+                        break;
+
+                    case 3:
+                        $return['aporte'][] = $key;
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            return $return;
         } else {
             return $prestamos;
         }
@@ -469,7 +538,8 @@ class Cs_prestamos extends Model
                 'pd.monto_ingreso',
                 'pd.monto_egreso',
                 'ep.descripcion as estado',
-                'pd.definicion'
+                'pd.definicion',
+                'p.tipo_prestamo_id'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')
@@ -486,7 +556,7 @@ class Cs_prestamos extends Model
         if (!$prestamo->isEmpty()) {
             return ['estado' => 'success', 'prestamos' => $prestamo];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en este mes'];
+            return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en la fecha ingresada.'];
         }
     }
 
@@ -507,7 +577,7 @@ class Cs_prestamos extends Model
         if (!$abonos->isEmpty()) {
             return ['estado' => 'success', 'abonos' => $abonos];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'No existe un Inicio mensual en este mes'];
+            return ['estado' => 'failed', 'mensaje' => 'No existen abonos.'];
         }
     }
 
@@ -554,5 +624,10 @@ class Cs_prestamos extends Model
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no pertenece a ningun socio.'];
         }
+    }
+
+    protected function pagoPrestamos()
+    {
+        //test
     }
 }

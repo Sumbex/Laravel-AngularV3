@@ -189,7 +189,7 @@ class Cs_prestamos extends Model
 
                                                     $detalleAbono = new DetallePrestamoAbono;
 
-                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->cs_prestamo_id;
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->id;
                                                     $detalleAbono->anio_id = $anio->id;
                                                     $detalleAbono->mes_id = $mes->id;
                                                     $detalleAbono->dia = $fecha['dia'];
@@ -227,7 +227,7 @@ class Cs_prestamos extends Model
 
                                                     $detalleAbono = new DetallePrestamoAbono;
 
-                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->cs_prestamo_id;
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->id;
                                                     $detalleAbono->anio_id = $anio->id;
                                                     $detalleAbono->mes_id = $mes->id;
                                                     $detalleAbono->dia = $fecha['dia'];
@@ -265,7 +265,7 @@ class Cs_prestamos extends Model
 
                                                     $detalleAbono = new DetallePrestamoAbono;
 
-                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->cs_prestamo_id;
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->id;
                                                     $detalleAbono->anio_id = $anio->id;
                                                     $detalleAbono->mes_id = $mes->id;
                                                     $detalleAbono->dia = $fecha['dia'];
@@ -505,13 +505,18 @@ class Cs_prestamos extends Model
 
         if ($prestamos['estado'] == 'success') {
             for ($i = 0; $i < count($prestamos['prestamos']); $i++) {
+                /* dd($this->traerAbonos(102)); */
                 $abonos = $this->traerAbonos($prestamos['prestamos'][$i]->prestamo_id);
 
                 if ($abonos['estado'] == 'success') {
                     for ($e = 0; $e < count($abonos['abonos']); $e++) {
                         switch ($abonos['abonos'][$e]->tipo) {
                             case 1:
-                                $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto;
+                                if (is_null($abonos['abonos'][$e]->monto_egreso)) {
+                                    $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso - 0;
+                                } else {
+                                    $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso - $abonos['abonos'][$e]->monto_ingreso;
+                                }
                                 if (!array_has($prestamos['prestamos'][$i], 'conflicto')) {
                                     $prestamos['prestamos'][$i]->conflicto = 0;
                                 }
@@ -521,7 +526,11 @@ class Cs_prestamos extends Model
                                 break;
 
                             case 2:
-                                $prestamos['prestamos'][$i]->conflicto = $abonos['abonos'][$e]->monto;
+                                if (is_null($abonos['abonos'][$e]->monto_egreso)) {
+                                    $prestamos['prestamos'][$i]->conflicto = $abonos['abonos'][$e]->monto_egreso - 0;
+                                } else {
+                                    $prestamos['prestamos'][$i]->conflicto = $abonos['abonos'][$e]->monto_egreso - $abonos['abonos'][$e]->monto_ingreso;
+                                }
                                 if (!array_has($prestamos['prestamos'][$i], 'sueldo')) {
                                     $prestamos['prestamos'][$i]->sueldo = 0;
                                 }
@@ -531,7 +540,11 @@ class Cs_prestamos extends Model
                                 break;
 
                             case 3:
-                                $prestamos['prestamos'][$i]->trimestral = $abonos['abonos'][$e]->monto;
+                                if (is_null($abonos['abonos'][$e]->monto_egreso)) {
+                                    $prestamos['prestamos'][$i]->trimestral = $abonos['abonos'][$e]->monto_egreso - 0;
+                                } else {
+                                    $prestamos['prestamos'][$i]->trimestral = $abonos['abonos'][$e]->monto_egreso - $abonos['abonos'][$e]->monto_ingreso;
+                                }
                                 if (!array_has($prestamos['prestamos'][$i], 'sueldo')) {
                                     $prestamos['prestamos'][$i]->sueldo = 0;
                                 }
@@ -621,15 +634,18 @@ class Cs_prestamos extends Model
 
     protected function traerAbonos($prestamo_id)
     {
-        $abonos = DB::table('cs_prestamo_tipo_abono_cuotas')
+        $abonos = DB::table('detalle_prestamo_tipo_abono as dpta')
             ->select([
-                'cs_prestamo_id',
-                'monto',
-                'tipo_abono_cuotas_id as tipo',
+                'dpta.id',
+                'pta.cs_prestamo_id',
+                'dpta.monto_ingreso',
+                'dpta.monto_egreso',
+                'pta.tipo_abono_cuotas_id as tipo'
             ])
+            ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
             ->where([
-                'cs_prestamo_id' => $prestamo_id,
-                'activo' => 'S'
+                'pta.cs_prestamo_id' => $prestamo_id,
+                'dpta.activo' => 'S'
             ])
             ->get();
 

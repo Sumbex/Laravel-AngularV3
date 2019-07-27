@@ -160,14 +160,12 @@ class Cs_prestamos extends Model
 
                                 $ultimoPrestamo = Cs_prestamos::all()->last();
 
-                                //verificar todos los check de abono
                                 $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
                                 $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
                                 $conflicto = array(['id' => 2, 'check' => $request->checkcon, 'monto' => $request->monto_con]);
 
                                 $array = array_collapse([$dia, $trimestral, $conflicto]);
 
-                                //dd($array);
                                 $totalesAbono = 0;
 
                                 for ($i = 0; $i < count($array); $i++) {
@@ -245,9 +243,6 @@ class Cs_prestamos extends Model
                                     }
                                 }
 
-                                //$ultimoPrestamo
-                                //$totalesAbono
-
                                 $monto = $ultimoPrestamo->monto_egreso - $totalesAbono;
 
                                 $detalle = new DetallePrestamo;
@@ -270,7 +265,6 @@ class Cs_prestamos extends Model
                                 return ['estado' => 'failed', 'mensaje' => 'No Insertado salud abono'];
                             }
                         } else {
-                            //return 'paso else';
                             $prestamo->tipo_pago_id = 1;
                             $prestamo->user_crea = Auth::user()->id;
                             $prestamo->cuota = $request->cuotas;
@@ -303,7 +297,6 @@ class Cs_prestamos extends Model
                                 } else {
                                     return ['estado' => 'failed', 'mensaje' => 'No Insertado salud cuotas'];
                                 }
-                                //return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'No Insertado salud cuotas'];
                             }
@@ -312,9 +305,6 @@ class Cs_prestamos extends Model
                         break;
 
                     case 2:
-                        //prestamo apuro economico - retornable
-
-                        //añadir el interes
 
                         $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosPrestamo/');
 
@@ -372,7 +362,6 @@ class Cs_prestamos extends Model
                         break;
 
                     case 3:
-                        //prestamo aporte economico - no retornable
                         $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosPrestamo/');
 
                         if ($guardarArchivo['estado'] == "success") {
@@ -583,7 +572,6 @@ class Cs_prestamos extends Model
 
     protected function verificarInicioMensual($anio, $mes)
     {
-        //c_s_cierre_mensual
         $verificar = DB::table('c_s_cierre_mensual')
             ->where([
                 'activo' => 'S',
@@ -626,8 +614,8 @@ class Cs_prestamos extends Model
         }
     }
 
-    protected function pagoPrestamos()
+    protected function pagoPrestamos($request)
     {
-        //test
+       //test agregar cuota actual en detalle prestamo
     }
 }

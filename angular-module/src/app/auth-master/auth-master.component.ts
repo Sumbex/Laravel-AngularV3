@@ -3,6 +3,7 @@ import { TipoCuentasService } from '../servicios/tipo-cuentas.service';
 import { AniosService } from '../servicios/anios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
+import { UsuarioService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-auth-master',
@@ -18,10 +19,12 @@ export class AuthMasterComponent implements OnInit {
 
   //Tiempo fuerra Loading
   tiempoEspera: number = 20;
+  tiempoEsperaToken: number = 1;
+  test2 = 1000;
   titleMensaje = 'Iniciando el sistema';
   bodyMensaje = 'Espere unos segundos mientras carga el sistema';
 
-  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, private _usuariosService: UsuarioService , private config: NgbModalConfig, private modalService: NgbModal) {
 
     config.backdrop = 'static';
     config.keyboard = false;  
@@ -53,6 +56,7 @@ export class AuthMasterComponent implements OnInit {
 
     document.getElementById("openModalButton").click();
     this.startTimer();
+    this.startTimerToken();
     this.verificarCarga();
   }
 
@@ -78,4 +82,18 @@ export class AuthMasterComponent implements OnInit {
       },1000)
     }
 
+  startTimerToken(){
+    setInterval(() => {
+      if(this.tiempoEsperaToken > 0){
+        this.tiempoEsperaToken--;
+      }else{
+        let estadoToken = this._usuariosService.isAuthenticated();
+        if(estadoToken == false){
+          window.location.reload();
+        }else{
+          this.tiempoEsperaToken = 1;
+        }
+      }
+    },1000)
+  }
 }

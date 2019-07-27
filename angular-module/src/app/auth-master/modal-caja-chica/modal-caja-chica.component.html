@@ -4,7 +4,8 @@
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
     <!--Cabezal del modal caja chica-->
     <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i>  Cuenta Sindical / Detalle Caja Chica</strong></h6>
+      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Detalle Caja Chica</strong>
+      </h6>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -22,138 +23,165 @@
       <div class="card">
         <div class="row centrarPrestamo">
 
-  <div class="col-sm-3 col-md-4 col-lg-4"> <br>
-      <label><strong>Ingrese Fecha  </strong>
-        <i class="fas fa-info-circle" placement="right" ngbTooltip="Recuerde ingresar un fecha."></i>
-      </label> <br>
-    <div class="form-group">
-      <div class="input-group">
-        <input type="date" class="form-control form-control-sm" name="fecha" #fecha="ngModel"
-          [(ngModel)]="datosCajaChica.fecha" required>
-      </div>
-    </div>
-  </div>
+          <ngb-alert type="warning" [dismissible]="false">
+              <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> Antes de ingresar un detalle compruebe que la caja chica existe en la fecha escogida. Recuerde que el archivo a subir debe de estar en formato PDF</small>
+            </ngb-alert>
 
-  <div class="col-sm-6 col-md-4 col-lg-4"><br>
-    <label><strong>Ingrese Detalle  </strong>
-      <i class="fas fa-info-circle" placement="right" ngbTooltip="El mínimo de caracteres debe ser de 5."></i>
-    </label>
-    <input class="form-control form-control-sm" type="text" minlength="5" maxlength="80" name="descripcion"
-      #descripcion="ngModel" [(ngModel)]="datosCajaChica.descripcion" required>
-  </div>
+          <div class="col-sm-3 col-md-4 col-lg-4"> <br>
+            <label><strong>Ingrese Fecha </strong>
+              <i class="fas fa-info-circle" placement="right" ngbTooltip="Recuerde ingresar un fecha."></i>
+            </label> <br>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="date" class="form-control form-control-sm" name="fecha" #fecha="ngModel"
+                  [(ngModel)]="datosCajaChica.fecha" required>
+              </div>
+            </div>
+          </div>
 
-  <div class="col-sm-6 col-md-4 col-lg-4"><br>
-    <label><strong>Igrese Monto  </strong>
-      <i class="fas fa-info-circle" placement="right" ngbTooltip="El monto a ingresar no debe ser negativo."></i>
-    </label>
-    <input class="form-control form-control-sm" type="number" name="monto" #monto="ngModel"
-      [(ngModel)]="datosCajaChica.monto_egreso" required>
-  </div>
+          <div class="col-sm-6 col-md-4 col-lg-4"><br>
+            <label><strong>Ingrese Detalle </strong>
+              <i class="fas fa-info-circle" placement="right" ngbTooltip="El mínimo de caracteres debe ser de 5."></i>
+            </label>
+            <input class="form-control form-control-sm" type="text" minlength="5" maxlength="80" name="descripcion"
+              #descripcion="ngModel" [(ngModel)]="datosCajaChica.descripcion" required>
+          </div>
 
-  <div class="col-sm-6 col-md-4 col-lg-4"><br>
-    <label><strong>Igrese N° Documento  </strong>
-      <i class="fas fa-info-circle" placement="right" ngbTooltip="El numero de documento puede ser alfa numerico."></i>
-    </label>
-    <input class="form-control form-control-sm" name="nDocumento" #nDocumento="ngModel"
-      [(ngModel)]="datosCajaChica.numero_documento" required>
-  </div>
+          <div class="col-sm-6 col-md-4 col-lg-4"><br>
+            <label><strong>Igrese Monto </strong>
+              <i class="fas fa-info-circle" placement="right"
+                ngbTooltip="El monto a ingresar no debe ser negativo."></i>
+            </label>
+            <input class="form-control form-control-sm" type="number" name="monto" #monto="ngModel"
+              [(ngModel)]="datosCajaChica.monto_egreso" required>
+          </div>
 
-  <div class="col-sm-3 col-md-4 col-lg-4"><br>
-    <label><strong>Ingrese el archivo comprobante  </strong>
-      <i class="fas fa-info-circle" placement="right" ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
-    </label> <br>
-    <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
-  </div>
+          <div class="col-sm-6 col-md-4 col-lg-4"><br>
+            <label><strong>Igrese N° Documento </strong>
+              <i class="fas fa-info-circle" placement="right"
+                ngbTooltip="El numero de documento puede ser alfa numerico."></i>
+            </label>
+            <input class="form-control form-control-sm" name="nDocumento" #nDocumento="ngModel"
+              [(ngModel)]="datosCajaChica.numero_documento" required>
+          </div>
 
-  <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-    <select (change)="changeDefinicion($event)" class="form-control form-control-sm">
-      <option *ngFor="let tipo of selectDefinicion | slice : 0:1;" [value]="tipo.id">{{tipo.descripcion}}</option>
-    </select>
-  </div>
-  <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="row justify-content-end">
-        <div class="col-sm-6 col-md-4 col-lg-4"><br>
-          <label><strong>Guardar Caja Chica  </strong>
-            <i class="fas fa-info-circle" placement="right" ngbTooltip="Para guardar debe completar todos los campos."></i>
-          </label><br>
-          <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-            [disabled]="loginForm.invalid || blockCajaChica"><i class="fas fa-save"></i>  Guardar</button>
-        </div>
-      </div>
-  </div>
+          <div class="col-sm-3 col-md-4 col-lg-4"><br>
+            <label><strong>Ingrese el archivo comprobante </strong>
+              <i class="fas fa-info-circle" placement="right"
+                ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+            </label> <br>
+            <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
+            <select (change)="changeDefinicion($event)" class="form-control form-control-sm">
+              <option *ngFor="let tipo of selectDefinicion | slice : 0:1;" [value]="tipo.id">{{tipo.descripcion}}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row justify-content-end">
+              <div class="col-sm-6 col-md-4 col-lg-4"><br>
+                <label><strong>Guardar Caja Chica </strong>
+                  <i class="fas fa-info-circle" placement="right"
+                    ngbTooltip="Para guardar debe completar todos los campos."></i>
+                </label><br>
+                <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
+                  [disabled]="loginForm.invalid || blockCajaChica"><i class="fas fa-save"></i> Guardar</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <hr>
       <!--Tabla del Modal Caja Chica-->
       <div id="printJS-table">
         <div class="row">
-          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año  <i class="fas fa-calendar-check"></i></strong></label>
+          <ngb-alert type="warning" [dismissible]="false">
+            <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Informativo!</strong> Si desea edita un valor de la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>
+          </ngb-alert>
+          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
+                  class="fas fa-calendar-check"></i></strong></label>
             <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="valorAnio.descripcion"
               class="form-control form-control-sm">
               <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
             </select>
           </div>
-  
-          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes  <i class="fas fa-calendar-check"></i></strong></label>
+
+          <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
+                  class="fas fa-calendar-check"></i></strong></label>
             <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="valorMes.descripcion"
               class="form-control form-control-sm">
               <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
             </select>
           </div>
         </div><br>
-  
+
         <div class="table-responsive">
           <table class="table table-bordered table-sm">
             <thead text-sm class="text-center">
               <tr>
                 <th colspan="11" style="background: #138D75;" class="ColorThCS">Tabla caja chica</th>
                 <th colspan="2" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
-                <td colspan="2"><strong *ngIf="!cajaChicaError">{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                <td colspan="2"><strong
+                    *ngIf="!cajaChicaError">{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
               </tr>
               <tr>
-                <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i>  Fecha</th>
+                <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
                 <th colspan="2" style="background: #138D75;">N° de Doc</th>
-                <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i>  PDF</th>
-                <th colspan="3" style="background: #138D75;"><i class="fas fa-file-signature"></i>  Detalle</th>
-                <th colspan="2" style="background: #138D75;"><i class="fas fa-plus-circle"></i>  Ingresos</th>
-                <th colspan="2" style="background: #138D75;"><i class="fas fa-minus-circle"></i>  Egresos</th>
-                <th colspan="2" style="background: #138D75;"><i class="fas fa-dollar-sign"></i>  Actual</th>
+                <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
+                <th colspan="3" style="background: #138D75;"><i class="fas fa-file-signature"></i> Detalle</th>
+                <th colspan="2" style="background: #138D75;"><i class="fas fa-plus-circle"></i> Ingresos</th>
+                <th colspan="2" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egresos</th>
+                <th colspan="2" style="background: #138D75;"><i class="fas fa-dollar-sign"></i> Actual</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of cajaChica" class="text-center">
                 <td colspan="2" (click)="editarParametro(item.id, 'fecha', item.fecha)">{{item.fecha}}</td>
-                <td colspan="2" (click)="editarParametro(item.id, 'numero_documento', item.numero_documento)">{{item.numero_documento}}</td>
-  
-  
-  
+                <td colspan="2" (click)="editarParametro(item.id, 'numero_documento', item.numero_documento)">
+                  {{item.numero_documento}}</td>
+
+
+
                 <td colspan="2">
-                  <a href="{{  '../' + item.archivo_documento}}" target="_blank"><i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
-                  <a class="btn-primary-outline" style="cursor: pointer" (click)="editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')">
+                  <a href="{{  '../' + item.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
+                      placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
+                  <a class="btn-primary-outline" style="cursor: pointer"
+                    (click)="editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')">
                     <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
                   </a>
                 </td>
-  
-  
-  
-                <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)">{{item.descripcion}}</td>
+
+
+
+                <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)">{{item.descripcion}}
+                </td>
                 <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">
+                  {{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                 <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
               </tr>
-              <br><!--Tabla del total Modal Caja Chica-->
+              <br>
+              <!--Tabla del total Modal Caja Chica-->
               <tr>
-                <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i>  INGRESOS</th>
-                <td colspan="3" class="text-center"><strong>{{ cajaChicaTotales.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i>
+                  INGRESOS</th>
+                <td colspan="3" class="text-center">
+                  <strong>{{ cajaChicaTotales.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
               </tr>
-  
+
               <tr>
-                <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i>  EGRESOS</th>
-                <td colspan="3" class="text-center"><strong>{{ cajaChicaTotales.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i>
+                  EGRESOS</th>
+                <td colspan="3" class="text-center">
+                  <strong>{{ cajaChicaTotales.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
               </tr>
               <tr>
-                <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>  CIERRE DEL MES</th>
-                <td colspan="3" class="text-center"><strong>{{ cajaChicaTotales.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>
+                  CIERRE DEL MES</th>
+                <td colspan="3" class="text-center">
+                  <strong>{{ cajaChicaTotales.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
               </tr>
             </tbody>
           </table>
@@ -165,57 +193,65 @@
     <div *ngIf="loading" class="loader">Loading...</div>
 
     <div class="modal-footer">
-      
-        <!--Boton para imprimir tabla caja chica-->
-        <button type="button" class="btn btn-success" 
-          onclick="printJS({
+
+      <!--Boton para imprimir tabla caja chica-->
+      <button type="button" class="btn btn-success" onclick="printJS({
             printable: 'printJS-table',
             type:'html',
             style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
           })">
-          <i class="fas fa-print"></i>  Imprimir Datos
-        </button>
-        
-        <!--Boton para salir del modal caja chica-->
-        <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i>  Volver a Cuenta Sindical</button>
+        <i class="fas fa-print"></i> Imprimir Datos
+      </button>
+
+      <!--Boton para salir del modal caja chica-->
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver a Cuenta Sindical</button>
     </div>
   </form>
 </ng-template>
 
 <!--MODAL PARA EDICION*********************************************************-->
 <ng-template #edicion let-modal>
-    <div class="modal-header" id="demoFont">
-      <h4 class="modal-title" id="modal-basic-title">Modificar Campo</h4>
-    </div>
-    <div class="modal-body">
-      <form enctype="multipart/form-data">
-        <div class="form-group">
-          <label><strong>Valor Anterior</strong></label>
-          <div class="input-group">
-            <input type="text" class="form-control"  value="{{parametroEdicion}}" disabled>
-          </div>
+  <div class="modal-header" id="demoFont">
+    <h4 class="modal-title" id="modal-basic-title">Modificar Campo</h4>
+  </div>
+  <div class="modal-body">
+    <form enctype="multipart/form-data">
+      <div class="form-group">
+        <label><strong>Valor Anterior</strong></label>
+        <div class="input-group">
+          <input type="text" class="form-control" value="{{parametroEdicion}}" disabled>
         </div>
-        <div class="form-group">
-          <label><strong>Nuevo Valor</strong></label>
-          <div class="input-group">
-            <input [hidden]="edicionDocumento" #nuevoValor id="nuevoValor" type="{{varType}}" class="form-control" name="nuevoValor">
-            <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file" (change)="onSelectImageEdicion($event)" required>
-          </div>
+      </div>
+      <div class="form-group">
+        <label><strong>Nuevo Valor</strong></label>
+        <div class="input-group">
+          <input [hidden]="edicionDocumento" #nuevoValor id="nuevoValor" type="{{varType}}" class="form-control"
+            name="nuevoValor">
+          <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file"
+            (change)="onSelectImageEdicion($event)" required>
         </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button id="closeModalButtonEdicion" type="button" class="btn btn-info" (click)="modal.close('Save click')">Salir</button>
-      <button [hidden]="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success" (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar
-        <img *ngIf="loadingModificacion" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-      </button>
-      <button *ngIf="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success" (click)="ingresarModificacionDocumento()">Guardar Documento
-        <img *ngIf="loadingModificacion" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-      </button>
-    </div>
-  </ng-template>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="closeModalButtonEdicion" type="button" class="btn btn-info"
+      (click)="modal.close('Save click')">Salir</button>
+    <button [hidden]="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
+      (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar
+      <img *ngIf="loadingModificacion" padding-left="20px" height="12"
+        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    </button>
+    <button *ngIf="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
+      (click)="ingresarModificacionDocumento()">Guardar Documento
+      <img *ngIf="loadingModificacion" padding-left="20px" height="12"
+        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    </button>
+  </div>
+</ng-template>
 
-  <button id="openModalButtonEdicion" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openEdicionModal(edicion)">Launch demo modal</button>
+<button id="openModalButtonEdicion" class="btn btn-lg btn-outline-primary" [hidden]=true
+  (click)="openEdicionModal(edicion)">Launch demo modal</button>
 
 <!--MODAL PARA EDICION-->
 
@@ -233,7 +269,7 @@
       <div class="form-group">
         <label>rut</label>
         <div class="input-group">
-          <input type="text" class="form-control"  name="rut" #rut="ngModel" [(ngModel)]="usuario.rut" disabled>
+          <input type="text" class="form-control" name="rut" #rut="ngModel" [(ngModel)]="usuario.rut" disabled>
         </div>
       </div>
       <div class="form-group">
@@ -245,11 +281,14 @@
     </form>
   </div>
   <div class="modal-footer">
-      <button id="closeModalButtonValidacion2" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click'); blockCajaChica = false">Salir</button>
-    <button hidden id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');">Salir</button>
+    <button id="closeModalButtonValidacion2" type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click'); blockCajaChica = false">Salir</button>
+    <button hidden id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click');">Salir</button>
     <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Guardar</button>
   </div>
 </ng-template>
 
-<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openContraseniaModal(validar)">Launch demo modal</button>
+<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]=true
+  (click)="openContraseniaModal(validar)">Launch demo modal</button>
 <!--MODAL VALIDACION CON CONTRASEÑA-->

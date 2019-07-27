@@ -11,6 +11,7 @@ use App\DetallePrestamo;
 use App\InteresPrestamo;
 use App\MontoCierrePrestamo;
 use Illuminate\Support\Facades\Storage;
+use App\DetallePrestamoAbono;
 
 class Cs_prestamos extends Model
 {
@@ -183,8 +184,26 @@ class Cs_prestamos extends Model
                                                 $prestamoAbono->activo = 'S';
 
                                                 if ($prestamoAbono->save()) {
-                                                    $array[$i]['paso'] = true;
-                                                    break;
+
+                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last();
+
+                                                    $detalleAbono = new DetallePrestamoAbono;
+
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->cs_prestamo_id;
+                                                    $detalleAbono->anio_id = $anio->id;
+                                                    $detalleAbono->mes_id = $mes->id;
+                                                    $detalleAbono->dia = $fecha['dia'];
+                                                    $detalleAbono->monto_egreso = $ultimoAbono->monto;
+                                                    $detalleAbono->definicion = 2;
+                                                    $detalleAbono->estado = 1;
+                                                    $detalleAbono->activo = 'S';
+
+                                                    if ($detalleAbono->save()) {
+                                                        $array[$i]['paso'] = true;
+                                                        break;
+                                                    } else {
+                                                        break;
+                                                    }
                                                 } else {
                                                     $array[$i]['paso'] = false;
                                                     break;
@@ -198,14 +217,31 @@ class Cs_prestamos extends Model
                                         case 2:
 
                                             if ($array[$i]['check'] == 'true') {
-                                                $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
+                                                $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->cs_prestamo_id;
                                                 $prestamoAbono->tipo_abono_cuotas_id = 2;
                                                 $prestamoAbono->monto = $array[$i]['monto'];
                                                 $prestamoAbono->activo = 'S';
 
                                                 if ($prestamoAbono->save()) {
-                                                    $array[$i]['paso'] = true;
-                                                    break;
+                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last();
+
+                                                    $detalleAbono = new DetallePrestamoAbono;
+
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->cs_prestamo_id;
+                                                    $detalleAbono->anio_id = $anio->id;
+                                                    $detalleAbono->mes_id = $mes->id;
+                                                    $detalleAbono->dia = $fecha['dia'];
+                                                    $detalleAbono->monto_egreso = $ultimoAbono->monto;
+                                                    $detalleAbono->definicion = 2;
+                                                    $detalleAbono->estado = 1;
+                                                    $detalleAbono->activo = 'S';
+
+                                                    if ($detalleAbono->save()) {
+                                                        $array[$i]['paso'] = true;
+                                                        break;
+                                                    } else {
+                                                        break;
+                                                    }
                                                 } else {
                                                     $array[$i]['paso'] = false;
                                                     break;
@@ -225,8 +261,25 @@ class Cs_prestamos extends Model
                                                 $prestamoAbono->activo = 'S';
 
                                                 if ($prestamoAbono->save()) {
-                                                    $array[$i]['paso'] = true;
-                                                    break;
+                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last();
+
+                                                    $detalleAbono = new DetallePrestamoAbono;
+
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->id;
+                                                    $detalleAbono->anio_id = $anio->id;
+                                                    $detalleAbono->mes_id = $mes->id;
+                                                    $detalleAbono->dia = $fecha['dia'];
+                                                    $detalleAbono->monto_egreso = $ultimoAbono->monto;
+                                                    $detalleAbono->definicion = 2;
+                                                    $detalleAbono->estado = 1;
+                                                    $detalleAbono->activo = 'S';
+
+                                                    if ($detalleAbono->save()) {
+                                                        $array[$i]['paso'] = true;
+                                                        break;
+                                                    } else {
+                                                        break;
+                                                    }
                                                 } else {
                                                     $array[$i]['paso'] = false;
                                                     break;
@@ -432,7 +485,8 @@ class Cs_prestamos extends Model
         return $tipo;
     }
 
-    protected function traerTipoAbonos(){
+    protected function traerTipoAbonos()
+    {
         $tipo = DB::table('tipo_abono_cuotas')
             ->select([
                 'id',
@@ -632,6 +686,6 @@ class Cs_prestamos extends Model
 
     protected function pagoPrestamos($request)
     {
-       //test agregar cuota actual en detalle prestamo
+        //test agregar cuota actual en detalle prestamo
     }
 }

@@ -265,7 +265,7 @@ class Cs_prestamos extends Model
 
                                                     $detalleAbono = new DetallePrestamoAbono;
 
-                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->id;
+                                                    $detalleAbono->prestamo_abono_id = $ultimoAbono->cs_prestamo_id;
                                                     $detalleAbono->anio_id = $anio->id;
                                                     $detalleAbono->mes_id = $mes->id;
                                                     $detalleAbono->dia = $fecha['dia'];

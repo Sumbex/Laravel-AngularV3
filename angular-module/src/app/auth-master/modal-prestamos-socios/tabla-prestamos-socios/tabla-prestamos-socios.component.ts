@@ -5,6 +5,7 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { HttpClient } from '@angular/common/http';
 import { Prestamos } from 'src/app/modelos/prestamos.model';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabla-prestamos-socios',
@@ -24,10 +25,18 @@ export class TablaPrestamosSociosComponent implements OnInit {
     descripcion: ''
   }
 
+  modalActualizarPagoSalud = null;
+
   //variable que almacena todos los prestamos que tiene el servidor
   valoresPrestamos;
 
-  constructor(private _sindicalService: SindicalService, private _fechasService: AniosService) { }
+  constructor(private _sindicalService: SindicalService,
+     private _fechasService: AniosService,
+     config: NgbModalConfig, 
+     private modalService: NgbModal) {
+      config.backdrop = 'static';
+      config.keyboard = false;
+      }
 
   ngOnInit() {
     //Cargar Años
@@ -62,6 +71,13 @@ export class TablaPrestamosSociosComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  openActualizar(Actualizar) {
+    this.modalActualizarPagoSalud = this.modalService.open(Actualizar,{ size: 'sm' });    
+   }
+   cerrarActualizar(){
+    this.modalActualizarPagoSalud.close();
   }
 
   refrescarTablaPrestamosClientes() {

@@ -210,7 +210,9 @@
   
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'monto',montoFijo)">Guardar</button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(itemFijo.id,'monto',montoFijo,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
                             </div>
   
                           </div>
@@ -774,7 +776,7 @@
     
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'monto',montoCamping)">Guardar
+                                  <button type="button" class="btn btn-outline-success" (click)="actualizar(itemCamping.id,'monto',montoCamping,modalUsuario)">Guardar
                                     <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                                   </button>
                               </div>

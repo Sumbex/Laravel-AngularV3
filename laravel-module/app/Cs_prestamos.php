@@ -255,6 +255,7 @@ class Cs_prestamos extends Model
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
+                                $detalle->cuota = 0;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
@@ -291,6 +292,7 @@ class Cs_prestamos extends Model
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
+                                $detalle->cuota = 0;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
@@ -347,6 +349,7 @@ class Cs_prestamos extends Model
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
+                                $detalle->cuota = 0;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
@@ -392,6 +395,7 @@ class Cs_prestamos extends Model
                             $detalle->activo = 'S';
                             $detalle->user_crea = Auth::user()->id;
                             $detalle->definicion = 2;
+                            $detalle->cuota = 0;
 
                             if ($detalle->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
@@ -418,6 +422,18 @@ class Cs_prestamos extends Model
     protected function traerTipoPrestamos()
     {
         $tipo = DB::table('tipo_prestamo')
+            ->select([
+                'id',
+                'descripcion'
+            ])
+            ->where('activo', 'S')
+            ->get();
+
+        return $tipo;
+    }
+
+    protected function traerTipoAbonos(){
+        $tipo = DB::table('tipo_abono_cuotas')
             ->select([
                 'id',
                 'descripcion'
@@ -523,7 +539,7 @@ class Cs_prestamos extends Model
                 'p.archivo_documento',
                 'p.descripcion',
                 'p.monto_egreso as total prestamo',
-                'p.cuota',
+                DB::raw("concat(pd.cuota,'/',p.cuota) as cuota"),
                 'pd.monto_ingreso',
                 'pd.monto_egreso',
                 'ep.descripcion as estado',

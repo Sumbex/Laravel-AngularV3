@@ -12,7 +12,7 @@ class CsDetalleCampingController extends Controller
     public function listar_detalle_camping($anio, $mes, $monto = 0)
     {
     	$monto = $this->traer_cierre_monto_detalle_camping_cs($anio, $mes);
-    	
+    	$total = 0;
 
     	$listar = Cuentasindicato::select([
     			DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
@@ -35,10 +35,11 @@ class CsDetalleCampingController extends Controller
     	if ($listar) {
     		//return $listar;
     		
-
+            $estado = 'failed';
     		$tomar = true;
             $ingreso = 0;
             $egreso = 0;
+            $total = 0;
 
 			for ($i=0; $i < count($listar); $i++) { 
 						//dump('lol: '.$listar[$i]->definicion);
@@ -75,6 +76,7 @@ class CsDetalleCampingController extends Controller
                 $ingreso = $ingreso + $listar[$i]->monto_ingreso;   
                 $egreso = $egreso + $listar[$i]->monto_egreso; 
                 $total = $listar[$i]->saldo_actual_raw ;   
+                $estado = "success";
 
 			}
 
@@ -85,6 +87,7 @@ class CsDetalleCampingController extends Controller
 
     		}
     		return [
+              'estado' => $estado,
               'tabla' => $listar,
               'resumen' => [
                     'ingreso' => number_format($ingreso,0,'.',','),

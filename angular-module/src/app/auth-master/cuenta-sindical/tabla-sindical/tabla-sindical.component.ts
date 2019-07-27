@@ -331,8 +331,9 @@ export class TablaSindicalComponent implements OnInit {
         if(response.estado == "success"){
           if(response.monto == 0){
             alert("no existe monto el mes anterior");
-            response.monto = " ";
+            response.monto = "";
             this.actualizarRecalcular = false;
+            this.modalActualizar.close();
           }
           this.actualizarMontoCajaChica = response.monto;
           this.actualizarRecalcular = false;

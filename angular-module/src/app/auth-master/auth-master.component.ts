@@ -21,7 +21,7 @@ export class AuthMasterComponent implements OnInit {
   tiempoEspera: number = 20;
   tiempoEsperaToken: number = 1;
   test2 = 1000;
-  titleMensaje = 'Iniciando los componentes del sistema';
+  titleMensaje = 'Iniciando el sistema';
   bodyMensaje = 'Espere unos segundos mientras carga el sistema';
 
   constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, private _usuariosService: UsuarioService , private config: NgbModalConfig, private modalService: NgbModal) {

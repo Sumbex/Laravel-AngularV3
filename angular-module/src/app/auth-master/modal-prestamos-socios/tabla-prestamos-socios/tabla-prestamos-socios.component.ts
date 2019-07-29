@@ -28,7 +28,9 @@ export class TablaPrestamosSociosComponent implements OnInit {
   modalActualizarPagoSalud = null;
 
   //variable que almacena todos los prestamos que tiene el servidor
-  valoresPrestamos;
+  valoresPrestamosSalud;
+  valoresPrestamosApuro;
+  valoresPrestamosAporte
 
   constructor(private _sindicalService: SindicalService,
      private _fechasService: AniosService,
@@ -84,10 +86,17 @@ export class TablaPrestamosSociosComponent implements OnInit {
     this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
-          this.valoresPrestamos = null;
+          this.valoresPrestamosSalud = null;
+          this.valoresPrestamosApuro = null;
+          this.valoresPrestamosAporte = null;
           alert(response.mensaje);
         } else {
-          this.valoresPrestamos = response;
+          this.valoresPrestamosSalud = response.salud;
+          this.valoresPrestamosApuro = response.apuro;
+          this.valoresPrestamosAporte = response.aporte;
+          console.log(this.valoresPrestamosSalud);
+          console.log(this.valoresPrestamosSalud);
+          console.log(this.valoresPrestamosAporte);
         }
       },
       error => {
@@ -106,5 +115,9 @@ export class TablaPrestamosSociosComponent implements OnInit {
     this.selectMes.id = evento.target.value;
     console.log(this.selectMes.id);
     this.refrescarTablaPrestamosClientes();
+  }
+
+  test(fecha, id, descripcion){
+    console.log(fecha, id, descripcion);
   }
 }

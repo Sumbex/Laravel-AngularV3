@@ -151,7 +151,7 @@ export class TablaSindicalComponent implements OnInit {
     this.refrescarSindical();
   }
   verTablaSindical(tablaGeneral) {
-    this.abrirTablaSindical = this.modalService.open(tablaGeneral, { size: 'lg' });
+    this.abrirTablaSindical = this.modalService.open(tablaGeneral, { size: 'xl' });
     this.cargar_select();
   }
 

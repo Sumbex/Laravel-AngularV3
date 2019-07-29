@@ -128,7 +128,7 @@ export class ModalCajaChicaComponent implements OnInit {
   }
 
   openCajaChica(CajaChica) {
-    this.modalService.open(CajaChica, { size: 'lg' });
+    this.modalService.open(CajaChica, { size: 'xl' });
     //Cargar Caja chica
     this.usuarioLogeado();
   }

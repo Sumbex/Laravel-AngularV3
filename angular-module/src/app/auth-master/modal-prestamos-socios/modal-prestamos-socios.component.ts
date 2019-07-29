@@ -35,7 +35,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     selectId: "1",
     socioId: "",
     numeroDocumento: "",
-    archivoDocumento: "",
+    archivoDocumento: null,
     montoPrestamo: "",
     checkAbono: false,
     cuotas: "",
@@ -70,6 +70,10 @@ export class ModalPrestamosSociosComponent implements OnInit {
 
   openPrestamo(Prestamo) {
     this.modalService.open(Prestamo, { size: 'xl' });
+  }
+
+  onSelectImage(event) {
+    this.datosEnvioPrestamo.archivoDocumento = event.srcElement.files[0];
   }
 
   changeTipoPrestamo(evento){

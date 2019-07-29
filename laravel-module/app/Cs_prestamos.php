@@ -774,7 +774,7 @@ class Cs_prestamos extends Model
             $estado = true;
         }
 
-        if ($dPrestamo->cuota < $prestamo->cuota && $prestamo->estado_prestamo_id == 1 && $prestamo->tipo_prestamo_id != 3) {
+        if ($dPrestamo->cuota < $prestamo->cuota && $prestamo->estado_prestamo_id == 1) {
             $pago = new DetallePrestamo;
 
             $pago->prestamo_id = $dPrestamo->prestamo_id;

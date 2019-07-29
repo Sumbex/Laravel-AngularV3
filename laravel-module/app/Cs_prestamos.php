@@ -765,6 +765,8 @@ class Cs_prestamos extends Model
             } else {
                 $estado = false;
             }
+        }else{
+            $estado = true;
         }
 
         if ($dPrestamo->cuota < $prestamo->cuota && $prestamo->estado_prestamo_id == 1) {

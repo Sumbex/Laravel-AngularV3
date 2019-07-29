@@ -1,0 +1,698 @@
+<div class="container"><br>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <!--buscador de socio-->
+      <div class="card-header" id="demoFont2">
+        <h6 class="card-title">Socio</h6>
+      </div>
+      <div class="card">
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+              <div class="form-group"> <br>
+                <label>
+                  <strong>Ingrese rut del socio sin guiones  </strong>
+                  <i class="fas fa-info-circle" placement="right"
+                    ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
+                </label>
+                <div class="input-group">
+                  <input type="number" class="form-control form-control-sm" placeholder="Ingrese rut del socio sin guion" name="rut" required>
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-outline-success btn-sm"><i *ngIf="!blockPrestamo" class="fas fa-search"></i></button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row">
+
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+              <div class="form-group text-center">
+                <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio"
+                  class="img-thumbnail">
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+              <div class="form-group"> <br>
+                <label><strong>Fecha Nacimiento</strong></label>
+                <input type="date" class="form-control form-control-sm" value="{{rutSocioTest}}" required disabled>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+              <div class="form-group"> <br>
+                <label><strong>Rut del socio</strong></label>
+                <input type="text" class="form-control form-control-sm" value="{{rutSocioTest}}" required disabled>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group"> <br>
+                <label><strong>Nombre Completo del socio</strong></label>
+                <input type="text" class="form-control form-control-sm" value="{{nombreSocioTest}}" required disabled>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div> <br>
+      <!--Datos del socio-->
+      <div class="card-header" id="demoFont2">
+        <h6 class="card-title">Datos del Socio</h6>
+      </div>
+      <div class="card">
+        <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>N° de Cta</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Banco</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Tipo de Cta</strong></label>
+                  <select name="Cta" id="cta" class="form-control form-control-sm" required>
+                    <option value="">--Seleccione--</option>
+                    <option value="">Cuenta Rut</option>
+                    <option value="">Cuenta Vista</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Isapre o Fonasa</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Grupo Sangre</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Direccion</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Comuna</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Telefono</strong></label>
+                  <input type="number" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Celular</strong></label>
+                  <input type="number" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Anexo</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Email Personal</strong></label>
+                  <input type="email" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Email Corporativo</strong></label>
+                  <input type="email" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div> 
+          
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Cargo Planta</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Cargo o Comision Sindicato</strong></label>
+                  <select name="Rol" id="rol" class="form-control form-control-sm" required>
+                      <option value="">--Seleccione--</option>
+                      <option value="">Socio</option>
+                      <option value="">Directiva</option>
+                    </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Casa Propia</strong></label>
+                  <select name="Rol" id="rol" class="form-control form-control-sm" required>
+                    <option value="">--Seleccione--</option>
+                    <option value="">Si</option>
+                    <option value="">No</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div> 
+          
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Rol Turno</strong></label>
+                 <select name="Rol" id="rol" class="form-control form-control-sm" required>
+                   <option value="">--Seleccione--</option>
+                   <option value="">Si</option>
+                   <option value="">No</option>
+                 </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Estado Civil</strong></label>
+                  <select name="Civil" id="civil" class="form-control form-control-sm" required>
+                    <option value="">--Seleccione--</option>
+                    <option value="">Soltero/a</option>
+                    <option value="">Casado/a</option>
+                    <option value="">Viudo/a</option>
+                    <option value="">Divorciado/a</option>
+                    <option value="">Conviviente civil</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Conyuge / Pareja</strong></label>
+                  <select name="Rol" id="rol" class="form-control form-control-sm" required>
+                    <option value="">--Seleccione--</option>
+                    <option value="">Si</option>
+                    <option value="">No</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-end">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                <label><strong>Guardar Datos del Socio</strong></label>
+                <div class="form-group">
+                    <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </div> <br>
+      <!--datos del conyuge-->
+      <div class="card-header" id="demoFont2">
+        <h6 class="card-title">Datos Conyuge / Pareja</h6>
+      </div>
+      <div class="card">
+        <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Rut</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
+                <div class="form-group">
+                  <label><strong>Fecha de Nacimiento</strong></label>
+                  <input type="date" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Nombres</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Paterno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Materno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Direccion</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Comuna</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Celular</strong></label>
+                  <input type="number" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div> 
+          
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-end">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                <label><strong>Guardar Datos del Conyuge / Pareja</strong></label>
+                <div class="form-group">
+                    <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </form>
+      </div> <br>
+      <!--Datos Beneficiario-->
+      <div class="card-header" id="demoFont2">
+        <h6 class="card-title">Beneficiario</h6>
+      </div>
+      <div class="card">
+        <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Relacion o Parentesco</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Rut</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Fecha de Nacimiento</strong></label>
+                  <input type="date" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Nombres</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Paterno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Materno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Direccion</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Comuna</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Celular</strong></label>
+                  <input type="number" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-end">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                <label><strong>Guardar Datos del Beneficiario</strong></label>
+                <div class="form-group">
+                    <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </form>
+      </div> <br>
+
+      <!--Datos del hijo-->
+      <div class="card-header" id="demoFont2">
+        <h6 class="card-title">Hijos y Cargas</h6>
+      </div>
+      <div class="card">
+        <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Rut</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Fecha de Nacimiento</strong></label>
+                  <input type="date" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Nombres</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Paterno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Materno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Direccion</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Comuna</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                <div class="form-group">
+                  <label><strong>Celular</strong></label>
+                  <input type="number" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+                  <div class="form-group">
+                    <label><strong>Establecimiento</strong></label>
+                    <input type="text" class="form-control form-control-sm" required>
+                  </div>
+                </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-end">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                <label><strong>Guardar Datos</strong></label>
+                <div class="form-group">
+                    <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </form>
+      </div> <br>
+
+      <!--Datos de padres y suegros-->
+      <div class="card-header" id="demoFont2">
+          <h6 class="card-title">Padres y Suegros Vivos</h6>
+      </div>
+      <div class="card">
+        <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Relacion con el Socio</strong></label>
+                  <select name="Cta" id="cta" class="form-control form-control-sm" required>
+                    <option value="">--Seleccione--</option>
+                    <option value="">padre</option>
+                    <option value="">Madre</option>
+                    <option value="">Suegro</option>
+                    <option value="">Suegra</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Rut</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Fecha de Nacimiento</strong></label>
+                  <input type="date" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+              
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Nombres</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Paterno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Apellido Materno</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Direccion</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Comuna</strong></label>
+                  <input type="text" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                <div class="form-group">
+                  <label><strong>Celular</strong></label>
+                  <input type="number" class="form-control form-control-sm" required>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-end">
+
+              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                <label><strong>Guardar Datos</strong></label>
+                <div class="form-group">
+                  <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </form>
+      </div> <br>
+
+    </div>
+  </div>
+</div>

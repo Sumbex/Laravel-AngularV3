@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cuentasindicato;
+use App\Detalleinteresprestamo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class CuentaSindicatoController extends Controller
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_sindicato' => 'required',
 	            'monto' => 'required',
-	            'archivo' => 'required|mimes:doc,pdf,docx',
+	            'archivo' => 'required|mimes:pdf',
 	        ],
 	        [
 	        	'fecha.required' => 'La fecha es necesaria',
@@ -234,7 +235,7 @@ class CuentaSindicatoController extends Controller
 	public function listar_cuenta_sindicato($anio, $mes)
 	{
 
-		try{
+		// try{
 
 			$cm_txt = 'c_s_cierre_mensual';
 			
@@ -250,21 +251,21 @@ class CuentaSindicatoController extends Controller
 
 				return $data;
 			}
-		}
-		catch(QueryException $e){
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'QEx: No se ha podido traer la lista cuenta sindical',
-				'exception' => $e //este es solo pal desarrollador;
-			];
-		}
-		catch(\Exception $e){
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'Ex: No se ha podido traer la lista cuenta sindical',
-				'exception' => $e //este es solo pal desarrollador;
-			];
-		}
+		// }
+		// catch(QueryException $e){
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'QEx: No se ha podido traer la lista cuenta sindical',
+		// 		'exception' => $e //este es solo pal desarrollador;
+		// 	];
+		// }
+		// catch(\Exception $e){
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'Ex: No se ha podido traer la lista cuenta sindical',
+		// 		'exception' => $e //este es solo pal desarrollador;
+		// 	];
+		// }
 	}
 
 	public function cuenta_sindical($s_a, $anio, $mes)
@@ -733,6 +734,13 @@ class CuentaSindicatoController extends Controller
 		
 
 	}
+
+	public function listar_interes_prestamo($anio, $mes)
+	{
+		return Detalleinteresprestamo::traer_lista($anio, $mes);
+	}
+
+	
 
 
 }

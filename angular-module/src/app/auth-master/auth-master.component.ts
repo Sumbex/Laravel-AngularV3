@@ -3,6 +3,7 @@ import { TipoCuentasService } from '../servicios/tipo-cuentas.service';
 import { AniosService } from '../servicios/anios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
+import { UsuarioService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-auth-master',
@@ -16,7 +17,14 @@ export class AuthMasterComponent implements OnInit {
   filtroAnios;
   filtroMeses;
 
-  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, config: NgbModalConfig, private modalService: NgbModal) {
+  //Tiempo fuerra Loading
+  tiempoEspera: number = 20;
+  tiempoEsperaToken: number = 1;
+  test2 = 1000;
+  titleMensaje = 'Iniciando el sistema';
+  bodyMensaje = 'Espere unos segundos mientras carga el sistema';
+
+  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, private _usuariosService: UsuarioService , private config: NgbModalConfig, private modalService: NgbModal) {
 
     config.backdrop = 'static';
     config.keyboard = false;  
@@ -47,6 +55,8 @@ export class AuthMasterComponent implements OnInit {
     });
 
     document.getElementById("openModalButton").click();
+    this.startTimer();
+    this.startTimerToken();
     this.verificarCarga();
   }
 
@@ -60,4 +70,30 @@ export class AuthMasterComponent implements OnInit {
     this.modalService.open(content, {centered:true});
   }
 
+  //Timer para loading en caso de superar el limite de espera
+  startTimer() {
+    setInterval(() => {
+        if(this.tiempoEspera > 0) {
+          this.tiempoEspera--;
+        } else {
+          this.titleMensaje = 'Error al cargar';
+          this.bodyMensaje = 'Se ha superado el tiempo de espera, por favor compruebe su conexión a internet y refresque esta pagina';
+        }
+      },1000)
+    }
+
+  startTimerToken(){
+    setInterval(() => {
+      if(this.tiempoEsperaToken > 0){
+        this.tiempoEsperaToken--;
+      }else{
+        let estadoToken = this._usuariosService.isAuthenticated();
+        if(estadoToken == false){
+          window.location.reload();
+        }else{
+          this.tiempoEsperaToken = 1;
+        }
+      }
+    },1000)
+  }
 }

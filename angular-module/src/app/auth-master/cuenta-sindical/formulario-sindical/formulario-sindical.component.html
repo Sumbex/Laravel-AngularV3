@@ -95,6 +95,10 @@
                 #monto="ngModel"
                 [(ngModel)]="datosSindicales.monto" 
                 required>
+                <div *ngIf="loadCajaChica">
+                  <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                  <label>Calculando Monto...</label>
+              </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">

@@ -13,7 +13,7 @@ import { ValidarUsuarioService } from '../../../servicios/validar-usuario.servic
 export class ListarSociosComponent implements OnInit {
 
   socios;
-  search;
+  search:string='';
   mod_editar = null;
   mod_validar = null;
 
@@ -72,13 +72,18 @@ export class ListarSociosComponent implements OnInit {
   }
 
   filtrar(){
-  		this._socios.getTablaFilter(this.search).subscribe(
-	      response => {
-	        console.log(response);
-	        this.socios = response;
-	        
-	      }
-	    )
+      if(this.search ==''){
+          alert("Ingrese un nombre para filtrar");
+          return false;
+      }else{
+    		this._socios.getTablaFilter(this.search).subscribe(
+  	      response => {
+  	        console.log(response);
+  	        this.socios = response;
+  	        
+  	      }
+  	    )
+      }
   }
 
   modal_editar(modal){
@@ -90,6 +95,11 @@ export class ListarSociosComponent implements OnInit {
 
   actualizar(id, campo, valor, validar){  
 
+    if (valor.value == '') {
+      alert("Ingrese dato en este campo para actualizar");
+      return false;
+
+    }
    
     //this.modalReference = this.modalService.open(validar, { size: 'sm' });
     this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

@@ -598,8 +598,13 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD:laravel-module/public/app/styles-es2015.js
 __webpack_require__(/*! C:\Users\bryan\Desktop\Proyecto CMCP\Laravel-AngularV3\angular-module\src\styles.css */"./src/styles.css");
 module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyecto CMCP\Laravel-AngularV3\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+=======
+__webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+>>>>>>> david:laravel-module/public/app/styles.js
 
 
 /***/ })

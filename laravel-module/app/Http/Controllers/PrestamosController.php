@@ -32,7 +32,7 @@ class PrestamosController extends Controller
 
 	public function PagoPrestamos(Request $request)
 	{
-		//test
+		return Cs_prestamos::pagoPrestamos($request);
 	}
 
 	public function TraerTipoAbonos()

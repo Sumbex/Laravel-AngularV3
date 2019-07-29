@@ -12,20 +12,21 @@
     </div>
     <!--Cuerpo del body caja chica-->
     <div class="modal-body">
-      <ngb-alert *ngIf="errorIngreso" [dismissible]="false">
-        <strong>
-          {{ ingresoStatus }}
-        </strong>
-      </ngb-alert>
+
+        <ngb-alert *ngIf="errorIngreso" [dismissible]="false" class="col-12 align-self-center">
+          <strong>
+            {{ ingresoStatus }}
+          </strong>
+        </ngb-alert>
+    
       <div class="modal-header" id="demoFont2">
         <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
       </div>
       <div class="card">
-        <div class="row centrarPrestamo">
-
-          <ngb-alert type="warning" [dismissible]="false">
-              <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> Antes de ingresar un detalle compruebe que la caja chica existe en la fecha escogida. Recuerde que el archivo a subir debe de estar en formato PDF</small>
-            </ngb-alert>
+        <div class="row centrarCajaChica">
+                <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+                  <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> Antes de ingresar un detalle compruebe que la caja chica existe en la fecha escogida. Recuerde que el archivo a subir debe de estar en formato PDF</small>
+                </ngb-alert>
 
           <div class="col-sm-3 col-md-4 col-lg-4"> <br>
             <label><strong>Ingrese Fecha </strong>
@@ -96,8 +97,8 @@
       <hr>
       <!--Tabla del Modal Caja Chica-->
       <div id="printJS-table">
-        <div class="row">
-          <ngb-alert type="warning" [dismissible]="false">
+        <div class="row centrarCajaChica">
+          <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
             <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Informativo!</strong> Si desea edita un valor de la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>
           </ngb-alert>
           <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i

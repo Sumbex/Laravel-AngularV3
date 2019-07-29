@@ -161,6 +161,7 @@ class Cs_prestamos extends Model
                             if ($prestamo->save()) {
 
                                 $ultimoPrestamo = Cs_prestamos::all()->last();
+                                /* dd($ultimoPrestamo->id); */
 
                                 $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
                                 $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
@@ -179,6 +180,7 @@ class Cs_prestamos extends Model
                                         case 1:
 
                                             if ($array[$i]['check'] == 'true') {
+                                                /* dd($ultimoPrestamo->id); */
                                                 $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
                                                 $prestamoAbono->tipo_abono_cuotas_id = 1;
                                                 $prestamoAbono->monto = $array[$i]['monto'];
@@ -218,7 +220,7 @@ class Cs_prestamos extends Model
                                         case 2:
 
                                             if ($array[$i]['check'] == 'true') {
-                                                $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->cs_prestamo_id;
+                                                $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
                                                 $prestamoAbono->tipo_abono_cuotas_id = 2;
                                                 $prestamoAbono->monto = $array[$i]['monto'];
                                                 $prestamoAbono->activo = 'S';
@@ -399,7 +401,7 @@ class Cs_prestamos extends Model
                                 $detalle->anio_id = $ultimoPrestamo->anio_id;
                                 $detalle->mes_id = $ultimoPrestamo->mes_id;
                                 $detalle->dia = $ultimoPrestamo->dia;
-                                $detalle->monto_egreso = $ultimoPrestamo->monto_egreso + $monto_total;
+                                $detalle->monto_egreso = $ultimoPrestamo->monto_egreso /* + $monto_total */;
                                 $detalle->activo = 'S';
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
@@ -717,124 +719,132 @@ class Cs_prestamos extends Model
 
     protected function pagoPrestamos($request)
     {
+        //validar inicio mensual antes de pagar
         $fecha = $this->div_fecha($request->fecha);
 
         $anio = $this->anio_tipo_id($fecha['anio']);
         $mes = $this->mes_tipo_id($fecha['mes']);
 
-        $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
-        $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
-        $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
+        $verificarInicioM = $this->verificarInicioMensual($anio->id, $mes->id);
 
-        /* dd($prestamo); */
-        /* dd($abonos); */
+        if ($verificarInicioM['estado'] == 'success') {
+            //
+            $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
+            $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
+            $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
 
-        /* dd($dPrestamo->cuota <= $prestamo->cuota);
-        dd($prestamo); */
+            /* dd($prestamo); */
+            /* dd($abonos); */
 
-        $vigente = [];
-        if ($abonos['estado'] == 'success') {
-            for ($i = 0; $i < count($abonos['abonos']); $i++) {
-                switch ($abonos['abonos'][$i]->tipo) {
-                    case 1:
-                        if ($abonos['abonos']->estado == 1) {
-                            $vigente['salud'] = true;
-                        } else {
-                            $vigente['salud'] = false;
+            /* dd($dPrestamo->cuota <= $prestamo->cuota);
+            dd($prestamo); */
+
+            $vigente = [];
+            if ($abonos['estado'] == 'success') {
+                for ($i = 0; $i < count($abonos['abonos']); $i++) {
+                    switch ($abonos['abonos'][$i]->tipo) {
+                        case 1:
+                            if ($abonos['abonos'][$i]->estado == 1) {
+                                $vigente['salud'] = true;
+                            } else {
+                                $vigente['salud'] = false;
+                                break;
+                            }
                             break;
-                        }
-                        break;
-                    case 2:
-                        if ($abonos['abonos']->estado == 1) {
-                            $vigente['apuro'] = true;
-                        } else {
-                            $vigente['apuro'] = false;
+                        case 2:
+                            if ($abonos['abonos'][$i]->estado == 1) {
+                                $vigente['apuro'] = true;
+                            } else {
+                                $vigente['apuro'] = false;
+                                break;
+                            }
                             break;
-                        }
-                        break;
-                    case 3:
-                        if ($abonos['abonos']->estado == 1) {
-                            $vigente['aporte'] = true;
-                        } else {
-                            $vigente['aporte'] = false;
+                        case 3:
+                            if ($abonos['abonos'][$i]->estado == 1) {
+                                $vigente['aporte'] = true;
+                            } else {
+                                $vigente['aporte'] = false;
+                                break;
+                            }
                             break;
-                        }
-                        break;
-                    default:
-                        # code...
-                        break;
+                        default:
+                            # code...
+                            break;
+                    }
                 }
-            }
-            if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
+                if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
+                    $estado = true;
+                } else {
+                    $estado = false;
+                }
+            } else {
                 $estado = true;
-            } else {
-                $estado = false;
             }
-        } else {
-            $estado = true;
-        }
 
-        if ($dPrestamo->cuota < $prestamo->cuota && $prestamo->estado_prestamo_id == 1) {
-            $pago = new DetallePrestamo;
+            if ($dPrestamo->cuota < $prestamo->cuota && $prestamo->estado_prestamo_id == 1) {
+                $pago = new DetallePrestamo;
 
-            $pago->prestamo_id = $dPrestamo->prestamo_id;
-            $pago->anio_id = $anio->id;
-            $pago->mes_id = $mes->id;
-            $pago->dia = $fecha['dia'];
+                $pago->prestamo_id = $dPrestamo->prestamo_id;
+                $pago->anio_id = $anio->id;
+                $pago->mes_id = $mes->id;
+                $pago->dia = $fecha['dia'];
 
-            if (!is_null($prestamo->interes_prestamo)) {
-                $dInteres = new Detalleinteresprestamo;
+                if (!is_null($prestamo->interes_prestamo)) {
+                    $dInteres = new Detalleinteresprestamo;
 
-                $idInteres = InteresPrestamo::where('prestamo_id', $dPrestamo->prestamo_id)->get();
+                    $idInteres = InteresPrestamo::where('prestamo_id', $dPrestamo->prestamo_id)->get();
 
-                $restar = $prestamo->interes_prestamo / $prestamo->cuota;
-                /* dd($restar); */
-                $dInteres->interes_prestamo_id = $idInteres[0]->id;
-                $dInteres->interes_mensual = $restar;
-                $dInteres->activo = "S";
-                $dInteres->anio_id = $anio->id;
-                $dInteres->mes_id = $mes->id;
-                $dInteres->dia = $fecha['dia'];
-                $dInteres->save();
-            } else {
-                $restar = 0;
-            }
-            $pago->monto_egreso = $dPrestamo->monto_egreso - $request->monto - $restar;
-            $pago->activo = "S";
-            $pago->user_crea = Auth::user()->id;
+                    $restar = $prestamo->interes_prestamo / $prestamo->cuota;
+                    /* dd($restar); */
+                    $dInteres->interes_prestamo_id = $idInteres[0]->id;
+                    $dInteres->interes_mensual = $restar;
+                    $dInteres->activo = "S";
+                    $dInteres->anio_id = $anio->id;
+                    $dInteres->mes_id = $mes->id;
+                    $dInteres->dia = $fecha['dia'];
+                    $dInteres->save();
+                } else {
+                    $restar = 0;
+                }
+                $pago->monto_egreso = $dPrestamo->monto_egreso - $request->monto - $restar;
+                $pago->activo = "S";
+                $pago->user_crea = Auth::user()->id;
 
-            //modificar tabla trayendo los detalle interes
-            if (is_null($dPrestamo->monto_ingreso)) {
-                $pago->monto_ingreso = $request->monto - $restar;
-            } else {
-                $pago->monto_ingreso = $dPrestamo->monto_ingreso + $request->monto - $restar;
-            }
-            $pago->definicion = 1;
-            $pago->cuota = $dPrestamo->cuota + 1;
+                //modificar tabla trayendo los detalle interes
+                if (is_null($dPrestamo->monto_ingreso)) {
+                    $pago->monto_ingreso = $request->monto - $restar;
+                } else {
+                    $pago->monto_ingreso = $dPrestamo->monto_ingreso + $request->monto - $restar;
+                }
+                $pago->definicion = 1;
+                $pago->cuota = $dPrestamo->cuota + 1;
 
-            if ($pago->save()) {
+                if ($pago->save()) {
 
-                if ($estado == true) {
-                    $ultimoPago = DetallePrestamo::all()->last();
+                    if ($estado == true) {
+                        $ultimoPago = DetallePrestamo::all()->last();
 
-                    if ($ultimoPago->cuota == $prestamo->cuota) {
-                        $prestamo->estado_prestamo_id = 2;
-                        if ($prestamo->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                        if ($ultimoPago->cuota == $prestamo->cuota) {
+                            $prestamo->estado_prestamo_id = 2;
+                            if ($prestamo->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                            } else {
+                                return ['estado' => 'success', 'mensaje' => 'Error'];
+                            }
                         } else {
-                            return ['estado' => 'success', 'mensaje' => 'Error'];
+                            return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                         }
                     } else {
                         return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                     }
                 } else {
-                    return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
                 }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                return ['estado' => 'failed', 'mensaje' => 'El prestamo ya se encuentra pagado'];
             }
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'El prestamo ya se encuentra pagado'];
+            return $verificarInicioM;
         }
     }
 }

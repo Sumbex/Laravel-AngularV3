@@ -12,6 +12,7 @@ use App\InteresPrestamo;
 use App\MontoCierrePrestamo;
 use Illuminate\Support\Facades\Storage;
 use App\DetallePrestamoAbono;
+use App\Detalleinteresprestamo;
 
 class Cs_prestamos extends Model
 {
@@ -614,8 +615,10 @@ class Cs_prestamos extends Model
                 DB::raw("coalesce(ip.interes, 0) as interes"),
                 DB::raw("(p.monto_egreso+coalesce(ip.interes, 0)) as total_prestamo"),
                 DB::raw("concat(pd.cuota,'/',p.cuota) as cuota"),
-                'pd.monto_ingreso',
-                'pd.monto_egreso',
+                'pd.cuota as cuotad',
+                'p.cuota as cuotap',
+                DB::raw("(pd.monto_ingreso+coalesce(dip.interes_mensual, 0)) as monto_ingreso"),
+                DB::raw("(pd.monto_egreso+coalesce(dip.interes_mensual, 0)) as monto_egreso"),
                 'ep.descripcion as estado',
                 'pd.definicion',
                 'p.tipo_prestamo_id'
@@ -625,6 +628,7 @@ class Cs_prestamos extends Model
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
             ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
             ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
+            ->leftJoin('detalle_interes_prestamo as dip', 'dip.interes_prestamo_id', 'ip.id')
             ->where([
                 'pd.activo' => 'S',
                 'pd.anio_id' => $anio,
@@ -722,6 +726,7 @@ class Cs_prestamos extends Model
         $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
         $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
 
+        /* dd($prestamo); */
         /* dd($abonos); */
 
         /* dd($dPrestamo->cuota <= $prestamo->cuota);
@@ -765,7 +770,7 @@ class Cs_prestamos extends Model
             } else {
                 $estado = false;
             }
-        }else{
+        } else {
             $estado = true;
         }
 
@@ -776,13 +781,33 @@ class Cs_prestamos extends Model
             $pago->anio_id = $anio->id;
             $pago->mes_id = $mes->id;
             $pago->dia = $fecha['dia'];
-            $pago->monto_egreso = $dPrestamo->monto_egreso - $request->monto;
+
+            if (!is_null($prestamo->interes_prestamo)) {
+                $dInteres = new Detalleinteresprestamo;
+
+                $idInteres = InteresPrestamo::where('prestamo_id', $dPrestamo->prestamo_id)->get();
+
+                $restar = $prestamo->interes_prestamo / $prestamo->cuota;
+                /* dd($restar); */
+                $dInteres->interes_prestamo_id = $idInteres[0]->id;
+                $dInteres->interes_mensual = $restar;
+                $dInteres->activo = "S";
+                $dInteres->anio_id = $anio->id;
+                $dInteres->mes_id = $mes->id;
+                $dInteres->dia = $fecha['dia'];
+                $dInteres->save();
+            } else {
+                $restar = 0;
+            }
+            $pago->monto_egreso = $dPrestamo->monto_egreso - $request->monto - $restar;
             $pago->activo = "S";
             $pago->user_crea = Auth::user()->id;
+
+            //modificar tabla trayendo los detalle interes
             if (is_null($dPrestamo->monto_ingreso)) {
-                $pago->monto_ingreso = $request->monto;
+                $pago->monto_ingreso = $request->monto - $restar;
             } else {
-                $pago->monto_ingreso = $dPrestamo->monto_ingreso + $request->monto;
+                $pago->monto_ingreso = $dPrestamo->monto_ingreso + $request->monto - $restar;
             }
             $pago->definicion = 1;
             $pago->cuota = $dPrestamo->cuota + 1;

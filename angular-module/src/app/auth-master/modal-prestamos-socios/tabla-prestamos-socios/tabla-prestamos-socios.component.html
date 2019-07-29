@@ -27,10 +27,11 @@
       <thead text-sm >
           <tr>
             <!--titulo de la tabla-->
-            <th colspan="43" class="text-center" style="background: #138D75;">Salud - Retornable</th>
+            <th colspan="44" class="text-center" style="background: #138D75;">Salud - Retornable</th>
           </tr>
         <tr>
           <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+          <th colspan="1" style="background: #138D75">ID</th>
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
@@ -50,10 +51,15 @@
 
       <!--casillas para llenar de la BD-->
       <tbody>
-        <tr *ngFor="let itemPrestamo of valoresPrestamos">
+        <tr *ngFor="let itemPrestamo of valoresPrestamosSalud">
           <td colspan="2">{{itemPrestamo.fecha}}</td>
+          <td colspan="1">{{itemPrestamo.id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
-          <td colspan="2">null</td>
+          <td colspan="2">
+            <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
+              placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+            </a>
+          </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
@@ -67,7 +73,7 @@
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="3" class="text-center">
-            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud)">
+            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud); test(itemPrestamo.fecha, itemPrestamo.id, itemPrestamo.descripcion)">
             <ng-template #pagoPrestamoSalud let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago | Salud - Retornable</h4>
@@ -129,10 +135,11 @@
       <thead text-sm>
           <tr>
             <!--titulo de la tabla-->
-            <th colspan="43" class="text-center" style="background: #138D75;">Apuro Economico - Retornable</th>
+            <th colspan="44" class="text-center" style="background: #138D75;">Apuro Economico - Retornable</th>
           </tr>
         <tr>
           <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+          <th colspan="1" style="background: #138D75">ID</th>
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
@@ -152,10 +159,15 @@
 
       <!--casillas para llenar de la BD-->
       <tbody>
-        <tr *ngFor="let itemPrestamo of valoresPrestamos">
+        <tr *ngFor="let itemPrestamo of valoresPrestamosApuro">
           <td colspan="2">{{itemPrestamo.fecha}}</td>
+          <td colspan="1">{{itemPrestamo.id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
-          <td colspan="2">null</td>
+          <td colspan="2">
+            <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
+              placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+            </a>
+          </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
@@ -217,10 +229,11 @@
       <thead text-sm >
           <tr>
             <!--titulo de la tabla-->
-            <th colspan="43" class="text-center" style="background: #138D75;">Aporte Economico - No Retornable</th>
+            <th colspan="44" class="text-center" style="background: #138D75;">Aporte Economico - No Retornable</th>
           </tr>
         <tr>
           <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+          <th colspan="1" style="background: #138D75">ID</th>
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
@@ -240,10 +253,15 @@
 
       <!--casillas para llenar de la BD-->
       <tbody>
-        <tr *ngFor="let itemPrestamo of valoresPrestamos">
+        <tr *ngFor="let itemPrestamo of valoresPrestamosAporte">
           <td colspan="2">{{itemPrestamo.fecha}}</td>
+          <td colspan="1">{{itemPrestamo.id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
-          <td colspan="2">null</td>
+          <td colspan="2">
+            <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
+              placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+            </a>
+          </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>

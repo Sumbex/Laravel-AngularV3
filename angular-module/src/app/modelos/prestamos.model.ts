@@ -3,7 +3,7 @@ export class Prestamos{
     selectId: string;
     socioId: string;
     numeroDocumento: string;
-    archivoDocumento: string;
+    archivoDocumento: File;
     montoPrestamo: string;
     checkAbono: boolean;
     cuotas: string;

@@ -811,7 +811,7 @@ class Cs_prestamos extends Model
             }
             $pago->definicion = 1;
             $pago->cuota = $dPrestamo->cuota + 1;
-
+            
             if ($pago->save()) {
 
                 if ($estado == true) {

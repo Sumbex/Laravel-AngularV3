@@ -141,7 +141,14 @@ class SocioController extends Controller
 
         switch ($r->campo) {
             case 'rut':
+
+           // dd(!$this->valida_rut($r->valor) == false);
+                 if(!$this->valida_rut($r->valor)){
+                    return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+                }
+
                 $s->rut = $r->valor;
+
                 if($s->save()){
                     return ['estado'=>'success','mensaje' => 'Rut actualizado!' ];
                 }else{

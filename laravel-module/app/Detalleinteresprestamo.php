@@ -10,7 +10,9 @@ class Detalleinteresprestamo extends Model
     protected $table = "detalle_interes_prestamo";
 
     protected function traer_lista($anio, $mes)
-    {	$total =0;
+    {	
+    	
+    	$total =0;
     	$list = $this->select([
     				'p.id as prestamo_id',
     				'ip.interes as interes_total',
@@ -27,6 +29,7 @@ class Detalleinteresprestamo extends Model
           			'detalle_interes_prestamo.mes_id' => $mes
           		])
     			->get();
+    
 
     	foreach ($list as $key) {
     		$total = $total + (int)$key->interes_mensual;
@@ -41,7 +44,7 @@ class Detalleinteresprestamo extends Model
     	];
     }
 
-    protected function item_interes_a_cs($anio, $mes)
+    protected function item_interes_a_cs($anio, $mes)//este item esta listo para irse a la cuenta sindical cuando se llame este metodo
     {	
     	$get_anio = DB::table('mes as m')->select('m.descripcion')->where('id',$mes)->first();
 

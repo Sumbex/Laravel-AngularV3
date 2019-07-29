@@ -740,5 +740,7 @@ class CuentaSindicatoController extends Controller
 		return Detalleinteresprestamo::traer_lista($anio, $mes);
 	}
 
+	
+
 
 }

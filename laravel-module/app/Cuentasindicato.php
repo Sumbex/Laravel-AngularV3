@@ -111,4 +111,9 @@ class Cuentasindicato extends Model
 			];
 
 	}
+
+	public function item_prestamos_a_cs($anio, $mes)
+	{
+		# code...
+	}
 }

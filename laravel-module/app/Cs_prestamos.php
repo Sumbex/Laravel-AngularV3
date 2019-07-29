@@ -506,7 +506,7 @@ class Cs_prestamos extends Model
         if ($prestamos['estado'] == 'success') {
             for ($i = 0; $i < count($prestamos['prestamos']); $i++) {
                 /* dd($this->traerAbonos(102)); */
-                $abonos = $this->traerAbonos($prestamos['prestamos'][$i]->prestamo_id);
+                $abonos = $this->traerAbonos($anio, $mes, $prestamos['prestamos'][$i]->prestamo_id);
 
                 if ($abonos['estado'] == 'success') {
                     for ($e = 0; $e < count($abonos['abonos']); $e++) {
@@ -562,6 +562,11 @@ class Cs_prestamos extends Model
                     $prestamos['prestamos'][$i]->conflicto = 0;
                     $prestamos['prestamos'][$i]->trimestral = 0;
                 }
+
+                /*  if (is_null($prestamos['prestamos'][$i]->monto_ingreso)) {
+                    $prestamos['prestamos'][$i]->monto_ingreso = 0;
+                } */
+                /* $prestamos['prestamos'][$i]->saldo_restante =  $prestamos['prestamos'][$i]->total_prestamo - $prestamos['prestamos'][$i]->monto_ingreso - $prestamos['prestamos'][$i]->trimestral - $prestamos['prestamos'][$i]->sueldo - $prestamos['prestamos'][$i]->conflicto; */
             }
 
             $return = [];
@@ -605,7 +610,9 @@ class Cs_prestamos extends Model
                 'p.numero_documento',
                 'p.archivo_documento',
                 'p.descripcion',
-                'p.monto_egreso as total prestamo',
+                'p.monto_egreso as total_prestamo_no_interes',
+                DB::raw("coalesce(ip.interes, 0) as interes"),
+                DB::raw("(p.monto_egreso+coalesce(ip.interes, 0)) as total_prestamo"),
                 DB::raw("concat(pd.cuota,'/',p.cuota) as cuota"),
                 'pd.monto_ingreso',
                 'pd.monto_egreso',
@@ -617,6 +624,7 @@ class Cs_prestamos extends Model
             ->join('mes as m', 'm.id', 'mes_id')
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
             ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
+            ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
             ->where([
                 'pd.activo' => 'S',
                 'pd.anio_id' => $anio,
@@ -632,7 +640,7 @@ class Cs_prestamos extends Model
         }
     }
 
-    protected function traerAbonos($prestamo_id)
+    protected function traerAbonos($anio, $mes, $prestamo_id)
     {
         $abonos = DB::table('detalle_prestamo_tipo_abono as dpta')
             ->select([
@@ -640,10 +648,13 @@ class Cs_prestamos extends Model
                 'pta.cs_prestamo_id',
                 'dpta.monto_ingreso',
                 'dpta.monto_egreso',
-                'pta.tipo_abono_cuotas_id as tipo'
+                'pta.tipo_abono_cuotas_id as tipo',
+                'dpta.estado'
             ])
             ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
             ->where([
+                'dpta.anio_id' => $anio,
+                'dpta.mes_id' => $mes,
                 'pta.cs_prestamo_id' => $prestamo_id,
                 'dpta.activo' => 'S'
             ])
@@ -702,6 +713,103 @@ class Cs_prestamos extends Model
 
     protected function pagoPrestamos($request)
     {
-        //test agregar cuota actual en detalle prestamo
+        $fecha = $this->div_fecha($request->fecha);
+
+        $anio = $this->anio_tipo_id($fecha['anio']);
+        $mes = $this->mes_tipo_id($fecha['mes']);
+
+        $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
+        $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
+        $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
+
+        /* dd($abonos); */
+
+        /* dd($dPrestamo->cuota <= $prestamo->cuota);
+        dd($prestamo); */
+
+        $vigente = [];
+        if ($abonos['estado'] == 'success') {
+            for ($i = 0; $i < count($abonos['abonos']); $i++) {
+                switch ($abonos['abonos'][$i]->tipo) {
+                    case 1:
+                        if ($abonos['abonos']->estado == 1) {
+                            $vigente['salud'] = true;
+                        } else {
+                            $vigente['salud'] = false;
+                            break;
+                        }
+                        break;
+                    case 2:
+                        if ($abonos['abonos']->estado == 1) {
+                            $vigente['apuro'] = true;
+                        } else {
+                            $vigente['apuro'] = false;
+                            break;
+                        }
+                        break;
+                    case 3:
+                        if ($abonos['abonos']->estado == 1) {
+                            $vigente['aporte'] = true;
+                        } else {
+                            $vigente['aporte'] = false;
+                            break;
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
+                $estado = true;
+            } else {
+                $estado = false;
+            }
+        }else{
+            $estado = true;
+        }
+
+        if ($dPrestamo->cuota < $prestamo->cuota && $prestamo->estado_prestamo_id == 1) {
+            $pago = new DetallePrestamo;
+
+            $pago->prestamo_id = $dPrestamo->prestamo_id;
+            $pago->anio_id = $anio->id;
+            $pago->mes_id = $mes->id;
+            $pago->dia = $fecha['dia'];
+            $pago->monto_egreso = $dPrestamo->monto_egreso - $request->monto;
+            $pago->activo = "S";
+            $pago->user_crea = Auth::user()->id;
+            if (is_null($dPrestamo->monto_ingreso)) {
+                $pago->monto_ingreso = $request->monto;
+            } else {
+                $pago->monto_ingreso = $dPrestamo->monto_ingreso + $request->monto;
+            }
+            $pago->definicion = 1;
+            $pago->cuota = $dPrestamo->cuota + 1;
+
+            if ($pago->save()) {
+
+                if ($estado == true) {
+                    $ultimoPago = DetallePrestamo::all()->last();
+
+                    if ($ultimoPago->cuota == $prestamo->cuota) {
+                        $prestamo->estado_prestamo_id = 2;
+                        if ($prestamo->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                        } else {
+                            return ['estado' => 'success', 'mensaje' => 'Error'];
+                        }
+                    } else {
+                        return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                    }
+                } else {
+                    return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                }
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El prestamo ya se encuentra pagado'];
+        }
     }
 }

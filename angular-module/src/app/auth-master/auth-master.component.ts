@@ -16,6 +16,11 @@ export class AuthMasterComponent implements OnInit {
   filtroAnios;
   filtroMeses;
 
+  //Tiempo fuerra Loading
+  tiempoEspera: number = 20;
+  titleMensaje = 'Iniciando el sistema';
+  bodyMensaje = 'Espere unos segundos mientras carga el sistema';
+
   constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, config: NgbModalConfig, private modalService: NgbModal) {
 
     config.backdrop = 'static';
@@ -47,6 +52,7 @@ export class AuthMasterComponent implements OnInit {
     });
 
     document.getElementById("openModalButton").click();
+    this.startTimer();
     this.verificarCarga();
   }
 
@@ -59,5 +65,17 @@ export class AuthMasterComponent implements OnInit {
   open(content) {
     this.modalService.open(content, {centered:true});
   }
+
+  //Timer para loading en caso de superar el limite de espera
+  startTimer() {
+    setInterval(() => {
+        if(this.tiempoEspera > 0) {
+          this.tiempoEspera--;
+        } else {
+          this.titleMensaje = 'Error al cargar';
+          this.bodyMensaje = 'Se ha superado el tiempo de espera, por favor compruebe su conexión a internet y refresque esta pagina';
+        }
+      },1000)
+    }
 
 }

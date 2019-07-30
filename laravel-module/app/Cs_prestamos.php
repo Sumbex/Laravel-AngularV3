@@ -908,7 +908,6 @@ class Cs_prestamos extends Model
 
     protected function pagoAbonos($request)
     {
-        //test
         $fecha = $this->div_fecha($request->fecha);
 
         $anio = $this->anio_tipo_id($fecha['anio']);
@@ -917,9 +916,46 @@ class Cs_prestamos extends Model
         $verificarInicioM = $this->verificarInicioMensual($anio->id, $mes->id);
 
         if ($verificarInicioM['estado'] == 'success') {
-            //
+
+            $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
+            $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
+
+            $abono = DB::table('detalle_prestamo_tipo_abono as dpta')
+                ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
+                ->where([
+                    'dpta.estado' => 1,
+                    'pta.tipo_abono_cuotas_id' => $request->tipo_abono_id,
+                    'pta.cs_prestamo_id' => $prestamo->id,
+                    'dpta.activo' => 'S'
+                ])
+                ->get();
+
+            /* dd($abono); */
+            if (!$abono->isEmpty()) {
+                //
+                foreach ($abono as $key) { }
+                /*  dd($key->prestamo_abono_id); */
+                $dAbono = new DetallePrestamoAbono;
+                $dAbono->prestamo_abono_id = $key->prestamo_abono_id;
+                $dAbono->anio_id = $anio->id;
+                $dAbono->mes_id = $mes->id;
+                $dAbono->dia = $fecha['dia'];
+                $dAbono->monto_ingreso = $request->monto;
+                $dAbono->monto_egreso = $key->monto_egreso - $request->monto;
+                $dAbono->definicion = 1;
+                $dAbono->estado = 1;
+                $dAbono->activo = "S";
+
+                if ($dAbono->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                }
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El Abono ya se encuentra pagado'];
+            }
         } else {
-            //
+            return $verificarInicioM;
         }
     }
 }

@@ -65,11 +65,11 @@
           <td colspan="2">{{itemPrestamo.sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.conflicto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.trimestral | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">esperando a sumbito</td>
+          <td colspan="2">{{itemPrestamo.monto_restante_p | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.cuota}}</td>
           <td colspan="3">{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="3">{{itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3">{{itemPrestamo.restante | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="3" class="text-center">
@@ -174,7 +174,7 @@
           <td colspan="2">{{itemPrestamo.cuota}}</td>
           <td colspan="3">{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="3">{{itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3">{{itemPrestamo.restante | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="3" class="text-center">
@@ -240,7 +240,7 @@
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
-          <th colspan="10" class="text-center" style="background: #138D75">Monto Prestamo</th>
+          <th colspan="12" class="text-center" style="background: #138D75">Monto Prestamo</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-plus-circle"></i> Ingresos</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egresos</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-dollar-sign"></i> Restante</th>
@@ -261,10 +261,10 @@
             </a>
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="10" class="text-center">{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="12" class="text-center">{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="3">{{itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3">{{itemPrestamo.restante | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.estado}}</td>
           <td colspan="3" class="text-center">S/P</td>
         </tr>

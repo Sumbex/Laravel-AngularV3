@@ -1,0 +1,205 @@
+<br>
+<div>
+	<!-- MODAL PARA VALIDAR USUARIO -->
+	<ng-template #validar let-modal>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+        <br>
+        <input [(ngModel)]="pass" class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+        <br>
+		<!-- 
+		<button  (click)="currentLesson = '1'"
+         [disabled]="currentLesson !== '1'" class="primair">
+           Start lesson</button>
+		
+		<button (click)="currentLesson = '2'"
+         [disabled]="currentLesson !== '2'" class="primair">
+           Start lesson</button> -->
+
+
+       <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar (click)="modal.close('Save click')">
+        Validar
+        </button>
+        <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </div>
+  	</ng-template>
+
+  	<!-- MODALS PARA EDITAR CAMPOS -->
+  
+
+
+
+<!-- HTML NORMAL EN VISTA -->
+	<div class="card">
+		<div class="card-header" id="demoFont">
+			<strong class="text-center">
+		        <h6>Lista de Socios</h6>
+		     </strong>
+		</div>
+		<div class="card-body">
+			 <div class="table-responsive">
+          <table class="table table-striped table-bordered table-sm">
+          		 <thead text-sm>
+	                <!--Titulo Tabla-->  
+	                <tr>
+	                  <th colspan="14" class=" text-center"  id="demoFont"><h6>Socios</h6></th>
+	                </tr>
+	                <tr>
+	                	<th style="background: #138D75"><label class="centrar_txt"> Buscar:</label></th>
+	                	<td style="background: #138D75" colspan="2">
+	                		<input 
+	                			class="form-control form-control-sm" 
+	                			placeholder="Buscar por nombre......"
+	                			[(ngModel)]="search"
+	                			>
+	                	</td>
+	                	<td style="background: #138D75" col>
+	                		<button (click)="filtrar()" class="form-control form-cntrol-sm" style="width: 35px">
+	                			<i class="fas fa-search"></i>
+	                		</button>
+	                	</td>
+	                	<td style="background: #138D75" colspan="3"> </td>
+	                </tr>
+	                <tr class="text-center">
+	                  	<th style="background: #138D75"><i class="fas fa-id-card"></i> Rut</th>
+	                  	<th style="background: #138D75"><i class="fas fa-user"></i> Nombres</th>
+	                  	<th style="background: #138D75"><i class="fas fa-user"></i> Apellidos</th>
+	                  	<th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Fecha Nacimiento</th>
+	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> Fecha de ingreso</th>
+	                  	<th style="background: #138D75"><i class="fas fa-user-minus"></i> Fecha de egreso</th>    
+	                  	<th style="background: #138D75"><i class="fas fa-edit"></i> Editar</th>           
+	                </tr>
+              </thead>
+              <tbody>
+              	<tr *ngFor="let item of socios">
+              		<td>{{ item.rut }}</td>
+              		<td>{{ item.nombres }}</td>
+              		<td>{{ item.a_paterno+' '+item.a_materno }}</td>
+              		<td>{{ item.fecha_nacimiento_view }}</td>
+              		<td>{{ item.fecha_ingreso_view }}</td>
+              		<td>{{ item.fecha_egreso_view }}</td>
+              		<td>
+
+              			<button class="btn btn-success btn-block btn-sm"
+				        (click)="modal_editar(editar);">
+				        <i class="fas fa-pencil-alt"></i>
+				        </button>
+              			
+
+              			<ng-template #editar let-modal>
+						     <div class="modal-header" id="demoFont">
+						        <h6 class="modal-title"><i class="fas fa-user-edit"></i> <strong> Editar socio</strong></h6>
+						        <button type="button" class="close" aria-label="Close" (click)="cerrar_editar()">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Rut</strong></label>
+						        		<input class="form-control form-control-sm" #rut [value]="item.rut">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'rut',rut,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Nombres</strong></label>
+						        		<input class="form-control form-control-sm" #nombres [value]="item.nombres">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'nombres',nombres,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Apellido paterno</strong></label>
+						        		<input class="form-control form-control-sm" #a_paterno [value]="item.a_paterno">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'a_paterno',a_paterno,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Apellido materno</strong></label>
+						        		<input class="form-control form-control-sm" #a_materno [value]="item.a_materno">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'a_materno',a_materno,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Fecha de nacimiento</strong></label>
+						       		 	<input type="date" class="form-control form-control-sm" #fecha_nacimiento [value]="item.fecha_nacimiento">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'fecha_nacimiento',fecha_nacimiento,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Fecha ingreso</strong></label>
+						        		<input type="date" class="form-control form-control-sm" #fecha_ingreso [value]="item.fecha_ingreso">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'fecha_ingreso',fecha_ingreso,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-11">
+										<label><strong>Fecha egreso</strong></label>
+						        		<input type="date" class="form-control form-control-sm" #fecha_egreso [value]="item.fecha_egreso">
+									</div>
+									<div class="col-md-1">
+										<br>
+										<button (click)="actualizar(item.id,'fecha_egreso',fecha_egreso,validar)" class="btn btn-link" style="margin-left: -10px">
+											<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</div>
+						        
+						      </div>
+						  </ng-template>
+              		</td>
+              	</tr>
+              </tbody>
+          </table>
+		</div>
+	</div>
+</div>

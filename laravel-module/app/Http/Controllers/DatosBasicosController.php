@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TipoCUentaSindicato;
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,11 +37,11 @@ class DatosBasicosController extends Controller
     }
     public function listar_definicion()
     {
-    	return DB::table('definicion')->get();
+    	return DB::table('definicion')->where('activo','S')->get();
     }
     public function listar_tipo_cuenta_sindicato()
     {
-    	return DB::table('tipo_cuenta_sindicato')->get();
+    	return DB::table('tipo_cuenta_sindicato')->where('activo','S')->get();
     }
 
 
@@ -68,12 +69,20 @@ class DatosBasicosController extends Controller
 
     public function confirmar_usuario(Request $r)
     {
-        $user = User::where('email', $r->rut)->orWhere('rut', $r->rut)->first();
+        try{
+            $user = User::where('email', $r->rut)->orWhere('rut', $r->rut)->first();
 
-        if (Hash::check($r->password, $user->password)) {
-            return $user->id;
+            if (Hash::check($r->password, $user->password)) {
+                return $user->id;
+            }
+            return 0;
+        
+        }catch(QueryException $e){
+            return 0;
         }
-        return 0;
+        catch(\Exception $e){
+            return 0;
+        }
     }
 
     public function cambiar_password(Request $r)

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TipoCuentasService } from '../servicios/tipo-cuentas.service';
 import { AniosService } from '../servicios/anios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { map } from 'rxjs/operators';
+import { UsuarioService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-auth-master',
@@ -9,8 +11,20 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./auth-master.component.css']
 })
 export class AuthMasterComponent implements OnInit {
+  anios;
+  filtroDefiniciones;
+  filtroDetalle;
+  filtroAnios;
+  filtroMeses;
 
-  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, config: NgbModalConfig, private modalService: NgbModal) {
+  //Tiempo fuerra Loading
+  tiempoEspera: number = 20;
+  tiempoEsperaToken: number = 1;
+  test2 = 1000;
+  titleMensaje = 'Iniciando el sistema';
+  bodyMensaje = 'Espere unos segundos mientras carga el sistema';
+
+  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, private _usuariosService: UsuarioService , private config: NgbModalConfig, private modalService: NgbModal) {
 
     config.backdrop = 'static';
     config.keyboard = false;  
@@ -18,34 +32,32 @@ export class AuthMasterComponent implements OnInit {
    }
 
   ngOnInit() {
-
-  
     //Guardar definicion
     this._tipoCuentas.getDefinicion().subscribe((res) => {
-      localStorage.setItem('definicion', JSON.stringify(res));
+      this.filtroDefiniciones = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('definicion', JSON.stringify(this.filtroDefiniciones));
     });
     //Guardar Detalle
     this._tipoCuentas.getTipoCuenta().subscribe((res) => {
-      localStorage.setItem('detalle', JSON.stringify(res));
+      this.filtroDetalle = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('detalle', JSON.stringify(this.filtroDetalle));
     });
     //Guardar Anios
     this._getAnios.getAnios().subscribe((res) => {
-      localStorage.setItem('anios', JSON.stringify(res));
+      this.filtroAnios = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('anios', JSON.stringify(this.filtroAnios));
     });
     //Guardar Meses
     this._getAnios.getMeses().subscribe((res) => {
-      localStorage.setItem('meses', JSON.stringify(res));
+      this.filtroMeses = res.map(({id,descripcion}) => ({id,descripcion}));
+      localStorage.setItem('meses', JSON.stringify(this.filtroMeses));
       document.getElementById("closeModalButton").click();
     });
 
     document.getElementById("openModalButton").click();
+    this.startTimer();
+    this.startTimerToken();
     this.verificarCarga();
-
-        //DomContentLoaded
-       // window.addEventListener('load', (event) => {
-      // document.getElementById("closeModalButton").click();   
-     // });
-        
   }
 
   verificarCarga(){
@@ -58,4 +70,30 @@ export class AuthMasterComponent implements OnInit {
     this.modalService.open(content, {centered:true});
   }
 
+  //Timer para loading en caso de superar el limite de espera
+  startTimer() {
+    setInterval(() => {
+        if(this.tiempoEspera > 0) {
+          this.tiempoEspera--;
+        } else {
+          this.titleMensaje = 'Error al cargar';
+          this.bodyMensaje = 'Se ha superado el tiempo de espera, por favor compruebe su conexión a internet y refresque esta pagina';
+        }
+      },1000)
+    }
+
+  startTimerToken(){
+    setInterval(() => {
+      if(this.tiempoEsperaToken > 0){
+        this.tiempoEsperaToken--;
+      }else{
+        let estadoToken = this._usuariosService.isAuthenticated();
+        if(estadoToken == false){
+          window.location.reload();
+        }else{
+          this.tiempoEsperaToken = 1;
+        }
+      }
+    },1000)
+  }
 }

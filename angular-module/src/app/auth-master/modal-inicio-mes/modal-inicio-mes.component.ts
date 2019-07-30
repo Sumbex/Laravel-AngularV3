@@ -16,6 +16,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ModalInicioMesComponent implements OnInit {
 
+  success_visible:boolean= false;
+  txt:string='';
+  failed_visible:boolean=false;
+
   modalReference = null; 
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
@@ -30,6 +34,7 @@ export class ModalInicioMesComponent implements OnInit {
   //variables-----------------
   load:boolean=false;
   monto:string='';
+  fil_anio:string='';
   anio:string='';
   mes:string='';
   public url: string;
@@ -43,7 +48,7 @@ export class ModalInicioMesComponent implements OnInit {
   password:string='';
   //-------------------------
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal,public _http: HttpClient) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal,public _http: HttpClient,public _anios: AniosService) {
 
     config.backdrop = 'static';
     config.keyboard = false;
@@ -55,16 +60,14 @@ export class ModalInicioMesComponent implements OnInit {
   }
 
   ngOnInit() {
-    //Cargar Años
-    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
-    //Cargar Meses
-    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
 
 
   }
 
   openMensual(Mensual) {
+    this.llenar_anio_y_mes();
     this.modalService.open(Mensual, { size: 'lg' });
     this.anio_actual();
     this.mes_actual();
@@ -73,10 +76,39 @@ export class ModalInicioMesComponent implements OnInit {
     //console.log(document.getElementById('anio').options.value);
     
   }
+  llenar_anio_y_mes(){
+
+
+       this._anios.getAnios().subscribe((val) => {
+              this.selectAnio = val;
+              
+              
+          }, response => {console.log("POST call in error", response);},() => {
+                 console.log("The POST success.");
+          });
+
+        this._anios.getMeses().subscribe((val) => {
+              this.selectMes = val;
+                
+              
+          }, response => {console.log("POST call in error", response);},() => {
+                 console.log("The POST success.");
+          });
+        
+
+       //Cargar Años
+    //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    //this.selectMes = JSON.parse(localStorage.getItem('meses'));
+  }
+
 
   //metodos---------------------------------------------------------------------------------------
   calcular_cierre_mensual(anio, mes){
-
+        this.failed_visible = false;
+        this.success_visible = false;
+        
         this._http.get(this.url + "calcular_cm/"+this.anio+"/"+this.mes,
                     {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
           ).subscribe((val:string) => {
@@ -93,6 +125,7 @@ export class ModalInicioMesComponent implements OnInit {
           ).subscribe((val : { id, descripcion } ) => {
 
                 this.anio = val.id;
+                this.fil_anio = val.id;
                 this.listar_tabla();
              
               
@@ -114,6 +147,8 @@ export class ModalInicioMesComponent implements OnInit {
   }
   guardar(){
 
+            this.failed_visible = false;
+            this.success_visible = false;
 
             const formData = new FormData();
             formData.append('anio', this.anio);
@@ -123,8 +158,24 @@ export class ModalInicioMesComponent implements OnInit {
                         {headers: new HttpHeaders({'Authorization': 'Bearer' + this.token })}
               ).subscribe((val) => {
                   
-                  this.listar_tabla();
-                  console.log("success_response");
+                  if (val['estado'] == 'failed'){ 
+                    // console.log(val);
+                    this.monto ='';
+                    this.failed_visible = true;
+                    this.success_visible = false;
+                    this.txt = val['mensaje'];
+                    this.listar_tabla();
+                 
+                  }
+                   if (val['estado'] == 'success'){ 
+                    // console.log(val);
+                    this.monto = '';
+                    this.failed_visible = false;
+                    this.success_visible = true;
+                    this.txt = val['mensaje'];
+                    this.listar_tabla();
+                 
+                  }
                   
               }, response => {console.log("POST call in error", response);},() => {
                      console.log("The POST success.");
@@ -134,7 +185,7 @@ export class ModalInicioMesComponent implements OnInit {
   }
 
   listar_tabla() {
-        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/"+this.anio ,{headers: new HttpHeaders(
+        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/"+this.fil_anio ,{headers: new HttpHeaders(
                 {'Authorization': 'Bearer' + this.token})}
         ).subscribe((val : object ) => {
             
@@ -191,6 +242,11 @@ export class ModalInicioMesComponent implements OnInit {
         }, response => {console.log("POST call in error", response);},() => {
                console.log("The POST success.");
         });
+    }
+    quitar_alerts(){
+        this.success_visible = false;
+        this.txt = '';
+        this.failed_visible = false;
     }
 
     private getDismissReason(reason: any): string {

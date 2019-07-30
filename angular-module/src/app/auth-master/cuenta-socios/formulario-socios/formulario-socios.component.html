@@ -1,0 +1,116 @@
+<br>
+<div class="container">
+
+  
+  <ng-template #validar let-modal>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+        <br>
+        <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+        <br>
+       <button class="btn btn-success btn-block btn-sm"
+        (click)="btn_validar_usuario(rut,password,validar);">
+        Validar
+        </button>
+        <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </div>
+  </ng-template>
+
+
+  <!--Formulario para ingresar una cuenta sindical-->
+  <div class="card">
+    <div class="card-header" id="demoFont"><strong class="text-center">
+        <h6>Resgistro de Socios</h6>
+      </strong>
+    </div>
+    <form>
+      <div class="card-body">
+
+        <div class="row">
+            
+            <div class="col-md-6">
+                <br><label><strong>Rut</strong></label>
+                  <input 
+                  type="string" 
+                  class="form-control form-control-sm"
+                  name="rut"
+                  placeholder="123456789"  
+                  [(ngModel)]="rut" 
+                  required>
+               <br>
+               <label><strong>Nombre</strong></label>
+                <input 
+                type="string" 
+                class="form-control form-control-sm"
+                name="nombre"  
+                placeholder="ingrese nombre"
+                [(ngModel)]="nombres" 
+                required>
+
+                 <br><label><strong>Apellido Paterno</strong></label>
+                 <input 
+                 type="string" 
+                 class="form-control form-control-sm"
+                 name="aPaterno"  
+                 placeholder="ingrese apellido paterno"
+                 [(ngModel)]="a_paterno" 
+                 required>
+
+                 <br><label><strong>Apellido Materno</strong></label>
+                 <input 
+                 type="string" 
+                 class="form-control form-control-sm"
+                 name="aPaterno"  
+                 placeholder="ingrese apellido paterno"
+                 [(ngModel)]="a_materno" 
+                 required>
+              
+
+
+            </div>
+            <div class="col-md-6">
+              
+                <br><label><strong>Fecha de Nacimiento</strong></label>
+                    <input 
+                    type="date" 
+                    class="form-control form-control-sm"
+                    name="fNacimiento"  
+                    [(ngModel)]="fecha_nacimiento" 
+                    required>
+
+                <br><label><strong>Fecha de ingreso</strong></label>
+                    <input 
+                    type="date" 
+                    class="form-control form-control-sm"
+                    name="fNacimiento"  
+                    [(ngModel)]="fecha_ingreso" 
+                    required>
+
+              
+            </div>
+  
+           <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                        <br><label><strong>Guardar Socio</strong></label><br>
+                        <button 
+                          class="btn btn btn-success btn-block btn-sm" 
+                          type="submit" value="ingresar"
+                          (click)="validar_usuario(validar)"
+                          >Guardar
+                        </button>
+                      </div>
+
+
+
+        </div>
+
+      </div>
+    </form>
+  </div> <br>
+
+</div>

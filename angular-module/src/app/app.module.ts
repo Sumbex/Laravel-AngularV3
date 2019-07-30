@@ -39,6 +39,14 @@ import { CambioContraseniaComponent } from './auth-master/configuraciones/cambio
 import { CajaChicaService } from './servicios/caja-chica.service';
 
 import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component';
+import { CuentaSociosComponent } from './auth-master/cuenta-socios/cuenta-socios.component';
+import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
+import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
+import { ModalPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/modal-prestamos-socios.component';
+import { ModalCampingComponent } from './auth-master/modal-camping/modal-camping.component';
+import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component';
+import { InteresPrestamoApuroEconomicoComponent } from './auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component';
+import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component';
 
 
 @NgModule({
@@ -68,7 +76,23 @@ import { TotalCuentaSindicalComponent } from './auth-master/cuenta-sindical/tota
 
     CambioContraseniaComponent,
 
-    TotalCuentaSindicalComponent
+    TotalCuentaSindicalComponent,
+
+    CuentaSociosComponent,
+
+    FormularioSociosComponent,
+
+    ListarSociosComponent,
+
+    ModalPrestamosSociosComponent,
+
+    ModalCampingComponent,
+
+    TablaPrestamosSociosComponent,
+
+    InteresPrestamoApuroEconomicoComponent,
+
+    BeneficiosSociosComponent
 
   ],
   imports: [

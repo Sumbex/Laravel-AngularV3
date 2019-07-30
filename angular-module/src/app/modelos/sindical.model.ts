@@ -1,6 +1,7 @@
 export class Sindical{
     id?: number;
     fecha: string;
+    archivoDocumento: File;
     nDocumento: string;
     tipoCuentaSindicato: string;
     descripcion: string;

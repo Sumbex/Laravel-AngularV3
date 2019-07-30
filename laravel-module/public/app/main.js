@@ -2691,6 +2691,10 @@ let ModalCampingComponent = class ModalCampingComponent {
         });
     }
     guarda_monto() {
+        if (this.monto == '') {
+            alert("No ha ingresado un monto en este campo");
+            return false;
+        }
         this._camping.guardar(this.anio, this.mes, this.monto).subscribe((val) => {
             //this.detallecamping = val;
             if (val.estado == 'success') {

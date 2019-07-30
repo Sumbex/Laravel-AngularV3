@@ -66,16 +66,6 @@ class Cuentasindicato extends Model
 				'definicion' => '1'
 			])->first();
 
-			$verify_p_egreso = $this->where([
-				'p_e' => 'S',
-				'activo' => 'S',
-				'tipo_cuenta_sindicato' => '4',//cuenta prestamos
-				'anio_id' => $anio,
-				'mes_id' => $mes,
-				'definicion' => '2'
-			])->first();
-
-
 
 			if (empty($verify_p_ingreso)) {
 				$this->numero_documento = '---';
@@ -97,6 +87,16 @@ class Cuentasindicato extends Model
 				$verify_p_ingreso->monto_ingreso = $prestamo['ingreso'];
 				$verify_p_ingreso->save();
 			}
+
+
+			$verify_p_egreso = $this->where([
+				'p_e' => 'S',
+				'activo' => 'S',
+				'tipo_cuenta_sindicato' => '4',//cuenta prestamos
+				'anio_id' => $anio,
+				'mes_id' => $mes,
+				'definicion' => '2'
+			])->first();
 
 			if (empty($verify_p_egreso)) {
 				$this->numero_documento = '--';
@@ -176,40 +176,26 @@ class Cuentasindicato extends Model
 
 	public function item_prestamos_a_cs($anio, $mes)
 	{
-		$p_ingreso = DB::table('detalle_prestamo')->where([
-						'activo' => 'S',
-						'mes_id' => $mes,
-						'anio_id' => $anio,
-						'definicion' => '1'
-					])->sum('monto_ingreso');
+		$dp_query = DB::select("SELECT 
+								--prestamo_id,
+							    COALESCE(sum(monto_egreso),0) as monto_egreso,
+							    COALESCE(sum(monto_ingreso),0)as monto_ingreso
+							from detalle_prestamo where mes_id = $mes and anio_id = $anio and activo = 'S'");
 
-		$p_egreso = DB::table('detalle_prestamo')->where([
-						'activo' => 'S',
-						'mes_id' => $mes,
-						'anio_id' => $anio,
-						'definicion' => '2'
-					])->sum('monto_egreso');
+		$dpta_query = DB::select("SELECT 
+								--prestamo_id,
+							    COALESCE(sum(monto_egreso),0) as monto_egreso,
+							    COALESCE(sum(monto_ingreso),0)as monto_ingreso
+							from detalle_prestamo_tipo_abono where mes_id = $mes and anio_id = $anio and activo = 'S'");
+
+		// dd($dp_query[0]->monto_egreso);
 
 
-		
-
-		$pa_ingreso = DB::table('detalle_prestamo_tipo_abono')->where([
-						'activo' => 'S',
-						'mes_id' => $mes,
-						'anio_id' => $anio,
-						'definicion' => '1'
-					])->sum('monto_ingreso');
-		$pa_egreso = DB::table('detalle_prestamo_tipo_abono')->where([
-						'activo' => 'S',
-						'mes_id' => $mes,
-						'anio_id' => $anio,
-						'definicion' => '2'
-					])->sum('monto_egreso');
-		if (($p_ingreso)>=0 && ($p_egreso)>=0 && ($pa_ingreso)>=0 && ($pa_egreso)>=0) {
+		if ($dp_query > 0 && $dpta_query > 0) {
 
 			return ([
-				'ingreso' => $p_ingreso + $pa_ingreso,
-				'egreso' => $p_egreso + $pa_egreso
+				'ingreso' => $dp_query[0]->monto_ingreso + $dpta_query[0]->monto_ingreso,
+				'egreso' => $dp_query[0]->monto_egreso + $dpta_query[0]->monto_egreso
 				
 			]);
 

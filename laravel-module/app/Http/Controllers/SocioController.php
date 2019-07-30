@@ -64,6 +64,11 @@ class SocioController extends Controller
     	// }
 
         $validar = $this->validar_datos_socio($r);
+        $exist = Socios::where([ 'activo'=>'S','rut'=>$r->rut ])->get();
+        //dd(count($exist)>0);
+        if (count($exist)>0) {
+            return ['estado'=>'failed','mensaje'=>'Este rut ya existe en la base de datos'];
+        }
 
         if ($validar['estado'] == "success") {
         
@@ -71,6 +76,8 @@ class SocioController extends Controller
             if(!$this->valida_rut($r->rut)){
                 return ['estado'=>'failed','mensaje'=>'Rut no valido'];
             }
+
+
 
         	$s->nombres = $r->nombres;
         	$s->a_paterno = $r->a_paterno;

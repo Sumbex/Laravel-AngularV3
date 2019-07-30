@@ -510,7 +510,7 @@ class Cs_prestamos extends Model
             for ($i = 0; $i < count($prestamos['prestamos']); $i++) {
                 /* dd($this->traerAbonos(102)); */
                 $abonos = $this->traerAbonos($anio, $mes, $prestamos['prestamos'][$i]->prestamo_id);
-
+                $totalesAbono = 0;
                 if ($abonos['estado'] == 'success') {
                     for ($e = 0; $e < count($abonos['abonos']); $e++) {
                         switch ($abonos['abonos'][$e]->tipo) {
@@ -566,10 +566,11 @@ class Cs_prestamos extends Model
                     $prestamos['prestamos'][$i]->trimestral = 0;
                 }
 
-                /*  if (is_null($prestamos['prestamos'][$i]->monto_ingreso)) {
+                if (is_null($prestamos['prestamos'][$i]->monto_ingreso)) {
                     $prestamos['prestamos'][$i]->monto_ingreso = 0;
-                } */
-                /* $prestamos['prestamos'][$i]->saldo_restante =  $prestamos['prestamos'][$i]->total_prestamo - $prestamos['prestamos'][$i]->monto_ingreso - $prestamos['prestamos'][$i]->trimestral - $prestamos['prestamos'][$i]->sueldo - $prestamos['prestamos'][$i]->conflicto; */
+                }
+                $prestamos['prestamos'][$i]->monto_restante_p = $prestamos['prestamos'][$i]->total_prestamo_no_interes - ($prestamos['prestamos'][$i]->sueldo + $prestamos['prestamos'][$i]->conflicto + $prestamos['prestamos'][$i]->trimestral) - $prestamos['prestamos'][$i]->monto_ingreso;
+                $prestamos['prestamos'][$i]->restante = $prestamos['prestamos'][$i]->monto_restante_p + $prestamos['prestamos'][$i]->monto_ingreso;
             }
 
             $return = [];
@@ -661,8 +662,8 @@ class Cs_prestamos extends Model
             ])
             ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
             ->where([
-                'dpta.anio_id' => $anio,
-                'dpta.mes_id' => $mes,
+                /* 'dpta.anio_id' => $anio,
+                'dpta.mes_id' => $mes, */
                 'pta.cs_prestamo_id' => $prestamo_id,
                 'dpta.activo' => 'S'
             ])
@@ -733,6 +734,58 @@ class Cs_prestamos extends Model
             //
             $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
             $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
+
+            //buscar bien los abonos por la fecha
+            /* $verificarAPF = DB::table('detalle_prestamo_tipo_abono as dpta')
+
+                ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
+                ->where([
+                    'dpta.estado' => 1,
+                    'pta.cs_prestamo_id' => $prestamo->id,
+                    'dpta.activo' => 'S'
+                ])
+                ->get();
+
+            $test = [];
+            for ($i = 0; $i < count($verificarAPF); $i++) {
+                switch ($verificarAPF[$i]->tipo_abono_cuotas_id) {
+                    case 1:
+                        //
+                        $test['anio1'] = $verificarAPF[$i]->anio_id;
+                        $test['mes1'] = $verificarAPF[$i]->mes_id;
+
+                        break;
+
+                    case 2:
+                        //
+                        $test['anio2'] = $verificarAPF[$i]->anio_id;
+                        $test['mes2'] = $verificarAPF[$i]->mes_id;
+                        break;
+
+                    case 3:
+                        //
+                        $test['anio3'] = $verificarAPF[$i]->anio_id;
+                        $test['mes3'] = $verificarAPF[$i]->mes_id;
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            if(($test[])){
+
+            }else{
+
+            }
+            dd($verificarAPF); */
+
+            /* if (!$verificarAPF->isEmpty()) {
+                $abonos = $this->traerAbonos($prestamo->anio_id, $prestamo->mes_id, $dPrestamo->prestamo_id);
+            } else {
+                $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
+            }  */
+
             $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
 
             /* dd($prestamo); */
@@ -774,6 +827,7 @@ class Cs_prestamos extends Model
                             break;
                     }
                 }
+                /* dd($vigente); */
                 if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
                     $estado = true;
                 } else {

@@ -53,7 +53,7 @@
       <tbody>
         <tr *ngFor="let itemPrestamo of valoresPrestamosSalud">
           <td colspan="2">{{itemPrestamo.fecha}}</td>
-          <td colspan="1">{{itemPrestamo.id}}</td>
+          <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
           <td colspan="2">
             <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
@@ -62,10 +62,10 @@
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+          <td colspan="2">{{itemPrestamo.sueldo}}</td>
+          <td colspan="2">{{itemPrestamo.conflicto}}</td>
+          <td colspan="2">{{itemPrestamo.trimestral}}</td>
+          <td colspan="2">esperando a sumbito</td>
           <td colspan="2">{{itemPrestamo.cuota}}</td>
           <td colspan="3">{{itemPrestamo.monto_ingreso}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso}}</td>
@@ -73,7 +73,7 @@
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="3" class="text-center">
-            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud); test(itemPrestamo.fecha, itemPrestamo.id, itemPrestamo.descripcion)">
+            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud)">
             <ng-template #pagoPrestamoSalud let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago | Salud - Retornable</h4>
@@ -161,7 +161,7 @@
       <tbody>
         <tr *ngFor="let itemPrestamo of valoresPrestamosApuro">
           <td colspan="2">{{itemPrestamo.fecha}}</td>
-          <td colspan="1">{{itemPrestamo.id}}</td>
+          <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
           <td colspan="2">
             <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
@@ -170,10 +170,10 @@
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+          <td colspan="2">{{itemPrestamo.sueldo}}</td>
+          <td colspan="2">{{itemPrestamo.conflicto}}</td>
+          <td colspan="2">{{itemPrestamo.trimestral}}</td>
+          <td colspan="2">esperando a sumbito</td>
           <td colspan="2">{{itemPrestamo.cuota}}</td>
           <td colspan="3">{{itemPrestamo.monto_ingreso}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso}}</td>
@@ -181,7 +181,7 @@
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="3" class="text-center">
-            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres)">
+            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)">
             <ng-template #pagoPrestamoInteres let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago | Apuro Economico - Retornable</h4>
@@ -191,28 +191,34 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                          <label> <strong>Fecha de Pago</strong></label> 
+                          <input class="form-control form-control-sm" #fechaInteres type="date">
+                        </div>
+                      </div><br>
+                    <div class="row">
                       <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <label> <strong>Monto del Interes a Pagar</strong></label> 
-                        <input class="form-control form-control-sm" #montoInteres type="number" value="2500" disabled>
+                        <input class="form-control form-control-sm" #montoInteres type="number" value="{{montoDelInteresPagar}}" disabled>
                       </div>
                     </div><br>
                     <div class="row">
                       <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <label><strong>Monto de Cuota a Pagar</strong></label> 
-                        <input type="number" class="form-control form-control-sm" #montoCuotaApuro value="25000" disabled>
+                        <input type="number" class="form-control form-control-sm" #montoCuotaApuro value="{{montoCuotaPagar}}" disabled>
                       </div>
                     </div><br>
 
                     <div class="row justify-content-center">
                       <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                         <label><strong>monto Final a Pagar</strong></label> 
-                        <input type="number" class="form-control form-control-sm" #montoFinalApuro value="27500" disabled>
+                        <input type="number" class="form-control form-control-sm" #montoFinalApuro value="{{montoFinalPagar}}">
                       </div>
                     </div><br>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                        <button type="button" class="btn btn-outline-success">Pagar</button>
+                        <button type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteres, itemPrestamo.prestamo_id, montoFinalApuro)">Pagar</button>
                     </div>
 
                   </div>
@@ -255,7 +261,7 @@
       <tbody>
         <tr *ngFor="let itemPrestamo of valoresPrestamosAporte">
           <td colspan="2">{{itemPrestamo.fecha}}</td>
-          <td colspan="1">{{itemPrestamo.id}}</td>
+          <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
           <td colspan="2">
             <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
@@ -264,10 +270,10 @@
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
           <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+          <td colspan="2">{{itemPrestamo.sueldo}}</td>
+          <td colspan="2">{{itemPrestamo.conflicto}}</td>
+          <td colspan="2">{{itemPrestamo.trimestral}}</td>
+          <td colspan="2">esperando a sumbito</td>
           <td colspan="2">{{itemPrestamo.cuota}}</td>
           <td colspan="3">{{itemPrestamo.monto_ingreso}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso}}</td>

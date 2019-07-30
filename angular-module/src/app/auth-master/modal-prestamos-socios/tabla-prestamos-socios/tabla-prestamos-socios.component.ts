@@ -36,12 +36,12 @@ export class TablaPrestamosSociosComponent implements OnInit {
   montoFinalPagar;
 
   constructor(private _sindicalService: SindicalService,
-     private _fechasService: AniosService,
-     config: NgbModalConfig, 
-     private modalService: NgbModal) {
-      config.backdrop = 'static';
-      config.keyboard = false;
-      }
+    private _fechasService: AniosService,
+    config: NgbModalConfig,
+    private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
     //Cargar Años
@@ -79,14 +79,17 @@ export class TablaPrestamosSociosComponent implements OnInit {
   }
 
   openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
-    this.modalActualizarPagoSalud = this.modalService.open(Actualizar,{ size: 'sm' });
+    this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
 
+    console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
     this.montoDelInteresPagar = interes / cuotaP;
     this.montoCuotaPagar = totalPrestamoNoInteres / cuotaP;
     this.montoFinalPagar = totalPrestamo / cuotaP;
-   }
 
-   cerrarActualizar(){
+    console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
+  }
+
+  cerrarActualizar() {
     this.modalActualizarPagoSalud.close();
   }
 
@@ -125,10 +128,15 @@ export class TablaPrestamosSociosComponent implements OnInit {
     this.refrescarTablaPrestamosClientes();
   }
 
-  pagarPrestamo(fecha, prestamoId, montoPagar){
+  pagarPrestamo(fecha, prestamoId, montoPagar) {
     this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(
       response => {
-        console.log("Pagado con éxito creo");
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          alert(response.mensaje);
+        } else {
+          alert("Se ha realizado el pago correctamente");
+          console.log("Pagado con éxito creo");
+        }
       },
       error => {
         console.log(error);

@@ -39,4 +39,9 @@ class PrestamosController extends Controller
 	{
 		return Cs_prestamos::traerTipoAbonos();
 	}
+
+	public function PagoAbonos(Request $request)
+	{
+		return Cs_prestamos::pagoAbonos($request);
+	}
 }

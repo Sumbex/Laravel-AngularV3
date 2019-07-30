@@ -31,7 +31,7 @@
                 </div>
               </li>
               <li *ngIf="isLogged" ngbDropdown class="d-inline-block">
-                <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-tie"></i> {{usuario}}</button>
+                <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-tie"></i> {{nombreUsuario}}</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/Configuracion']"><i class="fas fa-user-cog"></i> Configuracion Cuenta</a>
                   <button class="selectColor" ngbDropdownItem (click)="logOut()"><i class="fas fa-sign-out-alt"></i> &nbsp;Cerrar Sesion</button>

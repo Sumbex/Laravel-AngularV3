@@ -84,10 +84,11 @@ export class ModalPrestamosSociosComponent implements OnInit {
       this.datosTipoPrestamo.descripcion = "salud";
     }else if(this.datosTipoPrestamo.id == 2){
       this.datosTipoPrestamo.descripcion = "apuroEconomico";
-      this.datosEnvioPrestamo.montoPrestamo = "100000";
+      this.datosEnvioPrestamo.montoPrestamo = "";
       this.datosEnvioPrestamo.cuotas = "4";
     }else if(this.datosTipoPrestamo.id == 3){
       this.datosTipoPrestamo.descripcion = "aporteEconomico";
+      this.datosEnvioPrestamo.cuotas = "0";
     }
   }
 

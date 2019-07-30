@@ -31,6 +31,9 @@ export class TablaPrestamosSociosComponent implements OnInit {
   valoresPrestamosSalud;
   valoresPrestamosApuro;
   valoresPrestamosAporte
+  montoDelInteresPagar;
+  montoCuotaPagar;
+  montoFinalPagar;
 
   constructor(private _sindicalService: SindicalService,
      private _fechasService: AniosService,
@@ -75,9 +78,14 @@ export class TablaPrestamosSociosComponent implements OnInit {
     )
   }
 
-  openActualizar(Actualizar) {
-    this.modalActualizarPagoSalud = this.modalService.open(Actualizar,{ size: 'sm' });    
+  openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
+    this.modalActualizarPagoSalud = this.modalService.open(Actualizar,{ size: 'sm' });
+
+    this.montoDelInteresPagar = interes / cuotaP;
+    this.montoCuotaPagar = totalPrestamoNoInteres / cuotaP;
+    this.montoFinalPagar = totalPrestamo / cuotaP;
    }
+
    cerrarActualizar(){
     this.modalActualizarPagoSalud.close();
   }
@@ -117,7 +125,14 @@ export class TablaPrestamosSociosComponent implements OnInit {
     this.refrescarTablaPrestamosClientes();
   }
 
-  test(fecha, id, descripcion){
-    console.log(fecha, id, descripcion);
+  pagarPrestamo(fecha, prestamoId, montoPagar){
+    this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(
+      response => {
+        console.log("Pagado con éxito creo");
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }

@@ -13,6 +13,7 @@ import { ConfiguracionesComponent } from './auth-master/configuraciones/configur
 import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios/listar-socios.component';
 import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
 import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component';
+import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -27,7 +28,8 @@ const routes: Routes = [
     { path: 'Configuracion', component: ConfiguracionesComponent },
     { path: 'RegistroSocios', component: FormularioSociosComponent },
     { path: 'ListarSocios', component: ListarSociosComponent },
-    { path: 'TablaPrestamoSocios', component: TablaPrestamosSociosComponent }
+    { path: 'TablaPrestamoSocios', component: TablaPrestamosSociosComponent },
+    { path: 'BeneficiosSocios', component: BeneficiosSociosComponent }
 
   ]},
 

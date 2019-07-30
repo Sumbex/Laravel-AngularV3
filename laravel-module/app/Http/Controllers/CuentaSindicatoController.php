@@ -235,7 +235,7 @@ class CuentaSindicatoController extends Controller
 	public function listar_cuenta_sindicato($anio, $mes)
 	{
 
-		try{
+		// try{
 
 			$cm_txt = 'c_s_cierre_mensual';
 			
@@ -251,21 +251,21 @@ class CuentaSindicatoController extends Controller
 
 				return $data;
 			}
-		}
-		catch(QueryException $e){
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'QEx: No se ha podido traer la lista cuenta sindical',
-				'exception' => $e //este es solo pal desarrollador;
-			];
-		}
-		catch(\Exception $e){
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'Ex: No se ha podido traer la lista cuenta sindical',
-				'exception' => $e //este es solo pal desarrollador;
-			];
-		}
+		// }
+		// catch(QueryException $e){
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'QEx: No se ha podido traer la lista cuenta sindical',
+		// 		'exception' => $e //este es solo pal desarrollador;
+		// 	];
+		// }
+		// catch(\Exception $e){
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'Ex: No se ha podido traer la lista cuenta sindical',
+		// 		'exception' => $e //este es solo pal desarrollador;
+		// 	];
+		// }
 	}
 
 	public function cuenta_sindical($s_a, $anio, $mes)

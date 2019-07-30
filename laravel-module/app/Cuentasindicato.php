@@ -14,15 +14,13 @@ class Cuentasindicato extends Model
 
     protected function traer($anio, $mes)
     {
+    	$get_anio = DB::table('mes as m')->select('m.descripcion')->where('id',$mes)->first();
+
     	$interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
+    	$prestamo = $this->item_prestamos_a_cs($anio, $mes);
 
-     	//dd($interes['monto_ingreso']);
-  //   	if($interes != null){ // si existe interes de prestamo
-		// 	$get_interes = $interes;
-		// 	$listar->push(collect($get_interes));// se agrega obeto a consulta (el item genberal de los intereses)
 
-	
-		// }
+
 		if($interes != null){ // si existe interes de prestamo
 			$verify_interes = $this->where([
 				'interes' => 'S',
@@ -55,6 +53,70 @@ class Cuentasindicato extends Model
 				$verify_interes->monto_ingreso = $interes['monto_ingreso'];
 				$verify_interes->save();
 				
+			}
+		}
+		if ($prestamo != null) {
+
+			$verify_p_ingreso = $this->where([
+				'p_i' => 'S',
+				'activo' => 'S',
+				'tipo_cuenta_sindicato' => '4',//cuenta prestamos
+				'anio_id' => $anio,
+				'mes_id' => $mes,
+				'definicion' => '1'
+			])->first();
+
+			$verify_p_egreso = $this->where([
+				'p_e' => 'S',
+				'activo' => 'S',
+				'tipo_cuenta_sindicato' => '4',//cuenta prestamos
+				'anio_id' => $anio,
+				'mes_id' => $mes,
+				'definicion' => '2'
+			])->first();
+
+
+
+			if (empty($verify_p_ingreso)) {
+				$this->numero_documento = '---';
+				$this->archivo_documento = '---';
+				$this->tipo_cuenta_sindicato = 4; //prestamo
+				$this->descripcion = 'Total ingreso de prestamos, mes de '.$get_anio->descripcion;
+				$this->monto_ingreso = $prestamo['ingreso'];
+				$this->monto_egreso = null;
+				$this->saldo_actual = null;
+				$this->definicion = 1;
+				$this->user_crea = Auth::user()->id;
+				$this->activo = 'S';
+				$this->anio_id = $anio;
+				$this->mes_id = $mes;
+				$this->dia = '1';
+				$this->p_i = 'S';
+				$this->save();
+			}else{
+				$verify_p_ingreso->monto_ingreso = $prestamo['ingreso'];
+				$verify_p_ingreso->save();
+			}
+
+			if (empty($verify_p_egreso)) {
+				$this->numero_documento = '--';
+				$this->archivo_documento = '--';
+				$this->tipo_cuenta_sindicato = 4; //prestamo
+				$this->descripcion = 'Total egreso de prestamos, mes de '.$get_anio->descripcion;
+				$this->monto_ingreso = null;
+				$this->monto_egreso = $prestamo['egreso'];
+				$this->saldo_actual = null;
+				$this->definicion = 2;
+				$this->user_crea = Auth::user()->id;
+				$this->activo = 'S';
+				$this->anio_id = $anio;
+				$this->mes_id = $mes;
+				$this->dia = '1';
+				$this->p_e = 'S';
+				$this->save();
+			}else{
+				$verify_p_egreso->monto_egreso = $prestamo['egreso'];
+				$verify_p_egreso->save();
 			}
 		}
 
@@ -114,6 +176,47 @@ class Cuentasindicato extends Model
 
 	public function item_prestamos_a_cs($anio, $mes)
 	{
-		# code...
+		$p_ingreso = DB::table('detalle_prestamo')->where([
+						'activo' => 'S',
+						'mes_id' => $mes,
+						'anio_id' => $anio,
+						'definicion' => '1'
+					])->sum('monto_ingreso');
+
+		$p_egreso = DB::table('detalle_prestamo')->where([
+						'activo' => 'S',
+						'mes_id' => $mes,
+						'anio_id' => $anio,
+						'definicion' => '2'
+					])->sum('monto_egreso');
+
+
+		
+
+		$pa_ingreso = DB::table('detalle_prestamo_tipo_abono')->where([
+						'activo' => 'S',
+						'mes_id' => $mes,
+						'anio_id' => $anio,
+						'definicion' => '1'
+					])->sum('monto_ingreso');
+		$pa_egreso = DB::table('detalle_prestamo_tipo_abono')->where([
+						'activo' => 'S',
+						'mes_id' => $mes,
+						'anio_id' => $anio,
+						'definicion' => '2'
+					])->sum('monto_egreso');
+		if (($p_ingreso)>=0 && ($p_egreso)>=0 && ($pa_ingreso)>=0 && ($pa_egreso)>=0) {
+
+			return ([
+				'ingreso' => $p_ingreso + $pa_ingreso,
+				'egreso' => $p_egreso + $pa_egreso
+				
+			]);
+
+		}else{
+			return null;
+		}
+
+		
 	}
 }

@@ -85,7 +85,7 @@ export class UsuarioService {
             )});
     }
 
-    getUsuarioLogeado(){
+    getUsuarioLogeado() : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "usuario_logeado",{headers: new HttpHeaders(
             {'Authorization': 'Bearer' + token})}

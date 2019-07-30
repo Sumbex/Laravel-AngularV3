@@ -9,6 +9,7 @@ import { UsuarioService } from '../servicios/usuarios.service';
 export class NavbarComponent implements OnInit {
 
   usuario: string;
+  nombreUsuario;
   isLogged: boolean;
 
   constructor(private _userService: UsuarioService) { }
@@ -20,10 +21,23 @@ export class NavbarComponent implements OnInit {
     }else{
       this.isLogged = false;
     }
+
+    this.getNombre();
   }
 
   logOut(){
     this._userService.logOut();
   }
 
+  getNombre(){
+    this._userService.getUsuarioLogeado().subscribe(
+      response => {
+        this.nombreUsuario = response.name + " " + response.a_paterno;
+        console.log(this.nombreUsuario);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

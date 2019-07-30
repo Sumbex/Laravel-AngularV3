@@ -89,7 +89,6 @@ export class AuthMasterComponent implements OnInit {
       }else{
         let estadoToken = this._usuariosService.isAuthenticated();
         if(estadoToken == false){
-          alert("Seha caido la sesión, se reiniciará el sistema");
           window.location.reload();
         }else{
           this.tiempoEsperaToken = 1;

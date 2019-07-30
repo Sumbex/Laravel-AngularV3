@@ -847,4 +847,21 @@ class Cs_prestamos extends Model
             return $verificarInicioM;
         }
     }
+
+    protected function pagoAbonos($request)
+    {
+        //test
+        $fecha = $this->div_fecha($request->fecha);
+
+        $anio = $this->anio_tipo_id($fecha['anio']);
+        $mes = $this->mes_tipo_id($fecha['mes']);
+
+        $verificarInicioM = $this->verificarInicioMensual($anio->id, $mes->id);
+
+        if ($verificarInicioM['estado'] == 'success') {
+            //
+        } else {
+            //
+        }
+    }
 }

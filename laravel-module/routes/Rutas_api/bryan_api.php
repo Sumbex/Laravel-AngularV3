@@ -15,8 +15,8 @@ Route::get('/traer_socio/{rut}', 'PrestamosController@TraerSocio');
 Route::post('/ingresar_prestamo', 'PrestamosController@IngresarPrestamo');
 Route::get('/traer_prestamos/{anio}/{mes}', 'PrestamosController@TraerPrestamos');
 Route::get('/traer_tipo_abono','PrestamosController@TraerTipoAbonos');
-Route::post('ingresar_pago_prestamo', 'PrestamosController@PagoPrestamos');
-
+Route::post('/ingresar_pago_prestamo', 'PrestamosController@PagoPrestamos');
+Route::post('/ingresar_pago_abono', 'PrestamosController@PagoAbonos');
 //Route::get('/testeo', function() {
 //   return "kkck";
 //});

@@ -570,7 +570,7 @@ class Cs_prestamos extends Model
                     $prestamos['prestamos'][$i]->monto_ingreso = 0;
                 }
                 $prestamos['prestamos'][$i]->monto_restante_p = $prestamos['prestamos'][$i]->total_prestamo_no_interes - ($prestamos['prestamos'][$i]->sueldo + $prestamos['prestamos'][$i]->conflicto + $prestamos['prestamos'][$i]->trimestral) - $prestamos['prestamos'][$i]->monto_ingreso;
-                $prestamos['prestamos'][$i]->restante = $prestamos['prestamos'][$i]->monto_restante_p + $prestamos['prestamos'][$i]->monto_ingreso;
+                $prestamos['prestamos'][$i]->restante = $prestamos['prestamos'][$i]->total_prestamo_no_interes - $prestamos['prestamos'][$i]->monto_ingreso;
             }
 
             $return = [];

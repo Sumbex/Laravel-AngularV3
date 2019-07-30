@@ -619,8 +619,10 @@ class Cs_prestamos extends Model
                 DB::raw("concat(pd.cuota,'/',p.cuota) as cuota"),
                 'pd.cuota as cuotad',
                 'p.cuota as cuotap',
-                DB::raw("(pd.monto_ingreso+coalesce(dip.interes_mensual, 0)) as monto_ingreso"),
-                DB::raw("(pd.monto_egreso+coalesce(dip.interes_mensual, 0)) as monto_egreso"),
+                'pd.monto_ingreso',
+                'pd.monto_egreso',
+                /* DB::raw("(pd.monto_ingreso+coalesce(dip.interes_mensual, 0)) as monto_ingreso"),
+                DB::raw("(pd.monto_egreso+coalesce(dip.interes_mensual, 0)) as monto_egreso"), */
                 'ep.descripcion as estado',
                 'pd.definicion',
                 'p.tipo_prestamo_id'
@@ -630,7 +632,7 @@ class Cs_prestamos extends Model
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
             ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
             ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
-            ->leftJoin('detalle_interes_prestamo as dip', 'dip.interes_prestamo_id', 'ip.id')
+            /* ->leftJoin('detalle_interes_prestamo as dip', 'dip.interes_prestamo_id', 'ip.id') */
             ->where([
                 'pd.activo' => 'S',
                 'pd.anio_id' => $anio,
@@ -806,7 +808,9 @@ class Cs_prestamos extends Model
                 } else {
                     $restar = 0;
                 }
-                $pago->monto_egreso = $dPrestamo->monto_egreso - $request->monto - $restar;
+                $total = $request->monto - $restar;
+
+                $pago->monto_egreso = $dPrestamo->monto_egreso - $total;
                 $pago->activo = "S";
                 $pago->user_crea = Auth::user()->id;
 
@@ -845,6 +849,23 @@ class Cs_prestamos extends Model
             }
         } else {
             return $verificarInicioM;
+        }
+    }
+
+    protected function pagoAbonos($request)
+    {
+        //test
+        $fecha = $this->div_fecha($request->fecha);
+
+        $anio = $this->anio_tipo_id($fecha['anio']);
+        $mes = $this->mes_tipo_id($fecha['mes']);
+
+        $verificarInicioM = $this->verificarInicioMensual($anio->id, $mes->id);
+
+        if ($verificarInicioM['estado'] == 'success') {
+            //
+        } else {
+            //
         }
     }
 }

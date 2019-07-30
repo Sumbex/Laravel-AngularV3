@@ -83,7 +83,7 @@ export class TablaPrestamosSociosComponent implements OnInit {
 
     console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
     this.montoDelInteresPagar = interes / cuotaP;
-    this.montoCuotaPagar = totalPrestamoNoInteres / cuotaP;
+    this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
     this.montoFinalPagar = totalPrestamo / cuotaP;
 
     console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);

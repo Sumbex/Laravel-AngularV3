@@ -61,7 +61,7 @@
             </a>
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+          <td colspan="2">{{itemPrestamo.total_prestamo_no_interes}}</td>
           <td colspan="2">{{itemPrestamo.sueldo}}</td>
           <td colspan="2">{{itemPrestamo.conflicto}}</td>
           <td colspan="2">{{itemPrestamo.trimestral}}</td>
@@ -107,7 +107,7 @@
                       <div class="row">
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                           <label><strong>Monto de Cuota a Pagar</strong></label> 
-                          <input type="number" class="form-control form-control-sm" #montoPagarSalud value="">
+                          <input type="number" class="form-control form-control-sm" #montoPagarSalud value="{{montoCuotaPagar}}">
                         </div>
 
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
@@ -172,7 +172,7 @@
             </a>
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+          <td colspan="2">{{itemPrestamo.total_prestamo_no_interes}}</td>
           <td colspan="2">{{itemPrestamo.sueldo}}</td>
           <td colspan="2">{{itemPrestamo.conflicto}}</td>
           <td colspan="2">{{itemPrestamo.trimestral}}</td>
@@ -272,7 +272,7 @@
             </a>
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="2">{{itemPrestamo.monto_egreso}}</td>
+          <td colspan="2">{{itemPrestamo.total_prestamo_no_interes}}</td>
           <td colspan="2">{{itemPrestamo.sueldo}}</td>
           <td colspan="2">{{itemPrestamo.conflicto}}</td>
           <td colspan="2">{{itemPrestamo.trimestral}}</td>

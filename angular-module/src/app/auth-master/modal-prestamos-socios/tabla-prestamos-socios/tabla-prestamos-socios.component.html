@@ -73,7 +73,7 @@
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="3" class="text-center">
-            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud)">
+            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
             <ng-template #pagoPrestamoSalud let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago | Salud - Retornable</h4>
@@ -107,18 +107,21 @@
                       <div class="row">
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                           <label><strong>Monto de Cuota a Pagar</strong></label> 
-                          <input type="number" class="form-control form-control-sm" #montoVariable value="50000" disabled>
+                          <input type="number" class="form-control form-control-sm" #montoPagarSalud value="">
                         </div>
 
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                           <label><strong>N° de Cuotas Pagadas</strong></label> 
-                          <input type="number" class="form-control form-control-sm" #montoVariable value="3" disabled>
+                          <input type="number" class="form-control form-control-sm" #cuotasPagadasSalud value="3" disabled>
                         </div>
                       </div><br>
-
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                          <label> <strong>Fecha de Pago</strong></label> 
+                          <input class="form-control form-control-sm" #fechaInteresSalud type="date">
+                      </div><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                        <button type="button" class="btn btn-outline-success">Pagar</button>
+                        <button type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteresSalud, itemPrestamo.id, montoPagarSalud)">Pagar</button>
                     </div>
 
                   </div>
@@ -218,7 +221,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                        <button type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteres, itemPrestamo.prestamo_id, montoFinalApuro)">Pagar</button>
+                        <button type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteres, itemPrestamo.id, montoFinalApuro)">Pagar</button>
                     </div>
 
                   </div>

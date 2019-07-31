@@ -206,7 +206,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\n<div class=\"container\">\n\n  \n  <ng-template #validar let-modal>\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n       <button class=\"btn btn-success btn-block btn-sm\"\n        (click)=\"btn_validar_usuario(rut,password,validar);\">\n        Validar\n        </button>\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n      </div>\n  </ng-template>\n\n\n  <!--Formulario para ingresar una cuenta sindical-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\n        <h6>Resgistro de Socios</h6>\n      </strong>\n    </div>\n    <form>\n      <div class=\"card-body\">\n\n        <div class=\"row\">\n            \n            <div class=\"col-md-6\">\n                <br><label><strong>Rut</strong></label>\n                  <input \n                  type=\"string\" \n                  class=\"form-control form-control-sm\"\n                  name=\"rut\"\n                  placeholder=\"123456789\"  \n                  [(ngModel)]=\"rut\" \n                  required>\n               <br>\n               <label><strong>Nombre</strong></label>\n                <input \n                type=\"string\" \n                class=\"form-control form-control-sm\"\n                name=\"nombre\"  \n                placeholder=\"ingrese nombre\"\n                [(ngModel)]=\"nombres\" \n                required>\n\n                 <br><label><strong>Apellido Paterno</strong></label>\n                 <input \n                 type=\"string\" \n                 class=\"form-control form-control-sm\"\n                 name=\"aPaterno\"  \n                 placeholder=\"ingrese apellido paterno\"\n                 [(ngModel)]=\"a_paterno\" \n                 required>\n\n                 <br><label><strong>Apellido Materno</strong></label>\n                 <input \n                 type=\"string\" \n                 class=\"form-control form-control-sm\"\n                 name=\"aPaterno\"  \n                 placeholder=\"ingrese apellido paterno\"\n                 [(ngModel)]=\"a_materno\" \n                 required>\n              \n\n\n            </div>\n            <div class=\"col-md-6\">\n              \n                <br><label><strong>Fecha de Nacimiento</strong></label>\n                    <input \n                    type=\"date\" \n                    class=\"form-control form-control-sm\"\n                    name=\"fNacimiento\"  \n                    [(ngModel)]=\"fecha_nacimiento\" \n                    required>\n\n                <br><label><strong>Fecha de ingreso</strong></label>\n                    <input \n                    type=\"date\" \n                    class=\"form-control form-control-sm\"\n                    name=\"fNacimiento\"  \n                    [(ngModel)]=\"fecha_ingreso\" \n                    required>\n\n              \n            </div>\n  \n           <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                        <br><label><strong>Guardar Socio</strong></label><br>\n                        <button \n                          class=\"btn btn btn-success btn-block btn-sm\" \n                          type=\"submit\" value=\"ingresar\"\n                          (click)=\"validar_usuario(validar)\"\n                          >Guardar\n                        </button>\n                      </div>\n\n\n\n        </div>\n\n      </div>\n    </form>\n  </div> <br>\n\n</div>\n"
+module.exports = "<br>\n<div class=\"container\">\n\n  \n  <ng-template #validar let-modal>\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n       <button class=\"btn btn-success btn-block btn-sm\"\n        (click)=\"btn_validar_usuario(rut,password,validar);\">\n        Validar\n        </button>\n        <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n      </div>\n  </ng-template>\n\n\n  <!--Formulario para ingresar una cuenta sindical-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\n        <h6>Resgistro de Socios</h6>\n      </strong>\n    </div>\n    <form>\n      <div class=\"card-body\">\n\n        <div class=\"row\">\n            \n            <div class=\"col-md-6\">\n                <br><label><strong>Rut</strong></label>\n                  <input \n                  type=\"string\" \n                  class=\"form-control form-control-sm\"\n                  name=\"rut\"\n                  placeholder=\"123456789\"  \n                  [(ngModel)]=\"rut\" \n                  required>\n               <br>\n               <label><strong>Nombre</strong></label>\n                <input \n                type=\"string\" \n                class=\"form-control form-control-sm\"\n                name=\"nombre\"  \n                placeholder=\"ingrese nombre\"\n                [(ngModel)]=\"nombres\" \n                required>\n\n                 <br><label><strong>Apellido Paterno</strong></label>\n                 <input \n                 type=\"string\" \n                 class=\"form-control form-control-sm\"\n                 name=\"aPaterno\"  \n                 placeholder=\"ingrese apellido paterno\"\n                 [(ngModel)]=\"a_paterno\" \n                 required>\n\n                 <br><label><strong>Apellido Materno</strong></label>\n                 <input \n                 type=\"string\" \n                 class=\"form-control form-control-sm\"\n                 name=\"aPaterno\"  \n                 placeholder=\"ingrese apellido paterno\"\n                 [(ngModel)]=\"a_materno\" \n                 required>\n              \n\n\n            </div>\n            <div class=\"col-md-6\">\n              \n                <br><label><strong>Fecha de Nacimiento</strong></label>\n                    <input \n                    type=\"date\" \n                    class=\"form-control form-control-sm\"\n                    name=\"fNacimiento\"  \n                    [(ngModel)]=\"fecha_nacimiento\" \n                    required>\n\n                <br><label><strong>Fecha de ingreso</strong></label>\n                    <input \n                    type=\"date\" \n                    class=\"form-control form-control-sm\"\n                    name=\"fNacimiento\"  \n                    [(ngModel)]=\"fecha_ingreso\" \n                    required>\n\n              \n            </div>\n  \n           <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                        <br><label><strong>Guardar Socio</strong></label><br>\n                        <button \n                          class=\"btn btn btn-success btn-block btn-sm\" \n                          type=\"submit\" value=\"ingresar\"\n                          (click)=\"validar_inputs(validar)\"\n                          >Guardar\n                        </button>\n                      </div>\n\n\n\n        </div>\n\n      </div>\n    </form>\n  </div> <br>\n\n</div>\n"
 
 /***/ }),
 
@@ -1894,6 +1894,12 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         this._http = _http;
         this._validarusuario = _validarusuario;
         this.modalService = modalService;
+        this.rut = '';
+        this.fecha_nacimiento = '';
+        this.fecha_ingreso = '';
+        this.nombres = '';
+        this.a_paterno = '';
+        this.a_materno = '';
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.load = false;
         this.modalReference = null;
@@ -1954,6 +1960,10 @@ let FormularioSociosComponent = class FormularioSociosComponent {
     }
     validar_usuario(validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
+        //  validar = this.validar_inputs();
+        // if (validar == true) {
+        //   this.modalReference = this.modalService.open(validar, { size: 'sm' });
+        // }
     }
     btn_validar_usuario($rut, $password, validar) {
         this.load = true;
@@ -1974,6 +1984,34 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         }, response => { console.log("POST call in error", response); }, () => {
             console.log("The POST success.");
         });
+    }
+    validar_inputs(validar) {
+        if (this.rut == '') {
+            alert("Ingrese rut");
+            return false;
+        }
+        if (this.fecha_nacimiento == '') {
+            alert("Ingrese fecha de nacimiento");
+            return false;
+        }
+        if (this.fecha_ingreso == '') {
+            alert("Ingrese fecha de ingreso");
+            return false;
+        }
+        if (this.nombres == '') {
+            alert("Ingrese nombres");
+            return false;
+        }
+        if (this.a_paterno == '') {
+            alert("Ingrese apellido paterno");
+            return false;
+        }
+        if (this.a_materno == '') {
+            alert("Ingrese apellido materno");
+            return false;
+        }
+        this.modalReference = this.modalService.open(validar, { size: 'sm' });
+        return true;
     }
 };
 FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

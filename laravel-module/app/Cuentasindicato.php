@@ -17,7 +17,12 @@ class Cuentasindicato extends Model
     	$get_anio = DB::table('mes as m')->select('m.descripcion')->where('id',$mes)->first();
 
     	$interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
-    	$prestamo = $this->item_prestamos_a_cs($anio, $mes);
+    	//$prestamo = $this->item_prestamos_a_cs($anio, $mes);
+
+    	$prestamo_egreso = $this->item_prestamo_e_cs($anio, $mes);
+    	$prestamo_ingreso = $this->item_prestamo_i_cs($anio, $mes);
+
+    	//dd($prestamo_ingreso);
 
 
 
@@ -55,7 +60,6 @@ class Cuentasindicato extends Model
 				
 			}
 		}
-		if ($prestamo != null) {
 
 			$verify_p_ingreso = $this->where([
 				'p_i' => 'S',
@@ -72,7 +76,7 @@ class Cuentasindicato extends Model
 				$this->archivo_documento = '---';
 				$this->tipo_cuenta_sindicato = 4; //prestamo
 				$this->descripcion = 'Total ingreso de prestamos, mes de '.$get_anio->descripcion;
-				$this->monto_ingreso = $prestamo['ingreso'];
+				$this->monto_ingreso = $prestamo_ingreso;
 				$this->monto_egreso = null;
 				$this->saldo_actual = null;
 				$this->definicion = 1;
@@ -84,7 +88,7 @@ class Cuentasindicato extends Model
 				$this->p_i = 'S';
 				$this->save();
 			}else{
-				$verify_p_ingreso->monto_ingreso = $prestamo['ingreso'];
+				$verify_p_ingreso->monto_ingreso = $prestamo_ingreso;
 				$verify_p_ingreso->save();
 			}
 
@@ -104,7 +108,7 @@ class Cuentasindicato extends Model
 				$this->tipo_cuenta_sindicato = 4; //prestamo
 				$this->descripcion = 'Total egreso de prestamos, mes de '.$get_anio->descripcion;
 				$this->monto_ingreso = null;
-				$this->monto_egreso = $prestamo['egreso'];
+				$this->monto_egreso = $prestamo_egreso;
 				$this->saldo_actual = null;
 				$this->definicion = 2;
 				$this->user_crea = Auth::user()->id;
@@ -115,10 +119,10 @@ class Cuentasindicato extends Model
 				$this->p_e = 'S';
 				$this->save();
 			}else{
-				$verify_p_egreso->monto_egreso = $prestamo['egreso'];
+				$verify_p_egreso->monto_egreso = $prestamo_egreso;
 				$verify_p_egreso->save();
 			}
-		}
+		
 
     	$listar = $this::select([
     						'cuenta_sindicato.id',
@@ -205,4 +209,55 @@ class Cuentasindicato extends Model
 
 		
 	}
+
+	public function item_prestamo_e_cs($anio, $mes)
+	{
+
+		$dp_query = DB::select("SELECT COALESCE(sum(monto_egreso),0) as monto_egreso 
+ 								from cs_prestamos where mes_id = $mes and anio_id = $anio and activo='S'");
+
+
+		
+		if ($dp_query[0]->monto_egreso > 0) {
+
+			return $dp_query[0]->monto_egreso;
+
+		}else{
+			return 0;
+		}
+
+		
+	}
+
+	public function item_prestamo_i_cs($anio, $mes)
+	{
+		
+		$dp_query = DB::select("SELECT 
+      
+								COALESCE(sum(z.calculo),0) as suma from 
+
+								(select 
+								    (monto_ingreso / cuota) as calculo
+								from detalle_prestamo where definicion=1 and mes_id=$mes and anio_id=$anio) z ");
+
+		$dpta_query = DB::select("SELECT COALESCE(sum(monto_pagado),0) as monto_egreso
+					from detalle_prestamo_tipo_abono where definicion = 1 
+					and mes_id = $mes and anio_id = $anio and activo = 'S'");
+
+
+		if ($dp_query[0]->suma > 0 ) {
+
+			$suma = (int)$dp_query[0]->suma + (int)$dpta_query[0]->monto_egreso;
+			return $suma;
+
+		}else{
+			return 0;
+		}
+		
+	}
+
+
+
+	// $dpta_query = DB::select("SELECT COALESCE(sum(monto_ingreso),0) as monto_ingreso
+		// from detalle_prestamo_tipo_abono where definicion = 1 and mes_id = $mes and anio_id = $anio and activo = 'S'");
 }

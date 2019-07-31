@@ -637,7 +637,6 @@ class Cs_prestamos extends Model
             ->select([
                 'pd.id',
                 'pd.prestamo_id',
-                /* DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"), */
                 DB::raw("concat(pd.dia,' de ',m.descripcion,',',a.descripcion) as fecha_pago"),
                 'p.numero_documento',
                 'p.archivo_documento',
@@ -960,7 +959,7 @@ class Cs_prestamos extends Model
                                 }
 
                                 if ($estado == true) {
-                                    $prestamo->estado = 2;
+                                    $prestamo->estado_prestamo_id = 2;
                                     if ($prestamo->save()) {
                                         return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
                                     } else {
@@ -976,7 +975,7 @@ class Cs_prestamos extends Model
                             return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                         }
                     } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                        return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                     }
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'El Abono ya se encuentra pagado'];

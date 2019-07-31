@@ -511,14 +511,14 @@ class Cs_prestamos extends Model
                 $fechaPrestamo = Cs_prestamos::select([
                     DB::raw("concat(cs_prestamos.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
                 ])
-                ->join('anio as a', 'a.id', 'cs_prestamos.anio_id')
-                ->join('mes as m', 'm.id', 'cs_prestamos.mes_id')
-                ->where([
-                    'cs_prestamos.activo' => 'S',
-                    'cs_prestamos.id' => $prestamos['prestamos'][$i]->prestamo_id
-                ])
-                ->get();
-                
+                    ->join('anio as a', 'a.id', 'cs_prestamos.anio_id')
+                    ->join('mes as m', 'm.id', 'cs_prestamos.mes_id')
+                    ->where([
+                        'cs_prestamos.activo' => 'S',
+                        'cs_prestamos.id' => $prestamos['prestamos'][$i]->prestamo_id
+                    ])
+                    ->get();
+
                 $prestamos['prestamos'][$i]->fecha_prestamo = $fechaPrestamo[0]->fecha_prestamo;
 
                 $abonos = $this->traerAbonos($prestamos['prestamos'][$i]->prestamo_id);
@@ -908,6 +908,7 @@ class Cs_prestamos extends Model
                 $dAbono->definicion = 1;
                 $dAbono->estado = 1;
                 $dAbono->activo = "S";
+                $dAbono->monto_pagado = $request->monto;
 
                 if ($dAbono->save()) {
 

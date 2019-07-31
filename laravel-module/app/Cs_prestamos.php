@@ -623,7 +623,8 @@ class Cs_prestamos extends Model
             ->select([
                 'pd.id',
                 'pd.prestamo_id',
-                DB::raw("concat(pd.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                DB::raw("concat(pd.dia,' de ',m.descripcion,',',a.descripcion) as fecha_pago"),
                 'p.numero_documento',
                 'p.archivo_documento',
                 'p.descripcion',

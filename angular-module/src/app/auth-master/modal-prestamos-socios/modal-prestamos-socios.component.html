@@ -47,7 +47,7 @@
                                   ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
                               </label>
                               <div class="input-group">
-                                <input type="number" class="form-control form-control-sm"
+                                <input type="text" class="form-control form-control-sm"
                                   placeholder="Ingrese rut del socio sin guion" name="rut" #rut="ngModel"
                                   [(ngModel)]="inputRut" required>
                                 <span class="input-group-btn">
@@ -273,13 +273,13 @@
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto" name="inputPrestamoRestante" [(ngModel)]="inputPrestamoRestante" disabled>
+                            <input type="number" class="form-control" placeholder="Ingrese monto" name="inputPrestamoRestante" [(ngModel)]="inputPrestamoRestante" disabled>
                           </div> <br>
 
                           <label><strong>Numero de Cuotas</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled>/</button>
-                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas"
+                            <input type="number" class="form-control" placeholder="Ingrese n° cuotas"
                               name="inputNumeroCuotas" [(ngModel)]="datosEnvioPrestamo.cuotas">
                           </div>
 
@@ -323,11 +323,11 @@
                       <div class="row justify-content-center">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
 
-                          <label><strong>Monto Prestamo</strong></label>
+                          <label><strong>Monto del Prestamo</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>
-                            <input type="text" class="form-control" placeholder="Ingrese monto"
+                            <input type="number" class="form-control" placeholder="Ingrese monto"
                               name="inputMontoPrestramo2" [(ngModel)]="datosEnvioPrestamo.montoPrestamo" (change)="calcularInteres($event)">
                           </div>
 
@@ -343,7 +343,7 @@
                           <label><strong>Numero de Cuotas</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled>/</button>
-                            <input type="text" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" disabled required>
+                            <input type="number" class="form-control" placeholder="Ingrese n° cuotas" name="inputNumeroCuotas2" [(ngModel)]="datosEnvioPrestamo.cuotas" disabled required>
                           </div>
 
                         </div>
@@ -358,7 +358,7 @@
                           <label><strong>Interes del Prestamo (10%)</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled>%</button>
-                            <input type="text" class="form-control" placeholder="Ingese Interes" name="inputGanancia" [(ngModel)]="inputGanancia" disabled>
+                            <input type="number" class="form-control" placeholder="Ingese Interes" name="inputGanancia" [(ngModel)]="inputGanancia" disabled>
                           </div>
 
                         </div>
@@ -401,7 +401,7 @@
                       <div class="row justify-content-start">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
 
-                          <label><strong>Monto Prestamo</strong></label>
+                          <label><strong>Monto del Prestamo</strong></label>
                           <div class="input-group">
                             <button class="btn btn-success input-group-addon" disabled><i
                                 class="fas fa-dollar-sign"></i></button>

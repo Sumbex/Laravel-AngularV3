@@ -35,6 +35,9 @@ export class TablaPrestamosSociosComponent implements OnInit {
   montoCuotaPagar;
   montoFinalPagar;
 
+  //Variables de carga
+  cargandoTabla = false;
+
   constructor(private _sindicalService: SindicalService,
     private _fechasService: AniosService,
     config: NgbModalConfig,
@@ -94,20 +97,20 @@ export class TablaPrestamosSociosComponent implements OnInit {
   }
 
   refrescarTablaPrestamosClientes() {
+    this.cargandoTabla = true;
     this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
           this.valoresPrestamosSalud = null;
           this.valoresPrestamosApuro = null;
           this.valoresPrestamosAporte = null;
+          this.cargandoTabla = false;
           alert(response.mensaje);
         } else {
           this.valoresPrestamosSalud = response.salud;
           this.valoresPrestamosApuro = response.apuro;
           this.valoresPrestamosAporte = response.aporte;
-          console.log(this.valoresPrestamosSalud);
-          console.log(this.valoresPrestamosSalud);
-          console.log(this.valoresPrestamosAporte);
+          this.cargandoTabla = false;
         }
       },
       error => {

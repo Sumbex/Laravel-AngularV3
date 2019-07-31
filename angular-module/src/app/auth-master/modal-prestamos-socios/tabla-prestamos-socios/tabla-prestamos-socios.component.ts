@@ -139,11 +139,24 @@ export class TablaPrestamosSociosComponent implements OnInit {
         } else {
           this.cerrarActualizar();
           alert("Se ha realizado el pago correctamente");
-          console.log("Pagado con éxito creo");
         }
       },
       error => {
         console.log(error);
+      }
+    )
+  }
+
+  test(id, definicionSelectAbono, fecha, monto){
+    console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
+    this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          alert("Ha ocurrido un error, compruebe que los datos sean validos");
+        }else{
+          this.cerrarActualizar();
+          alert("Se ha realizado el pago correctamente");
+        }
       }
     )
   }

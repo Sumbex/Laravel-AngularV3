@@ -436,7 +436,7 @@ class Cs_prestamos extends Model
                         $prestamo->user_crea = Auth::user()->id;
                         $prestamo->cuota = 0;
                         $prestamo->activo = 'S';
-                        $prestamo->estado_prestamo_id = 1;
+                        $prestamo->estado_prestamo_id = 2;
 
                         if ($prestamo->save()) {
                             $ultimoPrestamo = Cs_prestamos::all()->last();
@@ -507,6 +507,20 @@ class Cs_prestamos extends Model
 
         if ($prestamos['estado'] == 'success') {
             for ($i = 0; $i < count($prestamos['prestamos']); $i++) {
+
+                $fechaPrestamo = Cs_prestamos::select([
+                    DB::raw("concat(cs_prestamos.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                ])
+                ->join('anio as a', 'a.id', 'cs_prestamos.anio_id')
+                ->join('mes as m', 'm.id', 'cs_prestamos.mes_id')
+                ->where([
+                    'cs_prestamos.activo' => 'S',
+                    'cs_prestamos.id' => $prestamos['prestamos'][$i]->prestamo_id
+                ])
+                ->get();
+                
+                $prestamos['prestamos'][$i]->fecha_prestamo = $fechaPrestamo[0]->fecha_prestamo;
+
                 $abonos = $this->traerAbonos($prestamos['prestamos'][$i]->prestamo_id);
                 $totalesAbono = 0;
                 if ($abonos['estado'] == 'success') {
@@ -623,7 +637,7 @@ class Cs_prestamos extends Model
             ->select([
                 'pd.id',
                 'pd.prestamo_id',
-                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                /* DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"), */
                 DB::raw("concat(pd.dia,' de ',m.descripcion,',',a.descripcion) as fecha_pago"),
                 'p.numero_documento',
                 'p.archivo_documento',

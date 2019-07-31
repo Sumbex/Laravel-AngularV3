@@ -312,6 +312,7 @@ class Cs_prestamos extends Model
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
                                 $detalle->cuota = 0;
+                                $detalle->estado = 1;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud abono'];
@@ -349,6 +350,7 @@ class Cs_prestamos extends Model
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
                                 $detalle->cuota = 0;
+                                $detalle->estado = 1;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado salud cuotas'];
@@ -406,6 +408,7 @@ class Cs_prestamos extends Model
                                 $detalle->user_crea = Auth::user()->id;
                                 $detalle->definicion = 2;
                                 $detalle->cuota = 0;
+                                $detalle->estado = 1;
 
                                 if ($detalle->save()) {
                                     return ['estado' => 'success', 'mensaje' => 'Insertado apuro cuotas'];
@@ -452,6 +455,7 @@ class Cs_prestamos extends Model
                             $detalle->user_crea = Auth::user()->id;
                             $detalle->definicion = 2;
                             $detalle->cuota = 0;
+                            $detalle->estado = 1;
 
                             if ($detalle->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Insertado aporte'];
@@ -656,7 +660,7 @@ class Cs_prestamos extends Model
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
-            ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'pd.estado')
             ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
             ->where([
                 'pd.activo' => 'S',
@@ -842,6 +846,7 @@ class Cs_prestamos extends Model
                         $ultimoPago = DetallePrestamo::all()->last();
 
                         if ($ultimoPago->cuota == $prestamo->cuota) {
+                            //$detalle->estado = 2;
                             $prestamo->estado_prestamo_id = 2;
                             if ($prestamo->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
@@ -951,6 +956,7 @@ class Cs_prestamos extends Model
                                         $estado = false;
                                     }
                                     if ($estado == true) {
+                                        //$detalle->estado = 2;
                                         $prestamo->estado_prestamo_id = 2;
                                         if ($prestamo->save()) {
                                             return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];

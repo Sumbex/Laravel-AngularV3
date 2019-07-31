@@ -134,6 +134,7 @@ export class TablaPrestamosSociosComponent implements OnInit {
         if (response.estado == "failed" || response.estado == "failed_v") {
           alert(response.mensaje);
         } else {
+          this.cerrarActualizar();
           alert("Se ha realizado el pago correctamente");
           console.log("Pagado con éxito creo");
         }

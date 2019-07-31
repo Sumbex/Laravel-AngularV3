@@ -152,7 +152,7 @@ export class TablaPrestamosSociosComponent implements OnInit {
     this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
-          alert("Ha ocurrido un error, compruebe que los datos sean validos");
+          alert("Ha ocurrido un error compruebe que los datos sean validos");
         }else{
           this.cerrarActualizar();
           alert("Se ha realizado el pago correctamente");

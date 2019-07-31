@@ -535,7 +535,7 @@ class Cs_prestamos extends Model
                                 if (is_null($abonos['abonos'][$e]->monto_ingreso)) {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso;
                                 } else {
-                                    $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_ingreso;
+                                    $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
                                 if (!array_has($prestamos['prestamos'][$i], 'conflicto')) {
                                     $prestamos['prestamos'][$i]->conflicto = 0;
@@ -554,7 +554,7 @@ class Cs_prestamos extends Model
                                 if (is_null($abonos['abonos'][$e]->monto_ingreso)) {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso;
                                 } else {
-                                    $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_ingreso;
+                                    $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
                                 if (!array_has($prestamos['prestamos'][$i], 'sueldo')) {
                                     $prestamos['prestamos'][$i]->sueldo = 0;
@@ -573,7 +573,7 @@ class Cs_prestamos extends Model
                                 if (is_null($abonos['abonos'][$e]->monto_ingreso)) {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso;
                                 } else {
-                                    $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_ingreso;
+                                    $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
                                 if (!array_has($prestamos['prestamos'][$i], 'sueldo')) {
                                     $prestamos['prestamos'][$i]->sueldo = 0;
@@ -681,6 +681,7 @@ class Cs_prestamos extends Model
                 'pta.cs_prestamo_id',
                 'dpta.monto_ingreso',
                 'dpta.monto_egreso',
+                DB::raw("coalesce(dpta.monto_pagado, 0) as monto_pagado"),
                 'pta.tipo_abono_cuotas_id as tipo',
                 'dpta.estado'
             ])

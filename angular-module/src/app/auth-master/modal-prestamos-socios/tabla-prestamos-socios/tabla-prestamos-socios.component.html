@@ -6,7 +6,7 @@
         <i class="fas fa-calendar-check"></i>
       </label>
         <!---Select Año-->
-        <select (change)="changeAnio($event)" class="form-control form-control-sm" [(ngModel)]="selectAnio.id">
+        <select (change)="changeAnio($event)" class="form-control form-control-sm" [(ngModel)]="selectAnio.id" [disabled]="cargandoTabla">
           <option *ngFor="let itemAnio of selectAnio" [value]="itemAnio.id">{{itemAnio.descripcion}}</option>
         </select>
       </div>
@@ -16,9 +16,19 @@
         <i class="fas fa-calendar-check"></i>
       </label>
         <!--Select Mes-->
-        <select (change)="changeMes($event)" class="form-control form-control-sm" [(ngModel)]="selectMes.id">
+        <select (change)="changeMes($event)" class="form-control form-control-sm" [(ngModel)]="selectMes.id" [disabled]="cargandoTabla">
           <option *ngFor="let itemMes of selectMes" [value]="itemMes.id">{{itemMes.descripcion}}</option>
         </select>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-3"> <br><label>
+        <strong>Recargar Tabla</strong>
+      </label><br>
+        <button class="btn btn-primary" (click)="refrescarTablaPrestamosClientes()" [disabled]="cargandoTabla">Actualizar</button>
+        <div *ngIf="cargandoTabla">
+          <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+          <label>Cargando tabla de Prestamos</label>
+      </div>
       </div>
     </div><br>
   <div class="table-responsive-xl">
@@ -27,83 +37,64 @@
       <thead text-sm >
           <tr>
             <!--titulo de la tabla-->
-            <th colspan="44" class="text-center" style="background: #138D75;">Salud - Retornable</th>
+            <th colspan="47" class="text-center" style="background: #138D75;">Salud - Retornable</th>
           </tr>
-        <tr>
-          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+        <tr class="text-center">
+          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha Prestamo</th>
+          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha de Pago</th>
           <th colspan="1" style="background: #138D75">ID</th>
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
-          <th colspan="2" style="background: #138D75">Monto Prestamo</th>
+          <th colspan="2" style="background: #138D75">Prestamo (Egreso C.S.)</th>
           <th colspan="2" style="background: #138D75">Dia Sueldo</th>
           <th colspan="2" style="background: #138D75">Trimestral</th>
           <th colspan="2" style="background: #138D75">Ter. Conflicto</th>
           <th colspan="2" style="background: #138D75">Monto Restante P.</th>
           <th colspan="2" style="background: #138D75">Nº Cuotas</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-plus-circle"></i> Ingresos</th>
-          <th colspan="3" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egresos</th>
+          <th colspan="3" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egreso de Cuotas</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-dollar-sign"></i> Restante</th>
           <th colspan="3" style="background: #138D75;">Estado</th>
-          <th colspan="3" style="background: #138D75;">pagar</th>
+          <th colspan="2" style="background: #138D75;">Pagar Cuota</th>
+          <th colspan="2" style="background: #138D75;">Pagar Abonos</th>
         </tr>
       </thead>
 
       <!--casillas para llenar de la BD-->
       <tbody>
-        <tr *ngFor="let itemPrestamo of valoresPrestamosSalud">
-          <td colspan="2">{{itemPrestamo.fecha}}</td>
+        <tr class="text-center" *ngFor="let itemPrestamo of valoresPrestamosSalud">
+          <td colspan="2">{{itemPrestamo.fecha_prestamo}}</td>
+          <td colspan="2">{{itemPrestamo.fecha_pago}}</td>
           <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
           <td colspan="2">
             <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
-              placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              placement="top" ngbTooltip="Presione aqui para visualizar el PDF."></i>
             </a>
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="2">{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="2"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           <td colspan="2">{{itemPrestamo.sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.conflicto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.trimestral | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">esperando a sumbito</td>
+          <td colspan="2">{{itemPrestamo.monto_restante_p | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.cuota}}</td>
-          <td colspan="3">{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3"><strong>{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           <td colspan="3">{{itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="3">{{itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3"><strong>{{itemPrestamo.restante | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
-          <td colspan="3" class="text-center">
-            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSalud, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
-            <ng-template #pagoPrestamoSalud let-c="close" let-d="dismiss">
+          <td colspan="2" class="text-center">
+            <button class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante_p, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
+            <ng-template #pagoPrestamoSaludCuota let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago | Salud - Retornable</h4>
+                  <h4 class="modal-title" id="modal-basic-title">Pago Cuota Salud Retornable</h4>
                   <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                      <div class="col-7 col-md-7 col-lg-7 col-xl-7">
-                        <label><strong>Pago de Abono</strong></label>
-                        <select #definicionVariable class="form-control form-control-sm">
-                          <option value="">Seleccione</option>
-                          <option value="">Dia Sueldo</option>
-                          <option value="">Trimestral</option>
-                          <option value="">Termino Conflicto</option>
-                        </select>
-                      </div>
-                      
-                      <div class="col-5 col-md-5 col-lg-5 col-xl-5">
-                        <label> <strong>Abono</strong></label> 
-                        <input class="form-control form-control-sm" #montoVariable type="number" value="100000" disabled>
-                      </div>
-                    </div><br>
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                      <button type="button" class="btn btn-outline-success">Pagar</button>
-                    </div> <hr>
-
                       <div class="row">
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                           <label><strong>Monto de Cuota a Pagar</strong></label> 
@@ -127,67 +118,106 @@
                   </div>
 
             </ng-template> 
-            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
-          </a>
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago de Cuota"></i>
+            </button>
+          
+          </td>
+
+          <td colspan="2" class="text-center">
+            <button [disabled]="itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
+            <ng-template #pagoPrestamoSaludAbono let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago Abono Salud Retornable</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                      <div class="col-7 col-md-7 col-lg-7 col-xl-7">
+                        <label><strong>Pago de Abono</strong></label>
+                        <select #definicionSelectAbono class="form-control form-control-sm">
+                          <option value="1">Dia Sueldo</option>
+                          <option value="3">Trimestral</option>
+                          <option value="2">Termino Conflicto</option>
+                        </select>
+                      </div>
+                      
+                      <div class="col-5 col-md-5 col-lg-5 col-xl-5">
+                        <label> <strong>Abono</strong></label> 
+                        <input class="form-control form-control-sm" #montoAbono type="number" value="100000">
+                      </div><br>
+
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label> <strong>Fecha de Pago</strong></label> 
+                        <input class="form-control form-control-sm" #fechaAbono type="date">
+                    </div>
+                    </div><br>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                      <button type="button" class="btn btn-outline-success" (click)="test(itemPrestamo.id, definicionSelectAbono, fechaAbono, montoAbono)">Pagar</button>
+                    </div> <hr>
+                  </div>
+
+            </ng-template> 
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago Abono"></i>
+            </button>
           
           </td>
         </tr>
-      </tbody>
+      </tbody> <br>
 
       <!--Tabla apuro Economico - Retornable-->
       <thead text-sm>
           <tr>
             <!--titulo de la tabla-->
-            <th colspan="44" class="text-center" style="background: #138D75;">Apuro Economico - Retornable</th>
+            <th colspan="47" class="text-center" style="background: #138D75;">Apuro Economico - Retornable</th>
           </tr>
-        <tr>
-          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+        <tr class="text-center">
+          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha Prestamo</th>
+          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha de Pago</th>
           <th colspan="1" style="background: #138D75">ID</th>
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
-          <th colspan="2" style="background: #138D75">Monto Prestamo</th>
-          <th colspan="2" style="background: #138D75">Dia Sueldo</th>
-          <th colspan="2" style="background: #138D75">Trimestral</th>
-          <th colspan="2" style="background: #138D75">Ter. Conflicto</th>
-          <th colspan="2" style="background: #138D75">Monto Restante P.</th>
+          <th colspan="2" style="background: #138D75">Prestamo (Egreso C.S.)</th>
+          <th colspan="8" class="text-center" style="background: #138D75">Interes</th>
           <th colspan="2" style="background: #138D75">Nº Cuotas</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-plus-circle"></i> Ingresos</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egresos</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-dollar-sign"></i> Restante</th>
           <th colspan="3" style="background: #138D75;">Estado</th>
-          <th colspan="3" style="background: #138D75;">pagar</th>
+          <th colspan="4" style="background: #138D75;">Pagar Cuota</th>
         </tr>
       </thead>
 
       <!--casillas para llenar de la BD-->
       <tbody>
-        <tr *ngFor="let itemPrestamo of valoresPrestamosApuro">
-          <td colspan="2">{{itemPrestamo.fecha}}</td>
+        <tr class="text-center" *ngFor="let itemPrestamo of valoresPrestamosApuro">
+          <td colspan="2">{{itemPrestamo.fecha_prestamo}}</td>
+          <td colspan="2">{{itemPrestamo.fecha_pago}}</td>
           <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
           <td colspan="2">
             <a href="{{  '../' + itemPrestamo.archivo_documento}}" target="_blank"><i class="far fa-file-alt"
-              placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              placement="top" ngbTooltip="Presione aqui para visualizar el PDF."></i>
             </a>
           </td>
-          <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="2">{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{itemPrestamo.sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{itemPrestamo.conflicto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{itemPrestamo.trimestral | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">esperando a sumbito</td>
+          <td colspan="10" class="text-center">{{itemPrestamo.descripcion}}</td>
+          <td colspan="2"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+          <td colspan="8" class="text-center">{{itemPrestamo.interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="2">{{itemPrestamo.cuota}}</td>
-          <td colspan="3">{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3"><strong>{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           <td colspan="3">{{itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="3">{{itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3"><strong>{{itemPrestamo.restante | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
-          <td colspan="3" class="text-center">
-            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)">
+          <td colspan="4" class="text-center">
+            <button class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)">
             <ng-template #pagoPrestamoInteres let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago | Apuro Economico - Retornable</h4>
+                  <h4 class="modal-title" id="modal-basic-title">Pago Cuota Apuro Economico Retornable</h4>
                   <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -227,43 +257,40 @@
                   </div>
 
             </ng-template> 
-            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
-          </a>
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago de cuota."></i>
+            </button>
           
           </td>
         </tr>
-      </tbody>
+      </tbody> <br>
 
       <!--Tabla aporte economico - No Retornable-->
       <thead text-sm >
           <tr>
             <!--titulo de la tabla-->
-            <th colspan="44" class="text-center" style="background: #138D75;">Aporte Economico - No Retornable</th>
+            <th colspan="47" class="text-center" style="background: #138D75;">Aporte Economico - No Retornable</th>
           </tr>
-        <tr>
-          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+        <tr class="text-center">
+          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha Prestamo</th>
+          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha de Pago</th>
           <th colspan="1" style="background: #138D75">ID</th>
           <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
           <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
           <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
-          <th colspan="2" style="background: #138D75">Monto Prestamo</th>
-          <th colspan="2" style="background: #138D75">Dia Sueldo</th>
-          <th colspan="2" style="background: #138D75">Trimestral</th>
-          <th colspan="2" style="background: #138D75">Ter. Conflicto</th>
-          <th colspan="2" style="background: #138D75">Monto Restante P.</th>
-          <th colspan="2" style="background: #138D75">Nº Cuotas</th>
+          <th colspan="12" class="text-center" style="background: #138D75">Prestamo (Egreso C.S.)</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-plus-circle"></i> Ingresos</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egresos</th>
           <th colspan="3" style="background: #138D75;"><i class="fas fa-dollar-sign"></i> Restante</th>
           <th colspan="3" style="background: #138D75;">Estado</th>
-          <th colspan="3" style="background: #138D75;">pagar</th>
+          <th colspan="4" style="background: #138D75;">pagar</th>
         </tr>
       </thead>
 
       <!--casillas para llenar de la BD-->
       <tbody>
-        <tr *ngFor="let itemPrestamo of valoresPrestamosAporte">
-          <td colspan="2">{{itemPrestamo.fecha}}</td>
+        <tr class="text-center" *ngFor="let itemPrestamo of valoresPrestamosAporte">
+          <td colspan="2">{{itemPrestamo.fecha_prestamo}}</td>
+          <td colspan="2">{{itemPrestamo.fecha_pago}}</td>
           <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
           <td colspan="2">{{itemPrestamo.numero_documento}}</td>
           <td colspan="2">
@@ -272,19 +299,14 @@
             </a>
           </td>
           <td colspan="10">{{itemPrestamo.descripcion}}</td>
-          <td colspan="2">{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{itemPrestamo.sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{itemPrestamo.conflicto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{itemPrestamo.trimestral | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">esperando a sumbito</td>
-          <td colspan="2">{{itemPrestamo.cuota}}</td>
+          <td colspan="12" class="text-center"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           <td colspan="3">{{itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="3">{{itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="3">{{itemPrestamo.restante | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           <td colspan="3">{{itemPrestamo.estado}}</td>
-          <td colspan="3" class="text-center">S/P</td>
+          <td colspan="4" class="text-center">S/P</td>
         </tr>
-      </tbody>
+      </tbody> <br>
       
     </table>
   </div>

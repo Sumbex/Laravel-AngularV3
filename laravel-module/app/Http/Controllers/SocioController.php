@@ -52,7 +52,7 @@ class SocioController extends Controller
 
     public function ingresar(Request $r)
     {
-
+        $rut_limpio = $this->limpiar($r->rut);
         //dd($r->all());
     	// dd($r->file('foto'));
     	$s = new Socios;
@@ -64,7 +64,7 @@ class SocioController extends Controller
     	// }
 
         $validar = $this->validar_datos_socio($r);
-        $exist = Socios::where([ 'activo'=>'S','rut'=>$r->rut ])->get();
+        $exist = Socios::where([ 'activo'=>'S','rut'=> $rut_limpio ])->get();
         //dd(count($exist)>0);
         if (count($exist)>0) {
             return ['estado'=>'failed','mensaje'=>'Este rut ya existe en la base de datos'];
@@ -73,7 +73,7 @@ class SocioController extends Controller
         if ($validar['estado'] == "success") {
         
     	
-            if(!$this->valida_rut($r->rut)){
+            if(!$this->valida_rut($rut_limpio)){
                 return ['estado'=>'failed','mensaje'=>'Rut no valido'];
             }
 
@@ -82,7 +82,7 @@ class SocioController extends Controller
         	$s->nombres = $r->nombres;
         	$s->a_paterno = $r->a_paterno;
         	$s->a_materno = $r->a_materno;
-        	$s->rut = $r->rut;
+        	$s->rut = $rut_limpio;
         	$s->fecha_nacimiento = $r->fecha_nacimiento;
             $s->fecha_ingreso = $r->fecha_ingreso;
         	$s->activo = 'S';
@@ -154,7 +154,7 @@ class SocioController extends Controller
                     return ['estado'=>'failed','mensaje'=>'Rut no valido'];
                 }
 
-                $s->rut = $r->valor;
+                $s->rut = $this->limpiar($r->valor);
 
                 if($s->save()){
                     return ['estado'=>'success','mensaje' => 'Rut actualizado!' ];
@@ -249,5 +249,28 @@ class SocioController extends Controller
             return true;
         else
             return false;
+    }
+
+    function limpiar($s) 
+    { 
+        $s = str_replace('á', 'a', $s); 
+        $s = str_replace('Á', 'A', $s); 
+        $s = str_replace('é', 'e', $s); 
+        $s = str_replace('É', 'E', $s); 
+        $s = str_replace('í', 'i', $s); 
+        $s = str_replace('Í', 'I', $s); 
+        $s = str_replace('ó', 'o', $s); 
+        $s = str_replace('Ó', 'O', $s); 
+        $s = str_replace('Ú', 'U', $s); 
+        $s= str_replace('ú', 'u', $s); 
+
+        //Quitando Caracteres Especiales 
+        $s= str_replace('"', '', $s); 
+        $s= str_replace(':', '', $s); 
+        $s= str_replace('.', '', $s); 
+        $s= str_replace(',', '', $s); 
+        $s= str_replace(';', '', $s); 
+        $s= str_replace('-', '', $s); 
+        return $s; 
     }
 }

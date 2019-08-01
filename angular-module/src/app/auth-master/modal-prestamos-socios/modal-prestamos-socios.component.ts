@@ -152,6 +152,25 @@ export class ModalPrestamosSociosComponent implements OnInit {
       }else{
         alert('Ingreso correcto');
         this.blockPrestamo = false;
+        //limpieza de campos
+        this.datosEnvioPrestamo.fecha = "";
+        this.datosEnvioPrestamo.selectId = "1";
+        this.datosEnvioPrestamo.socioId = "";
+        this.datosEnvioPrestamo.numeroDocumento = "";
+        this.datosEnvioPrestamo.archivoDocumento = null;
+        this.datosEnvioPrestamo.montoPrestamo = "";
+        this.datosEnvioPrestamo.checkAbono = false;
+        this.datosEnvioPrestamo.cuotas = "";
+        this.datosEnvioPrestamo.montoDia = "";
+        this.datosEnvioPrestamo.montoTri = "";
+        this.datosEnvioPrestamo.montoCon = "";
+        this.datosEnvioPrestamo.checkDia = false;
+        this.datosEnvioPrestamo.checkTri = false;
+        this.datosEnvioPrestamo.checkCon = false;
+        this.nombreSocioTest = "";
+        this.rutSocioTest = "";
+        this.inputRut = "";
+        this.inputPrestamoRestante = null;
       }
     },
     error => {

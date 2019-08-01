@@ -35,13 +35,16 @@ export class TablaPrestamosSociosComponent implements OnInit {
   montoCuotaPagar;
   montoFinalPagar;
 
+  //Variables de carga
+  cargandoTabla = false;
+
   constructor(private _sindicalService: SindicalService,
-     private _fechasService: AniosService,
-     config: NgbModalConfig, 
-     private modalService: NgbModal) {
-      config.backdrop = 'static';
-      config.keyboard = false;
-      }
+    private _fechasService: AniosService,
+    config: NgbModalConfig,
+    private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
     //Cargar Años
@@ -79,32 +82,35 @@ export class TablaPrestamosSociosComponent implements OnInit {
   }
 
   openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
-    this.modalActualizarPagoSalud = this.modalService.open(Actualizar,{ size: 'sm' });
+    this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
 
+    console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
     this.montoDelInteresPagar = interes / cuotaP;
-    this.montoCuotaPagar = totalPrestamoNoInteres / cuotaP;
+    this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
     this.montoFinalPagar = totalPrestamo / cuotaP;
-   }
 
-   cerrarActualizar(){
+    console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
+  }
+
+  cerrarActualizar() {
     this.modalActualizarPagoSalud.close();
   }
 
   refrescarTablaPrestamosClientes() {
+    this.cargandoTabla = true;
     this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
           this.valoresPrestamosSalud = null;
           this.valoresPrestamosApuro = null;
           this.valoresPrestamosAporte = null;
+          this.cargandoTabla = false;
           alert(response.mensaje);
         } else {
           this.valoresPrestamosSalud = response.salud;
           this.valoresPrestamosApuro = response.apuro;
           this.valoresPrestamosAporte = response.aporte;
-          console.log(this.valoresPrestamosSalud);
-          console.log(this.valoresPrestamosSalud);
-          console.log(this.valoresPrestamosAporte);
+          this.cargandoTabla = false;
         }
       },
       error => {
@@ -125,13 +131,32 @@ export class TablaPrestamosSociosComponent implements OnInit {
     this.refrescarTablaPrestamosClientes();
   }
 
-  pagarPrestamo(fecha, prestamoId, montoPagar){
+  pagarPrestamo(fecha, prestamoId, montoPagar) {
     this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(
       response => {
-        console.log("Pagado con éxito creo");
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          alert(response.mensaje);
+        } else {
+          this.cerrarActualizar();
+          alert("Se ha realizado el pago correctamente");
+        }
       },
       error => {
         console.log(error);
+      }
+    )
+  }
+
+  test(id, definicionSelectAbono, fecha, monto){
+    console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
+    this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          alert("Ha ocurrido un error compruebe que los datos sean validos");
+        }else{
+          this.cerrarActualizar();
+          alert("Se ha realizado el pago correctamente");
+        }
       }
     )
   }

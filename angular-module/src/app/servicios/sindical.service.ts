@@ -130,11 +130,25 @@ export class SindicalService{
 
     pagarPrestamo(fecha, id, monto): Observable<any>{
         const body = new FormData();
-        body.append('detalle_prestamo_id', fecha);
-        body.append('fecha', id);
+        body.append('detalle_prestamo_id', id);
+        body.append('fecha', fecha);
         body.append('monto', monto);
 
         return this._http.post(this.url + "ingresar_pago_prestamo",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token
+            }
+        )});
+    }
+
+    pagarAbono(id, definicionSelectAbono, fecha, monto): Observable<any>{
+        const body = new FormData();
+        body.append('detalle_prestamo_id', id);
+        body.append('fecha', fecha);
+        body.append('tipo_abono_id', definicionSelectAbono);
+        body.append('monto', monto);
+
+        return this._http.post(this.url + "ingresar_pago_abono",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token
             }

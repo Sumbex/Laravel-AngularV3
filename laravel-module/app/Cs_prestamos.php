@@ -875,14 +875,12 @@ class Cs_prestamos extends Model
         $verificarInicioM = $this->verificarInicioMensual($anio->id, $mes->id);
 
         if ($verificarInicioM['estado'] == 'success') {
-
             $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
             $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
 
             $abono = DB::table('detalle_prestamo_tipo_abono as dpta')
                 ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
                 ->where([
-                    'dpta.estado' => 1,
                     'pta.tipo_abono_cuotas_id' => $request->tipo_abono_id,
                     'pta.cs_prestamo_id' => $prestamo->id,
                     'dpta.activo' => 'S'
@@ -891,83 +889,79 @@ class Cs_prestamos extends Model
 
             if (!$abono->isEmpty()) {
                 foreach ($abono as $key) { }
+                if (($key->estado) == 1) {
+                    $dAbono = new DetallePrestamoAbono;
+                    $dAbono->prestamo_abono_id = $key->prestamo_abono_id;
+                    $dAbono->anio_id = $anio->id;
+                    $dAbono->mes_id = $mes->id;
+                    $dAbono->dia = $fecha['dia'];
+                    if (is_null($key->monto_ingreso)) {
+                        $dAbono->monto_ingreso = $request->monto;
+                    } else {
+                        $dAbono->monto_ingreso = $key->monto_ingreso + $request->monto;
+                    }
+                    $dAbono->monto_egreso = $key->monto_egreso - $request->monto;
+                    $dAbono->definicion = 1;
+                    $dAbono->estado = 1;
+                    $dAbono->activo = "S";
+                    $dAbono->monto_pagado = $request->monto;
 
-                $dAbono = new DetallePrestamoAbono;
-                $dAbono->prestamo_abono_id = $key->prestamo_abono_id;
-                $dAbono->anio_id = $anio->id;
-                $dAbono->mes_id = $mes->id;
-                $dAbono->dia = $fecha['dia'];
-
-                if (is_null($key->monto_ingreso)) {
-                    $dAbono->monto_ingreso = $request->monto;
-                } else {
-                    $dAbono->monto_ingreso = $key->monto_ingreso + $request->monto;
-                }
-
-                $dAbono->monto_egreso = $key->monto_egreso - $request->monto;
-                $dAbono->definicion = 1;
-                $dAbono->estado = 1;
-                $dAbono->activo = "S";
-                $dAbono->monto_pagado = $request->monto;
-
-                if ($dAbono->save()) {
-
-                    $ultimoPago = DetallePrestamoAbono::all()->last();
-
-                    if ($ultimoPago->monto_egreso == 0) {
-
-                        $ultimoPago->estado = 2;
-
-                        if ($ultimoPago->save()) {
-                            $abonos = $this->traerAbonos($dPrestamo->prestamo_id);
-                            $vigente = [];
-                            if ($abonos['estado'] == 'success') {
-                                for ($i = 0; $i < count($abonos['abonos']); $i++) {
-                                    switch ($abonos['abonos'][$i]->tipo) {
-                                        case 1:
-                                            if ($abonos['abonos'][$i]->estado == 1) {
-                                                $vigente['salud'] = true;
-                                            } else {
-                                                $vigente['salud'] = false;
+                    if ($dAbono->save()) {
+                        $ultimoPago = DetallePrestamoAbono::all()->last();
+                        if ($ultimoPago->monto_egreso == 0) {
+                            $ultimoPago->estado = 2;
+                            if ($ultimoPago->save()) {
+                                $abonos = $this->traerAbonos($dPrestamo->prestamo_id);
+                                $vigente = [];
+                                if ($abonos['estado'] == 'success') {
+                                    for ($i = 0; $i < count($abonos['abonos']); $i++) {
+                                        switch ($abonos['abonos'][$i]->tipo) {
+                                            case 1:
+                                                if ($abonos['abonos'][$i]->estado == 1) {
+                                                    $vigente['salud'] = true;
+                                                } else {
+                                                    $vigente['salud'] = false;
+                                                    break;
+                                                }
                                                 break;
-                                            }
-                                            break;
-                                        case 2:
-                                            if ($abonos['abonos'][$i]->estado == 1) {
-                                                $vigente['apuro'] = true;
-                                            } else {
-                                                $vigente['apuro'] = false;
+                                            case 2:
+                                                if ($abonos['abonos'][$i]->estado == 1) {
+                                                    $vigente['apuro'] = true;
+                                                } else {
+                                                    $vigente['apuro'] = false;
+                                                    break;
+                                                }
                                                 break;
-                                            }
-                                            break;
-                                        case 3:
-                                            if ($abonos['abonos'][$i]->estado == 1) {
-                                                $vigente['aporte'] = true;
-                                            } else {
-                                                $vigente['aporte'] = false;
+                                            case 3:
+                                                if ($abonos['abonos'][$i]->estado == 1) {
+                                                    $vigente['aporte'] = true;
+                                                } else {
+                                                    $vigente['aporte'] = false;
+                                                    break;
+                                                }
                                                 break;
-                                            }
-                                            break;
-                                        default:
-                                            # code...
-                                            break;
+                                            default:
+                                                # code...
+                                                break;
+                                        }
                                     }
-                                }
-                                if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
-                                    $estado = true;
-                                } else {
-                                    $estado = false;
-                                }
-
-                                if ($estado == true) {
-                                    $prestamo->estado_prestamo_id = 2;
-                                    if ($prestamo->save()) {
-                                        return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                                    if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
+                                        $estado = true;
                                     } else {
-                                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                        $estado = false;
+                                    }
+                                    if ($estado == true) {
+                                        $prestamo->estado_prestamo_id = 2;
+                                        if ($prestamo->save()) {
+                                            return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                                        } else {
+                                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                        }
+                                    } else {
+                                        return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                                     }
                                 } else {
-                                    return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                                    return $abonos;
                                 }
                             } else {
                                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
@@ -976,14 +970,16 @@ class Cs_prestamos extends Model
                             return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                         }
                     } else {
-                        return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
                     }
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'El Abono ya se encuentra pagado'];
                 }
             } else {
-                return $verificarInicioM;
+                return ['estado' => 'failed', 'mensaje' => 'El Prestamo a pagar no posee abonos'];
             }
+        } else {
+            return $verificarInicioM;
         }
     }
 }

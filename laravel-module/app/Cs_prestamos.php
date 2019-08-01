@@ -685,25 +685,32 @@ class Cs_prestamos extends Model
             $anioA = $anio;
             $mesA = $mes - 1;
         }
+        /* $test =  $this->prestamosTotales($anio, $mes); */
+
+        /* dd($test); */
 
         $prestamosA = $this->traerPrestamos($anioA, $mesA);
         /* dd($prestamosA); */
         /* dd((array_has($prestamosA, 'estado'))); */
         if ((array_has($prestamosA, 'estado'))) {
             /* return "E"; */
-            foreach ($prestamosA['prestamos'] as $key) {
-                /* dd($key); */
-                $this->pasarPrestamoAbonoProxMes($key->id);
-                switch ($key->tipo_prestamo_id) {
-                    case 1:
-                        $this->pasarPrestamoAbonoProxMes($key->id);
-                        break;
-
-                    default:
-                        # code...
-                        break;
+            /* dd($prestamosA['estado']=='success'); */
+            if($prestamosA['estado']=='success'){
+                foreach ($prestamosA['prestamos'] as $key) {
+                    /* dd($key); */
+                    $this->pasarPrestamoAbonoProxMes($key->id);
+                    switch ($key->tipo_prestamo_id) {
+                        case 1:
+                            $this->pasarPrestamoAbonoProxMes($key->id);
+                            break;
+    
+                        default:
+                            # code...
+                            break;
+                    }
                 }
             }
+            
             return $this->prestamosTotales($anio, $mes);
         } else {
             return $this->prestamosTotales($anio, $mes);

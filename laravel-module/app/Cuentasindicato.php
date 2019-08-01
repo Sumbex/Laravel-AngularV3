@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Cuentasindicato;
 use App\Detalleinteresprestamo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,8 @@ class Cuentasindicato extends Model
 				
 			}
 		}
+			$i = new Cuentasindicato;
+			$e = new Cuentasindicato;
 
 			$verify_p_ingreso = $this->where([
 				'p_i' => 'S',
@@ -72,21 +75,21 @@ class Cuentasindicato extends Model
 
 
 			if (empty($verify_p_ingreso)) {
-				$this->numero_documento = '---';
-				$this->archivo_documento = '---';
-				$this->tipo_cuenta_sindicato = 4; //prestamo
-				$this->descripcion = 'Total ingreso de prestamos, mes de '.$get_anio->descripcion;
-				$this->monto_ingreso = $prestamo_ingreso;
-				$this->monto_egreso = null;
-				$this->saldo_actual = null;
-				$this->definicion = 1;
-				$this->user_crea = Auth::user()->id;
-				$this->activo = 'S';
-				$this->anio_id = $anio;
-				$this->mes_id = $mes;
-				$this->dia = '1';
-				$this->p_i = 'S';
-				$this->save();
+				$i->numero_documento = '---';
+				$i->archivo_documento = '---';
+				$i->tipo_cuenta_sindicato = 4; //prestamo
+				$i->descripcion = 'Total ingreso de prestamos, mes de '.$get_anio->descripcion;
+				$i->monto_ingreso = $prestamo_ingreso;
+				$i->monto_egreso = null;
+				$i->saldo_actual = null;
+				$i->definicion = 1;
+				$i->user_crea = Auth::user()->id;
+				$i->activo = 'S';
+				$i->anio_id = $anio;
+				$i->mes_id = $mes;
+				$i->dia = '1';
+				$i->p_i = 'S';
+				$i->save();
 			}else{
 				$verify_p_ingreso->monto_ingreso = $prestamo_ingreso;
 				$verify_p_ingreso->save();
@@ -103,21 +106,21 @@ class Cuentasindicato extends Model
 			])->first();
 
 			if (empty($verify_p_egreso)) {
-				$this->numero_documento = '--';
-				$this->archivo_documento = '--';
-				$this->tipo_cuenta_sindicato = 4; //prestamo
-				$this->descripcion = 'Total egreso de prestamos, mes de '.$get_anio->descripcion;
-				$this->monto_ingreso = null;
-				$this->monto_egreso = $prestamo_egreso;
-				$this->saldo_actual = null;
-				$this->definicion = 2;
-				$this->user_crea = Auth::user()->id;
-				$this->activo = 'S';
-				$this->anio_id = $anio;
-				$this->mes_id = $mes;
-				$this->dia = '1';
-				$this->p_e = 'S';
-				$this->save();
+				$e->numero_documento = '--';
+				$e->archivo_documento = '--';
+				$e->tipo_cuenta_sindicato = 4; //prestamo
+				$e->descripcion = 'Total egreso de prestamos, mes de '.$get_anio->descripcion;
+				$e->monto_ingreso = null;
+				$e->monto_egreso = $prestamo_egreso;
+				$e->saldo_actual = null;
+				$e->definicion = 2;
+				$e->user_crea = Auth::user()->id;
+				$e->activo = 'S';
+				$e->anio_id = $anio;
+				$e->mes_id = $mes;
+				$e->dia = '1';
+				$e->p_e = 'S';
+				$e->save();
 			}else{
 				$verify_p_egreso->monto_egreso = $prestamo_egreso;
 				$verify_p_egreso->save();

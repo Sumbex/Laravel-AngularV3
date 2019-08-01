@@ -10,7 +10,7 @@
        <div class="modal-body" id="printJS-table">
 
         <div class="row">
-          <div class="col-sm-6 col-md-3 col-lg-3"><br><label>
+          <div class="col-md-2"><br><label>
             <strong>Filtro por Año  </strong>
             <i class="fas fa-calendar-check"></i>
           </label>
@@ -19,13 +19,19 @@
             </select>
           </div>
         
-          <div class="col-sm-6 col-md-3 col-lg-3"><br><label>
+          <div class="col-md-2"><br><label>
             <strong>Filtro por Mes  </strong>
             <i class="fas fa-calendar-check"></i>
           </label>
             <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="valorMes.descripcion" class="form-control form-control-sm">
               <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
             </select>
+          </div>
+          <div class="col-md-4"><br><label>
+            <strong>Recargar tabla </strong>
+            
+          </label><br>
+           <button class="btn btn-info" (click)="btn_reload()">Actualizar</button>
           </div>
         </div><br>
 

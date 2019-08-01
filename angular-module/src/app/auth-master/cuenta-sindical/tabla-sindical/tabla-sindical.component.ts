@@ -348,4 +348,10 @@ export class TablaSindicalComponent implements OnInit {
     ); 
   }
 
+  btn_reload(){
+
+      this.listo_para_listar(this.suc_res1, this.suc_res2);
+
+  }
+
 }

@@ -38,6 +38,9 @@ export class TablaPrestamosSociosComponent implements OnInit {
   //Variables de carga
   cargandoTabla = false;
 
+  //Variables para bloquear botones
+  blockPagoAbono = false;
+
   constructor(private _sindicalService: SindicalService,
     private _fechasService: AniosService,
     config: NgbModalConfig,
@@ -147,14 +150,18 @@ export class TablaPrestamosSociosComponent implements OnInit {
     )
   }
 
-  test(id, definicionSelectAbono, fecha, monto){
+  pagarAbono(id, definicionSelectAbono, fecha, monto){
+    this.blockPagoAbono = true;
     console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
     this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoAbono = false;
+          this.refrescarTablaPrestamosClientes();
           alert("Ha ocurrido un error compruebe que los datos sean validos");
         }else{
           this.cerrarActualizar();
+          this.blockPagoAbono = false;
           alert("Se ha realizado el pago correctamente");
         }
       }

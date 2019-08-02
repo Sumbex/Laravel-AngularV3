@@ -30,6 +30,11 @@ class PrestamosController extends Controller
 		return Cs_prestamos::prestamosFinales($anio, $mes);
 	}
 
+	public function TraerPrestamosHistorico($anio, $mes)
+	{
+		return Cs_prestamos::traerPrestamosHistorico($anio, $mes);
+	}
+
 	public function PagoPrestamos(Request $request)
 	{
 		return Cs_prestamos::pagoPrestamos($request);

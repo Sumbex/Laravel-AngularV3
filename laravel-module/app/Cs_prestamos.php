@@ -695,7 +695,7 @@ class Cs_prestamos extends Model
         if ((array_has($prestamosA, 'estado'))) {
             /* return "E"; */
             /* dd($prestamosA['estado']=='success'); */
-            if($prestamosA['estado']=='success'){
+            if ($prestamosA['estado'] == 'success') {
                 foreach ($prestamosA['prestamos'] as $key) {
                     /* dd($key); */
                     $this->pasarPrestamoAbonoProxMes($key->id);
@@ -703,14 +703,14 @@ class Cs_prestamos extends Model
                         case 1:
                             $this->pasarPrestamoAbonoProxMes($key->id);
                             break;
-    
+
                         default:
                             # code...
                             break;
                     }
                 }
             }
-            
+
             return $this->prestamosTotales($anio, $mes);
         } else {
             return $this->prestamosTotales($anio, $mes);
@@ -761,6 +761,99 @@ class Cs_prestamos extends Model
         }
     }
 
+    protected function traerPrestamosHistorico($anio, $mes)
+    {
+        /* $prestamo = DB::table('detalle_prestamo as pd')
+            ->select([
+                'pd.id',
+                'pd.prestamo_id',
+                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                'p.numero_documento',
+                'p.archivo_documento',
+                'p.descripcion',
+                'p.monto_egreso as total_prestamo_no_interes',
+                DB::raw("coalesce(ip.interes, 0) as interes"),
+                'p.cuota as cuotap',
+                'pd.monto_ingreso',
+                'pd.monto_egreso',
+                'ep.descripcion as estado',
+                'p.tipo_prestamo_id'
+            ])
+            ->join('anio as a', 'a.id', 'anio_id')
+            ->join('mes as m', 'm.id', 'mes_id')
+            ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'pd.estado')
+            ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
+            ->where([
+                'pd.activo' => 'S',
+                'pd.anio_id' => $anio,
+                'pd.mes_id' => $mes,
+            ])
+            ->orderby('pd.dia', 'ASC')
+            ->get(); */
+        $prestamo = DB::table('cs_prestamos as p')
+            ->select([
+                'p.id',
+                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                'p.numero_documento',
+                'p.archivo_documento',
+                'p.descripcion',
+                'p.monto_egreso as total_prestamo_no_interes',
+                DB::raw("coalesce(ip.interes, 0) as interes"),
+                'p.cuota as cuotap',
+                /* 'pd.monto_ingreso',
+                'pd.monto_egreso',
+                 */
+                'ep.descripcion as estado',
+                'p.tipo_prestamo_id'
+            ])
+            ->join('anio as a', 'a.id', 'p.anio_id')
+            ->join('mes as m', 'm.id', 'p.mes_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
+            ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'p.id')
+            /* ->join('detalle_prestamo as pd','pd.prestamo_id','p.id')
+            */
+            //test
+            ->where([
+                'p.activo' => 'S',
+                'p.anio_id' => $anio,
+                'p.mes_id' => $mes,
+            ])
+            ->orderby('p.dia', 'ASC')
+            ->get();
+
+        if (!$prestamo->isEmpty()) {
+            $return = [];
+            $return['salud'] = [];
+            $return['apuro'] = [];
+            $return['aporte'] = [];
+
+            foreach ($prestamo as $key) {
+
+                switch ($key->tipo_prestamo_id) {
+                    case 1:
+                        $return['salud'][] = $key;
+                        break;
+
+                    case 2:
+                        $return['apuro'][] = $key;
+                        break;
+
+                    case 3:
+                        $return['aporte'][] = $key;
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            return $return;
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en la fecha ingresada.'];
+        }
+    }
+
     protected function traerAbonos($anioP, $anioDP, $mesP, $mesDP, $prestamo_id)
     {
         $abonos = DB::table('detalle_prestamo_tipo_abono as dpta')
@@ -790,7 +883,7 @@ class Cs_prestamos extends Model
 
     protected function pasarPrestamoAbonoProxMes($detalle_prestamo_id)
     {
-        
+
         $detallePM = DetallePrestamo::find($detalle_prestamo_id);
         $prestamo = Cs_prestamos::find($detallePM->prestamo_id);
 

@@ -16,12 +16,12 @@ export class FormularioSociosComponent implements OnInit
   selectedImage:File;
 
   foto:File;
-  rut:string;
-  fecha_nacimiento:string;
-  fecha_ingreso:string;
-  nombres:string;
-  a_paterno:string;
-  a_materno:string;
+  rut:string='';
+  fecha_nacimiento:string='';
+  fecha_ingreso:string='';
+  nombres:string='';
+  a_paterno:string='';
+  a_materno:string='';
 
   token = localStorage.getItem('token').replace(/['"]+/g, '');
 
@@ -105,7 +105,15 @@ export class FormularioSociosComponent implements OnInit
   }
 
   validar_usuario(validar){
-       this.modalReference = this.modalService.open(validar, { size: 'sm' });
+    this.modalReference = this.modalService.open(validar, { size: 'sm' });
+
+      //  validar = this.validar_inputs();
+
+      // if (validar == true) {
+      //   this.modalReference = this.modalService.open(validar, { size: 'sm' });
+      // }
+
+       
   }
 
 
@@ -132,6 +140,22 @@ export class FormularioSociosComponent implements OnInit
         }, response => {console.log("POST call in error", response);},() => {
                console.log("The POST success.");
         });
+    }
+
+    validar_inputs(validar){
+
+       
+        if (this.rut == '') { alert("Ingrese rut"); return false }
+        if (this.fecha_nacimiento == '') { alert("Ingrese fecha de nacimiento"); return false }
+        if (this.fecha_ingreso == '') { alert("Ingrese fecha de ingreso"); return false }
+        if (this.nombres == '') { alert("Ingrese nombres"); return false }
+        if (this.a_paterno == '') { alert("Ingrese apellido paterno"); return false }
+        if (this.a_materno == '') { alert("Ingrese apellido materno"); return false }
+
+
+        this.modalReference = this.modalService.open(validar, { size: 'sm' });
+        return true;
+
     }
 
 }

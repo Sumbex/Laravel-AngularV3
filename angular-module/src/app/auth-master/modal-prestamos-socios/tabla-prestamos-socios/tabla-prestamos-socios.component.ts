@@ -40,6 +40,7 @@ export class TablaPrestamosSociosComponent implements OnInit {
 
   //Variables para bloquear botones
   blockPagoAbono = false;
+  blockPagoPrestamo = false;
 
   constructor(private _sindicalService: SindicalService,
     private _fechasService: AniosService,
@@ -135,17 +136,21 @@ export class TablaPrestamosSociosComponent implements OnInit {
   }
 
   pagarPrestamo(fecha, prestamoId, montoPagar) {
+    this.blockPagoPrestamo = true;
     this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoPrestamo = false;
           alert(response.mensaje);
         } else {
           this.cerrarActualizar();
+          this.blockPagoPrestamo = false;
           alert("Se ha realizado el pago correctamente");
         }
       },
       error => {
-        console.log(error);
+        this.blockPagoPrestamo = false;
+        alert("Ha ocurrido un error");
       }
     )
   }

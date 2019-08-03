@@ -6,7 +6,7 @@
       <i class="fas fa-calendar-check"></i>
     </label>
       <!---Select Año-->
-      <select class="form-control form-control-sm">
+      <select (change)="changeAnio($event)" class="form-control form-control-sm" [(ngModel)]="selectAnio.id" [disabled]="cargandoTabla">
         <option *ngFor="let itemAnio of selectAnio" [value]="itemAnio.id">{{itemAnio.descripcion}}</option>
       </select>
     </div>
@@ -16,7 +16,7 @@
       <i class="fas fa-calendar-check"></i>
     </label>
       <!--Select Mes-->
-      <select class="form-control form-control-sm">
+      <select (change)="changeMes($event)" class="form-control form-control-sm" [(ngModel)]="selectMes.id" [disabled]="cargandoTabla">
         <option *ngFor="let itemMes of selectMes" [value]="itemMes.id">{{itemMes.descripcion}}</option>
       </select>
     </div>
@@ -24,7 +24,11 @@
     <div class="col-6 col-md-3 col-lg-3"> <br><label>
       <strong>Recargar Tabla</strong>
     </label><br>
-      <button class="btn btn-primary">Actualizar</button>
+    <button class="btn btn-primary" (click)="refrescarTablaPrestamosClientes()" [disabled]="cargandoTabla">Actualizar</button>
+    <div *ngIf="cargandoTabla">
+      <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+      <label>Cargando tabla de Prestamos</label>
+  </div>
       <div>
     </div>
     </div>

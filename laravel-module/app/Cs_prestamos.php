@@ -695,7 +695,7 @@ class Cs_prestamos extends Model
         if ((array_has($prestamosA, 'estado'))) {
             /* return "E"; */
             /* dd($prestamosA['estado']=='success'); */
-            if($prestamosA['estado']=='success'){
+            if ($prestamosA['estado'] == 'success') {
                 foreach ($prestamosA['prestamos'] as $key) {
                     /* dd($key); */
                     $this->pasarPrestamoAbonoProxMes($key->id);
@@ -703,14 +703,14 @@ class Cs_prestamos extends Model
                         case 1:
                             $this->pasarPrestamoAbonoProxMes($key->id);
                             break;
-    
+
                         default:
                             # code...
                             break;
                     }
                 }
             }
-            
+
             return $this->prestamosTotales($anio, $mes);
         } else {
             return $this->prestamosTotales($anio, $mes);
@@ -741,8 +741,8 @@ class Cs_prestamos extends Model
                 'pd.definicion',
                 'p.tipo_prestamo_id'
             ])
-            ->join('anio as a', 'a.id', 'anio_id')
-            ->join('mes as m', 'm.id', 'mes_id')
+            ->join('anio as a', 'a.id', 'pd.anio_id')
+            ->join('mes as m', 'm.id', 'pd.mes_id')
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
             ->join('estado_prestamo as ep', 'ep.id', 'pd.estado')
             ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
@@ -756,6 +756,144 @@ class Cs_prestamos extends Model
 
         if (!$prestamo->isEmpty()) {
             return ['estado' => 'success', 'prestamos' => $prestamo];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en la fecha ingresada.'];
+        }
+    }
+
+    protected function traerPrestamosHistorico($anio, $mes)
+    {
+        $prestamo = DB::table('cs_prestamos as p')
+            ->select([
+                'p.id',
+                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                'p.anio_id',
+                'p.mes_id',
+                'p.numero_documento',
+                'p.archivo_documento',
+                'p.descripcion',
+                'p.monto_egreso as total_prestamo_no_interes',
+                DB::raw("coalesce(ip.interes, 0) as interes"),
+                'p.cuota as cuotap',
+                'pd.monto_ingreso',
+                'pd.monto_egreso',
+                'ep.descripcion as estado',
+                'p.tipo_prestamo_id'
+            ])
+            ->join('anio as a', 'a.id', 'p.anio_id')
+            ->join('mes as m', 'm.id', 'p.mes_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
+            ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'p.id')
+            ->join('detalle_prestamo as pd', 'pd.prestamo_id', 'p.id')
+            ->where([
+                'p.activo' => 'S',
+                'p.anio_id' => $anio,
+                'p.mes_id' => $mes,
+                'pd.anio_id' => $anio,
+                'pd.mes_id' => $mes
+            ])
+            ->orderby('p.dia', 'ASC')
+            ->get();
+
+        if (!$prestamo->isEmpty()) {
+            for ($i = 0; $i < count($prestamo); $i++) {
+                $abono = DB::table('cs_prestamo_tipo_abono_cuotas as pta')
+                    ->select([
+                        'pta.cs_prestamo_id',
+                        'pta.tipo_abono_cuotas_id as tipo',
+                        'pta.monto'
+                    ])
+                    ->where([
+                        'pta.cs_prestamo_id' => $prestamo[$i]->id,
+                        'pta.activo' => 'S'
+                    ])
+                    ->get();
+                if (!$abono->isEmpty()) {
+                    for ($e = 0; $e < count($abono); $e++) {
+                        switch ($abono[$e]->tipo) {
+                            case 1:
+                                if (is_null($abono[$e]->monto)) {
+                                    $prestamo[$i]->sueldo = $abono[$e]->monto;
+                                } else {
+                                    $prestamo[$i]->sueldo = $abono[$e]->monto;
+                                }
+                                if (!array_has($prestamo[$i], 'conflicto')) {
+                                    $prestamo[$i]->conflicto = 0;
+                                }
+                                if (!array_has($prestamo[$i], 'trimestral')) {
+                                    $prestamo[$i]->trimestral = 0;
+                                }
+                                break;
+                            case 2:
+                                if (is_null($abono[$e]->monto)) {
+                                    $prestamo[$i]->conflicto = $abono[$e]->monto;
+                                } else {
+                                    $prestamo[$i]->conflicto = $abono[$e]->monto;
+                                }
+                                if (!array_has($prestamo[$i], 'sueldo')) {
+                                    $prestamo[$i]->sueldo = 0;
+                                }
+                                if (!array_has($prestamo[$i], 'trimestral')) {
+                                    $prestamo[$i]->trimestral = 0;
+                                }
+                                break;
+                            case 3:
+                                if (is_null($abono[$e]->monto)) {
+                                    $prestamo[$i]->trimestral = $abono[$e]->monto;
+                                } else {
+                                    $prestamo[$i]->trimestral = $abono[$e]->monto;
+                                }
+                                if (!array_has($prestamo[$i], 'sueldo')) {
+                                    $prestamo[$i]->sueldo = 0;
+                                }
+                                if (!array_has($prestamo[$i], 'conflicto')) {
+                                    $prestamo[$i]->conflicto = 0;
+                                }
+                                break;
+
+                            default:
+                                # code...
+                                break;
+                        }
+                    }
+                } else {
+                    $prestamo[$i]->sueldo = 0;
+                    $prestamo[$i]->conflicto = 0;
+                    $prestamo[$i]->trimestral = 0;
+                }
+
+                if (is_null($prestamo[$i]->monto_ingreso)) {
+                    $prestamo[$i]->monto_ingreso = 0;
+                }
+                $prestamo[$i]->monto_restante_p = $prestamo[$i]->total_prestamo_no_interes - ($prestamo[$i]->sueldo + $prestamo[$i]->conflicto + $prestamo[$i]->trimestral) - $prestamo[$i]->monto_ingreso;
+            }
+
+            $return = [];
+            $return['salud'] = [];
+            $return['apuro'] = [];
+            $return['aporte'] = [];
+
+            foreach ($prestamo as $key) {
+
+                switch ($key->tipo_prestamo_id) {
+                    case 1:
+                        $return['salud'][] = $key;
+                        break;
+
+                    case 2:
+                        $return['apuro'][] = $key;
+                        break;
+
+                    case 3:
+                        $return['aporte'][] = $key;
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            return $return;
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en la fecha ingresada.'];
         }
@@ -790,7 +928,7 @@ class Cs_prestamos extends Model
 
     protected function pasarPrestamoAbonoProxMes($detalle_prestamo_id)
     {
-        
+
         $detallePM = DetallePrestamo::find($detalle_prestamo_id);
         $prestamo = Cs_prestamos::find($detallePM->prestamo_id);
 

@@ -1069,6 +1069,15 @@ class Cs_prestamos extends Model
                             break;
                     }
                 }
+                if (!array_has($vigente, 'salud')) {
+                    $vigente['salud'] = false;
+                }
+                if (!array_has($vigente, 'apuro')) {
+                    $vigente['apuro'] = false;
+                }
+                if (!array_has($vigente, 'aporte')) {
+                    $vigente['aporte'] = false;
+                }
                 if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
                     $estado = true;
                 } else {

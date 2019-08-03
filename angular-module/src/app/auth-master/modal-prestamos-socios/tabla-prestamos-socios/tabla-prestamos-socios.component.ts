@@ -164,6 +164,11 @@ export class TablaPrestamosSociosComponent implements OnInit {
           this.blockPagoAbono = false;
           alert("Se ha realizado el pago correctamente");
         }
+      },
+      error => {
+        console.log(error);
+        this.blockPagoAbono = false;
+        alert("Ha ocurrido un error");
       }
     )
   }

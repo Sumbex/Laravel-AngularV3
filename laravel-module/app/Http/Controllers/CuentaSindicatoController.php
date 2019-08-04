@@ -15,6 +15,22 @@ class CuentaSindicatoController extends Controller
 {
 	public $global_caja_chica = 100000;
 
+	public function validar_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'input' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'input.required' => 'El PDF es necesario',
+	        	'input.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+	}
 	public function validar_datos_cs($request)
 	{
 		 $validator = Validator::make($request->all(), 
@@ -149,12 +165,17 @@ class CuentaSindicatoController extends Controller
 						$cs->descripcion = $r->descripcion;
 
 						$cs->archivo_documento = 'storage/'.$archivo; 
+						if ($r->tipo_cuenta_sindicato == 5) {
+							//si el tipo de cuenta es camping
+							$cs->detalle_camping = 'S';
+						}
 
 						// dd($r->definicion);
 						switch ($r->definicion) {// si es ingreso o egreso
 							case '1':  
 								$cs->monto_ingreso = $r->monto; 
 								$cs->saldo_actual  = $s_a + $r->monto;
+
 							break;
 
 							case '2':  
@@ -185,6 +206,7 @@ class CuentaSindicatoController extends Controller
 									
 												//var_dump("paso por cuenta 3 con su monto");
 								}
+
 								else{
 									$cs->monto_egreso = $r->monto; 
 									$cs->saldo_actual = $s_a - $r->monto;
@@ -198,6 +220,136 @@ class CuentaSindicatoController extends Controller
 						$cs->user_crea  = Auth::user()->id;
 
 						if ($cs->save()) {
+							
+							if($cs->tipo_cuenta_sindicato == "5"){
+								switch ($cs->definicion) {
+									case '1':
+											
+										//aqui muestra si existe un camping en esta fecha
+										$v_existe_cmp = Cuentasindicato::where([
+											'mes_id' => $f['mes'],
+											'anio_id' => $anio->id,
+											'activo' => 'S',
+											'tipo_cuenta_sindicato' => '5',
+											'definicion' => '1',
+											'cuenta_sindicato.detalle_camping' => 'S'
+										])->count('id');
+										 //dd($v_existe_cmp > 0);
+
+										if($v_existe_cmp > 0){
+
+											$v_existe_cmp_i_total = Cuentasindicato::where([
+												'mes_id' => $f['mes'],
+												'anio_id' => $anio->id,
+												'activo' => 'S',
+												'definicion' =>'1',
+												'detalle_camping' =>null,
+												'tipo_cuenta_sindicato'=>'5'
+											])->first();
+
+											$sum_det_camping = Cuentasindicato::where([
+															'mes_id' => $f['mes'],
+															'anio_id' => $anio->id,
+															'activo' => 'S',
+															'definicion' =>'1',
+															'detalle_camping' =>'S',
+															'tipo_cuenta_sindicato'=>'5'
+											])->sum('monto_ingreso');
+
+											//dd(empty($v_existe_cmp_e_total));
+											if (empty($v_existe_cmp_i_total)) {
+
+													$camp_i = new Cuentasindicato;
+													$camp_i->dia = '1';
+													$camp_i->mes_id = $f['mes'];
+													$camp_i->anio_id= $anio->id;
+													$camp_i->numero_documento = '--';
+													$camp_i->archivo_documento = '--';
+													$camp_i->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
+													$camp_i->descripcion = 'Detalle camping ingreso';
+													$camp_i->monto_ingreso = $sum_det_camping;
+													$camp_i->definicion = '1';
+													$camp_i->user_crea = Auth::user()->id;
+													$camp_i->activo = 'S';
+
+													$camp_i->save();
+
+												}else{
+													$v_existe_cmp_i_total->monto_ingreso = $sum_det_camping;
+													$v_existe_cmp_i_total->save();
+												}
+
+												
+											}
+									
+									break;
+									case '2':
+
+											//aqui muestra si existe un camping en esta fecha
+										$v_existe_cmp = Cuentasindicato::where([
+											'mes_id' => $f['mes'],
+											'anio_id' => $anio->id,
+											'activo' => 'S',
+											'definicion' => '2',
+											'tipo_cuenta_sindicato' => '5',
+											'cuenta_sindicato.detalle_camping' => 'S'
+										])->count('id');
+										//dd($v_existe_cmp > 0);
+
+										if($v_existe_cmp > 0){
+
+											$v_existe_cmp_e_total = Cuentasindicato::where([
+												'mes_id' => $f['mes'],
+												'anio_id' => $anio->id,
+												'activo' => 'S',
+												'definicion' =>'2',
+												'detalle_camping' =>null,
+												'tipo_cuenta_sindicato'=>'5'
+											])->first();
+
+											$sum_det_camping = Cuentasindicato::where([
+															'mes_id' => $f['mes'],
+															'anio_id' => $anio->id,
+															'activo' => 'S',
+															'definicion' =>'2',
+															'detalle_camping' =>'S',
+															'tipo_cuenta_sindicato'=>'5'
+											])->sum('monto_egreso');
+
+											//dd($v_existe_cmp_e_total);
+
+											if (empty($v_existe_cmp_e_total)) {
+
+													$camp_e = new Cuentasindicato;
+													$camp_e->dia = '1';
+													$camp_e->mes_id = $f['mes'];
+													$camp_e->anio_id= $anio->id;
+													$camp_e->numero_documento = '--';
+													$camp_e->archivo_documento = '--';
+													$camp_e->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
+													$camp_e->descripcion = 'Detalle camping egreso';
+													$camp_e->monto_egreso = $sum_det_camping;
+													$camp_e->definicion = $r->definicion;
+													$camp_e->user_crea = Auth::user()->id;
+													$camp_e->activo = 'S';
+
+													$camp_e->save();
+
+											}else{
+												$v_existe_cmp_e_total->monto_egreso = $sum_det_camping;
+												$v_existe_cmp_e_total->save();
+											}
+
+												
+											}
+									break;
+										
+									default:
+											# code...
+								    break;
+								}
+							}
+
 							return [
 								'estado'  => 'success', 
 								'mensaje' => "Item de cuenta sindical añadido"
@@ -483,9 +635,16 @@ class CuentaSindicatoController extends Controller
     //@ este metodo recibe desde el front-end Objeto [ string campo, Input input,  Integer id]
     public function actualizar_dato_cs(Request $r)
     {
+    	$valida_pdf = $this->validar_pdf($r);
+    
 
     	$cs = Cuentasindicato::where('id',$r->id)->first();
     	//dd($cs);
+
+    	if ($r->input == '') {
+    		return ['estado'=>'failed','mensaje'=>'Ingrese un valor'];
+    	}
+
     	switch ($r->campo) {
     		case 'fecha':
 
@@ -576,6 +735,9 @@ class CuentaSindicatoController extends Controller
 
     		break;
     		case 'definicion':
+    			if ($cs->definicion == $r->input) {
+    				return ['estado'=>'failed','mensaje'=>'Ya existe esta definiciósn'];
+    			}
 
     			if ($r->input == 1) {
     				$monto = $cs->monto_egreso;
@@ -604,6 +766,45 @@ class CuentaSindicatoController extends Controller
 
 
     		break;
+    		case 'definicion_camping':
+    			if ($cs->definicion == $r->input) {
+    				return ['estado'=>'failed','mensaje'=>'Ya existe esta definiciósn'];
+    			}
+
+    			if ($r->input == 1) {
+    				$monto = $cs->monto_egreso;
+    				//dd("1: ".$monto);
+
+    				$cs->monto_ingreso = $monto;
+    				$cs->monto_egreso = null;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+
+    					//$this->calcular_total_camping($cs);
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    			if ($r->input == 2) {
+    				$monto = $cs->monto_ingreso;
+    				//dd("2: ".$monto);
+
+    				$cs->monto_egreso = $monto;
+    				$cs->monto_ingreso = null;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+
+    					//$this->calcular_total_camping($cs);
+
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			
+
+
+    		break;
     		case 'monto':
     			
     			if ($cs->definicion == 1) {
@@ -624,6 +825,7 @@ class CuentaSindicatoController extends Controller
     		break;
 
     		case 'archivo':
+    			if($valida_pdf['estado'] == 'success'){
     			 $ruta = substr($cs->archivo_documento, 8);
 				//$ruta = $cs->archivo_documento;
 					
@@ -645,7 +847,9 @@ class CuentaSindicatoController extends Controller
                     } else {
                         return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
                     }
-
+                }else{
+                	return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                }
 
     		break;
 
@@ -740,6 +944,137 @@ class CuentaSindicatoController extends Controller
 		return Detalleinteresprestamo::traer_lista($anio, $mes);
 	}
 
+	public function calcular_total_camping($cs)
+	{
+		if($cs->tipo_cuenta_sindicato == "5"){
+								switch ($cs->definicion) {
+									case '1':
+											
+										//aqui muestra si existe un camping en esta fecha
+										$v_existe_cmp = Cuentasindicato::where([
+											'mes_id' => $cs->mes_id,
+											'anio_id' => $cs->anio_id,
+											'activo' => 'S',
+											'tipo_cuenta_sindicato' => '5',
+											'definicion' => '1',
+											'cuenta_sindicato.detalle_camping' => 'S'
+										])->count('id');
+										 //dd($v_existe_cmp > 0);
+
+										if($v_existe_cmp > 0){
+
+											$v_existe_cmp_i_total = Cuentasindicato::where([
+												'mes_id' => $cs->mes_id,
+											    'anio_id' => $cs->anio_id,
+												'activo' => 'S',
+												'definicion' =>'1',
+												'detalle_camping' =>null,
+												'tipo_cuenta_sindicato'=>'5'
+											])->first();
+
+											$sum_det_camping = Cuentasindicato::where([
+															'mes_id' => $cs->mes_id,
+											                'anio_id' => $cs->anio_id,
+															'activo' => 'S',
+															'definicion' =>'1',
+															'detalle_camping' =>'S',
+															'tipo_cuenta_sindicato'=>'5'
+											])->sum('monto_ingreso');
+
+											//dd(empty($v_existe_cmp_e_total));
+											if (empty($v_existe_cmp_i_total)) {
+
+													$camp_i = new Cuentasindicato;
+													$camp_i->dia = '1';
+													$camp_i->mes_id = $cs->mes_id;
+													$camp_i->anio_id= $cs->anio_id;
+													$camp_i->numero_documento = '--';
+													$camp_i->archivo_documento = '--';
+													$camp_i->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
+													$camp_i->descripcion = 'Detalle camping ingreso';
+													$camp_i->monto_ingreso = $sum_det_camping;
+													$camp_i->definicion = '1';
+													$camp_i->user_crea = Auth::user()->id;
+													$camp_i->activo = 'S';
+
+													$camp_i->save();
+
+												}else{
+													$v_existe_cmp_i_total->monto_ingreso = $sum_det_camping;
+													$v_existe_cmp_i_total->save();
+												}
+
+												
+											}
+									
+									break;
+									case '2':
+
+											//aqui muestra si existe un camping en esta fecha
+										$v_existe_cmp = Cuentasindicato::where([
+											'mes_id' => $cs->mes_id,
+											'anio_id' => $cs->anio_id,
+											'activo' => 'S',
+											'definicion' => '2',
+											'tipo_cuenta_sindicato' => '5',
+											'cuenta_sindicato.detalle_camping' => 'S'
+										])->count('id');
+										//dd($v_existe_cmp > 0);
+
+										if($v_existe_cmp > 0){
+
+											$v_existe_cmp_e_total = Cuentasindicato::where([
+												'mes_id' => $cs->mes_id,
+												'anio_id' => $cs->anio_id,
+												'activo' => 'S',
+												'definicion' =>'2',
+												'detalle_camping' =>null,
+												'tipo_cuenta_sindicato'=>'5'
+											])->first();
+
+											$sum_det_camping = Cuentasindicato::where([
+															'mes_id' => $cs->mes_id,
+															'anio_id' => $cs->anio_id,
+															'activo' => 'S',
+															'definicion' =>'2',
+															'detalle_camping' =>'S',
+															'tipo_cuenta_sindicato'=>'5'
+											])->sum('monto_egreso');
+
+											//dd($v_existe_cmp_e_total);
+
+											if (empty($v_existe_cmp_e_total)) {
+
+													$camp_e = new Cuentasindicato;
+													$camp_e->dia = '1';
+													$camp_e->mes_id = $cs->mes_id;
+													$camp_e->anio_id= $cs->anio_id;
+													$camp_e->numero_documento = '--';
+													$camp_e->archivo_documento = '--';
+													$camp_e->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
+													$camp_e->descripcion = 'Detalle camping egreso';
+													$camp_e->monto_egreso = $sum_det_camping;
+													$camp_e->definicion = $r->definicion;
+													$camp_e->user_crea = Auth::user()->id;
+													$camp_e->activo = 'S';
+
+													$camp_e->save();
+
+											}else{
+												$v_existe_cmp_e_total->monto_egreso = $sum_det_camping;
+												$v_existe_cmp_e_total->save();
+											}
+
+												
+											}
+									break;
+										
+									default:
+											# code...
+								    break;
+								}
+						}
+	}
 	
 
 

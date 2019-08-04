@@ -103,7 +103,7 @@
 
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                           <label><strong>N° de Cuotas Pagadas</strong></label> 
-                          <input type="number" class="form-control form-control-sm" #cuotasPagadasSalud value="3" disabled>
+                          <input type="number" class="form-control form-control-sm" #cuotasPagadasSalud value="{{itemPrestamo.cuotad}}" disabled>
                         </div>
                       </div><br>
                       <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -112,7 +112,9 @@
                       </div><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                        <button type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteresSalud, itemPrestamo.id, montoPagarSalud)">Pagar</button>
+                        <button [disabled]="blockPagoPrestamo" type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteresSalud, itemPrestamo.id, montoPagarSalud)">Pagar
+                          <img *ngIf="blockPagoPrestamo" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                        </button>
                     </div>
 
                   </div>
@@ -145,7 +147,7 @@
                       
                       <div class="col-5 col-md-5 col-lg-5 col-xl-5">
                         <label> <strong>Abono</strong></label> 
-                        <input class="form-control form-control-sm" #montoAbono type="number" value="100000">
+                        <input class="form-control form-control-sm" #montoAbono type="number" value="">
                       </div><br>
 
                       <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -156,7 +158,9 @@
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                      <button type="button" class="btn btn-outline-success" (click)="test(itemPrestamo.id, definicionSelectAbono, fechaAbono, montoAbono)">Pagar</button>
+                      <button [disabled]="blockPagoAbono" type="button" class="btn btn-outline-success" (click)="pagarAbono(itemPrestamo.id, definicionSelectAbono, fechaAbono, montoAbono)">Pagar
+                        <img *ngIf="blockPagoAbono" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                      </button>
                     </div> <hr>
                   </div>
 
@@ -251,7 +255,9 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
-                        <button type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteres, itemPrestamo.id, montoFinalApuro)">Pagar</button>
+                        <button [disabled]="blockPagoPrestamo" type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteres, itemPrestamo.id, montoFinalApuro)">Pagar
+                          <img *ngIf="blockPagoPrestamo" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                        </button>
                     </div>
 
                   </div>

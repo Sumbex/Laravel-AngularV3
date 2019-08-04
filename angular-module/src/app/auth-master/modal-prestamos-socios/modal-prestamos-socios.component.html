@@ -13,8 +13,12 @@
         aria-selected="true">Formulario</a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab" aria-controls="historico"
+        aria-selected="false">Historial Prestamos</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-        aria-selected="false">Tabla del Detalle Prestamo</a>
+        aria-selected="false">Pago de Prestamos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
@@ -439,6 +443,9 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="profile-tab">
+      <app-tabla-prestamos-historicos-socios></app-tabla-prestamos-historicos-socios>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <app-tabla-prestamos-socios></app-tabla-prestamos-socios>

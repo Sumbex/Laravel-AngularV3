@@ -140,6 +140,7 @@ class Cuentasindicato extends Model
     					])
     				   ->join('anio as a','a.id','anio_id')
     				   ->join('mes as m','m.id','mes_id')
+    				   ->where('cuenta_sindicato.detalle_camping', null)
 				       ->where([
 							'cuenta_sindicato.activo'=>'S',
 							'cuenta_sindicato.anio_id' => $anio, 

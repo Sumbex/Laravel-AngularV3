@@ -541,7 +541,7 @@ class Cs_prestamos extends Model
                                 } else {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
-                                ///proceso egreso
+                                /* ///proceso egreso
                                 if ($abonos['abonos'][$e]->mes_id != $prestamos['prestamos'][$i]->mes_id) {
                                     //
                                     if (is_null($abonos['abonos'][$e]->monto_egreso)) {
@@ -561,8 +561,8 @@ class Cs_prestamos extends Model
                                 }
                                 if (!array_has($prestamos['prestamos'][$i], 'trimestral')) {
                                     $prestamos['prestamos'][$i]->trimestral = 0;
-                                }
-                                /*  if (is_null($abonos['abonos'][$e]->monto_egreso)) {
+                                } */
+                                if (is_null($abonos['abonos'][$e]->monto_egreso)) {
                                     $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
                                 } else {
                                     $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
@@ -572,7 +572,7 @@ class Cs_prestamos extends Model
                                 }
                                 if (!array_has($prestamos['prestamos'][$i], 'trimestral')) {
                                     $prestamos['prestamos'][$i]->trimestral = 0;
-                                } */
+                                }
                                 break;
 
                             case 2:
@@ -581,11 +581,11 @@ class Cs_prestamos extends Model
                                 } else {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
-                                ///proceso egreso
+                                /*///proceso egreso
                                 if ($abonos['abonos'][$e]->mes_id != $prestamos['prestamos'][$i]->mes_id) {
                                     //
                                     $abonos['abonos'][$e]->test = $abonos['abonos'][$e]->monto_egreso;
-                                }/* else{
+                                } else{
                                     //
                                 } */
                                 if (is_null($abonos['abonos'][$e]->monto_egreso)) {
@@ -607,11 +607,11 @@ class Cs_prestamos extends Model
                                 } else {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
-                                ///proceso egreso
+                                /*///proceso egreso
                                 if ($abonos['abonos'][$e]->mes_id != $prestamos['prestamos'][$i]->mes_id) {
                                     //
                                     $abonos['abonos'][$e]->test = $abonos['abonos'][$e]->monto_egreso;
-                                }/* else{
+                                } else{
                                     //
                                 } */
                                 if (is_null($abonos['abonos'][$e]->monto_egreso)) {
@@ -1069,6 +1069,15 @@ class Cs_prestamos extends Model
                             break;
                     }
                 }
+                if (!array_has($vigente, 'salud')) {
+                    $vigente['salud'] = false;
+                }
+                if (!array_has($vigente, 'apuro')) {
+                    $vigente['apuro'] = false;
+                }
+                if (!array_has($vigente, 'aporte')) {
+                    $vigente['aporte'] = false;
+                }
                 if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
                     $estado = true;
                 } else {
@@ -1165,7 +1174,6 @@ class Cs_prestamos extends Model
             $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
             $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
 
-
             /*  $abonos = $this->traerAbonos($prestamo->anio_id, $dPrestamo->anio_id, $prestamo->mes_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
             dd($abonos); */
 
@@ -1238,18 +1246,43 @@ class Cs_prestamos extends Model
                                                 break;
                                         }
                                     }
+
+                                    if (!array_has($vigente, 'salud')) {
+                                        $vigente['salud'] = false;
+                                    }
+                                    if (!array_has($vigente, 'apuro')) {
+                                        $vigente['apuro'] = false;
+                                    }
+                                    if (!array_has($vigente, 'aporte')) {
+                                        $vigente['aporte'] = false;
+                                    }
+
+                                    /* dd($vigente); */
+                                    /* dd(array_has($vigente, 'salud') && $vigente['salud'] == false) && (array_has($vigente, 'apuro') && $vigente['apuro'] == false) && (array_has($vigente, 'aporte') && $vigente['aporte'] == false); */
                                     if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
+                                        /* if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) { */
                                         $estado = true;
                                     } else {
                                         $estado = false;
                                     }
+                                    /* dd($estado == true); */
                                     if ($estado == true) {
-                                        //$detalle->estado = 2;
-                                        $prestamo->estado_prestamo_id = 2;
-                                        if ($prestamo->save()) {
-                                            return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                                        //$dPrestamo actualizar estado a pagado
+
+                                        if ($dPrestamo->cuota == $prestamo->cuota) {
+                                            $dPrestamo->estado = 2;
+                                            if ($dPrestamo->save()) {
+                                                $prestamo->estado_prestamo_id = 2;
+                                                if ($prestamo->save()) {
+                                                    return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                                                } else {
+                                                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                                }
+                                            } else {
+                                                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                            }
                                         } else {
-                                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                            return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                                         }
                                     } else {
                                         return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];

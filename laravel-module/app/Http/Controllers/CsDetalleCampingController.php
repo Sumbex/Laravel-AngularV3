@@ -15,8 +15,9 @@ class CsDetalleCampingController extends Controller
     	$total = 0;
 
     	$listar = Cuentasindicato::select([
+                'cuenta_sindicato.id as camping_id',
     			DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
-    			
+    			'archivo_documento',
     			'cuenta_sindicato.descripcion',
     			'monto_ingreso',
     			'monto_egreso',
@@ -29,8 +30,9 @@ class CsDetalleCampingController extends Controller
     			'anio_id' => $anio,
     			'mes_id' => $mes,
     			'cuenta_sindicato.activo' => 'S',
-    			'tipo_cuenta_sindicato' => '5' //comite camping
-    	])->get();
+    			'tipo_cuenta_sindicato' => '5', //comite camping
+                'detalle_camping' => 'S'
+    	])->orderBy('dia','desc')->get();
 
     	if ($listar) {
     		//return $listar;
@@ -78,11 +80,14 @@ class CsDetalleCampingController extends Controller
                 $total = $listar[$i]->saldo_actual_raw ;   
                 $estado = "success";
 
+                $this->reajustar_camping_a_cs($ingreso, $egreso, $anio, $mes);
+
 			}
+           // dd($listar);
 
 			foreach ($listar as $key) {
-    			$key['monto_ingreso'] = number_format($key->monto_ingreso,0,'.',',');
-    			$key['monto_egreso'] = number_format($key->monto_egreso,0,'.',',');
+    			$key['monto_ingreso'] = $key->monto_ingreso != 0? number_format($key->monto_ingreso,0,'.',','):null;
+    			$key['monto_egreso'] = $key->monto_egreso!=0? number_format($key->monto_egreso,0,'.',','):null;
     			$key['saldo_actual_raw'] = number_format($key->saldo_actual_raw,0,'.',',');
 
     		}
@@ -139,5 +144,35 @@ class CsDetalleCampingController extends Controller
     		return $get->cierre_calculable;
     	}
     	return 0;
+    }
+
+    public function reajustar_camping_a_cs($ingreso, $egreso, $anio, $mes)
+    {
+        $query_ingreso = Cuentasindicato::where([
+                                                'mes_id' => $mes,
+                                                'anio_id' => $anio,
+                                                'activo' => 'S',
+                                                'definicion' =>'1',
+                                                'detalle_camping' =>null,
+                                                'tipo_cuenta_sindicato'=>'5'
+                                            ])->first();
+
+        $query_egreso = Cuentasindicato::where([
+                                                'mes_id' => $mes,
+                                                'anio_id' => $anio,
+                                                'activo' => 'S',
+                                                'definicion' =>'2',
+                                                'detalle_camping' =>null,
+                                                'tipo_cuenta_sindicato'=>'5'
+                                            ])->first();
+
+        if (!empty($query_ingreso)) {
+            $query_ingreso->monto_ingreso = $ingreso;
+            $query_ingreso->save();
+        }
+        if (!empty($query_egreso)) {
+            $query_egreso->monto_egreso = $egreso;
+            $query_egreso->save();
+        }
     }
 }

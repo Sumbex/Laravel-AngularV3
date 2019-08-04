@@ -128,6 +128,15 @@ export class SindicalService{
         )});
     }
 
+    getPrestamosHistoricos(anio: string, mes: string): Observable<any>{
+        return this._http.get(this.url + "traer_prestamos_historicos/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
     pagarPrestamo(fecha, id, monto): Observable<any>{
         const body = new FormData();
         body.append('detalle_prestamo_id', id);

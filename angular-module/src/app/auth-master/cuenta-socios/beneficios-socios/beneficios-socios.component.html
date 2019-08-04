@@ -18,7 +18,7 @@
 
             <li class="nav-item">
               <a class="nav-link" id="hijo-tab" data-toggle="tab" href="#hijo" role="tab" aria-controls="hijo"
-                aria-selected="false">Datos Hijos / Cargas</a>
+                aria-selected="false">Datos Cargas Legales</a>
             </li>
 
             <li class="nav-item">
@@ -27,12 +27,9 @@
             </li>
           </ul> <br>
 
-      <div class="tab-content" id="myTabContent">
-        
-        <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
           <!--buscador de socio-->
           <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Socio</h6>
+          <h6 class="card-title">Socio</h6>
           </div>
           <div class="card">
 
@@ -91,6 +88,10 @@
             </div>
 
           </div> <br>
+
+      <div class="tab-content" id="myTabContent">
+        
+        <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
           <!--Datos del socio-->
           <div class="card-header" id="demoFont2">
             <h6 class="card-title">Datos del Socio</h6>
@@ -122,6 +123,7 @@
                         <option value="">--Seleccione--</option>
                         <option value="">Cuenta Rut</option>
                         <option value="">Cuenta Vista</option>
+                        <option value="">Cuenta Corriente</option>
                       </select>
                     </div>
                   </div>
@@ -518,13 +520,26 @@
         <div class="tab-pane fade" id="hijo" role="tabpanel" aria-labelledby="hijo-tab">
           <!--Datos del hijo-->
           <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Hijos y Cargas</h6>
+            <h6 class="card-title">Cargas Legales</h6>
           </div>
           <div class="card">
             <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
               <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
                 <div class="row justify-content-between">
+
+                  <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
+                    <div class="form-group">
+                      <label><strong>Tipo de carga</strong></label>
+                      <select name="Cta" id="cta" class="form-control form-control-sm" required>
+                        <option value="">--Seleccione--</option>
+                        <option value="">Hijo</option>
+                        <option value="">Nieto</option>
+                        <option value="">Adoptacion</option>
+                        <option value="">otros</option>
+                      </select>
+                    </div>
+                  </div>
 
                   <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                     <div class="form-group">

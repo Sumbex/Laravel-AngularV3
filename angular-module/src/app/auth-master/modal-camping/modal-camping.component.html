@@ -19,6 +19,27 @@
       </div>
   </ng-template>
 <ng-template #Camping let-modal>
+
+
+
+  <ng-template #modalUsuario let-modal>
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+      <br>
+      <input #password [(ngModel)]="pass" class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+      <br>
+      <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar (click)="modal.close('Save click')">
+        Validar
+        </button>
+      <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    </div>
+  </ng-template>
     <!--form del modal camping-->
 
       <!--Cabezal del modal camping-->
@@ -56,7 +77,7 @@
                <thead text-sm>
                   <!--Titulo Tabla-->  
                   <tr>
-                  <th colspan="4" class=" text-center"  style="background: #138D75"><h6>Detalle Comité Camping</h6></th>
+                  <th colspan="5" class=" text-center"  style="background: #138D75"><h6>Detalle Comité Camping</h6></th>
                   <th style="background: #138D75" colspan="3">
                       Cierre mensual acumulado:
                       <div class="input-group">
@@ -70,6 +91,7 @@
                   <tr class="text-center">
                       <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> Fecha</th>
                       <th style="background: #138D75"><i class="fas fa-id-card"></i> Nº Documento</th>
+                      <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
                       <th colspan="2" style="background: #138D75"><i class="fas fa-file-alt"></i> Detalle del camping</th>
                       <th style="background: #138D75"><i class="fas fa-arrow-down"></i> Ingreso</th>
                       <th style="background: #138D75"><i class="fas fa-arrow-up"></i> Egreso</th>
@@ -78,15 +100,168 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of detallecamping">
-                  <td scope="col">{{ item.fecha }}</td>
-                  <td scope="col">{{ item.numero_documento }}</td>
-                  <td colspan="2">{{ item.descripcion }}</td>
-                  <td scope="col">{{ item.monto_ingreso }}</td>
-                  <td scope="col">{{ item.monto_egreso }}</td>
+                  <td scope="col" (click)="openActualizar(m_fecha)" >{{ item.fecha }}
+                        
+                        <ng-template #m_fecha let-c="closeFecha" let-d="dismiss">
+                        <div class="modal-header" id="demoFont">
+                          <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                          <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm" value="{{item.fecha}}" disabled></label>
+                          <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fecha type="date"></label>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(item.camping_id,'fecha',fecha,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"> 
+                          </button>
+                        </div>
+                    </ng-template>
+
+                  </td>
+                  <td scope="col" (click)="openActualizar(m_num_doc)">{{ item.numero_documento }}
+                        
+                        <ng-template #m_num_doc let-c="close" let-d="dismiss">
+                          <div class="modal-header" id="demoFont">
+                            <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                                <label><strong>N° Documento Actual</strong></label> 
+                                <input type="text" class="form-control form-control-sm" value="{{item.numero_documento}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label> <strong>Nuevo N° Documento</strong></label> 
+                                <input class="form-control form-control-sm" #numero type="text">
+                            </div>
+                          </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                        <button type="button" class="btn btn-outline-success" (click)="actualizar(item.camping_id,'numero_documento',numero,modalUsuario)">Guardar
+                          <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                        </button>
+                      </div>
+                      </ng-template> 
+
+
+
+                  </td>
+                  <td scope="col">
+                     <a href="{{  '../' + item.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                        <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                      </a>&nbsp;
+                      <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(m_doc)">
+                        <ng-template #m_doc let-c="close" let-d="dismiss">
+                            <div class="modal-header" id="demoFont">
+                              <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+
+                              <div class="form-group">
+                                  <label> <strong>Reemplazar Documento Actual  </strong></label><i class="far fa-file-pdf"></i>
+                                  <input class="form-control-file form-control-file-sm" #Doc type="file" (change)="onSelectImage($event)">
+                              </div>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(item.camping_id,'archivo',Doc,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
+                            </div>
+                        </ng-template>
+                        <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+                      </a>
+                  </td>
+                  <td colspan="2" (click)="openActualizar(m_desc)">{{ item.descripcion }}
+                        <ng-template #m_desc let-c="close" let-d="dismiss">
+                        <div class="modal-header" id="demoFont">
+                          <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label><strong>Descripcion Actual</strong></label> 
+                                <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                            </div>
+                          <div class="form-group">
+                              <label> <strong>Nueva Descripcion</strong></label> 
+                              <input class="form-control form-control-sm" #descripcion type="text">
+                          </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                          <button type="button" class="btn btn-outline-success" (click)="actualizar(item.camping_id,'descripcion',descripcion,modalUsuario)">Guardar
+                            <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                          </button>
+                        </div>
+                    </ng-template> 
+                  </td>
+                  <td scope="col" (click)="openActualizar(montoFijoModal)">{{ item.monto_ingreso }}</td>
+                  <td scope="col" (click)="openActualizar(montoFijoModal)">{{ item.monto_egreso }}
+                      <ng-template #montoFijoModal let-c="close" let-d="dismiss">
+                          <div class="modal-header" id="demoFont">
+                            <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label><strong>Seleccione Nuevo Tipo</strong></label>
+                              <select #definicionFijo class="form-control form-control-sm">
+                                <option value="">Seleccione</option>
+                                <option value="1">Ingreso</option>
+                                <option value="2">Egreso</option>
+                              </select>
+                            </div>
+  
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                              <button type="button" class="btn btn-outline-success" (click)="actualizar(item.camping_id,'definicion_camping',definicionFijo,modalUsuario)">Guardar
+                                <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                              </button>
+                            </div> <hr>
+  
+                            <div class="form-group">
+                                <label><strong>Monto Actual</strong></label> 
+                                <input type="text" class="form-control form-control-sm" value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                            </div>
+                          <div class="form-group">
+                              <label> <strong>Nuevo Monto</strong></label> 
+                              <input class="form-control form-control-sm" #montoFijo type="text">
+                          </div>
+  
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                <button type="button" class="btn btn-outline-success" (click)="actualizar(item.camping_id,'monto',montoFijo,modalUsuario)">Guardar
+                                  <img *ngIf="actualizarLoad" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
+                            </div>
+  
+                          </div>
+                      </ng-template> 
+                  </td>
                   <td scope="col">{{ item.saldo_actual_raw }}</td>
                 </tr>
                 <tr>
-                    <th colspan="6" style="background: #138D75" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
+                    <th colspan="7" style="background: #138D75" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
                     <td scope="col">{{ resumen.total }}</td>
                   </tr>
                 <br>

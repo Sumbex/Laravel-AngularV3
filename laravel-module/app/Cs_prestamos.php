@@ -161,7 +161,6 @@ class Cs_prestamos extends Model
                             if ($prestamo->save()) {
 
                                 $ultimoPrestamo = Cs_prestamos::all()->last();
-                                /* dd($ultimoPrestamo->id); */
 
                                 $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
                                 $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
@@ -180,7 +179,6 @@ class Cs_prestamos extends Model
                                         case 1:
 
                                             if ($array[$i]['check'] == 'true') {
-                                                /* dd($ultimoPrestamo->id); */
                                                 $prestamoAbono->cs_prestamo_id = $ultimoPrestamo->id;
                                                 $prestamoAbono->tipo_abono_cuotas_id = 1;
                                                 $prestamoAbono->monto = $array[$i]['monto'];
@@ -528,8 +526,7 @@ class Cs_prestamos extends Model
                     ->get();
 
                 $prestamos['prestamos'][$i]->fecha_prestamo = $fechaPrestamo[0]->fecha_prestamo;
-                //($anioP, $anioDP, $mesP, $mesDP, $prestamo_id)
-                $abonos = $this->traerAbonos($fechaPrestamo[0]->anio_id, $prestamos['prestamos'][$i]->anio_id, $fechaPrestamo[0]->mes_id, $prestamos['prestamos'][$i]->mes_id, $prestamos['prestamos'][$i]->prestamo_id);
+                $abonos = $this->traerAbonos($anio, $mes, $prestamos['prestamos'][$i]->prestamo_id);
                 /* dd($abonos); */
                 $totalesAbono = 0;
                 if ($abonos['estado'] == 'success') {
@@ -541,28 +538,7 @@ class Cs_prestamos extends Model
                                 } else {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
-                                ///proceso egreso
-                                if ($abonos['abonos'][$e]->mes_id != $prestamos['prestamos'][$i]->mes_id) {
-                                    //
-                                    if (is_null($abonos['abonos'][$e]->monto_egreso)) {
-                                        $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
-                                    } else {
-                                        $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
-                                    }
-                                } else {
-                                    if (is_null($abonos['abonos'][$e]->monto_egreso)) {
-                                        $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
-                                    } else {
-                                        $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
-                                    }
-                                }
-                                if (!array_has($prestamos['prestamos'][$i], 'conflicto')) {
-                                    $prestamos['prestamos'][$i]->conflicto = 0;
-                                }
-                                if (!array_has($prestamos['prestamos'][$i], 'trimestral')) {
-                                    $prestamos['prestamos'][$i]->trimestral = 0;
-                                }
-                                /*  if (is_null($abonos['abonos'][$e]->monto_egreso)) {
+                                if (is_null($abonos['abonos'][$e]->monto_egreso)) {
                                     $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
                                 } else {
                                     $prestamos['prestamos'][$i]->sueldo = $abonos['abonos'][$e]->monto_egreso;
@@ -572,7 +548,7 @@ class Cs_prestamos extends Model
                                 }
                                 if (!array_has($prestamos['prestamos'][$i], 'trimestral')) {
                                     $prestamos['prestamos'][$i]->trimestral = 0;
-                                } */
+                                }
                                 break;
 
                             case 2:
@@ -581,13 +557,6 @@ class Cs_prestamos extends Model
                                 } else {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
-                                ///proceso egreso
-                                if ($abonos['abonos'][$e]->mes_id != $prestamos['prestamos'][$i]->mes_id) {
-                                    //
-                                    $abonos['abonos'][$e]->test = $abonos['abonos'][$e]->monto_egreso;
-                                }/* else{
-                                    //
-                                } */
                                 if (is_null($abonos['abonos'][$e]->monto_egreso)) {
                                     $prestamos['prestamos'][$i]->conflicto = $abonos['abonos'][$e]->monto_egreso;
                                 } else {
@@ -607,13 +576,6 @@ class Cs_prestamos extends Model
                                 } else {
                                     $prestamos['prestamos'][$i]->monto_ingreso = $prestamos['prestamos'][$i]->monto_ingreso + $abonos['abonos'][$e]->monto_pagado;
                                 }
-                                ///proceso egreso
-                                if ($abonos['abonos'][$e]->mes_id != $prestamos['prestamos'][$i]->mes_id) {
-                                    //
-                                    $abonos['abonos'][$e]->test = $abonos['abonos'][$e]->monto_egreso;
-                                }/* else{
-                                    //
-                                } */
                                 if (is_null($abonos['abonos'][$e]->monto_egreso)) {
                                     $prestamos['prestamos'][$i]->trimestral = $abonos['abonos'][$e]->monto_egreso;
                                 } else {
@@ -685,32 +647,24 @@ class Cs_prestamos extends Model
             $anioA = $anio;
             $mesA = $mes - 1;
         }
-        /* $test =  $this->prestamosTotales($anio, $mes); */
-
-        /* dd($test); */
 
         $prestamosA = $this->traerPrestamos($anioA, $mesA);
-        /* dd($prestamosA); */
-        /* dd((array_has($prestamosA, 'estado'))); */
         if ((array_has($prestamosA, 'estado'))) {
-            /* return "E"; */
-            /* dd($prestamosA['estado']=='success'); */
-            if($prestamosA['estado']=='success'){
+            if ($prestamosA['estado'] == 'success') {
                 foreach ($prestamosA['prestamos'] as $key) {
-                    /* dd($key); */
                     $this->pasarPrestamoAbonoProxMes($key->id);
                     switch ($key->tipo_prestamo_id) {
                         case 1:
                             $this->pasarPrestamoAbonoProxMes($key->id);
                             break;
-    
+
                         default:
                             # code...
                             break;
                     }
                 }
             }
-            
+
             return $this->prestamosTotales($anio, $mes);
         } else {
             return $this->prestamosTotales($anio, $mes);
@@ -741,8 +695,8 @@ class Cs_prestamos extends Model
                 'pd.definicion',
                 'p.tipo_prestamo_id'
             ])
-            ->join('anio as a', 'a.id', 'anio_id')
-            ->join('mes as m', 'm.id', 'mes_id')
+            ->join('anio as a', 'a.id', 'pd.anio_id')
+            ->join('mes as m', 'm.id', 'pd.mes_id')
             ->join('cs_prestamos as p', 'p.id', 'pd.prestamo_id')
             ->join('estado_prestamo as ep', 'ep.id', 'pd.estado')
             ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'pd.prestamo_id')
@@ -761,12 +715,151 @@ class Cs_prestamos extends Model
         }
     }
 
-    protected function traerAbonos($anioP, $anioDP, $mesP, $mesDP, $prestamo_id)
+    protected function traerPrestamosHistorico($anio, $mes)
+    {
+        $prestamo = DB::table('cs_prestamos as p')
+            ->select([
+                'p.id',
+                DB::raw("concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo"),
+                'p.anio_id',
+                'p.mes_id',
+                'p.numero_documento',
+                'p.archivo_documento',
+                'p.descripcion',
+                'p.monto_egreso as total_prestamo_no_interes',
+                DB::raw("coalesce(ip.interes, 0) as interes"),
+                'p.cuota as cuotap',
+                'pd.monto_ingreso',
+                'pd.monto_egreso',
+                'ep.descripcion as estado',
+                'p.tipo_prestamo_id'
+            ])
+            ->join('anio as a', 'a.id', 'p.anio_id')
+            ->join('mes as m', 'm.id', 'p.mes_id')
+            ->join('estado_prestamo as ep', 'ep.id', 'p.estado_prestamo_id')
+            ->leftJoin('interes_prestamo as ip', 'ip.prestamo_id', 'p.id')
+            ->join('detalle_prestamo as pd', 'pd.prestamo_id', 'p.id')
+            ->where([
+                'p.activo' => 'S',
+                'p.anio_id' => $anio,
+                'p.mes_id' => $mes,
+                'pd.anio_id' => $anio,
+                'pd.mes_id' => $mes
+            ])
+            ->orderby('p.dia', 'ASC')
+            ->get();
+
+        if (!$prestamo->isEmpty()) {
+            for ($i = 0; $i < count($prestamo); $i++) {
+                $abono = DB::table('cs_prestamo_tipo_abono_cuotas as pta')
+                    ->select([
+                        'pta.cs_prestamo_id',
+                        'pta.tipo_abono_cuotas_id as tipo',
+                        'pta.monto'
+                    ])
+                    ->where([
+                        'pta.cs_prestamo_id' => $prestamo[$i]->id,
+                        'pta.activo' => 'S'
+                    ])
+                    ->get();
+                if (!$abono->isEmpty()) {
+                    for ($e = 0; $e < count($abono); $e++) {
+                        switch ($abono[$e]->tipo) {
+                            case 1:
+                                if (is_null($abono[$e]->monto)) {
+                                    $prestamo[$i]->sueldo = $abono[$e]->monto;
+                                } else {
+                                    $prestamo[$i]->sueldo = $abono[$e]->monto;
+                                }
+                                if (!array_has($prestamo[$i], 'conflicto')) {
+                                    $prestamo[$i]->conflicto = 0;
+                                }
+                                if (!array_has($prestamo[$i], 'trimestral')) {
+                                    $prestamo[$i]->trimestral = 0;
+                                }
+                                break;
+                            case 2:
+                                if (is_null($abono[$e]->monto)) {
+                                    $prestamo[$i]->conflicto = $abono[$e]->monto;
+                                } else {
+                                    $prestamo[$i]->conflicto = $abono[$e]->monto;
+                                }
+                                if (!array_has($prestamo[$i], 'sueldo')) {
+                                    $prestamo[$i]->sueldo = 0;
+                                }
+                                if (!array_has($prestamo[$i], 'trimestral')) {
+                                    $prestamo[$i]->trimestral = 0;
+                                }
+                                break;
+                            case 3:
+                                if (is_null($abono[$e]->monto)) {
+                                    $prestamo[$i]->trimestral = $abono[$e]->monto;
+                                } else {
+                                    $prestamo[$i]->trimestral = $abono[$e]->monto;
+                                }
+                                if (!array_has($prestamo[$i], 'sueldo')) {
+                                    $prestamo[$i]->sueldo = 0;
+                                }
+                                if (!array_has($prestamo[$i], 'conflicto')) {
+                                    $prestamo[$i]->conflicto = 0;
+                                }
+                                break;
+
+                            default:
+                                # code...
+                                break;
+                        }
+                    }
+                } else {
+                    $prestamo[$i]->sueldo = 0;
+                    $prestamo[$i]->conflicto = 0;
+                    $prestamo[$i]->trimestral = 0;
+                }
+
+                if (is_null($prestamo[$i]->monto_ingreso)) {
+                    $prestamo[$i]->monto_ingreso = 0;
+                }
+                $prestamo[$i]->monto_restante_p = $prestamo[$i]->total_prestamo_no_interes - ($prestamo[$i]->sueldo + $prestamo[$i]->conflicto + $prestamo[$i]->trimestral) - $prestamo[$i]->monto_ingreso;
+            }
+
+            $return = [];
+            $return['salud'] = [];
+            $return['apuro'] = [];
+            $return['aporte'] = [];
+
+            foreach ($prestamo as $key) {
+
+                switch ($key->tipo_prestamo_id) {
+                    case 1:
+                        $return['salud'][] = $key;
+                        break;
+
+                    case 2:
+                        $return['apuro'][] = $key;
+                        break;
+
+                    case 3:
+                        $return['aporte'][] = $key;
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            return $return;
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existen prestamos en la fecha ingresada.'];
+        }
+    }
+
+    protected function traerAbonos($anioP, $mesP, $prestamo_id)
     {
         $abonos = DB::table('detalle_prestamo_tipo_abono as dpta')
             ->select([
                 'dpta.id',
                 'pta.cs_prestamo_id',
+                'dpta.prestamo_abono_id',
                 'dpta.anio_id',
                 'dpta.mes_id',
                 'dpta.monto_ingreso',
@@ -777,6 +870,8 @@ class Cs_prestamos extends Model
             ])
             ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
             ->where([
+                'dpta.anio_id' => $anioP,
+                'dpta.mes_id' => $mesP,
                 'pta.cs_prestamo_id' => $prestamo_id,
                 'dpta.activo' => 'S'
             ])
@@ -790,11 +885,9 @@ class Cs_prestamos extends Model
 
     protected function pasarPrestamoAbonoProxMes($detalle_prestamo_id)
     {
-        
         $detallePM = DetallePrestamo::find($detalle_prestamo_id);
         $prestamo = Cs_prestamos::find($detallePM->prestamo_id);
 
-        /* dd($prestamo->tipo_prestamo_id == 1 && $detallePM->cuota == $prestamo->cuota && ($detallePM->estado == 1 || $detallePM->estado == 4)); */
         if ($prestamo->tipo_prestamo_id == 1 && $detallePM->cuota == $prestamo->cuota && ($detallePM->estado == 1 || $detallePM->estado == 4)) {
 
             if ($detallePM->mes_id == 12) {
@@ -828,7 +921,112 @@ class Cs_prestamos extends Model
                 $proxMes->estado = 4;
 
                 if ($proxMes->save()) {
-                    return ['estado' => 'success'];
+                    $abonos = $this->traerAbonos($detallePM->anio_id, $detallePM->mes_id, $detallePM->prestamo_id);
+
+                    if ($abonos['estado'] == 'success') {
+                        $pasarPM = [];
+                        $pasarPM[0] = '';
+                        $pasarPM[1] = '';
+                        $pasarPM[2] = '';
+
+                        foreach ($abonos['abonos'] as $key) {
+                            switch ($key->tipo) {
+                                case 1:
+                                    $pasarPM[0] = $key;
+                                    break;
+                                case 2:
+                                    $pasarPM[1] = $key;
+                                    break;
+                                case 3:
+                                    $pasarPM[2] = $key;
+                                    break;
+                                default:
+                                    # code...
+                                    break;
+                            }
+                        }
+
+                        for ($i = 0; $i < count($pasarPM); $i++) {
+                            switch ($pasarPM[$i]->tipo) {
+                                case 1:
+                                    $detalleAbono = new DetallePrestamoAbono;
+
+                                    $detalleAbono->prestamo_abono_id = $pasarPM[$i]->prestamo_abono_id;
+                                    $detalleAbono->anio_id = $anio;
+                                    $detalleAbono->mes_id = $mes;
+                                    $detalleAbono->dia = $detallePM->dia;
+                                    $detalleAbono->monto_egreso = $pasarPM[$i]->monto_egreso;
+                                    $detalleAbono->definicion = 3;
+                                    $detalleAbono->estado = $pasarPM[$i]->estado;
+                                    $detalleAbono->activo = 'S';
+                                    if ($pasarPM[$i]->monto_pagado == 0) {
+                                        $detalleAbono->monto_pagado = null;
+                                    } else {
+                                        $detalleAbono->monto_pagado = $pasarPM[$i]->monto_pagado;
+                                    }
+
+                                    if ($detalleAbono->save()) {
+                                        break;
+                                    } else {
+                                        break;
+                                    }
+                                    break;
+                                case 2:
+                                    $detalleAbono = new DetallePrestamoAbono;
+
+                                    $detalleAbono->prestamo_abono_id = $pasarPM[$i]->prestamo_abono_id;
+                                    $detalleAbono->anio_id = $anio;
+                                    $detalleAbono->mes_id = $mes;
+                                    $detalleAbono->dia = $detallePM->dia;
+                                    $detalleAbono->monto_egreso = $pasarPM[$i]->monto_egreso;
+                                    $detalleAbono->definicion = 3;
+                                    $detalleAbono->estado = $pasarPM[$i]->estado;
+                                    $detalleAbono->activo = 'S';
+                                    if ($pasarPM[$i]->monto_pagado == 0) {
+                                        $detalleAbono->monto_pagado = null;
+                                    } else {
+                                        $detalleAbono->monto_pagado = $pasarPM[$i]->monto_pagado;
+                                    }
+
+                                    if ($detalleAbono->save()) {
+                                        break;
+                                    } else {
+                                        break;
+                                    }
+                                    break;
+                                case 3:
+                                    $detalleAbono = new DetallePrestamoAbono;
+
+                                    $detalleAbono->prestamo_abono_id = $pasarPM[$i]->prestamo_abono_id;
+                                    $detalleAbono->anio_id = $anio;
+                                    $detalleAbono->mes_id = $mes;
+                                    $detalleAbono->dia = $detallePM->dia;
+                                    $detalleAbono->monto_egreso = $pasarPM[$i]->monto_egreso;
+                                    $detalleAbono->definicion = 3;
+                                    $detalleAbono->estado = $pasarPM[$i]->estado;
+                                    $detalleAbono->activo = 'S';
+                                    if ($pasarPM[$i]->monto_pagado == 0) {
+                                        $detalleAbono->monto_pagado = null;
+                                    } else {
+                                        $detalleAbono->monto_pagado = $pasarPM[$i]->monto_pagado;
+                                    }
+
+                                    if ($detalleAbono->save()) {
+                                        break;
+                                    } else {
+                                        break;
+                                    }
+                                    break;
+
+                                default:
+                                    # code...
+                                    break;
+                            }
+                        }
+                        return ['estado' => 'success'];
+                    } else {
+                        return ['estado' => 'failed'];
+                    }
                 } else {
                     return ['estado' => 'failed'];
                 }
@@ -895,8 +1093,8 @@ class Cs_prestamos extends Model
         if ($verificarInicioM['estado'] == 'success') {
             $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
             $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
-            //traerAbonos($anioP, $anioDP, $mesP, $mesDP, $prestamo_id)
-            $abonos = $this->traerAbonos($prestamo->anio_id, $dPrestamo->anio_id, $prestamo->mes_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
+
+            $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
 
             $vigente = [];
             if ($abonos['estado'] == 'success') {
@@ -930,6 +1128,15 @@ class Cs_prestamos extends Model
                             # code...
                             break;
                     }
+                }
+                if (!array_has($vigente, 'salud')) {
+                    $vigente['salud'] = false;
+                }
+                if (!array_has($vigente, 'apuro')) {
+                    $vigente['apuro'] = false;
+                }
+                if (!array_has($vigente, 'aporte')) {
+                    $vigente['aporte'] = false;
                 }
                 if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
                     $estado = true;
@@ -1001,7 +1208,111 @@ class Cs_prestamos extends Model
                             return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                         }
                     } else {
-                        return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                        /* dd($abonos); */
+                        if ($abonos['estado'] == 'success') {
+                            $pasarPM = [];
+                            $pasarPM[0] = '';
+                            $pasarPM[1] = '';
+                            $pasarPM[2] = '';
+
+                            foreach ($abonos['abonos'] as $key) {
+                                switch ($key->tipo) {
+                                    case 1:
+                                        $pasarPM[0] = $key;
+                                        break;
+                                    case 2:
+                                        $pasarPM[1] = $key;
+                                        break;
+                                    case 3:
+                                        $pasarPM[2] = $key;
+                                        break;
+                                    default:
+                                        # code...
+                                        break;
+                                }
+                            }
+
+                            for ($e = 0; $e < count($pasarPM); $e++) {
+                                switch ($pasarPM[$e]->tipo) {
+                                    case 1:
+                                        $detalleAbono = new DetallePrestamoAbono;
+
+                                        $detalleAbono->prestamo_abono_id = $pasarPM[$e]->prestamo_abono_id;
+                                        $detalleAbono->anio_id = $anio->id;
+                                        $detalleAbono->mes_id = $mes->id;
+                                        $detalleAbono->dia = $fecha['dia'];
+                                        $detalleAbono->monto_egreso = $pasarPM[$e]->monto_egreso;
+                                        $detalleAbono->definicion = 3;
+                                        $detalleAbono->estado = 1;
+                                        $detalleAbono->activo = 'S';
+                                        if ($pasarPM[$e]->monto_pagado == 0) {
+                                            $detalleAbono->monto_pagado = null;
+                                        } else {
+                                            $detalleAbono->monto_pagado = $pasarPM[$e]->monto_pagado;
+                                        }
+
+                                        if ($detalleAbono->save()) {
+                                            break;
+                                        } else {
+                                            break;
+                                        }
+                                        break;
+                                    case 2:
+                                        $detalleAbono = new DetallePrestamoAbono;
+
+                                        $detalleAbono->prestamo_abono_id = $pasarPM[$e]->prestamo_abono_id;
+                                        $detalleAbono->anio_id = $anio->id;
+                                        $detalleAbono->mes_id = $mes->id;
+                                        $detalleAbono->dia = $fecha['dia'];
+                                        $detalleAbono->monto_egreso = $pasarPM[$e]->monto_egreso;
+                                        $detalleAbono->definicion = 3;
+                                        $detalleAbono->estado = 1;
+                                        $detalleAbono->activo = 'S';
+                                        if ($pasarPM[$e]->monto_pagado == 0) {
+                                            $detalleAbono->monto_pagado = null;
+                                        } else {
+                                            $detalleAbono->monto_pagado = $pasarPM[$e]->monto_pagado;
+                                        }
+
+                                        if ($detalleAbono->save()) {
+                                            break;
+                                        } else {
+                                            break;
+                                        }
+                                        break;
+                                    case 3:
+                                        $detalleAbono = new DetallePrestamoAbono;
+
+                                        $detalleAbono->prestamo_abono_id = $pasarPM[$e]->prestamo_abono_id;
+                                        $detalleAbono->anio_id = $anio->id;
+                                        $detalleAbono->mes_id = $mes->id;
+                                        $detalleAbono->dia = $fecha['dia'];
+                                        $detalleAbono->monto_egreso = $pasarPM[$e]->monto_egreso;
+                                        $detalleAbono->definicion = 3;
+                                        $detalleAbono->estado = 1;
+                                        $detalleAbono->activo = 'S';
+                                        if ($pasarPM[$e]->monto_pagado == 0) {
+                                            $detalleAbono->monto_pagado = null;
+                                        } else {
+                                            $detalleAbono->monto_pagado = $pasarPM[$e]->monto_pagado;
+                                        }
+
+                                        if ($detalleAbono->save()) {
+                                            break;
+                                        } else {
+                                            break;
+                                        }
+                                        break;
+
+                                    default:
+                                        # code...
+                                        break;
+                                }
+                            }
+                            return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                        } else {
+                            return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
+                        }
                     }
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
@@ -1027,13 +1338,11 @@ class Cs_prestamos extends Model
             $dPrestamo = DetallePrestamo::find($request->detalle_prestamo_id);
             $prestamo = Cs_prestamos::find($dPrestamo->prestamo_id);
 
-
-            /*  $abonos = $this->traerAbonos($prestamo->anio_id, $dPrestamo->anio_id, $prestamo->mes_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
-            dd($abonos); */
-
             $abono = DB::table('detalle_prestamo_tipo_abono as dpta')
                 ->join('cs_prestamo_tipo_abono_cuotas as pta', 'pta.id', 'dpta.prestamo_abono_id')
                 ->where([
+                    'dpta.anio_id' => $dPrestamo->anio_id,
+                    'dpta.mes_id' => $dPrestamo->mes_id,
                     'pta.tipo_abono_cuotas_id' => $request->tipo_abono_id,
                     'pta.cs_prestamo_id' => $prestamo->id,
                     'dpta.activo' => 'S'
@@ -1042,7 +1351,7 @@ class Cs_prestamos extends Model
 
             if (!$abono->isEmpty()) {
                 foreach ($abono as $key) { }
-                if (($key->estado) == 1) {
+                if ($key->estado == 1) {
                     $dAbono = new DetallePrestamoAbono;
                     $dAbono->prestamo_abono_id = $key->prestamo_abono_id;
                     $dAbono->anio_id = $anio->id;
@@ -1064,10 +1373,10 @@ class Cs_prestamos extends Model
                         if ($ultimoPago->monto_egreso == 0) {
                             $ultimoPago->estado = 2;
                             if ($ultimoPago->save()) {
-                                //traerAbonos($anioP, $anioDP, $mesP, $mesDP, $prestamo_id)
-                                $abonos = $this->traerAbonos($prestamo->anio_id, $dPrestamo->anio_id, $prestamo->mes_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
-                                /* dd($abonos); */
+
+                                $abonos = $this->traerAbonos($dPrestamo->anio_id, $dPrestamo->mes_id, $dPrestamo->prestamo_id);
                                 $vigente = [];
+
                                 if ($abonos['estado'] == 'success') {
                                     for ($i = 0; $i < count($abonos['abonos']); $i++) {
                                         switch ($abonos['abonos'][$i]->tipo) {
@@ -1100,18 +1409,37 @@ class Cs_prestamos extends Model
                                                 break;
                                         }
                                     }
+
+                                    if (!array_has($vigente, 'salud')) {
+                                        $vigente['salud'] = false;
+                                    }
+                                    if (!array_has($vigente, 'apuro')) {
+                                        $vigente['apuro'] = false;
+                                    }
+                                    if (!array_has($vigente, 'aporte')) {
+                                        $vigente['aporte'] = false;
+                                    }
+
                                     if ($vigente['salud'] == false && $vigente['apuro'] == false && $vigente['aporte'] == false) {
                                         $estado = true;
                                     } else {
                                         $estado = false;
                                     }
                                     if ($estado == true) {
-                                        //$detalle->estado = 2;
-                                        $prestamo->estado_prestamo_id = 2;
-                                        if ($prestamo->save()) {
-                                            return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                                        if ($dPrestamo->cuota == $prestamo->cuota) {
+                                            $dPrestamo->estado = 2;
+                                            if ($dPrestamo->save()) {
+                                                $prestamo->estado_prestamo_id = 2;
+                                                if ($prestamo->save()) {
+                                                    return ['estado' => 'success', 'mensaje' => 'Prestamo Finalizado'];
+                                                } else {
+                                                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                                }
+                                            } else {
+                                                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                            }
                                         } else {
-                                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error al realizar el pago'];
+                                            return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];
                                         }
                                     } else {
                                         return ['estado' => 'success', 'mensaje' => 'Pago Realizado'];

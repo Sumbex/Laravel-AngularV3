@@ -4,6 +4,9 @@ import { AniosService } from '../../servicios/anios.service';
 import { CsDetalleCampingService } from '../../servicios/cs-detalle-camping.service';
 import { ValidarUsuarioService } from '../../servicios/validar-usuario.service';
 
+import { Definicion } from 'src/app/modelos/definicion.model';
+import { SindicalService } from 'src/app/servicios/sindical.service';
+
 @Component({
   selector: 'app-modal-camping',
   templateUrl: './modal-camping.component.html',
@@ -27,11 +30,26 @@ export class ModalCampingComponent implements OnInit {
   load:boolean=false;
   user:object=[];
 
+  //actualizar
+  entrada;
+  archivoDocumento;
+  selectDefinicion: Definicion[] = [];
+  modalActualizar = null;
+
+  actualizarLoad:boolean=false;
+  actualizarRecalcular:boolean = false;
+
+  m_val = null;
+  closeResult: string;
+  pass:string = '';
+  buttonStatus = false;
+
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal, 
     private _anios:AniosService, 
     private _camping:CsDetalleCampingService,
-    private _validarusuario:ValidarUsuarioService
+    private _validarusuario:ValidarUsuarioService,
+    private _sindicalService: SindicalService
   ) {
 
     config.backdrop = 'static';
@@ -110,6 +128,13 @@ export class ModalCampingComponent implements OnInit {
           });
   }
   guarda_monto(){
+
+        if (this.monto == '') {
+
+          alert("No ha ingresado un monto en este campo");
+          return false;
+        }
+
           this._camping.guardar(this.anio, this.mes, this.monto).subscribe((val) => {
               //this.detallecamping = val;
               if (val.estado == 'success') {
@@ -183,4 +208,107 @@ export class ModalCampingComponent implements OnInit {
   validar_usuario(validar){
        this.modalReference = this.modalService.open(validar, { size: 'sm' });
   }
+
+
+   openActualizar(Actualizar) {
+   this.modalActualizar = this.modalService.open(Actualizar,{ size: 'sm' });
+   this.usuario_logeado();
+   
+  }
+  cerrarActualizar(){
+    this.modalActualizar.close();
+    //this.actualizarMontoCajaChica = '';
+  }
+
+   onSelectImage(event) {  
+       this.archivoDocumento = event.srcElement.files[0];
+  }
+
+  //actualizar items
+  actualizar(id,campo,input,validar){
+    if(campo == "archivo"){
+      if(validar == "undefined"){
+        alert("ingrese documento porfavor!")
+        return false;
+      }
+      this.entrada = this.archivoDocumento; 
+     }else{
+       this.entrada = input.value;
+     }
+     if(this.entrada == ''){
+       alert("ingrese datos porfavor!");
+       return false;
+     }
+    this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
+
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
+
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            
+          //si tiene acceso
+          if(val > 0){
+          
+            this.load = false;
+            this.buttonStatus = false;
+            this.pass = "";
+            
+           this.m_val.close();
+           
+                const form = new FormData();
+                form.append('id', id);
+                form.append('campo', campo);
+                form.append('valor', input.value);
+
+                this.actualizarLoad = true;
+                this._sindicalService.getTablaSindicalActualizar(id,campo,this.entrada).subscribe(
+                    response => {
+                      if (response.estado == "success") {
+                       alert(""+response.mensaje+"");
+                       this.modalActualizar.close();
+                       //this.archivoDocumento = null;
+                       this.listo_para_listar(this.suc_res1, this.suc_res2);
+                       this.actualizarLoad = false;
+                       this.pass = "";
+                      }
+                      if (response.estado == "failed") {
+                       alert(""+response.mensaje+"");
+                       //this.archivoDocumento = null;
+                       this.actualizarLoad = false;
+                       this.pass = "";
+                       return false;
+                      }
+                      
+                    }
+                  );
+
+
+
+          }else{
+            alert("Acceso denegado");
+            this.load = false;
+            this.buttonStatus = false;
+            this.pass = "";
+            this.m_val.close();
+            return false;
+          }
+
+      }, response => {console.log("POST call in error", response);},() => {
+             console.log("The POST success.");
+      });
+      return false;
+
+    
+  }, (reason) => {
+    console.log(`${reason}`);
+    //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+
+
+}
 }

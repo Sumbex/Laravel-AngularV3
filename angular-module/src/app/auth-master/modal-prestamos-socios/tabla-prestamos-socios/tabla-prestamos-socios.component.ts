@@ -38,6 +38,10 @@ export class TablaPrestamosSociosComponent implements OnInit {
   //Variables de carga
   cargandoTabla = false;
 
+  //Variables para bloquear botones
+  blockPagoAbono = false;
+  blockPagoPrestamo = false;
+
   constructor(private _sindicalService: SindicalService,
     private _fechasService: AniosService,
     config: NgbModalConfig,
@@ -132,31 +136,44 @@ export class TablaPrestamosSociosComponent implements OnInit {
   }
 
   pagarPrestamo(fecha, prestamoId, montoPagar) {
+    this.blockPagoPrestamo = true;
     this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(
       response => {
         if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoPrestamo = false;
           alert(response.mensaje);
         } else {
           this.cerrarActualizar();
+          this.blockPagoPrestamo = false;
+          alert("Se ha realizado el pago correctamente");
+        }
+      },
+      error => {
+        this.blockPagoPrestamo = false;
+        alert("Ha ocurrido un error");
+      }
+    )
+  }
+
+  pagarAbono(id, definicionSelectAbono, fecha, monto){
+    this.blockPagoAbono = true;
+    console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
+    this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoAbono = false;
+          this.refrescarTablaPrestamosClientes();
+          alert("Ha ocurrido un error compruebe que los datos sean validos");
+        }else{
+          this.cerrarActualizar();
+          this.blockPagoAbono = false;
           alert("Se ha realizado el pago correctamente");
         }
       },
       error => {
         console.log(error);
-      }
-    )
-  }
-
-  test(id, definicionSelectAbono, fecha, monto){
-    console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
-    this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
-      response => {
-        if (response.estado == "failed" || response.estado == "failed_v") {
-          alert("Ha ocurrido un error compruebe que los datos sean validos");
-        }else{
-          this.cerrarActualizar();
-          alert("Se ha realizado el pago correctamente");
-        }
+        this.blockPagoAbono = false;
+        alert("Ha ocurrido un error");
       }
     )
   }

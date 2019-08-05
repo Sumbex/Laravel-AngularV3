@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cuentasindicato;
 use App\Montocierrecamping;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CsDetalleCampingController extends Controller
@@ -169,10 +170,45 @@ class CsDetalleCampingController extends Controller
         if (!empty($query_ingreso)) {
             $query_ingreso->monto_ingreso = $ingreso;
             $query_ingreso->save();
+
+        }else{
+
+            $camp_i = new Cuentasindicato;
+            $camp_i->dia = '1';
+            $camp_i->mes_id = $mes;
+            $camp_i->anio_id= $anio;
+            $camp_i->numero_documento = '--';
+            $camp_i->archivo_documento = '--';
+            $camp_i->tipo_cuenta_sindicato = '5';
+            $camp_i->descripcion = 'Detalle camping ingreso';
+            $camp_i->monto_ingreso = $ingreso;
+            $camp_i->definicion = '1';
+            $camp_i->user_crea = Auth::user()->id;
+            $camp_i->activo = 'S';
+
+            $camp_i->save();
         }
+
         if (!empty($query_egreso)) {
             $query_egreso->monto_egreso = $egreso;
             $query_egreso->save();
+
+        }else{
+
+            $camp_e = new Cuentasindicato;
+            $camp_e->dia = '1';
+            $camp_e->mes_id = $mes;
+            $camp_e->anio_id= $anio;
+            $camp_e->numero_documento = '--';
+            $camp_e->archivo_documento = '--';
+            $camp_e->tipo_cuenta_sindicato = '5';
+            $camp_e->descripcion = 'Detalle camping egreso';
+            $camp_e->monto_egreso = $egreso;
+            $camp_e->definicion = '2';
+            $camp_e->user_crea = Auth::user()->id;
+            $camp_e->activo = 'S';
+
+                                                    $camp_e->save();
         }
     }
 }

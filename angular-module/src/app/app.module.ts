@@ -48,6 +48,12 @@ import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-soc
 import { InteresPrestamoApuroEconomicoComponent } from './auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component';
 import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component';
 import { TablaPrestamosHistoricosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component';
+import { TablasBeneficiosComponent } from './auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component';
+import { SocioComponent } from './auth-master/cuenta-socios/tablas-beneficios/socio/socio.component';
+import { ConyugeComponent } from './auth-master/cuenta-socios/tablas-beneficios/conyuge/conyuge.component';
+import { BeneficiarioComponent } from './auth-master/cuenta-socios/tablas-beneficios/beneficiario/beneficiario.component';
+import { CargasComponent } from './auth-master/cuenta-socios/tablas-beneficios/cargas/cargas.component';
+import { PadresSuegrosComponent } from './auth-master/cuenta-socios/tablas-beneficios/padres-suegros/padres-suegros.component';
 
 
 @NgModule({
@@ -95,7 +101,19 @@ import { TablaPrestamosHistoricosSociosComponent } from './auth-master/modal-pre
 
     BeneficiosSociosComponent,
 
-    TablaPrestamosHistoricosSociosComponent
+    TablaPrestamosHistoricosSociosComponent,
+
+    TablasBeneficiosComponent,
+
+    SocioComponent,
+
+    ConyugeComponent,
+
+    BeneficiarioComponent,
+
+    CargasComponent,
+
+    PadresSuegrosComponent
 
   ],
   imports: [

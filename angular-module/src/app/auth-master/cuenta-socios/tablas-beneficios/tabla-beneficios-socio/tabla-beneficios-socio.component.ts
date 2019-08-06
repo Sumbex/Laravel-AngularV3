@@ -35,8 +35,7 @@ export class TablaBeneficiosSocioComponent implements OnInit {
       alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
       return false;
     }else{
-      this.traerDatosSocio = response;
-      console.log(this.traerDatosSocio);
+      this.traerDatosSocio = response[0];
     }
 
        error => {

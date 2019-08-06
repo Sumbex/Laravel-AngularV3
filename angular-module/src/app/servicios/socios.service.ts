@@ -65,7 +65,14 @@ export class SociosService {
         )});
     }
 
-    insertarDatosSocio(){
-        
-    }
+    insertarDatosSocio(form): Observable<any>{
+      
+
+        return this._http.post(this.url + "guardar_datos_socio", form, {headers: new HttpHeaders(
+              {
+                  'Authorization': 'Bearer' + this.token,
+              }
+              )});
+          }
+  
 }

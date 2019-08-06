@@ -1,95 +1,217 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+    <!--MODAL INICIO DE SESIÓN PARA ADMINS-->
+    <ng-template #Admins let-modal>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title">Inicie sesión para entrar al modulo administrativo</h6>
+        <button id="closeModalLogin" type="button" class="close" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="card-header" id="demoFont"><strong class="text-center"><h6>Iniciar Sesión</h6></strong></div>
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+              <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+                <div class="row">
+                  <!--formulario login-->
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="card-body row justify-content-end">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+                        <div class="form-group">
+                          <label><strong>Rut</strong></label>&nbsp;
+                          <i class="fas fa-info-circle" placement="right"
+                            ngbTooltip="Ingrese rut sin puntos ni guion."></i>
+                          <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel"
+                            [(ngModel)]="usuario.email" required>
+                          <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut
+                            ingresado no es valido</small>
+                        </div>
+
+                        <div class="form-group">
+                          <label><strong>Contraseña</strong></label>&nbsp;
+                          <i class="fas fa-info-circle" placement="right"
+                            ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
+                          <input type="password" class="form-control" placeholder="********" name="password"
+                            #password="ngModel" [(ngModel)]="usuario.password" required>
+                          <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese
+                            una contraseña valida</small>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--boton identificar-->
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row justify-content-end">
+                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                        <input type="submit" value="Identificarse" class="btn btn-success"
+                          [disabled]="loginForm.invalid">
+                      </div>
+                  <!--loading-->
+                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                        <div *ngIf="loading" class="loader">Loading...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div> <br>
+                <!--comprobar alert-->
+                <div class="row justify-content-center">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
+                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
+                      <strong>contraseña</strong> sean las correctas e intente nuevamente.
+                    </ngb-alert>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
           </div>
         </div>
+
       </div>
-    
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-    
-            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-              <div class="card">
-    
+
+    </ng-template>
+
+    <!--MODAL INICIO DE SESISION SOCIOS-->
+    <ng-template #Socios let-modal>
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title">Inicie sesión para entrar al modulo de socios</h6>
+        <button id="closeModalLogin" type="button" class="close" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+
+              <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
                 <div class="row">
-                  
-                  <!--logo sindicato-->
-                  <div class="col-4 col-md-4 col-lg-4 col-xl-4">
-                      <div class="card-body row justify-content-start">
-                        <div class="col-10 col-md-10 col-lg-10 col-xl-10">
-    
-                          <div class="form-group">
-                            <img src="/assets/logo-sindicato-transparente-2.png" width="120" height="120" style="margin-top:20px;">
-                          </div>
-    
-                        </div>
-                      </div>
-                  </div>
-    
                   <!--formulario login-->
                   <div class="col-8 col-md-7 col-lg-7 col-xl-7">
-                      <div class="card-body row justify-content-end">
-                        <div class="col-10 col-md-12 col-lg-12 col-xl-12">
-                            
-                          <div class="form-group">
-                              <label><strong>Rut</strong></label>&nbsp;
-                              <i class="fas fa-info-circle" placement="right" ngbTooltip="Ingrese rut sin puntos ni guion."></i>
-                              <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel" [(ngModel)]="usuario.email" required>
-                              <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut ingresado no es valido</small> 
-                          </div>
-                      
-                          <div class="form-group">
-                              <label><strong>Contraseña</strong></label>&nbsp;
-                              <i class="fas fa-info-circle" placement="right" ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
-                              <input type="password"  class="form-control" placeholder="********" name="password" #password="ngModel" [(ngModel)]="usuario.password" required>
-                              <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese una contraseña valida</small>
-                          </div>
-    
+                    <div class="card-body row justify-content-end">
+                      <div class="col-10 col-md-12 col-lg-12 col-xl-12">
+
+                        <div class="form-group">
+                          <label><strong>Rut</strong></label>&nbsp;
+                          <i class="fas fa-info-circle" placement="right"
+                            ngbTooltip="Ingrese rut sin puntos ni guion."></i>
+                          <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel"
+                            [(ngModel)]="usuario.email" required>
+                          <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut
+                            ingresado no es valido</small>
                         </div>
+
+                        <div class="form-group">
+                          <label><strong>Contraseña</strong></label>&nbsp;
+                          <i class="fas fa-info-circle" placement="right"
+                            ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
+                          <input type="password" class="form-control" placeholder="********" name="password"
+                            #password="ngModel" [(ngModel)]="usuario.password" required>
+                          <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese
+                            una contraseña valida</small>
+                        </div>
+
                       </div>
+                    </div>
                   </div>
-                
+
                   <!--boton identificar-->
                   <div class="col-7 col-md-7 col-lg-7 col-xl-7">
                     <div class="card-body row justify-content-end" style="margin-top:-40px;">
                       <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-                        <input type="submit" value="Identificarse" class="btn btn-success" [disabled]="loginForm.invalid"> 
-                      </div>  
+                        <input type="submit" value="Identificarse" class="btn btn-success"
+                          [disabled]="loginForm.invalid">
+                      </div>
                     </div>
                   </div>
                   <!--loading-->
                   <div class="col-5 col-md-5 col-lg-5 col-xl-5">
-                      <div class="card-body row justify-content-end" style="margin-top:-40px;">
-                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                          <div *ngIf="loading" class="loader">Loading...</div>
-                        </div>
+                    <div class="card-body row justify-content-end" style="margin-top:-40px;">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div *ngIf="loading" class="loader">Loading...</div>
                       </div>
+                    </div>
                   </div>
-    
                 </div>
                 <!--comprobar alert-->
                 <div class="row justify-content-center">
                   <div class="col-11 col-md-10 col-lg-10 col-xl-10">
                     <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
-                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y <strong>contraseña</strong> sean las correctas e intente nuevamente.
+                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
+                      <strong>contraseña</strong> sean las correctas e intente nuevamente.
                     </ngb-alert>
                   </div>
                 </div>
-    
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </ng-template>
+
+    <!--logo sindicato-->
+    <div class="col-12">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="row justify-content-end">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+              <div class="form-group"><br><br>
+                <img class="img-fluid" src="/assets/logo-sindicato-transparente-2.png" width="700" height="700" style="margin-top:20px;">
               </div>
-            </form>
-    
+
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center col-12 col-sm-8 col-lg-8 col-xl-8">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-5 col-lg-5 col-xl-5">
+              <div class="card bg-success text-white mb-3" (click)="openLoginAdmins(Admins)" style="cursor: pointer">
+                <div class="card-body">
+                  <h5>
+                    <i class="fas fa-users"></i> Modulo <br> Administrativo
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-5 col-lg-5 col-xl-5">
+              <div class="card bg-danger text-white mb-3" (click)="openLoginAdmins(Socios)" style="cursor: pointer">
+                <div class="card-body">
+                  <h5>
+                    <i class="fas fa-users"></i> Modulo <br> Socios
+                  </h5>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
+    <!--
+    <label><strong>inicio de sesión para admins </strong></label><br>
+    <button type="button" class="btn btn btn-success btn-block btn-sm" (click)="openLoginAdmins(Admins)">Ingresar a
+      Administración</button>
+    <label><strong>inicio de sesión para Socios </strong></label><br>
+    <button type="button" class="btn btn btn-success btn-block btn-sm" (click)="openLoginAdmins(Admins)">Ingresar a
+      modulo de socios</button>
+-->
   </div>
 </div>
-

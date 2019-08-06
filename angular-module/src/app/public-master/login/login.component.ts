@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../modelos/usuarios.model';
 import { UsuarioService } from '../../servicios/usuarios.service';
 import { Router } from '@angular/router';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,10 @@ export class LoginComponent implements OnInit {
 
   public lockLogin: boolean = false;
 
-  constructor(private _userService: UsuarioService, private router: Router) {
+  constructor(private _userService: UsuarioService, private router: Router, config: NgbModalConfig, private modalService: NgbModal) {
     this.usuario = new Usuario();
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   ngOnInit() {
@@ -26,6 +29,10 @@ export class LoginComponent implements OnInit {
     if (this.token != null) {
       this.router.navigate(['AuthMaster']);
     }
+  }
+
+  openLoginAdmins(Admins){
+    this.modalService.open(Admins, { size: 'sm' });
   }
 
   onSubmit(form) {
@@ -40,6 +47,7 @@ export class LoginComponent implements OnInit {
         console.log(response);
         this.lockLogin = false;
         this.router.navigate(['AuthMaster']);
+        document.getElementById("closeModalLogin").click();
       }else{
         console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;

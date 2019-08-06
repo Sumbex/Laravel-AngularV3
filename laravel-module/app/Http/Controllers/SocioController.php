@@ -328,10 +328,10 @@ class SocioController extends Controller
 
                     $sdb->direccion = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Direccion actualizada!']; 
+                        return ['estado'=>'success','mensaje'=>'Direccion actualizada!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -339,10 +339,10 @@ class SocioController extends Controller
 
                     $sdb->telefono = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Telefono actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Telefono actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -350,10 +350,10 @@ class SocioController extends Controller
                     
                      $sdb->celular = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Celular actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Celular actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -361,10 +361,10 @@ class SocioController extends Controller
                 
                     $sdb->anexo = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Anexo actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Anexo actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -372,10 +372,10 @@ class SocioController extends Controller
 
                     $sdb->email_1 = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Email personal actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Email personal actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -383,10 +383,10 @@ class SocioController extends Controller
 
                     $sdb->email_2 = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Email corporativo actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Email corporativo actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -394,10 +394,10 @@ class SocioController extends Controller
                     
                     $sdb->cargo_planta = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Cargo de planta actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Cargo de planta actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -405,10 +405,10 @@ class SocioController extends Controller
                     
                     $sdb->cargo_comision_sindicato = $r->valor;
                     if ($sdb->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Cargo o comision de planta actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Cargo o comision de planta actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -416,40 +416,40 @@ class SocioController extends Controller
                     
                     $ss->numero_cuenta = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Numero de cuenta actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Numero de cuenta actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
             case 'socio_tipo_cuenta_banco_id':
 
                     $ss->tipo_cuenta_banco_id = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Tipo de cuenta actualizada!']; 
+                        return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
             case 'socio_banco':
 
                     $ss->banco = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Nombre de banco actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Nombre de banco actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
             case 'socio_isapre_fonasa':
 
                     $ss->isapre_fonasa = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Isapre o fonaza actualizada!']; 
+                        return ['estado'=>'success','mensaje'=>'Isapre o fonaza actualizada!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;
@@ -457,10 +457,10 @@ class SocioController extends Controller
                     
                     $ss->grupo_sangre = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success'=>'mensaje'=>'Grupo de sangre actualizado!']; 
+                        return ['estado'=>'success','mensaje'=>'Grupo de sangre actualizado!']; 
                     }
                     else {
-                        return ['estado'=>'failed'=>'mensaje'=>'Error al actualizar!']; 
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
 
             break;

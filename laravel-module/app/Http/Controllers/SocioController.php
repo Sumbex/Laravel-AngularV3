@@ -319,10 +319,6 @@ class SocioController extends Controller
     }
 
 
-
-
-
-
     public function actualizar_datos_socio(Request $r)//$id, $campo, $valor
     {
         $sdb = Socio_datos_basicos::where(['activo' => 'S','socio_id' => $r->id])->first();
@@ -476,6 +472,24 @@ class SocioController extends Controller
                 break;
         }
     }
+
+    public function traer_datos_socio($socio_id)
+    {
+        $list = DB::select("SELECT * from socios_datos_basicos as sdb
+                    inner join socio_situacion ss on ss.socio_id = sdb.socio_id where sdb.socio_id = $socio_id 
+                    and sdb.activo = 'S' and ss.activo = 'S'");
+
+        if (count($list) > 0) {
+            return $list;
+        }
+        return "null";
+    }
+
+    // public function guardar_datos_conyuge(Request $r)
+    // {
+        
+    // }
+
 
     function valida_rut($rut)
     {

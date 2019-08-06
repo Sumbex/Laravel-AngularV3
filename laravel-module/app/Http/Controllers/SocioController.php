@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SocioSituacion;
 use App\Socio_datos_basicos;
 use App\Socios;
 use Illuminate\Http\Request;

@@ -267,7 +267,7 @@ class SocioController extends Controller
             $sdb->email_2 = $r->email_2;
             $sdb->cargo_planta = $r->cargo_planta;
             $sdb->cargo_comision_sindicato = $r->cargo_comision_sindicato;
-            $sdb->casa_propia = $casa_propia;
+            $sdb->casa_propia = $r->casa_propia;
             $sdb->rol_turno = $r->rol_turno;
             $sdb->estado_civil_id = $r->estado_civil_id;
             $sdb->conyuge = $r->conyuge;

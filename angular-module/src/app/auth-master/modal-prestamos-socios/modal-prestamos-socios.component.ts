@@ -216,6 +216,9 @@ export class ModalPrestamosSociosComponent implements OnInit {
       alert("monto restante negativo");
     }
     this.inputPrestamoRestante = valor;
+    if(this.inputPrestamoRestante == 0){
+      this.datosEnvioPrestamo.cuotas = "0";
+    }
   }
 
 }

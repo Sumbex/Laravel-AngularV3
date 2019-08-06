@@ -84,7 +84,7 @@
     <!--MODAL INICIO DE SESISION SOCIOS-->
     <ng-template #Socios let-modal>
       <div class="modal-header" id="demoFont">
-        <h6 class="modal-title">Inicie sesión para entrar al modulo de socios</h6>
+        <h6 class="modal-title">Inicie sesión para entrar al portal de socios</h6>
         <button id="closeModalLogin" type="button" class="close" aria-label="Close"
           (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
@@ -94,14 +94,15 @@
 
         <div class="container-fluid">
           <div class="row justify-content-center">
-            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-              <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+              <form #loginFormSocios="ngForm" (ngSubmit)="onSubmitSocios(loginFormSocios)">
+
                 <div class="row">
                   <!--formulario login-->
-                  <div class="col-8 col-md-7 col-lg-7 col-xl-7">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card-body row justify-content-end">
-                      <div class="col-10 col-md-12 col-lg-12 col-xl-12">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
                         <div class="form-group">
                           <label><strong>Rut</strong></label>&nbsp;
@@ -128,32 +129,29 @@
                   </div>
 
                   <!--boton identificar-->
-                  <div class="col-7 col-md-7 col-lg-7 col-xl-7">
-                    <div class="card-body row justify-content-end" style="margin-top:-40px;">
-                      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row justify-content-end">
+                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                         <input type="submit" value="Identificarse" class="btn btn-success"
-                          [disabled]="loginForm.invalid">
+                          [disabled]="loginFormSocios.invalid">
                       </div>
-                    </div>
-                  </div>
                   <!--loading-->
-                  <div class="col-5 col-md-5 col-lg-5 col-xl-5">
-                    <div class="card-body row justify-content-end" style="margin-top:-40px;">
-                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                         <div *ngIf="loading" class="loader">Loading...</div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> <br>
                 <!--comprobar alert-->
                 <div class="row justify-content-center">
-                  <div class="col-11 col-md-10 col-lg-10 col-xl-10">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                     <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
                       <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
                       <strong>contraseña</strong> sean las correctas e intente nuevamente.
                     </ngb-alert>
                   </div>
                 </div>
+
               </form>
 
             </div>

@@ -270,7 +270,7 @@ class SocioController extends Controller
             $sdb->casa_propia = $casa_propia;
             $sdb->rol_turno = $r->rol_turno;
             $sdb->estado_civil_id = $r->estado_civil_id;
-            $sdb->conyuge = $r->conyuge
+            $sdb->conyuge = $r->conyuge;
             $sdb->activo = 'S';
 
             if ($sdb->save()) {

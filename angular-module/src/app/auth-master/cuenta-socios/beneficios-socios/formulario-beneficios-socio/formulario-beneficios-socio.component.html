@@ -1,6 +1,6 @@
 <ng-template #formularioBeneficiosSocio let-modal>
-    <div class="modal-header sticky-top" id="demoFont">
-      <h6 class="modal-title"><strong><i class="fas fa-table"></i>  Datos del Socio</strong></h6>
+    <div class="modal-header sticky-top" id="demoFont2">
+      <h6 class="modal-title"><i class="fas fa-table"></i>  Datos del Socio</h6>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -8,9 +8,6 @@
      <!--Cuerpo del body inicio y cierre mensual-->
     <div class="modal-body" id="printJS-table"> 
     <!--Datos del socio-->
-    <div class="card-header" id="demoFont2">
-      <h6 class="card-title">Datos del Socio</h6>
-      </div>
       <div class="card">
         <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
@@ -71,7 +68,7 @@
 
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
-                  <label><strong>Direccion</strong></label>
+                  <label><strong>Direccion*</strong></label>
                   <input type="text" class="form-control form-control-sm" required>
                 </div>
               </div>
@@ -132,7 +129,7 @@
 
               <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
                 <div class="form-group">
-                  <label><strong>Email Personal</strong></label>
+                  <label><strong>Email Personal*</strong></label>
                   <input type="email" class="form-control form-control-sm" required>
                 </div>
               </div>

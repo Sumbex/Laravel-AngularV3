@@ -43,9 +43,9 @@
                         ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
                     </label>
                     <div class="input-group">
-                      <input type="number" class="form-control form-control-sm" placeholder="Ingrese rut del socio sin guion" name="rut" required>
+                      <input type="text" [(ngModel)]="rut" class="form-control form-control-sm" placeholder="Ingrese rut del socio sin guion" name="rut" required>
                       <span class="input-group-btn">
-                        <button type="button" class="btn btn-outline-success btn-sm"><i *ngIf="!blockPrestamo" class="fas fa-search"></i></button>
+                        <button type="button"(click)="buscarSocio()" class="btn btn-outline-success btn-sm"><i class="fas fa-search"></i></button>
                       </span>
                     </div>
                   </div>

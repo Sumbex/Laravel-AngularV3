@@ -284,7 +284,7 @@ class SocioController extends Controller
         
         $verify_ss = SocioSituacion::where([
                         'activo' => 'S',
-                        'socio_id' => $socio_id
+                        'socio_id' => $r->socio_id
                       ])->first();
 
 

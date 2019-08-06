@@ -250,7 +250,7 @@ class SocioController extends Controller
 
         $verify_sdb = Socio_datos_basicos::where([
                         'activo' => 'S',
-                        'socio_id' => $socio_id
+                        'socio_id' => $r->socio_id
                       ])->first();
 
 
@@ -267,6 +267,10 @@ class SocioController extends Controller
             $sdb->email_2 = $r->email_2;
             $sdb->cargo_planta = $r->cargo_planta;
             $sdb->cargo_comision_sindicato = $r->cargo_comision_sindicato;
+            $sdb->casa_propia = $casa_propia;
+            $sdb->rol_turno = $r->rol_turno;
+            $sdb->estado_civil_id = $r->estado_civil_id;
+            $sdb->conyuge = $r->conyuge
             $sdb->activo = 'S';
 
             if ($sdb->save()) {

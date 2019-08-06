@@ -48,6 +48,16 @@ import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-soc
 import { InteresPrestamoApuroEconomicoComponent } from './auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component';
 import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component';
 import { TablaPrestamosHistoricosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component';
+import { TablasBeneficiosComponent } from './auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component';
+import { FormularioBeneficiosSocioComponent } from './auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component';
+import { FormularioBeneficiosBeneficiarioComponent } from './auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component';
+import { FormularioBeneficiosCargasComponent } from './auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component';
+import { FormularioBeneficiosConyugeComponent } from './auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component';
+import { FormularioBeneficiosPadresSuegrosComponent } from './auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component';
+import { TablaBeneficiosCargasComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component';
+import { TablaBeneficiosConyugeComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component';
+import { TablaBeneficiosPadresSuegrosComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component';
+import { TablaBeneficiosSocioComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component';
 
 
 @NgModule({
@@ -95,7 +105,27 @@ import { TablaPrestamosHistoricosSociosComponent } from './auth-master/modal-pre
 
     BeneficiosSociosComponent,
 
-    TablaPrestamosHistoricosSociosComponent
+    TablaPrestamosHistoricosSociosComponent,
+
+    TablasBeneficiosComponent,
+
+    FormularioBeneficiosSocioComponent,
+
+    FormularioBeneficiosBeneficiarioComponent,
+
+    FormularioBeneficiosCargasComponent,
+
+    FormularioBeneficiosConyugeComponent,
+
+    FormularioBeneficiosPadresSuegrosComponent,
+
+    TablaBeneficiosCargasComponent,
+
+    TablaBeneficiosConyugeComponent,
+
+    TablaBeneficiosPadresSuegrosComponent,
+
+    TablaBeneficiosSocioComponent
 
   ],
   imports: [

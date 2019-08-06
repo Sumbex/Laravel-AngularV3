@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cuentasindicato;
 use App\Montocierrecamping;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CsDetalleCampingController extends Controller
@@ -15,8 +16,9 @@ class CsDetalleCampingController extends Controller
     	$total = 0;
 
     	$listar = Cuentasindicato::select([
+                'cuenta_sindicato.id as camping_id',
     			DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
-    			
+    			'archivo_documento',
     			'cuenta_sindicato.descripcion',
     			'monto_ingreso',
     			'monto_egreso',
@@ -29,8 +31,9 @@ class CsDetalleCampingController extends Controller
     			'anio_id' => $anio,
     			'mes_id' => $mes,
     			'cuenta_sindicato.activo' => 'S',
-    			'tipo_cuenta_sindicato' => '5' //comite camping
-    	])->get();
+    			'tipo_cuenta_sindicato' => '5', //comite camping
+                'detalle_camping' => 'S'
+    	])->orderBy('dia','desc')->get();
 
     	if ($listar) {
     		//return $listar;
@@ -78,11 +81,14 @@ class CsDetalleCampingController extends Controller
                 $total = $listar[$i]->saldo_actual_raw ;   
                 $estado = "success";
 
+                $this->reajustar_camping_a_cs($ingreso, $egreso, $anio, $mes);
+
 			}
+           // dd($listar);
 
 			foreach ($listar as $key) {
-    			$key['monto_ingreso'] = number_format($key->monto_ingreso,0,'.',',');
-    			$key['monto_egreso'] = number_format($key->monto_egreso,0,'.',',');
+    			$key['monto_ingreso'] = $key->monto_ingreso != 0? number_format($key->monto_ingreso,0,'.',','):null;
+    			$key['monto_egreso'] = $key->monto_egreso!=0? number_format($key->monto_egreso,0,'.',','):null;
     			$key['saldo_actual_raw'] = number_format($key->saldo_actual_raw,0,'.',',');
 
     		}
@@ -139,5 +145,70 @@ class CsDetalleCampingController extends Controller
     		return $get->cierre_calculable;
     	}
     	return 0;
+    }
+
+    public function reajustar_camping_a_cs($ingreso, $egreso, $anio, $mes)
+    {
+        $query_ingreso = Cuentasindicato::where([
+                                                'mes_id' => $mes,
+                                                'anio_id' => $anio,
+                                                'activo' => 'S',
+                                                'definicion' =>'1',
+                                                'detalle_camping' =>null,
+                                                'tipo_cuenta_sindicato'=>'5'
+                                            ])->first();
+
+        $query_egreso = Cuentasindicato::where([
+                                                'mes_id' => $mes,
+                                                'anio_id' => $anio,
+                                                'activo' => 'S',
+                                                'definicion' =>'2',
+                                                'detalle_camping' =>null,
+                                                'tipo_cuenta_sindicato'=>'5'
+                                            ])->first();
+
+        if (!empty($query_ingreso)) {
+            $query_ingreso->monto_ingreso = $ingreso;
+            $query_ingreso->save();
+
+        }else{
+
+            $camp_i = new Cuentasindicato;
+            $camp_i->dia = '1';
+            $camp_i->mes_id = $mes;
+            $camp_i->anio_id= $anio;
+            $camp_i->numero_documento = '--';
+            $camp_i->archivo_documento = '--';
+            $camp_i->tipo_cuenta_sindicato = '5';
+            $camp_i->descripcion = 'Detalle camping ingreso';
+            $camp_i->monto_ingreso = $ingreso;
+            $camp_i->definicion = '1';
+            $camp_i->user_crea = Auth::user()->id;
+            $camp_i->activo = 'S';
+
+            $camp_i->save();
+        }
+
+        if (!empty($query_egreso)) {
+            $query_egreso->monto_egreso = $egreso;
+            $query_egreso->save();
+
+        }else{
+
+            $camp_e = new Cuentasindicato;
+            $camp_e->dia = '1';
+            $camp_e->mes_id = $mes;
+            $camp_e->anio_id= $anio;
+            $camp_e->numero_documento = '--';
+            $camp_e->archivo_documento = '--';
+            $camp_e->tipo_cuenta_sindicato = '5';
+            $camp_e->descripcion = 'Detalle camping egreso';
+            $camp_e->monto_egreso = $egreso;
+            $camp_e->definicion = '2';
+            $camp_e->user_crea = Auth::user()->id;
+            $camp_e->activo = 'S';
+
+                                                    $camp_e->save();
+        }
     }
 }

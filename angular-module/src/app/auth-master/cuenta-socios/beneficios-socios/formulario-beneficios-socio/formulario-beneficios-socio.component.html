@@ -15,21 +15,21 @@
               <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                 <div class="form-group">
                   <label><strong>N° de Cta</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="numero_cuenta" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.numero_cuenta" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                 <div class="form-group">
                   <label><strong>Banco</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="banco" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.banco" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                 <div class="form-group">
                   <label><strong>Tipo de Cta</strong></label>
-                  <select name="Cta" id="cta" class="form-control form-control-sm" [(ngModel)]="tipo_cuenta_banco_id" required>
+                  <select name="Cta" id="cta" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.tipo_cuenta_banco_id" required>
                     <option value="">--Seleccione--</option>
                     <option value="1">Cuenta Rut</option>
                     <option value="2">Cuenta Vista</option>
@@ -47,14 +47,14 @@
               <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
                 <div class="form-group">
                   <label><strong>Isapre o Fonasa</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="isapre_fonasa" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.isapre_fonasa" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
                 <div class="form-group">
                   <label><strong>Grupo Sangre</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="grupo_sangre" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.grupo_sangre" required>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Direccion*</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="direccion" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.direccion" required>
                 </div>
               </div>
 
@@ -101,21 +101,21 @@
               <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                 <div class="form-group">
                   <label><strong>Telefono</strong></label>
-                  <input type="number" class="form-control form-control-sm" [(ngModel)]="telefono" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.telefono" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                 <div class="form-group">
                   <label><strong>Celular</strong></label>
-                  <input type="number" class="form-control form-control-sm" [(ngModel)]="celular" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.celular" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
                 <div class="form-group">
                   <label><strong>Anexo</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="anexo" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.anexo" required>
                 </div>
               </div>
 
@@ -128,14 +128,14 @@
               <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
                 <div class="form-group">
                   <label><strong>Email Personal*</strong></label>
-                  <input type="email" class="form-control form-control-sm" [(ngModel)]="email_1" required>
+                  <input type="email" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.email_1" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
                 <div class="form-group">
                   <label><strong>Email Corporativo</strong></label>
-                  <input type="email" class="form-control form-control-sm" [(ngModel)]="email_2" required>
+                  <input type="email" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.email_2" required>
                 </div>
               </div>
 
@@ -148,14 +148,14 @@
               <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
                 <div class="form-group">
                   <label><strong>Cargo Planta</strong></label>
-                  <input type="text" class="form-control form-control-sm" [(ngModel)]="cargo_planta" required>
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.cargo_planta" required>
                 </div>
               </div>
 
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Cargo o Comision Sindicato</strong></label>
-                  <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="carga_comision_sindicato" required>
+                  <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.cargo_comision_sindicato" required>
                       <option value="">--Seleccione--</option>
                       <option value="1">Socio</option>
                       <option value="2">Directiva</option>
@@ -166,7 +166,7 @@
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Casa Propia</strong></label>
-                  <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="casa_propia" required>
+                  <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.casa_propia" required>
                     <option value="">--Seleccione--</option>
                     <option value="S">Si</option>
                     <option value="N">No</option>
@@ -183,7 +183,7 @@
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Rol Turno</strong></label>
-                <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="rol_turno" required>
+                <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.rol_turno" required>
                   <option value="">--Seleccione--</option>
                   <option value="S">Si</option>
                   <option value="N">No</option>
@@ -194,7 +194,7 @@
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Estado Civil</strong></label>
-                  <select name="Civil" id="civil" class="form-control form-control-sm" [(ngModel)]="estado_civil_id" required>
+                  <select name="Civil" id="civil" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.estado_civil_id" required>
                     <option value="">--Seleccione--</option>
                     <option value="1">Soltero/a</option>
                     <option value="2">Casado/a</option>
@@ -208,7 +208,7 @@
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Conyuge / Pareja</strong></label>
-                  <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="conyuge" required>
+                  <select name="Rol" id="rol" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosSocio.conyuge" required>
                     <option value="">--Seleccione--</option>
                     <option value="S">Si</option>
                     <option value="N">No</option>

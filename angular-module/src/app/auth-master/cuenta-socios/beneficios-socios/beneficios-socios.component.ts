@@ -27,6 +27,7 @@ export class BeneficiosSociosComponent implements OnInit {
     this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
       console.log(response);
         if(response.estado == "failed"){
+          alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
           this.fechaSocioTest = '';
           this.rutSocioTest = '';
           this.nombreSocioTest = '';

@@ -925,20 +925,18 @@ class Cs_prestamos extends Model
 
                     if ($abonos['estado'] == 'success') {
                         $pasarPM = [];
-                        $pasarPM[0] = '';
-                        $pasarPM[1] = '';
-                        $pasarPM[2] = '';
+
 
                         foreach ($abonos['abonos'] as $key) {
                             switch ($key->tipo) {
                                 case 1:
-                                    $pasarPM[0] = $key;
+                                    $pasarPM[] = $key;
                                     break;
                                 case 2:
-                                    $pasarPM[1] = $key;
+                                    $pasarPM[] = $key;
                                     break;
                                 case 3:
-                                    $pasarPM[2] = $key;
+                                    $pasarPM[] = $key;
                                     break;
                                 default:
                                     # code...
@@ -1211,28 +1209,27 @@ class Cs_prestamos extends Model
                         /* dd($abonos); */
                         if ($abonos['estado'] == 'success') {
                             $pasarPM = [];
-                            $pasarPM[0] = '';
-                            $pasarPM[1] = '';
-                            $pasarPM[2] = '';
+
 
                             foreach ($abonos['abonos'] as $key) {
                                 switch ($key->tipo) {
                                     case 1:
-                                        $pasarPM[0] = $key;
+                                        $pasarPM[] = $key;
                                         break;
                                     case 2:
-                                        $pasarPM[1] = $key;
+                                        $pasarPM[] = $key;
                                         break;
                                     case 3:
-                                        $pasarPM[2] = $key;
+                                        $pasarPM[] = $key;
                                         break;
                                     default:
                                         # code...
                                         break;
                                 }
                             }
-
+                             //dd($pasarPM);
                             for ($e = 0; $e < count($pasarPM); $e++) {
+                                //dump($pasarPM[$e]->tipo);
                                 switch ($pasarPM[$e]->tipo) {
                                     case 1:
                                         $detalleAbono = new DetallePrestamoAbono;

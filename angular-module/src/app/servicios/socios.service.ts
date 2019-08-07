@@ -55,7 +55,34 @@ export class SociosService {
         )});
     }
 
-    insertarDatosSocios(){
-        
+    traerDatosSocio(rut){
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "buscar_socio_por_rut/"+rut, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
     }
+
+    insertarDatosSocio(form): Observable<any>{
+      
+
+        return this._http.post(this.url + "guardar_datos_socio", form, {headers: new HttpHeaders(
+              {
+                  'Authorization': 'Bearer' + this.token,
+              }
+              )});
+          }
+
+          getDatosSocio(idSocio){
+            let token = localStorage.getItem('token').replace(/['"]+/g, '');
+            return this._http.get<any>(this.url + "traer_datos_socio/"+idSocio, {headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )});
+          }
+  
 }

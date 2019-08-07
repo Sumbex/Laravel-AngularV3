@@ -1,7 +1,13 @@
 .sinbordefondo {
   background-color:#fff;
   border: 0;
-  text-align: center;
+  /*text-align: center;*/
+}
+select#cta {
+    font-size: 13px;
+    font-weight: 400;
+   /* padding-left: -137px;*/
+    margin-left: -4px;
 }
 
 .my-class { 

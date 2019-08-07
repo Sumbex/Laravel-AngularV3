@@ -35,10 +35,26 @@ Route::get('listar_interes_prestamo/{anio}/{mes}','CuentaSindicatoController@lis
 
 //-------------------------------------------------------------------------------------------------
 
+
+//----selects
+Route::get('traer_regiones','geoController@traer_regiones');
+Route::get('traer_provincia/{region}','geoController@traer_provincia');
+Route::get('traer_comuna/{provincia}','geoController@traer_comuna');
+
+//
+
 //CUENTA SOCIOS-------------------------------------------------------------------------------
 
 Route::post('ingresar_socio','SocioController@ingresar');
 Route::get('listar_socios','SocioController@listar');
 Route::get('filtrar_socios/{busca?}', 'SocioController@filtrar');
 Route::post('editar_socios', 'SocioController@actualizar_socio');
+
+Route::get('buscar_socio_por_rut/{rut}','SocioController@socio_por_rut');
+
+
+
+Route::post('guardar_datos_socio','SocioController@guardar_datos_socio');
+Route::post('actualizar_datos_socio','SocioController@actualizar_datos_socio');
+Route::get('traer_datos_socio/{socio_id}','SocioController@traer_datos_socio');
 

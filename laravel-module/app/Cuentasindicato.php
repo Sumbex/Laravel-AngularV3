@@ -36,6 +36,8 @@ class Cuentasindicato extends Model
 				'mes_id' => $mes
 			])->first();
 
+			
+
 			if(empty($verify_interes)){
 
 				$this->numero_documento = '--';
@@ -236,12 +238,19 @@ class Cuentasindicato extends Model
 	public function item_prestamo_i_cs($anio, $mes)
 	{
 		
+		// $dp_query = DB::select("SELECT 
+      
+		// 						COALESCE(sum(z.calculo),0) as suma from 
+
+		// 						(select 
+		// 						    (monto_ingreso / cuota) as calculo
+		// 						from detalle_prestamo where definicion=1 and mes_id=$mes and anio_id=$anio) z ");
 		$dp_query = DB::select("SELECT 
       
 								COALESCE(sum(z.calculo),0) as suma from 
 
 								(select 
-								    (monto_ingreso / cuota) as calculo
+								    (monto_ingreso) as calculo
 								from detalle_prestamo where definicion=1 and mes_id=$mes and anio_id=$anio) z ");
 
 		$dpta_query = DB::select("SELECT COALESCE(sum(monto_pagado),0) as monto_egreso

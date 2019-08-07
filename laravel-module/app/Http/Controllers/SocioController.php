@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\SocioSituacion;
+use App\Socio_datos_basicos;
 use App\Socios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -223,6 +225,270 @@ class SocioController extends Controller
         }
     }
 
+    public function socio_por_rut($rut)
+    {
+        $rut_limpio = $this->limpiar($rut);
+
+        if ($this->valida_rut($rut_limpio) == false) {
+            return ['estado' => 'failed', 'mensaje' => 'El rut no es valido'];
+        }
+        $socio = Socios::where([
+                    'rut' => $rut_limpio,
+                    'activo' => 'S',    
+                  ])->first();
+
+        return $socio;
+    }
+
+
+    public function guardar_datos_socio(Request $r)
+    {
+        $insert_1 = false;
+        $insert_2 = false;
+
+        $verify_1 = false;
+        $verify_2 = false;
+
+        $verify_sdb = Socio_datos_basicos::where([
+                        'activo' => 'S',
+                        'socio_id' => $r->socio_id
+                      ])->first();
+
+
+        if (empty($verify_sdb)) {
+
+            $sdb = new Socio_datos_basicos;
+            $sdb->socio_id = $r->socio_id;
+            $sdb->direccion = $r->direccion;
+           // $sdb->direccion_2 = $r->direccion_2;
+            $sdb->telefono = $r->telefono;
+            $sdb->celular = $r->celular;
+            $sdb->anexo = $r->anexo;
+            $sdb->email_1 = $r->email_1;
+            $sdb->email_2 = $r->email_2;
+            $sdb->cargo_planta = $r->cargo_planta;
+            $sdb->cargo_comision_sindicato = $r->cargo_comision_sindicato;
+            $sdb->casa_propia = $r->casa_propia;
+            $sdb->rol_turno = $r->rol_turno;
+            $sdb->estado_civil_id = $r->estado_civil_id;
+            $sdb->conyuge = $r->conyuge;
+            $sdb->activo = 'S';
+
+            if ($sdb->save()) {
+                 $insert_1 = true;
+            }
+        }
+        else{
+             $verify_1 = true;
+        }
+        
+        $verify_ss = SocioSituacion::where([
+                        'activo' => 'S',
+                        'socio_id' => $r->socio_id
+                      ])->first();
+
+
+        if(empty($verify_ss)){
+
+            $ss = new SocioSituacion;
+            $ss->socio_id = $r->socio_id;
+            $ss->numero_cuenta = $r->numero_cuenta;
+            $ss->tipo_cuenta_banco_id = $r->tipo_cuenta_banco_id;
+            $ss->banco = $r->banco;
+            $ss->isapre_fonasa = $r->isapre_fonasa;
+            $ss->grupo_sangre = $r->grupo_sangre;
+            $ss->activo = 'S';
+
+            if ($ss->save()) {
+                $insert_2 = true;
+            }
+
+        }else{
+            $verify_1 = false;
+        }
+
+
+
+        if ($insert_1 == true || $insert_2 == true) {
+            return ['estado'=>'success','mensaje'=>'Informacion ingresada, en caso de que haya faltado algo, puede insertarlo desde la tabla. '];
+        }
+        else{
+            return ['estado'=>'failed','mensaje'=>'No se han ingresado datos, intente nuevamente.'];
+        }
+
+    }
+
+
+    public function actualizar_datos_socio(Request $r)//$id, $campo, $valor
+    {
+        $sdb = Socio_datos_basicos::where(['activo' => 'S','socio_id' => $r->id])->first();
+        $ss = SocioSituacion::where(['activo' => 'S','socio_id' => $r->id])->first();
+
+        switch ($r->campo) {
+            case 'socio_direccion':
+
+                    $sdb->direccion = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Direccion actualizada!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_telefono':
+
+                    $sdb->telefono = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Telefono actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_celular':
+                    
+                     $sdb->celular = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Celular actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_anexo':
+                
+                    $sdb->anexo = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Anexo actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_email_1':
+
+                    $sdb->email_1 = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Email personal actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_email_2':
+
+                    $sdb->email_2 = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Email corporativo actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_cargo_planta':
+                    
+                    $sdb->cargo_planta = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Cargo de planta actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_cargo_comision_sindicato':
+                    
+                    $sdb->cargo_comision_sindicato = $r->valor;
+                    if ($sdb->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Cargo o comision de planta actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_numero_cuenta':
+                    
+                    $ss->numero_cuenta = $r->valor;
+                    if ($ss->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Numero de cuenta actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+            break;
+            case 'socio_tipo_cuenta_banco_id':
+
+                    $ss->tipo_cuenta_banco_id = $r->valor;
+                    if ($ss->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+            break;
+            case 'socio_banco':
+
+                    $ss->banco = $r->valor;
+                    if ($ss->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Nombre de banco actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+            break;
+            case 'socio_isapre_fonasa':
+
+                    $ss->isapre_fonasa = $r->valor;
+                    if ($ss->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Isapre o fonaza actualizada!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+            case 'socio_grupo_sangre':
+                    
+                    $ss->grupo_sangre = $r->valor;
+                    if ($ss->save()) { 
+                        return ['estado'=>'success','mensaje'=>'Grupo de sangre actualizado!']; 
+                    }
+                    else {
+                        return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
+                    }
+
+            break;
+           
+            
+            default:
+                # code...
+                break;
+        }
+    }
+
+    public function traer_datos_socio($socio_id)
+    {
+        $list = DB::select("SELECT * from socios_datos_basicos as sdb
+                    inner join socio_situacion ss on ss.socio_id = sdb.socio_id where sdb.socio_id = $socio_id 
+                    and sdb.activo = 'S' and ss.activo = 'S'");
+
+        if (count($list) > 0) {
+            return $list;
+        }
+        return "null";
+    }
+
+    // public function guardar_datos_conyuge(Request $r)
+    // {
+        
+    // }
 
 
     function valida_rut($rut)

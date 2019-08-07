@@ -15,32 +15,42 @@
               <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                   <tr>
                     <th style="background: #138D75">N° Cta.</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.numero_cuenta}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75">banco</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{ traerDatosSocio.banco }}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Cuenta</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
+                    <td>
+                      <select name="Cta" id="cta" class="form-control form-control-sm" 
+                        [(ngModel)]="traerDatosSocio.tipo_cuenta_banco_id"
+                       required>
+                        <option value="">--Seleccione--</option>
+                        <option value="1">Cuenta Rut</option>
+                        <option value="2">Cuenta Vista</option>
+                        <option value="3">Cuenta Corriente</option>
+                      </select>
+                    </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Isapre o Fonasa</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.isapre_fonasa}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Grupo Sangre</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.grupo_sangre}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75">Direccion</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.direccion}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
@@ -60,7 +70,7 @@
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Telefono</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.telefono}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr> <br>
               </div>
@@ -68,52 +78,94 @@
               <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                   <tr>
                     <th style="background: #138D75;">Celular</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.celular}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Anexo</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.anexo}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Email Personal</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.email_1}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Email Corporativo</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.email_2}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Cargo Planta</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.cargo_planta}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Cargo o Comision</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
+                    <td>
+                        <select name="Rol" id="rol" class="form-control form-control-sm"  [(ngModel)]="traerDatosSocio.cargo_comision_sindicato" required>
+                        <option value="">--Seleccione--</option>
+                        <option value="1">Socio</option>
+                        <option value="2">Directiva</option>
+                      </select>
+                    </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Casa Propia</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
+                    <td>
+                       <select name="Rol" id="rol" class="form-control form-control-sm" 
+                       [(ngModel)]="traerDatosSocio.casa_propia" required>
+                        <option value="">--Seleccione--</option>
+                        <option value="S">Si</option>
+                        <option value="N">No</option>
+                      </select>
+                    </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Rol Turno</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
+                    <td>
+                      <select name="Rol" id="rol" class="form-control form-control-sm" 
+                      [(ngModel)]="traerDatosSocio.rol_turno" required>
+                      <option value="">--Seleccione--</option>
+                      <option value="S">Si</option>
+                      <option value="N">No</option>
+                    </select>
+                    </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Estado Civil</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
+                    <td>
+                      <select name="Civil" id="civil" class="form-control form-control-sm" 
+                      [(ngModel)]="traerDatosSocio.estado_civil_id" required>
+                        <option value="">--Seleccione--</option>
+                        <option value="1">Soltero/a</option>
+                        <option value="2">Casado/a</option>
+                        <option value="3">Viudo/a</option>
+                        <option value="4">Divorciado/a</option>
+                        <option value="5">Conviviente civil</option>
+                      </select>
+                    </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;">Conyuge</th>
-                    <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td>
+                    <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
+                    <td>
+                      <select name="Rol" id="rol" class="form-control form-control-sm"
+                       [(ngModel)]="traerDatosSocio.conyuge" required>
+                    <option value="">--Seleccione--</option>
+                    <option value="S">Si</option>
+                    <option value="N">No</option>
+                  </select>
+                    </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr> <br>
               </div>

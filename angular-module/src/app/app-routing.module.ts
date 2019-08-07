@@ -14,6 +14,8 @@ import { ListarSociosComponent } from './auth-master/cuenta-socios/listar-socios
 import { FormularioSociosComponent } from './auth-master/cuenta-socios/formulario-socios/formulario-socios.component';
 import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component';
 import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component';
+import { SociosMasterComponent } from './socios-master/socios-master.component';
+import { PerfilSocioComponent } from './socios-master/perfil-socio/perfil-socio.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -31,6 +33,10 @@ const routes: Routes = [
     { path: 'TablaPrestamoSocios', component: TablaPrestamosSociosComponent },
     { path: 'BeneficiosSocios', component: BeneficiosSociosComponent }
 
+  ]},
+
+  { path: 'SociosMaster', component: SociosMasterComponent, children:[
+    { path: 'Perfil', component: PerfilSocioComponent }
   ]},
 
   { path: '**', component: NoEncontradoComponent }

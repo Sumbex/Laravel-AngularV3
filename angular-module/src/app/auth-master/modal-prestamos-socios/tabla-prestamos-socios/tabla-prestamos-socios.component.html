@@ -86,7 +86,7 @@
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="2" class="text-center">
-            <button class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante_p, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
+            <button [disabled]="itemPrestamo.cuotap == 0 || itemPrestamo.cuotad == itemPrestamo.cuotap" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante_p, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
             <ng-template #pagoPrestamoSaludCuota let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago Cuota Salud Retornable</h4>
@@ -218,7 +218,7 @@
           <td colspan="3">{{itemPrestamo.estado}}</td>
 
           <td colspan="4" class="text-center">
-            <button class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)">
+            <button [disabled]="itemPrestamo.cuotap == 0 || itemPrestamo.cuotad == itemPrestamo.cuotap" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)">
             <ng-template #pagoPrestamoInteres let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago Cuota Apuro Economico Retornable</h4>

@@ -12,7 +12,31 @@ export class TablaBeneficiosSocioComponent implements OnInit {
   abrirTablaBeneficiosSocios;
 
   @Input () getIdSocio;
-  traerDatosSocio;
+  traerDatosSocio:object = [
+                      'numero_cuenta',
+                      'direccion',
+                      'direccion_2',
+                      'telefono',
+                      'celular',
+                      'anexo',
+                      'email_1',
+                      'email_2',
+                      'cargo_planta',
+                      'cargo_comision_sindicato',
+                      'activo',
+                      'created_at',
+                      'updated_at',
+                      'comuna_id',
+                      'casa_propia',
+                      'rol_turno',
+                      'estado_civil_id',
+                      'conyuge',
+                      'numero_cuenta',
+                      'tipo_cuenta_banco_id',
+                      'banco',
+                      'isapre_fonasa',
+                      'grupo_sangre'
+                  ];
 
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,

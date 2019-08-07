@@ -151,11 +151,7 @@ module.exports = "<br>\r\n<app-formulario-sindical></app-formulario-sindical>\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<div class=\"container\">\n  <!--Formulario de otras cuentas-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n      <strong class=\"text-center\">\n        <h6><i class=\"fas fa-file-invoice\"></i> Otras Cuentas Sindicales</h6>\n      </strong>\n    </div>\n    <form>\n      <div class=\"card-body\">\n        <div class=\"row\">\n          <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n            <!--Boton Para llamar modals-->\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-inicio-mes></app-modal-inicio-mes> </div>\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-caja-chica></app-modal-caja-chica> </div>\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-camping></app-modal-camping> </div>\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-prestamos-socios></app-modal-prestamos-socios> </div>\n          </div>\n        </div>\n      </div>\n    </form>\n  </div><br>\n\n  <!--Formulario para ingresar una cuenta sindical-->\n  <div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n      <strong class=\"text-center\">\n        <h6><i class=\"fas fa-file-invoice-dollar\"></i> Cuenta Sindical</h6>\n      </strong>\n    </div>\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"validar_usuario(modalUsuario)\" enctype=\"multipart/form-data\">\n      <div class=\"card-body\">\n        <div class=\"row\">\n          <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n              <br><label>\n                <strong>Ingrese Fecha  </strong>\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Recuerde ingresar un fecha.\"></i>\n              </label> <br>\n              <div class=\"input-group\">\n                <input\n                type=\"date\" \n                class=\"form-control form-control-sm\"  \n                name=\"fecha\" \n                #fecha=\"ngModel\"\n                [(ngModel)]=\"datosSindicales.fecha\"\n                required>\n              </div>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n              <br><label>\n                <strong>N° de Documento  </strong>\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El numero de documento puede ser alfa numerico.\"></i>\n              </label>\n              <input \n              type=\"text\" \n              class=\"form-control form-control-sm\"\n              name=\"nDocumento\" \n              #nDocumento=\"ngModel\"\n              [(ngModel)]=\"datosSindicales.nDocumento\" \n              required>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n              <br><label>\n                <strong>Subir Documento  </strong>\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Los documentos solo deben ser en formato PDF.\"></i>\n              </label>\n              <input class=\"form-file-input\" type=\"file\" (change)=\"onSelectImage($event)\" required>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\n              <select (change)=\"changeDefinicion($event)\" class=\"form-control form-control-sm\">\n                <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\n              </select>\n            </div><br>\n\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\n              <select (change)=\"changeDetalle($event)\" class=\"form-control form-control-sm\">\n                <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\n              </select>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                <br><label>\n                  <strong>Ingrese Monto  </strong>\n                  <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El monto a ingresar no debe ser negativo.\"></i>\n                </label>\n                <input \n                type=\"number\"\n                class=\"form-control form-control-sm\"\n                name=\"monto\" \n                #monto=\"ngModel\"\n                [(ngModel)]=\"datosSindicales.monto\" \n                required>\n                <div *ngIf=\"loadCajaChica\">\n                  <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\n                  <label>Calculando Monto...</label>\n              </div>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\n                <br><label>\n                  <strong>Ingrese Descripcion del Tipo  </strong>\n                  <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El mínimo de caracteres debe ser de 5.\"></i>\n                </label>\n                <input \n                  class=\"form-control\" \n                  minlength=\"5\"\n                  maxlength=\"160\"\n                  name=\"descripcion\" \n                  #descripcion=\"ngModel\"\n                  [(ngModel)]=\"datosSindicales.descripcion\" \n                  required>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n              <br><label>\n                <strong>Guardar Cuenta Sindical  </strong>\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Para guardar debe completar todos los campos.\"></i>\n              </label><br>\n              <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\n                [disabled]=\"loginForm.invalid\"><i class=\"fas fa-save\"></i> Guardar\n                <img *ngIf=\"guardarLoad\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n              </button>\n            </div>\n\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\n              <br><label><strong>Visualizar Tabla Sindical</strong></label><br>\n              <app-tabla-sindical></app-tabla-sindical>\n            </div>\n\n          </div>\n        </div>\n      </div>\n    </form>\n  </div><br>\n\n   <!--Modal validar user-->\n <ng-template #modalUsuario let-modal>\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n    <br>\n    <input #password autocomplete=\"false\" class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n    <br>\n  <button class=\"btn btn-success btn-block btn-sm\"\n    (click)=\"btn_validar_usuario(rut,password,validar);\">\n    Validar\n    </button>\n    <img *ngIf=\"load\" padding=\"50px\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  </div>\n</ng-template>\n\n</div>\n\n"
-=======
 module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n      <strong class=\"text-center\">\r\n        <h6><i class=\"fas fa-file-invoice\"></i> Otras Cuentas Sindicales</h6>\r\n      </strong>\r\n    </div>\r\n    <form>\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n          <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n            <!--Boton Para llamar modals-->\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-inicio-mes></app-modal-inicio-mes> </div>\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-caja-chica></app-modal-caja-chica> </div>\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-camping></app-modal-camping> </div>\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"> <app-modal-prestamos-socios></app-modal-prestamos-socios> </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n      <strong class=\"text-center\">\r\n        <h6><i class=\"fas fa-file-invoice-dollar\"></i> Cuenta Sindical</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"validar_usuario(modalUsuario)\" enctype=\"multipart/form-data\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n          <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label>\r\n                <strong>Ingrese Fecha  </strong>\r\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Recuerde ingresar un fecha.\"></i>\r\n              </label> <br>\r\n              <div class=\"input-group\">\r\n                <input\r\n                type=\"date\" \r\n                class=\"form-control form-control-sm\"  \r\n                name=\"fecha\" \r\n                #fecha=\"ngModel\"\r\n                [(ngModel)]=\"datosSindicales.fecha\"\r\n                required>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label>\r\n                <strong>N° de Documento  </strong>\r\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El numero de documento puede ser alfa numerico.\"></i>\r\n              </label>\r\n              <input \r\n              type=\"text\" \r\n              class=\"form-control form-control-sm\"\r\n              name=\"nDocumento\" \r\n              #nDocumento=\"ngModel\"\r\n              [(ngModel)]=\"datosSindicales.nDocumento\" \r\n              required>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label>\r\n                <strong>Subir Documento  </strong>\r\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Los documentos solo deben ser en formato PDF.\"></i>\r\n              </label>\r\n              <input class=\"form-file-input\" type=\"file\" (change)=\"onSelectImage($event)\" required>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\r\n              <select (change)=\"changeDefinicion($event)\" class=\"form-control form-control-sm\">\r\n                <option *ngFor=\"let tipo of selectDefinicion\" [value]=\"tipo.id\">{{tipo.descripcion}}</option>\r\n              </select>\r\n            </div><br>\r\n\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\r\n              <select (change)=\"changeDetalle($event)\" class=\"form-control form-control-sm\">\r\n                <option *ngFor=\"let detalle of selectDetalle\" [value]=\"detalle.id\">{{detalle.descripcion}}</option>\r\n              </select>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label>\r\n                  <strong>Ingrese Monto  </strong>\r\n                  <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El monto a ingresar no debe ser negativo.\"></i>\r\n                </label>\r\n                <input \r\n                type=\"number\"\r\n                class=\"form-control form-control-sm\"\r\n                name=\"monto\" \r\n                #monto=\"ngModel\"\r\n                [(ngModel)]=\"datosSindicales.monto\" \r\n                required>\r\n                <div *ngIf=\"loadCajaChica\">\r\n                  <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n                  <label>Calculando Monto...</label>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\">\r\n                <br><label>\r\n                  <strong>Ingrese Descripcion del Tipo  </strong>\r\n                  <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El mínimo de caracteres debe ser de 5.\"></i>\r\n                </label>\r\n                <input \r\n                  class=\"form-control\" \r\n                  minlength=\"5\"\r\n                  maxlength=\"80\"\r\n                  name=\"descripcion\" \r\n                  #descripcion=\"ngModel\"\r\n                  [(ngModel)]=\"datosSindicales.descripcion\" \r\n                  required>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label>\r\n                <strong>Guardar Cuenta Sindical  </strong>\r\n                <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Para guardar debe completar todos los campos.\"></i>\r\n              </label><br>\r\n              <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                [disabled]=\"loginForm.invalid\"><i class=\"fas fa-save\"></i> Guardar\r\n                <img *ngIf=\"guardarLoad\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </div>\r\n\r\n            <div class=\"col-xs-4 col-sm-3 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Visualizar Tabla Sindical</strong></label><br>\r\n              <app-tabla-sindical></app-tabla-sindical>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n   <!--Modal validar user-->\r\n <ng-template #modalUsuario let-modal>\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\r\n    <br>\r\n    <input #password autocomplete=\"false\" class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\r\n    <br>\r\n  <button class=\"btn btn-success btn-block btn-sm\"\r\n    (click)=\"btn_validar_usuario(rut,password,validar);\">\r\n    Validar\r\n    </button>\r\n    <img *ngIf=\"load\" padding=\"50px\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n  </div>\r\n</ng-template>\r\n\r\n</div>\r\n\r\n"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -320,11 +316,7 @@ module.exports = "<p>\r\n  tabla-beneficios-padres-suegros works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<ng-template #tablaBeneficiosSocio let-modal>\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-table\"></i>  Datos del Socio</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n     <!--Cuerpo del body inicio y cierre mensual-->\n    <div class=\"modal-body\" id=\"printJS-table\">\n      <div class=\"table-responsive\">\n        <table class=\"table table-striped table-bordered table-sm text-center\">\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n            <div class=\"row justify-content-center\">\n\n              <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                  <tr>\n                    <th style=\"background: #138D75\">N° Cta.</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.numero_cuenta}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75\">banco</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{ traerDatosSocio.banco }}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Cuenta</th>\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\n                    <td>\n                      <select name=\"Cta\" id=\"cta\" class=\"form-control form-control-sm\" \n                        [(ngModel)]=\"traerDatosSocio.tipo_cuenta_banco_id\"\n                       required>\n                        <option value=\"\">--Seleccione--</option>\n                        <option value=\"1\">Cuenta Rut</option>\n                        <option value=\"2\">Cuenta Vista</option>\n                        <option value=\"3\">Cuenta Corriente</option>\n                      </select>\n                    </td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Isapre o Fonasa</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.isapre_fonasa}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Grupo Sangre</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.grupo_sangre}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75\">Direccion</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.direccion}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <!-- <tr>\n                    <th style=\"background: #138D75\">Region</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75\">Provincia</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Comuna</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr> -->\n                  <tr>\n                    <th style=\"background: #138D75;\">Telefono</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.telefono}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr> <br>\n              </div>\n\n              <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                  <tr>\n                    <th style=\"background: #138D75;\">Celular</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.celular}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Anexo</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.anexo}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Email Personal</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.email_1}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Email Corporativo</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.email_2}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Cargo Planta</th>\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.cargo_planta}}\"></td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Cargo o Comision</th>\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\n                    <td>\n                        <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\"  [(ngModel)]=\"traerDatosSocio.cargo_comision_sindicato\" required>\n                        <option value=\"\">--Seleccione--</option>\n                        <option value=\"1\">Socio</option>\n                        <option value=\"2\">Directiva</option>\n                      </select>\n                    </td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Casa Propia</th>\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\n                    <td>\n                       <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" \n                       [(ngModel)]=\"traerDatosSocio.casa_propia\" required>\n                        <option value=\"\">--Seleccione--</option>\n                        <option value=\"S\">Si</option>\n                        <option value=\"N\">No</option>\n                      </select>\n                    </td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Rol Turno</th>\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\n                    <td>\n                      <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" \n                      [(ngModel)]=\"traerDatosSocio.rol_turno\" required>\n                      <option value=\"\">--Seleccione--</option>\n                      <option value=\"S\">Si</option>\n                      <option value=\"N\">No</option>\n                    </select>\n                    </td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Estado Civil</th>\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\n                    <td>\n                      <select name=\"Civil\" id=\"civil\" class=\"form-control form-control-sm\" \n                      [(ngModel)]=\"traerDatosSocio.estado_civil_id\" required>\n                        <option value=\"\">--Seleccione--</option>\n                        <option value=\"1\">Soltero/a</option>\n                        <option value=\"2\">Casado/a</option>\n                        <option value=\"3\">Viudo/a</option>\n                        <option value=\"4\">Divorciado/a</option>\n                        <option value=\"5\">Conviviente civil</option>\n                      </select>\n                    </td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr>\n                  <tr>\n                    <th style=\"background: #138D75;\">Conyuge</th>\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\n                    <td>\n                      <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\"\n                       [(ngModel)]=\"traerDatosSocio.conyuge\" required>\n                    <option value=\"\">--Seleccione--</option>\n                    <option value=\"S\">Si</option>\n                    <option value=\"N\">No</option>\n                  </select>\n                    </td>\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                  </tr> <br>\n              </div>\n              \n            </div>\n          </div>\n        </table>\n      </div>\n    </div>\n\n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-success\" \n    onclick=\"printJS({\n      printable: 'printJS-table',\n      type:'html',\n      style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\n    })\">\n    <i class=\"fas fa-print\"></i>  Imprimir Datos\n    </button>\n\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i>  Volver Beneficios Socio\n    </button>\n    </div>\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n<button class=\"btn btn btn-success btn-block btn-sm\" type=\"button\" (click)=\"verTablaBeneficios(tablaBeneficiosSocio)\">Ver Datos</button>\n\n    "
-=======
 module.exports = "<ng-template #tablaBeneficiosSocio let-modal>\r\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-table\"></i>  Datos del Socio</strong></h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n     <!--Cuerpo del body inicio y cierre mensual-->\r\n    <div class=\"modal-body\" id=\"printJS-table\">\r\n      <div class=\"table-responsive\">\r\n        <table class=\"table table-striped table-bordered table-sm text-center\">\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n            <div class=\"row justify-content-center\">\r\n\r\n              <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                  <tr>\r\n                    <th style=\"background: #138D75\">N° Cta.</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.numero_cuenta}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75\">banco</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{ traerDatosSocio.banco }}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Cuenta</th>\r\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\r\n                    <td>\r\n                      <select name=\"Cta\" id=\"cta\" class=\"form-control form-control-sm\" \r\n                        [(ngModel)]=\"traerDatosSocio.tipo_cuenta_banco_id\"\r\n                       required>\r\n                        <option value=\"\">--Seleccione--</option>\r\n                        <option value=\"1\">Cuenta Rut</option>\r\n                        <option value=\"2\">Cuenta Vista</option>\r\n                        <option value=\"3\">Cuenta Corriente</option>\r\n                      </select>\r\n                    </td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Isapre o Fonasa</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.isapre_fonasa}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Grupo Sangre</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.grupo_sangre}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75\">Direccion</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.direccion}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75\">Region</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75\">Provincia</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Comuna</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Telefono</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.telefono}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr> <br>\r\n              </div>\r\n\r\n              <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Celular</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.celular}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Anexo</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.anexo}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Email Personal</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.email_1}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Email Corporativo</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.email_2}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Cargo Planta</th>\r\n                    <td><input type=\"text\" class=\"sinbordefondo\" value=\"{{traerDatosSocio.cargo_planta}}\"></td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Cargo o Comision</th>\r\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\r\n                    <td>\r\n                        <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\"  [(ngModel)]=\"traerDatosSocio.cargo_comision_sindicato\" required>\r\n                        <option value=\"\">--Seleccione--</option>\r\n                        <option value=\"1\">Socio</option>\r\n                        <option value=\"2\">Directiva</option>\r\n                      </select>\r\n                    </td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Casa Propia</th>\r\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\r\n                    <td>\r\n                       <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" \r\n                       [(ngModel)]=\"traerDatosSocio.casa_propia\" required>\r\n                        <option value=\"\">--Seleccione--</option>\r\n                        <option value=\"S\">Si</option>\r\n                        <option value=\"N\">No</option>\r\n                      </select>\r\n                    </td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Rol Turno</th>\r\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\r\n                    <td>\r\n                      <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" \r\n                      [(ngModel)]=\"traerDatosSocio.rol_turno\" required>\r\n                      <option value=\"\">--Seleccione--</option>\r\n                      <option value=\"S\">Si</option>\r\n                      <option value=\"N\">No</option>\r\n                    </select>\r\n                    </td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Estado Civil</th>\r\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\r\n                    <td>\r\n                      <select name=\"Civil\" id=\"civil\" class=\"form-control form-control-sm\" \r\n                      [(ngModel)]=\"traerDatosSocio.estado_civil_id\" required>\r\n                        <option value=\"\">--Seleccione--</option>\r\n                        <option value=\"1\">Soltero/a</option>\r\n                        <option value=\"2\">Casado/a</option>\r\n                        <option value=\"3\">Viudo/a</option>\r\n                        <option value=\"4\">Divorciado/a</option>\r\n                        <option value=\"5\">Conviviente civil</option>\r\n                      </select>\r\n                    </td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr>\r\n                  <tr>\r\n                    <th style=\"background: #138D75;\">Conyuge</th>\r\n                    <!-- <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td> -->\r\n                    <td>\r\n                      <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\"\r\n                       [(ngModel)]=\"traerDatosSocio.conyuge\" required>\r\n                    <option value=\"\">--Seleccione--</option>\r\n                    <option value=\"S\">Si</option>\r\n                    <option value=\"N\">No</option>\r\n                  </select>\r\n                    </td>\r\n                    <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\r\n                  </tr> <br>\r\n              </div>\r\n              \r\n            </div>\r\n          </div>\r\n        </table>\r\n      </div>\r\n    </div>\r\n\r\n    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-success\" \r\n    onclick=\"printJS({\r\n      printable: 'printJS-table',\r\n      type:'html',\r\n      style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\r\n    })\">\r\n    <i class=\"fas fa-print\"></i>  Imprimir Datos\r\n    </button>\r\n\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i>  Volver Beneficios Socio\r\n    </button>\r\n    </div>\r\n</ng-template>\r\n\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n<button class=\"btn btn btn-success btn-block btn-sm\" type=\"button\" (click)=\"verTablaBeneficios(tablaBeneficiosSocio)\">Ver Datos</button>\r\n\r\n    "
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -346,11 +338,7 @@ module.exports = "<p>\r\n  tablas-beneficios works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<!--Modal caja chica-->\n<ng-template #CajaChica let-modal>\n  <!--form del modal caja chica-->\n  <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\" enctype=\"multipart/form-data\">\n    <!--Cabezal del modal caja chica-->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Detalle Caja Chica</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!--Cuerpo del body caja chica-->\n    <div class=\"modal-body\">\n\n        <ngb-alert *ngIf=\"errorIngreso\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n          <strong>\n            {{ ingresoStatus }}\n          </strong>\n        </ngb-alert>\n    \n      <div class=\"modal-header\" id=\"demoFont2\">\n        <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\n      </div>\n      <div class=\"card\">\n        <div class=\"row centrarCajaChica\">\n                <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n                  <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> Antes de ingresar un detalle compruebe que la caja chica existe en la fecha escogida. Recuerde que el archivo a subir debe de estar en formato PDF</small>\n                </ngb-alert>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br>\n            <label><strong>Ingrese Fecha </strong>\n              <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Recuerde ingresar un fecha.\"></i>\n            </label> <br>\n            <div class=\"form-group\">\n              <div class=\"input-group\">\n                <input type=\"date\" class=\"form-control form-control-sm\" name=\"fecha\" #fecha=\"ngModel\"\n                  [(ngModel)]=\"datosCajaChica.fecha\" required>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\n            <label><strong>Ingrese Detalle </strong>\n              <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El mínimo de caracteres debe ser de 5.\"></i>\n            </label>\n            <input class=\"form-control form-control-sm\" type=\"text\" minlength=\"5\" maxlength=\"160\" name=\"descripcion\"\n              #descripcion=\"ngModel\" [(ngModel)]=\"datosCajaChica.descripcion\" required>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\n            <label><strong>Igrese Monto </strong>\n              <i class=\"fas fa-info-circle\" placement=\"right\"\n                ngbTooltip=\"El monto a ingresar no debe ser negativo.\"></i>\n            </label>\n            <input class=\"form-control form-control-sm\" type=\"number\" name=\"monto\" #monto=\"ngModel\"\n              [(ngModel)]=\"datosCajaChica.monto_egreso\" required>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\n            <label><strong>Igrese N° Documento </strong>\n              <i class=\"fas fa-info-circle\" placement=\"right\"\n                ngbTooltip=\"El numero de documento puede ser alfa numerico.\"></i>\n            </label>\n            <input class=\"form-control form-control-sm\" name=\"nDocumento\" #nDocumento=\"ngModel\"\n              [(ngModel)]=\"datosCajaChica.numero_documento\" required>\n          </div>\n\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"><br>\n            <label><strong>Ingrese el archivo comprobante </strong>\n              <i class=\"fas fa-info-circle\" placement=\"right\"\n                ngbTooltip=\"Los documentos solo deben ser en formato PDF.\"></i>\n            </label> <br>\n            <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\" required>\n          </div>\n\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\n            <select (change)=\"changeDefinicion($event)\" class=\"form-control form-control-sm\">\n              <option *ngFor=\"let tipo of selectDefinicion | slice : 0:1;\" [value]=\"tipo.id\">{{tipo.descripcion}}\n              </option>\n            </select>\n          </div>\n          <div class=\"col-sm-12 col-md-12 col-lg-12\">\n            <div class=\"row justify-content-end\">\n              <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\n                <label><strong>Guardar Caja Chica </strong>\n                  <i class=\"fas fa-info-circle\" placement=\"right\"\n                    ngbTooltip=\"Para guardar debe completar todos los campos.\"></i>\n                </label><br>\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\n                  [disabled]=\"loginForm.invalid || blockCajaChica\"><i class=\"fas fa-save\"></i> Guardar</button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <hr>\n      <!--Tabla del Modal Caja Chica-->\n      <div id=\"printJS-table\">\n        <div class=\"row centrarCajaChica\">\n          <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n            <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> Si desea edita un valor de la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe de hacer <b>click</b> el icono <i class=\"far fa-copy\" placement=\"top\"></i></small>\n          </ngb-alert>\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\n                  class=\"fas fa-calendar-check\"></i></strong></label>\n            <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"valorAnio.descripcion\"\n              class=\"form-control form-control-sm\">\n              <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\n                  class=\"fas fa-calendar-check\"></i></strong></label>\n            <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"valorMes.descripcion\"\n              class=\"form-control form-control-sm\">\n              <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\n            </select>\n          </div>\n        </div><br>\n\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered table-sm\">\n            <thead text-sm class=\"text-center\">\n              <tr>\n                <th colspan=\"11\" style=\"background: #138D75;\" class=\"ColorThCS\">Tabla caja chica</th>\n                <th colspan=\"2\" style=\"background: #138D75;\" class=\"ColorThCS\">Monto Inicial</th>\n                <td colspan=\"2\"><strong\n                    *ngIf=\"!cajaChicaError\">{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n              <tr>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\n                <th colspan=\"2\" style=\"background: #138D75;\">N° de Doc</th>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\n                <td colspan=\"2\" (click)=\"editarParametro(item.id, 'fecha', item.fecha)\">{{item.fecha}}</td>\n                <td colspan=\"2\" (click)=\"editarParametro(item.id, 'numero_documento', item.numero_documento)\">\n                  {{item.numero_documento}}</td>\n\n\n\n                <td colspan=\"2\">\n                  <a href=\"{{  '../' + item.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n                      placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\n                  <a class=\"btn-primary-outline\" style=\"cursor: pointer\"\n                    (click)=\"editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')\">\n                    <i class=\"far fa-copy\" placement=\"top\" ngbTooltip=\"Presione aqui para modificar documento PDF\"></i>\n                  </a>\n                </td>\n\n\n\n                <td colspan=\"3\" (click)=\"editarParametro(item.id, 'descripcion', item.descripcion)\">{{item.descripcion}}\n                </td>\n                <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                <td colspan=\"2\" (click)=\"editarParametro(item.id, 'monto', item.monto_egreso)\">\n                  {{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n              </tr>\n              <br>\n              <!--Tabla del total Modal Caja Chica-->\n              <tr>\n                <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\n                  INGRESOS</th>\n                <td colspan=\"3\" class=\"text-center\">\n                  <strong>{{ cajaChicaTotales.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n\n              <tr>\n                <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\n                  EGRESOS</th>\n                <td colspan=\"3\" class=\"text-center\">\n                  <strong>{{ cajaChicaTotales.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n              <tr>\n                <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\n                  CIERRE DEL MES</th>\n                <td colspan=\"3\" class=\"text-center\">\n                  <strong>{{ cajaChicaTotales.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n\n    </div>\n\n    <div *ngIf=\"loading\" class=\"loader\">Loading...</div>\n\n    <div class=\"modal-footer\">\n\n      <!--Boton para imprimir tabla caja chica-->\n      <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\n            printable: 'printJS-table',\n            type:'html',\n            style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\n          })\">\n        <i class=\"fas fa-print\"></i> Imprimir Datos\n      </button>\n\n      <!--Boton para salir del modal caja chica-->\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuenta Sindical</button>\n    </div>\n  </form>\n</ng-template>\n\n<!--MODAL PARA EDICION*********************************************************-->\n<ng-template #edicion let-modal>\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Modificar Campo</h4>\n  </div>\n  <div class=\"modal-body\">\n    <form enctype=\"multipart/form-data\">\n      <div class=\"form-group\">\n        <label><strong>Valor Anterior</strong></label>\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" value=\"{{parametroEdicion}}\" disabled>\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label><strong>Nuevo Valor</strong></label>\n        <div class=\"input-group\">\n          <input [hidden]=\"edicionDocumento\" #nuevoValor id=\"nuevoValor\" type=\"{{varType}}\" class=\"form-control\"\n            name=\"nuevoValor\">\n          <input #nuevoDoc *ngIf=\"edicionDocumento\" class=\"form-control-file\" type=\"file\"\n            (change)=\"onSelectImageEdicion($event)\" required>\n        </div>\n      </div>\n    </form>\n  </div>\n  <div class=\"modal-footer\">\n    <button id=\"closeModalButtonEdicion\" type=\"button\" class=\"btn btn-info\"\n      (click)=\"modal.close('Save click')\">Salir</button>\n    <button [hidden]=\"edicionDocumento\" [disabled]=\"blockCajaChica\" type=\"button\" class=\"btn btn-outline-success\"\n      (click)=\"ingresarModificacionTexto(nuevoValor.value)\">Guardar\n      <img *ngIf=\"loadingModificacion\" padding-left=\"20px\" height=\"12\"\n        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n    </button>\n    <button *ngIf=\"edicionDocumento\" [disabled]=\"blockCajaChica\" type=\"button\" class=\"btn btn-outline-success\"\n      (click)=\"ingresarModificacionDocumento()\">Guardar Documento\n      <img *ngIf=\"loadingModificacion\" padding-left=\"20px\" height=\"12\"\n        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n    </button>\n  </div>\n</ng-template>\n\n<button id=\"openModalButtonEdicion\" class=\"btn btn-lg btn-outline-primary\" [hidden]=true\n  (click)=\"openEdicionModal(edicion)\">Launch demo modal</button>\n\n<!--MODAL PARA EDICION-->\n\n<!--Boton Para llamar al modal caja chica-->\n<label><strong>Detalle Caja Chica</strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\n\n<!--MODAL VALIDACION CON CONTRASEÑA-->\n<ng-template #validar let-modal>\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Verificación de usuario</h4>\n  </div>\n  <div class=\"modal-body\">\n    <form>\n      <div class=\"form-group\">\n        <label>rut</label>\n        <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" name=\"rut\" #rut=\"ngModel\" [(ngModel)]=\"usuario.rut\" disabled>\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label>contraseña</label>\n        <div class=\"input-group\">\n          <input #pass type=\"password\" class=\"form-control\" name=\"pass\">\n        </div>\n      </div>\n    </form>\n  </div>\n  <div class=\"modal-footer\">\n    <button id=\"closeModalButtonValidacion2\" type=\"button\" class=\"btn btn-outline-dark\"\n      (click)=\"modal.close('Save click'); blockCajaChica = false\">Salir</button>\n    <button hidden id=\"closeModalButtonValidacion\" type=\"button\" class=\"btn btn-outline-dark\"\n      (click)=\"modal.close('Save click');\">Salir</button>\n    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"validarUsuario(pass)\">Guardar</button>\n  </div>\n</ng-template>\n\n<button id=\"openModalButtonPass\" class=\"btn btn-lg btn-outline-primary\" [hidden]=true\n  (click)=\"openContraseniaModal(validar)\">Launch demo modal</button>\n<!--MODAL VALIDACION CON CONTRASEÑA-->"
-=======
 module.exports = "<!--Modal caja chica-->\r\n<ng-template #CajaChica let-modal>\r\n  <!--form del modal caja chica-->\r\n  <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\" enctype=\"multipart/form-data\">\r\n    <!--Cabezal del modal caja chica-->\r\n    <div class=\"modal-header\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Detalle Caja Chica</strong>\r\n      </h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <!--Cuerpo del body caja chica-->\r\n    <div class=\"modal-body\">\r\n\r\n        <ngb-alert *ngIf=\"errorIngreso\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\r\n          <strong>\r\n            {{ ingresoStatus }}\r\n          </strong>\r\n        </ngb-alert>\r\n    \r\n      <div class=\"modal-header\" id=\"demoFont2\">\r\n        <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\r\n      </div>\r\n      <div class=\"card\">\r\n        <div class=\"row centrarCajaChica\">\r\n                <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\r\n                  <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> Antes de ingresar un detalle compruebe que la caja chica existe en la fecha escogida. Recuerde que el archivo a subir debe de estar en formato PDF</small>\r\n                </ngb-alert>\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"> <br>\r\n            <label><strong>Ingrese Fecha </strong>\r\n              <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Recuerde ingresar un fecha.\"></i>\r\n            </label> <br>\r\n            <div class=\"form-group\">\r\n              <div class=\"input-group\">\r\n                <input type=\"date\" class=\"form-control form-control-sm\" name=\"fecha\" #fecha=\"ngModel\"\r\n                  [(ngModel)]=\"datosCajaChica.fecha\" required>\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\r\n            <label><strong>Ingrese Detalle </strong>\r\n              <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"El mínimo de caracteres debe ser de 5.\"></i>\r\n            </label>\r\n            <input class=\"form-control form-control-sm\" type=\"text\" minlength=\"5\" maxlength=\"80\" name=\"descripcion\"\r\n              #descripcion=\"ngModel\" [(ngModel)]=\"datosCajaChica.descripcion\" required>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\r\n            <label><strong>Igrese Monto </strong>\r\n              <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                ngbTooltip=\"El monto a ingresar no debe ser negativo.\"></i>\r\n            </label>\r\n            <input class=\"form-control form-control-sm\" type=\"number\" name=\"monto\" #monto=\"ngModel\"\r\n              [(ngModel)]=\"datosCajaChica.monto_egreso\" required>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\r\n            <label><strong>Igrese N° Documento </strong>\r\n              <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                ngbTooltip=\"El numero de documento puede ser alfa numerico.\"></i>\r\n            </label>\r\n            <input class=\"form-control form-control-sm\" name=\"nDocumento\" #nDocumento=\"ngModel\"\r\n              [(ngModel)]=\"datosCajaChica.numero_documento\" required>\r\n          </div>\r\n\r\n          <div class=\"col-sm-3 col-md-4 col-lg-4\"><br>\r\n            <label><strong>Ingrese el archivo comprobante </strong>\r\n              <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                ngbTooltip=\"Los documentos solo deben ser en formato PDF.\"></i>\r\n            </label> <br>\r\n            <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\" required>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-4 col-lg-4\"><br><label><strong>Seleccione Tipo</strong></label>\r\n            <select (change)=\"changeDefinicion($event)\" class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let tipo of selectDefinicion | slice : 0:1;\" [value]=\"tipo.id\">{{tipo.descripcion}}\r\n              </option>\r\n            </select>\r\n          </div>\r\n          <div class=\"col-sm-12 col-md-12 col-lg-12\">\r\n            <div class=\"row justify-content-end\">\r\n              <div class=\"col-sm-6 col-md-4 col-lg-4\"><br>\r\n                <label><strong>Guardar Caja Chica </strong>\r\n                  <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                    ngbTooltip=\"Para guardar debe completar todos los campos.\"></i>\r\n                </label><br>\r\n                <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                  [disabled]=\"loginForm.invalid || blockCajaChica\"><i class=\"fas fa-save\"></i> Guardar</button>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <hr>\r\n      <!--Tabla del Modal Caja Chica-->\r\n      <div id=\"printJS-table\">\r\n        <div class=\"row centrarCajaChica\">\r\n          <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\r\n            <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> Si desea edita un valor de la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe de hacer <b>click</b> el icono <i class=\"far fa-copy\" placement=\"top\"></i></small>\r\n          </ngb-alert>\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n                  class=\"fas fa-calendar-check\"></i></strong></label>\r\n            <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"valorAnio.descripcion\"\r\n              class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n                  class=\"fas fa-calendar-check\"></i></strong></label>\r\n            <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"valorMes.descripcion\"\r\n              class=\"form-control form-control-sm\">\r\n              <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        </div><br>\r\n\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-bordered table-sm\">\r\n            <thead text-sm class=\"text-center\">\r\n              <tr>\r\n                <th colspan=\"11\" style=\"background: #138D75;\" class=\"ColorThCS\">Tabla caja chica</th>\r\n                <th colspan=\"2\" style=\"background: #138D75;\" class=\"ColorThCS\">Monto Inicial</th>\r\n                <td colspan=\"2\"><strong\r\n                    *ngIf=\"!cajaChicaError\">{{ 100000 | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n              <tr>\r\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\r\n                <th colspan=\"2\" style=\"background: #138D75;\">N° de Doc</th>\r\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n                <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\r\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n                <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              <tr *ngFor=\"let item of cajaChica\" class=\"text-center\">\r\n                <td colspan=\"2\" (click)=\"editarParametro(item.id, 'fecha', item.fecha)\">{{item.fecha}}</td>\r\n                <td colspan=\"2\" (click)=\"editarParametro(item.id, 'numero_documento', item.numero_documento)\">\r\n                  {{item.numero_documento}}</td>\r\n\r\n\r\n\r\n                <td colspan=\"2\">\r\n                  <a href=\"{{  '../' + item.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n                      placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\r\n                  <a class=\"btn-primary-outline\" style=\"cursor: pointer\"\r\n                    (click)=\"editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')\">\r\n                    <i class=\"far fa-copy\" placement=\"top\" ngbTooltip=\"Presione aqui para modificar documento PDF\"></i>\r\n                  </a>\r\n                </td>\r\n\r\n\r\n\r\n                <td colspan=\"3\" (click)=\"editarParametro(item.id, 'descripcion', item.descripcion)\">{{item.descripcion}}\r\n                </td>\r\n                <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                <td colspan=\"2\" (click)=\"editarParametro(item.id, 'monto', item.monto_egreso)\">\r\n                  {{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n              </tr>\r\n              <br>\r\n              <!--Tabla del total Modal Caja Chica-->\r\n              <tr>\r\n                <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\r\n                  INGRESOS</th>\r\n                <td colspan=\"3\" class=\"text-center\">\r\n                  <strong>{{ cajaChicaTotales.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n\r\n              <tr>\r\n                <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\r\n                  EGRESOS</th>\r\n                <td colspan=\"3\" class=\"text-center\">\r\n                  <strong>{{ cajaChicaTotales.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n              <tr>\r\n                <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\r\n                  CIERRE DEL MES</th>\r\n                <td colspan=\"3\" class=\"text-center\">\r\n                  <strong>{{ cajaChicaTotales.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n              </tr>\r\n            </tbody>\r\n          </table>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"loading\" class=\"loader\">Loading...</div>\r\n\r\n    <div class=\"modal-footer\">\r\n\r\n      <!--Boton para imprimir tabla caja chica-->\r\n      <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\r\n            printable: 'printJS-table',\r\n            type:'html',\r\n            style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\r\n          })\">\r\n        <i class=\"fas fa-print\"></i> Imprimir Datos\r\n      </button>\r\n\r\n      <!--Boton para salir del modal caja chica-->\r\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuenta Sindical</button>\r\n    </div>\r\n  </form>\r\n</ng-template>\r\n\r\n<!--MODAL PARA EDICION*********************************************************-->\r\n<ng-template #edicion let-modal>\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Modificar Campo</h4>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <form enctype=\"multipart/form-data\">\r\n      <div class=\"form-group\">\r\n        <label><strong>Valor Anterior</strong></label>\r\n        <div class=\"input-group\">\r\n          <input type=\"text\" class=\"form-control\" value=\"{{parametroEdicion}}\" disabled>\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label><strong>Nuevo Valor</strong></label>\r\n        <div class=\"input-group\">\r\n          <input [hidden]=\"edicionDocumento\" #nuevoValor id=\"nuevoValor\" type=\"{{varType}}\" class=\"form-control\"\r\n            name=\"nuevoValor\">\r\n          <input #nuevoDoc *ngIf=\"edicionDocumento\" class=\"form-control-file\" type=\"file\"\r\n            (change)=\"onSelectImageEdicion($event)\" required>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button id=\"closeModalButtonEdicion\" type=\"button\" class=\"btn btn-info\"\r\n      (click)=\"modal.close('Save click')\">Salir</button>\r\n    <button [hidden]=\"edicionDocumento\" [disabled]=\"blockCajaChica\" type=\"button\" class=\"btn btn-outline-success\"\r\n      (click)=\"ingresarModificacionTexto(nuevoValor.value)\">Guardar\r\n      <img *ngIf=\"loadingModificacion\" padding-left=\"20px\" height=\"12\"\r\n        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n    </button>\r\n    <button *ngIf=\"edicionDocumento\" [disabled]=\"blockCajaChica\" type=\"button\" class=\"btn btn-outline-success\"\r\n      (click)=\"ingresarModificacionDocumento()\">Guardar Documento\r\n      <img *ngIf=\"loadingModificacion\" padding-left=\"20px\" height=\"12\"\r\n        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n    </button>\r\n  </div>\r\n</ng-template>\r\n\r\n<button id=\"openModalButtonEdicion\" class=\"btn btn-lg btn-outline-primary\" [hidden]=true\r\n  (click)=\"openEdicionModal(edicion)\">Launch demo modal</button>\r\n\r\n<!--MODAL PARA EDICION-->\r\n\r\n<!--Boton Para llamar al modal caja chica-->\r\n<label><strong>Detalle Caja Chica</strong></label><br>\r\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openCajaChica(CajaChica)\">Ingresar</button>\r\n\r\n<!--MODAL VALIDACION CON CONTRASEÑA-->\r\n<ng-template #validar let-modal>\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h4 class=\"modal-title\" id=\"modal-basic-title\">Verificación de usuario</h4>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <form>\r\n      <div class=\"form-group\">\r\n        <label>rut</label>\r\n        <div class=\"input-group\">\r\n          <input type=\"text\" class=\"form-control\" name=\"rut\" #rut=\"ngModel\" [(ngModel)]=\"usuario.rut\" disabled>\r\n        </div>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label>contraseña</label>\r\n        <div class=\"input-group\">\r\n          <input #pass type=\"password\" class=\"form-control\" name=\"pass\">\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button id=\"closeModalButtonValidacion2\" type=\"button\" class=\"btn btn-outline-dark\"\r\n      (click)=\"modal.close('Save click'); blockCajaChica = false\">Salir</button>\r\n    <button hidden id=\"closeModalButtonValidacion\" type=\"button\" class=\"btn btn-outline-dark\"\r\n      (click)=\"modal.close('Save click');\">Salir</button>\r\n    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"validarUsuario(pass)\">Guardar</button>\r\n  </div>\r\n</ng-template>\r\n\r\n<button id=\"openModalButtonPass\" class=\"btn btn-lg btn-outline-primary\" [hidden]=true\r\n  (click)=\"openContraseniaModal(validar)\">Launch demo modal</button>\r\n<!--MODAL VALIDACION CON CONTRASEÑA-->"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -427,11 +415,7 @@ module.exports = "<div class=\"container\">\r\n\t <table class=\"table table-str
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<!--Modal Prestamo-->\n<ng-template #Prestamo let-modal>\n  <!--Cabezal del modal Prestamo-->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\">Detalle Prestamo Socios</h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" id=\"home-tab\" data-toggle=\"tab\" href=\"#home\" role=\"tab\" aria-controls=\"home\"\n        aria-selected=\"true\">Formulario</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" id=\"historico-tab\" data-toggle=\"tab\" href=\"#historico\" role=\"tab\" aria-controls=\"historico\"\n        aria-selected=\"false\">Historial Prestamos</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#profile\" role=\"tab\" aria-controls=\"profile\"\n        aria-selected=\"false\">Pago de Prestamos</a>\n    </li>\n    <li class=\"nav-item\">\n      <a class=\"nav-link\" id=\"contact-tab\" data-toggle=\"tab\" href=\"#contact\" role=\"tab\" aria-controls=\"contact\"\n        aria-selected=\"false\">Interes del Prestamo / Apuro - Economico</a>\n    </li>\n  </ul> <br>\n\n  <!--Cuerpo del body Prestamo-->\n  <div class=\"tab-content\" id=\"myTabContent\">\n    <div class=\"tab-pane fade show active\" id=\"home\" role=\"tabpanel\" aria-labelledby=\"home-tab\">\n      <form #prestamoForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\n        <div class=\"modal-body\">\n          <div class=\"row\">\n\n            <!--tipo prestamo socio-->\n            <div class=\"container\">\n              \n                    <div class=\"modal-header\" id=\"demoFont2\">\n                      <h6 class=\"modal-title\">Datos del Socio</h6>\n                    </div>\n                    <div class=\"card\">\n\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <div class=\"row justify-content-center\">\n                          <div class=\"col-12 col-md-8 col-lg-8 col-xl-8\">\n                            <div class=\"form-group\"> <br>\n                              <label>\n                                <strong>Ingrese rut del socio sin guiones  </strong>\n                                <i class=\"fas fa-info-circle\" placement=\"right\"\n                                  ngbTooltip=\"El rut del socio debe de ser ingresado sin guion\"></i>\n                              </label>\n                              <div class=\"input-group\">\n                                <input type=\"text\" class=\"form-control form-control-sm\"\n                                  placeholder=\"Ingrese rut del socio sin guion\" name=\"rut\" #rut=\"ngModel\"\n                                  [(ngModel)]=\"inputRut\" required>\n                                <span class=\"input-group-btn\">\n                                  <button type=\"button\" (click)=\"consultarSocio(rut.value)\" [disabled]=\"blockPrestamo\"\n                                    class=\"btn btn-outline-success btn-sm\"><i *ngIf=\"!blockPrestamo\" class=\"fas fa-search\"></i>\n                                    <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                  </button>\n                                </span>\n                              </div>\n                            </div>\n                          </div>\n                        </div>\n                      </div>\n\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <div class=\"row\">\n                         <div class=\"col-12 col-md-2 col-lg-2 col-xl-2\">\n                            <div class=\"form-group text-center\">\n                              <img src=\"/assets/socio-default.png\" width=\"100px\" height=\"100px\" alt=\"Socio\"\n                                class=\"img-thumbnail\">\n                            </div>\n                          </div>\n\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                            <div class=\"form-group\"> <br>\n                              <label><strong>Rut del socio</strong></label>\n                              <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{rutSocioTest}}\" required disabled>\n                            </div>\n                          </div>\n\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                            <div class=\"form-group\"> <br>\n                              <label><strong>Nombre Completo del socio</strong></label>\n                              <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{nombreSocioTest}}\" required disabled>\n                            </div>\n                          </div>\n                        </div>\n                      </div>\n                    </div> <br>\n\n                    <div class=\"modal-header\" id=\"demoFont2\">\n                      <h6 class=\"modal-title\">Datos del Prestamo</h6>\n                    </div>\n                    <div class=\"card\">\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <div class=\"row justify-content-center\">\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                            <div class=\"form-group\"> <br>\n                              <label><strong>Fecha del prestamo</strong></label>\n                              <input type=\"date\" class=\"form-control form-control-sm\" name=\"fecha\" #fecha=\"ngModel\"\n                                [(ngModel)]=\"datosEnvioPrestamo.fecha\" required>\n                            </div>\n                          </div>\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                            <div class=\"form-group\"> <br>\n                              <label><strong>Transferencia Bancaria</strong></label>\n                              <input type=\"text\" class=\"form-control form-control-sm\" name=\"nDocumento\" #nDocumento=\"ngModel\"\n                                [(ngModel)]=\"datosEnvioPrestamo.numeroDocumento\" required>\n                            </div>\n                          </div>\n                        </div>\n                      </div>\n\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <div class=\"row justify-content-center\">\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                            <div class=\"form-group\"> <br>\n                              <label><strong>Seleccione el comprobante</strong></label>\n                              <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\" required>\n                            </div>\n                          </div>\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                            <div class=\"form-group\"> <br>\n                              <label><strong>Seleccione el tipo de Prestamo</strong></label>\n                              <select (change)=\"changeTipoPrestamo($event)\" class=\"form-control form-control-sm\">\n                                <option *ngFor=\"let tipo of selectTipoPrestamo\" [value]=\"tipo.id\">{{tipo.descripcion}}\n                                </option>\n                              </select>\n                            </div>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n\n\n\n              \n            </div>\n            <!--prestamo salud retornable-->\n            <div *ngIf=\"datosTipoPrestamo.descripcion == 'salud'\" class=\"container-fluid\">\n              <hr>\n              <div class=\"modal-header\" id=\"demoFont2\">\n                <h6 class=\"modal-title\">Prestamo Salud - Retornable</h6>\n              </div>\n              <div class=\"card\">\n                <div class=\"row centrarPrestamo\">\n                  <div class=\"row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n\n                    <!--monto del prestamo-->\n                    <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n                          <label><strong>Monto del Prestamo</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\n                                class=\"fas fa-dollar-sign\"></i></button>\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\"\n                              name=\"inputMontoPrestramo\" [(ngModel)]=\"datosEnvioPrestamo.montoPrestamo\" (change)=\"calcularPrestamoRestante()\" required>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                    <!--abono-->\n                    <div class=\"col-12 col-md-2 col-lg-2 col-xl-2\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-12 col-md-9 col-lg-9 col-xl-9\"> <br>\n\n                          <div class=\"funkyradio\">\n                            <strong>Abono</strong>\n\n                            <div class=\"form-group funkyradio\">\n                              <div class=\"funkyradio-success\">\n                                <input type=\"radio\" name=\"radio\" id=\"radio1\" value=true\n                                  class=\"form-control form-control-sm\" name=\"abono\" #abono=\"ngModel\"\n                                  [(ngModel)]=\"datosEnvioPrestamo.checkAbono\" (click)=\"changeRadioAbono(true); calcularPrestamoRestante()\" [disabled]=\"datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null\"/>\n                                <label for=\"radio1\">Si</label>\n                              </div>\n                              <div class=\"funkyradio-success\">\n                                <input type=\"radio\" name=\"radio\" id=\"radio2\" value=false\n                                  class=\"form-control form-control-sm\" name=\"abono\" #abono=\"ngModel\"\n                                  [(ngModel)]=\"datosEnvioPrestamo.checkAbono\" (click)=\"changeRadioAbono(false); calcularPrestamoRestante()\" [disabled]=\"datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null\"/>\n                                <label for=\"radio2\">No</label>\n                              </div>\n                            </div>\n\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                    <!--tipo de abono-->\n                    <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n\n                          <div class=\"funkyradio\">\n                            <strong>Tipos de Abono</strong>\n\n                            <div class=\"funkyradio-success\">\n                              <input\n                                [disabled]=\"!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'\"\n                                type=\"checkbox\" name=\"datosEnvioPrestamo.checkDia\"\n                                [(ngModel)]=\"datosEnvioPrestamo.checkDia\" id=\"checkbox1\"\n                                (click)=\"changeCheckAbono(1); calcularPrestamoRestante()\" />\n                              <label for=\"checkbox1\">Dia de Sueldo</label>\n                            </div>\n                            <div class=\"funkyradio-success\">\n                              <input\n                                [disabled]=\"!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'\"\n                                type=\"checkbox\" name=\"datosEnvioPrestamo.checkTri\"\n                                [(ngModel)]=\"datosEnvioPrestamo.checkTri\" id=\"checkbox2\"\n                                (click)=\"changeCheckAbono(2); calcularPrestamoRestante()\" />\n                              <label for=\"checkbox2\">Trimestral</label>\n                            </div>\n                            <div class=\"funkyradio-success\">\n                              <input\n                                [disabled]=\"!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'\"\n                                type=\"checkbox\" name=\"datosEnvioPrestamo.checkCon\"\n                                [(ngModel)]=\"datosEnvioPrestamo.checkCon\" id=\"checkbox3\"\n                                (click)=\"changeCheckAbono(3); calcularPrestamoRestante()\" />\n                              <label for=\"checkbox3\">Termino Conflicto</label>\n                            </div>\n\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n                    <!--monto tipo de abono-->\n                    <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n\n                          <label><strong>Monto de Abono</strong></label>\n                          <div class=\"form-group\">\n                            <div class=\"input-group\">\n                              <button class=\"btn btn-success input-group-addon\" disabled><i\n                                  class=\"fas fa-dollar-sign\"></i></button>\n                              <input type=\"number\" (change)=\"calcularPrestamoRestante()\" class=\"form-control\" placeholder=\"Monto Dia de Sueldo\"\n                                name=\"inputDiaSueldo\" [(ngModel)]=\"datosEnvioPrestamo.montoDia\"\n                                [disabled]=\"datosEnvioPrestamo.checkDia == false\">\n                            </div>\n                          </div>\n\n                          <div class=\"form-group\">\n                            <div class=\"input-group\">\n                              <button class=\"btn btn-success input-group-addon\" disabled><i\n                                  class=\"fas fa-dollar-sign\"></i></button>\n                              <input type=\"number\" (change)=\"calcularPrestamoRestante()\" class=\"form-control\" placeholder=\"Monto Trimestral\"\n                                name=\"inputTrimestral\" [(ngModel)]=\"datosEnvioPrestamo.montoTri\"\n                                [disabled]=\"datosEnvioPrestamo.checkTri == false\">\n                            </div>\n                          </div>\n\n                          <div class=\"form-group\">\n                            <div class=\"input-group\">\n                              <button class=\"btn btn-success input-group-addon\" disabled><i\n                                  class=\"fas fa-dollar-sign\"></i></button>\n                              <input type=\"number\" (change)=\"calcularPrestamoRestante()\" class=\"form-control\" placeholder=\"Monto Termino Conflicto\"\n                                name=\"inputTerminoConflicto\" [(ngModel)]=\"datosEnvioPrestamo.montoCon\"\n                                [disabled]=\"datosEnvioPrestamo.checkCon == false\">\n                            </div>\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n                    <!--prestamo restante / por n° de cuotas-->\n                    <div class=\"col-12 col-md-8 col-lg-8 col-xl-8\">\n                      <div class=\"row justify-content-start\">\n                        <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\">\n\n                          <label><strong>Prestamo Restante</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\n                                class=\"fas fa-dollar-sign\"></i></button>\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\" name=\"inputPrestamoRestante\" [(ngModel)]=\"inputPrestamoRestante\" disabled>\n                          </div> <br>\n\n                          <label><strong>Numero de Cuotas</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled>/</button>\n                            <input [disabled]=\"inputPrestamoRestante == 0\" type=\"number\" class=\"form-control\" placeholder=\"Ingrese n° cuotas\"\n                              name=\"inputNumeroCuotas\" [(ngModel)]=\"datosEnvioPrestamo.cuotas\">\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n                    <!--boton Guardar Prestamo-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\n                          <br><br><br><br>\n                          <label><strong>Guardar Prestamo</strong></label>\n                          <div class=\"input-group\">\n                            <button type=\"submit\" class=\"btn btn-block btn-outline-success\"\n                              [disabled]=\"prestamoForm.invalid || blockPrestamo\">Guardar\n                              <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                            </button>\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                  </div>\n                </div> <br>\n              </div>\n            </div>\n\n            <!--prestamo apuro economico retornable-->\n            <div *ngIf=\"datosTipoPrestamo.descripcion == 'apuroEconomico'\" class=\"container-fluid\">\n              <hr>\n              <div class=\"modal-header\" id=\"demoFont2\">\n                <h6 class=\"modal-title\">Apuro Economico - Retornable</h6>\n              </div>\n              <div class=\"card\">\n                <div class=\"row centrarPrestamo\">\n                  <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\n\n                    <!--monto prestamo-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n\n                          <label><strong>Monto del Prestamo</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\n                                class=\"fas fa-dollar-sign\"></i></button>\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\"\n                              name=\"inputMontoPrestramo2\" [(ngModel)]=\"datosEnvioPrestamo.montoPrestamo\" (change)=\"calcularInteres($event)\">\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                    <!--n° de cuotas-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n\n                          <label><strong>Numero de Cuotas</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled>/</button>\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese n° cuotas\" name=\"inputNumeroCuotas2\" [(ngModel)]=\"datosEnvioPrestamo.cuotas\" required>\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                    <!--Interes de prestamo-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\n                      <div class=\"row justify-content-center\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n\n                          <label><strong>Interes del Prestamo (10%)</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled>%</button>\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingese Interes\" name=\"inputGanancia\" [(ngModel)]=\"inputGanancia\" disabled>\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                    <!--boton Guardar Prestamo-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\n                      <div class=\"row justify-content-end\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\"> <br>\n\n                          <label><strong>Guardar Prestamo</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-block btn-outline-success\" [disabled]=\"prestamoForm.invalid || blockPrestamo\">Guardar\n                              <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                            </button>\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                  </div>\n                </div> <br>\n              </div>\n            </div>\n\n            <!--prestamo aporte economico no retornable-->\n            <div *ngIf=\"datosTipoPrestamo.descripcion == 'aporteEconomico'\" class=\"container-fluid\">\n              <hr>\n              <div class=\"modal-header\" id=\"demoFont2\">\n                <h6 class=\"modal-title\">Aporte Economico - No Retornable</h6>\n              </div>\n              <div class=\"card\">\n                <div class=\"row centrarPrestamo\">\n                  <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\n\n                    <!--monto prestamo-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\n                      <div class=\"row justify-content-start\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n\n                          <label><strong>Monto del Prestamo</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\n                                class=\"fas fa-dollar-sign\"></i></button>\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\"\n                              name=\"inputMontoPrestramo3\" [(ngModel)]=\"datosEnvioPrestamo.montoPrestamo\">\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                    <!--boton guardar Prestamo-->\n                    <div class=\"col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8\">\n                      <div class=\"row justify-content-end\">\n                        <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6\"> <br>\n\n                          <label><strong>Guardar Prestamo</strong></label>\n                          <div class=\"input-group\">\n                            <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\"\n                              [disabled]=\"prestamoForm.invalid || blockPrestamo\">Guardar\n                              <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                            </button>\n                          </div>\n\n                        </div>\n                      </div>\n                    </div>\n\n                  </div>\n                </div> <br>\n              </div>\n            </div>\n\n            <!--Cierre del Cuerpo del body Prestamo-->\n          </div>\n        </div>\n      </form>\n    </div>\n    <div class=\"tab-pane fade\" id=\"historico\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\n      <app-tabla-prestamos-historicos-socios></app-tabla-prestamos-historicos-socios>\n    </div>\n    <div class=\"tab-pane fade\" id=\"profile\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\n      <app-tabla-prestamos-socios></app-tabla-prestamos-socios>\n    </div>\n    <div class=\"tab-pane fade\" id=\"contact\" role=\"tabpanel\" aria-labelledby=\"contact-tab\">\n      <app-interes-prestamo-apuro-economico></app-interes-prestamo-apuro-economico>\n    </div>\n  </div>\n\n  <!--Boton para salir del modal Prestamo-->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i>  Volver a Cuenta Sindical\n    </button>\n  </div>\n</ng-template>\n\n<!--Boton Para llamar al modal Prestamo-->\n<label><strong>Detalle Prestamo Socios </strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openPrestamo(Prestamo)\">Ingresar</button>"
-=======
 module.exports = "<!--Modal Prestamo-->\r\n<ng-template #Prestamo let-modal>\r\n  <!--Cabezal del modal Prestamo-->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\">Detalle Prestamo Socios</h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" id=\"home-tab\" data-toggle=\"tab\" href=\"#home\" role=\"tab\" aria-controls=\"home\"\r\n        aria-selected=\"true\">Formulario</a>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" id=\"historico-tab\" data-toggle=\"tab\" href=\"#historico\" role=\"tab\" aria-controls=\"historico\"\r\n        aria-selected=\"false\">Historial Prestamos</a>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" id=\"profile-tab\" data-toggle=\"tab\" href=\"#profile\" role=\"tab\" aria-controls=\"profile\"\r\n        aria-selected=\"false\">Pago de Prestamos</a>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <a class=\"nav-link\" id=\"contact-tab\" data-toggle=\"tab\" href=\"#contact\" role=\"tab\" aria-controls=\"contact\"\r\n        aria-selected=\"false\">Interes del Prestamo / Apuro - Economico</a>\r\n    </li>\r\n  </ul> <br>\r\n\r\n  <!--Cuerpo del body Prestamo-->\r\n  <div class=\"tab-content\" id=\"myTabContent\">\r\n    <div class=\"tab-pane fade show active\" id=\"home\" role=\"tabpanel\" aria-labelledby=\"home-tab\">\r\n      <form #prestamoForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\r\n        <div class=\"modal-body\">\r\n          <div class=\"row\">\r\n\r\n            <!--tipo prestamo socio-->\r\n            <div class=\"container\">\r\n              \r\n                    <div class=\"modal-header\" id=\"demoFont2\">\r\n                      <h6 class=\"modal-title\">Datos del Socio</h6>\r\n                    </div>\r\n                    <div class=\"card\">\r\n\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <div class=\"row justify-content-center\">\r\n                          <div class=\"col-12 col-md-8 col-lg-8 col-xl-8\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label>\r\n                                <strong>Ingrese rut del socio sin guiones  </strong>\r\n                                <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                                  ngbTooltip=\"El rut del socio debe de ser ingresado sin guion\"></i>\r\n                              </label>\r\n                              <div class=\"input-group\">\r\n                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                  placeholder=\"Ingrese rut del socio sin guion\" name=\"rut\" #rut=\"ngModel\"\r\n                                  [(ngModel)]=\"inputRut\" required>\r\n                                <span class=\"input-group-btn\">\r\n                                  <button type=\"button\" (click)=\"consultarSocio(rut.value)\" [disabled]=\"blockPrestamo\"\r\n                                    class=\"btn btn-outline-success btn-sm\"><i *ngIf=\"!blockPrestamo\" class=\"fas fa-search\"></i>\r\n                                    <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                                  </button>\r\n                                </span>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <div class=\"row\">\r\n                         <div class=\"col-12 col-md-2 col-lg-2 col-xl-2\">\r\n                            <div class=\"form-group text-center\">\r\n                              <img src=\"/assets/socio-default.png\" width=\"100px\" height=\"100px\" alt=\"Socio\"\r\n                                class=\"img-thumbnail\">\r\n                            </div>\r\n                          </div>\r\n\r\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label><strong>Rut del socio</strong></label>\r\n                              <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{rutSocioTest}}\" required disabled>\r\n                            </div>\r\n                          </div>\r\n\r\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label><strong>Nombre Completo del socio</strong></label>\r\n                              <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{nombreSocioTest}}\" required disabled>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div> <br>\r\n\r\n                    <div class=\"modal-header\" id=\"demoFont2\">\r\n                      <h6 class=\"modal-title\">Datos del Prestamo</h6>\r\n                    </div>\r\n                    <div class=\"card\">\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <div class=\"row justify-content-center\">\r\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label><strong>Fecha del prestamo</strong></label>\r\n                              <input type=\"date\" class=\"form-control form-control-sm\" name=\"fecha\" #fecha=\"ngModel\"\r\n                                [(ngModel)]=\"datosEnvioPrestamo.fecha\" required>\r\n                            </div>\r\n                          </div>\r\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label><strong>Transferencia Bancaria</strong></label>\r\n                              <input type=\"text\" class=\"form-control form-control-sm\" name=\"nDocumento\" #nDocumento=\"ngModel\"\r\n                                [(ngModel)]=\"datosEnvioPrestamo.numeroDocumento\" required>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <div class=\"row justify-content-center\">\r\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label><strong>Seleccione el comprobante</strong></label>\r\n                              <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\" required>\r\n                            </div>\r\n                          </div>\r\n                          <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <div class=\"form-group\"> <br>\r\n                              <label><strong>Seleccione el tipo de Prestamo</strong></label>\r\n                              <select (change)=\"changeTipoPrestamo($event)\" class=\"form-control form-control-sm\">\r\n                                <option *ngFor=\"let tipo of selectTipoPrestamo\" [value]=\"tipo.id\">{{tipo.descripcion}}\r\n                                </option>\r\n                              </select>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n\r\n\r\n              \r\n            </div>\r\n            <!--prestamo salud retornable-->\r\n            <div *ngIf=\"datosTipoPrestamo.descripcion == 'salud'\" class=\"container-fluid\">\r\n              <hr>\r\n              <div class=\"modal-header\" id=\"demoFont2\">\r\n                <h6 class=\"modal-title\">Prestamo Salud - Retornable</h6>\r\n              </div>\r\n              <div class=\"card\">\r\n                <div class=\"row centrarPrestamo\">\r\n                  <div class=\"row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n                    <!--monto del prestamo-->\r\n                    <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n                          <label><strong>Monto del Prestamo</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                class=\"fas fa-dollar-sign\"></i></button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\"\r\n                              name=\"inputMontoPrestramo\" [(ngModel)]=\"datosEnvioPrestamo.montoPrestamo\" (change)=\"calcularPrestamoRestante()\" required>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <!--abono-->\r\n                    <div class=\"col-12 col-md-2 col-lg-2 col-xl-2\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-12 col-md-9 col-lg-9 col-xl-9\"> <br>\r\n\r\n                          <div class=\"funkyradio\">\r\n                            <strong>Abono</strong>\r\n\r\n                            <div class=\"form-group funkyradio\">\r\n                              <div class=\"funkyradio-success\">\r\n                                <input type=\"radio\" name=\"radio\" id=\"radio1\" value=true\r\n                                  class=\"form-control form-control-sm\" name=\"abono\" #abono=\"ngModel\"\r\n                                  [(ngModel)]=\"datosEnvioPrestamo.checkAbono\" (click)=\"changeRadioAbono(true); calcularPrestamoRestante()\" [disabled]=\"datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null\"/>\r\n                                <label for=\"radio1\">Si</label>\r\n                              </div>\r\n                              <div class=\"funkyradio-success\">\r\n                                <input type=\"radio\" name=\"radio\" id=\"radio2\" value=false\r\n                                  class=\"form-control form-control-sm\" name=\"abono\" #abono=\"ngModel\"\r\n                                  [(ngModel)]=\"datosEnvioPrestamo.checkAbono\" (click)=\"changeRadioAbono(false); calcularPrestamoRestante()\" [disabled]=\"datosEnvioPrestamo.montoPrestamo == '' || datosEnvioPrestamo.montoPrestamo == null\"/>\r\n                                <label for=\"radio2\">No</label>\r\n                              </div>\r\n                            </div>\r\n\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <!--tipo de abono-->\r\n                    <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n\r\n                          <div class=\"funkyradio\">\r\n                            <strong>Tipos de Abono</strong>\r\n\r\n                            <div class=\"funkyradio-success\">\r\n                              <input\r\n                                [disabled]=\"!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'\"\r\n                                type=\"checkbox\" name=\"datosEnvioPrestamo.checkDia\"\r\n                                [(ngModel)]=\"datosEnvioPrestamo.checkDia\" id=\"checkbox1\"\r\n                                (click)=\"changeCheckAbono(1); calcularPrestamoRestante()\" />\r\n                              <label for=\"checkbox1\">Dia de Sueldo</label>\r\n                            </div>\r\n                            <div class=\"funkyradio-success\">\r\n                              <input\r\n                                [disabled]=\"!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'\"\r\n                                type=\"checkbox\" name=\"datosEnvioPrestamo.checkTri\"\r\n                                [(ngModel)]=\"datosEnvioPrestamo.checkTri\" id=\"checkbox2\"\r\n                                (click)=\"changeCheckAbono(2); calcularPrestamoRestante()\" />\r\n                              <label for=\"checkbox2\">Trimestral</label>\r\n                            </div>\r\n                            <div class=\"funkyradio-success\">\r\n                              <input\r\n                                [disabled]=\"!datosEnvioPrestamo.checkAbono || datosEnvioPrestamo.checkAbono == 'false'\"\r\n                                type=\"checkbox\" name=\"datosEnvioPrestamo.checkCon\"\r\n                                [(ngModel)]=\"datosEnvioPrestamo.checkCon\" id=\"checkbox3\"\r\n                                (click)=\"changeCheckAbono(3); calcularPrestamoRestante()\" />\r\n                              <label for=\"checkbox3\">Termino Conflicto</label>\r\n                            </div>\r\n\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <!--monto tipo de abono-->\r\n                    <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n\r\n                          <label><strong>Monto de Abono</strong></label>\r\n                          <div class=\"form-group\">\r\n                            <div class=\"input-group\">\r\n                              <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                  class=\"fas fa-dollar-sign\"></i></button>\r\n                              <input type=\"number\" (change)=\"calcularPrestamoRestante()\" class=\"form-control\" placeholder=\"Monto Dia de Sueldo\"\r\n                                name=\"inputDiaSueldo\" [(ngModel)]=\"datosEnvioPrestamo.montoDia\"\r\n                                [disabled]=\"datosEnvioPrestamo.checkDia == false\">\r\n                            </div>\r\n                          </div>\r\n\r\n                          <div class=\"form-group\">\r\n                            <div class=\"input-group\">\r\n                              <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                  class=\"fas fa-dollar-sign\"></i></button>\r\n                              <input type=\"number\" (change)=\"calcularPrestamoRestante()\" class=\"form-control\" placeholder=\"Monto Trimestral\"\r\n                                name=\"inputTrimestral\" [(ngModel)]=\"datosEnvioPrestamo.montoTri\"\r\n                                [disabled]=\"datosEnvioPrestamo.checkTri == false\">\r\n                            </div>\r\n                          </div>\r\n\r\n                          <div class=\"form-group\">\r\n                            <div class=\"input-group\">\r\n                              <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                  class=\"fas fa-dollar-sign\"></i></button>\r\n                              <input type=\"number\" (change)=\"calcularPrestamoRestante()\" class=\"form-control\" placeholder=\"Monto Termino Conflicto\"\r\n                                name=\"inputTerminoConflicto\" [(ngModel)]=\"datosEnvioPrestamo.montoCon\"\r\n                                [disabled]=\"datosEnvioPrestamo.checkCon == false\">\r\n                            </div>\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <!--prestamo restante / por n° de cuotas-->\r\n                    <div class=\"col-12 col-md-8 col-lg-8 col-xl-8\">\r\n                      <div class=\"row justify-content-start\">\r\n                        <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\">\r\n\r\n                          <label><strong>Prestamo Restante</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                class=\"fas fa-dollar-sign\"></i></button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\" name=\"inputPrestamoRestante\" [(ngModel)]=\"inputPrestamoRestante\" disabled>\r\n                          </div> <br>\r\n\r\n                          <label><strong>Numero de Cuotas</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled>/</button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese n° cuotas\"\r\n                              name=\"inputNumeroCuotas\" [(ngModel)]=\"datosEnvioPrestamo.cuotas\">\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <!--boton Guardar Prestamo-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\r\n                          <br><br><br><br>\r\n                          <label><strong>Guardar Prestamo</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button type=\"submit\" class=\"btn btn-block btn-outline-success\"\r\n                              [disabled]=\"prestamoForm.invalid || blockPrestamo\">Guardar\r\n                              <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                            </button>\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                </div> <br>\r\n              </div>\r\n            </div>\r\n\r\n            <!--prestamo apuro economico retornable-->\r\n            <div *ngIf=\"datosTipoPrestamo.descripcion == 'apuroEconomico'\" class=\"container-fluid\">\r\n              <hr>\r\n              <div class=\"modal-header\" id=\"demoFont2\">\r\n                <h6 class=\"modal-title\">Apuro Economico - Retornable</h6>\r\n              </div>\r\n              <div class=\"card\">\r\n                <div class=\"row centrarPrestamo\">\r\n                  <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n                    <!--monto prestamo-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n\r\n                          <label><strong>Monto del Prestamo</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                class=\"fas fa-dollar-sign\"></i></button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\"\r\n                              name=\"inputMontoPrestramo2\" [(ngModel)]=\"datosEnvioPrestamo.montoPrestamo\" (change)=\"calcularInteres($event)\">\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!--n° de cuotas-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n\r\n                          <label><strong>Numero de Cuotas</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled>/</button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese n° cuotas\" name=\"inputNumeroCuotas2\" [(ngModel)]=\"datosEnvioPrestamo.cuotas\" disabled required>\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!--Interes de prestamo-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n                      <div class=\"row justify-content-center\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n\r\n                          <label><strong>Interes del Prestamo (10%)</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled>%</button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingese Interes\" name=\"inputGanancia\" [(ngModel)]=\"inputGanancia\" disabled>\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!--boton Guardar Prestamo-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\r\n                      <div class=\"row justify-content-end\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\"> <br>\r\n\r\n                          <label><strong>Guardar Prestamo</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-block btn-outline-success\" [disabled]=\"prestamoForm.invalid || blockPrestamo\">Guardar\r\n                              <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                            </button>\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                </div> <br>\r\n              </div>\r\n            </div>\r\n\r\n            <!--prestamo aporte economico no retornable-->\r\n            <div *ngIf=\"datosTipoPrestamo.descripcion == 'aporteEconomico'\" class=\"container-fluid\">\r\n              <hr>\r\n              <div class=\"modal-header\" id=\"demoFont2\">\r\n                <h6 class=\"modal-title\">Aporte Economico - No Retornable</h6>\r\n              </div>\r\n              <div class=\"card\">\r\n                <div class=\"row centrarPrestamo\">\r\n                  <div class=\"row col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n                    <!--monto prestamo-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4\">\r\n                      <div class=\"row justify-content-start\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n\r\n                          <label><strong>Monto del Prestamo</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-success input-group-addon\" disabled><i\r\n                                class=\"fas fa-dollar-sign\"></i></button>\r\n                            <input type=\"number\" class=\"form-control\" placeholder=\"Ingrese monto\"\r\n                              name=\"inputMontoPrestramo3\" [(ngModel)]=\"datosEnvioPrestamo.montoPrestamo\">\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!--boton guardar Prestamo-->\r\n                    <div class=\"col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8\">\r\n                      <div class=\"row justify-content-end\">\r\n                        <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6\"> <br>\r\n\r\n                          <label><strong>Guardar Prestamo</strong></label>\r\n                          <div class=\"input-group\">\r\n                            <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\"\r\n                              [disabled]=\"prestamoForm.invalid || blockPrestamo\">Guardar\r\n                              <img *ngIf=\"blockPrestamo\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                            </button>\r\n                          </div>\r\n\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                </div> <br>\r\n              </div>\r\n            </div>\r\n\r\n            <!--Cierre del Cuerpo del body Prestamo-->\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n    <div class=\"tab-pane fade\" id=\"historico\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\r\n      <app-tabla-prestamos-historicos-socios></app-tabla-prestamos-historicos-socios>\r\n    </div>\r\n    <div class=\"tab-pane fade\" id=\"profile\" role=\"tabpanel\" aria-labelledby=\"profile-tab\">\r\n      <app-tabla-prestamos-socios></app-tabla-prestamos-socios>\r\n    </div>\r\n    <div class=\"tab-pane fade\" id=\"contact\" role=\"tabpanel\" aria-labelledby=\"contact-tab\">\r\n      <app-interes-prestamo-apuro-economico></app-interes-prestamo-apuro-economico>\r\n    </div>\r\n  </div>\r\n\r\n  <!--Boton para salir del modal Prestamo-->\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i>  Volver a Cuenta Sindical\r\n    </button>\r\n  </div>\r\n</ng-template>\r\n\r\n<!--Boton Para llamar al modal Prestamo-->\r\n<label><strong>Detalle Prestamo Socios </strong></label><br>\r\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openPrestamo(Prestamo)\">Ingresar</button>"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -442,11 +426,7 @@ module.exports = "<!--Modal Prestamo-->\r\n<ng-template #Prestamo let-modal>\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<!--Tabla Del Prestamo Socios-->\n<div class=\"modal-body\"><br>\n  <div class=\"row\">\n    <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\n      <strong>Filtro por Año  </strong>\n      <i class=\"fas fa-calendar-check\"></i>\n    </label>\n      <!---Select Año-->\n      <select (change)=\"changeAnio($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectAnio.id\" [disabled]=\"cargandoTabla\">\n        <option *ngFor=\"let itemAnio of selectAnio\" [value]=\"itemAnio.id\">{{itemAnio.descripcion}}</option>\n      </select>\n    </div>\n  \n    <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\n      <strong>Filtro por Mes  </strong>\n      <i class=\"fas fa-calendar-check\"></i>\n    </label>\n      <!--Select Mes-->\n      <select (change)=\"changeMes($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectMes.id\" [disabled]=\"cargandoTabla\">\n        <option *ngFor=\"let itemMes of selectMes\" [value]=\"itemMes.id\">{{itemMes.descripcion}}</option>\n      </select>\n    </div>\n\n    <div class=\"col-6 col-md-3 col-lg-3\"> <br><label>\n      <strong>Recargar Tabla</strong>\n    </label><br>\n    <button class=\"btn btn-primary\" (click)=\"refrescarTablaPrestamosClientes()\" [disabled]=\"cargandoTabla\">Actualizar</button>\n    <div *ngIf=\"cargandoTabla\">\n      <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\n      <label>Cargando tabla de Prestamos</label>\n  </div>\n      <div>\n    </div>\n    </div>\n  </div><br>\n<div class=\"table-responsive\">\n  <table class=\"table table-striped table-bordered table-sm\">\n    <!--Tabla salud - Retornable-->\n    <thead text-sm >\n        <tr>\n          <!--titulo de la tabla-->\n          <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Salud - Retornable</th>\n        </tr>\n      <tr class=\"text-center\">\n        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\n        <th colspan=\"1\" style=\"background: #138D75\">ID</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\n        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n        <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Dia Sueldo</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Trimestral</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Ter. Conflicto</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Monto Restante P.</th>\n        <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\n        <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\n      </tr>\n    </thead>\n    <!--casillas para llenar de la BD-->\n    <tbody>\n      <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosSalud\">\n        <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\n        <td colspan=\"1\">{{itemPrestamo.id}}</td>\n        <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\n        <td colspan=\"2\">\n          <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n            placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\n          </a>\n        </td>\n        <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\n        <td colspan=\"2\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        <td colspan=\"2\">{{itemPrestamo.sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{itemPrestamo.trimestral | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{itemPrestamo.conflicto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{itemPrestamo.monto_restante_p | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{itemPrestamo.cuotap}}</td>\n        <td colspan=\"3\">{{itemPrestamo.estado}}</td>\n      </tr>\n    </tbody> <br>\n\n    <!--Tabla apuro economico - Retornable-->\n    <thead text-sm >\n      <tr>\n        <!--titulo de la tabla-->\n        <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Apuro Economico - Retornable</th>\n      </tr>\n    <tr class=\"text-center\">\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\n      <th colspan=\"1\" style=\"background: #138D75\">ID</th>\n      <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n      <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\n      <th colspan=\"5\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\n      <th colspan=\"5\" style=\"background: #138D75\">Interes</th>\n      <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\n      <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\n    </tr>\n    </thead>\n    <!--casillas para llenar de la BD-->\n    <tbody>\n      <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosApuro\">\n        <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\n        <td colspan=\"1\">{{itemPrestamo.id}}</td>\n        <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\n        <td colspan=\"2\">\n          <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n            placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\n          </a>\n        </td>\n        <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\n        <td colspan=\"5\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        <td colspan=\"5\">{{itemPrestamo.sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n        <td colspan=\"2\">{{itemPrestamo.cuotap}}</td>\n        <td colspan=\"3\">{{itemPrestamo.estado}}</td>\n      </tr>\n    </tbody> <br>\n\n    <!--Tabla aporte economico - No Retornable-->\n    <thead text-sm >\n      <tr>\n        <!--titulo de la tabla-->\n        <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Aporte Economico - No Retornable</th>\n      </tr>\n    <tr class=\"text-center\">\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\n      <th colspan=\"1\" style=\"background: #138D75\">ID</th>\n      <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n      <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\n      <th colspan=\"10\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\n      <th colspan=\"5\" style=\"background: #138D75;\">Estado</th>\n    </tr>\n    </thead>\n    <!--casillas para llenar de la BD-->\n    <tbody>\n      <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosAporte\">\n        <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\n        <td colspan=\"1\">{{itemPrestamo.id}}</td>\n        <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\n        <td colspan=\"2\">\n          <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n            placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\n          </a>\n        </td>\n        <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\n        <td colspan=\"10\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n        <td colspan=\"5\">{{itemPrestamo.estado}}</td>\n      </tr>\n    </tbody> <br>\n    \n  </table>\n</div>\n</div>"
-=======
 module.exports = "<!--Tabla Del Prestamo Socios-->\r\n<div class=\"modal-body\"><br>\r\n  <div class=\"row\">\r\n    <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\r\n      <strong>Filtro por Año  </strong>\r\n      <i class=\"fas fa-calendar-check\"></i>\r\n    </label>\r\n      <!---Select Año-->\r\n      <select (change)=\"changeAnio($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectAnio.id\" [disabled]=\"cargandoTabla\">\r\n        <option *ngFor=\"let itemAnio of selectAnio\" [value]=\"itemAnio.id\">{{itemAnio.descripcion}}</option>\r\n      </select>\r\n    </div>\r\n  \r\n    <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\r\n      <strong>Filtro por Mes  </strong>\r\n      <i class=\"fas fa-calendar-check\"></i>\r\n    </label>\r\n      <!--Select Mes-->\r\n      <select (change)=\"changeMes($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectMes.id\" [disabled]=\"cargandoTabla\">\r\n        <option *ngFor=\"let itemMes of selectMes\" [value]=\"itemMes.id\">{{itemMes.descripcion}}</option>\r\n      </select>\r\n    </div>\r\n\r\n    <div class=\"col-6 col-md-3 col-lg-3\"> <br><label>\r\n      <strong>Recargar Tabla</strong>\r\n    </label><br>\r\n    <button class=\"btn btn-primary\" (click)=\"refrescarTablaPrestamosClientes()\" [disabled]=\"cargandoTabla\">Actualizar</button>\r\n    <div *ngIf=\"cargandoTabla\">\r\n      <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n      <label>Cargando tabla de Prestamos</label>\r\n  </div>\r\n      <div>\r\n    </div>\r\n    </div>\r\n  </div><br>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-striped table-bordered table-sm\">\r\n    <!--Tabla salud - Retornable-->\r\n    <thead text-sm >\r\n        <tr>\r\n          <!--titulo de la tabla-->\r\n          <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Salud - Retornable</th>\r\n        </tr>\r\n      <tr class=\"text-center\">\r\n        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\r\n        <th colspan=\"1\" style=\"background: #138D75\">ID</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\r\n        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n        <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Dia Sueldo</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Trimestral</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Ter. Conflicto</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Monto Restante P.</th>\r\n        <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\r\n        <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\r\n      </tr>\r\n    </thead>\r\n    <!--casillas para llenar de la BD-->\r\n    <tbody>\r\n      <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosSalud\">\r\n        <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\r\n        <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\r\n        <td colspan=\"2\">\r\n          <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n            placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\r\n          </a>\r\n        </td>\r\n        <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\r\n        <td colspan=\"2\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        <td colspan=\"2\">{{itemPrestamo.sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.trimestral | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.conflicto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.monto_restante_p | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\r\n        <td colspan=\"3\">{{itemPrestamo.estado}}</td>\r\n      </tr>\r\n    </tbody> <br>\r\n\r\n    <!--Tabla apuro economico - Retornable-->\r\n    <thead text-sm >\r\n      <tr>\r\n        <!--titulo de la tabla-->\r\n        <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Apuro Economico - Retornable</th>\r\n      </tr>\r\n    <tr class=\"text-center\">\r\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\r\n      <th colspan=\"1\" style=\"background: #138D75\">ID</th>\r\n      <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\r\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n      <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\r\n      <th colspan=\"5\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\r\n      <th colspan=\"5\" style=\"background: #138D75\">Interes</th>\r\n      <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\r\n      <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\r\n    </tr>\r\n    </thead>\r\n    <!--casillas para llenar de la BD-->\r\n    <tbody>\r\n      <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosApuro\">\r\n        <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\r\n        <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\r\n        <td colspan=\"2\">\r\n          <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n            placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\r\n          </a>\r\n        </td>\r\n        <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\r\n        <td colspan=\"5\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        <td colspan=\"5\">{{itemPrestamo.sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\r\n        <td colspan=\"3\">{{itemPrestamo.estado}}</td>\r\n      </tr>\r\n    </tbody> <br>\r\n\r\n    <!--Tabla aporte economico - No Retornable-->\r\n    <thead text-sm >\r\n      <tr>\r\n        <!--titulo de la tabla-->\r\n        <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Aporte Economico - No Retornable</th>\r\n      </tr>\r\n    <tr class=\"text-center\">\r\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\r\n      <th colspan=\"1\" style=\"background: #138D75\">ID</th>\r\n      <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\r\n      <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n      <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\r\n      <th colspan=\"10\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\r\n      <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\r\n      <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\r\n    </tr>\r\n    </thead>\r\n    <!--casillas para llenar de la BD-->\r\n    <tbody>\r\n      <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosAporte\">\r\n        <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\r\n        <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\r\n        <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\r\n        <td colspan=\"2\">\r\n          <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n            placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\r\n          </a>\r\n        </td>\r\n        <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\r\n        <td colspan=\"10\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\r\n        <td colspan=\"3\">{{itemPrestamo.estado}}</td>\r\n      </tr>\r\n    </tbody> <br>\r\n    \r\n  </table>\r\n</div>\r\n</div>"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -457,11 +437,7 @@ module.exports = "<!--Tabla Del Prestamo Socios-->\r\n<div class=\"modal-body\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<!--Tabla Del Prestamo Socios-->\n<div class=\"modal-body\"><br>\n    <div class=\"row\">\n      <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\n        <strong>Filtro por Año  </strong>\n        <i class=\"fas fa-calendar-check\"></i>\n      </label>\n        <!---Select Año-->\n        <select (change)=\"changeAnio($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectAnio.id\" [disabled]=\"cargandoTabla\">\n          <option *ngFor=\"let itemAnio of selectAnio\" [value]=\"itemAnio.id\">{{itemAnio.descripcion}}</option>\n        </select>\n      </div>\n    \n      <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\n        <strong>Filtro por Mes  </strong>\n        <i class=\"fas fa-calendar-check\"></i>\n      </label>\n        <!--Select Mes-->\n        <select (change)=\"changeMes($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectMes.id\" [disabled]=\"cargandoTabla\">\n          <option *ngFor=\"let itemMes of selectMes\" [value]=\"itemMes.id\">{{itemMes.descripcion}}</option>\n        </select>\n      </div>\n\n      <div class=\"col-6 col-md-3 col-lg-3\"> <br><label>\n        <strong>Recargar Tabla</strong>\n      </label><br>\n        <button class=\"btn btn-primary\" (click)=\"refrescarTablaPrestamosClientes()\" [disabled]=\"cargandoTabla\">Actualizar</button>\n        <div *ngIf=\"cargandoTabla\">\n          <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\n          <label>Cargando tabla de Prestamos</label>\n      </div>\n      </div>\n    </div><br>\n  <div class=\"table-responsive-xl\">\n    <table class=\"table table-striped table-bordered table-sm\">\n      <!--Tabla salud - Retornable-->\n      <thead text-sm >\n          <tr>\n            <!--titulo de la tabla-->\n            <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Salud - Retornable</th>\n          </tr>\n        <tr class=\"text-center\">\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha de Pago</th>\n          <th colspan=\"1\" style=\"background: #138D75\">ID</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n          <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Dia Sueldo</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Trimestral</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Ter. Conflicto</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Monto Restante P.</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egreso de Cuotas</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Restante</th>\n          <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\n          <th colspan=\"2\" style=\"background: #138D75;\">Pagar Cuota</th>\n          <th colspan=\"2\" style=\"background: #138D75;\">Pagar Abonos</th>\n        </tr>\n      </thead>\n\n      <!--casillas para llenar de la BD-->\n      <tbody>\n        <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosSalud\">\n          <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\n          <td colspan=\"2\">{{itemPrestamo.fecha_pago}}</td>\n          <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\n          <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\n          <td colspan=\"2\">\n            <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n              placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\n            </a>\n          </td>\n          <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\n          <td colspan=\"2\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"2\">{{itemPrestamo.sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"2\">{{itemPrestamo.trimestral | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"2\">{{itemPrestamo.conflicto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"2\">{{itemPrestamo.monto_restante_p | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\n          <td colspan=\"3\"><strong>{{itemPrestamo.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"3\">{{itemPrestamo.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"3\"><strong>{{itemPrestamo.restante | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"3\">{{itemPrestamo.estado}}</td>\n\n          <td colspan=\"2\" class=\"text-center\">\n            <button [disabled]=\"itemPrestamo.cuotap == 0 || itemPrestamo.cuotad == itemPrestamo.cuotap\" class=\"btn btn-outline-success\" style=\"cursor: pointer\" (click)=\"openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante_p, itemPrestamo.total_prestamo, itemPrestamo.cuotap)\"> <!-------------------------------------->\n            <ng-template #pagoPrestamoSaludCuota let-c=\"close\" let-d=\"dismiss\">\n                <div class=\"modal-header\" id=\"demoFont\">\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Pago Cuota Salud Retornable</h4>\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div>\n                <div class=\"modal-body\">\n                      <div class=\"row\">\n                        <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n                          <label><strong>Monto de Cuota a Pagar</strong></label> \n                          <input type=\"number\" class=\"form-control form-control-sm\" #montoPagarSalud value=\"{{montoCuotaPagar}}\">\n                        </div>\n\n                        <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n                          <label><strong>N° de Cuotas Pagadas</strong></label> \n                          <input type=\"number\" class=\"form-control form-control-sm\" #cuotasPagadasSalud value=\"{{itemPrestamo.cuotad}}\" disabled>\n                        </div>\n                      </div><br>\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                          <label> <strong>Fecha de Pago</strong></label> \n                          <input class=\"form-control form-control-sm\" #fechaInteresSalud type=\"date\">\n                      </div><br>\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                        <button [disabled]=\"blockPagoPrestamo\" type=\"button\" class=\"btn btn-outline-success\" (click)=\"pagarPrestamo(fechaInteresSalud, itemPrestamo.id, montoPagarSalud)\">Pagar\n                          <img *ngIf=\"blockPagoPrestamo\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                        </button>\n                    </div>\n\n                  </div>\n\n            </ng-template> \n            <i class=\"fas fa-cash-register\" placement=\"top\" ngbTooltip=\"Presione aqui para realizar el pago de Cuota\"></i>\n            </button>\n          \n          </td>\n\n          <td colspan=\"2\" class=\"text-center\">\n            <button [disabled]=\"itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0\" class=\"btn btn-outline-success\" style=\"cursor: pointer\" (click)=\"openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)\"> <!-------------------------------------->\n            <ng-template #pagoPrestamoSaludAbono let-c=\"close\" let-d=\"dismiss\">\n                <div class=\"modal-header\" id=\"demoFont\">\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Pago Abono Salud Retornable</h4>\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div>\n                <div class=\"modal-body\">\n                    <div class=\"row\">\n                      <div class=\"col-7 col-md-7 col-lg-7 col-xl-7\">\n                        <label><strong>Pago de Abono</strong></label>\n                        <select #definicionSelectAbono class=\"form-control form-control-sm\">\n                          <option value=\"1\">Dia Sueldo</option>\n                          <option value=\"3\">Trimestral</option>\n                          <option value=\"2\">Termino Conflicto</option>\n                        </select>\n                      </div>\n                      \n                      <div class=\"col-5 col-md-5 col-lg-5 col-xl-5\">\n                        <label> <strong>Abono</strong></label> \n                        <input class=\"form-control form-control-sm\" #montoAbono type=\"number\" value=\"\">\n                      </div><br>\n\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <label> <strong>Fecha de Pago</strong></label> \n                        <input class=\"form-control form-control-sm\" #fechaAbono type=\"date\">\n                    </div>\n                    </div><br>\n\n                    <div class=\"modal-footer\">\n                      <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                      <button [disabled]=\"blockPagoAbono\" type=\"button\" class=\"btn btn-outline-success\" (click)=\"pagarAbono(itemPrestamo.id, definicionSelectAbono, fechaAbono, montoAbono)\">Pagar\n                        <img *ngIf=\"blockPagoAbono\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                      </button>\n                    </div> <hr>\n                  </div>\n\n            </ng-template> \n            <i class=\"fas fa-cash-register\" placement=\"top\" ngbTooltip=\"Presione aqui para realizar el pago Abono\"></i>\n            </button>\n          \n          </td>\n        </tr>\n      </tbody> <br>\n\n      <!--Tabla apuro Economico - Retornable-->\n      <thead text-sm>\n          <tr>\n            <!--titulo de la tabla-->\n            <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Apuro Economico - Retornable</th>\n          </tr>\n        <tr class=\"text-center\">\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha de Pago</th>\n          <th colspan=\"1\" style=\"background: #138D75\">ID</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n          <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\n          <th colspan=\"8\" class=\"text-center\" style=\"background: #138D75\">Interes</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Restante</th>\n          <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\n          <th colspan=\"4\" style=\"background: #138D75;\">Pagar Cuota</th>\n        </tr>\n      </thead>\n\n      <!--casillas para llenar de la BD-->\n      <tbody>\n        <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosApuro\">\n          <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\n          <td colspan=\"2\">{{itemPrestamo.fecha_pago}}</td>\n          <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\n          <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\n          <td colspan=\"2\">\n            <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n              placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\n            </a>\n          </td>\n          <td colspan=\"10\" class=\"text-center\">{{itemPrestamo.descripcion}}</td>\n          <td colspan=\"2\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"8\" class=\"text-center\">{{itemPrestamo.interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\n          <td colspan=\"3\"><strong>{{itemPrestamo.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"3\">{{itemPrestamo.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"3\"><strong>{{itemPrestamo.restante | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"3\">{{itemPrestamo.estado}}</td>\n\n          <td colspan=\"4\" class=\"text-center\">\n            <button [disabled]=\"itemPrestamo.cuotap == 0 || itemPrestamo.cuotad == itemPrestamo.cuotap\" class=\"btn btn-outline-success\" style=\"cursor: pointer\" (click)=\"openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)\">\n            <ng-template #pagoPrestamoInteres let-c=\"close\" let-d=\"dismiss\">\n                <div class=\"modal-header\" id=\"demoFont\">\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Pago Cuota Apuro Economico Retornable</h4>\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div>\n                <div class=\"modal-body\">\n                    <div class=\"row\">\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                          <label> <strong>Fecha de Pago</strong></label> \n                          <input class=\"form-control form-control-sm\" #fechaInteres type=\"date\">\n                        </div>\n                      </div><br>\n                    <div class=\"row\">\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <label> <strong>Monto del Interes a Pagar</strong></label> \n                        <input class=\"form-control form-control-sm\" #montoInteres type=\"number\" value=\"{{montoDelInteresPagar}}\" disabled>\n                      </div>\n                    </div><br>\n                    <div class=\"row\">\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <label><strong>Monto de Cuota a Pagar</strong></label> \n                        <input type=\"number\" class=\"form-control form-control-sm\" #montoCuotaApuro value=\"{{montoCuotaPagar}}\" disabled>\n                      </div>\n                    </div><br>\n\n                    <div class=\"row justify-content-center\">\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                        <label><strong>monto Final a Pagar</strong></label> \n                        <input type=\"number\" class=\"form-control form-control-sm\" #montoFinalApuro value=\"{{montoFinalPagar}}\">\n                      </div>\n                    </div><br>\n\n                    <div class=\"modal-footer\">\n                        <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                        <button [disabled]=\"blockPagoPrestamo\" type=\"button\" class=\"btn btn-outline-success\" (click)=\"pagarPrestamo(fechaInteres, itemPrestamo.id, montoFinalApuro)\">Pagar\n                          <img *ngIf=\"blockPagoPrestamo\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                        </button>\n                    </div>\n\n                  </div>\n\n            </ng-template> \n            <i class=\"fas fa-cash-register\" placement=\"top\" ngbTooltip=\"Presione aqui para realizar el pago de cuota.\"></i>\n            </button>\n          \n          </td>\n        </tr>\n      </tbody> <br>\n\n      <!--Tabla aporte economico - No Retornable-->\n      <thead text-sm >\n          <tr>\n            <!--titulo de la tabla-->\n            <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Aporte Economico - No Retornable</th>\n          </tr>\n        <tr class=\"text-center\">\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha de Pago</th>\n          <th colspan=\"1\" style=\"background: #138D75\">ID</th>\n          <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n          <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\n          <th colspan=\"12\" class=\"text-center\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Restante</th>\n          <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\n          <th colspan=\"4\" style=\"background: #138D75;\">pagar</th>\n        </tr>\n      </thead>\n\n      <!--casillas para llenar de la BD-->\n      <tbody>\n        <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosAporte\">\n          <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\n          <td colspan=\"2\">{{itemPrestamo.fecha_pago}}</td>\n          <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\n          <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\n          <td colspan=\"2\">\n            <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\n              placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n            </a>\n          </td>\n          <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\n          <td colspan=\"12\" class=\"text-center\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          <td colspan=\"3\">{{itemPrestamo.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"3\">{{itemPrestamo.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"3\">{{itemPrestamo.restante | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n          <td colspan=\"3\">{{itemPrestamo.estado}}</td>\n          <td colspan=\"4\" class=\"text-center\">S/P</td>\n        </tr>\n      </tbody> <br>\n      \n    </table>\n  </div>\n</div>"
-=======
 module.exports = "<!--Tabla Del Prestamo Socios-->\r\n<div class=\"modal-body\"><br>\r\n    <div class=\"row\">\r\n      <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\r\n        <strong>Filtro por Año  </strong>\r\n        <i class=\"fas fa-calendar-check\"></i>\r\n      </label>\r\n        <!---Select Año-->\r\n        <select (change)=\"changeAnio($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectAnio.id\" [disabled]=\"cargandoTabla\">\r\n          <option *ngFor=\"let itemAnio of selectAnio\" [value]=\"itemAnio.id\">{{itemAnio.descripcion}}</option>\r\n        </select>\r\n      </div>\r\n    \r\n      <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\r\n        <strong>Filtro por Mes  </strong>\r\n        <i class=\"fas fa-calendar-check\"></i>\r\n      </label>\r\n        <!--Select Mes-->\r\n        <select (change)=\"changeMes($event)\" class=\"form-control form-control-sm\" [(ngModel)]=\"selectMes.id\" [disabled]=\"cargandoTabla\">\r\n          <option *ngFor=\"let itemMes of selectMes\" [value]=\"itemMes.id\">{{itemMes.descripcion}}</option>\r\n        </select>\r\n      </div>\r\n\r\n      <div class=\"col-6 col-md-3 col-lg-3\"> <br><label>\r\n        <strong>Recargar Tabla</strong>\r\n      </label><br>\r\n        <button class=\"btn btn-primary\" (click)=\"refrescarTablaPrestamosClientes()\" [disabled]=\"cargandoTabla\">Actualizar</button>\r\n        <div *ngIf=\"cargandoTabla\">\r\n          <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n          <label>Cargando tabla de Prestamos</label>\r\n      </div>\r\n      </div>\r\n    </div><br>\r\n  <div class=\"table-responsive-xl\">\r\n    <table class=\"table table-striped table-bordered table-sm\">\r\n      <!--Tabla salud - Retornable-->\r\n      <thead text-sm >\r\n          <tr>\r\n            <!--titulo de la tabla-->\r\n            <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Salud - Retornable</th>\r\n          </tr>\r\n        <tr class=\"text-center\">\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha de Pago</th>\r\n          <th colspan=\"1\" style=\"background: #138D75\">ID</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n          <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Dia Sueldo</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Trimestral</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Ter. Conflicto</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Monto Restante P.</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egreso de Cuotas</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Restante</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\">Pagar Cuota</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\">Pagar Abonos</th>\r\n        </tr>\r\n      </thead>\r\n\r\n      <!--casillas para llenar de la BD-->\r\n      <tbody>\r\n        <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosSalud\">\r\n          <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.fecha_pago}}</td>\r\n          <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\r\n          <td colspan=\"2\">\r\n            <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n              placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\r\n            </a>\r\n          </td>\r\n          <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\r\n          <td colspan=\"2\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"2\">{{itemPrestamo.sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.trimestral | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.conflicto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.monto_restante_p | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\r\n          <td colspan=\"3\"><strong>{{itemPrestamo.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"3\">{{itemPrestamo.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"3\"><strong>{{itemPrestamo.restante | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"3\">{{itemPrestamo.estado}}</td>\r\n\r\n          <td colspan=\"2\" class=\"text-center\">\r\n            <button class=\"btn btn-outline-success\" style=\"cursor: pointer\" (click)=\"openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante_p, itemPrestamo.total_prestamo, itemPrestamo.cuotap)\"> <!-------------------------------------->\r\n            <ng-template #pagoPrestamoSaludCuota let-c=\"close\" let-d=\"dismiss\">\r\n                <div class=\"modal-header\" id=\"demoFont\">\r\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Pago Cuota Salud Retornable</h4>\r\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                      <div class=\"row\">\r\n                        <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\r\n                          <label><strong>Monto de Cuota a Pagar</strong></label> \r\n                          <input type=\"number\" class=\"form-control form-control-sm\" #montoPagarSalud value=\"{{montoCuotaPagar}}\">\r\n                        </div>\r\n\r\n                        <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\r\n                          <label><strong>N° de Cuotas Pagadas</strong></label> \r\n                          <input type=\"number\" class=\"form-control form-control-sm\" #cuotasPagadasSalud value=\"{{itemPrestamo.cuotad}}\" disabled>\r\n                        </div>\r\n                      </div><br>\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                          <label> <strong>Fecha de Pago</strong></label> \r\n                          <input class=\"form-control form-control-sm\" #fechaInteresSalud type=\"date\">\r\n                      </div><br>\r\n                    <div class=\"modal-footer\">\r\n                        <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\r\n                        <button [disabled]=\"blockPagoPrestamo\" type=\"button\" class=\"btn btn-outline-success\" (click)=\"pagarPrestamo(fechaInteresSalud, itemPrestamo.id, montoPagarSalud)\">Pagar\r\n                          <img *ngIf=\"blockPagoPrestamo\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                        </button>\r\n                    </div>\r\n\r\n                  </div>\r\n\r\n            </ng-template> \r\n            <i class=\"fas fa-cash-register\" placement=\"top\" ngbTooltip=\"Presione aqui para realizar el pago de Cuota\"></i>\r\n            </button>\r\n          \r\n          </td>\r\n\r\n          <td colspan=\"2\" class=\"text-center\">\r\n            <button [disabled]=\"itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0\" class=\"btn btn-outline-success\" style=\"cursor: pointer\" (click)=\"openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)\"> <!-------------------------------------->\r\n            <ng-template #pagoPrestamoSaludAbono let-c=\"close\" let-d=\"dismiss\">\r\n                <div class=\"modal-header\" id=\"demoFont\">\r\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Pago Abono Salud Retornable</h4>\r\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-7 col-md-7 col-lg-7 col-xl-7\">\r\n                        <label><strong>Pago de Abono</strong></label>\r\n                        <select #definicionSelectAbono class=\"form-control form-control-sm\">\r\n                          <option value=\"1\">Dia Sueldo</option>\r\n                          <option value=\"3\">Trimestral</option>\r\n                          <option value=\"2\">Termino Conflicto</option>\r\n                        </select>\r\n                      </div>\r\n                      \r\n                      <div class=\"col-5 col-md-5 col-lg-5 col-xl-5\">\r\n                        <label> <strong>Abono</strong></label> \r\n                        <input class=\"form-control form-control-sm\" #montoAbono type=\"number\" value=\"\">\r\n                      </div><br>\r\n\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <label> <strong>Fecha de Pago</strong></label> \r\n                        <input class=\"form-control form-control-sm\" #fechaAbono type=\"date\">\r\n                    </div>\r\n                    </div><br>\r\n\r\n                    <div class=\"modal-footer\">\r\n                      <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\r\n                      <button [disabled]=\"blockPagoAbono\" type=\"button\" class=\"btn btn-outline-success\" (click)=\"pagarAbono(itemPrestamo.id, definicionSelectAbono, fechaAbono, montoAbono)\">Pagar\r\n                        <img *ngIf=\"blockPagoAbono\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                      </button>\r\n                    </div> <hr>\r\n                  </div>\r\n\r\n            </ng-template> \r\n            <i class=\"fas fa-cash-register\" placement=\"top\" ngbTooltip=\"Presione aqui para realizar el pago Abono\"></i>\r\n            </button>\r\n          \r\n          </td>\r\n        </tr>\r\n      </tbody> <br>\r\n\r\n      <!--Tabla apuro Economico - Retornable-->\r\n      <thead text-sm>\r\n          <tr>\r\n            <!--titulo de la tabla-->\r\n            <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Apuro Economico - Retornable</th>\r\n          </tr>\r\n        <tr class=\"text-center\">\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha de Pago</th>\r\n          <th colspan=\"1\" style=\"background: #138D75\">ID</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n          <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\r\n          <th colspan=\"8\" class=\"text-center\" style=\"background: #138D75\">Interes</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Nº Cuotas</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Restante</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\r\n          <th colspan=\"4\" style=\"background: #138D75;\">Pagar Cuota</th>\r\n        </tr>\r\n      </thead>\r\n\r\n      <!--casillas para llenar de la BD-->\r\n      <tbody>\r\n        <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosApuro\">\r\n          <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.fecha_pago}}</td>\r\n          <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\r\n          <td colspan=\"2\">\r\n            <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n              placement=\"top\" ngbTooltip=\"Presione aqui para visualizar el PDF.\"></i>\r\n            </a>\r\n          </td>\r\n          <td colspan=\"10\" class=\"text-center\">{{itemPrestamo.descripcion}}</td>\r\n          <td colspan=\"2\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"8\" class=\"text-center\">{{itemPrestamo.interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.cuota}}</td>\r\n          <td colspan=\"3\"><strong>{{itemPrestamo.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"3\">{{itemPrestamo.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"3\"><strong>{{itemPrestamo.restante | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"3\">{{itemPrestamo.estado}}</td>\r\n\r\n          <td colspan=\"4\" class=\"text-center\">\r\n            <button class=\"btn btn-outline-success\" style=\"cursor: pointer\" (click)=\"openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)\">\r\n            <ng-template #pagoPrestamoInteres let-c=\"close\" let-d=\"dismiss\">\r\n                <div class=\"modal-header\" id=\"demoFont\">\r\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Pago Cuota Apuro Economico Retornable</h4>\r\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                          <label> <strong>Fecha de Pago</strong></label> \r\n                          <input class=\"form-control form-control-sm\" #fechaInteres type=\"date\">\r\n                        </div>\r\n                      </div><br>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <label> <strong>Monto del Interes a Pagar</strong></label> \r\n                        <input class=\"form-control form-control-sm\" #montoInteres type=\"number\" value=\"{{montoDelInteresPagar}}\" disabled>\r\n                      </div>\r\n                    </div><br>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <label><strong>Monto de Cuota a Pagar</strong></label> \r\n                        <input type=\"number\" class=\"form-control form-control-sm\" #montoCuotaApuro value=\"{{montoCuotaPagar}}\" disabled>\r\n                      </div>\r\n                    </div><br>\r\n\r\n                    <div class=\"row justify-content-center\">\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <label><strong>monto Final a Pagar</strong></label> \r\n                        <input type=\"number\" class=\"form-control form-control-sm\" #montoFinalApuro value=\"{{montoFinalPagar}}\">\r\n                      </div>\r\n                    </div><br>\r\n\r\n                    <div class=\"modal-footer\">\r\n                        <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\r\n                        <button [disabled]=\"blockPagoPrestamo\" type=\"button\" class=\"btn btn-outline-success\" (click)=\"pagarPrestamo(fechaInteres, itemPrestamo.id, montoFinalApuro)\">Pagar\r\n                          <img *ngIf=\"blockPagoPrestamo\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                        </button>\r\n                    </div>\r\n\r\n                  </div>\r\n\r\n            </ng-template> \r\n            <i class=\"fas fa-cash-register\" placement=\"top\" ngbTooltip=\"Presione aqui para realizar el pago de cuota.\"></i>\r\n            </button>\r\n          \r\n          </td>\r\n        </tr>\r\n      </tbody> <br>\r\n\r\n      <!--Tabla aporte economico - No Retornable-->\r\n      <thead text-sm >\r\n          <tr>\r\n            <!--titulo de la tabla-->\r\n            <th colspan=\"47\" class=\"text-center\" style=\"background: #138D75;\">Aporte Economico - No Retornable</th>\r\n          </tr>\r\n        <tr class=\"text-center\">\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha Prestamo</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha de Pago</th>\r\n          <th colspan=\"1\" style=\"background: #138D75\">ID</th>\r\n          <th colspan=\"2\" style=\"background: #138D75\">Trasf. Banc.</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n          <th colspan=\"10\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Descripcion Prestamo</th>\r\n          <th colspan=\"12\" class=\"text-center\" style=\"background: #138D75\">Prestamo (Egreso C.S.)</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Restante</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\">Estado</th>\r\n          <th colspan=\"4\" style=\"background: #138D75;\">pagar</th>\r\n        </tr>\r\n      </thead>\r\n\r\n      <!--casillas para llenar de la BD-->\r\n      <tbody>\r\n        <tr class=\"text-center\" *ngFor=\"let itemPrestamo of valoresPrestamosAporte\">\r\n          <td colspan=\"2\">{{itemPrestamo.fecha_prestamo}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.fecha_pago}}</td>\r\n          <td colspan=\"1\">{{itemPrestamo.prestamo_id}}</td>\r\n          <td colspan=\"2\">{{itemPrestamo.numero_documento}}</td>\r\n          <td colspan=\"2\">\r\n            <a href=\"{{  '../' + itemPrestamo.archivo_documento}}\" target=\"_blank\"><i class=\"far fa-file-alt\"\r\n              placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\r\n            </a>\r\n          </td>\r\n          <td colspan=\"10\">{{itemPrestamo.descripcion}}</td>\r\n          <td colspan=\"12\" class=\"text-center\"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          <td colspan=\"3\">{{itemPrestamo.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"3\">{{itemPrestamo.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"3\">{{itemPrestamo.restante | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"3\">{{itemPrestamo.estado}}</td>\r\n          <td colspan=\"4\" class=\"text-center\">S/P</td>\r\n        </tr>\r\n      </tbody> <br>\r\n      \r\n    </table>\r\n  </div>\r\n</div>"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -472,11 +448,7 @@ module.exports = "<!--Tabla Del Prestamo Socios-->\r\n<div class=\"modal-body\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "\n<!-- Navigation -->\n<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" href=\"#\">\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n          </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n        <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\"><i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Fondo Mutuo</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\"><i class=\"fas fa-chart-pie\"></i> Grafico</a>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                  <!-- <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a> -->\n                </div>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                </div>\n              </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  \n  "
-=======
 module.exports = "\r\n<!-- Navigation -->\r\n<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\r\n    <div class=\"container\">\r\n      <a class=\"navbar-brand\" href=\"#\">\r\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\r\n          </a>\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n          </button>\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaFondoMutuo']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Fondo Mutuo</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-chart-pie\"></i> Grafico</a>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\r\n                </div>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n                </div>\r\n              </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n\r\n  \r\n  "
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -509,11 +481,7 @@ module.exports = "<p>\r\n  about works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <!--MODAL INICIO DE SESIÓN PARA ADMINS-->\n    <ng-template #Admins let-modal>\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\">Inicie sesión para entrar al modulo administrativo</h6>\n        <button id=\"closeModalLogin\" type=\"button\" class=\"close\" aria-label=\"Close\"\n          (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n        <div class=\"container-fluid\">\n          <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n              <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\n\n                <div class=\"row\">\n                  <!--formulario login-->\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                    <div class=\"card-body row justify-content-end\">\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n                        <div class=\"form-group\">\n                          <label><strong>Rut</strong></label>&nbsp;\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\n                            ngbTooltip=\"Ingrese rut sin puntos ni guion.\"></i>\n                          <input type=\"text\" class=\"form-control\" placeholder=\"123456789\" name=\"email\" #email=\"ngModel\"\n                            [(ngModel)]=\"usuario.email\" required>\n                          <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\"> El rut\n                            ingresado no es valido</small>\n                        </div>\n\n                        <div class=\"form-group\">\n                          <label><strong>Contraseña</strong></label>&nbsp;\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\n                            ngbTooltip=\"Por su seguridad no seleccione la opcion recordar contraseña.\"></i>\n                          <input type=\"password\" class=\"form-control\" placeholder=\"********\" name=\"password\"\n                            #password=\"ngModel\" [(ngModel)]=\"usuario.password\" required>\n                          <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">Ingrese\n                            una contraseña valida</small>\n                        </div>\n\n                      </div>\n                    </div>\n                  </div>\n\n                  <!--boton identificar-->\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                    <div class=\"row justify-content-end\">\n                      <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n                        <input type=\"submit\" value=\"Identificarse\" class=\"btn btn-success\"\n                          [disabled]=\"loginForm.invalid\">\n                      </div>\n                  <!--loading-->\n                      <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n                        <div *ngIf=\"loading\" class=\"loader\">Loading...</div>\n                      </div>\n                    </div>\n                  </div>\n                </div> <br>\n                <!--comprobar alert-->\n                <div class=\"row justify-content-center\">\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                    <ngb-alert *ngIf=\"noEncontrado\" [dismissible]=\"false\">\n                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y\n                      <strong>contraseña</strong> sean las correctas e intente nuevamente.\n                    </ngb-alert>\n                  </div>\n                </div>\n\n              </form>\n\n            </div>\n          </div>\n        </div>\n\n      </div>\n\n    </ng-template>\n\n    <!--MODAL INICIO DE SESISION SOCIOS-->\n    <ng-template #Socios let-modal>\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\">Inicie sesión para entrar al portal de socios</h6>\n        <button id=\"closeModalLogin\" type=\"button\" class=\"close\" aria-label=\"Close\"\n          (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n        <div class=\"container-fluid\">\n          <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n              <form #loginFormSocios=\"ngForm\" (ngSubmit)=\"onSubmitSocios(loginFormSocios)\">\n\n                <div class=\"row\">\n                  <!--formulario login-->\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                    <div class=\"card-body row justify-content-end\">\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n                        <div class=\"form-group\">\n                          <label><strong>Rut</strong></label>&nbsp;\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\n                            ngbTooltip=\"Ingrese rut sin puntos ni guion.\"></i>\n                          <input type=\"text\" class=\"form-control\" placeholder=\"123456789\" name=\"email\" #email=\"ngModel\"\n                            [(ngModel)]=\"usuario.email\" required>\n                          <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\"> El rut\n                            ingresado no es valido</small>\n                        </div>\n\n                        <div class=\"form-group\">\n                          <label><strong>Contraseña</strong></label>&nbsp;\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\n                            ngbTooltip=\"Por su seguridad no seleccione la opcion recordar contraseña.\"></i>\n                          <input type=\"password\" class=\"form-control\" placeholder=\"********\" name=\"password\"\n                            #password=\"ngModel\" [(ngModel)]=\"usuario.password\" required>\n                          <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">Ingrese\n                            una contraseña valida</small>\n                        </div>\n\n                      </div>\n                    </div>\n                  </div>\n\n                  <!--boton identificar-->\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                    <div class=\"row justify-content-end\">\n                      <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n                        <input type=\"submit\" value=\"Identificarse\" class=\"btn btn-success\"\n                          [disabled]=\"loginFormSocios.invalid\">\n                      </div>\n                  <!--loading-->\n                      <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\n                        <div *ngIf=\"loading\" class=\"loader\">Loading...</div>\n                      </div>\n                    </div>\n                  </div>\n                </div> <br>\n                <!--comprobar alert-->\n                <div class=\"row justify-content-center\">\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n                    <ngb-alert *ngIf=\"noEncontrado\" [dismissible]=\"false\">\n                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y\n                      <strong>contraseña</strong> sean las correctas e intente nuevamente.\n                    </ngb-alert>\n                  </div>\n                </div>\n\n              </form>\n\n            </div>\n          </div>\n        </div>\n\n      </div>\n\n    </ng-template>\n\n    <!--logo sindicato-->\n    <div class=\"col-12\">\n      <div class=\"row justify-content-center\">\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n          <div class=\"row justify-content-end\">\n            <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n              <div class=\"form-group\"><br><br>\n                <img class=\"img-fluid\" src=\"/assets/logo-sindicato-transparente-2.png\" width=\"700\" height=\"700\" style=\"margin-top:20px;\">\n              </div>\n\n            </div>\n          </div>\n        </div>\n\n        <div class=\"text-center col-12 col-sm-8 col-lg-8 col-xl-8\">\n          <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-sm-5 col-lg-5 col-xl-5\">\n              <div class=\"card bg-success text-white mb-3\" (click)=\"openLoginAdmins(Admins)\" style=\"cursor: pointer\">\n                <div class=\"card-body\">\n                  <h5>\n                    <i class=\"fas fa-users\"></i> Modulo <br> Administrativo\n                  </h5>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-sm-5 col-lg-5 col-xl-5\">\n              <div class=\"card bg-danger text-white mb-3\" (click)=\"openLoginAdmins(Socios)\" style=\"cursor: pointer\">\n                <div class=\"card-body\">\n                  <h5>\n                    <i class=\"fas fa-users\"></i> Modulo <br> Socios\n                  </h5>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <!--\n    <label><strong>inicio de sesión para admins </strong></label><br>\n    <button type=\"button\" class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openLoginAdmins(Admins)\">Ingresar a\n      Administración</button>\n    <label><strong>inicio de sesión para Socios </strong></label><br>\n    <button type=\"button\" class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openLoginAdmins(Admins)\">Ingresar a\n      modulo de socios</button>\n-->\n  </div>\n</div>"
-=======
 module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <!--MODAL INICIO DE SESIÓN PARA ADMINS-->\r\n    <ng-template #Admins let-modal>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\">Inicie sesión para entrar al modulo administrativo</h6>\r\n        <button id=\"closeModalLogin\" type=\"button\" class=\"close\" aria-label=\"Close\"\r\n          (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n        <div class=\"container-fluid\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n              <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n\r\n                <div class=\"row\">\r\n                  <!--formulario login-->\r\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                    <div class=\"card-body row justify-content-end\">\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n                        <div class=\"form-group\">\r\n                          <label><strong>Rut</strong></label>&nbsp;\r\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                            ngbTooltip=\"Ingrese rut sin puntos ni guion.\"></i>\r\n                          <input type=\"text\" class=\"form-control\" placeholder=\"123456789\" name=\"email\" #email=\"ngModel\"\r\n                            [(ngModel)]=\"usuario.email\" required>\r\n                          <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\"> El rut\r\n                            ingresado no es valido</small>\r\n                        </div>\r\n\r\n                        <div class=\"form-group\">\r\n                          <label><strong>Contraseña</strong></label>&nbsp;\r\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                            ngbTooltip=\"Por su seguridad no seleccione la opcion recordar contraseña.\"></i>\r\n                          <input type=\"password\" class=\"form-control\" placeholder=\"********\" name=\"password\"\r\n                            #password=\"ngModel\" [(ngModel)]=\"usuario.password\" required>\r\n                          <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">Ingrese\r\n                            una contraseña valida</small>\r\n                        </div>\r\n\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <!--boton identificar-->\r\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                    <div class=\"row justify-content-end\">\r\n                      <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\r\n                        <input type=\"submit\" value=\"Identificarse\" class=\"btn btn-success\"\r\n                          [disabled]=\"loginForm.invalid\">\r\n                      </div>\r\n                  <!--loading-->\r\n                      <div class=\"col-6 col-md-6 col-lg-6 col-xl-6\">\r\n                        <div *ngIf=\"loading\" class=\"loader\">Loading...</div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div> <br>\r\n                <!--comprobar alert-->\r\n                <div class=\"row justify-content-center\">\r\n                  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                    <ngb-alert *ngIf=\"noEncontrado\" [dismissible]=\"false\">\r\n                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y\r\n                      <strong>contraseña</strong> sean las correctas e intente nuevamente.\r\n                    </ngb-alert>\r\n                  </div>\r\n                </div>\r\n\r\n              </form>\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </ng-template>\r\n\r\n    <!--MODAL INICIO DE SESISION SOCIOS-->\r\n    <ng-template #Socios let-modal>\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\">Inicie sesión para entrar al modulo de socios</h6>\r\n        <button id=\"closeModalLogin\" type=\"button\" class=\"close\" aria-label=\"Close\"\r\n          (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n        <div class=\"container-fluid\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-12 col-md-6 col-lg-6 col-xl-6\">\r\n\r\n              <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n                <div class=\"row\">\r\n                  <!--formulario login-->\r\n                  <div class=\"col-8 col-md-7 col-lg-7 col-xl-7\">\r\n                    <div class=\"card-body row justify-content-end\">\r\n                      <div class=\"col-10 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n                        <div class=\"form-group\">\r\n                          <label><strong>Rut</strong></label>&nbsp;\r\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                            ngbTooltip=\"Ingrese rut sin puntos ni guion.\"></i>\r\n                          <input type=\"text\" class=\"form-control\" placeholder=\"123456789\" name=\"email\" #email=\"ngModel\"\r\n                            [(ngModel)]=\"usuario.email\" required>\r\n                          <small *ngIf=\"!email.valid && email.touched\" class=\"invalid-feedback d-block\"> El rut\r\n                            ingresado no es valido</small>\r\n                        </div>\r\n\r\n                        <div class=\"form-group\">\r\n                          <label><strong>Contraseña</strong></label>&nbsp;\r\n                          <i class=\"fas fa-info-circle\" placement=\"right\"\r\n                            ngbTooltip=\"Por su seguridad no seleccione la opcion recordar contraseña.\"></i>\r\n                          <input type=\"password\" class=\"form-control\" placeholder=\"********\" name=\"password\"\r\n                            #password=\"ngModel\" [(ngModel)]=\"usuario.password\" required>\r\n                          <small *ngIf=\"!password.valid && password.touched\" class=\"invalid-feedback d-block\">Ingrese\r\n                            una contraseña valida</small>\r\n                        </div>\r\n\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <!--boton identificar-->\r\n                  <div class=\"col-7 col-md-7 col-lg-7 col-xl-7\">\r\n                    <div class=\"card-body row justify-content-end\" style=\"margin-top:-40px;\">\r\n                      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                        <input type=\"submit\" value=\"Identificarse\" class=\"btn btn-success\"\r\n                          [disabled]=\"loginForm.invalid\">\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  <!--loading-->\r\n                  <div class=\"col-5 col-md-5 col-lg-5 col-xl-5\">\r\n                    <div class=\"card-body row justify-content-end\" style=\"margin-top:-40px;\">\r\n                      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                        <div *ngIf=\"loading\" class=\"loader\">Loading...</div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <!--comprobar alert-->\r\n                <div class=\"row justify-content-center\">\r\n                  <div class=\"col-11 col-md-10 col-lg-10 col-xl-10\">\r\n                    <ngb-alert *ngIf=\"noEncontrado\" [dismissible]=\"false\">\r\n                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y\r\n                      <strong>contraseña</strong> sean las correctas e intente nuevamente.\r\n                    </ngb-alert>\r\n                  </div>\r\n                </div>\r\n              </form>\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </ng-template>\r\n\r\n    <!--logo sindicato-->\r\n    <div class=\"col-12\">\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n          <div class=\"row justify-content-end\">\r\n            <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n              <div class=\"form-group\"><br><br>\r\n                <img class=\"img-fluid\" src=\"/assets/logo-sindicato-transparente-2.png\" width=\"700\" height=\"700\" style=\"margin-top:20px;\">\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"text-center col-12 col-sm-8 col-lg-8 col-xl-8\">\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-12 col-sm-5 col-lg-5 col-xl-5\">\r\n              <div class=\"card bg-success text-white mb-3\" (click)=\"openLoginAdmins(Admins)\" style=\"cursor: pointer\">\r\n                <div class=\"card-body\">\r\n                  <h5>\r\n                    <i class=\"fas fa-users\"></i> Modulo <br> Administrativo\r\n                  </h5>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-12 col-sm-5 col-lg-5 col-xl-5\">\r\n              <div class=\"card bg-danger text-white mb-3\" (click)=\"openLoginAdmins(Socios)\" style=\"cursor: pointer\">\r\n                <div class=\"card-body\">\r\n                  <h5>\r\n                    <i class=\"fas fa-users\"></i> Modulo <br> Socios\r\n                  </h5>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <!--\r\n    <label><strong>inicio de sesión para admins </strong></label><br>\r\n    <button type=\"button\" class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openLoginAdmins(Admins)\">Ingresar a\r\n      Administración</button>\r\n    <label><strong>inicio de sesión para Socios </strong></label><br>\r\n    <button type=\"button\" class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openLoginAdmins(Admins)\">Ingresar a\r\n      modulo de socios</button>\r\n-->\r\n  </div>\r\n</div>"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -528,105 +496,6 @@ module.exports = "<hr><h1 class=\"text-center\"><strong>Bienvenido Sindicato CMP
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/navbar-socio/navbar-socio.component.html ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" href=\"#\">\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n        </a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-cat\"></i> Perfil <span class=\"sr-only\">(current)</span></a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"> <i class=\"fas fa-cat\"></i> Beneficios</a>\n            </li>\n            <li ngbDropdown class=\"d-inline-block\">\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> Nombre de Socio</button>\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n              </div>\n            </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.html":
-/*!*******************************************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.html ***!
-  \*******************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ng-template #formularioBeneficiosSocio let-modal>\n  <div class=\"modal-header sticky-top\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-table\"></i>  Datos del Socio</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n   <!--Cuerpo del body inicio y cierre mensual-->\n  <div class=\"modal-body\" id=\"printJS-table\"> \n  <!--Datos del socio-->\n  <div class=\"card-header\" id=\"demoFont2\">\n    <h6 class=\"card-title\">Datos del Socio</h6>\n    </div>\n    <div class=\"card\">\n      <form #BeneficiosForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\n\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n            \n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n              <div class=\"form-group\">\n                <label><strong>N° de Cta</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n              <div class=\"form-group\">\n                <label><strong>Banco</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n              <div class=\"form-group\">\n                <label><strong>Tipo de Cta</strong></label>\n                <select name=\"Cta\" id=\"cta\" class=\"form-control form-control-sm\" required>\n                  <option value=\"\">--Seleccione--</option>\n                  <option value=\"\">Cuenta Rut</option>\n                  <option value=\"\">Cuenta Vista</option>\n                  <option value=\"\">Cuenta Corriente</option>\n                </select>\n              </div>\n            </div>\n\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n\n            <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n              <div class=\"form-group\">\n                <label><strong>Isapre o Fonasa</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n              <div class=\"form-group\">\n                <label><strong>Grupo Sangre</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n          </div>\n        </div>  \n\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Direccion</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Region</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Provincia</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n              <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n                <div class=\"form-group\">\n                  <label><strong>Comuna</strong></label>\n                  <input type=\"text\" class=\"form-control form-control-sm\" required>\n                </div>\n              </div>\n\n          </div>\n        </div>  \n\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n              <div class=\"form-group\">\n                <label><strong>Telefono</strong></label>\n                <input type=\"number\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n              <div class=\"form-group\">\n                <label><strong>Celular</strong></label>\n                <input type=\"number\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n              <div class=\"form-group\">\n                <label><strong>Anexo</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n          </div>\n        </div>  \n\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n\n            <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n              <div class=\"form-group\">\n                <label><strong>Email Personal</strong></label>\n                <input type=\"email\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n              <div class=\"form-group\">\n                <label><strong>Email Corporativo</strong></label>\n                <input type=\"email\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n          </div>\n        </div> \n        \n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n\n            <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n              <div class=\"form-group\">\n                <label><strong>Cargo Planta</strong></label>\n                <input type=\"text\" class=\"form-control form-control-sm\" required>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Cargo o Comision Sindicato</strong></label>\n                <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" required>\n                    <option value=\"\">--Seleccione--</option>\n                    <option value=\"\">Socio</option>\n                    <option value=\"\">Directiva</option>\n                  </select>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Casa Propia</strong></label>\n                <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" required>\n                  <option value=\"\">--Seleccione--</option>\n                  <option value=\"\">Si</option>\n                  <option value=\"\">No</option>\n                </select>\n              </div>\n            </div>\n\n          </div>\n        </div> \n        \n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n          <div class=\"row justify-content-between\">\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Rol Turno</strong></label>\n              <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" required>\n                <option value=\"\">--Seleccione--</option>\n                <option value=\"\">Si</option>\n                <option value=\"\">No</option>\n              </select>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Estado Civil</strong></label>\n                <select name=\"Civil\" id=\"civil\" class=\"form-control form-control-sm\" required>\n                  <option value=\"\">--Seleccione--</option>\n                  <option value=\"\">Soltero/a</option>\n                  <option value=\"\">Casado/a</option>\n                  <option value=\"\">Viudo/a</option>\n                  <option value=\"\">Divorciado/a</option>\n                  <option value=\"\">Conviviente civil</option>\n                </select>\n              </div>\n            </div>\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n              <div class=\"form-group\">\n                <label><strong>Conyuge / Pareja</strong></label>\n                <select name=\"Rol\" id=\"rol\" class=\"form-control form-control-sm\" required>\n                  <option value=\"\">--Seleccione--</option>\n                  <option value=\"\">Si</option>\n                  <option value=\"\">No</option>\n                </select>\n              </div>\n            </div>\n\n          </div>\n        </div>  \n\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n          <div class=\"row justify-content-end\">\n\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n              <label><strong>Guardar Datos del Socio</strong></label>\n              <div class=\"form-group\">\n                  <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\">Guardar</button>\n              </div>\n            </div>\n\n          </div>\n        </div>\n\n      </form>\n    </div> <br>\n  </div>\n\n  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n  <div class=\"modal-footer\">\n      <!--<button type=\"button\" class=\"btn btn-success\" \n  onclick=\"printJS({\n    printable: 'printJS-table',\n    type:'html',\n    style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\n  })\">\n  <i class=\"fas fa-print\"></i>  Imprimir Datos\n  </button>-->\n\n  <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i>  Volver Beneficios Socio\n  </button>\n  </div>\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n<button class=\"btn btn-primary btn-block btn-sm\" type=\"button\" (click)=\"verFormularioBeneficios(formularioBeneficiosSocio)\">Insertar Datos</button>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.html":
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.html ***!
-  \*********************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card-header\" id=\"demoFont2\">\n  <h6 class=\"card-title\">Beneficiario</h6>\n</div>\n<div class=\"card\">\n  <form #BeneficiosForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n        \n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Relacion o Parentesco</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Rut</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Fecha de Nacimiento</strong></label>\n            <input type=\"date\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n        \n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Nombres</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Apellido Paterno</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Apellido Materno</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Direccion</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Comuna</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Celular</strong></label>\n            <input type=\"number\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>  \n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n      <div class=\"row justify-content-end\">\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n          <label><strong>Guardar Datos del Beneficiario</strong></label>\n          <div class=\"form-group\">\n              <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\">Guardar</button>\n          </div>\n        </div>\n        \n      </div>\n    </div>\n\n  </form>\n</div> <br>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.html":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.html ***!
-  \*********************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card-header\" id=\"demoFont2\">\n  <h6 class=\"card-title\">Cargas Legales</h6>\n</div>\n<div class=\"card\">\n  <form #BeneficiosForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Tipo de carga</strong></label>\n            <select name=\"Cta\" id=\"cta\" class=\"form-control form-control-sm\" required>\n              <option value=\"\">--Seleccione--</option>\n              <option value=\"\">Hijo</option>\n              <option value=\"\">Nieto</option>\n              <option value=\"\">Adoptacion</option>\n              <option value=\"\">otros</option>\n            </select>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Rut</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Fecha de Nacimiento</strong></label>\n            <input type=\"date\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n        \n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Nombres</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Apellido Paterno</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Apellido Materno</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n          <div class=\"form-group\">\n            <label><strong>Direccion</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n          <div class=\"form-group\">\n            <label><strong>Comuna</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n          <div class=\"form-group\">\n            <label><strong>Celular</strong></label>\n            <input type=\"number\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> \n            <div class=\"form-group\">\n              <label><strong>Establecimiento</strong></label>\n              <input type=\"text\" class=\"form-control form-control-sm\" required>\n            </div>\n          </div>\n\n      </div>\n    </div>  \n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n      <div class=\"row justify-content-end\">\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n          <label><strong>Guardar Datos</strong></label>\n          <div class=\"form-group\">\n              <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\">Guardar</button>\n          </div>\n        </div>\n        \n      </div>\n    </div>\n\n  </form>\n</div> <br>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.html":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.html ***!
-  \***********************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card-header\" id=\"demoFont2\">\n  <h6 class=\"card-title\">Datos Conyuge / Pareja</h6>\n</div>\n<div class=\"card\">\n  <form #BeneficiosForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n        \n        <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n          <div class=\"form-group\">\n            <label><strong>Rut</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-5 col-lg-5 col-xl-5\"> \n          <div class=\"form-group\">\n            <label><strong>Fecha de Nacimiento</strong></label>\n            <input type=\"date\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n        \n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Nombres</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Apellido Paterno</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Apellido Materno</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n      <div class=\"row justify-content-between\">\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Direccion</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Comuna</strong></label>\n            <input type=\"text\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n          <div class=\"form-group\">\n            <label><strong>Celular</strong></label>\n            <input type=\"number\" class=\"form-control form-control-sm\" required>\n          </div>\n        </div>\n\n      </div>\n    </div> \n    \n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n      <div class=\"row justify-content-end\">\n\n        <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n          <label><strong>Guardar Datos del Conyuge / Pareja</strong></label>\n          <div class=\"form-group\">\n              <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\">Guardar</button>\n          </div>\n        </div>\n        \n      </div>\n    </div>\n\n  </form>\n</div> <br>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.html":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.html ***!
-  \*************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card-header\" id=\"demoFont2\">\n  <h6 class=\"card-title\">Padres y Suegros Vivos</h6>\n</div>\n<div class=\"card\">\n<form #BeneficiosForm=\"ngForm\" (ngSubmit)=\"onSubmit()\" enctype=\"multipart/form-data\">\n\n  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n    <div class=\"row justify-content-between\">\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Relacion con el Socio</strong></label>\n          <select name=\"Cta\" id=\"cta\" class=\"form-control form-control-sm\" required>\n            <option value=\"\">--Seleccione--</option>\n            <option value=\"\">padre</option>\n            <option value=\"\">Madre</option>\n            <option value=\"\">Suegro</option>\n            <option value=\"\">Suegra</option>\n          </select>\n        </div>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Rut</strong></label>\n          <input type=\"text\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Fecha de Nacimiento</strong></label>\n          <input type=\"date\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n    <div class=\"row justify-content-between\">\n      \n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Nombres</strong></label>\n          <input type=\"text\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Apellido Paterno</strong></label>\n          <input type=\"text\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Apellido Materno</strong></label>\n          <input type=\"text\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"><br>\n    <div class=\"row justify-content-between\">\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Direccion</strong></label>\n          <input type=\"text\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Comuna</strong></label>\n          <input type=\"text\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\"> \n        <div class=\"form-group\">\n          <label><strong>Celular</strong></label>\n          <input type=\"number\" class=\"form-control form-control-sm\" required>\n        </div>\n      </div>\n\n    </div>\n  </div>  \n\n  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n    <div class=\"row justify-content-end\">\n\n      <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n        <label><strong>Guardar Datos</strong></label>\n        <div class=\"form-group\">\n          <button class=\"btn btn-block btn-outline-success\" type=\"submit\" value=\"ingresar\">Guardar</button>\n        </div>\n      </div>\n      \n    </div>\n  </div>\n\n</form>\n</div> <br>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/perfil-socio.component.html":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/perfil-socio.component.html ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\"><br>\n  <div class=\"row\">\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" id=\"socio-tab\" data-toggle=\"tab\" href=\"#socio\" role=\"tab\" aria-controls=\"socio\"\n                aria-selected=\"true\">Datos Socio</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" id=\"conyuge-tab\" data-toggle=\"tab\" href=\"#conyuge\" role=\"tab\" aria-controls=\"conyuge\"\n                aria-selected=\"false\">Datos Conyuge</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" id=\"beneficiario-tab\" data-toggle=\"tab\" href=\"#beneficiario\" role=\"tab\" aria-controls=\"beneficiario\"\n                aria-selected=\"false\">Datos Beneficiario</a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" id=\"hijo-tab\" data-toggle=\"tab\" href=\"#hijo\" role=\"tab\" aria-controls=\"hijo\"\n                aria-selected=\"false\">Datos Cargas Legales</a>\n            </li>\n\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" id=\"otros-tab\" data-toggle=\"tab\" href=\"#otros\" role=\"tab\" aria-controls=\"otros\"\n                aria-selected=\"false\">Datos de padres y suegros</a>\n            </li>\n          </ul> <br>\n\n      <div class=\"tab-content\" id=\"myTabContent\">\n        \n        <div class=\"tab-pane fade show active\" id=\"socio\" role=\"tabpanel\" aria-labelledby=\"socio-tab\">\n          <!--Datos del socio-->\n          <div class=\"card-header\" id=\"demoFont2\">\n            <h6 class=\"card-title\">Datos Socio</h6>\n          </div>\n\n          <div class=\"card\">\n            <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n              <div class=\"row justify-content-center\">\n\n                <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n                  <label><strong>Ingresar Datos Socio</strong></label>\n                  <div class=\"form-group\">\n                      <app-formulario-beneficios-auth-socio></app-formulario-beneficios-auth-socio> \n                  </div>\n                </div>\n                              \n                <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\n                  <label><strong>Ver Datos Socio</strong></label>\n                  <div class=\"form-group\">\n                    <app-tabla-beneficios-auth-socio></app-tabla-beneficios-auth-socio> \n                  </div>\n                </div>\n                \n              </div>\n            </div>\n          </div> <br>\n\n        </div>\n\n        <div class=\"tab-pane fade\" id=\"conyuge\" role=\"tabpanel\" aria-labelledby=\"conyuge-tab\">\n          <!--datos del conyuge-->\n          <app-formulario-beneficios-conyuge-auth-socio></app-formulario-beneficios-conyuge-auth-socio>\n        </div>\n\n        <div class=\"tab-pane fade\" id=\"beneficiario\" role=\"tabpanel\" aria-labelledby=\"beneficiario-tab\">\n          <!--Datos Beneficiario-->\n        <app-formulario-beneficios-beneficiario-auth-socio></app-formulario-beneficios-beneficiario-auth-socio>\n        </div>\n\n        <div class=\"tab-pane fade\" id=\"hijo\" role=\"tabpanel\" aria-labelledby=\"hijo-tab\">\n          <!--Datos del hijo-->\n          <app-formulario-beneficios-cargas-auth-socio></app-formulario-beneficios-cargas-auth-socio>\n        </div>\n\n        <div class=\"tab-pane fade\" id=\"otros\" role=\"tabpanel\" aria-labelledby=\"otros-tab\">\n          <!--Datos de padres y suegros-->\n         <app-formulario-beneficios-padres-suegros-auth-socio></app-formulario-beneficios-padres-suegros-auth-socio>\n        </div>\n\n      </div>\n\n    </div>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.html":
-/*!*********************************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.html ***!
-  \*********************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ng-template #tablaBeneficiosSocio let-modal>\n  <div class=\"modal-header sticky-top\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-table\"></i>  Datos del Socio</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n   <!--Cuerpo del body inicio y cierre mensual-->\n  <div class=\"modal-body\" id=\"printJS-table\">\n    <div class=\"table-responsive\">\n      <table class=\"table table-striped table-bordered table-sm text-center\">\n        <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n          <div class=\"row justify-content-center\">\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                <tr>\n                  <th style=\"background: #138D75\">N° Cta.</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75\">banco</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Cuenta</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Isapre o Fonasa</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Grupo Sangre</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75\">Direccion</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75\">Region</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75\">Provincia</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Comuna</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Telefono</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr> <br>\n            </div>\n\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\n                <tr>\n                  <th style=\"background: #138D75;\">Celular</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Anexo</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Email Personal</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Email Corporativo</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Cargo Planta</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Cargo o Comision</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Casa Propia</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Rol Turno</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Estado Civil</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr>\n                <tr>\n                  <th style=\"background: #138D75;\">Conyuge</th>\n                  <td><input type=\"text\" class=\"sinbordefondo\" value=\"Dato de Prueba\"></td>\n                  <td><button class=\"btn btn-outline-success btn-sm\"><i class=\"far fa-edit\"></i></button></td>\n                </tr> <br>\n            </div>\n            \n          </div>\n        </div>\n      </table>\n    </div>\n  </div>\n\n  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n  <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-success\" \n  onclick=\"printJS({\n    printable: 'printJS-table',\n    type:'html',\n    style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\n  })\">\n  <i class=\"fas fa-print\"></i>  Imprimir Datos\n  </button>\n\n  <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i>  Volver Beneficios Socio\n  </button>\n  </div>\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n<button class=\"btn btn-primary btn-block btn-sm\" type=\"button\" (click)=\"verTablaBeneficios(tablaBeneficiosSocio)\">Ver Datos</button>"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/socios-master.component.html":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/socios-master/socios-master.component.html ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<app-navbar-socio></app-navbar-socio>\n<router-outlet></router-outlet>\n<p>\n  socios-master works!\n</p>\n"
-
-/***/ }),
-
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -638,8 +507,8 @@ module.exports = "<app-navbar-socio></app-navbar-socio>\n<router-outlet></router
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./public-master/public-master.component */ "./src/app/public-master/public-master.component.ts");
 /* harmony import */ var _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./public-master/login/login.component */ "./src/app/public-master/login/login.component.ts");
 /* harmony import */ var _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./public-master/about/about.component */ "./src/app/public-master/about/about.component.ts");
@@ -654,8 +523,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auth-master/cuenta-socios/formulario-socios/formulario-socios.component */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.ts");
 /* harmony import */ var _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.ts");
 /* harmony import */ var _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component */ "./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.ts");
-/* harmony import */ var _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./socios-master/socios-master.component */ "./src/app/socios-master/socios-master.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./socios-master/perfil-socio/perfil-socio.component */ "./src/app/socios-master/perfil-socio/perfil-socio.component.ts");
 
 
 
@@ -673,9 +540,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-const routes = [
+var routes = [
     { path: '', component: _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_3__["PublicMasterComponent"], children: [
             { path: '', component: _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
             { path: 'about', component: _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_5__["AboutComponent"] }
@@ -690,19 +555,19 @@ const routes = [
             { path: 'TablaPrestamoSocios', component: _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_15__["TablaPrestamosSociosComponent"] },
             { path: 'BeneficiosSocios', component: _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_16__["BeneficiosSociosComponent"] }
         ] },
-    { path: 'SociosMaster', component: _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__["SociosMasterComponent"], children: [
-            { path: 'Perfil', component: _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__["PerfilSocioComponent"] }
-        ] },
     { path: '**', component: _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_10__["NoEncontradoComponent"] }
 ];
-let AppRoutingModule = class AppRoutingModule {
-};
-AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })
-], AppRoutingModule);
+var AppRoutingModule = /** @class */ (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
 
 
 
@@ -730,24 +595,25 @@ module.exports = "body {\r\n  background: #ECE9E6;  /* fallback for old browsers
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let AppComponent = class AppComponent {
-    constructor() {
+var AppComponent = /** @class */ (function () {
+    function AppComponent() {
         this.title = 'angular-module';
     }
-    ngOnInit() { }
-};
-AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-root',
-        template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
-        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
-        styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], AppComponent);
+    AppComponent.prototype.ngOnInit = function () { };
+    AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-root',
+            template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
+            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AppComponent);
+    return AppComponent;
+}());
 
 
 
@@ -764,11 +630,11 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./public-master/login/login.component */ "./src/app/public-master/login/login.component.ts");
@@ -820,15 +686,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_conyuge_tabla_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.ts");
 /* harmony import */ var _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_padres_suegros_tabla_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.ts");
 /* harmony import */ var _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_socio_tabla_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.ts");
-/* harmony import */ var _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./socios-master/socios-master.component */ "./src/app/socios-master/socios-master.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./socios-master/perfil-socio/perfil-socio.component */ "./src/app/socios-master/perfil-socio/perfil-socio.component.ts");
-/* harmony import */ var _socios_master_navbar_socio_navbar_socio_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./socios-master/navbar-socio/navbar-socio.component */ "./src/app/socios-master/navbar-socio/navbar-socio.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_formulario_beneficios_auth_socio_formulario_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component */ "./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_tabla_beneficios_auth_socio_tabla_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component */ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_formulario_beneficios_conyuge_auth_socio_formulario_beneficios_conyuge_auth_socio_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component */ "./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_formulario_beneficios_beneficiario_auth_socio_formulario_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component */ "./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_formulario_beneficios_cargas_auth_socio_formulario_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component */ "./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.ts");
-/* harmony import */ var _socios_master_perfil_socio_formulario_beneficios_padres_suegros_auth_socio_formulario_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component */ "./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.ts");
 
 
 
@@ -886,93 +743,78 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-let AppModule = class AppModule {
-};
-AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-        declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-            _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
-            _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_10__["PublicMasterComponent"],
-            _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_11__["AboutComponent"],
-            _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_12__["AuthMasterComponent"],
-            _auth_master_cuenta_sindical_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_13__["CuentaSindicalComponent"],
-            _auth_master_cuenta_sindical_formulario_sindical_formulario_sindical_component__WEBPACK_IMPORTED_MODULE_14__["FormularioSindicalComponent"],
-            _auth_master_cuenta_sindical_tabla_sindical_tabla_sindical_component__WEBPACK_IMPORTED_MODULE_15__["TablaSindicalComponent"],
-            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__["NavbarComponent"],
-            _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_17__["CuentaBienestarComponent"],
-            _auth_master_cuenta_bienestar_formulario_bienestar_formulario_bienestar_component__WEBPACK_IMPORTED_MODULE_18__["FormularioBienestarComponent"],
-            _auth_master_cuenta_bienestar_tabla_bienestar_tabla_bienestar_component__WEBPACK_IMPORTED_MODULE_19__["TablaBienestarComponent"],
-            _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_20__["CuentaFondoMutuoComponent"],
-            _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__["FormularioFondoMutuoComponent"],
-            _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__["TablaFondoMutuoComponent"],
-            _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"],
-            _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__["ModalCajaChicaComponent"],
-            _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__["TablaCajaChicaComponent"],
-            _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
-            _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
-            _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
-            _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
-            _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
-            _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"],
-            _auth_master_cuenta_socios_cuenta_socios_component__WEBPACK_IMPORTED_MODULE_38__["CuentaSociosComponent"],
-            _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_39__["FormularioSociosComponent"],
-            _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_40__["ListarSociosComponent"],
-            _auth_master_modal_prestamos_socios_modal_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_41__["ModalPrestamosSociosComponent"],
-            _auth_master_modal_camping_modal_camping_component__WEBPACK_IMPORTED_MODULE_42__["ModalCampingComponent"],
-            _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_43__["TablaPrestamosSociosComponent"],
-            _auth_master_modal_prestamos_socios_interes_prestamo_apuro_economico_interes_prestamo_apuro_economico_component__WEBPACK_IMPORTED_MODULE_44__["InteresPrestamoApuroEconomicoComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_45__["BeneficiosSociosComponent"],
-            _auth_master_modal_prestamos_socios_tabla_prestamos_historicos_socios_tabla_prestamos_historicos_socios_component__WEBPACK_IMPORTED_MODULE_46__["TablaPrestamosHistoricosSociosComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tablas_beneficios_component__WEBPACK_IMPORTED_MODULE_47__["TablasBeneficiosComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_socio_formulario_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_48__["FormularioBeneficiosSocioComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_beneficiario_formulario_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_49__["FormularioBeneficiosBeneficiarioComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_cargas_formulario_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_50__["FormularioBeneficiosCargasComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_conyuge_formulario_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_51__["FormularioBeneficiosConyugeComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_padres_suegros_formulario_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_52__["FormularioBeneficiosPadresSuegrosComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_cargas_tabla_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_53__["TablaBeneficiosCargasComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_conyuge_tabla_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_54__["TablaBeneficiosConyugeComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_padres_suegros_tabla_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_55__["TablaBeneficiosPadresSuegrosComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_socio_tabla_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_56__["TablaBeneficiosSocioComponent"],
-            _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_57__["SociosMasterComponent"],
-            _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_58__["PerfilSocioComponent"],
-            _socios_master_navbar_socio_navbar_socio_component__WEBPACK_IMPORTED_MODULE_59__["NavbarSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_auth_socio_formulario_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_60__["FormularioBeneficiosAuthSocioComponent"],
-            _socios_master_perfil_socio_tabla_beneficios_auth_socio_tabla_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_61__["TablaBeneficiosAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_conyuge_auth_socio_formulario_beneficios_conyuge_auth_socio_component__WEBPACK_IMPORTED_MODULE_62__["FormularioBeneficiosConyugeAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_beneficiario_auth_socio_formulario_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_63__["FormularioBeneficiosBeneficiarioAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_cargas_auth_socio_formulario_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_64__["FormularioBeneficiosCargasAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_padres_suegros_auth_socio_formulario_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_65__["FormularioBeneficiosPadresSuegrosAuthSocioComponent"]
-        ],
-        imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
-        ],
-        providers: [
-            _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"],
-            _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
-            { provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"], useValue: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"] },
-            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JwtHelperService"],
-            _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__["AniosService"],
-            _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__["TipoCuentasService"],
-            _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__["SindicalService"],
-            _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"]
-        ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
-    })
-], AppModule);
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+            declarations: [
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
+                _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_10__["PublicMasterComponent"],
+                _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_11__["AboutComponent"],
+                _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_12__["AuthMasterComponent"],
+                _auth_master_cuenta_sindical_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_13__["CuentaSindicalComponent"],
+                _auth_master_cuenta_sindical_formulario_sindical_formulario_sindical_component__WEBPACK_IMPORTED_MODULE_14__["FormularioSindicalComponent"],
+                _auth_master_cuenta_sindical_tabla_sindical_tabla_sindical_component__WEBPACK_IMPORTED_MODULE_15__["TablaSindicalComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__["NavbarComponent"],
+                _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_17__["CuentaBienestarComponent"],
+                _auth_master_cuenta_bienestar_formulario_bienestar_formulario_bienestar_component__WEBPACK_IMPORTED_MODULE_18__["FormularioBienestarComponent"],
+                _auth_master_cuenta_bienestar_tabla_bienestar_tabla_bienestar_component__WEBPACK_IMPORTED_MODULE_19__["TablaBienestarComponent"],
+                _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_20__["CuentaFondoMutuoComponent"],
+                _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__["FormularioFondoMutuoComponent"],
+                _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__["TablaFondoMutuoComponent"],
+                _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"],
+                _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__["ModalCajaChicaComponent"],
+                _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__["TablaCajaChicaComponent"],
+                _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
+                _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
+                _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
+                _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
+                _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
+                _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"],
+                _auth_master_cuenta_socios_cuenta_socios_component__WEBPACK_IMPORTED_MODULE_38__["CuentaSociosComponent"],
+                _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_39__["FormularioSociosComponent"],
+                _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_40__["ListarSociosComponent"],
+                _auth_master_modal_prestamos_socios_modal_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_41__["ModalPrestamosSociosComponent"],
+                _auth_master_modal_camping_modal_camping_component__WEBPACK_IMPORTED_MODULE_42__["ModalCampingComponent"],
+                _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_43__["TablaPrestamosSociosComponent"],
+                _auth_master_modal_prestamos_socios_interes_prestamo_apuro_economico_interes_prestamo_apuro_economico_component__WEBPACK_IMPORTED_MODULE_44__["InteresPrestamoApuroEconomicoComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_45__["BeneficiosSociosComponent"],
+                _auth_master_modal_prestamos_socios_tabla_prestamos_historicos_socios_tabla_prestamos_historicos_socios_component__WEBPACK_IMPORTED_MODULE_46__["TablaPrestamosHistoricosSociosComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tablas_beneficios_component__WEBPACK_IMPORTED_MODULE_47__["TablasBeneficiosComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_socio_formulario_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_48__["FormularioBeneficiosSocioComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_beneficiario_formulario_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_49__["FormularioBeneficiosBeneficiarioComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_cargas_formulario_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_50__["FormularioBeneficiosCargasComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_conyuge_formulario_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_51__["FormularioBeneficiosConyugeComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_padres_suegros_formulario_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_52__["FormularioBeneficiosPadresSuegrosComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_cargas_tabla_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_53__["TablaBeneficiosCargasComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_conyuge_tabla_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_54__["TablaBeneficiosConyugeComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_padres_suegros_tabla_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_55__["TablaBeneficiosPadresSuegrosComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_socio_tabla_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_56__["TablaBeneficiosSocioComponent"]
+            ],
+            imports: [
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
+            ],
+            providers: [
+                _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"],
+                _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
+                { provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"], useValue: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"] },
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JwtHelperService"],
+                _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__["AniosService"],
+                _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__["TipoCuentasService"],
+                _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__["SindicalService"],
+                _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"]
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+        })
+    ], AppModule);
+    return AppModule;
+}());
 
 
 
@@ -1000,10 +842,10 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthMasterComponent", function() { return AuthMasterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
@@ -1011,8 +853,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AuthMasterComponent = class AuthMasterComponent {
-    constructor(_tipoCuentas, _getAnios, _usuariosService, config, modalService) {
+var AuthMasterComponent = /** @class */ (function () {
+    function AuthMasterComponent(_tipoCuentas, _getAnios, _usuariosService, config, modalService) {
         this._tipoCuentas = _tipoCuentas;
         this._getAnios = _getAnios;
         this._usuariosService = _usuariosService;
@@ -1027,78 +869,94 @@ let AuthMasterComponent = class AuthMasterComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    AuthMasterComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Guardar definicion
-        this._tipoCuentas.getDefinicion().subscribe((res) => {
-            this.filtroDefiniciones = res.map(({ id, descripcion }) => ({ id, descripcion }));
-            localStorage.setItem('definicion', JSON.stringify(this.filtroDefiniciones));
+        this._tipoCuentas.getDefinicion().subscribe(function (res) {
+            _this.filtroDefiniciones = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
+            localStorage.setItem('definicion', JSON.stringify(_this.filtroDefiniciones));
         });
         //Guardar Detalle
-        this._tipoCuentas.getTipoCuenta().subscribe((res) => {
-            this.filtroDetalle = res.map(({ id, descripcion }) => ({ id, descripcion }));
-            localStorage.setItem('detalle', JSON.stringify(this.filtroDetalle));
+        this._tipoCuentas.getTipoCuenta().subscribe(function (res) {
+            _this.filtroDetalle = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
+            localStorage.setItem('detalle', JSON.stringify(_this.filtroDetalle));
         });
         //Guardar Anios
-        this._getAnios.getAnios().subscribe((res) => {
-            this.filtroAnios = res.map(({ id, descripcion }) => ({ id, descripcion }));
-            localStorage.setItem('anios', JSON.stringify(this.filtroAnios));
+        this._getAnios.getAnios().subscribe(function (res) {
+            _this.filtroAnios = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
+            localStorage.setItem('anios', JSON.stringify(_this.filtroAnios));
         });
         //Guardar Meses
-        this._getAnios.getMeses().subscribe((res) => {
-            this.filtroMeses = res.map(({ id, descripcion }) => ({ id, descripcion }));
-            localStorage.setItem('meses', JSON.stringify(this.filtroMeses));
+        this._getAnios.getMeses().subscribe(function (res) {
+            _this.filtroMeses = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
+            localStorage.setItem('meses', JSON.stringify(_this.filtroMeses));
             document.getElementById("closeModalButton").click();
         });
         document.getElementById("openModalButton").click();
         this.startTimer();
         this.startTimerToken();
         this.verificarCarga();
-    }
-    verificarCarga() {
+    };
+    AuthMasterComponent.prototype.verificarCarga = function () {
         if (localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null) {
             console.log("Se estan cargando los datos en memoria");
         }
-    }
-    open(content) {
+    };
+    AuthMasterComponent.prototype.open = function (content) {
         this.modalService.open(content, { centered: true });
-    }
+    };
     //Timer para loading en caso de superar el limite de espera
-    startTimer() {
-        setInterval(() => {
-            if (this.tiempoEspera > 0) {
-                this.tiempoEspera--;
+    AuthMasterComponent.prototype.startTimer = function () {
+        var _this = this;
+        setInterval(function () {
+            if (_this.tiempoEspera > 0) {
+                _this.tiempoEspera--;
             }
             else {
-                this.titleMensaje = 'Error al cargar';
-                this.bodyMensaje = 'Se ha superado el tiempo de espera, por favor compruebe su conexión a internet y refresque esta pagina';
+                _this.titleMensaje = 'Error al cargar';
+                _this.bodyMensaje = 'Se ha superado el tiempo de espera, por favor compruebe su conexión a internet y refresque esta pagina';
             }
         }, 1000);
-    }
-    startTimerToken() {
-        setInterval(() => {
-            if (this.tiempoEsperaToken > 0) {
-                this.tiempoEsperaToken--;
+    };
+    AuthMasterComponent.prototype.startTimerToken = function () {
+        var _this = this;
+        setInterval(function () {
+            if (_this.tiempoEsperaToken > 0) {
+                _this.tiempoEsperaToken--;
             }
             else {
-                let estadoToken = this._usuariosService.isAuthenticated();
+                var estadoToken = _this._usuariosService.isAuthenticated();
                 if (estadoToken == false) {
                     window.location.reload();
                 }
                 else {
-                    this.tiempoEsperaToken = 1;
+                    _this.tiempoEsperaToken = 1;
                 }
             }
         }, 1000);
-    }
-};
-AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-auth-master',
-        template: __webpack_require__(/*! raw-loader!./auth-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html"),
-        styles: [__webpack_require__(/*! ./auth-master.component.css */ "./src/app/auth-master/auth-master.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], AuthMasterComponent);
+    };
+    AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-auth-master',
+            template: __webpack_require__(/*! raw-loader!./auth-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html"),
+            styles: [__webpack_require__(/*! ./auth-master.component.css */ "./src/app/auth-master/auth-master.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], AuthMasterComponent);
+    return AuthMasterComponent;
+}());
 
 
 
@@ -1126,22 +984,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CambioContraseniaComponent", function() { return CambioContraseniaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
 
 
 
-let CambioContraseniaComponent = 
-// class Abc {
-//     private noLiterals: undefined;
-//     constructor(public estado: string, mensaje:string) { }
-// }
-class CambioContraseniaComponent {
-    constructor(_http, config, modalService) {
+var CambioContraseniaComponent = /** @class */ (function () {
+    function CambioContraseniaComponent(_http, config, modalService) {
         this._http = _http;
         this.modalService = modalService;
         this.load = false;
@@ -1156,65 +1009,67 @@ class CambioContraseniaComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openMensual(Mensual) {
+    CambioContraseniaComponent.prototype.ngOnInit = function () {
+    };
+    CambioContraseniaComponent.prototype.openMensual = function (Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
-    }
-    send(password, new_password, conf_new_password) {
+    };
+    CambioContraseniaComponent.prototype.send = function (password, new_password, conf_new_password) {
+        var _this = this;
         this.load = true;
         var pass = password.value;
         var new_pass = new_password.value;
         var conf_new_pass = conf_new_password.value;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('password', pass);
         formData.append('new_password', new_pass);
         formData.append('conf_new_password', conf_new_pass);
         this._http.post(this.url + "cambiar_password", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
-            }) }).subscribe((val) => {
+            }) }).subscribe(function (val) {
             //console.log(val.estado);
             if (val.estado == "success") {
                 password.value = '';
                 conf_new_password.value = '';
                 new_password.value = '';
-                this.success_visible = true;
-                this.fail_visible = false;
-                this.success_texto = 'Se ha actualizado la contraseña!.';
-                this.load = false;
+                _this.success_visible = true;
+                _this.fail_visible = false;
+                _this.success_texto = 'Se ha actualizado la contraseña!.';
+                _this.load = false;
             }
             if (val.estado == "false") {
-                this.fail_visible = true;
-                this.success_visible = false;
-                this.success_texto = val.mensaje;
-                this.load = false;
+                _this.fail_visible = true;
+                _this.success_visible = false;
+                _this.success_texto = val.mensaje;
+                _this.load = false;
             }
-        }, response => {
+        }, function (response) {
             console.log("POST call in error", response);
-        }, () => {
+        }, function () {
             console.log("The POST observable is now completed.");
         });
-    }
-    close() {
+    };
+    CambioContraseniaComponent.prototype.close = function () {
         this.success_visible = false;
         this.fail_visible = false;
-    }
-};
-CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cambio-contrasenia',
-        template: __webpack_require__(/*! raw-loader!./cambio-contrasenia.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html"),
-        styles: [__webpack_require__(/*! ./cambio-contrasenia.component.css */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css")]
-    })
-    // class Abc {
-    //     private noLiterals: undefined;
-    //     constructor(public estado: string, mensaje:string) { }
-    // }
-    ,
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], CambioContraseniaComponent);
+    };
+    CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cambio-contrasenia',
+            template: __webpack_require__(/*! raw-loader!./cambio-contrasenia.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html"),
+            styles: [__webpack_require__(/*! ./cambio-contrasenia.component.css */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css")]
+        })
+        // class Abc {
+        //     private noLiterals: undefined;
+        //     constructor(public estado: string, mensaje:string) { }
+        // }
+        ,
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], CambioContraseniaComponent);
+    return CambioContraseniaComponent;
+}());
 
 
 
@@ -1242,22 +1097,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfiguracionesComponent", function() { return ConfiguracionesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let ConfiguracionesComponent = class ConfiguracionesComponent {
-    constructor() { }
-    ngOnInit() {
+var ConfiguracionesComponent = /** @class */ (function () {
+    function ConfiguracionesComponent() {
     }
-};
-ConfiguracionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-configuraciones',
-        template: __webpack_require__(/*! raw-loader!./configuraciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/configuraciones.component.html"),
-        styles: [__webpack_require__(/*! ./configuraciones.component.css */ "./src/app/auth-master/configuraciones/configuraciones.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], ConfiguracionesComponent);
+    ConfiguracionesComponent.prototype.ngOnInit = function () {
+    };
+    ConfiguracionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-configuraciones',
+            template: __webpack_require__(/*! raw-loader!./configuraciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/configuraciones.component.html"),
+            styles: [__webpack_require__(/*! ./configuraciones.component.css */ "./src/app/auth-master/configuraciones/configuraciones.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ConfiguracionesComponent);
+    return ConfiguracionesComponent;
+}());
 
 
 
@@ -1285,22 +1142,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaBienestarComponent", function() { return CuentaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaBienestarComponent = class CuentaBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaBienestarComponent = /** @class */ (function () {
+    function CuentaBienestarComponent() {
     }
-};
-CuentaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-bienestar',
-        template: __webpack_require__(/*! raw-loader!./cuenta-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaBienestarComponent);
+    CuentaBienestarComponent.prototype.ngOnInit = function () {
+    };
+    CuentaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-bienestar',
+            template: __webpack_require__(/*! raw-loader!./cuenta-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaBienestarComponent);
+    return CuentaBienestarComponent;
+}());
 
 
 
@@ -1328,22 +1187,24 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBienestarComponent", function() { return FormularioBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioBienestarComponent = class FormularioBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioBienestarComponent = /** @class */ (function () {
+    function FormularioBienestarComponent() {
     }
-};
-FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-bienestar',
-        template: __webpack_require__(/*! raw-loader!./formulario-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBienestarComponent);
+    FormularioBienestarComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-bienestar',
+            template: __webpack_require__(/*! raw-loader!./formulario-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioBienestarComponent);
+    return FormularioBienestarComponent;
+}());
 
 
 
@@ -1371,31 +1232,32 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n  tr,th
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBienestarComponent", function() { return TablaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
-let TablaBienestarComponent = class TablaBienestarComponent {
-    constructor(config, modalService) {
+var TablaBienestarComponent = /** @class */ (function () {
+    function TablaBienestarComponent(config, modalService) {
         this.modalService = modalService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openTablaBienestar(TablaBienestar) {
+    TablaBienestarComponent.prototype.ngOnInit = function () {
+    };
+    TablaBienestarComponent.prototype.openTablaBienestar = function (TablaBienestar) {
         this.modalService.open(TablaBienestar, { size: 'lg' });
-    }
-};
-TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-bienestar',
-        template: __webpack_require__(/*! raw-loader!./tabla-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], TablaBienestarComponent);
+    };
+    TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-bienestar',
+            template: __webpack_require__(/*! raw-loader!./tabla-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], TablaBienestarComponent);
+    return TablaBienestarComponent;
+}());
 
 
 
@@ -1423,22 +1285,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaFondoMutuoComponent", function() { return CuentaFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaFondoMutuoComponent = class CuentaFondoMutuoComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaFondoMutuoComponent = /** @class */ (function () {
+    function CuentaFondoMutuoComponent() {
     }
-};
-CuentaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-fondo-mutuo',
-        template: __webpack_require__(/*! raw-loader!./cuenta-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaFondoMutuoComponent);
+    CuentaFondoMutuoComponent.prototype.ngOnInit = function () {
+    };
+    CuentaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-fondo-mutuo',
+            template: __webpack_require__(/*! raw-loader!./cuenta-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaFondoMutuoComponent);
+    return CuentaFondoMutuoComponent;
+}());
 
 
 
@@ -1466,22 +1330,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioFondoMutuoComponent", function() { return FormularioFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioFondoMutuoComponent = /** @class */ (function () {
+    function FormularioFondoMutuoComponent() {
     }
-};
-FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-fondo-mutuo',
-        template: __webpack_require__(/*! raw-loader!./formulario-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioFondoMutuoComponent);
+    FormularioFondoMutuoComponent.prototype.ngOnInit = function () {
+    };
+    FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-fondo-mutuo',
+            template: __webpack_require__(/*! raw-loader!./formulario-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioFondoMutuoComponent);
+    return FormularioFondoMutuoComponent;
+}());
 
 
 
@@ -1509,22 +1375,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaFondoMutuoComponent", function() { return TablaFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaFondoMutuoComponent = /** @class */ (function () {
+    function TablaFondoMutuoComponent() {
     }
-};
-TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-fondo-mutuo',
-        template: __webpack_require__(/*! raw-loader!./tabla-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaFondoMutuoComponent);
+    TablaFondoMutuoComponent.prototype.ngOnInit = function () {
+    };
+    TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-fondo-mutuo',
+            template: __webpack_require__(/*! raw-loader!./tabla-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaFondoMutuoComponent);
+    return TablaFondoMutuoComponent;
+}());
 
 
 
@@ -1552,22 +1420,24 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n/*# sou
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaSindicalComponent", function() { return CuentaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaSindicalComponent = class CuentaSindicalComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaSindicalComponent = /** @class */ (function () {
+    function CuentaSindicalComponent() {
     }
-};
-CuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-sindical',
-        template: __webpack_require__(/*! raw-loader!./cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaSindicalComponent);
+    CuentaSindicalComponent.prototype.ngOnInit = function () {
+    };
+    CuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-sindical',
+            template: __webpack_require__(/*! raw-loader!./cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaSindicalComponent);
+    return CuentaSindicalComponent;
+}());
 
 
 
@@ -1595,17 +1465,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSindicalComponent", function() { return FormularioSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let FormularioSindicalComponent = class FormularioSindicalComponent {
-    constructor(_sindicalService, _validarusuario, config, modalService2) {
+var FormularioSindicalComponent = /** @class */ (function () {
+    function FormularioSindicalComponent(_sindicalService, _validarusuario, config, modalService2) {
         this._sindicalService = _sindicalService;
         this._validarusuario = _validarusuario;
         this.modalService2 = modalService2;
@@ -1631,7 +1501,7 @@ let FormularioSindicalComponent = class FormularioSindicalComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    FormularioSindicalComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
@@ -1643,108 +1513,113 @@ let FormularioSindicalComponent = class FormularioSindicalComponent {
         console.log(this.selectDefinicion);
         console.log(this.selectDetalle);
         this.usuario_logeado();
-    }
-    ingresoFormulario() {
+    };
+    FormularioSindicalComponent.prototype.ingresoFormulario = function () {
+        var _this = this;
         this.guardarLoad = true;
-        this._sindicalService.ingresarValor(this.datosSindicales).subscribe(response => {
+        this._sindicalService.ingresarValor(this.datosSindicales).subscribe(function (response) {
             if (response.estado == "success") {
-                this.datosSindicales.fecha = '';
-                this.datosSindicales.nDocumento = '';
-                this.datosSindicales.descripcion = '';
-                this.datosSindicales.monto = null;
+                _this.datosSindicales.fecha = '';
+                _this.datosSindicales.nDocumento = '';
+                _this.datosSindicales.descripcion = '';
+                _this.datosSindicales.monto = null;
                 alert(response.mensaje);
-                this.guardarLoad = false;
+                _this.guardarLoad = false;
             }
             if (response.estado == "failed") {
                 alert(response.mensaje);
-                this.guardarLoad = false;
+                _this.guardarLoad = false;
             }
             if (response.estado == "failed_v") {
                 alert("error de ingreso, verifique que los datos esten bien ingresados y no duplicados ya en la base de datos.");
-                this.guardarLoad = false;
+                _this.guardarLoad = false;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-            };
+            });
         });
-    }
-    onSelectImage(event) {
+    };
+    FormularioSindicalComponent.prototype.onSelectImage = function (event) {
         this.datosSindicales.archivoDocumento = event.srcElement.files[0];
-    }
-    changeDefinicion(evento) {
+    };
+    FormularioSindicalComponent.prototype.changeDefinicion = function (evento) {
         this.datosSindicales.definicion = evento.target.value;
         console.log("ID Definicion: " + this.datosSindicales.definicion);
-    }
-    changeDetalle(evento) {
+    };
+    FormularioSindicalComponent.prototype.changeDetalle = function (evento) {
+        var _this = this;
         this.datosSindicales.tipoCuentaSindicato = evento.target.value;
         console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
         if (this.datosSindicales.tipoCuentaSindicato == '3') {
             var anio = this.datosSindicales.fecha.substring(0, 4);
             var mes = this.datosSindicales.fecha.substring(5, 7);
             this.loadCajaChica = true;
-            this._sindicalService.getCalcularCajaChica(anio, mes).subscribe(response => {
+            this._sindicalService.getCalcularCajaChica(anio, mes).subscribe(function (response) {
                 //console.log(response);
                 if (response.estado == "success") {
-                    this.datosSindicales.monto = response.monto;
-                    this.loadCajaChica = false;
+                    _this.datosSindicales.monto = response.monto;
+                    _this.loadCajaChica = false;
                 }
                 else {
-                    this.datosSindicales.monto = null;
-                    this.loadCajaChica = false;
+                    _this.datosSindicales.monto = null;
+                    _this.loadCajaChica = false;
                 }
-            }, error => {
+            }, function (error) {
                 console.log(error);
             });
         }
         else {
             this.datosSindicales.monto = null;
         }
-    }
+    };
     //validar usuario
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    FormularioSindicalComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    FormularioSindicalComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.ingresoFormulario();
-                this.validarFormSindical.close();
+                _this.load = false;
+                _this.ingresoFormulario();
+                _this.validarFormSindical.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.validarFormSindical.close();
+                _this.load = false;
+                _this.validarFormSindical.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(modalUsuario) {
+    };
+    FormularioSindicalComponent.prototype.validar_usuario = function (modalUsuario) {
         //var passwordVacio = <HTMLInputElement>document.getElementById('password');
         //passwordVacio.value ='';
         this.validarFormSindical = this.modalService2.open(modalUsuario, { size: 'sm' });
-    }
-};
-FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-sindical',
-        template: __webpack_require__(/*! raw-loader!./formulario-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], FormularioSindicalComponent);
+    };
+    FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-sindical',
+            template: __webpack_require__(/*! raw-loader!./formulario-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], FormularioSindicalComponent);
+    return FormularioSindicalComponent;
+}());
 
 
 
@@ -1772,8 +1647,8 @@ module.exports = ".my-class { \r\n  color: red;\r\n  font-size: 15px;\r\n  margi
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaSindicalComponent", function() { return TablaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
@@ -1785,8 +1660,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaSindicalComponent = class TablaSindicalComponent {
-    constructor(config, modalService, _sindicalService, _fechasService, _validarusuario, _socios) {
+var TablaSindicalComponent = /** @class */ (function () {
+    function TablaSindicalComponent(config, modalService, _sindicalService, _fechasService, _validarusuario, _socios) {
         this.modalService = modalService;
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
@@ -1822,55 +1697,57 @@ let TablaSindicalComponent = class TablaSindicalComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    TablaSindicalComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         //Cargar definiciones
         this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
-    }
-    cargar_select() {
+    };
+    TablaSindicalComponent.prototype.cargar_select = function () {
+        var _this = this;
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response;
-            this.valorAnio.descripcion = this.idAnioActual.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, error => {
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response;
+            _this.valorAnio.descripcion = _this.idAnioActual.id;
+            _this.suc_res1 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            this.idMesActual = response;
-            this.valorMes.descripcion = this.idMesActual.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, error => {
+        this._fechasService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response;
+            _this.valorMes.descripcion = _this.idMesActual.id;
+            _this.suc_res2 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (error) {
             console.log(error);
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    TablaSindicalComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             this.cierreMensualAnterior();
             this.refrescarSindical();
         }
-    }
-    changeAnio(evento) {
+    };
+    TablaSindicalComponent.prototype.changeAnio = function (evento) {
         this.valorAnio.descripcion = evento.target.value;
         this.cierreMensualAnterior();
         this.refrescarSindical();
-    }
-    changeMes(evento) {
+    };
+    TablaSindicalComponent.prototype.changeMes = function (evento) {
         this.valorMes.descripcion = evento.target.value;
         this.cierreMensualAnterior();
         this.refrescarSindical();
-    }
-    verTablaSindical(tablaGeneral) {
+    };
+    TablaSindicalComponent.prototype.verTablaSindical = function (tablaGeneral) {
         this.abrirTablaSindical = this.modalService.open(tablaGeneral, { size: 'xl' });
         this.cargar_select();
-    }
-    refrescarSindical() {
+    };
+    TablaSindicalComponent.prototype.refrescarSindical = function () {
+        var _this = this;
         this.tablaSindical = [];
         this.fijos = [];
         this.variable = [];
@@ -1879,62 +1756,65 @@ let TablaSindicalComponent = class TablaSindicalComponent {
         this.camping = [];
         this.resultado = [];
         this.actualizarMontoCajaChica = '';
-        this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             if (response == null) {
-                this.tablaSindical = [];
-                this.fijos = [];
-                this.variable = [];
-                this.cajaChica = [];
-                this.prestamo = [];
-                this.camping = [];
-                this.resultado = [];
-                this.actualizarMontoCajaChica = '';
+                _this.tablaSindical = [];
+                _this.fijos = [];
+                _this.variable = [];
+                _this.cajaChica = [];
+                _this.prestamo = [];
+                _this.camping = [];
+                _this.resultado = [];
+                _this.actualizarMontoCajaChica = '';
             }
             else {
-                this.tablaSindical = response;
-                this.fijos = this.tablaSindical.fijo;
-                this.variable = this.tablaSindical.variable;
-                this.cajaChica = this.tablaSindical.caja_chica;
-                this.prestamo = this.tablaSindical.prestamo;
-                this.camping = this.tablaSindical.camping;
-                this.resultado = this.tablaSindical.resultado;
+                _this.tablaSindical = response;
+                _this.fijos = _this.tablaSindical.fijo;
+                _this.variable = _this.tablaSindical.variable;
+                _this.cajaChica = _this.tablaSindical.caja_chica;
+                _this.prestamo = _this.tablaSindical.prestamo;
+                _this.camping = _this.tablaSindical.camping;
+                _this.resultado = _this.tablaSindical.resultado;
             }
-            this.loading = false;
-        }, error => {
+            _this.loading = false;
+        }, function (error) {
             console.log(error);
         });
         this.loading = true;
-    }
-    cierreMensualAnterior() {
+    };
+    TablaSindicalComponent.prototype.cierreMensualAnterior = function () {
+        var _this = this;
         this.cierreAnterior = [];
-        this._sindicalService.getTablaSindicalMontoInicial(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._sindicalService.getTablaSindicalMontoInicial(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             if (response['estado'] == "failed") {
-                this.get_numero = 0;
+                _this.get_numero = 0;
             }
             if (response['estado'] == "success") {
-                this.cierreAnterior = response[0].inicio_mensual;
-                this.get_numero = this.cierreAnterior;
+                _this.cierreAnterior = response[0].inicio_mensual;
+                _this.get_numero = _this.cierreAnterior;
             }
         });
-    }
-    openActualizar(Actualizar) {
+    };
+    TablaSindicalComponent.prototype.openActualizar = function (Actualizar) {
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
         this.usuario_logeado();
-    }
-    cerrarActualizar() {
+    };
+    TablaSindicalComponent.prototype.cerrarActualizar = function () {
         this.modalActualizar.close();
         this.actualizarMontoCajaChica = '';
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaSindicalComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(id, campo, input, validar) {
+    TablaSindicalComponent.prototype.actualizar = function (id, campo, input, validar) {
+        var _this = this;
         if (campo == "archivo") {
             if (campo == "undefined") {
                 alert("ingrese documento porfavor!");
@@ -1949,101 +1829,103 @@ let TablaSindicalComponent = class TablaSindicalComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', input.value);
-                    this.actualizarLoad = true;
-                    this._sindicalService.getTablaSindicalActualizar(id, campo, this.entrada).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._sindicalService.getTablaSindicalActualizar(id, campo, _this.entrada).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.modalActualizar.close();
-                            this.refrescarSindical();
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.modalActualizar.close();
+                            _this.refrescarSindical();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
+    };
     //-------------------------------------------------------------------------------------------
-    onSelectImage(event) {
+    TablaSindicalComponent.prototype.onSelectImage = function (event) {
         this.archivoDocumento = event.srcElement.files[0];
-    }
-    actualizarCaja() {
+    };
+    TablaSindicalComponent.prototype.actualizarCaja = function () {
+        var _this = this;
         this.actualizarRecalcular = true;
-        this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             //console.log(response);
             if (response.estado == "success") {
                 if (response.monto == 0) {
                     alert("no existe monto el mes anterior");
                     response.monto = "";
-                    this.actualizarRecalcular = false;
-                    this.modalActualizar.close();
+                    _this.actualizarRecalcular = false;
+                    _this.modalActualizar.close();
                 }
-                this.actualizarMontoCajaChica = response.monto;
-                this.actualizarRecalcular = false;
+                _this.actualizarMontoCajaChica = response.monto;
+                _this.actualizarRecalcular = false;
             }
             else {
-                this.actualizarMontoCajaChica = null;
-                this.load = false;
+                _this.actualizarMontoCajaChica = null;
+                _this.load = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    btn_reload() {
+    };
+    TablaSindicalComponent.prototype.btn_reload = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-};
-TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-sindical',
-        template: __webpack_require__(/*! raw-loader!./tabla-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"],
-        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_6__["SociosService"]])
-], TablaSindicalComponent);
+    };
+    TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-sindical',
+            template: __webpack_require__(/*! raw-loader!./tabla-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"],
+            src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_6__["SociosService"]])
+    ], TablaSindicalComponent);
+    return TablaSindicalComponent;
+}());
 
 
 
@@ -2071,22 +1953,24 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TotalCuentaSindicalComponent", function() { return TotalCuentaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TotalCuentaSindicalComponent = class TotalCuentaSindicalComponent {
-    constructor() { }
-    ngOnInit() {
+var TotalCuentaSindicalComponent = /** @class */ (function () {
+    function TotalCuentaSindicalComponent() {
     }
-};
-TotalCuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-total-cuenta-sindical',
-        template: __webpack_require__(/*! raw-loader!./total-cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./total-cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TotalCuentaSindicalComponent);
+    TotalCuentaSindicalComponent.prototype.ngOnInit = function () {
+    };
+    TotalCuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-total-cuenta-sindical',
+            template: __webpack_require__(/*! raw-loader!./total-cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./total-cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TotalCuentaSindicalComponent);
+    return TotalCuentaSindicalComponent;
+}());
 
 
 
@@ -2114,13 +1998,13 @@ module.exports = "  label,input, button, strong{\r\n    font-size: 12px;\r\n  }\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BeneficiosSociosComponent", function() { return BeneficiosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
-let BeneficiosSociosComponent = class BeneficiosSociosComponent {
-    constructor(_SociosService) {
+var BeneficiosSociosComponent = /** @class */ (function () {
+    function BeneficiosSociosComponent(_SociosService) {
         this._SociosService = _SociosService;
         this.rut = '';
         this.fechaSocioTest = '';
@@ -2129,38 +2013,40 @@ let BeneficiosSociosComponent = class BeneficiosSociosComponent {
         /*-----------------------------*/
         this.idSocio = '';
     }
-    ngOnInit() {
-    }
-    buscarSocio() {
-        this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
+    BeneficiosSociosComponent.prototype.ngOnInit = function () {
+    };
+    BeneficiosSociosComponent.prototype.buscarSocio = function () {
+        var _this = this;
+        this._SociosService.traerDatosSocio(this.rut).subscribe(function (response) {
             console.log(response);
             if (response.estado == "failed") {
                 alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.fechaSocioTest = '';
-                this.rutSocioTest = '';
-                this.nombreSocioTest = '';
-                this.idSocio = '';
+                _this.fechaSocioTest = '';
+                _this.rutSocioTest = '';
+                _this.nombreSocioTest = '';
+                _this.idSocio = '';
                 return false;
             }
             else {
-                this.fechaSocioTest = response.fecha_nacimiento;
-                this.rutSocioTest = response.rut;
-                this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
-                this.idSocio = response.id;
+                _this.fechaSocioTest = response.fecha_nacimiento;
+                _this.rutSocioTest = response.rut;
+                _this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
+                _this.idSocio = response.id;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-BeneficiosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-beneficios-socios',
-        template: __webpack_require__(/*! raw-loader!./beneficios-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.html"),
-        styles: [__webpack_require__(/*! ./beneficios-socios.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"]])
-], BeneficiosSociosComponent);
+    };
+    BeneficiosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-beneficios-socios',
+            template: __webpack_require__(/*! raw-loader!./beneficios-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.html"),
+            styles: [__webpack_require__(/*! ./beneficios-socios.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"]])
+    ], BeneficiosSociosComponent);
+    return BeneficiosSociosComponent;
+}());
 
 
 
@@ -2188,22 +2074,24 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosBeneficiarioComponent", function() { return FormularioBeneficiosBeneficiarioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioBeneficiosBeneficiarioComponent = class FormularioBeneficiosBeneficiarioComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioBeneficiosBeneficiarioComponent = /** @class */ (function () {
+    function FormularioBeneficiosBeneficiarioComponent() {
     }
-};
-FormularioBeneficiosBeneficiarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-beneficiario',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosBeneficiarioComponent);
+    FormularioBeneficiosBeneficiarioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosBeneficiarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-beneficiario',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioBeneficiosBeneficiarioComponent);
+    return FormularioBeneficiosBeneficiarioComponent;
+}());
 
 
 
@@ -2231,22 +2119,24 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosCargasComponent", function() { return FormularioBeneficiosCargasComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioBeneficiosCargasComponent = class FormularioBeneficiosCargasComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioBeneficiosCargasComponent = /** @class */ (function () {
+    function FormularioBeneficiosCargasComponent() {
     }
-};
-FormularioBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-cargas',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosCargasComponent);
+    FormularioBeneficiosCargasComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-cargas',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioBeneficiosCargasComponent);
+    return FormularioBeneficiosCargasComponent;
+}());
 
 
 
@@ -2274,22 +2164,24 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosConyugeComponent", function() { return FormularioBeneficiosConyugeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioBeneficiosConyugeComponent = class FormularioBeneficiosConyugeComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioBeneficiosConyugeComponent = /** @class */ (function () {
+    function FormularioBeneficiosConyugeComponent() {
     }
-};
-FormularioBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-conyuge',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosConyugeComponent);
+    FormularioBeneficiosConyugeComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-conyuge',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioBeneficiosConyugeComponent);
+    return FormularioBeneficiosConyugeComponent;
+}());
 
 
 
@@ -2317,22 +2209,24 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosPadresSuegrosComponent", function() { return FormularioBeneficiosPadresSuegrosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioBeneficiosPadresSuegrosComponent = class FormularioBeneficiosPadresSuegrosComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioBeneficiosPadresSuegrosComponent = /** @class */ (function () {
+    function FormularioBeneficiosPadresSuegrosComponent() {
     }
-};
-FormularioBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-padres-suegros',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosPadresSuegrosComponent);
+    FormularioBeneficiosPadresSuegrosComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-padres-suegros',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioBeneficiosPadresSuegrosComponent);
+    return FormularioBeneficiosPadresSuegrosComponent;
+}());
 
 
 
@@ -2360,15 +2254,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosSocioComponent", function() { return FormularioBeneficiosSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponent {
-    constructor(config, modalService, _SociosService) {
+var FormularioBeneficiosSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosSocioComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.InsertarBeneficiosSocio = {
@@ -2394,18 +2288,19 @@ let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponen
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosSocioComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
         console.log(this.getIdSocio);
-    }
-    guardarDatosSocio() {
+    };
+    FormularioBeneficiosSocioComponent.prototype.guardarDatosSocio = function () {
+        var _this = this;
         if (this.InsertarBeneficiosSocio.email_1 == '' && this.InsertarBeneficiosSocio.direccion == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('direccion', this.InsertarBeneficiosSocio.direccion);
         data.append('telefono', this.InsertarBeneficiosSocio.telefono);
@@ -2424,51 +2319,52 @@ let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponen
         data.append('rol_turno', this.InsertarBeneficiosSocio.rol_turno);
         data.append('estado_civil_id', this.InsertarBeneficiosSocio.estado_civil_id);
         data.append('conyuge', this.InsertarBeneficiosSocio.conyuge);
-        this._SociosService.insertarDatosSocio(data).subscribe((response) => {
+        this._SociosService.insertarDatosSocio(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarBeneficiosSocio.direccion = '';
-                this.InsertarBeneficiosSocio.telefono = '';
-                this.InsertarBeneficiosSocio.celular = '';
-                this.InsertarBeneficiosSocio.anexo = '';
-                this.InsertarBeneficiosSocio.email_1 = '';
-                this.InsertarBeneficiosSocio.email_2 = '';
-                this.InsertarBeneficiosSocio.cargo_planta = '';
-                this.InsertarBeneficiosSocio.cargo_comision_sindicato = '';
-                this.InsertarBeneficiosSocio.numero_cuenta = '';
-                this.InsertarBeneficiosSocio.tipo_cuenta_banco_id = '';
-                this.InsertarBeneficiosSocio.banco = '';
-                this.InsertarBeneficiosSocio.isapre_fonasa = '';
-                this.InsertarBeneficiosSocio.grupo_sangre = '';
-                this.InsertarBeneficiosSocio.casa_propia = '';
-                this.InsertarBeneficiosSocio.rol_turno = '';
-                this.InsertarBeneficiosSocio.estado_civil_id = '';
-                this.InsertarBeneficiosSocio.conyuge = '';
+                _this.InsertarBeneficiosSocio.direccion = '';
+                _this.InsertarBeneficiosSocio.telefono = '';
+                _this.InsertarBeneficiosSocio.celular = '';
+                _this.InsertarBeneficiosSocio.anexo = '';
+                _this.InsertarBeneficiosSocio.email_1 = '';
+                _this.InsertarBeneficiosSocio.email_2 = '';
+                _this.InsertarBeneficiosSocio.cargo_planta = '';
+                _this.InsertarBeneficiosSocio.cargo_comision_sindicato = '';
+                _this.InsertarBeneficiosSocio.numero_cuenta = '';
+                _this.InsertarBeneficiosSocio.tipo_cuenta_banco_id = '';
+                _this.InsertarBeneficiosSocio.banco = '';
+                _this.InsertarBeneficiosSocio.isapre_fonasa = '';
+                _this.InsertarBeneficiosSocio.grupo_sangre = '';
+                _this.InsertarBeneficiosSocio.casa_propia = '';
+                _this.InsertarBeneficiosSocio.rol_turno = '';
+                _this.InsertarBeneficiosSocio.estado_civil_id = '';
+                _this.InsertarBeneficiosSocio.conyuge = '';
                 alert(response.mensaje);
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
-FormularioBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], FormularioBeneficiosSocioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
+    FormularioBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], FormularioBeneficiosSocioComponent);
+    return FormularioBeneficiosSocioComponent;
+}());
 
 
 
@@ -2496,22 +2392,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaSociosComponent", function() { return CuentaSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaSociosComponent = class CuentaSociosComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaSociosComponent = /** @class */ (function () {
+    function CuentaSociosComponent() {
     }
-};
-CuentaSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-socios',
-        template: __webpack_require__(/*! raw-loader!./cuenta-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/cuenta-socios.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-socios.component.css */ "./src/app/auth-master/cuenta-socios/cuenta-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaSociosComponent);
+    CuentaSociosComponent.prototype.ngOnInit = function () {
+    };
+    CuentaSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-socios',
+            template: __webpack_require__(/*! raw-loader!./cuenta-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/cuenta-socios.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-socios.component.css */ "./src/app/auth-master/cuenta-socios/cuenta-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaSociosComponent);
+    return CuentaSociosComponent;
+}());
 
 
 
@@ -2539,9 +2437,9 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSociosComponent", function() { return FormularioSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -2550,8 +2448,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let FormularioSociosComponent = class FormularioSociosComponent {
-    constructor(_http, _validarusuario, modalService) {
+var FormularioSociosComponent = /** @class */ (function () {
+    function FormularioSociosComponent(_http, _validarusuario, modalService) {
         this._http = _http;
         this._validarusuario = _validarusuario;
         this.modalService = modalService;
@@ -2567,16 +2465,17 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         this.user = [];
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
     }
-    ngOnInit() {
+    FormularioSociosComponent.prototype.ngOnInit = function () {
         this.usuario_logeado();
-    }
-    onSelectImage(event) {
+    };
+    FormularioSociosComponent.prototype.onSelectImage = function (event) {
         //console.log(event.srcElement.files[0])
         this.selectedImage = event.srcElement.files[0];
         //console.log(this.selectedImage);
-    }
-    onSubmit() {
-        const form = new FormData();
+    };
+    FormularioSociosComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var form = new FormData();
         form.append('foto', this.selectedImage);
         form.append('rut', this.rut);
         form.append('fecha_nacimiento', this.fecha_nacimiento);
@@ -2587,15 +2486,15 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         console.log(form);
         this._http.post(this.url + "ingresar_socio", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
-            }) }).subscribe((val) => {
+            }) }).subscribe(function (val) {
             if (val.estado == "success") {
                 alert("" + val.mensaje + "");
-                this.rut = '';
-                this.fecha_nacimiento = '';
-                this.fecha_ingreso = '';
-                this.nombres = '';
-                this.a_paterno = '';
-                this.a_materno = '';
+                _this.rut = '';
+                _this.fecha_nacimiento = '';
+                _this.fecha_ingreso = '';
+                _this.nombres = '';
+                _this.a_paterno = '';
+                _this.a_materno = '';
                 return false;
             }
             if (val.estado == "failed") {
@@ -2606,47 +2505,49 @@ let FormularioSociosComponent = class FormularioSociosComponent {
                 alert("" + val.mensaje + "");
                 return false;
             }
-        }, response => {
+        }, function (response) {
             console.log("POST call in error", response);
-        }, () => {
+        }, function () {
             console.log("The POST observable is now completed.");
         });
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    FormularioSociosComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    FormularioSociosComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
         //  validar = this.validar_inputs();
         // if (validar == true) {
         //   this.modalReference = this.modalService.open(validar, { size: 'sm' });
         // }
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    FormularioSociosComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.modalReference.close();
-                this.onSubmit();
+                _this.load = false;
+                _this.modalReference.close();
+                _this.onSubmit();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_inputs(validar) {
+    };
+    FormularioSociosComponent.prototype.validar_inputs = function (validar) {
         if (this.rut == '') {
             alert("Ingrese rut");
             return false;
@@ -2673,16 +2574,17 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         }
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
         return true;
-    }
-};
-FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-socios',
-        template: __webpack_require__(/*! raw-loader!./formulario-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-socios.component.css */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], FormularioSociosComponent);
+    };
+    FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-socios',
+            template: __webpack_require__(/*! raw-loader!./formulario-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-socios.component.css */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], FormularioSociosComponent);
+    return FormularioSociosComponent;
+}());
 
 
 
@@ -2710,17 +2612,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListarSociosComponent", function() { return ListarSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
 
 
 
 
-let ListarSociosComponent = class ListarSociosComponent {
-    constructor(_socios, _validarusuario, modalService) {
+var ListarSociosComponent = /** @class */ (function () {
+    function ListarSociosComponent(_socios, _validarusuario, modalService) {
         this._socios = _socios;
         this._validarusuario = _validarusuario;
         this.modalService = modalService;
@@ -2738,7 +2640,7 @@ let ListarSociosComponent = class ListarSociosComponent {
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         //this.currentLesson=this.classes[0].currentLesson
     }
-    ngOnInit() {
+    ListarSociosComponent.prototype.ngOnInit = function () {
         console.log("a lo vio perro chuchetumareeee " + localStorage.getItem('token'));
         if (localStorage.getItem('token') == '') {
             alert("La sesión ya expiro!");
@@ -2746,60 +2648,63 @@ let ListarSociosComponent = class ListarSociosComponent {
         }
         this.listar();
         this.usuario_logeado();
-    }
-    listar() {
-        this._socios.getTablaSocios().subscribe(response => {
+    };
+    ListarSociosComponent.prototype.listar = function () {
+        var _this = this;
+        this._socios.getTablaSocios().subscribe(function (response) {
             console.log(response);
-            this.socios = response;
+            _this.socios = response;
         });
-    }
-    filtrar() {
+    };
+    ListarSociosComponent.prototype.filtrar = function () {
+        var _this = this;
         if (this.search == '') {
             alert("Ingrese un nombre para filtrar");
             return false;
         }
         else {
-            this._socios.getTablaFilter(this.search).subscribe(response => {
+            this._socios.getTablaFilter(this.search).subscribe(function (response) {
                 console.log(response);
-                this.socios = response;
+                _this.socios = response;
             });
         }
-    }
-    modal_editar(modal) {
+    };
+    ListarSociosComponent.prototype.modal_editar = function (modal) {
         this.mod_editar = this.modalService.open(modal, { size: 'lg' });
-    }
-    cerrar_editar(modal) {
+    };
+    ListarSociosComponent.prototype.cerrar_editar = function (modal) {
         this.mod_editar.close();
-    }
-    actualizar(id, campo, valor, validar) {
+    };
+    ListarSociosComponent.prototype.actualizar = function (id, campo, valor, validar) {
+        var _this = this;
         if (valor.value == '') {
             alert("Ingrese dato en este campo para actualizar");
             return false;
         }
         //this.modalReference = this.modalService.open(validar, { size: 'sm' });
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 // var inputValue = (<HTMLInputElement>document.getElementById("password")).value;
                 if (val > 0) { //si tiene acceso;
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', valor.value);
-                    this._socios.getEditar(form).subscribe(response => {
+                    _this._socios.getEditar(form).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.listar();
-                            this.pass = "";
+                            _this.listar();
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
@@ -2809,56 +2714,58 @@ let ListarSociosComponent = class ListarSociosComponent {
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
-            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }, function (reason) {
+            console.log("" + reason);
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    ListarSociosComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    ListarSociosComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
                 return true;
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
                 return false;
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    ListarSociosComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
         window.stop();
-    }
+    };
     // fin del metodo para validar usuario
-    getDismissReason(reason) {
+    ListarSociosComponent.prototype.getDismissReason = function (reason) {
         if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].ESC) {
             return 'by pressing ESC';
         }
@@ -2866,18 +2773,19 @@ let ListarSociosComponent = class ListarSociosComponent {
             return 'by clicking on a backdrop';
         }
         else {
-            return `with: ${reason}`;
+            return "with: " + reason;
         }
-    }
-};
-ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-listar-socios',
-        template: __webpack_require__(/*! raw-loader!./listar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.html"),
-        styles: [__webpack_require__(/*! ./listar-socios.component.css */ "./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
-], ListarSociosComponent);
+    };
+    ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-listar-socios',
+            template: __webpack_require__(/*! raw-loader!./listar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.html"),
+            styles: [__webpack_require__(/*! ./listar-socios.component.css */ "./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
+    ], ListarSociosComponent);
+    return ListarSociosComponent;
+}());
 
 
 
@@ -2905,22 +2813,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosCargasComponent", function() { return TablaBeneficiosCargasComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaBeneficiosCargasComponent = /** @class */ (function () {
+    function TablaBeneficiosCargasComponent() {
     }
-};
-TablaBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-cargas',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaBeneficiosCargasComponent);
+    TablaBeneficiosCargasComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-cargas',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaBeneficiosCargasComponent);
+    return TablaBeneficiosCargasComponent;
+}());
 
 
 
@@ -2948,22 +2858,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosConyugeComponent", function() { return TablaBeneficiosConyugeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaBeneficiosConyugeComponent = class TablaBeneficiosConyugeComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaBeneficiosConyugeComponent = /** @class */ (function () {
+    function TablaBeneficiosConyugeComponent() {
     }
-};
-TablaBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-conyuge',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaBeneficiosConyugeComponent);
+    TablaBeneficiosConyugeComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-conyuge',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaBeneficiosConyugeComponent);
+    return TablaBeneficiosConyugeComponent;
+}());
 
 
 
@@ -2991,22 +2903,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosPadresSuegrosComponent", function() { return TablaBeneficiosPadresSuegrosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaBeneficiosPadresSuegrosComponent = class TablaBeneficiosPadresSuegrosComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaBeneficiosPadresSuegrosComponent = /** @class */ (function () {
+    function TablaBeneficiosPadresSuegrosComponent() {
     }
-};
-TablaBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-padres-suegros',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaBeneficiosPadresSuegrosComponent);
+    TablaBeneficiosPadresSuegrosComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-padres-suegros',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaBeneficiosPadresSuegrosComponent);
+    return TablaBeneficiosPadresSuegrosComponent;
+}());
 
 
 
@@ -3034,15 +2948,15 @@ module.exports = ".sinbordefondo {\r\n  background-color:#fff;\r\n  border: 0;\r
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosSocioComponent", function() { return TablaBeneficiosSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let TablaBeneficiosSocioComponent = class TablaBeneficiosSocioComponent {
-    constructor(config, modalService, _SociosService) {
+var TablaBeneficiosSocioComponent = /** @class */ (function () {
+    function TablaBeneficiosSocioComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.traerDatosSocio = [
@@ -3073,41 +2987,43 @@ let TablaBeneficiosSocioComponent = class TablaBeneficiosSocioComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosSocioComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosSocios = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosSocio();
-    }
-    listarDatosSocio() {
-        this._SociosService.getDatosSocio(this.getIdSocio).subscribe((response) => {
+    };
+    TablaBeneficiosSocioComponent.prototype.listarDatosSocio = function () {
+        var _this = this;
+        this._SociosService.getDatosSocio(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
                 return false;
             }
             else {
-                this.traerDatosSocio = response[0];
+                _this.traerDatosSocio = response[0];
             }
-            error => {
+            (function (error) {
                 console.log(error);
-            };
+            });
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
-TablaBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], TablaBeneficiosSocioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
+    TablaBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], TablaBeneficiosSocioComponent);
+    return TablaBeneficiosSocioComponent;
+}());
 
 
 
@@ -3135,22 +3051,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablasBeneficiosComponent", function() { return TablasBeneficiosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablasBeneficiosComponent = class TablasBeneficiosComponent {
-    constructor() { }
-    ngOnInit() {
+var TablasBeneficiosComponent = /** @class */ (function () {
+    function TablasBeneficiosComponent() {
     }
-};
-TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tablas-beneficios',
-        template: __webpack_require__(/*! raw-loader!./tablas-beneficios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.html"),
-        styles: [__webpack_require__(/*! ./tablas-beneficios.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablasBeneficiosComponent);
+    TablasBeneficiosComponent.prototype.ngOnInit = function () {
+    };
+    TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tablas-beneficios',
+            template: __webpack_require__(/*! raw-loader!./tablas-beneficios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.html"),
+            styles: [__webpack_require__(/*! ./tablas-beneficios.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablasBeneficiosComponent);
+    return TablasBeneficiosComponent;
+}());
 
 
 
@@ -3178,14 +3096,14 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalCajaChicaComponent", function() { return ModalCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
 /* harmony import */ var _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla-caja-chica/tabla-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
 
@@ -3195,8 +3113,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ModalCajaChicaComponent = class ModalCajaChicaComponent {
-    constructor(config, modalService, _cajaChicaService, _fechasService, _usuariosSevice, _http) {
+var ModalCajaChicaComponent = /** @class */ (function () {
+    function ModalCajaChicaComponent(config, modalService, _cajaChicaService, _fechasService, _usuariosSevice, _http) {
         this.modalService = modalService;
         this._cajaChicaService = _cajaChicaService;
         this._fechasService = _fechasService;
@@ -3252,7 +3170,8 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ModalCajaChicaComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
@@ -3260,46 +3179,46 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         //Cargar definiciones
         this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response;
-            this.valorAnio.descripcion = this.idAnioActual.id;
-        }, error => {
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response;
+            _this.valorAnio.descripcion = _this.idAnioActual.id;
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            this.idMesActual = response;
-            this.valorMes.descripcion = this.idMesActual.id;
-            this.refrescarCajaChica();
-        }, error => {
+        this._fechasService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response;
+            _this.valorMes.descripcion = _this.idMesActual.id;
+            _this.refrescarCajaChica();
+        }, function (error) {
             console.log(error);
         });
-    }
-    openCajaChica(CajaChica) {
+    };
+    ModalCajaChicaComponent.prototype.openCajaChica = function (CajaChica) {
         this.modalService.open(CajaChica, { size: 'xl' });
         //Cargar Caja chica
         this.usuarioLogeado();
-    }
-    changeDefinicion(evento) {
+    };
+    ModalCajaChicaComponent.prototype.changeDefinicion = function (evento) {
         this.datosCajaChica.definicion = evento.target.value;
-    }
-    changeAnio(evento) {
+    };
+    ModalCajaChicaComponent.prototype.changeAnio = function (evento) {
         this.valorAnio.descripcion = evento.target.value;
         //this.cajaChicaError = false;
         this.refrescarCajaChica();
-    }
-    changeMes(evento) {
+    };
+    ModalCajaChicaComponent.prototype.changeMes = function (evento) {
         this.valorMes.descripcion = evento.target.value;
         //this.cajaChicaError = false;
         this.refrescarCajaChica();
-    }
-    onSelectImage(event) {
+    };
+    ModalCajaChicaComponent.prototype.onSelectImage = function (event) {
         this.datosCajaChica.archivo_documento = event.srcElement.files[0];
-    }
-    onSelectImageEdicion(event) {
+    };
+    ModalCajaChicaComponent.prototype.onSelectImageEdicion = function (event) {
         this.edicionArchivo = event.srcElement.files[0];
-    }
-    onSubmit(valid) {
+    };
+    ModalCajaChicaComponent.prototype.onSubmit = function (valid) {
         if (!valid) {
         }
         else {
@@ -3308,31 +3227,32 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
             document.getElementById("openModalButtonPass").click();
             /*  */
         }
-    }
-    refrescarCajaChica() {
+    };
+    ModalCajaChicaComponent.prototype.refrescarCajaChica = function () {
+        var _this = this;
         //Cargar Caja chica
         this.cajaChica = [];
-        this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.cajaChicaError = true;
-                this.cajaChicaTotales.total = 0;
-                this.cajaChicaTotales.total_egreso = 0;
-                this.cajaChicaTotales.total_ingreso = 0;
+                _this.cajaChicaError = true;
+                _this.cajaChicaTotales.total = 0;
+                _this.cajaChicaTotales.total_egreso = 0;
+                _this.cajaChicaTotales.total_ingreso = 0;
                 alert(response.mensaje);
             }
             else {
-                this.cajaChicaError = false;
-                this.cajaChica = response.caja;
-                this.cajaChicaTotales = response.totales[0];
+                _this.cajaChicaError = false;
+                _this.cajaChica = response.caja;
+                _this.cajaChicaTotales = response.totales[0];
             }
-            this.loading = false;
-        }, error => {
+            _this.loading = false;
+        }, function (error) {
             console.log(error);
         });
         this.loading = true;
-    }
+    };
     //Funciones para la edicion de los campos*********************************************************
-    editarParametro(id, campo, parametro) {
+    ModalCajaChicaComponent.prototype.editarParametro = function (id, campo, parametro) {
         this.idEdicion = id;
         this.campoEdicion = campo;
         this.parametroEdicion = parametro;
@@ -3352,120 +3272,125 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         }
         //aqui modificar el input del modal edicion
         document.getElementById("openModalButtonEdicion").click();
-    }
-    ingresarModificacionDocumento() {
+    };
+    ModalCajaChicaComponent.prototype.ingresarModificacionDocumento = function () {
+        var _this = this;
         this.blockCajaChica = true;
         this.loadingModificacion = true;
-        this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(response => {
+        this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert(response.mensaje.input[0] + "\n " + response.mensaje.input[1]);
             }
             else {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert(response.mensaje);
-                this.refrescarCajaChica();
+                _this.refrescarCajaChica();
                 document.getElementById("closeModalButtonEdicion").click();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    ingresarModificacionTexto(input) {
+    };
+    ModalCajaChicaComponent.prototype.ingresarModificacionTexto = function (input) {
+        var _this = this;
         this.blockCajaChica = true;
         this.loadingModificacion = true;
-        this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, input).subscribe(response => {
+        this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, input).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert("Compruebe que la fecha nueva corresponda al mes anterior, que el numero de documento no se encuentre duplicado o no ingresar valores negativos en egreso");
                 document.getElementById("closeModalButtonEdicion").click();
             }
             else {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert(response.mensaje);
-                this.refrescarCajaChica();
+                _this.refrescarCajaChica();
                 document.getElementById("closeModalButtonEdicion").click();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    openEdicionModal(edicion) {
+    };
+    ModalCajaChicaComponent.prototype.openEdicionModal = function (edicion) {
         this.modalReference = this.modalService.open(edicion, { size: 'sm' });
-    }
+    };
     //Funciones del modal validacion de conraseña++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    openContraseniaModal(validar) {
+    ModalCajaChicaComponent.prototype.openContraseniaModal = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    usuarioLogeado() {
+    };
+    ModalCajaChicaComponent.prototype.usuarioLogeado = function () {
+        var _this = this;
         this._http.get(this.url + "usuario_logeado", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
-        }).subscribe(response => {
-            this.usuario = response;
-            this.rut = this.usuario.rut;
-        }, error => {
+        }).subscribe(function (response) {
+            _this.usuario = response;
+            _this.rut = _this.usuario.rut;
+        }, function (error) {
             console.log(error);
         });
-    }
-    validarUsuario(pass) {
-        this._usuariosSevice.validarUsuario(this.rut, pass.value).subscribe(response => {
+    };
+    ModalCajaChicaComponent.prototype.validarUsuario = function (pass) {
+        var _this = this;
+        this._usuariosSevice.validarUsuario(this.rut, pass.value).subscribe(function (response) {
             if (response > 0) {
                 document.getElementById("closeModalButtonValidacion").click();
-                this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(response => {
+                _this._cajaChicaService.ingresarValor(_this.datosCajaChica).subscribe(function (response) {
                     if (response.estado == 'failed_v') {
-                        this.blockCajaChica = false;
+                        _this.blockCajaChica = false;
                         alert("ERROR: Compruebe que el número de documento no se encuentre duplicado o falte un campo en el formulario");
-                        this.ingresoStatus = 'Se ha encontrado un error en el formulario, revisar que se encuentre todos los campos llenos y validados';
-                        this.errorIngreso = true;
+                        _this.ingresoStatus = 'Se ha encontrado un error en el formulario, revisar que se encuentre todos los campos llenos y validados';
+                        _this.errorIngreso = true;
                         return false;
                     }
                     if (response.estado == 'failed') {
-                        this.blockCajaChica = false;
+                        _this.blockCajaChica = false;
                         alert(response.mensaje);
-                        this.ingresoStatus = response.mensaje;
-                        this.errorIngreso = true;
+                        _this.ingresoStatus = response.mensaje;
+                        _this.errorIngreso = true;
                         return false;
                     }
                     else {
-                        this.blockCajaChica = false;
+                        _this.blockCajaChica = false;
                         alert("¡Ingreso correcto!");
-                        this.errorIngreso = false;
-                        this.ingresoStatus = '';
-                        this.datosCajaChica.numero_documento = '';
-                        this.datosCajaChica.archivo_documento = null;
-                        this.datosCajaChica.fecha = '';
-                        this.datosCajaChica.descripcion = '';
-                        this.datosCajaChica.monto_egreso = null;
-                        this.refrescarCajaChica();
+                        _this.errorIngreso = false;
+                        _this.ingresoStatus = '';
+                        _this.datosCajaChica.numero_documento = '';
+                        _this.datosCajaChica.archivo_documento = null;
+                        _this.datosCajaChica.fecha = '';
+                        _this.datosCajaChica.descripcion = '';
+                        _this.datosCajaChica.monto_egreso = null;
+                        _this.refrescarCajaChica();
                     }
-                }, error => {
+                }, function (error) {
                     console.log(error);
                 });
             }
             else {
-                this.blockCajaChica = false;
+                _this.blockCajaChica = false;
                 alert("Acceso denegado");
-                this.modalReference.close();
+                _this.modalReference.close();
             }
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
-], ModalCajaChicaComponent.prototype, "tablaComponent", void 0);
-ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./modal-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./modal-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__["CajaChicaService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__["AniosService"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClient"]])
-], ModalCajaChicaComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
+    ], ModalCajaChicaComponent.prototype, "tablaComponent", void 0);
+    ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./modal-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./modal-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__["CajaChicaService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__["AniosService"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClient"]])
+    ], ModalCajaChicaComponent);
+    return ModalCajaChicaComponent;
+}());
 
 
 
@@ -3493,26 +3418,27 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaCajaChicaComponent", function() { return TablaCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
 
 
 
-let TablaCajaChicaComponent = class TablaCajaChicaComponent {
-    constructor(_cajaChicaService) {
+var TablaCajaChicaComponent = /** @class */ (function () {
+    function TablaCajaChicaComponent(_cajaChicaService) {
         this._cajaChicaService = _cajaChicaService;
     }
-    ngOnInit() {
-    }
-};
-TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./tabla-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__["CajaChicaService"]])
-], TablaCajaChicaComponent);
+    TablaCajaChicaComponent.prototype.ngOnInit = function () {
+    };
+    TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./tabla-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__["CajaChicaService"]])
+    ], TablaCajaChicaComponent);
+    return TablaCajaChicaComponent;
+}());
 
 
 
@@ -3540,22 +3466,24 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TotalCajaChicaComponent", function() { return TotalCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TotalCajaChicaComponent = class TotalCajaChicaComponent {
-    constructor() { }
-    ngOnInit() {
+var TotalCajaChicaComponent = /** @class */ (function () {
+    function TotalCajaChicaComponent() {
     }
-};
-TotalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-total-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./total-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./total-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TotalCajaChicaComponent);
+    TotalCajaChicaComponent.prototype.ngOnInit = function () {
+    };
+    TotalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-total-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./total-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./total-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TotalCajaChicaComponent);
+    return TotalCajaChicaComponent;
+}());
 
 
 
@@ -3583,8 +3511,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalCampingComponent", function() { return ModalCampingComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/cs-detalle-camping.service */ "./src/app/servicios/cs-detalle-camping.service.ts");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
@@ -3596,8 +3524,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ModalCampingComponent = class ModalCampingComponent {
-    constructor(config, modalService, _anios, _camping, _validarusuario, _sindicalService) {
+var ModalCampingComponent = /** @class */ (function () {
+    function ModalCampingComponent(config, modalService, _anios, _camping, _validarusuario, _sindicalService) {
         this.modalService = modalService;
         this._anios = _anios;
         this._camping = _camping;
@@ -3621,130 +3549,137 @@ let ModalCampingComponent = class ModalCampingComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ModalCampingComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.anios = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.meses = JSON.parse(localStorage.getItem('meses'));
-    }
-    openCamping(Camping) {
+    };
+    ModalCampingComponent.prototype.openCamping = function (Camping) {
         this.modalService.open(Camping, { size: 'lg' });
         this.cargar_select();
         this.usuario_logeado();
         //this.listo_para_listar();
-    }
-    cargar_select() {
-        this._anios.getAnioActual().subscribe((val) => {
-            this.anio = val.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalCampingComponent.prototype.cargar_select = function () {
+        var _this = this;
+        this._anios.getAnioActual().subscribe(function (val) {
+            _this.anio = val.id;
+            _this.suc_res1 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-        this._anios.getMesActual().subscribe((val) => {
-            this.mes = val.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+        this._anios.getMesActual().subscribe(function (val) {
+            _this.mes = val.id;
+            _this.suc_res2 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listar_detalle_camping() {
+    };
+    ModalCampingComponent.prototype.listar_detalle_camping = function () {
+        var _this = this;
         // listar_detalle_camping/{anio}/{mes}
-        this._camping.getLista(this.anio, this.mes).subscribe((val) => {
+        this._camping.getLista(this.anio, this.mes).subscribe(function (val) {
             if (val.estado == "success") {
-                this.detallecamping = val.tabla;
-                this.resumen = val.resumen;
+                _this.detallecamping = val.tabla;
+                _this.resumen = val.resumen;
             }
             if (val.estado == "failed") {
                 alert("No existen registros en este periodo de tiempo");
-                this.detallecamping = val.tabla;
-                this.resumen = val.resumen;
+                _this.detallecamping = val.tabla;
+                _this.resumen = val.resumen;
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    traer_monto() {
-        this._camping.getMonto(this.anio, this.mes).subscribe((val) => {
-            this.monto = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalCampingComponent.prototype.traer_monto = function () {
+        var _this = this;
+        this._camping.getMonto(this.anio, this.mes).subscribe(function (val) {
+            _this.monto = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    guarda_monto() {
+    };
+    ModalCampingComponent.prototype.guarda_monto = function () {
+        var _this = this;
         if (this.monto == '') {
             alert("No ha ingresado un monto en este campo");
             return false;
         }
-        this._camping.guardar(this.anio, this.mes, this.monto).subscribe((val) => {
+        this._camping.guardar(this.anio, this.mes, this.monto).subscribe(function (val) {
             //this.detallecamping = val;
             if (val.estado == 'success') {
                 alert("" + val.mensaje + "");
-                this.listar_detalle_camping();
+                _this.listar_detalle_camping();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    change_mes() {
+    };
+    ModalCampingComponent.prototype.change_mes = function () {
         this.traer_monto();
         this.listar_detalle_camping();
-    }
-    change_anio() {
+    };
+    ModalCampingComponent.prototype.change_anio = function () {
         this.traer_monto();
         this.listar_detalle_camping();
-    }
-    listo_para_listar(res1, res2) {
+    };
+    ModalCampingComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             console.log("ready to get");
             this.traer_monto();
             this.listar_detalle_camping();
         }
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalCampingComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    ModalCampingComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.modalReference.close();
-                this.guarda_monto();
+                _this.load = false;
+                _this.modalReference.close();
+                _this.guarda_monto();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    ModalCampingComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    openActualizar(Actualizar) {
+    };
+    ModalCampingComponent.prototype.openActualizar = function (Actualizar) {
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
         this.usuario_logeado();
-    }
-    cerrarActualizar() {
+    };
+    ModalCampingComponent.prototype.cerrarActualizar = function () {
         this.modalActualizar.close();
         //this.actualizarMontoCajaChica = '';
-    }
-    onSelectImage(event) {
+    };
+    ModalCampingComponent.prototype.onSelectImage = function (event) {
         this.archivoDocumento = event.srcElement.files[0];
-    }
+    };
     //actualizar items
-    actualizar(id, campo, input, validar) {
+    ModalCampingComponent.prototype.actualizar = function (id, campo, input, validar) {
+        var _this = this;
         if (campo == "archivo") {
             if (validar == "undefined") {
                 alert("ingrese documento porfavor!");
@@ -3759,74 +3694,75 @@ let ModalCampingComponent = class ModalCampingComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', input.value);
-                    this.actualizarLoad = true;
-                    this._sindicalService.getTablaSindicalActualizar(id, campo, this.entrada).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._sindicalService.getTablaSindicalActualizar(id, campo, _this.entrada).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.modalActualizar.close();
+                            _this.modalActualizar.close();
                             //this.archivoDocumento = null;
-                            this.listo_para_listar(this.suc_res1, this.suc_res2);
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
                             //this.archivoDocumento = null;
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-camping',
-        template: __webpack_require__(/*! raw-loader!./modal-camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-camping/modal-camping.component.html"),
-        styles: [__webpack_require__(/*! ./modal-camping.component.css */ "./src/app/auth-master/modal-camping/modal-camping.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"],
-        _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
-        src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_6__["SindicalService"]])
-], ModalCampingComponent);
+    };
+    ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-camping',
+            template: __webpack_require__(/*! raw-loader!./modal-camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-camping/modal-camping.component.html"),
+            styles: [__webpack_require__(/*! ./modal-camping.component.css */ "./src/app/auth-master/modal-camping/modal-camping.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+            _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"],
+            _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
+            src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_6__["SindicalService"]])
+    ], ModalCampingComponent);
+    return ModalCampingComponent;
+}());
 
 
 
@@ -3854,11 +3790,11 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalInicioMesComponent", function() { return ModalInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
 
@@ -3866,9 +3802,9 @@ __webpack_require__.r(__webpack_exports__);
 //import-------------
 
 
-let ModalInicioMesComponent = class ModalInicioMesComponent {
+var ModalInicioMesComponent = /** @class */ (function () {
     //-------------------------
-    constructor(config, modalService, _http, _anios) {
+    function ModalInicioMesComponent(config, modalService, _http, _anios) {
         this.modalService = modalService;
         this._http = _http;
         this._anios = _anios;
@@ -3903,135 +3839,143 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
         //---------------------
     }
-    ngOnInit() {
-    }
-    openMensual(Mensual) {
+    ModalInicioMesComponent.prototype.ngOnInit = function () {
+    };
+    ModalInicioMesComponent.prototype.openMensual = function (Mensual) {
         this.llenar_anio_y_mes();
         this.modalService.open(Mensual, { size: 'lg' });
         this.anio_actual();
         this.mes_actual();
         this.usuario_logeado();
         //console.log(document.getElementById('anio').options.value);
-    }
-    llenar_anio_y_mes() {
-        this._anios.getAnios().subscribe((val) => {
-            this.selectAnio = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.llenar_anio_y_mes = function () {
+        var _this = this;
+        this._anios.getAnios().subscribe(function (val) {
+            _this.selectAnio = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-        this._anios.getMeses().subscribe((val) => {
-            this.selectMes = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+        this._anios.getMeses().subscribe(function (val) {
+            _this.selectMes = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
         //Cargar Años
         //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         //this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
+    };
     //metodos---------------------------------------------------------------------------------------
-    calcular_cierre_mensual(anio, mes) {
+    ModalInicioMesComponent.prototype.calcular_cierre_mensual = function (anio, mes) {
+        var _this = this;
         this.failed_visible = false;
         this.success_visible = false;
-        this._http.get(this.url + "calcular_cm/" + this.anio + "/" + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.monto = val;
+        this._http.get(this.url + "calcular_cm/" + this.anio + "/" + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.monto = val;
             console.log(val);
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    anio_actual() {
-        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.anio = val.id;
-            this.fil_anio = val.id;
-            this.listar_tabla();
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.anio_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.anio = val.id;
+            _this.fil_anio = val.id;
+            _this.listar_tabla();
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    mes_actual() {
-        this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.mes = val.id;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.mes_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.mes = val.id;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    guardar() {
+    };
+    ModalInicioMesComponent.prototype.guardar = function () {
+        var _this = this;
         this.failed_visible = false;
         this.success_visible = false;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('anio', this.anio);
         formData.append('mes', this.mes);
         formData.append('cierre_mensual', this.monto);
-        this._http.post(this.url + "guardar_inicio_mensual", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+        this._http.post(this.url + "guardar_inicio_mensual", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
             if (val['estado'] == 'failed') {
                 // console.log(val);
-                this.monto = '';
-                this.failed_visible = true;
-                this.success_visible = false;
-                this.txt = val['mensaje'];
-                this.listar_tabla();
+                _this.monto = '';
+                _this.failed_visible = true;
+                _this.success_visible = false;
+                _this.txt = val['mensaje'];
+                _this.listar_tabla();
             }
             if (val['estado'] == 'success') {
                 // console.log(val);
-                this.monto = '';
-                this.failed_visible = false;
-                this.success_visible = true;
-                this.txt = val['mensaje'];
-                this.listar_tabla();
+                _this.monto = '';
+                _this.failed_visible = false;
+                _this.success_visible = true;
+                _this.txt = val['mensaje'];
+                _this.listar_tabla();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listar_tabla() {
-        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/" + this.fil_anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.tabla = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.listar_tabla = function () {
+        var _this = this;
+        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/" + this.fil_anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.tabla = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    cambiar_anio() {
+    };
+    ModalInicioMesComponent.prototype.cambiar_anio = function () {
         this.listar_tabla();
-    }
-    usuario_logeado() {
-        this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    ModalInicioMesComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    ModalInicioMesComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
-        this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+        this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.guardar();
-                this.load = false;
+                _this.guardar();
+                _this.load = false;
                 // this.modalReference.close();
                 //this.modalService.dismissAll();
-                this.modalReference.close();
+                _this.modalReference.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    quitar_alerts() {
+    };
+    ModalInicioMesComponent.prototype.quitar_alerts = function () {
         this.success_visible = false;
         this.txt = '';
         this.failed_visible = false;
-    }
-    getDismissReason(reason) {
+    };
+    ModalInicioMesComponent.prototype.getDismissReason = function (reason) {
         if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ModalDismissReasons"].ESC) {
             return 'by pressing ESC';
         }
@@ -4039,18 +3983,19 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
             return 'by clicking on a backdrop';
         }
         else {
-            return `with: ${reason}`;
+            return "with: " + reason;
         }
-    }
-};
-ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-inicio-mes',
-        template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
-        styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
-], ModalInicioMesComponent);
+    };
+    ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-inicio-mes',
+            template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
+            styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+    ], ModalInicioMesComponent);
+    return ModalInicioMesComponent;
+}());
 
 
 
@@ -4078,8 +4023,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaInicioMesComponent", function() { return TablaInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
@@ -4087,9 +4032,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /////////////////////
-let TablaInicioMesComponent = class TablaInicioMesComponent {
+var TablaInicioMesComponent = /** @class */ (function () {
     //-------------------------
-    constructor(_http) {
+    function TablaInicioMesComponent(_http) {
         this._http = _http;
         this.selectAnio = [];
         //variables-----------------
@@ -4100,20 +4045,21 @@ let TablaInicioMesComponent = class TablaInicioMesComponent {
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
         //---------------------
     }
-    ngOnInit() {
+    TablaInicioMesComponent.prototype.ngOnInit = function () {
         //Cargar Años
         //this.anio_actual();
         //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
-    }
-};
-TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-inicio-mes',
-        template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], TablaInicioMesComponent);
+    };
+    TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-inicio-mes',
+            template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], TablaInicioMesComponent);
+    return TablaInicioMesComponent;
+}());
 
 
 
@@ -4141,17 +4087,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InteresPrestamoApuroEconomicoComponent", function() { return InteresPrestamoApuroEconomicoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
 
 
 
-let InteresPrestamoApuroEconomicoComponent = class InteresPrestamoApuroEconomicoComponent {
-    constructor(_http, _anios) {
+var InteresPrestamoApuroEconomicoComponent = /** @class */ (function () {
+    function InteresPrestamoApuroEconomicoComponent(_http, _anios) {
         this._http = _http;
         this._anios = _anios;
         this.suc_res1 = false;
@@ -4163,58 +4109,61 @@ let InteresPrestamoApuroEconomicoComponent = class InteresPrestamoApuroEconomico
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
     }
-    ngOnInit() {
+    InteresPrestamoApuroEconomicoComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.anios = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.meses = JSON.parse(localStorage.getItem('meses'));
         this.cargar_select();
-    }
-    cargar_select() {
-        this._anios.getAnioActual().subscribe((val) => {
-            this.anio = val.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.cargar_select = function () {
+        var _this = this;
+        this._anios.getAnioActual().subscribe(function (val) {
+            _this.anio = val.id;
+            _this.suc_res1 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-        this._anios.getMesActual().subscribe((val) => {
-            this.mes = val.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+        this._anios.getMesActual().subscribe(function (val) {
+            _this.mes = val.id;
+            _this.suc_res2 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listar_intereses() {
-        this._http.get(this.url + "listar_interes_prestamo/" + this.anio + '/' + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.tabla = val.tabla;
-            this.total = val.total;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.listar_intereses = function () {
+        var _this = this;
+        this._http.get(this.url + "listar_interes_prestamo/" + this.anio + '/' + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.tabla = val.tabla;
+            _this.total = val.total;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             console.log("ready to get");
             this.listar_intereses();
         }
-    }
-    change_anio() {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.change_anio = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-    change_mes() {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.change_mes = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-};
-InteresPrestamoApuroEconomicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-interes-prestamo-apuro-economico',
-        template: __webpack_require__(/*! raw-loader!./interes-prestamo-apuro-economico.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.html"),
-        styles: [__webpack_require__(/*! ./interes-prestamo-apuro-economico.component.css */ "./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"]])
-], InteresPrestamoApuroEconomicoComponent);
+    };
+    InteresPrestamoApuroEconomicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-interes-prestamo-apuro-economico',
+            template: __webpack_require__(/*! raw-loader!./interes-prestamo-apuro-economico.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.html"),
+            styles: [__webpack_require__(/*! ./interes-prestamo-apuro-economico.component.css */ "./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"]])
+    ], InteresPrestamoApuroEconomicoComponent);
+    return InteresPrestamoApuroEconomicoComponent;
+}());
 
 
 
@@ -4242,8 +4191,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalPrestamosSociosComponent", function() { return ModalPrestamosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
@@ -4251,8 +4200,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
-    constructor(config, modalService, _sindicalService, _sociosService) {
+var ModalPrestamosSociosComponent = /** @class */ (function () {
+    function ModalPrestamosSociosComponent(config, modalService, _sindicalService, _sociosService) {
         this.modalService = modalService;
         this._sindicalService = _sindicalService;
         this._sociosService = _sociosService;
@@ -4284,22 +4233,26 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ModalPrestamosSociosComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Guardar Tipo Prestamo
-        this._sindicalService.getTipoPrestamo().subscribe((res) => {
-            this.selectTipoPrestamo = res.map(({ id, descripcion }) => ({ id, descripcion }));
-            this.datosTipoPrestamo.descripcion = "salud";
-        }, error => {
+        this._sindicalService.getTipoPrestamo().subscribe(function (res) {
+            _this.selectTipoPrestamo = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
+            _this.datosTipoPrestamo.descripcion = "salud";
+        }, function (error) {
             console.log(error);
         });
-    }
-    openPrestamo(Prestamo) {
+    };
+    ModalPrestamosSociosComponent.prototype.openPrestamo = function (Prestamo) {
         this.modalService.open(Prestamo, { size: 'xl' });
-    }
-    onSelectImage(event) {
+    };
+    ModalPrestamosSociosComponent.prototype.onSelectImage = function (event) {
         this.datosEnvioPrestamo.archivoDocumento = event.srcElement.files[0];
-    }
-    changeTipoPrestamo(evento) {
+    };
+    ModalPrestamosSociosComponent.prototype.changeTipoPrestamo = function (evento) {
         this.datosTipoPrestamo.id = evento.target.value;
         this.datosEnvioPrestamo.selectId = this.datosTipoPrestamo.id;
         console.log(this.datosEnvioPrestamo.selectId);
@@ -4315,30 +4268,31 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
             this.datosTipoPrestamo.descripcion = "aporteEconomico";
             this.datosEnvioPrestamo.cuotas = "0";
         }
-    }
-    consultarSocio(rut) {
+    };
+    ModalPrestamosSociosComponent.prototype.consultarSocio = function (rut) {
+        var _this = this;
         this.blockPrestamo = true;
-        this._sociosService.getSocio(rut).subscribe((res) => {
+        this._sociosService.getSocio(rut).subscribe(function (res) {
             if (res.estado == 'failed') {
                 alert(res.mensaje);
-                this.nombreSocioTest = "";
-                this.rutSocioTest = "";
-                this.errorSocio = true;
-                this.blockPrestamo = false;
+                _this.nombreSocioTest = "";
+                _this.rutSocioTest = "";
+                _this.errorSocio = true;
+                _this.blockPrestamo = false;
             }
             else {
-                this.datosSocio = res;
-                this.nombreSocioTest = this.datosSocio[0].socio;
-                this.rutSocioTest = this.datosSocio[0].rut;
-                this.datosEnvioPrestamo.socioId = this.datosSocio[0].id;
-                this.errorSocio = false;
-                this.blockPrestamo = false;
+                _this.datosSocio = res;
+                _this.nombreSocioTest = _this.datosSocio[0].socio;
+                _this.rutSocioTest = _this.datosSocio[0].rut;
+                _this.datosEnvioPrestamo.socioId = _this.datosSocio[0].id;
+                _this.errorSocio = false;
+                _this.blockPrestamo = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeRadioAbono(val) {
+    };
+    ModalPrestamosSociosComponent.prototype.changeRadioAbono = function (val) {
         console.log(val);
         console.log(this.datosEnvioPrestamo.checkAbono);
         if (val == false) {
@@ -4349,8 +4303,8 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
             this.datosEnvioPrestamo.montoTri = "";
             this.datosEnvioPrestamo.montoCon = "";
         }
-    }
-    changeCheckAbono(val) {
+    };
+    ModalPrestamosSociosComponent.prototype.changeCheckAbono = function (val) {
         if (val == 1) {
             console.log("monto del dia en 0");
             this.datosEnvioPrestamo.montoDia = "";
@@ -4361,53 +4315,54 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
         else if (val == 3) {
             this.datosEnvioPrestamo.montoCon = "";
         }
-    }
-    onSubmit() {
+    };
+    ModalPrestamosSociosComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.blockPrestamo = true;
         console.log(this.blockPrestamo);
         console.log(this.datosEnvioPrestamo);
-        this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
+        this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe(function (res) {
             console.log(res);
             if (res.estado == 'failed_v' || res.estado == 'failed') {
                 alert('ERROR: Compruebe que los valores ingresados son correctos');
-                this.blockPrestamo = false;
+                _this.blockPrestamo = false;
             }
             else {
                 alert('Ingreso correcto');
-                this.blockPrestamo = false;
+                _this.blockPrestamo = false;
                 //limpieza de campos
-                this.datosEnvioPrestamo.fecha = "";
-                this.datosEnvioPrestamo.selectId = "1";
-                this.datosEnvioPrestamo.socioId = "";
-                this.datosEnvioPrestamo.numeroDocumento = "";
-                this.datosEnvioPrestamo.archivoDocumento = null;
-                this.datosEnvioPrestamo.montoPrestamo = "";
-                this.datosEnvioPrestamo.checkAbono = false;
-                this.datosEnvioPrestamo.cuotas = "";
-                this.datosEnvioPrestamo.montoDia = "";
-                this.datosEnvioPrestamo.montoTri = "";
-                this.datosEnvioPrestamo.montoCon = "";
-                this.datosEnvioPrestamo.checkDia = false;
-                this.datosEnvioPrestamo.checkTri = false;
-                this.datosEnvioPrestamo.checkCon = false;
-                this.nombreSocioTest = "";
-                this.rutSocioTest = "";
-                this.inputRut = "";
-                this.inputPrestamoRestante = null;
+                _this.datosEnvioPrestamo.fecha = "";
+                _this.datosEnvioPrestamo.selectId = "1";
+                _this.datosEnvioPrestamo.socioId = "";
+                _this.datosEnvioPrestamo.numeroDocumento = "";
+                _this.datosEnvioPrestamo.archivoDocumento = null;
+                _this.datosEnvioPrestamo.montoPrestamo = "";
+                _this.datosEnvioPrestamo.checkAbono = false;
+                _this.datosEnvioPrestamo.cuotas = "";
+                _this.datosEnvioPrestamo.montoDia = "";
+                _this.datosEnvioPrestamo.montoTri = "";
+                _this.datosEnvioPrestamo.montoCon = "";
+                _this.datosEnvioPrestamo.checkDia = false;
+                _this.datosEnvioPrestamo.checkTri = false;
+                _this.datosEnvioPrestamo.checkCon = false;
+                _this.nombreSocioTest = "";
+                _this.rutSocioTest = "";
+                _this.inputRut = "";
+                _this.inputPrestamoRestante = null;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    calcularInteres(event) {
-        let valor = Math.ceil(event.target.value * 0.10);
+    };
+    ModalPrestamosSociosComponent.prototype.calcularInteres = function (event) {
+        var valor = Math.ceil(event.target.value * 0.10);
         this.inputGanancia = valor;
         console.log(this.inputGanancia);
-    }
-    calcularPrestamoRestante() {
-        let montoDia;
-        let montoTri;
-        let montoCon;
+    };
+    ModalPrestamosSociosComponent.prototype.calcularPrestamoRestante = function () {
+        var montoDia;
+        var montoTri;
+        var montoCon;
         montoDia = parseInt(this.datosEnvioPrestamo.montoDia);
         montoTri = parseInt(this.datosEnvioPrestamo.montoTri);
         montoCon = parseInt(this.datosEnvioPrestamo.montoCon);
@@ -4427,24 +4382,22 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
             montoCon = 0;
             console.log("montoCon" + montoCon);
         }
-        let valor = (parseInt(this.datosEnvioPrestamo.montoPrestamo) - montoDia - montoTri - montoCon);
+        var valor = (parseInt(this.datosEnvioPrestamo.montoPrestamo) - montoDia - montoTri - montoCon);
         if (valor < 0) {
             alert("monto restante negativo");
         }
         this.inputPrestamoRestante = valor;
-        if (this.inputPrestamoRestante == 0) {
-            this.datosEnvioPrestamo.cuotas = "0";
-        }
-    }
-};
-ModalPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-prestamos-socios',
-        template: __webpack_require__(/*! raw-loader!./modal-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./modal-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"], src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__["SociosService"]])
-], ModalPrestamosSociosComponent);
+    };
+    ModalPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-prestamos-socios',
+            template: __webpack_require__(/*! raw-loader!./modal-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./modal-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"], src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__["SociosService"]])
+    ], ModalPrestamosSociosComponent);
+    return ModalPrestamosSociosComponent;
+}());
 
 
 
@@ -4472,15 +4425,15 @@ module.exports = ".dark-modal .modal-content {\r\n    background-color: #292b2c;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaPrestamosHistoricosSociosComponent", function() { return TablaPrestamosHistoricosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 
 
 
 
-let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSociosComponent {
-    constructor(_sindicalService, _fechasService) {
+var TablaPrestamosHistoricosSociosComponent = /** @class */ (function () {
+    function TablaPrestamosHistoricosSociosComponent(_sindicalService, _fechasService) {
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
         //objetos con valores de los select para ser manipulados
@@ -4495,7 +4448,8 @@ let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSoci
         //Variables de carga
         this.cargandoTabla = false;
     }
-    ngOnInit() {
+    TablaPrestamosHistoricosSociosComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         this.selectAnio.id = '1';
@@ -4503,62 +4457,64 @@ let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSoci
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         this.selectMes.id = '1';
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            let AnioActual;
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            var AnioActual;
             AnioActual = response;
-            this.selectAnio.id = AnioActual.id;
-        }, error => {
+            _this.selectAnio.id = AnioActual.id;
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            let mesActual;
+        this._fechasService.getMesActual().subscribe(function (response) {
+            var mesActual;
             mesActual = response;
-            this.selectMes.id = mesActual.id;
-            this.refrescarTablaPrestamosClientes();
-        }, error => {
+            _this.selectMes.id = mesActual.id;
+            _this.refrescarTablaPrestamosClientes();
+        }, function (error) {
             console.log(error);
         });
-    }
-    refrescarTablaPrestamosClientes() {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.refrescarTablaPrestamosClientes = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._sindicalService.getPrestamosHistoricos(this.selectAnio.id, this.selectMes.id).subscribe(response => {
+        this._sindicalService.getPrestamosHistoricos(this.selectAnio.id, this.selectMes.id).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.valoresPrestamosSalud = null;
-                this.valoresPrestamosApuro = null;
-                this.valoresPrestamosAporte = null;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = null;
+                _this.valoresPrestamosApuro = null;
+                _this.valoresPrestamosAporte = null;
+                _this.cargandoTabla = false;
                 alert(response.mensaje);
             }
             else {
-                this.valoresPrestamosSalud = response.salud;
-                this.valoresPrestamosApuro = response.apuro;
-                this.valoresPrestamosAporte = response.aporte;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = response.salud;
+                _this.valoresPrestamosApuro = response.apuro;
+                _this.valoresPrestamosAporte = response.aporte;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(evento) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.changeAnio = function (evento) {
         this.selectAnio.id = evento.target.value;
         console.log(this.selectAnio.id);
         this.refrescarTablaPrestamosClientes();
-    }
-    changeMes(evento) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.changeMes = function (evento) {
         this.selectMes.id = evento.target.value;
         console.log(this.selectMes.id);
         this.refrescarTablaPrestamosClientes();
-    }
-};
-TablaPrestamosHistoricosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-prestamos-historicos-socios',
-        template: __webpack_require__(/*! raw-loader!./tabla-prestamos-historicos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-prestamos-historicos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
-], TablaPrestamosHistoricosSociosComponent);
+    };
+    TablaPrestamosHistoricosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-prestamos-historicos-socios',
+            template: __webpack_require__(/*! raw-loader!./tabla-prestamos-historicos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-prestamos-historicos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+    ], TablaPrestamosHistoricosSociosComponent);
+    return TablaPrestamosHistoricosSociosComponent;
+}());
 
 
 
@@ -4586,17 +4542,17 @@ module.exports = "    .dark-modal .modal-content {\r\n        background-color: 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaPrestamosSociosComponent", function() { return TablaPrestamosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
-    constructor(_sindicalService, _fechasService, config, modalService) {
+var TablaPrestamosSociosComponent = /** @class */ (function () {
+    function TablaPrestamosSociosComponent(_sindicalService, _fechasService, config, modalService) {
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
         this.modalService = modalService;
@@ -4618,7 +4574,8 @@ let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    TablaPrestamosSociosComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         this.selectAnio.id = '1';
@@ -4626,113 +4583,117 @@ let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         this.selectMes.id = '1';
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            let AnioActual;
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            var AnioActual;
             AnioActual = response;
-            this.selectAnio.id = AnioActual.id;
-        }, error => {
+            _this.selectAnio.id = AnioActual.id;
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            let mesActual;
+        this._fechasService.getMesActual().subscribe(function (response) {
+            var mesActual;
             mesActual = response;
-            this.selectMes.id = mesActual.id;
-            this.refrescarTablaPrestamosClientes();
-        }, error => {
+            _this.selectMes.id = mesActual.id;
+            _this.refrescarTablaPrestamosClientes();
+        }, function (error) {
             console.log(error);
         });
-    }
-    openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
+    };
+    TablaPrestamosSociosComponent.prototype.openActualizar = function (Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
         this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
         console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
         this.montoDelInteresPagar = interes / cuotaP;
         this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
         this.montoFinalPagar = totalPrestamo / cuotaP;
         console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
-    }
-    cerrarActualizar() {
+    };
+    TablaPrestamosSociosComponent.prototype.cerrarActualizar = function () {
         this.modalActualizarPagoSalud.close();
-    }
-    refrescarTablaPrestamosClientes() {
+    };
+    TablaPrestamosSociosComponent.prototype.refrescarTablaPrestamosClientes = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(response => {
+        this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.valoresPrestamosSalud = null;
-                this.valoresPrestamosApuro = null;
-                this.valoresPrestamosAporte = null;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = null;
+                _this.valoresPrestamosApuro = null;
+                _this.valoresPrestamosAporte = null;
+                _this.cargandoTabla = false;
                 alert(response.mensaje);
             }
             else {
-                this.valoresPrestamosSalud = response.salud;
-                this.valoresPrestamosApuro = response.apuro;
-                this.valoresPrestamosAporte = response.aporte;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = response.salud;
+                _this.valoresPrestamosApuro = response.apuro;
+                _this.valoresPrestamosAporte = response.aporte;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(evento) {
+    };
+    TablaPrestamosSociosComponent.prototype.changeAnio = function (evento) {
         this.selectAnio.id = evento.target.value;
         console.log(this.selectAnio.id);
         this.refrescarTablaPrestamosClientes();
-    }
-    changeMes(evento) {
+    };
+    TablaPrestamosSociosComponent.prototype.changeMes = function (evento) {
         this.selectMes.id = evento.target.value;
         console.log(this.selectMes.id);
         this.refrescarTablaPrestamosClientes();
-    }
-    pagarPrestamo(fecha, prestamoId, montoPagar) {
+    };
+    TablaPrestamosSociosComponent.prototype.pagarPrestamo = function (fecha, prestamoId, montoPagar) {
+        var _this = this;
         this.blockPagoPrestamo = true;
-        this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(response => {
+        this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoPrestamo = false;
+                _this.blockPagoPrestamo = false;
                 alert(response.mensaje);
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoPrestamo = false;
+                _this.cerrarActualizar();
+                _this.blockPagoPrestamo = false;
                 alert("Se ha realizado el pago correctamente");
             }
-        }, error => {
-            this.blockPagoPrestamo = false;
+        }, function (error) {
+            _this.blockPagoPrestamo = false;
             alert("Ha ocurrido un error");
         });
-    }
-    pagarAbono(id, definicionSelectAbono, fecha, monto) {
+    };
+    TablaPrestamosSociosComponent.prototype.pagarAbono = function (id, definicionSelectAbono, fecha, monto) {
+        var _this = this;
         this.blockPagoAbono = true;
         console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
-        this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(response => {
+        this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoAbono = false;
-                this.refrescarTablaPrestamosClientes();
+                _this.blockPagoAbono = false;
+                _this.refrescarTablaPrestamosClientes();
                 alert("Ha ocurrido un error compruebe que los datos sean validos");
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoAbono = false;
+                _this.cerrarActualizar();
+                _this.blockPagoAbono = false;
                 alert("Se ha realizado el pago correctamente");
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockPagoAbono = false;
+            _this.blockPagoAbono = false;
             alert("Ha ocurrido un error");
         });
-    }
-};
-TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-prestamos-socios',
-        template: __webpack_require__(/*! raw-loader!./tabla-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
-        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], TablaPrestamosSociosComponent);
+    };
+    TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-prestamos-socios',
+            template: __webpack_require__(/*! raw-loader!./tabla-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
+            src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], TablaPrestamosSociosComponent);
+    return TablaPrestamosSociosComponent;
+}());
 
 
 
@@ -4749,30 +4710,31 @@ TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuardService", function() { return AuthGuardService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
 
 
-let AuthGuardService = class AuthGuardService {
-    constructor(auth, router) {
+var AuthGuardService = /** @class */ (function () {
+    function AuthGuardService(auth, router) {
         this.auth = auth;
         this.router = router;
     }
-    canActivate() {
+    AuthGuardService.prototype.canActivate = function () {
         if (!this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }
         return true;
-    }
-};
-AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-], AuthGuardService);
+    };
+    AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AuthGuardService);
+    return AuthGuardService;
+}());
 
 
 
@@ -4788,8 +4750,12 @@ AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Usuario", function() { return Usuario; });
-class Usuario {
-}
+var Usuario = /** @class */ (function () {
+    function Usuario() {
+    }
+    return Usuario;
+}());
+
 
 
 /***/ }),
@@ -4816,16 +4782,16 @@ module.exports = "nav.navbar {\r\n    background: #093028;  /* fallback for old 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
 
-let NavbarComponent = class NavbarComponent {
-    constructor(_userService) {
+var NavbarComponent = /** @class */ (function () {
+    function NavbarComponent(_userService) {
         this._userService = _userService;
     }
-    ngOnInit() {
+    NavbarComponent.prototype.ngOnInit = function () {
         this.usuario = this._userService.getUsuario();
         if (this.usuario != null) {
             this.isLogged = true;
@@ -4834,27 +4800,29 @@ let NavbarComponent = class NavbarComponent {
             this.isLogged = false;
         }
         this.getNombre();
-    }
-    logOut() {
+    };
+    NavbarComponent.prototype.logOut = function () {
         this._userService.logOut();
-    }
-    getNombre() {
-        this._userService.getUsuarioLogeado().subscribe(response => {
-            this.nombreUsuario = response.name + " " + response.a_paterno;
-            console.log(this.nombreUsuario);
-        }, error => {
+    };
+    NavbarComponent.prototype.getNombre = function () {
+        var _this = this;
+        this._userService.getUsuarioLogeado().subscribe(function (response) {
+            _this.nombreUsuario = response.name + " " + response.a_paterno;
+            console.log(_this.nombreUsuario);
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-navbar',
-        template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
-        styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
-], NavbarComponent);
+    };
+    NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-navbar',
+            template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
+            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
+    ], NavbarComponent);
+    return NavbarComponent;
+}());
 
 
 
@@ -4882,22 +4850,24 @@ module.exports = "\r\n#demoFont {\r\n    color: white;\r\n    background: #2C3E5
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoEncontradoComponent", function() { return NoEncontradoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let NoEncontradoComponent = class NoEncontradoComponent {
-    constructor() { }
-    ngOnInit() {
+var NoEncontradoComponent = /** @class */ (function () {
+    function NoEncontradoComponent() {
     }
-};
-NoEncontradoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-no-encontrado',
-        template: __webpack_require__(/*! raw-loader!./no-encontrado.component.html */ "./node_modules/raw-loader/index.js!./src/app/no-encontrado/no-encontrado.component.html"),
-        styles: [__webpack_require__(/*! ./no-encontrado.component.css */ "./src/app/no-encontrado/no-encontrado.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], NoEncontradoComponent);
+    NoEncontradoComponent.prototype.ngOnInit = function () {
+    };
+    NoEncontradoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-no-encontrado',
+            template: __webpack_require__(/*! raw-loader!./no-encontrado.component.html */ "./node_modules/raw-loader/index.js!./src/app/no-encontrado/no-encontrado.component.html"),
+            styles: [__webpack_require__(/*! ./no-encontrado.component.css */ "./src/app/no-encontrado/no-encontrado.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], NoEncontradoComponent);
+    return NoEncontradoComponent;
+}());
 
 
 
@@ -4925,22 +4895,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutComponent", function() { return AboutComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let AboutComponent = class AboutComponent {
-    constructor() { }
-    ngOnInit() {
+var AboutComponent = /** @class */ (function () {
+    function AboutComponent() {
     }
-};
-AboutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-about',
-        template: __webpack_require__(/*! raw-loader!./about.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/about/about.component.html"),
-        styles: [__webpack_require__(/*! ./about.component.css */ "./src/app/public-master/about/about.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], AboutComponent);
+    AboutComponent.prototype.ngOnInit = function () {
+    };
+    AboutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-about',
+            template: __webpack_require__(/*! raw-loader!./about.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/about/about.component.html"),
+            styles: [__webpack_require__(/*! ./about.component.css */ "./src/app/public-master/about/about.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AboutComponent);
+    return AboutComponent;
+}());
 
 
 
@@ -4968,19 +4940,19 @@ module.exports = "\r\n#demoFont {\r\n    text-shadow: -1px -1px 1px rgba(255,255
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _modelos_usuarios_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modelos/usuarios.model */ "./src/app/modelos/usuarios.model.ts");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
 
-let LoginComponent = class LoginComponent {
-    constructor(_userService, router, config, modalService) {
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(_userService, router, config, modalService) {
         this._userService = _userService;
         this.router = router;
         this.modalService = modalService;
@@ -4991,84 +4963,56 @@ let LoginComponent = class LoginComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    LoginComponent.prototype.ngOnInit = function () {
         this.token = localStorage.getItem('token');
         if (this.token != null) {
             this.router.navigate(['AuthMaster']);
         }
-    }
-    openLoginAdmins(Admins) {
+    };
+    LoginComponent.prototype.openLoginAdmins = function (Admins) {
         this.modalService.open(Admins, { size: 'sm' });
-    }
-    onSubmit(form) {
+    };
+    LoginComponent.prototype.onSubmit = function (form) {
+        var _this = this;
         if (this.lockLogin == false) {
             this.lockLogin = true;
-            this._userService.login(this.usuario, true).subscribe(response => {
+            this._userService.login(this.usuario, true).subscribe(function (response) {
                 if (response.status == 'success') {
-                    this.token = response.token;
-                    localStorage.setItem('token', JSON.stringify(this.token));
-                    localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
+                    _this.token = response.token;
+                    localStorage.setItem('token', JSON.stringify(_this.token));
+                    localStorage.setItem('usuario', JSON.stringify(_this.usuario.email));
                     console.log(response);
-                    this.lockLogin = false;
-                    this.router.navigate(['AuthMaster']);
+                    _this.lockLogin = false;
+                    _this.router.navigate(['AuthMaster']);
                     document.getElementById("closeModalLogin").click();
                 }
                 else {
                     console.log("Revise que su usuario sea correcto");
-                    this.lockLogin = false;
-                    this.noEncontrado = true;
-                    this.loading = false;
+                    _this.lockLogin = false;
+                    _this.noEncontrado = true;
+                    _this.loading = false;
                 }
-            }, error => {
-                this.status = error;
+            }, function (error) {
+                _this.status = error;
                 console.log("Revise que su usuario sea correcto");
-                this.lockLogin = false;
-                this.noEncontrado = true;
-                this.loading = false;
+                _this.lockLogin = false;
+                _this.noEncontrado = true;
+                _this.loading = false;
             });
             this.noEncontrado = false;
             this.loading = true;
         }
-    }
-    onSubmitSocios(form) {
-        if (this.lockLogin == false) {
-            this.lockLogin = true;
-            this._userService.login(this.usuario, true).subscribe(response => {
-                if (response.status == 'success') {
-                    this.token = response.token;
-                    localStorage.setItem('token', JSON.stringify(this.token));
-                    localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-                    console.log(response);
-                    this.lockLogin = false;
-                    this.router.navigate(['SociosMaster']);
-                    document.getElementById("closeModalLogin").click();
-                }
-                else {
-                    console.log("Revise que su usuario sea correcto");
-                    this.lockLogin = false;
-                    this.noEncontrado = true;
-                    this.loading = false;
-                }
-            }, error => {
-                this.status = error;
-                console.log("Revise que su usuario sea correcto");
-                this.lockLogin = false;
-                this.noEncontrado = true;
-                this.loading = false;
-            });
-            this.noEncontrado = false;
-            this.loading = true;
-        }
-    }
-};
-LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-login',
-        template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/login/login.component.html"),
-        styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/public-master/login/login.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]])
-], LoginComponent);
+    };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/public-master/login/login.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
 
 
 
@@ -5096,22 +5040,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicMasterComponent", function() { return PublicMasterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let PublicMasterComponent = class PublicMasterComponent {
-    constructor() { }
-    ngOnInit() {
+var PublicMasterComponent = /** @class */ (function () {
+    function PublicMasterComponent() {
     }
-};
-PublicMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-public-master',
-        template: __webpack_require__(/*! raw-loader!./public-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/public-master.component.html"),
-        styles: [__webpack_require__(/*! ./public-master.component.css */ "./src/app/public-master/public-master.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], PublicMasterComponent);
+    PublicMasterComponent.prototype.ngOnInit = function () {
+    };
+    PublicMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-public-master',
+            template: __webpack_require__(/*! raw-loader!./public-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/public-master.component.html"),
+            styles: [__webpack_require__(/*! ./public-master.component.css */ "./src/app/public-master/public-master.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PublicMasterComponent);
+    return PublicMasterComponent;
+}());
 
 
 
@@ -5128,52 +5074,53 @@ PublicMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AniosService", function() { return AniosService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let AniosService = class AniosService {
-    constructor(_http) {
+var AniosService = /** @class */ (function () {
+    function AniosService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getAnios() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    AniosService.prototype.getAnios = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_anios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getMeses() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    AniosService.prototype.getMeses = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_meses", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getAnioActual() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    AniosService.prototype.getAnioActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getMesActual() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    AniosService.prototype.getMesActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-};
-AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-], AniosService);
+    };
+    AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], AniosService);
+    return AniosService;
+}());
 
 
 
@@ -5190,22 +5137,22 @@ AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CajaChicaService", function() { return CajaChicaService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let CajaChicaService = class CajaChicaService {
-    constructor(_http) {
+var CajaChicaService = /** @class */ (function () {
+    function CajaChicaService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    ingresarValor(datos) {
+    CajaChicaService.prototype.ingresarValor = function (datos) {
         console.log(datos);
-        const form = new FormData();
+        var form = new FormData();
         form.append('fecha', datos.fecha);
         form.append('archivo_documento', datos.archivo_documento);
         form.append('numero_documento', datos.numero_documento);
@@ -5215,34 +5162,35 @@ let CajaChicaService = class CajaChicaService {
         return this._http.post(this.url + "ingresar_caja_chica", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    modificarValor(id, campo, nuevoValor) {
+    };
+    CajaChicaService.prototype.modificarValor = function (id, campo, nuevoValor) {
         console.log(nuevoValor);
-        const form = new FormData();
+        var form = new FormData();
         form.append('id', id);
         form.append('campo', campo);
         form.append('input', nuevoValor);
         return this._http.post(this.url + "modificar_caja_chica", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getCajaChica(anio, mes) {
+    };
+    CajaChicaService.prototype.getCajaChica = function (anio, mes) {
         return this._http.get(this.url + "traer_caja_chica/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTotalesCajaChica(anio, mes) {
+    };
+    CajaChicaService.prototype.getTotalesCajaChica = function (anio, mes) {
         return this._http.get(this.url + "totales_caja_chica/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], CajaChicaService);
+    };
+    CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], CajaChicaService);
+    return CajaChicaService;
+}());
 
 
 
@@ -5259,47 +5207,48 @@ CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CsDetalleCampingService", function() { return CsDetalleCampingService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let CsDetalleCampingService = class CsDetalleCampingService {
-    constructor(_http) {
+var CsDetalleCampingService = /** @class */ (function () {
+    function CsDetalleCampingService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getLista(anio, mes) {
+    CsDetalleCampingService.prototype.getLista = function (anio, mes) {
         return this._http.get(this.url + "listar_detalle_camping/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    guardar(anio, mes, monto) {
-        let data = new FormData();
+    };
+    CsDetalleCampingService.prototype.guardar = function (anio, mes, monto) {
+        var data = new FormData();
         data.append('anio', anio);
         data.append('mes', mes);
         data.append('monto', monto);
         return this._http.post(this.url + "guardar_cierre_monto_detalle_camping_cs", data, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getMonto(anio, mes) {
+    };
+    CsDetalleCampingService.prototype.getMonto = function (anio, mes) {
         return this._http.get(this.url + "traer_cierre_monto_detalle_camping_cs/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], CsDetalleCampingService);
+    };
+    CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], CsDetalleCampingService);
+    return CsDetalleCampingService;
+}());
 
 
 
@@ -5334,21 +5283,21 @@ var global = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SindicalService", function() { return SindicalService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let SindicalService = class SindicalService {
-    constructor(_http) {
+var SindicalService = /** @class */ (function () {
+    function SindicalService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    ingresarValor(form) {
-        const body = new FormData();
+    SindicalService.prototype.ingresarValor = function (form) {
+        var body = new FormData();
         body.append('fecha', form.fecha);
         body.append('n_documento', form.nDocumento);
         body.append('archivo', form.archivoDocumento);
@@ -5360,21 +5309,21 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "guardar_item_c_s", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    getTablaSindical(anio, mes) {
+    };
+    SindicalService.prototype.getTablaSindical = function (anio, mes) {
         return this._http.get(this.url + "listar_c_s/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTablaSindicalMontoInicial(anio, mes) {
+    };
+    SindicalService.prototype.getTablaSindicalMontoInicial = function (anio, mes) {
         return this._http.get(this.url + "traer_monto_inicial_cs/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTablaSindicalActualizar(id, campo, input) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.getTablaSindicalActualizar = function (id, campo, input) {
+        var body = new FormData();
         body.append('id', id);
         body.append('campo', campo);
         body.append('input', input);
@@ -5382,27 +5331,27 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "actualizar_dato_cs", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getCalcularCajaChica(anio, mes) {
+    };
+    SindicalService.prototype.getCalcularCajaChica = function (anio, mes) {
         return this._http.get(this.url + "calcular_caja_chica_anterior_cs/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getCalcularCajaChicaActualizar(anio, mes) {
+    };
+    SindicalService.prototype.getCalcularCajaChicaActualizar = function (anio, mes) {
         return this._http.get(this.url + "calcular_caja_chica_anterior_cs2/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTipoPrestamo() {
+    };
+    SindicalService.prototype.getTipoPrestamo = function () {
         return this._http.get(this.url + "traer_tipo_prestamo", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    setPrestamo(form) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.setPrestamo = function (form) {
+        var body = new FormData();
         body.append('fecha', form.fecha);
         body.append('select_id', form.selectId);
         body.append('socio_id', form.socioId);
@@ -5421,30 +5370,30 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "ingresar_prestamo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    getPrestramosSocios(anio, mes) {
+    };
+    SindicalService.prototype.getPrestramosSocios = function (anio, mes) {
         return this._http.get(this.url + "traer_prestamos/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getPrestamosHistoricos(anio, mes) {
+    };
+    SindicalService.prototype.getPrestamosHistoricos = function (anio, mes) {
         return this._http.get(this.url + "traer_prestamos_historicos/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    pagarPrestamo(fecha, id, monto) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.pagarPrestamo = function (fecha, id, monto) {
+        var body = new FormData();
         body.append('detalle_prestamo_id', id);
         body.append('fecha', fecha);
         body.append('monto', monto);
         return this._http.post(this.url + "ingresar_pago_prestamo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    pagarAbono(id, definicionSelectAbono, fecha, monto) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.pagarAbono = function (id, definicionSelectAbono, fecha, monto) {
+        var body = new FormData();
         body.append('detalle_prestamo_id', id);
         body.append('fecha', fecha);
         body.append('tipo_abono_id', definicionSelectAbono);
@@ -5452,12 +5401,13 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "ingresar_pago_abono", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-};
-SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], SindicalService);
+    };
+    SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], SindicalService);
+    return SindicalService;
+}());
 
 
 
@@ -5474,69 +5424,70 @@ SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SociosService", function() { return SociosService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let SociosService = class SociosService {
-    constructor(_http) {
+var SociosService = /** @class */ (function () {
+    function SociosService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getTablaSocios() {
+    SociosService.prototype.getTablaSocios = function () {
         return this._http.get(this.url + "listar_socios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTablaFilter(search) {
+    };
+    SociosService.prototype.getTablaFilter = function (search) {
         return this._http.get(this.url + "filtrar_socios/" + search, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getEditar(form) {
+    };
+    SociosService.prototype.getEditar = function (form) {
         return this._http.post(this.url + "editar_socios", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getSocio(rut) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getSocio = function (rut) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_socio/" + rut, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    traerDatosSocio(rut) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.traerDatosSocio = function (rut) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "buscar_socio_por_rut/" + rut, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    insertarDatosSocio(form) {
+    };
+    SociosService.prototype.insertarDatosSocio = function (form) {
         return this._http.post(this.url + "guardar_datos_socio", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getDatosSocio(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDatosSocio = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_socio/" + idSocio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-};
-SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], SociosService);
+    };
+    SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], SociosService);
+    return SociosService;
+}());
 
 
 
@@ -5553,39 +5504,40 @@ SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TipoCuentasService", function() { return TipoCuentasService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let TipoCuentasService = class TipoCuentasService {
-    constructor(_http) {
+var TipoCuentasService = /** @class */ (function () {
+    function TipoCuentasService(_http) {
         this._http = _http;
         this.selectDefinicion = [];
         this.selectDetalle = [];
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getDefinicion() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    TipoCuentasService.prototype.getDefinicion = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_definicion", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getTipoCuenta() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    TipoCuentasService.prototype.getTipoCuenta = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_tipo_cuenta_sindicato", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-], TipoCuentasService);
+    };
+    TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], TipoCuentasService);
+    return TipoCuentasService;
+}());
 
 
 
@@ -5602,42 +5554,43 @@ TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuarioService", function() { return UsuarioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
 
-let UsuarioService = class UsuarioService {
-    constructor(_http, jwtHelper, router) {
+var UsuarioService = /** @class */ (function () {
+    function UsuarioService(_http, jwtHelper, router) {
         this._http = _http;
         this.jwtHelper = jwtHelper;
         this.router = router;
         this.token = '';
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    register(user) {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+    UsuarioService.prototype.register = function (user) {
+        var json = JSON.stringify(user);
+        var params = 'json=' + json;
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + 'register', params, { headers: headers });
-    }
-    login(user, getToken = null) {
+    };
+    UsuarioService.prototype.login = function (user, getToken) {
+        if (getToken === void 0) { getToken = null; }
         if (getToken != null) {
             user.getToken = 'true';
         }
-        let json = JSON.stringify(user);
+        var json = JSON.stringify(user);
         //let params = 'json='+json;
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + 'login_rut?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
-    }
-    getToken() {
-        let token = localStorage.getItem('token');
+    };
+    UsuarioService.prototype.getToken = function () {
+        var token = localStorage.getItem('token');
         if (token && token != "undefinided") {
             this.token = token;
         }
@@ -5645,9 +5598,9 @@ let UsuarioService = class UsuarioService {
             this.token = null;
         }
         return this.token;
-    }
-    getUsuario() {
-        let user = localStorage.getItem('usuario');
+    };
+    UsuarioService.prototype.getUsuario = function () {
+        var user = localStorage.getItem('usuario');
         if (user && user != "undefinided") {
             this.usuario = user;
         }
@@ -5655,34 +5608,35 @@ let UsuarioService = class UsuarioService {
             this.usuario = null;
         }
         return this.usuario;
-    }
-    isAuthenticated() {
-        const token = localStorage.getItem('token'); // Check whether the token is expired and return
+    };
+    UsuarioService.prototype.isAuthenticated = function () {
+        var token = localStorage.getItem('token'); // Check whether the token is expired and return
         // true or false
         return !this.jwtHelper.isTokenExpired(token);
-    }
-    logOut() {
+    };
+    UsuarioService.prototype.logOut = function () {
         localStorage.clear();
         this.router.navigate(['']);
-    }
-    validarUsuario(user, password) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const formData = new FormData();
+    };
+    UsuarioService.prototype.validarUsuario = function (user, password) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var formData = new FormData();
         formData.append('rut', user);
         formData.append('password', password);
         return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getUsuarioLogeado() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    UsuarioService.prototype.getUsuarioLogeado = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-};
-UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
-], UsuarioService);
+    };
+    UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+    ], UsuarioService);
+    return UsuarioService;
+}());
 
 
 
@@ -5699,439 +5653,33 @@ UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidarUsuarioService", function() { return ValidarUsuarioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let ValidarUsuarioService = class ValidarUsuarioService {
-    constructor(_http) {
+var ValidarUsuarioService = /** @class */ (function () {
+    function ValidarUsuarioService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    usuario_logeado() {
+    ValidarUsuarioService.prototype.usuario_logeado = function () {
         return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
-    }
-    validar_usuario(formData) {
+    };
+    ValidarUsuarioService.prototype.validar_usuario = function (formData) {
         return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
-    }
-};
-ValidarUsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], ValidarUsuarioService);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/navbar-socio/navbar-socio.component.css":
-/*!***********************************************************************!*\
-  !*** ./src/app/socios-master/navbar-socio/navbar-socio.component.css ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "nav.navbar {\n  background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n\n.navbar-light .navbar-nav .nav-link {\n    color: white !important;\n    text-decoration:none;\n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9uYXZiYXItc29jaW8vbmF2YmFyLXNvY2lvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBbUIsRUFBRSw4QkFBOEIsRUFDZSwrQkFBK0I7RUFDakcsd0RBQXdELEVBQUUscUVBQXFFO0FBQ2pJOztBQUVBO0lBQ0ksdUJBQXVCO0lBQ3ZCLG9CQUFvQjtJQUNwQiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvbmF2YmFyLXNvY2lvL25hdmJhci1zb2Npby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibmF2Lm5hdmJhciB7XG4gIGJhY2tncm91bmQ6ICMzNzNiNDQ7IC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbn1cblxuLm5hdmJhci1saWdodCAubmF2YmFyLW5hdiAubmF2LWxpbmsge1xuICAgIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAgIHRleHQtZGVjb3JhdGlvbjpub25lO1xuICAgIH0iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/navbar-socio/navbar-socio.component.ts":
-/*!**********************************************************************!*\
-  !*** ./src/app/socios-master/navbar-socio/navbar-socio.component.ts ***!
-  \**********************************************************************/
-/*! exports provided: NavbarSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarSocioComponent", function() { return NavbarSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let NavbarSocioComponent = class NavbarSocioComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-navbar-socio',
-        template: __webpack_require__(/*! raw-loader!./navbar-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html"),
-        styles: [__webpack_require__(/*! ./navbar-socio.component.css */ "./src/app/socios-master/navbar-socio/navbar-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], NavbarSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.css":
-/*!****************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.css ***!
-  \****************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".sinbordefondo {\n  background-color:#fff;\n  border: 0;\n  text-align: center;\n}\n\n.my-class { \n    color: red;\n    font-size: 15px;\n    margin: 10px auto;\n    padding: 5px;\n  }\n\nlabel,input, button{\n      font-size: 12px;\n    }\n\ntr,th{\n        font-size: 12px;\n    }\n\nth{\n      color: white;\n      background: #138D75;\n    }\n\n#demoFont {\n      color:#fff;\n      background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n      background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      }\n\n.tablaDerecha{\n      float: right;\n    }\n\n/*CLASES DEL LOADER*/\n\n.loader {\n      margin: 100px auto;\n      font-size: 25px;\n      width: 1em;\n      height: 1em;\n      border-radius: 50%;\n      position: relative;\n      text-indent: -9999em;\n      -webkit-animation: load5 1.1s infinite ease;\n      animation: load5 1.1s infinite ease;\n      -webkit-transform: translateZ(0);\n      transform: translateZ(0);\n    }\n\n@-webkit-keyframes load5 {\n      0%,\n      100% {\n        box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);\n      }\n      12.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);\n      }\n      25% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      37.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      50% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      62.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      75% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      87.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;\n      }\n    }\n\n@keyframes load5 {\n      0%,\n      100% {\n        box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);\n      }\n      12.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);\n      }\n      25% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      37.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      50% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      62.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      75% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n      }\n      87.5% {\n        box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;\n      }\n    }   \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWF1dGgtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWF1dGgtc29jaW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtFQUNyQixTQUFTO0VBQ1Qsa0JBQWtCO0FBQ3BCOztBQUVBO0lBQ0ksVUFBVTtJQUNWLGVBQWU7SUFDZixpQkFBaUI7SUFDakIsWUFBWTtFQUNkOztBQUVBO01BQ0ksZUFBZTtJQUNqQjs7QUFDQTtRQUNJLGVBQWU7SUFDbkI7O0FBQ0E7TUFDRSxZQUFZO01BQ1osbUJBQW1CO0lBQ3JCOztBQUVGO01BQ0ksVUFBVTtNQUNWLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtNQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7TUFDOUg7O0FBRUY7TUFDRSxZQUFZO0lBQ2Q7O0FBRUEsb0JBQW9COztBQUNwQjtNQUNFLGtCQUFrQjtNQUNsQixlQUFlO01BQ2YsVUFBVTtNQUNWLFdBQVc7TUFDWCxrQkFBa0I7TUFDbEIsa0JBQWtCO01BQ2xCLG9CQUFvQjtNQUNwQiwyQ0FBMkM7TUFDM0MsbUNBQW1DO01BQ25DLGdDQUFnQztNQUVoQyx3QkFBd0I7SUFDMUI7O0FBQ0E7TUFDRTs7UUFFRSwrVEFBK1Q7TUFDalU7TUFDQTtRQUNFLCtUQUErVDtNQUNqVTtNQUNBO1FBQ0UsK1RBQStUO01BQ2pVO01BQ0E7UUFDRSwrVEFBK1Q7TUFDalU7TUFDQTtRQUNFLCtUQUErVDtNQUNqVTtNQUNBO1FBQ0UsK1RBQStUO01BQ2pVO01BQ0E7UUFDRSwrVEFBK1Q7TUFDalU7TUFDQTtRQUNFLCtUQUErVDtNQUNqVTtJQUNGOztBQUNBO01BQ0U7O1FBRUUsK1RBQStUO01BQ2pVO01BQ0E7UUFDRSwrVEFBK1Q7TUFDalU7TUFDQTtRQUNFLCtUQUErVDtNQUNqVTtNQUNBO1FBQ0UsK1RBQStUO01BQ2pVO01BQ0E7UUFDRSwrVEFBK1Q7TUFDalU7TUFDQTtRQUNFLCtUQUErVDtNQUNqVTtNQUNBO1FBQ0UsK1RBQStUO01BQ2pVO01BQ0E7UUFDRSwrVEFBK1Q7TUFDalU7SUFDRiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvcGVyZmlsLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1hdXRoLXNvY2lvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2luYm9yZGVmb25kbyB7XG4gIGJhY2tncm91bmQtY29sb3I6I2ZmZjtcbiAgYm9yZGVyOiAwO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5teS1jbGFzcyB7IFxuICAgIGNvbG9yOiByZWQ7XG4gICAgZm9udC1zaXplOiAxNXB4O1xuICAgIG1hcmdpbjogMTBweCBhdXRvO1xuICAgIHBhZGRpbmc6IDVweDtcbiAgfVxuICBcbiAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICB9XG4gICAgdHIsdGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICB9XG4gICAgdGh7XG4gICAgICBjb2xvcjogd2hpdGU7XG4gICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xuICAgIH1cbiAgXG4gICNkZW1vRm9udCB7XG4gICAgICBjb2xvcjojZmZmO1xuICAgICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgICB9XG4gIFxuICAgIC50YWJsYURlcmVjaGF7XG4gICAgICBmbG9hdDogcmlnaHQ7XG4gICAgfVxuICBcbiAgICAvKkNMQVNFUyBERUwgTE9BREVSKi9cbiAgICAubG9hZGVyIHtcbiAgICAgIG1hcmdpbjogMTAwcHggYXV0bztcbiAgICAgIGZvbnQtc2l6ZTogMjVweDtcbiAgICAgIHdpZHRoOiAxZW07XG4gICAgICBoZWlnaHQ6IDFlbTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRleHQtaW5kZW50OiAtOTk5OWVtO1xuICAgICAgLXdlYmtpdC1hbmltYXRpb246IGxvYWQ1IDEuMXMgaW5maW5pdGUgZWFzZTtcbiAgICAgIGFuaW1hdGlvbjogbG9hZDUgMS4xcyBpbmZpbml0ZSBlYXNlO1xuICAgICAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gICAgICAtbXMtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgIH1cbiAgICBALXdlYmtpdC1rZXlmcmFtZXMgbG9hZDUge1xuICAgICAgMCUsXG4gICAgICAxMDAlIHtcbiAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtICMzMjRjYjMsIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KTtcbiAgICAgIH1cbiAgICAgIDEyLjUlIHtcbiAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAxLjhlbSAtMS44ZW0gMCAwZW0gIzMyNGNiMywgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KTtcbiAgICAgIH1cbiAgICAgIDI1JSB7XG4gICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAyLjVlbSAwZW0gMCAwZW0gIzMyNGNiMywgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgICB9XG4gICAgICAzNy41JSB7XG4gICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gIzMyNGNiMywgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgICB9XG4gICAgICA1MCUge1xuICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAwZW0gMi41ZW0gMCAwZW0gIzMyNGNiMywgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xuICAgICAgfVxuICAgICAgNjIuNSUge1xuICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0xLjhlbSAxLjhlbSAwIDBlbSAjMzI0Y2IzLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xuICAgICAgfVxuICAgICAgNzUlIHtcbiAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0yLjZlbSAwZW0gMCAwZW0gIzMyNGNiMywgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcbiAgICAgIH1cbiAgICAgIDg3LjUlIHtcbiAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0xLjhlbSAtMS44ZW0gMCAwZW0gIzMyNGNiMztcbiAgICAgIH1cbiAgICB9XG4gICAgQGtleWZyYW1lcyBsb2FkNSB7XG4gICAgICAwJSxcbiAgICAgIDEwMCUge1xuICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gIzMyNGNiMywgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpO1xuICAgICAgfVxuICAgICAgMTIuNSUge1xuICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDEuOGVtIC0xLjhlbSAwIDBlbSAjMzI0Y2IzLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpO1xuICAgICAgfVxuICAgICAgMjUlIHtcbiAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDIuNWVtIDBlbSAwIDBlbSAjMzI0Y2IzLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcbiAgICAgIH1cbiAgICAgIDM3LjUlIHtcbiAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgMS43NWVtIDEuNzVlbSAwIDBlbSAjMzI0Y2IzLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcbiAgICAgIH1cbiAgICAgIDUwJSB7XG4gICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDBlbSAyLjVlbSAwIDBlbSAjMzI0Y2IzLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgICB9XG4gICAgICA2Mi41JSB7XG4gICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgLTEuOGVtIDEuOGVtIDAgMGVtICMzMjRjYjMsIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgICB9XG4gICAgICA3NSUge1xuICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgLTIuNmVtIDBlbSAwIDBlbSAjMzI0Y2IzLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xuICAgICAgfVxuICAgICAgODcuNSUge1xuICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgLTEuOGVtIC0xLjhlbSAwIDBlbSAjMzI0Y2IzO1xuICAgICAgfVxuICAgIH0gICAiXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.ts":
-/*!***************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.ts ***!
-  \***************************************************************************************************************************/
-/*! exports provided: FormularioBeneficiosAuthSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosAuthSocioComponent", function() { return FormularioBeneficiosAuthSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-
-
-
-let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocioComponent {
-    constructor(config, modalService) {
-        this.modalService = modalService;
-        config.backdrop = 'static';
-        config.keyboard = false;
-    }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
-        this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    }
-};
-FormularioBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], FormularioBeneficiosAuthSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.css":
-/*!******************************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.css ***!
-  \******************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "label,input, button, strong{\n    font-size: 12px;\n  }\n\n  tr,th{\n    font-size: 12px;\n  }\n\n  th{\n    color: white;\n    background: #138D75;\n  }\n\n  #demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  #demoFont2 {\n    color: #fff;\n    \n    background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  \n    }\n\n  .nav-item a{\n      color: #fff;\n      background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      \n    }\n    \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWJlbmVmaWNpYXJpby1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1iZW5lZmljaWFyaW8tYXV0aC1zb2Npby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQjs7RUFFQTtJQUNFLGVBQWU7RUFDakI7O0VBQ0E7SUFDRSxZQUFZO0lBQ1osbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtJQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7SUFDOUg7O0VBQ0Y7SUFDRSxXQUFXOztJQUVYLG1CQUFtQixFQUFFLDhCQUE4QixFQUNhLCtCQUErQjtJQUMvRixzREFBc0QsRUFBRSxxRUFBcUU7O0lBRTdIOztFQUVBO01BQ0UsV0FBVztNQUNYLG1CQUFtQixFQUFFLDhCQUE4QixFQUNXLCtCQUErQjtFQUNqRyx3REFBd0QsRUFBRSxxRUFBcUU7O0lBRTdIIiwiZmlsZSI6InNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWJlbmVmaWNpYXJpby1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1iZW5lZmljaWFyaW8tYXV0aC1zb2Npby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGFiZWwsaW5wdXQsIGJ1dHRvbiwgc3Ryb25ne1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuXG4gIHRyLHRoe1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuICB0aHtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbiAgfVxuICBcbiAgI2RlbW9Gb250IHtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgIH1cbiAgI2RlbW9Gb250MiB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgXG4gICAgYmFja2dyb3VuZDogIzM3M2I0NDsgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMzNzNiNDQsICM0Mjg2ZjQpOyAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICBcbiAgICB9XG5cbiAgICAubmF2LWl0ZW0gYXtcbiAgICAgIGNvbG9yOiAjZmZmO1xuICAgICAgYmFja2dyb3VuZDogIzM3M2I0NDsgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICMzNzNiNDQsICM0Mjg2ZjQpOyAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgICAgXG4gICAgfVxuICAgICJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.ts":
-/*!*****************************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.ts ***!
-  \*****************************************************************************************************************************************************/
-/*! exports provided: FormularioBeneficiosBeneficiarioAuthSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosBeneficiarioAuthSocioComponent", function() { return FormularioBeneficiosBeneficiarioAuthSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBeneficiosBeneficiarioAuthSocioComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-FormularioBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-beneficiario-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosBeneficiarioAuthSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.css":
-/*!******************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.css ***!
-  \******************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "label,input, button, strong{\n    font-size: 12px;\n  }\n\n  tr,th{\n    font-size: 12px;\n  }\n\n  th{\n    color: white;\n    background: #138D75;\n  }\n\n  #demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  #demoFont2 {\n    color: #fff;\n    \n    background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  \n    }\n\n  .nav-item a{\n      color: #fff;\n      background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      \n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWNhcmdhcy1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1jYXJnYXMtYXV0aC1zb2Npby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQjs7RUFFQTtJQUNFLGVBQWU7RUFDakI7O0VBQ0E7SUFDRSxZQUFZO0lBQ1osbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtJQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7SUFDOUg7O0VBQ0Y7SUFDRSxXQUFXOztJQUVYLG1CQUFtQixFQUFFLDhCQUE4QixFQUNhLCtCQUErQjtJQUMvRixzREFBc0QsRUFBRSxxRUFBcUU7O0lBRTdIOztFQUVBO01BQ0UsV0FBVztNQUNYLG1CQUFtQixFQUFFLDhCQUE4QixFQUNXLCtCQUErQjtFQUNqRyx3REFBd0QsRUFBRSxxRUFBcUU7O0lBRTdIIiwiZmlsZSI6InNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWNhcmdhcy1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1jYXJnYXMtYXV0aC1zb2Npby5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGFiZWwsaW5wdXQsIGJ1dHRvbiwgc3Ryb25ne1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuXG4gIHRyLHRoe1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuICB0aHtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbiAgfVxuICBcbiAgI2RlbW9Gb250IHtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgIH1cbiAgI2RlbW9Gb250MiB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgXG4gICAgYmFja2dyb3VuZDogIzM3M2I0NDsgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMzNzNiNDQsICM0Mjg2ZjQpOyAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICBcbiAgICB9XG5cbiAgICAubmF2LWl0ZW0gYXtcbiAgICAgIGNvbG9yOiAjZmZmO1xuICAgICAgYmFja2dyb3VuZDogIzM3M2I0NDsgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICMzNzNiNDQsICM0Mjg2ZjQpOyAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgICAgXG4gICAgfSJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.ts":
-/*!*****************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.ts ***!
-  \*****************************************************************************************************************************************/
-/*! exports provided: FormularioBeneficiosCargasAuthSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosCargasAuthSocioComponent", function() { return FormularioBeneficiosCargasAuthSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCargasAuthSocioComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-FormularioBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-cargas-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-cargas-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosCargasAuthSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.css":
-/*!********************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.css ***!
-  \********************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "label,input, button, strong{\n    font-size: 12px;\n  }\n\n  tr,th{\n    font-size: 12px;\n  }\n\n  th{\n    color: white;\n    background: #138D75;\n  }\n\n  #demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  #demoFont2 {\n    color: #fff;\n    \n    background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  \n    }\n\n  .nav-item a{\n      color: #fff;\n      background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      \n    }\n    \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLWNvbnl1Z2UtYXV0aC1zb2Npby9mb3JtdWxhcmlvLWJlbmVmaWNpb3MtY29ueXVnZS1hdXRoLXNvY2lvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCOztFQUVBO0lBQ0UsZUFBZTtFQUNqQjs7RUFDQTtJQUNFLFlBQVk7SUFDWixtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxXQUFXO0lBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2MsK0JBQStCO0lBQ2pHLHVEQUF1RCxFQUFFLHFFQUFxRTtJQUM5SDs7RUFDRjtJQUNFLFdBQVc7O0lBRVgsbUJBQW1CLEVBQUUsOEJBQThCLEVBQ2EsK0JBQStCO0lBQy9GLHNEQUFzRCxFQUFFLHFFQUFxRTs7SUFFN0g7O0VBRUE7TUFDRSxXQUFXO01BQ1gsbUJBQW1CLEVBQUUsOEJBQThCLEVBQ1csK0JBQStCO0VBQ2pHLHdEQUF3RCxFQUFFLHFFQUFxRTs7SUFFN0giLCJmaWxlIjoic3JjL2FwcC9zb2Npb3MtbWFzdGVyL3BlcmZpbC1zb2Npby9mb3JtdWxhcmlvLWJlbmVmaWNpb3MtY29ueXVnZS1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1jb255dWdlLWF1dGgtc29jaW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b24sIHN0cm9uZ3tcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cblxuICB0cix0aHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cbiAgdGh7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gIH1cbiAgXG4gICNkZW1vRm9udCB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgICB9XG4gICNkZW1vRm9udDIge1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIFxuICAgIGJhY2tncm91bmQ6ICMzNzNiNDQ7IC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgXG4gICAgfVxuXG4gICAgLm5hdi1pdGVtIGF7XG4gICAgICBjb2xvcjogI2ZmZjtcbiAgICAgIGJhY2tncm91bmQ6ICMzNzNiNDQ7IC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgICAgIFxuICAgIH1cbiAgICAiXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.ts":
-/*!*******************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.ts ***!
-  \*******************************************************************************************************************************************/
-/*! exports provided: FormularioBeneficiosConyugeAuthSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosConyugeAuthSocioComponent", function() { return FormularioBeneficiosConyugeAuthSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosConyugeAuthSocioComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-FormularioBeneficiosConyugeAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-conyuge-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosConyugeAuthSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.css":
-/*!**********************************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.css ***!
-  \**********************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "label,input, button, strong{\n    font-size: 12px;\n  }\n\n  tr,th{\n    font-size: 12px;\n  }\n\n  th{\n    color: white;\n    background: #138D75;\n  }\n\n  #demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  #demoFont2 {\n    color: #fff;\n    \n    background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  \n    }\n\n  .nav-item a{\n      color: #fff;\n      background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      \n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLXBhZHJlcy1zdWVncm9zLWF1dGgtc29jaW8vZm9ybXVsYXJpby1iZW5lZmljaW9zLXBhZHJlcy1zdWVncm9zLWF1dGgtc29jaW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGVBQWU7RUFDakI7O0VBRUE7SUFDRSxlQUFlO0VBQ2pCOztFQUNBO0lBQ0UsWUFBWTtJQUNaLG1CQUFtQjtFQUNyQjs7RUFFQTtJQUNFLFdBQVc7SUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7SUFDakcsdURBQXVELEVBQUUscUVBQXFFO0lBQzlIOztFQUNGO0lBQ0UsV0FBVzs7SUFFWCxtQkFBbUIsRUFBRSw4QkFBOEIsRUFDYSwrQkFBK0I7SUFDL0Ysc0RBQXNELEVBQUUscUVBQXFFOztJQUU3SDs7RUFFQTtNQUNFLFdBQVc7TUFDWCxtQkFBbUIsRUFBRSw4QkFBOEIsRUFDVywrQkFBK0I7RUFDakcsd0RBQXdELEVBQUUscUVBQXFFOztJQUU3SCIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvcGVyZmlsLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1wYWRyZXMtc3VlZ3Jvcy1hdXRoLXNvY2lvL2Zvcm11bGFyaW8tYmVuZWZpY2lvcy1wYWRyZXMtc3VlZ3Jvcy1hdXRoLXNvY2lvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9uLCBzdHJvbmd7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICB9XG5cbiAgdHIsdGh7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICB9XG4gIHRoe1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xuICB9XG4gIFxuICAjZGVtb0ZvbnQge1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgfVxuICAjZGVtb0ZvbnQyIHtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBcbiAgICBiYWNrZ3JvdW5kOiAjMzczYjQ0OyAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMzNzNiNDQsICM0Mjg2ZjQpOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gIFxuICAgIH1cblxuICAgIC5uYXYtaXRlbSBhe1xuICAgICAgY29sb3I6ICNmZmY7XG4gICAgICBiYWNrZ3JvdW5kOiAjMzczYjQ0OyAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICMzNzNiNDQsICM0Mjg2ZjQpOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgICBcbiAgICB9Il19 */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.ts":
-/*!*********************************************************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.ts ***!
-  \*********************************************************************************************************************************************************/
-/*! exports provided: FormularioBeneficiosPadresSuegrosAuthSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosPadresSuegrosAuthSocioComponent", function() { return FormularioBeneficiosPadresSuegrosAuthSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let FormularioBeneficiosPadresSuegrosAuthSocioComponent = class FormularioBeneficiosPadresSuegrosAuthSocioComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-FormularioBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-padres-suegros-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioBeneficiosPadresSuegrosAuthSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/perfil-socio.component.css":
-/*!***********************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/perfil-socio.component.css ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "label,input, button, strong{\n    font-size: 12px;\n  }\n\n  tr,th{\n    font-size: 12px;\n  }\n\n  th{\n    color: white;\n    background: #138D75;\n  }\n\n  #demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  #demoFont2 {\n    color: #fff;\n    \n    background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  \n    }\n\n  .nav-item a{\n      color: #fff;\n      background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      \n    }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vcGVyZmlsLXNvY2lvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0VBQ2pCOztFQUVBO0lBQ0UsZUFBZTtFQUNqQjs7RUFDQTtJQUNFLFlBQVk7SUFDWixtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxXQUFXO0lBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2MsK0JBQStCO0lBQ2pHLHVEQUF1RCxFQUFFLHFFQUFxRTtJQUM5SDs7RUFDRjtJQUNFLFdBQVc7O0lBRVgsbUJBQW1CLEVBQUUsOEJBQThCLEVBQ2EsK0JBQStCO0lBQy9GLHNEQUFzRCxFQUFFLHFFQUFxRTs7SUFFN0g7O0VBRUE7TUFDRSxXQUFXO01BQ1gsbUJBQW1CLEVBQUUsOEJBQThCLEVBQ1csK0JBQStCO0VBQ2pHLHdEQUF3RCxFQUFFLHFFQUFxRTs7SUFFN0giLCJmaWxlIjoic3JjL2FwcC9zb2Npb3MtbWFzdGVyL3BlcmZpbC1zb2Npby9wZXJmaWwtc29jaW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b24sIHN0cm9uZ3tcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cblxuICB0cix0aHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cbiAgdGh7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gIH1cbiAgXG4gICNkZW1vRm9udCB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgICB9XG4gICNkZW1vRm9udDIge1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIFxuICAgIGJhY2tncm91bmQ6ICMzNzNiNDQ7IC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgXG4gICAgfVxuXG4gICAgLm5hdi1pdGVtIGF7XG4gICAgICBjb2xvcjogI2ZmZjtcbiAgICAgIGJhY2tncm91bmQ6ICMzNzNiNDQ7IC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgICAgIFxuICAgIH0iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/perfil-socio.component.ts":
-/*!**********************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/perfil-socio.component.ts ***!
-  \**********************************************************************/
-/*! exports provided: PerfilSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerfilSocioComponent", function() { return PerfilSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let PerfilSocioComponent = class PerfilSocioComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-PerfilSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-perfil-socio',
-        template: __webpack_require__(/*! raw-loader!./perfil-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/perfil-socio.component.html"),
-        styles: [__webpack_require__(/*! ./perfil-socio.component.css */ "./src/app/socios-master/perfil-socio/perfil-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], PerfilSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.css":
-/*!******************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.css ***!
-  \******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "label,input, button, strong{\n    font-size: 12px;\n  }\n\n  tr,th{\n    font-size: 12px;\n  }\n\n  th{\n    color: white;\n    background: #138D75;\n  }\n\n  #demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  #demoFont2 {\n    color: #fff;\n    background: #52c234;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\n\n  .nav-item a{\n      color: #fff;\n      background: #093028;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n      background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      \n    }\n    \n    \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9wZXJmaWwtc29jaW8vdGFibGEtYmVuZWZpY2lvcy1hdXRoLXNvY2lvL3RhYmxhLWJlbmVmaWNpb3MtYXV0aC1zb2Npby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQjs7RUFFQTtJQUNFLGVBQWU7RUFDakI7O0VBQ0E7SUFDRSxZQUFZO0lBQ1osbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtJQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7SUFDOUg7O0VBQ0Y7SUFDRSxXQUFXO0lBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2EsK0JBQStCO0lBQ2hHLHNEQUFzRCxFQUFFLHFFQUFxRTtJQUM3SDs7RUFFQTtNQUNFLFdBQVc7TUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDWSwrQkFBK0I7TUFDL0YscURBQXFELEVBQUUscUVBQXFFOztJQUU5SCIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvcGVyZmlsLXNvY2lvL3RhYmxhLWJlbmVmaWNpb3MtYXV0aC1zb2Npby90YWJsYS1iZW5lZmljaW9zLWF1dGgtc29jaW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b24sIHN0cm9uZ3tcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cblxuICB0cix0aHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gIH1cbiAgdGh7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XG4gIH1cbiAgXG4gICNkZW1vRm9udCB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgICB9XG4gICNkZW1vRm9udDIge1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJhY2tncm91bmQ6ICM1MmMyMzQ7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMDYxNzAwLCAjNTJjMjM0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgIH1cblxuICAgIC5uYXYtaXRlbSBhe1xuICAgICAgY29sb3I6ICNmZmY7XG4gICAgICBiYWNrZ3JvdW5kOiAjMDkzMDI4OyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICAgICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gdG9wLCAjMjM3QTU3LCAjMDkzMDI4KTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjMjM3QTU3LCAjMDkzMDI4KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgICAgXG4gICAgfVxuICAgIFxuICAgICJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.ts":
-/*!*****************************************************************************************************************!*\
-  !*** ./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.ts ***!
-  \*****************************************************************************************************************/
-/*! exports provided: TablaBeneficiosAuthSocioComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosAuthSocioComponent", function() { return TablaBeneficiosAuthSocioComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-
-
-
-let TablaBeneficiosAuthSocioComponent = class TablaBeneficiosAuthSocioComponent {
-    constructor(config, modalService) {
-        this.modalService = modalService;
-        config.backdrop = 'static';
-        config.keyboard = false;
-    }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
-        this.abrirTablaBeneficiosSocios = this.modalService.open(TablaBeneficios, { size: 'xl' });
-    }
-};
-TablaBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], TablaBeneficiosAuthSocioComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/socios-master/socios-master.component.css":
-/*!***********************************************************!*\
-  !*** ./src/app/socios-master/socios-master.component.css ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc29jaW9zLW1hc3Rlci5jb21wb25lbnQuY3NzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/socios-master/socios-master.component.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/socios-master/socios-master.component.ts ***!
-  \**********************************************************/
-/*! exports provided: SociosMasterComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SociosMasterComponent", function() { return SociosMasterComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let SociosMasterComponent = class SociosMasterComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-SociosMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-socios-master',
-        template: __webpack_require__(/*! raw-loader!./socios-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/socios-master.component.html"),
-        styles: [__webpack_require__(/*! ./socios-master.component.css */ "./src/app/socios-master/socios-master.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], SociosMasterComponent);
+    };
+    ValidarUsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ValidarUsuarioService);
+    return ValidarUsuarioService;
+}());
 
 
 
@@ -6150,7 +5698,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const environment = {
+var environment = {
     production: false
 };
 /*
@@ -6174,8 +5722,8 @@ const environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 
@@ -6186,7 +5734,7 @@ if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].produc
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }
 Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
-    .catch(err => console.error(err));
+    .catch(function (err) { return console.error(err); });
 
 
 /***/ }),
@@ -6198,14 +5746,10 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/src/main.ts */"./src/main.ts");
-=======
 module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=main-es5.js.map

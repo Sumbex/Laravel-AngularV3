@@ -377,7 +377,7 @@ class Cs_prestamos extends Model
                         $prestamo->tipo_prestamo_id = $request->select_id;
                         $prestamo->tipo_pago_id = 1;
                         $prestamo->user_crea = Auth::user()->id;
-                        $prestamo->cuota = 4;
+                        $prestamo->cuota = $request->cuotas;
                         $prestamo->activo = 'S';
                         $prestamo->estado_prestamo_id = 1;
                         $prestamo->interes_prestamo = $request->monto_total * $this->interes;

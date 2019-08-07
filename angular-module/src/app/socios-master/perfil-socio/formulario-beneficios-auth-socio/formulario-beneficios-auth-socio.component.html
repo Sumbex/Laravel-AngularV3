@@ -12,7 +12,7 @@
     <h6 class="card-title">Datos del Socio</h6>
     </div>
     <div class="card">
-      <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <form #BeneficiosForm="ngForm" (ngSubmit)="test()" enctype="multipart/form-data">
 
         <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
           <div class="row justify-content-between">
@@ -20,25 +20,25 @@
             <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
               <div class="form-group">
                 <label><strong>N° de Cta</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="numeroCuenta" [(ngModel)]="datosSocio.numeroCuenta" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
               <div class="form-group">
                 <label><strong>Banco</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="banco" [(ngModel)]="datosSocio.banco" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
               <div class="form-group">
                 <label><strong>Tipo de Cta</strong></label>
-                <select name="Cta" id="cta" class="form-control form-control-sm" required>
-                  <option value="">--Seleccione--</option>
-                  <option value="">Cuenta Rut</option>
-                  <option value="">Cuenta Vista</option>
-                  <option value="">Cuenta Corriente</option>
+                <select name="tipoCuenta" [(ngModel)]="datosSocio.tipoCuenta" id="cta" class="form-control form-control-sm" required>
+                  <option value="0">--Seleccione--</option>
+                  <option value="1">Cuenta Rut</option>
+                  <option value="2">Cuenta Vista</option>
+                  <option value="3">Cuenta Corriente</option>
                 </select>
               </div>
             </div>
@@ -52,14 +52,14 @@
             <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
               <div class="form-group">
                 <label><strong>Isapre o Fonasa</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="isaFona" [(ngModel)]="datosSocio.isaFona" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
               <div class="form-group">
                 <label><strong>Grupo Sangre</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="grupoSangre" [(ngModel)]="datosSocio.grupoSangre" class="form-control form-control-sm" required>
               </div>
             </div>
 
@@ -72,28 +72,28 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Direccion</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="direccion" [(ngModel)]="datosSocio.direccion" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Region</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="region" [(ngModel)]="datosSocio.region" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Provincia</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="provincia" [(ngModel)]="datosSocio.provincia" class="form-control form-control-sm" required>
               </div>
             </div>
 
               <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
                 <div class="form-group">
                   <label><strong>Comuna</strong></label>
-                  <input type="text" class="form-control form-control-sm" required>
+                  <input type="text" name="comuna" [(ngModel)]="datosSocio.comuna" class="form-control form-control-sm" required>
                 </div>
               </div>
 
@@ -106,21 +106,21 @@
             <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
               <div class="form-group">
                 <label><strong>Telefono</strong></label>
-                <input type="number" class="form-control form-control-sm" required>
+                <input type="number" name="telefono" [(ngModel)]="datosSocio.telefono" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
               <div class="form-group">
                 <label><strong>Celular</strong></label>
-                <input type="number" class="form-control form-control-sm" required>
+                <input type="number" name="celular" [(ngModel)]="datosSocio.celular" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
               <div class="form-group">
                 <label><strong>Anexo</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="anexo" [(ngModel)]="datosSocio.anexo" class="form-control form-control-sm" required>
               </div>
             </div>
 
@@ -133,14 +133,14 @@
             <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
               <div class="form-group">
                 <label><strong>Email Personal</strong></label>
-                <input type="email" class="form-control form-control-sm" required>
+                <input type="email" name="emailPersonal" [(ngModel)]="datosSocio.emailPersonal" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
               <div class="form-group">
                 <label><strong>Email Corporativo</strong></label>
-                <input type="email" class="form-control form-control-sm" required>
+                <input type="email" name="emailCorporativo" [(ngModel)]="datosSocio.emailCorporativo" class="form-control form-control-sm" required>
               </div>
             </div>
 
@@ -153,17 +153,17 @@
             <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
               <div class="form-group">
                 <label><strong>Cargo Planta</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <input type="text" name="cargoPlanta" [(ngModel)]="datosSocio.cargoPlanta" class="form-control form-control-sm" required>
               </div>
             </div>
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Cargo o Comision Sindicato</strong></label>
-                <select name="Rol" id="rol" class="form-control form-control-sm" required>
-                    <option value="">--Seleccione--</option>
-                    <option value="">Socio</option>
-                    <option value="">Directiva</option>
+                <select name="cargoComisionSindicato" [(ngModel)]="datosSocio.cargoComisionSindicato" id="rol" class="form-control form-control-sm" required>
+                    <option value="0">--Seleccione--</option>
+                    <option value="1">Socio</option>
+                    <option value="2">Directiva</option>
                   </select>
               </div>
             </div>
@@ -171,10 +171,10 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Casa Propia</strong></label>
-                <select name="Rol" id="rol" class="form-control form-control-sm" required>
-                  <option value="">--Seleccione--</option>
-                  <option value="">Si</option>
-                  <option value="">No</option>
+                <select name="casaPropia" [(ngModel)]="datosSocio.casaPropia" id="casa" class="form-control form-control-sm" required>
+                  <option value="0">--Seleccione--</option>
+                  <option value="1">Si</option>
+                  <option value="2">No</option>
                 </select>
               </div>
             </div>
@@ -230,7 +230,7 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
               <label><strong>Guardar Datos del Socio</strong></label>
               <div class="form-group">
-                  <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+                  <button class="btn btn-block btn-outline-primary" type="submit" value="ingresar">Guardar</button>
               </div>
             </div>
 

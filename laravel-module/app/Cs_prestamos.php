@@ -925,15 +925,7 @@ class Cs_prestamos extends Model
 
                     if ($abonos['estado'] == 'success') {
                         $pasarPM = [];
-<<<<<<< HEAD
-                        // $pasarPM[0] = '';
-                        // $pasarPM[1] = '';
-                        // $pasarPM[2] = '';
-=======
-                        /* $pasarPM[0] = '';
-                        $pasarPM[1] = '';
-                        $pasarPM[2] = ''; */
->>>>>>> bryanm
+
 
                         foreach ($abonos['abonos'] as $key) {
                             switch ($key->tipo) {
@@ -1217,15 +1209,7 @@ class Cs_prestamos extends Model
                         /* dd($abonos); */
                         if ($abonos['estado'] == 'success') {
                             $pasarPM = [];
-<<<<<<< HEAD
-                            // $pasarPM[0] = '';
-                            // $pasarPM[1] = '';
-                            // $pasarPM[2] = '';
-=======
-                            /* $pasarPM[0] = '';
-                            $pasarPM[1] = '';
-                            $pasarPM[2] = ''; */
->>>>>>> bryanm
+
 
                             foreach ($abonos['abonos'] as $key) {
                                 switch ($key->tipo) {

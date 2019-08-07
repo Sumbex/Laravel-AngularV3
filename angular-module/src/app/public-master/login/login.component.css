@@ -67,3 +67,15 @@ label,input, button{
   }
 }
 /*CLASES DEL LOADER*/
+
+.center-login{
+  padding-top: 10%;
+}
+
+.card-body{
+  height: 12em;
+}
+
+h5{
+  padding-top: 15%;
+}

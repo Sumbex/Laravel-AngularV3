@@ -15,6 +15,7 @@ export class BeneficiosSociosComponent implements OnInit {
   nombreSocioTest='';
   /*-----------------------------*/
   idSocio='';
+  nombreCompletoSocio='';
 
   constructor(
     private _SociosService:SociosService
@@ -28,12 +29,14 @@ export class BeneficiosSociosComponent implements OnInit {
       console.log(response);
         if(response.estado == "failed"){
           alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+          this.rut = '';
           this.fechaSocioTest = '';
           this.rutSocioTest = '';
           this.nombreSocioTest = '';
           this.idSocio = '';
           return false;
         }else{
+          this.rut = '';
           this.fechaSocioTest = response.fecha_nacimiento;
           this.rutSocioTest = response.rut;
           this.nombreSocioTest = response.nombres +' '+ response.a_paterno +' '+ response.a_materno;

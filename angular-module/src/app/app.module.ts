@@ -63,6 +63,10 @@ import { PerfilSocioComponent } from './socios-master/perfil-socio/perfil-socio.
 import { NavbarSocioComponent } from './socios-master/navbar-socio/navbar-socio.component';
 import { FormularioBeneficiosAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component';
 import { TablaBeneficiosAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component';
+import { FormularioBeneficiosConyugeAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component';
+import { FormularioBeneficiosBeneficiarioAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component';
+import { FormularioBeneficiosCargasAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component';
+import { FormularioBeneficiosPadresSuegrosAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component';
 
 
 @NgModule({
@@ -140,7 +144,15 @@ import { TablaBeneficiosAuthSocioComponent } from './socios-master/perfil-socio/
 
     FormularioBeneficiosAuthSocioComponent,
 
-    TablaBeneficiosAuthSocioComponent
+    TablaBeneficiosAuthSocioComponent,
+
+    FormularioBeneficiosConyugeAuthSocioComponent,
+
+    FormularioBeneficiosBeneficiarioAuthSocioComponent,
+
+    FormularioBeneficiosCargasAuthSocioComponent,
+
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent
 
   ],
   imports: [

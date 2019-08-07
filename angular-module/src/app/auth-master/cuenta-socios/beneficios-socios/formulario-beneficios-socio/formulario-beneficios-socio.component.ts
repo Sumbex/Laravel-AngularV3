@@ -12,6 +12,7 @@ export class FormularioBeneficiosSocioComponent implements OnInit {
   abrirFormularioBeneficiosSocios;
 
   @Input () getIdSocio:'';
+  @Input () getNombreSocio:'';
   InsertarBeneficiosSocio ={
   socio_id:'',
   direccion:'',

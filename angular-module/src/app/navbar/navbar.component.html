@@ -14,20 +14,20 @@
                 <a class="nav-link" [routerLink]="['/AuthMaster/CuentaSindical']"><i class="fas fa-calculator"></i> Cuenta Sindical <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"><i class="fas fa-money-check-alt"></i> Cuenta Bienestar</a>
+                <a class="nav-link" [routerLink]="['/AuthMaster/CuentaBienestar']"> <i class="fas fa-money-check-alt"></i> Cuenta Bienestar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"><i class="fas fa-piggy-bank"></i> Cuenta Fondo Mutuo</a>
+                <a class="nav-link" [routerLink]="['/AuthMaster/CuentaFondoMutuo']"><i class="fas fa-piggy-bank"></i> Cuenta Fondo Mutuo</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link"><i class="fas fa-chart-pie"></i> Grafico</a>
+                <a class="nav-link" [routerLink]="['/AuthMaster/CuentaFondoMutuo']"><i class="fas fa-chart-pie"></i> Grafico</a>
               </li>
               <li *ngIf="isLogged" ngbDropdown class="d-inline-block">
                 <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-friends"></i> Socios</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/RegistroSocios']"><i class="fas fa-user-plus"></i> Registro de Socio</a>
                   <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/ListarSocios']"><i class="fas fa-user-edit"></i> Listar Socio</a>
-                  <!-- <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/BeneficiosSocios']"><i class="far fa-address-card"></i> Beneficios Socio</a> -->
+                  <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/BeneficiosSocios']"><i class="far fa-address-card"></i> Beneficios Socio</a>
                 </div>
               </li>
               <li *ngIf="isLogged" ngbDropdown class="d-inline-block">

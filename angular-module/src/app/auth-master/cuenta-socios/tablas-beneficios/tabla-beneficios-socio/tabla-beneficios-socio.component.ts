@@ -12,6 +12,7 @@ export class TablaBeneficiosSocioComponent implements OnInit {
   abrirTablaBeneficiosSocios;
 
   @Input () getIdSocio;
+  @Input () getNombreSocio;
   traerDatosSocio:object = [
                       'numero_cuenta',
                       'direccion',
@@ -60,6 +61,7 @@ export class TablaBeneficiosSocioComponent implements OnInit {
       return false;
     }else{
       this.traerDatosSocio = response[0];
+      this.getNombreSocio;
     }
 
        error => {

@@ -1,6 +1,6 @@
 <ng-template #tablaBeneficiosSocio let-modal>
     <div class="modal-header sticky-top" id="demoFont">
-      <h6 class="modal-title"><strong><i class="fas fa-table"></i>  Datos del Socio</strong></h6>
+      <h6 class="modal-title"><strong><i class="fas fa-table"></i>  Datos del Socio: {{getNombreSocio}}</strong></h6>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -12,7 +12,7 @@
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row justify-content-center">
 
-              <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                   <tr>
                     <th style="background: #138D75">N° Cta.</th>
                     <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.numero_cuenta}}"></td>
@@ -72,10 +72,7 @@
                     <th style="background: #138D75;">Telefono</th>
                     <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.telefono}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr> <br>
-              </div>
-
-              <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                  </tr> 
                   <tr>
                     <th style="background: #138D75;">Celular</th>
                     <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.celular}}"></td>
@@ -85,7 +82,11 @@
                     <th style="background: #138D75;">Anexo</th>
                     <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.anexo}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
+                  </tr><br>
+              </div>
+
+              <div class="col-12 col-md-5 col-lg-5 col-xl-5">
+     
                   <tr>
                     <th style="background: #138D75;">Email Personal</th>
                     <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.email_1}}"></td>

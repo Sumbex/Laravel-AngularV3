@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'AuthController@login');
 Route::post('login_rut', 'AuthController@login_rut');
+Route::post('login_socios', 'PortalSocioController@LoginSocios');
 
 //CUANDO SE AUTORIZA UN USUARIO
 Route::group(['middleware' => ['jwt.auth','cors']], function(){

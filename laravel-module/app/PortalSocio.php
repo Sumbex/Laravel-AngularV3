@@ -43,7 +43,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
     ];
 
     protected $guard = 'socio_api';
-    
+
     protected function loginSocios($request)
     {
         try {
@@ -51,34 +51,33 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 return ['status' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
             } else {
                 $socio = PortalSocio::where('rut', $request->rut)->first();
-                 
+                /* dd(is_null($socio->fecha_egreso)); */
+                if (is_null($socio->fecha_egreso)) {
+                    if (Hash::check($request->password, $socio->password)) {
+                        /* Config */
+                        config()->set('auth.defaults.guard', 'socio_api');
+                        \Config::set('jwt.user', App\PortalSocio::class);
+                        \Config::set('auth.providers.users.model', \App\PortalSocio::class);
+                        $credentials = $request->only('rut', 'password');
 
-                /* dd(Hash::check($request->password, $socio->password)); */
-
-                if (Hash::check($request->password, $socio->password)) {
-                    /* Config */
-                    config()->set( 'auth.defaults.guard', 'socio_api' );
-                    \Config::set('jwt.user', App\PortalSocio::class);
-                    \Config::set('auth.providers.users.model', \App\PortalSocio::class);
-                    $credentials = $request->only('rut', 'password');
-                    // dd($credentials);
-
-                    /* dd(!$token = JWTAuth::attempt($credentials)); */
-                    if (!$token = JWTAuth::attempt($credentials)) {
+                        if (!$token = JWTAuth::attempt($credentials)) {
+                            return response([
+                                'status' => 'error',
+                                'error' => 'invalid.credentials',
+                                'msg' => 'Invalid Credentials.'
+                            ], 400);
+                        }
                         return response([
-                            'status' => 'error',
-                            'error' => 'invalid.credentials',
-                            'msg' => 'Invalid Credentials.'
-                        ], 400);
+                            'status' => 'success',
+                            'token' => $token,
+                            /* 'user' =>  JWTAuth::user() */
+                        ])
+                            ->header('Authorization', $token);
                     }
-                    return response([
-                        'status' => 'success',  
-                        'token' => $token,
-                        'user' =>  JWTAuth::user()
-                    ])
-                        ->header('Authorization', $token);
+                    return response(['status' => 'failed', 'mensaje' => 'La contraseña ingresado no es valida.']);
+                } else {
+                    return response(['status' => 'failed', 'mensaje' => 'El socio ya no se encuentra activo en el sindicato.']);
                 }
-                return response(['status' => 'failed', 'mensaje' => 'La contraseña ingresado no es valida.']);
             }
         } catch (\ErrorException $e) {
             return ['status' => 'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
@@ -112,8 +111,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function socioLogeado()
     {
-        $socio = PortalSocio::find(Auth::user()->id);
-        return $socio;
+        /* dd(Auth::guard('socio_api')->user()); */
+        $socio = PortalSocio::find(Auth::guard('socio_api')->user()->id);
+        return /* Auth::guard('socio_api')->user() */ $socio;
     }
 
     protected function actualizarDatosSocios($request)

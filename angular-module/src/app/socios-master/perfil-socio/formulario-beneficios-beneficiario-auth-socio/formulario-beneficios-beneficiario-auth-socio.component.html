@@ -2,7 +2,7 @@
   <h6 class="card-title">Beneficiario</h6>
 </div>
 <div class="card">
-  <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <form #BeneficiosForm="ngForm" (ngSubmit)="ingresarDatosBeneficiario()" enctype="multipart/form-data">
 
     <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
       <div class="row justify-content-between">
@@ -10,21 +10,21 @@
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Relacion o Parentesco</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="relacionParentesco" [(ngModel)]="datosBeneficiario.relacionParentesco" class="form-control form-control-sm" required>
           </div>
         </div>
 
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Rut</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="rut" [(ngModel)]="datosBeneficiario.rut" class="form-control form-control-sm" required>
           </div>
         </div>
 
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Fecha de Nacimiento</strong></label>
-            <input type="date" class="form-control form-control-sm" required>
+            <input type="date" name="fechaNacimiento" [(ngModel)]="datosBeneficiario.fechaNacimiento" class="form-control form-control-sm" required>
           </div>
         </div>
 
@@ -37,21 +37,21 @@
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Nombres</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="nombres" [(ngModel)]="datosBeneficiario.nombres" class="form-control form-control-sm" required>
           </div>
         </div>
 
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Apellido Paterno</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="apellidoPaterno" [(ngModel)]="datosBeneficiario.apellidoPaterno" class="form-control form-control-sm" required>
           </div>
         </div>
 
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Apellido Materno</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="apellidoMaterno" [(ngModel)]="datosBeneficiario.apellidoMaterno" class="form-control form-control-sm" required>
           </div>
         </div>
 
@@ -64,21 +64,21 @@
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Direccion</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="direccion" [(ngModel)]="datosBeneficiario.direccion" class="form-control form-control-sm" required>
           </div>
         </div>
 
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Comuna</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
+            <input type="text" name="comuna" [(ngModel)]="datosBeneficiario.comuna" class="form-control form-control-sm" required>
           </div>
         </div>
 
         <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
           <div class="form-group">
             <label><strong>Celular</strong></label>
-            <input type="number" class="form-control form-control-sm" required>
+            <input type="number" name="celular" [(ngModel)]="datosBeneficiario.celular" class="form-control form-control-sm" required>
           </div>
         </div>
 

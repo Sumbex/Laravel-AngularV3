@@ -44,12 +44,10 @@ export class LoginComponent implements OnInit {
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-        console.log(response);
         this.lockLogin = false;
         this.router.navigate(['AuthMaster']);
         document.getElementById("closeModalLogin").click();
       }else{
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;
@@ -57,7 +55,6 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.status = error;
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;
@@ -77,12 +74,10 @@ export class LoginComponent implements OnInit {
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-        console.log(response);
         this.lockLogin = false;
         this.router.navigate(['SociosMaster']);
         document.getElementById("closeModalLogin").click();
       }else{
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;
@@ -90,7 +85,6 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.status = error;
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;

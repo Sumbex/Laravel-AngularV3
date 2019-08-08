@@ -32,6 +32,7 @@ export class AuthMasterComponent implements OnInit {
    }
 
   ngOnInit() {
+    if(localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null){
     //Guardar definicion
     this._tipoCuentas.getDefinicion().subscribe((res) => {
       this.filtroDefiniciones = res.map(({id,descripcion}) => ({id,descripcion}));
@@ -57,13 +58,7 @@ export class AuthMasterComponent implements OnInit {
     document.getElementById("openModalButton").click();
     this.startTimer();
     this.startTimerToken();
-    this.verificarCarga();
   }
-
-  verificarCarga(){
-    if(localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null){
-      console.log("Se estan cargando los datos en memoria");
-    }
   }
 
   open(content) {
@@ -77,7 +72,7 @@ export class AuthMasterComponent implements OnInit {
           this.tiempoEspera--;
         } else {
           this.titleMensaje = 'Error al cargar';
-          this.bodyMensaje = 'Se ha superado el tiempo de espera, por favor compruebe su conexión a internet y refresque esta pagina';
+          this.bodyMensaje = 'La carga esta tardando más de lo esperado, si el problema persiste por favor compruebe su conexión a internet y refresque esta pagina';
         }
       },1000)
     }

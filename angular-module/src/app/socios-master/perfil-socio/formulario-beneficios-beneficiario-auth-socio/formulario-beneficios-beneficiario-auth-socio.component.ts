@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnInit {
 
+  datosBeneficiario = {
+    relacionParentesco: '',
+    rut: '',
+    fechaNacimiento: '',
+    nombres: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    direccion: '',
+    comuna: '',
+    celular: ''
+  }
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ingresarDatosBeneficiario(){
+    console.log(this.datosBeneficiario);
   }
 
 }

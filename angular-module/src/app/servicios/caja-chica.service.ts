@@ -14,7 +14,6 @@ export class CajaChicaService{
 
     ingresarValor(datos): Observable<any>{
 
-        console.log(datos);
         const form = new FormData();
         form.append('fecha', datos.fecha);
         form.append('archivo_documento', datos.archivo_documento);
@@ -31,7 +30,6 @@ export class CajaChicaService{
     }
 
     modificarValor(id, campo, nuevoValor): Observable<any>{
-        console.log(nuevoValor);
         const form = new FormData();
         form.append('id', id);
         form.append('campo', campo);

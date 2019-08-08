@@ -188,10 +188,10 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Rol Turno</strong></label>
-              <select name="Rol" id="rol" class="form-control form-control-sm" required>
-                <option value="">--Seleccione--</option>
-                <option value="">Si</option>
-                <option value="">No</option>
+              <select name="rolTurno" [(ngModel)]="datosSocio.rolTurno" class="form-control form-control-sm" value="0" required>
+                <option value="0">--Seleccione--</option>
+                <option value="1">Si</option>
+                <option value="2">No</option>
               </select>
               </div>
             </div>
@@ -199,13 +199,13 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Estado Civil</strong></label>
-                <select name="Civil" id="civil" class="form-control form-control-sm" required>
-                  <option value="">--Seleccione--</option>
-                  <option value="">Soltero/a</option>
-                  <option value="">Casado/a</option>
-                  <option value="">Viudo/a</option>
-                  <option value="">Divorciado/a</option>
-                  <option value="">Conviviente civil</option>
+                <select name="estadoCivil" [(ngModel)]="datosSocio.estadoCivil" class="form-control form-control-sm" value="0" required>
+                  <option value="0">--Seleccione--</option>
+                  <option value="1">Soltero/a</option>
+                  <option value="2">Casado/a</option>
+                  <option value="3">Viudo/a</option>
+                  <option value="4">Divorciado/a</option>
+                  <option value="5">Conviviente civil</option>
                 </select>
               </div>
             </div>
@@ -213,10 +213,10 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
               <div class="form-group">
                 <label><strong>Conyuge / Pareja</strong></label>
-                <select name="Rol" id="rol" class="form-control form-control-sm" required>
-                  <option value="">--Seleccione--</option>
-                  <option value="">Si</option>
-                  <option value="">No</option>
+                <select name="conyugePareja" [(ngModel)]="datosSocio.conyugePareja" id="rol" class="form-control form-control-sm" value="0" required>
+                  <option value="0">--Seleccione--</option>
+                  <option value="1">Si</option>
+                  <option value="2">No</option>
                 </select>
               </div>
             </div>
@@ -230,7 +230,7 @@
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
               <label><strong>Guardar Datos del Socio</strong></label>
               <div class="form-group">
-                  <button class="btn btn-block btn-outline-primary" type="submit" value="ingresar">Guardar</button>
+                  <button [disabled]="!BeneficiosForm.valid" class="btn btn-block btn-outline-primary" type="submit" value="ingresar">Guardar</button>
               </div>
             </div>
 

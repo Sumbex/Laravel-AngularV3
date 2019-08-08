@@ -61,7 +61,6 @@ export class TablaBeneficiosSocioComponent implements OnInit {
       return false;
     }else{
       this.traerDatosSocio = response[0];
-      this.getNombreSocio;
     }
 
        error => {

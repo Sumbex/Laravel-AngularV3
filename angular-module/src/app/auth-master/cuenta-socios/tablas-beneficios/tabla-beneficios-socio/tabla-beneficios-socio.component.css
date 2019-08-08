@@ -3,12 +3,13 @@
   border: 0;
   /*text-align: center;*/
 }
-select#cta {
-    font-size: 13px;
-    font-weight: 400;
-   /* padding-left: -137px;*/
-    margin-left: -4px;
+input,select{
+  width: 25em;
+  font-weight: bold;
+  color:#000000;
+  padding-left: 0%;
 }
+
 
 .my-class { 
     color: red;
@@ -17,7 +18,7 @@ select#cta {
     padding: 5px;
   }
   
-  label,input, button{
+  label,input, button,select{
       font-size: 12px;
     }
     tr,th{

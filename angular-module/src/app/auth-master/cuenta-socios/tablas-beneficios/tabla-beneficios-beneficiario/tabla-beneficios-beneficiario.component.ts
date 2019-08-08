@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SociosService } from 'src/app/servicios/socios.service';
 
 @Component({
   selector: 'app-tabla-beneficios-beneficiario',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaBeneficiosBeneficiarioComponent implements OnInit {
 
-  constructor() { }
+  abrirTablaBeneficiosBeneficiario;
+
+  @Input () getIdSocio:'';
+  @Input () getNombreSocio:'';
+  traerDatosBeneficiario:object = [
+                        'relacion_parentesco',
+                        'rut',
+                        'fecha_nacimiento',
+                        'nombres',
+                        'apellido_paterno',
+                        'apellido_materno',
+                        'direccion',
+                        'celular',
+                        'created_at',
+                        'updated_at',
+
+                        ];
+
+  constructor(config: NgbModalConfig, 
+    private modalService: NgbModal,
+    private _SociosService:SociosService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+                        }
 
   ngOnInit() {
+  }
+
+  verTablaBeneficios(TablaBeneficios) {
+    this.abrirTablaBeneficiosBeneficiario = this.modalService.open(TablaBeneficios, { size: 'xl' });
+    // this.listarDatosConyuge();
   }
 
 }

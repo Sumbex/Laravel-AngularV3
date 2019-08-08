@@ -1,12 +1,15 @@
 <ng-template #formularioBeneficiosSocio let-modal>
-    <div class="modal-header sticky-top" id="demoFont2">
-      <h6 class="modal-title"><i class="fas fa-table"></i>  Datos del Socio: {{getNombreSocio}}</h6>
+    <div class="modal-header sticky-top" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-table"></i>  Datos del Socio: {{getNombreSocio | uppercase}}</h6>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
      <!--Cuerpo del body inicio y cierre mensual-->
     <div class="modal-body" id="printJS-table"> 
+        <div class="card-header" id="demoFont2">
+            <h6 class="card-title">Socio</h6>
+          </div>
     <!--Datos del socio-->
       <div class="card">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>

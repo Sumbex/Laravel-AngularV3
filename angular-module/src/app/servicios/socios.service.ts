@@ -84,5 +84,27 @@ export class SociosService {
                 }
             )});
           }
+
+          insertarDatosConyuge(form): Observable<any>{
+
+            return this._http.post(this.url + "guardar_datos_conyuge", form, {headers: new HttpHeaders(
+                    {
+                        'Authorization': 'Bearer' + this.token,
+                    }
+                    )});
+                }
+
+            getDatosConyuge(idSocio){
+            let token = localStorage.getItem('token').replace(/['"]+/g, '');
+            return this._http.get<any>(this.url + "traer_datos_conyuge/"+idSocio, {headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )});
+            }
+
+
+          
   
 }

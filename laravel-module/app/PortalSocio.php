@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Hash;
-/* use Illuminate\Support\Facades\Config; */
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -57,8 +57,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
                 if (Hash::check($request->password, $socio->password)) {
                     /* Config */
-                    \Config::set('jwt.user', PortalSocio::class);
-                    \Config::set('auth.providers.users.model', PortalSocio::class);
+                    config()->set( 'auth.defaults.guard', 'socio_api' );
+                    \Config::set('jwt.user', App\PortalSocio::class);
+                    \Config::set('auth.providers.users.model', \App\PortalSocio::class);
                     $credentials = $request->only('rut', 'password');
                     // dd($credentials);
 
@@ -71,8 +72,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         ], 400);
                     }
                     return response([
-                        'status' => 'success',
-                        'token' => $token
+                        'status' => 'success',  
+                        'token' => $token,
+                        'user' =>  JWTAuth::user()
                     ])
                         ->header('Authorization', $token);
                 }

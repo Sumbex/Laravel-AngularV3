@@ -1285,6 +1285,7 @@ class Cs_prestamos extends Model
                                 }
                                 //dd($pasarPM);
                                 for ($e = 0; $e < count($pasarPM); $e++) {
+                                  /*   dd($pasarPM[$i]->monto_ingreso); */
                                     //dump($pasarPM[$e]->tipo);
                                     switch ($pasarPM[$e]->tipo) {
                                         case 1:
@@ -1294,9 +1295,11 @@ class Cs_prestamos extends Model
                                             $detalleAbono->anio_id = $anio->id;
                                             $detalleAbono->mes_id = $mes->id;
                                             $detalleAbono->dia = $fecha['dia'];
+                                            /* dd($pasarPM[$i]->monto_ingreso); */
+                                            $detalleAbono->monto_ingreso = $pasarPM[$e]->monto_ingreso;
                                             $detalleAbono->monto_egreso = $pasarPM[$e]->monto_egreso;
                                             $detalleAbono->definicion = 3;
-                                            $detalleAbono->estado = 1;
+                                            $detalleAbono->estado = $pasarPM[$e]->estado;
                                             $detalleAbono->activo = 'S';
                                             if ($pasarPM[$e]->monto_pagado == 0) {
                                                 $detalleAbono->monto_pagado = null;
@@ -1317,9 +1320,10 @@ class Cs_prestamos extends Model
                                             $detalleAbono->anio_id = $anio->id;
                                             $detalleAbono->mes_id = $mes->id;
                                             $detalleAbono->dia = $fecha['dia'];
+                                            $detalleAbono->monto_ingreso = $pasarPM[$e]->monto_ingreso;
                                             $detalleAbono->monto_egreso = $pasarPM[$e]->monto_egreso;
                                             $detalleAbono->definicion = 3;
-                                            $detalleAbono->estado = 1;
+                                            $detalleAbono->estado = $pasarPM[$e]->estado;
                                             $detalleAbono->activo = 'S';
                                             if ($pasarPM[$e]->monto_pagado == 0) {
                                                 $detalleAbono->monto_pagado = null;
@@ -1340,9 +1344,10 @@ class Cs_prestamos extends Model
                                             $detalleAbono->anio_id = $anio->id;
                                             $detalleAbono->mes_id = $mes->id;
                                             $detalleAbono->dia = $fecha['dia'];
+                                            $detalleAbono->monto_ingreso = $pasarPM[$e]->monto_ingreso;
                                             $detalleAbono->monto_egreso = $pasarPM[$e]->monto_egreso;
                                             $detalleAbono->definicion = 3;
-                                            $detalleAbono->estado = 1;
+                                            $detalleAbono->estado = $pasarPM[$e]->estado;
                                             $detalleAbono->activo = 'S';
                                             if ($pasarPM[$e]->monto_pagado == 0) {
                                                 $detalleAbono->monto_pagado = null;

@@ -18,6 +18,15 @@ Route::get('/traer_prestamos_historicos/{anio}/{mes}', 'PrestamosController@Trae
 Route::get('/traer_tipo_abono', 'PrestamosController@TraerTipoAbonos');
 Route::post('/ingresar_pago_prestamo', 'PrestamosController@PagoPrestamos');
 Route::post('/ingresar_pago_abono', 'PrestamosController@PagoAbonos');
+
+//------------------------------------------>rutas portal socio
+
+Route::post('/modificar_datos_socio', 'PortalSocioController@ActualizarDatosSocios');
+Route::get('/socio_logeado', 'PortalSocioController@SocioLogeado');
+
+/* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
+
+
 //Route::get('/testeo', function() {
 //   return "kkck";
 //});

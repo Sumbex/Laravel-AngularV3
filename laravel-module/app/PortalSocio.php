@@ -47,11 +47,11 @@ class PortalSocio extends Authenticatable implements JWTSubject
     protected function loginSocios($request)
     {
         try {
-            if (!$this->validarRut($request->email)) {
+            if (!$this->validarRut($request->rut)) {
                 return ['status' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
             } else {
-                $socio = PortalSocio::where('rut', $request->email)->first();
-                /* dd($socio); */
+                $socio = PortalSocio::where('rut', $request->rut)->first();
+                 
 
                 /* dd(Hash::check($request->password, $socio->password)); */
 
@@ -59,7 +59,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     /* Config */
                     \Config::set('jwt.user', PortalSocio::class);
                     \Config::set('auth.providers.users.model', PortalSocio::class);
-                    $credentials = $request->only('email', 'password');
+                    $credentials = $request->only('rut', 'password');
+                    // dd($credentials);
 
                     /* dd(!$token = JWTAuth::attempt($credentials)); */
                     if (!$token = JWTAuth::attempt($credentials)) {

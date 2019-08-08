@@ -1,208 +1,195 @@
 <div class="container"><br>
-  <div class="row">
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-
-      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link" id="socio-tab" data-toggle="tab" href="#socio" role="tab" aria-controls="socio"
-            aria-selected="true">Datos Socio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="conyuge-tab" data-toggle="tab" href="#conyuge" role="tab" aria-controls="conyuge"
-            aria-selected="false">Datos Conyuge</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="beneficiario-tab" data-toggle="tab" href="#beneficiario" role="tab"
-            aria-controls="beneficiario" aria-selected="false">Datos Beneficiario</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" id="hijo-tab" data-toggle="tab" href="#hijo" role="tab" aria-controls="hijo"
-            aria-selected="false">Datos Cargas Legales</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" id="otros-tab" data-toggle="tab" href="#otros" role="tab" aria-controls="otros"
-            aria-selected="false">Datos de padres y suegros</a>
-        </li>
-      </ul> <br>
-
-      <!--buscador de socio-->
-      <div class="card-header" id="demoFont2">
-        <h6 class="card-title">Socio</h6>
-      </div>
-      <div class="card">
-
+    <div class="row">
         <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-8 col-xl-8">
-              <div class="form-group"> <br>
-                <label>
+
+            <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="socio-tab" data-toggle="tab" href="#socio" role="tab" aria-controls="socio" aria-selected="true">Datos Socio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="conyuge-tab" data-toggle="tab" href="#conyuge" role="tab" aria-controls="conyuge" aria-selected="false">Datos Conyuge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="beneficiario-tab" data-toggle="tab" href="#beneficiario" role="tab" aria-controls="beneficiario" aria-selected="false">Datos Beneficiario</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="hijo-tab" data-toggle="tab" href="#hijo" role="tab" aria-controls="hijo" aria-selected="false">Datos Cargas Legales</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="otros-tab" data-toggle="tab" href="#otros" role="tab" aria-controls="otros" aria-selected="false">Datos de padres y suegros</a>
+                </li>
+            </ul> <br>
+
+            <!--buscador de socio-->
+            <div class="card-header" id="demoFont2">
+                <h6 class="card-title">Socio</h6>
+            </div>
+            <div class="card">
+
+                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+                            <div class="form-group"> <br>
+                                <label>
                   <strong>Ingrese rut del socio sin guiones </strong>
                   <i class="fas fa-info-circle" placement="right"
                     ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
                 </label>
-                <div class="input-group">
-                  <input type="text" [(ngModel)]="rut" class="form-control form-control-sm"
-                    placeholder="Ingrese rut del socio sin guion" name="rut" required>
-                  <span class="input-group-btn">
+                                <div class="input-group">
+                                    <input type="text" [(ngModel)]="rut" class="form-control form-control-sm" placeholder="Ingrese rut del socio sin guion" name="rut" required>
+                                    <span class="input-group-btn">
                     <button type="button" (click)="buscarSocio()" class="btn btn-outline-success btn-sm"><i
                         class="fas fa-search"></i></button>
                   </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="row">
-
-            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-              <div class="form-group text-center">
-                <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio" class="img-thumbnail">
-              </div>
-            </div>
-
-            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-              <div class="form-group"> <br>
-                <label><strong>Fecha Nacimiento</strong></label>
-                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechaSocioTest" required disabled>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-              <div class="form-group"> <br>
-                <label><strong>Rut del socio</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="rutSocioTest" required disabled>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group"> <br>
-                <label><strong>Nombre Completo del socio</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="nombreUpperSocio" required
-                  disabled>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div> <br>
-
-      <div class="tab-content" id="myTabContent">
-
-        <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
-          <!--Datos del socio-->
-          <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Datos Socio</h6>
-          </div>
-
-          <div class="card">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-              <div class="row justify-content-center">
-
-                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                  <label><strong>Ingresar Datos Socio</strong></label>
-                  <div class="form-group">
-                    <app-formulario-beneficios-socio 
-                      [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
-                    </app-formulario-beneficios-socio>
-                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                  <label><strong>Ver Datos Socio</strong></label>
-                  <div class="form-group">
-                    <app-tabla-beneficios-socio 
-                      [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
-                    </app-tabla-beneficios-socio>
-                  </div>
+                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row">
+
+                        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                            <div class="form-group text-center">
+                                <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio" class="img-thumbnail">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                            <div class="form-group"> <br>
+                                <label><strong>Fecha Nacimiento</strong></label>
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechaSocioTest" required disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                            <div class="form-group"> <br>
+                                <label><strong>Rut del socio</strong></label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]="rutSocioTest" required disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                            <div class="form-group"> <br>
+                                <label><strong>Nombre Completo del socio</strong></label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]="nombreUpperSocio" required disabled>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-              </div>
+            </div> <br>
+
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
+                    <!--Datos del socio-->
+                    <div class="card-header" id="demoFont2">
+                        <h6 class="card-title">Datos Socio</h6>
+                    </div>
+
+                    <div class="card">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row justify-content-center">
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ingresar Datos Socio</strong></label>
+                                    <div class="form-group">
+                                        <app-formulario-beneficios-socio [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+                                        </app-formulario-beneficios-socio>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ver Datos Socio</strong></label>
+                                    <div class="form-group">
+                                        <app-tabla-beneficios-socio [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+                                        </app-tabla-beneficios-socio>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <br>
+
+                </div>
+
+                <div class="tab-pane fade" id="conyuge" role="tabpanel" aria-labelledby="conyuge-tab">
+                    <!--datos del conyuge-->
+                    <div class="card-header" id="demoFont2">
+                        <h6 class="card-title">Datos Conyuge</h6>
+                    </div>
+                    <div class="card">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row justify-content-center">
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ingresar Datos Conyuge</strong></label>
+                                    <div class="form-group">
+                                        <app-formulario-beneficios-conyuge [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+                                        </app-formulario-beneficios-conyuge>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ver Datos Conyuge</strong></label>
+                                    <div class="form-group">
+                                        <app-tabla-beneficios-conyuge [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+                                        </app-tabla-beneficios-conyuge>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <br>
+                </div>
+
+                <div class="tab-pane fade" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab">
+                    <!--Datos Beneficiario-->
+                    <div class="card-header" id="demoFont2">
+                        <h6 class="card-title">Datos Beneficiario</h6>
+                    </div>
+                    <div class="card">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row justify-content-center">
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ingresar Datos Beneficiario</strong></label>
+                                    <div class="form-group">
+                                        <app-formulario-beneficios-beneficiario [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+                                        </app-formulario-beneficios-beneficiario>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ver Datos Beneficiario</strong></label>
+                                    <div class="form-group">
+                                        <app-tabla-beneficios-beneficiario [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+                                        </app-tabla-beneficios-beneficiario>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <br>
+                </div>
+
+                <div class="tab-pane fade" id="hijo" role="tabpanel" aria-labelledby="hijo-tab">
+                    <!--Datos del hijo-->
+                    <app-formulario-beneficios-cargas></app-formulario-beneficios-cargas>
+                </div>
+
+                <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
+                    <!--Datos de padres y suegros-->
+                    <app-formulario-beneficios-padres-suegros></app-formulario-beneficios-padres-suegros>
+                </div>
+
             </div>
-          </div> <br>
 
         </div>
-
-        <div class="tab-pane fade" id="conyuge" role="tabpanel" aria-labelledby="conyuge-tab">
-          <!--datos del conyuge-->
-          <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Datos Conyuge</h6>
-          </div>
-          <div class="card">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-              <div class="row justify-content-center">
-
-                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                  <label><strong>Ingresar Datos Conyuge</strong></label>
-                  <div class="form-group">
-                    <app-formulario-beneficios-conyuge 
-                      [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
-                    </app-formulario-beneficios-conyuge>
-                  </div>
-                </div>
-
-                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                  <label><strong>Ver Datos Conyuge</strong></label>
-                  <div class="form-group">
-                    <app-tabla-beneficios-conyuge 
-                      [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
-                    </app-tabla-beneficios-conyuge>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div> <br>
-        </div>
-
-        <div class="tab-pane fade" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab">
-          <!--Datos Beneficiario-->
-          <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Datos Beneficiario</h6>
-          </div>
-          <div class="card">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-              <div class="row justify-content-center">
-
-                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                  <label><strong>Ingresar Datos Beneficiario</strong></label>
-                  <div class="form-group">
-                    <app-formulario-beneficios-beneficiario 
-                      [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
-                    </app-formulario-beneficios-beneficiario>
-                  </div>
-                </div>
-
-                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                  <label><strong>Ver Datos Beneficiario</strong></label>
-                  <div class="form-group">
-                     <app-tabla-beneficios-beneficiario 
-                      [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
-                    </app-tabla-beneficios-beneficiario>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div> <br>
-        </div>
-
-        <div class="tab-pane fade" id="hijo" role="tabpanel" aria-labelledby="hijo-tab">
-          <!--Datos del hijo-->
-          <app-formulario-beneficios-cargas></app-formulario-beneficios-cargas>
-        </div>
-
-        <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
-          <!--Datos de padres y suegros-->
-          <app-formulario-beneficios-padres-suegros></app-formulario-beneficios-padres-suegros>
-        </div>
-
-      </div>
-
     </div>
-  </div>
 </div>

@@ -1,69 +1,81 @@
 <ng-template #tablaBeneficiosBeneficiario let-modal>
-    <div class="modal-header sticky-top" id="demoFont">
-      <!-- <h6 class="modal-title"><strong><i class="fas fa-table"></i>  Datos del Socio: {{getNombreSocio | uppercase}}</strong></h6> -->
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <div class="modal-header sticky-top" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
+        {{getNombreSocio | uppercase}}</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body" id="printJS-table">
+    <div class="card-header" id="demoFont2">
+      <h6 class="card-title">BENEFICIARIOS</h6>
     </div>
-     <!--Cuerpo del body inicio y cierre mensual-->
-    <div class="modal-body" id="printJS-table">
+    <div class="card"> <br>
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row justify-content-between">
-  
+
               <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                  <tr>
-                    <th style="background: #138D75" class="text-right" >RELACION:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.relacion_parentesco | uppercase}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <th style="background: #138D75" class="text-right" >RUT:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.rut}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                    <!-- <td><input type="date" class="sinbordefondo" value="{{ traerDatosBeneficiario.fecha_nacimiento }}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <th style="background: #138D75;" class="text-right">NOMBRES:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.nombres | uppercase}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.apellido_paterno | uppercase}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.apellido_materno | uppercase}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr>
-                  <tr>
-                    <th style="background: #138D75;" class="text-right">DIRECCION:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.direccion | uppercase}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr> 
-                  <tr>
-                    <th style="background: #138D75;" class="text-right">CELULAR:</th>
-                    <!-- <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.celular}}"></td> -->
-                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                  </tr> 
+                <tr>
+                  <th style="background: #138D75" class="text-right">RELACION:</th>
+                  <td><input type="text" class="sinbordefondo"
+                      value="{{traerDatosBeneficiario.relacion_parentesco | uppercase}}"></td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75" class="text-right">RUT:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.rut}}"></td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                  <td><input type="date" class="sinbordefondo" value="{{ traerDatosBeneficiario.fecha_nacimiento }}">
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">NOMBRES:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.nombres | uppercase}}">
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
+                  <td><input type="text" class="sinbordefondo"
+                      value="{{traerDatosBeneficiario.apellido_paterno | uppercase}}"></td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
+                  <td><input type="text" class="sinbordefondo"
+                      value="{{traerDatosBeneficiario.apellido_materno | uppercase}}"></td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.direccion | uppercase}}">
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{traerDatosBeneficiario.celular}}"></td>
+                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                </tr>
               </div>
-              
+
             </div>
           </div>
         </table>
       </div>
     </div>
-  
-    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
-    <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-success" 
+  </div>
+
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-success" 
     onclick="printJS({
       printable: 'printJS-table',
       type:'html',
@@ -71,13 +83,13 @@
     })">
     <i class="fas fa-print"></i>  Imprimir Datos
     </button> -->
-  
-    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i>  Volver Beneficios Conyuge
+
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Conyuge
     </button>
-    </div>
+  </div>
 </ng-template>
-  
-  <!--Boton Para llamar al Modal inicio y cierre mensual-->
-  <button class="btn btn btn-success btn-block btn-sm" type="button" (click)="verTablaBeneficios(tablaBeneficiosBeneficiario)">Ver Datos</button>
-  
-    
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn btn-success btn-block btn-sm" type="button"
+  (click)="verTablaBeneficios(tablaBeneficiosBeneficiario)">Ver Datos</button>

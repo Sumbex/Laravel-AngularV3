@@ -25,6 +25,8 @@ export class TablaBeneficiosConyugeComponent implements OnInit {
                     'updated_at',
 
                     ];
+vista_tabla: boolean = false;
+    
 
   constructor(config: NgbModalConfig, 
   private modalService: NgbModal,
@@ -40,18 +42,25 @@ export class TablaBeneficiosConyugeComponent implements OnInit {
     this.listarDatosConyuge();
   }
 
+  limpiar_tabla(){
+    this.vista_tabla = false;
+  }
+
   listarDatosConyuge(){
     this._SociosService.getDatosConyuge(this.getIdSocio).subscribe((response) =>{
       console.log(response);
      if(response.estado == "failed"){
        alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+       this.vista_tabla = false;
        return false;
      }else{
        this.traerDatosConyuge = response.body;
+       this.vista_tabla = true;
      }
  
         error => {
        console.log(error);
+       this.vista_tabla = false;
        }
      }
    );

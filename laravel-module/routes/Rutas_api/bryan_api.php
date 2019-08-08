@@ -21,7 +21,7 @@ Route::post('/ingresar_pago_abono', 'PrestamosController@PagoAbonos');
 
 //------------------------------------------>rutas portal socio
 
-Route::post('/modificar_datos_socio', 'PortalSocioController@ActualizarDatosSocios');
+Route::post('/modificar_datos_socio', 'PortalSocioController@ModificarDatosSocios');
 Route::get('/socio_logeado', 'PortalSocioController@SocioLogeado');
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

@@ -12,9 +12,9 @@ class PortalSocioController extends Controller
         return PortalSocio::loginSocios($request);
     }
 
-    public function ActualizarDatosSocios(Request $request)
+    public function ModificarDatosSocios(Request $request)
     {
-        return PortalSocio::actualizarDatosSocios($request);
+        return PortalSocio::modificarDatosSocios($request);
     }
 
     public function SocioLogeado()

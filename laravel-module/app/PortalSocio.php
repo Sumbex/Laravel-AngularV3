@@ -42,6 +42,10 @@ class PortalSocio extends Authenticatable implements JWTSubject
         'rut', 'password'
     ];
 
+    protected $hidden = [
+        'password', 'activo', 'created_at', 'updated_at', 'fecha_egreso', 'rol'
+    ];
+
     protected $guard = 'socio_api';
 
     protected function loginSocios($request)
@@ -111,13 +115,96 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function socioLogeado()
     {
-        /* dd(Auth::guard('socio_api')->user()); */
+
         $socio = PortalSocio::find(Auth::guard('socio_api')->user()->id);
-        return /* Auth::guard('socio_api')->user() */ $socio;
+        /* dd($socio); */
+        return $socio;
     }
 
-    protected function actualizarDatosSocios($request)
+    /* protected function div_fecha($value)
     {
-        //
+        $fecha = $value;
+        $ano = substr($fecha, -10, 4);
+        $mes = substr($fecha, -5, 2);
+        $dia = substr($fecha, -2, 2);
+        return [
+            'anio' => $ano, 'mes' => $mes, 'dia' => $dia
+        ];
+    }
+    protected function anio_tipo_id($value)
+    {
+        return DB::table('anio')->where('descripcion', $value)->first();
+    }
+
+    protected function mes_tipo_id($value)
+    {
+        return DB::table('mes')->where('id', $value)->first();
+    } */
+
+    protected function verificarSocio($id)
+    {
+        $verificar = DB::table('socios')
+            ->where([
+                'id' => $id,
+                'activo' => 'S'
+            ])
+            ->first();
+        if (is_null($verificar->fecha_egreso)) {
+            return ['estado' => 'success'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Ya no te encuentras activo en el sindicato, si no es asi regulariza tu situacion.'];
+        }
+    }
+
+    protected function modificarDatosSocios($request)
+    {
+        $verificar = $this->verificarSocio($request->socio_id);
+
+        if ($verificar['estado'] == 'success') {
+            $socio = PortalSocio::find($request->socio_id);
+            switch ($request->nombre_campo) {
+                case 'nombres':
+                    $socio->nombres = $request->input;
+                    if ($socio->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Nombres Actualizados.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                    break;
+
+                case 'a_paterno':
+                    $socio->a_paterno = $request->input;
+                    if ($socio->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Apellido Actualizado.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                    break;
+
+                case 'a_materno':
+                    $socio->a_materno = $request->input;
+                    if ($socio->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Apellido Actualizado.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                    break;
+
+                case 'fecha_nacimiento':
+                    $socio->fecha_nacimiento = $request->input;
+                    if ($socio->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Fecha de Nacimiento Actualizada.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        } else {
+            return $verificar;
+        }
     }
 }

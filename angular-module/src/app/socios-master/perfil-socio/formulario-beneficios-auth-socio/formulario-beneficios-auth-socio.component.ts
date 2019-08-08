@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-formulario-beneficios-auth-socio',
@@ -15,7 +16,7 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
   datosSocio = {
     numeroCuenta: '',
     banco: '',
-    tipoCuenta: '',
+    tipoCuenta: '0',
     isaFona: '',
     grupoSangre: '',
     direccion: '',
@@ -28,15 +29,14 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
     emailPersonal: '',
     emailCorporativo: '',
     cargoPlanta: '',
-    cargoComisionSindicato: '',
-    casaPropia: '',
-    rolTurno: '',
-    estadoCivil: '',
-    conyugePareja: ''
+    cargoComisionSindicato: '0',
+    casaPropia: '0',
+    rolTurno: '0',
+    estadoCivil: '0',
+    conyugePareja: '0'
   }
 
-  constructor(config: NgbModalConfig, 
-    private modalService: NgbModal) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
       config.backdrop = 'static';
       config.keyboard = false;
     }
@@ -48,7 +48,7 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
     this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
   }
 
-  test(){
+  ingresarDatosSocio(){
     console.log(this.datosSocio);
   }
 

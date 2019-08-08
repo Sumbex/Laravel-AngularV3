@@ -33,7 +33,6 @@ export class NavbarComponent implements OnInit {
     this._userService.getUsuarioLogeado().subscribe(
       response => {
         this.nombreUsuario = response.name + " " + response.a_paterno;
-        console.log(this.nombreUsuario);
       },
       error => {
         console.log(error);

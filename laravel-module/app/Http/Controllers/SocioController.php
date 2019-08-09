@@ -613,9 +613,9 @@ class SocioController extends Controller
         $beneficiario = SocioBeneficiario::where([
                         'activo'=>'S',
                         'socio_id' => $socio_id
-                    ])->first();
+                    ])->get();
        
-        if ($beneficiario) {
+        if (count($beneficiario) > 0) {
             return ['estado'=>'success', 'body'=>$beneficiario];
         }
         return ['estado'=>'failed', 'body'=>''];

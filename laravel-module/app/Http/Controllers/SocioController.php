@@ -326,7 +326,7 @@ class SocioController extends Controller
         if (empty($r->valor)) {
             return ['estado'=>'failed', 'mensaje'=>'No hay un valor ingresado'];
         }
-        
+
         $sdb = Socio_datos_basicos::where(['activo' => 'S','socio_id' => $r->id])->first();
         $ss = SocioSituacion::where(['activo' => 'S','socio_id' => $r->id])->first();
 
@@ -750,6 +750,9 @@ class SocioController extends Controller
 
     public function verificar_beneficio_por_rut($rut, $socio_id)
     {
-        return true;
+        return false;
     }
+
+
+
 }

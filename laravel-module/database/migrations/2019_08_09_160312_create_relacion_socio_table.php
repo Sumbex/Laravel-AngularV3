@@ -15,6 +15,8 @@ class CreateRelacionSocioTable extends Migration
     {
         Schema::create('relacion_socio', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('descripcion');
+            $table->char('activo',1);
             $table->timestamps();
         });
     }

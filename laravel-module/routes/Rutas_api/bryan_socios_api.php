@@ -1,3 +1,6 @@
-<?php 
+<?php
+//------------------------------------------>rutas portal socio
 
-//rutas
+Route::post('/modificar_datos_socio', 'PortalSocioController@ModificarDatosSocios');
+Route::get('/socio_logeado', 'PortalSocioController@SocioLogeado');
+

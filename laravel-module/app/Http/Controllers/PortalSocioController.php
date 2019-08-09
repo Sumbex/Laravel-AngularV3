@@ -21,4 +21,14 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::socioLogeado();
     }
+
+    public function TraerDatosBasicosSocios()
+    {
+        return PortalSocio::traerDatosBasicosSocios();
+    }
+
+    public function IngresarDatosBasicosSocio(Request $request)
+    {
+        return PortalSocio::ingresarDatosBasicosSocio($request);
+    }
 }

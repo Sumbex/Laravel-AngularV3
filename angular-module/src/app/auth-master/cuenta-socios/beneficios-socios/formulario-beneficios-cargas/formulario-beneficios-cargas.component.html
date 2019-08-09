@@ -1,115 +1,138 @@
-<div class="card-header" id="demoFont2">
-  <h6 class="card-title">Cargas Legales</h6>
-</div>
-<div class="card">
-  <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+<ng-template #formularioBeneficiosCargas let-modal>
+  <div class="modal-header sticky-top" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-table"></i> Datos del Socio: {{getNombreSocio | uppercase}}</h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body" id="printJS-table">
 
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-      <div class="row justify-content-between">
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Tipo de carga</strong></label>
-            <select name="Cta" id="cta" class="form-control form-control-sm" required>
-              <option value="">--Seleccione--</option>
-              <option value="">Hijo</option>
-              <option value="">Nieto</option>
-              <option value="">Adoptacion</option>
-              <option value="">otros</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Rut</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Fecha de Nacimiento</strong></label>
-            <input type="date" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-      </div>
+    <div class="card-header" id="demoFont2">
+      <h6 class="card-title">Cargas Legales</h6>
     </div>
+    <div class="card">
 
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-      <div class="row justify-content-between">
-        
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Nombres</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-        </div>
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
 
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Apellido Paterno</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Apellido Materno</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-      <div class="row justify-content-between">
-
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
-          <div class="form-group">
-            <label><strong>Direccion</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
-          <div class="form-group">
-            <label><strong>Comuna</strong></label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
-          <div class="form-group">
-            <label><strong>Celular</strong></label>
-            <input type="number" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3"> 
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Establecimiento</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <label><strong>Tipo de carga*</strong></label>
+              <select name="Carga" id="carga" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.tipo_carga" required>
+                <option value="">--Seleccione--</option>
+                <option value="1">Hijo</option>
+                <option value="2">Nieto</option>
+                <option value="3">Adoptacion</option>
+                <option value="4">otros</option>
+              </select>
             </div>
           </div>
 
-      </div>
-    </div>  
-
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="row justify-content-end">
-
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-          <label><strong>Guardar Datos</strong></label>
-          <div class="form-group">
-              <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Rut*</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.rut_carga" required>
+            </div>
           </div>
-        </div>
-        
-      </div>
-    </div>
 
-  </form>
-</div> <br>
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Fecha de Nacimiento*</strong></label>
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.fecha_nacimiento" required>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Nombres*</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.nombres" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Apellido Paterno*</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.apellido_paterno" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Apellido Materno*</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.apellido_materno" required>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <div class="form-group">
+              <label><strong>Direccion*</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.direccion" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <div class="form-group">
+              <label><strong>Celular*</strong></label>
+              <input type="number" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.celular" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <div class="form-group">
+              <label><strong>Establecimiento*</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.establecimiento" required>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row justify-content-end">
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+            <label><strong>Guardar Datos de la Carga</strong></label>
+            <div class="form-group">
+              <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDatosCarga()" >Guardar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <br>
+  </div>
+
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+    <!--<button type="button" class="btn btn-success" 
+onclick="printJS({
+  printable: 'printJS-table',
+  type:'html',
+  style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+})">
+<i class="fas fa-print"></i>  Imprimir Datos
+</button>-->
+
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Cargas
+    </button>
+  </div>
+</ng-template>
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn btn-success btn-block btn-sm" type="button"
+  (click)="verFormularioBeneficios(formularioBeneficiosCargas)">Insertar Datos</button>

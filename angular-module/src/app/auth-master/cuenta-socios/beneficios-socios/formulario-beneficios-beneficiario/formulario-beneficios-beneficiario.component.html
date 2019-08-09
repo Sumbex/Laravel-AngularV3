@@ -11,29 +11,28 @@
       <h6 class="card-title">Beneficiario</h6>
     </div>
     <div class="card">
-      <form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
         <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
           <div class="row justify-content-between">
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Relacion o Parentesco</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <label><strong>Relacion o Parentesco*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.relacion" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Rut</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <label><strong>Rut*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.rut_beneficiario" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Fecha de Nacimiento</strong></label>
-                <input type="date" class="form-control form-control-sm" required>
+                <label><strong>Fecha de Nacimiento*</strong></label>
+                <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.fecha_nacimiento" required>
               </div>
             </div>
 
@@ -45,22 +44,22 @@
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Nombres</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <label><strong>Nombres*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.nombres" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Apellido Paterno</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <label><strong>Apellido Paterno*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.apellido_paterno" required>
               </div>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Apellido Materno</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <label><strong>Apellido Materno*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.apellido_materno" required>
               </div>
             </div>
 
@@ -72,49 +71,28 @@
 
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Direccion</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
+                <label><strong>Direccion*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.direccion" required>
               </div>
             </div>
 
-            <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Comuna</strong></label>
-                <input type="text" class="form-control form-control-sm" required>
-              </div>
-            </div> -->
-
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
               <div class="form-group">
-                <label><strong>Celular</strong></label>
-                <input type="number" class="form-control form-control-sm" required>
+                <label><strong>Celular*</strong></label>
+                <input type="number" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.celular" required>
               </div>
             </div>
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3 align-self-end">
               <label><strong>Guardar Datos del Beneficiario</strong></label>
               <div class="form-group">
-                <button class="btn btn-block btn-outline-success btn-sm">Guardar</button>
+                <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDatosBeneficiario()">Guardar</button>
               </div>
             </div>
 
           </div>
         </div>
-<!-- 
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="row justify-content-end">
 
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-              <label><strong>Guardar Datos del Beneficiario</strong></label>
-              <div class="form-group">
-                <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
-              </div>
-            </div>
-
-          </div>
-        </div> -->
-
-      </form>
     </div> <br>
   </div>
 

@@ -80,4 +80,7 @@
 </ng-template>
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn btn-success btn-block btn-sm" type="button" (click)="verTablaBeneficios(tablaBeneficiosConyuge)">Ver Datos</button>
+<button class="btn btn btn-success btn-block btn-sm" type="button"
+    [disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
+    (click)="verTablaBeneficios(tablaBeneficiosConyuge)">Ver Datos
+</button>

@@ -13,7 +13,8 @@
     </div>
     <div class="card"> <br>
       <div class="table-responsive">
-        <table class="table table-striped table-bordered table-sm">
+        <div *ngIf="!vista_tabla" class="loader"></div>
+        <table *ngIf="vista_tabla" class="table table-striped table-bordered table-sm">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row justify-content-between">
 
@@ -21,7 +22,7 @@
                 <tr>
                   <th style="background: #138D75" class="text-right">RELACION:</th>
                   <td><input type="text" class="sinbordefondo"
-                      value="{{traerDatosBeneficiario.relacion_parentesco | uppercase}}"></td>
+                      value="{{traerDatosBeneficiario.relacion | uppercase}}"></td>
                   <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
@@ -84,12 +85,15 @@
     <i class="fas fa-print"></i>  Imprimir Datos
     </button> -->
 
-    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
-        class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Conyuge
+    <button type="button" class="btn btn-info" 
+      (click)="modal.close('Close click'); limpiar_tabla()">
+      <i class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Conyuge
     </button>
   </div>
 </ng-template>
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn btn-success btn-block btn-sm" type="button"
-  (click)="verTablaBeneficios(tablaBeneficiosBeneficiario)">Ver Datos</button>
+<button class="btn btn btn-success btn-block btn-sm" type="button" 
+  [disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
+  (click)="verTablaBeneficios(tablaBeneficiosBeneficiario)">Ver Datos
+</button>

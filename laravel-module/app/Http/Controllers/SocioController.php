@@ -593,10 +593,10 @@ class SocioController extends Controller
         $sb->socio_id = $r->socio_id;
         $sb->relacion = $r->relacion;
         $sb->rut = $r->rut;
-        $sb->fecha_nacimiento = $sb->fecha_nacimiento;
-        $sb->nombres = $sb->nombres;
-        $sb->apellido_paterno = $sb->apellido_paterno;
-        $sb->apellido_materno = $sb->apellido_materno;
+        $sb->fecha_nacimiento = $r->fecha_nacimiento;
+        $sb->nombres = $r->nombres;
+        $sb->apellido_paterno = $r->apellido_paterno;
+        $sb->apellido_materno = $r->apellido_materno;
         $sb->direccion = $r->direccion;
         $sb->celular = $r->celular;
         $sb->activo = 'S';

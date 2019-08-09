@@ -15,7 +15,8 @@ class CreateTipoCargaTable extends Migration
     {
         Schema::create('tipo_carga', function (Blueprint $table) {
             $table->bigIncrements('id');
-           // $table->
+            $table->text('descripcion');
+            $table->char('activo',1);
             $table->timestamps();
         });
     }

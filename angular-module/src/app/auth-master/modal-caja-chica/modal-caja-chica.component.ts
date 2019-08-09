@@ -14,6 +14,7 @@ import { UsuarioService } from 'src/app/servicios/usuarios.service';
 import { global } from '../../servicios/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { element } from 'protractor';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -25,6 +26,8 @@ export class ModalCajaChicaComponent implements OnInit {
 
   //variables
   url = global.url;
+  baseUrl = 'https://www.youtube.com/watch?v=3v79CLLhoyE';
+  safeUrl;
   token = localStorage.getItem('token').replace(/['"]+/g, '');
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
@@ -86,9 +89,10 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso: null
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService, public _http: HttpClient) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService, public _http: HttpClient, protected sanitizer: DomSanitizer) {
     config.backdrop = 'static';
     config.keyboard = false;
+    this.safeUrl = sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl);
 
   }
 
@@ -125,6 +129,10 @@ export class ModalCajaChicaComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
   }
 
   openCajaChica(CajaChica) {
@@ -333,6 +341,10 @@ export class ModalCajaChicaComponent implements OnInit {
         }
       }
     )
+  }
+
+  test(ruta){
+    console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + ruta));
   }
 
 }

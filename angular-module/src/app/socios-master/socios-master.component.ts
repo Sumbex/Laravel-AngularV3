@@ -13,14 +13,14 @@ export class SociosMasterComponent implements OnInit {
 
   constructor(private _usuariosService: UsuarioService, private config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
-    config.keyboard = false;  
+    config.keyboard = false;
   }
 
   ngOnInit() {
   }
 
   open(content) {
-    this.modalService.open(content, {centered:true});
+    this.modalService.open(content, {size: 'lg'});
   }
 
   startTimerToken(){

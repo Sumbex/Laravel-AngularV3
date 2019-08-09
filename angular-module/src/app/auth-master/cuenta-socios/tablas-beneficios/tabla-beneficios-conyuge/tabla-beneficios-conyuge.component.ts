@@ -50,8 +50,10 @@ vista_tabla: boolean = false;
     this._SociosService.getDatosConyuge(this.getIdSocio).subscribe((response) =>{
       console.log(response);
      if(response.estado == "failed"){
-       alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+      //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
        this.vista_tabla = false;
+       alert(response.mensaje);
+       this.abrirTablaBeneficiosConyuge.close();
        return false;
      }else{
        this.traerDatosConyuge = response.body;

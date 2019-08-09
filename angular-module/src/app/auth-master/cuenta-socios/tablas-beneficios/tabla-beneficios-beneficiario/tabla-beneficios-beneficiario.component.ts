@@ -52,8 +52,10 @@ export class TablaBeneficiosBeneficiarioComponent implements OnInit {
     this._SociosService.getDatosBeneficiario(this.getIdSocio).subscribe((response) =>{
       console.log(response);
      if(response.estado == "failed"){
-       alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+      //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
        this.vista_tabla = false;
+       alert(response.mensaje);
+       this.abrirTablaBeneficiosBeneficiario.close();
        return false;
      }else{
        this.traerDatosBeneficiario = response.body;

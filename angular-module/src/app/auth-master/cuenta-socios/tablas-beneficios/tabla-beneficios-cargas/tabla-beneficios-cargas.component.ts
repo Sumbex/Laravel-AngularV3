@@ -8,7 +8,7 @@ import { SociosService } from 'src/app/servicios/socios.service';
   styleUrls: ['./tabla-beneficios-cargas.component.css']
 })
 export class TablaBeneficiosCargasComponent implements OnInit {
-  abrirTablaBeneficiosSocios;
+  abrirTablaBeneficiosCarga;
 
   @Input () getIdSocio;
   @Input () getNombreSocio;
@@ -38,7 +38,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
   }
 
   verTablaBeneficios(TablaBeneficios) {
-    this.abrirTablaBeneficiosSocios = this.modalService.open(TablaBeneficios, { size: 'xl' });
+    this.abrirTablaBeneficiosCarga = this.modalService.open(TablaBeneficios, { size: 'xl' });
     this.listarDatosCarga();
   }
 
@@ -49,8 +49,10 @@ export class TablaBeneficiosCargasComponent implements OnInit {
   listarDatosCarga(){
    this._SociosService.getDatosCarga(this.getIdSocio).subscribe((response) =>{
     if(response.estado == "failed"){
-      alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+      // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
       this.vista_tabla = false;
+      alert(response.mensaje);
+      this.abrirTablaBeneficiosCarga.close();
       return false;
     }else{
       this.traerDatosCarga = response.body;

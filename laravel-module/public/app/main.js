@@ -3139,8 +3139,10 @@ let TablaBeneficiosBeneficiarioComponent = class TablaBeneficiosBeneficiarioComp
         this._SociosService.getDatosBeneficiario(this.getIdSocio).subscribe((response) => {
             console.log(response);
             if (response.estado == "failed") {
-                alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+                //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
                 this.vista_tabla = false;
+                alert(response.mensaje);
+                this.abrirTablaBeneficiosBeneficiario.close();
                 return false;
             }
             else {
@@ -3230,7 +3232,7 @@ let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
     ngOnInit() {
     }
     verTablaBeneficios(TablaBeneficios) {
-        this.abrirTablaBeneficiosSocios = this.modalService.open(TablaBeneficios, { size: 'xl' });
+        this.abrirTablaBeneficiosCarga = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosCarga();
     }
     limpiar_tabla() {
@@ -3239,8 +3241,10 @@ let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
     listarDatosCarga() {
         this._SociosService.getDatosCarga(this.getIdSocio).subscribe((response) => {
             if (response.estado == "failed") {
-                alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+                // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
                 this.vista_tabla = false;
+                alert(response.mensaje);
+                this.abrirTablaBeneficiosCarga.close();
                 return false;
             }
             else {
@@ -3338,8 +3342,10 @@ let TablaBeneficiosConyugeComponent = class TablaBeneficiosConyugeComponent {
         this._SociosService.getDatosConyuge(this.getIdSocio).subscribe((response) => {
             console.log(response);
             if (response.estado == "failed") {
-                alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+                //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
                 this.vista_tabla = false;
+                alert(response.mensaje);
+                this.abrirTablaBeneficiosConyuge.close();
                 return false;
             }
             else {
@@ -3493,8 +3499,10 @@ let TablaBeneficiosSocioComponent = class TablaBeneficiosSocioComponent {
     listarDatosSocio() {
         this._SociosService.getDatosSocio(this.getIdSocio).subscribe((response) => {
             if (response.estado == "failed") {
-                alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+                // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
                 this.vista_tabla = false;
+                alert(response.mensaje);
+                this.abrirTablaBeneficiosSocios.close();
                 return false;
             }
             else {

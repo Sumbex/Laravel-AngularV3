@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -47,6 +49,81 @@ class PortalSocio extends Authenticatable implements JWTSubject
     ];
 
     protected $guard = 'socio_api';
+
+    public function validarDatos($request, $opcion)
+    {
+        switch ($opcion) {
+            case 1:
+                switch ($request->nombre_campo) {
+                    case 'nombres':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'socio_id' => 'required',
+                                'input' => 'required|min:0'
+                            ],
+                            [
+                                'socio_id.required' => 'Debes pasar el ID del socio',
+                                'input.required' => 'El nombre es necesario'
+                            ]
+                        );
+                        break;
+                    case 'a_paterno':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'socio_id' => 'required',
+                                'input' => 'required|min:0'
+                            ],
+                            [
+                                'socio_id.required' => 'Debes pasar el ID del socio',
+                                'input.required' => 'El apellido es necesario'
+                            ]
+                        );
+                        break;
+                    case 'a_materno':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'socio_id' => 'required',
+                                'input' => 'required|min:0'
+                            ],
+                            [
+                                'socio_id.required' => 'Debes pasar el ID del socio',
+                                'input.required' => 'El apellido es necesario'
+                            ]
+                        );
+                        break;
+                    case 'fecha_nacimiento':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'socio_id' => 'required',
+                                'input' => 'required'
+                            ],
+                            [
+                                'socio_id.required' => 'Debes pasar el ID del socio',
+                                'input.required' => 'La fecha es necesaria'
+                            ]
+                        );
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        if ($validator->fails()) {
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
+        }
+        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
 
     protected function loginSocios($request)
     {
@@ -158,53 +235,57 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function modificarDatosSocios($request)
     {
-        $verificar = $this->verificarSocio($request->socio_id);
+        $validarDatos = $this->validarDatos($request, 1);
+        if ($validarDatos['estado'] == 'success') {
+            $verificar = $this->verificarSocio($request->socio_id);
+            if ($verificar['estado'] == 'success') {
+                $socio = PortalSocio::find($request->socio_id);
+                switch ($request->nombre_campo) {
+                    case 'nombres':
+                        $socio->nombres = $request->input;
+                        if ($socio->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Nombre Actualizado.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
 
-        if ($verificar['estado'] == 'success') {
-            $socio = PortalSocio::find($request->socio_id);
-            switch ($request->nombre_campo) {
-                case 'nombres':
-                    $socio->nombres = $request->input;
-                    if ($socio->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Nombres Actualizados.'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
-                    }
-                    break;
+                    case 'a_paterno':
+                        $socio->a_paterno = $request->input;
+                        if ($socio->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Apellido Actualizado.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
 
-                case 'a_paterno':
-                    $socio->a_paterno = $request->input;
-                    if ($socio->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Apellido Actualizado.'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
-                    }
-                    break;
+                    case 'a_materno':
+                        $socio->a_materno = $request->input;
+                        if ($socio->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Apellido Actualizado.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
 
-                case 'a_materno':
-                    $socio->a_materno = $request->input;
-                    if ($socio->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Apellido Actualizado.'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
-                    }
-                    break;
+                    case 'fecha_nacimiento':
+                        $socio->fecha_nacimiento = $request->input;
+                        if ($socio->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Fecha de Nacimiento Actualizada.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
 
-                case 'fecha_nacimiento':
-                    $socio->fecha_nacimiento = $request->input;
-                    if ($socio->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Fecha de Nacimiento Actualizada.'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
-                    }
-                    break;
-
-                default:
-                    # code...
-                    break;
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                return $verificar;
             }
         } else {
-            return $verificar;
+            return $validarDatos;
         }
     }
 }

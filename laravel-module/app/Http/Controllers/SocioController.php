@@ -593,8 +593,9 @@ class SocioController extends Controller
         $sb->celular = $r->celular;
         $sb->activo = 'S';
         if ($sb->save()) {
-            return ['estado'=>'success','mensaje'=>''];
+            return ['estado'=>'success','mensaje'=>'Beneficiario ingresado con exito!'];
         }
+        return ['estado'=>'failed','mensaje'=>'No se pudo ingresar el beneficiario!'];
 
     }
 

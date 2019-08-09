@@ -63,3 +63,5 @@ Route::get('traer_datos_conyuge/{socio_id}','SocioController@traer_datos_conyuge
 Route::get('actualizar_datos_conyuge','SocioController@actualizar_datos_conyuge');
 
 Route::post('guardar_datos_beneficiario','SocioController@guardar_datos_beneficiario');
+Route::get('traer_datos_beneficiario','SocioController@traer_datos_beneficiario');
+

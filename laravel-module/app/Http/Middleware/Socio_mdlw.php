@@ -16,11 +16,17 @@ class Socio_mdlw
      */
     public function handle($request, Closure $next)
     {
-        $rol = Auth::guard('socio_api')->user()->rol;
+        $socio = Auth::guard('socio_api')->user();
+        $admin = Auth::user();
 
-        if ($rol == '10') {
+        $logeado = !empty($socio)? $socio : $admin;
+
+        // return response()->json($logeado);
+
+        if ((string)$logeado->rol == "10") { //si el rol es de socio       
             return $next($request);
         }
-            
+        
+        return response(['status'=>'failed', 'mensaje'=>'No tienes acceso a esta url']);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class Admin_mdlw
 {
@@ -16,10 +17,18 @@ class Admin_mdlw
      */
     public function handle($request, Closure $next)
     {
-        $rol = Auth::user()->rol;
+        $socio = Auth::guard('socio_api')->user();
+        $admin = Auth::user();
 
-        if ($rol == "1") { //si el rol es de administrador       
+        $logeado = !empty($socio)? $socio : $admin;
+
+         //return response()->json($logeado->rol);
+
+        if ((string)$logeado->rol == "1") { //si el rol es de administrador       
             return $next($request);
         }
+        
+        return response(['status'=>'failed', 'mensaje'=>'No tienes acceso a esta url']);
+
     }
 }

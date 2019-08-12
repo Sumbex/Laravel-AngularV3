@@ -67,6 +67,10 @@ import { FormularioBeneficiosConyugeAuthSocioComponent } from './socios-master/p
 import { FormularioBeneficiosBeneficiarioAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component';
 import { FormularioBeneficiosCargasAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component';
 import { FormularioBeneficiosPadresSuegrosAuthSocioComponent } from './socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component';
+import { PortalSociosService } from './servicios/portal-socios.service';
+import { AuthGuardSocioService } from './guardianes/authSocio.guard.service';
+import { TablaBeneficiosBeneficiarioComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component';
+import { SafePipe } from './safe.pipe';
 
 
 @NgModule({
@@ -135,6 +139,7 @@ import { FormularioBeneficiosPadresSuegrosAuthSocioComponent } from './socios-ma
     TablaBeneficiosPadresSuegrosComponent,
 
     TablaBeneficiosSocioComponent,
+    TablaBeneficiosBeneficiarioComponent,
 
     SociosMasterComponent,
 
@@ -152,7 +157,9 @@ import { FormularioBeneficiosPadresSuegrosAuthSocioComponent } from './socios-ma
 
     FormularioBeneficiosCargasAuthSocioComponent,
 
-    FormularioBeneficiosPadresSuegrosAuthSocioComponent
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent,
+
+    SafePipe
 
   ],
   imports: [
@@ -165,12 +172,14 @@ import { FormularioBeneficiosPadresSuegrosAuthSocioComponent } from './socios-ma
   providers: [
     UsuarioService,
     AuthGuardService,
+    AuthGuardSocioService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService,
     AniosService,
     TipoCuentasService,
     SindicalService,
-    CajaChicaService
+    CajaChicaService,
+    PortalSociosService
   ],
   bootstrap: [AppComponent]
 })

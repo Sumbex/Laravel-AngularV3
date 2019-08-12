@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
 
 @Component({
@@ -13,9 +13,9 @@ export class BeneficiosSociosComponent implements OnInit {
   fechaSocioTest='';
   rutSocioTest='';
   nombreSocioTest='';
+  nombreUpperSocio='';
   /*-----------------------------*/
   idSocio='';
-  nombreCompletoSocio='';
 
   constructor(
     private _SociosService:SociosService
@@ -40,6 +40,7 @@ export class BeneficiosSociosComponent implements OnInit {
           this.fechaSocioTest = response.fecha_nacimiento;
           this.rutSocioTest = response.rut;
           this.nombreSocioTest = response.nombres +' '+ response.a_paterno +' '+ response.a_materno;
+          this.nombreUpperSocio = this.nombreSocioTest.toUpperCase();
           this.idSocio = response.id;
         }
     },

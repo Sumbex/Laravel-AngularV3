@@ -22,8 +22,6 @@ export class SindicalService{
         body.append('descripcion', form.descripcion);
         body.append('definicion', form.definicion);
         body.append('monto', form.monto);
-        
-        console.log(body);
 
         return this._http.post(this.url + "guardar_item_c_s", body, {headers: new HttpHeaders(
             {
@@ -57,7 +55,6 @@ export class SindicalService{
         body.append('id', id);
         body.append('campo', campo);
         body.append('input', input);
-        console.log(body);
 
         return this._http.post(this.url + "actualizar_dato_cs",body, {headers: new HttpHeaders(
             {
@@ -110,7 +107,6 @@ export class SindicalService{
         body.append('checkdia', form.checkDia);
         body.append('checktri', form.checkTri);
         body.append('checkcon', form.checkCon);
-        console.log(body);
 
         return this._http.post(this.url + "ingresar_prestamo",body, {headers: new HttpHeaders(
             {

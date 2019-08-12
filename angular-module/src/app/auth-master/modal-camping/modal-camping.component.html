@@ -155,8 +155,30 @@
 
 
                   </td>
+
+                  <!--MODAL VISOR PDF-->
+                  <ng-template #visorCamping let-c="close" let-d="dismiss">    
+                    <div class="row">
+                        <div class="col">
+                            <div class="modal-header text-center" id="demoFont">
+                                <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                    <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento | safeUrl" frameborder="0" allowfullscreen></iframe>
+                            </div> 
+                            <div class="modal-footer" [hidden]="true">
+                                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                  </ng-template>
+                  <!--MODAL VISOR PDF-->
+
                   <td scope="col">
-                     <a href="{{  '../' + item.archivo_documento}}" target="_blank" class="btn-primary-outline">
+                     <a (click)="open(visorCamping)" class="btn-primary-outline">
                         <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                       </a>&nbsp;
                       <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(m_doc)">

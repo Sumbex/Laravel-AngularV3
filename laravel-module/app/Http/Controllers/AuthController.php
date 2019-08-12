@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,9 @@ class AuthController extends Controller
 			}
 			else{//rut si valido
 
+				// config()->set( 'auth.defaults.guard', 'api' );
+                // \Config::set('jwt.user', App\User::class);
+                // \Config::set('auth.providers.users.model', \App\User::class);
 			
 			    $user = User::where('rut', $request->email)->first();
 
@@ -50,7 +54,8 @@ class AuthController extends Controller
 				    }
 				    return response([
 				            'status' => 'success',
-				            'token' => $token
+				            'token' => $token,
+				            'rol' => (string)$user->rol,
 				        ])
 				        ->header('Authorization', $token);
 				}

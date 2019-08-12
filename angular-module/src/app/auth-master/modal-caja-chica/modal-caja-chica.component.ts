@@ -6,14 +6,12 @@ import { CajaChicaService } from 'src/app/servicios/caja-chica.service';
 import { TablaCajaChicaComponent } from './tabla-caja-chica/tabla-caja-chica.component';
 import { Anios } from 'src/app/modelos/anios.model';
 import { Meses } from 'src/app/modelos/meses.model';
-import { all } from 'q';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { cajaChicaSindicalTotales } from 'src/app/modelos/cajaChicaSindicalTotales';
-import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuarios.service';
 import { global } from '../../servicios/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { element } from 'protractor';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-modal-caja-chica',
@@ -86,10 +84,9 @@ export class ModalCajaChicaComponent implements OnInit {
     monto_egreso: null
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService, public _http: HttpClient) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _cajaChicaService: CajaChicaService, private _fechasService: AniosService, private _usuariosSevice: UsuarioService, public _http: HttpClient, protected sanitizer: DomSanitizer) {
     config.backdrop = 'static';
     config.keyboard = false;
-
   }
 
   ngOnInit() {
@@ -125,6 +122,10 @@ export class ModalCajaChicaComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
   }
 
   openCajaChica(CajaChica) {

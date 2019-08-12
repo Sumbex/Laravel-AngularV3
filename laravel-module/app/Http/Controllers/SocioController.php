@@ -723,7 +723,7 @@ class SocioController extends Controller
             $carga->rut = $r->rut;
             $carga->fecha_nacimiento = $r->fecha_nacimiento;
             $carga->nombres = $r->nombres;
-            $carga->apellido_paterno = $r->apellido_materno;
+            $carga->apellido_paterno = $r->apellido_paterno;
             $carga->apellido_materno = $r->apellido_materno;
             $carga->direccion = $r->direccion;
             $carga->celular = $r->celular;
@@ -750,10 +750,42 @@ class SocioController extends Controller
     }
     public function actualizar_datos_carga(Request $r)
     {
-        # code...
+        # code... //falta actualizar a la carga.................
     }
 
 // -- FIN DATOS DE LA CARGA--------------------------------------------------------
+
+// -- INICIO DATOS  PADRES Y SUEGROS
+
+    public function guardar_datos_padres_suegros(Request $r)
+    {
+        $verify_i = SocioPadresSuegros::where(['rut'=> $r->rut ,'activo'=>'S','socio_id'=>$r->socio_id])->first();
+
+        if (!empty($verify_i)) {
+            return ['estado'=>'failed','mensaje'=>'Este rut ya esta en datos del padre y/o suegros'];
+        }else{
+
+            $i = new SocioPadresSuegros;
+            $i->socio_id = $r->socio_id;
+            $i->relacion_socio_id = $r->relacion_socio_id;
+            $i->rut = $r->rut;
+            $i->fecha_nacimiento = $r->fecha_nacimiento;
+            $i->nombres = $r->nombres;
+            $i->apellido_paterno = $r->apellido_paterno;
+            $i->apellido_materno = $r->apellido_materno;
+            $i->direccion = $r->direccion;
+            $i->celular = $r->celular;
+            $i->activo = 'S';
+            if ($i->save()) {
+                return [ 'estado'=>'success', 'mensaje'=>'Persona ingresada con exito!' ];
+            }else{
+                return [ 'estado'=>'success', 'mensaje'=>'Persona ingresada con exito!' ];
+            }
+        }
+    }
+
+
+// -- FIN DATOS PADRES Y SUEGROS    
     function valida_rut($rut)
     {
         $rut = preg_replace('/[^k0-9]/i', '', $rut);

@@ -47,7 +47,6 @@ export class ListarSociosComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("a lo vio perro chuchetumareeee "+localStorage.getItem('token'));
 
     if (localStorage.getItem('token') == '') {
       alert("La sesión ya expiro!");

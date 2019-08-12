@@ -14,7 +14,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
   InsertarBeneficiosCargas ={
-    tipo_carga:'',
+    tipo_carga_id:'',
     rut_carga:'',
     fecha_nacimiento:'',
     nombres:'',
@@ -38,13 +38,13 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
   }
 
   guardarDatosCarga(){
-    if(this.InsertarBeneficiosCargas.tipo_carga == '' && this.InsertarBeneficiosCargas.rut_carga == '' && this.InsertarBeneficiosCargas.fecha_nacimiento == '' && this.InsertarBeneficiosCargas.nombres == '' && this.InsertarBeneficiosCargas.apellido_paterno == '' && this.InsertarBeneficiosCargas.apellido_materno == '' && this.InsertarBeneficiosCargas.direccion == '' && this.InsertarBeneficiosCargas.celular == ''  && this.InsertarBeneficiosCargas.establecimiento == ''){
+    if(this.InsertarBeneficiosCargas.tipo_carga_id == '' && this.InsertarBeneficiosCargas.rut_carga == '' && this.InsertarBeneficiosCargas.fecha_nacimiento == '' && this.InsertarBeneficiosCargas.nombres == '' && this.InsertarBeneficiosCargas.apellido_paterno == '' && this.InsertarBeneficiosCargas.apellido_materno == '' && this.InsertarBeneficiosCargas.direccion == '' && this.InsertarBeneficiosCargas.celular == ''  && this.InsertarBeneficiosCargas.establecimiento == ''){
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
-    data.append('tipo_carga', this.InsertarBeneficiosCargas.tipo_carga);
+    data.append('tipo_carga_id', this.InsertarBeneficiosCargas.tipo_carga_id);
     data.append('rut',this.InsertarBeneficiosCargas.rut_carga);
     data.append('fecha_nacimiento',this.InsertarBeneficiosCargas.fecha_nacimiento);
     data.append('nombres',this.InsertarBeneficiosCargas.nombres);
@@ -60,7 +60,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
         return false;
       }
       if(response.estado == 'success'){
-       this.InsertarBeneficiosCargas.tipo_carga = '';
+       this.InsertarBeneficiosCargas.tipo_carga_id = '';
        this.InsertarBeneficiosCargas.rut_carga = '';
        this.InsertarBeneficiosCargas.fecha_nacimiento = '';
        this.InsertarBeneficiosCargas.nombres = '';

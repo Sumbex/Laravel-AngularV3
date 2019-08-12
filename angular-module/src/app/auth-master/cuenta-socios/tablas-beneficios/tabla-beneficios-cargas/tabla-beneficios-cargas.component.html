@@ -18,12 +18,12 @@
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
               <div class="row justify-content-between">
   
-                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                <div *ngFor="let item of traerDatosCarga" class="col-12 col-md-6 col-lg-6 col-xl-6">
                   <tr>
                     <th style="background: #138D75" class="text-right">RELACION:</th>
                     <td>
                         <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo"
-                        [(ngModel)]="traerDatosCarga.tipo_carga" required>
+                        [(ngModel)]="item.tipo_carga_id" required>
                         <option value="">--SELECCIONE--</option>
                         <option value="1">HIJO</option>
                         <option value="2">NIETO</option>
@@ -35,49 +35,49 @@
                   </tr>
                   <tr>
                     <th style="background: #138D75" class="text-right">RUT:</th>
-                    <td><input type="text" class="sinbordefondo" value="{{traerDatosCarga.rut}}"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{item.rut}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                    <td><input type="date" class="sinbordefondo" value="{{ traerDatosCarga.fecha_nacimiento }}">
+                    <td><input type="date" class="sinbordefondo" value="{{ item.fecha_nacimiento }}">
                     </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;" class="text-right">NOMBRES:</th>
-                    <td><input type="text" class="sinbordefondo" value="{{traerDatosCarga.nombres | uppercase}}">
+                    <td><input type="text" class="sinbordefondo" value="{{item.nombres | uppercase}}">
                     </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
                     <td><input type="text" class="sinbordefondo"
-                        value="{{traerDatosCarga.apellido_paterno | uppercase}}"></td>
+                        value="{{item.apellido_paterno | uppercase}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
                     <td><input type="text" class="sinbordefondo"
-                        value="{{traerDatosCarga.apellido_materno | uppercase}}"></td>
+                        value="{{item.apellido_materno | uppercase}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;" class="text-right">DIRECCION:</th>
-                    <td><input type="text" class="sinbordefondo" value="{{traerDatosCarga.direccion | uppercase}}">
+                    <td><input type="text" class="sinbordefondo" value="{{item.direccion | uppercase}}">
                     </td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;" class="text-right">CELULAR:</th>
-                    <td><input type="text" class="sinbordefondo" value="{{traerDatosCarga.celular}}"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{item.celular}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
                   </tr>
                   <tr>
                     <th style="background: #138D75;" class="text-right">ESTABLECIMIENTO:</th>
-                    <td><input type="text" class="sinbordefondo" value="{{traerDatosCarga.establecimiento | uppercase}}"></td>
+                    <td><input type="text" class="sinbordefondo" value="{{item.establecimiento | uppercase}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
-                    </tr>
+                    </tr> <br>
                 </div>
   
               </div>

@@ -13,7 +13,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
   @Input () getIdSocio;
   @Input () getNombreSocio;
   traerDatosCarga:object = [
-                      'tipo_carga',
+                      'tipo_carga_id',
                       'rut',
                       'fecha_nacimiento',
                       'nombres',

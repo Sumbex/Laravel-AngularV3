@@ -38,6 +38,7 @@ export class TablaBeneficiosSocioComponent implements OnInit {
                       'isapre_fonasa',
                       'grupo_sangre'
                   ];
+  vista_tabla:boolean=false;
 
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,
@@ -54,18 +55,26 @@ export class TablaBeneficiosSocioComponent implements OnInit {
     this.listarDatosSocio();
   }
 
+  limpiar_tabla(){
+    this.vista_tabla = false;
+  }
+
   listarDatosSocio(){
    this._SociosService.getDatosSocio(this.getIdSocio).subscribe((response) =>{
     if(response.estado == "failed"){
-      alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+      // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+      this.vista_tabla = false;
+      alert(response.mensaje);
+      this.abrirTablaBeneficiosSocios.close();
       return false;
     }else{
       this.traerDatosSocio = response[0];
-      this.getNombreSocio;
+      this.vista_tabla = true;
     }
 
        error => {
       console.log(error);
+      this.vista_tabla = false;
       }
     }
   );

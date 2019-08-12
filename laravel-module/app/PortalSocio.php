@@ -194,7 +194,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function socioLogeado()
     {
-
         $socio = PortalSocio::find(Auth::guard('socio_api')->user()->id);
         /* dd($socio); */
         return $socio;
@@ -325,7 +324,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ->get();
 
         if (!$socio->isEmpty()) {
-            return $socio;
+            return ['estado' => 'success', 'socio' => $socio];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
         }
@@ -333,42 +332,47 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function ingresarDatosBasicosSocio($request)
     {
-        $verificar = $this->verificarSocio($this->socioLogeado()->id);
-        if ($verificar['estado'] == 'success') {
-            $socioDB = new Socio_datos_basicos;
-            $socioDB->socio_id = $this->socioLogeado()->id;
-            $socioDB->direccion = $request->direccion;
-            $socioDB->telefono = $request->telefono;
-            $socioDB->celular = $request->celular;
-            $socioDB->anexo = $request->anexo;
-            $socioDB->email_1 = $request->email_1;
-            $socioDB->email_2 = $request->email_2;
-            $socioDB->cargo_planta = $request->cargo_planta;
-            $socioDB->cargo_comision_sindicato = $request->cargo_comision_sindicato;
-            $socioDB->activo = 'S';
-            $socioDB->casa_propia = $request->casa_propia;
-            $socioDB->rol_turno = $request->rol_turno;
-            $socioDB->estado_civil_id = $request->estado_civil_id;
-            $socioDB->conyuge = $request->conyuge;
-            if ($socioDB->save()) {
-                $socioS = new SocioSituacion;
-                $socioS->socio_id = $this->socioLogeado()->id;
-                $socioS->numero_cuenta = $request->numero_cuenta;
-                $socioS->tipo_cuenta_banco_id = $request->tipo_cuenta_banco_id;
-                $socioS->banco = $request->banco;
-                $socioS->isapre_fonasa = $request->isapre_fonasa;
-                $socioS->grupo_sangre = $request->grupo_sangre;
-                $socioS->activo = 'S';
-                if ($socioS->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+        $tienesDatos = $this->traerDatosBasicosSocios();
+        if ($tienesDatos['estado'] == 'failed') {
+            $verificar = $this->verificarSocio($this->socioLogeado()->id);
+            if ($verificar['estado'] == 'success') {
+                $socioDB = new Socio_datos_basicos;
+                $socioDB->socio_id = $this->socioLogeado()->id;
+                $socioDB->direccion = $request->direccion;
+                $socioDB->telefono = $request->telefono;
+                $socioDB->celular = $request->celular;
+                $socioDB->anexo = $request->anexo;
+                $socioDB->email_1 = $request->email_1;
+                $socioDB->email_2 = $request->email_2;
+                $socioDB->cargo_planta = $request->cargo_planta;
+                $socioDB->cargo_comision_sindicato = $request->cargo_comision_sindicato;
+                $socioDB->activo = 'S';
+                $socioDB->casa_propia = $request->casa_propia;
+                $socioDB->rol_turno = $request->rol_turno;
+                $socioDB->estado_civil_id = $request->estado_civil_id;
+                $socioDB->conyuge = $request->conyuge;
+                if ($socioDB->save()) {
+                    $socioS = new SocioSituacion;
+                    $socioS->socio_id = $this->socioLogeado()->id;
+                    $socioS->numero_cuenta = $request->numero_cuenta;
+                    $socioS->tipo_cuenta_banco_id = $request->tipo_cuenta_banco_id;
+                    $socioS->banco = $request->banco;
+                    $socioS->isapre_fonasa = $request->isapre_fonasa;
+                    $socioS->grupo_sangre = $request->grupo_sangre;
+                    $socioS->activo = 'S';
+                    if ($socioS->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                 }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                return $verificar;
             }
         } else {
-            return $verificar;
+            return ['estado' => 'failed', 'mensaje' => 'Ya tiene datos ingresados, si le faltaron datos por ingresar utilize el otro formulario.'];
         }
     }
 }

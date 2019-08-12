@@ -203,8 +203,8 @@ class Cs_prestamos extends Model
                             $prestamo->estado_prestamo_id = 1;
 
                             if ($prestamo->save()) {
-
-                                $ultimoPrestamo = Cs_prestamos::all()->last();
+                                //$prestamo->id
+                                $ultimoPrestamo = Cs_prestamos::find($prestamo->id);/* all()->last(); */
 
                                 $dia = array(['id' => 1, 'check' => $request->checkdia, 'monto' => $request->monto_dia]);
                                 $trimestral = array(['id' => 3, 'check' => $request->checktri, 'monto' => $request->monto_tri]);
@@ -380,7 +380,7 @@ class Cs_prestamos extends Model
 
                             if ($prestamo->save()) {
 
-                                $ultimoPrestamo = Cs_prestamos::all()->last();
+                                $ultimoPrestamo = Cs_prestamos::find($prestamo->id);
                                 $detalle = new DetallePrestamo;
 
                                 $detalle->prestamo_id = $ultimoPrestamo->id;
@@ -427,7 +427,7 @@ class Cs_prestamos extends Model
                         $prestamo->interes_prestamo = $request->monto_total * $this->interes;
 
                         if ($prestamo->save()) {
-                            $ultimoPrestamo = Cs_prestamos::all()->last();
+                            $ultimoPrestamo = Cs_prestamos::find($prestamo->id);
 
                             $prestamoInteres = new InteresPrestamo;
 
@@ -484,7 +484,7 @@ class Cs_prestamos extends Model
                         $prestamo->estado_prestamo_id = 2;
 
                         if ($prestamo->save()) {
-                            $ultimoPrestamo = Cs_prestamos::all()->last();
+                            $ultimoPrestamo = Cs_prestamos::find($prestamo->id);
 
                             $detalle = new DetallePrestamo;
 
@@ -785,6 +785,7 @@ class Cs_prestamos extends Model
             ->join('detalle_prestamo as pd', 'pd.prestamo_id', 'p.id')
             ->where([
                 'p.activo' => 'S',
+                /* 'pd.activo' => 'S', */
                 'p.anio_id' => $anio,
                 'p.mes_id' => $mes,
                 'pd.anio_id' => $anio,

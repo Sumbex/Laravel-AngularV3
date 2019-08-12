@@ -66,6 +66,10 @@ export class ModalCampingComponent implements OnInit {
 
   }
 
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   openCamping(Camping) {
     this.modalService.open(Camping, { size: 'lg' });
     this.cargar_select();

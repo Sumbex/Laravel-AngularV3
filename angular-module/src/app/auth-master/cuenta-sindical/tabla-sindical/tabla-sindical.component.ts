@@ -98,6 +98,11 @@ export class TablaSindicalComponent implements OnInit {
 
   }
 
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
+
   cargar_select(){
 
      //Cargar id del Año actual

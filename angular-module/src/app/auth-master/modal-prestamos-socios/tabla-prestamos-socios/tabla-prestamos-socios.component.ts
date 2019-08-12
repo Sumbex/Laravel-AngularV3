@@ -85,6 +85,10 @@ export class TablaPrestamosSociosComponent implements OnInit {
     )
   }
 
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
     this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
 

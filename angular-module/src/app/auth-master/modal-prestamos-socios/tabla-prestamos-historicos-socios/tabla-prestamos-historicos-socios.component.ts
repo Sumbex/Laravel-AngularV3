@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabla-prestamos-historicos-socios',
@@ -31,7 +32,11 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
   //Variables de carga
   cargandoTabla = false;
 
-  constructor(private _sindicalService: SindicalService, private _fechasService: AniosService) { }
+  constructor(private _sindicalService: SindicalService, private _fechasService: AniosService, config: NgbModalConfig,
+    private modalService: NgbModal) {
+      config.backdrop = 'static';
+      config.keyboard = false;
+    }
 
   ngOnInit() {
     //Cargar Años
@@ -66,6 +71,10 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
   }
 
   refrescarTablaPrestamosClientes() {

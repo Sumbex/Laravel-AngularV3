@@ -60,8 +60,6 @@ export class FormularioSindicalComponent implements OnInit {
 
     //Cargar detalles
     this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
-    console.log(this.selectDefinicion);
-    console.log(this.selectDetalle);
 
     this.usuario_logeado();
   }
@@ -99,12 +97,10 @@ export class FormularioSindicalComponent implements OnInit {
 
   changeDefinicion(evento){
     this.datosSindicales.definicion = evento.target.value;
-    console.log("ID Definicion: " + this.datosSindicales.definicion);
   }
 
   changeDetalle(evento){
     this.datosSindicales.tipoCuentaSindicato = evento.target.value;
-    console.log("ID Detalle: " + this.datosSindicales.tipoCuentaSindicato);
     if(this.datosSindicales.tipoCuentaSindicato == '3'){
       var anio = this.datosSindicales.fecha.substring(0,4);
       var mes = this.datosSindicales.fecha.substring(5,7);

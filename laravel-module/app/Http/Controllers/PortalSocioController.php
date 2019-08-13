@@ -36,4 +36,9 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::modificarDatosBasicosSocio($request);
     }
+
+    public function TraerDatosConyuge()
+    {
+        return PortalSocio::traerDatosConyuge();
+    }
 }

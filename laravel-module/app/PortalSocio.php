@@ -47,7 +47,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
     ];
 
     protected $hidden = [
-        'password', 'activo', 'created_at', 'updated_at', 'fecha_egreso', 'rol'
+        'password', 'activo', 'created_at', 'updated_at', 'fecha_egreso'/* , 'rol' */
     ];
 
     protected $guard = 'socio_api';
@@ -159,6 +159,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     ]
                 );
                 break;
+
             default:
                 # code...
                 break;
@@ -202,7 +203,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                             ])
                                 ->header('Authorization', $token);
                         }
-                        return response(['status' => 'failed', 'mensaje' => 'La contraseña ingresado no es valida.']);
+                        return response(['status' => 'failed', 'mensaje' => 'La contrasena ingresado no es valida.']);
                     } else {
                         return response(['status' => 'failed', 'mensaje' => 'El socio ya no se encuentra activo en el sindicato.']);
                     }
@@ -371,8 +372,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ])
             ->get();
 
+        $estados = [];
         if (!$socio->isEmpty()) {
-            return ['estado' => 'success', 'socio' => $socio];
+            if (!is_null($socio[0]->grupo_sangre)) {
+                $estados['grupo_sangre'] = true;
+            }
+            return ['estado' => 'success', 'socio' => $socio, 'estados' => $estados];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
         }
@@ -437,12 +442,11 @@ class PortalSocio extends Authenticatable implements JWTSubject
             if ($verificar['estado'] == 'success') {
                 switch ($request->tipo) {
                     case 1:
-                        //$this->socioLogeado()->id
                         $socioDB = Socio_datos_basicos::where([
                             'activo' => 'S',
                             'socio_id' => $this->socioLogeado()->id
                         ])
-                            ->get();
+                            ->first();
 
                         switch ($request->nombre_campo) {
                             case 'direccion':
@@ -547,12 +551,11 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         }
                         break;
                     case 2:
-                        //$this->socioLogeado()->id
                         $socioS = SocioSituacion::where([
                             'activo' => 'S',
                             'socio_id' => $this->socioLogeado()->id
                         ])
-                            ->get();
+                            ->first();
 
                         switch ($request->nombre_campo) {
                             case 'numero_cuenta':
@@ -609,6 +612,46 @@ class PortalSocio extends Authenticatable implements JWTSubject
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no haz ingresado tus datos, utilize el otro formulario para ingresarlos.'];
+        }
+    }
+
+    protected function traerDatosConyuge()
+    {
+        $conyuge = DB::table('socio_conyuge')
+            ->select([
+                'rut',
+                'fecha_nacimiento',
+                'nombres',
+                'apellido_paterno',
+                'apellido_materno',
+                'direccion',
+                'celular'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$conyuge->isEmpty()) {
+            return ['estado' => 'success', 'conyuge' => $conyuge];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function ingresarConyugeSocio($request)
+    {
+        $tienesDatos = $this->traerDatosConyuge();
+        if ($tienesDatos['estado'] == 'failed') {
+            $verificar = $this->verificarSocio($this->socioLogeado()->id);
+            if ($verificar['estado'] == 'success') {
+                //
+            } else {
+                return $verificar;
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Ya tienes datos ingresados, si deseas modificarlos dirigete al sindicato.'];
         }
     }
 }

@@ -1,7 +1,8 @@
 <ng-template #tablaBeneficiosSocio let-modal>
   <div class="modal-header sticky-top" id="demoFont">
     <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
-        {{getNombreSocio | uppercase}}</strong></h6>
+        {{getNombreSocio | uppercase}}<!-- <div *ngIf="actualizarLoad" class="loader2"></div> --></strong>
+      </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -9,7 +10,11 @@
   <!--Cuerpo del body inicio y cierre mensual-->
   <div class="modal-body" id="printJS-table">
     <div class="card-header" id="demoFont2">
-      <h6 class="card-title">SOCIO</h6>
+      <h6 class="card-title">SOCIO
+        <img *ngIf="actualizarLoad" padding-left="20px" height="15px"
+          src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+          <!-- <div *ngIf="actualizarLoad" class="loader2"></div> -->
+      </h6>
     </div>
     <div class="card"> <br>
       <div class="table-responsive">
@@ -21,58 +26,87 @@
               <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <tr>
                   <th class="text-right" style="background: #138D75">N° CTA:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.numero_cuenta}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.numero_cuenta}}"
+                      #ctaUpdate></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_numero_cuenta',ctaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75">BANCO:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{ traerDatosSocio.banco | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{ traerDatosSocio.banco | uppercase}}"
+                      #bancoUpdate></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_banco',bancoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CUENTA:</th>
                   <td>
-                    <select name="Cta" id="cta" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="traerDatosSocio.tipo_cuenta_banco_id" required>
-                      <option value="">--SELECCIONE--</option>
+                    <select name="Cta" id="cta" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.tipo_cuenta_banco_id" #tipoCtaUpdate required>
                       <option value="1">CUENTA RUT</option>
                       <option value="2">CUENTA VISTA</option>
                       <option value="3">CUENTA CORRIENTE</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_tipo_cuenta_banco_id',tipoCtaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">ISAPRE O FONASA:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.isapre_fonasa | uppercase}}">
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosSocio.isapre_fonasa | uppercase}}" #isapreFonasaUpdate>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_isapre_fonasa',isapreFonasaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">GRUPO DE SANGRE:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.grupo_sangre | uppercase}}">
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosSocio.grupo_sangre | uppercase}}" #grupoSangreUpdate>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_grupo_sangre',grupoSangreUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75">DIRECCION:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.direccion | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosSocio.direccion | uppercase}}" #direccionUpdate>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_direccion',direccionUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">TELEFONO:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.telefono}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                     value="{{traerDatosSocio.telefono}}" #telefonoUpdate>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_telefono',telefonoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CELULAR:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.celular}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                     value="{{traerDatosSocio.celular}}" #celularUpdate>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_celular',celularUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">ANEXO:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.anexo | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado" 
+                    value="{{traerDatosSocio.anexo | uppercase}}" #anexoUpdate>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_anexo',anexoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr><br>
               </div>
 
@@ -80,63 +114,76 @@
 
                 <tr>
                   <th class="text-right" style="background: #138D75;">EMAIL PERSONAL:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.email_1 | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                     value="{{traerDatosSocio.email_1 | uppercase}}" #email1Update>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_email_1',email1Update,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">EMAIL CORPORATIVO:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.email_2 | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                     value="{{traerDatosSocio.email_2 | uppercase}}" #email2Update>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_email_2',email2Update,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CARGO PLANTA:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{traerDatosSocio.cargo_planta | uppercase}}">
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosSocio.cargo_planta | uppercase}}" #cargoPlantaUpdate>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_cargo_planta',cargoPlantaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CARGO O COMISION:</th>
                   <td>
-                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="traerDatosSocio.cargo_comision_sindicato" required>
-                      <option value="">--SELECCIONE--</option>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.cargo_comision_sindicato" #cargoComisionUpdate required>
                       <option value="1">SOCIO</option>
                       <option value="2">DIRECTIVA</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_cargo_comision_sindicato',cargoComisionUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CASA PROPIA:</th>
                   <td>
-                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="traerDatosSocio.casa_propia" required>
-                      <option value="">--SELECCIONE--</option>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.casa_propia" #casaPropiaUpdate required>
                       <option value="S">SI</option>
                       <option value="N">NO</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_casa_propia',casaPropiaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">ROL TURNO:</th>
                   <td>
-                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="traerDatosSocio.rol_turno" required>
-                      <option value="">--SELECCIONE--</option>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.rol_turno" #rolTurnoUpdate required>
                       <option value="S">SI</option>
                       <option value="N">NO</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_rol_turno',rolTurnoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">ESTADO CIVIL:</th>
                   <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
                   <td>
-                    <select name="Civil" id="civil" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="traerDatosSocio.estado_civil_id" required>
-                      <option value="">--SELECCIONE--</option>
+                    <select name="Civil" id="civil" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.estado_civil_id" #estadoCivilUpdate required>
                       <option value="1">SOLTERO/A</option>
                       <option value="2">CASADO/A</option>
                       <option value="3">VIUDO/A</option>
@@ -144,20 +191,23 @@
                       <option value="5">CONVIVIENTE CIVIL</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_estado_civil_id',estadoCivilUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CONYUGE:</th>
                   <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
                   <td>
-                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="traerDatosSocio.conyuge" required>
-                      <option value="">--SELECCIONE--</option>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.conyuge" #conyugeUpdate required>
                       <option value="S">SI</option>
                       <option value="N">NO</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('socio_conyuge',conyugeUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr> <br>
               </div>
 
@@ -186,6 +236,38 @@
 </ng-template>
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn btn-success btn-block btn-sm" type="button" 
-[disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
-  (click)="verTablaBeneficios(tablaBeneficiosSocio)">Ver Datos</button>
+<button class="btn btn btn-success btn-block btn-sm" type="button"
+  [disabled]="this.getIdSocio == '' || this.getIdSocio == null" (click)="verTablaBeneficios(tablaBeneficiosSocio)">Ver
+  Datos</button>
+
+<ng-template #modalUsuario let-modal>
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="row justify-content-center">
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <input #rut class="form-control form-control-sm " [value]="user.rut"> <br>
+        </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <input #password [(ngModel)]="pass" class="form-control form-control-sm " type="password"
+            placeholder="Ingrese su contraseña"> <br>
+        </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+            (click)="modal.close('Save click')">
+            Validar
+            <img *ngIf="load" padding-left="10px" height="12" class="text-center"
+              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>

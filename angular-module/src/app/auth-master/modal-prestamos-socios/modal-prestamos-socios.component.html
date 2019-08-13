@@ -29,7 +29,7 @@
   <!--Cuerpo del body Prestamo-->
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <form #prestamoForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <form #prestamoForm="ngForm" (ngSubmit)="onSubmit(prestamoForm)" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="row">
 
@@ -126,7 +126,9 @@
                           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <div class="form-group"> <br>
                               <label><strong>Seleccione el tipo de Prestamo</strong></label>
-                              <select (change)="changeTipoPrestamo($event)" class="form-control form-control-sm">
+                              <select (change)="changeTipoPrestamo($event)" name="id" #id="ngModel"
+                              [(ngModel)]="this.datosTipoPrestamo.id" class="form-control form-control-sm">
+                                <option [value]="0">--Seleccione--</option>
                                 <option *ngFor="let tipo of selectTipoPrestamo" [value]="tipo.id">{{tipo.descripcion}}
                                 </option>
                               </select>

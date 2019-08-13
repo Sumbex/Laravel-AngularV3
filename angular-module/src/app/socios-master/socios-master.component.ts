@@ -18,32 +18,26 @@ export class SociosMasterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._portalSociosService.getSocioLogeado().subscribe(
-      response => {
-          console.log(response);
-      },
-      error => {
-          console.log(error);
-      });
+    this.startTimerToken();
   }
 
   open(content) {
-    this.modalService.open(content, {size: 'lg'});
+    this.modalService.open(content, { size: 'lg' });
   }
 
-  startTimerToken(){
+  startTimerToken() {
     setInterval(() => {
-      if(this.tiempoEsperaToken > 0){
+      if (this.tiempoEsperaToken > 0) {
         this.tiempoEsperaToken--;
-      }else{
+      } else {
         let estadoToken = this._usuariosService.isAuthenticated();
-        if(estadoToken == false){
+        if (estadoToken == false) {
           window.location.reload();
-        }else{
+        } else {
           this.tiempoEsperaToken = 1;
         }
       }
-    },1000)
+    }, 1000)
   }
 
 }

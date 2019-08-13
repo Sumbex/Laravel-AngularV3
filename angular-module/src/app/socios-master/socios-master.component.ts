@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../servicios/usuarios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from '../servicios/portal-socios.service';
 
 @Component({
   selector: 'app-socios-master',
@@ -11,12 +12,19 @@ export class SociosMasterComponent implements OnInit {
 
   tiempoEsperaToken: number = 1;
 
-  constructor(private _usuariosService: UsuarioService, private config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
 
   ngOnInit() {
+    this._portalSociosService.getSocioLogeado().subscribe(
+      response => {
+          console.log(response);
+      },
+      error => {
+          console.log(error);
+      });
   }
 
   open(content) {

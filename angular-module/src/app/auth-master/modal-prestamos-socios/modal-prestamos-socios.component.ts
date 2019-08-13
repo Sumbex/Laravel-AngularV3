@@ -147,7 +147,10 @@ export class ModalPrestamosSociosComponent implements OnInit {
     this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
       console.log(res);
       if(res.estado == 'failed_v' || res.estado == 'failed'){
-        alert('ERROR: Compruebe que los valores ingresados son correctos');
+        //alert('ERROR: Compruebe que los valores ingresados son correctos');
+        let mensaje = JSON.stringify(res.mensaje);
+        mensaje = mensaje.replace(/[\[\]'"{}]+/g,'')
+        alert(mensaje);
         this.blockPrestamo = false;
       }else{
         alert('Ingreso correcto');

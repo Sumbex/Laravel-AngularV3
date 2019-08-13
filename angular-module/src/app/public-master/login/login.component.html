@@ -96,7 +96,7 @@
           <div class="row justify-content-center">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-              <form #loginFormSocios="ngForm" (ngSubmit)="onSubmitSocios(loginFormSocios)">
+              <form #loginFormSocios="ngForm" (ngSubmit)="onSubmitSocios($event)">
 
                 <div class="row">
                   <!--formulario login-->
@@ -191,7 +191,7 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-12 col-sm-5 col-lg-5 col-xl-5">
-              <div class="card bg-danger text-white mb-3" style="cursor: pointer">
+              <div class="card bg-danger text-white mb-3" (click)="openLoginAdmins(Socios)" style="cursor: pointer">
                 <div class="card-body">
                   <h5>
                     <i class="fas fa-users"></i> Modulo <br> Socios

@@ -116,7 +116,6 @@ export class ModalCajaChicaComponent implements OnInit {
       response => {
         this.idMesActual = response;
         this.valorMes.descripcion = this.idMesActual.id;
-        this.refrescarCajaChica();
       },
       error => {
         console.log(error);
@@ -124,13 +123,14 @@ export class ModalCajaChicaComponent implements OnInit {
     )
   }
 
-  open(content) {
+  openPDF(content) {
     this.modalService.open(content, {size: 'lg'});
   }
 
   openCajaChica(CajaChica) {
     this.modalService.open(CajaChica, { size: 'xl' });
     //Cargar Caja chica
+    this.refrescarCajaChica();
     this.usuarioLogeado();
   }
 

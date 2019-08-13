@@ -474,8 +474,13 @@ class SocioController extends Controller
                 // -----------------------------------------
             case 'socio_casa_propia':
                     
+
                     $ss->casa_propia = $r->valor;
                     if ($ss->save()) { 
+
+                    $sdb->casa_propia = $r->valor;
+                    if ($sdb->save()) { 
+
                         return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
                     }
                     else {
@@ -485,8 +490,13 @@ class SocioController extends Controller
 
             case 'socio_rol_turno':
                     
+
                     $ss->rol_turno = $r->valor;
                     if ($ss->save()) { 
+
+                    $sdb->rol_turno = $r->valor;
+                    if ($sdb->save()) { 
+
                         return ['estado'=>'success','mensaje'=>'Rol de turno actualizado!']; 
                     }
                     else {
@@ -496,8 +506,13 @@ class SocioController extends Controller
 
             case 'socio_estado_civil_id':
                     
+
                     $ss->estado_civil_id = $r->valor;
                     if ($ss->save()) { 
+
+                    $sdb->estado_civil_id = $r->valor;
+                    if ($sdb->save()) { 
+
                         return ['estado'=>'success','mensaje'=>'Estado civil actualizado!']; 
                     }
                     else {
@@ -507,8 +522,13 @@ class SocioController extends Controller
 
             case 'socio_conyuge':
                     
+
                     $ss->conyuge = $r->valor;
                     if ($ss->save()) { 
+
+                    $sdb->conyuge = $r->valor;
+                    if ($sdb->save()) { 
+
                         return ['estado'=>'success','mensaje'=>'Conyuge actualizado!']; 
                     }
                     else {

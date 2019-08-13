@@ -473,21 +473,19 @@ class SocioController extends Controller
             break;
     //             // -----------------------------------------
             case 'socio_casa_propia':
-<<<<<<< HEAD
 
-                    $sdb->casa_propia = $r->valor;
-                    if ($sdb->save()) { 
 
-                        return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
-=======
-                    
-<<<<<<< HEAD
-                    $sdb->casa_propia = $r->valor;
-                    if ($sdb->save()) { 
-=======
+                    // $sdb->casa_propia = $r->valor;
+                    // if ($sdb->save()) { 
+
+                    //     return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
+
+                    // $sdb->casa_propia = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->casa_propia = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
                     }
                     else {
@@ -497,13 +495,13 @@ class SocioController extends Controller
 
             case 'socio_rol_turno':
                     
-<<<<<<< HEAD
-                    $sdb->rol_turno = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+                    // $sdb->rol_turno = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->rol_turno = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Rol de turno actualizado!']; 
                     }
                     else {
@@ -513,39 +511,38 @@ class SocioController extends Controller
 
             case 'socio_estado_civil_id':
                     
-<<<<<<< HEAD
-                    $sdb->estado_civil_id = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+                    // $sdb->estado_civil_id = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->estado_civil_id = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Estado civil actualizado!']; 
->>>>>>> bryanv
+
                     }
                     else {
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
 
-<<<<<<< HEAD
-=======
+
             case 'socio_conyuge':
                     
-<<<<<<< HEAD
-                    $sdb->conyuge = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+                    // $sdb->conyuge = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->conyuge = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Conyuge actualizado!']; 
                     }
                     else {
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
->>>>>>> bryanv
+
            
          }
     }

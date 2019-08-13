@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\SocioBeneficiario;
+use App\SocioConyuge;
 use App\SocioSituacion;
 use App\Socio_datos_basicos;
 use App\Socios;
@@ -240,7 +242,7 @@ class SocioController extends Controller
         return $socio;
     }
 
-
+//--DATOS SOCIO---------------------------------------------------------
     public function guardar_datos_socio(Request $r)
     {
         $insert_1 = false;
@@ -313,7 +315,7 @@ class SocioController extends Controller
             return ['estado'=>'success','mensaje'=>'Informacion ingresada, en caso de que haya faltado algo, puede insertarlo desde la tabla. '];
         }
         else{
-            return ['estado'=>'failed','mensaje'=>'No se han ingresado datos, intente nuevamente.'];
+            return ['estado'=>'failed','mensaje'=>'No se han ingresado datos, posiblemente ya existan algunos datos aqui, visualice la tabla o intente nuevamente.'];
         }
 
     }
@@ -484,12 +486,118 @@ class SocioController extends Controller
         }
         return "null";
     }
+//--fin---DATOS SOCIO---------------------------------------------------------
 
-    // public function guardar_datos_conyuge(Request $r)
-    // {
-        
-    // }
 
+//--DATOS DE LA CONYUGE-------------------------------------------------------    
+    public function guardar_datos_conyuge(Request $r)
+    {
+        $rut_limpio = $this->limpiar($r->rut);
+
+        if ($this->valida_rut($rut_limpio) == false ) {
+            return ['estado' => 'failed','mensaje'=>'Rut no valido'];
+        }
+
+        $verify_conyuge = SocioConyuge::where([
+                                'activo' => 'S',
+                                'socio_id' => $r->socio_id
+                          ])->first();
+
+
+        if (empty($verify_conyuge)) {
+                $cony = new SocioConyuge;
+                $cony->socio_id = $r->socio_id;
+                $cony->rut = $r->rut;
+                $cony->fecha_nacimiento = $r->fecha_nacimiento;
+                $cony->nombres = $r->nombres;
+                $cony->apellido_paterno = $r->apellido_paterno;
+                $cony->apellido_materno = $r->apellido_materno;
+                $cony->direccion = $r->direccion;
+                $cony->celular = $r->celular;
+                $cony->activo = 'S';
+                if ($cony->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Datos de conyuge ingresados, si no los ingreso todos, los puede ingresar desde la tabla conyuge/pareja'];
+                }else{
+                    return ['estado'=>'failed','mensaje'=>'No es posible almacenar algunos datos'];
+                }
+        }else{
+            return ['estado'=>'failed','mensaje'=>'No es posible volver a ingresar un(a) conyuge/pareja'];
+        }
+    }
+
+    public function traer_datos_conyuge($socio_id)
+    {
+        $conyuge = SocioConyuge::where([
+                        'activo'=>'S',
+                        'socio_id' => $socio_id
+                    ])->first();
+        //return $conyuge;
+        if ($conyuge) {
+            return ['estado'=>'success', 'body'=>$conyuge];
+        }
+        return ['estado'=>'failed', 'body'=>''];
+    }
+
+    public function actualizar_datos_conyuge(Request $r)
+    {
+        $cony = SocioConyuge::where(['activo'=>'S', 'socio_id'=>$r->socio_id])->first()
+
+        switch ($r->campo) {
+            case 'direccion':
+                $cony->direccion = $r->valor;
+                if ($cony->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Direccion actualizada!'];
+                }else{
+                    return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                }
+            break;
+            case 'celular':
+                 $cony->celular = $r->valor;
+                 if ($cony->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Celular actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+
+            default:
+                # code...
+            break;
+        }
+    }
+
+//--FIN -- DATOS DE LA CONYUGE-------------------------------------------------------    
+
+//--INICIO-- DATOS DEL BENEFICIARIO--------------------------------------------------
+    public function guardar_datos_beneficiario(Request $r)
+    {
+        $be = SocioBeneficiario::where(['activo'=>'S','socio_id'=>$r->socio_id],'rut'=>$r->rut)->first();
+
+        if (!empty($be)) {
+            return ['estado'=>'failed','mensaje'=>'Este rut ya esta como beneficiario para este socio'];
+        }
+
+        $verify_beneficio = $this->verificar_beneficio_por_rut('var rut', 'var socio_id');
+        if ($verify_beneficio == true) { // true dice que si esta asociado el rut a un beneficio.
+            return ['estado'=>'failed','mensaje'=>'Este rut ya esta asociado a un beneficio'];
+        }
+
+        $sb = new SocioBeneficiario;
+        $sb->socio_id = $r->socio_id;
+        $sb->relacion = $r->relacion;
+        $sb->rut = $r->rut;
+        $sb->fecha_nacimiento = $sb->fecha_nacimiento;
+        $sb->nombres = $sb->nombres;
+        $sb->apellido_paterno = $sb->apellido_paterno;
+        $sb->apellido_materno = $sb->apellido_materno;
+        $sb->direccion = $r->direccion;
+        $sb->celular = $r->celular;
+        $sb->activo = 'S';
+        if ($sb->save()) {
+            return ['estado'=>'success','mensaje'=>'Beneficiario ingresado con exito!'];
+        }
+        return ['estado'=>'failed','mensaje'=>'No se pudo ingresar el beneficiario!'];
+
+    }
 
     function valida_rut($rut)
     {
@@ -538,5 +646,10 @@ class SocioController extends Controller
         $s= str_replace(';', '', $s); 
         $s= str_replace('-', '', $s); 
         return $s; 
+    }
+
+    public function verificar_beneficio_por_rut($rut, $socio_id)
+    {
+        return true;
     }
 }

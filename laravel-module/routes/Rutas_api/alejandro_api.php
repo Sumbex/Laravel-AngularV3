@@ -58,3 +58,8 @@ Route::post('guardar_datos_socio','SocioController@guardar_datos_socio');
 Route::post('actualizar_datos_socio','SocioController@actualizar_datos_socio');
 Route::get('traer_datos_socio/{socio_id}','SocioController@traer_datos_socio');
 
+Route::post('guardar_datos_conyuge','SocioController@guardar_datos_conyuge');
+Route::get('traer_datos_conyuge/{socio_id}','SocioController@traer_datos_conyuge');
+Route::get('actualizar_datos_conyuge','SocioController@actualizar_datos_conyuge');
+
+Route::post('guardar_datos_beneficiario','SocioController@guardar_datos_beneficiario');

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Socio_datos_basicos;
 use App\SocioSituacion;
+use App\SocioConyuge;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -154,8 +155,31 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'password' => 'required'
                     ],
                     [
-                        'rut.required' => 'Debes ingresar tu correo.',
-                        'password.required' => 'Debes ingresar tu contraseña.',
+                        'rut.required' => 'Debes ingresar tu rut.',
+                        'password.required' => 'Debes ingresar tu contrasena.',
+                    ]
+                );
+                break;
+            case 4:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'rut' => 'required',
+                        'fecha_nacimiento' => 'required',
+                        'nombres' => 'required|string',
+                        'apellido_paterno' => 'required|string',
+                        'apellido_materno' => 'required|string',
+                        'direccion' => 'required|string',
+                        'celular' => 'required|string'
+                    ],
+                    [
+                        'rut.required' => 'Debes ingresar el rut.',
+                        'fecha_nacimiento.required' => 'Debes ingresar la fecha de nacimiento.',
+                        'nombres.required' => 'Debes ingresar los nombres.',
+                        'apellido_paterno.required' => 'Debes ingresar el apellido',
+                        'apellido_materno.required' => 'Debes ingresar el apellido',
+                        'direccion.required' => 'Debes ingresar la direccion',
+                        'celular.required' => 'Debes ingresar el numero de celular'
                     ]
                 );
                 break;
@@ -646,7 +670,25 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($tienesDatos['estado'] == 'failed') {
             $verificar = $this->verificarSocio($this->socioLogeado()->id);
             if ($verificar['estado'] == 'success') {
-                //
+                $validarDatos = $this->validarDatos($request, 4);
+                if ($validarDatos['estado'] == 'success') {
+                    $conyuge = new SocioConyuge;
+                    $conyuge->socio_id = $this->socioLogeado()->id;
+                    $conyuge->rut = $request->rut;
+                    $conyuge->fecha_nacimiento = $request->fecha_nacimiento;
+                    $conyuge->nombres = $request->nombres;
+                    $conyuge->apellido_paterno = $request->apellido_materno;
+                    $conyuge->direccion = $request->direccion;
+                    $conyuge->celular = $request->celular;
+                    $conyuge->activo = 'S';
+                    if ($conyuge->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                } else {
+                    return $validarDatos;
+                }
             } else {
                 return $verificar;
             }

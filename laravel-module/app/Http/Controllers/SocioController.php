@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\SocioBeneficiario;
 use App\SocioCarga;
 use App\SocioConyuge;
+use App\SocioPadresSuegros;
 use App\SocioSituacion;
 use App\Socio_datos_basicos;
 use App\Socios;
@@ -118,7 +119,9 @@ class SocioController extends Controller
             'a_materno'
 
         ])
-        ->orderBy('fecha_ingreso','DESC')
+        ->orderBy('a_paterno','ASC')
+        ->orderBy('a_materno','ASC')
+
         ->get();
     }
 
@@ -782,6 +785,30 @@ class SocioController extends Controller
                 return [ 'estado'=>'success', 'mensaje'=>'Persona ingresada con exito!' ];
             }
         }
+    }
+
+    public function traer_datos_padres_suegros($socio_id)
+    {
+        $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])->get();
+        if (count($listar) > 0) {
+            return [
+                'estado'  => 'success',
+                'mensaje' => 'success',
+                'body'    => $listar
+            ];
+        }
+        else{
+            return [
+                'estado'  => 'failed',
+                'mensaje' => 'failed',
+                'body'    => null
+            ];
+        }
+    }
+
+    public function actualizar_datos_padres_suegros(Request $r)
+    {
+        
     }
 
 

@@ -31,4 +31,9 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::ingresarDatosBasicosSocio($request);
     }
+
+    public function ModificarDatosBasicosSocio(Request $request)
+    {
+        return PortalSocio::modificarDatosBasicosSocio($request);
+    }
 }

@@ -19,7 +19,7 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Relacion con el Socio</strong></label>
-              <select name="Relacion" id="relacion" class="form-control form-control-sm" required>
+              <select name="Relacion" id="relacion" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.relacion_socio_id" required>
                 <option value="">--Seleccione--</option>
                 <option value="1">padre</option>
                 <option value="2">Madre</option>
@@ -32,14 +32,14 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Rut</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.rut" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Fecha de Nacimiento</strong></label>
-              <input type="date" class="form-control form-control-sm" required>
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.fecha_nacimiento" required>
             </div>
           </div>
 
@@ -52,21 +52,21 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Nombres</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.nombres" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Apellido Paterno</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.apellido_paterno" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Apellido Materno</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.apellido_materno" required>
             </div>
           </div>
 
@@ -79,14 +79,14 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Direccion</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.direccion" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Celular</strong></label>
-              <input type="text" class="form-control form-control-sm" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosPadresSuegros.celular" required>
             </div>
           </div>
 
@@ -99,7 +99,7 @@
           <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
             <label><strong>Guardar Datos</strong></label>
             <div class="form-group">
-              <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+              <button class="btn btn-block btn-outline-success" (click)="guardarDatosPadresSuegros()">Guardar</button>
             </div>
           </div>
 
@@ -130,4 +130,5 @@ style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} 
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
 <button class="btn btn btn-success btn-block btn-sm" type="button"
+[disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
   (click)="verFormularioBeneficios(formularioBeneficiosPadresSuegros)">Insertar Datos</button>

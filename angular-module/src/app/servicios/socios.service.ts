@@ -142,7 +142,7 @@ export class SociosService {
                     )});
                     }
 
-                    insertarDatosRelacion(form): Observable<any>{
+                    insertarDatosPS(form): Observable<any>{
 
                         return this._http.post(this.url + "guardar_datos_padres_suegros", form, {headers: new HttpHeaders(
                                 {
@@ -151,15 +151,24 @@ export class SociosService {
                                 )});
                             }
             
-                        getDatosRelacion(idSocio){
+                        getDatosPS(idSocio){
                         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-                        return this._http.get<any>(this.url + "traer_datos_relacion/"+idSocio, {headers: new HttpHeaders(
+                        return this._http.get<any>(this.url + "traer_datos_padres_suegros/"+idSocio, {headers: new HttpHeaders(
                             {
                                 'Authorization': 'Bearer' + token,
                                 'Content-Type': 'application/json'
                             }
                         )});
                         }
+
+                        ActualizarDatosSocio(form): Observable<any>{
+
+                            return this._http.post(this.url + "actualizar_datos_socio", form, {headers: new HttpHeaders(
+                                    {
+                                        'Authorization': 'Bearer' + this.token,
+                                    }
+                                    )});
+                                }
 
           
   

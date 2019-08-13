@@ -14,7 +14,7 @@ export class TablaBeneficiosPadresSuegrosComponent implements OnInit {
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
   traerDatosPS:object = [
-                        'relacion',
+                        'relacion_socio_id',
                         'rut',
                         'fecha_nacimiento',
                         'nombres',
@@ -49,7 +49,7 @@ export class TablaBeneficiosPadresSuegrosComponent implements OnInit {
   }
 
   listarDatosPS(){
-    this._SociosService.getDatosRelacion(this.getIdSocio).subscribe((response) =>{
+    this._SociosService.getDatosPS(this.getIdSocio).subscribe((response) =>{
       console.log(response);
      if(response.estado == "failed"){
       //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');

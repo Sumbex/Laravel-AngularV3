@@ -35,14 +35,14 @@ export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
     this.abrirFormularioBeneficiosPadresSuegros = this.modalService.open(FormularioBeneficios, { size: 'xl' });
   }
 
-  guardarDatosCarga(){
+  guardarDatosPadresSuegros(){
     if(this.InsertarBeneficiosPadresSuegros.relacion_socio_id == '' && this.InsertarBeneficiosPadresSuegros.rut == '' && this.InsertarBeneficiosPadresSuegros.fecha_nacimiento == '' && this.InsertarBeneficiosPadresSuegros.nombres == '' && this.InsertarBeneficiosPadresSuegros.apellido_paterno == '' && this.InsertarBeneficiosPadresSuegros.apellido_materno == '' && this.InsertarBeneficiosPadresSuegros.direccion == '' && this.InsertarBeneficiosPadresSuegros.celular == ''){
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
-    data.append('tipo_carga_id', this.InsertarBeneficiosPadresSuegros.relacion_socio_id);
+    data.append('relacion_socio_id', this.InsertarBeneficiosPadresSuegros.relacion_socio_id);
     data.append('rut',this.InsertarBeneficiosPadresSuegros.rut);
     data.append('fecha_nacimiento',this.InsertarBeneficiosPadresSuegros.fecha_nacimiento);
     data.append('nombres',this.InsertarBeneficiosPadresSuegros.nombres);
@@ -51,7 +51,7 @@ export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
     data.append('direccion',this.InsertarBeneficiosPadresSuegros.direccion);
     data.append('celular',this.InsertarBeneficiosPadresSuegros.celular);
 
-    this._SociosService.insertarDatosCarga(data).subscribe((response) =>{
+    this._SociosService.insertarDatosPS(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
         return false;

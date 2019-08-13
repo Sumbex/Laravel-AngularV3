@@ -12,9 +12,7 @@ export class AuthGuardSocioService implements CanActivate {
     constructor(public auth: UsuarioService, public _portalSociosService: PortalSociosService, public router: Router) {
         this._portalSociosService.getSocioLogeado().subscribe(
             response => {
-                console.log(response);
                 this.rol = response.rol;
-                console.log(this.rol);
             },
             error => {
                 console.log(error);
@@ -23,7 +21,7 @@ export class AuthGuardSocioService implements CanActivate {
     } 
 
     canActivate(): boolean {
-        if(this.usuario != 'socio' && !this.auth.isAuthenticated()){
+        if(this.rol != '10' && !this.auth.isAuthenticated()){
             this.router.navigate(['']);
             return false;
         }

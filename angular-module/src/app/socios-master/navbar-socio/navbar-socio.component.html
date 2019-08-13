@@ -15,7 +15,7 @@
               <a class="nav-link" [routerLink]="['/SociosMaster/Perfil']"> <i class="fas fa-cat"></i> Beneficios</a>
             </li>
             <li ngbDropdown class="d-inline-block">
-              <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-tie"></i> Nombre de Socio</button>
+              <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-tie"></i> {{nombreSocio}}</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/Configuracion']"><i class="fas fa-user-cog"></i> Configuracion Cuenta</a>
                 <button class="selectColor" ngbDropdownItem (click)="logOut()"><i class="fas fa-sign-out-alt"></i> &nbsp;Cerrar Sesion</button>

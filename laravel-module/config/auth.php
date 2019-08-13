@@ -48,7 +48,7 @@ return [
         ],
 
         'socio_api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'socios',
         ],
     ],

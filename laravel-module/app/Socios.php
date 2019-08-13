@@ -9,6 +9,8 @@ class Socios extends Model
 {
     protected function filtrar($search)
     {
+    	$busca = strtolower($search);
+
     	return DB::select("SELECT 
 						to_char(fecha_nacimiento, 'dd-mm-yyyy') as fecha_nacimiento_view,
 						to_char(fecha_ingreso, 'dd-mm-yyyy') as fecha_ingreso_view,
@@ -23,6 +25,6 @@ class Socios extends Model
 						a_materno
 
     					from socios
-						where lower(CONCAT(nombres,' ',a_paterno)) like  '%$search%'");
+						where lower(CONCAT(nombres,' ',a_paterno,' ',a_materno)) like  '%$busca%'");
     }
 }

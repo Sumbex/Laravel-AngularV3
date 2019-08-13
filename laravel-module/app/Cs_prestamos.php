@@ -229,9 +229,9 @@ class Cs_prestamos extends Model
                                                 $prestamoAbono->activo = 'S';
 
                                                 if ($prestamoAbono->save()) {
-
-                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last();
-
+                                                    /*  $ultimoPrestamo = Cs_prestamos::find($prestamo->id); */
+                                                    /* $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last(); */
+                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::find($prestamoAbono->id);
                                                     $detalleAbono = new DetallePrestamoAbono;
 
                                                     $detalleAbono->prestamo_abono_id = $ultimoAbono->id;
@@ -268,7 +268,8 @@ class Cs_prestamos extends Model
                                                 $prestamoAbono->activo = 'S';
 
                                                 if ($prestamoAbono->save()) {
-                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last();
+                                                    /* $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last(); */
+                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::find($prestamoAbono->id);
 
                                                     $detalleAbono = new DetallePrestamoAbono;
 
@@ -306,7 +307,8 @@ class Cs_prestamos extends Model
                                                 $prestamoAbono->activo = 'S';
 
                                                 if ($prestamoAbono->save()) {
-                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last();
+                                                    /* $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::all()->last(); */
+                                                    $ultimoAbono = Cs_prestamo_tipo_abono_cuotas::find($prestamoAbono->id);
 
                                                     $detalleAbono = new DetallePrestamoAbono;
 
@@ -1244,7 +1246,7 @@ class Cs_prestamos extends Model
                     if ($pago->save()) {
 
                         if ($estado == true) {
-                            $ultimoPago = DetallePrestamo::all()->last();
+                            $ultimoPago = DetallePrestamo::find($pago->id);
 
                             if ($ultimoPago->cuota == $prestamo->cuota) {
                                 $ultimoPago->estado = 2;
@@ -1286,7 +1288,7 @@ class Cs_prestamos extends Model
                                 }
                                 //dd($pasarPM);
                                 for ($e = 0; $e < count($pasarPM); $e++) {
-                                  /*   dd($pasarPM[$i]->monto_ingreso); */
+                                    /*   dd($pasarPM[$i]->monto_ingreso); */
                                     //dump($pasarPM[$e]->tipo);
                                     switch ($pasarPM[$e]->tipo) {
                                         case 1:
@@ -1435,7 +1437,7 @@ class Cs_prestamos extends Model
                             $dAbono->monto_pagado = $request->monto;
 
                             if ($dAbono->save()) {
-                                $ultimoPago = DetallePrestamoAbono::all()->last();
+                                $ultimoPago = DetallePrestamoAbono::find($dAbono->id);
                                 if ($ultimoPago->monto_egreso == 0) {
                                     $ultimoPago->estado = 2;
                                     if ($ultimoPago->save()) {

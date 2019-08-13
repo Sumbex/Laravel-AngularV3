@@ -12,6 +12,24 @@ export class PortalSociosService{
         this.url = global.url;
     }
 
+    loginSocios(form) : Observable<any>{
+        const body = new FormData();
+        body.append('rut',form.email);
+        body.append('password', form.password);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.post(this.url + "login_socios?", "rut=" + form.email + "&" + "password=" + form.password, {headers: headers});
+
+    }
+
+    getSocioLogeado() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "socio_logeado",{headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token})}
+    );
+    }
+
     getDatosSocios(){
         return this._http.get(this.url + "test", {headers: new HttpHeaders(
             {

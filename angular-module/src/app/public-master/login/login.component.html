@@ -1,209 +1,205 @@
-<div class="container">
-  <div class="row">
-    <!--MODAL INICIO DE SESIÓN PARA ADMINS-->
-    <ng-template #Admins let-modal>
-      <div class="modal-header" id="demoFont">
-        <h6 class="modal-title">Inicie sesión para entrar al modulo administrativo</h6>
-        <button id="closeModalLogin" type="button" class="close" aria-label="Close"
-          (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+<!--MODAL INICIO DE SESIÓN PARA ADMINS-->
+<ng-template #Admins let-modal>
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title">INGRESAR AL MODULO ADMINISTRATIVO</h6>
+    <button id="closeModalLogin" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-
-              <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-
-                <div class="row">
-                  <!--formulario login-->
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="card-body row justify-content-end">
-                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-
-                        <div class="form-group">
-                          <label><strong>Rut</strong></label>&nbsp;
-                          <i class="fas fa-info-circle" placement="right"
-                            ngbTooltip="Ingrese rut sin puntos ni guion."></i>
-                          <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel"
-                            [(ngModel)]="usuario.email" required>
-                          <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut
-                            ingresado no es valido</small>
-                        </div>
-
-                        <div class="form-group">
-                          <label><strong>Contraseña</strong></label>&nbsp;
-                          <i class="fas fa-info-circle" placement="right"
-                            ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
-                          <input type="password" class="form-control" placeholder="********" name="password"
-                            #password="ngModel" [(ngModel)]="usuario.password" required>
-                          <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese
-                            una contraseña valida</small>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!--boton identificar-->
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="row justify-content-end">
-                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
-                        <input type="submit" value="Identificarse" class="btn btn-success"
-                          [disabled]="loginForm.invalid">
-                      </div>
-                  <!--loading-->
-                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
-                        <div *ngIf="loading" class="loader">Loading...</div>
-                      </div>
-                    </div>
-                  </div>
-                </div> <br>
-                <!--comprobar alert-->
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
-                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
-                      <strong>contraseña</strong> sean las correctas e intente nuevamente.
-                    </ngb-alert>
-                  </div>
-                </div>
-
-              </form>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </ng-template>
-
-    <!--MODAL INICIO DE SESISION SOCIOS-->
-    <ng-template #Socios let-modal>
-      <div class="modal-header" id="demoFont">
-        <h6 class="modal-title">Inicie sesión para entrar al portal de socios</h6>
-        <button id="closeModalLogin" type="button" class="close" aria-label="Close"
-          (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-
-              <form #loginFormSocios="ngForm" (ngSubmit)="onSubmitSocios($event)">
-
-                <div class="row">
-                  <!--formulario login-->
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="card-body row justify-content-end">
-                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-
-                        <div class="form-group">
-                          <label><strong>Rut</strong></label>&nbsp;
-                          <i class="fas fa-info-circle" placement="right"
-                            ngbTooltip="Ingrese rut sin puntos ni guion."></i>
-                          <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel"
-                            [(ngModel)]="usuario.email" required>
-                          <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut
-                            ingresado no es valido</small>
-                        </div>
-
-                        <div class="form-group">
-                          <label><strong>Contraseña</strong></label>&nbsp;
-                          <i class="fas fa-info-circle" placement="right"
-                            ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
-                          <input type="password" class="form-control" placeholder="********" name="password"
-                            #password="ngModel" [(ngModel)]="usuario.password" required>
-                          <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese
-                            una contraseña valida</small>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!--boton identificar-->
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="row justify-content-end">
-                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
-                        <input type="submit" value="Identificarse" class="btn btn-success"
-                          [disabled]="loginFormSocios.invalid">
-                      </div>
-                  <!--loading-->
-                      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
-                        <div *ngIf="loading" class="loader">Loading...</div>
-                      </div>
-                    </div>
-                  </div>
-                </div> <br>
-                <!--comprobar alert-->
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
-                      <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
-                      <strong>contraseña</strong> sean las correctas e intente nuevamente.
-                    </ngb-alert>
-                  </div>
-                </div>
-
-              </form>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </ng-template>
-
-    <!--logo sindicato-->
-    <div class="col-12">
+    <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-          <div class="row justify-content-end">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-              <div class="form-group"><br><br>
-                <img class="img-fluid" src="/assets/logo-sindicato-transparente-2.png" width="700" height="700" style="margin-top:20px;">
-              </div>
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 
-            </div>
-          </div>
-        </div>
+            <div class="row">
+              <!--formulario login-->
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="card-body row justify-content-end">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-        <div class="text-center col-12 col-sm-8 col-lg-8 col-xl-8">
-          <div class="row justify-content-center">
-            <div class="col-12 col-sm-5 col-lg-5 col-xl-5">
-              <div class="card bg-success text-white mb-3" (click)="openLoginAdmins(Admins)" style="cursor: pointer">
-                <div class="card-body">
-                  <h5>
-                    <i class="fas fa-users"></i> Modulo <br> Administrativo
-                  </h5>
+                    <div class="form-group">
+                      <label><strong>RUT ADMINISTRATIVO</strong></label>&nbsp;
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="Ingrese rut sin puntos ni guion."></i>
+                      <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel"
+                        [(ngModel)]="usuario.email" required>
+                      <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut
+                        ingresado no es valido</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label><strong>CONTRASEÑA</strong></label>&nbsp;
+                      <i class="fas fa-info-circle" placement="right"
+                        ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
+                      <input type="password" class="form-control" placeholder="********" name="password"
+                        #password="ngModel" [(ngModel)]="usuario.password" required>
+                      <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese
+                        una contraseña valida</small>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-12 col-sm-5 col-lg-5 col-xl-5">
-              <div class="card bg-danger text-white mb-3" (click)="openLoginAdmins(Socios)" style="cursor: pointer">
-                <div class="card-body">
-                  <h5>
-                    <i class="fas fa-users"></i> Modulo <br> Socios
-                  </h5>
+
+              <!--boton identificar-->
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-end">
+                  <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                    <input type="submit" value="Identificarse" class="btn btn-success" [disabled]="loginForm.invalid">
+                  </div>
+                  <!--loading-->
+                  <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                    <div *ngIf="loading" class="loader">Loading...</div>
+                  </div>
                 </div>
               </div>
+            </div> <br>
+            <!--comprobar alert-->
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
+                  <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
+                  <strong>contraseña</strong> sean las correctas e intente nuevamente.
+                </ngb-alert>
+              </div>
             </div>
-          </div>
+
+          </form>
+
         </div>
       </div>
     </div>
-    <!--
+
+  </div>
+
+</ng-template>
+
+<!--MODAL INICIO DE SESISION SOCIOS-->
+<ng-template #Socios let-modal>
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title">INGRESAR AL PORTAL DE SOCIOS</h6>
+    <button id="closeModalLogin" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+          <form #loginFormSocios="ngForm" (ngSubmit)="onSubmitSocios($event)">
+
+            <div class="row">
+              <!--formulario login-->
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="card-body row justify-content-end">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+                    <div class="form-group">
+                      <label><strong>RUT DEL SOCIO</strong></label>&nbsp;
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="Ingrese rut sin puntos ni guion."></i>
+                      <input type="text" class="form-control" placeholder="123456789" name="email" #email="ngModel"
+                        [(ngModel)]="usuario.email" required>
+                      <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block"> El rut
+                        ingresado no es valido</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label><strong>CONTRASEÑA</strong></label>&nbsp;
+                      <i class="fas fa-info-circle" placement="right"
+                        ngbTooltip="Por su seguridad no seleccione la opcion recordar contraseña."></i>
+                      <input type="password" class="form-control" placeholder="********" name="password"
+                        #password="ngModel" [(ngModel)]="usuario.password" required>
+                      <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">Ingrese
+                        una contraseña valida</small>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!--boton identificar-->
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-end">
+                  <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                    <input type="submit" value="Identificarse" class="btn btn-success"
+                      [disabled]="loginFormSocios.invalid">
+                  </div>
+                  <!--loading-->
+                  <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                    <div *ngIf="loading" class="loader">Loading...</div>
+                  </div>
+                </div>
+              </div>
+            </div> <br>
+            <!--comprobar alert-->
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <ngb-alert *ngIf="noEncontrado" [dismissible]="false">
+                  <strong>¡Usuario no encontrado!</strong> Compruebe que su <strong>rut</strong> y
+                  <strong>contraseña</strong> sean las correctas e intente nuevamente.
+                </ngb-alert>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>
+
+<!--logo sindicato--> <br> <br> <br> <br>
+<div class="card" id="demoFont">
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
+    <div class="row justify-content-start">
+
+      <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="text-center"><img src="/assets/logo-sindicato-transparente.png" width="100" height="100"></div>
+      </div>
+      <div class="col-12 col-md-10 col-lg-10 col-xl-10">
+       <br><h1>Bienvenido Sindicato CMPC Santa Fe</h1>
+      </div>
+
+    </div> <br>
+  </div>
+</div>
+
+<div class="card">
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-sm-5 col-lg-5 col-xl-5"> <br>
+        <div class="card borde-redondo bg-success text-white mb-3" (click)="openLoginAdmins(Admins)"
+          style="cursor: pointer">
+
+          <h5 class="size_icon text-center">
+            <i class="fas fa-user-tie"></i> <br> MODULO <br> ADMINISTRATIVO <br>
+          </h5> <br> <br>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-5 col-lg-5 col-xl-5"> <br>
+        <div class=" borde-redondo bg-danger text-white mb-3" (click)="openLoginAdmins(Socios)" style="cursor: pointer">
+
+          <h5 class="size_icon text-center">
+            <i class="fas fa-users"></i> <br> MODULO <br> PORTAL SOCIOS <br>
+          </h5> <br> <br>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--
     <label><strong>inicio de sesión para admins </strong></label><br>
     <button type="button" class="btn btn btn-success btn-block btn-sm" (click)="openLoginAdmins(Admins)">Ingresar a
       Administración</button>
@@ -211,5 +207,3 @@
     <button type="button" class="btn btn btn-success btn-block btn-sm" (click)="openLoginAdmins(Admins)">Ingresar a
       modulo de socios</button>
 -->
-  </div>
-</div>

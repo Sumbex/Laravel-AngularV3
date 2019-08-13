@@ -51,7 +51,7 @@ export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
     data.append('direccion',this.InsertarBeneficiosPadresSuegros.direccion);
     data.append('celular',this.InsertarBeneficiosPadresSuegros.celular);
 
-    this._SociosService.insertarDatosCarga(data).subscribe((response) =>{
+    this._SociosService.insertarDatosPS(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
         return false;

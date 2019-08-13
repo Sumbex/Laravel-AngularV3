@@ -56,7 +56,7 @@ export class FormularioBeneficiosSocioComponent implements OnInit {
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
     data.append('direccion',this.InsertarBeneficiosSocio.direccion);
-    data.append('telefono',this.InsertarBeneficiosSocio.telefono);
+    data.append('telefono',this.InsertarBeneficiosSocio.telefono); 
     data.append('celular',this.InsertarBeneficiosSocio.celular);
     data.append('anexo',this.InsertarBeneficiosSocio.anexo);
     data.append('email_1',this.InsertarBeneficiosSocio.email_1);

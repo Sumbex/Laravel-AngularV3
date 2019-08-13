@@ -514,7 +514,7 @@ module.exports = "<hr><h1 class=\"text-center\"><strong>Bienvenido Sindicato CMP
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n        </a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-cat\"></i> Perfil <span class=\"sr-only\">(current)</span></a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"> <i class=\"fas fa-cat\"></i> Beneficios</a>\n            </li>\n            <li ngbDropdown class=\"d-inline-block\">\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> Nombre de Socio</button>\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n              </div>\n            </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n        </a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-cat\"></i> Perfil <span class=\"sr-only\">(current)</span></a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"> <i class=\"fas fa-cat\"></i> Beneficios</a>\n            </li>\n            <li ngbDropdown class=\"d-inline-block\">\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n              </div>\n            </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -4873,15 +4873,13 @@ let AuthGuardSocioService = class AuthGuardSocioService {
         this.usuario = 'admin';
         this.rol = '';
         this._portalSociosService.getSocioLogeado().subscribe(response => {
-            console.log(response);
             this.rol = response.rol;
-            console.log(this.rol);
         }, error => {
             console.log(error);
         });
     }
     canActivate() {
-        if (this.usuario != 'socio' && !this.auth.isAuthenticated()) {
+        if (this.rol != '10' && !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }
@@ -5959,14 +5957,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+/* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+
 
 
 
 let NavbarSocioComponent = class NavbarSocioComponent {
-    constructor(_userService) {
+    constructor(_userService, _portalSociosService) {
         this._userService = _userService;
+        this._portalSociosService = _portalSociosService;
     }
     ngOnInit() {
+        //Guardar nombre socio
+        this._portalSociosService.getSocioLogeado().subscribe((res) => {
+            this.nombreSocio = res.nombres;
+        });
     }
     logOut() {
         this._userService.logOut();
@@ -5978,7 +5983,7 @@ NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./navbar-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html"),
         styles: [__webpack_require__(/*! ./navbar-socio.component.css */ "./src/app/socios-master/navbar-socio/navbar-socio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
 ], NavbarSocioComponent);
 
 
@@ -6410,11 +6415,7 @@ let SociosMasterComponent = class SociosMasterComponent {
         config.keyboard = false;
     }
     ngOnInit() {
-        this._portalSociosService.getSocioLogeado().subscribe(response => {
-            console.log(response);
-        }, error => {
-            console.log(error);
-        });
+        this.startTimerToken();
     }
     open(content) {
         this.modalService.open(content, { size: 'lg' });

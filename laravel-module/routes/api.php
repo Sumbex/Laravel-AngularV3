@@ -20,14 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'AuthController@login');
 Route::post('login_rut', 'AuthController@login_rut');
 Route::post('login_socios', 'PortalSocioController@LoginSocios');
-Route::group(['middleware' => ['cors', 'socio']], function () {
+/* Route::group(['middleware' => ['jwt.auth', 'cors', 'socio']], function () {
 	require 'Rutas_api/bryan_socios_api.php';
-});
+}); */
 /* require 'Rutas_api/bryan_socios_api.php'; */
 
 //CUANDO SE AUTORIZA UN USUARIO
 Route::group(['middleware' => ['jwt.auth', 'cors']], function () {
-
+	
 	//rutas con auth (loged)
 	Route::group(['middleware' => ['administrador']], function () {
 		Route::get('loged', function () {
@@ -44,7 +44,7 @@ Route::group(['middleware' => ['jwt.auth', 'cors']], function () {
 		require 'Rutas_api/bryan_api.php';
 	});
 	//['middleware' => 'auth']['middleware' => 'socio']
-	/* Route::group(['middleware' => ['jwt.auth', 'socio']], function () {
+	Route::group(['middleware' => ['socio']], function () {
 		require 'Rutas_api/bryan_socios_api.php';
-	}); */
+	});
 });

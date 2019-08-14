@@ -30,12 +30,10 @@ export class PortalSociosService{
     );
     }
 
-    getDatosSocios(){
-        return this._http.get(this.url + "test", {headers: new HttpHeaders(
-            {
-                //'Authorization': 'Bearer' + this.token,
-                'Content-Type': 'application/json'
-            }
+    getDatosSocios() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_basicos_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
         )});
     }
 
@@ -45,7 +43,7 @@ export class PortalSociosService{
         body.append('fecha', form);
         body.append('monto', form);
 
-        return this._http.post(this.url + "ingresar_pago_prestamo",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "modificar_datos_basicos_socio",body, {headers: new HttpHeaders(
             {
                 //'Authorization': 'Bearer' + this.token
             }

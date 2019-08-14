@@ -232,14 +232,20 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     return ['status' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                 } else {
 
-                    $socio = PortalSocio::where('rut', $request->rut)->first();
+                    $socio = PortalSocio::where([
+                        'rut' => $request->rut,
+                        'rol' => '10'
+                    ])->first();
+
                     /* dd(is_null($socio->fecha_egreso)); */
                     if (is_null($socio->fecha_egreso)) {
                         if (Hash::check($request->password, $socio->password)) {
                             /* Config */
                             config()->set('auth.defaults.guard', 'socio_api');
-                            \Config::set('jwt.user', App\PortalSocio::class);
+                            \Config::set('jwt.user', 'App\PortalSocio');
                             \Config::set('auth.providers.users.model', \App\PortalSocio::class);
+
+
                             $credentials = $request->only('rut', 'password');
 
                             // dd($credentials);
@@ -250,6 +256,10 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                     'msg' => 'Invalid Credentials.'
                                 ], 400);
                             }
+
+                            /* $test = \Auth::guard('socio_api');
+                            dd($test); */
+                            
                             return response([
                                 'status' => 'success',
                                 'token' => $token,
@@ -760,7 +770,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
-    protected function ingresarBeneficiarioSocio($request)
+    protected function ingresarBeneficiariosSocio($request)
     {
         $verificar = $this->verificarSocio($this->socioLogeado()->id);
         if ($verificar['estado'] == 'success') {
@@ -789,5 +799,35 @@ class PortalSocio extends Authenticatable implements JWTSubject
         } else {
             return $verificar;
         }
+    }
+
+    protected function traerDatosCargasSocio()
+    {
+        $cargas = DB::table('cargas_legales_socio')
+            ->select([
+                'rut',
+                'fecha_nacimiento',
+                'nombres',
+                'apellido_paterno',
+                'apellido_materno',
+                'direccion',
+                'celular'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$cargas->isEmpty()) {
+            return ['estado' => 'success', 'cargas' => $cargas];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function ingresarDatosCargasSocio($request)
+    {
+        //
     }
 }

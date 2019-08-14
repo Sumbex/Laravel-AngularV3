@@ -696,4 +696,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
             return ['estado' => 'failed', 'mensaje' => 'Ya tienes datos ingresados, si deseas modificarlos dirigete al sindicato.'];
         }
     }
+
+    protected function ingresarBeneficiarioSocio($request)
+    {
+        //
+    }
 }

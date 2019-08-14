@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PortalSociosService{
     public url: string;
+    rol = '';
     //token = localStorage.getItem('token').replace(/['"]+/g, '');
 
     constructor(public _http: HttpClient){

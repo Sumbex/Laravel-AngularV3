@@ -12,17 +12,11 @@ export class SociosMasterComponent implements OnInit {
 
   tiempoEsperaToken: number = 1;
 
-  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private config: NgbModalConfig, private modalService: NgbModal) {
-    config.backdrop = 'static';
-    config.keyboard = false;
+  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService) {
   }
 
   ngOnInit() {
     this.startTimerToken();
-  }
-
-  open(content) {
-    this.modalService.open(content, { size: 'lg' });
   }
 
   startTimerToken() {

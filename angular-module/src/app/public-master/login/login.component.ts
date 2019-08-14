@@ -3,6 +3,7 @@ import { Usuario } from '../../modelos/usuarios.model';
 import { UsuarioService } from '../../servicios/usuarios.service';
 import { Router } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   public lockLogin: boolean = false;
 
-  constructor(private _userService: UsuarioService, private router: Router, config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private _userService: UsuarioService, private _portalSocios: PortalSociosService, private router: Router, config: NgbModalConfig, private modalService: NgbModal) {
     this.usuario = new Usuario();
     config.backdrop = 'static';
     config.keyboard = false;
@@ -44,12 +45,10 @@ export class LoginComponent implements OnInit {
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-        console.log(response);
         this.lockLogin = false;
         this.router.navigate(['AuthMaster']);
         document.getElementById("closeModalLogin").click();
       }else{
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;
@@ -57,7 +56,6 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.status = error;
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;
@@ -71,18 +69,16 @@ export class LoginComponent implements OnInit {
   onSubmitSocios(form) {
     if(this.lockLogin == false){
     this.lockLogin = true;
-    this._userService.login(this.usuario, true).subscribe(
+    this._portalSocios.loginSocios(this.usuario).subscribe(
       response => {
         if(response.status == 'success'){
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-        console.log(response);
         this.lockLogin = false;
         this.router.navigate(['SociosMaster']);
         document.getElementById("closeModalLogin").click();
       }else{
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;
@@ -90,7 +86,6 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.status = error;
-        console.log("Revise que su usuario sea correcto");
         this.lockLogin = false;
         this.noEncontrado = true;
         this.loading = false;

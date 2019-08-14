@@ -16,6 +16,7 @@ import { TablaPrestamosSociosComponent } from './auth-master/modal-prestamos-soc
 import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component';
 import { SociosMasterComponent } from './socios-master/socios-master.component';
 import { PerfilSocioComponent } from './socios-master/perfil-socio/perfil-socio.component';
+import { AuthGuardSocioService } from './guardianes/authSocio.guard.service';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -35,7 +36,7 @@ const routes: Routes = [
 
   ]},
 
-  { path: 'SociosMaster', component: SociosMasterComponent, children:[
+  { path: 'SociosMaster', component: SociosMasterComponent, canActivate: [AuthGuardSocioService], children:[
     { path: 'Perfil', component: PerfilSocioComponent }
   ]},
 

@@ -8,7 +8,10 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TablaBeneficiosAuthSocioComponent implements OnInit {
 
+  //Instancia del modal
   abrirTablaBeneficiosSocios;
+
+  //Objeto con los datos del socio
   
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal) {

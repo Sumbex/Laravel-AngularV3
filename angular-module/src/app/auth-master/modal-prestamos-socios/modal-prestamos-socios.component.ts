@@ -14,7 +14,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
   selectTipoPrestamo;
 
   datosTipoPrestamo = {
-    id: null,
+    id: 0,
     descripcion: ''
   };
 
@@ -32,7 +32,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
   //datos para enviar al formulario
   datosEnvioPrestamo: Prestamos = {
     fecha: "",
-    selectId: "1",
+    selectId: 1,
     socioId: "",
     numeroDocumento: "",
     archivoDocumento: null,
@@ -60,7 +60,7 @@ export class ModalPrestamosSociosComponent implements OnInit {
     //Guardar Tipo Prestamo
     this._sindicalService.getTipoPrestamo().subscribe((res) => {
       this.selectTipoPrestamo = res.map(({id, descripcion}) => ({id, descripcion}));
-      this.datosTipoPrestamo.descripcion = "salud";
+      this.datosTipoPrestamo.descripcion = "";
     },
     error => {
       console.log(error);
@@ -147,14 +147,18 @@ export class ModalPrestamosSociosComponent implements OnInit {
     this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
       console.log(res);
       if(res.estado == 'failed_v' || res.estado == 'failed'){
-        alert('ERROR: Compruebe que los valores ingresados son correctos');
+        //alert('ERROR: Compruebe que los valores ingresados son correctos');
+        let mensaje = JSON.stringify(res.mensaje);
+        mensaje = mensaje.replace(/[\[\]'"{}]+/g,'')
+        alert(mensaje);
         this.blockPrestamo = false;
       }else{
         alert('Ingreso correcto');
         this.blockPrestamo = false;
         //limpieza de campos
+        this.datosTipoPrestamo.id = 0;
         this.datosEnvioPrestamo.fecha = "";
-        this.datosEnvioPrestamo.selectId = "1";
+        this.datosEnvioPrestamo.selectId = 1;
         this.datosEnvioPrestamo.socioId = "";
         this.datosEnvioPrestamo.numeroDocumento = "";
         this.datosEnvioPrestamo.archivoDocumento = null;

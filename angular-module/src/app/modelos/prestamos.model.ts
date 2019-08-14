@@ -1,6 +1,6 @@
 export class Prestamos{
     fecha: string;
-    selectId: string;
+    selectId: number;
     socioId: string;
     numeroDocumento: string;
     archivoDocumento: File;

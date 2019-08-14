@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use App\Socio_datos_basicos;
 use App\SocioSituacion;
 use App\SocioConyuge;
+use App\SocioBeneficiario;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -184,6 +185,32 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 );
                 break;
 
+            case 5:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'relacion' => 'required|string',
+                        'rut' => 'required',
+                        'fecha_nacimiento' => 'required',
+                        'nombres' => 'required|string',
+                        'apellido_paterno' => 'required|string',
+                        'apellido_materno' => 'required|string',
+                        'direccion' => 'required|string',
+                        'celular' => 'required|string'
+                    ],
+                    [
+                        'relacion.required' => 'Debes ingresar su relacion.',
+                        'rut.required' => 'Debes ingresar el rut.',
+                        'fecha_nacimiento.required' => 'Debes ingresar la fecha de nacimiento.',
+                        'nombres.required' => 'Debes ingresar los nombres.',
+                        'apellido_paterno.required' => 'Debes ingresar el apellido',
+                        'apellido_materno.required' => 'Debes ingresar el apellido',
+                        'direccion.required' => 'Debes ingresar la direccion',
+                        'celular.required' => 'Debes ingresar el numero de celular'
+                    ]
+                );
+                break;
+
             default:
                 # code...
                 break;
@@ -205,14 +232,20 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     return ['status' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                 } else {
 
-                    $socio = PortalSocio::where('rut', $request->rut)->first();
+                    $socio = PortalSocio::where([
+                        'rut' => $request->rut,
+                        'rol' => '10'
+                    ])->first();
+
                     /* dd(is_null($socio->fecha_egreso)); */
                     if (is_null($socio->fecha_egreso)) {
                         if (Hash::check($request->password, $socio->password)) {
                             /* Config */
                             config()->set('auth.defaults.guard', 'socio_api');
-                            \Config::set('jwt.user', App\PortalSocio::class);
+                            \Config::set('jwt.user', 'App\PortalSocio');
                             \Config::set('auth.providers.users.model', \App\PortalSocio::class);
+
+
                             $credentials = $request->only('rut', 'password');
 
                             // dd($credentials);
@@ -223,12 +256,16 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                     'msg' => 'Invalid Credentials.'
                                 ], 400);
                             }
+
+                            /* $test = \Auth::guard('socio_api');
+                            dd($test); */
+                            
                             return response([
                                 'status' => 'success',
                                 'token' => $token,
-                                 'user' =>  JWTAuth::user() 
+                                'user' =>  JWTAuth::user()
                             ])
-                            ->header('Authorization', $token);
+                                ->header('Authorization', $token);
                         }
                         return response(['status' => 'failed', 'mensaje' => 'La contrasena ingresado no es valida.']);
                     } else {
@@ -698,5 +735,99 @@ class PortalSocio extends Authenticatable implements JWTSubject
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Ya tienes datos ingresados, si deseas modificarlos dirigete al sindicato.'];
         }
+    }
+
+    protected function traerDatosBeneficiariosSocios()
+    {
+        $beneficiario = DB::table('socio_beneficiario')
+            ->select([
+                'relacion',
+                'rut',
+                'fecha_nacimiento',
+                'nombres',
+                'apellido_paterno',
+                'apellido_materno',
+                'direccion',
+                'celular',
+                'cobro_beneficion',
+                'fecha_cobro_beneficio'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$beneficiario->isEmpty()) {
+            for ($i = 0; $i < count($beneficiario); $i++) {
+                if (is_null($beneficiario[$i]->fecha_cobro_beneficio)) {
+                    $beneficiario[$i]->fecha_cobro_beneficio = 'Aun no se ha realizado el cobro.';
+                }
+            }
+            return ['estado' => 'success', 'beneficiario' => $beneficiario];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function ingresarBeneficiariosSocio($request)
+    {
+        $verificar = $this->verificarSocio($this->socioLogeado()->id);
+        if ($verificar['estado'] == 'success') {
+            $validarDatos = $this->validarDatos($request, 5);
+            if ($validarDatos['estado'] == 'success') {
+                $beneficiario = new SocioBeneficiario;
+                $beneficiario->socio_id = $this->socioLogeado()->id;
+                $beneficiario->relacion = $request->relacion;
+                $beneficiario->rut = $request->rut;
+                $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
+                $beneficiario->nombres = $request->nombres;
+                $beneficiario->apellido_paterno = $request->apellido_paterno;
+                $beneficiario->apellido_materno = $request->apellido_materno;
+                $beneficiario->direccion = $request->direccion;
+                $beneficiario->celular = $request->celular;
+                $beneficiario->activo = 'S';
+                $beneficiario->cobro_beneficio = 'N';
+                if ($beneficiario->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
+            } else {
+                return $validarDatos;
+            }
+        } else {
+            return $verificar;
+        }
+    }
+
+    protected function traerDatosCargasSocio()
+    {
+        $cargas = DB::table('cargas_legales_socio')
+            ->select([
+                'rut',
+                'fecha_nacimiento',
+                'nombres',
+                'apellido_paterno',
+                'apellido_materno',
+                'direccion',
+                'celular'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$cargas->isEmpty()) {
+            return ['estado' => 'success', 'cargas' => $cargas];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function ingresarDatosCargasSocio($request)
+    {
+        //
     }
 }

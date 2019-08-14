@@ -9,3 +9,4 @@ Route::post('/modificar_datos_basicos_socio', 'PortalSocioController@ModificarDa
 Route::get('/traer_datos_conyuge_socio', 'PortalSocioController@TraerDatosConyuge');
 Route::post('/ingresar_datos_conyuge_socio', 'PortalSocioController@IngresarConyugeSocio');
 Route::post('/ingresar_datos_beneficiarios_socio', 'PortalSocioController@IngresarBeneficiarioSocio');
+Route::get('/traer_datos_beneficiarios_socio', 'PortalSocioController@TraerDatosBeneficiariosSocios');

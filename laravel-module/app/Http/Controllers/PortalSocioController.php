@@ -51,4 +51,9 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::ingresarBeneficiarioSocio($request);
     }
+
+    public function TraerDatosBeneficiariosSocios()
+    {
+        return PortalSocio::traerDatosBeneficiariosSocios();
+    }
 }

@@ -24,7 +24,7 @@ class Socio_mdlw
         /* dd(is_null($logeado)); */
 
         if (!is_null($logeado)) {
-            if ((string) $logeado->rol == "10") { //si el rol es de socio       
+            if ((string) $logeado->rol == "10" | (string) $logeado->rol == "5") { //si el rol es de socio       
                 return $next($request);
             }
         } else {

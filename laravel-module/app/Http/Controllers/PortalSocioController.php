@@ -66,4 +66,14 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::borrarUsuarioSocio($request);
     }
+
+    public function CrearUsuariosAdmin(Request $request)
+    {
+        return PortalSocio::crearUsuariosAdmin($request);
+    }
+
+    public function BorrarUsuariosAdmin(Request $request)
+    {
+        return PortalSocio::borrarUsuariosAdmin($request);
+    }
 }

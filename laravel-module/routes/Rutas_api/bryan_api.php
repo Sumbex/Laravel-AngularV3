@@ -23,6 +23,12 @@ Route::post('/ingresar_pago_abono', 'PrestamosController@PagoAbonos');
 Route::post('/crear_usuario_socio', 'PortalSocioController@CrearUsuarioSocio');
 Route::post('/borrar_usuario_socio', 'PortalSocioController@BorrarUsuarioSocio');
 
+
+//------------------------------------------->accesos admin cambiar de lado despues
+Route::post('/crear_usuario_admin', 'PortalSocioController@CrearUsuariosAdmin');
+Route::post('/borrar_usuario_admin', 'PortalSocioController@BorrarUsuariosAdmin');
+
+
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 
 

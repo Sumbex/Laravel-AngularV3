@@ -242,7 +242,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         /* dd($user); */
                         if (Hash::check($request->password, $user->password)) {
                             /* Config */
-                            /* config()->set('auth.defaults.guard', 'socio_api'); */
+                            config()->set('auth.defaults.guard', 'socio_api');
                             \Config::set('jwt.user', 'App\User');
                             \Config::set('auth.providers.users.model', \App\User::class);
 
@@ -308,9 +308,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function socioLogeado()
     {
-        /* dd(Auth::guard()->user()); */
-        $socio = PortalSocio::where('rut', Auth::guard()->user()->rut)->get();
-        
+        /* dd(Auth::guard('socio_api')->user()); */
+        $socio = PortalSocio::where('rut', Auth::guard('socio_api')->user()->rut)->get();
+        /* dd($socio); */
         foreach ($socio as $key) {
             $key->rol = Auth::guard()->user()->rol;
         }

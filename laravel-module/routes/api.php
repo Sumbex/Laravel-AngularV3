@@ -44,7 +44,7 @@ Route::group(['middleware' => ['jwt.auth', 'cors']], function () {
 		require 'Rutas_api/bryan_api.php';
 	});
 	//['middleware' => 'auth']['middleware' => 'socio']
-	Route::group(['middleware' => ['jwt.auth', 'socio']], function () {
+	Route::group(['middleware' => ['socio']], function () {
 		require 'Rutas_api/bryan_socios_api.php';
 	});
 });

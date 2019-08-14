@@ -56,4 +56,14 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::traerDatosBeneficiariosSocios();
     }
+
+    public function CrearUsuarioSocio(Request $request)
+    {
+        return PortalSocio::crearUsuarioSocio($request);
+    }
+
+    public function BorrarUsuarioSocio(Request $request)
+    {
+        return PortalSocio::borrarUsuarioSocio($request);
+    }
 }

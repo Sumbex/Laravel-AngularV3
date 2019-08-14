@@ -19,7 +19,9 @@ Route::get('/traer_tipo_abono', 'PrestamosController@TraerTipoAbonos');
 Route::post('/ingresar_pago_prestamo', 'PrestamosController@PagoPrestamos');
 Route::post('/ingresar_pago_abono', 'PrestamosController@PagoAbonos');
 
-
+//------------------------------------------->ruta socio
+Route::post('/crear_usuario_socio', 'PortalSocioController@CrearUsuarioSocio');
+Route::post('/borrar_usuario_socio', 'PortalSocioController@BorrarUsuarioSocio');
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 

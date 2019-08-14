@@ -15,6 +15,7 @@ use App\Socio_datos_basicos;
 use App\SocioSituacion;
 use App\SocioConyuge;
 use App\SocioBeneficiario;
+use App\User;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -259,7 +260,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
                             /* $test = \Auth::guard('socio_api');
                             dd($test); */
-                            
+
                             return response([
                                 'status' => 'success',
                                 'token' => $token,
@@ -829,5 +830,63 @@ class PortalSocio extends Authenticatable implements JWTSubject
     protected function ingresarDatosCargasSocio($request)
     {
         //
+    }
+
+    protected function crearUsuarioSocio($request)
+    {
+        $traerSocio = PortalSocio::find($request->id);
+
+        if (!is_null($traerSocio)) {
+            if (is_null($traerSocio->fecha_egreso)) {
+                $user = User::where('rut', $traerSocio->rut)->first();
+                if (is_null($user)) {
+                    $crear = new User;
+                    $crear->name = $traerSocio->nombres;
+                    $crear->nombres = $traerSocio->nombres;
+                    $crear->a_paterno = $traerSocio->a_paterno;
+                    $crear->a_materno = $traerSocio->a_materno;
+                    $crear->email = 'correo@prueba.cl';
+                    $pass = substr($traerSocio->rut, -5, 4);
+                    $crear->password = bcrypt($pass);
+                    $crear->rut = $traerSocio->rut;
+                    $crear->rol = '10';
+                    if ($crear->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso creadas correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales del socio.'];
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'El socio ya tiene credenciales de acceso creadas.'];
+                }
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El socio ya no se encuentra en el sindicato.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Socio no encontrado.'];
+        }
+    }
+
+    protected function borrarUsuarioSocio($request)
+    {
+        $traerSocio = PortalSocio::find($request->id);
+
+        if (!is_null($traerSocio)) {
+            if (!is_null($traerSocio->fecha_egreso)) {
+                $user = User::where('rut', $traerSocio->rut)->first();
+                if (!is_null($user)) {
+                    if ($user->delete()) {
+                        return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso eliminadas correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Error al eliminar las credenciales del socio.'];
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'El socio aun no tiene credenciales de acceso.'];
+                }
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El socio aun se encuentra activo en el sindicato.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Socio no encontrado.'];
+        }
     }
 }

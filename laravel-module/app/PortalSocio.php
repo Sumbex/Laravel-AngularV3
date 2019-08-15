@@ -223,6 +223,42 @@ class PortalSocio extends Authenticatable implements JWTSubject
         return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
+    /* public function login_rut(Request $request)
+	{	
+		try{
+			if(!$this->valida_rut($request->email)){
+				return ['status'=>'failed', 'mensaje'=>'El rut no es valido'];
+			}
+			else{//rut si valido
+
+				// config()->set( 'auth.defaults.guard', 'api' );
+                // \Config::set('jwt.user', App\User::class);
+                // \Config::set('auth.providers.users.model', \App\User::class);
+			
+			    $user = User::where('rut', $request->email)->first();
+
+				if (Hash::check($request->password, $user->password)) {
+					 //$credentials = $request->only('email', 'password');
+				    if ( ! $token = JWTAuth::fromUser($user)) {
+				            return response([
+				                'status' => 'error',
+				                'error' => 'invalid.credentials',
+				                'msg' => 'Invalid Credentials.'
+				            ], 400);
+				    }
+				    return response([
+				            'status' => 'success',
+				            'token' => $token,
+				            'rol' => (string)$user->rol,
+				        ])
+				        ->header('Authorization', $token);
+				}
+				return response(['status'=>'failed', 'mensaje'=>'Contraseña no valida']);
+			}
+		}catch(\ErrorException $e){
+			return ['status'=>'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
+		}
+	} */
     protected function loginSocios($request)
     {
 
@@ -239,36 +275,24 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     if (is_null($socio->fecha_egreso)) {
 
                         $user = User::where('rut', $socio->rut)->first();
-                        /* dd($user); */
+
                         if (Hash::check($request->password, $user->password)) {
-                            /* Config */
-                            config()->set('auth.defaults.guard', 'socio_api');
-                            \Config::set('jwt.user', 'App\User');
-                            \Config::set('auth.providers.users.model', \App\User::class);
-
-
-                            $credentials = $request->only('rut', 'password');
-
-                            // dd($credentials);
-                            if (!$token = JWTAuth::attempt($credentials)) {
+                            //$credentials = $request->only('email', 'password');
+                            if (!$token = JWTAuth::fromUser($user)) {
                                 return response([
                                     'status' => 'error',
                                     'error' => 'invalid.credentials',
                                     'msg' => 'Invalid Credentials.'
                                 ], 400);
                             }
-
-                            /* $test = \Auth::guard('socio_api');
-                            dd($test); */
-
                             return response([
                                 'status' => 'success',
                                 'token' => $token,
-                                'user' =>  JWTAuth::user()
+                                'rol' => (string) $user->rol,
                             ])
                                 ->header('Authorization', $token);
                         }
-                        return response(['status' => 'failed', 'mensaje' => 'La contrasena ingresado no es valida.']);
+                        return response(['status' => 'failed', 'mensaje' => 'Contraseña no valida']);
                     } else {
                         return response(['status' => 'failed', 'mensaje' => 'El socio ya no se encuentra activo en el sindicato.']);
                     }
@@ -308,34 +332,14 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function socioLogeado()
     {
-        /* dd(Auth::guard('socio_api')->user()); */
-        $socio = PortalSocio::where('rut', Auth::guard('socio_api')->user()->rut)->get();
+        /* dd(Auth::guard()->user()); */
+        $socio = PortalSocio::where('rut', Auth::guard()->user()->rut)->get();
         /* dd($socio); */
         foreach ($socio as $key) {
             $key->rol = Auth::guard()->user()->rol;
         }
         return $socio[0];
     }
-
-    /* protected function div_fecha($value)
-    {
-        $fecha = $value;
-        $ano = substr($fecha, -10, 4);
-        $mes = substr($fecha, -5, 2);
-        $dia = substr($fecha, -2, 2);
-        return [
-            'anio' => $ano, 'mes' => $mes, 'dia' => $dia
-        ];
-    }
-    protected function anio_tipo_id($value)
-    {
-        return DB::table('anio')->where('descripcion', $value)->first();
-    }
-
-    protected function mes_tipo_id($value)
-    {
-        return DB::table('mes')->where('id', $value)->first();
-    } */
 
     protected function verificarSocio($id)
     {
@@ -860,11 +864,15 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales del socio.'];
                     }
                 } else {
-                    $user->rol = '5';
-                    if ($user->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso mixto creadas correctamente.'];
+                    if ($user->rol == 1) {
+                        $user->rol = '5';
+                        if ($user->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso mixto creadas correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales.'];
+                        }
                     } else {
-                        return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales.'];
+                        return ['estado' => 'failed', 'mensaje' => 'El socio no es administrador, si necesitas crear credenciales para el, contactenos.'];
                     }
                 }
             } else {

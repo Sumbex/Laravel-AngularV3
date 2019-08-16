@@ -225,7 +225,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function loginSocios($request)
     {
-
         try {
             $validarDatos = $this->validarDatos($request, 3);
             if ($validarDatos['estado'] == 'success') {
@@ -833,15 +832,19 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     }
                 } else {
                     //verificar si rol es 5 dar mensaje de que ya tiene acceso mixto sino hacer lo de abajo 
-                    if ($user->rol == 1) {
-                        $user->rol = '5';
-                        if ($user->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso mixto creadas correctamente.'];
-                        } else {
-                            return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales.'];
-                        }
+                    if ($user->rol == 5) {
+                        return ['estado' => 'failed', 'mensaje' => 'El socio ya tiene sus Credenciales de acceso mixto creadas.'];
                     } else {
-                        return ['estado' => 'failed', 'mensaje' => 'El socio no es administrador, si necesitas crear credenciales para el, contactenos.'];
+                        if ($user->rol == 1) {
+                            $user->rol = '5';
+                            if ($user->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso mixto creadas correctamente.'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales.'];
+                            }
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'El socio no es administrador, si necesitas crear credenciales para el, contactenos.'];
+                        }
                     }
                 }
             } else {

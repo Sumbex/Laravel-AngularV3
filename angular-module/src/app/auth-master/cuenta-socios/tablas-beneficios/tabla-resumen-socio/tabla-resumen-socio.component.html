@@ -1,0 +1,301 @@
+<div id="printJS-table">
+  <div class="row">
+    <div class="col-12"> <br>
+      <div class="table-responsive">
+
+        <div *ngIf="vista_tabla == true" class="loader"></div>
+        <table *ngIf="vista_tabla == false && ocultar_tabla == false" class="table table-striped table-bordered table-sm">
+            <h3 class="text-center">REGISTRO DATOS PERSONALES DE SOCIO</h3> <br> <br>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-between">
+
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label class="text-center"><strong>SOCIO: {{getNombreSocio | uppercase}} <br> </strong></label> <br>
+                <tr>
+                  <th class="text-right" style="background: #138D75">RUT:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{getRutSocio}}" #rutUpdate disabled></td>
+                  <th class="text-right" style="background: #138D75">FECHA DE NACIMIENTO:</th>
+                  <td><input type="date" class="sinbordefondo centrado" value="{{getFechaSocio}}" #fechaUpdate disabled></td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75">N° CTA:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.numero_cuenta}}"#ctaUpdate disabled></td>
+
+                  <th class="text-right" style="background: #138D75">BANCO:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{ traerDatosSocio.banco | uppercase}}"#bancoUpdate disabled></td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">CUENTA:</th>
+                  <td>
+                    <select name="Cta" id="cta" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.tipo_cuenta_banco_id" #tipoCtaUpdate required disabled style="-webkit-appearance: none;-moz-appearance: none; appearance: none;">
+                      <option value="1">CUENTA RUT</option>
+                      <option value="2">CUENTA VISTA</option>
+                      <option value="3">CUENTA CORRIENTE</option>
+                    </select>
+                  </td>
+
+                  <th class="text-right" style="background: #138D75;">ISAPRE O FONASA:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.isapre_fonasa | uppercase}}" #isapreFonasaUpdate disabled></td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">GRUPO DE SANGRE:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.grupo_sangre | uppercase}}" #grupoSangreUpdate disabled></td>
+
+                  <th class="text-right" style="background: #138D75">DIRECCION:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosSocio.direccion | uppercase}}" #direccionUpdate disabled>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">TELEFONO:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.telefono}}"
+                      #telefonoUpdate disabled>
+                  </td>
+
+                  <th class="text-right" style="background: #138D75;">CELULAR:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.celular}}"
+                      #celularUpdate disabled>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">ANEXO:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.anexo | uppercase}}"
+                      #anexoUpdate disabled>
+                  </td>
+
+                  <th class="text-right" style="background: #138D75;">EMAIL PERSONAL:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.email_1 | uppercase}}"
+                      #email1Update disabled>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">EMAIL CORPORATIVO:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.email_2 | uppercase}}"
+                      #email2Update disabled>
+                  </td>
+
+                  <th class="text-right" style="background: #138D75;">CARGO PLANTA:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosSocio.cargo_planta | uppercase}}" #cargoPlantaUpdate disabled>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">CARGO O COMISION:</th>
+                  <td>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.cargo_comision_sindicato" #cargoComisionUpdate required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                      <option value="1">SOCIO</option>
+                      <option value="2">DIRECTIVA</option>
+                    </select>
+                  </td>
+
+                  <th class="text-right" style="background: #138D75;">CASA PROPIA:</th>
+                  <td>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.casa_propia" #casaPropiaUpdate required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                      <option value="S">SI</option>
+                      <option value="N">NO</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">ROL TURNO:</th>
+                  <td>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.rol_turno" #rolTurnoUpdate required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                      <option value="S">SI</option>
+                      <option value="N">NO</option>
+                    </select>
+                  </td>
+
+                  <th class="text-right" style="background: #138D75;">ESTADO CIVIL:</th>
+                  <td>
+                    <select name="Civil" id="civil" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.estado_civil_id" #estadoCivilUpdate required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                      <option value="1">SOLTERO/A</option>
+                      <option value="2">CASADO/A</option>
+                      <option value="3">VIUDO/A</option>
+                      <option value="4">DIVORCIADO/A</option>
+                      <option value="5">CONVIVIENTE CIVIL</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="text-right" style="background: #138D75;">CONYUGE:</th>
+                  <td>
+                    <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="traerDatosSocio.conyuge" #conyugeUpdate required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                      <option value="S">SI</option>
+                      <option value="N">NO</option>
+                    </select>
+                  </td>
+                </tr> <br>
+              </div>
+
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label class="text-center"><strong>CONYUGE: {{traerDatosConyuge.nombres | uppercase}}{{traerDatosConyuge.apellido_paterno | uppercase}} {{traerDatosConyuge.apellido_materno | uppercase}}<br> </strong></label> <br>
+                <tr>
+                  <th style="background: #138D75" class="text-right">RUT:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.rut}}" disabled></td>
+
+                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                  <td><input type="date" class="sinbordefondo centrado" value="{{ traerDatosConyuge.fecha_nacimiento }}" disabled>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.direccion | uppercase}}" disabled></td>
+
+                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.celular}}" disabled></td>
+                </tr> <br>
+              </div>
+
+              <!-- <div *ngFor="let itemBeneficiario of traerDatosBeneficiario" class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label class="text-center"><strong>BENEFICIARIO: {{itemBeneficiario.nombres | uppercase}} {{itemBeneficiario.apellido_paterno | uppercase}} {{itemBeneficiario.apellido_materno | uppercase}} <br> </strong></label> <br>
+  
+                  <tr>
+                    <th style="background: #138D75" class="text-right">RUT:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemBeneficiario.rut}}" disabled></td>
+
+                    <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                    <td><input type="date" class="sinbordefondo centrado" value="{{ itemBeneficiario.fecha_nacimiento }}" disabled>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemBeneficiario.direccion | uppercase}}" disabled>
+                    </td>
+
+                    <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemBeneficiario.celular}}" disabled></td>
+                  </tr> 
+                  <tr>
+                    <th style="background: #138D75" class="text-right">RELACION:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemBeneficiario.relacion | uppercase}}" disabled></td>
+                  </tr> <br>
+              </div> -->
+
+              <div *ngFor="let itemCarga of traerDatosCarga" class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <label class="text-center"><strong>CARGA: {{itemCarga.nombres | uppercase}}
+                    {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} <br>
+                  </strong></label> <br>
+                <tr>
+                  <th style="background: #138D75" class="text-right">RUT:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{itemCarga.rut}}" disabled></td>
+
+                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                  <td><input type="date" class="sinbordefondo centrado" value="{{ itemCarga.fecha_nacimiento }}" disabled></td>
+                </tr>
+
+                <tr>
+                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{itemCarga.direccion | uppercase}}" disabled>
+                  </td>
+
+                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{itemCarga.celular}}" disabled></td>
+                </tr>
+
+                <tr>
+                  <th style="background: #138D75;" class="text-right">ESTABLECIMIENTO:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{itemCarga.establecimiento | uppercase}}" disabled>
+                  </td>
+
+                  <th style="background: #138D75" class="text-right">RELACION:</th>
+                  <td>
+                    <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="itemCarga.tipo_carga_id" required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                      <option value="1">HIJO</option>
+                      <option value="2">NIETO</option>
+                      <option value="3">ADOPCION</option>
+                      <option value="4">OTROS</option>
+                    </select>
+                  </td>
+                </tr> <br>
+              </div>
+
+              <div *ngFor="let itemPS of traerDatosPS" class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label class="text-center"><strong>
+                    <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
+                    [(ngModel)]="itemPS.relacion_socio_id" required disabled style="-webkit-appearance: none;-moz-appearance: none; appearance: none;">  
+                      <option value="1">PADRE: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}} {{itemPS.apellido_materno | uppercase}} </option>
+                      <option value="2">MADRE: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}} {{itemPS.apellido_materno | uppercase}} </option>
+                      <option value="3">SUEGRO: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}} {{itemPS.apellido_materno | uppercase}} </option>
+                      <option value="4">SUEGRA: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}} {{itemPS.apellido_materno | uppercase}} </option>
+                    </select> <br> </strong></label>
+                  <tr>
+                    <th style="background: #138D75" class="text-right">RUT:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemPS.rut}}" disabled></td>
+
+                    <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                    <td><input type="date" class="sinbordefondo centrado" value="{{ itemPS.fecha_nacimiento }}" disabled></td>
+                  </tr>
+
+                  <tr>
+                    <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                    <td><input type="date" class="sinbordefondo centrado" value="{{ itemPS.fecha_nacimiento }}" disabled></td>
+
+                    <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemPS.direccion | uppercase}}" disabled></td>
+                  </tr>
+
+                  <tr>
+                    <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{itemPS.celular}}" disabled></td>
+                  
+                    <th style="background: #138D75" class="text-right">RELACION:</th>
+                    <td>
+                        <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
+                        [(ngModel)]="itemPS.relacion_socio_id" required style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                        <option value="1">PADRE</option>
+                        <option value="2">MADRE</option>
+                        <option value="3">SUEGRO</option>
+                        <option value="4">SUEGRA</option>
+                      </select>
+                    </td>
+                </tr> <br>
+              </div>
+
+            </div>
+          </div>
+          <br><br><label class="text-center"><strong>AUTORIZO AL SINDICATO A PAGAR AL BENEFICIARIO(S) ___________________________________________</strong></label>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-12 col-md-12 col-lg-12 col-xl-12">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+      <button class="btn btn btn-success btn-block btn-sm" type="button"
+        [disabled]="this.getIdSocio == '' || this.getIdSocio == null" (click)="listarDatosResumenSocio()">Generar Resumen
+      </button>
+    </div>
+
+    <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+      <button type="button" class="btn btn-success btn-block btn-sm" [disabled]="ocultar_imprimir" onclick="printJS({
+                          printable: 'printJS-table',
+                          type:'html',
+                          style: '.table {font-size: 15px;font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; text-align: right;} input,select {background-color: #fff;border: 0; width: 25em; font-weight: bold; color: #000000; padding-left: 0%;} .table th{border: 0;}'
+                        })">
+        <i class="fas fa-print"></i> Imprimir Datos
+      </button>
+    </div>
+  </div>
+</div>

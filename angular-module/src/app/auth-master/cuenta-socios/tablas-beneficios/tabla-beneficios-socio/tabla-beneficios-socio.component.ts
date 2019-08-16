@@ -33,7 +33,6 @@ export class TablaBeneficiosSocioComponent implements OnInit {
                       'rol_turno',
                       'estado_civil_id',
                       'conyuge',
-                      'numero_cuenta',
                       'tipo_cuenta_banco_id',
                       'banco',
                       'isapre_fonasa',

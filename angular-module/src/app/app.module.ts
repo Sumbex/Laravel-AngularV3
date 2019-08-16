@@ -71,6 +71,7 @@ import { PortalSociosService } from './servicios/portal-socios.service';
 import { AuthGuardSocioService } from './guardianes/authSocio.guard.service';
 import { TablaBeneficiosBeneficiarioComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component';
 import { SafePipe } from './safe.pipe';
+import { TablaResumenSocioComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-resumen-socio/tabla-resumen-socio.component';
 
 
 @NgModule({
@@ -159,7 +160,9 @@ import { SafePipe } from './safe.pipe';
 
     FormularioBeneficiosPadresSuegrosAuthSocioComponent,
 
-    SafePipe
+    SafePipe,
+
+    TablaResumenSocioComponent
 
   ],
   imports: [

@@ -223,42 +223,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
         return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
-    /* public function login_rut(Request $request)
-	{	
-		try{
-			if(!$this->valida_rut($request->email)){
-				return ['status'=>'failed', 'mensaje'=>'El rut no es valido'];
-			}
-			else{//rut si valido
-
-				// config()->set( 'auth.defaults.guard', 'api' );
-                // \Config::set('jwt.user', App\User::class);
-                // \Config::set('auth.providers.users.model', \App\User::class);
-			
-			    $user = User::where('rut', $request->email)->first();
-
-				if (Hash::check($request->password, $user->password)) {
-					 //$credentials = $request->only('email', 'password');
-				    if ( ! $token = JWTAuth::fromUser($user)) {
-				            return response([
-				                'status' => 'error',
-				                'error' => 'invalid.credentials',
-				                'msg' => 'Invalid Credentials.'
-				            ], 400);
-				    }
-				    return response([
-				            'status' => 'success',
-				            'token' => $token,
-				            'rol' => (string)$user->rol,
-				        ])
-				        ->header('Authorization', $token);
-				}
-				return response(['status'=>'failed', 'mensaje'=>'Contraseña no valida']);
-			}
-		}catch(\ErrorException $e){
-			return ['status'=>'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
-		}
-	} */
     protected function loginSocios($request)
     {
 
@@ -276,23 +240,27 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
                         $user = User::where('rut', $socio->rut)->first();
 
-                        if (Hash::check($request->password, $user->password)) {
-                            //$credentials = $request->only('email', 'password');
-                            if (!$token = JWTAuth::fromUser($user)) {
+                        if ($user->rol == 5 || $user->rol == 10) {
+                            if (Hash::check($request->password, $user->password)) {
+                                //$credentials = $request->only('email', 'password');
+                                if (!$token = JWTAuth::fromUser($user)) {
+                                    return response([
+                                        'status' => 'error',
+                                        'error' => 'invalid.credentials',
+                                        'msg' => 'Invalid Credentials.'
+                                    ], 400);
+                                }
                                 return response([
-                                    'status' => 'error',
-                                    'error' => 'invalid.credentials',
-                                    'msg' => 'Invalid Credentials.'
-                                ], 400);
+                                    'status' => 'success',
+                                    'token' => $token,
+                                    'rol' => (string) $user->rol,
+                                ])
+                                    ->header('Authorization', $token);
                             }
-                            return response([
-                                'status' => 'success',
-                                'token' => $token,
-                                'rol' => (string) $user->rol,
-                            ])
-                                ->header('Authorization', $token);
+                            return response(['status' => 'failed', 'mensaje' => 'La contrasena ingresada no es valida.']);
+                        } else {
+                            return response(['status' => 'failed', 'mensaje' => 'Tu usuario no tiene permisos para acceder a este lugar.']);
                         }
-                        return response(['status' => 'failed', 'mensaje' => 'Contraseña no valida']);
                     } else {
                         return response(['status' => 'failed', 'mensaje' => 'El socio ya no se encuentra activo en el sindicato.']);
                     }
@@ -864,6 +832,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales del socio.'];
                     }
                 } else {
+                    //verificar si rol es 5 dar mensaje de que ya tiene acceso mixto sino hacer lo de abajo 
                     if ($user->rol == 1) {
                         $user->rol = '5';
                         if ($user->save()) {

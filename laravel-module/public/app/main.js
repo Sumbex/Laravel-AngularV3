@@ -7058,8 +7058,13 @@ let TablaBeneficiosAuthSocioComponent = class TablaBeneficiosAuthSocioComponent 
     getDatosSocio() {
         this.cargandoTabla = true;
         this._portalSociosService.getDatosSocios().subscribe(response => {
-            this.traerDatosSocio = response.socio[0];
-            this.cargandoTabla = false;
+            if (response.estado == 'failed') {
+                alert(response.mensaje);
+            }
+            else {
+                this.traerDatosSocio = response.socio[0];
+                this.cargandoTabla = false;
+            }
         }, error => {
             console.log(error);
             this.cargandoTabla = false;

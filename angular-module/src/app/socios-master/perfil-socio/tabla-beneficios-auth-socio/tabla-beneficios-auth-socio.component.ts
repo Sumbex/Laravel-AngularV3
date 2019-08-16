@@ -17,12 +17,12 @@ export class TablaBeneficiosAuthSocioComponent implements OnInit {
 
   cargandoTabla;
 
-  constructor(config: NgbModalConfig, 
+  constructor(config: NgbModalConfig,
     private modalService: NgbModal,
-    private _portalSociosService:PortalSociosService) {
-      config.backdrop = 'static';
-      config.keyboard = false;
-    }
+    private _portalSociosService: PortalSociosService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
   }
@@ -32,12 +32,16 @@ export class TablaBeneficiosAuthSocioComponent implements OnInit {
     this.getDatosSocio();
   }
 
-  getDatosSocio(){
+  getDatosSocio() {
     this.cargandoTabla = true;
     this._portalSociosService.getDatosSocios().subscribe(
       response => {
-        this.traerDatosSocio = response.socio[0];
-        this.cargandoTabla = false;
+        if (response.estado == 'failed') {
+          alert(response.mensaje);
+        } else {
+          this.traerDatosSocio = response.socio[0];
+          this.cargandoTabla = false;
+        }
       },
       error => {
         console.log(error);

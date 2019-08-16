@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-formulario-beneficios-cargas-auth-socio',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
 
-  constructor() { }
+  //variable para el modal de la carga
+  abrirModalFormularioCarga;
+
+  //Datos de la carga
+  datosCargas = {
+    tipoCargaId:'',
+    rutCarga:'',
+    fechaNacimiento:'',
+    nombres:'',
+    apellidoPaterno:'',
+    apellidoMaterno:'',
+    direccion:'',
+    celular:'',
+    establecimiento:'',
+    }
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
+  }
+
+  verModalCargas(formularioCargas){
+    this.abrirModalFormularioCarga = this.modalService.open(formularioCargas, { size: 'xl' });
+  }
+
+  setDatosCarga(){
+    //Aquí se llamá al servicio para ingresar los datos de la carga
+    console.log(this.datosCargas);
   }
 
 }

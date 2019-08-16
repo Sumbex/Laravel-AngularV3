@@ -78,7 +78,7 @@
                     <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
                         <label><strong>Ver Datos Conyuge</strong></label>
                         <div class="form-group">
-                            <app-tabla-beneficios-conyuge></app-tabla-beneficios-conyuge>
+                            <app-tabla-beneficios-auth-conyuge></app-tabla-beneficios-auth-conyuge>
                         </div>
                     </div>
 
@@ -89,17 +89,86 @@
 
         <div class="tab-pane fade" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab">
           <!--Datos Beneficiario-->
-        <app-formulario-beneficios-beneficiario-auth-socio></app-formulario-beneficios-beneficiario-auth-socio>
+          <div class="card-header" id="demoFont2">
+            <h6 class="card-title">Datos Beneficiario</h6>
+        </div>
+        <div class="card">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                        <label><strong>Ingresar Datos Beneficiario</strong></label>
+                        <div class="form-group">
+                          <app-formulario-beneficios-beneficiario-auth-socio></app-formulario-beneficios-beneficiario-auth-socio>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                        <label><strong>Ver Datos Beneficiario</strong></label>
+                        <div class="form-group">
+                            <app-tabla-beneficios-beneficiario-auth-socio></app-tabla-beneficios-beneficiario-auth-socio>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div> <br>
         </div>
 
         <div class="tab-pane fade" id="hijo" role="tabpanel" aria-labelledby="hijo-tab">
-          <!--Datos del hijo-->
-          <app-formulario-beneficios-cargas-auth-socio></app-formulario-beneficios-cargas-auth-socio>
+          <!--Datos Carga-->
+          <div class="card-header" id="demoFont2">
+                        <h6 class="card-title"> Datos Cargas</h6>
+                    </div>
+                    <div class="card">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row justify-content-center">
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ingresar Datos Cargas</strong></label>
+                                    <div class="form-group">
+                                      <app-formulario-beneficios-cargas-auth-socio></app-formulario-beneficios-cargas-auth-socio>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                    <label><strong>Ver Datos Cargas</strong></label>
+                                    <div class="form-group">
+                                        <app-tabla-beneficios-cargas-auth-socio></app-tabla-beneficios-cargas-auth-socio>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <br>
         </div>
 
         <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
           <!--Datos de padres y suegros-->
-         <app-formulario-beneficios-padres-suegros-auth-socio></app-formulario-beneficios-padres-suegros-auth-socio>
+          <div class="card-header" id="demoFont2">
+            <h6 class="card-title"> Datos Padres / Suegros</h6>
+        </div>
+        <div class="card">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                        <label><strong>Ingresar Datos Padres / Suegros</strong></label>
+                        <div class="form-group">
+                          <app-formulario-beneficios-padres-suegros-auth-socio></app-formulario-beneficios-padres-suegros-auth-socio>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                        <label><strong>Ver Datos Padres / Suegros</strong></label>
+                        <div class="form-group">
+                            <app-tabla-beneficios-padres-suegros></app-tabla-beneficios-padres-suegros>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div> <br>
         </div>
 
       </div>

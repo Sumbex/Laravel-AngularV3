@@ -7,11 +7,13 @@ import { stringify } from 'querystring';
 @Injectable()
 export class AuthGuardSocioService implements CanActivate {
 
+    rol = localStorage.getItem('rol');
+
     constructor(public auth: UsuarioService, public _portalSociosService: PortalSociosService, public router: Router) {
     }
 
     canActivate(): boolean {
-        if (this._portalSociosService.rol != '10' || !this.auth.isAuthenticated()) {
+        if (this.rol != '10' || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }

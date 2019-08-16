@@ -6,10 +6,12 @@ import { stringify } from 'querystring';
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
+    rol = localStorage.getItem('rol');
+
     constructor(public auth: UsuarioService, public router: Router) {}
 
     canActivate(): boolean {
-        if (this.auth.rol != '1' || !this.auth.isAuthenticated()) {
+        if (this.rol != '1' || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }

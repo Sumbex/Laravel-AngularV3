@@ -42,12 +42,14 @@ export class LoginComponent implements OnInit {
     this._userService.login(this.usuario, true).subscribe(
       response => {
         if(response.status == 'success'){
-        this._userService.rol = '1';
+        localStorage.setItem('rol', response.rol);
+        console.log(response.rol);
+        //this._userService.rol = '1';
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
         this.lockLogin = false;
-        this.router.navigate(['AuthMaster']);
+        this.router.navigate(['AuthMaster/CuentaSindical']);
         document.getElementById("closeModalLogin").click();
       }else{
         this.lockLogin = false;
@@ -73,7 +75,9 @@ export class LoginComponent implements OnInit {
     this._portalSocios.loginSocios(this.usuario).subscribe(
       response => {
         if(response.status == 'success'){
-        this._portalSocios.rol = '10';
+        localStorage.setItem('rol', response.rol);
+        console.log(response.rol);
+        //this._portalSocios.rol = '10';
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));

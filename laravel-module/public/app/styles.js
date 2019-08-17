@@ -598,8 +598,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\src\styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! C:\Users\david\Desktop\Laravel-AngularV3\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! C:\Users\david\Desktop\Versiones CMPC\V8\Laravel-AngularV3\angular-module\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\david\Desktop\Versiones CMPC\V8\Laravel-AngularV3\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
 /***/ })

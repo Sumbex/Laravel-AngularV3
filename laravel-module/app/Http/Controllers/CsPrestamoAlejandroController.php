@@ -11,39 +11,58 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class CsPrestamoAlejandroController extends Controller
 {
     public function ingresar_prestamo(Request $r)
     {
+    	try{
+	    	$tipo_prestamo = (string)$r->select_id; // tipo de prestamo;
 
-    	$tipo_prestamo = (string)$r->select_id; // tipo de prestamo;
+	    	$valida_pdf = $this->validar_pdf($r);
+	    	if($valida_pdf['estado'] == 'failed_v'){
+
+	    		return ['estado'=>'failed', 'mensaje'=>'Error con el documento adjunto'];
+	    	}
 
 
-    	switch ($tipo_prestamo) {
+	    	switch ($tipo_prestamo) {
 
-    		case '1': // PRESTAMO SALUD RETORNABLE
+	    		case '1': // PRESTAMO SALUD RETORNABLE
 
-    			return $this->insertar_p_salud_retornable($r);
-    		
-    		break;
+	    			return $this->insertar_p_salud_retornable($r);
+	    		
+	    		break;
 
-    		case '2': // PRESTAMO APORTE ECONOMICO RETORNABLE
-    			
-    			return $this->insertar_p_apuro_economico_retornable($r);
-    		
-    		break;
+	    		case '2': // PRESTAMO APORTE ECONOMICO RETORNABLE
+	    			
+	    			return $this->insertar_p_apuro_economico_retornable($r);
+	    		
+	    		break;
 
-    		case '3': // PRESTAMO APORTE ECONOMICO NO RETORNABLR
-    			
-    			return $this->insertar_p_aporte_economico_nr($r);
-    		
-    		break;
-    		
-    		default:
-    			# code...
-    			break;
-    	}
+	    		case '3': // PRESTAMO APORTE ECONOMICO NO RETORNABLR
+	    			
+	    			return $this->insertar_p_aporte_economico_nr($r);
+	    		
+	    		break;
+	    		
+	    		default:
+	    			# code...
+	    			break;
+	    	}
+	    }catch(QueryException $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}
+		catch(\Exception $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}
     }
     public function listar_p_salud_retornable($anio, $mes)
     {
@@ -529,6 +548,11 @@ class CsPrestamoAlejandroController extends Controller
     	$listar = CsPrestamo::prestamos_no_iniciados();
     	return $listar;
     }
+    public function listar_prestamos_finalizados()
+    {
+    	$listar = CsPrestamo::prestamos_finalizados();
+    	return $listar;
+    }
 
 
     public function socio($id)
@@ -566,20 +590,41 @@ class CsPrestamoAlejandroController extends Controller
 
     protected function guardarArchivo($archivo, $ruta)
     {
-        $filenameext = $archivo->getClientOriginalName();
-        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
-        $extension = $archivo->getClientOriginalExtension();
-        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
-        $rutaDB = $ruta . $nombreArchivo;
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
 
-        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
 
-        if ($guardar) {
-            return ['estado' =>  'success', 'archivo' => $rutaDB];
-        } else {
-            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
-        }
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
     }
+
+    public function validar_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'archivo_documento' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'archivo_documento.required' => 'El PDF es necesario',
+	        	'archivo_documento.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+	}
 
 
     //   public function pago_abono(Request $r)

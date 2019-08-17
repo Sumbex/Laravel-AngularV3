@@ -47,7 +47,7 @@ Route::post('pagar_p_apuro_economico_retornable','CsPrestamoAlejandroController@
 Route::get('listar_abonos_por_prestamo/{id}/{tipo}','CsPrestamoAlejandroController@listar_abonos_por_prestamo_id');
 Route::get('tabla_final_prestamo/{anio}/{mes}',	'CsPrestamoAlejandroController@tabla_final_prestamo');
 Route::get('listar_prestamos_vigentes','CsPrestamoAlejandroController@listar_prestamos_vigentes');
-
+Route::get('listar_prestamos_finalizados','CsPrestamoAlejandroController@listar_prestamos_finalizados');
 
 
 

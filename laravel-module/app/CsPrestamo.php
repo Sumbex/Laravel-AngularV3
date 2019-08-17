@@ -27,7 +27,37 @@ class CsPrestamo extends Model
 								from cs_prestamo p 
 								inner join mes as m on m.id = p.mes_id
 								inner join anio as a on a.id = p.anio_id
+								where p.activo ='S'
 								and estado_prestamo = 'vigente' and definicion = 2 
+								 order by fecha_prestamo desc
+    						 ");
+
+    	if (count($listar) > 0) {
+    		return ['estado' => 'success', 'body' => $listar];
+    	}else{
+    		return ['estado'=>'failed','body'=>null];
+    	}
+    }
+
+    protected function prestamos_finalizados()
+    {
+    	$listar = DB::select("
+    							SELECT 
+								    p.id as prestamo_id,
+								    concat(p.dia,' de ',m.descripcion,',',a.descripcion) as fecha_prestamo,
+								    descripcion_prestamo,
+								    transferencia_bancaria,
+								    archivo,
+								    egreso,
+								    cuotas,
+								    case 
+								        when tipo_prestamo = 1 then 'Prestamo salud retornable'
+								        when tipo_prestamo = 2 then 'Prestamo aporte económico retornable'
+								    end as tipo
+								from cs_prestamo p 
+								inner join mes as m on m.id = p.mes_id
+								inner join anio as a on a.id = p.anio_id
+								and estado_prestamo = 'pagado'
 								where p.activo ='S'
     						 ");
 

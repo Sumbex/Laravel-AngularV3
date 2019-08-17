@@ -212,4 +212,16 @@ export class SindicalService{
             }
         )});
     }
+     listar_pc(): Observable<any>{
+
+        return this._http.get(this.url + "listar_prestamos_finalizados", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+
+    
 }

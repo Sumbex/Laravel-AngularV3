@@ -40,13 +40,14 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         'interes'
   ];
   get_pni;
-
+ get_pc;
 
   //Variables de carga
   cargandoTabla = false;
    modalActualizarPagoSalud = null;
    m_bono = null;
    m_pni = null;
+   m_pc = null;
 
   constructor(private _sindicalService: SindicalService, private _fechasService: AniosService, config: NgbModalConfig,
     private modalService: NgbModal) {
@@ -256,6 +257,11 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
     this.listar_prestamos_no_iniciados();
   }
 
+  modal_pc(modal){
+    this.m_pc = this.modalService.open(modal, { size: 'xl' });
+    this.listar_prestamos_finalizados();
+  }
+
   listar_prestamos_no_iniciados(){
     this._sindicalService.listar_pni().subscribe(
       response => {
@@ -268,6 +274,23 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         console.log(error);
         alert("No se encontraron datos");
         this.get_abonos = "No existen datos";
+        
+        this.m_pc.close();
+      }
+    )
+  }
+  listar_prestamos_finalizados(){
+    this._sindicalService.listar_pc().subscribe(
+      response => {
+          if (response.estado =="success") {
+            this.get_pc = response.body;
+          }
+          
+      },
+      error => {
+        console.log(error);
+        alert("No se encontraron datos");
+        this.get_pc = "No existen datos";
         
         this.m_bono.close();
       }

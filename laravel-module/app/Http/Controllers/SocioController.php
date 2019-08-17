@@ -718,11 +718,11 @@ class SocioController extends Controller
 
 //--INICIO-- DATOS DEL BENEFICIARIO--------------------------------------------------
     public function guardar_datos_beneficiario(Request $r)
-    {
+    {   $rut_limpio = $this->limpiar($r->rut);
         $existe_beneficiario = SocioBeneficiario::where([
                         'activo'  => 'S',
                         'socio_id'=> $r->socio_id,
-                        'rut'     => $r->rut,
+                        'rut'     => $r->rut_limpio,
                         'cobro_beneficio' => 'N'
                     ])->first();
         $existe_cobro_de_rut_en_socio = SocioBeneficiario::where([

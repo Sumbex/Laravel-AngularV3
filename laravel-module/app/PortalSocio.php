@@ -212,6 +212,25 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 );
                 break;
 
+            case 6:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'password' => 'required',
+                        'new_password' => 'required|required_with:conf_new_password|same:conf_new_password',
+                        'conf_new_password' => 'required'
+                    ],
+                    [
+                        'password.required' => 'Debe ingresar su contrasena actual.',
+                        'new_password.required' => 'Debe ingresar su contrasena nueva.',
+                        'conf_new_password.required' => 'Confirme su nueva contraseña.',
+                        'new_password.same' => 'Las contrasenas ingresadas no son iguales.'
+
+
+                    ]
+                );
+                break;
+
             default:
                 # code...
                 break;
@@ -225,7 +244,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function loginSocios($request)
     {
-
         try {
             $validarDatos = $this->validarDatos($request, 3);
             if ($validarDatos['estado'] == 'success') {
@@ -321,6 +339,31 @@ class PortalSocio extends Authenticatable implements JWTSubject
             return ['estado' => 'success'];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Ya no te encuentras activo en el sindicato, si no es asi regulariza tu situacion.'];
+        }
+    }
+
+    protected function cambiarContrasena($request)
+    {
+        $verificar = $this->verificarSocio($this->socioLogeado()->id);
+        if ($verificar['estado'] == 'success') {
+            $validarDatos = $this->validarDatos($request, 6);
+            if ($validarDatos['estado'] == 'success') {
+                $user = User::find($this->socioLogeado()->id);
+                if (Hash::check($user->password, $request->password)) {
+                    $user->password = bcrypt($request->new_password);
+                    if ($user->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Contrasena actualizada. Recuerda cerrar tu sesion para verificar si el cambio fue correcto.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                } else {
+                    return response(['status' => 'failed', 'mensaje' => 'La contrasena ingresada no es valida.']);
+                }
+            } else {
+                return $validarDatos;
+            }
+        } else {
+            return $verificar;
         }
     }
 
@@ -833,15 +876,19 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     }
                 } else {
                     //verificar si rol es 5 dar mensaje de que ya tiene acceso mixto sino hacer lo de abajo 
-                    if ($user->rol == 1) {
-                        $user->rol = '5';
-                        if ($user->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso mixto creadas correctamente.'];
-                        } else {
-                            return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales.'];
-                        }
+                    if ($user->rol == 5) {
+                        return ['estado' => 'failed', 'mensaje' => 'El socio ya tiene sus Credenciales de acceso mixto creadas.'];
                     } else {
-                        return ['estado' => 'failed', 'mensaje' => 'El socio no es administrador, si necesitas crear credenciales para el, contactenos.'];
+                        if ($user->rol == 1) {
+                            $user->rol = '5';
+                            if ($user->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso mixto creadas correctamente.'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al crear las credenciales.'];
+                            }
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'El socio no es administrador, si necesitas crear credenciales para el, contactenos.'];
+                        }
                     }
                 }
             } else {

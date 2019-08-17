@@ -8,6 +8,8 @@ import { SociosService } from 'src/app/servicios/socios.service';
 })
 export class TablaResumenSocioComponent implements OnInit {
 
+  firma:string='AUTORIZO AL SINDICATO A PAGAR AL BENEFICIARIO(S) ___________________________________________';
+
   @Input () getIdSocio;
   @Input () getNombreSocio;
   @Input () getRutSocio;
@@ -162,6 +164,7 @@ constructor(private _SociosService:SociosService) {
      return false;
    }else{
      this.traerDatosPS = response.body;
+     this.firma;
      this.vista_tabla = false;
      this.ocultar_imprimir =false;
      this.ocultar_tabla = false;

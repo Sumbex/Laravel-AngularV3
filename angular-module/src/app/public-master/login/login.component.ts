@@ -43,8 +43,6 @@ export class LoginComponent implements OnInit {
       response => {
         if(response.status == 'success'){
         localStorage.setItem('rol', response.rol);
-        console.log(response.rol);
-        //this._userService.rol = '1';
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
@@ -76,8 +74,6 @@ export class LoginComponent implements OnInit {
       response => {
         if(response.status == 'success'){
         localStorage.setItem('rol', response.rol);
-        console.log(response.rol);
-        //this._portalSocios.rol = '10';
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));

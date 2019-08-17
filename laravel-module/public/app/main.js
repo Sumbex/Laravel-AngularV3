@@ -5682,7 +5682,7 @@ let AuthGuardService = class AuthGuardService {
         this.rol = localStorage.getItem('rol');
     }
     canActivate() {
-        if (this.rol != '1' || !this.auth.isAuthenticated()) {
+        if ((this.rol == '1' || this.rol == '5') || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }
@@ -5726,7 +5726,7 @@ let AuthGuardSocioService = class AuthGuardSocioService {
         this.rol = localStorage.getItem('rol');
     }
     canActivate() {
-        if (this.rol != '10' || !this.auth.isAuthenticated()) {
+        if ((this.rol == '10' || this.rol == '5') || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }
@@ -5972,8 +5972,6 @@ let LoginComponent = class LoginComponent {
             this._userService.login(this.usuario, true).subscribe(response => {
                 if (response.status == 'success') {
                     localStorage.setItem('rol', response.rol);
-                    console.log(response.rol);
-                    //this._userService.rol = '1';
                     this.token = response.token;
                     localStorage.setItem('token', JSON.stringify(this.token));
                     localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
@@ -6002,8 +6000,6 @@ let LoginComponent = class LoginComponent {
             this._portalSocios.loginSocios(this.usuario).subscribe(response => {
                 if (response.status == 'success') {
                     localStorage.setItem('rol', response.rol);
-                    console.log(response.rol);
-                    //this._portalSocios.rol = '10';
                     this.token = response.token;
                     localStorage.setItem('token', JSON.stringify(this.token));
                     localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
@@ -6362,13 +6358,29 @@ let PortalSociosService = class PortalSociosService {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_basicos_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
     }
-    setDatosSocios(form) {
+    setDatosBasicosSocios(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('detalle_prestamo_id', form);
-        body.append('fecha', form);
-        body.append('monto', form);
-        return this._http.post(this.url + "modificar_datos_basicos_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-            //'Authorization': 'Bearer' + this.token
+        body.append('direccion', form.direccion);
+        body.append('telefono', form.telefono);
+        body.append('celular', form.celular);
+        body.append('anexo', form.anexo);
+        body.append('email_1', form.email_1);
+        body.append('email_2', form.email_2);
+        body.append('cargo_planta', form.cargo_planta);
+        body.append('cargo_comision_sindicato', form.cargo_comision_sindicato);
+        body.append('casa_propia', form.casa_propia);
+        body.append('rol_turno', form.rol_turno);
+        body.append('estado_civil_id', form.estado_civil_id);
+        body.append('conyuge', form.conyuge);
+        body.append('numero_cuenta', form.numero_cuenta);
+        body.append('tipo_cuenta_banco_id', form.tipo_cuenta_banco_id);
+        body.append('banco', form.banco);
+        body.append('isapre_fonasa', form.isapre_fonasa);
+        body.append('grupo_sangre', form.grupo_sangre);
+        console.log(form);
+        return this._http.post(this.url + "ingresar_datos_basicos_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
             }) });
     }
 };
@@ -6960,61 +6972,16 @@ let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocio
         console.log(this.idSocio);
     }
     guardarDatosSocio() {
-        /* if(this.InsertarBeneficiosSocio.email_1 == '' && this.InsertarBeneficiosSocio.direccion == ''){
-          alert('ingrese los datos obligatorios (*)');
-          return false;
-        }
-        const data = new FormData();
-        data.append('socio_id', this.idSocio);
-        data.append('direccion',this.InsertarBeneficiosSocio.direccion);
-        data.append('telefono',this.InsertarBeneficiosSocio.telefono);
-        data.append('celular',this.InsertarBeneficiosSocio.celular);
-        data.append('anexo',this.InsertarBeneficiosSocio.anexo);
-        data.append('email_1',this.InsertarBeneficiosSocio.email_1);
-        data.append('email_2',this.InsertarBeneficiosSocio.email_2);
-        data.append('cargo_planta',this.InsertarBeneficiosSocio.cargo_planta);
-        data.append('cargo_comision_sindicato',this.InsertarBeneficiosSocio.cargo_comision_sindicato);
-        data.append('numero_cuenta',this.InsertarBeneficiosSocio.numero_cuenta);
-        data.append('tipo_cuenta_banco_id',this.InsertarBeneficiosSocio.tipo_cuenta_banco_id);
-        data.append('banco',this.InsertarBeneficiosSocio.banco);
-        data.append('isapre_fonasa',this.InsertarBeneficiosSocio.isapre_fonasa);
-        data.append('grupo_sangre',this.InsertarBeneficiosSocio.grupo_sangre);
-        data.append('casa_propia',this.InsertarBeneficiosSocio.casa_propia);
-        data.append('rol_turno',this.InsertarBeneficiosSocio.rol_turno);
-        data.append('estado_civil_id',this.InsertarBeneficiosSocio.estado_civil_id);
-        data.append('conyuge',this.InsertarBeneficiosSocio.conyuge);
-    
-        this._SociosService.insertarDatosSocio(data).subscribe((response) =>{
-          if(response.estado == 'failed'){
-            alert(response.mensaje);
-            return false;
-          }
-          if(response.estado == 'success'){
-            this.InsertarBeneficiosSocio.direccion = '';
-            this.InsertarBeneficiosSocio.telefono = '';
-            this.InsertarBeneficiosSocio.celular = '';
-            this.InsertarBeneficiosSocio.anexo ='';
-            this.InsertarBeneficiosSocio.email_1 ='';
-            this.InsertarBeneficiosSocio.email_2 ='';
-            this.InsertarBeneficiosSocio.cargo_planta ='';
-            this.InsertarBeneficiosSocio.cargo_comision_sindicato ='';
-            this.InsertarBeneficiosSocio.numero_cuenta ='';
-            this.InsertarBeneficiosSocio.tipo_cuenta_banco_id ='';
-            this.InsertarBeneficiosSocio.banco ='';
-            this.InsertarBeneficiosSocio.isapre_fonasa ='';
-            this.InsertarBeneficiosSocio.grupo_sangre ='';
-            this.InsertarBeneficiosSocio.casa_propia ='';
-            this.InsertarBeneficiosSocio.rol_turno ='';
-            this.InsertarBeneficiosSocio.estado_civil_id ='';
-            this.InsertarBeneficiosSocio.conyuge ='';
-            alert(response.mensaje);
-            return false;
-          }
-        },
-        error => {
-          console.log(error);
-        }
-        ); */
+        this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(response => {
+            if (response.estado == "failed" || response.estado == "failed_v") {
+                alert(response.mensaje);
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 FormularioBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

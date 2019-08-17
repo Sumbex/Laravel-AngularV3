@@ -13,7 +13,7 @@ export class AuthGuardSocioService implements CanActivate {
     }
 
     canActivate(): boolean {
-        if (this.rol != '10' || !this.auth.isAuthenticated()) {
+        if ((this.rol == '10' || this.rol == '5') || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }

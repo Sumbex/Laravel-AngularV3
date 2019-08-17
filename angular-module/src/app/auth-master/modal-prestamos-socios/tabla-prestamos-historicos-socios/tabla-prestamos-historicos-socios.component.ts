@@ -28,9 +28,25 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
   montoDelInteresPagar;
   montoCuotaPagar;
   montoFinalPagar;
+  blockPagoPrestamo;
+  blockPagoAbono;
+  get_abonos;
+  cargar_1:boolean=true;
+  mostrar_1:boolean=false;
+  resumen:any = [
+        'egreso',
+        'ingreso',
+        'abono',
+        'interes'
+  ];
+  get_pni;
+
 
   //Variables de carga
   cargandoTabla = false;
+   modalActualizarPagoSalud = null;
+   m_bono = null;
+   m_pni = null;
 
   constructor(private _sindicalService: SindicalService, private _fechasService: AniosService, config: NgbModalConfig,
     private modalService: NgbModal) {
@@ -66,6 +82,7 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         mesActual = response;
         this.selectMes.id = mesActual.id;
         this.refrescarTablaPrestamosClientes();
+        
       },
       error => {
         console.log(error);
@@ -98,18 +115,163 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         console.log(error);
       }
     )
+    this.listar_resumen_prestamos();
   }
 
   changeAnio(evento) {
     this.selectAnio.id = evento.target.value;
     console.log(this.selectAnio.id);
     this.refrescarTablaPrestamosClientes();
+    this.listar_resumen_prestamos();
   }
 
   changeMes(evento) {
     this.selectMes.id = evento.target.value;
     console.log(this.selectMes.id);
     this.refrescarTablaPrestamosClientes();
+    //this.listar_resumen_prestamos();
+  }
+
+  pagarPrestamo(fecha, prestamoId, montoPagar) {
+    this.blockPagoPrestamo = true;
+    this._sindicalService.pagarPrestamoSalud(fecha.value, prestamoId, montoPagar.value).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoPrestamo = false;
+          alert(response.mensaje);
+        } else {
+          this.cerrarActualizar();
+          this.blockPagoPrestamo = false;
+          alert("Se ha realizado el pago correctamente");
+        }
+      },
+      error => {
+        this.blockPagoPrestamo = false;
+        alert("Ha ocurrido un error");
+      }
+    )
+  }
+  
+   pagarPrestamoApu(fecha, prestamoId, montoPagar) {
+    this.blockPagoPrestamo = true;
+    this._sindicalService.pagarPrestamoApuro(fecha.value, prestamoId, montoPagar.value).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoPrestamo = false;
+          alert(response.mensaje);
+        } else {
+          this.cerrarActualizar();
+          this.blockPagoPrestamo = false;
+          alert("Se ha realizado el pago correctamente");
+        }
+      },
+      error => {
+        this.blockPagoPrestamo = false;
+        alert("Ha ocurrido un error");
+      }
+    )
+  }
+
+  openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
+    this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
+
+    console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
+    this.montoDelInteresPagar = interes / cuotaP;
+    this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
+    this.montoFinalPagar = totalPrestamo / cuotaP;
+
+    console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
+  }
+
+  cerrarActualizar() {
+    this.modalActualizarPagoSalud.close();
+  }
+
+  openAbono(modal,id,tipo){
+    this.mostrar_1 = false;
+    this.cargar_1 = true;
+    this.m_bono = this.modalService.open(modal, { size: 'lg' });
+    this.abonos(id,tipo)
+  }
+
+  pagarAbono(id, definicionSelectAbono, fecha, monto){
+    this.blockPagoAbono = true;
+    console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
+    this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockPagoAbono = false;
+          this.refrescarTablaPrestamosClientes();
+          //this.listar_resumen_prestamos();
+          alert(""+response.mensaje+"");
+        }else{
+          this.cerrarActualizar();
+          this.blockPagoAbono = false;
+          alert(""+response.mensaje+"");
+        }
+      },
+      error => {
+        console.log(error);
+        this.blockPagoAbono = false;
+        alert("Error de proceso");
+      }
+    )
+  }
+  abonos(id, tipo){
+    this._sindicalService.listar_abonos_por_prestamo(id,tipo).subscribe(
+      response => {
+          this.get_abonos = response;
+          this.cargar_1 = false;
+          this.mostrar_1 = true;
+      },
+      error => {
+        console.log(error);
+        alert("No se encontraron datos");
+        this.get_abonos = "No existen datos";
+        this.cargar_1 = false;
+        this.mostrar_1 = true;
+        this.m_bono.close();
+      }
+    ) 
+  }
+
+  listar_resumen_prestamos(){
+    this._sindicalService.lista_ultima_prestamos(this.selectAnio.id, this.selectMes.id).subscribe(
+      response => {
+          this.resumen = response;
+          
+      },
+      error => {
+        console.log(error);
+        alert("No se encontraron datos");
+        this.get_abonos = "No existen datos";
+        
+        this.m_bono.close();
+      }
+    )
+  }
+
+  modal_pni(modal){
+    this.m_pni = this.modalService.open(modal, { size: 'xl' });
+    this.listar_prestamos_no_iniciados();
+  }
+
+  listar_prestamos_no_iniciados(){
+    this._sindicalService.listar_pni().subscribe(
+      response => {
+          if (response.estado =="success") {
+            this.get_pni = response.body;
+          }
+          
+      },
+      error => {
+        console.log(error);
+        alert("No se encontraron datos");
+        this.get_abonos = "No existen datos";
+        
+        this.m_bono.close();
+      }
+    )
   }
 
 }

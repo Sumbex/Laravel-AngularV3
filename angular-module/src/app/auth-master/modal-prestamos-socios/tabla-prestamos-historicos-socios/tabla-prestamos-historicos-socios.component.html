@@ -21,7 +21,7 @@
       </select>
     </div>
 
-    <div class="col-6 col-md-3 col-lg-3"> <br><label>
+    <div class="col-2 col-md-2 col-lg-2"> <br><label>
       <strong>Recargar Tabla</strong>
     </label><br>
     <button class="btn btn-primary" (click)="refrescarTablaPrestamosClientes()" [disabled]="cargandoTabla">Actualizar</button>
@@ -31,6 +31,103 @@
   </div>
       <div>
     </div>
+    </div>
+    <div class="col-2 col-md-2 col-lg-2"> <br><label>
+      <strong>Ver tabla</strong>
+        </label><br>
+        <button class="btn btn-success" (click)="modal_pni(m_pni)"> prestamos no iniciados</button>
+        <!--MODAL PRESTAMOS NO INICIADOS-->
+        <ng-template #m_pni let-c="close" let-d="dismiss">    
+          <div class="row">
+            <div class="col">
+              <div class="modal-header text-center" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Prestamos no iniciados(vigentes)</h4>
+                      <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                          
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered table-sm">
+                    <!--Tabla salud - Retornable-->
+                    <thead text-sm >
+                        <tr>
+                          <!--titulo de la tabla-->
+                          <th colspan="47" class="text-center" style="background: #138D75;">Salud - Retornable</th>
+                        </tr>
+                      <tr class="text-center">
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha prestamo</th>
+                        <th colspan="2" style="background: #138D75">ID</th>
+                        <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
+                        <th colspan="3" style="background: #138D75;"><i class="fas fa-file-signature"></i> Detalle Prestamo</th>
+                        <th colspan="2" style="background: #138D75">Egreso ( - C.S.)</th>
+                        <!-- <th colspan="2" style="background: #138D75">Dia Sueldo</th>
+                        <th colspan="2" style="background: #138D75">Trimestral</th>
+                        <th colspan="2" style="background: #138D75">Ter. Conflicto</th> -->
+                        <th colspan="2" style="background: #138D75">Nº Cuotas</th>
+                        <th colspan="4" style="background: #138D75;">Tipo</th>
+                        <!-- <th colspan="3" style="background: #138D75;">Estado abono</th> -->
+                       <!--  <th colspan="2" style="background: #138D75;">Pagar Cuota</th>
+                        <th colspan="2" style="background: #138D75;">Pagar Abonos</th> -->
+                      </tr>
+                    </thead>
+                    <!--casillas para llenar de la BD-->
+                    <tbody>
+                      <tr class="text-center" *ngFor="let i of get_pni">
+                        <td colspan="2">{{i.fecha_prestamo}}</td>
+                        <td colspan="2">{{i.prestamo_id}}</td>
+                        <td colspan="2">{{i.transferencia_bancaria}}</td>
+                          <!--MODAL VISOR PDF-->
+                        <ng-template #visorPrestamoHistorico let-c="close" let-d="dismiss">    
+                          <div class="row">
+                              <div class="col">
+                                  <div class="modal-header text-center" id="demoFont">
+                                      <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                          <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <iframe width="100%" height="500px" [src]="  '../' + i.archivo | safeUrl" frameborder="0" allowfullscreen></iframe>
+                                  </div> 
+                                  <div class="modal-footer" [hidden]="true">
+                                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                  </div>
+                              </div>
+                          </div>
+                        </ng-template>
+                        <!--MODAL VISOR PDF-->
+                        <td colspan="2">
+                          <a (click)="open(visorPrestamoHistorico)"><i class="far fa-file-alt"
+                            placement="top" ngbTooltip="Presione aqui para visualizar el PDF."></i>
+                          </a>
+                        </td>
+                        <td colspan="3">{{i.descripcion_prestamo}}</td>
+                        <td colspan="2">{{i.egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td colspan="2">{{i.cuotas}}</td>
+                        <td colspan="4">{{i.tipo}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div> 
+              <div class="modal-footer" [hidden]="true">
+                  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        
+    </div>
+
+    <div class="col-2 col-md-2 col-lg-2"> <br><label>
+      <strong>Ver tabla</strong>
+        </label><br>
+        <button class="btn btn-success" (click)="refrescarTablaPrestamosClientes()"> prestamos finalizados</button>
+        
     </div>
   </div><br>
 <div class="table-responsive">
@@ -42,26 +139,30 @@
           <th colspan="47" class="text-center" style="background: #138D75;">Salud - Retornable</th>
         </tr>
       <tr class="text-center">
-        <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha Prestamo</th>
+        <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha detalle</th>
         <th colspan="1" style="background: #138D75">ID</th>
         <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
-        <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
-        <th colspan="2" style="background: #138D75">Prestamo (Egreso C.S.)</th>
+        <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Detalle Prestamo</th>
+        <th colspan="2" style="background: #138D75">Egreso ( - C.S.)</th>
+        <th colspan="2" style="background: #138D75">Ingreso ( + C.S.)</th>
         <th colspan="2" style="background: #138D75">Dia Sueldo</th>
         <th colspan="2" style="background: #138D75">Trimestral</th>
         <th colspan="2" style="background: #138D75">Ter. Conflicto</th>
         <th colspan="2" style="background: #138D75">Monto Restante P.</th>
         <th colspan="2" style="background: #138D75">Nº Cuotas</th>
-        <th colspan="3" style="background: #138D75;">Estado</th>
+        <th colspan="3" style="background: #138D75;">Estado cuota</th>
+        <th colspan="3" style="background: #138D75;">Estado abono</th>
+        <th colspan="2" style="background: #138D75;">Pagar Cuota</th>
+        <th colspan="2" style="background: #138D75;">Pagar Abonos</th>
       </tr>
     </thead>
     <!--casillas para llenar de la BD-->
     <tbody>
       <tr class="text-center" *ngFor="let itemPrestamo of valoresPrestamosSalud">
-        <td colspan="2">{{itemPrestamo.fecha_prestamo}}</td>
-        <td colspan="1">{{itemPrestamo.id}}</td>
-        <td colspan="2">{{itemPrestamo.numero_documento}}</td>
+        <td colspan="2">{{itemPrestamo.fecha_detalle}}</td>
+        <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
+        <td colspan="2">{{itemPrestamo.transferencia_bancaria}}</td>
         <!--MODAL VISOR PDF-->
         <ng-template #visorPrestamoHistorico let-c="close" let-d="dismiss">    
           <div class="row">
@@ -73,7 +174,7 @@
                       </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + itemPrestamo.archivo_documento | safeUrl" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="500px" [src]="  '../' + itemPrestamo.archivo | safeUrl" frameborder="0" allowfullscreen></iframe>
                   </div> 
                   <div class="modal-footer" [hidden]="true">
                       <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
@@ -87,14 +188,206 @@
             placement="top" ngbTooltip="Presione aqui para visualizar el PDF."></i>
           </a>
         </td>
-        <td colspan="10">{{itemPrestamo.descripcion}}</td>
-        <td colspan="2"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
-        <td colspan="2">{{itemPrestamo.sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-        <td colspan="2">{{itemPrestamo.trimestral | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-        <td colspan="2">{{itemPrestamo.conflicto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-        <td colspan="2">{{itemPrestamo.monto_restante_p | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-        <td colspan="2">{{itemPrestamo.cuotap}}</td>
-        <td colspan="3">{{itemPrestamo.estado}}</td>
+        <td colspan="10">{{itemPrestamo.descripcion_prestamo}}</td>
+        <td colspan="2"><strong>{{itemPrestamo.egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+        <td colspan="2"><strong>{{itemPrestamo.ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+        <td colspan="2" (click)="openAbono(diasueldo,itemPrestamo.prestamo_id,1)">
+              {{itemPrestamo.monto_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <ng-template #diasueldo let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Día de sueldo</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                      <div *ngIf="cargar_1" class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                      <div *ngIf="mostrar_1" class="row">
+                            <table class="table table-striped table-bordered table-sm">
+                              <thead text-sm >
+                                <tr class="text-center">
+                                  <th colspan="2" style="background: #138D75;">
+                                    <i class="far fa-calendar-alt"></i>Detalle
+                                  </th>
+                                </tr>
+                              </thead>    
+                              <tbody>
+                                  <tr class="text-center" *ngFor="let a of get_abonos">
+                                    <td>
+                                      {{a}} <i style="color:green" class="fas fa-check"></i>
+                                    </td>
+                                  </tr> 
+                            </table>
+                     </div>
+
+                 </div>
+            </ng-template> 
+        </td>
+        <td colspan="2" (click)="openAbono(mtrimestral,itemPrestamo.prestamo_id,3)">
+              {{itemPrestamo.monto_trimestral | currency:"CLP" : "symbol-narrow":'1.0'}}
+
+              <ng-template #mtrimestral let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Trimestral</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                      <div *ngIf="cargar_1" class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                      <div *ngIf="mostrar_1" class="row">
+                            <table class="table table-striped table-bordered table-sm">
+                              <thead text-sm >
+                                <tr class="text-center">
+                                  <th colspan="2" style="background: #138D75;">
+                                    <i class="far fa-calendar-alt"></i>Detalle
+                                  </th>
+                                </tr>
+                              </thead>    
+                              <tbody>
+                                  <tr class="text-center" *ngFor="let a of get_abonos">
+                                    <td>
+                                      {{a}} <i style="color:green" class="fas fa-check"></i>
+                                    </td>
+                                  </tr> 
+                            </table>
+                     </div>
+                 </div>
+            </ng-template> 
+        </td>
+        <td colspan="2" (click)="openAbono(mconflicto,itemPrestamo.prestamo_id,2)">
+              {{itemPrestamo.monto_termino_conflicto | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <ng-template #mconflicto let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Termino de conflicto</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                      <div *ngIf="cargar_1" class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                      <div *ngIf="mostrar_1" class="row">
+                            <table class="table table-striped table-bordered table-sm">
+                              <thead text-sm >
+                                <tr class="text-center">
+                                  <th colspan="2" style="background: #138D75;">
+                                    <i class="far fa-calendar-alt"></i>Detalle
+                                  </th>
+                                </tr>
+                              </thead>    
+                              <tbody>
+                                  <tr class="text-center" *ngFor="let a of get_abonos">
+                                    <td>
+                                      {{a}} <i style="color:green" class="fas fa-check"></i>
+                                    </td>
+                                  </tr> 
+                            </table>
+                     </div>
+                 </div>
+            </ng-template> 
+        </td>
+        <td colspan="2">{{itemPrestamo.monto_restante | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+        <td colspan="2">{{itemPrestamo.cuotas}}</td>
+        <td colspan="3">
+          <label *ngIf="itemPrestamo.estado_prestamo == 'pagado'" style="color:green;">{{itemPrestamo.estado_prestamo}}</label>
+          <label *ngIf="itemPrestamo.estado_prestamo == 'pagando'" style="color:blue;">{{itemPrestamo.estado_prestamo}}</label>
+          <label *ngIf="itemPrestamo.estado_prestamo == 'vigente'" style="color:orange;">{{itemPrestamo.estado_prestamo}}</label>
+        </td>
+        <td colspan="3">{{itemPrestamo.estado_abono}}</td>
+
+
+        <td colspan="2" class="text-center">
+            <button [disabled]="1<1" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante, itemPrestamo.egreso, itemPrestamo.cuotas_totales)"> <!-------------------------------------->
+            <ng-template #pagoPrestamoSaludCuota let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago Cuota Salud Retornable</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                      <div class="row">
+                        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                          <label><strong>Monto de Cuota a Pagar</strong></label> 
+                          <input type="number" class="form-control form-control-sm" #montoPagarSalud value="">
+                        </div>
+
+                        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                          <label><strong>N° de Cuotas Pagadas </strong></label> 
+
+                          <strong>{{itemPrestamo.cuotas}}</strong>
+                          <!-- <input type="number" class="form-control form-control-sm" #cuotasPagadasSalud value="{{itemPrestamo.cuotas}}" disabled> -->
+                        </div>
+                      </div><br>
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                          <label> <strong>Fecha de Pago</strong></label> 
+                          <input class="form-control form-control-sm" #fechaInteresSalud type="date">
+                      </div><br>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                        <button [disabled]="blockPagoPrestamo" type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteresSalud, itemPrestamo.id, montoPagarSalud)">Pagar
+                          <img *ngIf="blockPagoPrestamo" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                        </button>
+                    </div>
+
+                  </div>
+
+            </ng-template> 
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago de Cuota"></i>
+            </button>
+          
+        </td>
+
+          <td colspan="2" class="text-center">
+            <button [disabled]="itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
+            <ng-template #pagoPrestamoSaludAbono let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago Abono Salud Retornable</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                      <div class="col-7 col-md-7 col-lg-7 col-xl-7">
+                        <label><strong>Pago de Abono</strong></label>
+                        <select #definicionSelectAbono class="form-control form-control-sm">
+                          <option value="1">Dia Sueldo</option>
+                          <option value="3">Trimestral</option>
+                          <option value="2">Termino Conflicto</option>
+                        </select>
+                      </div>
+                      
+                      <div class="col-5 col-md-5 col-lg-5 col-xl-5">
+                        <label> <strong>Abono</strong></label> 
+                        <input class="form-control form-control-sm" #montoAbono type="number" value="">
+                      </div><br>
+
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label> <strong>Fecha de Pago</strong></label> 
+                        <input class="form-control form-control-sm" #fechaAbono type="date">
+                    </div>
+                    </div><br>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                      <button [disabled]="blockPagoAbono" type="button" class="btn btn-outline-success" (click)="pagarAbono(itemPrestamo.id, definicionSelectAbono, fechaAbono, montoAbono)">Pagar
+                        <img *ngIf="blockPagoAbono" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                      </button>
+                    </div> <hr>
+                  </div>
+
+            </ng-template> 
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago Abono"></i>
+            </button>
+          
+          </td>
       </tr>
     </tbody> <br>
 
@@ -110,18 +403,22 @@
       <th colspan="2" style="background: #138D75">Trasf. Banc.</th>
       <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
       <th colspan="10" style="background: #138D75;"><i class="fas fa-file-signature"></i> Descripcion Prestamo</th>
-      <th colspan="5" style="background: #138D75">Prestamo (Egreso C.S.)</th>
-      <th colspan="5" style="background: #138D75">Interes</th>
+      <th colspan="3" style="background: #138D75">Egreso (-C.S.)</th>
+      <th colspan="3" style="background: #138D75">Ingreso (+C.S.)</th>
+      <th colspan="4" style="background: #138D75">Interes mensual</th>
+      <th colspan="5" style="background: #138D75">Interes a ganar</th>
       <th colspan="2" style="background: #138D75">Nº Cuotas</th>
+      <th colspan="2" style="background: #138D75">Monto Restante P.</th>
       <th colspan="3" style="background: #138D75;">Estado</th>
+      <th colspan="3" style="background: #138D75;">Pagar</th>
     </tr>
     </thead>
     <!--casillas para llenar de la BD-->
     <tbody>
       <tr class="text-center" *ngFor="let itemPrestamo of valoresPrestamosApuro">
-        <td colspan="2">{{itemPrestamo.fecha_prestamo}}</td>
-        <td colspan="1">{{itemPrestamo.id}}</td>
-        <td colspan="2">{{itemPrestamo.numero_documento}}</td>
+        <td colspan="2">{{itemPrestamo.fecha_detalle}}</td>
+        <td colspan="1">{{itemPrestamo.prestamo_id}}</td>
+        <td colspan="2">{{itemPrestamo.transferencia_bancaria}}</td>
         <!--MODAL VISOR PDF-->
         <ng-template #visorPrestamoHistorico let-c="close" let-d="dismiss">    
           <div class="row">
@@ -133,7 +430,7 @@
                       </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + itemPrestamo.archivo_documento | safeUrl" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="500px" [src]="  '../' + itemPrestamo.archivo | safeUrl" frameborder="0" allowfullscreen></iframe>
                   </div> 
                   <div class="modal-footer" [hidden]="true">
                       <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
@@ -147,11 +444,69 @@
             placement="top" ngbTooltip="Presione aqui para visualizar el PDF."></i>
           </a>
         </td>
-        <td colspan="10">{{itemPrestamo.descripcion}}</td>
-        <td colspan="5"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
-        <td colspan="5">{{itemPrestamo.sueldo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-        <td colspan="2">{{itemPrestamo.cuotap}}</td>
-        <td colspan="3">{{itemPrestamo.estado}}</td>
+        <td colspan="10">{{itemPrestamo.descripcion_prestamo}}</td>
+        <td colspan="3"><strong>{{itemPrestamo.egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+        <td colspan="3"><strong>{{itemPrestamo.ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+        <td colspan="4">{{itemPrestamo.interes_mensual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+        <td colspan="5">{{itemPrestamo.interes_total | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+        <td colspan="2">{{itemPrestamo.cuotas}}</td>
+        <td colspan="2">{{itemPrestamo.monto_restante | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+        <td colspan="3">
+          <label *ngIf="itemPrestamo.estado_cuota == 'pagado'" style="color:green;">{{itemPrestamo.estado_cuota}}</label>
+          <label *ngIf="itemPrestamo.estado_cuota == 'pagando'" style="color:blue;">{{itemPrestamo.estado_cuota}}</label>
+          <label *ngIf="itemPrestamo.estado_cuota == 'vigente'" style="color:orange;">{{itemPrestamo.estado_cuota}}</label>
+        </td>
+        <td colspan="3" class="text-center">
+            <button  class="btn btn-outline-success" style="cursor: pointer" 
+            (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes_total,itemPrestamo.egreso,(itemPrestamo.egreso + itemPrestamo.interes_total),itemPrestamo.cuotas_totales)">
+            <ng-template #pagoPrestamoInteres let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago Cuota Apuro Economico Retornable</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                          <label> <strong>Fecha de Pago</strong></label> 
+                          <input class="form-control form-control-sm" #fechaInteres type="date">
+                        </div>
+                      </div><br>
+                    <div class="row">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label> <strong>Monto del Interes a Pagar</strong></label> 
+                        <input class="form-control form-control-sm" #montoInteres type="number" value="{{montoDelInteresPagar}}" disabled>
+                      </div>
+                    </div><br>
+                    <div class="row">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label><strong>Monto de Cuota a Pagar</strong></label> 
+                        <input type="number" class="form-control form-control-sm" #montoCuotaApuro value="{{montoCuotaPagar}}" disabled>
+                      </div>
+                    </div><br>
+
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label><strong>monto Final a Pagar</strong></label> 
+                        <input type="number" class="form-control form-control-sm" #montoFinalApuro value="{{montoFinalPagar}}">
+                      </div>
+                    </div><br>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                        <button [disabled]="blockPagoPrestamo" type="button" class="btn btn-outline-success" (click)="pagarPrestamoApu(fechaInteres, itemPrestamo.id, montoFinalApuro)">Pagar
+                          <img *ngIf="blockPagoPrestamo" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                        </button>
+                    </div>
+
+                  </div>
+
+            </ng-template> 
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago de cuota."></i>
+            </button>
+          
+          </td>
       </tr>
     </tbody> <br>
 
@@ -159,7 +514,7 @@
     <thead text-sm >
       <tr>
         <!--titulo de la tabla-->
-        <th colspan="47" class="text-center" style="background: #138D75;">Aporte Economico - No Retornable</th>
+        <th colspan="30" class="text-center" style="background: #138D75;">Aporte Economico - No Retornable</th>
       </tr>
     <tr class="text-center">
       <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha Prestamo</th>
@@ -174,9 +529,9 @@
     <!--casillas para llenar de la BD-->
     <tbody>
       <tr class="text-center" *ngFor="let itemPrestamo of valoresPrestamosAporte">
-        <td colspan="2">{{itemPrestamo.fecha_prestamo}}</td>
+        <td colspan="2">{{itemPrestamo.fecha}}</td>
         <td colspan="1">{{itemPrestamo.id}}</td>
-        <td colspan="2">{{itemPrestamo.numero_documento}}</td>
+        <td colspan="2">{{itemPrestamo.transferencia_bancaria}}</td>
         <!--MODAL VISOR PDF-->
         <ng-template #visorPrestamoHistorico let-c="close" let-d="dismiss">    
           <div class="row">
@@ -188,7 +543,7 @@
                       </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + itemPrestamo.archivo_documento | safeUrl" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="500px" [src]="  '../' + itemPrestamo.archivo | safeUrl" frameborder="0" allowfullscreen></iframe>
                   </div> 
                   <div class="modal-footer" [hidden]="true">
                       <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
@@ -202,12 +557,89 @@
             placement="top" ngbTooltip="Presione aqui para visualizar el PDF."></i>
           </a>
         </td>
-        <td colspan="10">{{itemPrestamo.descripcion}}</td>
-        <td colspan="10"><strong>{{itemPrestamo.total_prestamo_no_interes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
-        <td colspan="5">{{itemPrestamo.estado}}</td>
+        <td colspan="10">{{itemPrestamo.descripcion_prestamo}}</td>
+        <td colspan="10"><strong>{{itemPrestamo.egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+        <td colspan="5">{{itemPrestamo.estado_prestamo}}</td>
+        <!-- <td colspan="4" class="text-center">
+            <button [disabled]="itemPrestamo.cuotap == 0 || itemPrestamo.cuotad == itemPrestamo.cuotap" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoInteres, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)">
+            <ng-template #pagoPrestamoInteres let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago Cuota Apuro Economico Retornable</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                          <label> <strong>Fecha de Pago</strong></label> 
+                          <input class="form-control form-control-sm" #fechaInteres type="date">
+                        </div>
+                      </div><br>
+                    <div class="row">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label> <strong>Monto del Interes a Pagar</strong></label> 
+                        <input class="form-control form-control-sm" #montoInteres type="number" value="{{montoDelInteresPagar}}" disabled>
+                      </div>
+                    </div><br>
+                    <div class="row">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label><strong>Monto de Cuota a Pagar</strong></label> 
+                        <input type="number" class="form-control form-control-sm" #montoCuotaApuro value="{{montoCuotaPagar}}" disabled>
+                      </div>
+                    </div><br>
+
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <label><strong>monto Final a Pagar</strong></label> 
+                        <input type="number" class="form-control form-control-sm" #montoFinalApuro value="{{montoFinalPagar}}">
+                      </div>
+                    </div><br>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                        <button [disabled]="blockPagoPrestamo" type="button" class="btn btn-outline-success" (click)="pagarPrestamo(fechaInteres, itemPrestamo.id, montoFinalApuro)">Pagar
+                          <img *ngIf="blockPagoPrestamo" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                        </button>
+                    </div>
+
+                  </div>
+
+            </ng-template> 
+            <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago de cuota."></i>
+            </button>
+          
+          </td> -->
       </tr>
     </tbody> <br>
-    
   </table>
+  
+  <div style="width: 280px;">
+      <table class="table table-striped table-bordered table-sm">
+      <thead text-sm >
+        <tr>
+          <th colspan="5" class="text-center" style="background: #138D75;">Resumen prestamo por mes</th>
+        </tr>
+    </thead>
+      <tr>
+         <th colspan="2" style="background: #138D75;"> Egresos</th>
+         <td colspan="2">{{resumen.egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+      </tr>
+      <tr>
+        <th colspan="2" style="background: #138D75">Ingresos</th>
+        <td colspan="2">{{resumen.ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+      </tr>
+      <tr>
+        <th colspan="2" style="background: #138D75">Abonos</th>
+        <td colspan="2">{{resumen.abonos | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+      </tr>
+      <tr>
+        <th colspan="2" style="background: #138D75;">Intereses</th>
+        <td colspan="2">{{resumen.interes | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+      </tr>
+  </table>
+  </div>
+    
+
 </div>
 </div>

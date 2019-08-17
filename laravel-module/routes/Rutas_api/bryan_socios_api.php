@@ -10,3 +10,4 @@ Route::get('/traer_datos_conyuge_socio', 'PortalSocioController@TraerDatosConyug
 Route::post('/ingresar_datos_conyuge_socio', 'PortalSocioController@IngresarConyugeSocio');
 Route::post('/ingresar_datos_beneficiarios_socio', 'PortalSocioController@IngresarBeneficiariosSocio');
 Route::get('/traer_datos_beneficiarios_socio', 'PortalSocioController@TraerDatosBeneficiariosSocios');
+Route::post('/cambiar_contrasena_socio', 'PortalSocioController@CambiarContrasena');

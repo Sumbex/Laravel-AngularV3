@@ -22,6 +22,11 @@ class PortalSocioController extends Controller
         return PortalSocio::socioLogeado();
     }
 
+    public function CambiarContrasena(Request $request)
+    {
+        return PortalSocio::cambiarContrasena($request);
+    }
+
     public function TraerDatosBasicosSocios()
     {
         return PortalSocio::traerDatosBasicosSocios();

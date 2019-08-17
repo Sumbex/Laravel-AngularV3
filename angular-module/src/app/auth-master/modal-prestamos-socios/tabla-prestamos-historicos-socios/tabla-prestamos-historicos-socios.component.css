@@ -231,4 +231,21 @@
     }
     /*CLASE INPUT*/
 
-    
+    .spacing {
+  padding: 10px;
+  height: 10px;
+  width: 100%;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  height: 45px;
+  background-color: #FCF;
+  overflow: hidden;
+}
+
+.hasTooltip:hover .tooltip,
+.tooltip:hover {
+  display: block;
+}

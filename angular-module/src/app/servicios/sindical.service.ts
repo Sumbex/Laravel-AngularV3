@@ -108,7 +108,7 @@ export class SindicalService{
         body.append('checktri', form.checkTri);
         body.append('checkcon', form.checkCon);
 
-        return this._http.post(this.url + "ingresar_prestamo",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "guardar_prestamo",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token
             }
@@ -125,7 +125,7 @@ export class SindicalService{
     }
 
     getPrestamosHistoricos(anio: string, mes: string): Observable<any>{
-        return this._http.get(this.url + "traer_prestamos_historicos/" + anio + "/" + mes, {headers: new HttpHeaders(
+        return this._http.get(this.url + "listar_p_salud_retornable/" + anio + "/" + mes, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
@@ -146,18 +146,82 @@ export class SindicalService{
         )});
     }
 
-    pagarAbono(id, definicionSelectAbono, fecha, monto): Observable<any>{
+    pagarPrestamoSalud(fecha, id, monto): Observable<any>{
         const body = new FormData();
-        body.append('detalle_prestamo_id', id);
+        body.append('p_salud_retornable_id', id);
         body.append('fecha', fecha);
-        body.append('tipo_abono_id', definicionSelectAbono);
         body.append('monto', monto);
 
-        return this._http.post(this.url + "ingresar_pago_abono",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "pagar_p_salud_retornable",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token
+            }
+        )});
+    }
+    pagarPrestamoApuro(fecha, id, monto): Observable<any>{
+        const body = new FormData();
+        body.append('p_apuro_id', id);
+        body.append('fecha', fecha);
+        body.append('monto', monto);
+
+        return this._http.post(this.url + "pagar_p_apuro_economico_retornable",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token
             }
         )});
     }
 
+    pagarAbono(id, definicionSelectAbono, fecha, monto): Observable<any>{
+        const body = new FormData();
+        body.append('p_salud_retornable_id', id);
+        body.append('fecha', fecha);
+        body.append('abono', definicionSelectAbono);
+        body.append('monto', monto);
+
+        return this._http.post(this.url + "pago_abono",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token
+            }
+        )});
+    }
+    listar_abonos_por_prestamo(id, tipo): Observable<any>{
+
+        return this._http.get(this.url + "listar_abonos_por_prestamo/" + id + "/" + tipo, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+    
+    lista_ultima_prestamos(anio, mes): Observable<any>{
+
+        return this._http.get(this.url + "tabla_final_prestamo/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+    listar_pni(): Observable<any>{
+
+        return this._http.get(this.url + "listar_prestamos_vigentes", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+     listar_pc(): Observable<any>{
+
+        return this._http.get(this.url + "listar_prestamos_finalizados", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+
+    
 }

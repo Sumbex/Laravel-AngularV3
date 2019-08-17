@@ -25,8 +25,6 @@ class Cuentasindicato extends Model
 
     	//dd($prestamo_ingreso);
 
-
-
 		if($interes != null){ // si existe interes de prestamo
 			$verify_interes = $this->where([
 				'interes' => 'S',
@@ -219,18 +217,19 @@ class Cuentasindicato extends Model
 	public function item_prestamo_e_cs($anio, $mes)
 	{
 
-		$dp_query = DB::select("SELECT COALESCE(sum(monto_egreso),0) as monto_egreso 
- 								from cs_prestamos where mes_id = $mes and anio_id = $anio and activo='S'");
+		$salud_retor = DB::select("SELECT COALESCE(sum(egreso),0)as egreso  from p_salud_retornable
+									where mes_id = $mes and anio_id = $anio and definicion = 2");
 
+		$apuro = DB::select("SELECT COALESCE(sum(egreso),0)as egreso  from p_apuro_economico_retornable
+									where mes_id = $mes and anio_id = $anio and definicion = 2 and activo = 'S'");
 
+		$aporte = DB::select("SELECT COALESCE(sum(egreso),0) as egreso from cs_prestamo
+									where mes_id = $mes and anio_id = $anio and definicion = 2 and activo ='S' 
+									and estado_prestamo ='egresado'");
+
+		return $salud_retor[0]->egreso + $apuro[0]->egreso + $aporte[0]->egreso;
 		
-		if ($dp_query[0]->monto_egreso > 0) {
-
-			return $dp_query[0]->monto_egreso;
-
-		}else{
-			return 0;
-		}
+		
 
 		
 	}
@@ -238,34 +237,30 @@ class Cuentasindicato extends Model
 	public function item_prestamo_i_cs($anio, $mes)
 	{
 		
+
 		// $dp_query = DB::select("SELECT 
       
 		// 						COALESCE(sum(z.calculo),0) as suma from 
 
 		// 						(select 
-		// 						    (monto_ingreso / cuota) as calculo
+		// 						    (monto_ingreso) as calculo
 		// 						from detalle_prestamo where definicion=1 and mes_id=$mes and anio_id=$anio) z ");
-		$dp_query = DB::select("SELECT 
-      
-								COALESCE(sum(z.calculo),0) as suma from 
 
-								(select 
-								    (monto_ingreso) as calculo
-								from detalle_prestamo where definicion=1 and mes_id=$mes and anio_id=$anio) z ");
+		// $dpta_query = DB::select("SELECT COALESCE(sum(monto_pagado),0) as monto_egreso
+		// 			from detalle_prestamo_tipo_abono where definicion = 1 
+		// 			and mes_id = $mes and anio_id = $anio and activo = 'S'");	
+		$salud_retor = DB::select("SELECT COALESCE(sum(ingreso),0)as ingreso  from p_salud_retornable
+									where mes_id = $mes and anio_id = $anio and definicion = 1");
 
-		$dpta_query = DB::select("SELECT COALESCE(sum(monto_pagado),0) as monto_egreso
-					from detalle_prestamo_tipo_abono where definicion = 1 
-					and mes_id = $mes and anio_id = $anio and activo = 'S'");
+		$apuro = DB::select("SELECT COALESCE(sum(ingreso),0)as ingreso  from p_apuro_economico_retornable
+									where mes_id = $mes and anio_id = $anio and definicion = 1");
+
+		$abonos = DB::select("SELECT COALESCE(sum(monto),0) as monto from abonos_salud_retornable where mes_id = $mes and anio_id = $anio");
+
+		return $salud_retor[0]->ingreso + $apuro[0]->ingreso + $abonos[0]->monto;
 
 
-		if ($dp_query[0]->suma > 0 ) {
-
-			$suma = (int)$dp_query[0]->suma + (int)$dpta_query[0]->monto_egreso;
-			return $suma;
-
-		}else{
-			return 0;
-		}
+		
 		
 	}
 

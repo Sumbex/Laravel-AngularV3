@@ -11,7 +11,7 @@ export class AuthGuardService implements CanActivate {
     constructor(public auth: UsuarioService, public router: Router) {}
 
     canActivate(): boolean {
-        if ((this.rol == '1' || this.rol == '5') || !this.auth.isAuthenticated()) {
+        if ((this.rol != '1' && this.rol != '5') || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }

@@ -66,11 +66,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required|min:0'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'El nombre es necesario'
                             ]
                         );
@@ -79,11 +77,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required|min:0'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'El apellido es necesario'
                             ]
                         );
@@ -92,11 +88,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required|min:0'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'El apellido es necesario'
                             ]
                         );
@@ -105,11 +99,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'La fecha es necesaria'
                             ]
                         );
@@ -229,6 +221,32 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'new_password.same' => 'Las contrasenas ingresadas no son iguales.'
 
 
+                    ]
+                );
+                break;
+
+            case 7:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'relacion_socio_id' => 'required|string',
+                        'rut' => 'required',
+                        'fecha_nacimiento' => 'required',
+                        'nombres' => 'required|string',
+                        'apellido_paterno' => 'required|string',
+                        'apellido_materno' => 'required|string',
+                        'direccion' => 'required|string',
+                        'celular' => 'required|string'
+                    ],
+                    [
+                        'relacion_socio_id.required' => 'Debes ingresar su relacion.',
+                        'rut.required' => 'Debes ingresar el rut.',
+                        'fecha_nacimiento.required' => 'Debes ingresar la fecha de nacimiento.',
+                        'nombres.required' => 'Debes ingresar los nombres.',
+                        'apellido_paterno.required' => 'Debes ingresar el apellido',
+                        'apellido_materno.required' => 'Debes ingresar el apellido',
+                        'direccion.required' => 'Debes ingresar la direccion',
+                        'celular.required' => 'Debes ingresar el numero de celular'
                     ]
                 );
                 break;
@@ -925,26 +943,31 @@ class PortalSocio extends Authenticatable implements JWTSubject
     {
         $verificar = $this->verificarSocio($this->socioLogeado()->id);
         if ($verificar['estado'] == 'success') {
-            $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
-            if ($tienesDatos['estado'] == 'failed') {
-                $PS = new SocioPadresSuegros;
-                $PS->socio_id = $this->socioLogeado()->id;
-                $PS->relacion_socio_id = $request->relacion_socio_id;
-                $PS->rut = $request->rut;
-                $PS->fecha_nacimiento = $request->fecha_nacimiento;
-                $PS->nombres = $request->nombres;
-                $PS->apellido_paterno = $request->apellido_paterno;
-                $PS->apellido_materno = $request->apellido_materno;
-                $PS->direccion = $request->direccion;
-                $PS->celular = $request->celular;
-                $PS->activo = 'S';
-                if ($PS->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+            $validarDatos = $this->validarDatos($request, 7);
+            if ($validarDatos['estado'] == 'success') {
+                $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                if ($tienesDatos['estado'] == 'failed') {
+                    $PS = new SocioPadresSuegros;
+                    $PS->socio_id = $this->socioLogeado()->id;
+                    $PS->relacion_socio_id = $request->relacion_socio_id;
+                    $PS->rut = $request->rut;
+                    $PS->fecha_nacimiento = $request->fecha_nacimiento;
+                    $PS->nombres = $request->nombres;
+                    $PS->apellido_paterno = $request->apellido_paterno;
+                    $PS->apellido_materno = $request->apellido_materno;
+                    $PS->direccion = $request->direccion;
+                    $PS->celular = $request->celular;
+                    $PS->activo = 'S';
+                    if ($PS->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion']->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
                 }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion']->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
+                return $validarDatos;
             }
         } else {
             return $verificar;

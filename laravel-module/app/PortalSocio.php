@@ -999,9 +999,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ])
             ->join('relacion_socio', 'relacion_socio.id', 'padres_suegros_socio.relacion_socio_id')
             ->where([
-                'activo' => 'S',
-                'socio_id' => $this->socioLogeado()->id,
-                'relacion_socio_id' => $relacion_socio_id
+                'padres_suegros_socio.activo' => 'S',
+                'padres_suegros_socio.socio_id' => $this->socioLogeado()->id,
+                'padres_suegros_socio.relacion_socio_id' => $relacion_socio_id
             ])
             ->get();
 

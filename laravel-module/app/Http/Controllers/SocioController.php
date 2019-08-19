@@ -132,7 +132,7 @@ class SocioController extends Controller
             $this->listar();
         }
         $return = Socios::filtrar($search);
-        return $return;
+        return Response()->json($return);
     }
 
 
@@ -483,7 +483,7 @@ class SocioController extends Controller
                     // $sdb->casa_propia = $r->valor;
                     // if ($sdb->save()) { 
 
-                    $ss->casa_propia = $r->valor;
+                    $sdb->casa_propia = $r->valor;
                     if ($ss->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
@@ -499,7 +499,7 @@ class SocioController extends Controller
                     // $sdb->rol_turno = $r->valor;
                     // if ($sdb->save()) { 
 
-                    $ss->rol_turno = $r->valor;
+                    $sdb->rol_turno = $r->valor;
                     if ($ss->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Rol de turno actualizado!']; 
@@ -515,7 +515,7 @@ class SocioController extends Controller
                     // $sdb->estado_civil_id = $r->valor;
                     // if ($sdb->save()) { 
 
-                    $ss->estado_civil_id = $r->valor;
+                    $sdb->estado_civil_id = $r->valor;
                     if ($ss->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Estado civil actualizado!']; 
@@ -533,7 +533,7 @@ class SocioController extends Controller
                     // $sdb->conyuge = $r->valor;
                     // if ($sdb->save()) { 
 
-                    $ss->conyuge = $r->valor;
+                    $sdb->conyuge = $r->valor;
                     if ($ss->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Conyuge actualizado!']; 
@@ -774,7 +774,7 @@ class SocioController extends Controller
         return ['estado'=>'failed', 'body'=>'', 'mensaje'=>'No hay datos en la tabla'];
     }
     public function actualizar_datos_beneficiario(Request $r)
-    {
+    {//id(socio),campo,valor y socio_beneficiario_id
         if (empty($r->valor)) {
             return ['estado'=>'failed', 'mensaje'=>'No hay un valor ingresado'];
         }
@@ -782,6 +782,7 @@ class SocioController extends Controller
         $ben = SocioBeneficiario::where([
                     'activo'=>'S',
                     'socio_id' => $r->socio_id,
+                    'id' => $r->socio_beneficiario_id,
                     'cobro_beneficio' => 'N'
                ])->first();
 
@@ -1025,8 +1026,17 @@ class SocioController extends Controller
         }
     }
     public function actualizar_datos_padres_suegros(Request $r)
-    {
-        
+    { // id(socio),campo,valor y socio_padre_id
+        if (empty($r->valor)) {
+            return ['estado'=>'failed', 'mensaje'=>'No hay un valor ingresado'];
+        }
+
+        $pys = SocioPadresSuegros::where([
+            'rut'=> $rut_limpio ,
+            'activo'=>'S',
+            'socio_id'=>$r->socio_id,
+            'id' => $r->socio_padre_suegro_id
+        ])->first();
     }
 
 

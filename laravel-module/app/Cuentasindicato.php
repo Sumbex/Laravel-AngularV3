@@ -18,10 +18,8 @@ class Cuentasindicato extends Model
     	$get_anio = DB::table('mes as m')->select('m.descripcion')->where('id',$mes)->first();
 
     	$interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
-    	//$prestamo = $this->item_prestamos_a_cs($anio, $mes);
-
     	$prestamo_egreso = $this->item_prestamo_e_cs($anio, $mes);
-    	$prestamo_ingreso = $this->item_prestamo_i_cs($anio, $mes);
+    	//$prestamo_ingreso = $this->item_prestamo_i_cs($anio, $mes); este se comenta por peticion del tio emilio
 
     	//dd($prestamo_ingreso);
 
@@ -64,36 +62,36 @@ class Cuentasindicato extends Model
 			$i = new Cuentasindicato;
 			$e = new Cuentasindicato;
 
-			$verify_p_ingreso = $this->where([
-				'p_i' => 'S',
-				'activo' => 'S',
-				'tipo_cuenta_sindicato' => '4',//cuenta prestamos
-				'anio_id' => $anio,
-				'mes_id' => $mes,
-				'definicion' => '1'
-			])->first();
+			// $verify_p_ingreso = $this->where([
+			// 	'p_i' => 'S',
+			// 	'activo' => 'S',
+			// 	'tipo_cuenta_sindicato' => '4',//cuenta prestamos
+			// 	'anio_id' => $anio,
+			// 	'mes_id' => $mes,
+			// 	'definicion' => '1'
+			// ])->first();
 
 
-			if (empty($verify_p_ingreso)) {
-				$i->numero_documento = '---';
-				$i->archivo_documento = '---';
-				$i->tipo_cuenta_sindicato = 4; //prestamo
-				$i->descripcion = 'Total ingreso de prestamos, mes de '.$get_anio->descripcion;
-				$i->monto_ingreso = $prestamo_ingreso;
-				$i->monto_egreso = null;
-				$i->saldo_actual = null;
-				$i->definicion = 1;
-				$i->user_crea = Auth::user()->id;
-				$i->activo = 'S';
-				$i->anio_id = $anio;
-				$i->mes_id = $mes;
-				$i->dia = '1';
-				$i->p_i = 'S';
-				$i->save();
-			}else{
-				$verify_p_ingreso->monto_ingreso = $prestamo_ingreso;
-				$verify_p_ingreso->save();
-			}
+			// if (empty($verify_p_ingreso)) {
+			// 	$i->numero_documento = '---';
+			// 	$i->archivo_documento = '---';
+			// 	$i->tipo_cuenta_sindicato = 4; //prestamo
+			// 	$i->descripcion = 'Total ingreso de prestamos, mes de '.$get_anio->descripcion;
+			// 	$i->monto_ingreso = $prestamo_ingreso;
+			// 	$i->monto_egreso = null;
+			// 	$i->saldo_actual = null;
+			// 	$i->definicion = 1;
+			// 	$i->user_crea = Auth::user()->id;
+			// 	$i->activo = 'S';
+			// 	$i->anio_id = $anio;
+			// 	$i->mes_id = $mes;
+			// 	$i->dia = '1';
+			// 	$i->p_i = 'S';
+			// 	$i->save();
+			// }else{
+			// 	$verify_p_ingreso->monto_ingreso = $prestamo_ingreso;
+			// 	$verify_p_ingreso->save();
+			// }
 
 
 			$verify_p_egreso = $this->where([

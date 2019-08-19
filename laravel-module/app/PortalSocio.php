@@ -904,13 +904,15 @@ class PortalSocio extends Authenticatable implements JWTSubject
     {
         $cargas = DB::table('cargas_legales_socio')
             ->select([
+                'tipo_carga_id',
                 'rut',
                 'fecha_nacimiento',
                 'nombres',
                 'apellido_paterno',
                 'apellido_materno',
                 'direccion',
-                'celular'
+                'celular',
+                'establecimiento'
             ])
             ->where([
                 'activo' => 'S',

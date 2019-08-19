@@ -252,6 +252,32 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 );
                 break;
 
+            case 8:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'tipo_carga_id' => 'required|string',
+                        'rut' => 'required',
+                        'fecha_nacimiento' => 'required',
+                        'nombres' => 'required|string',
+                        'apellido_paterno' => 'required|string',
+                        'apellido_materno' => 'required|string',
+                        'direccion' => 'required|string',
+                        'celular' => 'required|string'
+                    ],
+                    [
+                        'tipo_carga_id.required' => 'Debes seleccionar el tipo.',
+                        'rut.required' => 'Debes ingresar el rut.',
+                        'fecha_nacimiento.required' => 'Debes ingresar la fecha de nacimiento.',
+                        'nombres.required' => 'Debes ingresar los nombres.',
+                        'apellido_paterno.required' => 'Debes ingresar el apellido',
+                        'apellido_materno.required' => 'Debes ingresar el apellido',
+                        'direccion.required' => 'Debes ingresar la direccion',
+                        'celular.required' => 'Debes ingresar el numero de celular'
+                    ]
+                );
+                break;
+
             default:
                 # code...
                 break;
@@ -878,13 +904,15 @@ class PortalSocio extends Authenticatable implements JWTSubject
     {
         $cargas = DB::table('cargas_legales_socio')
             ->select([
+                'tipo_carga_id',
                 'rut',
                 'fecha_nacimiento',
                 'nombres',
                 'apellido_paterno',
                 'apellido_materno',
                 'direccion',
-                'celular'
+                'celular',
+                'establecimiento'
             ])
             ->where([
                 'activo' => 'S',
@@ -903,29 +931,34 @@ class PortalSocio extends Authenticatable implements JWTSubject
     {
         $verificar = $this->verificarSocio($this->socioLogeado()->id);
         if ($verificar['estado'] == 'success') {
-            $carga = new SocioCarga;
-            $carga->socio_id = $this->socioLogeado()->id;
-            $carga->tipo_carga_id = $request->tipo_carga_id;
-            $carga->rut = $request->rut;
-            $carga->fecha_nacimiento = $request->fecha_nacimiento;
-            $carga->nombres = $request->nombres;
-            $carga->apellido_paterno = $request->apellido_paterno;
-            $carga->apellido_materno = $request->apellido_materno;
-            $carga->direccion = $request->direccion;
-            $carga->celular = $request->celular;
-            $carga->establecimiento = $request->establecimiento;
-            $carga->activo = 'S';
-            /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
+            $validarDatos = $this->validarDatos($request, 8);
+            if ($validarDatos['estado'] == 'success') {
+                $carga = new SocioCarga;
+                $carga->socio_id = $this->socioLogeado()->id;
+                $carga->tipo_carga_id = $request->tipo_carga_id;
+                $carga->rut = $request->rut;
+                $carga->fecha_nacimiento = $request->fecha_nacimiento;
+                $carga->nombres = $request->nombres;
+                $carga->apellido_paterno = $request->apellido_paterno;
+                $carga->apellido_materno = $request->apellido_materno;
+                $carga->direccion = $request->direccion;
+                $carga->celular = $request->celular;
+                $carga->establecimiento = $request->establecimiento;
+                $carga->activo = 'S';
+                /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
 
                     if ($guardarArchivo['estado'] == "success") {
                         $carga->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
                     } else {
                         return $guardarArchivo;
                     } */
-            if ($carga->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                if ($carga->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                return $validarDatos;
             }
         } else {
             return $verificar;

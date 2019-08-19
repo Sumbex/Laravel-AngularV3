@@ -37,6 +37,18 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
 
   setDatosConyuge(){
     //Llamar al servicio para ingresar los valores del objeto
+    this._portalSociosService.setDatosConyugeSocio(this.datosConyuge).subscribe(
+      response => {
+        if(response.estado == 'failed' || response.estado == 'failed_v'){
+          alert(response.mensaje);
+        }else{
+          alert('Se ha ingresado correctamente la conyuge en la base de datos');
+        }
+      },
+      error =>{
+        console.log(error);
+      }
+    );
     console.log(this.datosConyuge);
   }
 

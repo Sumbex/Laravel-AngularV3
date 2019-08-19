@@ -67,4 +67,22 @@ export class PortalSociosService{
             }
         )});
     }
+
+    setDatosConyugeSocio(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+
+        return this._http.post(this.url + "ingresar_datos_conyuge_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
 }

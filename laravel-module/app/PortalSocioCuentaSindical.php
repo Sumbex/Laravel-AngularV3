@@ -14,16 +14,16 @@ class PortalSocioCuentaSindical extends Model
             ->select([
                 'cs.id',
                 DB::raw("concat(cs.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
-                'numero_documento',
-                'archivo_documento',
-                'descripcion',
-                'monto_ingreso',
-                'monto_egreso',
-                'tipo_cuenta_sindicato',
-                'definicion',
-                'interes',
-                'p_e',
-                'detalle_camping'
+                'cs.numero_documento',
+                'cs.archivo_documento',
+                'cs.descripcion',
+                'cs.monto_ingreso',
+                'cs.monto_egreso',
+                'cs.tipo_cuenta_sindicato',
+                'cs.definicion',
+                'cs.interes',
+                'cs.p_e',
+                'cs.detalle_camping'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')

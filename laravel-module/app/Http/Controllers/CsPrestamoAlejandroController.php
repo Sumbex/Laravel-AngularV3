@@ -244,6 +244,10 @@ class CsPrestamoAlejandroController extends Controller
 
     public function pagar_p_salud_retornable(Request $r)
     {
+    	if ($r->monto == '' || $r->fecha=='') {
+    		return ['estado'=>'failed','mensaje'=>'Puede que falte un dato'];
+    	}
+
     	$id = $r->p_salud_retornable_id;
 
 
@@ -314,6 +318,11 @@ class CsPrestamoAlejandroController extends Controller
 
     public function pago_abono(Request $r)
     {
+
+    	if ($r->fecha=='' || $r->monto=='') {
+    		return ['estado'=>'failed','mensaje'=>'Puede que falte un dato'];
+    	}
+
     	$psr = p_salud_retornable::find($r->p_salud_retornable_id); //item prestamo salud retornable;
     	$monto_versus = 0; //variable total de un trimestral, dia sueldo o termino conflicto en item p_s_r
     	$monto_abono = 0;
@@ -409,6 +418,10 @@ class CsPrestamoAlejandroController extends Controller
 
     public function pagar_p_apuro_economico_retornable(Request $r)
     {
+    	if ($r->fecha=='' || $r->monto=='') {
+    		return ['estado'=>'failed','mensaje'=>'Puede que falte un dato'];
+    	} 
+    	
     	$fecha = $r->fecha;
     	$monto = $r->monto;
     	$p_apuro_id = $r->p_apuro_id;

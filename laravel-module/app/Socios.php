@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class Socios extends Model
 {
+
     protected function filtrar($search)
     {
-    	$busca = strtolower($search);
+    	$busca = mb_strtolower($search);
 
-    	return DB::select("SELECT 
+    	$filtro = DB::select("SELECT 
 						to_char(fecha_nacimiento, 'dd-mm-yyyy') as fecha_nacimiento_view,
 						to_char(fecha_ingreso, 'dd-mm-yyyy') as fecha_ingreso_view,
 						to_char(fecha_egreso, 'dd-mm-yyyy') as fecha_egreso_view,
@@ -26,5 +27,7 @@ class Socios extends Model
 
     					from socios
 						where lower(CONCAT(nombres,' ',a_paterno,' ',a_materno)) like  '%$busca%'");
+
+    	return $filtro;
     }
 }

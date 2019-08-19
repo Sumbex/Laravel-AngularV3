@@ -775,7 +775,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $conyuge->rut = $request->rut;
                     $conyuge->fecha_nacimiento = $request->fecha_nacimiento;
                     $conyuge->nombres = $request->nombres;
-                    $conyuge->apellido_paterno = $request->apellido_materno;
+                    $conyuge->apellido_paterno = $request->apellido_paterno;
+                    $conyuge->apellido_materno = $request->apellido_materno;
                     $conyuge->direccion = $request->direccion;
                     $conyuge->celular = $request->celular;
                     /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');

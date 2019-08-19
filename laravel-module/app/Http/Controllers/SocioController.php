@@ -249,6 +249,11 @@ class SocioController extends Controller
 //--DATOS SOCIO---------------------------------------------------------
     public function guardar_datos_socio(Request $r)
     {
+
+        if ($r->email_1 == '' || $r->direccion == '') {
+            return ['estado'=>'failed','mensaje'=>'La direccion y el email personal son obligatorios'];
+        }
+
         $insert_1 = false;
         $insert_2 = false;
 
@@ -484,7 +489,7 @@ class SocioController extends Controller
                     // if ($sdb->save()) { 
 
                     $sdb->casa_propia = $r->valor;
-                    if ($ss->save()) { 
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
                     }
@@ -500,7 +505,7 @@ class SocioController extends Controller
                     // if ($sdb->save()) { 
 
                     $sdb->rol_turno = $r->valor;
-                    if ($ss->save()) { 
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Rol de turno actualizado!']; 
                     }
@@ -516,7 +521,7 @@ class SocioController extends Controller
                     // if ($sdb->save()) { 
 
                     $sdb->estado_civil_id = $r->valor;
-                    if ($ss->save()) { 
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Estado civil actualizado!']; 
 
@@ -775,16 +780,22 @@ class SocioController extends Controller
     }
     public function actualizar_datos_beneficiario(Request $r)
     {//id(socio),campo,valor y socio_beneficiario_id
+
+         // dd($r->all());
         if (empty($r->valor)) {
             return ['estado'=>'failed', 'mensaje'=>'No hay un valor ingresado'];
         }
 
         $ben = SocioBeneficiario::where([
                     'activo'=>'S',
-                    'socio_id' => $r->socio_id,
+                    'socio_id' => $r->id,
                     'id' => $r->socio_beneficiario_id,
                     'cobro_beneficio' => 'N'
                ])->first();
+
+     if (empty($ben)) {
+         return ['estado'=>'failed','mensaje'=>'No es posible cambiar algun dato, esta persona cuenta con un beneficio o no esta apta por el momento'];
+     }
 
         if ($ben) {
             switch ($r->campo) {
@@ -831,7 +842,7 @@ class SocioController extends Controller
                     }
 
 
-                    $ben->rut = $rut_limpio ;
+                    $ben->rut = $rut_limpio;
                     if ($ben->save()) {
                         return ['estado'=>'success', 'mensaje'=>'Rut actualizado!'];
                     }

@@ -30,7 +30,8 @@ export class TablaBeneficiosAuthConyugeComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        console.log(response);
+        this.datosConyuge = response.conyuge[0];
+        console.log(this.datosConyuge);
       }
     },
     error => {

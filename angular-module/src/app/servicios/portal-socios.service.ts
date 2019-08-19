@@ -92,4 +92,30 @@ export class PortalSociosService{
             {'Authorization': 'Bearer' + token}
         )});
     }
+
+    setDatosBeneficiarios(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('relacion', form.relacionParentesco);
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+
+        return this._http.post(this.url + "ingresar_datos_beneficiarios_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getDatosBeneficiario() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_beneficiarios_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
 }

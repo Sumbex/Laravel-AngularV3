@@ -38,6 +38,16 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
   setDatosBeneficiario(){
     //Llamar al servicio para ingresar datos del beneficiario
     console.log(this.datosBeneficiario);
+    this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        alert('Ingreso del Beneficiario correcto');
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

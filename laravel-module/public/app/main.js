@@ -6546,6 +6546,25 @@ let PortalSociosService = class PortalSociosService {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_conyuge_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
     }
+    setDatosBeneficiarios(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('relacion', form.relacionParentesco);
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+        return this._http.post(this.url + "ingresar_datos_beneficiarios_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    getDatosBeneficiario() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_beneficiarios_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
+    }
 };
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -7258,6 +7277,16 @@ let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBenefic
     setDatosBeneficiario() {
         //Llamar al servicio para ingresar datos del beneficiario
         console.log(this.datosBeneficiario);
+        this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                alert('Ingreso del Beneficiario correcto');
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 FormularioBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -7579,7 +7608,8 @@ let TablaBeneficiosAuthConyugeComponent = class TablaBeneficiosAuthConyugeCompon
                 alert(response.mensaje);
             }
             else {
-                console.log(response);
+                this.datosConyuge = response.conyuge[0];
+                console.log(this.datosConyuge);
             }
         }, error => {
             console.log(error);
@@ -7704,6 +7734,7 @@ __webpack_require__.r(__webpack_exports__);
 let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBeneficiarioAuthSocioComponent {
     constructor(config, modalService, _portalSociosService) {
         this.modalService = modalService;
+        this._portalSociosService = _portalSociosService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -7711,10 +7742,21 @@ let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBenefic
     }
     verTablaBeneficiario(tablaBeneficiario) {
         this.abrirModalBeneficiosBeneficiario = this.modalService.open(tablaBeneficiario, { size: 'xl' });
+        this.getDatosBeneficiario();
     }
     getDatosBeneficiario() {
         //llamar al servici para llenar la variable datosBeneficiario
-        console.log("test getdatosbeneficiario");
+        this._portalSociosService.getDatosBeneficiario().subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                this.datosBeneficiario = response;
+                console.log(response);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 TablaBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-formulario-beneficios-padres-suegros-auth-socio',
@@ -23,7 +24,7 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
     celular:''
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -38,6 +39,16 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
   setDatosPadresSuegros(){
     //Aquí se dede de llamar al servicio para ingresar los datos del objeto datosPadresSuegros
     console.log(this.datosPadresSuegros);
+    this._portalSociosService.setDatosPadresSuegros(this.datosPadresSuegros).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        alert(response.mensaje);
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

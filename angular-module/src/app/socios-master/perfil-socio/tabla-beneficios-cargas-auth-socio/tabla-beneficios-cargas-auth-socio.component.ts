@@ -34,7 +34,7 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        console.log(response);
+        this.datosCargas = response.cargas;
       }
     },
     error => {

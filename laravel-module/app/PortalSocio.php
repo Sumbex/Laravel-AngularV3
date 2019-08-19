@@ -1044,7 +1044,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                     }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion']->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
+                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion'][0]->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
                 }
             } else {
                 return $validarDatos;

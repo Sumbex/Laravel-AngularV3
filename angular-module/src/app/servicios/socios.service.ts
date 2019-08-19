@@ -170,6 +170,42 @@ export class SociosService {
                                     )});
                                 }
 
+                        ActualizarDatosConyuge(form): Observable<any>{
+
+                            return this._http.post(this.url + "actualizar_datos_conyuge", form, {headers: new HttpHeaders(
+                                    {
+                                        'Authorization': 'Bearer' + this.token,
+                                    }
+                                    )});
+                                }
+
+                        ActualizarDatosBeneficiarios(form): Observable<any>{
+
+                            return this._http.post(this.url + "actualizar_datos_beneficiario", form, {headers: new HttpHeaders(
+                                    {
+                                        'Authorization': 'Bearer' + this.token,
+                                    }
+                                    )});
+                        }
+
+                        ActualizarDatosCargas(form): Observable<any>{
+
+                            return this._http.post(this.url + "actualizar_datos_carga", form, {headers: new HttpHeaders(
+                                    {
+                                        'Authorization': 'Bearer' + this.token,
+                                    }
+                                    )});
+                                }
+
+                        ActualizarDatosPadresSuegros(form): Observable<any>{
+
+                            return this._http.post(this.url + "actualizar_datos_padres_suegros", form, {headers: new HttpHeaders(
+                                    {
+                                        'Authorization': 'Bearer' + this.token,
+                                    }
+                                    )});
+                                }
+
           
   
 }

@@ -995,7 +995,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
     {
         $relacion = DB::table('padres_suegros_socio')
             ->select([
-                'descripcion'
+                'relacion_socio.descripcion'
             ])
             ->join('relacion_socio', 'relacion_socio.id', 'padres_suegros_socio.relacion_socio_id')
             ->where([

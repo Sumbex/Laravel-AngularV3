@@ -470,7 +470,7 @@ module.exports = "<!--Tabla Del Prestamo Socios-->\n<div class=\"modal-body\"><b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- Navigation -->\n<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" href=\"#\">\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n          </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n        <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" > <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" ><i class=\"fas fa-piggy-bank\"></i> Cuenta Fondo Mutuo</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" ><i class=\"fas fa-chart-pie\"></i> Grafico</a>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\n                </div>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                </div>\n              </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  \n  "
+module.exports = "\n<!-- Navigation -->\n<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" href=\"#\">\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n          </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n        <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" > <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" ><i class=\"fas fa-piggy-bank\"></i> Cuenta Fondo Mutuo</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" ><i class=\"fas fa-chart-pie\"></i> Grafico</a>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                  <!-- <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a> -->\n                </div>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                </div>\n              </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  \n  "
 
 /***/ }),
 
@@ -6528,6 +6528,24 @@ let PortalSociosService = class PortalSociosService {
                 'Authorization': 'Bearer' + token
             }) });
     }
+    setDatosConyugeSocio(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+        return this._http.post(this.url + "ingresar_datos_conyuge_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    getDatosConyuge() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_conyuge_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
+    }
 };
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -7379,6 +7397,16 @@ let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosCo
     }
     setDatosConyuge() {
         //Llamar al servicio para ingresar los valores del objeto
+        this._portalSociosService.setDatosConyugeSocio(this.datosConyuge).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                alert('Se ha ingresado correctamente la conyuge en la base de datos');
+            }
+        }, error => {
+            console.log(error);
+        });
         console.log(this.datosConyuge);
     }
 };
@@ -7546,7 +7574,16 @@ let TablaBeneficiosAuthConyugeComponent = class TablaBeneficiosAuthConyugeCompon
         this.getDatosConyuge();
     }
     getDatosConyuge() {
-        //Llamar al servicio para obtener los datos de la conyuge
+        this._portalSociosService.getDatosConyuge().subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                console.log(response);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 TablaBeneficiosAuthConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

@@ -85,4 +85,11 @@ export class PortalSociosService{
             }
         )});
     }
+
+    getDatosConyuge() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_conyuge_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
 }

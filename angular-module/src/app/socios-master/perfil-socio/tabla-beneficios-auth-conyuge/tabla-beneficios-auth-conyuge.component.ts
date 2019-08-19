@@ -26,7 +26,16 @@ export class TablaBeneficiosAuthConyugeComponent implements OnInit {
   }
 
   getDatosConyuge(){
-    //Llamar al servicio para obtener los datos de la conyuge
+    this._portalSociosService.getDatosConyuge().subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        console.log(response);
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

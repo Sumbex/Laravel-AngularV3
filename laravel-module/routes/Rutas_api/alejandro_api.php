@@ -35,6 +35,21 @@ Route::get('listar_interes_prestamo/{anio}/{mes}','CuentaSindicatoController@lis
 
 //-------------------------------------------------------------------------------------------------
 
+//PRESTAMO-----------------------------------------------------
+
+Route::post('guardar_prestamo','CsPrestamoAlejandroController@ingresar_prestamo');
+Route::get('listar_p_salud_retornable/{anio}/{mes}','CsPrestamoAlejandroController@listar_p_salud_retornable');
+
+Route::post('pagar_p_salud_retornable','CsPrestamoAlejandroController@pagar_p_salud_retornable');
+Route::post('pago_abono','CsPrestamoAlejandroController@pago_abono');
+Route::post('pagar_p_apuro_economico_retornable','CsPrestamoAlejandroController@pagar_p_apuro_economico_retornable');
+
+Route::get('listar_abonos_por_prestamo/{id}/{tipo}','CsPrestamoAlejandroController@listar_abonos_por_prestamo_id');
+Route::get('tabla_final_prestamo/{anio}/{mes}',	'CsPrestamoAlejandroController@tabla_final_prestamo');
+Route::get('listar_prestamos_vigentes','CsPrestamoAlejandroController@listar_prestamos_vigentes');
+Route::get('listar_prestamos_finalizados','CsPrestamoAlejandroController@listar_prestamos_finalizados');
+
+
 
 //----selects
 Route::get('traer_regiones','geoController@traer_regiones');

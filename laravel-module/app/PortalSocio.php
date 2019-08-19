@@ -815,7 +815,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'apellido_materno',
                 'direccion',
                 'celular',
-                'cobro_beneficion',
+                'cobro_beneficio',
                 'fecha_cobro_beneficio'
             ])
             ->where([

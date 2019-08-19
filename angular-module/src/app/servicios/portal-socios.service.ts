@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PortalSociosService{
     public url: string;
+    rol = '';
     //token = localStorage.getItem('token').replace(/['"]+/g, '');
 
     constructor(public _http: HttpClient){
@@ -30,24 +31,39 @@ export class PortalSociosService{
     );
     }
 
-    getDatosSocios(){
-        return this._http.get(this.url + "test", {headers: new HttpHeaders(
-            {
-                //'Authorization': 'Bearer' + this.token,
-                'Content-Type': 'application/json'
-            }
+    getDatosSocios() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_basicos_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
         )});
     }
 
-    setDatosSocios(form): Observable<any>{
+    setDatosBasicosSocios(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('detalle_prestamo_id', form);
-        body.append('fecha', form);
-        body.append('monto', form);
+        body.append('direccion', form.direccion);
+        body.append('telefono', form.telefono);
+        body.append('celular', form.celular);
+        body.append('anexo', form.anexo);
+        body.append('email_1', form.email_1);
+        body.append('email_2', form.email_2);
+        body.append('cargo_planta', form.cargo_planta);
+        body.append('cargo_comision_sindicato', form.cargo_comision_sindicato);
+        body.append('casa_propia', form.casa_propia);
+        body.append('rol_turno', form.rol_turno);
+        body.append('estado_civil_id', form.estado_civil_id);
+        body.append('conyuge', form.conyuge);
+        body.append('numero_cuenta', form.numero_cuenta);
+        body.append('tipo_cuenta_banco_id', form.tipo_cuenta_banco_id);
+        body.append('banco', form.banco);
+        body.append('isapre_fonasa', form.isapre_fonasa);
+        body.append('grupo_sangre', form.grupo_sangre);
 
-        return this._http.post(this.url + "ingresar_pago_prestamo",body, {headers: new HttpHeaders(
+        console.log(form);
+
+        return this._http.post(this.url + "ingresar_datos_basicos_socio",body, {headers: new HttpHeaders(
             {
-                //'Authorization': 'Bearer' + this.token
+                'Authorization': 'Bearer' + token
             }
         )});
     }

@@ -22,6 +22,11 @@ class PortalSocioController extends Controller
         return PortalSocio::socioLogeado();
     }
 
+    public function CambiarContrasena(Request $request)
+    {
+        return PortalSocio::cambiarContrasena($request);
+    }
+
     public function TraerDatosBasicosSocios()
     {
         return PortalSocio::traerDatosBasicosSocios();
@@ -45,5 +50,35 @@ class PortalSocioController extends Controller
     public function IngresarConyugeSocio(Request $request)
     {
         return PortalSocio::ingresarConyugeSocio($request);
+    }
+
+    public function IngresarBeneficiariosSocio(Request $request)
+    {
+        return PortalSocio::ingresarBeneficiariosSocio($request);
+    }
+
+    public function TraerDatosBeneficiariosSocios()
+    {
+        return PortalSocio::traerDatosBeneficiariosSocios();
+    }
+
+    public function CrearUsuarioSocio(Request $request)
+    {
+        return PortalSocio::crearUsuarioSocio($request);
+    }
+
+    public function BorrarUsuarioSocio(Request $request)
+    {
+        return PortalSocio::borrarUsuarioSocio($request);
+    }
+
+    public function CrearUsuariosAdmin(Request $request)
+    {
+        return PortalSocio::crearUsuariosAdmin($request);
+    }
+
+    public function BorrarUsuariosAdmin(Request $request)
+    {
+        return PortalSocio::borrarUsuariosAdmin($request);
     }
 }

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.token = localStorage.getItem('token');
     if (this.token != null) {
-      this.router.navigate(['AuthMaster']);
+      localStorage.clear();
     }
   }
 
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     this._userService.login(this.usuario, true).subscribe(
       response => {
         if(response.status == 'success'){
+        localStorage.setItem('rol', response.rol);
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
@@ -72,6 +73,7 @@ export class LoginComponent implements OnInit {
     this._portalSocios.loginSocios(this.usuario).subscribe(
       response => {
         if(response.status == 'success'){
+        localStorage.setItem('rol', response.rol);
         this.token = response.token;
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));

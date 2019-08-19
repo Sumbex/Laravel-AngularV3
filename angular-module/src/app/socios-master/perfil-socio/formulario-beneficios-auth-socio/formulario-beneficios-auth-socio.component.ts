@@ -9,34 +9,34 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 })
 export class FormularioBeneficiosAuthSocioComponent implements OnInit {
 
-  //Instancia del modal
   abrirFormularioBeneficiosSocios;
 
-  //Objeto con los datos del socio
-  datosSocio = {
-    numeroCuenta: '',
-    banco: '',
-    tipoCuenta: '0',
-    isaFona: '',
-    grupoSangre: '',
-    direccion: '',
-    region: '',
-    provincia: '',
-    comuna: '',
-    telefono: '',
-    celular: '',
-    anexo: '',
-    emailPersonal: '',
-    emailCorporativo: '',
-    cargoPlanta: '',
-    cargoComisionSindicato: '0',
-    casaPropia: '0',
-    rolTurno: '0',
-    estadoCivil: '0',
-    conyugePareja: '0'
+  idSocio = '5';
+
+  InsertarBeneficiosSocio ={
+  socio_id:'',
+  direccion:'',
+  telefono:'',
+  celular:'',
+  anexo:'',
+  email_1:'',
+  email_2:'',
+  cargo_planta:'',
+  cargo_comision_sindicato:'',
+  numero_cuenta:'',
+  tipo_cuenta_banco_id:'',
+  banco:'',
+  isapre_fonasa:'',
+  grupo_sangre:'',
+  casa_propia:'',
+  rol_turno:'',
+  estado_civil_id:'',
+  conyuge:'',
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
+  constructor(config: NgbModalConfig, 
+    private modalService: NgbModal,
+    private _portalSociosService: PortalSociosService) {
       config.backdrop = 'static';
       config.keyboard = false;
     }
@@ -46,10 +46,22 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
 
   verFormularioBeneficios(FormularioBeneficios) {
     this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
+    console.log(this.idSocio);
   }
-
-  ingresarDatosSocio(){
-    console.log(this.datosSocio);
+  
+  guardarDatosSocio(){
+    this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(
+      response => {
+        if(response.estado == "failed" || response.estado == "failed_v"){
+          alert(response.mensaje);
+        }else{
+          alert(response.mensaje);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

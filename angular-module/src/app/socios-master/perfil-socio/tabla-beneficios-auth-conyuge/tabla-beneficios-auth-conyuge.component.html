@@ -1,0 +1,84 @@
+<ng-template #tablaBeneficiosConyuge let-modal>
+  <div class="modal-header sticky-top" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
+      {{getNombreSocio | uppercase}}</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body" id="printJS-table">
+      <div class="card-header" id="demoFont2">
+          <h6 class="card-title">CONYUGE</h6>
+      </div>
+      <div class="card"> <br>
+          <div class="table-responsive">
+              <!-- <div *ngIf="!vista_tabla" class="loader"></div> -->
+              <table class="table table-striped table-bordered table-sm text-center">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row justify-content-center">
+                          <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+                              <tr>
+                                  <th style="background: #138D75" class="text-right">RUT:</th>
+                                  <td><input type="text" class="sinbordefondo" value="{{datosConyuge?.rut}}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                              <tr>
+                                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                                  <td><input type="date" class="sinbordefondo" value="{{ datosConyuge?.fecha_nacimiento }}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                              <tr>
+                                  <th style="background: #138D75;" class="text-right">NOMBRES:</th>
+                                  <td><input type="text" class="sinbordefondo" value="{{datosConyuge?.nombres | uppercase}}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                              <tr>
+                                  <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
+                                  <td><input type="text" class="sinbordefondo" value="{{datosConyuge?.apellido_paterno | uppercase}}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                              <tr>
+                                  <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
+                                  <td><input type="text" class="sinbordefondo" value="{{datosConyuge?.apellido_materno | uppercase}}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                              <tr>
+                                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                                  <td><input type="text" class="sinbordefondo" value="{{datosConyuge?.direccion | uppercase}}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                              <tr>
+                                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                                  <td><input type="text" class="sinbordefondo" value="{{datosConyuge?.celular}}" disabled></td>
+                                  <!-- <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td> -->
+                              </tr>
+                          </div>
+
+                      </div>
+                  </div>
+              </table>
+          </div>
+      </div>
+  </div>
+
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-success" 
+onclick="printJS({
+  printable: 'printJS-table',
+  type:'html',
+  style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+})">
+<i class="fas fa-print"></i>  Imprimir Datos
+</button> -->
+
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click'); limpiar_tabla()"><i
+      class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Conyuge
+  </button>
+  </div>
+</ng-template>
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn btn-primary btn-block btn-sm" type="button" (click)="verTablaModalConyuge(tablaBeneficiosConyuge)">Ver Datos
+</button>

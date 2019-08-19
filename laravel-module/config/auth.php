@@ -77,7 +77,7 @@ return [
         ],
         'socios' => [
             'driver' => 'eloquent',
-            'model' => App\PortalSocio::class,
+            'model' => App\User::class,
         ]
         // 'users' => [
         //     'driver' => 'database',

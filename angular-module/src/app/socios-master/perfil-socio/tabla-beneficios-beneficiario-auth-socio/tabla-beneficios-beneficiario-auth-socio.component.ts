@@ -34,8 +34,7 @@ export class TablaBeneficiosBeneficiarioAuthSocioComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        this.datosBeneficiario = response;
-        console.log(response);
+        this.datosBeneficiario = response.beneficiario;
       }
     },
     error => {

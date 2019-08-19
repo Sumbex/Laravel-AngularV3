@@ -6565,6 +6565,26 @@ let PortalSociosService = class PortalSociosService {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_beneficiarios_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
     }
+    setDatosCargas(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('tipo_carga_id', form.tipoCargaId);
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+        body.append('establecimiento', form.establecimiento);
+        return this._http.post(this.url + "ingresar_datos_cargas_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    getDatosCargas() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_cargas_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
+    }
 };
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -7338,7 +7358,7 @@ let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCar
         //Datos de la carga
         this.datosCargas = {
             tipoCargaId: '',
-            rutCarga: '',
+            rut: '',
             fechaNacimiento: '',
             nombres: '',
             apellidoPaterno: '',
@@ -7358,6 +7378,16 @@ let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCar
     setDatosCarga() {
         //Aquí se llamá al servicio para ingresar los datos de la carga
         console.log(this.datosCargas);
+        this._portalSociosService.setDatosCargas(this.datosCargas).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                alert('Ingreso de la carga correcto');
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 FormularioBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -7751,8 +7781,7 @@ let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBenefic
                 alert(response.mensaje);
             }
             else {
-                this.datosBeneficiario = response;
-                console.log(response);
+                this.datosBeneficiario = response.beneficiario;
             }
         }, error => {
             console.log(error);
@@ -7796,12 +7825,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+
 
 
 
 let TablaBeneficiosCargasAuthSocioComponent = class TablaBeneficiosCargasAuthSocioComponent {
-    constructor(config, modalService) {
+    constructor(config, modalService, _portalSociosService) {
         this.modalService = modalService;
+        this._portalSociosService = _portalSociosService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -7813,6 +7845,16 @@ let TablaBeneficiosCargasAuthSocioComponent = class TablaBeneficiosCargasAuthSoc
     }
     getDatosCargas() {
         //Aquí se llamá al servicio para obtener los datos de las cargas
+        this._portalSociosService.getDatosCargas().subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                console.log(response);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 TablaBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -7821,7 +7863,7 @@ TablaBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__
         template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component.html"),
         styles: [__webpack_require__(/*! ./tabla-beneficios-cargas-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
 ], TablaBeneficiosCargasAuthSocioComponent);
 
 

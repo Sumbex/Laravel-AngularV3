@@ -15,7 +15,7 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
   //Datos de la carga
   datosCargas = {
     tipoCargaId:'',
-    rutCarga:'',
+    rut:'',
     fechaNacimiento:'',
     nombres:'',
     apellidoPaterno:'',
@@ -40,6 +40,16 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
   setDatosCarga(){
     //Aquí se llamá al servicio para ingresar los datos de la carga
     console.log(this.datosCargas);
+    this._portalSociosService.setDatosCargas(this.datosCargas).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        alert('Ingreso de la carga correcto');
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

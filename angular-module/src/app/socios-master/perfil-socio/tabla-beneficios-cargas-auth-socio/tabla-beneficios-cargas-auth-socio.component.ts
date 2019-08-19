@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-tabla-beneficios-cargas-auth-socio',
@@ -14,7 +15,7 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
   //objeto que guardara los datos obtenidos de las cargas
   datosCargas;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -29,6 +30,16 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
 
   getDatosCargas(){
     //Aquí se llamá al servicio para obtener los datos de las cargas
+    this._portalSociosService.getDatosCargas().subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        console.log(response);
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

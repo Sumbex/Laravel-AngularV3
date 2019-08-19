@@ -18,6 +18,7 @@ use App\SocioBeneficiario;
 use App\User;
 use App\SocioCarga;
 use App\SocioPadresSuegros;
+use Illuminate\Support\Facades\Storage;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -443,6 +444,23 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    protected function guardarArchivo($archivo, $ruta)
+    {
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+        $rutaDB = $ruta . $nombreArchivo;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+        if ($guardar) {
+            return ['estado' =>  'success', 'archivo' => $rutaDB];
+        } else {
+            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+        }
+    }
+
     protected function traerDatosBasicosSocios()
     {
         $socio = DB::table('socios_datos_basicos as sdb')
@@ -760,6 +778,13 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $conyuge->apellido_paterno = $request->apellido_materno;
                     $conyuge->direccion = $request->direccion;
                     $conyuge->celular = $request->celular;
+                    /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
+
+                    if ($guardarArchivo['estado'] == "success") {
+                        $conyuge->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                    } else {
+                        return $guardarArchivo;
+                    } */
                     $conyuge->activo = 'S';
                     if ($conyuge->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
@@ -828,6 +853,13 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $beneficiario->celular = $request->celular;
                 $beneficiario->activo = 'S';
                 $beneficiario->cobro_beneficio = 'N';
+                /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
+
+                    if ($guardarArchivo['estado'] == "success") {
+                        $beneficiario->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                    } else {
+                        return $guardarArchivo;
+                    } */
                 if ($beneficiario->save()) {
                     return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                 } else {
@@ -882,6 +914,13 @@ class PortalSocio extends Authenticatable implements JWTSubject
             $carga->celular = $request->celular;
             $carga->establecimiento = $request->establecimiento;
             $carga->activo = 'S';
+            /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
+
+                    if ($guardarArchivo['estado'] == "success") {
+                        $carga->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                    } else {
+                        return $guardarArchivo;
+                    } */
             if ($carga->save()) {
                 return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
             } else {
@@ -958,6 +997,13 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $PS->direccion = $request->direccion;
                     $PS->celular = $request->celular;
                     $PS->activo = 'S';
+                    /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
+
+                    if ($guardarArchivo['estado'] == "success") {
+                        $PS->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                    } else {
+                        return $guardarArchivo;
+                    } */
                     if ($PS->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                     } else {

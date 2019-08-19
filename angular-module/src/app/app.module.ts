@@ -71,6 +71,10 @@ import { PortalSociosService } from './servicios/portal-socios.service';
 import { AuthGuardSocioService } from './guardianes/authSocio.guard.service';
 import { TablaBeneficiosBeneficiarioComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component';
 import { SafePipe } from './safe.pipe';
+import { TablaResumenSocioComponent } from './auth-master/cuenta-socios/tablas-beneficios/tabla-resumen-socio/tabla-resumen-socio.component';
+import { TablaBeneficiosAuthConyugeComponent } from './socios-master/perfil-socio/tabla-beneficios-auth-conyuge/tabla-beneficios-auth-conyuge.component';
+import { TablaBeneficiosBeneficiarioAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component';
+import { TablaBeneficiosCargasAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component';
 
 
 @NgModule({
@@ -159,7 +163,15 @@ import { SafePipe } from './safe.pipe';
 
     FormularioBeneficiosPadresSuegrosAuthSocioComponent,
 
-    SafePipe
+    SafePipe,
+
+    TablaResumenSocioComponent,
+
+    TablaBeneficiosAuthConyugeComponent,
+
+    TablaBeneficiosBeneficiarioAuthSocioComponent,
+
+    TablaBeneficiosCargasAuthSocioComponent
 
   ],
   imports: [

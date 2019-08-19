@@ -48,7 +48,7 @@ return [
         ],
 
         'socio_api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'socios',
         ],
     ],
@@ -77,7 +77,7 @@ return [
         ],
         'socios' => [
             'driver' => 'eloquent',
-            'model' => App\PortalSocio::class,
+            'model' => App\User::class,
         ]
         // 'users' => [
         //     'driver' => 'database',

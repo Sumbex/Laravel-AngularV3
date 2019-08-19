@@ -331,7 +331,7 @@ class SocioController extends Controller
         $sdb = Socio_datos_basicos::where(['activo' => 'S','socio_id' => $r->id])->first();
         $ss = SocioSituacion::where(['activo' => 'S','socio_id' => $r->id])->first();
 
-        switch ($r->campo) {
+       switch ($r->campo) {
             case 'socio_direccion':
 
                     $sdb->direccion = $r->valor;
@@ -356,7 +356,7 @@ class SocioController extends Controller
             break;
             case 'socio_celular':
                     
-                     $sdb->celular = $r->valor;
+                    $sdb->celular = $r->valor;
                     if ($sdb->save()) { 
                         return ['estado'=>'success','mensaje'=>'Celular actualizado!']; 
                     }
@@ -471,16 +471,21 @@ class SocioController extends Controller
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
-                // -----------------------------------------
+    //             // -----------------------------------------
             case 'socio_casa_propia':
-                    
-<<<<<<< HEAD
-                    $sdb->casa_propia = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+
+                    // $sdb->casa_propia = $r->valor;
+                    // if ($sdb->save()) { 
+
+                    //     return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
+
+                    // $sdb->casa_propia = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->casa_propia = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
                     }
                     else {
@@ -490,13 +495,13 @@ class SocioController extends Controller
 
             case 'socio_rol_turno':
                     
-<<<<<<< HEAD
-                    $sdb->rol_turno = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+                    // $sdb->rol_turno = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->rol_turno = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Rol de turno actualizado!']; 
                     }
                     else {
@@ -506,41 +511,40 @@ class SocioController extends Controller
 
             case 'socio_estado_civil_id':
                     
-<<<<<<< HEAD
-                    $sdb->estado_civil_id = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+                    // $sdb->estado_civil_id = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->estado_civil_id = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Estado civil actualizado!']; 
+
                     }
                     else {
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
 
+
             case 'socio_conyuge':
                     
-<<<<<<< HEAD
-                    $sdb->conyuge = $r->valor;
-                    if ($sdb->save()) { 
-=======
+
+                    // $sdb->conyuge = $r->valor;
+                    // if ($sdb->save()) { 
+
                     $ss->conyuge = $r->valor;
                     if ($ss->save()) { 
->>>>>>> d64ec1853026ece16d7246255a43b63498070dde
+
                         return ['estado'=>'success','mensaje'=>'Conyuge actualizado!']; 
                     }
                     else {
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
+
            
-            
-            default:
-                # code...
-                break;
-        }
+         }
     }
     public function traer_datos_socio($socio_id)
     {
@@ -714,11 +718,11 @@ class SocioController extends Controller
 
 //--INICIO-- DATOS DEL BENEFICIARIO--------------------------------------------------
     public function guardar_datos_beneficiario(Request $r)
-    {
+    {   $rut_limpio = $this->limpiar($r->rut);
         $existe_beneficiario = SocioBeneficiario::where([
                         'activo'  => 'S',
                         'socio_id'=> $r->socio_id,
-                        'rut'     => $r->rut,
+                        'rut'     => $r->rut_limpio,
                         'cobro_beneficio' => 'N'
                     ])->first();
         $existe_cobro_de_rut_en_socio = SocioBeneficiario::where([
@@ -928,47 +932,47 @@ class SocioController extends Controller
         }
         return ['estado'=>'failed','body'=>'','mensaje'=>'No hay datos en la tabla'];
     }
-    public function actualizar_datos_carga(Request $r)
-    {
-        $carga = SocioCarga::where([
-                        'activo' => 'S',
-                        'socio_id' => $r->id,
-                ])->first();
+    // public function actualizar_datos_carga(Request $r)
+    // {
+    //     $carga = SocioCarga::where([
+    //                     'activo' => 'S',
+    //                     'socio_id' => $r->id,
+    //             ])->first();
 
-        switch ($r->campo) {
-            case 'tipo_carga_id':
-                # code...
-            break;
-            case 'rut':
-                # code...
-            break;
-            case 'fecha_nacimiento':
-                # code...
-            break;
-            case 'nombres':
-                # code...
-            break;
-            case 'apellido_paterno':
-                # code...
-            break;
-            case 'apellido_materno':
-                # code...
-            break;
-            case 'direccion':
-                # code...
-            break;
-            case 'celular':
-                # code...
-            break;
-            case 'establecimiento':
-                # code...
-            break;
+    //     switch ($r->campo) {
+    //         case 'tipo_carga_id':
+    //             # code...
+    //         break;
+    //         case 'rut':
+    //             # code...
+    //         break;
+    //         case 'fecha_nacimiento':
+    //             # code...
+    //         break;
+    //         case 'nombres':
+    //             # code...
+    //         break;
+    //         case 'apellido_paterno':
+    //             # code...
+    //         break;
+    //         case 'apellido_materno':
+    //             # code...
+    //         break;
+    //         case 'direccion':
+    //             # code...
+    //         break;
+    //         case 'celular':
+    //             # code...
+    //         break;
+    //         case 'establecimiento':
+    //             # code...
+    //         break;
             
-            default:
-                # code...
-                break;
-        }
-    }
+    //         default:
+    //             # code...
+    //             break;
+    //     }
+    // }
 
 // -------------------------------------------------------------------------------
 

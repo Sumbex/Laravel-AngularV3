@@ -20,15 +20,14 @@ class Admin_mdlw
         $socio = Auth::guard('socio_api')->user();
         $admin = Auth::user();
 
-        $logeado = !empty($socio)? $socio : $admin;
+        $logeado = !empty($socio) ? $socio : $admin;
 
-         //return response()->json($logeado->rol);
+        //return response()->json($logeado->rol);
 
-        if ((string)$logeado->rol == "1") { //si el rol es de administrador       
+        if ((string) $logeado->rol == "1" || (string) $logeado->rol == "5") { //si el rol es de administrador       
             return $next($request);
         }
-        
-        return response(['status'=>'failed', 'mensaje'=>'No tienes acceso a esta url']);
 
+        return response(['status' => 'failed', 'mensaje' => 'No tienes acceso a esta url']);
     }
 }

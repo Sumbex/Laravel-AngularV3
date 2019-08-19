@@ -1,108 +1,132 @@
-<div class="card-header" id="demoFont2">
-  <h6 class="card-title">Padres y Suegros Vivos</h6>
-</div>
-<div class="card">
-<form #BeneficiosForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-
-  <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-    <div class="row justify-content-between">
-
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Relacion con el Socio</strong></label>
-          <select name="Cta" id="cta" class="form-control form-control-sm" required>
-            <option value="">--Seleccione--</option>
-            <option value="">padre</option>
-            <option value="">Madre</option>
-            <option value="">Suegro</option>
-            <option value="">Suegra</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Rut</strong></label>
-          <input type="text" class="form-control form-control-sm" required>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Fecha de Nacimiento</strong></label>
-          <input type="date" class="form-control form-control-sm" required>
-        </div>
-      </div>
-
-    </div>
+<ng-template #formularioBeneficiosPadresSuegros let-modal>
+  <div class="modal-header sticky-top" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-table"></i> Datos del Socio: {{getNombreSocio | uppercase}}</h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body" id="printJS-table">
 
-  <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-    <div class="row justify-content-between">
-      
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Nombres</strong></label>
-          <input type="text" class="form-control form-control-sm" required>
+    <div class="card-header" id="demoFont2">
+      <h6 class="card-title">Padres y Suegros Vivos</h6>
+    </div>
+    <div class="card">
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Relacion con el Socio</strong></label>
+              <select name="Relacion" id="relacion" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.relacionSocioId" required>
+                <option value="">--Seleccione--</option>
+                <option value="1">padre</option>
+                <option value="2">Madre</option>
+                <option value="3">Suegro</option>
+                <option value="4">Suegra</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Rut</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.rut" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Fecha de Nacimiento</strong></label>
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.fechaNacimiento" required>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Apellido Paterno</strong></label>
-          <input type="text" class="form-control form-control-sm" required>
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Nombres</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.nombres" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Apellido Paterno</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.apellidoPaterno" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Apellido Materno</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.apellidoMaterno" required>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Apellido Materno</strong></label>
-          <input type="text" class="form-control form-control-sm" required>
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Direccion</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.direccion" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Celular</strong></label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.celular" required>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row justify-content-end">
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+            <label><strong>Guardar Datos</strong></label>
+            <div class="form-group">
+              <button class="btn btn-block btn-outline-success" (click)="setDatosPadresSuegros()">Guardar</button>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
+
+  </div> <br>
+
+
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+    <!--<button type="button" class="btn btn-success" 
+onclick="printJS({
+printable: 'printJS-table',
+type:'html',
+style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+})">
+<i class="fas fa-print"></i>  Imprimir Datos
+</button>-->
+
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Padres / Suegros
+    </button>
   </div>
+</ng-template>
 
-  <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-    <div class="row justify-content-between">
-
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Direccion</strong></label>
-          <input type="text" class="form-control form-control-sm" required>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Comuna</strong></label>
-          <input type="text" class="form-control form-control-sm" required>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-        <div class="form-group">
-          <label><strong>Celular</strong></label>
-          <input type="number" class="form-control form-control-sm" required>
-        </div>
-      </div>
-
-    </div>
-  </div>  
-
-  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-    <div class="row justify-content-end">
-
-      <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-        <label><strong>Guardar Datos</strong></label>
-        <div class="form-group">
-          <button class="btn btn-block btn-outline-primary" type="submit" value="ingresar">Guardar</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-</form>
-</div> <br>
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn btn-primary btn-block btn-sm" type="button" (click)="abrirModalPadresSuegros(formularioBeneficiosPadresSuegros)">Insertar Datos</button>

@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class UsuarioService {
     public url: string;
     token = '';
+    rol = '';
     public usuario: string;
 
     constructor(public _http: HttpClient, public jwtHelper: JwtHelperService, private router: Router) {

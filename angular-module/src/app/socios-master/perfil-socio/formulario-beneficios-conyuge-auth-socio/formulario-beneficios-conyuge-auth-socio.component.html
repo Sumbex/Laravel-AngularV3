@@ -1,95 +1,130 @@
-<div class="card-header" id="demoFont2">
-  <h6 class="card-title">Datos Conyuge / Pareja</h6>
-</div>
-<div class="card">
-  <form #beneficiosConyugeForm="ngForm" (ngSubmit)="ingresarDatosConyuge()" enctype="multipart/form-data">
+<ng-template #formularioBeneficiosConyuge let-modal>
+  <div class="modal-header sticky-top" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-table"></i> Datos del Socio: {{getNombreSocio | uppercase}}</h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body" id="printJS-table">
+      <div class="card-header" id="demoFont2">
+          <h6 class="card-title">Conyuge</h6>
+        </div>
+    <div class="card">
 
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-      <div class="row justify-content-between">
-        
-        <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
-          <div class="form-group">
-            <label><strong>Rut</strong></label>
-            <input type="text" name="rut" #name="ngModel" [(ngModel)]="datosConyuge.rut" class="form-control form-control-sm" minlength="3" maxlength="80" required>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+          <div class="row justify-content-between">
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Rut*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="datosConyuge.rut" required>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Fecha de Nacimiento*</strong></label>
+                <input type="date" class="form-control form-control-sm" [(ngModel)]="datosConyuge.fechaNacimiento" required>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Nombres*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="datosConyuge.nombres" required>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <div class="col-12 col-md-5 col-lg-5 col-xl-5"> 
-          <div class="form-group">
-            <label><strong>Fecha de Nacimiento</strong></label>
-            <input type="date" name="fechaNacimiento" [(ngModel)]="datosConyuge.fechaNacimiento" class="form-control form-control-sm" required>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Apellido Paterno*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="datosConyuge.apellidoPaterno" required>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Apellido Materno*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="datosConyuge.apellidoMaterno" required>
+              </div>
+            </div>
+
+            
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Direccion*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="datosConyuge.direccion" required>
+              </div>
+            </div>
+
           </div>
         </div>
 
-      </div>
-    </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+          <div class="row justify-content-between">
 
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-      <div class="row justify-content-between">
-        
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Nombres</strong></label>
-            <input type="text" name="nombres" [(ngModel)]="datosConyuge.nombres" class="form-control form-control-sm" required>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Celular*</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="datosConyuge.celular" required>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+              <div class="form-group">
+                <label><strong>Guardar Datos del Conyuge / Pareja</strong></label>
+                <button class="btn btn-block btn-outline-success btn-sm" (click)="setDatosConyuge()">Guardar</button>
+              </div>
+            </div>
+
+            <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group">
+                <label><strong>Comuna</strong></label>
+                <input type="text" class="form-control form-control-sm" required>
+              </div>
+            </div> -->
+
           </div>
         </div>
 
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Apellido Paterno</strong></label>
-            <input type="text" name="apellidoPaterno" [(ngModel)]="datosConyuge.apellidoPaterno" class="form-control form-control-sm" required>
+        <!-- <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row justify-content-end">
+
+            <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+              <label><strong>Guardar Datos del Conyuge / Pareja</strong></label>
+              <div class="form-group">
+                <button class="btn btn-block btn-outline-success" type="submit" value="ingresar">Guardar</button>
+              </div>
+            </div>
+
           </div>
-        </div>
+        </div> -->
+    </div> <br>
+  </div>
 
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Apellido Materno</strong></label>
-            <input type="text" name="apellidoMaterno" [(ngModel)]="datosConyuge.apellidoMaterno" class="form-control form-control-sm" required>
-          </div>
-        </div>
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+    <!--<button type="button" class="btn btn-success" 
+onclick="printJS({
+  printable: 'printJS-table',
+  type:'html',
+  style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+})">
+<i class="fas fa-print"></i>  Imprimir Datos
+</button>-->
 
-      </div>
-    </div>
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Conyuge
+    </button>
+  </div>
+</ng-template>
 
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-      <div class="row justify-content-between">
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Direccion</strong></label>
-            <input type="text" name="direccion" [(ngModel)]="datosConyuge.direccion" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Comuna</strong></label>
-            <input type="text" name="comuna" [(ngModel)]="datosConyuge.comuna" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4"> 
-          <div class="form-group">
-            <label><strong>Celular</strong></label>
-            <input type="number" name="celular" [(ngModel)]="datosConyuge.celular" class="form-control form-control-sm" required>
-          </div>
-        </div>
-
-      </div>
-    </div> 
-    
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="row justify-content-end">
-
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-          <label><strong>Guardar Datos del Conyuge / Pareja</strong></label>
-          <div class="form-group">
-              <button [disabled]="!beneficiosConyugeForm.valid" class="btn btn-block btn-outline-primary" type="submit" value="ingresar">Guardar</button>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-
-  </form>
-</div> <br>
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn btn-primary btn-block btn-sm" type="button" (click)="verFormularioConyuge(formularioBeneficiosConyuge)">Insertar Datos</button>

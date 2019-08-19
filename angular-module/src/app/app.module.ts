@@ -75,6 +75,7 @@ import { TablaResumenSocioComponent } from './auth-master/cuenta-socios/tablas-b
 import { TablaBeneficiosAuthConyugeComponent } from './socios-master/perfil-socio/tabla-beneficios-auth-conyuge/tabla-beneficios-auth-conyuge.component';
 import { TablaBeneficiosBeneficiarioAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component';
 import { TablaBeneficiosCargasAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component';
+import { TablaBeneficiosPadresSuegrosAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component';
 
 
 @NgModule({
@@ -171,7 +172,9 @@ import { TablaBeneficiosCargasAuthSocioComponent } from './socios-master/perfil-
 
     TablaBeneficiosBeneficiarioAuthSocioComponent,
 
-    TablaBeneficiosCargasAuthSocioComponent
+    TablaBeneficiosCargasAuthSocioComponent,
+
+    TablaBeneficiosPadresSuegrosAuthSocioComponent
 
   ],
   imports: [

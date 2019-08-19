@@ -164,4 +164,11 @@ export class PortalSociosService{
             }
         )});
     }
+
+    getDatosPadresSuegros() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_padres_suegros_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
 }

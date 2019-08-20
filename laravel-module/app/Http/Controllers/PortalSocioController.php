@@ -42,6 +42,11 @@ class PortalSocioController extends Controller
         return PortalSocio::traerDatosBasicosSocios();
     }
 
+    public function TraerArchivoResumen()
+    {
+        return PortalSocio::traerArchivoResumen();
+    }
+
     public function IngresarConyugeSocio(Request $request)
     {
         return PortalSocio::ingresarConyugeSocio($request);

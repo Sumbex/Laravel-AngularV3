@@ -510,8 +510,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'ss.tipo_cuenta_banco_id',
                 'ss.banco',
                 'ss.isapre_fonasa',
-                'ss.grupo_sangre',
-                'sdb.archivo'
+                'ss.grupo_sangre'
             ])
             ->join('socio_situacion as ss', 'ss.socio_id', 'sdb.socio_id')
             ->join('socios as s', 's.id', 'sdb.socio_id')
@@ -525,6 +524,25 @@ class PortalSocio extends Authenticatable implements JWTSubject
             return ['estado' => 'success', 'socio' => $socio];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function traerArchivoResumen()
+    {
+        $archivo = DB::table('socios_datos_basicos')
+            ->select([
+                'archivo'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$archivo->isEmpty()) {
+            return ['estado' => 'success', 'archivo' => $archivo];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes tu archivo resumen ingresado.'];
         }
     }
 
@@ -983,15 +1001,15 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function verificarRelacionIngresada($relacion_socio_id)
     {
-        $relacion = DB::table('padres_suegros_socio')
+        $relacion = DB::table('padres_suegros_socio as pss')
             ->select([
-                'relacion_socio.descripcion'
+                'rc.descripcion'
             ])
-            ->join('relacion_socio', 'relacion_socio.id', 'padres_suegros_socio.relacion_socio_id')
+            ->join('relacion_socio as rc', 'rc.id', 'pss.relacion_socio_id')
             ->where([
-                'padres_suegros_socio.activo' => 'S',
-                'padres_suegros_socio.socio_id' => $this->socioLogeado()->id,
-                'padres_suegros_socio.relacion_socio_id' => $relacion_socio_id
+                'pss.activo' => 'S',
+                'pss.socio_id' => $this->socioLogeado()->id,
+                'pss.relacion_socio_id' => $relacion_socio_id
             ])
             ->get();
 
@@ -1021,13 +1039,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $PS->direccion = $request->direccion;
                     $PS->celular = $request->celular;
                     $PS->activo = 'S';
-                    /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
-
-                    if ($guardarArchivo['estado'] == "success") {
-                        $PS->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
-                    } else {
-                        return $guardarArchivo;
-                    } */
                     if ($PS->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                     } else {

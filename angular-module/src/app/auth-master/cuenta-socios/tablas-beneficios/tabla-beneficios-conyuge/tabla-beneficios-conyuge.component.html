@@ -9,7 +9,10 @@
     <!--Cuerpo del body inicio y cierre mensual-->
     <div class="modal-body" id="printJS-table">
         <div class="card-header" id="demoFont2">
-            <h6 class="card-title">CONYUGE</h6>
+            <h6 class="card-title">CONYUGE
+                <img *ngIf="actualizarLoad" padding-left="20px" height="15px"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            </h6>
         </div>
         <div class="card"> <br>
             <div class="table-responsive">
@@ -20,38 +23,45 @@
                             <div class="col-12 col-md-7 col-lg-7 col-xl-7">
                                 <tr>
                                     <th style="background: #138D75" class="text-right">RUT:</th>
-                                    <td><input type="text" class="sinbordefondo" value="{{traerDatosConyuge.rut}}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.rut}}" #rutUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('rut',rutUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                                 <tr>
                                     <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                                    <td><input type="date" class="sinbordefondo" value="{{ traerDatosConyuge.fecha_nacimiento }}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="date" class="sinbordefondo centrado" value="{{ traerDatosConyuge.fecha_nacimiento }}" #fechaUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('fecha_nacimiento',fechaUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                                 <tr>
                                     <th style="background: #138D75;" class="text-right">NOMBRES:</th>
-                                    <td><input type="text" class="sinbordefondo" value="{{traerDatosConyuge.nombres | uppercase}}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.nombres | uppercase}}" #nombresUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('nombres',nombresUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                                 <tr>
                                     <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
-                                    <td><input type="text" class="sinbordefondo" value="{{traerDatosConyuge.apellido_paterno | uppercase}}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.apellido_paterno | uppercase}}" #apellidoPaternoUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('apellido_paterno',apellidoPaternoUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                                 <tr>
                                     <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
-                                    <td><input type="text" class="sinbordefondo" value="{{traerDatosConyuge.apellido_materno | uppercase}}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.apellido_materno | uppercase}}"#apellidoMaternoUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('apellido_materno',apellidoMaternoUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                                 <tr>
                                     <th style="background: #138D75;" class="text-right">DIRECCION:</th>
-                                    <td><input type="text" class="sinbordefondo" value="{{traerDatosConyuge.direccion | uppercase}}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.direccion | uppercase}}" #direccionUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('direccion',direccionUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                                 <tr>
                                     <th style="background: #138D75;" class="text-right">CELULAR:</th>
-                                    <td><input type="text" class="sinbordefondo" value="{{traerDatosConyuge.celular}}"></td>
-                                    <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.celular}}" #celularUpd></td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                        (click)="actualizar('celular',celularUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
                             </div>
 
@@ -84,3 +94,35 @@
     [disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
     (click)="verTablaBeneficios(tablaBeneficiosConyuge)">Ver Datos
 </button>
+
+<ng-template #modalUsuario let-modal>
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row justify-content-center">
+  
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <input #rut class="form-control form-control-sm " [value]="user.rut"> <br>
+          </div>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <input #password [(ngModel)]="pass" class="form-control form-control-sm " type="password"
+              placeholder="Ingrese su contraseña"> <br>
+          </div>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+              (click)="modal.close('Save click')">
+              Validar
+              <img *ngIf="load" padding-left="10px" height="12" class="text-center"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            </button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </ng-template>

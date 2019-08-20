@@ -959,6 +959,8 @@ class SocioController extends Controller
                 return ['estado'=>'success','mensaje'=>'La carga se ha ingresado correctamente'];
             }
             return ['estado'=>'failed','mensaje'=>'Error al ingresas carga'];
+        }else{
+            return ['estado'=>'failed','mensaje'=>'Posiblemente falten campos por llenar'];
         }
     }
     public function traer_datos_carga($socio_id)
@@ -1385,6 +1387,31 @@ class SocioController extends Controller
         }catch (\Throwable $t) {
                 return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
         }
+    }
+
+    public function subir_archivo_general_socio(Request $r)
+    {
+        $sdb = Socio_datos_basicos::where(['activo'=>'S','socio_id'=>$r->id])->first();
+
+        if (!empty($sdb)) {
+            $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/DatosBasicos/');
+
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+
+                $sdb->archivo = $archivo;
+                if ($sdb->save()) {
+                    return ['estado'=>'failed', 'mensaje'=>'Documento subido correctamente!'];
+                }
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar documento!'];
+            }else{
+                return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+        }
+        else{
+             return ['estado'=>'failed','mensaje'=>'No se ha encontrado el socio'];
+        }
+
     }
 
 

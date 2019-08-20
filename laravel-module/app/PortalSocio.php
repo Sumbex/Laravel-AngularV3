@@ -886,28 +886,56 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    protected function verificarBeneficiarioIngresado($rut)
+    {
+        $beneficiario = DB::table('socio_beneficiario')
+            ->select([
+                'rut',
+                'socio_id',
+                DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre")
+            ])
+            ->join('relacion_socio as rc', 'rc.id', 'pss.relacion_socio_id')
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id,
+                'rut' => $rut
+            ])
+            ->get();
+
+        if (!$beneficiario->isEmpty()) {
+            return ['estado' => 'success', 'beneficiario' => $beneficiario];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
     protected function ingresarBeneficiariosSocio($request)
     {
         $verificar = $this->verificarSocio($this->socioLogeado()->id);
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 5);
             if ($validarDatos['estado'] == 'success') {
-                $beneficiario = new SocioBeneficiario;
-                $beneficiario->socio_id = $this->socioLogeado()->id;
-                $beneficiario->relacion = $request->relacion;
-                $beneficiario->rut = $request->rut;
-                $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
-                $beneficiario->nombres = $request->nombres;
-                $beneficiario->apellido_paterno = $request->apellido_paterno;
-                $beneficiario->apellido_materno = $request->apellido_materno;
-                $beneficiario->direccion = $request->direccion;
-                $beneficiario->celular = $request->celular;
-                $beneficiario->activo = 'S';
-                $beneficiario->cobro_beneficio = 'N';
-                if ($beneficiario->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                if ($tienesDatos['estado'] == 'failed') {
+                    $beneficiario = new SocioBeneficiario;
+                    $beneficiario->socio_id = $this->socioLogeado()->id;
+                    $beneficiario->relacion = $request->relacion;
+                    $beneficiario->rut = $request->rut;
+                    $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
+                    $beneficiario->nombres = $request->nombres;
+                    $beneficiario->apellido_paterno = $request->apellido_paterno;
+                    $beneficiario->apellido_materno = $request->apellido_materno;
+                    $beneficiario->direccion = $request->direccion;
+                    $beneficiario->celular = $request->celular;
+                    $beneficiario->activo = 'S';
+                    $beneficiario->cobro_beneficio = 'N';
+                    if ($beneficiario->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado al beneficiario ' . $tienesDatos['beneficiario'][0]->nombre . '.'];
                 }
             } else {
                 return $validarDatos;

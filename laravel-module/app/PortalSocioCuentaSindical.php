@@ -41,10 +41,7 @@ class PortalSocioCuentaSindical extends Model
                 'cs.monto_ingreso',
                 'cs.monto_egreso',
                 'cs.tipo_cuenta_sindicato',
-                'cs.definicion',
-                'cs.interes',
-                'cs.p_e',
-                'cs.detalle_camping'
+                'cs.definicion'
             ])
             ->join('anio as a', 'a.id', 'anio_id')
             ->join('mes as m', 'm.id', 'mes_id')

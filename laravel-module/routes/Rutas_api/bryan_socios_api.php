@@ -15,3 +15,4 @@ Route::post('/ingresar_datos_padres_suegros_socio', 'PortalSocioController@Ingre
 Route::get('/traer_datos_padres_suegros_socio', 'PortalSocioController@TraerDatosPadresSuegrosSocio');
 Route::post('/ingresar_datos_cargas_socio', 'PortalSocioController@IngresarDatosCargasSocio');
 Route::get('/traer_datos_cargas_socio', 'PortalSocioController@TraerDatosCargasSocio');
+Route::get('/traer_archivo_resumen_socio', 'PortalSocioController@TraerArchivoResumen');

@@ -167,7 +167,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno' => 'required|string',
                         'apellido_materno' => 'required|string',
                         'direccion' => 'required|string',
-                        'celular' => 'required|string'
+                        'celular' => 'required|string',
+                        'archivo' => 'required|file|mimes:pdf'
                     ],
                     [
                         'rut.required' => 'Debes ingresar el rut.',
@@ -176,7 +177,10 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno.required' => 'Debes ingresar el apellido',
                         'apellido_materno.required' => 'Debes ingresar el apellido',
                         'direccion.required' => 'Debes ingresar la direccion',
-                        'celular.required' => 'Debes ingresar el numero de celular'
+                        'celular.required' => 'Debes ingresar el numero de celular',
+                        'archivo.required' => 'Debe seleccionar un archivo.',
+                        'archivo.file' => 'Lo seleccionado debe ser un archivo.',
+                        'archivo.mimes' => 'El archivo debe ser extension PDF.'
                     ]
                 );
                 break;
@@ -263,7 +267,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno' => 'required|string',
                         'apellido_materno' => 'required|string',
                         'direccion' => 'required|string',
-                        'celular' => 'required|string'
+                        'celular' => 'required|string',
+                        'archivo' => 'required|file|mimes:pdf'
                     ],
                     [
                         'tipo_carga_id.required' => 'Debes seleccionar el tipo.',
@@ -273,7 +278,10 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno.required' => 'Debes ingresar el apellido',
                         'apellido_materno.required' => 'Debes ingresar el apellido',
                         'direccion.required' => 'Debes ingresar la direccion',
-                        'celular.required' => 'Debes ingresar el numero de celular'
+                        'celular.required' => 'Debes ingresar el numero de celular',
+                        'archivo.required' => 'Debe seleccionar un archivo.',
+                        'archivo.file' => 'Lo seleccionado debe ser un archivo.',
+                        'archivo.mimes' => 'El archivo debe ser extension PDF.'
                     ]
                 );
                 break;

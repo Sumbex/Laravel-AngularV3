@@ -8,7 +8,7 @@ class PortalSocioCuentaSindical extends Model
 {
     protected $table = "cuenta_sindicato";
 
-    protected function traerCuentaSindical()
+    protected function traerCuentaSindical($anio, $mes)
     {
         $CS = DB::table('cuenta_sindicato as cs')
             ->select([

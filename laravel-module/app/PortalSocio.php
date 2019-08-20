@@ -510,7 +510,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'ss.tipo_cuenta_banco_id',
                 'ss.banco',
                 'ss.isapre_fonasa',
-                'ss.grupo_sangre'
+                'ss.grupo_sangre',
+                'sdb.archivo'
             ])
             ->join('socio_situacion as ss', 'ss.socio_id', 'sdb.socio_id')
             ->join('socios as s', 's.id', 'sdb.socio_id')
@@ -520,12 +521,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ])
             ->get();
 
-        $estados = [];
         if (!$socio->isEmpty()) {
-            if (!is_null($socio[0]->grupo_sangre)) {
-                $estados['grupo_sangre'] = true;
-            }
-            return ['estado' => 'success', 'socio' => $socio, 'estados' => $estados];
+            return ['estado' => 'success', 'socio' => $socio];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
         }
@@ -773,7 +770,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'apellido_paterno',
                 'apellido_materno',
                 'direccion',
-                'celular'
+                'celular',
+                'archivo'
             ])
             ->where([
                 'activo' => 'S',
@@ -805,14 +803,13 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $conyuge->apellido_materno = $request->apellido_materno;
                     $conyuge->direccion = $request->direccion;
                     $conyuge->celular = $request->celular;
-                    /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
-
+                    $conyuge->activo = 'S';
+                    $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/ArchivosConyuge/');
                     if ($guardarArchivo['estado'] == "success") {
-                        $conyuge->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
+                        $conyuge->archivo = 'storage/' . $guardarArchivo['archivo'];
                     } else {
                         return $guardarArchivo;
-                    } */
-                    $conyuge->activo = 'S';
+                    }
                     if ($conyuge->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                     } else {
@@ -880,13 +877,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $beneficiario->celular = $request->celular;
                 $beneficiario->activo = 'S';
                 $beneficiario->cobro_beneficio = 'N';
-                /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
-
-                    if ($guardarArchivo['estado'] == "success") {
-                        $beneficiario->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
-                    } else {
-                        return $guardarArchivo;
-                    } */
                 if ($beneficiario->save()) {
                     return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                 } else {
@@ -912,7 +902,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'apellido_materno',
                 'direccion',
                 'celular',
-                'establecimiento'
+                'establecimiento',
+                'archivo'
             ])
             ->where([
                 'activo' => 'S',
@@ -945,13 +936,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $carga->celular = $request->celular;
                 $carga->establecimiento = $request->establecimiento;
                 $carga->activo = 'S';
-                /* $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/');
-
-                    if ($guardarArchivo['estado'] == "success") {
-                        $carga->archivo_documento = 'storage/' . $guardarArchivo['archivo'];
-                    } else {
-                        return $guardarArchivo;
-                    } */
+                $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/ArchivosCargas/');
+                if ($guardarArchivo['estado'] == "success") {
+                    $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
+                } else {
+                    return $guardarArchivo;
+                }
                 if ($carga->save()) {
                     return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                 } else {

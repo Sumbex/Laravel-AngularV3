@@ -91,6 +91,8 @@ Route::post('guardar_datos_padres_suegros','SocioController@guardar_datos_padres
 Route::get('traer_datos_padres_suegros/{socio_id}','SocioController@traer_datos_padres_suegros');
 Route::post('actualizar_datos_padres_suegros','SocioController@actualizar_datos_padres_suegros');
 
+Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general_socio');
+
 
 
 

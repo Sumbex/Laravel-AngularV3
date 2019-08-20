@@ -301,10 +301,34 @@
     <div class="form-group">
         <div class="col-12 col-md-12 col-lg-12 col-xl-12">
           <button class="btn btn btn-success btn-block btn-sm" type="button"
-            [disabled]="this.getIdSocio == '' || this.getIdSocio == null">Ver Documento Firmado
+            [disabled]="this.getIdSocio == '' || this.getIdSocio == null" 
+            (click)="verTablaResumen(visorDocGral)">Ver Documento Firmado
           </button>
         </div>
       </div>
 
   </div>
 </div>
+
+ <!--MODAL VISOR PDF-->
+ <ng-template #visorDocGral let-c="close" let-d="dismiss">
+    <div class="row">
+      <div class="col">
+        <div class="modal-header text-center" id="demoFont">
+          <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+          <button id="closeModalButton" type="button" class="close" aria-label="Close"
+            (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe width="100%" height="500px" [src]="  '../storage/' + TraerDocumentoSocio | safeUrl"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer" [hidden]="true">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <!--MODAL VISOR PDF-->

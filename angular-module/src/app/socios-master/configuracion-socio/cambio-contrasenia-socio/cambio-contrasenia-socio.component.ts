@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-cambio-contrasenia-socio',
@@ -11,7 +12,7 @@ export class CambioContraseniaSocioComponent implements OnInit {
   //Variable para asociar el modal
   modalCambioPass;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal,) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSocioService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -23,9 +24,19 @@ export class CambioContraseniaSocioComponent implements OnInit {
     this.modalCambioPass = this.modalService.open(cambioPass, {size: 'lg'});
   }
 
-  cambiarPass(){
+  cambiarPass(passActual, passNueva, passNuevaValida){
     //Aquí llamar al servicio para cambiar pass
-    alert('Llamar a cambiar contraseña');
+    this._portalSocioService.cambiarPassSocio(passActual.value, passNueva.value, passNuevaValida.value).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(JSON.stringify(response.mensaje));
+      }else{
+        alert(response.mensaje);
+        window.location.reload();
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

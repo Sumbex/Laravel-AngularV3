@@ -173,4 +173,18 @@ export class PortalSociosService{
             {'Authorization': 'Bearer' + token}
         )});
     }
+
+    cambiarPassSocio(passAct, passNue, passCon) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('password', passAct);
+        body.append('new_password', passNue);
+        body.append('conf_password_socio', passCon);
+
+        return this._http.post(this.url + "cambiar_contrasena_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
 }

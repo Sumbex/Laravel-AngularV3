@@ -547,7 +547,7 @@ module.exports = "<p>\n  prestamos-socios works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openModalPassCambio(cambioPass)\" >Cambiar contraseña</button>\n\n\n <ng-template #cambioPass let-modal>\n  <div>\n  \t<div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><i class=\"fas fa-key\"></i> <strong> Cambiar contraseña</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n  \t<div class=\"modal-body\">\n  \t\t<form>\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\"><br>\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\" placeholder=\"Nueva contraseña\" type=\"password\"><br>\n  \t\t\t<input #conf_new_password   class=\"form-control form-control-sm\"  placeholder=\"Confirmar nueva contraseña\" type=\"password\"><br>\n  \t\t\t<button class=\"btn btn-success\" (click)=\"cambiarPass(password,new_password,conf_new_password)\" >Actualizar contraseña</button>\n  \t\t</form>\n      <br>\n\t\t<div class=\"alert alert-primary\" role=\"alert\">\n\t\t  Contraseña cambiada correctamente\n\t\t</div>\n    <br>\n\t\t<div class=\"alert alert-danger\" role=\"alert\">\n\t\t  Ha surgido un error al cambiar su contraseña\n\t\t</div>\n  \t</div>\n  </div>\n</ng-template>"
+module.exports = "<button class=\"btn btn-primary btn-block\" (click)=\"openModalPassCambio(cambioPass)\" >Cambiar contraseña</button>\n\n\n <ng-template #cambioPass let-modal>\n  <div>\n  \t<div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><i class=\"fas fa-key\"></i> <strong> Cambiar contraseña</strong></h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n  \t<div class=\"modal-body\">\n  \t\t<form>\n  \t\t\t<input #password   class=\"form-control form-control-sm\"  placeholder=\"Contraseña actual\" type=\"password\"><br>\n  \t\t\t<input #new_password   class=\"form-control form-control-sm\" placeholder=\"Nueva contraseña\" type=\"password\"><br>\n  \t\t\t<input #conf_new_password   class=\"form-control form-control-sm\"  placeholder=\"Confirmar nueva contraseña\" type=\"password\"><br>\n  \t\t\t<button class=\"btn btn-success\" (click)=\"cambiarPass(password,new_password,conf_new_password)\" >Actualizar contraseña</button>\n  \t\t</form>\n<!--       <br>\n\t\t<div class=\"alert alert-primary\" role=\"alert\">\n\t\t  Contraseña cambiada correctamente\n\t\t</div>\n    <br>\n\t\t<div class=\"alert alert-danger\" role=\"alert\">\n\t\t  Ha surgido un error al cambiar su contraseña\n\t\t</div> -->\n  \t</div>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -6696,6 +6696,16 @@ let PortalSociosService = class PortalSociosService {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_padres_suegros_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
     }
+    cambiarPassSocio(passAct, passNue, passCon) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('password', passAct);
+        body.append('new_password', passNue);
+        body.append('conf_password_socio', passCon);
+        return this._http.post(this.url + "cambiar_contrasena_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
 };
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -7316,12 +7326,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+
 
 
 
 let CambioContraseniaSocioComponent = class CambioContraseniaSocioComponent {
-    constructor(config, modalService) {
+    constructor(config, modalService, _portalSocioService) {
         this.modalService = modalService;
+        this._portalSocioService = _portalSocioService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -7330,9 +7343,19 @@ let CambioContraseniaSocioComponent = class CambioContraseniaSocioComponent {
     openModalPassCambio(cambioPass) {
         this.modalCambioPass = this.modalService.open(cambioPass, { size: 'lg' });
     }
-    cambiarPass() {
+    cambiarPass(passActual, passNueva, passNuevaValida) {
         //Aquí llamar al servicio para cambiar pass
-        alert('Llamar a cambiar contraseña');
+        this._portalSocioService.cambiarPassSocio(passActual.value, passNueva.value, passNuevaValida.value).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(JSON.stringify(response.mensaje));
+            }
+            else {
+                alert(response.mensaje);
+                window.location.reload();
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 CambioContraseniaSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -7341,7 +7364,7 @@ CambioContraseniaSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
         template: __webpack_require__(/*! raw-loader!./cambio-contrasenia-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component.html"),
         styles: [__webpack_require__(/*! ./cambio-contrasenia-socio.component.css */ "./src/app/socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
 ], CambioContraseniaSocioComponent);
 
 

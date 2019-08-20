@@ -63,16 +63,16 @@ export class BeneficiosSociosComponent implements OnInit {
     this.archivoDocumento = event.srcElement.files[0];
   }
 
-  SubirDocumentoGeneral(){
+  SubirDocumento(){
     if(this.archivoDocumento == null){
     alert('ingrese el documento PDF');
       return false;
     }
     const data = new FormData();
-    data.append('socio_id',this.idSocio);
+    data.append('id',this.idSocio);
     data.append('archivo',this.archivoDocumento);
 
-    this._SociosService.insertarDatosConyuge(data).subscribe((response) =>{
+    this._SociosService.SubirDocumentoGeneral(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
         return false;

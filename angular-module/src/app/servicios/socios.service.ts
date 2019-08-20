@@ -258,6 +258,17 @@ export class SociosService {
     }
 
 
+    getDocumentoResumen(idSocio) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "documento_resumen_socio/" + idSocio, {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )
+        });
+    }
 
 
 }

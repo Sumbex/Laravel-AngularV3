@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabla-resumen-socio',
@@ -7,6 +8,9 @@ import { SociosService } from 'src/app/servicios/socios.service';
   styleUrls: ['./tabla-resumen-socio.component.css']
 })
 export class TablaResumenSocioComponent implements OnInit {
+
+  abrirTablaResumen;
+  TraerDocumentoSocio;
 
   firma:string='AUTORIZO AL SINDICATO A PAGAR AL BENEFICIARIO(S) ___________________________________________';
 
@@ -37,7 +41,7 @@ export class TablaResumenSocioComponent implements OnInit {
     'tipo_cuenta_banco_id',
     'banco',
     'isapre_fonasa',
-    'grupo_sangre'
+    'grupo_sangre',
 ];
 
 traerDatosConyuge:object = [
@@ -100,12 +104,42 @@ vista_tabla:boolean=false;
 ocultar_tabla:boolean=true;
 ocultar_imprimir:boolean=true;
 
-constructor(private _SociosService:SociosService) {
+constructor(private _SociosService:SociosService,
+            config: NgbModalConfig, 
+            private modalService: NgbModal,) {
+      config.backdrop = 'static';
+      config.keyboard = false;
   }
 
 
   ngOnInit() {
   }
+  verTablaResumen(TablaResumen) {
+    this.abrirTablaResumen = this.modalService.open(TablaResumen, { size: 'lg' });
+    this.traerDocumentoSocio();
+  }
+
+  traerDocumentoSocio(){
+    this.vista_tabla = true;
+    this._SociosService.getDocumentoResumen(this.getIdSocio).subscribe((response) =>{
+    //  if(response.estado == "failed"){
+    //    // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
+    //    this.vista_tabla = false;
+    //    alert(response.mensaje);
+    //    this.abrirTablaResumen.close();
+    //    return false;
+    //  }else{
+       this.TraerDocumentoSocio = response[0].archivo;
+       this.vista_tabla = false;
+    //  }
+ 
+    //     error => {
+    //    console.log(error);
+    //    this.vista_tabla = false;
+    //    }
+     }
+   );
+   }
 
   listarDatosResumenSocio(){
     this.vista_tabla = true;

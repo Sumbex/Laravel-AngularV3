@@ -254,6 +254,7 @@ class SocioController extends Controller
             return ['estado'=>'failed','mensaje'=>'La direccion y el email personal son obligatorios'];
         }
 
+
         $insert_1 = false;
         $insert_2 = false;
 
@@ -272,6 +273,7 @@ class SocioController extends Controller
             $sdb->socio_id = $r->socio_id;
             $sdb->direccion = $r->direccion;
            // $sdb->direccion_2 = $r->direccion_2;
+
             $sdb->telefono = $r->telefono;
             $sdb->celular = $r->celular;
             $sdb->anexo = $r->anexo;
@@ -578,6 +580,15 @@ class SocioController extends Controller
                     return ['estado' => 'failed','mensaje'=>'Rut no valido'];
                 }
 
+                $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosConyuge/');
+
+                if($file['estado'] == "success"){
+                    $archivo = $file['archivo'];
+                }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+                }
+
+
                 $verify_conyuge = SocioConyuge::where([
                                         'activo' => 'S',
                                         'socio_id' => $r->socio_id
@@ -595,6 +606,7 @@ class SocioController extends Controller
                         $cony->direccion = $r->direccion;
                         $cony->celular = $r->celular;
                         $cony->activo = 'S';
+                        $cony->archivo = $archivo;
                         if ($cony->save()) {
                             return ['estado'=>'success', 'mensaje'=>'Datos de conyuge ingresados, para actualizar datos abra la tabla conyuge/pareja'];
                         }else{
@@ -1325,7 +1337,7 @@ class SocioController extends Controller
                 'apellido_materno' => 'required',
                 'direccion' => 'required',
                 'celular' => 'required',
-                //'archivo' => 'required|mimes:doc,pdf,docx',
+                'archivo' => 'required|mimes:pdf',
             ],
             [
                 'socio_id.required' => 'El socio es necesario',
@@ -1336,11 +1348,34 @@ class SocioController extends Controller
                 'apellido_materno.required' => 'El apellido materno es necesario',
                 'direccion.required' => 'La direccion es necesaria',
                 'celular.required' => 'el celular es necesario',
+                'archivo.required' => 'El documento no se ha subido',
+                'archivo.mimes' => 'Debe ser formato PDF'
             ]);
 
  
             if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
             return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
+    protected function guardarArchivo($archivo, $ruta)
+    {
+        try{
+            $filenameext = $archivo->getClientOriginalName();
+            $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+            $extension = $archivo->getClientOriginalExtension();
+            $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+            $rutaDB = $ruta . $nombreArchivo;
+
+            $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+            if ($guardar) {
+                return ['estado' =>  'success', 'archivo' => $rutaDB];
+            } else {
+                return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+            }
+        }catch (\Throwable $t) {
+                return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+        }
     }
 
 

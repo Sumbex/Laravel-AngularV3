@@ -1,6 +1,5 @@
 <?php
 //------------------------------------------>rutas portal socio
-
 Route::post('/modificar_datos_socio', 'PortalSocioController@ModificarDatosSocios');
 Route::get('/socio_logeado', 'PortalSocioController@SocioLogeado');
 Route::get('/traer_datos_basicos_socio', 'PortalSocioController@TraerDatosBasicosSocios');
@@ -16,6 +15,12 @@ Route::get('/traer_datos_padres_suegros_socio', 'PortalSocioController@TraerDato
 Route::post('/ingresar_datos_cargas_socio', 'PortalSocioController@IngresarDatosCargasSocio');
 Route::get('/traer_datos_cargas_socio', 'PortalSocioController@TraerDatosCargasSocio');
 Route::get('/traer_archivo_resumen_socio', 'PortalSocioController@TraerArchivoResumen');
+//------------------------------------------>rutas portal socio
+
+//------------------------------------------>rutas portal socio cs
+Route::get('/traer_cuenta_sindical_socio/{anio}/{mes}', 'PortalSocioController@TraerCuentaSindical');
+//------------------------------------------>rutas portal socio cs
+
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//
 Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');

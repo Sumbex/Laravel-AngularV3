@@ -1145,28 +1145,24 @@ class PortalSocio extends Authenticatable implements JWTSubject
         $traerSocio = PortalSocio::find($request->id);
 
         if (!is_null($traerSocio)) {
-            if (!is_null($traerSocio->fecha_egreso)) {
-                $user = User::where('rut', $traerSocio->rut)->first();
-                if (!is_null($user)) {
-                    if ($user->rol == 5) {
-                        $user->rol = '1';
-                        if ($user->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso como Socio eliminadas correctamente.'];
-                        } else {
-                            return ['estado' => 'failed', 'mensaje' => 'Error al eliminar las credenciales del socio.'];
-                        }
+            $user = User::where('rut', $traerSocio->rut)->first();
+            if (!is_null($user)) {
+                if ($user->rol == 5) {
+                    $user->rol = '1';
+                    if ($user->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso como Socio eliminadas correctamente.'];
                     } else {
-                        if ($user->delete()) {
-                            return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso eliminadas correctamente.'];
-                        } else {
-                            return ['estado' => 'failed', 'mensaje' => 'Error al eliminar las credenciales del socio.'];
-                        }
+                        return ['estado' => 'failed', 'mensaje' => 'Error al eliminar las credenciales del socio.'];
                     }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'El socio aun no tiene credenciales de acceso.'];
+                    if ($user->delete()) {
+                        return ['estado' => 'success', 'mensaje' => 'Credenciales de acceso eliminadas correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Error al eliminar las credenciales del socio.'];
+                    }
                 }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'El socio aun se encuentra activo en el sindicato.'];
+                return ['estado' => 'failed', 'mensaje' => 'El socio aun no tiene credenciales de acceso.'];
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Socio no encontrado.'];

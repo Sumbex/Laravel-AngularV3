@@ -967,7 +967,7 @@ class SocioController extends Controller
         }
 
         switch ($r->campo) {
-            case 'rolacion_id':
+            case 'tipo_carga_id':
                 $carga->tipo_carga_id = $r->valor;
                 if ($carga->save()) {
                     return ['estado'=>'success', 'mensaje'=>'Relación actualizada!'];

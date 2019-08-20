@@ -11,3 +11,12 @@ Route::post('/ingresar_datos_conyuge_socio', 'PortalSocioController@IngresarCony
 Route::post('/ingresar_datos_beneficiarios_socio', 'PortalSocioController@IngresarBeneficiariosSocio');
 Route::get('/traer_datos_beneficiarios_socio', 'PortalSocioController@TraerDatosBeneficiariosSocios');
 Route::post('/cambiar_contrasena_socio', 'PortalSocioController@CambiarContrasena');
+Route::post('/ingresar_datos_padres_suegros_socio', 'PortalSocioController@IngresarDatosPadresSuegrosSocio');
+Route::get('/traer_datos_padres_suegros_socio', 'PortalSocioController@TraerDatosPadresSuegrosSocio');
+Route::post('/ingresar_datos_cargas_socio', 'PortalSocioController@IngresarDatosCargasSocio');
+Route::get('/traer_datos_cargas_socio', 'PortalSocioController@TraerDatosCargasSocio');
+Route::get('/traer_archivo_resumen_socio', 'PortalSocioController@TraerArchivoResumen');
+
+//------------------------------------------------FUNCION TEST------------------------------------------------//
+Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');
+//------------------------------------------------FUNCION TEST------------------------------------------------//

@@ -301,7 +301,7 @@
     <div class="form-group">
         <div class="col-12 col-md-12 col-lg-12 col-xl-12">
           <button class="btn btn btn-success btn-block btn-sm" type="button"
-            [disabled]="this.getIdSocio == '' || this.getIdSocio == null" 
+            [disabled]="this.getIdSocio == '' || this.getIdSocio == null || TraerDocumentoSocio == null" 
             (click)="verTablaResumen(visorDocGral)">Ver Documento Firmado
           </button>
         </div>
@@ -321,7 +321,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div *ngIf="vista_pdf == true" class="loader"></div>
+        <div class="modal-body" *ngIf="vista_pdf == false">
           <iframe width="100%" height="500px" [src]="  '../storage/' + TraerDocumentoSocio | safeUrl"
             frameborder="0" allowfullscreen></iframe>
         </div>

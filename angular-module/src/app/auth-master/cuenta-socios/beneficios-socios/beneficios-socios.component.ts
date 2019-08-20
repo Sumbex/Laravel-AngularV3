@@ -17,6 +17,8 @@ export class BeneficiosSociosComponent implements OnInit {
   /*-----------------------------*/
   idSocio='';
 
+  blockSocio = false;
+
   constructor(
     private _SociosService:SociosService
   ) { }
@@ -25,6 +27,7 @@ export class BeneficiosSociosComponent implements OnInit {
   }
 
   buscarSocio(){
+    this.blockSocio = true;
     this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
       console.log(response);
         if(response.estado == "failed"){
@@ -34,6 +37,7 @@ export class BeneficiosSociosComponent implements OnInit {
           this.rutSocioTest = '';
           this.nombreSocioTest = '';
           this.idSocio = '';
+          this.blockSocio = false;
           return false;
         }else{
           this.rut = '';
@@ -42,10 +46,12 @@ export class BeneficiosSociosComponent implements OnInit {
           this.nombreSocioTest = response.nombres +' '+ response.a_paterno +' '+ response.a_materno;
           this.nombreUpperSocio = this.nombreSocioTest.toUpperCase();
           this.idSocio = response.id;
+          this.blockSocio = false;
         }
     },
     error => {
       console.log(error);
+      this.blockSocio = false;
     }
     );
     

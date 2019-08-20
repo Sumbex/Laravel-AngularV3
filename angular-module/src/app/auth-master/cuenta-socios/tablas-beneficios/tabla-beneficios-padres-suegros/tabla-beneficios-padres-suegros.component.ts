@@ -128,7 +128,7 @@ export class TablaBeneficiosPadresSuegrosComponent implements OnInit {
                   data.append('id', this.getIdSocio);
                   data.append('campo',campo);
                   data.append('valor',valor.value);
-                  data.append('relacion_socio_id',id);
+                  data.append('socio_padre_suegro_id',id);
   
                   this.actualizarLoad = true;
                   this._SociosService.ActualizarDatosPadresSuegros(data).subscribe(

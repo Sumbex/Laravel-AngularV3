@@ -932,6 +932,14 @@ class SocioController extends Controller
                 return ['estado'=>'failed','mensaje'=>'Rut no valido'];
             }
 
+            $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosCargas/');
+
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+            }else{
+                return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+
             $carga = new SocioCarga;
             $carga->socio_id = $r->socio_id;
             $carga->tipo_carga_id = $r->tipo_carga_id;
@@ -943,6 +951,7 @@ class SocioController extends Controller
             $carga->direccion = $r->direccion;
             $carga->celular = $r->celular;
             $carga->establecimiento = $r->establecimiento;
+            $carga->archivo = $archivo;
             $carga->activo = 'S';
 
             if ($carga->save()) {

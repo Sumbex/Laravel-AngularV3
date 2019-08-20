@@ -914,11 +914,16 @@ class SocioController extends Controller
             if (!empty($existe_carga)) {
                 return ['estado'=>'failed','mensaje'=>'Este rut ya esta como carga para este socio'];
             }
+            $rut_limpio = $this->limpiar($r->valor);
+            if(!$this->valida_rut($rut_limpio)){
+
+                return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+            }
 
             $carga = new SocioCarga;
             $carga->socio_id = $r->socio_id;
             $carga->tipo_carga_id = $r->tipo_carga_id;
-            $carga->rut = $r->rut;
+            $carga->rut = $rut_limpio;
             $carga->fecha_nacimiento = $r->fecha_nacimiento;
             $carga->nombres = $r->nombres;
             $carga->apellido_paterno = $r->apellido_paterno;
@@ -944,47 +949,110 @@ class SocioController extends Controller
         }
         return ['estado'=>'failed','body'=>'','mensaje'=>'No hay datos en la tabla'];
     }
-    // public function actualizar_datos_carga(Request $r)
-    // {
-    //     $carga = SocioCarga::where([
-    //                     'activo' => 'S',
-    //                     'socio_id' => $r->id,
-    //             ])->first();
+    public function actualizar_datos_carga(Request $r)
+    {// id(socio),campo,valor y carga_socio_id
 
-    //     switch ($r->campo) {
-    //         case 'tipo_carga_id':
-    //             # code...
-    //         break;
-    //         case 'rut':
-    //             # code...
-    //         break;
-    //         case 'fecha_nacimiento':
-    //             # code...
-    //         break;
-    //         case 'nombres':
-    //             # code...
-    //         break;
-    //         case 'apellido_paterno':
-    //             # code...
-    //         break;
-    //         case 'apellido_materno':
-    //             # code...
-    //         break;
-    //         case 'direccion':
-    //             # code...
-    //         break;
-    //         case 'celular':
-    //             # code...
-    //         break;
-    //         case 'establecimiento':
-    //             # code...
-    //         break;
+        if (empty($r->valor)) {
+            return['estado'=>'failed', 'mensaje'=>'No hay dato para actualizar!'];
+        }
+
+        $carga = SocioCarga::where([
+                        'activo' => 'S',
+                        'socio_id' => $r->id,
+                        'id' => $r->carga_socio_id
+                ])->first();
+
+        if(empty($carga)){
+            return ['estado'=>'failed','mensaje'=>'No se han encontrado datos para actualizar'];
+        }
+
+        switch ($r->campo) {
+            case 'rolacion_id':
+                $carga->tipo_carga_id = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Relación actualizada!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'rut':
+                $rut_limpio = $this->limpiar($r->valor);
+
+                $existe_rut = SocioCarga::where([
+                                        'activo'=>'S', 
+                                        'socio_id'=>$r->id,
+                                        'rut' => $rut_limpio
+                              ])->first();
+
+                if(!$this->valida_rut($rut_limpio)){
+
+                    return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+                }
+                if (!empty($existe_rut)) {
+                    return ['estado'=>'failed','mensaje'=>'Rut ya asociado a este socio'];
+                }
+
+                $carga->rut = $rut_limpio;
+                 if ($carga->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Rut actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+            case 'fecha_nacimiento':
+                $carga->fecha_nacimiento = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Fecha de nacimiento actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'nombres':
+                $carga->nombres = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Nombre actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'apellido_paterno':
+                $carga->apellido_paterno = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Apellido paterno actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'apellido_materno':
+                $carga->apellido_materno = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Apellido materno actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'direccion':
+                $carga->direccion = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Dirección actualizada!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'celular':
+                $carga->celular = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Celular actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'establecimiento':
+                $carga->establecimiento = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Establecimiento actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
             
-    //         default:
-    //             # code...
-    //             break;
-    //     }
-    // }
+            default:
+                # code...
+                break;
+        }
+    }
 
 // -------------------------------------------------------------------------------
 
@@ -1060,7 +1128,7 @@ class SocioController extends Controller
         switch ($r->campo) {
             case 'relacion_socio_id':
                 $pys->relacion_socio_id = $r->valor;
-                if ($cony->save()) {
+                if ($pys->save()) {
                     return ['estado'=>'success', 'mensaje'=>'Relación actualizada!'];
                 }else{
                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
@@ -1068,7 +1136,7 @@ class SocioController extends Controller
             break;
             case 'direccion':
                 $pys->direccion = $r->valor;
-                if ($cony->save()) {
+                if ($pys->save()) {
                     return ['estado'=>'success', 'mensaje'=>'Direccion actualizada!'];
                 }else{
                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
@@ -1076,7 +1144,7 @@ class SocioController extends Controller
             break;
             case 'celular':
                  $pys->celular = $r->valor;
-                 if ($cony->save()) {
+                 if ($pys->save()) {
                      return ['estado'=>'success', 'mensaje'=>'Celular actualizado!'];
                  }else{
                      return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];

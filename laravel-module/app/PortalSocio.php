@@ -403,11 +403,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 6);
             if ($validarDatos['estado'] == 'success') {
-                $user = User::find($this->socioLogeado()->id);
-                if (Hash::check($user->password, $request->password)) {
+                $user = User::find(Auth::guard()->user()->id);
+                //dd(Hash::check($request->password, $user->password));
+                if (Hash::check($request->password, $user->password)) {
                     $user->password = bcrypt($request->new_password);
                     if ($user->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Contrasena actualizada. Recuerda cerrar tu sesion para verificar si el cambio fue correcto.'];
+                        return ['estado' => 'success', 'mensaje' => 'Contrasena actualizada, ahora su sesion se cerrara para que el cambio sea correcto.'];
                     } else {
                         return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                     }

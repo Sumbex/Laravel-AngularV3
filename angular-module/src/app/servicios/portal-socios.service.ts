@@ -179,12 +179,32 @@ export class PortalSociosService{
         const body = new FormData();
         body.append('password', passAct);
         body.append('new_password', passNue);
-        body.append('conf_password_socio', passCon);
+        body.append('conf_new_password', passCon);
 
         return this._http.post(this.url + "cambiar_contrasena_socio",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
             }
+        )});
+    }
+
+    updateInfoSocio(valor, campo) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('input', valor);
+        body.append('nombre_campo', campo);
+
+        return this._http.post(this.url + "modificar_datos_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getResumenSocio(): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_archivo_resumen_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
         )});
     }
 }

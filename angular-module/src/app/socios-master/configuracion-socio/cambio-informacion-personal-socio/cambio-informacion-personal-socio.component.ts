@@ -16,14 +16,17 @@ export class CambioInformacionPersonalSocioComponent implements OnInit {
   infoPersonal;
 
   //variable para mostrar el loading
-  cargandoTabla;
+  cargandoTabla = false;
+
+  //bloquear ingreso
+  blockUpdate = false;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
 
-  ngOnInit() {
+  ngOnInit() {   
   }
 
   vertTablaInfoPersonal(infoPersonal){
@@ -33,9 +36,33 @@ export class CambioInformacionPersonalSocioComponent implements OnInit {
 
   getInfoPersonal(){
     //Aquí se llama al servicio para obtener los datos personales
+    this.cargandoTabla = true;
+    this._portalSociosService.getSocioLogeado().subscribe(response => {
+      this.infoPersonal = response;
+      this.cargandoTabla = false;
+    },
+    error => {
+      console.log(error);
+      this.cargandoTabla = false;
+    });
   }
 
-  setNuevosDatos(){
+  setNuevosDatos(valor, input){
     //Aquí se llama al servicio para ingresar los nuevos datos
+    this.blockUpdate = true;
+    this._portalSociosService.updateInfoSocio(valor.value, input).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+        this.blockUpdate = false;
+      }else{
+        alert('¡Dato actualizado correctamente!');
+        this.blockUpdate = false;
+        window.location.reload();
+      }
+    },
+    error => {
+      console.log(error);
+      this.blockUpdate = false;
+    });
   }
 }

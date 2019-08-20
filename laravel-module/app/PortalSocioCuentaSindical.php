@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class PortalSocioCuentaSindical extends Model
 {
@@ -51,6 +52,7 @@ class PortalSocioCuentaSindical extends Model
                 'cs.activo' => 'S',
                 'cs.anio_id' => $anio,
                 'cs.mes_id' => $mes,
+                'cs.detalle_camping' => null
             ])
             ->get();
 

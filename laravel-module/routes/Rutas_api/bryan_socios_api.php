@@ -16,3 +16,7 @@ Route::get('/traer_datos_padres_suegros_socio', 'PortalSocioController@TraerDato
 Route::post('/ingresar_datos_cargas_socio', 'PortalSocioController@IngresarDatosCargasSocio');
 Route::get('/traer_datos_cargas_socio', 'PortalSocioController@TraerDatosCargasSocio');
 Route::get('/traer_archivo_resumen_socio', 'PortalSocioController@TraerArchivoResumen');
+
+//------------------------------------------------FUNCION TEST------------------------------------------------//
+Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');
+//------------------------------------------------FUNCION TEST------------------------------------------------//

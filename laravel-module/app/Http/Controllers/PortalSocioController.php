@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PortalSocio;
+use App\PortalSocioCuentaSindical;
 
 class PortalSocioController extends Controller
 {
@@ -111,4 +112,10 @@ class PortalSocioController extends Controller
     }
     //--------------------------------------------------------------------------------
 
+    //------------------------------------------------FUNCION TEST------------------------------------------------//
+    public function FuncionTest($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::traerCuentaSindical($anio, $mes);
+    }
+    //------------------------------------------------FUNCION TEST------------------------------------------------//
 }

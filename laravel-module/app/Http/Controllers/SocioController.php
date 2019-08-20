@@ -995,6 +995,10 @@ class SocioController extends Controller
         $rut_limpio = $this->limpiar($r->rut);
 
         $verify_i = SocioPadresSuegros::where(['rut'=> $rut_limpio ,'activo'=>'S','socio_id'=>$r->socio_id])->first();
+        if(!$this->valida_rut($rut_limpio)){
+
+            return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+        }
 
         if (!empty($verify_i)) {
             return ['estado'=>'failed','mensaje'=>'Este rut ya esta en datos del padre y/o suegros'];
@@ -1043,11 +1047,113 @@ class SocioController extends Controller
         }
 
         $pys = SocioPadresSuegros::where([
-            'rut'=> $rut_limpio ,
+            //'rut'=> $rut_limpio ,
             'activo'=>'S',
-            'socio_id'=>$r->socio_id,
+            'socio_id'=>$r->id,
             'id' => $r->socio_padre_suegro_id
         ])->first();
+
+        if(empty($pys)){
+            return ['estado'=>'failed','mensaje'=>'No se han encontrado datos para actualizar'];
+        }
+        
+        switch ($r->campo) {
+            case 'relacion_socio_id':
+                $pys->relacion_socio_id = $r->valor;
+                if ($cony->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Relación actualizada!'];
+                }else{
+                    return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                }
+            break;
+            case 'direccion':
+                $pys->direccion = $r->valor;
+                if ($cony->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Direccion actualizada!'];
+                }else{
+                    return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                }
+            break;
+            case 'celular':
+                 $pys->celular = $r->valor;
+                 if ($cony->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Celular actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'rut':
+
+                $rut_limpio = $this->limpiar($r->valor);
+
+                $existe_rut = SocioPadresSuegros::where([
+                                            'activo'=>'S', 
+                                            'socio_id'=>$r->id,
+                                            'rut' => $rut_limpio
+                                    ])->first();
+
+                if(!$this->valida_rut($rut_limpio)){
+
+                    return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+                }
+                if (!empty($existe_rut)) {
+                    return ['estado'=>'failed','mensaje'=>'Rut ya asociado a este socio'];
+                }
+
+                $pys->rut = $rut_limpio;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Rut actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'fecha_nacimiento':
+
+                $pys->fecha_nacimiento = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Fecha de nacimiento actualizada!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'nombres':
+
+                $pys->nombres = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Nombre actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'apellido_paterno':
+
+                $pys->apellido_paterno = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Apellido paterno actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'apellido_materno':
+
+                $pys->apellido_materno = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Apellido materno actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+
+            default:
+                # code...
+            break;
+        }
     }
 
 

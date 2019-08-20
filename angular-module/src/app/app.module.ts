@@ -76,6 +76,11 @@ import { TablaBeneficiosAuthConyugeComponent } from './socios-master/perfil-soci
 import { TablaBeneficiosBeneficiarioAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component';
 import { TablaBeneficiosCargasAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component';
 import { TablaBeneficiosPadresSuegrosAuthSocioComponent } from './socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component';
+import { BeneficiosSocioComponent } from './socios-master/beneficios-socio/beneficios-socio.component';
+import { PrestamosSociosComponent } from './socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component';
+import { ConfiguracionSocioComponent } from './socios-master/configuracion-socio/configuracion-socio.component';
+import { CambioContraseniaSocioComponent } from './socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component';
+import { CambioInformacionPersonalSocioComponent } from './socios-master/configuracion-socio/cambio-informacion-personal-socio/cambio-informacion-personal-socio.component';
 
 
 @NgModule({
@@ -174,7 +179,17 @@ import { TablaBeneficiosPadresSuegrosAuthSocioComponent } from './socios-master/
 
     TablaBeneficiosCargasAuthSocioComponent,
 
-    TablaBeneficiosPadresSuegrosAuthSocioComponent
+    TablaBeneficiosPadresSuegrosAuthSocioComponent,
+
+    BeneficiosSocioComponent,
+
+    PrestamosSociosComponent,
+
+    ConfiguracionSocioComponent,
+
+    CambioContraseniaSocioComponent,
+
+    CambioInformacionPersonalSocioComponent
 
   ],
   imports: [

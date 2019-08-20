@@ -15,6 +15,9 @@ export class TablaBeneficiosPadresSuegrosAuthSocioComponent implements OnInit {
   //Objetoq ue almacena los datos a ingresar
   datosPadresSuegros;
 
+  //Loading tabla
+  loadingTabla = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
       config.backdrop = 'static';
       config.keyboard = false;
@@ -30,16 +33,20 @@ export class TablaBeneficiosPadresSuegrosAuthSocioComponent implements OnInit {
 
   getDatosPadresSuegros(){
     //Llamar al servicio para almacenar los datos
+    this.loadingTabla = true;
     this._portalSociosService.getDatosPadresSuegros().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.loadingTabla = false;
       }else{
         this.datosPadresSuegros = response.padres_suegros;
         console.log(this.datosPadresSuegros);
+        this.loadingTabla = false;
       }
     },
     error => {
       console.log(error);
+      this.loadingTabla = false;
     });
   }
 

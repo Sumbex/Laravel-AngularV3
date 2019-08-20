@@ -23,6 +23,9 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
     celular: ''
   }
 
+  //variable para bloquear el doble ingreso
+  blockIngreso = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -36,17 +39,21 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
   }
 
   setDatosBeneficiario(){
+    this.blockIngreso = true;
     //Llamar al servicio para ingresar datos del beneficiario
     console.log(this.datosBeneficiario);
     this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.blockIngreso = false;
       }else{
         alert('Ingreso del Beneficiario correcto');
+        this.blockIngreso = false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso = false;
     });
   }
 

@@ -15,6 +15,9 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
   //objeto que guardara los datos obtenidos de las cargas
   datosCargas;
 
+  //Loading tabla
+  loadingTabla = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -30,15 +33,19 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
 
   getDatosCargas(){
     //Aquí se llamá al servicio para obtener los datos de las cargas
+    this.loadingTabla = true;
     this._portalSociosService.getDatosCargas().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.loadingTabla = false;
       }else{
         this.datosCargas = response.cargas;
+        this.loadingTabla = false;
       }
     },
     error => {
       console.log(error);
+      this.loadingTabla = false;
     });
   }
 

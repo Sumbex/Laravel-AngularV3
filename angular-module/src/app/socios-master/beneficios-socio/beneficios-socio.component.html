@@ -1,0 +1,189 @@
+<div class="container"><br>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="socio-tab" data-toggle="tab" href="#socio" role="tab" aria-controls="socio"
+              aria-selected="true">Mis Prestamos </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="conyuge-tab" data-toggle="tab" href="#conyuge" role="tab" aria-controls="conyuge"
+              aria-selected="false">Mis Nacimientos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="beneficiario-tab" data-toggle="tab" href="#beneficiario" role="tab" aria-controls="beneficiario"
+              aria-selected="false">Mis Fallecidos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" id="hijo-tab" data-toggle="tab" href="#hijo" role="tab" aria-controls="hijo"
+              aria-selected="false">Mis Fondos Mutuos</a>
+          </li>
+        </ul> <br>
+
+    <div class="tab-content" id="myTabContent">
+      
+      <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
+        <!--Datos del socio-->
+        <div class="card-header" id="demoFont2">
+          <h6 class="card-title">MIS PRESTAMOS</h6>
+        </div>
+
+        <div class="card">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row justify-content-center">
+
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+        </div> <br>
+
+      </div>
+
+      <div class="tab-pane fade" id="conyuge" role="tabpanel" aria-labelledby="conyuge-tab">
+        <!--datos del conyuge-->
+        <div class="card-header" id="demoFont2">
+          <h6 class="card-title">Datos Conyuge</h6>
+      </div>
+      <div class="card">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="row justify-content-center">
+
+                  <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                      <label><strong>Ingresar Datos Conyuge</strong></label>
+                      <div class="form-group">
+                        <app-formulario-beneficios-conyuge-auth-socio></app-formulario-beneficios-conyuge-auth-socio>
+                      </div>
+                  </div>
+
+                  <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                      <label><strong>Ver Datos Conyuge</strong></label>
+                      <div class="form-group">
+                          <app-tabla-beneficios-auth-conyuge></app-tabla-beneficios-auth-conyuge>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div> <br>
+      </div>
+
+      <div class="tab-pane fade" id="beneficiario" role="tabpanel" aria-labelledby="beneficiario-tab">
+        <!--Datos Beneficiario-->
+        <div class="card-header" id="demoFont2">
+          <h6 class="card-title">Datos Beneficiario</h6>
+      </div>
+      <div class="card">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="row justify-content-center">
+
+                  <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                      <label><strong>Ingresar Datos Beneficiario</strong></label>
+                      <div class="form-group">
+                        <app-formulario-beneficios-beneficiario-auth-socio></app-formulario-beneficios-beneficiario-auth-socio>
+                      </div>
+                  </div>
+
+                  <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                      <label><strong>Ver Datos Beneficiario</strong></label>
+                      <div class="form-group">
+                          <app-tabla-beneficios-beneficiario-auth-socio></app-tabla-beneficios-beneficiario-auth-socio>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div> <br>
+      </div>
+
+      <div class="tab-pane fade" id="hijo" role="tabpanel" aria-labelledby="hijo-tab">
+        <!--Datos Carga-->
+        <div class="card-header" id="demoFont2">
+                      <h6 class="card-title"> Datos Cargas</h6>
+                  </div>
+                  <div class="card">
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                          <div class="row justify-content-center">
+
+                              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                  <label><strong>Ingresar Datos Cargas</strong></label>
+                                  <div class="form-group">
+                                    <app-formulario-beneficios-cargas-auth-socio></app-formulario-beneficios-cargas-auth-socio>
+                                  </div>
+                              </div>
+
+                              <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                                  <label><strong>Ver Datos Cargas</strong></label>
+                                  <div class="form-group">
+                                      <app-tabla-beneficios-cargas-auth-socio></app-tabla-beneficios-cargas-auth-socio>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div> <br>
+      </div>
+
+      <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
+        <!--Datos de padres y suegros-->
+        <div class="card-header" id="demoFont2">
+          <h6 class="card-title"> Datos Padres / Suegros</h6>
+      </div>
+      <div class="card">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="row justify-content-center">
+
+                  <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                      <label><strong>Ingresar Datos Padres / Suegros</strong></label>
+                      <div class="form-group">
+                        <app-formulario-beneficios-padres-suegros-auth-socio></app-formulario-beneficios-padres-suegros-auth-socio>
+                      </div>
+                  </div>
+
+                  <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                      <label><strong>Ver Datos Padres / Suegros</strong></label>
+                      <div class="form-group">
+                          <app-tabla-beneficios-padres-suegros-auth-socio></app-tabla-beneficios-padres-suegros-auth-socio>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div> <br>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+</div>

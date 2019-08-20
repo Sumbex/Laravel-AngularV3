@@ -13,14 +13,14 @@
     </div>
     <div class="card"> <br>
       <div class="table-responsive">
-        <!-- <div *ngIf="!vista_tabla" class="loader"></div> -->
-        <table class="table table-striped table-bordered table-sm">
+        <div *ngIf="loadingTabla" class="loader"></div>
+        <table class="table table-striped table-bordered table-sm" *ngIf="!loadingTabla">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row justify-content-between">
 
               <div *ngFor="let item of datosCargas" class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <tr>
-                  <th style="background: #138D75" class="text-right">RELACION:</th>
+                  <th style="background: #195fcf" class="text-right">RELACION:</th>
                   <td>
                       <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo"
                       [(ngModel)]="item.tipo_carga_id" disabled>
@@ -33,40 +33,40 @@
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75" class="text-right">RUT:</th>
+                  <th style="background: #195fcf" class="text-right">RUT:</th>
                   <td><input type="text" class="sinbordefondo" value="{{item?.rut}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                  <th style="background: #195fcf" class="text-right">FECHA DE NACIMIENTO:</th>
                   <td><input type="date" class="sinbordefondo" value="{{ item?.fecha_nacimiento }}" disabled>
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">NOMBRES:</th>
+                  <th style="background: #195fcf;" class="text-right">NOMBRES:</th>
                   <td><input type="text" class="sinbordefondo" value="{{item?.nombres | uppercase}}" disabled>
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
+                  <th style="background: #195fcf;" class="text-right">APELLIDO PATERNO:</th>
                   <td><input type="text" class="sinbordefondo"
                       value="{{item?.apellido_paterno | uppercase}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
+                  <th style="background: #195fcf" class="text-right">APELLIDO MATERNO:</th>
                   <td><input type="text" class="sinbordefondo"
                       value="{{item?.apellido_materno | uppercase}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                  <th style="background: #195fcf;" class="text-right">DIRECCION:</th>
                   <td><input type="text" class="sinbordefondo" value="{{item?.direccion | uppercase}}" disabled>
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                  <th style="background: #195fcf;" class="text-right">CELULAR:</th>
                   <td><input type="text" class="sinbordefondo" value="{{item?.celular}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">ESTABLECIMIENTO:</th>
+                  <th style="background: #195fcf;" class="text-right">ESTABLECIMIENTO:</th>
                   <td><input type="text" class="sinbordefondo" value="{{item?.establecimiento | uppercase}}" disabled></td>
                   </tr> <br>
               </div>

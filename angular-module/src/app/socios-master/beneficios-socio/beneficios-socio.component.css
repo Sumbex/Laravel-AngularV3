@@ -1,14 +1,6 @@
 label,input, button, strong{
     font-size: 12px;
   }
-
-  tr,th{
-    font-size: 12px;
-  }
-  th{
-    color: white;
-    background: #138D75;
-  }
   
   #demoFont {
     color: #fff;

@@ -1,0 +1,29 @@
+<button class="btn btn-primary btn-block" (click)="openModalPassCambio(cambioPass)" >Cambiar contraseña</button>
+
+
+ <ng-template #cambioPass let-modal>
+  <div>
+  	<div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-key"></i> <strong> Cambiar contraseña</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  	<div class="modal-body">
+  		<form>
+  			<input #password   class="form-control form-control-sm"  placeholder="Contraseña actual" type="password"><br>
+  			<input #new_password   class="form-control form-control-sm" placeholder="Nueva contraseña" type="password"><br>
+  			<input #conf_new_password   class="form-control form-control-sm"  placeholder="Confirmar nueva contraseña" type="password"><br>
+  			<button class="btn btn-success" (click)="cambiarPass(password,new_password,conf_new_password)" >Actualizar contraseña</button>
+  		</form>
+      <br>
+		<div class="alert alert-primary" role="alert">
+		  Contraseña cambiada correctamente
+		</div>
+    <br>
+		<div class="alert alert-danger" role="alert">
+		  Ha surgido un error al cambiar su contraseña
+		</div>
+  	</div>
+  </div>
+</ng-template>

@@ -24,6 +24,9 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
     celular:''
   }
 
+  //variable para bloquear el doble ingreso
+  blockIngreso = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -38,16 +41,19 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
 
   setDatosPadresSuegros(){
     //Aquí se dede de llamar al servicio para ingresar los datos del objeto datosPadresSuegros
-    console.log(this.datosPadresSuegros);
+    this.blockIngreso = true;
     this._portalSociosService.setDatosPadresSuegros(this.datosPadresSuegros).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.blockIngreso = false;
       }else{
         alert(response.mensaje);
+        this.blockIngreso = false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso = false;
     });
   }
 

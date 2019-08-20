@@ -13,16 +13,17 @@
     </div>
     <div class="card"> <br>
       <div class="table-responsive">
-        <table class="table table-striped table-bordered table-sm">
+        <div *ngIf="loadingTabla" class="loader"></div>
+        <table class="table table-striped table-bordered table-sm" *ngIf="!loadingTabla">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row justify-content-between">
 
               <div *ngFor="let item of datosPadresSuegros" class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <tr>
-                  <th style="background: #138D75" class="text-right">RELACION:</th>
+                  <th style="background: #195fcf" class="text-right">RELACION:</th>
                   <td>
                       <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="item.relacion_socio_id" required>
+                      [(ngModel)]="item.relacion_socio_id" disabled required>
                       <option value="">--SELECCIONE--</option>
                       <option value="1">PADRE</option>
                       <option value="2">MADRE</option>
@@ -32,37 +33,37 @@
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75" class="text-right">RUT:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.rut}}"></td>
+                  <th style="background: #195fcf" class="text-right">RUT:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{item.rut}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                  <td><input type="date" class="sinbordefondo" value="{{ item.fecha_nacimiento }}">
+                  <th style="background: #195fcf" class="text-right">FECHA DE NACIMIENTO:</th>
+                  <td><input type="date" class="sinbordefondo" value="{{ item.fecha_nacimiento }}" disabled>
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">NOMBRES:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.nombres | uppercase}}">
+                  <th style="background: #195fcf;" class="text-right">NOMBRES:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{item.nombres | uppercase}}" disabled>
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
+                  <th style="background: #195fcf;" class="text-right">APELLIDO PATERNO:</th>
                   <td><input type="text" class="sinbordefondo"
-                      value="{{item.apellido_paterno | uppercase}}"></td>
+                      value="{{item.apellido_paterno | uppercase}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
+                  <th style="background: #195fcf" class="text-right">APELLIDO MATERNO:</th>
                   <td><input type="text" class="sinbordefondo"
-                      value="{{item.apellido_materno | uppercase}}"></td>
+                      value="{{item.apellido_materno | uppercase}}" disabled></td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.direccion | uppercase}}">
+                  <th style="background: #195fcf;" class="text-right">DIRECCION:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{item.direccion | uppercase}}" disabled>
                   </td>
                 </tr>
                 <tr>
-                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.celular}}"></td>
+                  <th style="background: #195fcf;" class="text-right">CELULAR:</th>
+                  <td><input type="text" class="sinbordefondo" value="{{item.celular}}" disabled></td>
                 </tr> <br>
               </div>
 

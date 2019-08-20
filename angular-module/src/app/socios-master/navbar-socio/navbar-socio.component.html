@@ -9,15 +9,21 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/SociosMaster/Perfil']"><i class="fas fa-cat"></i> Perfil <span class="sr-only">(current)</span></a>
+              <a class="nav-link" [routerLink]="['/SociosMaster/Perfil']"><i class="fas fa-cat"></i> Mi Perfil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/SociosMaster/Perfil']"> <i class="fas fa-cat"></i> Beneficios</a>
+              <a class="nav-link" [routerLink]="['/SociosMaster/Beneficios']"> <i class="fas fa-cat"></i> Mis Beneficios</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/SociosMaster/Beneficios']"> <i class="fas fa-kiwi-bird"></i> Cuenta Sindical</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/SociosMaster/Beneficios']"> <i class="fas fa-kiwi-bird"></i> Cuenta Bienestar</a>
+                </li>
             <li ngbDropdown class="d-inline-block">
               <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-tie"></i> {{nombreSocio}}</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/Configuracion']"><i class="fas fa-user-cog"></i> Configuracion Cuenta</a>
+                <a class="selectColor" ngbDropdownItem [routerLink]="['/SociosMaster/Configuracion']"><i class="fas fa-user-cog"></i> Configuracion Cuenta</a>
                 <button class="selectColor" ngbDropdownItem (click)="logOut()"><i class="fas fa-sign-out-alt"></i> &nbsp;Cerrar Sesion</button>
               </div>
             </li>

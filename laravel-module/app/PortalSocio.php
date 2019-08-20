@@ -830,7 +830,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $conyuge->direccion = $request->direccion;
                     $conyuge->celular = $request->celular;
                     $conyuge->activo = 'S';
-                    $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/ArchivosConyuge/');
+                    $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosConyuge/');
                     if ($guardarArchivo['estado'] == "success") {
                         $conyuge->archivo = 'storage/' . $guardarArchivo['archivo'];
                     } else {
@@ -962,7 +962,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $carga->celular = $request->celular;
                 $carga->establecimiento = $request->establecimiento;
                 $carga->activo = 'S';
-                $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosSocios/ArchivosCargas/');
+                $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosCargas/');
                 if ($guardarArchivo['estado'] == "success") {
                     $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
                 } else {

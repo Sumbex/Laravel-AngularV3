@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ValidarUsuarioService } from '../../../servicios/validar-usuario.service';
+import { SindicalService } from '../../../servicios/sindical.service';
 
 @Component({
   selector: 'app-listar-socios',
@@ -42,7 +43,11 @@ export class ListarSociosComponent implements OnInit {
     buttonStatus = false;
     token = localStorage.getItem('token').replace(/['"]+/g, '');
 
-  constructor(private _socios:SociosService, public _validarusuario:ValidarUsuarioService,private modalService: NgbModal) {
+  constructor(private _socios:SociosService, 
+              public _validarusuario:ValidarUsuarioService,
+              private modalService: NgbModal,
+              private _sindical:SindicalService
+  ) {
 
       //this.currentLesson=this.classes[0].currentLesson
   }
@@ -229,6 +234,11 @@ export class ListarSociosComponent implements OnInit {
   
   asignar_portal(socio_id){
 
+    this._sindical.asignar_portal_socio(socio_id).subscribe(
+          response => {
+            console.log(response);
+          }
+        )
   }
 
 

@@ -222,6 +222,22 @@ export class SindicalService{
         )});
     }
 
+    //esto es del modulo socios
+
+    asignar_portal_socio(id): Observable<any>{
+
+        const body = new FormData();
+        body.append('id', id);
+
+        return this._http.post(this.url + "crear_usuario_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token
+            }
+        )});
+
+    }
+
+
 
     
 }

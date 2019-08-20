@@ -204,8 +204,7 @@
               			<button class="btn btn-primary btn-sm"
 				        (click)="modal_opcion(opcion);">
 				        <i class="fas fa-wrench"></i>
-				        </button>
-              			
+				        </button>	
 
               			<ng-template #opcion let-modal>
 						     <div class="modal-header" id="demoFont">
@@ -221,7 +220,7 @@
 	                  						 Asignar Portal de socios
 	                  						</th>
 	                  	        			<td>
-	                  	        				<button (click) = "asignar_portal()"
+	                  	        				<button (click) = "asignar_portal(item.id)"
 	                  	        					class="btn btn-success">
 	                  	        					<i class="far fa-save fa-1x"></i>
 	                  	        				</button>

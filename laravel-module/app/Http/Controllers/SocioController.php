@@ -926,7 +926,7 @@ class SocioController extends Controller
             if (!empty($existe_carga)) {
                 return ['estado'=>'failed','mensaje'=>'Este rut ya esta como carga para este socio'];
             }
-            $rut_limpio = $this->limpiar($r->valor);
+            $rut_limpio = $this->limpiar($r->rut);
             if(!$this->valida_rut($rut_limpio)){
 
                 return ['estado'=>'failed','mensaje'=>'Rut no valido'];

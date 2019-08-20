@@ -69,6 +69,7 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
        this.InsertarBeneficiosConyuge.apellido_materno = '';
        this.InsertarBeneficiosConyuge.direccion = '';
        this.InsertarBeneficiosConyuge.celular = '';
+       this.InsertarBeneficiosConyuge.archivoDocumento = null;
         alert(response.mensaje);
         return false;
       }

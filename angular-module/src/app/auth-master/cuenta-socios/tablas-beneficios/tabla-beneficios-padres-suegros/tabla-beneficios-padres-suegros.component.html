@@ -22,8 +22,8 @@
                 <tr>
                   <th style="background: #138D75" class="text-right">RELACION:</th>
                   <td>
-                      <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo"
-                      [(ngModel)]="item.relacion_socio_id" required>
+                      <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
+                      [(ngModel)]="item.relacion_socio_id" #relacionUpd required>
                       <option value="">--SELECCIONE--</option>
                       <option value="1">PADRE</option>
                       <option value="2">MADRE</option>
@@ -31,47 +31,55 @@
                       <option value="4">SUEGRA</option>
                     </select>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('relacion',relacionUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75" class="text-right">RUT:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.rut}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{item.rut}}" #rutUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('rut',rutUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                  <td><input type="date" class="sinbordefondo" value="{{ item.fecha_nacimiento }}">
+                  <td><input type="date" class="sinbordefondo centrado" value="{{ item.fecha_nacimiento }}" #fechaUpd>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('fecha_nacimiento',fechaUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75;" class="text-right">NOMBRES:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.nombres | uppercase}}">
+                  <td><input type="text" class="sinbordefondo centrado" value="{{item.nombres | uppercase}}" #nombresUpd>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('nombres',nombresUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
-                  <td><input type="text" class="sinbordefondo"
-                      value="{{item.apellido_paterno | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{item.apellido_paterno | uppercase}}" #apellidoPaternoUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('apellido_paterno',apellidoPaternoUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
-                  <td><input type="text" class="sinbordefondo"
-                      value="{{item.apellido_materno | uppercase}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{item.apellido_materno | uppercase}}" #apellidoMaternoUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('apellido_materno',apellidoMaternoUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75;" class="text-right">DIRECCION:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.direccion | uppercase}}">
+                  <td><input type="text" class="sinbordefondo centrado" value="{{item.direccion | uppercase}}" #direccionUpd>
                   </td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('direccion',direccionUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr>
                 <tr>
                   <th style="background: #138D75;" class="text-right">CELULAR:</th>
-                  <td><input type="text" class="sinbordefondo" value="{{item.celular}}"></td>
-                  <td><button class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button></td>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{item.celular}}" #celularUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="actualizar('celular',celularUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                 </tr> <br>
               </div>
 
@@ -105,3 +113,35 @@
   [disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
   (click)="verTablaBeneficios(tablaBeneficiosPS)">Ver Datos
 </button>
+
+<ng-template #modalUsuario let-modal>
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="row justify-content-center">
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <input #rut class="form-control form-control-sm " [value]="user.rut"> <br>
+        </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <input #password [(ngModel)]="pass" class="form-control form-control-sm " type="password"
+            placeholder="Ingrese su contraseña"> <br>
+        </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+            (click)="modal.close('Save click')">
+            Validar
+            <img *ngIf="load" padding-left="10px" height="12" class="text-center"
+              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>

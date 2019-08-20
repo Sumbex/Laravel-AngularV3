@@ -19,7 +19,8 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Tipo de carga*</strong></label>
-              <select name="Carga" id="carga" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.tipo_carga_id" required>
+              <select name="Carga" id="carga" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosCargas.tipo_carga_id" required>
                 <option value="">--Seleccione--</option>
                 <option value="1">Hijo</option>
                 <option value="2">Nieto</option>
@@ -32,14 +33,16 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Rut*</strong></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.rut_carga" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.rut_carga"
+                required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Fecha de Nacimiento*</strong></label>
-              <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.fecha_nacimiento" required>
+              <input type="date" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosCargas.fecha_nacimiento" required>
             </div>
           </div>
 
@@ -52,21 +55,24 @@
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Nombres*</strong></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.nombres" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.nombres"
+                required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Apellido Paterno*</strong></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.apellido_paterno" required>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosCargas.apellido_paterno" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
               <label><strong>Apellido Materno*</strong></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.apellido_materno" required>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosCargas.apellido_materno" required>
             </div>
           </div>
 
@@ -79,21 +85,35 @@
           <div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <div class="form-group">
               <label><strong>Direccion*</strong></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.direccion" required>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.direccion"
+                required>
             </div>
           </div>
 
           <div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <div class="form-group">
               <label><strong>Celular*</strong></label>
-              <input type="number" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.celular" required>
+              <input type="number" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.celular"
+                required>
             </div>
           </div>
 
           <div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <div class="form-group">
               <label><strong>Establecimiento*</strong></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosCargas.establecimiento" required>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosCargas.establecimiento" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <div class="form-group">
+              <label>
+                <strong>Subir Certificado </strong>
+                <i class="fas fa-info-circle" placement="right"
+                  ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+              </label>
+              <input class="form-file-input" type="file" (change)="onSelectImage($event)" required>
             </div>
           </div>
 
@@ -106,7 +126,7 @@
           <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
             <label><strong>Guardar Datos de la Carga</strong></label>
             <div class="form-group">
-              <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDatosCarga()" >Guardar</button>
+              <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDatosCarga()">Guardar</button>
             </div>
           </div>
 
@@ -135,5 +155,5 @@ onclick="printJS({
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
 <button class="btn btn btn-success btn-block btn-sm" type="button"
-[disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
+  [disabled]="this.getIdSocio == '' || this.getIdSocio == null"
   (click)="verFormularioBeneficios(formularioBeneficiosCargas)">Insertar Datos</button>

@@ -25,36 +25,34 @@
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                   <tr>
                     <th class="text-right" style="background: #195fcf">Nombres:</th>
-                    <td><input type="text" class="sinbordefondo centrado" value="{{infoPersonal?.numero_cuenta}}"
-                        disabled></td>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{infoPersonal?.numero_cuenta}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"
-                      (click)="actualizar('socio_numero_cuenta',ctaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="setNuevosDatos('socio_numero_cuenta',ctaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
                     <th class="text-right" style="background: #195fcf">Apellido Paterno:</th>
-                    <td><input type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.banco | uppercase}}"
-                      disabled></td>
+                    <td><input type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.banco | uppercase}}"></td>
                     <td><button class="btn btn-outline-success btn-sm"
-                      (click)="actualizar('socio_banco',bancoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="setNuevosDatos('socio_banco',bancoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
                     <th class="text-right" style="background: #195fcf;">Apellido Materno:</th>
                     <td><input type="text" class="sinbordefondo centrado"
-                        value="{{infoPersonal?.isapre_fonasa | uppercase}}" disabled>
+                        value="{{infoPersonal?.isapre_fonasa | uppercase}}">
                     </td>
                     <td><button class="btn btn-outline-success btn-sm"
-                      (click)="actualizar('socio_isapre_fonasa',isapreFonasaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="setNuevosDatos('socio_isapre_fonasa',isapreFonasaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
                     <th class="text-right" style="background: #195fcf;">Fecha de nacimiento:</th>
                     <td><input type="date" class="sinbordefondo centrado"
-                        value="{{infoPersonal?.grupo_sangre | uppercase}}" disabled>
+                        value="{{infoPersonal?.grupo_sangre | uppercase}}">
                     </td>
                     <td><button class="btn btn-outline-success btn-sm"
-                      (click)="actualizar('socio_grupo_sangre',grupoSangreUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="setNuevosDatos('socio_grupo_sangre',grupoSangreUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
                     </td>
                   </tr>
                 </div>

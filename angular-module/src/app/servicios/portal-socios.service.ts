@@ -78,6 +78,7 @@ export class PortalSociosService{
         body.append('apellido_materno', form.apellidoMaterno);
         body.append('direccion', form.direccion);
         body.append('celular', form.celular);
+        body.append('archivo', form.archivoDocumento);
 
         return this._http.post(this.url + "ingresar_datos_conyuge_socio",body, {headers: new HttpHeaders(
             {
@@ -131,6 +132,7 @@ export class PortalSociosService{
         body.append('direccion', form.direccion);
         body.append('celular', form.celular);
         body.append('establecimiento', form.establecimiento);
+        body.append('archivo', form.archivoDocumento);
 
         return this._http.post(this.url + "ingresar_datos_cargas_socio",body, {headers: new HttpHeaders(
             {

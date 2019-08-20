@@ -23,6 +23,7 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
     direccion:'',
     celular:'',
     establecimiento:'',
+    archivoDocumento:''
     }
   
   //variable para bloquear el doble ingreso
@@ -38,6 +39,10 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
 
   verModalCargas(formularioCargas){
     this.abrirModalFormularioCarga = this.modalService.open(formularioCargas, { size: 'xl' });
+  }
+
+  onSelectImage(event) {
+    this.datosCargas.archivoDocumento = event.srcElement.files[0];
   }
 
   setDatosCarga(){

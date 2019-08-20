@@ -20,7 +20,8 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
     apellidoPaterno: '',
     apellidoMaterno: '',
     direccion: '',
-    celular: ''
+    celular: '',
+    archivoDocumento: ''
   }
 
   //variable para bloquear el doble ingreso
@@ -36,6 +37,10 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
 
   verFormularioConyuge(formularioBeneficiosConyuge){
     this.abrirFormularioBeneficiosConyuge = this.modalService.open(formularioBeneficiosConyuge, { size: 'xl' });
+  }
+
+  onSelectImage(event) {
+    this.datosConyuge.archivoDocumento = event.srcElement.files[0];
   }
 
   setDatosConyuge(){

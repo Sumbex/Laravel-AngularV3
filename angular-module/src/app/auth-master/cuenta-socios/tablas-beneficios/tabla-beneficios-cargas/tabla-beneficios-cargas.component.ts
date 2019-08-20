@@ -122,7 +122,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
                   data.append('id', this.getIdSocio);
                   data.append('campo',campo);
                   data.append('valor',valor.value);
-                  data.append('tipo_carga_id',id);
+                  data.append('carga_socio_id',id);
   
                   this.actualizarLoad = true;
                   this._SociosService.ActualizarDatosCargas(data).subscribe(

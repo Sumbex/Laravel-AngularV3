@@ -21,6 +21,7 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
     apellido_materno:'',
     direccion:'',
     celular:'',
+    archivoDocumento:null,
     }
     constructor(config: NgbModalConfig, 
       private modalService: NgbModal,
@@ -34,6 +35,10 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
   verFormularioBeneficios(FormularioBeneficios) {
     this.abrirFormularioBeneficiosConyuge = this.modalService.open(FormularioBeneficios, { size: 'xl' });
   }
+  onSelectImage(event) {
+    this.InsertarBeneficiosConyuge.archivoDocumento = event.srcElement.files[0];
+  }
+
 
   guardarDatosConyuge(){
     if(this.InsertarBeneficiosConyuge.rut_conyuge == '' && this.InsertarBeneficiosConyuge.fecha_nacimiento == '' && this.InsertarBeneficiosConyuge.fecha_nacimiento == '' && this.InsertarBeneficiosConyuge.nombres == '' && this.InsertarBeneficiosConyuge.apellido_paterno == '' && this.InsertarBeneficiosConyuge.apellido_materno == '' && this.InsertarBeneficiosConyuge.direccion == '' && this.InsertarBeneficiosConyuge.celular == ''){
@@ -49,6 +54,7 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
     data.append('apellido_materno',this.InsertarBeneficiosConyuge.apellido_materno);
     data.append('direccion',this.InsertarBeneficiosConyuge.direccion);
     data.append('celular',this.InsertarBeneficiosConyuge.celular);
+    data.append('archivo',this.InsertarBeneficiosConyuge.archivoDocumento);
 
     this._SociosService.insertarDatosConyuge(data).subscribe((response) =>{
       if(response.estado == 'failed'){
@@ -63,6 +69,7 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
        this.InsertarBeneficiosConyuge.apellido_materno = '';
        this.InsertarBeneficiosConyuge.direccion = '';
        this.InsertarBeneficiosConyuge.celular = '';
+       this.InsertarBeneficiosConyuge.archivoDocumento = null;
         alert(response.mensaje);
         return false;
       }

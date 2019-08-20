@@ -17,6 +17,8 @@ export class BeneficiosSociosComponent implements OnInit {
   /*-----------------------------*/
   idSocio='';
 
+  archivoDocumento:null;
+
   blockSocio = false;
 
   constructor(
@@ -24,6 +26,10 @@ export class BeneficiosSociosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  onSelectImage(event) {
+    this.archivoDocumento = event.srcElement.files[0];
   }
 
   buscarSocio(){

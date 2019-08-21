@@ -156,7 +156,7 @@ class PortalSocioController extends Controller
     //------------------------------------------------FUNCION TEST------------------------------------------------//
     public function FuncionTest($anio, $mes)
     {
-        return PortalSocioCuentaSindical::traerCampingTotal($anio, $mes);
+        return PortalSocioCuentaSindical::traerPrestamos($anio, $mes);
     }
     //------------------------------------------------FUNCION TEST------------------------------------------------//
 }

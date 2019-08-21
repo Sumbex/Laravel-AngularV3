@@ -8,6 +8,7 @@ use App\PortalSocioCuentaSindical;
 
 class PortalSocioController extends Controller
 {
+    //------------------------------------------>rutas portal socio
     public function LoginSocios(Request $request)
     {
         return PortalSocio::loginSocios($request);
@@ -87,6 +88,14 @@ class PortalSocioController extends Controller
     {
         return PortalSocio::traerDatosCargasSocio();
     }
+    //------------------------------------------>rutas portal socio
+
+    //------------------------------------------>rutas portal socio cs
+    public function TraerCuentaSindical($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::traerCuentaSindicalTotal($anio, $mes);
+    }
+    //------------------------------------------>rutas portal socio cs
 
     //--------------------------------------------------------------------------------
     public function CrearUsuarioSocio(Request $request)
@@ -115,7 +124,7 @@ class PortalSocioController extends Controller
     //------------------------------------------------FUNCION TEST------------------------------------------------//
     public function FuncionTest($anio, $mes)
     {
-        return PortalSocioCuentaSindical::traerCuentaSindical($anio, $mes);
+        return PortalSocioCuentaSindical::totalesCuentaSindical($anio, $mes);
     }
     //------------------------------------------------FUNCION TEST------------------------------------------------//
 }

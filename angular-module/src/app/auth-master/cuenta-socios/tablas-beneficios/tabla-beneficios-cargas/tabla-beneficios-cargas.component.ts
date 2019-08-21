@@ -44,6 +44,9 @@ export class TablaBeneficiosCargasComponent implements OnInit {
    vista_pdf:boolean=false;
    DocumentoCarga;
 
+   UpdDocumento;
+   entrada;
+
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,
     private _SociosService:SociosService,
@@ -63,6 +66,10 @@ export class TablaBeneficiosCargasComponent implements OnInit {
   verDocumento(Documento,idCarga) {
     this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
     this.traerDocumentoCarga(idCarga);
+  }
+
+  onSelectImage(event) {
+    this.UpdDocumento = event.srcElement.files[0];
   }
 
   traerDocumentoCarga(idCarga){
@@ -128,7 +135,21 @@ export class TablaBeneficiosCargasComponent implements OnInit {
   
     //actualizar items
     actualizar(campo,valor,validar,id){
-  
+
+      if(campo == "archivo"){
+        if(valor.value == null){
+          alert("ingrese documento porfavor!")
+          return false;
+        }
+        this.entrada = this.UpdDocumento; 
+       }else{
+         this.entrada = valor.value;
+       }
+       if(this.entrada == ''){
+         alert("ingrese datos porfavor!");
+         return false;
+       }
+ 
       this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           
         this.m_val = this.modalService.open(validar, { size: 'sm' });
@@ -153,7 +174,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
                   const data = new FormData();
                   data.append('id', this.getIdSocio);
                   data.append('campo',campo);
-                  data.append('valor',valor.value);
+                  data.append('valor',this.entrada);
                   data.append('carga_socio_id',id);
   
                   this.actualizarLoad = true;
@@ -163,12 +184,14 @@ export class TablaBeneficiosCargasComponent implements OnInit {
                          alert(response.mensaje);
                          this.actualizarLoad = false;
                          this.pass = "";
+                         this.UpdDocumento = null;
                          this.listarDatosCarga();
                         }
                         if (response.estado == "failed") {
                          alert(response.mensaje);
                          this.actualizarLoad = false;
                          this.pass = "";
+                         this.UpdDocumento = null;
                          this.listarDatosCarga();
                          return false;
                         }
@@ -183,6 +206,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
               this.load = false;
               this.buttonStatus = false;
               this.pass = "";
+              this.UpdDocumento = null;
               this.m_val.close();
               return false;
             }

@@ -12,6 +12,7 @@ export class TablaBeneficiosConyugeComponent implements OnInit {
 
   abrirTablaBeneficiosConyuge;
   abrirDocumento;
+  UpdDocumento;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -42,6 +43,7 @@ buttonStatus = false;
 actualizarLoad:boolean=false;
 vista_pdf:boolean=false;
 DocumentoConyuge;
+entrada;
     
 
   constructor(config: NgbModalConfig, 
@@ -64,6 +66,9 @@ DocumentoConyuge;
   verDocumento(Documento) {
     this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
     this.traerDocumentoConyuge();
+  }
+  onSelectImage(event) {
+    this.UpdDocumento = event.srcElement.files[0];
   }
 
   traerDocumentoConyuge(){
@@ -129,6 +134,20 @@ DocumentoConyuge;
    
      //actualizar items
      actualizar(campo,valor,validar){
+
+      if(campo == "archivo"){
+        if(valor.value == null){
+          alert("ingrese documento porfavor!")
+          return false;
+        }
+        this.entrada = this.UpdDocumento; 
+       }else{
+         this.entrada = valor.value;
+       }
+       if(this.entrada == ''){
+         alert("ingrese datos porfavor!");
+         return false;
+       }
  
        this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
            
@@ -154,7 +173,7 @@ DocumentoConyuge;
                    const data = new FormData();
                    data.append('id', this.getIdSocio);
                    data.append('campo',campo);
-                   data.append('valor',valor.value);
+                   data.append('valor',this.entrada);
    
                    this.actualizarLoad = true;
                    this._SociosService.ActualizarDatosConyuge(data).subscribe(
@@ -163,12 +182,14 @@ DocumentoConyuge;
                           alert(response.mensaje);
                           this.actualizarLoad = false;
                           this.pass = "";
+                          this.UpdDocumento = null;
                           this.listarDatosConyuge();
                          }
                          if (response.estado == "failed") {
                           alert(response.mensaje);
                           this.actualizarLoad = false;
                           this.pass = "";
+                          this.UpdDocumento = null;
                           this.listarDatosConyuge();
                           return false;
                          }
@@ -183,6 +204,7 @@ DocumentoConyuge;
                this.load = false;
                this.buttonStatus = false;
                this.pass = "";
+               this.UpdDocumento = null;
                this.m_val.close();
                return false;
              }

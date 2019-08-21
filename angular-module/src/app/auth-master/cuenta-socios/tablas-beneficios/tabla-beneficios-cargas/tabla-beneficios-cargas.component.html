@@ -89,14 +89,32 @@
                     <td><button class="btn btn-outline-success btn-sm"
                       (click)="actualizar('establecimiento',establecimientoUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <th style="background: #138D75;" class="text-right">CERTIFICADO:</th>
                       <td><button class="btn btn-outline-dark btn-sm float-left"
                         (click)="verDocumento(visorCertificadoNacimiento,item.id)"><i class="far fa-file-pdf"></i>
                       </button></td>
                       <td><button class="btn btn-outline-success btn-sm"
                           (click)="actualizar('celular',celularUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                  </tr> <br>
+                  </tr> 
+                   -->
+                  <tr>
+                      <th style="background: #138D75;" class="text-right">CAMBIAR CERTIFICADO:</th>
+                      <td> 
+                          <input class="form-file-input float-left" type="file" (change)="onSelectImage($event)" #documentoUpd required>
+                      </td>
+                      <td><button class="btn btn-outline-success btn-sm"
+                          (click)="actualizar('archivo',documentoUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
+                  </tr>
+                    <tr>
+                      <th style="background: #138D75;" class="text-right">VER CERTIFICADO:</th>
+                      <td colspan="2"><button class="btn btn-outline-dark btn-sm float-left"
+                        (click)="verDocumento(visorCertificadoNacimiento,item.id)"><i class="far fa-file-pdf" ></i>
+                      </button>
+                    </td>
+                  </tr>
+                  
+                  <br>
                 </div>
   
               </div>

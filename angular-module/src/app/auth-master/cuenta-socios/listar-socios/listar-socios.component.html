@@ -64,7 +64,7 @@
 	                			<i class="fas fa-search"></i>
 	                		</button>
 	                	</td>
-	                	<td style="background: #138D75" colspan="3"> </td>
+	                	<td style="background: #138D75" colspan="4"> </td>
 	                </tr>
 	                <tr class="text-center">
 	                  	<th style="background: #138D75"><i class="fas fa-id-card"></i> Rut</th>
@@ -202,10 +202,9 @@
               		<td>
               			
               			<button class="btn btn-primary btn-sm"
-				        (click)="modal_opcion(opcion);">
+				        (click)="modal_opcion(opcion,item.id);">
 				        <i class="fas fa-wrench"></i>
-				        </button>
-              			
+				        </button>	
 
               			<ng-template #opcion let-modal>
 						     <div class="modal-header" id="demoFont">
@@ -221,7 +220,7 @@
 	                  						 Asignar Portal de socios
 	                  						</th>
 	                  	        			<td>
-	                  	        				<button (click) = "asignar_portal()"
+	                  	        				<button (click) = "asignar_portal(item.id)"
 	                  	        					class="btn btn-success">
 	                  	        					<i class="far fa-save fa-1x"></i>
 	                  	        				</button>
@@ -229,7 +228,12 @@
 	                  	        			<th style="background: #138D75">
 	                  						 Estado
 	                  						</th>
-	                  						<td>No Asignado</td>
+	                  						<td>
+	                  							<div *ngIf="ver_load" class="spinner-border text-success" role="status">
+												  <span class="sr-only">Loading...</span>
+												</div>
+	                  							<label *ngIf="ver_estado_soc">{{estado_socio}}</label>
+	                  						</td>
 	                					</tr>
 									 </table>
 								

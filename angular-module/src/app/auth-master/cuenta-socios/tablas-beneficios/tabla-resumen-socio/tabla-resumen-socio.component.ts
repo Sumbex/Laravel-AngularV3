@@ -130,6 +130,7 @@ constructor(private _SociosService:SociosService,
        return false;
      }else{
        this.TraerDocumentoSocio = response.body[0].archivo;
+       console.log(this.TraerDocumentoSocio);
        this.vista_pdf = false;
      }
  

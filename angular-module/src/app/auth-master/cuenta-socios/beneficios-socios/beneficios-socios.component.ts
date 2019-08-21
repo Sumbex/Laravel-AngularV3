@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
 
 @Component({
   selector: 'app-beneficios-socios',
@@ -21,9 +23,25 @@ export class BeneficiosSociosComponent implements OnInit {
 
   blockSocio = false;
 
-  constructor(
-    private _SociosService:SociosService
-  ) { }
+  //validar user 
+  user:object=[];
+  load:boolean=false;
+  validarModalActualizar = null;
+
+  m_val = null;
+  closeResult: string;
+  pass:string = '';
+  buttonStatus = false;
+
+  actualizarLoad:boolean=false;
+
+  constructor(config: NgbModalConfig, 
+    private modalService: NgbModal,
+    private _SociosService:SociosService,
+    private _validarusuario:ValidarUsuarioService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+                        }
 
   ngOnInit() {
   }

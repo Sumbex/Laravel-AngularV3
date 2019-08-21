@@ -11,6 +11,7 @@ import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service
 export class TablaBeneficiosConyugeComponent implements OnInit {
 
   abrirTablaBeneficiosConyuge;
+  abrirDocumento;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -24,6 +25,7 @@ export class TablaBeneficiosConyugeComponent implements OnInit {
                     'celular',
                     'created_at',
                     'updated_at',
+                    'archivo',
                     ];
 vista_tabla: boolean = false;
 
@@ -38,6 +40,8 @@ pass:string = '';
 buttonStatus = false;
 
 actualizarLoad:boolean=false;
+vista_pdf:boolean=false;
+DocumentoConyuge;
     
 
   constructor(config: NgbModalConfig, 
@@ -50,11 +54,40 @@ actualizarLoad:boolean=false;
 
   ngOnInit() {
   }
+
   verTablaBeneficios(TablaBeneficios) {
     this.abrirTablaBeneficiosConyuge = this.modalService.open(TablaBeneficios, { size: 'xl' });
     this.listarDatosConyuge();
     this.usuario_logeado();
   }
+
+  verDocumento(Documento) {
+    this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
+    this.traerDocumentoConyuge();
+  }
+
+  traerDocumentoConyuge(){
+    this.vista_pdf = true;
+    this._SociosService.getRegistroCivil(this.getIdSocio).subscribe((response) =>{
+      // console.log(response);
+     if(response.estado == "failed"){
+       this.vista_pdf = false;
+       alert(response.mensaje);
+       this.abrirDocumento.close();
+       return false;
+     }else{
+       this.DocumentoConyuge = response.body[0].archivo;
+      //  console.log(this.TraerDocumentoSocio);
+       this.vista_pdf = false;
+     }
+ 
+        error => {
+       console.log(error);
+       this.vista_pdf = false;
+       }
+     }
+   );
+   }
 
   limpiar_tabla(){
     this.vista_tabla = false;

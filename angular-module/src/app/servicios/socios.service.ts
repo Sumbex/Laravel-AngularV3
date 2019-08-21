@@ -270,5 +270,30 @@ export class SociosService {
         });
     }
 
+    getRegistroCivil(idSocio) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "documento_registro_civil/" + idSocio, {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )
+        });
+    }
+
+    getCertificadoNacimiento(idCarga) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "documento_certificado_nacimiento/" + idCarga, {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )
+        });
+    }
+
+
 
 }

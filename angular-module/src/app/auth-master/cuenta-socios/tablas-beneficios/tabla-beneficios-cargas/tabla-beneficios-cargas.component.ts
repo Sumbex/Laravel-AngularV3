@@ -9,7 +9,9 @@ import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service
   styleUrls: ['./tabla-beneficios-cargas.component.css']
 })
 export class TablaBeneficiosCargasComponent implements OnInit {
+
   abrirTablaBeneficiosCarga;
+  abrirDocumento;
 
   @Input () getIdSocio;
   @Input () getNombreSocio;
@@ -39,6 +41,8 @@ export class TablaBeneficiosCargasComponent implements OnInit {
    buttonStatus = false;
 
    actualizarLoad:boolean=false;
+   vista_pdf:boolean=false;
+   DocumentoCarga;
 
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,
@@ -55,6 +59,34 @@ export class TablaBeneficiosCargasComponent implements OnInit {
     this.listarDatosCarga();
     this.usuario_logeado();
   }
+
+  verDocumento(Documento,idCarga) {
+    this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
+    this.traerDocumentoCarga(idCarga);
+  }
+
+  traerDocumentoCarga(idCarga){
+    this.vista_pdf = true;
+    this._SociosService.getCertificadoNacimiento(idCarga).subscribe((response) =>{
+      // console.log(response);
+     if(response.estado == "failed"){
+       this.vista_pdf = false;
+       alert(response.mensaje);
+       this.abrirDocumento.close();
+       return false;
+     }else{
+       this.DocumentoCarga = response.body[0].archivo;
+      //  console.log(this.TraerDocumentoSocio);
+       this.vista_pdf = false;
+     }
+ 
+        error => {
+       console.log(error);
+       this.vista_pdf = false;
+       }
+     }
+   );
+   }
 
   limpiar_tabla(){
     this.vista_tabla = false;

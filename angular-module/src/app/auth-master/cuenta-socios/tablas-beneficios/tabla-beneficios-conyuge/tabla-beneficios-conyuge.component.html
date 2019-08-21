@@ -63,6 +63,21 @@
                                     <td><button class="btn btn-outline-success btn-sm"
                                         (click)="actualizar('celular',celularUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
                                 </tr>
+                                <tr>
+                                  <th style="background: #138D75;" class="text-right">CAMBIAR CERTIFICADO:</th>
+                                  <td> 
+                                      <input type="file" class="float-left" #documentoUpd>
+                                  </td>
+                                  <td><button class="btn btn-outline-success btn-sm"
+                                      (click)="actualizar('archivo',documentoUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
+                              </tr>
+                                <tr>
+                                  <th style="background: #138D75;" class="text-right">VER CERTIFICADO:</th>
+                                  <td colspan="2"><button class="btn btn-outline-dark btn-sm float-left"
+                                    (click)="verDocumento(visorRegistroCivil)"><i class="far fa-file-pdf" ></i>
+                                  </button>
+                                </td>
+                              </tr>
                             </div>
 
                         </div>
@@ -126,3 +141,26 @@
       </div>
     </div>
   </ng-template>
+
+  <!--MODAL VISOR PDF-->
+<ng-template #visorRegistroCivil let-c="close" let-d="dismiss">
+  <div class="row">
+    <div class="col">
+      <div class="modal-header text-center" id="demoFont">
+        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="vista_pdf == true" class="loader"></div>
+      <div class="modal-body" *ngIf="vista_pdf == false">
+        <iframe width="100%" height="500px" [src]="  '../storage/' + DocumentoConyuge | safeUrl" frameborder="0"
+          allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer" [hidden]="true">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--MODAL VISOR PDF-->

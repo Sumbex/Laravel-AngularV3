@@ -1093,11 +1093,11 @@ class PortalSocio extends Authenticatable implements JWTSubject
     }
 
     //--------------------------------------------------------------------------------
-    public function traerAnios()
+    protected function traerAnios()
     {
         return DB::table('anio')->orderBy('descripcion', 'desc')->get();
     }
-    public function anioActual()
+    protected function anioActual()
     {
         $anio = DB::select("select date_part('year',now()) as anio");
         $anio_db = DB::table('anio')->select(['id', 'descripcion'])
@@ -1105,19 +1105,19 @@ class PortalSocio extends Authenticatable implements JWTSubject
         return response()->json($anio_db);
     }
 
-    public function traerMeses()
+    protected function traerMeses()
     {
         return DB::table('mes')->orderBy('id', 'asc')->get();
     }
 
-    public function mesActual()
+    protected function mesActual()
     {
         $mes_actual = DB::select("select date_part('month',now()) as mes");
         $id = $mes_actual[0]->mes;
         return $this->getMes($id);
     }
 
-    public function getMes($id)
+    protected function getMes($id)
     {
         switch ($id) {
             case '1':

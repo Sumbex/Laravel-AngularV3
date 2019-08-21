@@ -17,6 +17,13 @@ Route::get('/traer_datos_cargas_socio', 'PortalSocioController@TraerDatosCargasS
 Route::get('/traer_archivo_resumen_socio', 'PortalSocioController@TraerArchivoResumen');
 //------------------------------------------>rutas portal socio
 
+//------------------------------------------>rutas datos basicos
+Route::get('/traer_anios', 'PortalSocioController@TraerAnios');
+Route::get('/traer_anio_actual', 'PortalSocioController@AnioActual');
+Route::get('/traer_meses', 'PortalSocioController@TraerMeses');
+Route::get('/trae_mes_actual', 'PortalSocioController@MesActual');
+//------------------------------------------>rutas datos basicos
+
 //------------------------------------------>rutas portal socio cs
 Route::get('/traer_cuenta_sindical_socio/{anio}/{mes}', 'PortalSocioController@TraerCuentaSindical');
 //------------------------------------------>rutas portal socio cs

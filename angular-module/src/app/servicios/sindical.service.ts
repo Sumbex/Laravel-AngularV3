@@ -236,6 +236,14 @@ export class SindicalService{
         )});
 
     }
+    estado_de_socio_en_portal_beneficio(id){
+        return this._http.get(this.url + "estado_de_socio_en_portal_beneficio/id", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 
 
 

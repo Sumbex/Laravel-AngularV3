@@ -1414,5 +1414,18 @@ class SocioController extends Controller
 
     }
 
+    public function estado_de_socio_en_portal_beneficio($socio_id)
+    {
+        $socio = Socios::where(['activo'=>'S','id'=>$socio_id])->first();
+        if (!empty($socio)) {
+            $user = User::where(['activo'=>'S','rut'=>$socio->rut])->first();
+            if (!empty($user)) {
+                return ['estado'=>'Portal socio asignado'];
+            }
+            return ['estado'=>'No asignado'];
+        }
+        return ['estado'=>'No asignado'];
+    }
+
 
 }

@@ -241,6 +241,14 @@ export class ListarSociosComponent implements OnInit {
         )
   }
 
+  estado_socio_portal(socio_id){
+    this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
+          response => {
+            console.log(response);
+          }
+        )
+  }
+
 
   // fin del metodo para validar usuario
 

@@ -67,7 +67,7 @@ Route::post('editar_socios', 'SocioController@actualizar_socio');
 
 Route::get('buscar_socio_por_rut/{rut}','SocioController@socio_por_rut');
 
-
+Route::get('estado_de_socio_en_portal_beneficio/{id}','SocioController@estado_de_socio_en_portal_beneficio');
 
 Route::post('guardar_datos_socio','SocioController@guardar_datos_socio');
 Route::post('actualizar_datos_socio','SocioController@actualizar_datos_socio');

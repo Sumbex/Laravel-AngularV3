@@ -167,6 +167,26 @@ class PortalSocioCuentaSindical extends Model
         }
     }
 
+    protected function traerCajaChicaTotal($anio, $mes)
+    {
+        $existe = $this->existeCajaChica($anio, $mes);
+        if ($existe['estado'] == 'success') {
+            $totales = $this->totalesCajaChica($anio, $mes);
+            if ($totales['estado'] == 'success') {
+                $caja = $this->traerCajaChica($anio, $mes, $existe['monto_caja'], $totales['totales']->total_egreso);
+                if ($caja['estado'] == 'success') {
+                    return $caja;
+                } else {
+                    return $caja;
+                }
+            } else {
+                return $totales;
+            }
+        } else {
+            return $existe;
+        }
+    }
+
     protected function existeCajaChica($anio, $mes)
     {
         $existe = DB::table('cuenta_sindicato')
@@ -192,7 +212,7 @@ class PortalSocioCuentaSindical extends Model
         }
     }
 
-    protected function traerCajaChica($anio, $mes)
+    protected function traerCajaChica($anio, $mes, $MC, $total)
     {
         $caja = DB::table('cs_caja_chica as cc')
             ->select([
@@ -216,7 +236,32 @@ class PortalSocioCuentaSindical extends Model
             ->get();
 
         if (!$caja->isEmpty()) {
-            return ['estado' => 'success', 'caja' => $caja];
+            $tomar = true;
+
+            for ($i = 0; $i < count($caja); $i++) {
+                switch ($caja[$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $MC + $caja[$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $MC - $caja[$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            return ['estado' => 'success', 'monto_inicio' => $MC, 'caja' => $caja, 'total' => $total];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }
@@ -228,9 +273,7 @@ class PortalSocioCuentaSindical extends Model
         if ($existe['estado'] == 'success') {
             $totales = DB::table('cs_caja_chica')
                 ->select([
-                    DB::raw('sum(monto_ingreso) as total_ingreso'),
-                    DB::raw('sum(coalesce(monto_ingreso, 0)) as total_egreso'),
-                    DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(monto_egreso) as total')
+                    DB::raw('sum(monto_egreso) as total_egreso'),
                 ])
                 ->where([
                     'activo' => 'S',
@@ -240,7 +283,7 @@ class PortalSocioCuentaSindical extends Model
                 ->get();
 
             if (!$totales->isEmpty()) {
-                return ['estado' => 'success', 'totales' => $totales];
+                return ['estado' => 'success', 'totales' => $totales[0]];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
             }

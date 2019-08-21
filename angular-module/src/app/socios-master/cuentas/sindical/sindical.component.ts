@@ -16,10 +16,23 @@ export class SindicalComponent implements OnInit {
   idAnioActual;
   idMesActual;
 
+  //Variable para las cargas
+  cargandoTabla = false;
+
+  //Variables que almacenan los valores obtenidos para la tabla
+  montoInicio;
+  tablaSindical;
+  fijos;
+  variable;
+  cajaChica;
+  prestamo;
+  camping;
+  resultado;
+
   //variable asociada al modalSindical
   modalTablaSindical;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _fechasService: PortalSociosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -37,9 +50,14 @@ export class SindicalComponent implements OnInit {
     this.cargarFechasActuales();
   }
 
+  //Abrir visor de PDF
+  open(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   cargarFechasActuales(){
     //Cargar id del Año actual
-    this._fechasService.getAnioActual().subscribe(
+    this._portalSociosService.getAnioActual().subscribe(
      response => {
        this.idAnioActual = response.id;
      },
@@ -48,14 +66,65 @@ export class SindicalComponent implements OnInit {
      }
    )
    //Cargar id del Mes actual
-   this._fechasService.getMesActual().subscribe(
+   this._portalSociosService.getMesActual().subscribe(
      response => {
-       this.idMesActual = response.id;             
+       this.idMesActual = response.id;
+       this.cargarTablaSindical();       
      },
      error => {
        console.log(error);
      }
    )
+ }
+
+ cargarTablaSindical(){
+   this.cargandoTabla = true;
+   this._portalSociosService.getTablaSindical(this.idAnioActual, this.idMesActual).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+        this.cargandoTabla = false;
+      }else{
+        this.cargandoTabla = false;
+        this.montoInicio = response.monto_inicio;
+        this.cajaChica = response.CS.caja_chica;
+        this.camping = response.CS.camping;
+        this.fijos = response.CS.fijos;
+        this.prestamo = response.CS.prestamos;
+        this.variable = response.CS.variables;
+        this.resultado = response.totales;
+      }
+   },
+   error => {
+     console.log(error);
+     this.cargandoTabla = false;
+   });
+ }
+
+ recargarTablaSindical(){
+  this.limpiarTabla();
+   this.cargarTablaSindical();
+ }
+
+ changeAnio(valorSelect){
+   this.limpiarTabla();
+   this.idAnioActual = valorSelect.target.value;
+   this.recargarTablaSindical();
+ }
+
+ changeMes(valorSelect){
+  this.limpiarTabla();
+  this.idMesActual = valorSelect.target.value;
+  this.recargarTablaSindical();
+ }
+
+ limpiarTabla(){
+  this.montoInicio = null;
+  this.cajaChica = null;
+  this.camping = null;
+  this.fijos = null;
+  this.prestamo = null;
+  this.variable = null;
+  this.resultado = null;
  }
 
 }

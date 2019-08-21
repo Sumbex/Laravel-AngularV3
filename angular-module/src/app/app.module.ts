@@ -81,6 +81,8 @@ import { PrestamosSociosComponent } from './socios-master/beneficios-socio/prest
 import { ConfiguracionSocioComponent } from './socios-master/configuracion-socio/configuracion-socio.component';
 import { CambioContraseniaSocioComponent } from './socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component';
 import { CambioInformacionPersonalSocioComponent } from './socios-master/configuracion-socio/cambio-informacion-personal-socio/cambio-informacion-personal-socio.component';
+import { CuentasComponent } from './socios-master/cuentas/cuentas.component';
+import { SindicalComponent } from './socios-master/cuentas/sindical/sindical.component';
 
 
 @NgModule({
@@ -189,7 +191,11 @@ import { CambioInformacionPersonalSocioComponent } from './socios-master/configu
 
     CambioContraseniaSocioComponent,
 
-    CambioInformacionPersonalSocioComponent
+    CambioInformacionPersonalSocioComponent,
+
+    CuentasComponent,
+
+    SindicalComponent
 
   ],
   imports: [

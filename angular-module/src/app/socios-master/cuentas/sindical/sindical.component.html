@@ -14,7 +14,7 @@
           <strong>Filtro por Año </strong>
           <i class="fas fa-calendar-check"></i>
         </label>
-        <select (change)="changeAnio($event)" name="anio" class="form-control form-control-sm">
+        <select (change)="changeAnio($event)" name="anio" class="form-control form-control-sm" [(ngModel)]="idAnioActual">
           <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
         </select>
       </div>
@@ -23,7 +23,7 @@
           <strong>Filtro por Mes </strong>
           <i class="fas fa-calendar-check"></i>
         </label>
-        <select (change)="changeMes($event)" name="mes" class="form-control form-control-sm">
+        <select (change)="changeMes($event)" name="mes" class="form-control form-control-sm" [(ngModel)]="idMesActual">
           <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
         </select>
       </div>
@@ -841,4 +841,4 @@
   </div>
 </ng-template>
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-block btn-sm" type="button" (click)="verTablaBeneficios(tablaGeneral)">Ver Datos</button>
+<button class="btn btn-primary btn-block btn-sm" type="button" (click)="openModalTablaSindical(tablaGeneral)">Ver Datos</button>

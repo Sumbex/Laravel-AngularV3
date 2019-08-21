@@ -34,6 +34,7 @@ export class SindicalComponent implements OnInit {
 
   openModalTablaSindical(tablaSindical){
     this.modalTablaSindical = this.modalService.open(tablaSindical, {size: 'xl'});
+    this.cargarFechasActuales();
   }
 
   cargarFechasActuales(){
@@ -46,7 +47,6 @@ export class SindicalComponent implements OnInit {
        console.log(error);
      }
    )
-
    //Cargar id del Mes actual
    this._fechasService.getMesActual().subscribe(
      response => {

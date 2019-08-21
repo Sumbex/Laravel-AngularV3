@@ -21,7 +21,7 @@ Route::get('/traer_archivo_resumen_socio', 'PortalSocioController@TraerArchivoRe
 Route::get('/traer_anios', 'PortalSocioController@TraerAnios');
 Route::get('/traer_anio_actual', 'PortalSocioController@AnioActual');
 Route::get('/traer_meses', 'PortalSocioController@TraerMeses');
-Route::get('/trae_mes_actual', 'PortalSocioController@MesActual');
+Route::get('/traer_mes_actual', 'PortalSocioController@MesActual');
 //------------------------------------------>rutas datos basicos
 
 //------------------------------------------>rutas portal socio cs
@@ -32,5 +32,5 @@ Route::get('/traer_caja_chica_socio/{anio}/{mes}', 'PortalSocioController@TraerC
 
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//
-Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@TraerCajaChica');
+Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');
 //------------------------------------------------FUNCION TEST------------------------------------------------//

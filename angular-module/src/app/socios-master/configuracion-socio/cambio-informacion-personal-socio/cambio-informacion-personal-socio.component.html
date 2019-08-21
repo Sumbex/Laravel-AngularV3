@@ -1,0 +1,93 @@
+<ng-template #tablaBeneficiosSocio let-modal>
+    <div class="modal-header sticky-top" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
+          {{getNombreSocio | uppercase}}<!-- <div *ngIf="actualizarLoad" class="loader2"></div> --></strong>
+        </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo del body inicio y cierre mensual-->
+    <div class="modal-body" id="printJS-table">
+      <div class="card-header" id="demoFont2">
+        <h6 class="card-title">SOCIO
+          <img *ngIf="actualizarLoad" padding-left="20px" height="15px"
+            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+        </h6>
+      </div>
+      <div class="card"> <br>
+        <div class="table-responsive">
+          <div *ngIf="cargandoTabla" class="loader"></div>
+          <table *ngIf="!cargandoTabla" class="table table-striped table-bordered table-sm">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="row justify-content-center">
+  
+                <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                  <tr>
+                    <th class="text-right" style="background: #195fcf">Nombres:</th>
+                    <td><input #nombresSocio type="text" class="sinbordefondo centrado" value="{{infoPersonal?.nombres | uppercase}}"></td>
+                    <td><button class="btn btn-outline-success btn-sm"
+                      (click)="setNuevosDatos(nombresSocio,'nombres')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
+                      <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="text-right" style="background: #195fcf">Apellido Paterno:</th>
+                    <td><input #apellidoP type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.a_paterno | uppercase}}"></td>
+                    <td><button class="btn btn-outline-success btn-sm"
+                      (click)="setNuevosDatos(apellidoP,'a_paterno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
+                      <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="text-right" style="background: #195fcf;">Apellido Materno:</th>
+                    <td><input #apellidoM type="text" class="sinbordefondo centrado"
+                        value="{{infoPersonal?.a_materno | uppercase}}">
+                    </td>
+                    <td><button class="btn btn-outline-success btn-sm"
+                      (click)="setNuevosDatos(apellidoM,'a_materno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
+                      <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="text-right" style="background: #195fcf;">Fecha de nacimiento:</th>
+                    <td><input #fechaN type="date" class="sinbordefondo centrado"
+                        value="{{infoPersonal?.fecha_nacimiento | uppercase}}">
+                    </td>
+                    <td><button class="btn btn-outline-success btn-sm"
+                      (click)="setNuevosDatos(fechaN,'fecha_nacimiento')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
+                      <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                    </td>
+                  </tr>
+                </div>
+  
+              </div>
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-success" 
+      onclick="printJS({
+        printable: 'printJS-table',
+        type:'html',
+        style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+      })">
+      <i class="fas fa-print"></i>  Imprimir Datos
+      </button> -->
+  
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click'); limpiar_tabla()"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver
+      </button>
+    </div>
+  </ng-template>
+  
+  <!--Boton Para llamar al Modal inicio y cierre mensual-->
+  <button class="btn btn-primary btn-block btn-sm" type="button" (click)="vertTablaInfoPersonal(tablaBeneficiosSocio)">Cambiar informacion</button>

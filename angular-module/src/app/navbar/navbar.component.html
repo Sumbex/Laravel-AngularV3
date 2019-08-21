@@ -2,7 +2,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" [routerLink]="['/AuthMaster']">
              <img src="/assets/logo-sindicato-transparente.png"  width="80px" height="50px">
           </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/RegistroSocios']"><i class="fas fa-user-plus"></i> Registro de Socio</a>
                   <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/ListarSocios']"><i class="fas fa-user-edit"></i> Listar Socio</a>
-                  <!-- <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/BeneficiosSocios']"><i class="far fa-address-card"></i> Beneficios Socio</a> -->
+                  <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/BeneficiosSocios']"><i class="far fa-address-card"></i> Beneficios Socio</a>
                 </div>
               </li>
               <li *ngIf="isLogged" ngbDropdown class="d-inline-block">

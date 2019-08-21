@@ -120,7 +120,12 @@ class PortalSocioController extends Controller
 
     public function TraerCajaChica($anio, $mes)
     {
-        return PortalSocioCuentaSindical::traerCajaChica($anio, $mes);
+        return PortalSocioCuentaSindical::traerCajaChicaTotal($anio, $mes);
+    }
+
+    public function TraerCamping($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::traerCampingTotal($anio, $mes);
     }
     //------------------------------------------>rutas portal socio cs
 
@@ -151,7 +156,7 @@ class PortalSocioController extends Controller
     //------------------------------------------------FUNCION TEST------------------------------------------------//
     public function FuncionTest($anio, $mes)
     {
-        return PortalSocioCuentaSindical::existeCajaChica($anio, $mes);
+        return PortalSocioCuentaSindical::traerCampingTotal($anio, $mes);
     }
     //------------------------------------------------FUNCION TEST------------------------------------------------//
 }

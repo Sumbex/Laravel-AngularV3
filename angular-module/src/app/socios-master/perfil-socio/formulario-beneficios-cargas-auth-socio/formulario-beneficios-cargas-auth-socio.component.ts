@@ -15,7 +15,7 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
   //Datos de la carga
   datosCargas = {
     tipoCargaId:'',
-    rutCarga:'',
+    rut:'',
     fechaNacimiento:'',
     nombres:'',
     apellidoPaterno:'',
@@ -23,7 +23,11 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
     direccion:'',
     celular:'',
     establecimiento:'',
+    archivoDocumento:''
     }
+  
+  //variable para bloquear el doble ingreso
+  blockIngreso = false;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
@@ -37,9 +41,26 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
     this.abrirModalFormularioCarga = this.modalService.open(formularioCargas, { size: 'xl' });
   }
 
+  onSelectImage(event) {
+    this.datosCargas.archivoDocumento = event.srcElement.files[0];
+  }
+
   setDatosCarga(){
     //Aquí se llamá al servicio para ingresar los datos de la carga
-    console.log(this.datosCargas);
+    this.blockIngreso = true;
+    this._portalSociosService.setDatosCargas(this.datosCargas).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+        this.blockIngreso = false;
+      }else{
+        alert('Ingreso de la carga correcto');
+        this.blockIngreso = false;
+      }
+    },
+    error => {
+      console.log(error);
+      this.blockIngreso = false;
+    });
   }
 
 }

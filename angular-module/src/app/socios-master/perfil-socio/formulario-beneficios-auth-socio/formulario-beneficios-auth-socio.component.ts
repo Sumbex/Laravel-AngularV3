@@ -9,10 +9,10 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 })
 export class FormularioBeneficiosAuthSocioComponent implements OnInit {
 
+  //Variable para asociar al modal
   abrirFormularioBeneficiosSocios;
 
-  idSocio = '5';
-
+  //Objeto para almacenar los datos
   InsertarBeneficiosSocio ={
   socio_id:'',
   direccion:'',
@@ -34,6 +34,9 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
   conyuge:'',
   }
 
+  //variable para bloquear el doble ingreso
+  blockIngreso = false;
+
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,
     private _portalSociosService: PortalSociosService) {
@@ -46,20 +49,23 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
 
   verFormularioBeneficios(FormularioBeneficios) {
     this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    console.log(this.idSocio);
   }
   
   guardarDatosSocio(){
+    this.blockIngreso = true;
     this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(
       response => {
         if(response.estado == "failed" || response.estado == "failed_v"){
           alert(response.mensaje);
+          this.blockIngreso = false;
         }else{
           alert(response.mensaje);
+          this.blockIngreso = false;
         }
       },
       error => {
         console.log(error);
+        this.blockIngreso = false;
       }
     );
   }

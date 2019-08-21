@@ -67,4 +67,208 @@ export class PortalSociosService{
             }
         )});
     }
+
+    setDatosConyugeSocio(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+        body.append('archivo', form.archivoDocumento);
+
+        return this._http.post(this.url + "ingresar_datos_conyuge_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getDatosConyuge() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_conyuge_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
+
+    setDatosBeneficiarios(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('relacion', form.relacionParentesco);
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+
+        return this._http.post(this.url + "ingresar_datos_beneficiarios_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getDatosBeneficiario() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_beneficiarios_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
+
+    setDatosCargas(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('tipo_carga_id', form.tipoCargaId);
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+        body.append('establecimiento', form.establecimiento);
+        body.append('archivo', form.archivoDocumento);
+
+        return this._http.post(this.url + "ingresar_datos_cargas_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getDatosCargas() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_cargas_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
+
+    setDatosPadresSuegros(form): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('relacion_socio_id', form.relacionSocioId);
+        body.append('rut', form.rut);
+        body.append('fecha_nacimiento', form.fechaNacimiento);
+        body.append('nombres', form.nombres);
+        body.append('apellido_paterno', form.apellidoPaterno);
+        body.append('apellido_materno', form.apellidoMaterno);
+        body.append('direccion', form.direccion);
+        body.append('celular', form.celular);
+
+        return this._http.post(this.url + "ingresar_datos_padres_suegros_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getDatosPadresSuegros() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_datos_padres_suegros_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
+
+    cambiarPassSocio(passAct, passNue, passCon) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('password', passAct);
+        body.append('new_password', passNue);
+        body.append('conf_new_password', passCon);
+
+        return this._http.post(this.url + "cambiar_contrasena_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    updateInfoSocio(valor, campo) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('input', valor);
+        body.append('nombre_campo', campo);
+
+        return this._http.post(this.url + "modificar_datos_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getResumenSocio(): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_archivo_resumen_socio", {headers: new HttpHeaders(
+            {'Authorization': 'Bearer' + token}
+        )});
+    }
+
+    //OBTENER FECHAS PARA EL PORTAL DE SOCIOS
+
+    getAnios() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "traer_anios", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getMeses() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "traer_meses", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getAnioActual() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_anio_actual", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+    
+    getMesActual() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_mes_actual", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    //Servicio para llamar a la cuenta sindical
+    getTablaSindical(anio: string, mes: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_cuenta_sindical_socio/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    //Servicio para llamar a la caja chica
+    getCajaChica(anio: string, mes: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_caja_chica_socio/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 }

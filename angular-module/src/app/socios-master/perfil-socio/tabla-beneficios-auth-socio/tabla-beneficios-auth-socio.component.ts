@@ -11,10 +11,13 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 })
 export class TablaBeneficiosAuthSocioComponent implements OnInit {
 
+  //variable para definir el modal
   abrirTablaBeneficiosSocios;
 
+  //objeto que almacenara la informacion
   traerDatosSocio;
 
+  //variable para mostrar el loading
   cargandoTabla;
 
   constructor(config: NgbModalConfig,

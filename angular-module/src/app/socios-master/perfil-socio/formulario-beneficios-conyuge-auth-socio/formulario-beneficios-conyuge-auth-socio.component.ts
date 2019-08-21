@@ -20,8 +20,12 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
     apellidoPaterno: '',
     apellidoMaterno: '',
     direccion: '',
-    celular: ''
+    celular: '',
+    archivoDocumento: ''
   }
+
+  //variable para bloquear el doble ingreso
+  blockIngreso = false;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
@@ -35,8 +39,28 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
     this.abrirFormularioBeneficiosConyuge = this.modalService.open(formularioBeneficiosConyuge, { size: 'xl' });
   }
 
+  onSelectImage(event) {
+    this.datosConyuge.archivoDocumento = event.srcElement.files[0];
+  }
+
   setDatosConyuge(){
     //Llamar al servicio para ingresar los valores del objeto
+    this.blockIngreso = true;
+    this._portalSociosService.setDatosConyugeSocio(this.datosConyuge).subscribe(
+      response => {
+        if(response.estado == 'failed' || response.estado == 'failed_v'){
+          alert(response.mensaje);
+          this.blockIngreso = false;
+        }else{
+          alert('Se ha ingresado correctamente la conyuge en la base de datos');
+          this.blockIngreso = false;
+        }
+      },
+      error =>{
+        console.log(error);
+        this.blockIngreso = false;
+      }
+    );
     console.log(this.datosConyuge);
   }
 

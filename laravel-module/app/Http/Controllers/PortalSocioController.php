@@ -117,6 +117,11 @@ class PortalSocioController extends Controller
     {
         return PortalSocioCuentaSindical::traerCuentaSindicalTotal($anio, $mes);
     }
+
+    public function TraerCajaChica($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::existeCajaChica($anio, $mes);
+    }
     //------------------------------------------>rutas portal socio cs
 
     //--------------------------------------------------------------------------------

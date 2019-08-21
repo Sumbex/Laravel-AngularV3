@@ -9,6 +9,8 @@ class PortalSocioCuentaSindical extends Model
 {
     protected $table = "cuenta_sindicato";
 
+    protected  $saldo = 100000;
+
     protected function traerMontoIncialMensual($anio, $mes)
     {
         $inicio = DB::table('c_s_cierre_mensual')
@@ -160,6 +162,61 @@ class PortalSocioCuentaSindical extends Model
 
         if (!$totales->isEmpty()) {
             return ['estado' => 'success', 'totales' => $totales];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+        }
+    }
+
+    protected function existeCajaChica($anio, $mes)
+    {
+        $existe = DB::table('cuenta_sindicato')
+            ->select([
+                'monto_egreso'
+            ])
+            ->where([
+                'cuenta_sindicato.activo' => 'S',
+                'cuenta_sindicato.anio_id' => $anio,
+                'cuenta_sindicato.mes_id' => $mes,
+                'cuenta_sindicato.tipo_cuenta_sindicato' => 3
+            ])
+            ->get();
+
+        if (!$existe->isEmpty()) {
+
+            $resta =  $this->saldo - $existe[0]->monto_egreso;
+            $TC = $existe[0]->monto_egreso + $resta;
+
+            return ['estado' => 'success', 'monto_caja' => $TC];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no ha realizado el ingreso a Caja Chica este mes.'];
+        }
+    }
+
+    protected function traerCajaChica($anio, $mes)
+    {
+        $caja = DB::table('cs_caja_chica as cc')
+            ->select([
+                'cc.id',
+                DB::raw("concat(cc.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+                'cc.numero_documento',
+                'cc.archivo_documento',
+                'cc.descripcion',
+                'cc.monto_ingreso',
+                'cc.monto_egreso',
+                'cc.definicion'
+            ])
+            ->join('anio as a', 'a.id', 'anio_id')
+            ->join('mes as m', 'm.id', 'mes_id')
+            ->where([
+                'cc.activo' => 'S',
+                'cc.anio_id' => $anio,
+                'cc.mes_id' => $mes,
+            ])
+            ->orderby('cc.dia', 'ASC')
+            ->get();
+
+        if (!$caja->isEmpty()) {
+            return ['estado' => 'success', 'caja' => $caja];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }

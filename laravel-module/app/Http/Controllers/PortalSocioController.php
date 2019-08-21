@@ -90,6 +90,28 @@ class PortalSocioController extends Controller
     }
     //------------------------------------------>rutas portal socio
 
+    //------------------------------------------>rutas datos basicos
+    public function TraerAnios()
+    {
+        return PortalSocio::traerAnios();
+    }
+
+    public function AnioActual()
+    {
+        return PortalSocio::anioActual();
+    }
+
+    public function TraerMeses()
+    {
+        return PortalSocio::traerMeses();
+    }
+
+    public function MesActual()
+    {
+        return PortalSocio::mesActual();
+    }
+    //------------------------------------------>rutas datos basicos
+
     //------------------------------------------>rutas portal socio cs
     public function TraerCuentaSindical($anio, $mes)
     {

@@ -156,7 +156,7 @@ export class TablaResumenSocioComponent implements OnInit {
         num--;
         this.blockTablaSocio=true;
       } else {
-        this.traerDatosSocio = response;
+        this.traerDatosSocio = response[0];
       }
     },
       error => {

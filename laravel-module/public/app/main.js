@@ -4450,7 +4450,7 @@ let TablaResumenSocioComponent = class TablaResumenSocioComponent {
                 this.blockTablaSocio = true;
             }
             else {
-                this.traerDatosSocio = response;
+                this.traerDatosSocio = response[0];
             }
         }, error => {
             console.log(error);

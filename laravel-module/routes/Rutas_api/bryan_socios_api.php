@@ -27,7 +27,7 @@ Route::get('/traer_mes_actual', 'PortalSocioController@MesActual');
 //------------------------------------------>rutas portal socio cs
 Route::get('/traer_cuenta_sindical_socio/{anio}/{mes}', 'PortalSocioController@TraerCuentaSindical');
 Route::get('/traer_caja_chica_socio/{anio}/{mes}', 'PortalSocioController@TraerCajaChica');
-
+Route::get('/traer_camping_socio/{anio}/{mes}', 'PortalSocioController@TraerCamping');
 //------------------------------------------>rutas portal socio cs
 
 

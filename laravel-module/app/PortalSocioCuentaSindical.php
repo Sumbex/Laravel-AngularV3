@@ -194,10 +194,10 @@ class PortalSocioCuentaSindical extends Model
                 'monto_egreso'
             ])
             ->where([
-                'cuenta_sindicato.activo' => 'S',
-                'cuenta_sindicato.anio_id' => $anio,
-                'cuenta_sindicato.mes_id' => $mes,
-                'cuenta_sindicato.tipo_cuenta_sindicato' => 3
+                'activo' => 'S',
+                'anio_id' => $anio,
+                'mes_id' => $mes,
+                'tipo_cuenta_sindicato' => 3
             ])
             ->get();
 
@@ -289,6 +289,126 @@ class PortalSocioCuentaSindical extends Model
             }
         } else {
             return $existe;
+        }
+    }
+
+    protected function traerCampingTotal($anio, $mes)
+    {
+        $monto = $this->traerMontoCierreCamping($anio, $mes);
+        if (array_has($monto, 'estado')) {
+            $totales = $this->totalesCamping($anio, $mes, $monto['monto']);
+            if ($totales['estado'] == 'success') {
+                $camping = $this->traerCamping($anio, $mes, $monto['monto'], $totales['totales']);
+                if ($camping['estado'] == 'success') {
+                    return $camping;
+                } else {
+                    return $camping;
+                }
+            } else {
+                return $totales;
+            }
+        }
+    }
+
+    protected function traerMontoCierreCamping($anio, $mes)
+    {
+        $monto = DB::table('monto_cierre_camping')
+            ->select([
+                'cierre_calculable'
+            ])
+            ->where([
+                'activo' => 'S',
+                'anio_id' => $anio,
+                'mes_id' => $mes
+            ])
+            ->get();
+
+        if (!$monto->isEmpty()) {
+            return ['estado' => 'success', 'monto' => $monto[0]->cierre_calculable];
+        } else {
+            return ['estado' => 'failed', 'monto' => 0];
+        }
+    }
+
+    protected function traerCamping($anio, $mes, $MI, $totales)
+    {
+        $camping = DB::table('cuenta_sindicato as cs')
+            ->select([
+                'cs.id',
+                DB::raw("concat(cs.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+                'cs.numero_documento',
+                'cs.archivo_documento',
+                'cs.descripcion',
+                'cs.monto_ingreso',
+                'cs.monto_egreso',
+                'cs.definicion'
+            ])
+            ->join('anio as a', 'a.id', 'anio_id')
+            ->join('mes as m', 'm.id', 'mes_id')
+            ->where([
+                'cs.anio_id' => $anio,
+                'cs.mes_id' => $mes,
+                'cs.activo' => 'S',
+                'cs.tipo_cuenta_sindicato' => '5',
+                'cs.detalle_camping' => 'S'
+            ])
+            ->orderBy('cs.dia', 'asc')
+            ->get();
+
+        if (!$camping->isEmpty()) {
+            $tomar = true;
+
+            for ($i = 0; $i < count($camping); $i++) {
+                switch ($camping[$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $camping[$i]->saldo_actual = $MI + $camping[$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $camping[$i]->saldo_actual = $camping[$i - 1]->saldo_actual + $camping[$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $camping[$i]->saldo_actual = $MI - $camping[$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $camping[$i]->saldo_actual = $camping[$i - 1]->saldo_actual - $camping[$i]->monto_egreso;
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            return ['estado' => 'success', 'monto_inicio' => $MI, 'camping' => $camping, 'totales' => $totales];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+        }
+    }
+
+    protected function totalesCamping($anio, $mes, $total)
+    {
+        $totales = DB::table('cuenta_sindicato')
+            ->select([
+                DB::raw('sum(monto_ingreso) as total_ingreso'),
+                DB::raw('sum(monto_egreso) as total_egreso'),
+                DB::raw('sum(monto_ingreso) - sum(monto_egreso) as total')
+            ])
+            ->where([
+                'anio_id' => $anio,
+                'mes_id' => $mes,
+                'activo' => 'S',
+                'tipo_cuenta_sindicato' => '5',
+                'detalle_camping' => 'S'
+            ])
+            ->get();
+
+        if (!$totales->isEmpty()) {
+            $totales[0]->total = $totales[0]->total + $total;
+            return ['estado' => 'success', 'totales' => $totales[0]];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }
     }
 }

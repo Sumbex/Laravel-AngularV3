@@ -260,4 +260,15 @@ export class PortalSociosService{
             }
         )});
     }
+
+    //Servicio para llamar a la caja chica
+    getCajaChica(anio: string, mes: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_caja_chica_socio/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 }

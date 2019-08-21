@@ -16,6 +16,9 @@ export class CajaChicaComponent implements OnInit {
   idAnioActual;
   idMesActual;
 
+  //Variable para las cargas
+  cargandoTabla = false;
+
   //Variable que almacena los valores obtenidos para la tabla caja chica
   datosCajaChica;
 
@@ -36,7 +39,8 @@ export class CajaChicaComponent implements OnInit {
   }
 
   openModalCajaChica(cajaChicaModal) {
-    this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' })
+    this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
+    this.cargarFechasActuales();
   }
 
   cargarFechasActuales() {
@@ -62,7 +66,16 @@ export class CajaChicaComponent implements OnInit {
   }
 
   cargarTablaCajaChica(){
-    
+    this._portalSociosService.getCajaChica(this.idAnioActual, this.idMesActual).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        console.log(response);
+      }
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 }

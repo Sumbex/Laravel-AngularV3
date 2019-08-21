@@ -13,7 +13,7 @@
   <div class="row centrarCajaChica">
     <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
             class="fas fa-calendar-check"></i></strong></label>
-      <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="valorAnio.descripcion"
+      <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
         class="form-control form-control-sm">
         <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
       </select>
@@ -21,7 +21,7 @@
 
     <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
             class="fas fa-calendar-check"></i></strong></label>
-      <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="valorMes.descripcion"
+      <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
         class="form-control form-control-sm">
         <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
       </select>
@@ -34,7 +34,7 @@
         <tr>
           <th colspan="11" style="background: #138D75;" class="ColorThCS">Tabla caja chica</th>
           <th colspan="2" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
-          <td colspan="2"><strong *ngIf="!cajaChicaError">{{ 100000 | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+          <td colspan="2"><strong>{{ montoInicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
           </td>
         </tr>
         <tr>
@@ -48,10 +48,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of cajaChica" class="text-center">
-          <td colspan="2" (click)="editarParametro(item.id, 'fecha', item.fecha)">{{item.fecha}}</td>
-          <td colspan="2" (click)="editarParametro(item.id, 'numero_documento', item.numero_documento)">
-            {{item.numero_documento}}</td>
+        <tr *ngFor="let item of datosCajaChica" class="text-center">
+          <td colspan="2">{{item.fecha}}</td>
+          <td colspan="2">{{item.numero_documento}}</td>
 
 
           <!--MODAL VISOR PDF-->

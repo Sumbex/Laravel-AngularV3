@@ -16,6 +16,9 @@ use App\SocioSituacion;
 use App\SocioConyuge;
 use App\SocioBeneficiario;
 use App\User;
+use App\SocioCarga;
+use App\SocioPadresSuegros;
+use Illuminate\Support\Facades\Storage;
 
 class PortalSocio extends Authenticatable implements JWTSubject
 {
@@ -64,11 +67,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required|min:0'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'El nombre es necesario'
                             ]
                         );
@@ -77,11 +78,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required|min:0'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'El apellido es necesario'
                             ]
                         );
@@ -90,11 +89,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required|min:0'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'El apellido es necesario'
                             ]
                         );
@@ -103,11 +100,9 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         $validator = Validator::make(
                             $request->all(),
                             [
-                                'socio_id' => 'required',
                                 'input' => 'required'
                             ],
                             [
-                                'socio_id.required' => 'Debes pasar el ID del socio',
                                 'input.required' => 'La fecha es necesaria'
                             ]
                         );
@@ -172,7 +167,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno' => 'required|string',
                         'apellido_materno' => 'required|string',
                         'direccion' => 'required|string',
-                        'celular' => 'required|string'
+                        'celular' => 'required|string',
+                        'archivo' => 'required|file|mimes:pdf'
                     ],
                     [
                         'rut.required' => 'Debes ingresar el rut.',
@@ -181,7 +177,10 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno.required' => 'Debes ingresar el apellido',
                         'apellido_materno.required' => 'Debes ingresar el apellido',
                         'direccion.required' => 'Debes ingresar la direccion',
-                        'celular.required' => 'Debes ingresar el numero de celular'
+                        'celular.required' => 'Debes ingresar el numero de celular',
+                        'archivo.required' => 'Debe seleccionar un archivo.',
+                        'archivo.file' => 'Lo seleccionado debe ser un archivo.',
+                        'archivo.mimes' => 'El archivo debe ser extension PDF.'
                     ]
                 );
                 break;
@@ -227,6 +226,62 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'new_password.same' => 'Las contrasenas ingresadas no son iguales.'
 
 
+                    ]
+                );
+                break;
+
+            case 7:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'relacion_socio_id' => 'required|string',
+                        'rut' => 'required',
+                        'fecha_nacimiento' => 'required',
+                        'nombres' => 'required|string',
+                        'apellido_paterno' => 'required|string',
+                        'apellido_materno' => 'required|string',
+                        'direccion' => 'required|string',
+                        'celular' => 'required|string'
+                    ],
+                    [
+                        'relacion_socio_id.required' => 'Debes ingresar su relacion.',
+                        'rut.required' => 'Debes ingresar el rut.',
+                        'fecha_nacimiento.required' => 'Debes ingresar la fecha de nacimiento.',
+                        'nombres.required' => 'Debes ingresar los nombres.',
+                        'apellido_paterno.required' => 'Debes ingresar el apellido',
+                        'apellido_materno.required' => 'Debes ingresar el apellido',
+                        'direccion.required' => 'Debes ingresar la direccion',
+                        'celular.required' => 'Debes ingresar el numero de celular'
+                    ]
+                );
+                break;
+
+            case 8:
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'tipo_carga_id' => 'required|string',
+                        'rut' => 'required',
+                        'fecha_nacimiento' => 'required',
+                        'nombres' => 'required|string',
+                        'apellido_paterno' => 'required|string',
+                        'apellido_materno' => 'required|string',
+                        'direccion' => 'required|string',
+                        'celular' => 'required|string',
+                        'archivo' => 'required|file|mimes:pdf'
+                    ],
+                    [
+                        'tipo_carga_id.required' => 'Debes seleccionar el tipo.',
+                        'rut.required' => 'Debes ingresar el rut.',
+                        'fecha_nacimiento.required' => 'Debes ingresar la fecha de nacimiento.',
+                        'nombres.required' => 'Debes ingresar los nombres.',
+                        'apellido_paterno.required' => 'Debes ingresar el apellido',
+                        'apellido_materno.required' => 'Debes ingresar el apellido',
+                        'direccion.required' => 'Debes ingresar la direccion',
+                        'celular.required' => 'Debes ingresar el numero de celular',
+                        'archivo.required' => 'Debe seleccionar un archivo.',
+                        'archivo.file' => 'Lo seleccionado debe ser un archivo.',
+                        'archivo.mimes' => 'El archivo debe ser extension PDF.'
                     ]
                 );
                 break;
@@ -348,11 +403,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 6);
             if ($validarDatos['estado'] == 'success') {
-                $user = User::find($this->socioLogeado()->id);
-                if (Hash::check($user->password, $request->password)) {
+                $user = User::find(Auth::guard()->user()->id);
+                //dd(Hash::check($request->password, $user->password));
+                if (Hash::check($request->password, $user->password)) {
                     $user->password = bcrypt($request->new_password);
                     if ($user->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Contrasena actualizada. Recuerda cerrar tu sesion para verificar si el cambio fue correcto.'];
+                        return ['estado' => 'success', 'mensaje' => 'Contrasena actualizada, ahora su sesion se cerrara para que el cambio sea correcto.'];
                     } else {
                         return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                     }
@@ -423,6 +479,23 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    protected function guardarArchivo($archivo, $ruta)
+    {
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+        $rutaDB = $ruta . $nombreArchivo;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+        if ($guardar) {
+            return ['estado' =>  'success', 'archivo' => $rutaDB];
+        } else {
+            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+        }
+    }
+
     protected function traerDatosBasicosSocios()
     {
         $socio = DB::table('socios_datos_basicos as sdb')
@@ -456,14 +529,29 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ])
             ->get();
 
-        $estados = [];
         if (!$socio->isEmpty()) {
-            if (!is_null($socio[0]->grupo_sangre)) {
-                $estados['grupo_sangre'] = true;
-            }
-            return ['estado' => 'success', 'socio' => $socio, 'estados' => $estados];
+            return ['estado' => 'success', 'socio' => $socio];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function traerArchivoResumen()
+    {
+        $archivo = DB::table('socios_datos_basicos')
+            ->select([
+                'archivo'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$archivo->isEmpty()) {
+            return ['estado' => 'success', 'archivo' => $archivo];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes tu archivo resumen ingresado.'];
         }
     }
 
@@ -709,7 +797,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'apellido_paterno',
                 'apellido_materno',
                 'direccion',
-                'celular'
+                'celular',
+                'archivo'
             ])
             ->where([
                 'activo' => 'S',
@@ -737,10 +826,17 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $conyuge->rut = $request->rut;
                     $conyuge->fecha_nacimiento = $request->fecha_nacimiento;
                     $conyuge->nombres = $request->nombres;
-                    $conyuge->apellido_paterno = $request->apellido_materno;
+                    $conyuge->apellido_paterno = $request->apellido_paterno;
+                    $conyuge->apellido_materno = $request->apellido_materno;
                     $conyuge->direccion = $request->direccion;
                     $conyuge->celular = $request->celular;
                     $conyuge->activo = 'S';
+                    $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosConyuge/');
+                    if ($guardarArchivo['estado'] == "success") {
+                        $conyuge->archivo = 'storage/' . $guardarArchivo['archivo'];
+                    } else {
+                        return $guardarArchivo;
+                    }
                     if ($conyuge->save()) {
                         return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
                     } else {
@@ -769,7 +865,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'apellido_materno',
                 'direccion',
                 'celular',
-                'cobro_beneficion',
+                'cobro_beneficio',
                 'fecha_cobro_beneficio'
             ])
             ->where([
@@ -790,28 +886,56 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    protected function verificarBeneficiarioIngresado($rut)
+    {
+        $beneficiario = DB::table('socio_beneficiario')
+            ->select([
+                'rut',
+                'socio_id',
+                DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre")
+            ])
+            ->join('relacion_socio as rc', 'rc.id', 'pss.relacion_socio_id')
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id,
+                'rut' => $rut
+            ])
+            ->get();
+
+        if (!$beneficiario->isEmpty()) {
+            return ['estado' => 'success', 'beneficiario' => $beneficiario];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
     protected function ingresarBeneficiariosSocio($request)
     {
         $verificar = $this->verificarSocio($this->socioLogeado()->id);
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 5);
             if ($validarDatos['estado'] == 'success') {
-                $beneficiario = new SocioBeneficiario;
-                $beneficiario->socio_id = $this->socioLogeado()->id;
-                $beneficiario->relacion = $request->relacion;
-                $beneficiario->rut = $request->rut;
-                $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
-                $beneficiario->nombres = $request->nombres;
-                $beneficiario->apellido_paterno = $request->apellido_paterno;
-                $beneficiario->apellido_materno = $request->apellido_materno;
-                $beneficiario->direccion = $request->direccion;
-                $beneficiario->celular = $request->celular;
-                $beneficiario->activo = 'S';
-                $beneficiario->cobro_beneficio = 'N';
-                if ($beneficiario->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                if ($tienesDatos['estado'] == 'failed') {
+                    $beneficiario = new SocioBeneficiario;
+                    $beneficiario->socio_id = $this->socioLogeado()->id;
+                    $beneficiario->relacion = $request->relacion;
+                    $beneficiario->rut = $request->rut;
+                    $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
+                    $beneficiario->nombres = $request->nombres;
+                    $beneficiario->apellido_paterno = $request->apellido_paterno;
+                    $beneficiario->apellido_materno = $request->apellido_materno;
+                    $beneficiario->direccion = $request->direccion;
+                    $beneficiario->celular = $request->celular;
+                    $beneficiario->activo = 'S';
+                    $beneficiario->cobro_beneficio = 'N';
+                    if ($beneficiario->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado al beneficiario ' . $tienesDatos['beneficiario'][0]->nombre . '.'];
                 }
             } else {
                 return $validarDatos;
@@ -825,13 +949,16 @@ class PortalSocio extends Authenticatable implements JWTSubject
     {
         $cargas = DB::table('cargas_legales_socio')
             ->select([
+                'tipo_carga_id',
                 'rut',
                 'fecha_nacimiento',
                 'nombres',
                 'apellido_paterno',
                 'apellido_materno',
                 'direccion',
-                'celular'
+                'celular',
+                'establecimiento',
+                'archivo'
             ])
             ->where([
                 'activo' => 'S',
@@ -848,7 +975,121 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function ingresarDatosCargasSocio($request)
     {
-        //
+        $verificar = $this->verificarSocio($this->socioLogeado()->id);
+        if ($verificar['estado'] == 'success') {
+            $validarDatos = $this->validarDatos($request, 8);
+            if ($validarDatos['estado'] == 'success') {
+                $carga = new SocioCarga;
+                $carga->socio_id = $this->socioLogeado()->id;
+                $carga->tipo_carga_id = $request->tipo_carga_id;
+                $carga->rut = $request->rut;
+                $carga->fecha_nacimiento = $request->fecha_nacimiento;
+                $carga->nombres = $request->nombres;
+                $carga->apellido_paterno = $request->apellido_paterno;
+                $carga->apellido_materno = $request->apellido_materno;
+                $carga->direccion = $request->direccion;
+                $carga->celular = $request->celular;
+                $carga->establecimiento = $request->establecimiento;
+                $carga->activo = 'S';
+                $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosCargas/');
+                if ($guardarArchivo['estado'] == "success") {
+                    $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
+                } else {
+                    return $guardarArchivo;
+                }
+                if ($carga->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
+            } else {
+                return $validarDatos;
+            }
+        } else {
+            return $verificar;
+        }
+    }
+
+    protected function traerDatosPadresSuegrosSocio()
+    {
+        $PS = DB::table('padres_suegros_socio')
+            ->select([
+                'relacion_socio_id',
+                'rut',
+                'fecha_nacimiento',
+                'nombres',
+                'apellido_paterno',
+                'apellido_materno',
+                'direccion',
+                'celular'
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$PS->isEmpty()) {
+            return ['estado' => 'success', 'padres_suegros' => $PS];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function verificarRelacionIngresada($relacion_socio_id)
+    {
+        $relacion = DB::table('padres_suegros_socio as pss')
+            ->select([
+                'rc.descripcion'
+            ])
+            ->join('relacion_socio as rc', 'rc.id', 'pss.relacion_socio_id')
+            ->where([
+                'pss.activo' => 'S',
+                'pss.socio_id' => $this->socioLogeado()->id,
+                'pss.relacion_socio_id' => $relacion_socio_id
+            ])
+            ->get();
+
+        if (!$relacion->isEmpty()) {
+            return ['estado' => 'success', 'relacion' => $relacion];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
+    protected function ingresarDatosPadresSuegrosSocio($request)
+    {
+        $verificar = $this->verificarSocio($this->socioLogeado()->id);
+        if ($verificar['estado'] == 'success') {
+            $validarDatos = $this->validarDatos($request, 7);
+            if ($validarDatos['estado'] == 'success') {
+                $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                if ($tienesDatos['estado'] == 'failed') {
+                    $PS = new SocioPadresSuegros;
+                    $PS->socio_id = $this->socioLogeado()->id;
+                    $PS->relacion_socio_id = $request->relacion_socio_id;
+                    $PS->rut = $request->rut;
+                    $PS->fecha_nacimiento = $request->fecha_nacimiento;
+                    $PS->nombres = $request->nombres;
+                    $PS->apellido_paterno = $request->apellido_paterno;
+                    $PS->apellido_materno = $request->apellido_materno;
+                    $PS->direccion = $request->direccion;
+                    $PS->celular = $request->celular;
+                    $PS->activo = 'S';
+                    if ($PS->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion'][0]->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
+                }
+            } else {
+                return $validarDatos;
+            }
+        } else {
+            return $verificar;
+        }
     }
 
     protected function crearUsuarioSocio($request)
@@ -932,6 +1173,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    //--------------------------------------------------------------------------------
     protected function crearUsuariosAdmin($request)
     {
         $crear = new User;
@@ -959,4 +1201,6 @@ class PortalSocio extends Authenticatable implements JWTSubject
             return ['estado' => 'failed', 'mensaje' => 'Error al eliminar las credenciales.'];
         }
     }
+    //--------------------------------------------------------------------------------
+
 }

@@ -31,6 +31,7 @@ export class ListarSociosComponent implements OnInit {
    load:boolean=false;
    modalReference = null; 
    m_val = null;
+   mod_opcion = null;
 
    closeResult: string;
    pass:string = '';
@@ -218,7 +219,17 @@ export class ListarSociosComponent implements OnInit {
         window.stop()
   }
 
+  modal_opcion(modal){
+    this.mod_opcion = this.modalService.open(modal, { size: 'lg' });
+  }
+
+  cerrar_opcion(){
+    this.mod_opcion.close();
+  }
   
+  asignar_portal(socio_id){
+
+  }
 
 
   // fin del metodo para validar usuario

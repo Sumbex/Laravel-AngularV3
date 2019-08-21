@@ -11,6 +11,8 @@ import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service
 export class TablaBeneficiosConyugeComponent implements OnInit {
 
   abrirTablaBeneficiosConyuge;
+  abrirDocumento;
+  UpdDocumento;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -24,6 +26,7 @@ export class TablaBeneficiosConyugeComponent implements OnInit {
                     'celular',
                     'created_at',
                     'updated_at',
+                    'archivo',
                     ];
 vista_tabla: boolean = false;
 
@@ -38,6 +41,9 @@ pass:string = '';
 buttonStatus = false;
 
 actualizarLoad:boolean=false;
+vista_pdf:boolean=false;
+DocumentoConyuge;
+entrada;
     
 
   constructor(config: NgbModalConfig, 
@@ -50,11 +56,43 @@ actualizarLoad:boolean=false;
 
   ngOnInit() {
   }
+
   verTablaBeneficios(TablaBeneficios) {
     this.abrirTablaBeneficiosConyuge = this.modalService.open(TablaBeneficios, { size: 'xl' });
     this.listarDatosConyuge();
     this.usuario_logeado();
   }
+
+  verDocumento(Documento) {
+    this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
+    this.traerDocumentoConyuge();
+  }
+  onSelectImage(event) {
+    this.UpdDocumento = event.srcElement.files[0];
+  }
+
+  traerDocumentoConyuge(){
+    this.vista_pdf = true;
+    this._SociosService.getRegistroCivil(this.getIdSocio).subscribe((response) =>{
+      // console.log(response);
+     if(response.estado == "failed"){
+       this.vista_pdf = false;
+       alert(response.mensaje);
+       this.abrirDocumento.close();
+       return false;
+     }else{
+       this.DocumentoConyuge = response.body[0].archivo;
+      //  console.log(this.TraerDocumentoSocio);
+       this.vista_pdf = false;
+     }
+ 
+        error => {
+       console.log(error);
+       this.vista_pdf = false;
+       }
+     }
+   );
+   }
 
   limpiar_tabla(){
     this.vista_tabla = false;
@@ -96,6 +134,20 @@ actualizarLoad:boolean=false;
    
      //actualizar items
      actualizar(campo,valor,validar){
+
+      if(campo == "archivo"){
+        if(valor.value == null){
+          alert("ingrese documento porfavor!")
+          return false;
+        }
+        this.entrada = this.UpdDocumento; 
+       }else{
+         this.entrada = valor.value;
+       }
+       if(this.entrada == ''){
+         alert("ingrese datos porfavor!");
+         return false;
+       }
  
        this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
            
@@ -121,7 +173,7 @@ actualizarLoad:boolean=false;
                    const data = new FormData();
                    data.append('id', this.getIdSocio);
                    data.append('campo',campo);
-                   data.append('valor',valor.value);
+                   data.append('valor',this.entrada);
    
                    this.actualizarLoad = true;
                    this._SociosService.ActualizarDatosConyuge(data).subscribe(
@@ -130,12 +182,14 @@ actualizarLoad:boolean=false;
                           alert(response.mensaje);
                           this.actualizarLoad = false;
                           this.pass = "";
+                          this.UpdDocumento = null;
                           this.listarDatosConyuge();
                          }
                          if (response.estado == "failed") {
                           alert(response.mensaje);
                           this.actualizarLoad = false;
                           this.pass = "";
+                          this.UpdDocumento = null;
                           this.listarDatosConyuge();
                           return false;
                          }
@@ -150,6 +204,7 @@ actualizarLoad:boolean=false;
                this.load = false;
                this.buttonStatus = false;
                this.pass = "";
+               this.UpdDocumento = null;
                this.m_val.close();
                return false;
              }

@@ -9,7 +9,9 @@ import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service
   styleUrls: ['./tabla-beneficios-cargas.component.css']
 })
 export class TablaBeneficiosCargasComponent implements OnInit {
+
   abrirTablaBeneficiosCarga;
+  abrirDocumento;
 
   @Input () getIdSocio;
   @Input () getNombreSocio;
@@ -39,6 +41,11 @@ export class TablaBeneficiosCargasComponent implements OnInit {
    buttonStatus = false;
 
    actualizarLoad:boolean=false;
+   vista_pdf:boolean=false;
+   DocumentoCarga;
+
+   UpdDocumento;
+   entrada;
 
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,
@@ -55,6 +62,38 @@ export class TablaBeneficiosCargasComponent implements OnInit {
     this.listarDatosCarga();
     this.usuario_logeado();
   }
+
+  verDocumento(Documento,idCarga) {
+    this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
+    this.traerDocumentoCarga(idCarga);
+  }
+
+  onSelectImage(event) {
+    this.UpdDocumento = event.srcElement.files[0];
+  }
+
+  traerDocumentoCarga(idCarga){
+    this.vista_pdf = true;
+    this._SociosService.getCertificadoNacimiento(idCarga).subscribe((response) =>{
+      // console.log(response);
+     if(response.estado == "failed"){
+       this.vista_pdf = false;
+       alert(response.mensaje);
+       this.abrirDocumento.close();
+       return false;
+     }else{
+       this.DocumentoCarga = response.body[0].archivo;
+      //  console.log(this.TraerDocumentoSocio);
+       this.vista_pdf = false;
+     }
+ 
+        error => {
+       console.log(error);
+       this.vista_pdf = false;
+       }
+     }
+   );
+   }
 
   limpiar_tabla(){
     this.vista_tabla = false;
@@ -96,7 +135,21 @@ export class TablaBeneficiosCargasComponent implements OnInit {
   
     //actualizar items
     actualizar(campo,valor,validar,id){
-  
+
+      if(campo == "archivo"){
+        if(valor.value == null){
+          alert("ingrese documento porfavor!")
+          return false;
+        }
+        this.entrada = this.UpdDocumento; 
+       }else{
+         this.entrada = valor.value;
+       }
+       if(this.entrada == ''){
+         alert("ingrese datos porfavor!");
+         return false;
+       }
+ 
       this.m_val = this.modalService.open(validar, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           
         this.m_val = this.modalService.open(validar, { size: 'sm' });
@@ -121,7 +174,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
                   const data = new FormData();
                   data.append('id', this.getIdSocio);
                   data.append('campo',campo);
-                  data.append('valor',valor.value);
+                  data.append('valor',this.entrada);
                   data.append('carga_socio_id',id);
   
                   this.actualizarLoad = true;
@@ -131,12 +184,14 @@ export class TablaBeneficiosCargasComponent implements OnInit {
                          alert(response.mensaje);
                          this.actualizarLoad = false;
                          this.pass = "";
+                         this.UpdDocumento = null;
                          this.listarDatosCarga();
                         }
                         if (response.estado == "failed") {
                          alert(response.mensaje);
                          this.actualizarLoad = false;
                          this.pass = "";
+                         this.UpdDocumento = null;
                          this.listarDatosCarga();
                          return false;
                         }
@@ -151,6 +206,7 @@ export class TablaBeneficiosCargasComponent implements OnInit {
               this.load = false;
               this.buttonStatus = false;
               this.pass = "";
+              this.UpdDocumento = null;
               this.m_val.close();
               return false;
             }

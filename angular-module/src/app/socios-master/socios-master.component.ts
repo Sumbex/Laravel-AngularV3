@@ -3,7 +3,6 @@ import { UsuarioService } from '../servicios/usuarios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PortalSociosService } from '../servicios/portal-socios.service';
 import { map } from 'rxjs/operators';
-import { AniosService } from '../servicios/anios.service';
 
 @Component({
   selector: 'app-socios-master',
@@ -14,7 +13,7 @@ export class SociosMasterComponent implements OnInit {
 
   tiempoEsperaToken: number = 1;
 
-  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private _getAnios: AniosService) {
+  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private _getAnios: PortalSociosService) {
   }
 
   ngOnInit() {

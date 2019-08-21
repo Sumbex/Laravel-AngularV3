@@ -207,4 +207,46 @@ export class PortalSociosService{
             {'Authorization': 'Bearer' + token}
         )});
     }
+
+    //OBTENER FECHAS PARA EL PORTAL DE SOCIOS
+
+    getAnios() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "traer_anios", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getMeses() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "traer_meses", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getAnioActual() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_anio_actual", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+    
+    getMesActual() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_mes_actual", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
 }

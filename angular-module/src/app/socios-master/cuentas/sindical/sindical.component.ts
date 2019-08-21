@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AniosService } from 'src/app/servicios/anios.service';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-sindical',
@@ -19,9 +19,17 @@ export class SindicalComponent implements OnInit {
   //variable asociada al modalSindical
   modalTablaSindical;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _fechasService: AniosService) { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _fechasService: PortalSociosService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+
+    //Cargar Meses
+    this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
   openModalTablaSindical(tablaSindical){
@@ -32,7 +40,7 @@ export class SindicalComponent implements OnInit {
     //Cargar id del Año actual
     this._fechasService.getAnioActual().subscribe(
      response => {
-       this.selectAnio = response;
+       this.idAnioActual = response.id;
      },
      error => {
        console.log(error);
@@ -42,7 +50,7 @@ export class SindicalComponent implements OnInit {
    //Cargar id del Mes actual
    this._fechasService.getMesActual().subscribe(
      response => {
-       this.selectMes = response;             
+       this.idMesActual = response.id;             
      },
      error => {
        console.log(error);

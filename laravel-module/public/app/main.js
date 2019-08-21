@@ -6750,6 +6750,35 @@ let PortalSociosService = class PortalSociosService {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_archivo_resumen_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
     }
+    //OBTENER FECHAS PARA EL PORTAL DE SOCIOS
+    getAnios() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_anios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }) });
+    }
+    getMeses() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_meses", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }) });
+    }
+    getAnioActual() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }) });
+    }
+    getMesActual() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }) });
+    }
 };
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -7618,7 +7647,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
@@ -7627,8 +7656,14 @@ let SindicalComponent = class SindicalComponent {
     constructor(config, modalService, _fechasService) {
         this.modalService = modalService;
         this._fechasService = _fechasService;
+        config.backdrop = 'static';
+        config.keyboard = false;
     }
     ngOnInit() {
+        //Cargar Años
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+        //Cargar Meses
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
     }
     openModalTablaSindical(tablaSindical) {
         this.modalTablaSindical = this.modalService.open(tablaSindical, { size: 'xl' });
@@ -7636,13 +7671,13 @@ let SindicalComponent = class SindicalComponent {
     cargarFechasActuales() {
         //Cargar id del Año actual
         this._fechasService.getAnioActual().subscribe(response => {
-            this.selectAnio = response;
+            this.idAnioActual = response.id;
         }, error => {
             console.log(error);
         });
         //Cargar id del Mes actual
         this._fechasService.getMesActual().subscribe(response => {
-            this.selectMes = response;
+            this.idMesActual = response.id;
         }, error => {
             console.log(error);
         });
@@ -7654,7 +7689,7 @@ SindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/sindical/sindical.component.html"),
         styles: [__webpack_require__(/*! ./sindical.component.css */ "./src/app/socios-master/cuentas/sindical/sindical.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
 ], SindicalComponent);
 
 
@@ -8629,8 +8664,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-
 
 
 
@@ -8678,7 +8711,7 @@ SociosMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./socios-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/socios-master.component.html"),
         styles: [__webpack_require__(/*! ./socios-master.component.css */ "./src/app/socios-master/socios-master.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
 ], SociosMasterComponent);
 
 

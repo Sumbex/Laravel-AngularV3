@@ -221,4 +221,31 @@ class PortalSocioCuentaSindical extends Model
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }
     }
+
+    protected function totalesCajaChica($anio, $mes)
+    {
+        $existe = $this->existeCajaChica($anio, $mes);
+        if ($existe['estado'] == 'success') {
+            $totales = DB::table('cs_caja_chica')
+                ->select([
+                    DB::raw('sum(monto_ingreso) as total_ingreso'),
+                    DB::raw('sum(coalesce(monto_ingreso, 0)) as total_egreso'),
+                    DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(monto_egreso) as total')
+                ])
+                ->where([
+                    'activo' => 'S',
+                    'anio_id' => $anio,
+                    'mes_id' => $mes,
+                ])
+                ->get();
+
+            if (!$totales->isEmpty()) {
+                return ['estado' => 'success', 'totales' => $totales];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+            }
+        } else {
+            return $existe;
+        }
+    }
 }

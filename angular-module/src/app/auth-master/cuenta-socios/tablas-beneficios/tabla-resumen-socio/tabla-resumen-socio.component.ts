@@ -101,6 +101,7 @@ traerDatosConyuge:object = [
     ];
 
 vista_tabla:boolean=false;
+vista_pdf:boolean=false;
 ocultar_tabla:boolean=true;
 ocultar_imprimir:boolean=true;
 
@@ -120,23 +121,22 @@ constructor(private _SociosService:SociosService,
   }
 
   traerDocumentoSocio(){
-    this.vista_tabla = true;
+    this.vista_pdf = true;
     this._SociosService.getDocumentoResumen(this.getIdSocio).subscribe((response) =>{
-    //  if(response.estado == "failed"){
-    //    // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-    //    this.vista_tabla = false;
-    //    alert(response.mensaje);
-    //    this.abrirTablaResumen.close();
-    //    return false;
-    //  }else{
-       this.TraerDocumentoSocio = response[0].archivo;
-       this.vista_tabla = false;
-    //  }
+     if(response.estado == "failed"){
+       this.vista_pdf = false;
+       alert(response.mensaje);
+       this.abrirTablaResumen.close();
+       return false;
+     }else{
+       this.TraerDocumentoSocio = response.body[0].archivo;
+       this.vista_pdf = false;
+     }
  
-    //     error => {
-    //    console.log(error);
-    //    this.vista_tabla = false;
-    //    }
+        error => {
+       console.log(error);
+       this.vista_pdf = false;
+       }
      }
    );
    }

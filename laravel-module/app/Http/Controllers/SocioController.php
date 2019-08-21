@@ -9,6 +9,7 @@ use App\SocioPadresSuegros;
 use App\SocioSituacion;
 use App\Socio_datos_basicos;
 use App\Socios;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -481,15 +482,6 @@ class SocioController extends Controller
     //             // -----------------------------------------
             case 'socio_casa_propia':
 
-
-                    // $sdb->casa_propia = $r->valor;
-                    // if ($sdb->save()) { 
-
-                    //     return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
-
-                    // $sdb->casa_propia = $r->valor;
-                    // if ($sdb->save()) { 
-
                     $sdb->casa_propia = $r->valor;
                     if ($sdb->save()) { 
 
@@ -501,10 +493,6 @@ class SocioController extends Controller
             break;
 
             case 'socio_rol_turno':
-                    
-
-                    // $sdb->rol_turno = $r->valor;
-                    // if ($sdb->save()) { 
 
                     $sdb->rol_turno = $r->valor;
                     if ($sdb->save()) { 
@@ -517,10 +505,6 @@ class SocioController extends Controller
             break;
 
             case 'socio_estado_civil_id':
-                    
-
-                    // $sdb->estado_civil_id = $r->valor;
-                    // if ($sdb->save()) { 
 
                     $sdb->estado_civil_id = $r->valor;
                     if ($sdb->save()) { 
@@ -535,10 +519,6 @@ class SocioController extends Controller
 
 
             case 'socio_conyuge':
-                    
-
-                    // $sdb->conyuge = $r->valor;
-                    // if ($sdb->save()) { 
 
                     $sdb->conyuge = $r->valor;
                     if ($ss->save()) { 
@@ -549,6 +529,11 @@ class SocioController extends Controller
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
+
+            // case 'archivo':
+               
+
+            // break;
 
            
          }
@@ -723,6 +708,36 @@ class SocioController extends Controller
                  }
             break;
 
+            case 'archivo':
+                 //actualizar----------------------------------------------------------------------------
+                     $valida_pdf = $this->validar_pdf_upd($r);
+                        if($valida_pdf['estado'] == 'success'){
+                         $ruta = substr($cony->archivo,0);
+                            
+                            $borrar = Storage::delete('/'.$ruta);
+                            if ($borrar) {
+                                $guardarArchivo = $this->guardarArchivo($r->valor, 'ArchivosSocios/ArchivosConyuge/');
+
+                                if ($guardarArchivo['estado'] == "success") {
+                                    $cony->archivo = $guardarArchivo['archivo'];
+                                    if ($cony->save()) {
+                                        return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                    } else {
+                                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                                    }
+                                } else {
+                                    return $guardarArchivo;
+                                }
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                            }
+                        }else{
+                            return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                        }
+
+        
+                //fin actualzar-------------------------------------------------------------------
+            break;
 
             default:
                 # code...
@@ -965,7 +980,9 @@ class SocioController extends Controller
     }
     public function traer_datos_carga($socio_id)
     {
-        $carga = SocioCarga::where(['activo'=>'S','socio_id'=>$socio_id])->get();
+        $carga = SocioCarga::where(['activo'=>'S','socio_id'=>$socio_id])
+                 ->orderBy('created_at','ASC')
+                 ->get();
 
         if (count($carga)>0) {
             return ['estado'=>'success', 'mensaje'=>'si hay datos','body'=>$carga];
@@ -1070,6 +1087,37 @@ class SocioController extends Controller
                 }
                 return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
             break;
+
+             case 'archivo':
+                 //actualizar----------------------------------------------------------------------------
+                     $valida_pdf = $this->validar_pdf_upd($r);
+                        if($valida_pdf['estado'] == 'success'){
+                         $ruta = substr($carga->archivo,0);
+                            
+                            $borrar = Storage::delete('/'.$ruta);
+                            if ($borrar) {
+                                $guardarArchivo = $this->guardarArchivo($r->valor, 'ArchivosSocios/ArchivosCargas/');
+
+                                if ($guardarArchivo['estado'] == "success") {
+                                    $carga->archivo = $guardarArchivo['archivo'];
+                                    if ($carga->save()) {
+                                        return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                    } else {
+                                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                                    }
+                                } else {
+                                    return $guardarArchivo;
+                                }
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                            }
+                        }else{
+                            return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                        }
+
+        
+                //fin actualzar-------------------------------------------------------------------
+            break;
             
             default:
                 # code...
@@ -1115,7 +1163,9 @@ class SocioController extends Controller
     }
     public function traer_datos_padres_suegros($socio_id)
     {
-        $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])->get();
+        $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])
+                   ->orderBy('created_at','ASC')
+                  ->get();
         if (count($listar) > 0) {
             return [
                 'estado'  => 'success',
@@ -1391,6 +1441,46 @@ class SocioController extends Controller
 
     public function subir_archivo_general_socio(Request $r)
     {
+        //actualizar----------------------------------------------------------------------------
+        $up_sdb = Socio_datos_basicos::where([
+            'activo'=>'S',
+            'socio_id'=>$r->id,
+        ])
+        ->whereNotNull('archivo')
+        ->first();
+
+
+        if (!empty($up_sdb)) {
+            
+             $valida_pdf = $this->validar_pdf($r);
+                if($valida_pdf['estado'] == 'success'){
+                 $ruta = substr($up_sdb->archivo,0);
+                    
+                    $borrar = Storage::delete('/'.$ruta);
+                    if ($borrar) {
+                        $guardarArchivo = $this->guardarArchivo($r->archivo, 'ArchivosSocios/DatosBasicos/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $up_sdb->archivo = $guardarArchivo['archivo'];
+                            if ($up_sdb->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                        } else {
+                            return $guardarArchivo;
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                    }
+                }else{
+                    return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                }
+
+        }
+        //fin actualzar-------------------------------------------------------------------
+
+        //insertar----------------------------------------------------------------------------
         $sdb = Socio_datos_basicos::where(['activo'=>'S','socio_id'=>$r->id])->first();
 
         if (!empty($sdb)) {
@@ -1401,7 +1491,7 @@ class SocioController extends Controller
 
                 $sdb->archivo = $archivo;
                 if ($sdb->save()) {
-                    return ['estado'=>'failed', 'mensaje'=>'Documento subido correctamente!'];
+                    return ['estado'=>'success', 'mensaje'=>'Documento subido correctamente!'];
                 }
                 return ['estado'=>'failed', 'mensaje'=>'Error al guardar documento!'];
             }else{
@@ -1418,13 +1508,47 @@ class SocioController extends Controller
     {
         $socio = Socios::where(['activo'=>'S','id'=>$socio_id])->first();
         if (!empty($socio)) {
-            $user = User::where(['activo'=>'S','rut'=>$socio->rut])->first();
+            $user = User::where(['rut'=>$socio->rut])->first();
             if (!empty($user)) {
                 return ['estado'=>'Portal socio asignado'];
             }
             return ['estado'=>'No asignado'];
         }
         return ['estado'=>'No asignado'];
+    }
+
+    public function validar_pdf($request)
+    {
+        $val = Validator::make($request->all(), 
+            [
+
+                'archivo' => 'required|mimes:pdf',
+            ],
+            [
+                'input.required' => 'El PDF es necesario',
+                'input.mimes' => 'El archivo no es PDF',
+            ]);
+
+ 
+            if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+            return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
+    public function validar_pdf_upd($request)
+    {
+        $val = Validator::make($request->all(), 
+            [
+
+                'valor' => 'required|mimes:pdf',
+            ],
+            [
+                'input.required' => 'El PDF es necesario',
+                'input.mimes' => 'El archivo no es PDF',
+            ]);
+
+ 
+            if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+            return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
 

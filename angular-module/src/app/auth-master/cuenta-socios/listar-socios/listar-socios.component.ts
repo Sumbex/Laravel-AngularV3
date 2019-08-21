@@ -42,6 +42,9 @@ export class ListarSociosComponent implements OnInit {
   
     buttonStatus = false;
     token = localStorage.getItem('token').replace(/['"]+/g, '');
+    estado_socio:object=['estado'];
+    ver_load:boolean = true;
+    ver_estado_soc:boolean = false;
 
   constructor(private _socios:SociosService, 
               public _validarusuario:ValidarUsuarioService,
@@ -224,8 +227,11 @@ export class ListarSociosComponent implements OnInit {
         window.stop()
   }
 
-  modal_opcion(modal){
+  modal_opcion(modal, id){
+    this.ver_load = true;
+    this.ver_estado_soc = false;
     this.mod_opcion = this.modalService.open(modal, { size: 'lg' });
+    this.estado_socio_portal(id);
   }
 
   cerrar_opcion(){
@@ -237,14 +243,19 @@ export class ListarSociosComponent implements OnInit {
     this._sindical.asignar_portal_socio(socio_id).subscribe(
           response => {
             console.log(response);
+            this.ver_load = true;
+            this.ver_estado_soc = false;
+            this.estado_socio_portal(socio_id);
           }
         )
   }
 
   estado_socio_portal(socio_id){
     this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
-          response => {
-            console.log(response);
+          (response:{'estado'}) => {
+            this.estado_socio = response.estado;
+            this.ver_load = false;
+            this.ver_estado_soc = true;
           }
         )
   }

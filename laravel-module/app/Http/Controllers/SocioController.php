@@ -776,56 +776,71 @@ class SocioController extends Controller
 
 //--INICIO-- DATOS DEL BENEFICIARIO--------------------------------------------------
     public function guardar_datos_beneficiario(Request $r)
-    {   $rut_limpio = $this->limpiar($r->rut);
+    {   
+        try{
+            $rut_limpio = $this->limpiar($r->rut);
 
-        $validar_rut = $this->valida_rut($rut_limpio);
+            $validar_rut = $this->valida_rut($rut_limpio);
 
-        if (!$validar_rut) {
-            return ['estado'=>'failed', 'mensaje'=>'Rut no valido o inexistente'];
-        }
+            if (!$validar_rut) {
+                return ['estado'=>'failed', 'mensaje'=>'Rut no valido o inexistente'];
+            }
 
 
-        $existe_beneficiario = SocioBeneficiario::where([
-                        'activo'  => 'S',
-                        'socio_id'=> $r->socio_id,
-                        'rut'     => $r->rut_limpio,
-                        'cobro_beneficio' => 'N'
-                    ])->first();
-        $existe_cobro_de_rut_en_socio = SocioBeneficiario::where([
-                        'activo'   =>'S',
-                        'socio_id' => $r->id,
-                        'rut'      => $rut_limpio,
-                        'cobro_beneficio' => 'S'
-                    ])->first();
+            $existe_beneficiario = SocioBeneficiario::where([
+                            'activo'  => 'S',
+                            'socio_id'=> $r->socio_id,
+                            'rut'     => $r->rut_limpio,
+                            'cobro_beneficio' => 'N'
+                        ])->first();
+            $existe_cobro_de_rut_en_socio = SocioBeneficiario::where([
+                            'activo'   =>'S',
+                            'socio_id' => $r->id,
+                            'rut'      => $rut_limpio,
+                            'cobro_beneficio' => 'S'
+                        ])->first();
 
-        if (!empty($existe_beneficiario)) {
-            return ['estado'=>'failed','mensaje'=>'Este rut ya esta como beneficiario para este socio'];
-        }
+            if (!empty($existe_beneficiario)) {
+                return ['estado'=>'failed','mensaje'=>'Este rut ya esta como beneficiario para este socio'];
+            }
 
-                   
-        if (!empty($existe_cobro_de_rut_en_socio)) {
-            return [
-                'estado'  => 'failed',
-                'mensaje' => 'Este rut ya tiene un beneficio para este socio'
+                       
+            if (!empty($existe_cobro_de_rut_en_socio)) {
+                return [
+                    'estado'  => 'failed',
+                    'mensaje' => 'Este rut ya tiene un beneficio para este socio'
+                ];
+            }
+
+            $sb = new SocioBeneficiario;
+            $sb->socio_id = $r->socio_id;
+            $sb->relacion = $r->relacion;
+            $sb->rut = $r->rut;
+            $sb->fecha_nacimiento = $r->fecha_nacimiento;
+            $sb->nombres = $r->nombres;
+            $sb->apellido_paterno = $r->apellido_paterno;
+            $sb->apellido_materno = $r->apellido_materno;
+            $sb->direccion = $r->direccion;
+            $sb->celular = $r->celular;
+            $sb->activo = 'S';
+            $sb->cobro_beneficio = 'N';
+            if ($sb->save()) {
+                return ['estado'=>'success','mensaje'=>'Beneficiario ingresado con exito!'];
+            }
+            return ['estado'=>'failed','mensaje'=>'No se pudo ingresar el beneficiario!'];
+
+         }catch(QueryException $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
             ];
         }
-
-        $sb = new SocioBeneficiario;
-        $sb->socio_id = $r->socio_id;
-        $sb->relacion = $r->relacion;
-        $sb->rut = $r->rut;
-        $sb->fecha_nacimiento = $r->fecha_nacimiento;
-        $sb->nombres = $r->nombres;
-        $sb->apellido_paterno = $r->apellido_paterno;
-        $sb->apellido_materno = $r->apellido_materno;
-        $sb->direccion = $r->direccion;
-        $sb->celular = $r->celular;
-        $sb->activo = 'S';
-        $sb->cobro_beneficio = 'N';
-        if ($sb->save()) {
-            return ['estado'=>'success','mensaje'=>'Beneficiario ingresado con exito!'];
+        catch(\Exception $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
         }
-        return ['estado'=>'failed','mensaje'=>'No se pudo ingresar el beneficiario!'];
     }
     public function traer_datos_beneficiario($socio_id)
     {
@@ -964,52 +979,65 @@ class SocioController extends Controller
 
     public function guardar_datos_carga(Request $r)
     {
+        try{
+            $validar = $this->validar_datos_carga($r);
 
-        $validar = $this->validar_datos_carga($r);
 
+            if ($validar['estado'] == 'success') {
+                        
+                $existe_carga = SocioCarga::where(['activo'=>'S','rut'=>$r->rut,'socio_id'=>$r->socio_id])->first();
 
-        if ($validar['estado'] == 'success') {
-                    
-            $existe_carga = SocioCarga::where(['activo'=>'S','rut'=>$r->rut,'socio_id'=>$r->socio_id])->first();
+                if (!empty($existe_carga)) {
+                    return ['estado'=>'failed','mensaje'=>'Este rut ya esta como carga para este socio'];
+                }
+                $rut_limpio = $this->limpiar($r->rut);
+                if(!$this->valida_rut($rut_limpio)){
 
-            if (!empty($existe_carga)) {
-                return ['estado'=>'failed','mensaje'=>'Este rut ya esta como carga para este socio'];
-            }
-            $rut_limpio = $this->limpiar($r->rut);
-            if(!$this->valida_rut($rut_limpio)){
+                    return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+                }
 
-                return ['estado'=>'failed','mensaje'=>'Rut no valido'];
-            }
+                $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosCargas/');
 
-            $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosCargas/');
+                if($file['estado'] == "success"){
+                    $archivo = 'storage/' . $file['archivo'];
+                }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+                }
 
-            if($file['estado'] == "success"){
-                $archivo = 'storage/' . $file['archivo'];
+                $carga = new SocioCarga;
+                $carga->socio_id = $r->socio_id;
+                $carga->tipo_carga_id = $r->tipo_carga_id;
+                $carga->rut = $rut_limpio;
+                $carga->fecha_nacimiento = $r->fecha_nacimiento;
+                $carga->nombres = $r->nombres;
+                $carga->apellido_paterno = $r->apellido_paterno;
+                $carga->apellido_materno = $r->apellido_materno;
+                $carga->direccion = $r->direccion;
+                $carga->celular = $r->celular;
+                $carga->establecimiento = $r->establecimiento;
+                $carga->archivo = $archivo;
+                $carga->activo = 'S';
+
+                if ($carga->save()) {
+
+                    return ['estado'=>'success','mensaje'=>'La carga se ha ingresado correctamente'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al ingresas carga'];
             }else{
-                return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+                return ['estado'=>'failed','mensaje'=>'Posiblemente falten campos por llenar'];
             }
 
-            $carga = new SocioCarga;
-            $carga->socio_id = $r->socio_id;
-            $carga->tipo_carga_id = $r->tipo_carga_id;
-            $carga->rut = $rut_limpio;
-            $carga->fecha_nacimiento = $r->fecha_nacimiento;
-            $carga->nombres = $r->nombres;
-            $carga->apellido_paterno = $r->apellido_paterno;
-            $carga->apellido_materno = $r->apellido_materno;
-            $carga->direccion = $r->direccion;
-            $carga->celular = $r->celular;
-            $carga->establecimiento = $r->establecimiento;
-            $carga->archivo = $archivo;
-            $carga->activo = 'S';
-
-            if ($carga->save()) {
-
-                return ['estado'=>'success','mensaje'=>'La carga se ha ingresado correctamente'];
-            }
-            return ['estado'=>'failed','mensaje'=>'Error al ingresas carga'];
-        }else{
-            return ['estado'=>'failed','mensaje'=>'Posiblemente falten campos por llenar'];
+         }catch(QueryException $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
+        }
+        catch(\Exception $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
         }
     }
     public function traer_datos_carga($socio_id)

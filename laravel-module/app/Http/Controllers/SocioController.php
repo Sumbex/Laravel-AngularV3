@@ -9,6 +9,7 @@ use App\SocioPadresSuegros;
 use App\SocioSituacion;
 use App\Socio_datos_basicos;
 use App\Socios;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -132,7 +133,7 @@ class SocioController extends Controller
             $this->listar();
         }
         $return = Socios::filtrar($search);
-        return $return;
+        return Response()->json($return);
     }
 
 
@@ -249,6 +250,12 @@ class SocioController extends Controller
 //--DATOS SOCIO---------------------------------------------------------
     public function guardar_datos_socio(Request $r)
     {
+
+        if ($r->email_1 == '' || $r->direccion == '') {
+            return ['estado'=>'failed','mensaje'=>'La direccion y el email personal son obligatorios'];
+        }
+
+
         $insert_1 = false;
         $insert_2 = false;
 
@@ -267,6 +274,7 @@ class SocioController extends Controller
             $sdb->socio_id = $r->socio_id;
             $sdb->direccion = $r->direccion;
            // $sdb->direccion_2 = $r->direccion_2;
+
             $sdb->telefono = $r->telefono;
             $sdb->celular = $r->celular;
             $sdb->anexo = $r->anexo;
@@ -474,17 +482,8 @@ class SocioController extends Controller
     //             // -----------------------------------------
             case 'socio_casa_propia':
 
-
-                    // $sdb->casa_propia = $r->valor;
-                    // if ($sdb->save()) { 
-
-                    //     return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
-
-                    // $sdb->casa_propia = $r->valor;
-                    // if ($sdb->save()) { 
-
-                    $ss->casa_propia = $r->valor;
-                    if ($ss->save()) { 
+                    $sdb->casa_propia = $r->valor;
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Estado casa propia actualizada!']; 
                     }
@@ -494,13 +493,9 @@ class SocioController extends Controller
             break;
 
             case 'socio_rol_turno':
-                    
 
-                    // $sdb->rol_turno = $r->valor;
-                    // if ($sdb->save()) { 
-
-                    $ss->rol_turno = $r->valor;
-                    if ($ss->save()) { 
+                    $sdb->rol_turno = $r->valor;
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Rol de turno actualizado!']; 
                     }
@@ -510,13 +505,9 @@ class SocioController extends Controller
             break;
 
             case 'socio_estado_civil_id':
-                    
 
-                    // $sdb->estado_civil_id = $r->valor;
-                    // if ($sdb->save()) { 
-
-                    $ss->estado_civil_id = $r->valor;
-                    if ($ss->save()) { 
+                    $sdb->estado_civil_id = $r->valor;
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Estado civil actualizado!']; 
 
@@ -528,12 +519,8 @@ class SocioController extends Controller
 
 
             case 'socio_conyuge':
-                    
 
-                    // $sdb->conyuge = $r->valor;
-                    // if ($sdb->save()) { 
-
-                    $ss->conyuge = $r->valor;
+                    $sdb->conyuge = $r->valor;
                     if ($ss->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Conyuge actualizado!']; 
@@ -542,6 +529,11 @@ class SocioController extends Controller
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
                     }
             break;
+
+            // case 'archivo':
+               
+
+            // break;
 
            
          }
@@ -573,6 +565,15 @@ class SocioController extends Controller
                     return ['estado' => 'failed','mensaje'=>'Rut no valido'];
                 }
 
+                $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosConyuge/');
+
+                if($file['estado'] == "success"){
+                    $archivo = $file['archivo'];
+                }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+                }
+
+
                 $verify_conyuge = SocioConyuge::where([
                                         'activo' => 'S',
                                         'socio_id' => $r->socio_id
@@ -590,6 +591,7 @@ class SocioController extends Controller
                         $cony->direccion = $r->direccion;
                         $cony->celular = $r->celular;
                         $cony->activo = 'S';
+                        $cony->archivo = $archivo;
                         if ($cony->save()) {
                             return ['estado'=>'success', 'mensaje'=>'Datos de conyuge ingresados, para actualizar datos abra la tabla conyuge/pareja'];
                         }else{
@@ -706,6 +708,36 @@ class SocioController extends Controller
                  }
             break;
 
+            case 'archivo':
+                 //actualizar----------------------------------------------------------------------------
+                     $valida_pdf = $this->validar_pdf_upd($r);
+                        if($valida_pdf['estado'] == 'success'){
+                         $ruta = substr($cony->archivo,8);
+                            
+                            $borrar = Storage::delete('/'.$ruta);
+                            if ($borrar) {
+                                $guardarArchivo = $this->guardarArchivo($r->valor, 'ArchivosSocios/ArchivosConyuge/');
+
+                                if ($guardarArchivo['estado'] == "success") {
+                                    $cony->archivo = 'storage/' . $guardarArchivo['archivo'];
+                                    if ($cony->save()) {
+                                        return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                    } else {
+                                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                                    }
+                                } else {
+                                    return $guardarArchivo;
+                                }
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                            }
+                        }else{
+                            return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                        }
+
+        
+                //fin actualzar-------------------------------------------------------------------
+            break;
 
             default:
                 # code...
@@ -774,16 +806,23 @@ class SocioController extends Controller
         return ['estado'=>'failed', 'body'=>'', 'mensaje'=>'No hay datos en la tabla'];
     }
     public function actualizar_datos_beneficiario(Request $r)
-    {
+    {//id(socio),campo,valor y socio_beneficiario_id
+
+         // dd($r->all());
         if (empty($r->valor)) {
             return ['estado'=>'failed', 'mensaje'=>'No hay un valor ingresado'];
         }
 
         $ben = SocioBeneficiario::where([
                     'activo'=>'S',
-                    'socio_id' => $r->socio_id,
+                    'socio_id' => $r->id,
+                    'id' => $r->socio_beneficiario_id,
                     'cobro_beneficio' => 'N'
                ])->first();
+
+     if (empty($ben)) {
+         return ['estado'=>'failed','mensaje'=>'No es posible cambiar algun dato, esta persona cuenta con un beneficio o no esta apta por el momento'];
+     }
 
         if ($ben) {
             switch ($r->campo) {
@@ -830,7 +869,7 @@ class SocioController extends Controller
                     }
 
 
-                    $ben->rut = $rut_limpio ;
+                    $ben->rut = $rut_limpio;
                     if ($ben->save()) {
                         return ['estado'=>'success', 'mensaje'=>'Rut actualizado!'];
                     }
@@ -902,11 +941,24 @@ class SocioController extends Controller
             if (!empty($existe_carga)) {
                 return ['estado'=>'failed','mensaje'=>'Este rut ya esta como carga para este socio'];
             }
+            $rut_limpio = $this->limpiar($r->rut);
+            if(!$this->valida_rut($rut_limpio)){
+
+                return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+            }
+
+            $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosCargas/');
+
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+            }else{
+                return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
 
             $carga = new SocioCarga;
             $carga->socio_id = $r->socio_id;
             $carga->tipo_carga_id = $r->tipo_carga_id;
-            $carga->rut = $r->rut;
+            $carga->rut = $rut_limpio;
             $carga->fecha_nacimiento = $r->fecha_nacimiento;
             $carga->nombres = $r->nombres;
             $carga->apellido_paterno = $r->apellido_paterno;
@@ -914,6 +966,7 @@ class SocioController extends Controller
             $carga->direccion = $r->direccion;
             $carga->celular = $r->celular;
             $carga->establecimiento = $r->establecimiento;
+            $carga->archivo = $archivo;
             $carga->activo = 'S';
 
             if ($carga->save()) {
@@ -921,58 +974,156 @@ class SocioController extends Controller
                 return ['estado'=>'success','mensaje'=>'La carga se ha ingresado correctamente'];
             }
             return ['estado'=>'failed','mensaje'=>'Error al ingresas carga'];
+        }else{
+            return ['estado'=>'failed','mensaje'=>'Posiblemente falten campos por llenar'];
         }
     }
     public function traer_datos_carga($socio_id)
     {
-        $carga = SocioCarga::where(['activo'=>'S','socio_id'=>$socio_id])->get();
+        $carga = SocioCarga::where(['activo'=>'S','socio_id'=>$socio_id])
+                 ->orderBy('created_at','ASC')
+                 ->get();
 
         if (count($carga)>0) {
             return ['estado'=>'success', 'mensaje'=>'si hay datos','body'=>$carga];
         }
         return ['estado'=>'failed','body'=>'','mensaje'=>'No hay datos en la tabla'];
     }
-    // public function actualizar_datos_carga(Request $r)
-    // {
-    //     $carga = SocioCarga::where([
-    //                     'activo' => 'S',
-    //                     'socio_id' => $r->id,
-    //             ])->first();
+    public function actualizar_datos_carga(Request $r)
+    {// id(socio),campo,valor y carga_socio_id
 
-    //     switch ($r->campo) {
-    //         case 'tipo_carga_id':
-    //             # code...
-    //         break;
-    //         case 'rut':
-    //             # code...
-    //         break;
-    //         case 'fecha_nacimiento':
-    //             # code...
-    //         break;
-    //         case 'nombres':
-    //             # code...
-    //         break;
-    //         case 'apellido_paterno':
-    //             # code...
-    //         break;
-    //         case 'apellido_materno':
-    //             # code...
-    //         break;
-    //         case 'direccion':
-    //             # code...
-    //         break;
-    //         case 'celular':
-    //             # code...
-    //         break;
-    //         case 'establecimiento':
-    //             # code...
-    //         break;
+        if (empty($r->valor)) {
+            return['estado'=>'failed', 'mensaje'=>'No hay dato para actualizar!'];
+        }
+
+        $carga = SocioCarga::where([
+                        'activo' => 'S',
+                        'socio_id' => $r->id,
+                        'id' => $r->carga_socio_id
+                ])->first();
+
+        if(empty($carga)){
+            return ['estado'=>'failed','mensaje'=>'No se han encontrado datos para actualizar'];
+        }
+
+        switch ($r->campo) {
+            case 'tipo_carga_id':
+                $carga->tipo_carga_id = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Relación actualizada!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'rut':
+                $rut_limpio = $this->limpiar($r->valor);
+
+                $existe_rut = SocioCarga::where([
+                                        'activo'=>'S', 
+                                        'socio_id'=>$r->id,
+                                        'rut' => $rut_limpio
+                              ])->first();
+
+                if(!$this->valida_rut($rut_limpio)){
+
+                    return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+                }
+                if (!empty($existe_rut)) {
+                    return ['estado'=>'failed','mensaje'=>'Rut ya asociado a este socio'];
+                }
+
+                $carga->rut = $rut_limpio;
+                 if ($carga->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Rut actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+            case 'fecha_nacimiento':
+                $carga->fecha_nacimiento = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Fecha de nacimiento actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'nombres':
+                $carga->nombres = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Nombre actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'apellido_paterno':
+                $carga->apellido_paterno = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Apellido paterno actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'apellido_materno':
+                $carga->apellido_materno = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Apellido materno actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'direccion':
+                $carga->direccion = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Dirección actualizada!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'celular':
+                $carga->celular = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Celular actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+            case 'establecimiento':
+                $carga->establecimiento = $r->valor;
+                if ($carga->save()) {
+                    return ['estado'=>'success','mensaje'=>'Establecimiento actualizado!'];
+                }
+                return ['estado'=>'failed','mensaje'=>'Error al actualizar!'];
+            break;
+
+             case 'archivo':
+                 //actualizar----------------------------------------------------------------------------
+                     $valida_pdf = $this->validar_pdf_upd($r);
+                        if($valida_pdf['estado'] == 'success'){
+                         $ruta = substr($carga->archivo,8);
+                            
+                            $borrar = Storage::delete('/'.$ruta);
+                            if ($borrar) {
+                                $guardarArchivo = $this->guardarArchivo($r->valor, 'ArchivosSocios/ArchivosCargas/');
+
+                                if ($guardarArchivo['estado'] == "success") {
+                                    $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
+                                    if ($carga->save()) {
+                                        return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                    } else {
+                                        return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                                    }
+                                } else {
+                                    return $guardarArchivo;
+                                }
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                            }
+                        }else{
+                            return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                        }
+
+        
+                //fin actualzar-------------------------------------------------------------------
+            break;
             
-    //         default:
-    //             # code...
-    //             break;
-    //     }
-    // }
+            default:
+                # code...
+                break;
+        }
+    }
 
 // -------------------------------------------------------------------------------
 
@@ -983,6 +1134,10 @@ class SocioController extends Controller
         $rut_limpio = $this->limpiar($r->rut);
 
         $verify_i = SocioPadresSuegros::where(['rut'=> $rut_limpio ,'activo'=>'S','socio_id'=>$r->socio_id])->first();
+        if(!$this->valida_rut($rut_limpio)){
+
+            return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+        }
 
         if (!empty($verify_i)) {
             return ['estado'=>'failed','mensaje'=>'Este rut ya esta en datos del padre y/o suegros'];
@@ -1008,7 +1163,9 @@ class SocioController extends Controller
     }
     public function traer_datos_padres_suegros($socio_id)
     {
-        $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])->get();
+        $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])
+                   ->orderBy('created_at','ASC')
+                  ->get();
         if (count($listar) > 0) {
             return [
                 'estado'  => 'success',
@@ -1025,8 +1182,119 @@ class SocioController extends Controller
         }
     }
     public function actualizar_datos_padres_suegros(Request $r)
-    {
+    { // id(socio),campo,valor y socio_padre_id
+        if (empty($r->valor)) {
+            return ['estado'=>'failed', 'mensaje'=>'No hay un valor ingresado'];
+        }
+
+        $pys = SocioPadresSuegros::where([
+            //'rut'=> $rut_limpio ,
+            'activo'=>'S',
+            'socio_id'=>$r->id,
+            'id' => $r->socio_padre_suegro_id
+        ])->first();
+
+        if(empty($pys)){
+            return ['estado'=>'failed','mensaje'=>'No se han encontrado datos para actualizar'];
+        }
         
+        switch ($r->campo) {
+            case 'relacion_socio_id':
+                $pys->relacion_socio_id = $r->valor;
+                if ($pys->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Relación actualizada!'];
+                }else{
+                    return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                }
+            break;
+            case 'direccion':
+                $pys->direccion = $r->valor;
+                if ($pys->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Direccion actualizada!'];
+                }else{
+                    return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                }
+            break;
+            case 'celular':
+                 $pys->celular = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Celular actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'rut':
+
+                $rut_limpio = $this->limpiar($r->valor);
+
+                $existe_rut = SocioPadresSuegros::where([
+                                            'activo'=>'S', 
+                                            'socio_id'=>$r->id,
+                                            'rut' => $rut_limpio
+                                    ])->first();
+
+                if(!$this->valida_rut($rut_limpio)){
+
+                    return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+                }
+                if (!empty($existe_rut)) {
+                    return ['estado'=>'failed','mensaje'=>'Rut ya asociado a este socio'];
+                }
+
+                $pys->rut = $rut_limpio;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Rut actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'fecha_nacimiento':
+
+                $pys->fecha_nacimiento = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Fecha de nacimiento actualizada!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'nombres':
+
+                $pys->nombres = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Nombre actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'apellido_paterno':
+
+                $pys->apellido_paterno = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Apellido paterno actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+            case 'apellido_materno':
+
+                $pys->apellido_materno = $r->valor;
+                 if ($pys->save()) {
+                     return ['estado'=>'success', 'mensaje'=>'Apellido materno actualizado!'];
+                 }else{
+                     return ['estado'=>'success', 'mensaje'=>'Error al actualizar!'];
+                 }
+            break;
+
+
+            default:
+                # code...
+            break;
+        }
     }
 
 
@@ -1130,7 +1398,7 @@ class SocioController extends Controller
                 'apellido_materno' => 'required',
                 'direccion' => 'required',
                 'celular' => 'required',
-                //'archivo' => 'required|mimes:doc,pdf,docx',
+                'archivo' => 'required|mimes:pdf',
             ],
             [
                 'socio_id.required' => 'El socio es necesario',
@@ -1141,10 +1409,145 @@ class SocioController extends Controller
                 'apellido_materno.required' => 'El apellido materno es necesario',
                 'direccion.required' => 'La direccion es necesaria',
                 'celular.required' => 'el celular es necesario',
+                'archivo.required' => 'El documento no se ha subido',
+                'archivo.mimes' => 'Debe ser formato PDF'
             ]);
 
  
             if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+            return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
+    protected function guardarArchivo($archivo, $ruta)
+    {
+        try{
+            $filenameext = $archivo->getClientOriginalName();
+            $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+            $extension = $archivo->getClientOriginalExtension();
+            $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+            $rutaDB = $ruta . $nombreArchivo;
+
+            $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+            if ($guardar) {
+                return ['estado' =>  'success', 'archivo' => $rutaDB];
+            } else {
+                return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+            }
+        }catch (\Throwable $t) {
+                return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+        }
+    }
+
+    public function subir_archivo_general_socio(Request $r)
+    {
+        //actualizar----------------------------------------------------------------------------
+        $up_sdb = Socio_datos_basicos::where([
+            'activo'=>'S',
+            'socio_id'=>$r->id,
+        ])
+        ->whereNotNull('archivo')
+        ->first();
+
+
+        if (!empty($up_sdb)) {
+            
+             $valida_pdf = $this->validar_pdf($r);
+                if($valida_pdf['estado'] == 'success'){
+                 $ruta = substr($up_sdb->archivo,8);
+                    
+                    $borrar = Storage::delete('/'.$ruta);
+                    if ($borrar) {
+                        $guardarArchivo = $this->guardarArchivo($r->archivo, 'ArchivosSocios/DatosBasicos/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $up_sdb->archivo = 'storage/'.$guardarArchivo['archivo'];
+                            if ($up_sdb->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                        } else {
+                            return $guardarArchivo;
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                    }
+                }else{
+                    return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                }
+
+        }
+        //fin actualzar-------------------------------------------------------------------
+
+        //insertar----------------------------------------------------------------------------
+        $sdb = Socio_datos_basicos::where(['activo'=>'S','socio_id'=>$r->id])->first();
+
+        if (!empty($sdb)) {
+            $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/DatosBasicos/');
+
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+
+                $sdb->archivo = 'storage/'. $archivo;
+                if ($sdb->save()) {
+                    return ['estado'=>'success', 'mensaje'=>'Documento subido correctamente!'];
+                }
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar documento!'];
+            }else{
+                return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+        }
+        else{
+             return ['estado'=>'failed','mensaje'=>'No se ha encontrado el socio'];
+        }
+
+    }
+
+    public function estado_de_socio_en_portal_beneficio($socio_id)
+    {
+        $socio = Socios::where(['activo'=>'S','id'=>$socio_id])->first();
+        if (!empty($socio)) {
+            $user = User::where(['rut'=>$socio->rut])->first();
+            if (!empty($user)) {
+                return ['estado'=>'Portal socio asignado'];
+            }
+            return ['estado'=>'No asignado'];
+        }
+        return ['estado'=>'No asignado'];
+    }
+
+    public function validar_pdf($request)
+    {
+        $val = Validator::make($request->all(), 
+            [
+
+                'archivo' => 'required|mimes:pdf',
+            ],
+            [
+                'input.required' => 'El PDF es necesario',
+                'input.mimes' => 'El archivo no es PDF',
+            ]);
+
+ 
+            if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+            return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
+    public function validar_pdf_upd($request)
+    {
+        $val = Validator::make($request->all(), 
+            [
+
+                'valor' => 'required|mimes:pdf',
+            ],
+            [
+                'input.required' => 'El PDF es necesario',
+                'input.mimes' => 'El archivo no es PDF',
+            ]);
+
+ 
+            if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
             return ['estado' => 'success', 'mensaje' => 'success'];
     }
 

@@ -90,10 +90,42 @@ class PortalSocioController extends Controller
     }
     //------------------------------------------>rutas portal socio
 
+    //------------------------------------------>rutas datos basicos
+    public function TraerAnios()
+    {
+        return PortalSocio::traerAnios();
+    }
+
+    public function AnioActual()
+    {
+        return PortalSocio::anioActual();
+    }
+
+    public function TraerMeses()
+    {
+        return PortalSocio::traerMeses();
+    }
+
+    public function MesActual()
+    {
+        return PortalSocio::mesActual();
+    }
+    //------------------------------------------>rutas datos basicos
+
     //------------------------------------------>rutas portal socio cs
     public function TraerCuentaSindical($anio, $mes)
     {
         return PortalSocioCuentaSindical::traerCuentaSindicalTotal($anio, $mes);
+    }
+
+    public function TraerCajaChica($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::traerCajaChicaTotal($anio, $mes);
+    }
+
+    public function TraerCamping($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::traerCampingTotal($anio, $mes);
     }
     //------------------------------------------>rutas portal socio cs
 
@@ -124,7 +156,7 @@ class PortalSocioController extends Controller
     //------------------------------------------------FUNCION TEST------------------------------------------------//
     public function FuncionTest($anio, $mes)
     {
-        return PortalSocioCuentaSindical::totalesCuentaSindical($anio, $mes);
+        return PortalSocioCuentaSindical::traerPrestamos($anio, $mes);
     }
     //------------------------------------------------FUNCION TEST------------------------------------------------//
 }

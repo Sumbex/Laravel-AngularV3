@@ -117,12 +117,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'direccion' => 'required|string',
-                        'telefono' => 'string',
+                        'direccion' => 'required/* |string */',
+                        /*  'telefono' => 'string',
                         'celular' => 'string',
-                        'anexo' => 'string',
+                        'anexo' => 'string', */
                         'email_1' => 'required|email', //'unique:users,email_address'
-                        'email_2' => 'email', //'unique:users,email_address'
+                        /* 'email_2' => 'email', //'unique:users,email_address'
                         'cargo_planta' => 'string',
                         'cargo_comision_sindicato' => 'integer||min:0',
                         'casa_propia' => 'string',
@@ -133,14 +133,14 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'tipo_cuenta_banco_id' => 'integer||min:0',
                         'banco' => 'string',
                         'isapre_fonasa' => 'string',
-                        'grupo_sangre' => 'string',
+                        'grupo_sangre' => 'string', */
 
                     ],
                     [
                         'direccion.required' => 'Debes ingresar tu direccion.',
                         'email_1.required' => 'Debes ingresar tu correo personal.',
                         'email_1.email' => 'Debes ingresar un correo valido.',
-                        'email_2' => 'Debes ingresar un correo valido.',
+                        /* 'email_2' => 'Debes ingresar un correo valido.', */
                     ]
                 );
                 break;
@@ -549,7 +549,11 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ->get();
 
         if (!$archivo->isEmpty()) {
-            return ['estado' => 'success', 'archivo' => $archivo];
+            if (!is_null($archivo[0]->archivo)) {
+                return ['estado' => 'success', 'archivo' => $archivo[0]->archivo];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes tu archivo resumen ingresado.'];
+            }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes tu archivo resumen ingresado.'];
         }
@@ -1091,6 +1095,76 @@ class PortalSocio extends Authenticatable implements JWTSubject
             return $verificar;
         }
     }
+
+    //--------------------------------------------------------------------------------
+    protected function traerAnios()
+    {
+        return DB::table('anio')->orderBy('descripcion', 'desc')->get();
+    }
+    protected function anioActual()
+    {
+        $anio = DB::select("select date_part('year',now()) as anio");
+        $anio_db = DB::table('anio')->select(['id', 'descripcion'])
+            ->where(['activo' => 'S', 'descripcion' => $anio[0]->anio])->first();
+        return response()->json($anio_db);
+    }
+
+    protected function traerMeses()
+    {
+        return DB::table('mes')->orderBy('id', 'asc')->get();
+    }
+
+    protected function mesActual()
+    {
+        $mes_actual = DB::select("select date_part('month',now()) as mes");
+        $id = $mes_actual[0]->mes;
+        return $this->getMes($id);
+    }
+
+    protected function getMes($id)
+    {
+        switch ($id) {
+            case '1':
+                $mes = ['id' => $id, 'descripcion' => 'Enero'];
+                break;
+            case '2':
+                $mes = ['id' => $id, 'descripcion' => 'Febrero'];
+                break;
+            case '3':
+                $mes = ['id' => $id, 'descripcion' => 'Marzo'];
+                break;
+            case '4':
+                $mes = ['id' => $id, 'descripcion' => 'Abril'];
+                break;
+            case '5':
+                $mes = ['id' => $id, 'descripcion' => 'Mayo'];
+                break;
+            case '6':
+                $mes = ['id' => $id, 'descripcion' => 'Junio'];
+                break;
+            case '7':
+                $mes = ['id' => $id, 'descripcion' => 'Julio'];
+                break;
+            case '8':
+                $mes = ['id' => $id, 'descripcion' => 'Agosto'];
+                break;
+            case '9':
+                $mes = ['id' => $id, 'descripcion' => 'Septiembre'];
+                break;
+            case '10':
+                $mes = ['id' => $id, 'descripcion' => 'Octubre'];
+                break;
+            case '11':
+                $mes = ['id' => $id, 'descripcion' => 'Noviembre'];
+                break;
+            case '12':
+                $mes = ['id' => $id, 'descripcion' => 'Diciembre'];
+                break;
+        }
+
+        return $mes;
+    }
+    //--------------------------------------------------------------------------------
 
     protected function crearUsuarioSocio($request)
     {

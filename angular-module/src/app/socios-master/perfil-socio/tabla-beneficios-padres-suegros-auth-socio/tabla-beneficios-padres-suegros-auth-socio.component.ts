@@ -37,6 +37,7 @@ export class TablaBeneficiosPadresSuegrosAuthSocioComponent implements OnInit {
     this._portalSociosService.getDatosPadresSuegros().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.abrirModalPadresSuegros.close();
         this.loadingTabla = false;
       }else{
         this.datosPadresSuegros = response.padres_suegros;

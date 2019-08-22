@@ -14,11 +14,17 @@
     <div class="card">
 
       <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <p>
+            <ngb-alert type="warning" [dismissible]="false">
+              <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> Los campos marcados
+                con un <i class="fas fa-asterisk"></i> son obligatorios.</small>
+            </ngb-alert>
+          </p>
         <div class="row justify-content-between">
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Relacion con el Socio</strong></label>
+              <label><strong>Relacion con el Socio*</strong></label>
               <select name="Relacion" id="relacion" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.relacionSocioId" required>
                 <option value="">--Seleccione--</option>
                 <option value="1">padre</option>
@@ -31,14 +37,14 @@
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Rut</strong></label>
+              <label><strong>Rut*</strong></label>
               <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.rut" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Fecha de Nacimiento</strong></label>
+              <label><strong>Fecha de Nacimiento*</strong></label>
               <input type="date" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.fechaNacimiento" required>
             </div>
           </div>
@@ -51,21 +57,21 @@
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Nombres</strong></label>
+              <label><strong>Nombres*</strong></label>
               <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.nombres" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Apellido Paterno</strong></label>
+              <label><strong>Apellido Paterno*</strong></label>
               <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.apellidoPaterno" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Apellido Materno</strong></label>
+              <label><strong>Apellido Materno*</strong></label>
               <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.apellidoMaterno" required>
             </div>
           </div>
@@ -78,14 +84,14 @@
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Direccion</strong></label>
+              <label><strong>Direccion*</strong></label>
               <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.direccion" required>
             </div>
           </div>
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
-              <label><strong>Celular</strong></label>
+              <label><strong>Celular*</strong></label>
               <input type="text" class="form-control form-control-sm" [(ngModel)]="datosPadresSuegros.celular" required>
             </div>
           </div>

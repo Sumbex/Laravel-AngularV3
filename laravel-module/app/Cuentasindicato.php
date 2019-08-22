@@ -161,8 +161,10 @@ class Cuentasindicato extends Model
     protected function resultado_cuenta_sindical($anio, $mes)
 	{
 			$ingreso_total = $this::where(['activo'=>'S', 'anio_id' => $anio, 'mes_id' => $mes ])
+			->where('cuenta_sindicato.detalle_camping', null)
 			->sum('monto_ingreso');
 			$egreso_total = $this::where(['activo'=>'S', 'anio_id' => $anio, 'mes_id' => $mes ])
+			->where('cuenta_sindicato.detalle_camping', null)
 			->sum('monto_egreso');
 			$total = $ingreso_total - $egreso_total;
 

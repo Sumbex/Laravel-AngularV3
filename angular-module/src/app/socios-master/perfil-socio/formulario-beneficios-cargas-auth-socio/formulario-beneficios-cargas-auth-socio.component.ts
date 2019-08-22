@@ -50,7 +50,7 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
     this.blockIngreso = true;
     this._portalSociosService.setDatosCargas(this.datosCargas).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
+        alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g,''));
         this.blockIngreso = false;
       }else{
         alert('Ingreso de la carga correcto');

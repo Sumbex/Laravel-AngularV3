@@ -67,7 +67,7 @@ Route::post('editar_socios', 'SocioController@actualizar_socio');
 
 Route::get('buscar_socio_por_rut/{rut}','SocioController@socio_por_rut');
 
-
+Route::get('estado_de_socio_en_portal_beneficio/{id}','SocioController@estado_de_socio_en_portal_beneficio');
 
 Route::post('guardar_datos_socio','SocioController@guardar_datos_socio');
 Route::post('actualizar_datos_socio','SocioController@actualizar_datos_socio');
@@ -90,6 +90,8 @@ Route::post('actualizar_datos_carga','SocioController@actualizar_datos_carga');
 Route::post('guardar_datos_padres_suegros','SocioController@guardar_datos_padres_suegros');
 Route::get('traer_datos_padres_suegros/{socio_id}','SocioController@traer_datos_padres_suegros');
 Route::post('actualizar_datos_padres_suegros','SocioController@actualizar_datos_padres_suegros');
+
+Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general_socio');
 
 
 

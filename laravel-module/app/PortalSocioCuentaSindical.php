@@ -155,6 +155,7 @@ class PortalSocioCuentaSindical extends Model
                 DB::raw('sum(monto_ingreso) - sum(monto_egreso) as total')
             ])
             ->where([
+                'detalle_camping' => null,
                 'activo' => 'S',
                 'anio_id' => $anio,
                 'mes_id' => $mes,

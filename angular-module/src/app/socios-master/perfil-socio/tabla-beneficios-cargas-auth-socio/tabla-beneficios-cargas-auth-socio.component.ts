@@ -31,12 +31,17 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
     this.getDatosCargas();
   }
 
+  openModalPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   getDatosCargas(){
     //Aquí se llamá al servicio para obtener los datos de las cargas
     this.loadingTabla = true;
     this._portalSociosService.getDatosCargas().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.abrirModalTablaCargas.close();
         this.loadingTabla = false;
       }else{
         this.datosCargas = response.cargas;

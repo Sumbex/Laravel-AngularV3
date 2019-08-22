@@ -139,6 +139,7 @@ class PortalSocioCuentaSindical extends Model
                         break;
                 }
             }
+            $totales->cierre_mes = $totales->total + $IM;
             return ['estado' => 'success', 'monto_inicio' => $IM, 'CS' => $return, 'totales' => $totales];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];

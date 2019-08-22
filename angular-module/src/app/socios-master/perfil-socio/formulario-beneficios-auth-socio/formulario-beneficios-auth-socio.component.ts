@@ -56,10 +56,11 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
     this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(
       response => {
         if(response.estado == "failed" || response.estado == "failed_v"){
-          alert(response.mensaje);
+          alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
           this.blockIngreso = false;
         }else{
           alert(response.mensaje);
+          this.limpiarFormulario();
           this.blockIngreso = false;
         }
       },
@@ -68,6 +69,27 @@ export class FormularioBeneficiosAuthSocioComponent implements OnInit {
         this.blockIngreso = false;
       }
     );
+  }
+
+  limpiarFormulario(){
+    this.InsertarBeneficiosSocio.socio_id='';
+    this.InsertarBeneficiosSocio.direccion='';
+    this.InsertarBeneficiosSocio.celular='';
+    this.InsertarBeneficiosSocio.anexo='';
+    this.InsertarBeneficiosSocio.email_1='';
+    this.InsertarBeneficiosSocio.email_2='';
+    this.InsertarBeneficiosSocio.cargo_planta='';
+    this.InsertarBeneficiosSocio.cargo_comision_sindicato='';
+    this.InsertarBeneficiosSocio.numero_cuenta='';
+    this.InsertarBeneficiosSocio.tipo_cuenta_banco_id='';
+    this.InsertarBeneficiosSocio.banco='';
+    this.InsertarBeneficiosSocio.isapre_fonasa='';
+    this.InsertarBeneficiosSocio.grupo_sangre='';
+    this.InsertarBeneficiosSocio.casa_propia='';
+    this.InsertarBeneficiosSocio.rol_turno='';
+    this.InsertarBeneficiosSocio.estado_civil_id='';
+    this.InsertarBeneficiosSocio.conyuge='';
+    this.InsertarBeneficiosSocio.telefono='';
   }
 
 }

@@ -521,7 +521,7 @@ class SocioController extends Controller
             case 'socio_conyuge':
 
                     $sdb->conyuge = $r->valor;
-                    if ($ss->save()) { 
+                    if ($sdb->save()) { 
 
                         return ['estado'=>'success','mensaje'=>'Conyuge actualizado!']; 
                     }

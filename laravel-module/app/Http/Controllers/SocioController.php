@@ -568,7 +568,7 @@ class SocioController extends Controller
                 $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosConyuge/');
 
                 if($file['estado'] == "success"){
-                    $archivo = $file['archivo'];
+                    $archivo = 'storage/' . $file['archivo'];
                 }else{
                     return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
                 }
@@ -950,7 +950,7 @@ class SocioController extends Controller
             $file = $this->guardarArchivo($r->archivo,'ArchivosSocios/ArchivosCargas/');
 
             if($file['estado'] == "success"){
-                $archivo = $file['archivo'];
+                $archivo = 'storage/' . $file['archivo'];
             }else{
                 return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
             }
@@ -1301,28 +1301,36 @@ class SocioController extends Controller
 // -- FIN DATOS PADRES Y SUEGROS    
     function valida_rut($rut)
     {
-        $rut = preg_replace('/[^k0-9]/i', '', $rut);
-        $dv  = substr($rut, -1);
-        $numero = substr($rut, 0, strlen($rut)-1);
-        $i = 2;
-        $suma = 0;
-        foreach(array_reverse(str_split($numero)) as $v)
-        {
-            if($i==8)
-                $i = 2;
-            $suma += $v * $i;
-            ++$i;
+        try{
+            $rut = preg_replace('/[^k0-9]/i', '', $rut);
+            $dv  = substr($rut, -1);
+            $numero = substr($rut, 0, strlen($rut)-1);
+            $i = 2;
+            $suma = 0;
+            foreach(array_reverse(str_split($numero)) as $v)
+            {
+                if($i==8)
+                    $i = 2;
+                $suma += $v * $i;
+                ++$i;
+            }
+            $dvr = 11 - ($suma % 11);
+            
+            if($dvr == 11)
+                $dvr = 0;
+            if($dvr == 10)
+                $dvr = 'K';
+            if($dvr == strtoupper($dv))
+                return true;
+            else
+                return false;
         }
-        $dvr = 11 - ($suma % 11);
-        
-        if($dvr == 11)
-            $dvr = 0;
-        if($dvr == 10)
-            $dvr = 'K';
-        if($dvr == strtoupper($dv))
-            return true;
-        else
-            return false;
+        catch(\Exception $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
+        }
     }
 
     function limpiar($s) 
@@ -1366,7 +1374,7 @@ class SocioController extends Controller
                 'apellido_materno' => 'required',
                 'direccion' => 'required',
                 'celular' => 'required',
-                //'archivo' => 'required|mimes:doc,pdf,docx',
+                'archivo' => 'required|mimes:doc,pdf,docx',
             ],
             [
                 'socio_id.required' => 'El socio es necesario',
@@ -1378,6 +1386,8 @@ class SocioController extends Controller
                 'apellido_materno.required' => 'El apellido materno es necesario',
                 'direccion.required' => 'La direccion es necesaria',
                 'celular.required' => 'el celular es necesario',
+                'archivo.required' => 'el archivo es requerido',
+                'archivo.mimes' => 'el archivo no es un PDF'
             ]);
 
  

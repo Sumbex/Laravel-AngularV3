@@ -117,12 +117,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'direccion' => 'required|string',
-                        'telefono' => 'string',
+                        'direccion' => 'required/* |string */',
+                        /*  'telefono' => 'string',
                         'celular' => 'string',
-                        'anexo' => 'string',
+                        'anexo' => 'string', */
                         'email_1' => 'required|email', //'unique:users,email_address'
-                        'email_2' => 'email', //'unique:users,email_address'
+                        /* 'email_2' => 'email', //'unique:users,email_address'
                         'cargo_planta' => 'string',
                         'cargo_comision_sindicato' => 'integer||min:0',
                         'casa_propia' => 'string',
@@ -133,14 +133,14 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'tipo_cuenta_banco_id' => 'integer||min:0',
                         'banco' => 'string',
                         'isapre_fonasa' => 'string',
-                        'grupo_sangre' => 'string',
+                        'grupo_sangre' => 'string', */
 
                     ],
                     [
                         'direccion.required' => 'Debes ingresar tu direccion.',
                         'email_1.required' => 'Debes ingresar tu correo personal.',
                         'email_1.email' => 'Debes ingresar un correo valido.',
-                        'email_2' => 'Debes ingresar un correo valido.',
+                        /* 'email_2' => 'Debes ingresar un correo valido.', */
                     ]
                 );
                 break;
@@ -549,7 +549,11 @@ class PortalSocio extends Authenticatable implements JWTSubject
             ->get();
 
         if (!$archivo->isEmpty()) {
-            return ['estado' => 'success', 'archivo' => $archivo];
+            if (!is_null($archivo[0]->archivo)) {
+                return ['estado' => 'success', 'archivo' => $archivo[0]->archivo];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes tu archivo resumen ingresado.'];
+            }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes tu archivo resumen ingresado.'];
         }

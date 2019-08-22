@@ -13,7 +13,6 @@
       <h6 class="card-title">SOCIO
         <img *ngIf="actualizarLoad" padding-left="20px" height="15px"
           src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-          <!-- <div *ngIf="actualizarLoad" class="loader2"></div> -->
       </h6>
     </div>
     <div class="card"> <br>
@@ -180,7 +179,6 @@
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">ESTADO CIVIL:</th>
-                  <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
                   <td>
                     <select name="Civil" id="civil" class="form-control form-control-sm sinbordefondo centrado"
                       [(ngModel)]="traerDatosSocio.estado_civil_id" #estadoCivilUpdate required>
@@ -197,7 +195,6 @@
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CONYUGE:</th>
-                  <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
                   <td>
                     <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
                       [(ngModel)]="traerDatosSocio.conyuge" #conyugeUpdate required>

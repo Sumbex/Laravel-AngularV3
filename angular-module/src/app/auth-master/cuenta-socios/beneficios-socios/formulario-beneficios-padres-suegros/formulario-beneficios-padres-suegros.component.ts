@@ -9,6 +9,7 @@ import { SociosService } from 'src/app/servicios/socios.service';
 })
 export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
   abrirFormularioBeneficiosPadresSuegros;
+  blockIngreso=false;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -40,6 +41,7 @@ export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
+    this.blockIngreso=true;
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
     data.append('relacion_socio_id', this.InsertarBeneficiosPadresSuegros.relacion_socio_id);
@@ -54,6 +56,7 @@ export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
     this._SociosService.insertarDatosPS(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
       if(response.estado == 'success'){
@@ -66,11 +69,13 @@ export class FormularioBeneficiosPadresSuegrosComponent implements OnInit {
        this.InsertarBeneficiosPadresSuegros.direccion = '';
        this.InsertarBeneficiosPadresSuegros.celular = '';
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso=false;
     }
     );
     

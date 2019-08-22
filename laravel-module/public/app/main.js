@@ -8486,7 +8486,7 @@ let PerfilSocioComponent = class PerfilSocioComponent {
                 alert(response.mensaje);
             }
             else {
-                this.rutaResumen = response.archivo[0];
+                this.rutaResumen = response.archivo;
                 document.getElementById('showModal').click();
             }
         }, error => {

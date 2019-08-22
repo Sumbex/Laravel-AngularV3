@@ -117,7 +117,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'direccion' => 'required/* |string */',
+                        'direccion' => 'required',
                         /*  'telefono' => 'string',
                         'celular' => 'string',
                         'anexo' => 'string', */

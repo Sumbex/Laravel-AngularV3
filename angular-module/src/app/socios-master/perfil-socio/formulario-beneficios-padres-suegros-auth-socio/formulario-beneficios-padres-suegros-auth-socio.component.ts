@@ -44,7 +44,7 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
     this.blockIngreso = true;
     this._portalSociosService.setDatosPadresSuegros(this.datosPadresSuegros).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
         this.blockIngreso = false;
       }else{
         alert(response.mensaje);

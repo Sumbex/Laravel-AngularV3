@@ -49,7 +49,7 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
     this._portalSociosService.setDatosConyugeSocio(this.datosConyuge).subscribe(
       response => {
         if(response.estado == 'failed' || response.estado == 'failed_v'){
-          alert(response.mensaje);
+          alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
           this.blockIngreso = false;
         }else{
           alert('Se ha ingresado correctamente la conyuge en la base de datos');

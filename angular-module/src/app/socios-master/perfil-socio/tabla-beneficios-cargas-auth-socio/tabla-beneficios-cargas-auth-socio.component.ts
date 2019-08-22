@@ -31,6 +31,10 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
     this.getDatosCargas();
   }
 
+  openModalPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   getDatosCargas(){
     //Aquí se llamá al servicio para obtener los datos de las cargas
     this.loadingTabla = true;

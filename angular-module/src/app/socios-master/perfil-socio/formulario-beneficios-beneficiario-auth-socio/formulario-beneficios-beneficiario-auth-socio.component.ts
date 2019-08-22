@@ -44,7 +44,7 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
     console.log(this.datosBeneficiario);
     this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
         this.blockIngreso = false;
       }else{
         alert('Ingreso del Beneficiario correcto');

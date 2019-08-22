@@ -1499,7 +1499,7 @@ class SocioController extends Controller
             }
         }
         else{
-             return ['estado'=>'failed','mensaje'=>'No se ha encontrado el socio'];
+             return ['estado'=>'failed','mensaje'=>'No se han ingresado datos basicos para este socio'];
         }
 
     }

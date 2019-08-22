@@ -348,27 +348,31 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function validarRut($rut)
     {
-        $rut = preg_replace('/[^k0-9]/i', '', $rut);
-        $dv  = substr($rut, -1);
-        $numero = substr($rut, 0, strlen($rut) - 1);
-        $i = 2;
-        $suma = 0;
-        foreach (array_reverse(str_split($numero)) as $v) {
-            if ($i == 8)
-                $i = 2;
-            $suma += $v * $i;
-            ++$i;
-        }
-        $dvr = 11 - ($suma % 11);
+        try {
+            $rut = preg_replace('/[^k0-9]/i', '', $rut);
+            $dv  = substr($rut, -1);
+            $numero = substr($rut, 0, strlen($rut) - 1);
+            $i = 2;
+            $suma = 0;
+            foreach (array_reverse(str_split($numero)) as $v) {
+                if ($i == 8)
+                    $i = 2;
+                $suma += $v * $i;
+                ++$i;
+            }
+            $dvr = 11 - ($suma % 11);
 
-        if ($dvr == 11)
-            $dvr = 0;
-        if ($dvr == 10)
-            $dvr = 'K';
-        if ($dvr == strtoupper($dv))
-            return true;
-        else
+            if ($dvr == 11)
+                $dvr = 0;
+            if ($dvr == 10)
+                $dvr = 'K';
+            if ($dvr == strtoupper($dv))
+                return true;
+            else
+                return false;
+        } catch (\Exception $e) {
             return false;
+        }
     }
 
     protected function socioLogeado()
@@ -825,26 +829,31 @@ class PortalSocio extends Authenticatable implements JWTSubject
             if ($verificar['estado'] == 'success') {
                 $validarDatos = $this->validarDatos($request, 4);
                 if ($validarDatos['estado'] == 'success') {
-                    $conyuge = new SocioConyuge;
-                    $conyuge->socio_id = $this->socioLogeado()->id;
-                    $conyuge->rut = $request->rut;
-                    $conyuge->fecha_nacimiento = $request->fecha_nacimiento;
-                    $conyuge->nombres = $request->nombres;
-                    $conyuge->apellido_paterno = $request->apellido_paterno;
-                    $conyuge->apellido_materno = $request->apellido_materno;
-                    $conyuge->direccion = $request->direccion;
-                    $conyuge->celular = $request->celular;
-                    $conyuge->activo = 'S';
-                    $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosConyuge/');
-                    if ($guardarArchivo['estado'] == "success") {
-                        $conyuge->archivo = 'storage/' . $guardarArchivo['archivo'];
+                    $validarRut = $this->validarRut($request->rut);
+                    if ($validarRut == true) {
+                        $conyuge = new SocioConyuge;
+                        $conyuge->socio_id = $this->socioLogeado()->id;
+                        $conyuge->rut = $request->rut;
+                        $conyuge->fecha_nacimiento = $request->fecha_nacimiento;
+                        $conyuge->nombres = $request->nombres;
+                        $conyuge->apellido_paterno = $request->apellido_paterno;
+                        $conyuge->apellido_materno = $request->apellido_materno;
+                        $conyuge->direccion = $request->direccion;
+                        $conyuge->celular = $request->celular;
+                        $conyuge->activo = 'S';
+                        $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosConyuge/');
+                        if ($guardarArchivo['estado'] == "success") {
+                            $conyuge->archivo = 'storage/' . $guardarArchivo['archivo'];
+                        } else {
+                            return $guardarArchivo;
+                        }
+                        if ($conyuge->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
                     } else {
-                        return $guardarArchivo;
-                    }
-                    if ($conyuge->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
-                    } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                     }
                 } else {
                     return $validarDatos;
@@ -919,27 +928,32 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 5);
             if ($validarDatos['estado'] == 'success') {
-                $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
-                if ($tienesDatos['estado'] == 'failed') {
-                    $beneficiario = new SocioBeneficiario;
-                    $beneficiario->socio_id = $this->socioLogeado()->id;
-                    $beneficiario->relacion = $request->relacion;
-                    $beneficiario->rut = $request->rut;
-                    $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
-                    $beneficiario->nombres = $request->nombres;
-                    $beneficiario->apellido_paterno = $request->apellido_paterno;
-                    $beneficiario->apellido_materno = $request->apellido_materno;
-                    $beneficiario->direccion = $request->direccion;
-                    $beneficiario->celular = $request->celular;
-                    $beneficiario->activo = 'S';
-                    $beneficiario->cobro_beneficio = 'N';
-                    if ($beneficiario->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                $validarRut = $this->validarRut($request->rut);
+                if ($validarRut == true) {
+                    $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                    if ($tienesDatos['estado'] == 'failed') {
+                        $beneficiario = new SocioBeneficiario;
+                        $beneficiario->socio_id = $this->socioLogeado()->id;
+                        $beneficiario->relacion = $request->relacion;
+                        $beneficiario->rut = $request->rut;
+                        $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
+                        $beneficiario->nombres = $request->nombres;
+                        $beneficiario->apellido_paterno = $request->apellido_paterno;
+                        $beneficiario->apellido_materno = $request->apellido_materno;
+                        $beneficiario->direccion = $request->direccion;
+                        $beneficiario->celular = $request->celular;
+                        $beneficiario->activo = 'S';
+                        $beneficiario->cobro_beneficio = 'N';
+                        if ($beneficiario->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
                     } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado al beneficiario ' . $tienesDatos['beneficiario'][0]->nombre . '.'];
                     }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado al beneficiario ' . $tienesDatos['beneficiario'][0]->nombre . '.'];
+                    return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                 }
             } else {
                 return $validarDatos;
@@ -983,28 +997,33 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 8);
             if ($validarDatos['estado'] == 'success') {
-                $carga = new SocioCarga;
-                $carga->socio_id = $this->socioLogeado()->id;
-                $carga->tipo_carga_id = $request->tipo_carga_id;
-                $carga->rut = $request->rut;
-                $carga->fecha_nacimiento = $request->fecha_nacimiento;
-                $carga->nombres = $request->nombres;
-                $carga->apellido_paterno = $request->apellido_paterno;
-                $carga->apellido_materno = $request->apellido_materno;
-                $carga->direccion = $request->direccion;
-                $carga->celular = $request->celular;
-                $carga->establecimiento = $request->establecimiento;
-                $carga->activo = 'S';
-                $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosCargas/');
-                if ($guardarArchivo['estado'] == "success") {
-                    $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
+                $validarRut = $this->validarRut($request->rut);
+                if ($validarRut == true) {
+                    $carga = new SocioCarga;
+                    $carga->socio_id = $this->socioLogeado()->id;
+                    $carga->tipo_carga_id = $request->tipo_carga_id;
+                    $carga->rut = $request->rut;
+                    $carga->fecha_nacimiento = $request->fecha_nacimiento;
+                    $carga->nombres = $request->nombres;
+                    $carga->apellido_paterno = $request->apellido_paterno;
+                    $carga->apellido_materno = $request->apellido_materno;
+                    $carga->direccion = $request->direccion;
+                    $carga->celular = $request->celular;
+                    $carga->establecimiento = $request->establecimiento;
+                    $carga->activo = 'S';
+                    $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosCargas/');
+                    if ($guardarArchivo['estado'] == "success") {
+                        $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
+                    } else {
+                        return $guardarArchivo;
+                    }
+                    if ($carga->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
                 } else {
-                    return $guardarArchivo;
-                }
-                if ($carga->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
-                } else {
-                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                 }
             } else {
                 return $validarDatos;
@@ -1067,26 +1086,31 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 7);
             if ($validarDatos['estado'] == 'success') {
-                $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
-                if ($tienesDatos['estado'] == 'failed') {
-                    $PS = new SocioPadresSuegros;
-                    $PS->socio_id = $this->socioLogeado()->id;
-                    $PS->relacion_socio_id = $request->relacion_socio_id;
-                    $PS->rut = $request->rut;
-                    $PS->fecha_nacimiento = $request->fecha_nacimiento;
-                    $PS->nombres = $request->nombres;
-                    $PS->apellido_paterno = $request->apellido_paterno;
-                    $PS->apellido_materno = $request->apellido_materno;
-                    $PS->direccion = $request->direccion;
-                    $PS->celular = $request->celular;
-                    $PS->activo = 'S';
-                    if ($PS->save()) {
-                        return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                $validarRut = $this->validarRut($request->rut);
+                if ($validarRut == true) {
+                    $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                    if ($tienesDatos['estado'] == 'failed') {
+                        $PS = new SocioPadresSuegros;
+                        $PS->socio_id = $this->socioLogeado()->id;
+                        $PS->relacion_socio_id = $request->relacion_socio_id;
+                        $PS->rut = $request->rut;
+                        $PS->fecha_nacimiento = $request->fecha_nacimiento;
+                        $PS->nombres = $request->nombres;
+                        $PS->apellido_paterno = $request->apellido_paterno;
+                        $PS->apellido_materno = $request->apellido_materno;
+                        $PS->direccion = $request->direccion;
+                        $PS->celular = $request->celular;
+                        $PS->activo = 'S';
+                        if ($PS->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
                     } else {
-                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion'][0]->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
                     }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado a un(a) ' . $tienesDatos['relacion'][0]->descripcion . ', si deseas modificarlo dirigete al sindicato.'];
+                    return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                 }
             } else {
                 return $validarDatos;
@@ -1180,7 +1204,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $crear->nombres = $traerSocio->nombres;
                     $crear->a_paterno = $traerSocio->a_paterno;
                     $crear->a_materno = $traerSocio->a_materno;
-                    $crear->email = 'correo'.rand(1,999).'-'.rand(1,999).'@prueba.cl';
+                    $crear->email = 'correo' . rand(1, 999) . '-' . rand(1, 999) . '@prueba.cl';
                     $pass = substr($traerSocio->rut, -5, 4);
                     $crear->password = bcrypt($pass);
                     $crear->rut = $traerSocio->rut;

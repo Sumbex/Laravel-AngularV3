@@ -37,6 +37,7 @@ export class TablaBeneficiosCargasAuthSocioComponent implements OnInit {
     this._portalSociosService.getDatosCargas().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.abrirModalTablaCargas.close();
         this.loadingTabla = false;
       }else{
         this.datosCargas = response.cargas;

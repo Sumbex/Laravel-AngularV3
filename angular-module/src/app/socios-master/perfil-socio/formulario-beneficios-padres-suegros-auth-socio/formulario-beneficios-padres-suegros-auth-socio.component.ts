@@ -48,6 +48,7 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
         this.blockIngreso = false;
       }else{
         alert(response.mensaje);
+        this.limpiarDatos();
         this.blockIngreso = false;
       }
     },
@@ -55,6 +56,17 @@ export class FormularioBeneficiosPadresSuegrosAuthSocioComponent implements OnIn
       console.log(error);
       this.blockIngreso = false;
     });
+  }
+
+  limpiarDatos(){
+    this.datosPadresSuegros.relacionSocioId='';
+    this.datosPadresSuegros.rut='';
+    this.datosPadresSuegros.fechaNacimiento='';
+    this.datosPadresSuegros.nombres='';
+    this.datosPadresSuegros.apellidoPaterno='';
+    this.datosPadresSuegros.apellidoMaterno='';
+    this.datosPadresSuegros.direccion='';
+    this.datosPadresSuegros.celular='';
   }
 
 }

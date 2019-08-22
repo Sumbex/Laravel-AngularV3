@@ -54,6 +54,7 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
         this.blockIngreso = false;
       }else{
         alert('Ingreso de la carga correcto');
+        this.limpiarDatos();
         this.blockIngreso = false;
       }
     },
@@ -61,6 +62,19 @@ export class FormularioBeneficiosCargasAuthSocioComponent implements OnInit {
       console.log(error);
       this.blockIngreso = false;
     });
+  }
+
+  limpiarDatos(){
+    this.datosCargas.tipoCargaId='';
+    this.datosCargas.rut='';
+    this.datosCargas.fechaNacimiento='';
+    this.datosCargas.nombres='';
+    this.datosCargas.apellidoPaterno='';
+    this.datosCargas.apellidoMaterno='';
+    this.datosCargas.direccion='';
+    this.datosCargas.celular='';
+    this.datosCargas.establecimiento='';
+    this.datosCargas.archivoDocumento='';
   }
 
 }

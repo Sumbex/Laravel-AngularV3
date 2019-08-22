@@ -33,6 +33,7 @@ export class TablaBeneficiosAuthConyugeComponent implements OnInit {
     this._portalSociosService.getDatosConyuge().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.verTablaConyuge.close();
         this.loadingTabla = false;
       }else{
         this.datosConyuge = response.conyuge[0];

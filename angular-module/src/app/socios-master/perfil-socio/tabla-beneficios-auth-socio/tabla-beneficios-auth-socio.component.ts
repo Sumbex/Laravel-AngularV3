@@ -39,8 +39,9 @@ export class TablaBeneficiosAuthSocioComponent implements OnInit {
     this.cargandoTabla = true;
     this._portalSociosService.getDatosSocios().subscribe(
       response => {
-        if (response.estado == 'failed') {
+        if (response.estado == 'failed' || response.estado == 'failed_v') {
           alert(response.mensaje);
+          this.abrirTablaBeneficiosSocios.close();
         } else {
           this.traerDatosSocio = response.socio[0];
           this.cargandoTabla = false;

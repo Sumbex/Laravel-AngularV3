@@ -7993,17 +7993,38 @@ let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocio
         this.blockIngreso = true;
         this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(response => {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                alert(response.mensaje);
+                alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
                 this.blockIngreso = false;
             }
             else {
                 alert(response.mensaje);
+                this.limpiarFormulario();
                 this.blockIngreso = false;
             }
         }, error => {
             console.log(error);
             this.blockIngreso = false;
         });
+    }
+    limpiarFormulario() {
+        this.InsertarBeneficiosSocio.socio_id = '';
+        this.InsertarBeneficiosSocio.direccion = '';
+        this.InsertarBeneficiosSocio.celular = '';
+        this.InsertarBeneficiosSocio.anexo = '';
+        this.InsertarBeneficiosSocio.email_1 = '';
+        this.InsertarBeneficiosSocio.email_2 = '';
+        this.InsertarBeneficiosSocio.cargo_planta = '';
+        this.InsertarBeneficiosSocio.cargo_comision_sindicato = '';
+        this.InsertarBeneficiosSocio.numero_cuenta = '';
+        this.InsertarBeneficiosSocio.tipo_cuenta_banco_id = '';
+        this.InsertarBeneficiosSocio.banco = '';
+        this.InsertarBeneficiosSocio.isapre_fonasa = '';
+        this.InsertarBeneficiosSocio.grupo_sangre = '';
+        this.InsertarBeneficiosSocio.casa_propia = '';
+        this.InsertarBeneficiosSocio.rol_turno = '';
+        this.InsertarBeneficiosSocio.estado_civil_id = '';
+        this.InsertarBeneficiosSocio.conyuge = '';
+        this.InsertarBeneficiosSocio.telefono = '';
     }
 };
 FormularioBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8085,12 +8106,23 @@ let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBenefic
             }
             else {
                 alert('Ingreso del Beneficiario correcto');
+                this.limpiarDatos();
                 this.blockIngreso = false;
             }
         }, error => {
             console.log(error);
             this.blockIngreso = false;
         });
+    }
+    limpiarDatos() {
+        this.datosBeneficiario.relacionParentesco = '';
+        this.datosBeneficiario.rut = '';
+        this.datosBeneficiario.fechaNacimiento = '';
+        this.datosBeneficiario.nombres = '';
+        this.datosBeneficiario.apellidoPaterno = '';
+        this.datosBeneficiario.apellidoMaterno = '';
+        this.datosBeneficiario.direccion = '';
+        this.datosBeneficiario.celular = '';
     }
 };
 FormularioBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8175,12 +8207,25 @@ let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCar
             }
             else {
                 alert('Ingreso de la carga correcto');
+                this.limpiarDatos();
                 this.blockIngreso = false;
             }
         }, error => {
             console.log(error);
             this.blockIngreso = false;
         });
+    }
+    limpiarDatos() {
+        this.datosCargas.tipoCargaId = '';
+        this.datosCargas.rut = '';
+        this.datosCargas.fechaNacimiento = '';
+        this.datosCargas.nombres = '';
+        this.datosCargas.apellidoPaterno = '';
+        this.datosCargas.apellidoMaterno = '';
+        this.datosCargas.direccion = '';
+        this.datosCargas.celular = '';
+        this.datosCargas.establecimiento = '';
+        this.datosCargas.archivoDocumento = '';
     }
 };
 FormularioBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8263,6 +8308,7 @@ let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosCo
             }
             else {
                 alert('Se ha ingresado correctamente la conyuge en la base de datos');
+                this.limpiarDatos();
                 this.blockIngreso = false;
             }
         }, error => {
@@ -8270,6 +8316,16 @@ let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosCo
             this.blockIngreso = false;
         });
         console.log(this.datosConyuge);
+    }
+    limpiarDatos() {
+        this.datosConyuge.rut = '';
+        this.datosConyuge.fechaNacimiento = '';
+        this.datosConyuge.nombres = '';
+        this.datosConyuge.apellidoPaterno = '';
+        this.datosConyuge.apellidoMaterno = '';
+        this.datosConyuge.direccion = '';
+        this.datosConyuge.celular = '';
+        this.datosConyuge.archivoDocumento = '';
     }
 };
 FormularioBeneficiosConyugeAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8349,12 +8405,23 @@ let FormularioBeneficiosPadresSuegrosAuthSocioComponent = class FormularioBenefi
             }
             else {
                 alert(response.mensaje);
+                this.limpiarDatos();
                 this.blockIngreso = false;
             }
         }, error => {
             console.log(error);
             this.blockIngreso = false;
         });
+    }
+    limpiarDatos() {
+        this.datosPadresSuegros.relacionSocioId = '';
+        this.datosPadresSuegros.rut = '';
+        this.datosPadresSuegros.fechaNacimiento = '';
+        this.datosPadresSuegros.nombres = '';
+        this.datosPadresSuegros.apellidoPaterno = '';
+        this.datosPadresSuegros.apellidoMaterno = '';
+        this.datosPadresSuegros.direccion = '';
+        this.datosPadresSuegros.celular = '';
     }
 };
 FormularioBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8487,6 +8554,7 @@ let TablaBeneficiosAuthConyugeComponent = class TablaBeneficiosAuthConyugeCompon
         this._portalSociosService.getDatosConyuge().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
+                this.verTablaConyuge.close();
                 this.loadingTabla = false;
             }
             else {
@@ -8557,8 +8625,9 @@ let TablaBeneficiosAuthSocioComponent = class TablaBeneficiosAuthSocioComponent 
     getDatosSocio() {
         this.cargandoTabla = true;
         this._portalSociosService.getDatosSocios().subscribe(response => {
-            if (response.estado == 'failed') {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
+                this.abrirTablaBeneficiosSocios.close();
             }
             else {
                 this.traerDatosSocio = response.socio[0];
@@ -8635,6 +8704,7 @@ let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBenefic
         this._portalSociosService.getDatosBeneficiario().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
+                this.abrirModalBeneficiosBeneficiario.close();
                 this.loadingTabla = false;
             }
             else {
@@ -8710,6 +8780,7 @@ let TablaBeneficiosCargasAuthSocioComponent = class TablaBeneficiosCargasAuthSoc
         this._portalSociosService.getDatosCargas().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
+                this.abrirModalTablaCargas.close();
                 this.loadingTabla = false;
             }
             else {
@@ -8785,6 +8856,7 @@ let TablaBeneficiosPadresSuegrosAuthSocioComponent = class TablaBeneficiosPadres
         this._portalSociosService.getDatosPadresSuegros().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
+                this.abrirModalPadresSuegros.close();
                 this.loadingTabla = false;
             }
             else {

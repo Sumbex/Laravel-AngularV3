@@ -53,6 +53,7 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
           this.blockIngreso = false;
         }else{
           alert('Se ha ingresado correctamente la conyuge en la base de datos');
+          this.limpiarDatos();
           this.blockIngreso = false;
         }
       },
@@ -62,6 +63,17 @@ export class FormularioBeneficiosConyugeAuthSocioComponent implements OnInit {
       }
     );
     console.log(this.datosConyuge);
+  }
+
+  limpiarDatos(){
+    this.datosConyuge.rut = '';
+    this.datosConyuge.fechaNacimiento = '';
+    this.datosConyuge.nombres = '';
+    this.datosConyuge.apellidoPaterno = '';
+    this.datosConyuge.apellidoMaterno = '';
+    this.datosConyuge.direccion = '';
+    this.datosConyuge.celular = '';
+    this.datosConyuge.archivoDocumento = '';
   }
 
 }

@@ -48,6 +48,7 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
         this.blockIngreso = false;
       }else{
         alert('Ingreso del Beneficiario correcto');
+        this.limpiarDatos();
         this.blockIngreso = false;
       }
     },
@@ -55,6 +56,17 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
       console.log(error);
       this.blockIngreso = false;
     });
+  }
+
+  limpiarDatos(){
+    this.datosBeneficiario.relacionParentesco= '';
+    this.datosBeneficiario.rut= '';
+    this.datosBeneficiario.fechaNacimiento= '';
+    this.datosBeneficiario.nombres= '';
+    this.datosBeneficiario.apellidoPaterno= '';
+    this.datosBeneficiario.apellidoMaterno= '';
+    this.datosBeneficiario.direccion= '';
+    this.datosBeneficiario.celular= '';
   }
 
 }

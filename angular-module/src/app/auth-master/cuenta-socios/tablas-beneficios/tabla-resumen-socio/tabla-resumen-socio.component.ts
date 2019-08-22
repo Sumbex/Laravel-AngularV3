@@ -131,7 +131,7 @@ export class TablaResumenSocioComponent implements OnInit {
     this._SociosService.getDocumentoResumen(this.getIdSocio).subscribe((response) => {
       if (response.estado == "failed") {
         this.vista_pdf = false;
-        //  alert(response.mensaje);
+        alert(response.mensaje);
         this.abrirTablaResumen.close();
         return false;
       } else {

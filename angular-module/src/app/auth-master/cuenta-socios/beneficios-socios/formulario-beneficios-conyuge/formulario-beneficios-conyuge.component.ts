@@ -10,6 +10,7 @@ import { SociosService } from 'src/app/servicios/socios.service';
 export class FormularioBeneficiosConyugeComponent implements OnInit {
 
   abrirFormularioBeneficiosConyuge;
+  blockIngreso=false;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -45,6 +46,7 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
+    this.blockIngreso=true;
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
     data.append('rut',this.InsertarBeneficiosConyuge.rut_conyuge);
@@ -59,6 +61,7 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
     this._SociosService.insertarDatosConyuge(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
       if(response.estado == 'success'){
@@ -71,11 +74,13 @@ export class FormularioBeneficiosConyugeComponent implements OnInit {
        this.InsertarBeneficiosConyuge.celular = '';
        this.InsertarBeneficiosConyuge.archivoDocumento = null;
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso=false;
     }
     );
     

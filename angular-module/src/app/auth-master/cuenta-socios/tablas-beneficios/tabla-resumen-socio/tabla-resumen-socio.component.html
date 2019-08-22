@@ -263,7 +263,9 @@
               </div>
 
               <br><br>
-              <p class="text-center"><strong>{{firma}}</strong></p>
+              <div class="text-center">
+                <p><strong>{{firma}}</strong></p>
+              </div>
 
             </div>
           </div>
@@ -323,7 +325,7 @@
       </div>
       <div *ngIf="vista_pdf == true" class="loader"></div>
       <div class="modal-body" *ngIf="vista_pdf == false">
-        <iframe width="100%" height="500px" [src]="  '../storage/' + TraerDocumentoSocio | safeUrl" frameborder="0"
+        <iframe width="100%" height="500px" [src]="  '../' + TraerDocumentoSocio | safeUrl" frameborder="0"
           allowfullscreen></iframe>
       </div>
       <div class="modal-footer" [hidden]="true">
@@ -332,4 +334,6 @@
     </div>
   </div>
 </ng-template>
+
+
 <!--MODAL VISOR PDF-->

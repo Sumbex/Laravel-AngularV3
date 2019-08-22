@@ -651,7 +651,7 @@ class SocioController extends Controller
                                             'socio_id'=>$r->id,
                                             'rut' => $rut_limpio
                                     ])->first();
-
+                // dd(!$this->valida_rut($rut_limpio));
                 if(!$this->valida_rut($rut_limpio)){
 
                     return ['estado'=>'failed','mensaje'=>'Rut no valido'];
@@ -1326,10 +1326,7 @@ class SocioController extends Controller
                 return false;
         }
         catch(\Exception $e){
-            return[
-                'estado'  => 'failed', 
-                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
-            ];
+            return false;
         }
     }
 

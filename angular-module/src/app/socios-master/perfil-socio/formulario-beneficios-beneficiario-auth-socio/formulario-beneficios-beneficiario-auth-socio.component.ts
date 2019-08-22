@@ -44,10 +44,11 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
     console.log(this.datosBeneficiario);
     this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        alert('Revise el formulario, que no falte un campo o que exista un dato invalido');
         this.blockIngreso = false;
       }else{
         alert('Ingreso del Beneficiario correcto');
+        this.limpiarDatos();
         this.blockIngreso = false;
       }
     },
@@ -55,6 +56,17 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
       console.log(error);
       this.blockIngreso = false;
     });
+  }
+
+  limpiarDatos(){
+    this.datosBeneficiario.relacionParentesco= '';
+    this.datosBeneficiario.rut= '';
+    this.datosBeneficiario.fechaNacimiento= '';
+    this.datosBeneficiario.nombres= '';
+    this.datosBeneficiario.apellidoPaterno= '';
+    this.datosBeneficiario.apellidoMaterno= '';
+    this.datosBeneficiario.direccion= '';
+    this.datosBeneficiario.celular= '';
   }
 
 }

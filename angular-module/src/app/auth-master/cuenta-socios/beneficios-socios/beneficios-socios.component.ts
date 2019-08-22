@@ -18,6 +18,7 @@ export class BeneficiosSociosComponent implements OnInit {
   nombreUpperSocio='';
   /*-----------------------------*/
   idSocio='';
+  blockGuardar=false;
 
   archivoDocumento:null;
 
@@ -83,9 +84,12 @@ export class BeneficiosSociosComponent implements OnInit {
 
   SubirDocumento(){
     if(this.archivoDocumento == null){
-    alert('ingrese el documento PDF');
+      // this.blockGuardar=true;
+      alert('ingrese el documento PDF');
+      // this.blockGuardar=false;
       return false;
     }
+    this.blockGuardar=true;
     const data = new FormData();
     data.append('id',this.idSocio);
     data.append('archivo',this.archivoDocumento);
@@ -93,16 +97,19 @@ export class BeneficiosSociosComponent implements OnInit {
     this._SociosService.SubirDocumentoGeneral(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
+        this.blockGuardar=false;
         return false;
       }
       if(response.estado == 'success'){
        this.archivoDocumento = null;
         alert(response.mensaje);
+        this.blockGuardar=false;
         return false;
       }
     },
     error => {
       console.log(error);
+      this.blockGuardar=false;
     }
     );
     

@@ -10,6 +10,7 @@ import { SociosService } from 'src/app/servicios/socios.service';
 export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
 
   abrirFormularioBeneficiosBeneficiario;
+  blockIngreso:boolean=false;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -41,6 +42,7 @@ export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
+    this.blockIngreso=true;
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
     data.append('relacion', this.InsertarBeneficiosBeneficiario.relacion);
@@ -52,9 +54,11 @@ export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
     data.append('direccion',this.InsertarBeneficiosBeneficiario.direccion);
     data.append('celular',this.InsertarBeneficiosBeneficiario.celular);
 
+  
     this._SociosService.insertarDatosBeneficiario(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
       if(response.estado == 'success'){
@@ -67,11 +71,13 @@ export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
        this.InsertarBeneficiosBeneficiario.direccion = '';
        this.InsertarBeneficiosBeneficiario.celular = '';
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso=false;
     }
     );
     

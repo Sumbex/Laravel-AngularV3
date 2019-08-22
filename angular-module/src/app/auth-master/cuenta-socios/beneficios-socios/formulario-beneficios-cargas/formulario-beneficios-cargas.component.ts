@@ -10,6 +10,7 @@ import { SociosService } from 'src/app/servicios/socios.service';
 export class FormularioBeneficiosCargasComponent implements OnInit {
 
   abrirFormularioBeneficiosCargas;
+  blockIngreso:boolean=false;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -46,6 +47,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
+    this.blockIngreso=true;
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
     data.append('tipo_carga_id', this.InsertarBeneficiosCargas.tipo_carga_id);
@@ -62,6 +64,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
     this._SociosService.insertarDatosCarga(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
       if(response.estado == 'success'){
@@ -76,11 +79,13 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
        this.InsertarBeneficiosCargas.establecimiento = '';
        this.InsertarBeneficiosCargas.archivoDocumento = null; 
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso=false;
     }
     );
     

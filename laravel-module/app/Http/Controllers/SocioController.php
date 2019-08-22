@@ -462,7 +462,7 @@ class SocioController extends Controller
 
                     $ss->isapre_fonasa = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success','mensaje'=>'Isapre o fonaza actualizada!']; 
+                        return ['estado'=>'success','mensaje'=>'Isapre o fonasa actualizada!']; 
                     }
                     else {
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
@@ -614,7 +614,7 @@ class SocioController extends Controller
         if ($conyuge) {
             return ['estado'=>'success', 'body'=>$conyuge];
         }
-        return ['estado'=>'failed', 'body'=>'', 'mensaje'=>'No existen datos en esta tabla'];
+        return ['estado'=>'failed', 'body'=>'', 'mensaje'=>'No hay datos en esta tabla'];
     }
     public function actualizar_datos_conyuge(Request $r)
     {
@@ -712,14 +712,14 @@ class SocioController extends Controller
                  //actualizar----------------------------------------------------------------------------
                      $valida_pdf = $this->validar_pdf_upd($r);
                         if($valida_pdf['estado'] == 'success'){
-                         $ruta = substr($cony->archivo,0);
+                         $ruta = substr($cony->archivo,8);
                             
                             $borrar = Storage::delete('/'.$ruta);
                             if ($borrar) {
                                 $guardarArchivo = $this->guardarArchivo($r->valor, 'ArchivosSocios/ArchivosConyuge/');
 
                                 if ($guardarArchivo['estado'] == "success") {
-                                    $cony->archivo = $guardarArchivo['archivo'];
+                                    $cony->archivo = 'storage/' . $guardarArchivo['archivo'];
                                     if ($cony->save()) {
                                         return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
                                     } else {
@@ -1092,14 +1092,14 @@ class SocioController extends Controller
                  //actualizar----------------------------------------------------------------------------
                      $valida_pdf = $this->validar_pdf_upd($r);
                         if($valida_pdf['estado'] == 'success'){
-                         $ruta = substr($carga->archivo,0);
+                         $ruta = substr($carga->archivo,8);
                             
                             $borrar = Storage::delete('/'.$ruta);
                             if ($borrar) {
                                 $guardarArchivo = $this->guardarArchivo($r->valor, 'ArchivosSocios/ArchivosCargas/');
 
                                 if ($guardarArchivo['estado'] == "success") {
-                                    $carga->archivo = $guardarArchivo['archivo'];
+                                    $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
                                     if ($carga->save()) {
                                         return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
                                     } else {
@@ -1176,7 +1176,7 @@ class SocioController extends Controller
         else{
             return [
                 'estado'  => 'failed',
-                'mensaje' => 'failed',
+                'mensaje' => 'No hay datos en la tabla',
                 'body'    => null
             ];
         }
@@ -1454,14 +1454,14 @@ class SocioController extends Controller
             
              $valida_pdf = $this->validar_pdf($r);
                 if($valida_pdf['estado'] == 'success'){
-                 $ruta = substr($up_sdb->archivo,0);
+                 $ruta = substr($up_sdb->archivo,8);
                     
                     $borrar = Storage::delete('/'.$ruta);
                     if ($borrar) {
                         $guardarArchivo = $this->guardarArchivo($r->archivo, 'ArchivosSocios/DatosBasicos/');
 
                         if ($guardarArchivo['estado'] == "success") {
-                            $up_sdb->archivo = $guardarArchivo['archivo'];
+                            $up_sdb->archivo = 'storage/'.$guardarArchivo['archivo'];
                             if ($up_sdb->save()) {
                                 return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
                             } else {
@@ -1489,7 +1489,7 @@ class SocioController extends Controller
             if($file['estado'] == "success"){
                 $archivo = $file['archivo'];
 
-                $sdb->archivo = $archivo;
+                $sdb->archivo = 'storage/'. $archivo;
                 if ($sdb->save()) {
                     return ['estado'=>'success', 'mensaje'=>'Documento subido correctamente!'];
                 }
@@ -1499,7 +1499,7 @@ class SocioController extends Controller
             }
         }
         else{
-             return ['estado'=>'failed','mensaje'=>'No se ha encontrado el socio'];
+             return ['estado'=>'failed','mensaje'=>'No se han ingresado datos basicos para este socio'];
         }
 
     }

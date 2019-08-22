@@ -31,7 +31,7 @@ export class PerfilSocioComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        this.rutaResumen = response.archivo[0];
+        this.rutaResumen = response.archivo;
         document.getElementById('showModal').click();
       }
     },

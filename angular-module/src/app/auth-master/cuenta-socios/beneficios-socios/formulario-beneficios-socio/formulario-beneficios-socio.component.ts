@@ -10,6 +10,7 @@ import { SociosService } from 'src/app/servicios/socios.service';
 export class FormularioBeneficiosSocioComponent implements OnInit {
 
   abrirFormularioBeneficiosSocios;
+  blockIngreso=false;
 
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
@@ -53,6 +54,7 @@ export class FormularioBeneficiosSocioComponent implements OnInit {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
+    this.blockIngreso=true;
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
     data.append('direccion',this.InsertarBeneficiosSocio.direccion);
@@ -76,6 +78,7 @@ export class FormularioBeneficiosSocioComponent implements OnInit {
     this._SociosService.insertarDatosSocio(data).subscribe((response) =>{
       if(response.estado == 'failed'){
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
       if(response.estado == 'success'){
@@ -97,11 +100,13 @@ export class FormularioBeneficiosSocioComponent implements OnInit {
         this.InsertarBeneficiosSocio.estado_civil_id ='';
         this.InsertarBeneficiosSocio.conyuge ='';
         alert(response.mensaje);
+        this.blockIngreso=false;
         return false;
       }
     },
     error => {
       console.log(error);
+      this.blockIngreso=false;
     }
     );
     

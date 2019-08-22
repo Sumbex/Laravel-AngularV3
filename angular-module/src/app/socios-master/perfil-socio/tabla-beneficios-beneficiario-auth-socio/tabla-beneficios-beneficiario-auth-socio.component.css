@@ -3,6 +3,11 @@
     border: 0;
     /*text-align: center;*/
   }
+
+  .centrado{
+    color: #000000;
+  }
+
   input{
     width: 30em;
     font-weight: bold; 

@@ -139,6 +139,7 @@ class PortalSocioCuentaSindical extends Model
                         break;
                 }
             }
+            $totales->cierre_mes = $totales->total + $IM;
             return ['estado' => 'success', 'monto_inicio' => $IM, 'CS' => $return, 'totales' => $totales];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
@@ -154,6 +155,7 @@ class PortalSocioCuentaSindical extends Model
                 DB::raw('sum(monto_ingreso) - sum(monto_egreso) as total')
             ])
             ->where([
+                'detalle_camping' => null,
                 'activo' => 'S',
                 'anio_id' => $anio,
                 'mes_id' => $mes,

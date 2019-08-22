@@ -10,7 +10,7 @@
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row justify-content-between">
 
-              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div [hidden]="blockTablaSocio" class="col-12 col-md-12 col-lg-12 col-xl-12">
                 <label><strong>SOCIO: {{getNombreSocio | uppercase}} <br> </strong></label>
                 <tr>
                   <th class="text-right" style="background: #138D75">RUT:</th>
@@ -143,7 +143,7 @@
                 </tr> <br>
               </div>
 
-              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div [hidden]="blockTablaConyuge" class="col-12 col-md-12 col-lg-12 col-xl-12">
                 <label><strong>CONYUGE:
                     {{traerDatosConyuge.nombres | uppercase}}{{traerDatosConyuge.apellido_paterno | uppercase}}
                     {{traerDatosConyuge.apellido_materno | uppercase}}<br> </strong></label>
@@ -166,103 +166,106 @@
                 </tr> <br>
               </div>
 
-              <div *ngFor="let itemBeneficiario of traerDatosBeneficiario; let i = index"
-                class="col-12 col-md-12 col-lg-12 col-xl-12">
-                <label><strong>{{i+1}}° BENEFICIARIO: {{itemBeneficiario.nombres | uppercase}}
-                    {{itemBeneficiario.apellido_paterno | uppercase}} {{itemBeneficiario.apellido_materno | uppercase}}
-                    <br> </strong></label>
+              <div [hidden]="blockTablaBeneficiario">
+                <div *ngFor="let itemBeneficiario of traerDatosBeneficiario; let i = index"
+                  class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label><strong>{{i+1}}° BENEFICIARIO: {{itemBeneficiario.nombres | uppercase}}
+                      {{itemBeneficiario.apellido_paterno | uppercase}}
+                      {{itemBeneficiario.apellido_materno | uppercase}}
+                      <br> </strong></label>
 
-                <tr>
-                  <th id="fusion" style="background: #138D75" class="text-right">RUT:</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
-                      value="{{itemBeneficiario.rut}}" disabled></td>
-
-                  <th id="fusion" style="background: #138D75" class="text-right">RELACION:</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
-                      value="{{itemBeneficiario.relacion | uppercase}}" disabled></td>
-
-                  <th id="fusion" style="background: #138D75;" class="text-right">CELULAR:</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
-                      value="{{itemBeneficiario.celular}}" disabled></td>
-
-                  <th id="fusion" style="background: #138D75;" class="text-right">DIRECCION:</th>
-                  <td id="fusion"><input id="fusion-direccion" type="text" class="sinbordefondo centrado"
-                      value="{{itemBeneficiario.direccion | uppercase}}" disabled> </td>
-                </tr> <br>
-              </div>
-
-              <div *ngFor="let itemCarga of traerDatosCarga" class="col-12 col-md-12 col-lg-12 col-xl-12">
-                <label><strong>
-                    <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="itemCarga.tipo_carga_id" required
-                      style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
-                      <option value="1">HIJO: {{itemCarga.nombres | uppercase}}
-                        {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
-                      <option value="2">NIETO: {{itemCarga.nombres | uppercase}}
-                        {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
-                      <option value="3">ADOPCION: {{itemCarga.nombres | uppercase}}
-                        {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
-                      <option value="4">OTROS: {{itemCarga.nombres | uppercase}}
-                        {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
-                    </select>
-                  </strong></label>
-                <tr>
-                  <th id="fusion" style="background: #138D75" class="text-right">RUT:</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
-                      value="{{itemCarga.rut}}" disabled></td>
-                  <th id="fusion" style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                  <td id="fusion"><input id="fusion" type="date" class="sinbordefondo centrado"
-                      value="{{ itemCarga.fecha_nacimiento }}" disabled></td>
-                  <th id="fusion" style="background: #138D75;" class="text-right">ESCUELA:</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
-                      value="{{itemCarga.establecimiento | uppercase}}" disabled></td>
-                  <th id="fusion" style="background: #138D75;" class="text-right">DIRECCION:</th>
-                  <td id="fusion"><input id="fusion-direccion" type="text" class="sinbordefondo centrado"
-                      value="{{itemCarga.direccion | uppercase}}" disabled></td>
-                </tr> <br>
-              </div>
-
-              <!-- <div *ngFor="let itemPS of traerDatosPS" class="col-12 col-md-6 col-lg-6 col-xl-6">
                   <tr>
-                    <th style="background: #138D75" class="text-right">{{itemPS.relacion_socio_id}}</th>
-                    <td><input type="text" class="sinbordefondo centrado" value=" {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}} {{itemPS.apellido_materno | uppercase}} " disabled></td>
-                  </tr>
-              </div> -->
-              <div *ngFor="let itemPS of traerDatosPS" class="col-12 col-md-12 col-lg-12 col-xl-12">
-                <label><strong>
-                    <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="itemPS.relacion_socio_id" required disabled
-                      style="-webkit-appearance: none;-moz-appearance: none; appearance: none;">
-                      <option value="1">PADRE: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
-                        {{itemPS.apellido_materno | uppercase}} </option>
-                      <option value="2">MADRE: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
-                        {{itemPS.apellido_materno | uppercase}} </option>
-                      <option value="3">SUEGRO: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
-                        {{itemPS.apellido_materno | uppercase}} </option>
-                      <option value="4">SUEGRA: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
-                        {{itemPS.apellido_materno | uppercase}} </option>
-                    </select></strong></label>
-                <tr>
-                  <th id="fusion" style="background: #138D75" class="text-right">RUT: &nbsp;</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado" value="{{itemPS.rut}}"
-                      disabled></td>
+                    <th id="fusion" style="background: #138D75" class="text-right">RUT:</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
+                        value="{{itemBeneficiario.rut}}" disabled></td>
 
-                  <th id="fusion" style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                  <td id="fusion"><input id="fusion" type="date" class="sinbordefondo centrado"
-                      value="{{ itemPS.fecha_nacimiento }}" disabled></td>
+                    <th id="fusion" style="background: #138D75" class="text-right">RELACION:</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
+                        value="{{itemBeneficiario.relacion | uppercase}}" disabled></td>
 
-                  <th id="fusion" style="background: #138D75" class="text-right">CELULAR:</th>
-                  <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
-                      value="{{ itemPS.celular }}" disabled></td>
+                    <th id="fusion" style="background: #138D75;" class="text-right">CELULAR:</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
+                        value="{{itemBeneficiario.celular}}" disabled></td>
 
-                  <th id="fusion" style="background: #138D75;" class="text-right">DIRECCION:</th>
-                  <td id="fusion"><input id="fusion-direccion" type="text" class="sinbordefondo centrado"
-                      value="{{itemPS.direccion | uppercase}}" disabled></td>
-                </tr><br>
+                    <th id="fusion" style="background: #138D75;" class="text-right">DIRECCION:</th>
+                    <td id="fusion"><input id="fusion-direccion" type="text" class="sinbordefondo centrado"
+                        value="{{itemBeneficiario.direccion | uppercase}}" disabled> </td>
+                  </tr> <br>
+                </div>
+              </div>
+
+              <div [hidden]="blockTablaCarga">
+                <div *ngFor="let itemCarga of traerDatosCarga" class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label><strong>
+                      <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
+                        [(ngModel)]="itemCarga.tipo_carga_id" required
+                        style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
+                        <option value="1">HIJO: {{itemCarga.nombres | uppercase}}
+                          {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
+                        <option value="2">NIETO: {{itemCarga.nombres | uppercase}}
+                          {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
+                        <option value="3">ADOPCION: {{itemCarga.nombres | uppercase}}
+                          {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
+                        <option value="4">OTROS: {{itemCarga.nombres | uppercase}}
+                          {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}} </option>
+                      </select>
+                    </strong></label>
+                  <tr>
+                    <th id="fusion" style="background: #138D75" class="text-right">RUT:</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
+                        value="{{itemCarga.rut}}" disabled></td>
+                    <th id="fusion" style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                    <td id="fusion"><input id="fusion" type="date" class="sinbordefondo centrado"
+                        value="{{ itemCarga.fecha_nacimiento }}" disabled></td>
+                    <th id="fusion" style="background: #138D75;" class="text-right">ESCUELA:</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
+                        value="{{itemCarga.establecimiento | uppercase}}" disabled></td>
+                    <th id="fusion" style="background: #138D75;" class="text-right">DIRECCION:</th>
+                    <td id="fusion"><input id="fusion-direccion" type="text" class="sinbordefondo centrado"
+                        value="{{itemCarga.direccion | uppercase}}" disabled></td>
+                  </tr> <br>
+                </div>
+              </div>
+
+              <div [hidden]="blockTablaPS">
+                <div *ngFor="let itemPS of traerDatosPS" class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <label><strong>
+                      <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
+                        [(ngModel)]="itemPS.relacion_socio_id" required disabled
+                        style="-webkit-appearance: none;-moz-appearance: none; appearance: none;">
+                        <option value="1">PADRE: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
+                          {{itemPS.apellido_materno | uppercase}} </option>
+                        <option value="2">MADRE: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
+                          {{itemPS.apellido_materno | uppercase}} </option>
+                        <option value="3">SUEGRO: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
+                          {{itemPS.apellido_materno | uppercase}} </option>
+                        <option value="4">SUEGRA: {{itemPS.nombres | uppercase}} {{itemPS.apellido_paterno | uppercase}}
+                          {{itemPS.apellido_materno | uppercase}} </option>
+                      </select></strong></label>
+                  <tr>
+                    <th id="fusion" style="background: #138D75" class="text-right">RUT: &nbsp;</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado" value="{{itemPS.rut}}"
+                        disabled></td>
+  
+                    <th id="fusion" style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                    <td id="fusion"><input id="fusion" type="date" class="sinbordefondo centrado"
+                        value="{{ itemPS.fecha_nacimiento }}" disabled></td>
+  
+                    <th id="fusion" style="background: #138D75" class="text-right">CELULAR:</th>
+                    <td id="fusion"><input id="fusion" type="text" class="sinbordefondo centrado"
+                        value="{{ itemPS.celular }}" disabled></td>
+  
+                    <th id="fusion" style="background: #138D75;" class="text-right">DIRECCION:</th>
+                    <td id="fusion"><input id="fusion-direccion" type="text" class="sinbordefondo centrado"
+                        value="{{itemPS.direccion | uppercase}}" disabled></td>
+                  </tr><br>
+                </div>
               </div>
 
               <br><br>
-              <p class="text-center"><strong>{{firma}}</strong></p>
+              <div class="text-center">
+                <p><strong>{{firma}}</strong></p>
+              </div>
 
             </div>
           </div>
@@ -322,7 +325,7 @@
       </div>
       <div *ngIf="vista_pdf == true" class="loader"></div>
       <div class="modal-body" *ngIf="vista_pdf == false">
-        <iframe width="100%" height="500px" [src]="  '../storage/' + TraerDocumentoSocio | safeUrl" frameborder="0"
+        <iframe width="100%" height="500px" [src]="  '../' + TraerDocumentoSocio | safeUrl" frameborder="0"
           allowfullscreen></iframe>
       </div>
       <div class="modal-footer" [hidden]="true">
@@ -331,4 +334,6 @@
     </div>
   </div>
 </ng-template>
+
+
 <!--MODAL VISOR PDF-->

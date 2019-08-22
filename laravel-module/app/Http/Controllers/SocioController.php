@@ -462,7 +462,7 @@ class SocioController extends Controller
 
                     $ss->isapre_fonasa = $r->valor;
                     if ($ss->save()) { 
-                        return ['estado'=>'success','mensaje'=>'Isapre o fonaza actualizada!']; 
+                        return ['estado'=>'success','mensaje'=>'Isapre o fonasa actualizada!']; 
                     }
                     else {
                         return ['estado'=>'failed','mensaje'=>'Error al actualizar!']; 
@@ -614,7 +614,7 @@ class SocioController extends Controller
         if ($conyuge) {
             return ['estado'=>'success', 'body'=>$conyuge];
         }
-        return ['estado'=>'failed', 'body'=>'', 'mensaje'=>'No existen datos en esta tabla'];
+        return ['estado'=>'failed', 'body'=>'', 'mensaje'=>'No hay datos en esta tabla'];
     }
     public function actualizar_datos_conyuge(Request $r)
     {
@@ -1176,7 +1176,7 @@ class SocioController extends Controller
         else{
             return [
                 'estado'  => 'failed',
-                'mensaje' => 'failed',
+                'mensaje' => 'No hay datos en la tabla',
                 'body'    => null
             ];
         }
@@ -1499,7 +1499,7 @@ class SocioController extends Controller
             }
         }
         else{
-             return ['estado'=>'failed','mensaje'=>'No se ha encontrado el socio'];
+             return ['estado'=>'failed','mensaje'=>'No se han ingresado datos basicos para este socio'];
         }
 
     }

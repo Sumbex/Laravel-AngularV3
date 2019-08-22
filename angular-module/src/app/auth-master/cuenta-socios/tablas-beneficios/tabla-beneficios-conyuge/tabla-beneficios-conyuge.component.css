@@ -1,20 +1,21 @@
+
 .sinbordefondo {
     background-color: #fff;
     border: 0;
     /*text-align: center;*/
 }
-
-input {
+.centrado{
     width: 30em;
     font-weight: bold;
+    color: #000000;
+    padding-left: 0%;
 }
-
-select#cta {
-    font-size: 13px;
-    font-weight: 400;
-    /* padding-left: -137px;*/
-    margin-left: -4px;
-}
+/* .centrado{
+    width: 22em;
+    font-weight: bold;
+    color: #000000;
+    padding-left: 1%;
+} */
 
 .my-class {
     color: red;
@@ -25,7 +26,8 @@ select#cta {
 
 label,
 input,
-button {
+button,
+select {
     font-size: 12px;
 }
 
@@ -139,3 +141,63 @@ th {
 
 
 /*CLASES DEL LOADER*/
+
+/*CLASES DEL LOADER2*/
+.loader2,
+.loader2:before,
+.loader2:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader2 {
+  color: #3ead0d;
+  font-size: 5px;
+  margin: 4px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader2:before,
+.loader2:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader2:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader2:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+/*CLASES DEL LOADER2*/

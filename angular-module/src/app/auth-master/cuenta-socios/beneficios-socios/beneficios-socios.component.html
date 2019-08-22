@@ -27,8 +27,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="resumen-tab" data-toggle="tab" href="#resumen" role="tab" aria-controls="resumen"
-                        aria-selected="false">Resumen Socio</a>
+                    <a class="nav-link" id="resumen-tab" data-toggle="tab" href="#resumen" role="tab"
+                        aria-controls="resumen" aria-selected="false">Resumen Socio</a>
                 </li>
             </ul> <br>
 
@@ -40,10 +40,11 @@
 
                 <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="row justify-content-center">
+
                         <div class="col-12 col-md-8 col-lg-8 col-xl-8">
                             <div class="form-group"> <br>
                                 <label>
-                                    <strong>Ingrese rut del socio sin guiones </strong>
+                                    <strong>Ingrese Rut </strong>
                                     <i class="fas fa-info-circle" placement="right"
                                         ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
                                 </label>
@@ -52,24 +53,48 @@
                                         placeholder="Ingrese rut del socio sin guion" name="rut" required>
                                     <span class="input-group-btn">
                                         <button type="button" (click)="buscarSocio()"
-                                            class="btn btn-outline-success btn-sm"><i
-                                                class="fas fa-search"></i></button>
+                                            class="btn btn-outline-success btn-sm">
+                                            <i *ngIf="!blockSocio" class="fas fa-search"></i>
+                                            <img *ngIf="blockSocio" padding-left="20px" height="12"
+                                                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                        </button>
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        <!-- 
+                        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                <div class="form-group"> <br>
+                                  <label>
+                                    <strong>Subir Documento </strong>
+                                    <i class="fas fa-info-circle" placement="right"
+                                      ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+                                  </label> <br>
+                                  <input class="form-file-input" type="file" (change)="onSelectImage($event)" required>
+                                </div>
+                              </div>
+
+                              
+                              <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="form-group"> <br>
+                                  <label><strong>Guardar Documento</strong></label>
+                                  <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDocumento()">Guardar</button>
+                                </div>
+                              </div> -->
+
+
                     </div>
                 </div>
 
                 <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="row">
+                    <div class="row justify-content-center">
 
-                        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                        <!-- <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                             <div class="form-group text-center">
                                 <img src="/assets/socio-default.png" width="100px" height="100px" alt="Socio"
                                     class="img-thumbnail">
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                             <div class="form-group"> <br>
@@ -99,6 +124,7 @@
                 </div>
 
             </div> <br>
+
 
             <div class="tab-content" id="myTabContent">
 
@@ -265,9 +291,45 @@
                 </div>
 
                 <div class="tab-pane fade" id="resumen" role="tabpanel" aria-labelledby="resumen-tab">
+
+                    <div class="card-header" id="demoFont2">
+                        <h6 class="card-title">Subir Registro de Socio</h6>
+                    </div>
+                    <div class="card">
+
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row justify-content-center">
+
+                                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="form-group"> <br>
+                                        <label>
+                                            <strong>Subir Documento </strong>
+                                            <i class="fas fa-info-circle" placement="right"
+                                                ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+                                        </label> <br>
+                                        <input class="form-file-input" type="file" (change)="onSelectImage($event)"
+                                            required>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="form-group"> <br>
+                                        <label><strong>Guardar Documento</strong></label>
+                                        <button class="btn btn-block btn-success btn-sm"
+                                            (click)="SubirDocumento()"
+                                            [disabled] = "idSocio == '' || idSocio == null">Guardar</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div> <br>
                     <!--Datos de padres y suegros-->
                     <div class="card-header" id="demoFont2">
-                        <h6 class="card-title">RESUMEN DEL SOCIO: {{nombreSocioTest | uppercase}}</h6>
+                        <h6 class="card-title">Resumen del Socio: {{nombreSocioTest | uppercase}}</h6>
                     </div>
                     <div class="card">
                         <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -276,11 +338,9 @@
                                 <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
                                     <!-- <label><strong>Ver Datos Padres / Suegros</strong></label> -->
                                     <div class="form-group">
-                                        <app-tabla-resumen-socio 
-                                        [getIdSocio]="idSocio"
-                                        [getNombreSocio]="nombreSocioTest" 
-                                        [getRutSocio]="rutSocioTest"
-                                        [getFechaSocio]="fechaSocioTest">
+                                        <app-tabla-resumen-socio [getIdSocio]="idSocio"
+                                            [getNombreSocio]="nombreSocioTest" [getRutSocio]="rutSocioTest"
+                                            [getFechaSocio]="fechaSocioTest">
                                         </app-tabla-resumen-socio>
                                     </div>
                                 </div>

@@ -17,6 +17,9 @@ import { BeneficiosSociosComponent } from './auth-master/cuenta-socios/beneficio
 import { SociosMasterComponent } from './socios-master/socios-master.component';
 import { PerfilSocioComponent } from './socios-master/perfil-socio/perfil-socio.component';
 import { AuthGuardSocioService } from './guardianes/authSocio.guard.service';
+import { BeneficiosSocioComponent } from './socios-master/beneficios-socio/beneficios-socio.component';
+import { ConfiguracionSocioComponent } from './socios-master/configuracion-socio/configuracion-socio.component';
+import { CuentasComponent } from './socios-master/cuentas/cuentas.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -37,7 +40,10 @@ const routes: Routes = [
   ]},
 
   { path: 'SociosMaster', component: SociosMasterComponent, canActivate: [AuthGuardSocioService], children:[
-    { path: 'Perfil', component: PerfilSocioComponent }
+    { path: 'Perfil', component: PerfilSocioComponent },
+    { path: 'Beneficios', component: BeneficiosSocioComponent },
+    { path: 'Configuracion', component: ConfiguracionSocioComponent },
+    { path: 'Cuentas', component: CuentasComponent }
   ]},
 
   { path: '**', component: NoEncontradoComponent }

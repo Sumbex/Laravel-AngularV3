@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ValidarUsuarioService } from '../../../servicios/validar-usuario.service';
+import { SindicalService } from '../../../servicios/sindical.service';
 
 @Component({
   selector: 'app-listar-socios',
@@ -31,6 +32,7 @@ export class ListarSociosComponent implements OnInit {
    load:boolean=false;
    modalReference = null; 
    m_val = null;
+   mod_opcion = null;
 
    closeResult: string;
    pass:string = '';
@@ -40,8 +42,15 @@ export class ListarSociosComponent implements OnInit {
   
     buttonStatus = false;
     token = localStorage.getItem('token').replace(/['"]+/g, '');
+    estado_socio:object=['estado'];
+    ver_load:boolean = true;
+    ver_estado_soc:boolean = false;
 
-  constructor(private _socios:SociosService, public _validarusuario:ValidarUsuarioService,private modalService: NgbModal) {
+  constructor(private _socios:SociosService, 
+              public _validarusuario:ValidarUsuarioService,
+              private modalService: NgbModal,
+              private _sindical:SindicalService
+  ) {
 
       //this.currentLesson=this.classes[0].currentLesson
   }
@@ -218,7 +227,38 @@ export class ListarSociosComponent implements OnInit {
         window.stop()
   }
 
+  modal_opcion(modal, id){
+    this.ver_load = true;
+    this.ver_estado_soc = false;
+    this.mod_opcion = this.modalService.open(modal, { size: 'lg' });
+    this.estado_socio_portal(id);
+  }
+
+  cerrar_opcion(){
+    this.mod_opcion.close();
+  }
   
+  asignar_portal(socio_id){
+
+    this._sindical.asignar_portal_socio(socio_id).subscribe(
+          response => {
+            console.log(response);
+            this.ver_load = true;
+            this.ver_estado_soc = false;
+            this.estado_socio_portal(socio_id);
+          }
+        )
+  }
+
+  estado_socio_portal(socio_id){
+    this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
+          (response:{'estado'}) => {
+            this.estado_socio = response.estado;
+            this.ver_load = false;
+            this.ver_estado_soc = true;
+          }
+        )
+  }
 
 
   // fin del metodo para validar usuario

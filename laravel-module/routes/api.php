@@ -42,6 +42,7 @@ Route::group(['middleware' => ['jwt.auth', 'cors']], function () {
 
 		require 'Rutas_api/alejandro_api.php';
 		require 'Rutas_api/bryan_api.php';
+		require 'Rutas_api/david_api.php';
 	});
 	//['middleware' => 'auth']['middleware' => 'socio']
 	Route::group(['middleware' => ['socio']], function () {

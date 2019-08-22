@@ -23,6 +23,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
     direccion:'',
     celular:'',
     establecimiento:'',
+    archivoDocumento:null,
     }
     constructor(config: NgbModalConfig, 
       private modalService: NgbModal,
@@ -35,6 +36,9 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
 
   verFormularioBeneficios(FormularioBeneficios) {
     this.abrirFormularioBeneficiosCargas = this.modalService.open(FormularioBeneficios, { size: 'xl' });
+  }
+  onSelectImage(event) {
+    this.InsertarBeneficiosCargas.archivoDocumento = event.srcElement.files[0];
   }
 
   guardarDatosCarga(){
@@ -53,6 +57,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
     data.append('direccion',this.InsertarBeneficiosCargas.direccion);
     data.append('celular',this.InsertarBeneficiosCargas.celular);
     data.append('establecimiento',this.InsertarBeneficiosCargas.establecimiento);
+    data.append('archivo',this.InsertarBeneficiosCargas.archivoDocumento);
 
     this._SociosService.insertarDatosCarga(data).subscribe((response) =>{
       if(response.estado == 'failed'){
@@ -69,6 +74,7 @@ export class FormularioBeneficiosCargasComponent implements OnInit {
        this.InsertarBeneficiosCargas.direccion = '';
        this.InsertarBeneficiosCargas.celular = '';
        this.InsertarBeneficiosCargas.establecimiento = '';
+       this.InsertarBeneficiosCargas.archivoDocumento = null; 
         alert(response.mensaje);
         return false;
       }

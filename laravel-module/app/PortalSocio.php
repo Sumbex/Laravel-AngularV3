@@ -117,7 +117,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'direccion' => 'required/* |string */',
+                        'direccion' => 'required',
                         /*  'telefono' => 'string',
                         'celular' => 'string',
                         'anexo' => 'string', */
@@ -1175,11 +1175,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 $user = User::where('rut', $traerSocio->rut)->first();
                 if (is_null($user)) {
                     $crear = new User;
+                    // $crear->id = User::max('id') + 1;
                     $crear->name = $traerSocio->nombres;
                     $crear->nombres = $traerSocio->nombres;
                     $crear->a_paterno = $traerSocio->a_paterno;
                     $crear->a_materno = $traerSocio->a_materno;
-                    $crear->email = 'correo@prueba.cl';
+                    $crear->email = 'correo'.rand(1,999).'-'.rand(1,999).'@prueba.cl';
                     $pass = substr($traerSocio->rut, -5, 4);
                     $crear->password = bcrypt($pass);
                     $crear->rut = $traerSocio->rut;

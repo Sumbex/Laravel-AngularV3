@@ -15,7 +15,10 @@ export class TablaBeneficiosBeneficiarioAuthSocioComponent implements OnInit {
   //objeto con los datos del beneficiario
   datosBeneficiario;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, _portalSociosService: PortalSociosService) {
+  //Loading tabla
+  loadingTabla = false;
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -25,11 +28,25 @@ export class TablaBeneficiosBeneficiarioAuthSocioComponent implements OnInit {
 
   verTablaBeneficiario(tablaBeneficiario){
     this.abrirModalBeneficiosBeneficiario = this.modalService.open(tablaBeneficiario, { size: 'xl' });
+    this.getDatosBeneficiario();
   }
 
   getDatosBeneficiario(){
     //llamar al servici para llenar la variable datosBeneficiario
-    console.log("test getdatosbeneficiario");
+    this.loadingTabla = true;
+    this._portalSociosService.getDatosBeneficiario().subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+        this.loadingTabla = false;
+      }else{
+        this.datosBeneficiario = response.beneficiario;
+        this.loadingTabla = false;
+      }
+    },
+    error => {
+      console.log(error);
+      this.loadingTabla = false;
+    });
   }
 
 }

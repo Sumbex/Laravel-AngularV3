@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n</div> <br> <br>\r\n\r\n<!-- Footer -->\r\n<footer class=\"fondo-footer fixed-bottom estilo-footer\">\r\n\r\n    <!-- <div class=\"footer-copyright estilo-footer text-center py-3\">Desarrollado por:\r\n        <a href=\"https://mdbootstrap.com/education/bootstrap/\">NeoFox</a>\r\n    </div> -->\r\n\r\n    <div class=\"footer-copyright estilo-footer text-center py-2\" >\r\n        Desarrollado por:\r\n        <a class=\"estilo-footer\" href=\"https://www.facebook.com/NeoFoxInformatica/\" target=\"_blank\">\r\n            <img src=\"/assets/NeoFox_SF.png\" width=\"20\" height=\"20\"> NeoFox</a>\r\n    </div>\r\n</footer>\r\n<!-- Footer -->"
+module.exports = "<!--<router-outlet></router-outlet>-->\r\n<div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n</div> <br> <br>\r\n\r\n<!-- Footer -->\r\n<footer class=\"fondo-footer fixed-bottom estilo-footer\">\r\n\r\n    <!-- <div class=\"footer-copyright estilo-footer text-center py-3\">Desarrollado por:\r\n        <a href=\"https://mdbootstrap.com/education/bootstrap/\">NeoFox</a>\r\n    </div> -->\r\n\r\n    <div class=\"footer-copyright estilo-footer text-center py-2\" >\r\n        Desarrollado por:\r\n        <a class=\"estilo-footer\" href=\"https://neofox.cl/\" target=\"_blank\">\r\n            <img src=\"/assets/NeoFox_SF.png\" width=\"20\" height=\"20\"> NeoFox</a>\r\n    </div>\r\n</footer>\r\n<!-- Footer -->"
 
 /***/ }),
 

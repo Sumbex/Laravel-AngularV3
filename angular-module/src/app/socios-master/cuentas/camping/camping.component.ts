@@ -21,6 +21,7 @@ export class CampingComponent implements OnInit {
 
   //Variable que almacena los valores obtenidos para la tabla caja chica
   datosCamping;
+  totalesCamping;
 
   //variable para asociar al modal
   modalCamping;
@@ -78,6 +79,7 @@ export class CampingComponent implements OnInit {
         this.cargandoTabla = false;
       }else{
         this.datosCamping = response;
+        this.totalesCamping = response.totales;
         this.cargandoTabla = false;
       }
     },
@@ -85,6 +87,28 @@ export class CampingComponent implements OnInit {
       console.log(error);
       this.cargandoTabla = false;
     });
+  }
+
+  changeAnio(valorSelect){
+    this.limpiarTabla();
+    this.idAnioActual = valorSelect.target.value;
+    this.recargarTabla();
+  }
+ 
+  changeMes(valorSelect){
+   this.limpiarTabla();
+   this.idMesActual = valorSelect.target.value;
+   this.recargarTabla();
+  }
+
+  limpiarTabla(){
+    this.datosCamping = '';
+    this.totalesCamping = '';
+  }
+
+  recargarTabla(){
+    this.limpiarTabla();
+    this.cargarCamping();
   }
 
 }

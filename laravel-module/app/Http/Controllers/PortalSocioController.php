@@ -136,6 +136,11 @@ class PortalSocioController extends Controller
         return PortalSocioMisBeneficios::traerPrestamos();
     }
 
+    public function TraerPagosPrestamos($id, $tipo)
+    {
+        return PortalSocioMisBeneficios::traerPagosPrestamos($id, $tipo);
+    }
+
     //------------------------------------------>rutas portal socio mb
 
     //--------------------------------------------------------------------------------

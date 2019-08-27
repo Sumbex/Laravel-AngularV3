@@ -1,35 +1,36 @@
 
     .dark-modal .modal-content {
-        background-color: #292b2c;
-        color: white;
+      background-color: #292b2c;
+      color: white;
+    }
+    .dark-modal .close {
+      color: white;
+    }
+    .light-blue-backdrop {
+      background-color: #5cb3fd;
+    }
+
+    label,input, button{
+      font-size: 12px;
+    }
+
+    tr,th{
+      font-size: 12px;
+    }
+    th{
+      color: white;
+      background: #138D75;
+    }
+    
+    #demoFont {
+      color: #fff;
+      background: #2C3E50;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
-      .dark-modal .close {
-        color: white;
+      .margen{
+        display: flex;
+        justify-content: center;
+        width: 100%;
       }
-      .light-blue-backdrop {
-        background-color: #5cb3fd;
-      }
-  
-      label,input, button{
-        font-size: 12px;
-      }
-  
-      tr,th{
-        font-size: 12px;
-      }
-      th{
-        color: white;
-        background: #138D75;
-      }
-      
-      #demoFont {
-        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);
-        color: #d9d9d9;
-        background: #4B94AD;
-        }
-        .margen{
-          display: flex;
-          justify-content: center;
-          width: 100%;
-        }
-  
+

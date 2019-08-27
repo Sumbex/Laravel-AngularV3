@@ -318,7 +318,10 @@
                                         <label><strong>Guardar Documento</strong></label>
                                         <button class="btn btn-block btn-success btn-sm"
                                             (click)="SubirDocumento()"
-                                            [disabled] = "idSocio == '' || idSocio == null">Guardar</button>
+                                            [disabled] = "blockGuardar == true">Guardar / Actualizar
+                                            <img *ngIf="blockGuardar == true" padding-left="20px" 
+                                            height="15px" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                        </button>
                                     </div>
                                 </div>
 

@@ -89,15 +89,6 @@
                     <td><button class="btn btn-outline-success btn-sm"
                       (click)="actualizar('establecimiento',establecimientoUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button></td>
                     </tr>
-                    <!-- <tr>
-                      <th style="background: #138D75;" class="text-right">CERTIFICADO:</th>
-                      <td><button class="btn btn-outline-dark btn-sm float-left"
-                        (click)="verDocumento(visorCertificadoNacimiento,item.id)"><i class="far fa-file-pdf"></i>
-                      </button></td>
-                      <td><button class="btn btn-outline-success btn-sm"
-                          (click)="actualizar('celular',celularUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                  </tr> 
-                   -->
                   <tr>
                       <th style="background: #138D75;" class="text-right">CAMBIAR CERTIFICADO:</th>
                       <td> 
@@ -108,8 +99,8 @@
                   </tr>
                     <tr>
                       <th style="background: #138D75;" class="text-right">VER CERTIFICADO:</th>
-                      <td colspan="2"><button class="btn btn-outline-dark btn-sm float-center"
-                        (click)="verDocumento(visorCertificadoNacimiento,item.id)"><i class="far fa-file-pdf" ></i>
+                      <td colspan="2"><button class="btn btn-outline-dark btn-sm float-left"
+                        (click)="verDocumento(visorCertificadoNacimiento,item.id)">Haga click para ver el archivo <i class="far fa-file-pdf" ></i>
                       </button>
                     </td>
                   </tr>
@@ -192,7 +183,7 @@
       </div>
       <div *ngIf="vista_pdf == true" class="loader"></div>
       <div class="modal-body" *ngIf="vista_pdf == false">
-        <iframe width="100%" height="500px" [src]="  '../storage/' + DocumentoCarga | safeUrl" frameborder="0"
+        <iframe width="100%" height="500px" [src]="  '../' + DocumentoCarga | safeUrl" frameborder="0"
           allowfullscreen></iframe>
       </div>
       <div class="modal-footer" [hidden]="true">

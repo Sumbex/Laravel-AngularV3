@@ -67,6 +67,39 @@ module.exports = "<div>\r\n\t<br>\r\n\t<div class=\"row justify-content-center\"
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.html":
+/*!*********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.html ***!
+  \*********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-formulario-caja-chica-bienestar></app-formulario-caja-chica-bienestar>\n<app-tabla-caja-chica-bienestar></app-tabla-caja-chica-bienestar>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.html":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.html ***!
+  \****************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  formulario-caja-chica-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.html":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.html ***!
+  \******************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  tabla-caja-chica-bienestar works!\n</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.html":
 /*!********************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.html ***!
@@ -78,6 +111,39 @@ module.exports = "\r\n<br><app-formulario-bienestar></app-formulario-bienestar>"
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.html":
+/*!***************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.html ***!
+  \***************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  fallecimiento-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.html":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.html ***!
+  \*************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  formulario-fallecimiento-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.html":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.html ***!
+  \***************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  tabla-fallecimiento-bienestar works!\n</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.html":
 /*!*********************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.html ***!
@@ -85,7 +151,84 @@ module.exports = "\r\n<br><app-formulario-bienestar></app-formulario-bienestar>"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Otras Cuentas</h6>\r\n      </strong></div>\r\n    <form action=\"\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n          <div class=\"row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n            <!--Boton Para llamar modals-->\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Inicio y Cierre Mensual</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Caja Chica</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Fallecimiento</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Nacimiento</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Gastos Medicos</div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Cuenta Bienestar</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n          <div class=\"row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n              <div class=\"input-group\">\r\n                <input type=\"date\" class=\"form-control form-control-sm\" name=\"fecha\">\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>N° de Documento</strong></label>\r\n              <input type=\"number\" class=\"form-control form-control-sm\" name=\"nDocumento\" required>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label><strong>Subir Documento</strong></label>\r\n              <input class=\"form-control-file\" type=\"file\">\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\r\n              <select name=\"tipo\" id=\"tipo\" class=\"form-control form-control-sm\">\r\n                <option value=\"0\">--Seleccione--</option>\r\n                <option value=\"1\">Ingreso</option>\r\n                <option value=\"2\">Egreso</option>\r\n              </select>\r\n            </div><br>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\r\n              <select name=\"detalleTipo\" id=\"detalleTipo\" class=\"form-control form-control-sm\">\r\n                <option value=\"0\">--Seleccione--</option>\r\n                <option value=\"1\">Cuenta del Gas</option>\r\n                <option value=\"2\">Inasistencia por Reunión</option>\r\n                <option value=\"3\">Inasistencia por Votación</option>\r\n                <option value=\"4\">Fallecimiento</option>\r\n                <option value=\"5\">Nacimiento</option>\r\n                <option value=\"6\">Detalle Caja Chica</option>\r\n                <option value=\"7\">Gastos Medicos</option>\r\n              </select>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label><strong>Ingrese Monto</strong></label>\r\n              <input type=\"number\" class=\"form-control form-control-sm\" name=\"monto\" required>\r\n            </div>\r\n\r\n\r\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\r\n              <input class=\"form-control\" minlength=\"5\" maxlength=\"160\" name=\"descripcion\" required>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>\r\n              <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                [disabled]=\"loginForm.invalid\">Guardar</button>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>\r\n              <app-tabla-bienestar></app-tabla-bienestar>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>"
+module.exports = "<div class=\"container\">\r\n  <!--Formulario de otras cuentas-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Otras Cuentas</h6>\r\n      </strong></div>\r\n    <form action=\"\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n          <div class=\"row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n            <!--Boton Para llamar modals-->\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\"><app-inicio-cierre-mensual></app-inicio-cierre-mensual></div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Caja Chica</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Fallecimiento</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Nacimiento</div>\r\n            <div class=\"col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2\">Gastos Medicos</div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div><br>\r\n\r\n  <!--Formulario para ingresar una cuenta sindical-->\r\n  <div class=\"card\">\r\n    <div class=\"card-header\" id=\"demoFont\"><strong class=\"text-center\">\r\n        <h6>Cuenta Bienestar</h6>\r\n      </strong>\r\n    </div>\r\n    <form #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit(loginForm)\">\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n          <div class=\"row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center\">\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Ingrese Fecha</strong></label> <br>\r\n              <div class=\"input-group\">\r\n                <input type=\"date\" class=\"form-control form-control-sm\" name=\"fecha\">\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>N° de Documento</strong></label>\r\n              <input type=\"number\" class=\"form-control form-control-sm\" name=\"nDocumento\" required>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label><strong>Subir Documento</strong></label>\r\n              <input class=\"form-control-file\" type=\"file\">\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Seleccione Tipo</strong></label>\r\n              <select name=\"tipo\" id=\"tipo\" class=\"form-control form-control-sm\">\r\n                <option value=\"0\">--Seleccione--</option>\r\n                <option value=\"1\">Ingreso</option>\r\n                <option value=\"2\">Egreso</option>\r\n              </select>\r\n            </div><br>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"><br><label><strong>Detalle Tipo</strong></label>\r\n              <select name=\"detalleTipo\" id=\"detalleTipo\" class=\"form-control form-control-sm\">\r\n                <option value=\"0\">--Seleccione--</option>\r\n                <option value=\"1\">Cuenta del Gas</option>\r\n                <option value=\"2\">Inasistencia por Reunión</option>\r\n                <option value=\"3\">Inasistencia por Votación</option>\r\n                <option value=\"4\">Fallecimiento</option>\r\n                <option value=\"5\">Nacimiento</option>\r\n                <option value=\"6\">Detalle Caja Chica</option>\r\n                <option value=\"7\">Gastos Medicos</option>\r\n              </select>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label><strong>Ingrese Monto</strong></label>\r\n              <input type=\"number\" class=\"form-control form-control-sm\" name=\"monto\" required>\r\n            </div>\r\n\r\n\r\n            <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n              <br><label><strong>Ingrese Descripcion del Tipo</strong></label>\r\n              <input class=\"form-control\" minlength=\"5\" maxlength=\"160\" name=\"descripcion\" required>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>\r\n              <button class=\"btn btn btn-success btn-block btn-sm\" type=\"submit\" value=\"ingresar\"\r\n                [disabled]=\"loginForm.invalid\">Guardar</button>\r\n            </div>\r\n\r\n            <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\">\r\n              <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>\r\n              <app-tabla-bienestar></app-tabla-bienestar>\r\n            </div>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div> <br>\r\n\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.html":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.html ***!
+  \****************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  formulario-gastos-medicos-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.html":
+/*!*****************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.html ***!
+  \*****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  gastos-medicos-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.html":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.html ***!
+  \******************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  tabla-gastos-medicos-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.html":
+/*!***********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.html ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--Modal para el inicio y cierre mensual-->\n<ng-template #validar let-modal>\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n    <br>\n    <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n    <br>\n    <button class=\"btn btn-success btn-block btn-sm\" (click)=\"btn_validar_usuario(rut,password,validar)\">\n      Validar\n    </button>\n    <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  </div>\n</ng-template>\n\n<ng-template #Mensual let-modal>\n\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Cuenta Bienestar / Inicio y Cierre\n        Mensual</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!--Cuerpo del body inicio y cierre mensual-->\n  <div class=\"modal-body\">\n\n    <p>\n      <ngb-alert type=\"warning\" [dismissible]=\"false\">\n        <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> El primer mes de cada año\n          se debe ingresar el monto incial de forma manual.</small>\n      </ngb-alert>\n    </p>\n\n    <div class=\"row\">\n      <div class=\"col-12 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n        <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\n          <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n        </select>\n      </div>\n\n      <div class=\"col-12 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n        <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\n          <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\n        </select>\n      </div>\n    </div>\n      \n    <div class=\"row justify-content-between\">\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Calcular monto</strong></label><br>\n        <button (click)=\"calcular_cierre_mensual()\" type=\"submit\" name=\"botonCalcular\"\n          class=\"btn btn btn-outline-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\"><i\n            class=\"fas fa-calculator\"></i> Calcular</button>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Monto Inicial</strong></label>\n        <input class=\"form-control form-control-sm\" type=\"number\" name=\"montoInicial\" #montoInicial=\"ngModel\"\n          [(ngModel)]=\"monto\" minlength=\"1\" required>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Guardar Monto</strong></label><br>\n        <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"validar_usuario(validar)\">\n          <i class=\"fas fa-save\"></i> Guardar</button>\n      </div>\n    </div>\n    <br>\n    <div *ngIf=\"success_visible\" class=\"alert alert-primary\" role=\"alert\">\n      {{ txt }}\n    </div>\n\n    <div *ngIf=\"failed_visible\" class=\"alert alert-danger\" role=\"alert\">\n      {{ txt }}\n    </div>\n    <hr>\n    <ngb-alert type=\"warning\" [dismissible]=\"false\">\n      <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> En el ítem <b>\"Monto de\n          cierre\"</b> de la siguiente tabla cuando aparezca un <b>(*)</b>, significa que el monto aun no ha sido\n        calculado, cuando avance en cada mes es necesario ir calculando de manera responsable sus inicios y cierres\n        mensuales.</small>\n    </ngb-alert>\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n      <select [(ngModel)]=\"fil_anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n        <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n      </select>\n    </div>\n    <br>\n    <!--tabla del modal inicio y cierre mensual-->\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered table-sm\">\n        <thead text-sm class=\"text-center\">\n\n          <tr>\n            <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n              <h6>Movimiento anual</h6>\n            </th>\n          </tr>\n\n          <tr>\n            <th scope=\"col\" colspan=\"3\">Año</th>\n            <th scope=\"col\" colspan=\"3\">Mes</th>\n            <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n            <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n            <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n          </tr>\n        </tbody>\n      </table>\n    </div><br>\n  </div>\n\n\n  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta\n      Sindical\n    </button>\n  </div>\n\n\n\n\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n<label><strong>Inicio y Cierre Mensual</strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.html":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.html ***!
+  \****************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  formulario-nacimiento-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.html":
+/*!*********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.html ***!
+  \*********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  nacimiento-bienestar works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.html":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.html ***!
+  \******************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  tabla-nacimiento-bienestar works!\n</p>\n"
 
 /***/ }),
 
@@ -580,7 +723,18 @@ module.exports = "<div>\r\n\t<br>\r\n\t<div class=\"row justify-content-center\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-template #cajaChica let-modal>\r\n\r\n<!-- Header Del Modal -->\r\n<div class=\"modal-header\" id=\"demoFont\">\r\n  <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Detalle Caja Chica</strong>\r\n  </h6>\r\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n    <span aria-hidden=\"true\">&times;</span>\r\n  </button>\r\n</div>\r\n<!-- Cuerpo del Modal Caja Chica -->\r\n<div class=\"modal-body\">\r\n  <div class=\"row centrarCajaChica\">\r\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n            class=\"fas fa-calendar-check\"></i></strong></label>\r\n      <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\"\r\n        class=\"form-control form-control-sm\">\r\n        <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n      </select>\r\n    </div>\r\n\r\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n            class=\"fas fa-calendar-check\"></i></strong></label>\r\n      <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\"\r\n        class=\"form-control form-control-sm\">\r\n        <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n      </select>\r\n    </div>\r\n  </div><br>\r\n\r\n  <div class=\"table-responsive\">\r\n    <table class=\"table table-bordered table-sm\">\r\n      <thead text-sm class=\"text-center\">\r\n        <tr>\r\n          <th colspan=\"11\" style=\"background: #138D75;\" class=\"ColorThCS\">Tabla caja chica</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\" class=\"ColorThCS\">Monto Inicial</th>\r\n          <td colspan=\"2\"><strong>{{ montoInicio | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong>\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\">N° de Doc</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let item of datosCajaChica\" class=\"text-center\">\r\n          <td colspan=\"2\">{{item.fecha}}</td>\r\n          <td colspan=\"2\">{{item.numero_documento}}</td>\r\n\r\n\r\n          <!--MODAL VISOR PDF-->\r\n          <ng-template #visor let-c=\"close\" let-d=\"dismiss\">\r\n            <div class=\"row\">\r\n              <div class=\"col\">\r\n                <div class=\"modal-header text-center\" id=\"demoFont\">\r\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\r\n                  <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\r\n                    (click)=\"d('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                  <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\" frameborder=\"0\"\r\n                    allowfullscreen></iframe>\r\n                </div>\r\n                <div class=\"modal-footer\" [hidden]=\"true\">\r\n                  <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ng-template>\r\n          <!--MODAL VISOR PDF-->\r\n\r\n          <td colspan=\"2\">\r\n            <a (click)=\"openPDF(visor)\"><i class=\"far fa-file-alt\" placement=\"top\"\r\n                ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\r\n            <a class=\"btn-primary-outline\" style=\"cursor: pointer\"\r\n              (click)=\"editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')\">\r\n              <i class=\"far fa-copy\" placement=\"top\" ngbTooltip=\"Presione aqui para modificar documento PDF\"></i>\r\n            </a>\r\n          </td>\r\n\r\n\r\n\r\n          <td colspan=\"3\" (click)=\"editarParametro(item.id, 'descripcion', item.descripcion)\">{{item.descripcion}}\r\n          </td>\r\n          <td colspan=\"2\">{{item.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\" (click)=\"editarParametro(item.id, 'monto', item.monto_egreso)\">\r\n            {{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{item.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        </tr>\r\n        <br>\r\n        <!--Tabla del total Modal Caja Chica-->\r\n        <tr>\r\n          <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\r\n            INGRESOS</th>\r\n          <td colspan=\"3\" class=\"text-center\">\r\n            <strong>{{ cajaChicaTotales.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\r\n            EGRESOS</th>\r\n          <td colspan=\"3\" class=\"text-center\">\r\n            <strong>{{ cajaChicaTotales.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n        <tr>\r\n          <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\r\n            CIERRE DEL MES</th>\r\n          <td colspan=\"3\" class=\"text-center\">\r\n            <strong>{{ cajaChicaTotales.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"modal-footer\">\r\n\r\n  <!--Boton para imprimir tabla caja chica-->\r\n  <!-- <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\r\n      printable: 'printJS-table',\r\n      type:'html',\r\n      style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\r\n    })\">\r\n  <i class=\"fas fa-print\"></i> Imprimir Datos\r\n</button> -->\r\n\r\n  <!--Boton para salir del modal caja chica-->\r\n  <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n      class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuenta Sindical</button>\r\n</div>\r\n\r\n</ng-template>\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n<button class=\"btn btn-primary btn-block btn-sm\" type=\"button\" (click)=\"openModalCajaChica(cajaChica)\">Ver\r\n  Datos\r\n</button>"
+module.exports = "<ng-template #cajaChica let-modal>\r\n\r\n<!-- Header Del Modal -->\r\n<div class=\"modal-header\" id=\"demoFont\">\r\n  <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Detalle Caja Chica</strong>\r\n  </h6>\r\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n    <span aria-hidden=\"true\">&times;</span>\r\n  </button>\r\n</div>\r\n<!-- Cuerpo del Modal Caja Chica -->\r\n<div class=\"modal-body\">\r\n  <div class=\"row centrarCajaChica\">\r\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n            class=\"fas fa-calendar-check\"></i></strong></label>\r\n      <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\"\r\n        class=\"form-control form-control-sm\">\r\n        <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n      </select>\r\n    </div>\r\n\r\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n            class=\"fas fa-calendar-check\"></i></strong></label>\r\n      <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\"\r\n        class=\"form-control form-control-sm\">\r\n        <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n      </select>\r\n    </div>\r\n\r\n    <div class=\"col-md-4\"><br><label>\r\n      <strong>Recargar tabla </strong>\r\n\r\n    </label><br>\r\n    <button [disabled]=\"cargandoTabla\" class=\"btn btn-info\" (click)=\"recargarTabla()\">Actualizar</button>\r\n    <div *ngIf=\"cargandoTabla\">\r\n      <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n      <label>Cargando tabla de Prestamos</label>\r\n    </div>\r\n  </div>\r\n  </div><br>\r\n\r\n  <div class=\"table-responsive\">\r\n    <table class=\"table table-bordered table-sm\">\r\n      <thead text-sm class=\"text-center\">\r\n        <tr>\r\n          <th colspan=\"11\" style=\"background: #138D75;\" class=\"ColorThCS\">Tabla caja chica</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\" class=\"ColorThCS\">Monto Inicial</th>\r\n          <td colspan=\"2\"><strong>{{ datosCajaChica?.monto_inicio | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong>\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\">N° de Doc</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n          <th colspan=\"3\" style=\"background: #138D75;\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n          <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let item of datosCajaChica?.caja\" class=\"text-center\">\r\n          <td colspan=\"2\">{{item?.fecha}}</td>\r\n          <td colspan=\"2\">{{item?.numero_documento}}</td>\r\n\r\n\r\n          <!--MODAL VISOR PDF-->\r\n          <ng-template #visor let-c=\"close\" let-d=\"dismiss\">\r\n            <div class=\"row\">\r\n              <div class=\"col\">\r\n                <div class=\"modal-header text-center\" id=\"demoFont\">\r\n                  <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\r\n                  <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\r\n                    (click)=\"d('Cross click')\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                  </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                  <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\" frameborder=\"0\"\r\n                    allowfullscreen></iframe>\r\n                </div>\r\n                <div class=\"modal-footer\" [hidden]=\"true\">\r\n                  <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ng-template>\r\n          <!--MODAL VISOR PDF-->\r\n\r\n          <td colspan=\"2\">\r\n            <a (click)=\"openPDF(visor)\"><i class=\"far fa-file-alt\" placement=\"top\"\r\n                ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\r\n          </td>\r\n\r\n\r\n\r\n          <td colspan=\"3\" (click)=\"editarParametro(item.id, 'descripcion', item.descripcion)\">{{item.descripcion}}\r\n          </td>\r\n          <td colspan=\"2\">{{item?.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\" (click)=\"editarParametro(item.id, 'monto', item.monto_egreso)\">\r\n            {{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n          <td colspan=\"2\">{{item?.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n        </tr>\r\n        <br>\r\n        <!--Tabla del total Modal Caja Chica-->\r\n        <tr>\r\n          <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\r\n            INGRESOS</th>\r\n          <td colspan=\"3\" class=\"text-center\">\r\n            <strong><!-- {{ cajaChicaTotales.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}} --></strong></td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\r\n            EGRESOS</th>\r\n          <td colspan=\"3\" class=\"text-center\">\r\n            <strong><!-- {{ cajaChicaTotales.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}} --></strong></td>\r\n        </tr>\r\n        <tr>\r\n          <th colspan=\"9\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\r\n            CIERRE DEL MES</th>\r\n          <td colspan=\"3\" class=\"text-center\">\r\n            <strong><!-- {{ cajaChicaTotales.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}} --></strong></td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"modal-footer\">\r\n\r\n  <!--Boton para imprimir tabla caja chica-->\r\n  <!-- <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\r\n      printable: 'printJS-table',\r\n      type:'html',\r\n      style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\r\n    })\">\r\n  <i class=\"fas fa-print\"></i> Imprimir Datos\r\n</button> -->\r\n\r\n  <!--Boton para salir del modal caja chica-->\r\n  <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n      class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuenta Sindical</button>\r\n</div>\r\n\r\n</ng-template>\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n<button class=\"btn btn-primary btn-block btn-sm\" type=\"button\" (click)=\"openModalCajaChica(cajaChica)\">Ver\r\n  Datos\r\n</button>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/camping/camping.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/socios-master/cuentas/camping/camping.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-template #camping let-modal>\r\n      <!--Cabezal del modal camping-->\r\n      <div class=\"modal-header\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong><i class=\"fas fa-box-open\"></i> Cuenta sindical / Detalle camping</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <!--Cuerpo del body camping-->\r\n      <div class=\"modal-body\">\r\n          <div class=\"row\">\r\n              <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\r\n                <strong>Filtro por Año  </strong>\r\n                <i class=\"fas fa-calendar-check\"></i>\r\n              </label>\r\n                <!---Select Año-->\r\n                <select id=\"anio_id\" (change)=\"change_anio()\" class=\"form-control form-control-sm\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\">\r\n                  <option *ngFor=\"let a of selectAnio\" [value]=\"a.id\">{{ a.descripcion }}</option>\r\n                </select>\r\n              </div>\r\n            \r\n              <div class=\"col-6 col-md-3 col-lg-3\"><br><label>\r\n                <strong>Filtro por Mes  </strong>\r\n                <i class=\"fas fa-calendar-check\"></i>\r\n              </label>\r\n                <!--Select Mes-->\r\n                <select (change)=\"change_mes()\" class=\"form-control form-control-sm\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\">\r\n                  <option *ngFor=\"let m of selectMes\" [value]=\"m.id\" >{{ m.descripcion }}</option>\r\n                </select>\r\n              </div>\r\n            </div><br>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-striped table-bordered table-sm\">\r\n               <thead text-sm>\r\n                  <!--Titulo Tabla-->  \r\n                  <tr>\r\n                  <th colspan=\"8\" class=\" text-center\"  style=\"background: #138D75\"><h6>Detalle Comité Camping</h6></th>\r\n                 </tr>\r\n                  <tr class=\"text-center\">\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> Fecha</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> Nº Documento</th>\r\n                      <th style=\"background: #138D75\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n                      <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-file-alt\"></i> Detalle del camping</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-arrow-down\"></i> Ingreso</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-arrow-up\"></i> Egreso</th>\r\n                      <th style=\"background: #138D75\"><i class=\"fas fa-money-bill-wave\"></i> Monto actual</th>           \r\n                  </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngFor=\"let item of detallecamping\">\r\n                  <td scope=\"col\">{{ item.fecha }}\r\n                  </td>\r\n                  <td scope=\"col\">{{ item.numero_documento }}\r\n                  </td>\r\n\r\n                  <!--MODAL VISOR PDF-->\r\n                  <ng-template #visorCamping let-c=\"close\" let-d=\"dismiss\">    \r\n                    <div class=\"row\">\r\n                        <div class=\"col\">\r\n                            <div class=\"modal-header text-center\" id=\"demoFont\">\r\n                                <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\r\n                                    <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                                    <span aria-hidden=\"true\">&times;</span>\r\n                                </button>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                              <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\" frameborder=\"0\" allowfullscreen></iframe>\r\n                            </div> \r\n                            <div class=\"modal-footer\" [hidden]=\"true\">\r\n                                <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                  </ng-template>\r\n                  <!--MODAL VISOR PDF-->\r\n\r\n                  <td scope=\"col\">\r\n                     <a (click)=\"open(visorCamping)\" class=\"btn-primary-outline\">\r\n                        <i class=\"far fa-file-alt\" placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\r\n                      </a>&nbsp;\r\n                      <a class=\"btn-primary-outline\" style=\"cursor: pointer\">\r\n                        <i class=\"far fa-copy\" placement=\"top\"></i>\r\n                      </a>\r\n                  </td>\r\n                  <td colspan=\"2\">{{ item.descripcion }}\r\n                  </td>\r\n                  <td scope=\"col\">{{ item.monto_ingreso }}</td>\r\n                  <td scope=\"col\">{{ item.monto_egreso }}\r\n                  </td>\r\n                  <td scope=\"col\">{{ item.saldo_actual_raw }}</td>\r\n                </tr>\r\n                <tr>\r\n                    <th colspan=\"7\" style=\"background: #138D75\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>  Total Cierre del  Mes</th>\r\n                    <td scope=\"col\"><!-- {{ resumen.total }} --></td>\r\n                  </tr>\r\n                <br>\r\n\r\n                <tr>\r\n                  <th style=\"background: #138D75\" colspan=\"3\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>  INGRESOS</th>\r\n                  <td colspan=\"1\"><!-- {{ resumen.ingreso }} --></td>\r\n                </tr>\r\n                <tr>\r\n                  <th style=\"background: #138D75\" colspan=\"3\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>  EGRESOS</th>\r\n                  <td colspan=\"1\"><!-- {{ resumen.egreso }} --></td>\r\n                </tr>\r\n                <tr>\r\n                  <th style=\"background: #138D75\" colspan=\"3\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>  CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>\r\n                  <td colspan=\"1\"><!-- {{ resumen.total }} --></td>\r\n                </tr>\r\n              </tbody>\r\n          </table>\r\n        </div>\r\n\r\n      </div>\r\n      <!--Boton para salir del modal camping-->\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta Sindical\r\n        </button>\r\n      </div>\r\n    \r\n  </ng-template>\r\n\r\n\r\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n<button class=\"btn btn-primary btn-block btn-sm\" type=\"button\" (click)=\"openModalCamping(camping)\">Ver\r\n  Datos\r\n</button>"
 
 /***/ }),
 
@@ -591,7 +745,7 @@ module.exports = "<ng-template #cajaChica let-modal>\r\n\r\n<!-- Header Del Moda
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    <!--Datos del socio-->\r\n    <br>\r\n    <div class=\"card-header\" id=\"demoFont2\">\r\n      <h6 class=\"card-title\">Detalles Cuentas</h6>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n        <div class=\"row justify-content-center\">\r\n\r\n          <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\r\n            <label><strong>Cuenta Sindical</strong></label>\r\n            <div class=\"form-group\">\r\n                <app-sindical></app-sindical> \r\n            </div>\r\n          </div>\r\n                        \r\n          <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\r\n            <label><strong>Caja Chica</strong></label>\r\n            <div class=\"form-group\">\r\n              <app-caja-chica></app-caja-chica> \r\n            </div>\r\n          </div>\r\n          \r\n        </div>\r\n      </div>\r\n    </div> <br>"
+module.exports = "    <!--Datos del socio-->\r\n    <br>\r\n    <div class=\"card-header\" id=\"demoFont2\">\r\n      <h6 class=\"card-title\">Detalles Cuentas</h6>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n        <div class=\"row justify-content-center\">\r\n\r\n          <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\r\n            <label><strong>Cuenta Sindical</strong></label>\r\n            <div class=\"form-group\">\r\n                <app-sindical></app-sindical> \r\n            </div>\r\n          </div>\r\n                        \r\n          <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\r\n            <label><strong>Caja Chica</strong></label>\r\n            <div class=\"form-group\">\r\n              <app-caja-chica></app-caja-chica> \r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-12 col-md-3 col-lg-3 col-xl-3\"> <br>\r\n            <label><strong>Cuenta Camping</strong></label>\r\n            <div class=\"form-group\">\r\n              <app-camping></app-camping>\r\n            </div>\r\n          </div>\r\n          \r\n        </div>\r\n      </div>\r\n    </div> <br>"
 
 /***/ }),
 
@@ -979,6 +1133,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_cuentas_cuentas_component__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./socios-master/cuentas/cuentas.component */ "./src/app/socios-master/cuentas/cuentas.component.ts");
 /* harmony import */ var _socios_master_cuentas_sindical_sindical_component__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./socios-master/cuentas/sindical/sindical.component */ "./src/app/socios-master/cuentas/sindical/sindical.component.ts");
 /* harmony import */ var _socios_master_cuentas_caja_chica_caja_chica_component__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./socios-master/cuentas/caja-chica/caja-chica.component */ "./src/app/socios-master/cuentas/caja-chica/caja-chica.component.ts");
+/* harmony import */ var _socios_master_cuentas_camping_camping_component__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./socios-master/cuentas/camping/camping.component */ "./src/app/socios-master/cuentas/camping/camping.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_inicio_cierre_mensual_inicio_cierre_mensual_component__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component */ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_caja_chica_bienestar_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_fallecimiento_bienestar_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_nacimiento_bienestar_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_gastos_medicos_bienestar_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_88__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_caja_chica_bienestar_formulario_caja_chica_bienestar_formulario_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_89__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_caja_chica_bienestar_tabla_caja_chica_bienestar_tabla_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_90__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_fallecimiento_bienestar_formulario_fallecimiento_bienestar_formulario_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_91__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_fallecimiento_bienestar_tabla_fallecimiento_bienestar_tabla_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_92__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_nacimiento_bienestar_formulario_nacimiento_bienestar_formulario_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_93__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_nacimiento_bienestar_tabla_nacimiento_bienestar_tabla_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_94__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_95__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.ts");
+/* harmony import */ var _auth_master_cuenta_bienestar_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_96__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1133,7 +1315,21 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _socios_master_configuracion_socio_cambio_informacion_personal_socio_cambio_informacion_personal_socio_component__WEBPACK_IMPORTED_MODULE_79__["CambioInformacionPersonalSocioComponent"],
             _socios_master_cuentas_cuentas_component__WEBPACK_IMPORTED_MODULE_80__["CuentasComponent"],
             _socios_master_cuentas_sindical_sindical_component__WEBPACK_IMPORTED_MODULE_81__["SindicalComponent"],
-            _socios_master_cuentas_caja_chica_caja_chica_component__WEBPACK_IMPORTED_MODULE_82__["CajaChicaComponent"]
+            _socios_master_cuentas_caja_chica_caja_chica_component__WEBPACK_IMPORTED_MODULE_82__["CajaChicaComponent"],
+            _socios_master_cuentas_camping_camping_component__WEBPACK_IMPORTED_MODULE_83__["CampingComponent"],
+            _auth_master_cuenta_bienestar_inicio_cierre_mensual_inicio_cierre_mensual_component__WEBPACK_IMPORTED_MODULE_84__["InicioCierreMensualComponent"],
+            _auth_master_cuenta_bienestar_caja_chica_bienestar_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_85__["CajaChicaBienestarComponent"],
+            _auth_master_cuenta_bienestar_fallecimiento_bienestar_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_86__["FallecimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_nacimiento_bienestar_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_87__["NacimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_88__["GastosMedicosBienestarComponent"],
+            _auth_master_cuenta_bienestar_caja_chica_bienestar_formulario_caja_chica_bienestar_formulario_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_89__["FormularioCajaChicaBienestarComponent"],
+            _auth_master_cuenta_bienestar_caja_chica_bienestar_tabla_caja_chica_bienestar_tabla_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_90__["TablaCajaChicaBienestarComponent"],
+            _auth_master_cuenta_bienestar_fallecimiento_bienestar_formulario_fallecimiento_bienestar_formulario_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_91__["FormularioFallecimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_fallecimiento_bienestar_tabla_fallecimiento_bienestar_tabla_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_92__["TablaFallecimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_nacimiento_bienestar_formulario_nacimiento_bienestar_formulario_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_93__["FormularioNacimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_nacimiento_bienestar_tabla_nacimiento_bienestar_tabla_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_94__["TablaNacimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_95__["FormularioGastosMedicosBienestarComponent"],
+            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_96__["TablaGastosMedicosBienestarComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1443,6 +1639,135 @@ ConfiguracionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.css":
+/*!******************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.css ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvY2FqYS1jaGljYS1iaWVuZXN0YXIvY2FqYS1jaGljYS1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.ts":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.ts ***!
+  \*****************************************************************************************************/
+/*! exports provided: CajaChicaBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CajaChicaBienestarComponent", function() { return CajaChicaBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let CajaChicaBienestarComponent = class CajaChicaBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+CajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-caja-chica-bienestar',
+        template: __webpack_require__(/*! raw-loader!./caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], CajaChicaBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.css":
+/*!*************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.css ***!
+  \*************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvY2FqYS1jaGljYS1iaWVuZXN0YXIvZm9ybXVsYXJpby1jYWphLWNoaWNhLWJpZW5lc3Rhci9mb3JtdWxhcmlvLWNhamEtY2hpY2EtYmllbmVzdGFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.ts":
+/*!************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.ts ***!
+  \************************************************************************************************************************************************/
+/*! exports provided: FormularioCajaChicaBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioCajaChicaBienestarComponent", function() { return FormularioCajaChicaBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FormularioCajaChicaBienestarComponent = class FormularioCajaChicaBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+FormularioCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-formulario-caja-chica-bienestar',
+        template: __webpack_require__(/*! raw-loader!./formulario-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./formulario-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], FormularioCajaChicaBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.css":
+/*!***************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.css ***!
+  \***************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvY2FqYS1jaGljYS1iaWVuZXN0YXIvdGFibGEtY2FqYS1jaGljYS1iaWVuZXN0YXIvdGFibGEtY2FqYS1jaGljYS1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.ts":
+/*!**************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.ts ***!
+  \**************************************************************************************************************************************/
+/*! exports provided: TablaCajaChicaBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaCajaChicaBienestarComponent", function() { return TablaCajaChicaBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TablaCajaChicaBienestarComponent = class TablaCajaChicaBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TablaCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-tabla-caja-chica-bienestar',
+        template: __webpack_require__(/*! raw-loader!./tabla-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./tabla-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TablaCajaChicaBienestarComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.css":
 /*!*****************************************************************************!*\
   !*** ./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.css ***!
@@ -1486,6 +1811,135 @@ CuentaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.css":
+/*!************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.css ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZmFsbGVjaW1pZW50by1iaWVuZXN0YXIvZmFsbGVjaW1pZW50by1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.ts":
+/*!***********************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.ts ***!
+  \***********************************************************************************************************/
+/*! exports provided: FallecimientoBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FallecimientoBienestarComponent", function() { return FallecimientoBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FallecimientoBienestarComponent = class FallecimientoBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+FallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-fallecimiento-bienestar',
+        template: __webpack_require__(/*! raw-loader!./fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], FallecimientoBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.css":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.css ***!
+  \**********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZmFsbGVjaW1pZW50by1iaWVuZXN0YXIvZm9ybXVsYXJpby1mYWxsZWNpbWllbnRvLWJpZW5lc3Rhci9mb3JtdWxhcmlvLWZhbGxlY2ltaWVudG8tYmllbmVzdGFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.ts":
+/*!*********************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.ts ***!
+  \*********************************************************************************************************************************************************/
+/*! exports provided: FormularioFallecimientoBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioFallecimientoBienestarComponent", function() { return FormularioFallecimientoBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FormularioFallecimientoBienestarComponent = class FormularioFallecimientoBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+FormularioFallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-formulario-fallecimiento-bienestar',
+        template: __webpack_require__(/*! raw-loader!./formulario-fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./formulario-fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], FormularioFallecimientoBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.css":
+/*!************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.css ***!
+  \************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZmFsbGVjaW1pZW50by1iaWVuZXN0YXIvdGFibGEtZmFsbGVjaW1pZW50by1iaWVuZXN0YXIvdGFibGEtZmFsbGVjaW1pZW50by1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.ts":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.ts ***!
+  \***********************************************************************************************************************************************/
+/*! exports provided: TablaFallecimientoBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaFallecimientoBienestarComponent", function() { return TablaFallecimientoBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TablaFallecimientoBienestarComponent = class TablaFallecimientoBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TablaFallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-tabla-fallecimiento-bienestar',
+        template: __webpack_require__(/*! raw-loader!./tabla-fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./tabla-fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TablaFallecimientoBienestarComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.css":
 /*!******************************************************************************************************!*\
   !*** ./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.css ***!
@@ -1524,6 +1978,318 @@ FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], FormularioBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.css":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.css ***!
+  \*************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZ2FzdG9zLW1lZGljb3MtYmllbmVzdGFyL2Zvcm11bGFyaW8tZ2FzdG9zLW1lZGljb3MtYmllbmVzdGFyL2Zvcm11bGFyaW8tZ2FzdG9zLW1lZGljb3MtYmllbmVzdGFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.ts":
+/*!************************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.ts ***!
+  \************************************************************************************************************************************************************/
+/*! exports provided: FormularioGastosMedicosBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioGastosMedicosBienestarComponent", function() { return FormularioGastosMedicosBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FormularioGastosMedicosBienestarComponent = class FormularioGastosMedicosBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+FormularioGastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-formulario-gastos-medicos-bienestar',
+        template: __webpack_require__(/*! raw-loader!./formulario-gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./formulario-gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], FormularioGastosMedicosBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.css":
+/*!**************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.css ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZ2FzdG9zLW1lZGljb3MtYmllbmVzdGFyL2dhc3Rvcy1tZWRpY29zLWJpZW5lc3Rhci5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.ts":
+/*!*************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.ts ***!
+  \*************************************************************************************************************/
+/*! exports provided: GastosMedicosBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GastosMedicosBienestarComponent", function() { return GastosMedicosBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let GastosMedicosBienestarComponent = class GastosMedicosBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+GastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-gastos-medicos-bienestar',
+        template: __webpack_require__(/*! raw-loader!./gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], GastosMedicosBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.css":
+/*!***************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.css ***!
+  \***************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvZ2FzdG9zLW1lZGljb3MtYmllbmVzdGFyL3RhYmxhLWdhc3Rvcy1tZWRpY29zLWJpZW5lc3Rhci90YWJsYS1nYXN0b3MtbWVkaWNvcy1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.ts":
+/*!**************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.ts ***!
+  \**************************************************************************************************************************************************/
+/*! exports provided: TablaGastosMedicosBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaGastosMedicosBienestarComponent", function() { return TablaGastosMedicosBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TablaGastosMedicosBienestarComponent = class TablaGastosMedicosBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TablaGastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-tabla-gastos-medicos-bienestar',
+        template: __webpack_require__(/*! raw-loader!./tabla-gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./tabla-gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TablaGastosMedicosBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.css":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.css ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        color: #fff;\r\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n  \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWJpZW5lc3Rhci9pbmljaW8tY2llcnJlLW1lbnN1YWwvaW5pY2lvLWNpZXJyZS1tZW5zdWFsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLFdBQVc7UUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7UUFDakcsdURBQXVELEVBQUUscUVBQXFFO1FBQzlIO01BQ0E7VUFDRSxhQUFhO1VBQ2IsdUJBQXVCO1VBQ3ZCLFdBQVc7UUFDYiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvaW5pY2lvLWNpZXJyZS1tZW5zdWFsL2luaWNpby1jaWVycmUtbWVuc3VhbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgdHIsdGh7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgICAgIHRoe1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAjZGVtb0ZvbnQge1xyXG4gICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbiAgICAgICAgfVxyXG4gICAgICAgIC5tYXJnZW57XHJcbiAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICB9XHJcbiAgXHJcbiAgIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.ts":
+/*!*******************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.ts ***!
+  \*******************************************************************************************************/
+/*! exports provided: InicioCierreMensualComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InicioCierreMensualComponent", function() { return InicioCierreMensualComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
+
+
+let InicioCierreMensualComponent = class InicioCierreMensualComponent {
+    constructor(config, modalService) {
+        this.modalService = modalService;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    openMensual(Mensual) {
+        this.modalPrincipal = this.modalService.open(Mensual, { size: 'lg' });
+        //console.log(document.getElementById('anio').options.value);
+    }
+};
+InicioCierreMensualComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-inicio-cierre-mensual',
+        template: __webpack_require__(/*! raw-loader!./inicio-cierre-mensual.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.html"),
+        styles: [__webpack_require__(/*! ./inicio-cierre-mensual.component.css */ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+], InicioCierreMensualComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.css":
+/*!*************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.css ***!
+  \*************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvbmFjaW1pZW50by1iaWVuZXN0YXIvZm9ybXVsYXJpby1uYWNpbWllbnRvLWJpZW5lc3Rhci9mb3JtdWxhcmlvLW5hY2ltaWVudG8tYmllbmVzdGFyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.ts":
+/*!************************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.ts ***!
+  \************************************************************************************************************************************************/
+/*! exports provided: FormularioNacimientoBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioNacimientoBienestarComponent", function() { return FormularioNacimientoBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FormularioNacimientoBienestarComponent = class FormularioNacimientoBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+FormularioNacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-formulario-nacimiento-bienestar',
+        template: __webpack_require__(/*! raw-loader!./formulario-nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./formulario-nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], FormularioNacimientoBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.css":
+/*!******************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.css ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvbmFjaW1pZW50by1iaWVuZXN0YXIvbmFjaW1pZW50by1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.ts":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.ts ***!
+  \*****************************************************************************************************/
+/*! exports provided: NacimientoBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NacimientoBienestarComponent", function() { return NacimientoBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let NacimientoBienestarComponent = class NacimientoBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+NacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-nacimiento-bienestar',
+        template: __webpack_require__(/*! raw-loader!./nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], NacimientoBienestarComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.css":
+/*!***************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.css ***!
+  \***************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1iaWVuZXN0YXIvbmFjaW1pZW50by1iaWVuZXN0YXIvdGFibGEtbmFjaW1pZW50by1iaWVuZXN0YXIvdGFibGEtbmFjaW1pZW50by1iaWVuZXN0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.ts":
+/*!**************************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.ts ***!
+  \**************************************************************************************************************************************/
+/*! exports provided: TablaNacimientoBienestarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaNacimientoBienestarComponent", function() { return TablaNacimientoBienestarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TablaNacimientoBienestarComponent = class TablaNacimientoBienestarComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TablaNacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-tabla-nacimiento-bienestar',
+        template: __webpack_require__(/*! raw-loader!./tabla-nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.html"),
+        styles: [__webpack_require__(/*! ./tabla-nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TablaNacimientoBienestarComponent);
 
 
 
@@ -7379,6 +8145,14 @@ let PortalSociosService = class PortalSociosService {
                 'Content-Type': 'applcation/json'
             }) });
     }
+    //Servicio para llamar al detalle Camping
+    getCamping(anio, mes) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_camping_socio/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
 };
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -8336,6 +9110,10 @@ let CajaChicaComponent = class CajaChicaComponent {
         this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
         this.cargarFechasActuales();
     }
+    //Abrir visor de PDF
+    openPDF(content) {
+        this.modalService.open(content, { size: 'lg' });
+    }
     cargarFechasActuales() {
         //Cargar id del Año actual
         this._portalSociosService.getAnioActual().subscribe(response => {
@@ -8351,17 +9129,38 @@ let CajaChicaComponent = class CajaChicaComponent {
             console.log(error);
         });
     }
+    changeAnio(valorSelect) {
+        this.limpiarTabla();
+        this.idAnioActual = valorSelect.target.value;
+        this.recargarTabla();
+    }
+    changeMes(valorSelect) {
+        this.limpiarTabla();
+        this.idMesActual = valorSelect.target.value;
+        this.recargarTabla();
+    }
     cargarTablaCajaChica() {
+        this.cargandoTabla = true;
         this._portalSociosService.getCajaChica(this.idAnioActual, this.idMesActual).subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
+                this.cargandoTabla = false;
             }
             else {
-                console.log(response);
+                this.datosCajaChica = response;
+                this.cargandoTabla = false;
             }
         }, error => {
             console.log(error);
+            this.cargandoTabla = false;
         });
+    }
+    limpiarTabla() {
+        this.datosCajaChica = '';
+    }
+    recargarTabla() {
+        this.limpiarTabla();
+        this.cargarTablaCajaChica();
     }
 };
 CajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -8372,6 +9171,103 @@ CajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
 ], CajaChicaComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/socios-master/cuentas/camping/camping.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/socios-master/cuentas/camping/camping.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);\r\n        color: #d9d9d9;\r\n        background: #4B94AD;\r\n        }\r\n      /*CLASES DEL LOADER*/\r\n      .loader {\r\n          margin: 100px auto;\r\n          font-size: 25px;\r\n          width: 1em;\r\n          height: 1em;\r\n          border-radius: 50%;\r\n          position: relative;\r\n          text-indent: -9999em;\r\n          -webkit-animation: load5 1.1s infinite ease;\r\n          animation: load5 1.1s infinite ease;\r\n          -webkit-transform: translateZ(0);\r\n          transform: translateZ(0);\r\n        }\r\n      @-webkit-keyframes load5 {\r\n          0%,\r\n          100% {\r\n            box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);\r\n          }\r\n          12.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);\r\n          }\r\n          25% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          37.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          50% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          62.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          75% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          87.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;\r\n          }\r\n        }\r\n      @keyframes load5 {\r\n          0%,\r\n          100% {\r\n            box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);\r\n          }\r\n          12.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);\r\n          }\r\n          25% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          37.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          50% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          62.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          75% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\r\n          }\r\n          87.5% {\r\n            box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;\r\n          }\r\n        }   \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9jdWVudGFzL2NhbXBpbmcvY2FtcGluZy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtRQUNJLHlCQUF5QjtRQUN6QixZQUFZO01BQ2Q7TUFDQTtRQUNFLFlBQVk7TUFDZDtNQUNBO1FBQ0UseUJBQXlCO01BQzNCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BQ0E7UUFDRSxZQUFZO1FBQ1osbUJBQW1CO01BQ3JCO01BRUE7UUFDRSwwR0FBMEc7UUFDMUcsY0FBYztRQUNkLG1CQUFtQjtRQUNuQjtNQUVBLG9CQUFvQjtNQUNwQjtVQUNFLGtCQUFrQjtVQUNsQixlQUFlO1VBQ2YsVUFBVTtVQUNWLFdBQVc7VUFDWCxrQkFBa0I7VUFDbEIsa0JBQWtCO1VBQ2xCLG9CQUFvQjtVQUNwQiwyQ0FBMkM7VUFDM0MsbUNBQW1DO1VBQ25DLGdDQUFnQztVQUVoQyx3QkFBd0I7UUFDMUI7TUFDQTtVQUNFOztZQUVFLCtUQUErVDtVQUNqVTtVQUNBO1lBQ0UsK1RBQStUO1VBQ2pVO1VBQ0E7WUFDRSwrVEFBK1Q7VUFDalU7VUFDQTtZQUNFLCtUQUErVDtVQUNqVTtVQUNBO1lBQ0UsK1RBQStUO1VBQ2pVO1VBQ0E7WUFDRSwrVEFBK1Q7VUFDalU7VUFDQTtZQUNFLCtUQUErVDtVQUNqVTtVQUNBO1lBQ0UsK1RBQStUO1VBQ2pVO1FBQ0Y7TUFDQTtVQUNFOztZQUVFLCtUQUErVDtVQUNqVTtVQUNBO1lBQ0UsK1RBQStUO1VBQ2pVO1VBQ0E7WUFDRSwrVEFBK1Q7VUFDalU7VUFDQTtZQUNFLCtUQUErVDtVQUNqVTtVQUNBO1lBQ0UsK1RBQStUO1VBQ2pVO1VBQ0E7WUFDRSwrVEFBK1Q7VUFDalU7VUFDQTtZQUNFLCtUQUErVDtVQUNqVTtVQUNBO1lBQ0UsK1RBQStUO1VBQ2pVO1FBQ0YiLCJmaWxlIjoic3JjL2FwcC9zb2Npb3MtbWFzdGVyL2N1ZW50YXMvY2FtcGluZy9jYW1waW5nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0xcHggLTFweCAxcHggcmdiYSgyNTUsMjU1LDI1NSwuMSksIDFweCAxcHggMXB4IHJnYmEoMCwwLDAsLjUpLCAycHggMnB4IDJweCByZ2JhKDIwNiw4OSw1NSwwKTtcclxuICAgICAgICBjb2xvcjogI2Q5ZDlkOTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNEI5NEFEO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgLypDTEFTRVMgREVMIExPQURFUiovXHJcbiAgICAgICAgLmxvYWRlciB7XHJcbiAgICAgICAgICBtYXJnaW46IDEwMHB4IGF1dG87XHJcbiAgICAgICAgICBmb250LXNpemU6IDI1cHg7XHJcbiAgICAgICAgICB3aWR0aDogMWVtO1xyXG4gICAgICAgICAgaGVpZ2h0OiAxZW07XHJcbiAgICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgICAgICB0ZXh0LWluZGVudDogLTk5OTllbTtcclxuICAgICAgICAgIC13ZWJraXQtYW5pbWF0aW9uOiBsb2FkNSAxLjFzIGluZmluaXRlIGVhc2U7XHJcbiAgICAgICAgICBhbmltYXRpb246IGxvYWQ1IDEuMXMgaW5maW5pdGUgZWFzZTtcclxuICAgICAgICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xyXG4gICAgICAgICAgLW1zLXRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcclxuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcclxuICAgICAgICB9XHJcbiAgICAgICAgQC13ZWJraXQta2V5ZnJhbWVzIGxvYWQ1IHtcclxuICAgICAgICAgIDAlLFxyXG4gICAgICAgICAgMTAwJSB7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSAjMzI0Y2IzLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyk7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAxMi41JSB7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgMS44ZW0gLTEuOGVtIDAgMGVtICMzMjRjYjMsIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSk7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAyNSUge1xyXG4gICAgICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgMi41ZW0gMGVtIDAgMGVtICMzMjRjYjMsIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgMzcuNSUge1xyXG4gICAgICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAxLjc1ZW0gMS43NWVtIDAgMGVtICMzMjRjYjMsIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgNTAlIHtcclxuICAgICAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgMGVtIDIuNWVtIDAgMGVtICMzMjRjYjMsIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIDYyLjUlIHtcclxuICAgICAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAtMS44ZW0gMS44ZW0gMCAwZW0gIzMyNGNiMywgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIDc1JSB7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAtMi42ZW0gMGVtIDAgMGVtICMzMjRjYjMsIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICA4Ny41JSB7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAtMS44ZW0gLTEuOGVtIDAgMGVtICMzMjRjYjM7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgICAgIEBrZXlmcmFtZXMgbG9hZDUge1xyXG4gICAgICAgICAgMCUsXHJcbiAgICAgICAgICAxMDAlIHtcclxuICAgICAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtICMzMjRjYjMsIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIDEyLjUlIHtcclxuICAgICAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAxLjhlbSAtMS44ZW0gMCAwZW0gIzMyNGNiMywgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIDI1JSB7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAyLjVlbSAwZW0gMCAwZW0gIzMyNGNiMywgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAzNy41JSB7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gIzMyNGNiMywgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICA1MCUge1xyXG4gICAgICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAwZW0gMi41ZW0gMCAwZW0gIzMyNGNiMywgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgNjIuNSUge1xyXG4gICAgICAgICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0xLjhlbSAxLjhlbSAwIDBlbSAjMzI0Y2IzLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgNzUlIHtcclxuICAgICAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0yLjZlbSAwZW0gMCAwZW0gIzMyNGNiMywgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIDg3LjUlIHtcclxuICAgICAgICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0xLjhlbSAtMS44ZW0gMCAwZW0gIzMyNGNiMztcclxuICAgICAgICAgIH1cclxuICAgICAgICB9ICAgIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/socios-master/cuentas/camping/camping.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/socios-master/cuentas/camping/camping.component.ts ***!
+  \********************************************************************/
+/*! exports provided: CampingComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CampingComponent", function() { return CampingComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+
+
+
+
+let CampingComponent = class CampingComponent {
+    constructor(config, modalService, _portalSociosService) {
+        this.modalService = modalService;
+        this._portalSociosService = _portalSociosService;
+        //Variable para las cargas
+        this.cargandoTabla = false;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+        //Cargar Años
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+        //Cargar Meses
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
+    }
+    //Abrir visor de PDF
+    openPDF(content) {
+        this.modalService.open(content, { size: 'lg' });
+    }
+    openModalCamping(cajaChicaModal) {
+        this.modalCamping = this.modalService.open(cajaChicaModal, { size: 'xl' });
+        this.cargarFechasActuales();
+    }
+    cargarFechasActuales() {
+        //Cargar id del Año actual
+        this._portalSociosService.getAnioActual().subscribe(response => {
+            this.idAnioActual = response.id;
+        }, error => {
+            console.log(error);
+        });
+        //Cargar id del Mes actual
+        this._portalSociosService.getMesActual().subscribe(response => {
+            this.idMesActual = response.id;
+            this.cargarCamping();
+        }, error => {
+            console.log(error);
+        });
+    }
+    cargarCamping() {
+        this.cargandoTabla = true;
+        this._portalSociosService.getCamping(this.idAnioActual, this.idMesActual).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+                this.cargandoTabla = false;
+            }
+            else {
+                this.datosCamping = response;
+                this.cargandoTabla = false;
+            }
+        }, error => {
+            console.log(error);
+            this.cargandoTabla = false;
+        });
+    }
+};
+CampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-camping',
+        template: __webpack_require__(/*! raw-loader!./camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/camping/camping.component.html"),
+        styles: [__webpack_require__(/*! ./camping.component.css */ "./src/app/socios-master/cuentas/camping/camping.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+], CampingComponent);
 
 
 

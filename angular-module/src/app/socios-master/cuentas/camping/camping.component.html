@@ -47,7 +47,7 @@
                   </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of detallecamping">
+                <tr *ngFor="let item of datosCamping?.camping">
                   <td scope="col">{{ item.fecha }}
                   </td>
                   <td scope="col">{{ item.numero_documento }}
@@ -78,16 +78,13 @@
                      <a (click)="open(visorCamping)" class="btn-primary-outline">
                         <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                       </a>&nbsp;
-                      <a class="btn-primary-outline" style="cursor: pointer">
-                        <i class="far fa-copy" placement="top"></i>
-                      </a>
                   </td>
                   <td colspan="2">{{ item.descripcion }}
                   </td>
                   <td scope="col">{{ item.monto_ingreso }}</td>
                   <td scope="col">{{ item.monto_egreso }}
                   </td>
-                  <td scope="col">{{ item.saldo_actual_raw }}</td>
+                  <td scope="col">{{ item.saldo_actual }}</td>
                 </tr>
                 <tr>
                     <th colspan="7" style="background: #138D75" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>

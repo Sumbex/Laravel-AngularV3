@@ -84,6 +84,7 @@ import { CambioInformacionPersonalSocioComponent } from './socios-master/configu
 import { CuentasComponent } from './socios-master/cuentas/cuentas.component';
 import { SindicalComponent } from './socios-master/cuentas/sindical/sindical.component';
 import { CajaChicaComponent } from './socios-master/cuentas/caja-chica/caja-chica.component';
+import { CampingComponent } from './socios-master/cuentas/camping/camping.component';
 
 
 @NgModule({
@@ -198,7 +199,9 @@ import { CajaChicaComponent } from './socios-master/cuentas/caja-chica/caja-chic
 
     SindicalComponent,
 
-    CajaChicaComponent
+    CajaChicaComponent,
+
+    CampingComponent
 
   ],
   imports: [

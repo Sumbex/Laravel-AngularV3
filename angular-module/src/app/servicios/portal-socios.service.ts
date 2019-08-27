@@ -271,4 +271,15 @@ export class PortalSociosService{
             }
         )});
     }
+
+    //Servicio para llamar al detalle Camping
+    getCamping(anio: string, mes: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_camping_socio/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 }

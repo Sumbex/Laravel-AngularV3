@@ -81,11 +81,33 @@ class PortalSocioMisBeneficios extends Model
                 break;
 
             case 2:
-                # code...
-                break;
+                $apuro = DB::table('p_apuro_economico_retornable as pae')
+                    ->select([
+                        'pae.id',
+                        'pae.prestamo_id',
+                        DB::raw("concat(pae.numero_cuota,'/',pae.cuotas) as cuota"),
+                        'pae.interes_mensual',
+                        'pae.ingreso',
+                        'pae.egreso',
+                        'pae.monto_restante',
+                        'pae.estado_cuota'
+                    ])
+                    ->join('anio as a', 'a.id', 'pae.anio_id')
+                    ->join('mes as m', 'm.id', 'pae.mes_id')
+                    ->join('cs_prestamo as p', 'p.id', 'pae.prestamo_id')
+                    ->where([
+                        'pae.estado_cuota' => 'pagando',
+                        'pae.prestamo_id' => $id,
+                        'p.activo' => 'S',
+                        'p.socio_id' => $this->socioID()
+                    ])
+                    ->get();
 
-            case 3:
-                # code...
+                if (!$apuro->isEmpty()) {
+                    return ['estado' => 'success', 'pagos' => $apuro];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este prestamo.'];
+                }
                 break;
 
             default:

@@ -42,7 +42,7 @@
 
     <!--Tabla sindical-->
     <div class="table-responsive">
-      <table class="table table-striped table-bordered table-sm">
+      <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
         <thead text-sm>
           <!--Titulo Tabla-->
           <!--<tr>
@@ -50,21 +50,21 @@
                 </tr>-->
           <!--Cuenta Sindical-->
           <tr class="text-center">
-            <th colspan="11" style="background: #138D75">Cuenta Sindical</th>
-            <th style="background: #229954;">Cierre Mensual Acumulado</th>
+            <th colspan="11">Cuenta Sindical</th>
+            <th>Cierre Mensual Acumulado</th>
           </tr>
         </thead>
         <thead>
           <!--Fijos-->
           <tr class="text-center">
-            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
-            <th style="background: #138D75">N° Doc</th>
-            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th>N° Doc</th>
+            <th><i class="far fa-file-pdf"></i> PDF</th>
             <!--fijos-->
-            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Ingresos y Egresos Fijos
+            <th colspan="4"><i class="fas fa-file-signature"></i> Ingresos y Egresos Fijos
             </th>
-            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
-            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <th><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th><i class="fas fa-minus-circle"></i> Egresos</th>
             <!--cuenta del cierre del mes actual-->
             <td class="text-center"><strong>{{ montoInicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
@@ -72,10 +72,10 @@
         <tbody>
           <tr *ngFor="let itemFijo of fijos">
             <td colspan="3" class="text-center">
-              {{itemFijo.fecha}}
+              <b>{{itemFijo.fecha}}</b>
             </td>
             <td class="text-center">
-              {{itemFijo.numero_documento}}
+              <b>{{itemFijo.numero_documento}}</b>
             </td>
             <!--MODAL VISOR PDF-->
             <ng-template #visorSindicalFijo let-c="close" let-d="dismiss">
@@ -107,42 +107,42 @@
             </td>
 
             <td colspan="4">
-              {{itemFijo.descripcion}}
+              <b>{{itemFijo.descripcion}}</b>
             </td>
 
             <td class="text-center">
-              {{ itemFijo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemFijo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
 
 
             <td class="text-center">
-              {{ itemFijo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemFijo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ itemFijo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemFijo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
           </tr>
 
           <!--variables-->
           <tr class="text-center">
-            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
-            <th style="background: #138D75">N° Doc</th>
-            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Ingresos y Egresos
+            <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th>N° Doc</th>
+            <th><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4"><i class="fas fa-file-signature"></i> Ingresos y Egresos
               Variables</th>
-            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
-            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <th><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th><i class="fas fa-minus-circle"></i> Egresos</th>
             <td></td>
           </tr>
 
           <tr *ngFor="let itemVariable of variable">
             <td colspan="3" class="text-center">
-              {{itemVariable.fecha}}
+              <b>{{itemVariable.fecha}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{itemVariable.numero_documento}}
+              <b>{{itemVariable.numero_documento}}</b>
             </td>
 
             <!--MODAL VISOR PDF-->
@@ -175,39 +175,39 @@
             </td>
 
             <td scope="col" colspan="4">
-              {{itemVariable.descripcion}}
+              <b>{{itemVariable.descripcion}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{ itemVariable.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemVariable.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{ itemVariable.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemVariable.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <!--acumulado cierre del mes actual-->
             <td scope="col" class="text-center">
-              {{ itemVariable.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <b>{{ itemVariable.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
 
           <!--caja chica-->
           <tr class="text-center">
-            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
-            <th style="background: #138D75">N° Doc</th>
-            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Detalle Caja Chica</th>
-            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
-            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th>N° Doc</th>
+            <th><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4"><i class="fas fa-file-signature"></i> Detalle Caja Chica</th>
+            <th><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th><i class="fas fa-minus-circle"></i> Egresos</th>
             <td></td>
           </tr>
 
           <tr *ngFor="let itemCajaChica of cajaChica">
             <td colspan="3" class="text-center">
-              {{itemCajaChica.fecha}}
+              <b>{{itemCajaChica.fecha}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{itemCajaChica.numero_documento}}
+              <b>{{itemCajaChica.numero_documento}}</b>
             </td>
 
             <!--MODAL VISOR PDF-->
@@ -240,66 +240,66 @@
             </td>
 
             <td scope="col" colspan="4">
-              {{itemCajaChica.descripcion}}
+              <b>{{itemCajaChica.descripcion}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{ itemCajaChica.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemCajaChica.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <td scope="col" class="text-center">
-              {{ itemCajaChica.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemCajaChica.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <!--acumulado cierre del mes actual-->
             <td scope="col" class="text-center">
-              {{ itemCajaChica.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <b>{{ itemCajaChica.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
 
           <!--Prestamos-->
           <tr class="text-center">
-            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
-            <th style="background: #138D75">N° Doc</th>
-            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Prestamos Ingresos y
+            <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th>N° Doc</th>
+            <th><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4"><i class="fas fa-file-signature"></i> Prestamos Ingresos y
               Egresos</th>
-            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
-            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <th><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th><i class="fas fa-minus-circle"></i> Egresos</th>
             <td></td>
           </tr>
 
           <tr *ngFor="let itemPrestamo of prestamo">
-            <td colspan="3" class="text-center">{{itemPrestamo.fecha}}</td>
-            <td scope="col" class="text-center">{{itemPrestamo.numero_documento}}</td>
+            <td colspan="3" class="text-center"><b>{{itemPrestamo.fecha}}</b></td>
+            <td scope="col" class="text-center"><b>{{itemPrestamo.numero_documento}}</b></td>
             <td scope="col" class="text-center">
               <a><i class="far fa-file-alt"></i></a>
             </td>
-            <td scope="col" colspan="4">{{itemPrestamo.descripcion}}</td>
-            <td scope="col" class="text-center">{{ itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            <td scope="col" colspan="4"><b>{{itemPrestamo.descripcion}}</b></td>
+            <td scope="col" class="text-center"><b>{{ itemPrestamo.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
-            <td scope="col" class="text-center">{{ itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            <td scope="col" class="text-center"><b>{{ itemPrestamo.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <!--acumulado cierre del mes actual-->
             <td scope="col" class="text-center">
-              {{ itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <b>{{ itemPrestamo.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
 
           <!--comite camping-->
           <tr class="text-center">
-            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
-            <th style="background: #138D75">N° Doc</th>
-            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Comite Camping</th>
-            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
-            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th>N° Doc</th>
+            <th><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4"><i class="fas fa-file-signature"></i> Comite Camping</th>
+            <th><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th><i class="fas fa-minus-circle"></i> Egresos</th>
             <td></td>
           </tr>
 
           <tr *ngFor="let itemCamping of camping">
             <td colspan="3" class="text-center">
-              {{itemCamping.fecha}}
+              <b>{{itemCamping.fecha}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{itemCamping.numero_documento}}
+              <b>{{itemCamping.numero_documento}}</b>
             </td>
 
             <td class="text-center">
@@ -309,24 +309,24 @@
             </td>
 
             <td scope="col" colspan="4">
-              {{itemCamping.descripcion}}
+              <b>{{itemCamping.descripcion}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{ itemCamping.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemCamping.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
 
             <td scope="col" class="text-center">
-              {{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <b>{{ itemCamping.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <!--acumulado cierre del mes actual-->
             <td scope="col" class="text-center">
-              {{ itemCamping.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              <b>{{ itemCamping.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
 
           <!--Cierre del mes-->
           <tr>
-            <th colspan="11" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i> Total
+            <th colspan="11" class="text-right"><i class="fas fa-dollar-sign"></i> Total
               Cierre del Mes</th>
             <td scope="col" class="text-center">
               <strong>{{ resultado?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
@@ -334,20 +334,20 @@
           <br>
           <!--total del cierre de mes-->
           <tr>
-            <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i> INGRESOS
+            <th colspan="9" class="text-right"><i class="fas fa-plus-circle"></i> INGRESOS
             </th>
             <td colspan="2" class="text-center">
               <strong>{{ resultado?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
 
           <tr>
-            <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i> EGRESOS
+            <th colspan="9" class="text-right"><i class="fas fa-minus-circle"></i> EGRESOS
             </th>
             <td colspan="2" class="text-center">
               <strong>{{ resultado?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
           <tr>
-            <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i> CIERRE
+            <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i> CIERRE
               MENSUAL ACTUAL (INGRESO - EGRESO)</th>
             <td colspan="2" class="text-center">
               <strong>{{ resultado?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>

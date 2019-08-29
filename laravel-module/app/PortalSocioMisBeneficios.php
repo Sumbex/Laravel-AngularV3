@@ -25,13 +25,13 @@ class PortalSocioMisBeneficios extends Model
                 'p.egreso',
                 'p.cuotas',
                 'p.tipo_prestamo as tipo',
-                /* 'tp.descripcion as tipo', */
+                'tp.descripcion as tipo',
                 'p.estado_prestamo',
                 'p.estado_abono'
             ])
             ->join('anio as a', 'a.id', 'p.anio_id')
             ->join('mes as m', 'm.id', 'p.mes_id')
-            /* ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo') */
+            ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo')
             ->where([
                 'p.activo' => 'S',
                 'p.socio_id' => $this->socioID()
@@ -59,6 +59,8 @@ class PortalSocioMisBeneficios extends Model
                         'psr.monto_dia_sueldo as monto_sueldo',
                         'psr.monto_trimestral',
                         'psr.monto_termino_conflicto as monto_conflicto',
+                        'psr.ingreso',
+                        'psr.egreso',
                         'psr.estado_prestamo',
                         'psr.estado_abono',
                     ])
@@ -66,14 +68,15 @@ class PortalSocioMisBeneficios extends Model
                     ->join('mes as m', 'm.id', 'psr.mes_id')
                     ->join('cs_prestamo as p', 'p.id', 'psr.prestamo_id')
                     ->where([
-                        'psr.estado_prestamo' => 'pagando',
                         'psr.prestamo_id' => $id,
                         'p.activo' => 'S',
                         'p.socio_id' => $this->socioID()
                     ])
+                    ->whereIn('psr.estado_prestamo', ['pagando', 'pagado'])
                     ->get();
 
                 if (!$salud->isEmpty()) {
+
                     return ['estado' => 'success', 'pagos' => $salud];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este prestamo.'];
@@ -96,11 +99,11 @@ class PortalSocioMisBeneficios extends Model
                     ->join('mes as m', 'm.id', 'pae.mes_id')
                     ->join('cs_prestamo as p', 'p.id', 'pae.prestamo_id')
                     ->where([
-                        'pae.estado_cuota' => 'pagando',
                         'pae.prestamo_id' => $id,
                         'p.activo' => 'S',
                         'p.socio_id' => $this->socioID()
                     ])
+                    ->whereIn('pae.estado_cuota', ['pagando', 'pagado'])
                     ->get();
 
                 if (!$apuro->isEmpty()) {

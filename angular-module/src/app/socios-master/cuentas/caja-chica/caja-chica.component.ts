@@ -21,6 +21,7 @@ export class CajaChicaComponent implements OnInit {
 
   //Variable que almacena los valores obtenidos para la tabla caja chica
   datosCajaChica;
+  totalesCajaChica;
 
   //variable para asociar al modal
   modalCajaChica;
@@ -90,6 +91,7 @@ export class CajaChicaComponent implements OnInit {
         this.cargandoTabla = false;
       }else{
         this.datosCajaChica = response;
+        this.totalesCajaChica = response.total;
         this.cargandoTabla = false;
       }
     },
@@ -101,6 +103,7 @@ export class CajaChicaComponent implements OnInit {
 
   limpiarTabla(){
     this.datosCajaChica = '';
+    this.totalesCajaChica = '';
   }
 
   recargarTabla(){

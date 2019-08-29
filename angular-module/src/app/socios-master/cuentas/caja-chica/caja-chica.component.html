@@ -60,8 +60,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of datosCajaChica?.caja" class="text-center">
-          <td colspan="2">{{item?.fecha}}</td>
-          <td colspan="2">{{item?.numero_documento}}</td>
+          <td colspan="2"><b>{{item?.fecha}}</b></td>
+          <td colspan="2"><b>{{item?.numero_documento}}</b></td>
 
 
           <!--MODAL VISOR PDF-->
@@ -94,12 +94,12 @@
 
 
 
-          <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)">{{item.descripcion}}
+          <td colspan="3"><b>{{item.descripcion}}</b>
           </td>
-          <td colspan="2">{{item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">
-            {{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="2"><b>{{item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          <td colspan="2">
+            <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
         </tr>
         <br>
         <!--Tabla del total Modal Caja Chica-->
@@ -107,20 +107,20 @@
           <th colspan="9" class="text-right"><i class="fas fa-plus-circle"></i>
             INGRESOS</th>
           <td colspan="3" class="text-center">
-            <strong><!-- {{ cajaChicaTotales.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}} --></strong></td>
+            <strong>{{ totalesCajaChica?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
 
         <tr>
           <th colspan="9" class="text-right"><i class="fas fa-minus-circle"></i>
             EGRESOS</th>
           <td colspan="3" class="text-center">
-            <strong><!-- {{ cajaChicaTotales.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}} --></strong></td>
+            <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
         <tr>
           <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
             CIERRE DEL MES</th>
           <td colspan="3" class="text-center">
-            <strong><!-- {{ cajaChicaTotales.total | currency:"CLP" : "symbol-narrow":'1.0'}} --></strong></td>
+            <strong>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
       </tbody>
     </table>

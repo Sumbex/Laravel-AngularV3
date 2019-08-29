@@ -33,6 +33,8 @@ Route::get('/traer_camping_socio/{anio}/{mes}', 'PortalSocioController@TraerCamp
 //------------------------------------------>rutas portal socio mis beneficios
 Route::get('/traer_prestamos_socio', 'PortalSocioController@TraerPrestamos');
 Route::get('/traer_pagos_prestamos_socio/{id}/{tipo}', 'PortalSocioController@TraerPagosPrestamos');
+Route::get('/traer_abonos_prestamos_socio/{id}/{tipo}', 'PortalSocioController@TraerPagosAbonos');
+
 //------------------------------------------>rutas portal socio mis beneficios
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//

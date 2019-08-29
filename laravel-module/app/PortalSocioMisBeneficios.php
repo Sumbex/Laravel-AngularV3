@@ -5,6 +5,7 @@ namespace App;
 use App\PortalSocio;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use App\CsPrestamo;
 
 class PortalSocioMisBeneficios extends Model
 {
@@ -13,104 +14,201 @@ class PortalSocioMisBeneficios extends Model
         return PortalSocio::socioLogeado()->id;
     }
 
+    protected function verificarSocio($id)
+    {
+        return PortalSocio::verificarSocio($id);
+    }
+
     protected function traerPrestamos()
     {
-        $prestamos = DB::table('cs_prestamo as p')
-            ->select([
-                'p.id',
-                DB::raw("concat(p.dia,' de ',m.descripcion,', ',a.descripcion) as fecha"),
-                'p.descripcion_prestamo as descripcion',
-                'p.transferencia_bancaria as codigo',
-                'p.archivo',
-                'p.egreso',
-                'p.cuotas',
-                'p.tipo_prestamo as tipo',
-                'tp.descripcion as tipo',
-                'p.estado_prestamo',
-                'p.estado_abono'
-            ])
-            ->join('anio as a', 'a.id', 'p.anio_id')
-            ->join('mes as m', 'm.id', 'p.mes_id')
-            ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo')
-            ->where([
-                'p.activo' => 'S',
-                'p.socio_id' => $this->socioID()
-            ])
-            ->get();
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $prestamos = DB::table('cs_prestamo as p')
+                ->select([
+                    'p.id',
+                    DB::raw("concat(p.dia,' de ',m.descripcion,', ',a.descripcion) as fecha"),
+                    'p.descripcion_prestamo as descripcion',
+                    'p.transferencia_bancaria as codigo',
+                    'p.archivo',
+                    'p.egreso',
+                    'p.cuotas',
+                    'p.tipo_prestamo as tipo_id',
+                    'tp.descripcion as tipo',
+                    'p.estado_prestamo',
+                    'p.estado_abono'
+                ])
+                ->join('anio as a', 'a.id', 'p.anio_id')
+                ->join('mes as m', 'm.id', 'p.mes_id')
+                ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo')
+                ->orderBy('p.tipo_prestamo', 'asc')
+                ->orderBy('p.dia', 'asc')
+                ->where([
+                    'p.activo' => 'S',
+                    'p.socio_id' => $this->socioID()
+                ])
+                ->get();
 
-        if (!$prestamos->isEmpty()) {
-            return ['estado' => 'success', 'prestamos' => $prestamos];
+            if (!$prestamos->isEmpty()) {
+                return ['estado' => 'success', 'prestamos' => $prestamos];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes prestamos pedidos.'];
+            }
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes prestamos pedidos.'];
+            return $verificarSocio;
+        }
+    }
+
+    protected function verificarPrestamoSocio($id)
+    {
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $prestamo = CsPrestamo::where([
+                'id' => $id,
+                'socio_id' => $this->socioID(),
+                'activo' => 'S'
+            ])
+                ->get();
+
+            if (!$prestamo->isEmpty()) {
+                return ['estado' => 'success'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El prestamo al que intenas acceder no existe o no es tuyo.'];
+            }
+        } else {
+            return $verificarSocio;
         }
     }
 
     protected function traerPagosPrestamos($id, $tipo)
     {
+        $verificarPrestamo = $this->verificarPrestamoSocio($id);
+        if ($verificarPrestamo['estado'] == 'success') {
+            switch ($tipo) {
+                case 1:
+                    $salud = DB::table('p_salud_retornable as psr')
+                        ->select([
+                            'psr.id',
+                            'psr.prestamo_id',
+                            DB::raw("concat(psr.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_pago"),
+                            /* 'psr.monto_dia_sueldo as monto_sueldo',
+                            'psr.monto_trimestral',
+                            'psr.monto_termino_conflicto as monto_conflicto', */
+                            'psr.ingreso',
+                            'psr.egreso',
+                            'psr.numero_cuota',
+                            /* 'psr.monto_restante',
+                            DB::raw("concat(psr.numero_cuota,'/',psr.cuotas) as cuota"),
+                            'psr.estado_prestamo',
+                            'psr.estado_abono', */
+                        ])
+                        ->join('anio as a', 'a.id', 'psr.anio_id')
+                        ->join('mes as m', 'm.id', 'psr.mes_id')
+                        ->join('cs_prestamo as p', 'p.id', 'psr.prestamo_id')
+                        ->where([
+                            'psr.prestamo_id' => $id,
+                            'p.activo' => 'S',
+                            'p.socio_id' => $this->socioID()
+                        ])
+                        ->whereIn('psr.estado_prestamo', ['pagando', 'pagado'])
+                        ->get();
+
+                    if (!$salud->isEmpty()) {
+                        $pagos['mensaje'] = [];
+                        foreach ($salud as $key) {
+                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->numero_cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso, 0, '.', ',') . ' pesos.';
+                            /* $key->tipo_sueldo = 1;
+                            $key->tipo_conflicto = 2;
+                            $key->tipo_trimestral = 3; */
+                        }
+                        return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este prestamo.'];
+                    }
+                    break;
+
+                case 2:
+                    $apuro = DB::table('p_apuro_economico_retornable as pae')
+                        ->select([
+                            'pae.id',
+                            'pae.prestamo_id',
+                            DB::raw("concat(pae.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_pago"),
+                            'pae.interes_mensual',
+                            'pae.ingreso',
+                            'pae.egreso',
+                            'pae.numero_cuota'
+                            /* 'pae.monto_restante',
+                            DB::raw("concat(pae.numero_cuota,'/',pae.cuotas) as cuota"),
+                            'pae.estado_cuota' */
+                        ])
+                        ->join('anio as a', 'a.id', 'pae.anio_id')
+                        ->join('mes as m', 'm.id', 'pae.mes_id')
+                        ->join('cs_prestamo as p', 'p.id', 'pae.prestamo_id')
+                        ->where([
+                            'pae.prestamo_id' => $id,
+                            'p.activo' => 'S',
+                            'p.socio_id' => $this->socioID()
+                        ])
+                        ->whereIn('pae.estado_cuota', ['pagando', 'pagado'])
+                        ->get();
+
+                    if (!$apuro->isEmpty()) {
+                        $pagos['mensaje'] = [];
+                        foreach ($apuro as $key) {
+                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->numero_cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso + $key->interes_mensual, 0, '.', ',') . ' pesos.';
+                        }
+                        return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este prestamo.'];
+                    }
+                    break;
+
+                case 3:
+                    return ['estado' => 'success', 'mensaje' => 'El prestamo seleccionado no es retornable.'];
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        } else {
+            return $verificarPrestamo;
+        }
+    }
+
+    protected function traerPagosAbonos($id, $tipo)
+    {
         switch ($tipo) {
             case 1:
-                $salud = DB::table('p_salud_retornable as psr')
+                $sueldo = DB::table('abonos_salud_retornable as asr')
                     ->select([
-                        'psr.id',
-                        DB::raw("concat(psr.dia,' de ',m.descripcion,', ',a.descripcion) as fecha_pago"),
-                        'psr.prestamo_id',
-                        'psr.monto_restante',
-                        DB::raw("concat(psr.numero_cuota,'/',psr.cuotas) as cuota"),
-                        'psr.monto_dia_sueldo as monto_sueldo',
-                        'psr.monto_trimestral',
-                        'psr.monto_termino_conflicto as monto_conflicto',
-                        'psr.ingreso',
-                        'psr.egreso',
-                        'psr.estado_prestamo',
-                        'psr.estado_abono',
-                    ])
-                    ->join('anio as a', 'a.id', 'psr.anio_id')
-                    ->join('mes as m', 'm.id', 'psr.mes_id')
-                    ->join('cs_prestamo as p', 'p.id', 'psr.prestamo_id')
-                    ->where([
-                        'psr.prestamo_id' => $id,
-                        'p.activo' => 'S',
-                        'p.socio_id' => $this->socioID()
-                    ])
-                    ->whereIn('psr.estado_prestamo', ['pagando', 'pagado'])
-                    ->get();
+                        'asr.id',
+                        'asr.prestamo_id',
+                        DB::raw("concat(asr.dia,' de ',m.descripcion,', ',a.descripcion) as fecha_pago"),
 
-                if (!$salud->isEmpty()) {
-
-                    return ['estado' => 'success', 'pagos' => $salud];
-                } else {
-                    return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este prestamo.'];
-                }
-                break;
-
-            case 2:
-                $apuro = DB::table('p_apuro_economico_retornable as pae')
-                    ->select([
-                        'pae.id',
-                        'pae.prestamo_id',
-                        DB::raw("concat(pae.numero_cuota,'/',pae.cuotas) as cuota"),
-                        'pae.interes_mensual',
-                        'pae.ingreso',
-                        'pae.egreso',
-                        'pae.monto_restante',
-                        'pae.estado_cuota'
                     ])
                     ->join('anio as a', 'a.id', 'pae.anio_id')
                     ->join('mes as m', 'm.id', 'pae.mes_id')
                     ->join('cs_prestamo as p', 'p.id', 'pae.prestamo_id')
                     ->where([
-                        'pae.prestamo_id' => $id,
+                        'asr.prestamo_id' => $id,
                         'p.activo' => 'S',
                         'p.socio_id' => $this->socioID()
                     ])
-                    ->whereIn('pae.estado_cuota', ['pagando', 'pagado'])
                     ->get();
 
-                if (!$apuro->isEmpty()) {
-                    return ['estado' => 'success', 'pagos' => $apuro];
+                if (!$sueldo->isEmpty()) {
+                    return ['estado' => 'success', 'pagos' => $sueldo];
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este prestamo.'];
+                    return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este abono.'];
                 }
+                break;
+
+            case 2:
+                # code...
+                break;
+
+            case 3:
+                # code...
                 break;
 
             default:

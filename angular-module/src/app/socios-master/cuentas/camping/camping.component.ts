@@ -3,11 +3,11 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
-  selector: 'app-caja-chica',
-  templateUrl: './caja-chica.component.html',
-  styleUrls: ['./caja-chica.component.css']
+  selector: 'app-camping',
+  templateUrl: './camping.component.html',
+  styleUrls: ['./camping.component.css']
 })
-export class CajaChicaComponent implements OnInit {
+export class CampingComponent implements OnInit {
 
   //Variables para los select de año y mes
   selectAnio;
@@ -20,10 +20,10 @@ export class CajaChicaComponent implements OnInit {
   cargandoTabla = false;
 
   //Variable que almacena los valores obtenidos para la tabla caja chica
-  datosCajaChica;
+  datosCamping;
 
   //variable para asociar al modal
-  modalCajaChica;
+  modalCamping;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
@@ -38,14 +38,14 @@ export class CajaChicaComponent implements OnInit {
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
-  openModalCajaChica(cajaChicaModal) {
-    this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
-    this.cargarFechasActuales();
-  }
-
   //Abrir visor de PDF
   openPDF(content) {
     this.modalService.open(content, {size: 'lg'});
+  }
+
+  openModalCamping(cajaChicaModal) {
+    this.modalCamping = this.modalService.open(cajaChicaModal, { size: 'xl' });
+    this.cargarFechasActuales();
   }
 
   cargarFechasActuales() {
@@ -62,7 +62,7 @@ export class CajaChicaComponent implements OnInit {
     this._portalSociosService.getMesActual().subscribe(
       response => {
         this.idMesActual = response.id;
-        this.cargarTablaCajaChica();
+        this.cargarCamping();
       },
       error => {
         console.log(error);
@@ -70,26 +70,14 @@ export class CajaChicaComponent implements OnInit {
     )
   }
 
-  changeAnio(valorSelect){
-    this.limpiarTabla();
-    this.idAnioActual = valorSelect.target.value;
-    this.recargarTabla();
-  }
- 
-  changeMes(valorSelect){
-   this.limpiarTabla();
-   this.idMesActual = valorSelect.target.value;
-   this.recargarTabla();
-  }
-
-  cargarTablaCajaChica(){
+  cargarCamping(){
     this.cargandoTabla = true;
-    this._portalSociosService.getCajaChica(this.idAnioActual, this.idMesActual).subscribe(response => {
+    this._portalSociosService.getCamping(this.idAnioActual, this.idMesActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoTabla = false;
       }else{
-        this.datosCajaChica = response;
+        this.datosCamping = response;
         this.cargandoTabla = false;
       }
     },
@@ -97,15 +85,6 @@ export class CajaChicaComponent implements OnInit {
       console.log(error);
       this.cargandoTabla = false;
     });
-  }
-
-  limpiarTabla(){
-    this.datosCajaChica = '';
-  }
-
-  recargarTabla(){
-    this.limpiarTabla();
-    this.cargarTablaCajaChica();
   }
 
 }

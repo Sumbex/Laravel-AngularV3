@@ -84,6 +84,20 @@ import { CambioInformacionPersonalSocioComponent } from './socios-master/configu
 import { CuentasComponent } from './socios-master/cuentas/cuentas.component';
 import { SindicalComponent } from './socios-master/cuentas/sindical/sindical.component';
 import { CajaChicaComponent } from './socios-master/cuentas/caja-chica/caja-chica.component';
+import { CampingComponent } from './socios-master/cuentas/camping/camping.component';
+import { InicioCierreMensualComponent } from './auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component';
+import { CajaChicaBienestarComponent } from './auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component';
+import { FallecimientoBienestarComponent } from './auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component';
+import { NacimientoBienestarComponent } from './auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component';
+import { GastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component';
+import { FormularioCajaChicaBienestarComponent } from './auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component';
+import { TablaCajaChicaBienestarComponent } from './auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component';
+import { FormularioFallecimientoBienestarComponent } from './auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component';
+import { TablaFallecimientoBienestarComponent } from './auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component';
+import { FormularioNacimientoBienestarComponent } from './auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component';
+import { TablaNacimientoBienestarComponent } from './auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component';
+import { FormularioGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component';
+import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component';
 
 
 @NgModule({
@@ -198,7 +212,35 @@ import { CajaChicaComponent } from './socios-master/cuentas/caja-chica/caja-chic
 
     SindicalComponent,
 
-    CajaChicaComponent
+    CajaChicaComponent,
+
+    CampingComponent,
+
+    InicioCierreMensualComponent,
+
+    CajaChicaBienestarComponent,
+
+    FallecimientoBienestarComponent,
+
+    NacimientoBienestarComponent,
+
+    GastosMedicosBienestarComponent,
+
+    FormularioCajaChicaBienestarComponent,
+
+    TablaCajaChicaBienestarComponent,
+
+    FormularioFallecimientoBienestarComponent,
+
+    TablaFallecimientoBienestarComponent,
+
+    FormularioNacimientoBienestarComponent,
+
+    TablaNacimientoBienestarComponent,
+
+    FormularioGastosMedicosBienestarComponent,
+
+    TablaGastosMedicosBienestarComponent
 
   ],
   imports: [

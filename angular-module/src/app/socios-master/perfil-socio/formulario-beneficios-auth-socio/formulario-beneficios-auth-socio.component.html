@@ -1,4 +1,4 @@
-<ng-template #formularioBeneficiosSocio let-modal>
+<ng-template #formularioBeneficiosSocio let-modal id="test">
   <div class="modal-header sticky-top" id="demoFont">
     <h6 class="modal-title"><i class="fas fa-table"></i> Datos del Socio: {{getNombreSocio | uppercase}}</h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -252,4 +252,4 @@
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
 <button class="btn btn-primary btn-block btn-sm" type="button"
-  (click)="verFormularioBeneficios(formularioBeneficiosSocio)">Insertar Datos</button>
+  (click)="verFormularioBeneficios(formularioBeneficiosSocio)"><b>Insertar Datos</b></button>

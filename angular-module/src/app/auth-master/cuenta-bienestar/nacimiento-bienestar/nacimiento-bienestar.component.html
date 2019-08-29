@@ -1,3 +1,65 @@
-<p>
-  nacimiento-bienestar works!
-</p>
+<ng-template #Nacimiento let-modal>
+
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-baby"></i> <strong> Cuenta Bienestar / Nacimiento</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo del body nacimiento-->
+    <div class="modal-body">
+  
+      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="form-nacimiento-tab" data-toggle="tab" href="#form-nacimiento" role="tab"
+            aria-controls="form-nacimiento" aria-selected="true">Formulario Nacimiento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="table-nacimiento-tab" data-toggle="tab" href="#table-nacimiento" role="tab"
+            aria-controls="table-nacimiento" aria-selected="false">Tabla Nacimiento</a>
+        </li>
+      </ul> <br>
+  
+      <div class="tab-content" id="myTabContent">
+  
+          <div class="tab-pane fade show active" id="form-nacimiento" role="tabpanel" aria-labelledby="form-nacimiento-tab">
+              <div class="card-header" id="demoFont2">
+                  <h6 class="card-title">Formulario</h6>
+              </div>
+  
+              <div class="card">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row justify-content-center">
+                        <app-formulario-nacimiento-bienestar></app-formulario-nacimiento-bienestar>
+                      </div>
+                  </div>
+              </div> <br>
+          </div>
+  
+          <div class="tab-pane fade" id="table-nacimiento" role="tabpanel" aria-labelledby="table-nacimiento-tab">
+              <div class="card-header" id="demoFont2">
+                  <h6 class="card-title">Tabla</h6>
+              </div>
+              <div class="card">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row justify-content-center">
+                        <app-tabla-nacimiento-bienestar></app-tabla-nacimiento-bienestar>
+                      </div>
+                  </div>
+              </div> <br>
+          </div>
+  
+      </div> 
+    </div>
+  
+    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i class="fas fa-undo-alt"></i> Volver a Cuenta
+        Bienestar
+      </button>
+    </div>
+  </ng-template>
+  
+  <!--Boton Para llamar al Modal inicio y cierre mensual-->
+  <label><strong>Detalle Nacimiento</strong></label><br>
+  <button class="btn btn btn-success btn-block btn-sm" (click)="openModal(Nacimiento)">Ingresar</button>

@@ -45,7 +45,13 @@
                <thead text-sm>
                   <!--Titulo Tabla-->  
                   <tr>
-                  <th colspan="8" class=" text-center"><h6>Detalle Comité Camping</h6></th>
+                  <th colspan="5" class="text-center"><h6>Detalle Comité Camping</h6></th>
+                  <th colspan="3">
+                    Cierre mensual acumulado:
+                    <div class="input-group">
+                      <b>{{montoAcumulado | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                    </div>
+                 </th>
                  </tr>
                   <tr class="text-center">
                       <th><i class="fas fa-calendar-alt"></i> Fecha</th>
@@ -59,9 +65,9 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of datosCamping?.camping">
-                  <td scope="col">{{ item.fecha }}
+                  <td scope="col"><b>{{ item.fecha }}</b>
                   </td>
-                  <td scope="col">{{ item.numero_documento }}
+                  <td scope="col"><b>{{ item.numero_documento }}</b>
                   </td>
 
                   <!--MODAL VISOR PDF-->
@@ -85,35 +91,35 @@
                   </ng-template>
                   <!--MODAL VISOR PDF-->
 
-                  <td scope="col">
+                  <td scope="col" style="text-align: center">
                      <a (click)="openPDF(visorCamping)" class="btn-primary-outline">
                         <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                       </a>&nbsp;
                   </td>
-                  <td colspan="2">{{ item.descripcion }}
+                  <td colspan="2"><b>{{ item.descripcion }}</b>
                   </td>
-                  <td scope="col">{{ item.monto_ingreso }}</td>
-                  <td scope="col">{{ item.monto_egreso }}
+                  <td scope="col"><b>{{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                  <td scope="col"><b>{{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b>
                   </td>
-                  <td scope="col">{{ item.saldo_actual }}</td>
+                  <td scope="col"><b>{{ item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
                 <tr>
                     <th colspan="7" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
-                    <td scope="col">{{ totalesCamping?.total }}</td>
+                    <td scope="col"><b>{{ totalesCamping?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                   </tr>
                 <br>
 
                 <tr>
                   <th colspan="3" class="text-right"><i class="fas fa-plus-circle"></i>  INGRESOS</th>
-                  <td colspan="1">{{ totalesCamping?.total_ingreso }}</td>
+                  <td colspan="1"><b>{{ totalesCamping?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
                 <tr>
                   <th colspan="3" class="text-right"><i class="fas fa-minus-circle"></i>  EGRESOS</th>
-                  <td colspan="1">{{ totalesCamping?.total_egreso }}</td>
+                  <td colspan="1"><b>{{ totalesCamping?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
                 <tr>
                   <th colspan="3" class="text-right"><i class="fas fa-dollar-sign"></i>  CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
-                  <td colspan="1">{{ totalesCamping?.total }}</td>
+                  <td colspan="1"><b>{{ totalesCamping?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
               </tbody>
           </table>

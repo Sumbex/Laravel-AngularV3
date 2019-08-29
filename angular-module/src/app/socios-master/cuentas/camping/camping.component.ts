@@ -22,6 +22,7 @@ export class CampingComponent implements OnInit {
   //Variable que almacena los valores obtenidos para la tabla caja chica
   datosCamping;
   totalesCamping;
+  montoAcumulado;
 
   //variable para asociar al modal
   modalCamping;
@@ -80,6 +81,7 @@ export class CampingComponent implements OnInit {
       }else{
         this.datosCamping = response;
         this.totalesCamping = response.totales;
+        this.montoAcumulado = response.monto_inicio;
         this.cargandoTabla = false;
       }
     },
@@ -104,6 +106,7 @@ export class CampingComponent implements OnInit {
   limpiarTabla(){
     this.datosCamping = '';
     this.totalesCamping = '';
+    this.montoAcumulado = '';
   }
 
   recargarTabla(){

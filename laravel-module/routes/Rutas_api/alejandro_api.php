@@ -49,6 +49,8 @@ Route::get('tabla_final_prestamo/{anio}/{mes}',	'CsPrestamoAlejandroController@t
 Route::get('listar_prestamos_vigentes','CsPrestamoAlejandroController@listar_prestamos_vigentes');
 Route::get('listar_prestamos_finalizados','CsPrestamoAlejandroController@listar_prestamos_finalizados');
 
+Route::get('calcular_cuota_prestamo/{prestamo_id}','CsPrestamoAlejandroController@calcular_cuota_prestamo');
+Route::get('calcular_abono/{prestamo_id}/{tipo_abono}','CsPrestamoAlejandroController@calcular_abono');
 
 
 //----selects
@@ -93,6 +95,12 @@ Route::post('actualizar_datos_padres_suegros','SocioController@actualizar_datos_
 
 Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general_socio');
 
+//---------------------------------------------------------------------------------------------------
 
+
+
+//CUENTA BIEN ESTAR----------------------------------------------------------------------------------
+
+Route::post('cbe_guardar_inicio_mensual','InicioCierreMensualBienestarController@guardar_inicio_mensual');
 
 

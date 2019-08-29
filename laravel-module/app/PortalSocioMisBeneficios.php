@@ -58,21 +58,38 @@ class PortalSocioMisBeneficios extends Model
         }
     }
 
-    protected function verificarPrestamoSocio($id)
+    protected function verificarPrestamoSocio($id, $tipo)
     {
         $verificarSocio = $this->verificarSocio($this->socioID());
         if ($verificarSocio['estado'] == 'success') {
-            $prestamo = CsPrestamo::where([
-                'id' => $id,
-                'socio_id' => $this->socioID(),
-                'activo' => 'S'
-            ])
-                ->get();
+            if (!is_null($tipo)) {
+                $prestamo = CsPrestamo::where([
+                    'id' => $id,
+                    'socio_id' => $this->socioID(),
+                    'tipo_prestamo' => $tipo,
+                    'activo' => 'S'
+                ])
+                    ->get();
 
-            if (!$prestamo->isEmpty()) {
-                return ['estado' => 'success'];
+                if (!$prestamo->isEmpty()) {
+                    return ['estado' => 'success'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'El prestamo al que intenas acceder no existe o no es tuyo.'];
+                }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'El prestamo al que intenas acceder no existe o no es tuyo.'];
+                $prestamo = CsPrestamo::where([
+                    'id' => $id,
+                    'tipo_prestamo' => 1,
+                    'socio_id' => $this->socioID(),
+                    'activo' => 'S'
+                ])
+                    ->get();
+
+                if (!$prestamo->isEmpty()) {
+                    return ['estado' => 'success'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'El prestamo al que intenas acceder no existe o no es tuyo.'];
+                }
             }
         } else {
             return $verificarSocio;
@@ -81,7 +98,7 @@ class PortalSocioMisBeneficios extends Model
 
     protected function traerPagosPrestamos($id, $tipo)
     {
-        $verificarPrestamo = $this->verificarPrestamoSocio($id);
+        $verificarPrestamo = $this->verificarPrestamoSocio($id, $tipo);
         if ($verificarPrestamo['estado'] == 'success') {
             switch ($tipo) {
                 case 1:
@@ -96,6 +113,7 @@ class PortalSocioMisBeneficios extends Model
                             'psr.ingreso',
                             'psr.egreso',
                             'psr.numero_cuota',
+                            /* 'psr.monto_restante' */
                             /* 'psr.monto_restante',
                             DB::raw("concat(psr.numero_cuota,'/',psr.cuotas) as cuota"),
                             'psr.estado_prestamo',
@@ -177,43 +195,38 @@ class PortalSocioMisBeneficios extends Model
 
     protected function traerPagosAbonos($id, $tipo)
     {
-        switch ($tipo) {
-            case 1:
-                $sueldo = DB::table('abonos_salud_retornable as asr')
-                    ->select([
-                        'asr.id',
-                        'asr.prestamo_id',
-                        DB::raw("concat(asr.dia,' de ',m.descripcion,', ',a.descripcion) as fecha_pago"),
+        $verificarPrestamo = $this->verificarPrestamoSocio($id, null);
+        if ($verificarPrestamo['estado'] == 'success') {
+            $abonos = DB::table('abonos_salud_retornable as asr')
+                ->select([
+                    'asr.id',
+                    'asr.prestamo_id',
+                    DB::raw("concat(asr.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_pago"),
+                    'asr.monto',
+                    'asr.restante_abono'
+                ])
+                ->join('anio as a', 'a.id', 'asr.anio_id')
+                ->join('mes as m', 'm.id', 'asr.mes_id')
+                ->join('cs_prestamo as p', 'p.id', 'asr.prestamo_id')
+                ->where([
+                    'asr.prestamo_id' => $id,
+                    'asr.abono_tipo' => $tipo,
+                    'p.activo' => 'S',
+                    'p.socio_id' => $this->socioID()
+                ])
+                ->get();
 
-                    ])
-                    ->join('anio as a', 'a.id', 'pae.anio_id')
-                    ->join('mes as m', 'm.id', 'pae.mes_id')
-                    ->join('cs_prestamo as p', 'p.id', 'pae.prestamo_id')
-                    ->where([
-                        'asr.prestamo_id' => $id,
-                        'p.activo' => 'S',
-                        'p.socio_id' => $this->socioID()
-                    ])
-                    ->get();
-
-                if (!$sueldo->isEmpty()) {
-                    return ['estado' => 'success', 'pagos' => $sueldo];
-                } else {
-                    return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este abono.'];
+            if (!$abonos->isEmpty()) {
+                $pagos['mensaje'] = [];
+                foreach ($abonos as $key) {
+                    $pagos['mensaje'][] = 'Se ha generado un pago el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->monto, 0, '.', ',') . ' pesos, quedando asi un total de: $' . number_format($key->restante_abono, 0, '.', ',') . ' pesos por pagar.';
                 }
-                break;
-
-            case 2:
-                # code...
-                break;
-
-            case 3:
-                # code...
-                break;
-
-            default:
-                # code...
-                break;
+                return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes pagos registrados en este abono.'];
+            }
+        } else {
+            return $verificarPrestamo;
         }
     }
 }

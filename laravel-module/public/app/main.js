@@ -195,7 +195,7 @@ module.exports = "<p>\n  tabla-gastos-medicos-bienestar works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Modal para el inicio y cierre mensual-->\n<ng-template #validar let-modal>\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n    <br>\n    <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n    <br>\n    <button class=\"btn btn-success btn-block btn-sm\" (click)=\"btn_validar_usuario(rut,password,validar)\">\n      Validar\n    </button>\n    <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  </div>\n</ng-template>\n\n<ng-template #Mensual let-modal>\n\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Cuenta Bienestar / Inicio y Cierre\n        Mensual</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!--Cuerpo del body inicio y cierre mensual-->\n  <div class=\"modal-body\">\n\n    <p>\n      <ngb-alert type=\"warning\" [dismissible]=\"false\">\n        <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> El primer mes de cada año\n          se debe ingresar el monto incial de forma manual.</small>\n      </ngb-alert>\n    </p>\n\n    <div class=\"row\">\n      <div class=\"col-12 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n        <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\n          <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n        </select>\n      </div>\n\n      <div class=\"col-12 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n        <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\n          <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\n        </select>\n      </div>\n    </div>\n      \n    <div class=\"row justify-content-between\">\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Calcular monto</strong></label><br>\n        <button (click)=\"calcular_cierre_mensual()\" type=\"submit\" name=\"botonCalcular\"\n          class=\"btn btn btn-outline-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\"><i\n            class=\"fas fa-calculator\"></i> Calcular</button>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Monto Inicial</strong></label>\n        <input class=\"form-control form-control-sm\" type=\"number\" name=\"montoInicial\" #montoInicial=\"ngModel\"\n          [(ngModel)]=\"monto\" minlength=\"1\" required>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Guardar Monto</strong></label><br>\n        <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"validar_usuario(validar)\">\n          <i class=\"fas fa-save\"></i> Guardar</button>\n      </div>\n    </div>\n    <br>\n    <div *ngIf=\"success_visible\" class=\"alert alert-primary\" role=\"alert\">\n      {{ txt }}\n    </div>\n\n    <div *ngIf=\"failed_visible\" class=\"alert alert-danger\" role=\"alert\">\n      {{ txt }}\n    </div>\n    <hr>\n    <ngb-alert type=\"warning\" [dismissible]=\"false\">\n      <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> En el ítem <b>\"Monto de\n          cierre\"</b> de la siguiente tabla cuando aparezca un <b>(*)</b>, significa que el monto aun no ha sido\n        calculado, cuando avance en cada mes es necesario ir calculando de manera responsable sus inicios y cierres\n        mensuales.</small>\n    </ngb-alert>\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n      <select [(ngModel)]=\"fil_anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n        <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n      </select>\n    </div>\n    <br>\n    <!--tabla del modal inicio y cierre mensual-->\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered table-sm\">\n        <thead text-sm class=\"text-center\">\n\n          <tr>\n            <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n              <h6>Movimiento anual</h6>\n            </th>\n          </tr>\n\n          <tr>\n            <th scope=\"col\" colspan=\"3\">Año</th>\n            <th scope=\"col\" colspan=\"3\">Mes</th>\n            <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n            <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n            <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n          </tr>\n        </tbody>\n      </table>\n    </div><br>\n  </div>\n\n\n  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta\n      Sindical\n    </button>\n  </div>\n\n\n\n\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n<label><strong>Inicio y Cierre Mensual</strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>"
+module.exports = "<!--Modal para el inicio y cierre mensual-->\n<ng-template #validar let-modal>\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n    <br>\n    <input #password class=\"form-control form-control-sm\" type=\"password\" placeholder=\"Ingrese su contraseña\" name=\"\">\n    <br>\n    <button class=\"btn btn-success btn-block btn-sm\" (click)=\"btn_validar_usuario(rut,password,validar)\">\n      Validar\n    </button>\n    <img *ngIf=\"load\" height=\"30\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n  </div>\n</ng-template>\n\n<ng-template #Mensual let-modal>\n\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Cuenta Bienestar / Inicio y Cierre\n        Mensual</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!--Cuerpo del body inicio y cierre mensual-->\n  <div class=\"modal-body\">\n\n    <p>\n      <ngb-alert type=\"warning\" [dismissible]=\"false\">\n        <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Advertencia!</strong> El primer mes de cada año\n          se debe ingresar el monto incial de forma manual.</small>\n      </ngb-alert>\n    </p>\n\n    <div class=\"row\">\n      <div class=\"col-12 col-md-6 col-lg-6\"><br><label><strong>Año</strong></label>\n        <select [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\n          <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n        </select>\n      </div>\n\n      <div class=\"col-12 col-md-6 col-lg-6\"><br><label><strong>Mes</strong></label>\n        <select [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\n          <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\n        </select>\n      </div>\n    </div>\n      \n    <div class=\"row justify-content-between\">\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Calcular monto</strong></label><br>\n        <button (click)=\"calcular()\" type=\"submit\" name=\"botonCalcular\"\n          class=\"btn btn btn-outline-success btn-block btn-sm\" [disabled]=\"selectOptionMes.value == '1'\"><i\n            class=\"fas fa-calculator\"></i> Calcular</button>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Monto Inicial</strong></label>\n        <input class=\"form-control form-control-sm\" type=\"number\" name=\"montoInicial\" #montoInicial=\"ngModel\"\n          [(ngModel)]=\"monto\" minlength=\"1\" required>\n      </div>\n\n      <div class=\"col-12 col-md-4 col-lg-4\">\n        <br><label><strong>Guardar Monto</strong></label><br>\n        <button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"validar_usuario(validar)\">\n          <i class=\"fas fa-save\"></i> Guardar</button>\n      </div>\n    </div>\n    <br>\n    <div *ngIf=\"success_visible\" class=\"alert alert-primary\" role=\"alert\">\n      {{ txt }}\n    </div>\n\n    <div *ngIf=\"failed_visible\" class=\"alert alert-danger\" role=\"alert\">\n      {{ txt }}\n    </div>\n    <hr>\n    <ngb-alert type=\"warning\" [dismissible]=\"false\">\n      <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> En el ítem <b>\"Monto de\n          cierre\"</b> de la siguiente tabla cuando aparezca un <b>(*)</b>, significa que el monto aun no ha sido\n        calculado, cuando avance en cada mes es necesario ir calculando de manera responsable sus inicios y cierres\n        mensuales.</small>\n    </ngb-alert>\n    <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año</strong></label>\n      <select [(ngModel)]=\"f_anio\" (change)=\"cambiar_anio()\" class=\"form-control form-control-sm\">\n        <option *ngFor=\"let anio of f_anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n      </select>\n    </div>\n    <br>\n    <!--tabla del modal inicio y cierre mensual-->\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered table-sm\">\n        <thead text-sm class=\"text-center\">\n\n          <tr>\n            <th colspan=\"14\" class=\" text-center\" id=\"demoFont\">\n              <h6>Movimiento anual</h6>\n            </th>\n          </tr>\n\n          <tr>\n            <th scope=\"col\" colspan=\"3\">Año</th>\n            <th scope=\"col\" colspan=\"3\">Mes</th>\n            <th scope=\"col\" colspan=\"3\">Monto inicial(mes anterior)</th>\n            <th scope=\"col\" colspan=\"3\">Monto de cierre</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr class=\"text-center\" *ngFor=\"let t of tabla\">\n            <td scope=\"col\" colspan=\"3\">{{ t.anio }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.mes }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.inicio_mensual_m }}</td>\n            <td scope=\"col\" colspan=\"3\">{{ t.cierre_mensual_m }}</td>\n          </tr>\n        </tbody>\n      </table>\n    </div><br>\n  </div>\n\n\n  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\">Volver a Cuenta\n      Sindical\n    </button>\n  </div>\n\n\n\n\n</ng-template>\n\n<!--Boton Para llamar al Modal inicio y cierre mensual-->\n<label><strong>Inicio y Cierre Mensual</strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openMensual(Mensual)\">Ingresar</button>"
 
 /***/ }),
 
@@ -2156,20 +2156,119 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
+/* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
+
+
+
+
 
 
 
 let InicioCierreMensualComponent = class InicioCierreMensualComponent {
-    constructor(config, modalService) {
+    //-------------------------
+    constructor(config, modalService, _cbe, _time, _http) {
         this.modalService = modalService;
+        this._cbe = _cbe;
+        this._time = _time;
+        this._http = _http;
+        this.load = false;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        //datos_validacion_usuario-
+        this.user = [];
+        this.rut = '';
+        this.password = '';
         config.backdrop = 'static';
         config.keyboard = false;
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_6__["global"].url;
     }
     ngOnInit() {
     }
     openMensual(Mensual) {
         this.modalPrincipal = this.modalService.open(Mensual, { size: 'lg' });
+        this.llenar_select();
+        this.usuario_logeado();
         //console.log(document.getElementById('anio').options.value);
+    }
+    llenar_select() {
+        this._time.getAnios().subscribe(response => {
+            this.anios = response;
+            this.f_anios = response;
+            this._time.getAnioActual().subscribe((response) => {
+                this.anio = response.id;
+                this.f_anio = response.id;
+            }, error => {
+                console.log(error);
+            });
+        }, error => {
+            console.log(error);
+        });
+        this._time.getMeses().subscribe(response => {
+            this.meses = response;
+            this._time.getMesActual().subscribe((response) => {
+                this.mes = response.id;
+            }, error => {
+                console.log(error);
+            });
+        }, error => {
+            console.log(error);
+        });
+    }
+    guardar() {
+        this._cbe.guardar_iniciomensual(this.anio, this.mes, this.monto).subscribe((response) => {
+            if (response.estado == 'success') {
+                alert("Monto inicial guardado");
+                this.monto = '';
+            }
+            else {
+                alert("Error al guardar");
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    usuario_logeado() {
+        this._http.get(this.url + "usuario_logeado", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        }).subscribe((val) => {
+            this.user = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    validar_usuario(validar) {
+        this.modalReference = this.modalService.open(validar, { size: 'sm' });
+    }
+    btn_validar_usuario($rut, $password, validar) {
+        this.load = true;
+        const formData = new FormData();
+        formData.append('rut', $rut.value);
+        formData.append('password', $password.value);
+        this._http.post(this.url + "confirmar_usuario", formData, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        }).subscribe((val) => {
+            if (val > 0) { //si tiene acceso;
+                this.guardar();
+                this.load = false;
+                // this.modalReference.close();
+                //this.modalService.dismissAll();
+                this.modalReference.close();
+            }
+            else {
+                alert("Acceso denegado");
+                this.load = false;
+                this.modalReference.close();
+            }
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    calcular() {
+        this._cbe.calcular(this.anio, this.mes).subscribe((response) => {
+        }, error => {
+        });
     }
 };
 InicioCierreMensualComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2179,7 +2278,10 @@ InicioCierreMensualComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
         styles: [__webpack_require__(/*! ./inicio-cierre-mensual.component.css */ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.css")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+        _servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
+        _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
 ], InicioCierreMensualComponent);
 
 
@@ -7848,6 +7950,61 @@ AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
 ], AniosService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/bienestar.service.ts":
+/*!************************************************!*\
+  !*** ./src/app/servicios/bienestar.service.ts ***!
+  \************************************************/
+/*! exports provided: BienestarService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BienestarService", function() { return BienestarService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let BienestarService = class BienestarService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    guardar_iniciomensual(anio, mes, cierre_mensual) {
+        const body = new FormData();
+        body.append('anio', anio);
+        body.append('mes', mes);
+        body.append('cierre_mensual', cierre_mensual);
+        return this._http.post(this.url + "cbe_guardar_inicio_mensual", body, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            })
+        });
+    }
+    calcular(anio, mes) {
+        return this._http.get(this.url + "cbe_calcular_cm/" + anio + '/' + mes, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+};
+BienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], BienestarService);
 
 
 

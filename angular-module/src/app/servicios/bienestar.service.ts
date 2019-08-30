@@ -32,6 +32,18 @@ export class BienestarService {
       });
   }
 
+  calcular(anio, mes): Observable<any>{
+
+    return this._http.get(this.url + "cbe_calcular_cm/" + anio + '/' + mes, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'applcation/json'
+        }
+      )
+    });
+  }
+
   // guardar_iniciomensual(){
   //   // return http.get('cbe_guardar_inicio_mensual');
   // }

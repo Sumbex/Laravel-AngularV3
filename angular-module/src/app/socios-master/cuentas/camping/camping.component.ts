@@ -45,8 +45,8 @@ export class CampingComponent implements OnInit {
     this.modalService.open(content, {size: 'lg'});
   }
 
-  openModalCamping(cajaChicaModal) {
-    this.modalCamping = this.modalService.open(cajaChicaModal, { size: 'xl' });
+  openModalCamping(Modal) {
+    this.modalCamping = this.modalService.open(Modal, { size: 'xl' });
     this.cargarFechasActuales();
   }
 

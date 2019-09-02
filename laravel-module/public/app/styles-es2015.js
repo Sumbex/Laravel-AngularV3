@@ -605,4 +605,4 @@ module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyec
 /***/ })
 
 },[[2,"runtime"]]]);
-//# sourceMappingURL=styles.js.map
+//# sourceMappingURL=styles-es2015.js.map

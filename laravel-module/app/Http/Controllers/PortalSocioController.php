@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PortalSocio;
 use App\PortalSocioCuentaSindical;
+use App\PortalSocioMisBeneficios;
 
 class PortalSocioController extends Controller
 {
@@ -129,6 +130,24 @@ class PortalSocioController extends Controller
     }
     //------------------------------------------>rutas portal socio cs
 
+    //------------------------------------------>rutas portal socio mb
+    public function TraerPrestamos()
+    {
+        return PortalSocioMisBeneficios::traerPrestamos();
+    }
+
+    public function TraerPagosPrestamos($id, $tipo)
+    {
+        return PortalSocioMisBeneficios::traerPagosPrestamos($id, $tipo);
+    }
+
+    public function TraerPagosAbonos($id, $tipo)
+    {
+        return PortalSocioMisBeneficios::traerPagosAbonos($id, $tipo);
+    }
+
+    //------------------------------------------>rutas portal socio mb
+
     //--------------------------------------------------------------------------------
     public function CrearUsuarioSocio(Request $request)
     {
@@ -157,6 +176,11 @@ class PortalSocioController extends Controller
     public function FuncionTest($anio, $mes)
     {
         return PortalSocioCuentaSindical::traerPrestamos($anio, $mes);
+    }
+
+    public function FuncionTest2()
+    {
+        return PortalSocioMisBeneficios::traerPrestamos();
     }
     //------------------------------------------------FUNCION TEST------------------------------------------------//
 }

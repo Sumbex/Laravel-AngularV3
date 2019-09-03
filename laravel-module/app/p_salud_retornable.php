@@ -20,7 +20,7 @@ class p_salud_retornable extends Model
 					    concat(psr.dia,' de ',m_psr.descripcion,',',a_psr.descripcion) as fecha_detalle,
 					    p.transferencia_bancaria,
 					    p.archivo,
-					    P.descripcion_prestamo,
+					    UPPER(P.descripcion_prestamo) AS descripcion_prestamo,
 					    psr.definicion,
 					    p.egreso,
 					    COALESCE(psr.ingreso,'0') as ingreso,

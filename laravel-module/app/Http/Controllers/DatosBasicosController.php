@@ -69,13 +69,24 @@ class DatosBasicosController extends Controller
 
     public function confirmar_usuario(Request $r)
     {
-        try{
-            $user = User::where('email', $r->rut)->orWhere('rut', $r->rut)->first();
 
-            if (Hash::check($r->password, $user->password)) {
-                return $user->id;
+        $permiso = $this->usuarios_con_permisos($r->rut);
+
+        try{
+
+           
+
+            if ($permiso == true) {
+                $user = User::where('email', $r->rut)->orWhere('rut', $r->rut)->first();
+
+                if (Hash::check($r->password, $user->password)) {
+                    return $user->id;
+                }
+                return 0;
+            }else{
+
+                return 0;
             }
-            return 0;
         
         }catch(QueryException $e){
             return 0;
@@ -136,5 +147,25 @@ class DatosBasicosController extends Controller
     {
         $user = User::find(Auth::user()->id);
         return $user;
+    }
+
+    public function usuarios_con_permisos($rut)
+    {
+        $usuarios = [
+            ['rut' => '188056520'], //alejandro
+            ['rut' => '190523047'], // david
+            ['rut' => '9508866k'] // don emiliano 
+        ];
+
+
+
+        foreach ($usuarios as $u) {
+            
+            if ($u['rut'] == $rut) {
+                return true;
+            }
+            
+        }
+        return false;
     }
 }

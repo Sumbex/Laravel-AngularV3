@@ -1,5 +1,8 @@
 <!--Tabla Del Prestamo Socios-->
 <div class="modal-body"><br>
+  <div class="alert alert-warning" role="alert">
+  IMPORTANTE!!, cuando quiera pagar la ultima cuota de un prestamo, verificar si el <strong style="font-size: 15px">Monto restante</strong> coincide con el valor que hay en <strong style="font-size: 15px">Monto de Cuota a Pagar</strong> al clickear el botón <strong style="font-size: 15px">pagar cuota</strong>
+</div>
   <div class="row">
     <div class="col-6 col-md-3 col-lg-3"><br><label>
       <strong>Filtro por Año  </strong>
@@ -21,7 +24,7 @@
       </select>
     </div>
 
-    <div class="col-2 col-md-2 col-lg-2"> <br><label>
+    <div class="col-md-2"> <br><label>
       <strong>Recargar Tabla</strong>
     </label><br>
     <button class="btn btn-primary" (click)="refrescarTablaPrestamosClientes()" [disabled]="cargandoTabla">Actualizar</button>
@@ -32,7 +35,7 @@
       <div>
     </div>
     </div>
-    <div class="col-2 col-md-2 col-lg-2"> <br><label>
+    <div class="col-md-2"> <br><label>
       <strong>Ver tabla</strong>
         </label><br>
         <button class="btn btn-success" (click)="modal_pni(m_pni)"> prestamos no iniciados</button>
@@ -123,7 +126,7 @@
         
     </div>
 
-    <div class="col-2 col-md-2 col-lg-2"> <br><label>
+    <div class="col-md-2"> <br><label>
       <strong>Ver tabla</strong>
         </label><br>
         <button class="btn btn-success" (click)="modal_pc(m_pc)"> prestamos finalizados</button>
@@ -386,7 +389,7 @@
 
 
         <td colspan="2" class="text-center">
-            <button [disabled]="1<1" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante, itemPrestamo.egreso, itemPrestamo.cuotas_totales)"> <!-------------------------------------->
+            <button [disabled]="1<1" class="btn btn-outline-success" style="cursor: pointer" (click)="calcular_cuota_prestamo2(itemPrestamo.prestamo_id);openActualizar(pagoPrestamoSaludCuota, itemPrestamo.interes, itemPrestamo.monto_restante, itemPrestamo.egreso, itemPrestamo.cuotas_totales)"> <!-------------------------------------->
             <ng-template #pagoPrestamoSaludCuota let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Pago Cuota Salud Retornable</h4>
@@ -398,7 +401,7 @@
                       <div class="row">
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
                           <label><strong>Monto de Cuota a Pagar</strong></label> 
-                          <input type="number" class="form-control form-control-sm" #montoPagarSalud value="">
+                          <input [(ngModel)]="calculo_cuota" type="number" class="form-control form-control-sm" #montoPagarSalud value="">
                         </div>
 
                         <div class="col-6 col-md-6 col-lg-6 col-xl-6">
@@ -428,10 +431,12 @@
         </td>
 
           <td colspan="2" class="text-center">
-            <button [disabled]="itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0" class="btn btn-outline-success" style="cursor: pointer" (click)="openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
+            <button [disabled]="itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0" class="btn btn-outline-success" style="cursor: pointer" (click)="calcular_el_abono(itemPrestamo.prestamo_id);openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
             <ng-template #pagoPrestamoSaludAbono let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago Abono Salud Retornable</h4>
+                  <h4 class="modal-title" id="modal-basic-title">Pago Abono Salud Retornable <div *ngIf="if_abono" class="spinner-border text-success" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div></h4>
                   <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -440,8 +445,8 @@
                     <div class="row">
                       <div class="col-7 col-md-7 col-lg-7 col-xl-7">
                         <label><strong>Pago de Abono</strong></label>
-                        <select #definicionSelectAbono class="form-control form-control-sm">
-                          <option value="1">Dia Sueldo</option>
+                        <select (change)="changeAbono(itemPrestamo.prestamo_id)" #definicionSelectAbono [(ngModel)]='s_abono' class="form-control form-control-sm">
+                          <option value="1" selected>Dia Sueldo</option>
                           <option value="3">Trimestral</option>
                           <option value="2">Termino Conflicto</option>
                         </select>
@@ -449,7 +454,7 @@
                       
                       <div class="col-5 col-md-5 col-lg-5 col-xl-5">
                         <label> <strong>Abono</strong></label> 
-                        <input class="form-control form-control-sm" #montoAbono type="number" value="">
+                        <input [(ngModel)]="m_abono" class="form-control form-control-sm" #montoAbono type="number" value="">
                       </div><br>
 
                       <div class="col-12 col-md-12 col-lg-12 col-xl-12">

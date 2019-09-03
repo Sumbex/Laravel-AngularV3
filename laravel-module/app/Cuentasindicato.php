@@ -131,7 +131,7 @@ class Cuentasindicato extends Model
     						'cuenta_sindicato.numero_documento',
     						'cuenta_sindicato.archivo_documento',
     						'cuenta_sindicato.tipo_cuenta_sindicato',
-    						'cuenta_sindicato.descripcion',
+    						DB::raw("UPPER(cuenta_sindicato.descripcion) as descripcion"),
     						'cuenta_sindicato.monto_ingreso',
     						'cuenta_sindicato.monto_egreso',
     						'cuenta_sindicato.definicion'

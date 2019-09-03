@@ -786,6 +786,16 @@ class SocioController extends Controller
                 return ['estado'=>'failed', 'mensaje'=>'Rut no valido o inexistente'];
             }
 
+            $existe_prioridad = SocioBeneficiario::where([
+                            'activo'  => 'S',
+                            'socio_id'=> $r->socio_id,
+                            'prioritario' => $r->prioridad
+                        ])->first();
+
+            if ($existe_prioridad) {
+                return ['esdtado'=>'failed', 'mensaje'=>'Prioridad ya en uso'];
+            }
+
 
             $existe_beneficiario = SocioBeneficiario::where([
                             'activo'  => 'S',
@@ -847,7 +857,9 @@ class SocioController extends Controller
         $beneficiario = SocioBeneficiario::where([
                         'activo'=>'S',
                         'socio_id' => $socio_id
-                    ])->get();
+                    ])
+                    ->orderBy('prioritario','ASC')
+                    ->get();
        
         if (count($beneficiario) > 0) {
             return ['estado'=>'success', 'body'=>$beneficiario];
@@ -1239,7 +1251,7 @@ class SocioController extends Controller
     public function traer_datos_padres_suegros($socio_id)
     {
         $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])
-                   ->orderBy('created_at','ASC')
+                   ->orderBy('relacion_socio_id','ASC')
                   ->get();
         if (count($listar) > 0) {
             return [

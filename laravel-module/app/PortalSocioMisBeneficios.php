@@ -49,6 +49,21 @@ class PortalSocioMisBeneficios extends Model
                 ->get();
 
             if (!$prestamos->isEmpty()) {
+                foreach ($prestamos as $key) {
+                    switch ($key->tipo_id) {
+                        case 1:
+                            if ($key->estado_abono != 'sin abonos') {
+                                $key->tipo_sueldo = 1;
+                                $key->tipo_conflicto = 2;
+                                $key->tipo_trimestral = 3;
+                            }
+                            break;
+
+                        default:
+                            # code...
+                            break;
+                    }
+                }
                 return ['estado' => 'success', 'prestamos' => $prestamos];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'Aun no tienes prestamos pedidos.'];

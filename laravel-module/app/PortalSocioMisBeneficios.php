@@ -40,6 +40,7 @@ class PortalSocioMisBeneficios extends Model
                 ->join('anio as a', 'a.id', 'p.anio_id')
                 ->join('mes as m', 'm.id', 'p.mes_id')
                 ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo')
+                ->orderBy('p.estado_prestamo', 'asc')
                 ->orderBy('p.tipo_prestamo', 'asc')
                 ->orderBy('p.dia', 'asc')
                 ->where([

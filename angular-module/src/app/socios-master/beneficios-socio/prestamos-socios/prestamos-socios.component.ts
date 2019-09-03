@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-prestamos-socios',
@@ -8,16 +9,25 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 })
 export class PrestamosSociosComponent implements OnInit {
 
-  //Objeto con los datos de la conyuge
+  //variable para asociar al modal
+  modalPagosPrestamos;
+
+  //Objeto con los datos del Prestamo
   datosPrestamos;
+  historialCuotas;
+  historialAbonos;
 
   //Loading tabla
   loadingTabla = false;
 
-  constructor(private _portalSociosService: PortalSociosService) { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) { }
 
   ngOnInit() {
     this.getPrestamos();
+  }
+
+  openModalHistorialPagos(historial) {
+    this.modalPagosPrestamos = this.modalService.open(historial, { size: 'xl' });
   }
 
   getPrestamos(){
@@ -36,7 +46,18 @@ export class PrestamosSociosComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        console.log();
+        this.historialCuotas = response.mensaje;
+      }
+    });
+  }
+
+  getPagosAbonos(id, tipo){
+    this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        //alert(response.mensaje);
+        this.historialAbonos[0] = 'No existen abonos en este tipo de prestamo';
+      }else{
+        this.historialAbonos = response.mensaje;
       }
     });
   }

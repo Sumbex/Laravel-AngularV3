@@ -14,13 +14,62 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let itemPrestamo of datosPrestamos" class="table-success text-center" [ngClass]="{'red': (itemPrestamo?.estado_prestamo) == 'vigente'}">
+            <tr *ngFor="let itemPrestamo of datosPrestamos" class="table-success text-center"
+              [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
+              (click)="getPagosPrestamos(42,2); getPagosAbonos(42,2); openModalHistorialPagos(historialPagos)">
               <th scope="row">{{itemPrestamo?.fecha}}</th>
               <td>{{itemPrestamo?.id}}</td>
-              <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+              <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
+                    ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
               <td>{{itemPrestamo?.tipo}}</td>
               <td>{{itemPrestamo?.cuotas}}</td>
               <td>{{itemPrestamo?.estado_prestamo}}</td>
+
+              <ng-template #historialPagos let-modal>
+                <!-- Header Del Modal -->
+                <div class="modal-header" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Historial de Prestamos y Abonos </strong>
+                  </h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Cuerpo del MOdal -->
+                <div class="modal-body">
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Prestamos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialPagos of historialCuotas">
+                        <td>{{itemHistorialPagos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Patas del Modal -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                    class="far fa-arrow-alt-circle-left"></i> Regresar a Prestamos</button>
+                </div>
+              </ng-template>
+
+
             </tr>
             <!--           <tr class="table-success">
             <th scope="row">2019-03-02</th>

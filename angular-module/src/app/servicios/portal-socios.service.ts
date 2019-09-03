@@ -296,7 +296,17 @@ export class PortalSociosService{
 
     getPagosPrestamos(id: string, tipo: string) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_prestamos_socio/" + id + "/" + tipo, {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_pagos_prestamos_socio/" + id + "/" + tipo, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getPagosAbonos(id: string, tipo: string) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_abonos_prestamos_socio/" + id + "/" + tipo, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'

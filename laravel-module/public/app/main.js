@@ -679,7 +679,7 @@ module.exports = "<div class=\"container\"><br>\n  <div class=\"row\">\n    <div
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n    <div class=\"row justify-content-center\">\n      <div class=\"table-responsive\">\n        <table class=\"table table-hover table-bordered\">\n          <thead>\n            <tr class=\"text-center\">\n              <th scope=\"col\">Fecha Prestamo</th>\n              <th scope=\"col\">ID Prestamo</th>\n              <th scope=\"col\">Comprobante</th>\n              <th scope=\"col\">Tipo Prestamo</th>\n              <th scope=\"col\">Cuotas</th>\n              <th scope=\"col\">Estado Prestamo</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let itemPrestamo of datosPrestamos\" class=\"table-success text-center\" [ngClass]=\"{'red': (itemPrestamo?.estado_prestamo) == 'vigente'}\">\n              <th scope=\"row\">{{itemPrestamo?.fecha}}</th>\n              <td>{{itemPrestamo?.id}}</td>\n              <td><a (click)=\"console.log('test');\"><i class=\"far fa-file-alt\" placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;</td>\n              <td>{{itemPrestamo?.tipo}}</td>\n              <td>{{itemPrestamo?.cuotas}}</td>\n              <td>{{itemPrestamo?.estado_prestamo}}</td>\n            </tr>\n            <!--           <tr class=\"table-success\">\n            <th scope=\"row\">2019-03-02</th>\n            <td>$100,000</td>\n            <td>$50,000</td>\n            <td>$10,000</td>\n            <td>$50000</td>\n            <td>$0</td>\n            <td>0</td>\n            <td>Pagado</td>\n          </tr>\n          <tr class=\"table-danger\">\n            <th scope=\"row\">2019-08-018</th>\n            <td>$500,000</td>\n            <td>$50,000</td>\n            <td>$0</td>\n            <td>$10,000</td>\n            <td>$450,000</td>\n            <td>3</td>\n            <td>Pendiente</td>\n          </tr> -->\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </div>\n</div> <br>"
+module.exports = "<div class=\"card\">\n  <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n    <div class=\"row justify-content-center\">\n      <div class=\"table-responsive\">\n        <table class=\"table table-hover table-bordered\">\n          <thead>\n            <tr class=\"text-center\">\n              <th scope=\"col\">Fecha Prestamo</th>\n              <th scope=\"col\">ID Prestamo</th>\n              <th scope=\"col\">Comprobante</th>\n              <th scope=\"col\">Tipo Prestamo</th>\n              <th scope=\"col\">Cuotas</th>\n              <th scope=\"col\">Estado Prestamo</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let itemPrestamo of datosPrestamos\" class=\"table-success text-center\"\n              [ngClass]=\"{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}\"\n              (click)=\"getPagosPrestamos(42,2); getPagosAbonos(42,2); openModalHistorialPagos(historialPagos)\">\n              <th scope=\"row\">{{itemPrestamo?.fecha}}</th>\n              <td>{{itemPrestamo?.id}}</td>\n              <td><a (click)=\"console.log('test');\"><i class=\"far fa-file-alt\" placement=\"top\"\n                    ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;</td>\n              <td>{{itemPrestamo?.tipo}}</td>\n              <td>{{itemPrestamo?.cuotas}}</td>\n              <td>{{itemPrestamo?.estado_prestamo}}</td>\n\n              <ng-template #historialPagos let-modal>\n                <!-- Header Del Modal -->\n                <div class=\"modal-header\" id=\"demoFont\">\n                  <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Historial de Prestamos y Abonos </strong>\n                  </h6>\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div>\n                <!-- Cuerpo del MOdal -->\n                <div class=\"modal-body\">\n                  <table class=\"table table-sm\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col-12\">Prestamos Pagados</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                      <tr *ngFor=\"let itemHistorialPagos of historialCuotas\">\n                        <td>{{itemHistorialPagos}}</td>\n                      </tr>\n                    </tbody>\n                  </table><br>\n                  <table class=\"table table-sm\">\n                    <thead>\n                      <tr>\n                        <th scope=\"col-12\">Abonos Pagados</th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                      <tr *ngFor=\"let itemHistorialAbonos of historialAbonos\">\n                        <td>{{itemHistorialAbonos}}</td>\n                      </tr>\n                    </tbody>\n                  </table>\n                </div>\n\n                <!-- Patas del Modal -->\n                <div class=\"modal-footer\">\n                  <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n                    class=\"far fa-arrow-alt-circle-left\"></i> Regresar a Prestamos</button>\n                </div>\n              </ng-template>\n\n\n            </tr>\n            <!--           <tr class=\"table-success\">\n            <th scope=\"row\">2019-03-02</th>\n            <td>$100,000</td>\n            <td>$50,000</td>\n            <td>$10,000</td>\n            <td>$50000</td>\n            <td>$0</td>\n            <td>0</td>\n            <td>Pagado</td>\n          </tr>\n          <tr class=\"table-danger\">\n            <th scope=\"row\">2019-08-018</th>\n            <td>$500,000</td>\n            <td>$50,000</td>\n            <td>$0</td>\n            <td>$10,000</td>\n            <td>$450,000</td>\n            <td>3</td>\n            <td>Pendiente</td>\n          </tr> -->\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </div>\n</div> <br>"
 
 /***/ }),
 
@@ -767,7 +767,7 @@ module.exports = "<!--Modal para el inicio y cierre mensual-->\n<ng-template #ta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light sticky-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n        </a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-cat\"></i> Mi Perfil <span class=\"sr-only\">(current)</span></a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Beneficios']\"> <i class=\"fas fa-cat\"></i> Mis Beneficios</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Cuentas']\"> <i class=\"fas fa-kiwi-bird\"></i> Cuentas</a>\n              </li>\n            <li ngbDropdown class=\"d-inline-block\">\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n              </div>\n            </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n        </a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-cat\"></i> Mi Perfil <span class=\"sr-only\">(current)</span></a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Beneficios']\"> <i class=\"fas fa-cat\"></i> Mis Beneficios</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Cuentas']\"> <i class=\"fas fa-kiwi-bird\"></i> Cuentas</a>\n              </li>\n            <li ngbDropdown class=\"d-inline-block\">\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n              </div>\n            </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -8397,7 +8397,14 @@ let PortalSociosService = class PortalSociosService {
     }
     getPagosPrestamos(id, tipo) {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_prestamos_socio/" + id + "/" + tipo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        return this._http.get(this.url + "traer_pagos_prestamos_socio/" + id + "/" + tipo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }) });
+    }
+    getPagosAbonos(id, tipo) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_abonos_prestamos_socio/" + id + "/" + tipo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
@@ -9099,17 +9106,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
 
 
 
 let PrestamosSociosComponent = class PrestamosSociosComponent {
-    constructor(_portalSociosService) {
+    constructor(config, modalService, _portalSociosService) {
+        this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Loading tabla
         this.loadingTabla = false;
     }
     ngOnInit() {
         this.getPrestamos();
+    }
+    openModalHistorialPagos(historial) {
+        this.modalPagosPrestamos = this.modalService.open(historial, { size: 'xl' });
     }
     getPrestamos() {
         this._portalSociosService.getPrestamosSocios().subscribe(response => {
@@ -9128,7 +9141,18 @@ let PrestamosSociosComponent = class PrestamosSociosComponent {
                 alert(response.mensaje);
             }
             else {
-                console.log();
+                this.historialCuotas = response.mensaje;
+            }
+        });
+    }
+    getPagosAbonos(id, tipo) {
+        this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                //alert(response.mensaje);
+                this.historialAbonos[0] = 'No existen abonos en este tipo de prestamo';
+            }
+            else {
+                this.historialAbonos = response.mensaje;
             }
         });
     }
@@ -9139,7 +9163,7 @@ PrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component.html"),
         styles: [__webpack_require__(/*! ./prestamos-socios.component.css */ "./src/app/socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
 ], PrestamosSociosComponent);
 
 

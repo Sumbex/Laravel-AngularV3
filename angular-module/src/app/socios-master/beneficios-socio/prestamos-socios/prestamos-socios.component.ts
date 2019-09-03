@@ -31,4 +31,14 @@ export class PrestamosSociosComponent implements OnInit {
     });
   }
 
+  getPagosPrestamos(id, tipo){
+    this._portalSociosService.getPagosPrestamos(id, tipo).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        console.log();
+      }
+    });
+  }
+
 }

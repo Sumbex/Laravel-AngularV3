@@ -16,6 +16,7 @@ export class TablaBeneficiosBeneficiarioComponent implements OnInit {
   @Input () getNombreSocio:'';
   traerDatosBeneficiario:object = [
                         'id',
+                        'prioritario',
                         'relacion',
                         'rut',
                         'fecha_nacimiento',

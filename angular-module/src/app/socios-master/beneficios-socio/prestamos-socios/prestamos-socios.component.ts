@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 
 @Component({
   selector: 'app-prestamos-socios',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrestamosSociosComponent implements OnInit {
 
-  constructor() { }
+  //Objeto con los datos de la conyuge
+  datosPrestamos;
+
+  //Loading tabla
+  loadingTabla = false;
+
+  constructor(private _portalSociosService: PortalSociosService) { }
 
   ngOnInit() {
+    this.getPrestamos();
+  }
+
+  getPrestamos(){
+    this._portalSociosService.getPrestamosSocios().subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        this.datosPrestamos = response.prestamos;
+        console.log(this.datosPrestamos);
+      }
+    });
   }
 
 }

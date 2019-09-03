@@ -1,3 +1,65 @@
-<p>
-  gastos-medicos-bienestar works!
-</p>
+<ng-template #Medico let-modal>
+
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-notes-medical"></i> <strong> Cuenta Bienestar / Gastos Medicos</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo del body medico-->
+    <div class="modal-body">
+  
+      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="form-medico-tab" data-toggle="tab" href="#form-medico" role="tab"
+            aria-controls="form-medico" aria-selected="true">Formulario Gastos Medicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="table-medico-tab" data-toggle="tab" href="#table-medico" role="tab"
+            aria-controls="table-medico" aria-selected="false">Tabla Gastos Medicos</a>
+        </li>
+      </ul> <br>
+  
+      <div class="tab-content" id="myTabContent">
+  
+          <div class="tab-pane fade show active" id="form-medico" role="tabpanel" aria-labelledby="form-medico-tab">
+              <div class="card-header" id="demoFont2">
+                  <h6 class="card-title">Formulario</h6>
+              </div>
+  
+              <div class="card">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row justify-content-center">
+                        <app-formulario-gastos-medicos-bienestar></app-formulario-gastos-medicos-bienestar>
+                      </div>
+                  </div>
+              </div> <br>
+          </div>
+  
+          <div class="tab-pane fade" id="table-medico" role="tabpanel" aria-labelledby="table-medico-tab">
+              <div class="card-header" id="demoFont2">
+                  <h6 class="card-title">Tabla</h6>
+              </div>
+              <div class="card">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <div class="row justify-content-center">
+                        <app-tabla-gastos-medicos-bienestar></app-tabla-gastos-medicos-bienestar>
+                      </div>
+                  </div>
+              </div> <br>
+          </div>
+  
+      </div> 
+    </div>
+  
+    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i class="fas fa-undo-alt"></i> Volver a Cuenta
+        Bienestar
+      </button>
+    </div>
+  </ng-template>
+  
+  <!--Boton Para llamar al Modal inicio y cierre mensual-->
+  <label><strong>Detalle Gastos Medicos</strong></label><br>
+  <button class="btn btn btn-success btn-block btn-sm" (click)="openModal(Medico)">Ingresar</button>

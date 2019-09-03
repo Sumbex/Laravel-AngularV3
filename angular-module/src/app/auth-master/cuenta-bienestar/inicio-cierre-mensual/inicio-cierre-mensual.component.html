@@ -40,13 +40,13 @@
     <div class="row">
       <div class="col-12 col-md-6 col-lg-6"><br><label><strong>Año</strong></label>
         <select [(ngModel)]="anio" class="form-control form-control-sm">
-          <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+          <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
         </select>
       </div>
 
       <div class="col-12 col-md-6 col-lg-6"><br><label><strong>Mes</strong></label>
         <select [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
-          <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
+          <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
         </select>
       </div>
     </div>
@@ -54,7 +54,7 @@
     <div class="row justify-content-between">
       <div class="col-12 col-md-4 col-lg-4">
         <br><label><strong>Calcular monto</strong></label><br>
-        <button (click)="calcular_cierre_mensual()" type="submit" name="botonCalcular"
+        <button (click)="calcular()" type="submit" name="botonCalcular"
           class="btn btn btn-outline-success btn-block btn-sm" [disabled]="selectOptionMes.value == '1'"><i
             class="fas fa-calculator"></i> Calcular</button>
       </div>
@@ -87,8 +87,8 @@
         mensuales.</small>
     </ngb-alert>
     <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
-      <select [(ngModel)]="fil_anio" (change)="cambiar_anio()" class="form-control form-control-sm">
-        <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+      <select [(ngModel)]="f_anio" (change)="cambiar_anio()" class="form-control form-control-sm">
+        <option *ngFor="let anio of f_anios" [value]="anio.id">{{anio.descripcion}}</option>
       </select>
     </div>
     <br>
@@ -138,3 +138,9 @@
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
 <label><strong>Inicio y Cierre Mensual</strong></label><br>
 <button class="btn btn btn-success btn-block btn-sm" (click)="openMensual(Mensual)">Ingresar</button>
+
+<style>
+  .modal-content{
+    background: green;
+  }
+</style>

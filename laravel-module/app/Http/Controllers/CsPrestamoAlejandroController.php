@@ -639,6 +639,123 @@ class CsPrestamoAlejandroController extends Controller
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 
+    public function calcular_cuota_prestamo($prestamo_id)
+    {
+        try{
+
+
+            $prestamo = CsPrestamo::where([
+                    'activo' => 'S',
+                    'id' => $prestamo_id
+            ])->first();
+
+
+            if(!empty($prestamo)){
+
+                if ($prestamo->estado_prestamo == 'pagado') {
+
+                    return ['estado' => 'failed', 'mensaje'=>'Este prestamo ya esta pagado'];
+                }
+
+                    switch ($prestamo->tipo_prestamo) {
+                        case '1':
+                            $psr = p_salud_retornable::where([
+                                'prestamo_id' => $prestamo->id,
+                                'definicion' => 2,
+                                'numero_cuota' => 0
+                            ])->first();
+
+                            $cuota = $psr->monto_restante / $psr->cuotas;
+
+                            return ['estado'=>'success','calculo_cuota'=>round($cuota)];
+                        break;
+
+                        case '2':
+                            $paer = p_apuro_economico_retornable::where([
+                                 'prestamo_id' => $prestamo->id,
+                                 'definicion' => 2,
+                                 'numero_cuota' => 0   
+                            ])->first();
+
+                            $cuota = $paer->monto_restante / $paer->cuotas;
+                             return ['estado'=>'success','calculo_cuota'=> round($cuota)];
+
+                        break;
+                        
+                        default:
+                            # code...
+                        break;
+                    }
+                    
+            }
+            return ['estado'=>'failed'];
+
+
+
+        }
+        catch(QueryException $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
+        }
+        catch(\Exception $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
+        }
+    }
+
+    public function calcular_abono($prestamo_id, $tipo_abono)
+    {
+        // try{
+
+            $psr = p_salud_retornable::where([
+                    'prestamo_id' => $prestamo_id,
+                    'definicion' => 2,
+                    'numero_cuota' => 0
+            ])->first();
+
+            if(empty($psr)){
+                return ['estado'=>'failed','monto'=> ''];
+            }
+
+            switch ($tipo_abono) {
+                case '1': // dia de sueldo
+                    $monto = ($psr->monto_dia_sueldo == 0)? '' : $psr->monto_dia_sueldo;
+                    return ['estado'=>'success','monto'=> $monto];
+
+                break;
+                case '3': // trimestral
+                    $monto = ($psr->monto_trimestral == 0)? '' : $psr->monto_trimestral;
+                    return ['estado'=>'success','monto'=>$monto];
+                break;
+                case '2': // Termino conflicto
+                    $monto = ($psr->monto_termino_conflicto == 0)? '' : $psr->monto_termino_conflicto;
+                    return ['estado'=>'success','monto'=>$monto];
+                break;
+                
+                default:
+                    # code...
+                break;
+            }
+
+        // }
+        // catch(QueryException $e){
+        //     return[
+        //         'estado'  => 'failed', 
+        //         'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+        //     ];
+        // }
+        // catch(\Exception $e){
+        //     return[
+        //         'estado'  => 'failed', 
+        //         'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+        //     ];
+        // }
+    }
+
 
     //   public function pago_abono(Request $r)
     // {

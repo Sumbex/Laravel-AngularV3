@@ -17,6 +17,8 @@ export class ListarSociosComponent implements OnInit {
   search:string='';
   mod_editar = null;
   mod_validar = null;
+  blockLoad = false;
+  blockLoad2 = false;
 
   //actualizar_socio
   rut;
@@ -73,21 +75,25 @@ export class ListarSociosComponent implements OnInit {
 	  	this._socios.getTablaSocios().subscribe(
 	      response => {
 	        console.log(response);
-	        this.socios = response;
+          this.socios = response;
+          this.blockLoad2=false;
 	        
 	      }
 	    )
   }
 
   filtrar(){
+    this.blockLoad=true;
       if(this.search ==''){
           alert("Ingrese un nombre para filtrar");
+          this.blockLoad=false;
           return false;
       }else{
     		this._socios.getTablaFilter(this.search).subscribe(
   	      response => {
   	        console.log(response);
-  	        this.socios = response;
+            this.socios = response;
+            this.blockLoad=false;
   	        
   	      }
   	    )

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fallecimiento-bienestar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FallecimientoBienestarComponent implements OnInit {
 
-  constructor() { }
+  modalPrincipal;
+
+  constructor(config: NgbModalConfig, 
+    private modalService: NgbModal) {
+
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
   }
 
+  openMensual(Mensual) {
+    this.modalPrincipal = this.modalService.open(Mensual, { size: 'xl' });
+
+  }
 }

@@ -282,4 +282,15 @@ export class PortalSociosService{
             }
         )});
     }
+
+    //Servicio para llamar a los prestamos del socio
+    getPrestamosSocios() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_prestamos_socio", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
 }

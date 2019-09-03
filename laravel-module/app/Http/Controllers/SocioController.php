@@ -778,6 +778,11 @@ class SocioController extends Controller
     public function guardar_datos_beneficiario(Request $r)
     {   
         try{
+
+            if (empty($r->prioritario)) {
+                return ['estado'=>'failed','mensaje'=>'No ha seleccionado una prioridad'];
+            }
+
             $rut_limpio = $this->limpiar($r->rut);
 
             $validar_rut = $this->valida_rut($rut_limpio);
@@ -789,11 +794,11 @@ class SocioController extends Controller
             $existe_prioridad = SocioBeneficiario::where([
                             'activo'  => 'S',
                             'socio_id'=> $r->socio_id,
-                            'prioritario' => $r->prioridad
+                            'prioritario' => $r->prioritario
                         ])->first();
-
-            if ($existe_prioridad) {
-                return ['esdtado'=>'failed', 'mensaje'=>'Prioridad ya en uso'];
+            
+            if ($existe_prioridad && $r->prioritario != 10 ) {
+                return ['estado'=>'failed', 'mensaje'=>'Prioridad ya en uso'];
             }
 
 
@@ -834,6 +839,7 @@ class SocioController extends Controller
             $sb->celular = $r->celular;
             $sb->activo = 'S';
             $sb->cobro_beneficio = 'N';
+            $sb->prioritario = $r->prioritario;
             if ($sb->save()) {
                 return ['estado'=>'success','mensaje'=>'Beneficiario ingresado con exito!'];
             }

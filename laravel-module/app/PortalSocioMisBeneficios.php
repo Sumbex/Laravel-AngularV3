@@ -34,7 +34,7 @@ class PortalSocioMisBeneficios extends Model
                     'p.cuotas',
                     'p.tipo_prestamo as tipo_id',
                     'tp.descripcion as tipo',
-                    'p.estado_prestamo',
+                    DB::raw("trim(p.estado_prestamo) as estado_prestamo"),
                     'p.estado_abono'
                 ])
                 ->join('anio as a', 'a.id', 'p.anio_id')

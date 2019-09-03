@@ -900,6 +900,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'activo' => 'S',
                 'socio_id' => $this->socioLogeado()->id
             ])
+            ->orderBy('prioritario', 'asc')
             ->get();
 
         if (!$beneficiario->isEmpty()) {
@@ -921,8 +922,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'rut',
                 'socio_id',
                 DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre")
+
             ])
-            ->join('relacion_socio as rc', 'rc.id', 'pss.relacion_socio_id')
             ->where([
                 'activo' => 'S',
                 'socio_id' => $this->socioLogeado()->id,
@@ -937,6 +938,32 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    protected function verificarPrioridadBeneficiario($prioridad)
+    {
+        $prioridad = DB::table('socio_beneficiario')
+            ->select([
+                'rut',
+                'prioritario'
+            ])
+            ->where([
+                'prioritario' => $prioridad,
+                'activo' => 'S',
+                'socio_id' => $this->socioLogeado()->id
+            ])
+            ->get();
+
+        if (!$prioridad->isEmpty()) {
+            //prioridad 10 == libre
+            if ($prioridad[0]->prioritario == 10) {
+                return ['estado' => 'failed'];
+            } else {
+                return ['estado' => 'success', 'prioridad' => $prioridad];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+        }
+    }
+
     protected function ingresarBeneficiariosSocio($request)
     {
         $verificar = $this->verificarSocio($this->socioLogeado()->id);
@@ -945,24 +972,30 @@ class PortalSocio extends Authenticatable implements JWTSubject
             if ($validarDatos['estado'] == 'success') {
                 $validarRut = $this->validarRut($request->rut);
                 if ($validarRut == true) {
-                    $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
+                    $tienesDatos = $this->verificarBeneficiarioIngresado($request->rut);
                     if ($tienesDatos['estado'] == 'failed') {
-                        $beneficiario = new SocioBeneficiario;
-                        $beneficiario->socio_id = $this->socioLogeado()->id;
-                        $beneficiario->relacion = $request->relacion;
-                        $beneficiario->rut = $request->rut;
-                        $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
-                        $beneficiario->nombres = $request->nombres;
-                        $beneficiario->apellido_paterno = $request->apellido_paterno;
-                        $beneficiario->apellido_materno = $request->apellido_materno;
-                        $beneficiario->direccion = $request->direccion;
-                        $beneficiario->celular = $request->celular;
-                        $beneficiario->activo = 'S';
-                        $beneficiario->cobro_beneficio = 'N';
-                        if ($beneficiario->save()) {
-                            return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                        $prioridad = $this->verificarPrioridadBeneficiario($request->prioritario);
+                        if ($prioridad['estado'] == 'failed') {
+                            $beneficiario = new SocioBeneficiario;
+                            $beneficiario->socio_id = $this->socioLogeado()->id;
+                            $beneficiario->relacion = $request->relacion;
+                            $beneficiario->rut = $request->rut;
+                            $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
+                            $beneficiario->nombres = $request->nombres;
+                            $beneficiario->apellido_paterno = $request->apellido_paterno;
+                            $beneficiario->apellido_materno = $request->apellido_materno;
+                            $beneficiario->direccion = $request->direccion;
+                            $beneficiario->celular = $request->celular;
+                            $beneficiario->activo = 'S';
+                            $beneficiario->cobro_beneficio = 'N';
+                            $beneficiario->prioritario = $request->prioritario;
+                            if ($beneficiario->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                            }
                         } else {
-                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                            return ['estado' => 'failed', 'mensaje' => 'La prioridad que intentas utilizar ya esta en uso.'];
                         }
                     } else {
                         return ['estado' => 'failed', 'mensaje' => 'Ya tienes ingresado al beneficiario ' . $tienesDatos['beneficiario'][0]->nombre . '.'];

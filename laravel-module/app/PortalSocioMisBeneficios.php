@@ -50,6 +50,7 @@ class PortalSocioMisBeneficios extends Model
                 ->get();
 
             if (!$prestamos->isEmpty()) {
+
                 foreach ($prestamos as $key) {
                     switch ($key->tipo_id) {
                         case 1:
@@ -65,7 +66,37 @@ class PortalSocioMisBeneficios extends Model
                             break;
                     }
                 }
-                return ['estado' => 'success', 'prestamos' => $prestamos];
+
+                $return = [];
+                $return['vigente'] = [];
+                $return['pagando'] = [];
+                $return['finalizado'] = [];
+
+                foreach ($prestamos as $key) {
+                    switch ($key->estado_prestamo) {
+                        case 'vigente':
+                            $return['vigente'][] = $key;
+                            break;
+
+                        case 'pagando':
+                            $return['pagando'][] = $key;
+                            break;
+
+                        case 'pagado':
+                            $return['finalizado'][] = $key;
+                            break;
+
+                        case 'egresado':
+                            $return['finalizado'][] = $key;
+                            break;
+
+                        default:
+                            # code...
+                            break;
+                    }
+                }
+                //dd($return);
+                return ['estado' => 'success', 'prestamos' => $return];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'Aun no tienes prestamos pedidos.'];
             }

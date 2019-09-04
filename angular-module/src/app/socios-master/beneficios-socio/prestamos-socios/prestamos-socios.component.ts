@@ -17,10 +17,17 @@ export class PrestamosSociosComponent implements OnInit {
   historialCuotas;
   historialAbonos;
 
+  //Bloquear Muestro de pagos
+  hideCuotas = true;
+  hideAbonos = true;
+
   //Loading tabla
   loadingTabla = false;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
     this.getPrestamos();
@@ -45,7 +52,9 @@ export class PrestamosSociosComponent implements OnInit {
     this._portalSociosService.getPagosPrestamos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.hideCuotas = true;
       }else{
+        this.hideCuotas = false;
         this.historialCuotas = response.mensaje;
       }
     });
@@ -54,9 +63,10 @@ export class PrestamosSociosComponent implements OnInit {
   getPagosAbonos(id, tipo){
     this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        //alert(response.mensaje);
-        this.historialAbonos[0] = 'No existen abonos en este tipo de prestamo';
+        alert(response.mensaje);
+        this.hideAbonos = true;
       }else{
+        this.hideAbonos = false;
         this.historialAbonos = response.mensaje;
       }
     });

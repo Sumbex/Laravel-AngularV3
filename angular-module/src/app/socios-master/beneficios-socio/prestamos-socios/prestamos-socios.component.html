@@ -16,7 +16,7 @@
           <tbody>
             <tr *ngFor="let itemPrestamo of datosPrestamos" class="table-success text-center"
               [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
-              (click)="getPagosPrestamos(42,2); getPagosAbonos(42,2); openModalHistorialPagos(historialPagos)">
+              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,itemPrestamo?.tipo_id); openModalHistorialPagos(historialPagos)">
               <th scope="row">{{itemPrestamo?.fecha}}</th>
               <td>{{itemPrestamo?.id}}</td>
               <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
@@ -36,7 +36,7 @@
                 </div>
                 <!-- Cuerpo del MOdal -->
                 <div class="modal-body">
-                  <table class="table table-sm">
+                  <table [hidden]="hideCuotas" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Prestamos Pagados</th>
@@ -48,7 +48,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table class="table table-sm">
+                  <table [hidden]="hideAbonos" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados</th>

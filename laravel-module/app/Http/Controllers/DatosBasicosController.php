@@ -70,8 +70,8 @@ class DatosBasicosController extends Controller
     public function confirmar_usuario(Request $r)
     {
 
-        $permiso = $this->usuarios_con_permisos($r->rut);
-
+        $permiso = $this->usuarios_con_permisos($r->rut,$r->estado);
+        
         try{
 
            
@@ -149,12 +149,60 @@ class DatosBasicosController extends Controller
         return $user;
     }
 
-    public function usuarios_con_permisos($rut)
+    public function usuarios_con_permisos($rut, $estado)
     {
+
+      
+        //este objeto tiene los permisos en todos los modulos administrativos (S/N)
         $usuarios = [
-            ['rut' => '188056520'], //alejandro
-            ['rut' => '190523047'], // david
-            ['rut' => '9508866k'] // don emiliano 
+            [ //alejandro
+                'rut' => '188056520',
+                'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
+                'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
+                'modificar_cs' => 'S', // actualizar en cuenta sindical
+                'ingresar_total_camping' =>'S', //modal detalle camping input total camping
+                'modificar_detalle_camping' => 'S', // detalles de la tabla camping
+                'ingresar_socio' => 'S',
+                'modificar_socio' => 'S',
+                'ingresar_socio_beneficios' =>'S', // socio beneficios
+                'modificar_socio_beneficios' => 'S' //socio beneficios
+            ], 
+            [ // david pass 1028
+                'rut' => '190523047',
+                'ingresar_cierre_inicio_mes' => 'S',
+                'ingresar_cs' => 'S',
+                'modificar_cs' => 'N',
+                'ingresar_total_camping' =>'N',
+                'modificar_detalle_camping' => 'N',
+                'ingresar_socio' => 'S',
+                'modificar_socio' => 'S',
+                'ingresar_socio_beneficios' =>'S', 
+                'modificar_socio_beneficios' => 'S'
+            ], 
+            [ // don emilio 
+                'rut' => '9508866k',
+                'ingresar_cierre_inicio_mes' => 'N',
+                'ingresar_cs' => 'S',
+                'modificar_cs' => 'S',
+                'ingresar_total_camping' =>'N',
+                'modificar_detalle_camping' => 'N',
+                'ingresar_socio' => 'S',
+                'modificar_socio' => 'S',
+                'ingresar_socio_beneficios' =>'S', 
+                'modificar_socio_beneficios' => 'S'
+            ], 
+            [ // dña Oriana
+                'rut' => '81951845',
+                'ingresar_cierre_inicio_mes' => 'N',
+                'ingresar_cs' => 'S',
+                'modificar_cs' => 'N',
+                'ingresar_total_camping' =>'N',
+                'modificar_detalle_camping' => 'N',
+                'ingresar_socio' => 'S',
+                'modificar_socio' => 'S',
+                'ingresar_socio_beneficios' =>'S', 
+                'modificar_socio_beneficios' => 'S'
+            ] 
         ];
 
 
@@ -162,8 +210,50 @@ class DatosBasicosController extends Controller
         foreach ($usuarios as $u) {
             
             if ($u['rut'] == $rut) {
-                return true;
+
+                switch ($estado) {
+                    case 'ingresar_cs':
+                        return ($u['ingresar_cs']=='S')? true:false;
+                    break;
+                    case 'modificar_cs':
+                        return ($u['modificar_cs']=='S')? true:false;
+                    break;
+                    case 'ingresar_cierre_inicio_mes':
+                    
+                        return ($u['ingresar_cierre_inicio_mes']=='S')? true:false;
+                    break;
+                    case 'ingresar_total_camping':
+                    
+                        return ($u['ingresar_total_camping']=='S')? true:false;
+                    break;
+                    case 'modificar_detalle_camping':
+                    
+                        return ($u['modificar_detalle_camping']=='S')? true:false;
+                    break;
+                    case 'ingresar_socio':
+                    
+                        return ($u['ingresar_socio']=='S')? true:false;
+                    break;
+                    case 'modificar_socio':
+                    
+                        return ($u['modificar_socio']=='S')? true:false;
+                    break;
+                    case 'ingresar_socio_beneficios':
+                    
+                        return ($u['ingresar_socio_beneficios']=='S')? true:false;
+                    break;
+                    case 'modificar_socio_beneficios':
+                    
+                        return ($u['modificar_socio_beneficios']=='S')? true:false;
+                    break;
+                    
+                    default:
+                        return false;
+                    break;
+                }
+                
             }
+            
             
         }
         return false;

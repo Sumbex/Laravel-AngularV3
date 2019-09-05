@@ -217,11 +217,12 @@ export class ModalInicioMesComponent implements OnInit {
        this.modalReference = this.modalService.open(validar, { size: 'sm' });
     }
 
-    btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
+    btn_validar_usuario($rut, $password, validar,estado){//btn que esta en el modal de validacion de usuario
         this.load = true;
         const formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
+        formData.append('estado', estado);
 
         this._http.post(this.url + "confirmar_usuario", formData,{headers: new HttpHeaders(
                 {'Authorization': 'Bearer' + this.token})}

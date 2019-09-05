@@ -1,7 +1,7 @@
 <!--Modal caja chica-->
 <ng-template #CajaChica let-modal>
   <!--form del modal caja chica-->
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm); estado='ingresar_cch'" enctype="multipart/form-data">
     <!--Cabezal del modal caja chica-->
     <div class="modal-header" id="demoFont">
       <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Detalle Caja Chica</strong>
@@ -259,12 +259,12 @@
     <button id="closeModalButtonEdicion" type="button" class="btn btn-info"
       (click)="modal.close('Save click')">Salir</button>
     <button [hidden]="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
-      (click)="ingresarModificacionTexto(nuevoValor.value)">Guardar
+      (click)="ingresarModificacionTexto(nuevoValor.value); estado='actualizar_cch'">Guardar
       <img *ngIf="loadingModificacion" padding-left="20px" height="12"
         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </button>
     <button *ngIf="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
-      (click)="ingresarModificacionDocumento()">Guardar Documento
+      (click)="ingresarModificacionDocumento(); estado='actualizar_cch'">Guardar Documento
       <img *ngIf="loadingModificacion" padding-left="20px" height="12"
         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </button>
@@ -312,4 +312,38 @@
 
 <button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]=true
   (click)="openContraseniaModal(validar)">Launch demo modal</button>
+<!--MODAL VALIDACION CON CONTRASEÑA-->
+
+<!--MODAL VALIDACION CON CONTRASEÑA EDICIONNNNNNNNNNNNNN-->
+<ng-template #validarEdicion let-modal>
+  <div class="modal-header" id="demoFont">
+    <h4 class="modal-title" id="modal-basic-title">Verificación de usuario</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>rut</label>
+        <div class="input-group">
+          <input type="text" class="form-control" name="rut" #rut="ngModel" [(ngModel)]="usuario.rut" disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>contraseña</label>
+        <div class="input-group">
+          <input #pass2 type="password" class="form-control" name="pass">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="closeModalButtonValidacion2" type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click'); blockCajaChica = false">Salir</button>
+    <button hidden id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click');">Salir</button>
+    <button type="button" class="btn btn-outline-dark" (click)="validarUsuarioModificaciones(pass2)">Guardar</button>
+  </div>
+</ng-template>
+
+<button id="openModalButtonPass" class="btn btn-lg btn-outline-primary" [hidden]=true
+  (click)="openContraseniaModalEdicion(validarEdicion)">Launch demo modal</button>
 <!--MODAL VALIDACION CON CONTRASEÑA-->

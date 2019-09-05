@@ -34,6 +34,10 @@ export class ModalCajaChicaComponent implements OnInit {
   pass: string = "";
   loadingModificacion = false;
   blockCajaChica = false;
+  valorInput='';
+
+  //limitaciones
+  estado;
 
   //variables para la edicion
   idEdicion: string = '';
@@ -242,25 +246,8 @@ export class ModalCajaChicaComponent implements OnInit {
   ingresarModificacionTexto(input){
     this.blockCajaChica = true;
     this.loadingModificacion = true;
-    this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, input).subscribe(
-      response => {
-        if(response.estado == "failed" || response.estado == "failed_v"){
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert("Compruebe que la fecha nueva corresponda al mes anterior, que el numero de documento no se encuentre duplicado o no ingresar valores negativos en egreso");
-          document.getElementById("closeModalButtonEdicion").click();
-        }else{
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(response.mensaje);
-          this.refrescarCajaChica();
-          document.getElementById("closeModalButtonEdicion").click();
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    this.valorInput = input.value;
+    document.getElementById("openModalButtonPass").click();
   }
 
   openEdicionModal(edicion) {
@@ -271,6 +258,10 @@ export class ModalCajaChicaComponent implements OnInit {
   //Funciones del modal validacion de conraseña++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   openContraseniaModal(validar) {
+    this.modalReference = this.modalService.open(validar, { size: 'sm' });
+  }
+
+  openContraseniaModalEdicion(validar) {
     this.modalReference = this.modalService.open(validar, { size: 'sm' });
   }
 
@@ -290,8 +281,43 @@ export class ModalCajaChicaComponent implements OnInit {
     )
   }
 
+  validarUsuarioModificaciones(pass){
+    this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(
+      response => {
+        if (response > 0){
+          document.getElementById("closeModalButtonValidacion").click();
+          this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.valorInput).subscribe(
+            response => {
+              if(response.estado == "failed" || response.estado == "failed_v"){
+                this.blockCajaChica = false;
+                this.loadingModificacion = false;
+                alert("Compruebe que la fecha nueva corresponda al mes anterior, que el numero de documento no se encuentre duplicado o no ingresar valores negativos en egreso");
+                document.getElementById("closeModalButtonEdicion").click();
+              }else{
+                this.blockCajaChica = false;
+                this.loadingModificacion = false;
+                alert(response.mensaje);
+                this.refrescarCajaChica();
+                document.getElementById("closeModalButtonEdicion").click();
+              }
+            },
+            error => {
+              console.log(error);
+            }
+          )
+        }else{
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert("Acceso denegado");
+          document.getElementById("closeModalButtonEdicion").click();
+          this.modalReference.close();
+        }
+      }
+    )
+  }
+
   validarUsuario(pass){
-    this._usuariosSevice.validarUsuario(this.rut, pass.value).subscribe(
+    this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(
       response => {
         if (response > 0){
           document.getElementById("closeModalButtonValidacion").click();

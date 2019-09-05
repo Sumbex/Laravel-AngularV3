@@ -4,12 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\PortalSocio;
 
 class PortalSocioCuentaSindical extends Model
 {
     protected $table = "cuenta_sindicato";
 
     protected  $saldo = 100000;
+
+    protected function socioID()
+    {
+        return PortalSocio::socioLogeado()->id;
+    }
+
+    protected function verificarSocio($id)
+    {
+        return PortalSocio::verificarSocio($id);
+    }
 
     protected function traerMontoIncialMensual($anio, $mes)
     {
@@ -32,21 +43,21 @@ class PortalSocioCuentaSindical extends Model
 
     protected function traerCuentaSindicalTotal($anio, $mes)
     {
-        $inicio = $this->traerMontoIncialMensual($anio, $mes);
-        if ($inicio['estado'] == 'success') {
-            $totales = $this->totalesCuentaSindical($anio, $mes);
-            if ($totales['estado'] == 'success') {
-                $CS = $this->traerCuentaSindical($inicio['inicio'][0]->inicio_mensual, $anio, $mes, $totales['totales'][0]);
-                if ($CS['estado'] == 'success') {
-                    return $CS;
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $inicio = $this->traerMontoIncialMensual($anio, $mes);
+            if ($inicio['estado'] == 'success') {
+                $totales = $this->totalesCuentaSindical($anio, $mes);
+                if ($totales['estado'] == 'success') {
+                    return $this->traerCuentaSindical($inicio['inicio'][0]->inicio_mensual, $anio, $mes, $totales['totales'][0]);
                 } else {
-                    return $CS;
+                    return $totales;
                 }
             } else {
-                return $totales;
+                return $inicio;
             }
         } else {
-            return $inicio;
+            $verificarSocio;
         }
     }
 
@@ -151,9 +162,9 @@ class PortalSocioCuentaSindical extends Model
     {
         $totales = DB::table('cuenta_sindicato')
             ->select([
-                DB::raw('sum(monto_ingreso) as total_ingreso'),
-                DB::raw('sum(monto_egreso) as total_egreso'),
-                DB::raw('sum(monto_ingreso) - sum(monto_egreso) as total')
+                DB::raw('sum(coalesce(monto_ingreso, 0)) as total_ingreso'),
+                DB::raw('sum(coalesce(monto_egreso, 0)) as total_egreso'),
+                DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(coalesce(monto_egreso, 0)) as total')
             ])
             ->where([
                 'detalle_camping' => null,
@@ -172,21 +183,21 @@ class PortalSocioCuentaSindical extends Model
 
     protected function traerCajaChicaTotal($anio, $mes)
     {
-        $existe = $this->existeCajaChica($anio, $mes);
-        if ($existe['estado'] == 'success') {
-            $totales = $this->totalesCajaChica($anio, $mes);
-            if ($totales['estado'] == 'success') {
-                $caja = $this->traerCajaChica($anio, $mes, $existe['monto_caja'], $totales['totales']);
-                if ($caja['estado'] == 'success') {
-                    return $caja;
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $existe = $this->existeCajaChica($anio, $mes);
+            if ($existe['estado'] == 'success') {
+                $totales = $this->totalesCajaChica($anio, $mes);
+                if ($totales['estado'] == 'success') {
+                    return $this->traerCajaChica($anio, $mes, $existe['monto_caja'], $totales['totales']);
                 } else {
-                    return $caja;
+                    return $totales;
                 }
             } else {
-                return $totales;
+                return $existe;
             }
         } else {
-            return $existe;
+            return $verificarSocio;
         }
     }
 
@@ -279,8 +290,8 @@ class PortalSocioCuentaSindical extends Model
             $totales = DB::table('cs_caja_chica')
                 ->select([
                     DB::raw('sum(coalesce(monto_ingreso, 0)) as total_ingreso'),
-                    DB::raw('sum(monto_egreso) as total_egreso'),
-                    DB::raw('(sum(coalesce(monto_ingreso, 0))- sum(monto_egreso)) as total'),
+                    DB::raw('sum(coalesce(monto_egreso, 0)) as total_egreso'),
+                    DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(coalesce(monto_egreso, 0)) as total')
                 ])
                 ->where([
                     'activo' => 'S',
@@ -301,19 +312,19 @@ class PortalSocioCuentaSindical extends Model
 
     protected function traerCampingTotal($anio, $mes)
     {
-        $monto = $this->traerMontoCierreCamping($anio, $mes);
-        if (array_has($monto, 'estado')) {
-            $totales = $this->totalesCamping($anio, $mes, $monto['monto']);
-            if ($totales['estado'] == 'success') {
-                $camping = $this->traerCamping($anio, $mes, $monto['monto'], $totales['totales']);
-                if ($camping['estado'] == 'success') {
-                    return $camping;
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $monto = $this->traerMontoCierreCamping($anio, $mes);
+            if (array_has($monto, 'estado')) {
+                $totales = $this->totalesCamping($anio, $mes, $monto['monto']);
+                if ($totales['estado'] == 'success') {
+                    return $this->traerCamping($anio, $mes, $monto['monto'], $totales['totales']);
                 } else {
-                    return $camping;
+                    return $totales;
                 }
-            } else {
-                return $totales;
             }
+        } else {
+            $verificarSocio;
         }
     }
 
@@ -399,9 +410,9 @@ class PortalSocioCuentaSindical extends Model
     {
         $totales = DB::table('cuenta_sindicato')
             ->select([
-                DB::raw('sum(monto_ingreso) as total_ingreso'),
-                DB::raw('sum(monto_egreso) as total_egreso'),
-                DB::raw('sum(monto_ingreso) - sum(monto_egreso) as total')
+                DB::raw('sum(coalesce(monto_ingreso, 0)) as total_ingreso'),
+                DB::raw('sum(coalesce(monto_egreso, 0)) as total_egreso'),
+                DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(coalesce(monto_egreso, 0)) as total')
             ])
             ->where([
                 'anio_id' => $anio,

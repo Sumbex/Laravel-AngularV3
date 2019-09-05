@@ -183,13 +183,41 @@ class DatosBasicosController extends Controller
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'S'
             ], 
+            [ //bryan vidal
+                'rut' => '185227839',
+                'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
+                'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
+                'modificar_cs' => 'S', // actualizar en cuenta sindical
+                'ingresar_total_camping' =>'S', //modal detalle camping input total camping
+                'modificar_detalle_camping' => 'S', // detalles de la tabla camping
+                'ingresar_socio' => 'S',
+                'modificar_socio' => 'S',
+                'ingresar_socio_beneficios' =>'S', // socio beneficios
+                'modificar_socio_beneficios' => 'S', //socio beneficios
+                'ingresar_cch' => 'S',
+                'modificar_cch' => 'S'
+            ],
+            [ //bryan montecino
+                'rut' => '191107861',
+                'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
+                'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
+                'modificar_cs' => 'S', // actualizar en cuenta sindical
+                'ingresar_total_camping' =>'S', //modal detalle camping input total camping
+                'modificar_detalle_camping' => 'S', // detalles de la tabla camping
+                'ingresar_socio' => 'S',
+                'modificar_socio' => 'S',
+                'ingresar_socio_beneficios' =>'S', // socio beneficios
+                'modificar_socio_beneficios' => 'S', //socio beneficios
+                'ingresar_cch' => 'S',
+                'modificar_cch' => 'S'
+            ], 
             [ // don emilio 
                 'rut' => '9508866k',
-                'ingresar_cierre_inicio_mes' => 'N',
+                'ingresar_cierre_inicio_mes' => 'S',
                 'ingresar_cs' => 'S',
                 'modificar_cs' => 'S',
-                'ingresar_total_camping' =>'N',
-                'modificar_detalle_camping' => 'N',
+                'ingresar_total_camping' =>'S',
+                'modificar_detalle_camping' => 'S',
                 'ingresar_socio' => 'S',
                 'modificar_socio' => 'S',
                 'ingresar_socio_beneficios' =>'S', 
@@ -202,15 +230,16 @@ class DatosBasicosController extends Controller
                 'ingresar_cierre_inicio_mes' => 'N',
                 'ingresar_cs' => 'S',
                 'modificar_cs' => 'N',
-                'ingresar_total_camping' =>'N',
+                'ingresar_total_camping' =>'S',
                 'modificar_detalle_camping' => 'N',
                 'ingresar_socio' => 'S',
                 'modificar_socio' => 'S',
                 'ingresar_socio_beneficios' =>'S', 
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'S'
-            ] 
+                'modificar_cch' => 'N'
+            ]
+             
         ];
 
 

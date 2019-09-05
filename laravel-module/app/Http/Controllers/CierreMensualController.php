@@ -51,7 +51,11 @@ class CierreMensualController extends Controller
     	 //dd($existe);
     	 if (!empty($existe)) { //si existe un monto en este mes
     		$s_a = $existe->inicio_mensual; //saldo actual de mes <
-    		$listar = Cuentasindicato::where(['anio_id' => $anio, 'mes_id' => $mes])->get();
+    		$listar = Cuentasindicato::where([
+				'anio_id' => $anio, 'mes_id' => $mes
+			])
+			->where('cuenta_sindicato.detalle_camping', null)
+			->get();
 			$tomar = true;
 			$ultimo_valor =0;
 			for ($i=0; $i < count($listar); $i++) { 

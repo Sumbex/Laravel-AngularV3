@@ -117,11 +117,12 @@ export class FormularioSociosComponent implements OnInit
   }
 
 
-  btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
+  btn_validar_usuario($rut, $password, validar, estado){//btn que esta en el modal de validacion de usuario
         this.load = true;
         const formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
+        formData.append('estado', estado);
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
             

@@ -125,6 +125,7 @@ export class ListarSociosComponent implements OnInit {
         const formData = new FormData();
         formData.append('rut', this.user['rut']);
         formData.append('password', this.pass);
+        formData.append('estado', 'modificar_socio');
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
     

@@ -14,6 +14,7 @@ import { SindicalService } from 'src/app/servicios/sindical.service';
 })
 export class ModalCampingComponent implements OnInit {
 
+  estado;
   suc_res1 = false;
   suc_res2 = false;
   anio:string='';
@@ -187,6 +188,7 @@ export class ModalCampingComponent implements OnInit {
         const formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
+        formData.append('estado', this.estado);
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
             
@@ -252,6 +254,7 @@ export class ModalCampingComponent implements OnInit {
       const formData = new FormData();
       formData.append('rut', this.user['rut']);
       formData.append('password', this.pass);
+      formData.append('estado', this.estado);
 
       this._validarusuario.validar_usuario(formData).subscribe((val) => {
             

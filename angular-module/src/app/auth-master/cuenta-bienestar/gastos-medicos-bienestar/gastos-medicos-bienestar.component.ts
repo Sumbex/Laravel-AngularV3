@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,20 +8,14 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class GastosMedicosBienestarComponent implements OnInit {
 
-  modalPrincipal;
+  @Input () getIdSocio:'';
+  @Input () getNombreSocio:'';
 
-  constructor(config: NgbModalConfig, 
-    private modalService: NgbModal) {
+  constructor() {
 
-    config.backdrop = 'static';
-    config.keyboard = false;
   }
 
   ngOnInit() {
   }
 
-  openModal(Modal) {
-    this.modalPrincipal = this.modalService.open(Modal, { size: 'xl' });
-
-  }
 }

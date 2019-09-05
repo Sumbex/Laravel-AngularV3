@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-nacimiento-bienestar',
@@ -7,22 +6,15 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./nacimiento-bienestar.component.css']
 })
 export class NacimientoBienestarComponent implements OnInit {
+  
+  @Input () getIdSocio:'';
+  @Input () getNombreSocio:'';
 
-  modalPrincipal;
-
-  constructor(config: NgbModalConfig, 
-    private modalService: NgbModal) {
-
-    config.backdrop = 'static';
-    config.keyboard = false;
-  }
+  constructor() {
+    }
 
   ngOnInit() {
   }
 
-  openModal(Modal) {
-    this.modalPrincipal = this.modalService.open(Modal, { size: 'xl' });
-
-  }
 
 }

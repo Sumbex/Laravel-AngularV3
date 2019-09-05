@@ -12,88 +12,113 @@
     </div>
     <div class="card">
 
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-          <div class="row justify-content-between">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
 
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Relacion o Parentesco*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.relacion" required>
-              </div>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="form-group">
+              <label><strong>Prioridad del Beneficiario* (Seleccione la prioridad que tendra cada uno de los
+                  beneficiarios ingresados)</strong></label>
+              <select name="prioridad" id="prioridad" [(ngModel)]="InsertarBeneficiosBeneficiario.prioritario"
+                class="form-control form-control-sm" required>
+                <option value="">--Seleccione--</option>
+                <option value="1">Primario</option>
+                <option value="2">Secundario</option>
+                <option value="3">Terciario</option>
+                <option value="10">Sin Orden</option>
+              </select>
             </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Rut*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.rut_beneficiario" required>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Fecha de Nacimiento*</strong></label>
-                <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.fecha_nacimiento" required>
-              </div>
-            </div>
-
           </div>
-        </div>
 
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-          <div class="row justify-content-between">
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Nombres*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.nombres" required>
-              </div>
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Relacion o Parentesco*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.relacion" required>
             </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Apellido Paterno*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.apellido_paterno" required>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Apellido Materno*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.apellido_materno" required>
-              </div>
-            </div>
-
           </div>
-        </div>
 
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-          <div class="row justify-content-start">
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Direccion*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.direccion" required>
-              </div>
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Rut*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.rut_beneficiario" required>
             </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <div class="form-group">
-                <label><strong>Celular*</strong></label>
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="InsertarBeneficiosBeneficiario.celular" required>
-              </div>
-            </div>
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3 align-self-end">
-              <label><strong>Guardar Datos del Beneficiario</strong></label>
-              <div class="form-group">
-                <button [disabled]="blockIngreso == true" class="btn btn-block btn-outline-success btn-sm" (click)="guardarDatosBeneficiario()">Guardar
-                  <img *ngIf="blockIngreso == true" padding-left="20px" height="15px" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                </button>
-              </div>
-            </div>
-
           </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Fecha de Nacimiento*</strong></label>
+              <input type="date" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.fecha_nacimiento" required>
+            </div>
+          </div>
+
         </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-between">
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Nombres*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.nombres" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Apellido Paterno*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.apellido_paterno" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Apellido Materno*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.apellido_materno" required>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
+        <div class="row justify-content-start">
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Direccion*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.direccion" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="form-group">
+              <label><strong>Celular*</strong></label>
+              <input type="text" class="form-control form-control-sm"
+                [(ngModel)]="InsertarBeneficiosBeneficiario.celular" required>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3 align-self-end">
+            <label><strong>Guardar Datos del Beneficiario</strong></label>
+            <div class="form-group">
+              <button [disabled]="blockIngreso == true" class="btn btn-block btn-outline-success btn-sm"
+                (click)="guardarDatosBeneficiario()">Guardar
+                <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
     </div> <br>
   </div>
@@ -117,5 +142,5 @@ onclick="printJS({
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
 <button class="btn btn btn-success btn-block btn-sm" type="button"
-[disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
+  [disabled]="this.getIdSocio == '' || this.getIdSocio == null"
   (click)="verFormularioBeneficios(formularioBeneficiosBeneficiario)">Insertar Datos</button>

@@ -19,7 +19,7 @@ class CsDetalleCampingController extends Controller
                 'cuenta_sindicato.id as camping_id',
     			DB::raw("concat(cuenta_sindicato.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
     			'archivo_documento',
-    			'cuenta_sindicato.descripcion',
+    			DB::raw("UPPER(cuenta_sindicato.descripcion) as descripcion"),
     			'monto_ingreso',
     			'monto_egreso',
     			'numero_documento',

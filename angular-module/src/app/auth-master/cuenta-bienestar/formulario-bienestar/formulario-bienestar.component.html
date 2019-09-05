@@ -1,23 +1,147 @@
 <div class="container">
-  <!--Formulario de otras cuentas-->
-  <div class="card">
-    <div class="card-header" id="demoFont"><strong class="text-center">
-        <h6>Otras Cuentas</h6>
-      </strong></div>
-    <form action="">
-      <div class="card-body">
-        <div class="row">
-          <div class="row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-            <!--Boton Para llamar modals-->
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2"><app-inicio-cierre-mensual></app-inicio-cierre-mensual></div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2"><app-caja-chica-bienestar></app-caja-chica-bienestar></div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2"><app-fallecimiento-bienestar></app-fallecimiento-bienestar></div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2"><app-nacimiento-bienestar></app-nacimiento-bienestar></div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xl-2"><app-gastos-medicos-bienestar></app-gastos-medicos-bienestar></div>
+
+  <!-- beneficios del socio -->
+
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+
+      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="nac-tab" data-toggle="tab" href="#nac" role="tab" aria-controls="nac"
+            aria-selected="true">Nacimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="falle-tab" data-toggle="tab" href="#falle" role="tab" aria-controls="falle"
+            aria-selected="false">Fallecimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="med-tab" data-toggle="tab" href="#med" role="tab" aria-controls="med"
+            aria-selected="false">Gastos Medicos</a>
+        </li>
+      </ul> <br>
+
+      <!--buscador de socio-->
+      <div class="card-header" id="demoFont">
+        <h6 class="card-title">Socio</h6>
+      </div>
+
+      <div class="card">
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row justify-content-center">
+
+            <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+              <div class="form-group"> <br>
+                <label>
+                  <strong>Ingrese Rut </strong>
+                  <i class="fas fa-info-circle" placement="right"
+                    ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
+                </label>
+                <div class="input-group">
+                  <input type="text" [(ngModel)]="rut" class="form-control form-control-sm"
+                    placeholder="Ingrese rut del socio sin guion" name="rut" required>
+                  <span class="input-group-btn">
+                    <button type="button" (click)="buscarSocio()" class="btn btn-outline-success btn-sm">
+                      <i *ngIf="!blockSocio" class="fas fa-search"></i>
+                      <img *ngIf="blockSocio" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row justify-content-center">
+
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+              <div class="form-group"> <br>
+                <label><strong>Fecha Nacimiento</strong></label>
+                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechaSocioTest" required disabled>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+              <div class="form-group"> <br>
+                <label><strong>Rut del socio</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="rutSocioTest" required disabled>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="form-group"> <br>
+                <label><strong>Nombre Completo del socio</strong></label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="nombreUpperSocio" required
+                  disabled>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div> <br>
+
+
+      <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade show active" id="nac" role="tabpanel" aria-labelledby="nac-tab">
+          <!--formulario nacimiento-->
+          <div class="card-header" id="demoFont">
+            <h6 class="card-title">Formulario Nacimientos</h6>
+          </div>
+          <app-nacimiento-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest"></app-nacimiento-bienestar>
+        </div>
+
+        <div class="tab-pane fade" id="falle" role="tabpanel" aria-labelledby="falle-tab">
+          <!--formulario fallecimiento-->
+          <div class="card-header" id="demoFont">
+            <h6 class="card-title">Formulario Fallecimientos</h6>
+          </div>
+          <app-fallecimiento-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest"></app-fallecimiento-bienestar>
+        </div>
+
+        <div class="tab-pane fade" id="med" role="tabpanel" aria-labelledby="med-tab">
+          <!--formulario gastos medicos-->
+          <div class="card-header" id="demoFont">
+            <h6 class="card-title">Formulario Gastos Medicios</h6>
+          </div>
+          <app-gastos-medicos-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest"></app-gastos-medicos-bienestar>
+        </div>
+
+
       </div>
-    </form>
+
+    </div>
+  </div>
+
+  <!--Formulario de otras cuentas--> <br>
+  <div class="card">
+    <div class="card-header" id="demoFont">
+      <strong class="text-center">
+        <h6>Otras Cuentas</h6>
+      </strong>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+
+          <!--Boton Para llamar modals-->
+          <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+            <app-inicio-cierre-mensual></app-inicio-cierre-mensual>
+          </div>
+
+          <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+            <app-caja-chica-bienestar></app-caja-chica-bienestar>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div><br>
 
   <!--Formulario para ingresar una cuenta sindical-->
@@ -26,7 +150,7 @@
         <h6>Cuenta Bienestar</h6>
       </strong>
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
       <div class="card-body">
         <div class="row">
           <div class="row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
@@ -58,7 +182,7 @@
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Detalle Tipo</strong></label>
               <select name="detalleTipo" id="detalleTipo" class="form-control form-control-sm">
-                <option value="0">--Seleccione--</option>
+                <option value="">--Seleccione--</option>
                 <option value="1">Cuenta del Gas</option>
                 <option value="2">Inasistencia por Reunión</option>
                 <option value="3">Inasistencia por Votación</option>
@@ -82,8 +206,7 @@
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3">
               <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>
-              <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-                [disabled]="loginForm.invalid">Guardar</button>
+              <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar">Guardar</button>
             </div>
 
             <div class="col-12 col-md-3 col-lg-3 col-xl-3">
@@ -94,7 +217,7 @@
           </div>
         </div>
       </div>
-    </form>
+
   </div> <br>
 
 </div>

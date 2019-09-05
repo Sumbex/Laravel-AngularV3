@@ -160,6 +160,7 @@ class PortalSocioMisBeneficios extends Model
                             'psr.ingreso',
                             'psr.egreso',
                             'psr.numero_cuota',
+                            DB::raw("concat(psr.numero_cuota,'/',psr.cuotas) as cuota"),
                             /* 'psr.monto_restante' */
                             /* 'psr.monto_restante',
                             DB::raw("concat(psr.numero_cuota,'/',psr.cuotas) as cuota"),
@@ -180,7 +181,7 @@ class PortalSocioMisBeneficios extends Model
                     if (!$salud->isEmpty()) {
                         $pagos['mensaje'] = [];
                         foreach ($salud as $key) {
-                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->numero_cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso, 0, '.', ',') . ' pesos.';
+                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso, 0, '.', ',') . ' pesos.';
                             /* $key->tipo_sueldo = 1;
                             $key->tipo_conflicto = 2;
                             $key->tipo_trimestral = 3; */
@@ -200,7 +201,8 @@ class PortalSocioMisBeneficios extends Model
                             'pae.interes_mensual',
                             'pae.ingreso',
                             'pae.egreso',
-                            'pae.numero_cuota'
+                            'pae.numero_cuota',
+                            DB::raw("concat(pae.numero_cuota,'/',pae.cuotas) as cuota")
                             /* 'pae.monto_restante',
                             DB::raw("concat(pae.numero_cuota,'/',pae.cuotas) as cuota"),
                             'pae.estado_cuota' */
@@ -219,7 +221,7 @@ class PortalSocioMisBeneficios extends Model
                     if (!$apuro->isEmpty()) {
                         $pagos['mensaje'] = [];
                         foreach ($apuro as $key) {
-                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->numero_cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso + $key->interes_mensual, 0, '.', ',') . ' pesos.';
+                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso + $key->interes_mensual, 0, '.', ',') . ' pesos.';
                         }
                         return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
                     } else {

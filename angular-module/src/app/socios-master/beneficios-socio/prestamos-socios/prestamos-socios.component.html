@@ -39,6 +39,7 @@
                 <!-- Cuerpo del MOdal -->
                 <div class="modal-body">
                     <div [hidden]="!loadingTabla" class="loader mx-auto"></div>
+                <div [hidden]="hideAllAbonos">
                   <table [hidden]="hideCuotas" class="table table-sm">
                     <thead>
                       <tr>
@@ -51,7 +52,9 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                </div>
+                <div [hidden]="hideAllAbonos">
+                  <table [hidden]="hideAbonoDiaSueldo" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
@@ -63,7 +66,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                  <table [hidden]="hideAbonosConflicto" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Termino de Conflicto</th>
@@ -75,7 +78,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                  <table [hidden]="hideAbonosTrimestral" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados Trimestral</th>
@@ -87,6 +90,7 @@
                       </tr>
                     </tbody>
                   </table>
+                </div>
                 </div>
 
                 <!-- Patas del Modal -->
@@ -138,6 +142,7 @@
                 <!-- Cuerpo del MOdal -->
                 <div class="modal-body">
                     <div [hidden]="!loadingTabla" class="loader mx-auto"></div>
+                <div [hidden]="hideAllAbonos">
                   <table [hidden]="hideCuotas" class="table table-sm">
                     <thead>
                       <tr>
@@ -150,7 +155,9 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                </div>
+                <div [hidden]="hideAllAbonos">
+                  <table [hidden]="hideAbonosDiaSueldo" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
@@ -162,7 +169,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                  <table [hidden]="hideAbonosConflicto" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Termino de Conflicto</th>
@@ -174,7 +181,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                  <table [hidden]="hideAbonosTrimestral" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados Trimestral</th>
@@ -186,6 +193,7 @@
                       </tr>
                     </tbody>
                   </table>
+                </div>
                 </div>
 
                 <!-- Patas del Modal -->
@@ -237,6 +245,7 @@
                 <!-- Cuerpo del MOdal -->
                 <div class="modal-body">
                     <div [hidden]="!loadingTabla" class="loader mx-auto"></div>
+                <div [hidden]="hideAllAbonos">
                   <table [hidden]="hideCuotas" class="table table-sm">
                     <thead>
                       <tr>
@@ -249,7 +258,9 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                </div>
+                <div [hidden]="hideAllAbonos">
+                  <table [hidden]="hideAbonosDiaSueldo" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
@@ -261,7 +272,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                  <table [hidden]="hideAbonosConflicto" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Termino de Conflicto</th>
@@ -273,7 +284,7 @@
                       </tr>
                     </tbody>
                   </table><br>
-                  <table [hidden]="hideAbonos" class="table table-sm">
+                  <table [hidden]="hideAbonosTrimestral" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados Trimestral</th>
@@ -285,6 +296,7 @@
                       </tr>
                     </tbody>
                   </table>
+                </div>
                 </div>
 
                 <!-- Patas del Modal -->

@@ -15,14 +15,16 @@ export class PrestamosSociosComponent implements OnInit {
   //Objeto con los datos del Prestamo
   datosPrestamos;
   historialCuotas;
-  historialAbonos;
+  historialAbonoDiaSueldo;
+  historialAbonoTrimestral;
+  historialAbonoTerminoConflicto;
 
   //Bloquear Muestro de pagos
   hideCuotas = true;
   hideAbonos = true;
 
   //Loading tabla
-  loadingTabla = false;
+  loadingTabla = true;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
     config.backdrop = 'static';
@@ -35,6 +37,10 @@ export class PrestamosSociosComponent implements OnInit {
 
   openModalHistorialPagos(historial) {
     this.modalPagosPrestamos = this.modalService.open(historial, { size: 'xl' });
+    this.limpiarHistorial();
+    this.loadingTabla = true;
+    this.hideCuotas = true;
+    this.hideAbonos = true;
   }
 
   getPrestamos(){
@@ -51,10 +57,9 @@ export class PrestamosSociosComponent implements OnInit {
   getPagosPrestamos(id, tipo){
     this._portalSociosService.getPagosPrestamos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
         this.hideCuotas = true;
       }else{
-        this.hideCuotas = false;
+        this.hideCuotas = false; //mostrar los prestamos encontrados
         this.historialCuotas = response.mensaje;
       }
     });
@@ -63,13 +68,35 @@ export class PrestamosSociosComponent implements OnInit {
   getPagosAbonos(id, tipo){
     this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        this.loadingTabla = false;
         this.hideAbonos = true;
+        if(tipo == 1){
+          this.historialAbonoDiaSueldo = response.mensaje;
+        }else if(tipo == 2){
+          this.historialAbonoTerminoConflicto = response.mensaje;
+        }else if(tipo == 3){
+          this.historialAbonoTrimestral = response.mensaje;
+        }
       }else{
+        this.loadingTabla = false;
         this.hideAbonos = false;
-        this.historialAbonos = response.mensaje;
+        //this.historialAbonos = response.mensaje;
+        if(tipo == 1){
+          this.historialAbonoDiaSueldo = response.mensaje;
+        }else if(tipo == 2){
+          this.historialAbonoTerminoConflicto = response.mensaje;
+        }else if(tipo == 3){
+          this.historialAbonoTrimestral = response.mensaje;
+        }
       }
     });
+  }
+
+  limpiarHistorial(){
+    this.historialAbonoDiaSueldo = '';
+    this.historialAbonoTerminoConflicto = '';
+    this.historialAbonoTrimestral = '';
+    this.historialCuotas = '';
   }
 
 }

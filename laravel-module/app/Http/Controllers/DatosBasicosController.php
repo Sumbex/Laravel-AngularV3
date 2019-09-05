@@ -293,7 +293,7 @@ class DatosBasicosController extends Controller
                     break;
                     
                     default:
-                        return false;
+                        return true; // dejar hacer accion en caso que el usuario no este asociado a un permiso en especial
                     break;
                 }
                 

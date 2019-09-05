@@ -59,7 +59,7 @@ export class PrestamosSociosComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         this.hideCuotas = true;
       }else{
-        this.hideCuotas = false; //mostrar los prestamos encontrados
+        //this.hideCuotas = false; //mostrar los prestamos encontrados
         this.historialCuotas = response.mensaje;
       }
     });
@@ -68,25 +68,36 @@ export class PrestamosSociosComponent implements OnInit {
   getPagosAbonos(id, tipo){
     this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        this.loadingTabla = false;
-        this.hideAbonos = true;
+        //this.loadingTabla = false;
+        //this.hideAbonos = true; NO OCULTAR SI ALGUNO VIENE FAILED
         if(tipo == 1){
           this.historialAbonoDiaSueldo = response.mensaje;
+          console.log(this.historialAbonoDiaSueldo);
         }else if(tipo == 2){
           this.historialAbonoTerminoConflicto = response.mensaje;
+          console.log(this.historialAbonoTerminoConflicto);
         }else if(tipo == 3){
           this.historialAbonoTrimestral = response.mensaje;
+          this.hideAbonos = false;
+          this.hideCuotas = false;
+          this.loadingTabla = false;
+          console.log(this.historialAbonoTrimestral);
         }
       }else{
-        this.loadingTabla = false;
-        this.hideAbonos = false;
+        //this.loadingTabla = false;
         //this.historialAbonos = response.mensaje;
         if(tipo == 1){
           this.historialAbonoDiaSueldo = response.mensaje;
+          console.log(this.historialAbonoDiaSueldo);
         }else if(tipo == 2){
           this.historialAbonoTerminoConflicto = response.mensaje;
+          console.log(this.historialAbonoTerminoConflicto);
         }else if(tipo == 3){
           this.historialAbonoTrimestral = response.mensaje;
+          this.hideAbonos = false;
+          this.hideCuotas = false;
+          this.loadingTabla = false;
+          console.log(this.historialAbonoTrimestral);
         }
       }
     });

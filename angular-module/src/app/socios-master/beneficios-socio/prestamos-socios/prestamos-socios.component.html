@@ -54,11 +54,35 @@
                   <table [hidden]="hideAbonos" class="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col-12">Abonos Pagados</th>
+                        <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoDiaSueldo">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados por Termino de Conflicto</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoTerminoConflicto">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados Trimestral</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoTrimestral">
                         <td>{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
@@ -93,7 +117,7 @@
           <tbody>
             <tr *ngFor="let itemPrestamo of datosPrestamos?.pagando" class="table-success text-center" style="cursor: pointer"
               [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
-              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,itemPrestamo?.tipo_id); openModalHistorialPagos(historialPagos)">
+              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,1); getPagosAbonos(itemPrestamo?.id,2); getPagosAbonos(itemPrestamo?.id,3); openModalHistorialPagos(historialPagos)">
               <th>{{itemPrestamo?.fecha}}</th>
               <td>{{itemPrestamo?.id}}</td>
               <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
@@ -129,11 +153,35 @@
                   <table [hidden]="hideAbonos" class="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col-12">Abonos Pagados</th>
+                        <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoDiaSueldo">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados por Termino de Conflicto</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoTerminoConflicto">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados Trimestral</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoTrimestral">
                         <td>{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
@@ -168,7 +216,7 @@
           <tbody>
             <tr *ngFor="let itemPrestamo of datosPrestamos?.finalizado" class="table-success text-center" style="cursor: pointer"
               [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
-              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,itemPrestamo?.tipo_id); openModalHistorialPagos(historialPagos)">
+              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,1); getPagosAbonos(itemPrestamo?.id,2); getPagosAbonos(itemPrestamo?.id,3);; openModalHistorialPagos(historialPagos)">
               <th>{{itemPrestamo?.fecha}}</th>
               <td>{{itemPrestamo?.id}}</td>
               <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
@@ -204,11 +252,35 @@
                   <table [hidden]="hideAbonos" class="table table-sm">
                     <thead>
                       <tr>
-                        <th scope="col-12">Abonos Pagados</th>
+                        <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoDiaSueldo">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados por Termino de Conflicto</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoTerminoConflicto">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados Trimestral</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonoTrimestral">
                         <td>{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>

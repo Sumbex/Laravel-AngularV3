@@ -24,7 +24,7 @@
               <div *ngFor="let item of traerDatosBeneficiario" class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <tr>
                   <th style="background: #138D75" class="text-right">PRIORIDAD:</th>
-                  <td colspan="2">
+                  <td colspan="1">
                     <select name="Prioridad" id="prioridad" class="form-control form-control-sm sinbordefondo centrado"
                       [(ngModel)]="item.prioritario" #relacionUpd disabled>
                       <option value="">--SELECCIONE--</option>
@@ -34,9 +34,7 @@
                       <option value="10">SIN ORDEN</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                        (click)="actualizar('relacion_socio_id',relacionUpd,modalUsuario,item.id)"><i class="far fa-edit"></i></button>
-                      </td> -->
+                  <td></td>
                 </tr>
 
                 <tr>

@@ -1,65 +1,60 @@
-<ng-template #Medico let-modal>
+<div class="card">
 
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><i class="fas fa-notes-medical"></i> <strong> Cuenta Bienestar / Gastos Medicos</strong></h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <!--Cuerpo del body medico-->
-    <div class="modal-body">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="row justify-content-center">
   
-      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link" id="form-medico-tab" data-toggle="tab" href="#form-medico" role="tab"
-            aria-controls="form-medico" aria-selected="true">Formulario Gastos Medicos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="table-medico-tab" data-toggle="tab" href="#table-medico" role="tab"
-            aria-controls="table-medico" aria-selected="false">Tabla Gastos Medicos</a>
-        </li>
-      </ul> <br>
-  
-      <div class="tab-content" id="myTabContent">
-  
-          <div class="tab-pane fade show active" id="form-medico" role="tabpanel" aria-labelledby="form-medico-tab">
-              <div class="card-header" id="demoFont2">
-                  <h6 class="card-title">Formulario</h6>
-              </div>
-  
-              <div class="card">
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                      <div class="row justify-content-center">
-                        <app-formulario-gastos-medicos-bienestar></app-formulario-gastos-medicos-bienestar>
-                      </div>
-                  </div>
-              </div> <br>
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <br><label><strong>Ingrese Fecha</strong></label> <br>
+            <input type="date" class="form-control form-control-sm" name="fecha">
           </div>
+        </div>
   
-          <div class="tab-pane fade" id="table-medico" role="tabpanel" aria-labelledby="table-medico-tab">
-              <div class="card-header" id="demoFont2">
-                  <h6 class="card-title">Tabla</h6>
-              </div>
-              <div class="card">
-                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                      <div class="row justify-content-center">
-                        <app-tabla-gastos-medicos-bienestar></app-tabla-gastos-medicos-bienestar>
-                      </div>
-                  </div>
-              </div> <br>
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <br><label><strong>N° de Folio</strong></label>
+            <input type="text" class="form-control form-control-sm" name="nDocumento" required>
           </div>
+        </div>
   
-      </div> 
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <br><label><strong>Subir Certificado medico</strong></label>
+            <input class="form-control-file" type="file">
+          </div>
+        </div>
+  
+      </div>
     </div>
   
-    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
-    <div class="modal-footer">
-      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i class="fas fa-undo-alt"></i> Volver a Cuenta
-        Bienestar
-      </button>
-    </div>
-  </ng-template>
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="row justify-content-center">
   
-  <!--Boton Para llamar al Modal inicio y cierre mensual-->
-  <label><strong>Detalle Gastos Medicos</strong></label><br>
-  <button class="btn btn btn-success btn-block btn-sm" (click)="openModal(Medico)">Ingresar</button>
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <br><label><strong>Seleccione Tipo</strong></label>
+            <select name="tipo" id="tipo" class="form-control form-control-sm">
+              <option value="">--Seleccione--</option>
+              <option value="2">Egreso</option>
+            </select>
+          </div>
+        </div><br>
+  
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <br><label><strong>Ingrese Monto</strong></label>
+            <input type="number" class="form-control form-control-sm" name="monto" required>
+          </div>
+        </div>
+  
+        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+          <div class="form-group">
+            <br><label><strong>Guardar gasto medico</strong></label><br>
+            <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar">Guardar</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  </div>

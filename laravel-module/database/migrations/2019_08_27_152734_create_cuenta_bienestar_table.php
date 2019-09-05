@@ -20,9 +20,9 @@ class CreateCuentaBienestarTable extends Migration
             $table->integer('dia');
             $table->integer('tipo_cuenta_bienestar_id');
             $table->text('numero_documento_1');
-            $table->text('numero_documento_2');
+            $table->text('numero_documento_2')->nullable();
             $table->text('archivo_documento_1');
-            $table->text('archivo_documento_2');
+            $table->text('archivo_documento_2')->nullable();
             $table->bigInteger('monto_ingreso')->nullable();
             $table->bigInteger('monto_egreso')->nullable();
             $table->timestamps();

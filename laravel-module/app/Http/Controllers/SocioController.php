@@ -778,12 +778,27 @@ class SocioController extends Controller
     public function guardar_datos_beneficiario(Request $r)
     {   
         try{
+
+            if (empty($r->prioritario)) {
+                return ['estado'=>'failed','mensaje'=>'No ha seleccionado una prioridad'];
+            }
+
             $rut_limpio = $this->limpiar($r->rut);
 
             $validar_rut = $this->valida_rut($rut_limpio);
 
             if (!$validar_rut) {
                 return ['estado'=>'failed', 'mensaje'=>'Rut no valido o inexistente'];
+            }
+
+            $existe_prioridad = SocioBeneficiario::where([
+                            'activo'  => 'S',
+                            'socio_id'=> $r->socio_id,
+                            'prioritario' => $r->prioritario
+                        ])->first();
+            
+            if ($existe_prioridad && $r->prioritario != 10 ) {
+                return ['estado'=>'failed', 'mensaje'=>'Prioridad ya en uso'];
             }
 
 
@@ -824,6 +839,7 @@ class SocioController extends Controller
             $sb->celular = $r->celular;
             $sb->activo = 'S';
             $sb->cobro_beneficio = 'N';
+            $sb->prioritario = $r->prioritario;
             if ($sb->save()) {
                 return ['estado'=>'success','mensaje'=>'Beneficiario ingresado con exito!'];
             }
@@ -847,7 +863,9 @@ class SocioController extends Controller
         $beneficiario = SocioBeneficiario::where([
                         'activo'=>'S',
                         'socio_id' => $socio_id
-                    ])->get();
+                    ])
+                    ->orderBy('prioritario','ASC')
+                    ->get();
        
         if (count($beneficiario) > 0) {
             return ['estado'=>'success', 'body'=>$beneficiario];
@@ -1239,7 +1257,7 @@ class SocioController extends Controller
     public function traer_datos_padres_suegros($socio_id)
     {
         $listar = SocioPadresSuegros::where(['activo'=>'S','socio_id'=>$socio_id])
-                   ->orderBy('created_at','ASC')
+                   ->orderBy('relacion_socio_id','ASC')
                   ->get();
         if (count($listar) > 0) {
             return [

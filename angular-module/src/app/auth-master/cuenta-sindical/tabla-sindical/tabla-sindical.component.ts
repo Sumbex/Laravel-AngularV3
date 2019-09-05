@@ -259,6 +259,7 @@ export class TablaSindicalComponent implements OnInit {
       const formData = new FormData();
       formData.append('rut', this.user['rut']);
       formData.append('password', this.pass);
+      formData.append('estado', 'modificar_cs');
 
       this._validarusuario.validar_usuario(formData).subscribe((val) => {
             

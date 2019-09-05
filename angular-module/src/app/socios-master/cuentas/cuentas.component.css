@@ -9,6 +9,10 @@ label,input, button, strong{
     color: white;
     background: #138D75;
   }
+
+  .card{
+    background: rgba(255, 255, 255, 0.5);
+  }
   
   #demoFont {
     color: #fff;

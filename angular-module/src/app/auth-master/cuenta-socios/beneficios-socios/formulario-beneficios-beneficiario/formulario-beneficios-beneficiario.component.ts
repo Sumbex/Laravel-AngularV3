@@ -15,6 +15,7 @@ export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
   InsertarBeneficiosBeneficiario ={
+    prioritario:'',
     relacion:'',
     rut_beneficiario:'',
     fecha_nacimiento:'',
@@ -45,6 +46,7 @@ export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
     this.blockIngreso=true;
     const data = new FormData();
     data.append('socio_id', this.getIdSocio);
+    data.append('prioritario', this.InsertarBeneficiosBeneficiario.prioritario);
     data.append('relacion', this.InsertarBeneficiosBeneficiario.relacion);
     data.append('rut',this.InsertarBeneficiosBeneficiario.rut_beneficiario);
     data.append('fecha_nacimiento',this.InsertarBeneficiosBeneficiario.fecha_nacimiento);
@@ -62,6 +64,7 @@ export class FormularioBeneficiosBeneficiarioComponent implements OnInit {
         return false;
       }
       if(response.estado == 'success'){
+       this.InsertarBeneficiosBeneficiario.prioritario = '';
        this.InsertarBeneficiosBeneficiario.relacion = '';
        this.InsertarBeneficiosBeneficiario.rut_beneficiario = '';
        this.InsertarBeneficiosBeneficiario.fecha_nacimiento = '';

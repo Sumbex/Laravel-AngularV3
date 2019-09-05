@@ -26,31 +26,42 @@
         <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
       </select>
     </div>
+
+    <div class="col-md-4"><br><label>
+      <strong>Recargar tabla </strong>
+
+    </label><br>
+    <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
+    <div *ngIf="cargandoTabla">
+      <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+      <label>Cargando tabla de Prestamos</label>
+    </div>
+  </div>
   </div><br>
 
   <div class="table-responsive">
-    <table class="table table-bordered table-sm">
+    <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
       <thead text-sm class="text-center">
         <tr>
-          <th colspan="11" style="background: #138D75;" class="ColorThCS">Tabla caja chica</th>
-          <th colspan="2" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
-          <td colspan="2"><strong>{{ montoInicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+          <th colspan="11" class="ColorThCS">Tabla caja chica</th>
+          <th colspan="2" class="ColorThCS">Monto Inicial</th>
+          <td colspan="2"><strong>{{ datosCajaChica?.monto_inicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
           </td>
         </tr>
         <tr>
-          <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
-          <th colspan="2" style="background: #138D75;">N° de Doc</th>
-          <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> PDF</th>
-          <th colspan="3" style="background: #138D75;"><i class="fas fa-file-signature"></i> Detalle</th>
-          <th colspan="2" style="background: #138D75;"><i class="fas fa-plus-circle"></i> Ingresos</th>
-          <th colspan="2" style="background: #138D75;"><i class="fas fa-minus-circle"></i> Egresos</th>
-          <th colspan="2" style="background: #138D75;"><i class="fas fa-dollar-sign"></i> Actual</th>
+          <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+          <th colspan="2">N° de Doc</th>
+          <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
+          <th colspan="3"><i class="fas fa-file-signature"></i> Detalle</th>
+          <th colspan="2"><i class="fas fa-plus-circle"></i> Ingresos</th>
+          <th colspan="2"><i class="fas fa-minus-circle"></i> Egresos</th>
+          <th colspan="2"><i class="fas fa-dollar-sign"></i> Actual</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of datosCajaChica" class="text-center">
-          <td colspan="2">{{item.fecha}}</td>
-          <td colspan="2">{{item.numero_documento}}</td>
+        <tr *ngFor="let item of datosCajaChica?.caja" class="text-center">
+          <td colspan="2"><b>{{item?.fecha}}</b></td>
+          <td colspan="2"><b>{{item?.numero_documento}}</b></td>
 
 
           <!--MODAL VISOR PDF-->
@@ -79,41 +90,37 @@
           <td colspan="2">
             <a (click)="openPDF(visor)"><i class="far fa-file-alt" placement="top"
                 ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
-            <a class="btn-primary-outline" style="cursor: pointer"
-              (click)="editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')">
-              <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
-            </a>
           </td>
 
 
 
-          <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)">{{item.descripcion}}
+          <td colspan="3"><b>{{item.descripcion}}</b>
           </td>
-          <td colspan="2">{{item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">
-            {{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-          <td colspan="2">{{item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          <td colspan="2"><b>{{item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          <td colspan="2">
+            <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
         </tr>
         <br>
         <!--Tabla del total Modal Caja Chica-->
         <tr>
-          <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i>
+          <th colspan="9" class="text-right"><i class="fas fa-plus-circle"></i>
             INGRESOS</th>
           <td colspan="3" class="text-center">
-            <strong>{{ cajaChicaTotales.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+            <strong>{{ totalesCajaChica?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
 
         <tr>
-          <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i>
+          <th colspan="9" class="text-right"><i class="fas fa-minus-circle"></i>
             EGRESOS</th>
           <td colspan="3" class="text-center">
-            <strong>{{ cajaChicaTotales.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+            <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
         <tr>
-          <th colspan="9" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>
+          <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
             CIERRE DEL MES</th>
           <td colspan="3" class="text-center">
-            <strong>{{ cajaChicaTotales.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+            <strong>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
       </tbody>
     </table>

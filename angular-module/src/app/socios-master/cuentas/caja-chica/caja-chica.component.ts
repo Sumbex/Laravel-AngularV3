@@ -21,6 +21,7 @@ export class CajaChicaComponent implements OnInit {
 
   //Variable que almacena los valores obtenidos para la tabla caja chica
   datosCajaChica;
+  totalesCajaChica;
 
   //variable para asociar al modal
   modalCajaChica;
@@ -41,6 +42,11 @@ export class CajaChicaComponent implements OnInit {
   openModalCajaChica(cajaChicaModal) {
     this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
     this.cargarFechasActuales();
+  }
+
+  //Abrir visor de PDF
+  openPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
   }
 
   cargarFechasActuales() {
@@ -65,17 +71,44 @@ export class CajaChicaComponent implements OnInit {
     )
   }
 
+  changeAnio(valorSelect){
+    this.limpiarTabla();
+    this.idAnioActual = valorSelect.target.value;
+    this.recargarTabla();
+  }
+ 
+  changeMes(valorSelect){
+   this.limpiarTabla();
+   this.idMesActual = valorSelect.target.value;
+   this.recargarTabla();
+  }
+
   cargarTablaCajaChica(){
+    this.cargandoTabla = true;
     this._portalSociosService.getCajaChica(this.idAnioActual, this.idMesActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoTabla = false;
       }else{
-        console.log(response);
+        this.datosCajaChica = response;
+        this.totalesCajaChica = response.total;
+        this.cargandoTabla = false;
       }
     },
     error => {
       console.log(error);
+      this.cargandoTabla = false;
     });
+  }
+
+  limpiarTabla(){
+    this.datosCajaChica = '';
+    this.totalesCajaChica = '';
+  }
+
+  recargarTabla(){
+    this.limpiarTabla();
+    this.cargarTablaCajaChica();
   }
 
 }

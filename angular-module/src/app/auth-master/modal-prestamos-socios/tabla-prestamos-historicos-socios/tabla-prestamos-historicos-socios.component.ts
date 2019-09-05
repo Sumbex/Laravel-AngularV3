@@ -40,7 +40,11 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         'interes'
   ];
   get_pni;
- get_pc;
+  get_pc;
+  calculo_cuota;
+  s_abono:string='1';
+  m_abono;
+  if_abono:boolean=true;
 
   //Variables de carga
   cargandoTabla = false;
@@ -182,6 +186,7 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
     this.montoFinalPagar = totalPrestamo / cuotaP;
 
     console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
+
   }
 
   cerrarActualizar() {
@@ -295,6 +300,49 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
         this.m_bono.close();
       }
     )
+  }
+
+  calcular_cuota_prestamo2(id){
+    this._sindicalService.calcular_cuota(id).subscribe(
+      response => {
+          if (response.estado =="success") {
+            this.calculo_cuota = response.calculo_cuota;
+          }
+          
+      },
+      error => {
+        console.log(error);
+        alert("No se encontraron datos");
+        
+      }
+    )
+  }
+  calcular_el_abono(id){
+    this.m_abono = '';
+    this.if_abono = true;
+    this._sindicalService.calcular_abono(id,this.s_abono).subscribe(
+      response => {
+          if (response.estado =="success") {
+            this.m_abono = response.monto;
+            this.if_abono = false;
+            console.log(this.if_abono);
+          }
+
+          
+      },
+      error => {
+        this.m_abono = '';
+        this.if_abono = false;
+        console.log(error);
+        alert("No se encontraron datos");
+        
+      }
+    )
+  }
+
+  changeAbono(id){
+
+      this.calcular_el_abono(id);
   }
 
 }

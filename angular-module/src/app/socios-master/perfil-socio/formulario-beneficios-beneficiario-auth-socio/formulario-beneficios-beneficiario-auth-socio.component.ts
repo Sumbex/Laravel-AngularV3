@@ -13,6 +13,7 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
   abrirFormularioBeneficiario
 
   datosBeneficiario = {
+    prioridad: '',
     relacionParentesco: '',
     rut: '',
     fechaNacimiento: '',
@@ -44,7 +45,10 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
     console.log(this.datosBeneficiario);
     this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g,''));
+        let mensaje = JSON.stringify(response.mensaje);
+        mensaje.replace(/'/g, "");
+        alert(mensaje);
+        /* alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g,'')); */
         this.blockIngreso = false;
       }else{
         alert('Ingreso del Beneficiario correcto');
@@ -59,6 +63,7 @@ export class FormularioBeneficiosBeneficiarioAuthSocioComponent implements OnIni
   }
 
   limpiarDatos(){
+    this.datosBeneficiario.prioridad= '';
     this.datosBeneficiario.relacionParentesco= '';
     this.datosBeneficiario.rut= '';
     this.datosBeneficiario.fechaNacimiento= '';

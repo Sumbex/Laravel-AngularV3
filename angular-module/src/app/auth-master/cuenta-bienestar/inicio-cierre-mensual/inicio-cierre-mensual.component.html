@@ -1,0 +1,146 @@
+<!--Modal para el inicio y cierre mensual-->
+<ng-template #validar let-modal>
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+    <br>
+    <input #password class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
+    <br>
+    <button class="btn btn-success btn-block btn-sm" (click)="btn_validar_usuario(rut,password,validar)">
+      Validar
+    </button>
+    <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+  </div>
+</ng-template>
+
+<ng-template #Mensual let-modal>
+
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Cuenta Bienestar / Inicio y Cierre
+        Mensual</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body">
+
+    <p>
+      <ngb-alert type="warning" [dismissible]="false">
+        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> El primer mes de cada año
+          se debe ingresar el monto incial de forma manual.</small>
+      </ngb-alert>
+    </p>
+
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-6"><br><label><strong>Año</strong></label>
+        <select [(ngModel)]="anio" class="form-control form-control-sm">
+          <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6"><br><label><strong>Mes</strong></label>
+        <select [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
+          <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+      
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-4 col-lg-4">
+        <br><label><strong>Calcular monto</strong></label><br>
+        <button (click)="calcular()" type="submit" name="botonCalcular"
+          class="btn btn btn-outline-success btn-block btn-sm" [disabled]="selectOptionMes.value == '1'"><i
+            class="fas fa-calculator"></i> Calcular</button>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4">
+        <br><label><strong>Monto Inicial</strong></label>
+        <input class="form-control form-control-sm" type="number" name="montoInicial" #montoInicial="ngModel"
+          [(ngModel)]="monto" minlength="1" required>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4">
+        <br><label><strong>Guardar Monto</strong></label><br>
+        <button class="btn btn btn-success btn-block btn-sm" (click)="validar_usuario(validar)">
+          <i class="fas fa-save"></i> Guardar</button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="success_visible" class="alert alert-primary" role="alert">
+      {{ txt }}
+    </div>
+
+    <div *ngIf="failed_visible" class="alert alert-danger" role="alert">
+      {{ txt }}
+    </div>
+    <hr>
+    <ngb-alert type="warning" [dismissible]="false">
+      <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Informativo!</strong> En el ítem <b>"Monto de
+          cierre"</b> de la siguiente tabla cuando aparezca un <b>(*)</b>, significa que el monto aun no ha sido
+        calculado, cuando avance en cada mes es necesario ir calculando de manera responsable sus inicios y cierres
+        mensuales.</small>
+    </ngb-alert>
+    <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año</strong></label>
+      <select [(ngModel)]="f_anio" (change)="cambiar_anio()" class="form-control form-control-sm">
+        <option *ngFor="let anio of f_anios" [value]="anio.id">{{anio.descripcion}}</option>
+      </select>
+    </div>
+    <br>
+    <!--tabla del modal inicio y cierre mensual-->
+    <div class="table-responsive">
+      <table class="table table-bordered table-sm">
+        <thead text-sm class="text-center">
+
+          <tr>
+            <th colspan="14" class=" text-center" id="demoFont">
+              <h6>Movimiento anual</h6>
+            </th>
+          </tr>
+
+          <tr>
+            <th scope="col" colspan="3">Año</th>
+            <th scope="col" colspan="3">Mes</th>
+            <th scope="col" colspan="3">Monto inicial(mes anterior)</th>
+            <th scope="col" colspan="3">Monto de cierre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let t of tabla">
+            <td scope="col" colspan="3">{{ t.anio }}</td>
+            <td scope="col" colspan="3">{{ t.mes }}</td>
+            <td scope="col" colspan="3">{{ t.inicio_mensual_m }}</td>
+            <td scope="col" colspan="3">{{ t.cierre_mensual_m }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><br>
+  </div>
+
+
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta
+      Sindical
+    </button>
+  </div>
+
+
+
+
+</ng-template>
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<label><strong>Inicio y Cierre Mensual</strong></label><br>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openMensual(Mensual)">Ingresar</button>
+
+<style>
+  .modal-content{
+    background: green;
+  }
+</style>

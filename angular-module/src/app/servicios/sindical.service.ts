@@ -245,6 +245,26 @@ export class SindicalService{
         )});
     }
 
+    calcular_cuota(id): Observable<any>{
+        
+        return this._http.get(this.url + "calcular_cuota_prestamo/"+id, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    calcular_abono(id, abono_id): Observable<any>{
+        
+        return this._http.get(this.url + "calcular_abono/"+id+"/"+abono_id, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 
 
     

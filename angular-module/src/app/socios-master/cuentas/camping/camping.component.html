@@ -1,0 +1,141 @@
+<ng-template #Camping let-modal>
+      <!--Cabezal del modal camping-->
+      <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-box-open"></i> Cuenta sindical / Detalle camping</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Cuerpo del body camping-->
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-6 col-md-3 col-lg-3"><br><label>
+                <strong>Filtro por Año  </strong>
+                <i class="fas fa-calendar-check"></i>
+              </label>
+                <!---Select Año-->
+                <select id="anio_id" (change)="changeAnio($event)" class="form-control form-control-sm" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual">
+                  <option *ngFor="let a of selectAnio" [value]="a.id">{{ a.descripcion }}</option>
+                </select>
+              </div>
+            
+              <div class="col-6 col-md-3 col-lg-3"><br><label>
+                <strong>Filtro por Mes  </strong>
+                <i class="fas fa-calendar-check"></i>
+              </label>
+                <!--Select Mes-->
+                <select (change)="changeMes($event)" class="form-control form-control-sm" name="mes" #mes="ngModel" [(ngModel)]="idMesActual">
+                  <option *ngFor="let m of selectMes" [value]="m.id" >{{ m.descripcion }}</option>
+                </select>
+              </div>
+
+              <div class="col-md-4"><br><label>
+                <strong>Recargar tabla </strong>
+          
+              </label><br>
+              <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
+              <div *ngIf="cargandoTabla">
+                <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                <label>Cargando tabla de Prestamos</label>
+              </div>
+            </div>
+            </div><br>
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered table-sm shadow p-3 mb-5 bg-white rounded">
+               <thead text-sm>
+                  <!--Titulo Tabla-->  
+                  <tr>
+                  <th colspan="5" class="text-center"><h6>Detalle Comité Camping</h6></th>
+                  <th colspan="3">
+                    Cierre mensual acumulado:
+                    <div class="input-group">
+                      <b>{{montoAcumulado | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                    </div>
+                 </th>
+                 </tr>
+                  <tr class="text-center">
+                      <th><i class="fas fa-calendar-alt"></i> Fecha</th>
+                      <th><i class="fas fa-id-card"></i> Nº Documento</th>
+                      <th><i class="far fa-file-pdf"></i> PDF</th>
+                      <th colspan="2"><i class="fas fa-file-alt"></i> Detalle del camping</th>
+                      <th><i class="fas fa-arrow-down"></i> Ingreso</th>
+                      <th><i class="fas fa-arrow-up"></i> Egreso</th>
+                      <th><i class="fas fa-money-bill-wave"></i> Monto actual</th>           
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of datosCamping?.camping">
+                  <td scope="col"><b>{{ item.fecha }}</b>
+                  </td>
+                  <td scope="col"><b>{{ item.numero_documento }}</b>
+                  </td>
+
+                  <!--MODAL VISOR PDF-->
+                  <ng-template #visorCamping let-c="close" let-d="dismiss">    
+                    <div class="row">
+                        <div class="col">
+                            <div class="modal-header text-center" id="demoFont">
+                                <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                    <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento | safeUrl" frameborder="0" allowfullscreen></iframe>
+                            </div> 
+                            <div class="modal-footer" [hidden]="true">
+                                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                  </ng-template>
+                  <!--MODAL VISOR PDF-->
+
+                  <td scope="col" style="text-align: center">
+                     <a (click)="openPDF(visorCamping)" class="btn-primary-outline">
+                        <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                      </a>&nbsp;
+                  </td>
+                  <td colspan="2"><b>{{ item.descripcion }}</b>
+                  </td>
+                  <td scope="col"><b>{{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                  <td scope="col"><b>{{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b>
+                  </td>
+                  <td scope="col"><b>{{ item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                </tr>
+                <tr>
+                    <th colspan="7" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
+                    <td scope="col"><b>{{ totalesCamping?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                  </tr>
+                <br>
+
+                <tr>
+                  <th colspan="3" class="text-right"><i class="fas fa-plus-circle"></i>  INGRESOS</th>
+                  <td colspan="1"><b>{{ totalesCamping?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                </tr>
+                <tr>
+                  <th colspan="3" class="text-right"><i class="fas fa-minus-circle"></i>  EGRESOS</th>
+                  <td colspan="1"><b>{{ totalesCamping?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                </tr>
+                <tr>
+                  <th colspan="3" class="text-right"><i class="fas fa-dollar-sign"></i>  CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
+                  <td colspan="1"><b>{{ totalesCamping?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+
+      </div>
+      <!--Boton para salir del modal camping-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Sindical
+        </button>
+      </div>
+    
+  </ng-template>
+
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn-primary btn-block btn-sm" type="button" (click)="openModalCamping(Camping)">Ver
+  Datos
+</button>

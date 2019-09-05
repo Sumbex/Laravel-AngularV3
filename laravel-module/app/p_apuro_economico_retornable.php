@@ -20,7 +20,7 @@ class p_apuro_economico_retornable extends Model
 						concat(paer.dia,' de ',m_paer.descripcion,',',a_paer.descripcion) as fecha_detalle,
 						p.transferencia_bancaria,
 						p.archivo,
-						P.descripcion_prestamo,
+						UPPER(P.descripcion_prestamo) AS descripcion_prestamo,
 						paer.definicion,
 						p.egreso,
 						COALESCE(paer.ingreso,'0') as ingreso,
@@ -54,7 +54,7 @@ class p_apuro_economico_retornable extends Model
 							    egreso,
 							    transferencia_bancaria,
 							    archivo,
-							    descripcion_prestamo,
+							    UPPER(descripcion_prestamo) as descripcion_prestamo,
 							    estado_prestamo
 							from cs_prestamo as p
 							inner join mes as m on m.id = p.mes_id

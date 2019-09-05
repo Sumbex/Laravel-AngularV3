@@ -39,6 +39,9 @@ export class FormularioSindicalComponent implements OnInit {
 
   loadCajaChica:boolean = false;
 
+  //limitar acciones
+  estado;
+
   constructor(private _sindicalService: SindicalService,
     private _validarusuario:ValidarUsuarioService,
     config: NgbModalConfig, 
@@ -142,6 +145,7 @@ export class FormularioSindicalComponent implements OnInit {
         const formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
+        formData.append('estado', 'ingresar_cs');
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
 

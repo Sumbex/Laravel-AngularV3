@@ -221,6 +221,7 @@ class PortalSocioMisBeneficios extends Model
                     if (!$apuro->isEmpty()) {
                         $pagos['mensaje'] = [];
                         foreach ($apuro as $key) {
+                            /* <b></b> */
                             $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: ' . $key->cuota . ', el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso + $key->interes_mensual, 0, '.', ',') . ' pesos.';
                         }
                         return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
@@ -268,7 +269,7 @@ class PortalSocioMisBeneficios extends Model
             if (!$abonos->isEmpty()) {
                 $pagos['mensaje'] = [];
                 foreach ($abonos as $key) {
-                    $pagos['mensaje'][] = 'Se ha generado un pago el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->monto, 0, '.', ',') . ' pesos, quedando asi un total de: $' . number_format($key->restante_abono, 0, '.', ',') . ' pesos por pagar.';
+                    $pagos['mensaje'][] = 'Se ha generado un pago el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->monto, 0, '.', ',') . ' pesos, quedando asi un total de: $' . number_format($key->restante_abono, 0, '.', ',') . ' pesos por pagar en este tipo de abono.';
                 }
                 return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
             } else {

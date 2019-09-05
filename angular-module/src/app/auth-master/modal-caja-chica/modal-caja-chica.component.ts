@@ -223,31 +223,14 @@ export class ModalCajaChicaComponent implements OnInit {
   ingresarModificacionDocumento(){
     this.blockCajaChica = true;
     this.loadingModificacion = true;
-    this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
-      response => {
-        if(response.estado == "failed" || response.estado == "failed_v"){
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(response.mensaje.input[0] + "\n " + response.mensaje.input[1]);
-        }else{
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(response.mensaje);
-          this.refrescarCajaChica();
-          document.getElementById("closeModalButtonEdicion").click();
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    document.getElementById("openModalButtonPass3").click();
   }
 
   ingresarModificacionTexto(input){
     this.blockCajaChica = true;
     this.loadingModificacion = true;
-    this.valorInput = input.value;
-    document.getElementById("openModalButtonPass").click();
+    this.valorInput = input;
+    document.getElementById("openModalButtonPass2").click();
   }
 
   openEdicionModal(edicion) {
@@ -265,6 +248,10 @@ export class ModalCajaChicaComponent implements OnInit {
     this.modalReference = this.modalService.open(validar, { size: 'sm' });
   }
 
+  openContraseniaModalEdicionDocumento(validar) {
+    this.modalReference = this.modalService.open(validar, { size: 'sm' });
+  }
+
   usuarioLogeado() {
     this._http.get(this.url + "usuario_logeado", {
       headers: new HttpHeaders(
@@ -277,6 +264,40 @@ export class ModalCajaChicaComponent implements OnInit {
       },
       error => {
         console.log(error);
+      }
+    )
+  }
+
+  validarUsuarioModificacionDocumento(pass){
+    this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(
+      response => {
+        if (response > 0){
+          document.getElementById("closeModalButtonValidacion").click();
+          this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
+            response => {
+              if(response.estado == "failed" || response.estado == "failed_v"){
+                this.blockCajaChica = false;
+                this.loadingModificacion = false;
+                alert(response.mensaje.input[0] + "\n " + response.mensaje.input[1]);
+              }else{
+                this.blockCajaChica = false;
+                this.loadingModificacion = false;
+                alert(response.mensaje);
+                this.refrescarCajaChica();
+                document.getElementById("closeModalButtonEdicion").click();
+              }
+            },
+            error => {
+              console.log(error);
+            }
+          )
+        }else{
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert("Acceso denegado");
+          document.getElementById("closeModalButtonEdicion").click();
+          this.modalReference.close();
+        }
       }
     )
   }

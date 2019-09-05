@@ -72,12 +72,13 @@ export class UsuarioService {
         this.router.navigate(['']);
     }
 
-    validarUsuario(user, password): Observable<any> {
+    validarUsuario(user, password, estado): Observable<any> {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
 
         const formData = new FormData();
         formData.append('rut', user);
         formData.append('password', password);
+        formData.append('estado', estado);
 
         return this._http.post(this.url + "confirmar_usuario", formData, {headers: new HttpHeaders(
                 {

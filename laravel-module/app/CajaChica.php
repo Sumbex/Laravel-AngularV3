@@ -412,7 +412,8 @@ class CajaChica extends Model
                 DB::raw("concat(cc.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
                 'cc.numero_documento',
                 'cc.archivo_documento',
-                'cc.descripcion',
+                DB::raw("upper(cc.descripcion) as descripcion"),
+                //'cc.descripcion',
                 'cc.monto_ingreso',
                 'cc.monto_egreso',
                 'cc.definicion'

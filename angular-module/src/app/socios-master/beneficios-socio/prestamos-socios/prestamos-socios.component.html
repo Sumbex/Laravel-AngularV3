@@ -2,53 +2,230 @@
   <div class="col-12 col-md-12 col-lg-12 col-xl-12">
     <div class="row justify-content-center">
       <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Fecha Prestamo</th>
-            <th scope="col">ID Prestamo</th>
-            <th scope="col">Tipo Prestamo</th>
-            <th scope="col">Comprobante</th>
-            <th scope="col">Cuotas</th>
-            <th scope="col">Estado Abono</th>
-            <th scope="col">Estado Prestamo</th>
-            <th scope="col">Test</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-success">
-            <th scope="row">2019-01-01</th>
-            <td>$200,000</td>
-            <td>$50,000</td>
-            <td>$0</td>
-            <td>$30000</td>
-            <td>$0</td>
-            <td>0</td>
-            <td>Pagado</td>
-          </tr>
-          <tr class="table-success">
-            <th scope="row">2019-03-02</th>
-            <td>$100,000</td>
-            <td>$50,000</td>
-            <td>$10,000</td>
-            <td>$50000</td>
-            <td>$0</td>
-            <td>0</td>
-            <td>Pagado</td>
-          </tr>
-          <tr class="table-danger">
-            <th scope="row">2019-08-018</th>
-            <td>$500,000</td>
-            <td>$50,000</td>
-            <td>$0</td>
-            <td>$10,000</td>
-            <td>$450,000</td>
-            <td>3</td>
-            <td>Pendiente</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <br>
+          <h3 class="text-center table-danger">Prestamos iniciados sin pagar</h3>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">Fecha Prestamo</th>
+              <th scope="col">ID Prestamo</th>
+              <th scope="col">Comprobante</th>
+              <th scope="col">Tipo Prestamo</th>
+              <th scope="col">Cuotas</th>
+              <th scope="col">Estado Prestamo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let itemPrestamo of datosPrestamos?.vigente" class="table-success text-center" style="cursor: pointer"
+              [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
+              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,1); getPagosAbonos(itemPrestamo?.id,2); getPagosAbonos(itemPrestamo?.id,3); openModalHistorialPagos(historialPagos)">
+              <th>{{itemPrestamo?.fecha}}</th>
+              <td>{{itemPrestamo?.id}}</td>
+              <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
+                    ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+              <td>{{itemPrestamo?.tipo}}</td>
+              <td>{{itemPrestamo?.cuotas}}</td>
+              <td>{{itemPrestamo?.estado_prestamo}}</td>
+
+              <ng-template #historialPagos let-modal>
+                <!-- Header Del Modal -->
+                <div class="modal-header" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Historial de Prestamos y Abonos </strong>
+                  </h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Cuerpo del MOdal -->
+                <div class="modal-body">
+                    <div [hidden]="!loadingTabla" class="loader mx-auto"></div>
+                  <table [hidden]="hideCuotas" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Prestamos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialPagos of historialCuotas">
+                        <td>{{itemHistorialPagos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Patas del Modal -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                    class="far fa-arrow-alt-circle-left"></i> Regresar a Prestamos</button>
+                </div>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="table-responsive">
+        <br>
+          <h3 class="text-center table-warning">Prestamos con cuotas pagadas</h3>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">Fecha Prestamo</th>
+              <th scope="col">ID Prestamo</th>
+              <th scope="col">Comprobante</th>
+              <th scope="col">Tipo Prestamo</th>
+              <th scope="col">Cuotas</th>
+              <th scope="col">Estado Prestamo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let itemPrestamo of datosPrestamos?.pagando" class="table-success text-center" style="cursor: pointer"
+              [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
+              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,itemPrestamo?.tipo_id); openModalHistorialPagos(historialPagos)">
+              <th>{{itemPrestamo?.fecha}}</th>
+              <td>{{itemPrestamo?.id}}</td>
+              <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
+                    ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+              <td>{{itemPrestamo?.tipo}}</td>
+              <td>{{itemPrestamo?.cuotas}}</td>
+              <td>{{itemPrestamo?.estado_prestamo}}</td>
+
+              <ng-template #historialPagos let-modal>
+                <!-- Header Del Modal -->
+                <div class="modal-header" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Historial de Prestamos y Abonos </strong>
+                  </h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Cuerpo del MOdal -->
+                <div class="modal-body">
+                    <div [hidden]="!loadingTabla" class="loader mx-auto"></div>
+                  <table [hidden]="hideCuotas" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Prestamos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialPagos of historialCuotas">
+                        <td>{{itemHistorialPagos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Patas del Modal -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                    class="far fa-arrow-alt-circle-left"></i> Regresar a Prestamos</button>
+                </div>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="table-responsive">
+          <br>
+          <h3 class="text-center table-success">Prestamos pagados</h3>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">Fecha Prestamo</th>
+              <th scope="col">ID Prestamo</th>
+              <th scope="col">Comprobante</th>
+              <th scope="col">Tipo Prestamo</th>
+              <th scope="col">Cuotas</th>
+              <th scope="col">Estado Prestamo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let itemPrestamo of datosPrestamos?.finalizado" class="table-success text-center" style="cursor: pointer"
+              [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}"
+              (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,itemPrestamo?.tipo_id); openModalHistorialPagos(historialPagos)">
+              <th>{{itemPrestamo?.fecha}}</th>
+              <td>{{itemPrestamo?.id}}</td>
+              <td><a (click)="console.log('test');"><i class="far fa-file-alt" placement="top"
+                    ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+              <td>{{itemPrestamo?.tipo}}</td>
+              <td>{{itemPrestamo?.cuotas}}</td>
+              <td>{{itemPrestamo?.estado_prestamo}}</td>
+
+              <ng-template #historialPagos let-modal>
+                <!-- Header Del Modal -->
+                <div class="modal-header" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Historial de Prestamos y Abonos </strong>
+                  </h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Cuerpo del MOdal -->
+                <div class="modal-body">
+                    <div [hidden]="!loadingTabla" class="loader mx-auto"></div>
+                  <table [hidden]="hideCuotas" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Prestamos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialPagos of historialCuotas">
+                        <td>{{itemHistorialPagos}}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table [hidden]="hideAbonos" class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col-12">Abonos Pagados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let itemHistorialAbonos of historialAbonos">
+                        <td>{{itemHistorialAbonos}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Patas del Modal -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                    class="far fa-arrow-alt-circle-left"></i> Regresar a Prestamos</button>
+                </div>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </div>
 </div> <br>

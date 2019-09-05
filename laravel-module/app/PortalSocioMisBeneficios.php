@@ -34,12 +34,13 @@ class PortalSocioMisBeneficios extends Model
                     'p.cuotas',
                     'p.tipo_prestamo as tipo_id',
                     'tp.descripcion as tipo',
-                    'p.estado_prestamo',
+                    DB::raw("trim(p.estado_prestamo) as estado_prestamo"),
                     'p.estado_abono'
                 ])
                 ->join('anio as a', 'a.id', 'p.anio_id')
                 ->join('mes as m', 'm.id', 'p.mes_id')
                 ->join('tipo_prestamo as tp', 'tp.id', 'p.tipo_prestamo')
+                ->orderBy('p.estado_prestamo', 'asc')
                 ->orderBy('p.tipo_prestamo', 'asc')
                 ->orderBy('p.dia', 'asc')
                 ->where([
@@ -49,7 +50,53 @@ class PortalSocioMisBeneficios extends Model
                 ->get();
 
             if (!$prestamos->isEmpty()) {
-                return ['estado' => 'success', 'prestamos' => $prestamos];
+
+                foreach ($prestamos as $key) {
+                    switch ($key->tipo_id) {
+                        case 1:
+                            if ($key->estado_abono != 'sin abonos') {
+                                $key->tipo_sueldo = 1;
+                                $key->tipo_conflicto = 2;
+                                $key->tipo_trimestral = 3;
+                            }
+                            break;
+
+                        default:
+                            # code...
+                            break;
+                    }
+                }
+
+                $return = [];
+                $return['vigente'] = [];
+                $return['pagando'] = [];
+                $return['finalizado'] = [];
+
+                foreach ($prestamos as $key) {
+                    switch ($key->estado_prestamo) {
+                        case 'vigente':
+                            $return['vigente'][] = $key;
+                            break;
+
+                        case 'pagando':
+                            $return['pagando'][] = $key;
+                            break;
+
+                        case 'pagado':
+                            $return['finalizado'][] = $key;
+                            break;
+
+                        case 'egresado':
+                            $return['finalizado'][] = $key;
+                            break;
+
+                        default:
+                            # code...
+                            break;
+                    }
+                }
+                //dd($return);
+                return ['estado' => 'success', 'prestamos' => $return];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'Aun no tienes prestamos pedidos.'];
             }

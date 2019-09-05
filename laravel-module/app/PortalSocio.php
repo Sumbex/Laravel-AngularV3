@@ -1105,6 +1105,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 'activo' => 'S',
                 'socio_id' => $this->socioLogeado()->id
             ])
+            ->orderBy('relacion_socio_id', 'asc')
             ->get();
 
         if (!$PS->isEmpty()) {

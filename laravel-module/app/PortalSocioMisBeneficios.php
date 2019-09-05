@@ -181,7 +181,7 @@ class PortalSocioMisBeneficios extends Model
                     if (!$salud->isEmpty()) {
                         $pagos['mensaje'] = [];
                         foreach ($salud as $key) {
-                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: <b>' . $key->cuota . '</b>, el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso, 0, '.', ',') . ' pesos.';
+                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: <b>' . $key->cuota . '</b>, el dia: <b>' . $key->fecha_pago . '</b>, por un monto de: $<b>' . number_format($key->ingreso, 0, '.', ',') . '</b> pesos.';
                             /* $key->tipo_sueldo = 1;
                             $key->tipo_conflicto = 2;
                             $key->tipo_trimestral = 3; */
@@ -222,7 +222,7 @@ class PortalSocioMisBeneficios extends Model
                         $pagos['mensaje'] = [];
                         foreach ($apuro as $key) {
                             /* <b></b> */
-                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: <b>' . $key->cuota . '</b>, el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->ingreso + $key->interes_mensual, 0, '.', ',') . ' pesos.';
+                            $pagos['mensaje'][] = 'Se ha generado un pago por la cuota n°: <b>' . $key->cuota . '</b>, el dia: <b>' . $key->fecha_pago . '</b>, por un monto de: $<b>' . number_format($key->ingreso + $key->interes_mensual, 0, '.', ',') . '</b> pesos.';
                         }
                         return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
                     } else {
@@ -269,7 +269,7 @@ class PortalSocioMisBeneficios extends Model
             if (!$abonos->isEmpty()) {
                 $pagos['mensaje'] = [];
                 foreach ($abonos as $key) {
-                    $pagos['mensaje'][] = 'Se ha generado un pago el dia: ' . $key->fecha_pago . ', por un monto de: $' . number_format($key->monto, 0, '.', ',') . ' pesos, quedando asi un total de: $' . number_format($key->restante_abono, 0, '.', ',') . ' pesos por pagar en este tipo de abono.';
+                    $pagos['mensaje'][] = 'Se ha generado un pago el dia: <b>' . $key->fecha_pago . '</b>, por un monto de: $<b>' . number_format($key->monto, 0, '.', ',') . '</b> pesos, quedando asi un total de: $<b>' . number_format($key->restante_abono, 0, '.', ',') . '</b> pesos por pagar en este tipo de abono.';
                 }
                 return ['estado' => 'success', 'mensaje' => $pagos['mensaje']];
             } else {

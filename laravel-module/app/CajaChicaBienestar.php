@@ -1,0 +1,266 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
+class CajaChicaBienestar extends Model
+{
+    protected $table = "cb_caja_chica";
+
+    protected function fecha($value)
+    {
+        $fecha = $value;
+        $anio = substr($fecha, -10, 4);
+        $mes = substr($fecha, -5, 2);
+        $dia = substr($fecha, -2, 2);
+        return [
+            'anio' => $anio, 'mes' => $mes, 'dia' => $dia
+        ];
+    }
+    protected function anioID($value)
+    {
+        return DB::table('anio')->where('descripcion', $value)->first()->id;
+    }
+
+    protected function mesID($value)
+    {
+        return DB::table('mes')->where('id', $value)->first()->id;
+    }
+
+    protected function existeInicioMensual($anio, $mes)
+    {
+        $existe = DB::table('cbe_cierre_mensual')
+            ->select([
+                'inicio_mensual'
+            ])
+            ->where([
+                'activo' => 'S',
+                'anio_id' => $anio,
+                'mes_id' => $mes
+            ])
+            ->get();
+
+        if (!$existe->isEmpty()) {
+            return ['estado' => 'success'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no se ha realizado el ingreso a inicio mensual en la fecha ingresada.'];
+        }
+    }
+
+    protected function existeCajaChica($anio, $mes)
+    {
+        $IM = $this->existeInicioMensual($anio, $mes);
+        if ($IM['estado'] == 'success') {
+            $existe = DB::table('cuenta_bienestar')
+                ->select([
+                    'monto_egreso'
+                ])
+                ->where([
+                    'activo' => 'S',
+                    'anio_id' => $anio,
+                    'mes_id' => $mes,
+                    'tipo_cuenta_bienestar_id' => 6
+                ])
+                ->get();
+
+            if (!$existe->isEmpty()) {
+                return ['estado' => 'success', 'monto_caja' => $existe[0]->monto_egreso];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no ha realizado el ingreso a Caja Chica este mes.'];
+            }
+        } else {
+            return $IM;
+        }
+    }
+
+    protected function saldoActualCajaChica($anio, $mes, $MCC)
+    {
+        $saldo = DB::table('cb_caja_chica')
+            ->select([
+                DB::raw('sum(coalesce(monto_ingreso, 0)) as monto_ingreso'),
+                DB::raw('sum(coalesce(monto_egreso, 0)) as monto_egreso')
+            ])
+            ->where([
+                'activo' => 'S',
+                'anio_id' => $anio,
+                'mes_id' => $mes
+            ])
+            ->get();
+        if (!$saldo->isEmpty()) {
+            $MA = 0;
+            if ($saldo[0]->monto_ingreso == 0) {
+                $MA = $MCC - $saldo[0]->monto_egreso;
+            } else {
+                $resta = $saldo[0]->monto_ingreso - $saldo[0]->monto_egreso;
+                $MA = $MCC - $resta;
+            }
+            return ['estado' => 'success', 'saldo' => $MA];
+        } else {
+            return ['estado' => 'failed', 'saldo' => $MCC];
+        }
+    }
+
+    protected function guardarArchivo($archivo, $ruta)
+    {
+        $filenameext = $archivo->getClientOriginalName();
+        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+        $extension = $archivo->getClientOriginalExtension();
+        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+        $rutaDB = 'storage/' . $ruta . $nombreArchivo;
+
+        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+        if ($guardar) {
+            return ['estado' =>  'success', 'archivo' => $rutaDB];
+        } else {
+            return ['estado' =>  'failed', 'mensaje' => 'Error al intentar guardar el archivo.'];
+        }
+    }
+
+    protected function ingresarCajaChica($request)
+    {
+        $fecha = $this->fecha($request->fecha);
+        $anio = $this->anioID($fecha['anio']);
+        $mes = $this->mesID($fecha['mes']);
+
+        $existe = $this->existeCajaChica($anio, $mes);
+        if ($existe['estado'] == 'success') {
+            $saldo = $this->saldoActualCajaChica($anio, $mes, $existe['monto_caja']);
+            if (array_has($saldo, 'estado')) {
+                if ($request->monto <= $saldo['saldo']) {
+                    $caja = new CajaChicaBienestar;
+                    $caja->anio_id = $anio;
+                    $caja->mes_id = $mes;
+                    $caja->dia = $fecha['dia'];
+                    $caja->numero_documento = $request->numero_documento;
+                    $guardarArchivo = $this->guardarArchivo($request->archivo_documento, 'ArchivosCajaChicaBienestar/');
+                    if ($guardarArchivo['estado'] == "success") {
+                        $caja->archivo_documento = $guardarArchivo['archivo'];
+                        $caja->descripcion = $request->descripcion;
+                        switch ($request->definicion) {
+                            case '1':
+                                $caja->monto_ingreso = $request->monto;
+                                break;
+                            case '2':
+                                $caja->monto_egreso = $request->monto;
+                                break;
+                            default:
+                                # code...
+                                break;
+                        }
+                        $caja->definicion = $request->definicion;
+                        $caja->user_crea = Auth::user()->id;
+                        $caja->activo = "S";
+                        if ($caja->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Datos ingresados correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                    } else {
+                        return $guardarArchivo;
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'El monto que intentas ingresar excede al saldo actual en Caja Chica.'];
+                }
+            }
+        } else {
+            return $existe;
+        }
+    }
+
+    protected function traerCajaChicaTotal($anio, $mes)
+    {
+        $existe = $this->existeCajaChica($anio, $mes);
+        if ($existe['estado'] == 'success') {
+            $total = $this->totalesCajaChica($anio, $mes);
+            if ($total['estado'] == 'success') {
+                return $this->traerCajaChica($anio, $mes, $existe['monto_caja'], $total['totales']);
+            } else {
+                return $total;
+            }
+        } else {
+            return $existe;
+        }
+    }
+
+    protected function traerCajaChica($anio, $mes, $MC, $total)
+    {
+        $caja = DB::table('cb_caja_chica as cc')
+            ->select([
+                'cc.id',
+                DB::raw("concat(cc.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha"),
+                'cc.numero_documento',
+                'cc.archivo_documento',
+                DB::raw("upper(cc.descripcion) as descripcion"),
+                'cc.monto_ingreso',
+                'cc.monto_egreso',
+                'cc.definicion'
+            ])
+            ->join('anio as a', 'a.id', 'anio_id')
+            ->join('mes as m', 'm.id', 'mes_id')
+            ->where([
+                'cc.activo' => 'S',
+                'cc.anio_id' => $anio,
+                'cc.mes_id' => $mes,
+            ])
+            ->orderby('cc.dia', 'ASC')
+            ->get();
+
+        if (!$caja->isEmpty()) {
+            $tomar = true;
+            for ($i = 0; $i < count($caja); $i++) {
+                switch ($caja[$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $MC + $caja[$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual + $caja[$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $caja[$i]->saldo_actual = $MC - $caja[$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $caja[$i]->saldo_actual = $caja[$i - 1]->saldo_actual - $caja[$i]->monto_egreso;
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            $total->cierre_mes = $total->total + $MC;
+            return ['estado' => 'success', 'monto_inicio' => $MC, 'caja' => $caja, 'total' => $total];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+        }
+    }
+
+    protected function totalesCajaChica($anio, $mes)
+    {
+        $totales = DB::table('cb_caja_chica')
+            ->select([
+                DB::raw('sum(coalesce(monto_ingreso, 0)) as total_ingreso'),
+                DB::raw('sum(coalesce(monto_egreso, 0)) as total_egreso'),
+                DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(coalesce(monto_egreso, 0)) as total')
+            ])
+            ->where([
+                'activo' => 'S',
+                'anio_id' => $anio,
+                'mes_id' => $mes,
+            ])
+            ->get();
+
+        if (!$totales->isEmpty()) {
+            return ['estado' => 'success', 'totales' => $totales[0]];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+        }
+    }
+}

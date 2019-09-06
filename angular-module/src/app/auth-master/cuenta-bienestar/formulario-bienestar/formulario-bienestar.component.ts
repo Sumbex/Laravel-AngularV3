@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
 import { BienestarService } from 'src/app/servicios/bienestar.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-formulario-bienestar',
@@ -18,7 +19,8 @@ export class FormularioBienestarComponent implements OnInit {
   nombreSocioTest = '';
   nombreUpperSocio = '';
 
-  //variables cuenta gas
+  //variables cuenta Bienestar
+  blockIngreso: boolean = false;
   InsertarCuentaBienestar = {
     fecha:'',
     tipo_cuenta_bienestar_id: '',
@@ -28,14 +30,24 @@ export class FormularioBienestarComponent implements OnInit {
     definicion: '',
     descripcion: '',
   }
-  blockIngreso: boolean = false;
+  //varibles modal permisos usuario
+  user: object=[];
+  load: boolean=false;
+  validarFormBienestar = null;
 
   constructor(
     private _SociosService: SociosService,
     private _validarusuario: ValidarUsuarioService,
-    private _bienestarService: BienestarService) {
-  }
+    private _bienestarService: BienestarService,
+    config: NgbModalConfig, 
+    private modalService: NgbModal) 
+    {
+    config.backdrop = 'static';
+    config.keyboard = false;
+    }
+  
   ngOnInit() {
+    this.usuario_logeado();
   }
 
   buscarSocio() {
@@ -110,9 +122,53 @@ export class FormularioBienestarComponent implements OnInit {
       error => {
         console.log(error);
         this.blockIngreso = false;
+        return false;
       }
     );
 
   }
+
+  usuario_logeado(){
+      
+    this._validarusuario.usuario_logeado().subscribe((val : object ) => {
+          
+          this.user = val;
+
+      }, response => {console.log("POST call in error", response);},() => {
+             console.log("The POST success.");
+      });
+      }
+
+      btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
+        this.load = true;
+        const formData = new FormData();
+        formData.append('rut', $rut.value);
+        formData.append('password', $password.value);
+        formData.append('estado', 'ingresar_cb');
+
+        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+            if(val > 0){//si tiene acceso;
+              
+              this.load = false;
+              this.guardarCuentaBienestar(); 
+              this.validarFormBienestar.close();
+            }else{
+              alert("Acceso denegado");
+              this.load = false;
+              this.validarFormBienestar.close();
+            }
+
+        }, response => {console.log("POST call in error", response);},() => {
+              console.log("The POST success.");
+        });
+      }
+
+
+
+      validar_usuario(modalUsuario){
+      this.validarFormBienestar = this.modalService.open(modalUsuario, { size: 'sm' });
+    
+      }
 }
 

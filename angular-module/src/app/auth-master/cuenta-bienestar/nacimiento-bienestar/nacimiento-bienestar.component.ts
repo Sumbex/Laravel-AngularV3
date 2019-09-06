@@ -10,6 +10,15 @@ export class NacimientoBienestarComponent implements OnInit {
   @Input () getIdSocio:'';
   @Input () getNombreSocio:'';
 
+  //variables cuenta Bienestar
+  InsertarNacimiento = {
+    fecha:'',
+    numero_documento_1: '',
+    archivo_documento_1: null,
+    definicion: '',
+    monto: '',
+  }
+
   constructor() {
     }
 

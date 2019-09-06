@@ -51,6 +51,11 @@ class CajaChicaBienestar extends Model
         }
     }
 
+    protected function calcularValorCajaChicaMesAnterior($anio, $mes)
+    {
+        //
+    }
+
     protected function existeCajaChica($anio, $mes)
     {
         $IM = $this->existeInicioMensual($anio, $mes);

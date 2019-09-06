@@ -211,7 +211,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno' => 'required|string',
                         'apellido_materno' => 'required|string',
                         'direccion' => 'required|string',
-                        'celular' => 'required|string'
+                        'celular' => 'required|string',
+                        'prioritario' => 'required'
                     ],
                     [
                         'relacion.required' => 'Debes ingresar su relacion.',
@@ -221,7 +222,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'apellido_paterno.required' => 'Debes ingresar el apellido',
                         'apellido_materno.required' => 'Debes ingresar el apellido',
                         'direccion.required' => 'Debes ingresar la direccion',
-                        'celular.required' => 'Debes ingresar el numero de celular'
+                        'celular.required' => 'Debes ingresar el numero de celular',
+                        'prioritario.required' => 'Debes seleccionar el orden de prioridad'
                     ]
                 );
                 break;

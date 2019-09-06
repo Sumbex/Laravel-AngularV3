@@ -105,4 +105,6 @@ Route::post('cbe_guardar_inicio_mensual','InicioCierreMensualBienestarController
 Route::get('cbe_calcular_cm/{anio}/{mes}', 'CierreMensualController@calcular_cierre_e_inicio_mensual');
 
 Route::post('cbe_insertar', 'CuentaBienestarController@insertar');
+Route::get('cbe_listar/{anio}/{mes}', 'CuentaBienestarController@listar_cuenta');
+
 

@@ -86,5 +86,5 @@ class CierreMensualBienEstar extends Model
     	}
     	return ['estado'=>'failed', 'mensaje' => 'no hay monto incial en este mes'];
     }# code...
-    }
+    
 }

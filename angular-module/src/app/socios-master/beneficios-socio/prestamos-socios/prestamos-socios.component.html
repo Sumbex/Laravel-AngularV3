@@ -48,13 +48,13 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialPagos of historialCuotas">
-                        <td>{{itemHistorialPagos}}</td>
+                        <td [innerHTML]="itemHistorialPagos">{{itemHistorialPagos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
                 </div>
                 <div [hidden]="hideAllAbonos">
-                  <table [hidden]="hideAbonoDiaSueldo" class="table table-sm">
+                  <table [hidden]="hideAbonosDiaSueldo" class="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col-12">Abonos Pagados por Día de Sueldo</th>
@@ -62,7 +62,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoDiaSueldo">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -74,7 +74,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoTerminoConflicto">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -86,7 +86,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoTrimestral">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -151,7 +151,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialPagos of historialCuotas">
-                        <td>{{itemHistorialPagos}}</td>
+                        <td [innerHTML]="itemHistorialPagos">{{itemHistorialPagos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -165,7 +165,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoDiaSueldo">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -177,7 +177,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoTerminoConflicto">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -189,7 +189,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoTrimestral">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -254,7 +254,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialPagos of historialCuotas">
-                        <td>{{itemHistorialPagos}}</td>
+                        <td [innerHTML]="itemHistorialPagos">{{itemHistorialPagos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -268,7 +268,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoDiaSueldo">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -280,7 +280,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoTerminoConflicto">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -292,7 +292,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let itemHistorialAbonos of historialAbonoTrimestral">
-                        <td>{{itemHistorialAbonos}}</td>
+                        <td [innerHTML]="itemHistorialAbonos">{{itemHistorialAbonos}}</td>
                       </tr>
                     </tbody>
                   </table>

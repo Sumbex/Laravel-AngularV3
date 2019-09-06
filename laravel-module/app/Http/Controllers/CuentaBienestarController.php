@@ -96,23 +96,24 @@ class CuentaBienestarController extends Controller
                     }
 
                 }
+
                 $return = [];
                     $return['Cuenta_gas']=[];
                     $return['inasistencia_reunion']=[];
-                    $return['caja_chica']=[];
                     $return['inasistencia_votacion']=[];
+                    $return['caja_chica']=[];
                     $return['fallecimiento']=[];
                     $return['nacimiento']=[];
                     $return['gastos_medicos']=[];
 
                     foreach ($listar as $key) {
-                        switch ($key->tipo_cuenta_bienestar_id) {
+                        switch ($key->orden) {
                             case '1': $return['Cuenta_gas'][] = $key; break;
                             case '2': $return['inasistencia_reunion'][] = $key; break;
                             case '3': $return['inasistencia_votacion'][] = $key; break;
-                            case '6': $return['caja_chica'][] = $key; break;
-                            case '4': $return['fallecimiento'][] = $key; break;
-                            case '5': $return['nacimiento'][] = $key; break;
+                            case '4': $return['caja_chica'][] = $key; break;
+                            case '5': $return['fallecimiento'][] = $key; break;
+                            case '6': $return['nacimiento'][] = $key; break;
                             case '7': $return['gastos_medicos'][] = $key; break;
                             
                             default:

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\CbeNacimiento;
+use App\CbeFallecimiento;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,7 +51,7 @@ class Cuentabienestar extends Model
             return ['estado'=>'failed', 'mensaje'=>'Error al guardar item de cuenta del gas'];
         }
     }
-     protected function insertar_cuenta_sindical($r)//aqui cae la del gas, caja chica, reunion y votacion
+     protected function insertar_cuenta_sindical($r)//caja chica, reunion y votacion
     {
         $f = $this->div_fecha($r->fecha);
         $anio = $this->anio_tipo_id($f['anio']);
@@ -70,12 +72,53 @@ class Cuentabienestar extends Model
             $cbe->descripcion = $r->descripcion;
 
             if ($cbe->save()) {
-                return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
+                return [ 'estado'=>'success', 'mensaje'=> 'Item ingresado correctamente' ];
             }
-            return ['estado'=>'failed', 'mensaje'=>'Error al guardar item de cuenta del gas'];
+            return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
         
     }
 
+    protected function insertar_fall_nac_gm($r)
+    {
+         $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
+
+            $cbe = $this;
+            $cbe->anio_id = $anio->id;
+            $cbe->mes_id = $f['mes'];
+            $cbe->dia = $f['dia'];
+            $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
+            $cbe->numero_documento_1 = $r->numero_documento_1;
+            $cbe->archivo_documento_1 = 'documento.pdf' /*$r->archivo_documento_1*/;
+            $cbe->definicion = $r->definicion;
+            $cbe->activo = 'S';
+
+            if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
+            if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
+
+            $cbe->descripcion = $r->descripcion;
+
+            if ($cbe->save()) {
+
+                switch ((string)$cbe->tipo_cuenta_bienestar_id) {
+                    case '4'://Fallecimiento
+                        return CbeFallecimiento::insertar($cbe->id, $r->socio_id);
+                    break;
+                     case '5'://Nacimiento
+                        return CbeNacimiento::insertar($cbe->id, $r->socio_id);
+                    break;
+                     case '7'://Gastos medicos
+                        return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
+                    break;
+                    
+                    default:
+                        # code...
+                    break;
+                }
+
+            }
+            return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+    }
 
     protected function listar($anio, $mes)
     {
@@ -128,5 +171,29 @@ class Cuentabienestar extends Model
     	} 
     		
     }
+
+     protected function resultado_cuenta_sindical($anio, $mes)
+	{
+			$ingreso_total = $this::where(['activo'=>'S', 'anio_id' => $anio, 'mes_id' => $mes ])
+			// ->where('cuenta_bienestar.detalle_camping', null)
+			->sum('monto_ingreso');
+			$egreso_total = $this::where(['activo'=>'S', 'anio_id' => $anio, 'mes_id' => $mes ])
+			// ->where('cuenta_bienestar.detalle_camping', null)
+			->sum('monto_egreso');
+			$total = $ingreso_total - $egreso_total;
+
+			$anterior = DB::table('cbe_cierre_mensual')->select('inicio_mensual')->where([
+				'mes_id'=> $mes, 'anio_id' => $anio
+			])->first();
+
+			return [
+				'ingreso_total' => $ingreso_total,
+				'egreso_total' => $egreso_total,
+				'total_actual' => $total,
+				'total_resumen' => $total.' + '. $anterior->inicio_mensual.' = '.($total + $anterior->inicio_mensual),
+				'total_final' => ($total + $anterior->inicio_mensual)
+			];
+
+	}
 
 }

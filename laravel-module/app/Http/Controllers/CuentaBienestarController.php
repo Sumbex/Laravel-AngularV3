@@ -30,10 +30,23 @@ class CuentaBienestarController extends Controller
                  $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                 return $cuenta_be;
             break;
-            
+
+            //-------------------------------------------------------------------------------------------------
+            case '4': //Fallecimiento
+                $fall = Cuentabienestar::insertar_fall_nac_gm($r);
+                return $fall;
+            break;
+            case '5'://Nacimiento
+                $nac = Cuentabienestar::insertar_fall_nac_gm($r);
+                return $nac;
+            break;
+            case '7'://Gastos medicos
+                $gm = Cuentabienestar::insertar_fall_nac_gm($r);
+                return $gm;
+            break;
             default:
-                # code...
-                break;
+                
+            break;
         }
 
     }
@@ -42,23 +55,22 @@ class CuentaBienestarController extends Controller
     {
         $cm_txt = 'cbe_cierre_mensual';
 			
-		$c_m = DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes,
-		    	])->first();
+		$c_m=DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes])->first();
       
-        // dd(!empty($c_m->inicio_mensual));
 		if(!empty($c_m->inicio_mensual)){
 			$s_a = $c_m->inicio_mensual;
-            $tomar = true;
 
             $listar = Cuentabienestar::listar($anio, $mes);
 
             if ($listar > 0) {
 
-               
+                $tomar = true;
+
                 for ($i=0; $i < count($listar); $i++) { 
                 
                     switch ($listar[$i]->definicion) {
                         case '1':  
+
                             if ($tomar == true) {
                                 $listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
                                 $tomar = false;
@@ -82,7 +94,9 @@ class CuentaBienestarController extends Controller
                         break;
                     
                     }
-                    $return = [];
+
+                }
+                $return = [];
                     $return['Cuenta_gas']=[];
                     $return['inasistencia_reunion']=[];
                     $return['caja_chica']=[];
@@ -103,15 +117,14 @@ class CuentaBienestarController extends Controller
                             
                             default:
                                 # code...
-                                break;
+                            break;
                         }
                     }
+                    $return['resultado'] = Cuentabienestar::resultado_cuenta_sindical($anio, $mes);
 
                     return $return;
-
-
-                }
             }
+            return ['estado'=>'failed','mensaje'=>'No hay datos en la tabla'];
         }
         return ['estado'=>'failed','mensaje'=>'No hay monto inicial en este mes'];
        

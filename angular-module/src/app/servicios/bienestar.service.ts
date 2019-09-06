@@ -60,7 +60,7 @@ insertar_CuentaBienestar(form): Observable<any> {
 }
 
 getTablaBienestar(anio: string, mes: string): Observable<any>{
-  return this._http.get(this.url + "listar_c_b/" + anio + "/" + mes, {headers: new HttpHeaders(
+  return this._http.get(this.url + "cbe_listar/" + anio + "/" + mes, {headers: new HttpHeaders(
       {
           'Authorization': 'Bearer' + this.token,
           'Content-Type': 'applcation/json'

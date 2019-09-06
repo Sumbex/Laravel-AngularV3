@@ -3,6 +3,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
 import { BienestarService } from 'src/app/servicios/bienestar.service';
+import { Anios } from 'src/app/modelos/anios.model';
+import { Meses } from 'src/app/modelos/meses.model';
 
 @Component({
   selector: 'app-tabla-bienestar',
@@ -12,12 +14,23 @@ import { BienestarService } from 'src/app/servicios/bienestar.service';
 export class TablaBienestarComponent implements OnInit {
 
   modalTablaBienestar = null;
+  loading = false;
 
   //variables select año y mes
-  anio;
-  anios;
-  mes;
-  meses;
+
+  anio; anios;
+  mes; meses;
+  idAnioActual;
+  idMesActual;
+  suc_res1 = false;
+  suc_res2 = false;
+
+  valorAnio: Anios = {
+    descripcion: ''
+  }
+  valorMes: Meses = {
+    descripcion: ''
+  }
 
   //usuario logeado
   user: object = [];
@@ -32,7 +45,16 @@ export class TablaBienestarComponent implements OnInit {
   actualizarLoad: boolean;
   modalActualizar = null;
 
-
+  //tablas bienestar
+  tablaBienestar;
+  gas;
+  reunion;
+  votacion;
+  fallecimiento;
+  nacimiento;
+  medico;
+  cajaChica;
+  resultado: any = ["total_final"];
 
   constructor(config: NgbModalConfig,
     private modalService: NgbModal,
@@ -46,9 +68,11 @@ export class TablaBienestarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   openTablaBienestar(TablaBienestar) {
     this.modalTablaBienestar = this.modalService.open(TablaBienestar, { size: 'xl' });
-    this.llenar_fecha();
+    this.llenar_select();
   }
 
   openActualizar(Actualizar) {
@@ -58,18 +82,21 @@ export class TablaBienestarComponent implements OnInit {
 
   cerrarActualizar() {
     this.modalActualizar.close();
-    // this.actualizarMontoCajaChica = '';
   }
 
-  llenar_fecha() {
+  llenar_select() {
 
     this._time.getAnios().subscribe(
       response => {
         this.anios = response;
 
+
         this._time.getAnioActual().subscribe(
           (response: { id }) => {
             this.anio = response.id;
+            this.suc_res1 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+
           },
           error => {
             console.log(error);
@@ -88,6 +115,8 @@ export class TablaBienestarComponent implements OnInit {
         this._time.getMesActual().subscribe(
           (response: { id }) => {
             this.mes = response.id;
+            this.suc_res2 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
           },
           error => {
             console.log(error);
@@ -98,6 +127,56 @@ export class TablaBienestarComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  listo_para_listar(res1, res2) {
+    if (res1 == true && res2 == true) {
+      //  this.cierreMensualAnterior();
+      this.refrescarBienestar();
+
+    }
+  }
+
+  refrescarBienestar() {
+    this.tablaBienestar = [];
+    this.gas = [];
+    this.reunion = [];
+    this.votacion = [];
+    this.cajaChica = [];
+    this.nacimiento = [];
+    this.fallecimiento = [];
+    this.medico = [];
+    this.resultado = [];
+    this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(
+      response => {
+        if (response == null) {
+          this.tablaBienestar = [];
+          this.gas = [];
+          this.reunion = [];
+          this.votacion = [];
+          this.cajaChica = [];
+          this.nacimiento = [];
+          this.fallecimiento = [];
+          this.medico = [];
+          this.resultado = [];
+        } else {
+          this.tablaBienestar = response;
+          this.gas = this.tablaBienestar.Cuenta_gas;
+          this.reunion = this.tablaBienestar.inasistencia_reunion;
+          this.votacion = this.tablaBienestar.inasistencia_votacion;
+          this.cajaChica = this.tablaBienestar.caja_chica;
+          this.nacimiento = this.tablaBienestar.nacimiento;
+          this.fallecimiento = this.tablaBienestar.fallecimiento;
+          this.medico = this.tablaBienestar.gastos_medicos;
+          this.resultado = this.tablaBienestar.resultado;
+        }
+        this.loading = false;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.loading = true;
   }
 
   usuario_logeado() {

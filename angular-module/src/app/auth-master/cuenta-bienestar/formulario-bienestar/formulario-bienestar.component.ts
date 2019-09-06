@@ -22,6 +22,7 @@ export class FormularioBienestarComponent implements OnInit {
   //variables cuenta Bienestar
   blockIngreso: boolean = false;
   InsertarCuentaBienestar = {
+    socioId:'0',
     fecha:'',
     tipo_cuenta_bienestar_id: '',
     numero_documento_1: '',
@@ -92,6 +93,7 @@ export class FormularioBienestarComponent implements OnInit {
     }
     this.blockIngreso = true;
     const data = new FormData();
+    data.append('socio_id', this.InsertarCuentaBienestar.socioId);
     data.append('fecha', this.InsertarCuentaBienestar.fecha);
     data.append('tipo_cuenta_bienestar_id', this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id);
     data.append('numero_documento_1', this.InsertarCuentaBienestar.numero_documento_1);
@@ -107,10 +109,11 @@ export class FormularioBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'success') {
+        this.InsertarCuentaBienestar.socioId = '0';
         this.InsertarCuentaBienestar.fecha = '';
         this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id = '';
         this.InsertarCuentaBienestar.numero_documento_1 = '';
-        this.InsertarCuentaBienestar.archivo_documento_1 = '';
+        this.InsertarCuentaBienestar.archivo_documento_1 = null;
         this.InsertarCuentaBienestar.monto = '';
         this.InsertarCuentaBienestar.definicion = '';
         this.InsertarCuentaBienestar.descripcion = '';

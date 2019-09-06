@@ -110,9 +110,9 @@ class CuentaBienestarController extends Controller
                             case '1': $return['Cuenta_gas'][] = $key; break;
                             case '2': $return['inasistencia_reunion'][] = $key; break;
                             case '3': $return['inasistencia_votacion'][] = $key; break;
+                            case '6': $return['caja_chica'][] = $key; break;
                             case '4': $return['fallecimiento'][] = $key; break;
                             case '5': $return['nacimiento'][] = $key; break;
-                            case '6': $return['caja_chica'][] = $key; break;
                             case '7': $return['gastos_medicos'][] = $key; break;
                             
                             default:

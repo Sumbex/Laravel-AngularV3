@@ -16,9 +16,23 @@
         <div *ngIf="loadingTabla" class="loader"></div>
         <table class="table table-striped table-bordered table-sm" *ngIf="!loadingTabla">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="row justify-content-between">
+            <br>
+            <div class="row justify-content-between mx-auto">
 
               <div *ngFor="let item of datosBeneficiario" class="col-12 col-md-6 col-lg-6 col-xl-6">
+                  <tr>
+                      <th style="background: #195fcf" class="text-right">PRIORIDAD:</th>
+                      <td>
+                        <select name="Prioridad" id="prioridad" class="form-control form-control-sm sinbordefondo"
+                          [(ngModel)]="item.prioritario" disabled>
+                          <option value="">--SELECCIONE--</option>
+                          <option value="1">PRIMARIO</option>
+                          <option value="2">SECUNDARIO</option>
+                          <option value="3">TERCIARIO</option>
+                          <option value="10">SIN ORDEN</option>
+                        </select>
+                      </td>
+                    </tr>
                 <tr>
                   <th style="background: #195fcf" class="text-right">RELACION:</th>
                   <td><input type="text" class="sinbordefondo centrado"

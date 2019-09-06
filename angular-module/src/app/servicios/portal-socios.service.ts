@@ -97,6 +97,7 @@ export class PortalSociosService{
     setDatosBeneficiarios(form): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
+        body.append('prioritario', form.prioridad)
         body.append('relacion', form.relacionParentesco);
         body.append('rut', form.rut);
         body.append('fecha_nacimiento', form.fechaNacimiento);

@@ -41,6 +41,7 @@ export class TablaBeneficiosBeneficiarioAuthSocioComponent implements OnInit {
         this.loadingTabla = false;
       }else{
         this.datosBeneficiario = response.beneficiario;
+        console.log(this.datosBeneficiario);
         this.loadingTabla = false;
       }
     },

@@ -55,7 +55,7 @@ export class CambioInformacionPersonalSocioComponent implements OnInit {
         alert(response.mensaje);
         this.blockUpdate = false;
       }else{
-        alert('¡Dato actualizado correctamente!');
+        alert('Datos actualizados correctamente, el sistema se reiniciará para aplicar los nuevos cambios.');
         this.blockUpdate = false;
         window.location.reload();
       }

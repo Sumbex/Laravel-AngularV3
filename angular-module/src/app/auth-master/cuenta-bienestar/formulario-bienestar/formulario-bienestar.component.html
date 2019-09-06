@@ -157,7 +157,8 @@
     <div class="card-body">
       <div class="row">
         <div class="row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-div class="col-12 col-md-3 col-lg-3 col-xl-3">
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <br><label><strong>Ingrese Fecha</strong></label> <br>
             <div class="input-group">
               <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarCuentaBienestar.fecha"
@@ -179,7 +180,8 @@ div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <input class="form-file-input" type="file" (change)="onSelectPDF($event)">
           </div>
 
-          <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <br><label><strong>Seleccione Tipo</strong></label>
             <select name="Tipo" id="tipo" class="form-control form-control-sm"
               [(ngModel)]="InsertarCuentaBienestar.definicion" required>
               <option value="">--Seleccione--</option>
@@ -188,7 +190,8 @@ div class="col-12 col-md-3 col-lg-3 col-xl-3">
             </select>
           </div><br>
 
-          <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Detalle Tipo</strong></label>
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <br><label><strong>Detalle Tipo</strong></label>
             <select name="detalleTipo" id="detalleTipo" class="form-control form-control-sm"
               [(ngModel)]="InsertarCuentaBienestar.tipo_cuenta_bienestar_id" required>
               <option value="">--Seleccione--</option>
@@ -216,13 +219,21 @@ div class="col-12 col-md-3 col-lg-3 col-xl-3">
 
           <div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm" type="submit"
-              (click)="guardarCuentaBienestar()" [disabled]>Guardar
+            <button class="btn btn btn-success btn-block btn-sm" (click)="guardarCuentaBienestar()"
+            [disabled]="InsertarCuentaBienestar.fecha == ''
+                     || InsertarCuentaBienestar.tipo_cuenta_bienestar_id == '' 
+                     || InsertarCuentaBienestar.numero_documento_1 == '' 
+                     || InsertarCuentaBienestar.archivo_documento_1 == null
+                     || InsertarCuentaBienestar.monto == ''
+                     || InsertarCuentaBienestar.monto == null
+                     || InsertarCuentaBienestar.definicion == ''
+                     || InsertarCuentaBienestar.descripcion == ''">
+                     Guardar
               <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
                 src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
             </button>
           </div>
-          <
+
 
           <div class="col-12 col-md-3 col-lg-3 col-xl-3">
             <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>

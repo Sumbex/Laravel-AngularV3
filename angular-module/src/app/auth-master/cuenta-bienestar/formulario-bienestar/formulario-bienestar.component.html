@@ -22,7 +22,7 @@
 
       <!--buscador de socio-->
       <div class="card-header" id="demoFont">
-        <h6 class="card-title">Socio</h6>
+        <h6 class="card-title text-center"><strong>Socio</strong></h6>
       </div>
 
       <div class="card">
@@ -90,25 +90,28 @@
         <div class="tab-pane fade show active" id="nac" role="tabpanel" aria-labelledby="nac-tab">
           <!--formulario nacimiento-->
           <div class="card-header" id="demoFont">
-            <h6 class="card-title">Formulario Nacimientos</h6>
+            <h6 class="card-title text-center"><strong>Formulario Nacimientos</strong></h6>
           </div>
-          <app-nacimiento-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest"></app-nacimiento-bienestar>
+          <app-nacimiento-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+          </app-nacimiento-bienestar>
         </div>
 
         <div class="tab-pane fade" id="falle" role="tabpanel" aria-labelledby="falle-tab">
           <!--formulario fallecimiento-->
           <div class="card-header" id="demoFont">
-            <h6 class="card-title">Formulario Fallecimientos</h6>
+            <h6 class="card-title text-center"><strong>Formulario Fallecimientos</strong></h6>
           </div>
-          <app-fallecimiento-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest"></app-fallecimiento-bienestar>
+          <app-fallecimiento-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+          </app-fallecimiento-bienestar>
         </div>
 
         <div class="tab-pane fade" id="med" role="tabpanel" aria-labelledby="med-tab">
           <!--formulario gastos medicos-->
           <div class="card-header" id="demoFont">
-            <h6 class="card-title">Formulario Gastos Medicios</h6>
+            <h6 class="card-title text-center"><strong>Formulario Gastos Medicios</strong></h6>
           </div>
-          <app-gastos-medicos-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest"></app-gastos-medicos-bienestar>
+          <app-gastos-medicos-bienestar [getIdSocio]="idSocio" [getNombreSocio]="nombreSocioTest">
+          </app-gastos-medicos-bienestar>
         </div>
 
 
@@ -151,72 +154,84 @@
       </strong>
     </div>
 
-      <div class="card-body">
-        <div class="row">
-          <div class="row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-              <br><label><strong>Ingrese Fecha</strong></label> <br>
-              <div class="input-group">
-                <input type="date" class="form-control form-control-sm" name="fecha">
-              </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="row col-12 col-md-12 col-lg-12 col-xl-12 justify-content-center">
+div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <br><label><strong>Ingrese Fecha</strong></label> <br>
+            <div class="input-group">
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="InsertarCuentaBienestar.fecha"
+                required>
             </div>
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-              <br><label><strong>N° de Documento</strong></label>
-              <input type="number" class="form-control form-control-sm" name="nDocumento" required>
-            </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <br><label><strong>Subir Documento</strong></label>
-              <input class="form-control-file" type="file">
-            </div>
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>
-              <select name="tipo" id="tipo" class="form-control form-control-sm">
-                <option value="0">--Seleccione--</option>
-                <option value="1">Ingreso</option>
-                <option value="2">Egreso</option>
-              </select>
-            </div><br>
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Detalle Tipo</strong></label>
-              <select name="detalleTipo" id="detalleTipo" class="form-control form-control-sm">
-                <option value="">--Seleccione--</option>
-                <option value="1">Cuenta del Gas</option>
-                <option value="2">Inasistencia por Reunión</option>
-                <option value="3">Inasistencia por Votación</option>
-                <option value="4">Fallecimiento</option>
-                <option value="5">Nacimiento</option>
-                <option value="6">Detalle Caja Chica</option>
-                <option value="7">Gastos Medicos</option>
-              </select>
-            </div>
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <br><label><strong>Ingrese Monto</strong></label>
-              <input type="number" class="form-control form-control-sm" name="monto" required>
-            </div>
-
-
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-              <br><label><strong>Ingrese Descripcion del Tipo</strong></label>
-              <input class="form-control" minlength="5" maxlength="160" name="descripcion" required>
-            </div>
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-              <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>
-              <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar">Guardar</button>
-            </div>
-
-            <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-              <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>
-              <app-tabla-bienestar></app-tabla-bienestar>
-            </div>
-
           </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <br><label><strong>N° de Documento</strong></label>
+            <input type="text" class="form-control form-control-sm"
+              [(ngModel)]="InsertarCuentaBienestar.numero_documento_1" required>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <br><label><strong>Subir Documento</strong>
+              <i class="fas fa-info-circle" placement="right"
+                ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+            </label> <br>
+            <input class="form-file-input" type="file" (change)="onSelectPDF($event)">
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Seleccione Tipo</strong></label>
+            <select name="Tipo" id="tipo" class="form-control form-control-sm"
+              [(ngModel)]="InsertarCuentaBienestar.definicion" required>
+              <option value="">--Seleccione--</option>
+              <option value="1">Ingreso</option>
+              <option value="2">Egreso</option>
+            </select>
+          </div><br>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3"><br><label><strong>Detalle Tipo</strong></label>
+            <select name="detalleTipo" id="detalleTipo" class="form-control form-control-sm"
+              [(ngModel)]="InsertarCuentaBienestar.tipo_cuenta_bienestar_id" required>
+              <option value="">--Seleccione--</option>
+              <option value="1">Cuenta del Gas</option>
+              <option value="2">Inasistencia por Reunión</option>
+              <option value="3">Inasistencia por Votación</option>
+              <!-- <option value="4">Fallecimiento</option> -->
+              <!-- <option value="5">Nacimiento</option> -->
+              <option value="6">Caja Chica</option>
+              <!-- <option value="7">Gastos Medicos</option> -->
+            </select>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <br><label><strong>Ingrese Monto</strong></label>
+            <input type="number" class="form-control form-control-sm" [(ngModel)]="InsertarCuentaBienestar.monto"
+              required>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+            <br><label><strong>Ingrese Descripcion del Tipo</strong></label>
+            <input class="form-control" minlength="5" maxlength="160" [(ngModel)]="InsertarCuentaBienestar.descripcion"
+              required>
+          </div>
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <br><label><strong>Guardar Cuenta Bienestar</strong></label><br>
+            <button class="btn btn btn-success btn-block btn-sm" type="submit"
+              (click)="guardarCuentaBienestar()" [disabled]>Guardar
+              <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            </button>
+          </div>
+          <
+
+          <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+            <br><label><strong>Visualizar Tabla Bienestar</strong></label><br>
+            <app-tabla-bienestar></app-tabla-bienestar>
+          </div>
+
         </div>
       </div>
+    </div>
 
   </div> <br>
 

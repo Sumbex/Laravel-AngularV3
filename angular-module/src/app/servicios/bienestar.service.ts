@@ -47,4 +47,22 @@ export class BienestarService {
   // guardar_iniciomensual(){
   //   // return http.get('cbe_guardar_inicio_mensual');
   // }
+
+insertar_CuentaBienestar(form): Observable<any> {
+
+  return this._http.post(this.url + "cbe_insertar", form, {
+      headers: new HttpHeaders(
+          {
+              'Authorization': 'Bearer' + this.token,
+          }
+      )
+  });
+}
+
+
+
+
+
+
+
 }

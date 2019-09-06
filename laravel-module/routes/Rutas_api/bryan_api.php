@@ -28,6 +28,10 @@ Route::post('/borrar_usuario_socio', 'PortalSocioController@BorrarUsuarioSocio')
 Route::post('/crear_usuario_admin', 'PortalSocioController@CrearUsuariosAdmin');
 Route::post('/borrar_usuario_admin', 'PortalSocioController@BorrarUsuariosAdmin');
 
+//------------------------------------------->cuenta bienestar
+Route::post('/ingresar_caja_chica_bienestar', 'CajaChicaBienestarController@IngresarCajaChica');
+Route::get('/traer_caja_chica_bienestar/{anio}/{mes}', 'CajaChicaBienestarController@TraerCajaChicaTotal');
+//------------------------------------------->cuenta bienestar
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 

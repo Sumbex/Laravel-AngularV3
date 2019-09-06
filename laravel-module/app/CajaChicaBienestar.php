@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class CajaChicaBienestar extends Model
 {
@@ -80,8 +81,8 @@ class CajaChicaBienestar extends Model
     {
         $saldo = DB::table('cb_caja_chica')
             ->select([
-                DB::raw('sum(coalesce(monto_ingreso), 0) as monto_ingreso'),
-                DB::raw('sum(coalesce(monto_egreso), 0) as monto_egreso')
+                DB::raw('sum(coalesce(monto_ingreso, 0)) as monto_ingreso'),
+                DB::raw('sum(coalesce(monto_egreso, 0)) as monto_egreso')
             ])
             ->where([
                 'activo' => 'S',

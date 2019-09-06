@@ -18,7 +18,7 @@ class CreateCbCajaChica extends Migration
             $table->integer('anio_id');
             $table->integer('mes_id');
             $table->integer('dia');
-            $table->bigInteger('numero_documento');
+            $table->text('numero_documento');
             $table->text('archivo_documento')->nullable();
             $table->text('descripcion');
             $table->bigInteger('monto_ingreso')->nullable();

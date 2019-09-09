@@ -108,7 +108,6 @@ class Cuentabienestar extends Model
     protected function insertar_fall_nac_gm($r)
     {
 
-
         $rut_limpio = $this->limpiar($r->rut);
 
         if(!$this->valida_rut($rut_limpio)){
@@ -122,7 +121,7 @@ class Cuentabienestar extends Model
                  if (!$verify) {
                     return [ 
                         'estado'=>'failed', 
-                        'mensaje'=> 'El rut del recien nacido ya esta asociado al item NACIMIENTO segun el socio'
+                        'mensaje'=> 'El rut del recien nacido puede que no exista en beneficios o ya esta asociado al item NACIMIENTO segun el socio'
                      ];
                  }
             break;
@@ -131,7 +130,7 @@ class Cuentabienestar extends Model
                 if (!$verify) {
                     return [ 
                         'estado'=>'failed', 
-                        'mensaje'=> 'El rut del fallecido ya esta asociado al item Fallecimiento segun el socio'
+                        'mensaje'=> 'El rut del fallecido puede que no exista en los beneficios o ya esta asociado al item Fallecimiento segun el socio'
                      ];
                 }
             break;
@@ -140,10 +139,6 @@ class Cuentabienestar extends Model
                 # code...
             break;
         }
-
-
-
-
 
 
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');

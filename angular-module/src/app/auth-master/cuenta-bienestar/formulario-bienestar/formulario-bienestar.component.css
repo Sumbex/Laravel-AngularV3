@@ -61,6 +61,11 @@
       #myTab{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
-
+      hr{
+      border-top: 1px solid #000000 !important;
+      margin-bottom:5px !important; 
+      margin-top:5px !important;
+      height: 10px;
+      }
 
 

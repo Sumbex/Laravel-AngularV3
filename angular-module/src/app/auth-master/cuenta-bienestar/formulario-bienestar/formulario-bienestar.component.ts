@@ -18,6 +18,7 @@ export class FormularioBienestarComponent implements OnInit {
   idSocio: '';
   nombreSocioTest = '';
   nombreUpperSocio = '';
+  ocultarBuscador = false;
 
   //variables cuenta Bienestar
   blockIngreso: boolean = false;
@@ -80,6 +81,14 @@ export class FormularioBienestarComponent implements OnInit {
       }
     );
 
+  }
+
+  ocultarBuscadorSocio(valor){
+    if(valor == true){
+    this.ocultarBuscador = true;
+    }else{
+      this.ocultarBuscador = false;
+    }
   }
 
   onSelectPDF(event) {

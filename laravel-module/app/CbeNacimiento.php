@@ -23,7 +23,7 @@ class CbeNacimiento extends Model
             $this->activo = 'S';
             $this->rut_nacimiento = $rut;
             if ($this->save()) {
-                return [ 'estado'=>'success', 'mensaje'=> 'Item ingresado correctamente' ];
+                return [ 'mensaje'=> 'El rut del recien nacido puede que no exista en beneficios o ya esta asociado al item NACIMIENTO segun el socio' ];
             }
             return [ 'estado'=>'failed', 'mensaje'=> 'Error al guardar item' ];
         }

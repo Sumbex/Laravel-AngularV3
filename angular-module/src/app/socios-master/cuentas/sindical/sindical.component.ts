@@ -18,6 +18,7 @@ export class SindicalComponent implements OnInit {
 
   //Variable para las cargas
   cargandoTabla = false;
+  cargarDatos = 0;
 
   //Variables que almacenan los valores obtenidos para la tabla
   montoInicio;
@@ -56,10 +57,16 @@ export class SindicalComponent implements OnInit {
   }
 
   cargarFechasActuales(){
+    this.cargarDatos = 0;
     //Cargar id del Año actual
     this._portalSociosService.getAnioActual().subscribe(
      response => {
        this.idAnioActual = response.id;
+       this.cargarDatos++;
+       console.log(this.cargarDatos);
+       if(this.cargarDatos == 2){
+        this.cargarTablaSindical();
+       }  
      },
      error => {
        console.log(error);
@@ -69,7 +76,11 @@ export class SindicalComponent implements OnInit {
    this._portalSociosService.getMesActual().subscribe(
      response => {
        this.idMesActual = response.id;
-       this.cargarTablaSindical();       
+       this.cargarDatos++;
+       console.log(this.cargarDatos);
+       if(this.cargarDatos == 2){
+        this.cargarTablaSindical();
+       }       
      },
      error => {
        console.log(error);

@@ -314,4 +314,36 @@ export class PortalSociosService{
             }
         )});
     }
+
+    //*******************OBTENER LOS BENEFICIOS COBRADOS POR NACIMIENTO************************/
+    getBeneficiosNacimientosCobrados() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_beneficios_nacimientos/", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getBeneficiosFalleciomientosCobrados() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_beneficios_fallecimientos/", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    //*************************OBTENER DATOS FONDOS MUTUOS*******************************/
+    getFondosMutuos() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_fondos_mutuos/", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
 }

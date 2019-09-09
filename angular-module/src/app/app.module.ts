@@ -98,6 +98,8 @@ import { FormularioNacimientoBienestarComponent } from './auth-master/cuenta-bie
 import { TablaNacimientoBienestarComponent } from './auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component';
 import { FormularioGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component';
 import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component';
+import { BeneficiosCobradosComponent } from './socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component';
+import { FondosMutuosSocioComponent } from './socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component';
 
 
 @NgModule({
@@ -240,7 +242,11 @@ import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-biene
 
     FormularioGastosMedicosBienestarComponent,
 
-    TablaGastosMedicosBienestarComponent
+    TablaGastosMedicosBienestarComponent,
+
+    BeneficiosCobradosComponent,
+
+    FondosMutuosSocioComponent
 
   ],
   imports: [

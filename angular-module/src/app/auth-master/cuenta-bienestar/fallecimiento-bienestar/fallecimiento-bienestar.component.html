@@ -41,7 +41,7 @@
       <div class="col-12 col-md-4 col-lg-4 col-xl-4">
         <div class="form-group">
           <br><label><strong>Subir Comprobante Bancario</strong></label>
-          <input class="form-control-file" type="file" [(ngModel)]="InsertarFallecimiento.archivo_documento_1" required>
+          <input class="form-control-file" type="file" (change)="onSelectPDF1($event)" required>
         </div>
       </div>
 
@@ -91,7 +91,7 @@
       <div class="col-12 col-md-4 col-lg-4 col-xl-4">
         <div class="form-group">
           <br><label><strong>Subir Certificado de Defunción</strong></label>
-          <input class="form-control-file" type="file" [(ngModel)]="InsertarFallecimiento.archivo_documento_2" required>
+          <input class="form-control-file" type="file" (change)="onSelectPDF2($event)"  required>
         </div>
       </div>
 
@@ -120,5 +120,5 @@
   </div>
 
 
-</div>
+</div> <br>
 </div>

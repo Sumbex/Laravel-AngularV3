@@ -41,7 +41,7 @@
         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
           <div class="form-group">
             <br><label><strong>Subir Comprobante Bancario</strong></label>
-            <input class="form-control-file" type="file" [(ngModel)]="InsertarNacimiento.archivo_documento_1" required>
+            <input class="form-control-file" type="file" (change)="onSelectPDF($event)"  required>
           </div>
         </div>
 
@@ -113,6 +113,6 @@
       </div>
     </div>
 
-  </div>
+  </div> <br>
 
 </div>

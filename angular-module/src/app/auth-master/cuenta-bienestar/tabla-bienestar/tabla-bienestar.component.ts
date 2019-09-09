@@ -143,8 +143,8 @@ export class TablaBienestarComponent implements OnInit {
     this.reunion = [];
     this.votacion = [];
     this.cajaChica = [];
-    this.nacimiento = [];
     this.fallecimiento = [];
+    this.nacimiento = [];
     this.medico = [];
     this.resultado = [];
     this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(
@@ -155,8 +155,8 @@ export class TablaBienestarComponent implements OnInit {
           this.reunion = [];
           this.votacion = [];
           this.cajaChica = [];
-          this.nacimiento = [];
           this.fallecimiento = [];
+          this.nacimiento = [];
           this.medico = [];
           this.resultado = [];
         } else {
@@ -165,8 +165,8 @@ export class TablaBienestarComponent implements OnInit {
           this.reunion = this.tablaBienestar.inasistencia_reunion;
           this.votacion = this.tablaBienestar.inasistencia_votacion;
           this.cajaChica = this.tablaBienestar.caja_chica;
-          this.nacimiento = this.tablaBienestar.nacimiento;
           this.fallecimiento = this.tablaBienestar.fallecimiento;
+          this.nacimiento = this.tablaBienestar.nacimiento;
           this.medico = this.tablaBienestar.gastos_medicos;
           this.resultado = this.tablaBienestar.resultado;
         }

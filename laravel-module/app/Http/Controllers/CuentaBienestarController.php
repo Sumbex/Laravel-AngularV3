@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Cuentabienestar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class CuentaBienestarController extends Controller
 {
     public function insertar(Request $r)
     {
+
         $tipo_cuenta = $r->tipo_cuenta_bienestar_id;
 
         switch ((string)$tipo_cuenta) {
@@ -130,4 +132,51 @@ class CuentaBienestarController extends Controller
         return ['estado'=>'failed','mensaje'=>'No hay monto inicial en este mes'];
        
     }
+
+
+
+
+
+
+
+
+
+    public function validar_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'input' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'input.required' => 'El PDF es necesario',
+	        	'input.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    
+    protected function guardarArchivo($archivo, $ruta)
+    {
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
+
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
+    }
+
 }

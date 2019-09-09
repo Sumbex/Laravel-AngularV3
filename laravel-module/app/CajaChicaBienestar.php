@@ -53,7 +53,42 @@ class CajaChicaBienestar extends Model
 
     protected function calcularValorCajaChicaMesAnterior($anio, $mes)
     {
-        //
+        $anioA = $anio;
+        $mesA = $mes - 1;
+
+        if ($mesA == 0) {
+            $mesA = 12;
+            $anioA = $anio - 1;
+        }
+
+        $caja = DB::table('cuenta_bienestar')
+            ->select([
+                'monto_egreso'
+            ])
+            ->where([
+                'activo' => 'S',
+                'anio_id' => $anioA,
+                'mes_id' => $mesA,
+                'tipo_cuenta_bienestar_id' => 6
+            ])
+            ->get();
+
+        if (!$caja->isEmpty()) {
+            $monto = DB::table('cb_caja_chica')
+                ->select([
+                    'monto_egreso'
+                ])
+                ->where([
+                    'activo' => 'S',
+                    'anio_id' => $anioA,
+                    'mes_id' => $mesA
+                ])
+                ->sum('monto_egreso');
+            $resta = $caja[0]->monto_egreso - $monto;
+            return ['estado' => 'success', 'monto' => $resta];
+        } else {
+            return ['estado' => 'failed', 'monto' => 0];
+        }
     }
 
     protected function existeCajaChica($anio, $mes)
@@ -73,7 +108,9 @@ class CajaChicaBienestar extends Model
                 ->get();
 
             if (!$existe->isEmpty()) {
-                return ['estado' => 'success', 'monto_caja' => $existe[0]->monto_egreso];
+                $montoAnterior = $this->calcularValorCajaChicaMesAnterior($anio, $mes);
+                $monto = $montoAnterior['monto'] + $existe[0]->monto_egreso;
+                return ['estado' => 'success', 'monto_caja' => $monto];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'Aun no ha realizado el ingreso a Caja Chica este mes.'];
             }

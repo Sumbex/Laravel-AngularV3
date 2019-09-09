@@ -48,6 +48,7 @@ export class SindicalComponent implements OnInit {
 
   openModalTablaSindical(tablaSindical){
     this.modalTablaSindical = this.modalService.open(tablaSindical, {size: 'xl'});
+    this.limpiarTabla();
     this.cargarFechasActuales();
   }
 

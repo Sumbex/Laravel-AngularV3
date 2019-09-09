@@ -10100,6 +10100,7 @@ let CajaChicaComponent = class CajaChicaComponent {
         this._portalSociosService = _portalSociosService;
         //Variable para las cargas
         this.cargandoTabla = false;
+        this.cargarDatos = 0;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -10111,6 +10112,7 @@ let CajaChicaComponent = class CajaChicaComponent {
     }
     openModalCajaChica(cajaChicaModal) {
         this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
+        this.limpiarTabla();
         this.cargarFechasActuales();
     }
     //Abrir visor de PDF
@@ -10118,16 +10120,26 @@ let CajaChicaComponent = class CajaChicaComponent {
         this.modalService.open(content, { size: 'lg' });
     }
     cargarFechasActuales() {
+        this.cargarDatos = 0;
         //Cargar id del Año actual
         this._portalSociosService.getAnioActual().subscribe(response => {
             this.idAnioActual = response.id;
+            this.cargarDatos++;
+            console.log(this.cargarDatos);
+            if (this.cargarDatos == 2) {
+                this.cargarTablaCajaChica();
+            }
         }, error => {
             console.log(error);
         });
         //Cargar id del Mes actual
         this._portalSociosService.getMesActual().subscribe(response => {
             this.idMesActual = response.id;
-            this.cargarTablaCajaChica();
+            this.cargarDatos++;
+            console.log(this.cargarDatos);
+            if (this.cargarDatos == 2) {
+                this.cargarTablaCajaChica();
+            }
         }, error => {
             console.log(error);
         });
@@ -10216,6 +10228,7 @@ let CampingComponent = class CampingComponent {
         this._portalSociosService = _portalSociosService;
         //Variable para las cargas
         this.cargandoTabla = false;
+        this.cargarDatos = 0;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -10231,19 +10244,30 @@ let CampingComponent = class CampingComponent {
     }
     openModalCamping(Modal) {
         this.modalCamping = this.modalService.open(Modal, { size: 'xl' });
+        this.limpiarTabla();
         this.cargarFechasActuales();
     }
     cargarFechasActuales() {
+        this.cargarDatos = 0;
         //Cargar id del Año actual
         this._portalSociosService.getAnioActual().subscribe(response => {
             this.idAnioActual = response.id;
+            this.cargarDatos++;
+            console.log(this.cargarDatos);
+            if (this.cargarDatos == 2) {
+                this.cargarCamping();
+            }
         }, error => {
             console.log(error);
         });
         //Cargar id del Mes actual
         this._portalSociosService.getMesActual().subscribe(response => {
             this.idMesActual = response.id;
-            this.cargarCamping();
+            this.cargarDatos++;
+            console.log(this.cargarDatos);
+            if (this.cargarDatos == 2) {
+                this.cargarCamping();
+            }
         }, error => {
             console.log(error);
         });
@@ -10389,6 +10413,7 @@ let SindicalComponent = class SindicalComponent {
     }
     openModalTablaSindical(tablaSindical) {
         this.modalTablaSindical = this.modalService.open(tablaSindical, { size: 'xl' });
+        this.limpiarTabla();
         this.cargarFechasActuales();
     }
     //Abrir visor de PDF

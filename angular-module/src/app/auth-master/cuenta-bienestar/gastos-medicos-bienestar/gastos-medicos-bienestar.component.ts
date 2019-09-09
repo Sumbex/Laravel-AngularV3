@@ -72,6 +72,11 @@ export class GastosMedicosBienestarComponent implements OnInit {
         this.blockIngreso = false;
         return false;
       }
+      if (response.estado == 'failed_v') {
+        alert(response.mensaje);
+        this.blockIngreso = false;
+        return false;
+      }
       if (response.estado == 'success') {
         this.InsertarMedico.fecha = '';
         this.InsertarMedico.numero_documento_1 = '';

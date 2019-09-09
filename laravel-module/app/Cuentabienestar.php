@@ -132,14 +132,15 @@ class Cuentabienestar extends Model
                         definicion,
                         tcb.id as tipo_cuenta_bienestar_id,
                         tcb.descripcion as tipo_cuenta,
-                        cbe.descripcion 
+                        cbe.descripcion,
+                        tcb.orden 
                     from cuenta_bienestar cbe
                     inner join anio as a on a.id = cbe.anio_id
                     inner join mes as m on m.id = cbe.mes_id
                     inner join tipo_cuenta_bienestar as tcb on tcb.id = cbe.tipo_cuenta_bienestar_id
                     where cbe.mes_id = $mes and cbe.anio_id= $anio and cbe.activo ='S'
                     --order by tcb.id ASC 
-                    order by tcb.id ASC , cbe.dia asc "
+                    order by tcb.orden ASC, cbe.dia asc "
         );
         
         if ($list > 0 ) {

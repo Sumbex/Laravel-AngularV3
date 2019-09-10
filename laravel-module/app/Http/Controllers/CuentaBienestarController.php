@@ -17,7 +17,7 @@ class CuentaBienestarController extends Controller
 		 $validator = Validator::make($request->all(), 
 		 	[
 	            'fecha' => 'required',
-	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
 	            'descripcion' => 'required|min:0',
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_bienestar_id' => 'required',
@@ -45,7 +45,7 @@ class CuentaBienestarController extends Controller
 		 $validator = Validator::make($request->all(), 
 		 	[
 	            'fecha' => 'required',
-	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
 	            'descripcion' => 'required|min:0',
 	            'definicion' => 'required|min:0',
 	            'tipo_cuenta_bienestar_id' => 'required',
@@ -77,7 +77,7 @@ class CuentaBienestarController extends Controller
 		 $validator = Validator::make($request->all(), 
 		 	[
 	            'fecha' => 'required',
-                'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento',
+                'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
                 // 'numero_documento_2' => 'required|unique:cuenta_bienestar,numero_documento',
 	            'descripcion' => 'required|min:0',
 	            'definicion' => 'required|min:0',
@@ -122,7 +122,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
                     return $cuenta_be;
                 }
-                return ['estado'=>'failed_v', 'mensaje'=>'Error de ingreso en el formulario, intente nuevamente'];
+                return $validar;
 
             break;
             case '2': //inasistencia por reunion
@@ -142,12 +142,12 @@ class CuentaBienestarController extends Controller
                      return $cuenta_be;
             break;
             case '6': // detalle caja chica
-                $validar = $this->validar_datos_socio($r);
+                $validar = $this->validar_datos_bienestar($r);
                 if ($validar['estado'] == "success") {
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return ['estado'=>'failed_v', 'mensaje'=>'Error de ingreso en el formulario, intente nuevamente'];
+                return $fall;
             break;
 
             //-------------------------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ class CuentaBienestarController extends Controller
                     $fall = Cuentabienestar::insertar_fall_nac_gm($r);
                     return $fall;
                 }
-                return ['estado'=>'failed_v', 'mensaje'=>'Error de ingreso en el formulario, intente nuevamente'];
+                return $validar;
             break;
             case '5'://Nacimiento
                 $validar = $this->validar_datos_nacimiento($r);
@@ -165,7 +165,7 @@ class CuentaBienestarController extends Controller
                     $nac = Cuentabienestar::insertar_fall_nac_gm($r);
                     return $nac;
                 }
-                return ['estado'=>'failed_v', 'mensaje'=>'Error de ingreso en el formulario, intente nuevamente'];
+                return $validar;
             break;
             case '7'://Gastos medicos
                 $gm = Cuentabienestar::insertar_fall_nac_gm($r);

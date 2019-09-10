@@ -17,27 +17,26 @@ class Cuentabienestar extends Model
 
     protected function insertar_cuenta_sindical_gas($r)//aqui cae la del gas
     {
-    
+        $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
+
+
+        $verify = $this->where([
+                'mes_id' => $f['mes'],
+                'anio_id'=> $anio->id,
+                'activo'=>'S',
+                'tipo_cuenta_bienestar_id' => '1'
+        ])->first();
+
+        if (!empty($verify)) {
+                return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
+        }
+        
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
 
 		if($file['estado'] == "success"){
                 $archivo = $file['archivo'];
                 
-                 $f = $this->div_fecha($r->fecha);
-                $anio = $this->anio_tipo_id($f['anio']);
-
-
-                $verify = $this->where([
-                    'mes_id' => $f['mes'],
-                    'anio_id'=> $anio->id,
-                    'activo'=>'S',
-                    'tipo_cuenta_bienestar_id' => '1'
-                ])->first();
-
-            if (!empty($verify)) {
-                return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
-            }
-            else{
 
                 $cbe = $this;
                 $cbe->anio_id = $anio->id;
@@ -57,9 +56,8 @@ class Cuentabienestar extends Model
                 if ($cbe->save()) {
                     return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
                 }
+                $borrar = Storage::delete('/'.$archivo);
                 return ['estado'=>'failed', 'mensaje'=>'Error al guardar item de cuenta del gas'];
-            }
-
 
 
 		}else{
@@ -69,6 +67,24 @@ class Cuentabienestar extends Model
     }
      protected function insertar_cuenta_sindical($r)//caja chica, reunion y votacion
     {
+
+        if ($r->tipo_cuenta_bienestar_id == '6') { // si el ingreso es una caja chica
+            $f = $this->div_fecha($r->fecha);
+            $anio = $this->anio_tipo_id($f['anio']);
+
+
+            $verify = $this->where([
+                    'mes_id' => $f['mes'],
+                    'anio_id'=> $anio->id,
+                    'activo'=>'S',
+                    'tipo_cuenta_bienestar_id' => '6'
+            ])->first();
+
+            if (!empty($verify)) {
+                    return ['estado'=>'failed', 'mensaje'=>'Ya existe la caja chica para este mes'];
+            }
+        }
+
 
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
 

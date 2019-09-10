@@ -102,6 +102,7 @@ class CuentaSindicatoController extends Controller
 			//si existe caja chica, no volver a ingresar
 			if($this->existe_item_caja_chica($anio->id, $f['mes'], $r->tipo_cuenta_sindicato))
 			{
+				$borrar = Storage::delete('/'.$archivo);
 			return [ 'estado' =>'failed', 'mensaje'=>'Ya existe item caja chica en este mes' ];
 
 			}else{
@@ -128,7 +129,7 @@ class CuentaSindicatoController extends Controller
 							
 					// si no existe, primero calcular o insertar manual el monto inicial(toma de mes anterior)
 					if(empty($exis_monto_init)){
-
+						$borrar = Storage::delete('/'.$archivo);
 						return [
 							"estado"  => "failed", 
 							"mensaje" => "No existe monto inicial, primero calcule"
@@ -184,7 +185,8 @@ class CuentaSindicatoController extends Controller
 								if ($r->tipo_cuenta_sindicato == 3){
 									
 									if($r->monto > $this->global_caja_chica ){
-									
+										
+										$borrar = Storage::delete('/'.$archivo);
 										return [
 										'estado'  => 'failed', 
 										'mensaje' => 'el monto ingresado supera los '.number_format($this->global_caja_chica,0,'.',',').' pesos'
@@ -355,6 +357,8 @@ class CuentaSindicatoController extends Controller
 								'mensaje' => "Item de cuenta sindical añadido"
 							];
 						}
+
+						$borrar = Storage::delete('/'.$archivo);
 						return [
 							'estado'  => 'failed', 
 							'mensaje' => 'Algo salió mal, intente nuevamente'];

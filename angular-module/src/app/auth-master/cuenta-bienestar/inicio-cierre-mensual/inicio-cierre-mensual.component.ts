@@ -170,7 +170,7 @@ export class InicioCierreMensualComponent implements OnInit {
       this._cbe.calcular(this.anio, this.mes).subscribe(
 
         (response) => {
-          
+          this.monto = response;
         },
         error => {
           

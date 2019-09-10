@@ -18,12 +18,16 @@ export class FormularioBienestarComponent implements OnInit {
   idSocio: '';
   nombreSocioTest = '';
   nombreUpperSocio = '';
+  ocultarBuscador = true;
+  ocultarNac = true;
+  ocultarFalle = true;
+  ocultarMed = true;
 
   //variables cuenta Bienestar
   blockIngreso: boolean = false;
   InsertarCuentaBienestar = {
-    socioId:'0',
-    fecha:'',
+    socioId: '0',
+    fecha: '',
     tipo_cuenta_bienestar_id: '',
     numero_documento_1: '',
     archivo_documento_1: null,
@@ -32,21 +36,20 @@ export class FormularioBienestarComponent implements OnInit {
     descripcion: '',
   }
   //varibles modal permisos usuario
-  user: object=[];
-  load: boolean=false;
+  user: object = [];
+  load: boolean = false;
   validarFormBienestar = null;
 
   constructor(
     private _SociosService: SociosService,
     private _validarusuario: ValidarUsuarioService,
     private _bienestarService: BienestarService,
-    config: NgbModalConfig, 
-    private modalService: NgbModal) 
-    {
+    config: NgbModalConfig,
+    private modalService: NgbModal) {
     config.backdrop = 'static';
     config.keyboard = false;
-    }
-  
+  }
+
   ngOnInit() {
     this.usuario_logeado();
   }
@@ -82,6 +85,20 @@ export class FormularioBienestarComponent implements OnInit {
 
   }
 
+  ocultarBuscadorSocio(valor) {
+    if (valor == true) {
+      this.ocultarBuscador = true;
+      this.ocultarNac = true;
+      this.ocultarFalle = true;
+      this.ocultarMed = true;
+    } else {
+      this.ocultarBuscador = false;
+      this.ocultarNac = false;
+      this.ocultarFalle = false;
+      this.ocultarMed = false;
+    }
+  }
+
   onSelectPDF(event) {
     this.InsertarCuentaBienestar.archivo_documento_1 = event.srcElement.files[0];
   }
@@ -104,6 +121,11 @@ export class FormularioBienestarComponent implements OnInit {
 
     this._bienestarService.insertar_CuentaBienestar(data).subscribe((response) => {
       if (response.estado == 'failed') {
+        alert(response.mensaje);
+        this.blockIngreso = false;
+        return false;
+      }
+      if (response.estado == 'failed_v') {
         alert(response.mensaje);
         this.blockIngreso = false;
         return false;
@@ -131,47 +153,47 @@ export class FormularioBienestarComponent implements OnInit {
 
   }
 
-  usuario_logeado(){
-      
-    this._validarusuario.usuario_logeado().subscribe((val : object ) => {
-          
-          this.user = val;
+  usuario_logeado() {
 
-      }, response => {console.log("POST call in error", response);},() => {
-             console.log("The POST success.");
-      });
+    this._validarusuario.usuario_logeado().subscribe((val: object) => {
+
+      this.user = val;
+
+    }, response => { console.log("POST call in error", response); }, () => {
+      console.log("The POST success.");
+    });
+  }
+
+  btn_validar_usuario($rut, $password, validar) {//btn que esta en el modal de validacion de usuario
+    this.load = true;
+    const formData = new FormData();
+    formData.append('rut', $rut.value);
+    formData.append('password', $password.value);
+    formData.append('estado', 'ingresar_cb');
+
+    this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+      if (val > 0) {//si tiene acceso;
+
+        this.load = false;
+        this.guardarCuentaBienestar();
+        this.validarFormBienestar.close();
+      } else {
+        alert("Acceso denegado");
+        this.load = false;
+        this.validarFormBienestar.close();
       }
 
-      btn_validar_usuario($rut, $password, validar){//btn que esta en el modal de validacion de usuario
-        this.load = true;
-        const formData = new FormData();
-        formData.append('rut', $rut.value);
-        formData.append('password', $password.value);
-        formData.append('estado', 'ingresar_cb');
-
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
-
-            if(val > 0){//si tiene acceso;
-              
-              this.load = false;
-              this.guardarCuentaBienestar(); 
-              this.validarFormBienestar.close();
-            }else{
-              alert("Acceso denegado");
-              this.load = false;
-              this.validarFormBienestar.close();
-            }
-
-        }, response => {console.log("POST call in error", response);},() => {
-              console.log("The POST success.");
-        });
-      }
+    }, response => { console.log("POST call in error", response); }, () => {
+      console.log("The POST success.");
+    });
+  }
 
 
 
-      validar_usuario(modalUsuario){
-      this.validarFormBienestar = this.modalService.open(modalUsuario, { size: 'sm' });
-    
-      }
+  validar_usuario(modalUsuario) {
+    this.validarFormBienestar = this.modalService.open(modalUsuario, { size: 'sm' });
+
+  }
 }
 

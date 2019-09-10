@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Cuentabienestar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class CuentaBienestarController extends Controller
 {
     public function insertar(Request $r)
     {
+
         $tipo_cuenta = $r->tipo_cuenta_bienestar_id;
 
         switch ((string)$tipo_cuenta) {
@@ -96,13 +98,16 @@ class CuentaBienestarController extends Controller
                     }
 
                 }
+
+                //return $listar;
+
                 $return = [];
                     $return['Cuenta_gas']=[];
                     $return['inasistencia_reunion']=[];
-                    $return['caja_chica']=[];
                     $return['inasistencia_votacion']=[];
-                    $return['fallecimiento']=[];
+                    $return['caja_chica']=[];
                     $return['nacimiento']=[];
+                    $return['fallecimiento']=[];
                     $return['gastos_medicos']=[];
 
                     foreach ($listar as $key) {
@@ -110,9 +115,9 @@ class CuentaBienestarController extends Controller
                             case '1': $return['Cuenta_gas'][] = $key; break;
                             case '2': $return['inasistencia_reunion'][] = $key; break;
                             case '3': $return['inasistencia_votacion'][] = $key; break;
-                            case '4': $return['fallecimiento'][] = $key; break;
-                            case '5': $return['nacimiento'][] = $key; break;
                             case '6': $return['caja_chica'][] = $key; break;
+                            case '5': $return['nacimiento'][] = $key; break;
+                            case '4': $return['fallecimiento'][] = $key; break;
                             case '7': $return['gastos_medicos'][] = $key; break;
                             
                             default:
@@ -129,4 +134,51 @@ class CuentaBienestarController extends Controller
         return ['estado'=>'failed','mensaje'=>'No hay monto inicial en este mes'];
        
     }
+
+
+
+
+
+
+
+
+
+    public function validar_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'input' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'input.required' => 'El PDF es necesario',
+	        	'input.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    
+    protected function guardarArchivo($archivo, $ruta)
+    {
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
+
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
+    }
+
 }

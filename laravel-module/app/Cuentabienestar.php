@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\SocioConyuge;
 use App\CbeNacimiento;
 use App\CbeFallecimiento;
+use App\SocioPadresSuegros;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Cuentabienestar extends Model
 {
@@ -14,47 +17,66 @@ class Cuentabienestar extends Model
 
     protected function insertar_cuenta_sindical_gas($r)//aqui cae la del gas
     {
-        $f = $this->div_fecha($r->fecha);
-        $anio = $this->anio_tipo_id($f['anio']);
+    
+        $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+
+		if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+                
+                 $f = $this->div_fecha($r->fecha);
+                $anio = $this->anio_tipo_id($f['anio']);
 
 
-        $verify = $this->where([
-            'mes_id' => $f['mes'],
-            'anio_id'=> $anio->id,
-            'activo'=>'S',
-            'tipo_cuenta_bienestar_id' => '1'
-        ])->first();
+                $verify = $this->where([
+                    'mes_id' => $f['mes'],
+                    'anio_id'=> $anio->id,
+                    'activo'=>'S',
+                    'tipo_cuenta_bienestar_id' => '1'
+                ])->first();
 
-        if (!empty($verify)) {
-            return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
-        }
-        else{
-
-            $cbe = $this;
-            $cbe->anio_id = $anio->id;
-            $cbe->mes_id = $f['mes'];
-            $cbe->dia = $f['dia'];
-            $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
-            $cbe->numero_documento_1 = $r->numero_documento_1;
-            $cbe->archivo_documento_1 = 'documento.pdf' /*$r->archivo_documento_1*/;
-            $cbe->definicion = $r->definicion;
-            $cbe->activo = 'S';
-
-            if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
-            if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
-
-            $cbe->descripcion = $r->descripcion;
-
-            if ($cbe->save()) {
-                return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
+            if (!empty($verify)) {
+                return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
             }
-            return ['estado'=>'failed', 'mensaje'=>'Error al guardar item de cuenta del gas'];
-        }
+            else{
+
+                $cbe = $this;
+                $cbe->anio_id = $anio->id;
+                $cbe->mes_id = $f['mes'];
+                $cbe->dia = $f['dia'];
+                $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
+                $cbe->numero_documento_1 = $r->numero_documento_1;
+                $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
+                $cbe->definicion = $r->definicion;
+                $cbe->activo = 'S';
+
+                if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
+                if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
+
+                $cbe->descripcion = $r->descripcion;
+
+                if ($cbe->save()) {
+                    return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
+                }
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar item de cuenta del gas'];
+            }
+
+
+
+		}else{
+				return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+		}
+
     }
      protected function insertar_cuenta_sindical($r)//caja chica, reunion y votacion
     {
-        $f = $this->div_fecha($r->fecha);
-        $anio = $this->anio_tipo_id($f['anio']);
+
+        $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+
+		if($file['estado'] == "success"){
+            $archivo = $file['archivo'];
+
+            $f = $this->div_fecha($r->fecha);
+            $anio = $this->anio_tipo_id($f['anio']);
 
             $cbe = $this;
             $cbe->anio_id = $anio->id;
@@ -62,7 +84,7 @@ class Cuentabienestar extends Model
             $cbe->dia = $f['dia'];
             $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
             $cbe->numero_documento_1 = $r->numero_documento_1;
-            $cbe->archivo_documento_1 = 'documento.pdf' /*$r->archivo_documento_1*/;
+            $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
             $cbe->definicion = $r->definicion;
             $cbe->activo = 'S';
 
@@ -75,13 +97,57 @@ class Cuentabienestar extends Model
                 return [ 'estado'=>'success', 'mensaje'=> 'Item ingresado correctamente' ];
             }
             return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+
+
+		}else{
+			return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+		}
         
     }
 
     protected function insertar_fall_nac_gm($r)
     {
-         $f = $this->div_fecha($r->fecha);
-        $anio = $this->anio_tipo_id($f['anio']);
+
+        $rut_limpio = $this->limpiar($r->rut);
+
+        if(!$this->valida_rut($rut_limpio)){
+                return ['estado'=>'failed','mensaje'=>'Rut no valido'];
+        }
+
+
+        switch ((string)$r->tipo_cuenta_bienestar_id) {
+            case '5':
+                 $verify = $this->verificar_existencia_nacimiento($r->socio_id, $rut_limpio);
+                 if (!$verify) {
+                    return [ 
+                        'estado'=>'failed', 
+                        'mensaje'=> 'El rut del recien nacido puede que no exista en beneficios o ya esta asociado al item NACIMIENTO segun el socio'
+                     ];
+                 }
+            break;
+            case '4':
+                $verify = $this->verificar_existencia_fallecido($r->socio_id, $rut_limpio);
+                if (!$verify) {
+                    return [ 
+                        'estado'=>'failed', 
+                        'mensaje'=> 'El rut del fallecido puede que no exista en los beneficios o ya esta asociado al item Fallecimiento segun el socio'
+                     ];
+                }
+            break;
+            
+            default:
+                # code...
+            break;
+        }
+
+
+        $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+
+		if($file['estado'] == "success"){
+            $archivo = $file['archivo'];
+            
+            $f = $this->div_fecha($r->fecha);
+            $anio = $this->anio_tipo_id($f['anio']);
 
             $cbe = $this;
             $cbe->anio_id = $anio->id;
@@ -89,7 +155,7 @@ class Cuentabienestar extends Model
             $cbe->dia = $f['dia'];
             $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
             $cbe->numero_documento_1 = $r->numero_documento_1;
-            $cbe->archivo_documento_1 = 'documento.pdf' /*$r->archivo_documento_1*/;
+            $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
             $cbe->definicion = $r->definicion;
             $cbe->activo = 'S';
 
@@ -102,10 +168,10 @@ class Cuentabienestar extends Model
 
                 switch ((string)$cbe->tipo_cuenta_bienestar_id) {
                     case '4'://Fallecimiento
-                        return CbeFallecimiento::insertar($cbe->id, $r->socio_id);
+                        return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
                     break;
                      case '5'://Nacimiento
-                        return CbeNacimiento::insertar($cbe->id, $r->socio_id);
+                        return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
                     break;
                      case '7'://Gastos medicos
                         return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
@@ -118,6 +184,12 @@ class Cuentabienestar extends Model
 
             }
             return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+		}else{
+				return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+		}
+
+
+            
     }
 
     protected function listar($anio, $mes)
@@ -132,14 +204,15 @@ class Cuentabienestar extends Model
                         definicion,
                         tcb.id as tipo_cuenta_bienestar_id,
                         tcb.descripcion as tipo_cuenta,
-                        cbe.descripcion 
+                        cbe.descripcion,
+                        tcb.orden 
                     from cuenta_bienestar cbe
                     inner join anio as a on a.id = cbe.anio_id
                     inner join mes as m on m.id = cbe.mes_id
                     inner join tipo_cuenta_bienestar as tcb on tcb.id = cbe.tipo_cuenta_bienestar_id
                     where cbe.mes_id = $mes and cbe.anio_id= $anio and cbe.activo ='S'
                     --order by tcb.id ASC 
-                    order by tcb.id ASC , cbe.dia asc "
+                    order by tcb.orden ASC, cbe.dia asc "
         );
         
         if ($list > 0 ) {
@@ -194,6 +267,212 @@ class Cuentabienestar extends Model
 				'total_final' => ($total + $anterior->inicio_mensual)
 			];
 
-	}
+    }
+
+
+
+    // otros metodos utiles
+
+    public function validar_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'input' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'input.required' => 'El PDF es necesario',
+	        	'input.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    
+    protected function guardarArchivo($archivo, $ruta)
+    {
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
+
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
+    }
+
+     public function verificar_existencia_nacimiento($socio_id, $rut)
+    {
+        $exist_beneficiario = false;
+        $existe_carga = false;
+        
+        $benef = SocioBeneficiario::where([
+                    'socio_id' => $socio_id,
+                    'rut' => $rut,
+                    'activo' => 'S'
+        ])->first();
+
+        if (!empty($benef)) {
+             $exist_beneficiario = true;
+        }
+
+        $carga = SocioCarga::where([
+                    'socio_id' => $socio_id,
+                    'rut' => $rut,
+                    'activo' => 'S'
+
+        ])->first();
+
+        if (!empty($carga)) {
+             $existe_carga = true;
+        }
+
+        if ($exist_beneficiario || $existe_carga) {
+
+            $very = CbeNacimiento::where([
+                'activo'=>'S','socio_id'=>$socio_id, 'rut_nacimiento'=>$rut
+            ])->first();
+
+            if (empty($very)) {
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
+        return false;
+
+        
+    }
+
+    public function verificar_existencia_fallecido($socio_id, $rut)
+    {
+        $exist_beneficiario = false;
+        $exist_carga = false;
+        $exist_cony = false;
+        $exist_p_s = false;
+        
+        $benef = SocioBeneficiario::where([
+                    'socio_id' => $socio_id,
+                    'rut' => $rut,
+                    'activo' => 'S'
+        ])->first();
+
+            if (!empty($benef)) {
+             $exist_beneficiario = true;
+            }
+
+        $carga = SocioCarga::where([
+                    'socio_id' => $socio_id,
+                    'rut' => $rut,
+                    'activo' => 'S'
+
+        ])->first();
+
+            if (!empty($carga)) {
+             $exist_carga = true;
+            }
+
+        $cony = SocioConyuge::where([
+                    'socio_id' => $socio_id,
+                    'rut' => $rut,
+                    'activo' => 'S'
+        ])->first();
+
+            if (!empty($cony)) {
+                $exist_cony = true;
+            }
+        $p_s = SocioPadresSuegros::where([
+                    'socio_id' => $socio_id,
+                    'rut' => $rut,
+                    'activo' => 'S'
+        ])->first();
+            
+         if (!empty($p_s)) {
+                $exist_p_s = true;
+            }
+        
+            
+        if ($exist_beneficiario || $exist_carga || $exist_cony || $exist_p_s) {
+
+            $very = CbeFallecimiento::where([
+                'activo'=>'S','socio_id'=>$socio_id, 'rut_fallecido'=>$rut
+            ])->first();
+
+            if (empty($very)) {
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
+        return false;
+    }
+
+    function valida_rut($rut)
+    {
+        try{
+            $rut = preg_replace('/[^k0-9]/i', '', $rut);
+            $dv  = substr($rut, -1);
+            $numero = substr($rut, 0, strlen($rut)-1);
+            $i = 2;
+            $suma = 0;
+            foreach(array_reverse(str_split($numero)) as $v)
+            {
+                if($i==8)
+                    $i = 2;
+                $suma += $v * $i;
+                ++$i;
+            }
+            $dvr = 11 - ($suma % 11);
+            
+            if($dvr == 11)
+                $dvr = 0;
+            if($dvr == 10)
+                $dvr = 'K';
+            if($dvr == strtoupper($dv))
+                return true;
+            else
+                return false;
+        }
+        catch(\Exception $e){
+            return false;
+        }
+    }
+    
+
+    function limpiar($s) 
+    { 
+        $s = str_replace('á', 'a', $s); 
+        $s = str_replace('Á', 'A', $s); 
+        $s = str_replace('é', 'e', $s); 
+        $s = str_replace('É', 'E', $s); 
+        $s = str_replace('í', 'i', $s); 
+        $s = str_replace('Í', 'I', $s); 
+        $s = str_replace('ó', 'o', $s); 
+        $s = str_replace('Ó', 'O', $s); 
+        $s = str_replace('Ú', 'U', $s); 
+        $s= str_replace('ú', 'u', $s); 
+
+        //Quitando Caracteres Especiales 
+        $s= str_replace('"', '', $s); 
+        $s= str_replace(':', '', $s); 
+        $s= str_replace('.', '', $s); 
+        $s= str_replace(',', '', $s); 
+        $s= str_replace(';', '', $s); 
+        $s= str_replace('-', '', $s); 
+        return $s; 
+    }
+    
 
 }

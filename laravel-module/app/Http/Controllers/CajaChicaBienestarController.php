@@ -12,7 +12,13 @@ class CajaChicaBienestarController extends Controller
         return CajaChicaBienestar::ingresarCajaChica($request);
     }
 
-    public function TraerCajaChicaTotal($anio, $mes){
+    public function TraerCajaChicaTotal($anio, $mes)
+    {
         return CajaChicaBienestar::traerCajaChicaTotal($anio, $mes);
+    }
+
+    public function ModificarCajaChica(Request $request)
+    {
+        return CajaChicaBienestar::modificarCajaChica($request);
     }
 }

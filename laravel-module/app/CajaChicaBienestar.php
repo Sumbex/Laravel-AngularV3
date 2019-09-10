@@ -263,6 +263,11 @@ class CajaChicaBienestar extends Model
         }
     }
 
+    protected function modificarCajaChica($request)
+    {
+        //
+    }
+
     protected function traerCajaChicaTotal($anio, $mes)
     {
         $existe = $this->existeCajaChica($anio, $mes);

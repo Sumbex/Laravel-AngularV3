@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CajaChicaBienestar extends Model
 {
@@ -30,7 +31,7 @@ class CajaChicaBienestar extends Model
                         'fecha.required' => 'Debes ingresar la fecha.',
                         'numero_documento.required' => 'Debes ingresar un n° de documento.',
                         'numero_documento.unique' => 'El numero de documento ya existe en tus registros.',
-                        'archivo_documento.required' => 'Debe seleccionar un archivo.',
+                        'archivo_documento.required' => 'Debes seleccionar un archivo.',
                         'archivo_documento.file' => 'Lo seleccionado debe ser un archivo.',
                         'archivo_documento.mimes' => 'El archivo debe ser extension PDF.',
                         'descripcion.required' => 'Debes ingresar una descripcion.',
@@ -43,8 +44,77 @@ class CajaChicaBienestar extends Model
                 break;
 
             case 2:
-                # code...
+                switch ($request->campo) {
+                    case 'fecha':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required'
+                            ],
+                            [
+                                'input.required' => 'Debes ingresar la fecha.'
+                            ]
+                        );
+                        break;
+                    case 'numero_documento':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|unique:cb_caja_chica,numero_documento'
+                            ],
+                            [
+                                'input.required' => 'Debes ingresar un n° de documento.',
+                                'input.unique' => 'El numero de documento ya existe en tus registros.'
+                            ]
+                        );
+                        break;
+
+                    case 'archivo_documento':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|file|mimes:pdf'
+                            ],
+                            [
+                                'input.required' => 'Debes seleccionar un archivo.',
+                                'input.file' => 'Lo seleccionado debe ser un archivo.',
+                                'input.mimes' => 'El archivo debe ser extension PDF.'
+                            ]
+                        );
+                        break;
+
+                    case 'descripcion':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required'
+                            ],
+                            [
+                                'input.required' => 'Debes ingresar una descripcion.'
+                            ]
+                        );
+                        break;
+
+                    case 'monto':
+                        $validator = Validator::make(
+                            $request->all(),
+                            [
+                                'input' => 'required|integer|min:1'
+                            ],
+                            [
+                                'input.required' => 'Debes ingresar un monto.',
+                                'input.min' => 'El monto ingresado debe ser mayor a 0.',
+                                'input.integer' => 'Debes ingresar solo numeros.'
+                            ]
+                        );
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
                 break;
+
             default:
                 # code...
                 break;
@@ -265,7 +335,85 @@ class CajaChicaBienestar extends Model
 
     protected function modificarCajaChica($request)
     {
-        //
+        $validarDatos = $this->validarDatos($request, 2);
+        if ($validarDatos['estado'] == 'success') {
+            $modificar = CajaChicaBienestar::find($request->id);
+
+            if (!is_null($modificar)) {
+                switch ($request->campo) {
+                    case 'fecha':
+                        $fecha = $this->fecha($request->input);
+                        $anio = $this->anioID($fecha['anio']);
+                        $mes = $this->mesID($fecha['mes']);
+
+                        $modificar->anio_id = $anio;
+                        $modificar->mes_id = $mes;
+                        $modificar->dia = $fecha['dia'];
+                        //dd($modificar);
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Fecha actualizada correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'numero_documento':
+                        $modificar->numero_documento = $request->input;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'N° de documento actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'archivo_documento':
+                        $ruta = substr($modificar->archivo_documento, 8);
+                        $borrar = Storage::delete($ruta);
+                        if ($borrar) {
+                            $guardarArchivo = $this->guardarArchivo($request->input, 'ArchivosCajaChicaBienestar/');
+                            if ($guardarArchivo['estado'] == 'success') {
+                                $modificar->archivo_documento = $guardarArchivo['archivo'];
+                                if ($modificar->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Archivo actualizado correctamente.'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                                }
+                            } else {
+                                return $guardarArchivo;
+                            }
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'descripcion':
+                        $modificar->descripcion = $request->input;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Descripcion actualizada correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'monto':
+                        $modificar->monto_egreso = $request->input;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Monto actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El Item que intentas modificar no existe.'];
+            }
+        } else {
+            return $validarDatos;
+        }
     }
 
     protected function traerCajaChicaTotal($anio, $mes)

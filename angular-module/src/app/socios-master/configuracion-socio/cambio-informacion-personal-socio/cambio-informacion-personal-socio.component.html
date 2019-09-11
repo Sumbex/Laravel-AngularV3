@@ -27,7 +27,7 @@
                   <tr>
                     <th class="text-right" style="background: #195fcf">Nombres:</th>
                     <td><input #nombresSocio type="text" class="sinbordefondo centrado" value="{{infoPersonal?.nombres}}"></td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(nombresSocio,'nombres')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -36,7 +36,7 @@
                   <tr>
                     <th class="text-right" style="background: #195fcf">Apellido Paterno:</th>
                     <td><input #apellidoP type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.a_paterno}}"></td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(apellidoP,'a_paterno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -47,7 +47,7 @@
                     <td><input #apellidoM type="text" class="sinbordefondo centrado"
                         value="{{infoPersonal?.a_materno}}">
                     </td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(apellidoM,'a_materno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -58,7 +58,7 @@
                     <td><input #fechaN type="date" class="sinbordefondo centrado"
                         value="{{infoPersonal?.fecha_nacimiento | uppercase}}">
                     </td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(fechaN,'fecha_nacimiento')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>

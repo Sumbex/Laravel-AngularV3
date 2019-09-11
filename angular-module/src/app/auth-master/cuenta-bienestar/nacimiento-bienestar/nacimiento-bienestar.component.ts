@@ -73,6 +73,11 @@ export class NacimientoBienestarComponent implements OnInit {
         alert(response.mensaje);
         this.blockIngreso = false;
         return false;
+      } 
+      if (response.estado == 'failed_v') {
+        alert(response.mensaje);
+        this.blockIngreso = false;
+        return false;
       }
       if (response.estado == 'success') {
         this.InsertarNacimiento.fecha = '';

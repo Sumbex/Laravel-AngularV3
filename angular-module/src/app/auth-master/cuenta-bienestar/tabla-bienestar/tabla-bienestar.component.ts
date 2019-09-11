@@ -17,20 +17,12 @@ export class TablaBienestarComponent implements OnInit {
   loading = false;
 
   //variables select año y mes
-
   anio; anios;
   mes; meses;
   idAnioActual;
   idMesActual;
   suc_res1 = false;
   suc_res2 = false;
-
-  valorAnio: Anios = {
-    descripcion: ''
-  }
-  valorMes: Meses = {
-    descripcion: ''
-  }
 
   //usuario logeado
   user: object = [];
@@ -44,6 +36,14 @@ export class TablaBienestarComponent implements OnInit {
   pass: string = '';
   actualizarLoad: boolean;
   modalActualizar = null;
+
+  //recalcular caja chica
+  actualizarRecalcular:boolean = false;
+  actualizarMontoCajaChica;
+
+  //cierre mensual anterior
+  cierreAnterior;
+  get_numero:number = 0;
 
   //tablas bienestar
   tablaBienestar;
@@ -68,8 +68,6 @@ export class TablaBienestarComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   openTablaBienestar(TablaBienestar) {
     this.modalTablaBienestar = this.modalService.open(TablaBienestar, { size: 'xl' });
     this.llenar_select();
@@ -82,6 +80,9 @@ export class TablaBienestarComponent implements OnInit {
 
   cerrarActualizar() {
     this.modalActualizar.close();
+  }
+  openPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
   }
 
   llenar_select() {
@@ -131,7 +132,7 @@ export class TablaBienestarComponent implements OnInit {
 
   listo_para_listar(res1, res2) {
     if (res1 == true && res2 == true) {
-      //  this.cierreMensualAnterior();
+      this.cierreMensualAnterior();
       this.refrescarBienestar();
 
     }
@@ -147,6 +148,7 @@ export class TablaBienestarComponent implements OnInit {
     this.nacimiento = [];
     this.medico = [];
     this.resultado = [];
+    this.actualizarMontoCajaChica = '';
     this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(
       response => {
         if (response == null) {
@@ -159,6 +161,7 @@ export class TablaBienestarComponent implements OnInit {
           this.nacimiento = [];
           this.medico = [];
           this.resultado = [];
+          this.actualizarMontoCajaChica = '';
         } else {
           this.tablaBienestar = response;
           this.gas = this.tablaBienestar.Cuenta_gas;
@@ -191,7 +194,7 @@ export class TablaBienestarComponent implements OnInit {
   }
   //actualizar items
   actualizar(id, campo, input, validar) {
-    if (campo == "archivo") {
+    if (campo == "archivo_1" || campo == "archivo_2") {
       if (campo == "undefined") {
         alert("ingrese documento porfavor!")
         return false;
@@ -276,8 +279,55 @@ export class TablaBienestarComponent implements OnInit {
 
   }
 
+  cierreMensualAnterior(){
+    this.cierreAnterior = [];
+      this._bienestarService.traer_monto_inicial_cbe(this.anio, this.mes).subscribe(
+        response => {
+          console.log(response);
+          if (response['estado'] == "failed") {
+            this.get_numero = 0;
+          }
+          if(response['estado'] == "success"){
+            this.cierreAnterior = response[0].inicio_mensual;
+            this.get_numero = this.cierreAnterior;
+          }
+        }
+      );
+}
+
+  actualizarCaja(){ 
+    this.actualizarRecalcular = true;
+    this._bienestarService.getCalcularCajaChicaActualizar(this.anio, this.mes).subscribe(
+      response => {
+        //console.log(response);
+        if(response.estado == "success"){
+          if(response.monto == 0){
+            alert("no existe monto el mes anterior");
+            response.monto = "";
+            this.actualizarRecalcular = false;
+            this.modalActualizar.close();
+          }
+          this.actualizarMontoCajaChica = response.monto;
+          this.actualizarRecalcular = false;
+        }else{
+          this.actualizarMontoCajaChica = null;
+          this.load = false;
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    ); 
+  }
+
   onSelectImage(event) {
     this.archivoDocumento = event.srcElement.files[0];
   }
+
+  btn_reload(){
+
+    this.listo_para_listar(this.suc_res1, this.suc_res2);
+
+}
 
 }

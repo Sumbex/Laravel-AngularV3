@@ -215,7 +215,7 @@ class CajaChicaBienestar extends Model
                 $total = $total + $key->monto_egreso;
             }
 
-            $monto = DB::table('cb_caja_chica')
+           /*  $monto = DB::table('cb_caja_chica')
                 ->select([
                     'monto_egreso'
                 ])
@@ -224,7 +224,7 @@ class CajaChicaBienestar extends Model
                     'anio_id' => $anioA,
                     'mes_id' => $mesA
                 ])
-                ->sum('monto_egreso');
+                ->sum('monto_egreso'); */
             /*  dd($total - $test); */
 
             $resta = $total - $test/* $caja[0]->monto_egreso - $monto*/;

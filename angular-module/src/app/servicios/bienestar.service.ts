@@ -44,6 +44,17 @@ export class BienestarService {
     });
   }
 
+  listar_inicio_cierre(anio):Observable<any>{
+    return this._http.get(this.url + "listar_inicio_y_cierre_mensual_cbe/" + anio, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'applcation/json'
+        }
+      )
+    });
+  }
+
   // guardar_iniciomensual(){
   //   // return http.get('cbe_guardar_inicio_mensual');
   // }
@@ -92,6 +103,31 @@ getTablaBienestarActualizar(id,campo,input): Observable<any>{
       }
   )});
 }
+traer_monto_inicial_cbe(anio, mes): Observable<any>{
+  
+  return this._http.get(this.url + "traer_monto_inicial_cbe/"+anio+'/'+mes, {
+    headers: new HttpHeaders(
+      {
+        'Authorization': 'Bearer' + this.token,
+        'Content-Type': 'applcation/json'
+      }
+    )
+  });
+
+}
+calcular_caja_chica_cbe(anio, mes): Observable<any>{
+  
+  return this._http.get(this.url + "calcular_caja_chica_anterior_cbe/" + anio + '/' + mes, {
+    headers: new HttpHeaders(
+      {
+        'Authorization': 'Bearer' + this.token,
+        'Content-Type': 'applcation/json'
+      }
+    )
+  });
+}
+
+
 
 // getCalcularCajaChica(anio: string, mes: string): Observable<any>{
 //   return this._http.get(this.url + "calcular_caja_chica_anterior_cs/" + anio + "/" + mes, {headers: new HttpHeaders(

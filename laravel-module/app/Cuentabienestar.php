@@ -20,6 +20,22 @@ class Cuentabienestar extends Model
         $f = $this->div_fecha($r->fecha);
         $anio = $this->anio_tipo_id($f['anio']);
 
+         // PRIMERO VERIFICAR SI EXISTE 
+        $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
+								'activo'  => 'S',
+								'anio_id' => $anio->id/*$f['anio']*/,
+								'mes_id'  => $f['mes'],
+                        ])->first();
+        
+        if(empty($exis_monto_init)){
+			$borrar = Storage::delete('/'.$archivo);
+			return [
+				"estado"  => "failed", 
+				"mensaje" => "No existe monto inicial, primero calcule"
+			];
+
+		}
+
 
         $verify = $this->where([
                 'mes_id' => $f['mes'],
@@ -84,6 +100,23 @@ class Cuentabienestar extends Model
                     return ['estado'=>'failed', 'mensaje'=>'Ya existe la caja chica para este mes'];
             }
         }
+
+         // PRIMERO VERIFICAR SI EXISTE 
+        $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
+								'activo'  => 'S',
+								'anio_id' => $anio->id/*$f['anio']*/,
+								'mes_id'  => $f['mes'],
+                        ])->first();
+        
+        if(empty($exis_monto_init)){
+			$borrar = Storage::delete('/'.$archivo);
+			return [
+				"estado"  => "failed", 
+				"mensaje" => "No existe monto inicial, primero calcule"
+			];
+
+		}
+
 
 
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
@@ -156,14 +189,31 @@ class Cuentabienestar extends Model
             break;
         }
 
+        $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
+
+         // PRIMERO VERIFICAR SI EXISTE 
+        $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
+								'activo'  => 'S',
+								'anio_id' => $anio->id/*$f['anio']*/,
+								'mes_id'  => $f['mes'],
+                        ])->first();
+        
+        if(empty($exis_monto_init)){
+			$borrar = Storage::delete('/'.$archivo);
+			return [
+				"estado"  => "failed", 
+				"mensaje" => "No existe monto inicial, primero calcule"
+			];
+
+		}
+
 
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
 
 		if($file['estado'] == "success"){
             $archivo = $file['archivo'];
             
-            $f = $this->div_fecha($r->fecha);
-            $anio = $this->anio_tipo_id($f['anio']);
 
             $cbe = $this;
             $cbe->anio_id = $anio->id;

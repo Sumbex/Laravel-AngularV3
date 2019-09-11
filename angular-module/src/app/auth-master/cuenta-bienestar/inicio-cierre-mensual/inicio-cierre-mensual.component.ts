@@ -31,6 +31,8 @@ export class InicioCierreMensualComponent implements OnInit {
   password: string = '';
   //-------------------------
 
+  tabla;
+
   constructor(config: NgbModalConfig, 
     private modalService: NgbModal,
     private _cbe: BienestarService,
@@ -69,6 +71,8 @@ export class InicioCierreMensualComponent implements OnInit {
             (response:{id}) => {
               this.anio = response.id;
               this.f_anio = response.id;
+
+              this.listar();
             },
             error => {
               console.log(error);
@@ -176,6 +180,17 @@ export class InicioCierreMensualComponent implements OnInit {
           
         }
       );
+  }
+
+  listar(){
+    this._cbe.listar_inicio_cierre(this.f_anio).subscribe(
+      (response) =>{
+
+        this.tabla = response;
+
+      }
+
+    );
   }
 
 }

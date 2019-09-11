@@ -100,6 +100,7 @@ import { FormularioGastosMedicosBienestarComponent } from './auth-master/cuenta-
 import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component';
 import { BeneficiosCobradosComponent } from './socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component';
 import { FondosMutuosSocioComponent } from './socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component';
+import { BryanBienestarService } from './servicios/bryans-bienestar.service';
 
 
 @NgModule({
@@ -266,7 +267,8 @@ import { FondosMutuosSocioComponent } from './socios-master/beneficios-socio/fon
     TipoCuentasService,
     SindicalService,
     CajaChicaService,
-    PortalSociosService
+    PortalSociosService,
+    BryanBienestarService
   ],
   bootstrap: [AppComponent]
 })

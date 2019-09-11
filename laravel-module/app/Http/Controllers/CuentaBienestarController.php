@@ -6,10 +6,110 @@ use App\Cuentabienestar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 
 class CuentaBienestarController extends Controller
 {
+
+    public function validar_datos_bienestar($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+	            'archivo_documento_1' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+                'archivo_documento_1.mimes' =>'El documento debe ser un PDF'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    public function validar_datos_nacimiento($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+                'archivo_documento_1' => 'required|mimes:pdf',
+                'rut' => 'required',
+                'socio_id' => 'required'
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+                'archivo_documento_1.mimes' =>'El documento debe ser un PDF',
+                'rut.required' => 'El rut del recien nacido es necesario',
+                'socio_id.required' => 'El socio es necesario'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    public function validar_datos_fallecimiento($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+                'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+                // 'numero_documento_2' => 'required|unique:cuenta_bienestar,numero_documento',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+                'archivo_documento_1' => 'required|mimes:pdf',
+                'archivo_documento_2' => 'required|mimes:pdf',
+                'rut' => 'required',
+                'socio_id' => 'required'
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+                'archivo_documento_1.mimes' =>'El documento debe ser un PDF',
+                'archivo_documento_2.required' =>'El documento del fallecido es necesario',
+                'archivo_documento_2.mimes' =>'El documento del fallecido debe ser un PDF',
+                'rut.required' => 'El rut del recien nacido es necesario',
+                'socio_id.required' => 'El socio es necesario'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+	}
+
+
     public function insertar(Request $r)
     {
 
@@ -17,30 +117,55 @@ class CuentaBienestarController extends Controller
 
         switch ((string)$tipo_cuenta) {
             case '1': // cuenta del gas
-                $cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
-                return $cuenta_be;
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+
             break;
             case '2': //inasistencia por reunion
-                 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                return $cuenta_be;
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return ['estado'=>'failed_v', 'mensaje'=>'Error de ingreso en el formulario, intente nuevamente'];
             break;
             case '3': // inasistencia por votacion
-                 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                return $cuenta_be;
+
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                }
+                     return $cuenta_be;
             break;
             case '6': // detalle caja chica
-                 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                return $cuenta_be;
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $fall;
             break;
 
             //-------------------------------------------------------------------------------------------------
             case '4': //Fallecimiento
-                $fall = Cuentabienestar::insertar_fall_nac_gm($r);
-                return $fall;
+                $validar = $this->validar_datos_fallecimiento($r);
+                if ($validar['estado'] == "success") {
+                    $fall = Cuentabienestar::insertar_fall_nac_gm($r);
+                    return $fall;
+                }
+                return $validar;
             break;
             case '5'://Nacimiento
-                $nac = Cuentabienestar::insertar_fall_nac_gm($r);
-                return $nac;
+                $validar = $this->validar_datos_nacimiento($r);
+                if ($validar['estado'] == "success") {
+                    $nac = Cuentabienestar::insertar_fall_nac_gm($r);
+                    return $nac;
+                }
+                return $validar;
             break;
             case '7'://Gastos medicos
                 $gm = Cuentabienestar::insertar_fall_nac_gm($r);

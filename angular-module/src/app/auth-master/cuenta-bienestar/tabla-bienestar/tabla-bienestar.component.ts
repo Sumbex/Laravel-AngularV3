@@ -45,6 +45,10 @@ export class TablaBienestarComponent implements OnInit {
   actualizarLoad: boolean;
   modalActualizar = null;
 
+  //recalcular caja chica
+  actualizarRecalcular:boolean = false;
+  actualizarMontoCajaChica;
+
   //tablas bienestar
   tablaBienestar;
   gas;
@@ -82,6 +86,9 @@ export class TablaBienestarComponent implements OnInit {
 
   cerrarActualizar() {
     this.modalActualizar.close();
+  }
+  openPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
   }
 
   llenar_select() {
@@ -275,6 +282,31 @@ export class TablaBienestarComponent implements OnInit {
 
 
   }
+
+  // actualizarCaja(){ 
+  //   this.actualizarRecalcular = true;
+  //   this._bienestarService.getCalcularCajaChicaActualizar(this.anio, this.mes).subscribe(
+  //     response => {
+  //       //console.log(response);
+  //       if(response.estado == "success"){
+  //         if(response.monto == 0){
+  //           alert("no existe monto el mes anterior");
+  //           response.monto = "";
+  //           this.actualizarRecalcular = false;
+  //           this.modalActualizar.close();
+  //         }
+  //         this.actualizarMontoCajaChica = response.monto;
+  //         this.actualizarRecalcular = false;
+  //       }else{
+  //         this.actualizarMontoCajaChica = null;
+  //         this.load = false;
+  //       }
+  //     },
+  //     error => {
+  //       console.log(<any>error);
+  //     }
+  //   ); 
+  // }
 
   onSelectImage(event) {
     this.archivoDocumento = event.srcElement.files[0];

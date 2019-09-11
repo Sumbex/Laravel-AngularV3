@@ -10,13 +10,13 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Año</strong></label>
-        <select [(ngModel)]="anio" class="form-control form-control-sm">
+        <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
           <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
         </select>
       </div>
 
       <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Mes</strong></label>
-        <select [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
+        <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
           <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
         </select>
       </div>

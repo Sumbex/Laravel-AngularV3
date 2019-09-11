@@ -102,5 +102,14 @@ Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general
 //CUENTA BIEN ESTAR----------------------------------------------------------------------------------
 
 Route::post('cbe_guardar_inicio_mensual','InicioCierreMensualBienestarController@guardar_inicio_mensual');
-Route::get('cbe_calcular_cm/{anio}/{mes}', 'CierreMensualController@calcular_cierre_e_inicio_mensual');
+Route::get('cbe_calcular_cm/{anio}/{mes}', 'InicioCierreMensualBienestarController@calcular_cierre_e_inicio_mensual');
+Route::get('listar_inicio_y_cierre_mensual_cbe/{anio}','InicioCierreMensualBienestarController@listar_cierre_mensual_cbe');
+
+Route::get('traer_monto_inicial_cbe/{anio}/{mes}','InicioCierreMensualBienestarController@traer_monto_inicial');
+Route::get('calcular_caja_chica_anterior_cbe/{anio}/{mes}', 'CuentaBienestarController@existe_dinero_mes_anterior_caja_chica');
+Route::get('calcular_caja_chica_anterior_cbe2/{anio}/{mes}','CuentaBienestarController@dinero_mes_anterior_caja_chica_2');
+
+Route::post('cbe_insertar', 'CuentaBienestarController@insertar');
+Route::get('cbe_listar/{anio}/{mes}', 'CuentaBienestarController@listar_cuenta');
+
 

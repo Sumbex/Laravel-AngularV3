@@ -327,13 +327,15 @@ class CuentaBienestarController extends Controller
     
      public function dinero_mes_anterior_caja_chica_2($anio, $mes)
 	{	
-		
+
 		$convert = DB::table('anio')->where('id', $anio)->first();
 		$anio = $convert->descripcion;
 
 
 		$mes_anterior = $mes - 1;
-		$anio_anterior = $anio;
+        $anio_anterior = $anio;
+        
+        
 
 		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;

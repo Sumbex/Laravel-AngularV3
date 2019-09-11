@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cuentabienestar;
 use Illuminate\Http\Request;
+use App\CierreMensualBienEstar;
 use Illuminate\Support\Facades\DB;
 
 class InicioCierreMensualBienestarController extends Controller
@@ -107,11 +108,11 @@ class InicioCierreMensualBienestarController extends Controller
     	return CierreMensualBienEstar::inicio_mensual($anio, $mes);
     }
 
-    // public function listar_cierre_mensual_cs($anio)
-    // {
-    // 	// '1' => id que trabaja en ambito sindical
+    public function listar_cierre_mensual_cbe($anio)
+    {
+    	// '1' => id que trabaja en ambito sindical
     
 
-    // 	return CierreMensualBienEstar::listar_cierre_mensual_cs($anio,'2');
-    // }
+    	return CierreMensualBienEstar::listar_cierre_mensual_cbe($anio,'2');
+    }
 }

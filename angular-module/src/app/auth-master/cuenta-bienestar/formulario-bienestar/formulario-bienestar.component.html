@@ -182,7 +182,7 @@
 
                 <div class="col-12 col-md-3 col-lg-3 col-xl-3">
                   <br><label><strong>Detalle Tipo</strong></label>
-                  <select name="detalleTipo" id="detalleTipo" class="form-control form-control-sm"
+                  <select (change)="changeDetalle($event)" name="detalleTipo" id="detalleTipo" class="form-control form-control-sm"
                     [(ngModel)]="InsertarCuentaBienestar.tipo_cuenta_bienestar_id" required>
                     <option value="">--Seleccione--</option>
                     <option value="1">Cuenta del Gas</option>
@@ -197,8 +197,14 @@
 
                 <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                   <br><label><strong>Ingrese Monto</strong></label>
-                  <input type="number" class="form-control form-control-sm" [(ngModel)]="InsertarCuentaBienestar.monto"
-                    required>
+                  <input type="number" 
+                  class="form-control form-control-sm" 
+                  [(ngModel)]="InsertarCuentaBienestar.monto"
+                   required>
+                    <div *ngIf="loadCajaChica">
+                      <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                      <label>Calculando Monto...</label>
+                  </div>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 col-xl-4">

@@ -552,28 +552,34 @@ class CuentaSindicatoController extends Controller
 		}
 		else
 		{
-			$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
+			try{
+				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
 
 
-			//dd($anio->id.'; mes_id:'.$mes_anterior);
-			$monto = DB::table('cs_caja_chica')->where([
-						'activo' => 'S',
-						'anio_id' => $anio->id,
-						'mes_id' => $mes_anterior
-					])->sum('monto_egreso');
+				//dd($anio->id.'; mes_id:'.$mes_anterior);
+				$monto = DB::table('cs_caja_chica')->where([
+							'activo' => 'S',
+							'anio_id' => $anio->id,
+							'mes_id' => $mes_anterior
+						])->sum('monto_egreso');
 
 
 
-			$monto_a_guardar = /*$this->global_caja_chica - */$monto;
-			if ($monto_a_guardar == 100000) {
-				return ['estado'=>'success', 'monto'=>0];
-			}
-			return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
+				}
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
 
-			// $monto_sobrante = $this->global_caja_chica - $monto;
-			// if (empty($monto)) {
-			// 	return ['estado'=>"success",'monto'=>0];
-			// }
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
+			}catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
 
 		}
 
@@ -909,28 +915,34 @@ class CuentaSindicatoController extends Controller
 		}
 		else
 		{
-			$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
+			try{
+				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
 
 
-			//dd($anio->id.'; mes_id:'.$mes_anterior);
-			$monto = DB::table('cs_caja_chica')->where([
-						'activo' => 'S',
-						'anio_id' => $anio->id,
-						'mes_id' => $mes_anterior
-					])->sum('monto_egreso');
+				//dd($anio->id.'; mes_id:'.$mes_anterior);
+				$monto = DB::table('cs_caja_chica')->where([
+							'activo' => 'S',
+							'anio_id' => $anio->id,
+							'mes_id' => $mes_anterior
+						])->sum('monto_egreso');
 
 
 
-			$monto_a_guardar = /*$this->global_caja_chica - */$monto;
-			if ($monto_a_guardar == 100000) {
-				return ['estado'=>'success', 'monto'=>0];
-			}
-			return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
+				}
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
 
-			// $monto_sobrante = $this->global_caja_chica - $monto;
-			// if (empty($monto)) {
-			// 	return ['estado'=>"success",'monto'=>0];
-			// }
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
+			}catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
 
 		}
 

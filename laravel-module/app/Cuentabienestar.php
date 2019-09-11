@@ -209,50 +209,106 @@ class Cuentabienestar extends Model
 		}
 
 
-        $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+        if ($r->tipo_cuenta_bienestar_id == '4') { // tipo fallecido
 
-		if($file['estado'] == "success"){
-            $archivo = $file['archivo'];
-            
+            $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+            $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/defuncion/');    
+        
+            if($file['estado'] == "success" && $file2['estado'] == "success"){
 
-            $cbe = $this;
-            $cbe->anio_id = $anio->id;
-            $cbe->mes_id = $f['mes'];
-            $cbe->dia = $f['dia'];
-            $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
-            $cbe->numero_documento_1 = $r->numero_documento_1;
-            $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
-            $cbe->definicion = $r->definicion;
-            $cbe->activo = 'S';
+                $archivo = $file['archivo'];
+                $archivo2 = $file2['archivo'];
+                
 
-            if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
-            if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
+                $cbe = $this;
+                $cbe->anio_id = $anio->id;
+                $cbe->mes_id = $f['mes'];
+                $cbe->dia = $f['dia'];
+                $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
+                $cbe->numero_documento_1 = $r->numero_documento_1;
+                $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
+                $cbe->archivo_documento_2 = 'storage/'.$archivo2;
+                $cbe->definicion = $r->definicion;
+                $cbe->activo = 'S';
 
-            $cbe->descripcion = $r->descripcion;
+                if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
+                if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
 
-            if ($cbe->save()) {
+                $cbe->descripcion = $r->descripcion;
 
-                switch ((string)$cbe->tipo_cuenta_bienestar_id) {
-                    case '4'://Fallecimiento
-                        return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
-                    break;
-                     case '5'://Nacimiento
-                        return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
-                    break;
-                     case '7'://Gastos medicos
-                        return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
-                    break;
-                    
-                    default:
-                        # code...
-                    break;
+                if ($cbe->save()) {
+
+                    switch ((string)$cbe->tipo_cuenta_bienestar_id) {
+                        case '4'://Fallecimiento
+                            return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '5'://Nacimiento
+                            return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '7'://Gastos medicos
+                            return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
+                        break;
+                        
+                        default:
+                            # code...
+                        break;
+                    }
+
                 }
-
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+            }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
             }
-            return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
-		}else{
-				return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
-		}
+
+        }
+        else{ // o si no guardado normal para nacimiento o gastos medicos
+
+            $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+        
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+                
+
+                $cbe = $this;
+                $cbe->anio_id = $anio->id;
+                $cbe->mes_id = $f['mes'];
+                $cbe->dia = $f['dia'];
+                $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
+                $cbe->numero_documento_1 = $r->numero_documento_1;
+                $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
+                $cbe->definicion = $r->definicion;
+                $cbe->activo = 'S';
+
+                if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
+                if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
+
+                $cbe->descripcion = $r->descripcion;
+
+                if ($cbe->save()) {
+
+                    switch ((string)$cbe->tipo_cuenta_bienestar_id) {
+                        case '4'://Fallecimiento
+                            return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '5'://Nacimiento
+                            return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '7'://Gastos medicos
+                            return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
+                        break;
+                        
+                        default:
+                            # code...
+                        break;
+                    }
+
+                }
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+            }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+
+        }
 
 
             

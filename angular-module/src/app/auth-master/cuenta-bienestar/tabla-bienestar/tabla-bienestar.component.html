@@ -51,7 +51,7 @@
             <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
             <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
             <!--cuenta del cierre del mes actual-->
-            <td class="text-center"><strong> {{get_numero}} </strong></td>
+            <td class="text-center"><strong> {{get_numero | currency:"CLP" : "symbol-narrow":'1.0'}} </strong></td>
           </tr>
         </thead>
 

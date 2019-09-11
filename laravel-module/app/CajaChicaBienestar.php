@@ -175,7 +175,7 @@ class CajaChicaBienestar extends Model
             $anioA = $anio - 1;
         }
 
-        $caja = DB::table('cuenta_bienestar')
+        /* $caja = DB::table('cuenta_bienestar')
             ->select([
                 'monto_egreso'
             ])
@@ -185,9 +185,36 @@ class CajaChicaBienestar extends Model
                 'mes_id' => $mesA,
                 'tipo_cuenta_bienestar_id' => 6
             ])
+            ->get(); */
+        $caja = DB::table('cuenta_bienestar')
+            ->select([
+                'monto_egreso'
+            ])
+            ->where([
+                'activo' => 'S',
+                'tipo_cuenta_bienestar_id' => 6,
+                'anio_id' => $anio
+            ])
+            ->where('mes_id', '<', $mes)
             ->get();
-
+        /* dd($caja); */
+        $total = 0;
         if (!$caja->isEmpty()) {
+            $test = DB::table('cb_caja_chica')
+                ->select([
+                    'monto_egreso'
+                ])
+                ->where([
+                    'activo' => 'S',
+                    'anio_id' => $anio
+                ])
+                ->where('mes_id', '<', $mes)
+                ->sum('monto_egreso');
+
+            foreach ($caja as $key) {
+                $total = $total + $key->monto_egreso;
+            }
+
             $monto = DB::table('cb_caja_chica')
                 ->select([
                     'monto_egreso'
@@ -198,7 +225,9 @@ class CajaChicaBienestar extends Model
                     'mes_id' => $mesA
                 ])
                 ->sum('monto_egreso');
-            $resta = $caja[0]->monto_egreso - $monto;
+            /*  dd($total - $test); */
+
+            $resta = $total - $test/* $caja[0]->monto_egreso - $monto*/;
             return ['estado' => 'success', 'monto' => $resta];
         } else {
             return ['estado' => 'failed', 'monto' => 0];

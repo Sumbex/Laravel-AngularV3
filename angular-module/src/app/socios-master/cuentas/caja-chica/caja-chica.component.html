@@ -101,6 +101,10 @@
             <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
         </tr>
+        <tr>
+          <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
+          <td scope="col" class="text-center"><b>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+        </tr>
         <br>
         <!--Tabla del total Modal Caja Chica-->
         <tr>
@@ -145,6 +149,5 @@
 
 </ng-template>
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-block btn-sm" type="button" (click)="openModalCajaChica(cajaChica)">Ver
-  Datos
+<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCajaChica(cajaChica)"><b>Cuenta Caja Chica</b>
 </button>

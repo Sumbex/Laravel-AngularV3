@@ -1,3 +1,73 @@
-<p>
-  formulario-caja-chica-bienestar works!
-</p>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm); estado='ingresar_cch'" enctype="multipart/form-data">
+  <br>
+  <div class="row centrarCajaChica">
+          <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+            <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Advertencia!</strong> Antes de ingresar un detalle compruebe que la caja chica existe en la fecha escogida. Recuerde que el archivo a subir debe de estar en formato PDF</small>
+          </ngb-alert>
+
+    <div class="col-sm-3 col-md-4 col-lg-4"> <br>
+      <label><strong>Ingrese Fecha </strong>
+        <i class="fas fa-info-circle" placement="right" ngbTooltip="Recuerde ingresar un fecha."></i>
+      </label> <br>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="date" class="form-control form-control-sm" name="fecha" #fecha="ngModel"
+            [(ngModel)]="datosCajaChica.fecha" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-4"><br>
+      <label><strong>Ingrese Detalle </strong>
+        <i class="fas fa-info-circle" placement="right" ngbTooltip="El mínimo de caracteres debe ser de 5."></i>
+      </label>
+      <input class="form-control form-control-sm" type="text" minlength="5" maxlength="160" name="descripcion"
+        #descripcion="ngModel" [(ngModel)]="datosCajaChica.descripcion" required>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-4"><br>
+      <label><strong>Igrese Monto </strong>
+        <i class="fas fa-info-circle" placement="right"
+          ngbTooltip="El monto a ingresar no debe ser negativo."></i>
+      </label>
+      <input class="form-control form-control-sm" type="number" name="monto" #monto="ngModel"
+        [(ngModel)]="datosCajaChica.monto_egreso" required>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-4"><br>
+      <label><strong>Igrese N° Documento </strong>
+        <i class="fas fa-info-circle" placement="right"
+          ngbTooltip="El numero de documento puede ser alfa numerico."></i>
+      </label>
+      <input class="form-control form-control-sm" name="nDocumento" #nDocumento="ngModel"
+        [(ngModel)]="datosCajaChica.numero_documento" required>
+    </div>
+
+    <div class="col-sm-3 col-md-4 col-lg-4"><br>
+      <label><strong>Ingrese el archivo comprobante </strong>
+        <i class="fas fa-info-circle" placement="right"
+          ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+      </label> <br>
+      <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
+      <select (change)="changeDefinicion($event)" class="form-control form-control-sm">
+          <option value="2">EGRESO</option>
+      </select>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="row justify-content-end">
+        <div class="col-sm-6 col-md-4 col-lg-4"><br>
+          <label><strong>Guardar Caja Chica </strong>
+            <i class="fas fa-info-circle" placement="right"
+              ngbTooltip="Para guardar debe completar todos los campos."></i>
+          </label><br>
+          <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
+            [disabled]="loginForm.invalid || blockCajaChica"><i class="fas fa-save"></i> Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</form>

@@ -21,7 +21,10 @@ export class PrestamosSociosComponent implements OnInit {
 
   //Bloquear Muestro de pagos
   hideCuotas = true;
-  hideAbonos = true;
+  hideAbonosDiaSueldo = true;
+  hideAbonosConflicto = true;
+  hideAbonosTrimestral = true;
+  hideAllAbonos = true;
 
   //Loading tabla
   loadingTabla = true;
@@ -35,12 +38,19 @@ export class PrestamosSociosComponent implements OnInit {
     this.getPrestamos();
   }
 
+  openPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   openModalHistorialPagos(historial) {
     this.modalPagosPrestamos = this.modalService.open(historial, { size: 'xl' });
     this.limpiarHistorial();
     this.loadingTabla = true;
     this.hideCuotas = true;
-    this.hideAbonos = true;
+    this.hideAbonosDiaSueldo = true;
+    this.hideAbonosConflicto = true;
+    this.hideAbonosTrimestral = true;
+    this.hideAllAbonos = true;
   }
 
   getPrestamos(){
@@ -58,9 +68,12 @@ export class PrestamosSociosComponent implements OnInit {
     this._portalSociosService.getPagosPrestamos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         this.hideCuotas = true;
+        this.historialCuotas = ['Apple', 'Orange', 'Banana'];
+        console.log(this.historialCuotas);
       }else{
         this.hideCuotas = false; //mostrar los prestamos encontrados
         this.historialCuotas = response.mensaje;
+        console.log(this.historialCuotas);
       }
     });
   }
@@ -68,25 +81,37 @@ export class PrestamosSociosComponent implements OnInit {
   getPagosAbonos(id, tipo){
     this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        this.loadingTabla = false;
-        this.hideAbonos = true;
         if(tipo == 1){
-          this.historialAbonoDiaSueldo = response.mensaje;
+          this.historialAbonoDiaSueldo = ['Apple', 'Orange', 'Banana']; 
+          this.hideAbonosDiaSueldo = true;
+          console.log(this.historialAbonoDiaSueldo);
         }else if(tipo == 2){
-          this.historialAbonoTerminoConflicto = response.mensaje;
+          this.historialAbonoTerminoConflicto = ['Apple', 'Orange', 'Banana']; 
+          this.hideAbonosConflicto = true;
+          console.log(this.historialAbonoTerminoConflicto);
         }else if(tipo == 3){
-          this.historialAbonoTrimestral = response.mensaje;
+          this.historialAbonoTrimestral = ['Apple', 'Orange', 'Banana'];   
+          this.hideAbonosTrimestral = true;
+          this.hideAllAbonos = false;
+          this.loadingTabla = false;
+          console.log(this.historialAbonoTrimestral);
         }
       }else{
-        this.loadingTabla = false;
-        this.hideAbonos = false;
-        //this.historialAbonos = response.mensaje;
         if(tipo == 1){
           this.historialAbonoDiaSueldo = response.mensaje;
+          this.hideAbonosDiaSueldo = false;
+          console.log(this.historialAbonoDiaSueldo);
         }else if(tipo == 2){
           this.historialAbonoTerminoConflicto = response.mensaje;
+          this.hideAbonosConflicto = false;
+          console.log(this.historialAbonoTerminoConflicto);
         }else if(tipo == 3){
-          this.historialAbonoTrimestral = response.mensaje;
+          this.historialAbonoTrimestral = response.mensaje;       
+          this.hideAbonosTrimestral = false;
+          /* this.hideCuotas = false; */
+          this.hideAllAbonos = false;
+          this.loadingTabla = false;
+          console.log(this.historialAbonoTrimestral);
         }
       }
     });

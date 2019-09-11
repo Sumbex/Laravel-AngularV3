@@ -9,8 +9,12 @@
       .light-blue-backdrop {
         background-color: #5cb3fd;
       }
+
+      .btn-block{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
   
-      label,input, button{
+      label,input{
         font-size: 12px;
       }
   

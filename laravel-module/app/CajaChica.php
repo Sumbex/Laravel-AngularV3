@@ -451,6 +451,7 @@ class CajaChica extends Model
                 if ($caja[0]->total_ingreso == 0) {
                     $caja[0]->total_ingreso = 0;
                     $caja[0]->total = $caja[0]->total_egreso;
+                    $caja[0]->cierre_mes = $this->saldo - $caja[0]->total;
                 } else {
                     $caja[0]->total = $caja[0]->total_ingreso - $caja[0]->total_egreso;
                 }

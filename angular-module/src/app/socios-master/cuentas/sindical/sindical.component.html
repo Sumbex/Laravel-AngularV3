@@ -271,7 +271,7 @@
             <td scope="col" class="text-center"><b>{{itemPrestamo.numero_documento}}</b></td>
             <td scope="col" class="text-center">
               <a class="btn-primary-outline" style="cursor: pointer">
-                <i class="far fa-times-circle" placement="top"></i>
+                <i class="fas fa-times-circle" placement="top"></i>
               </a>
             </td>
             <td scope="col" colspan="4"><b>{{itemPrestamo.descripcion}}</b></td>
@@ -328,7 +328,7 @@
             <!--MODAL VISOR PDF-->
 
             <td class="text-center">
-              <a (click)="open(visorSindicalCamping)" class="btn-primary-outline" style="cursor: pointer">
+              <a class="btn-primary-outline" style="cursor: pointer">
                 <i class="far fa-file-alt" [ngClass]="{'fas fa-times-circle': itemCamping.archivo_documento == '--'}" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
               </a>
             </td>
@@ -401,4 +401,4 @@
   </div>
 </ng-template>
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-lg btn-block" type="button" (click)="openModalTablaSindical(tablaGeneral)"><b>Cuenta Sindical</b></button>
+<button class="btn btn-primary btn-lg btn-block" type="button" (click)="openModalTablaSindical(tablaGeneral)"><b>Sindical</b></button>

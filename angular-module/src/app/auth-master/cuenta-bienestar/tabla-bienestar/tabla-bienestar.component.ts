@@ -38,12 +38,12 @@ export class TablaBienestarComponent implements OnInit {
   modalActualizar = null;
 
   //recalcular caja chica
-  actualizarRecalcular:boolean = false;
+  actualizarRecalcular: boolean = false;
   actualizarMontoCajaChica;
 
   //cierre mensual anterior
   cierreAnterior;
-  get_numero:number = 0;
+  get_numero: number = 0;
 
   //tablas bienestar
   tablaBienestar;
@@ -54,6 +54,11 @@ export class TablaBienestarComponent implements OnInit {
   nacimiento;
   medico;
   cajaChica;
+  socioCuota;
+  inasistenciaElecciones;
+  consorcio;
+  cuotaExtraordinaria;
+  noSindicalizados;
   resultado: any = ["total_final"];
 
   constructor(config: NgbModalConfig,
@@ -82,7 +87,7 @@ export class TablaBienestarComponent implements OnInit {
     this.modalActualizar.close();
   }
   openPDF(content) {
-    this.modalService.open(content, {size: 'lg'});
+    this.modalService.open(content, { size: 'lg' });
   }
 
   llenar_select() {
@@ -149,6 +154,11 @@ export class TablaBienestarComponent implements OnInit {
     this.medico = [];
     this.resultado = [];
     this.actualizarMontoCajaChica = '';
+    this.socioCuota = [];
+    this.inasistenciaElecciones = [];
+    this.consorcio = [];
+    this.cuotaExtraordinaria = [];
+    this.noSindicalizados = [];
     this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(
       response => {
         if (response == null) {
@@ -162,6 +172,11 @@ export class TablaBienestarComponent implements OnInit {
           this.medico = [];
           this.resultado = [];
           this.actualizarMontoCajaChica = '';
+          this.socioCuota = [];
+          this.inasistenciaElecciones = [];
+          this.consorcio = [];
+          this.cuotaExtraordinaria = [];
+          this.noSindicalizados = [];
         } else {
           this.tablaBienestar = response;
           this.gas = this.tablaBienestar.Cuenta_gas;
@@ -172,6 +187,11 @@ export class TablaBienestarComponent implements OnInit {
           this.nacimiento = this.tablaBienestar.nacimiento;
           this.medico = this.tablaBienestar.gastos_medicos;
           this.resultado = this.tablaBienestar.resultado;
+          this.socioCuota = this.tablaBienestar.socio_cuota;
+          this.inasistenciaElecciones = this.tablaBienestar.inasistencia_elecciones;
+          this.consorcio = this.tablaBienestar.consorcio;
+          this.cuotaExtraordinaria = this.tablaBienestar.cuota_extraordinaria;
+          this.noSindicalizados = this.tablaBienestar.no_sindicalizados;
         }
         this.loading = false;
       },
@@ -279,29 +299,29 @@ export class TablaBienestarComponent implements OnInit {
 
   }
 
-  cierreMensualAnterior(){
+  cierreMensualAnterior() {
     this.cierreAnterior = [];
-      this._bienestarService.traer_monto_inicial_cbe(this.anio, this.mes).subscribe(
-        response => {
-          console.log(response);
-          if (response['estado'] == "failed") {
-            this.get_numero = 0;
-          }
-          if(response['estado'] == "success"){
-            this.cierreAnterior = response[0].inicio_mensual;
-            this.get_numero = this.cierreAnterior;
-          }
+    this._bienestarService.traer_monto_inicial_cbe(this.anio, this.mes).subscribe(
+      response => {
+        console.log(response);
+        if (response['estado'] == "failed") {
+          this.get_numero = 0;
         }
-      );
-}
+        if (response['estado'] == "success") {
+          this.cierreAnterior = response[0].inicio_mensual;
+          this.get_numero = this.cierreAnterior;
+        }
+      }
+    );
+  }
 
-  actualizarCaja(){ 
+  actualizarCaja() {
     this.actualizarRecalcular = true;
     this._bienestarService.getCalcularCajaChicaActualizar(this.anio, this.mes).subscribe(
       response => {
         //console.log(response);
-        if(response.estado == "success"){
-          if(response.monto == 0){
+        if (response.estado == "success") {
+          if (response.monto == 0) {
             alert("no existe monto el mes anterior");
             response.monto = "";
             this.actualizarRecalcular = false;
@@ -309,7 +329,7 @@ export class TablaBienestarComponent implements OnInit {
           }
           this.actualizarMontoCajaChica = response.monto;
           this.actualizarRecalcular = false;
-        }else{
+        } else {
           this.actualizarMontoCajaChica = null;
           this.load = false;
         }
@@ -317,17 +337,17 @@ export class TablaBienestarComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    ); 
+    );
   }
 
   onSelectImage(event) {
     this.archivoDocumento = event.srcElement.files[0];
   }
 
-  btn_reload(){
+  btn_reload() {
 
     this.listo_para_listar(this.suc_res1, this.suc_res2);
 
-}
+  }
 
 }

@@ -83,11 +83,10 @@ class Cuentabienestar extends Model
     }
      protected function insertar_cuenta_sindical($r)//caja chica, reunion y votacion
     {
+         $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
 
         if ($r->tipo_cuenta_bienestar_id == '6') { // si el ingreso es una caja chica
-            $f = $this->div_fecha($r->fecha);
-            $anio = $this->anio_tipo_id($f['anio']);
-
 
             $verify = $this->where([
                     'mes_id' => $f['mes'],

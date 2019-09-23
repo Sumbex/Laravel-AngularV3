@@ -442,4 +442,34 @@ class PortalSocioMisBeneficios extends Model
             return ['estado' => 'failed', 'mensaje' => 'No existe el fallecido o no esta relacionado con el socio.'];
         }
     }
+
+    protected function traerGastosMedicos()
+    {
+        $MGM = DB::table('cuenta_bienestar as cb')
+            ->select([
+                'cb.id',
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                'cb.numero_documento_1 as codigo',
+                'cb.archivo_documento_1 as comprobante',
+                'cb.monto_egreso as monto',
+                'cb.descripcion'
+            ])
+            ->join('anio as a', 'a.id', 'cb.anio_id')
+            ->join('mes as m', 'm.id', 'cb.mes_id')
+            ->join('cbe_gastos_medicos as cmg', 'cmg.cuenta_bienestar_id', 'cb.id')
+            ->orderBy('cb.dia', 'asc')
+            ->where([
+                'cb.activo' => 'S',
+                'cb.tipo_cuenta_bienestar_id' => 7,
+                'cmg.activo' => 'S',
+                'cmg.socio_id' => $this->socioID()
+            ])
+            ->get();
+
+        if (!$MGM->isEmpty()) {
+            return ['estado' => 'success', 'GM' => $MGM];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por gastos medicos cobrados.'];
+        }
+    }
 }

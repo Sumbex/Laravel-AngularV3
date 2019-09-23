@@ -95,6 +95,8 @@ Route::post('actualizar_datos_padres_suegros','SocioController@actualizar_datos_
 
 Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general_socio');
 
+Route::get('listar_beneficios_cobrados/{socio_id}','SocioController@listar_beneficios_cobrados');
+
 //---------------------------------------------------------------------------------------------------
 
 

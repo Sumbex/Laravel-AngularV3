@@ -68,7 +68,7 @@ class Cuentabienestar extends Model
                 if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
 
                 $cbe->descripcion = $r->descripcion;
-
+                
                 if ($cbe->save()) {
                     return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
                 }

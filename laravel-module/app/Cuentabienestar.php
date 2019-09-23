@@ -169,7 +169,7 @@ class Cuentabienestar extends Model
                  if (!$verify) {
                     return [ 
                         'estado'=>'failed', 
-                        'mensaje'=> 'El rut del recien nacido puede que no exista en beneficios o ya esta asociado al item NACIMIENTO segun el socio'
+                        'mensaje'=> 'El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido'
                      ];
                  }
             break;

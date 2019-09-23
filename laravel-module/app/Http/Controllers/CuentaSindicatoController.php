@@ -513,8 +513,11 @@ class CuentaSindicatoController extends Controller
 
 
 	//este metodo recibe el año como tal
-	public function existe_dinero_mes_anterior_caja_chica($anio, $mes)
+	public function existe_dinero_mes_anterior_caja_chica($anio ='', $mes ='')
 	{	
+		if ($anio =='' && $mes=='') {
+			return ['estado'=>"failed",'monto'=>0];
+		}
 		// dd($anio.'; '.$mes);
 		$mes_anterior = $mes - 1;
 		$anio_anterior = $anio;
@@ -547,7 +550,8 @@ class CuentaSindicatoController extends Controller
 		    {
 
 		        return ['estado'=>"failed",'monto'=>0];
-		    }
+			}
+			
 
 		}
 		else

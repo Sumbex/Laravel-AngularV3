@@ -279,4 +279,33 @@ class PortalSocioMisBeneficios extends Model
             return $verificarPrestamo;
         }
     }
+
+    protected function traerNacimientos()
+    {
+        $MN = DB::table('cuenta_bienestar as cb')
+            ->select([
+                'cb.id',
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_pago"),
+                'cb.numero_documento_1 as codigo',
+                'cb.archivo_documento_1 as archivo',
+                'cb.monto_egreso',
+                'cb.descripcion',
+                'cn.rut_nacimiento'
+            ])
+            ->join('anio as a', 'a.id', 'cb.anio_id')
+            ->join('mes as m', 'm.id', 'cb.mes_id')
+            ->join('cbe_nacimiento as cn', 'cn.cuenta_bienestar_id', 'cb.id')
+            ->where([
+                'cb.activo' => 'S',
+                'cn.activo' => 'S',
+                'cn.socio_id' => $this->socioID()
+            ])
+            ->get();
+
+        if (!$MN->isEmpty()) {
+            return ['estado' => 'success', 'nacimientos' => $MN];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];
+        }
+    }
 }

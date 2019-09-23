@@ -101,6 +101,8 @@ import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-biene
 import { BeneficiosCobradosComponent } from './socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component';
 import { FondosMutuosSocioComponent } from './socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component';
 import { BryanBienestarService } from './servicios/bryans-bienestar.service';
+import { CuentaBienestarSociosComponent } from './socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component';
+import { CajaBienestarSociosComponent } from './socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component';
 
 
 @NgModule({
@@ -247,7 +249,11 @@ import { BryanBienestarService } from './servicios/bryans-bienestar.service';
 
     BeneficiosCobradosComponent,
 
-    FondosMutuosSocioComponent
+    FondosMutuosSocioComponent,
+
+    CuentaBienestarSociosComponent,
+
+    CajaBienestarSociosComponent
 
   ],
   imports: [

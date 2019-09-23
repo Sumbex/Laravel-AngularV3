@@ -6,10 +6,110 @@ use App\Cuentabienestar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 
 class CuentaBienestarController extends Controller
 {
+
+    public function validar_datos_bienestar($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+	            'archivo_documento_1' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+                'archivo_documento_1.mimes' =>'El documento debe ser un PDF'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    public function validar_datos_nacimiento($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+                'archivo_documento_1' => 'required|mimes:pdf',
+                'rut' => 'required',
+                'socio_id' => 'required'
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+                'archivo_documento_1.mimes' =>'El documento debe ser un PDF',
+                'rut.required' => 'El rut del recien nacido es necesario',
+                'socio_id.required' => 'El socio es necesario'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    public function validar_datos_fallecimiento($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+                'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+                // 'numero_documento_2' => 'required|unique:cuenta_bienestar,numero_documento',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+                'archivo_documento_1' => 'required|mimes:pdf',
+                'archivo_documento_2' => 'required|mimes:pdf',
+                'rut' => 'required',
+                'socio_id' => 'required'
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+                'archivo_documento_1.mimes' =>'El documento debe ser un PDF',
+                'archivo_documento_2.required' =>'El documento del fallecido es necesario',
+                'archivo_documento_2.mimes' =>'El documento del fallecido debe ser un PDF',
+                'rut.required' => 'El rut del recien nacido es necesario',
+                'socio_id.required' => 'El socio es necesario'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+	}
+
+
     public function insertar(Request $r)
     {
 
@@ -17,34 +117,106 @@ class CuentaBienestarController extends Controller
 
         switch ((string)$tipo_cuenta) {
             case '1': // cuenta del gas
-                $cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
-                return $cuenta_be;
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+
             break;
             case '2': //inasistencia por reunion
-                 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                return $cuenta_be;
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
             break;
             case '3': // inasistencia por votacion
-                 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                return $cuenta_be;
+
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                }
+                return $validar;
             break;
             case '6': // detalle caja chica
-                 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                return $cuenta_be;
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+			break;
+			
+			case '8': // 10% cuota socio
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+			break;
+			
+			case '9': // Inasistencia por elecciones
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+			break;
+			
+			case '10': // Consorcio
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+			break;
+			case '11': // Cuota extraordinaria
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
+			break;
+			case '12': // No Sindicalizada
+                $validar = $this->validar_datos_bienestar($r);
+                if ($validar['estado'] == "success") {
+                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+                    return $cuenta_be;
+                }
+                return $validar;
             break;
 
             //-------------------------------------------------------------------------------------------------
             case '4': //Fallecimiento
-                $fall = Cuentabienestar::insertar_fall_nac_gm($r);
-                return $fall;
+                $validar = $this->validar_datos_fallecimiento($r);
+                if ($validar['estado'] == "success") {
+                    $fall = Cuentabienestar::insertar_fall_nac_gm($r);
+                    return $fall;
+                }
+                return $validar;
             break;
             case '5'://Nacimiento
-                $nac = Cuentabienestar::insertar_fall_nac_gm($r);
-                return $nac;
+                $validar = $this->validar_datos_nacimiento($r);
+                if ($validar['estado'] == "success") {
+                    $nac = Cuentabienestar::insertar_fall_nac_gm($r);
+                    return $nac;
+                }
+                return $validar;
             break;
-            case '7'://Gastos medicos
-                $gm = Cuentabienestar::insertar_fall_nac_gm($r);
-                return $gm;
+			case '7'://Gastos medicos
+				$validar = $this->validar_datos_bienestar($r);
+				if ($validar['estado'] == "success") {
+					$gm = Cuentabienestar::insertar_fall_nac_gm($r);
+                	return $gm;
+				}
+				return $validar;
             break;
             default:
                 
@@ -108,7 +280,13 @@ class CuentaBienestarController extends Controller
                     $return['caja_chica']=[];
                     $return['nacimiento']=[];
                     $return['fallecimiento']=[];
-                    $return['gastos_medicos']=[];
+					$return['gastos_medicos']=[];
+					
+					$return['socio_cuota']=[];
+					$return['inasistencia_elecciones']=[];
+					$return['consorcio']=[];
+					$return['cuota_extraordinaria']=[];
+					$return['no_sindicalizados']=[];
 
                     foreach ($listar as $key) {
                         switch ($key->tipo_cuenta_bienestar_id) {
@@ -118,7 +296,13 @@ class CuentaBienestarController extends Controller
                             case '6': $return['caja_chica'][] = $key; break;
                             case '5': $return['nacimiento'][] = $key; break;
                             case '4': $return['fallecimiento'][] = $key; break;
-                            case '7': $return['gastos_medicos'][] = $key; break;
+							case '7': $return['gastos_medicos'][] = $key; break;
+							
+							case '8': $return['socio_cuota'][] = $key; break;
+							case '9': $return['inasistencia_elecciones'][] = $key; break;
+							case '10': $return['consorcio'][] = $key;  break;
+							case '11': $return['cuota_extraordinaria'][] = $key;  break;
+							case '12': $return['no_sindicalizados'][] = $key;  break;
                             
                             default:
                                 # code...
@@ -133,14 +317,369 @@ class CuentaBienestarController extends Controller
         }
         return ['estado'=>'failed','mensaje'=>'No hay monto inicial en este mes'];
        
+	}
+	
+	 public function actualizar_dato_cbe(Request $r)
+    {
+    	$valida_pdf = $this->validar_pdf($r);
+    
+
+    	$cs = Cuentabienestar::where('id',$r->id)->first();
+    	//dd($cs);
+
+    	if ($r->input == '') {
+    		return ['estado'=>'failed','mensaje'=>'Ingrese un valor'];
+    	}
+
+    	switch ($r->campo) {
+    		case 'fecha':
+
+    				$f = $this->div_fecha($r->input);
+    				$anio = $this->anio_tipo_id($f['anio']);
+
+    				if($cs->anio_id == $anio->id && $cs->mes_id == $f['mes']){
+
+    					$cs->anio_id = $anio->id/*$f['anio']*/;
+						$cs->mes_id  = $f['mes'];
+						$cs->dia     = $f['dia'];
+
+						if ($cs->save()) {
+							return ['estado'=>'success','mensaje'=>'Fecha actualizada'];
+						}
+						return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    				}else{
+    				return ['estado'=>'failed','mensaje'=>'La fecha ingresada no pertenece al mes correspondiente'];
+    				}
+						
+
+    		break;
+    		case 'numero_documento_1':
+
+    				$exist = Cuentabienestar::where([
+    					'activo'=>'S', 
+    					'numero_documento_1'=>$r->input,
+    					//'id'=>$r->id
+    				])->first();
+    				if(!empty($exist)){
+    					return ['estado'=>'failed','mensaje'=>'Error, ya existe este numero de documento en la base de datos'];
+    				}else{
+    					$cs->numero_documento_1 = $r->input;
+    					if ($cs->save()) {
+    						return ['estado'=>'success','mensaje'=>'Numero de documento actualizado'];
+    					}
+    				}
+
+			break;
+			
+    		case 'tipo_cuenta_bienestar':
+    			
+    			$mes =	$cs->mes_id;
+    			$anio = $cs->anio_id;
+
+    			if ($r->input == 3) {//si el input viene como caja chica
+    				$verifi_cch = Cuentabienestar::where([
+    							'tipo_cuenta_sindicato' => 3, //caja chica
+    							'mes_id' => $mes,
+    							'anio_id' => $anio,
+    							'activo' => 'S'
+    						])->first();
+
+	    			//verificar que exista ya una caja chica en este mes
+	    			if(!empty($verifi_cch)){ // si existe
+	    				return ['estado'=>'failed','mensaje'=>'Error, ya existe una caja chica en este mes'];
+	    			}
+
+
+	    			$cs->tipo_cuenta_sindicato = $r->input;
+	    			if ($cs->save()) {
+	    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+	    			}
+	    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    			}
+    			else{
+
+    				$cs->tipo_cuenta_sindicato = $r->input;
+	    			if ($cs->save()) {
+	    				return ['estado'=>'success','mensaje'=>'Tipo de cuenta actualizada'];
+	    			}
+	    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    			}
+
+    		break;
+    		case 'descripcion':
+    			
+    			$cs->descripcion = $r->input;
+    			if ($cs->save()) {
+    				return ['estado'=>'success','mensaje'=>'Descripción actualizada'];
+    			}
+    			return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+
+    		break;
+    		case 'definicion':
+    			if ($cs->definicion == $r->input) {
+    				return ['estado'=>'failed','mensaje'=>'Ya existe esta definiciósn'];
+    			}
+
+    			if ($r->input == 1) {
+    				$monto = $cs->monto_egreso;
+
+    				$cs->monto_ingreso = $monto;
+    				$cs->monto_egreso = null;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    			if ($r->input == 2) {
+    				$monto = $cs->monto_ingreso;
+
+    				$cs->monto_egreso = $monto;
+    				$cs->monto_ingreso = null;
+    				$cs->definicion = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Definición actualizada'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			
+
+
+    		break;
+    		
+    		case 'monto':
+    			
+    			if ($cs->definicion == 1) {
+    				$cs->monto_ingreso = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+    			if ($cs->definicion == 2) {
+    				$cs->monto_egreso = $r->input;
+    				if ($cs->save()) {
+    					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    				}
+    				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    			}
+
+    		break;
+
+    		case 'archivo_1':
+    			if($valida_pdf['estado'] == 'success'){
+    			 $ruta = substr($cs->archivo_documento_1, 8);
+				//$ruta = $cs->archivo_documento;
+					
+                    $borrar = Storage::delete($ruta);
+
+                    if ($borrar) {
+                        $guardarArchivo = $this->guardarArchivo($r->input, 'archivos_bienestar/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $cs->archivo_documento_1 = 'storage/'.$guardarArchivo['archivo'];
+                            if ($cs->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                        } else {
+                            return $guardarArchivo;
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                    }
+                }else{
+                	return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                }
+
+			break;
+			case 'archivo_2':
+    			if($valida_pdf['estado'] == 'success'){
+    			 $ruta = substr($cs->archivo_documento_2, 8);
+				//$ruta = $cs->archivo_documento;
+					
+                    $borrar = Storage::delete($ruta);
+
+                    if ($borrar) {
+                        $guardarArchivo = $this->guardarArchivo($r->input, 'archivos_bienestar/defuncion/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $cs->archivo_documento_2 = 'storage/'.$guardarArchivo['archivo'];
+                            if ($cs->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                        } else {
+                            return $guardarArchivo;
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                    }
+                }else{
+                	return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                }
+
+    		break;
+
+    		
+    		default:
+    			# code...
+    			break;
+    	}
     }
+    //este metodo recibe el año como tal
+	public function existe_dinero_mes_anterior_caja_chica($anio = '', $mes = '')
+	{	
+		if ($anio == '' && $mes == '') {
+			return ['estado'=>'success', 'monto'=>0];
+		}
+
+		// dd($anio.'; '.$mes);
+		$mes_anterior = $mes - 1;
+		$anio_anterior = $anio;
+
+		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
+			$mes_anterior = 12;
+			$anio_anterior = $anio - 1;
+			
+			try{
+				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
+				
+				$monto = DB::table('cb_caja_chica')->where([
+							'activo' => 'S',
+							'anio_id' => $anio->id,
+							'mes_id' => $mes_anterior
+						])->sum('monto_egreso');
+
+
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
+				}
+
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+			
+			}catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
+
+		}
+		else
+		{
+            try{
+                $anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
+
+
+                $monto = DB::table('cb_caja_chica')->where([
+                            'activo' => 'S',
+                            'anio_id' => $anio->id,
+                            'mes_id' => $mes_anterior
+                        ])->sum('monto_egreso');
 
 
 
+                $monto_a_guardar = /*$this->global_caja_chica - */$monto;
+                if ($monto_a_guardar == 100000) {
+                    return ['estado'=>'success', 'monto'=>0];
+                }
+                return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+            
+            }catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
+
+
+		}
+		
+    }
+    
+     public function dinero_mes_anterior_caja_chica_2($anio, $mes)
+	{	
+
+		$convert = DB::table('anio')->where('id', $anio)->first();
+		$anio = $convert->descripcion;
+
+
+		$mes_anterior = $mes - 1;
+        $anio_anterior = $anio;
+        
+        
+
+		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
+			$mes_anterior = 12;
+			$anio_anterior = $anio - 1;
+			
+			try{
+				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
+				
+				$monto = DB::table('cb_caja_chica')->where([
+							'activo' => 'S',
+							'anio_id' => $anio->id,
+							'mes_id' => $mes_anterior
+						])->sum('monto_egreso');
+
+
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
+				}
+
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
+			}catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
+
+		}
+		else
+		{
+			try{
+				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> ($anio_anterior) ])->first();
+
+
+				//dd($anio->id.'; mes_id:'.$mes_anterior);
+				$monto = DB::table('cb_caja_chica')->where([
+							'activo' => 'S',
+							'anio_id' => $anio->id,
+							'mes_id' => $mes_anterior
+						])->sum('monto_egreso');
 
 
 
+				$monto_a_guardar = /*$this->global_caja_chica - */$monto;
+				if ($monto_a_guardar == 100000) {
+					return ['estado'=>'success', 'monto'=>0];
+				}
+				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
 
+				// $monto_sobrante = $this->global_caja_chica - $monto;
+				// if (empty($monto)) {
+				// 	return ['estado'=>"success",'monto'=>0];
+				// }
+			}catch (\Exception $e)
+		    {
+
+		        return ['estado'=>"failed",'monto'=>0];
+		    }
+
+		}		
+
+	}
 
 
     public function validar_pdf($request)
@@ -180,5 +719,27 @@ class CuentaBienestarController extends Controller
     			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
 		}
     }
+	 public function div_fecha($value)//funciona con input type date 
+    {
+    	$fecha = $value;
+		$ano = substr($fecha, -10, 4);
+		$mes = substr($fecha, -5, 2);
+		$dia = substr($fecha, -2, 2);
+		return [
+			'anio' => $ano, 
+			'mes'  => $mes, 
+			'dia'  => $dia
+		];
+    }
+    public function anio_tipo_id($value)
+    {
 
+    	$data = DB::table('anio')->where('descripcion', $value)->first();
+
+    	if(!empty($data)){
+
+    	 	return $data;
+    	} 
+    		
+    }
 }

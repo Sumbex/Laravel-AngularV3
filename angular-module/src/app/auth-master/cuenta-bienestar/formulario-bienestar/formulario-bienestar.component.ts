@@ -40,6 +40,9 @@ export class FormularioBienestarComponent implements OnInit {
   load: boolean = false;
   validarFormBienestar = null;
 
+  //caja chica
+  loadCajaChica:boolean = false;
+
   constructor(
     private _SociosService: SociosService,
     private _validarusuario: ValidarUsuarioService,
@@ -126,7 +129,7 @@ export class FormularioBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'failed_v') {
-        alert(response.mensaje);
+        alert("Verifique que los campos no esten duplicados");
         this.blockIngreso = false;
         return false;
       }
@@ -189,11 +192,35 @@ export class FormularioBienestarComponent implements OnInit {
     });
   }
 
-
-
   validar_usuario(modalUsuario) {
     this.validarFormBienestar = this.modalService.open(modalUsuario, { size: 'sm' });
 
+  }
+
+  changeDetalle(evento){
+    this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id = evento.target.value;
+    if(this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id == '6'){
+      var anio = this.InsertarCuentaBienestar.fecha.substring(0,4);
+      var mes = this.InsertarCuentaBienestar.fecha.substring(5,7);
+      this.loadCajaChica = true;
+      this._bienestarService.calcular_caja_chica_cbe(anio,mes).subscribe(
+        response => {
+          //console.log(response);
+          if(response.estado == "success"){
+            this.InsertarCuentaBienestar.monto = response.monto;
+            this.loadCajaChica = false;
+          }else{
+            this.InsertarCuentaBienestar.monto = null;
+            this.loadCajaChica = false;
+          }
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+    }else{
+      this.InsertarCuentaBienestar.monto = null;
+    }
   }
 }
 

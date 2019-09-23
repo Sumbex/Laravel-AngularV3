@@ -17,27 +17,42 @@ class Cuentabienestar extends Model
 
     protected function insertar_cuenta_sindical_gas($r)//aqui cae la del gas
     {
-    
+        $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
+
+         // PRIMERO VERIFICAR SI EXISTE 
+        $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
+								'activo'  => 'S',
+								'anio_id' => $anio->id/*$f['anio']*/,
+								'mes_id'  => $f['mes'],
+                        ])->first();
+        
+        if(empty($exis_monto_init)){
+			$borrar = Storage::delete('/'.$archivo);
+			return [
+				"estado"  => "failed", 
+				"mensaje" => "No existe monto inicial, primero calcule"
+			];
+
+		}
+
+
+        $verify = $this->where([
+                'mes_id' => $f['mes'],
+                'anio_id'=> $anio->id,
+                'activo'=>'S',
+                'tipo_cuenta_bienestar_id' => '1'
+        ])->first();
+
+        if (!empty($verify)) {
+                return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
+        }
+        
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
 
 		if($file['estado'] == "success"){
                 $archivo = $file['archivo'];
                 
-                 $f = $this->div_fecha($r->fecha);
-                $anio = $this->anio_tipo_id($f['anio']);
-
-
-                $verify = $this->where([
-                    'mes_id' => $f['mes'],
-                    'anio_id'=> $anio->id,
-                    'activo'=>'S',
-                    'tipo_cuenta_bienestar_id' => '1'
-                ])->first();
-
-            if (!empty($verify)) {
-                return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
-            }
-            else{
 
                 $cbe = $this;
                 $cbe->anio_id = $anio->id;
@@ -53,13 +68,12 @@ class Cuentabienestar extends Model
                 if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
 
                 $cbe->descripcion = $r->descripcion;
-
+                
                 if ($cbe->save()) {
                     return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
                 }
+                $borrar = Storage::delete('/'.$archivo);
                 return ['estado'=>'failed', 'mensaje'=>'Error al guardar item de cuenta del gas'];
-            }
-
 
 
 		}else{
@@ -69,6 +83,40 @@ class Cuentabienestar extends Model
     }
      protected function insertar_cuenta_sindical($r)//caja chica, reunion y votacion
     {
+         $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
+
+        if ($r->tipo_cuenta_bienestar_id == '6') { // si el ingreso es una caja chica
+
+            $verify = $this->where([
+                    'mes_id' => $f['mes'],
+                    'anio_id'=> $anio->id,
+                    'activo'=>'S',
+                    'tipo_cuenta_bienestar_id' => '6'
+            ])->first();
+
+            if (!empty($verify)) {
+                    return ['estado'=>'failed', 'mensaje'=>'Ya existe la caja chica para este mes'];
+            }
+        }
+
+         // PRIMERO VERIFICAR SI EXISTE 
+        $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
+								'activo'  => 'S',
+								'anio_id' => $anio->id/*$f['anio']*/,
+								'mes_id'  => $f['mes'],
+                        ])->first();
+        
+        if(empty($exis_monto_init)){
+			$borrar = Storage::delete('/'.$archivo);
+			return [
+				"estado"  => "failed", 
+				"mensaje" => "No existe monto inicial, primero calcule"
+			];
+
+		}
+
+
 
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
 
@@ -121,7 +169,7 @@ class Cuentabienestar extends Model
                  if (!$verify) {
                     return [ 
                         'estado'=>'failed', 
-                        'mensaje'=> 'El rut del recien nacido puede que no exista en beneficios o ya esta asociado al item NACIMIENTO segun el socio'
+                        'mensaje'=> 'El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido'
                      ];
                  }
             break;
@@ -140,53 +188,126 @@ class Cuentabienestar extends Model
             break;
         }
 
+        $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
 
-        $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+         // PRIMERO VERIFICAR SI EXISTE 
+        $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
+								'activo'  => 'S',
+								'anio_id' => $anio->id/*$f['anio']*/,
+								'mes_id'  => $f['mes'],
+                        ])->first();
+        
+        if(empty($exis_monto_init)){
+			$borrar = Storage::delete('/'.$archivo);
+			return [
+				"estado"  => "failed", 
+				"mensaje" => "No existe monto inicial, primero calcule"
+			];
 
-		if($file['estado'] == "success"){
-            $archivo = $file['archivo'];
-            
-            $f = $this->div_fecha($r->fecha);
-            $anio = $this->anio_tipo_id($f['anio']);
-
-            $cbe = $this;
-            $cbe->anio_id = $anio->id;
-            $cbe->mes_id = $f['mes'];
-            $cbe->dia = $f['dia'];
-            $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
-            $cbe->numero_documento_1 = $r->numero_documento_1;
-            $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
-            $cbe->definicion = $r->definicion;
-            $cbe->activo = 'S';
-
-            if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
-            if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
-
-            $cbe->descripcion = $r->descripcion;
-
-            if ($cbe->save()) {
-
-                switch ((string)$cbe->tipo_cuenta_bienestar_id) {
-                    case '4'://Fallecimiento
-                        return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
-                    break;
-                     case '5'://Nacimiento
-                        return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
-                    break;
-                     case '7'://Gastos medicos
-                        return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
-                    break;
-                    
-                    default:
-                        # code...
-                    break;
-                }
-
-            }
-            return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
-		}else{
-				return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
 		}
+
+
+        if ($r->tipo_cuenta_bienestar_id == '4') { // tipo fallecido
+
+            $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+            $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/defuncion/');    
+        
+            if($file['estado'] == "success" && $file2['estado'] == "success"){
+
+                $archivo = $file['archivo'];
+                $archivo2 = $file2['archivo'];
+                
+
+                $cbe = $this;
+                $cbe->anio_id = $anio->id;
+                $cbe->mes_id = $f['mes'];
+                $cbe->dia = $f['dia'];
+                $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
+                $cbe->numero_documento_1 = $r->numero_documento_1;
+                $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
+                $cbe->archivo_documento_2 = 'storage/'.$archivo2;
+                $cbe->definicion = $r->definicion;
+                $cbe->activo = 'S';
+
+                if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
+                if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
+
+                $cbe->descripcion = $r->descripcion;
+
+                if ($cbe->save()) {
+
+                    switch ((string)$cbe->tipo_cuenta_bienestar_id) {
+                        case '4'://Fallecimiento
+                            return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '5'://Nacimiento
+                            return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '7'://Gastos medicos
+                            return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
+                        break;
+                        
+                        default:
+                            # code...
+                        break;
+                    }
+
+                }
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+            }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+
+        }
+        else{ // o si no guardado normal para nacimiento o gastos medicos
+
+            $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
+        
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+                
+
+                $cbe = $this;
+                $cbe->anio_id = $anio->id;
+                $cbe->mes_id = $f['mes'];
+                $cbe->dia = $f['dia'];
+                $cbe->tipo_cuenta_bienestar_id = $r->tipo_cuenta_bienestar_id;
+                $cbe->numero_documento_1 = $r->numero_documento_1;
+                $cbe->archivo_documento_1 = 'storage/'.$archivo; /*$r->archivo_documento_1*/
+                $cbe->definicion = $r->definicion;
+                $cbe->activo = 'S';
+
+                if ($r->definicion == '1') { $cbe->monto_ingreso = $r->monto; }
+                if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
+
+                $cbe->descripcion = $r->descripcion;
+
+                if ($cbe->save()) {
+
+                    switch ((string)$cbe->tipo_cuenta_bienestar_id) {
+                        case '4'://Fallecimiento
+                            return CbeFallecimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '5'://Nacimiento
+                            return CbeNacimiento::insertar($cbe->id, $r->socio_id, $rut_limpio);
+                        break;
+                        case '7'://Gastos medicos
+                            return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
+                        break;
+                        
+                        default:
+                            # code...
+                        break;
+                    }
+
+                }
+                return ['estado'=>'failed', 'mensaje'=>'Error al guardar item'];
+            }else{
+                    return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+
+        }
 
 
             
@@ -199,6 +320,7 @@ class Cuentabienestar extends Model
                         concat(cbe.dia,' de ',m.descripcion,',',a.descripcion) as fecha,
                         numero_documento_1,
                         archivo_documento_1,
+                        archivo_documento_2,
                         monto_ingreso,
                         monto_egreso,
                         definicion,

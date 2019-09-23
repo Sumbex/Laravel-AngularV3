@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'AuthMaster', component: AuthMasterComponent, canActivate: [AuthGuardService], children:[
     { path: 'CuentaSindical', component: CuentaSindicalComponent },
     { path: 'CuentaBienestar', component: CuentaBienestarComponent },
-    { path: 'CuentaFondoMutuo', component: CuentaFondoMutuoComponent },
+    { path: 'CuentaConsorcio', component: CuentaFondoMutuoComponent },
     { path: 'Configuracion', component: ConfiguracionesComponent },
     { path: 'RegistroSocios', component: FormularioSociosComponent },
     { path: 'ListarSocios', component: ListarSociosComponent },

@@ -64,7 +64,7 @@
                   </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of datosCamping?.camping">
+                <tr *ngFor="let item of datosCamping?.camping" class="text-center">
                   <td scope="col"><b>{{ item.fecha }}</b>
                   </td>
                   <td scope="col"><b>{{ item.numero_documento }}</b>
@@ -92,7 +92,7 @@
                   <!--MODAL VISOR PDF-->
 
                   <td scope="col" style="text-align: center">
-                     <a (click)="openPDF(visorCamping)" class="btn-primary-outline">
+                     <a (click)="openPDF(visorCamping)" class="btn-primary-outline" style="cursor: pointer">
                         <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                       </a>&nbsp;
                   </td>
@@ -103,21 +103,21 @@
                   </td>
                   <td scope="col"><b>{{ item.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <th colspan="7" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
                     <td scope="col"><b>{{ totalesCamping?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                   </tr>
                 <br>
 
-                <tr>
+                <tr class="text-center">
                   <th colspan="3" class="text-right"><i class="fas fa-plus-circle"></i>  INGRESOS</th>
                   <td colspan="1"><b>{{ totalesCamping?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                   <th colspan="3" class="text-right"><i class="fas fa-minus-circle"></i>  EGRESOS</th>
                   <td colspan="1"><b>{{ totalesCamping?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                   <th colspan="3" class="text-right"><i class="fas fa-dollar-sign"></i>  CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
                   <td colspan="1"><b>{{ totalesCamping?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 </tr>
@@ -136,5 +136,5 @@
 
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCamping(Camping)"><b>Cuenta Camping</b>
+<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCamping(Camping)"><b>Camping</b>
 </button>

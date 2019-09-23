@@ -321,6 +321,7 @@ class Cuentabienestar extends Model
                         concat(cbe.dia,' de ',m.descripcion,',',a.descripcion) as fecha,
                         numero_documento_1,
                         archivo_documento_1,
+                        archivo_documento_2,
                         monto_ingreso,
                         monto_egreso,
                         definicion,

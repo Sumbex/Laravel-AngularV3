@@ -111,5 +111,6 @@ Route::get('calcular_caja_chica_anterior_cbe2/{anio}/{mes}','CuentaBienestarCont
 
 Route::post('cbe_insertar', 'CuentaBienestarController@insertar');
 Route::get('cbe_listar/{anio}/{mes}', 'CuentaBienestarController@listar_cuenta');
+Route::post('actualizar_dato_cbe','CuentaBienestarController@actualizar_dato_cbe');
 
 

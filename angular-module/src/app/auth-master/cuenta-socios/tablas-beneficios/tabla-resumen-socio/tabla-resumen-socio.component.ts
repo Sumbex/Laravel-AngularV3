@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BienestarService } from 'src/app/servicios/bienestar.service';
 
 @Component({
   selector: 'app-tabla-resumen-socio',
@@ -107,12 +108,18 @@ export class TablaResumenSocioComponent implements OnInit {
 
   ];
 
+  traerFallecimientos;
+  traerGastosMedicos;
+  traerNacimientos;
+
   vista_tabla: boolean = false;
+  vista_tabla_2: boolean = false;
   vista_pdf: boolean = false;
   ocultar_tabla: boolean = true;
   ocultar_imprimir: boolean = true;
 
   constructor(private _SociosService: SociosService,
+    private _BienestarService: BienestarService,
     config: NgbModalConfig,
     private modalService: NgbModal, ) {
     config.backdrop = 'static';
@@ -129,6 +136,7 @@ export class TablaResumenSocioComponent implements OnInit {
 
   verTablaBeneficiosCobrados(BeneficiosCobrados) {
     this.abrirTablaBeneficiosCobrados = this.modalService.open(BeneficiosCobrados, { size: 'lg' });
+    this.listarBeneficiosCobrados();
   }
   traerDocumentoSocio() {
     this.vista_pdf = true;
@@ -232,5 +240,45 @@ export class TablaResumenSocioComponent implements OnInit {
       }
     );
   }
+
+  listarBeneficiosCobrados(){
+    this.vista_tabla_2 = true;
+    let num = 3;
+    this._BienestarService.getBeneficiosCobrados(this.getIdSocio).subscribe((response) =>{
+      if(response.estado == "failed"){
+        console.log(response);
+        this.vista_tabla_2 = false;
+        alert(response.mensaje);
+        this.abrirTablaBeneficiosCobrados.close();
+        return false;
+      }
+      if(response.fallecimiento == ""){
+        num--;
+      }
+      if(response.gastos_medicos == ""){
+        num--;
+      }
+      if(response.nacimiento == ""){
+        num--;
+      }
+      if (num == 0) {
+        this.vista_tabla_2 = false;
+        alert("El socio aun no tienen beneficios cobrados.");
+        this.abrirTablaBeneficiosCobrados.close();
+        return false;
+      }else{
+        this.traerFallecimientos = response.fallecimiento;
+        this.traerGastosMedicos = response.gastos_medicos;
+        this.traerNacimientos = response.nacimiento;
+        this.vista_tabla_2 = false;
+      }
+         error => {
+        console.log(error);
+        this.vista_tabla_2 = false;
+        }
+      }
+    );
+    }
+
 
 }

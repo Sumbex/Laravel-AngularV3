@@ -120,4 +120,14 @@ getCalcularCajaChicaActualizar(anio: string, mes: string): Observable<any>{
   )});
 }
 
+
+getBeneficiosCobrados(idSocio): Observable<any>{
+  return this._http.get(this.url + "listar_beneficios_cobrados/" + idSocio, {headers: new HttpHeaders(
+      {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'applcation/json'
+      }
+  )});
+}
+
 }

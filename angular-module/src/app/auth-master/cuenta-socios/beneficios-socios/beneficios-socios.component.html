@@ -38,53 +38,55 @@
             </div>
             <div class="card">
 
-                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="row justify-content-center">
-
-                        <div class="col-12 col-md-8 col-lg-8 col-xl-8">
-                            <div class="form-group"> <br>
-                                <label>
-                                    <strong>Ingrese Rut </strong>
-                                    <i class="fas fa-info-circle" placement="right"
-                                        ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" [(ngModel)]="rut" class="form-control form-control-sm"
-                                        placeholder="Ingrese rut del socio sin guion" name="rut" required>
-                                    <span class="input-group-btn">
-                                        <button type="button" (click)="buscarSocio()"
-                                            class="btn btn-outline-success btn-sm">
-                                            <i *ngIf="!blockSocio" class="fas fa-search"></i>
-                                            <img *ngIf="blockSocio" padding-left="20px" height="12"
-                                                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                                        </button>
-                                    </span>
+                <form action="">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row justify-content-center">
+    
+                            <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+                                <div class="form-group"> <br>
+                                    <label>
+                                        <strong>Ingrese Rut </strong>
+                                        <i class="fas fa-info-circle" placement="right"
+                                            ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" [(ngModel)]="rut" class="form-control form-control-sm"
+                                            placeholder="Ingrese rut del socio sin guion" name="rut" required>
+                                        <span class="input-group-btn">
+                                            <button type="submit" (click)="buscarSocio()"
+                                                class="btn btn-outline-success btn-sm">
+                                                <i *ngIf="!blockSocio" class="fas fa-search"></i>
+                                                <img *ngIf="blockSocio" padding-left="20px" height="12"
+                                                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- 
+                            <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="form-group"> <br>
+                                      <label>
+                                        <strong>Subir Documento </strong>
+                                        <i class="fas fa-info-circle" placement="right"
+                                          ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+                                      </label> <br>
+                                      <input class="form-file-input" type="file" (change)="onSelectImage($event)" required>
+                                    </div>
+                                  </div>
+    
+                                  
+                                  <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                                    <div class="form-group"> <br>
+                                      <label><strong>Guardar Documento</strong></label>
+                                      <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDocumento()">Guardar</button>
+                                    </div>
+                                  </div> -->
+    
+    
                         </div>
-                        <!-- 
-                        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-                                <div class="form-group"> <br>
-                                  <label>
-                                    <strong>Subir Documento </strong>
-                                    <i class="fas fa-info-circle" placement="right"
-                                      ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
-                                  </label> <br>
-                                  <input class="form-file-input" type="file" (change)="onSelectImage($event)" required>
-                                </div>
-                              </div>
-
-                              
-                              <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-                                <div class="form-group"> <br>
-                                  <label><strong>Guardar Documento</strong></label>
-                                  <button class="btn btn-block btn-outline-success btn-sm" (click)="guardarDocumento()">Guardar</button>
-                                </div>
-                              </div> -->
-
-
                     </div>
-                </div>
+                </form>
 
                 <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="row justify-content-center">

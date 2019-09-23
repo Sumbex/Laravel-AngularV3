@@ -75,11 +75,12 @@ export class NacimientoBienestarComponent implements OnInit {
         return false;
       } 
       if (response.estado == 'failed_v') {
-        alert(response.mensaje);
+        alert("El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido.");
         this.blockIngreso = false;
         return false;
       }
       if (response.estado == 'success') {
+        console.log("AQUI ESTOY");
         this.InsertarNacimiento.fecha = '';
         this.InsertarNacimiento.numero_documento_1 = '';
         this.InsertarNacimiento.archivo_documento_1 = null;

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SociosService } from 'src/app/servicios/socios.service';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { SindicalService } from '../../../servicios/sindical.service';
+import { AniosService } from 'src/app/servicios/anios.service';
 
 @Component({
   selector: 'app-formulario-fondo-mutuo',
@@ -10,55 +12,177 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FormularioFondoMutuoComponent implements OnInit {
 
-    //Variables buscador socio
-    blockSocio: boolean = false;
-    rut: '';
-    fechaSocioTest: '';
-    rutSocioTest: '';
-    idSocio: '';
-    nombreSocioTest = '';
-    nombreUpperSocio = '';
 
-    constructor(
-      private _SociosService: SociosService,
-      private _validarusuario: ValidarUsuarioService,
-      config: NgbModalConfig,
-      private modalService: NgbModal) {
-      config.backdrop = 'static';
-      config.keyboard = false;
-    }
-  ngOnInit() {
+  socios;
+  search: string = '';
+  mod_editar = null;
+  mod_validar = null;
+  blockLoad = false;
+  blockLoad2 = false;
+
+  //actualizar_socio
+  rut;
+  nombres;
+  a_paterno;
+  a_materno;
+  fecha_nacimiento;
+  fecha_ingreso;
+  fecha_egreso;
+
+  //para validar usuario
+  user: object = [];
+  load: boolean = false;
+  modalReference = null;
+  m_val = null;
+  mod_opcion = null;
+
+  closeResult: string;
+  pass: string = '';
+  btn_validar: boolean = false;
+
+  currentLesson: string;
+
+  buttonStatus = false;
+  token = localStorage.getItem('token').replace(/['"]+/g, '');
+  estado_socio: object = ['estado'];
+  ver_load: boolean = true;
+  ver_estado_soc: boolean = false;
+
+   //variables select año y mes
+   anio; anios;
+   mes; meses;
+   idAnioActual;
+   idMesActual;
+   suc_res1 = false;
+   suc_res2 = false;
+
+  constructor(private _socios: SociosService,
+    private _time: AniosService,
+    public _validarusuario: ValidarUsuarioService,
+    private modalService: NgbModal,
+    private _sindical: SindicalService
+  ) {
+
   }
 
-  buscarSocio() {
-    this.blockSocio = true;
-    this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
-      console.log(response);
-      if (response.estado == "failed") {
-        alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-        this.rut = '';
-        this.fechaSocioTest = '';
-        this.rutSocioTest = '';
-        this.nombreSocioTest = '';
-        this.idSocio = '';
-        this.blockSocio = false;
-        return false;
-      } else {
-        this.rut = '';
-        this.fechaSocioTest = response.fecha_nacimiento;
-        this.rutSocioTest = response.rut;
-        this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
-        this.nombreUpperSocio = this.nombreSocioTest.toUpperCase();
-        this.idSocio = response.id;
-        this.blockSocio = false;
+  ngOnInit() {
+
+    if (localStorage.getItem('token') == '') {
+      alert("La sesión ya expiro!");
+
+      location.reload();
+    }
+
+    this.listar();
+    this.llenar_select();
+  }
+
+  listar() {
+    this._socios.getTablaSocios().subscribe(
+      response => {
+        console.log(response);
+        this.socios = response;
+        this.blockLoad2 = false;
+
       }
-    },
+    )
+  }
+
+  filtrar() {
+    this.blockLoad = true;
+    if (this.search == '') {
+      alert("Ingrese un nombre para filtrar");
+      this.blockLoad = false;
+      return false;
+    } else {
+      this._socios.getTablaFilter(this.search).subscribe(
+        response => {
+          console.log(response);
+          this.socios = response;
+          this.blockLoad = false;
+
+        }
+      )
+    }
+  }
+
+  estado_socio_portal(socio_id) {
+    this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
+      (response: { 'estado' }) => {
+        this.estado_socio = response.estado;
+        this.ver_load = false;
+        this.ver_estado_soc = true;
+      }
+    )
+  }
+
+  // fin del metodo para validar usuario
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  llenar_select() {
+
+    this._time.getAnios().subscribe(
+      response => {
+        this.anios = response;
+
+
+        this._time.getAnioActual().subscribe(
+          (response: { id }) => {
+            this.anio = response.id;
+            this.suc_res1 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      },
       error => {
         console.log(error);
-        this.blockSocio = false;
       }
-    );
+    )
+
+    this._time.getMeses().subscribe(
+      response => {
+        this.meses = response;
+
+        this._time.getMesActual().subscribe(
+          (response: { id }) => {
+            this.mes = response.id;
+            this.suc_res2 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  listo_para_listar(res1, res2) {
+    if (res1 == true && res2 == true) {
+
+    }
+  }
+
+  btn_reload() {
+
+    this.listo_para_listar(this.suc_res1, this.suc_res2);
 
   }
+
 
 }

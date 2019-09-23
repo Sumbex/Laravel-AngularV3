@@ -297,12 +297,14 @@ class PortalSocioMisBeneficios extends Model
             ->join('cbe_nacimiento as cn', 'cn.cuenta_bienestar_id', 'cb.id')
             ->where([
                 'cb.activo' => 'S',
+                'cb.tipo_cuenta_bienestar_id' => 5,
                 'cn.activo' => 'S',
                 'cn.socio_id' => $this->socioID()
             ])
             ->get();
 
         if (!$MN->isEmpty()) {
+            
             return ['estado' => 'success', 'nacimientos' => $MN];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];

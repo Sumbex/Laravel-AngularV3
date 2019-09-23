@@ -279,4 +279,9 @@ class PortalSocioMisBeneficios extends Model
             return $verificarPrestamo;
         }
     }
+
+    public function traerNacimientos()
+    {
+        //
+    }
 }

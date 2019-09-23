@@ -131,7 +131,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return ['estado'=>'failed_v', 'mensaje'=>'Error de ingreso en el formulario, intente nuevamente'];
+                return $validar;
             break;
             case '3': // inasistencia por votacion
 
@@ -139,7 +139,7 @@ class CuentaBienestarController extends Controller
                 if ($validar['estado'] == "success") {
                      $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                 }
-                     return $cuenta_be;
+                return $validar;
             break;
             case '6': // detalle caja chica
                 $validar = $this->validar_datos_bienestar($r);
@@ -147,7 +147,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return $fall;
+                return $validar;
 			break;
 			
 			case '8': // 10% cuota socio
@@ -156,7 +156,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return $fall;
+                return $validar;
 			break;
 			
 			case '9': // Inasistencia por elecciones
@@ -165,7 +165,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return $fall;
+                return $validar;
 			break;
 			
 			case '10': // Consorcio
@@ -174,7 +174,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return $fall;
+                return $validar;
 			break;
 			case '11': // Cuota extraordinaria
                 $validar = $this->validar_datos_bienestar($r);
@@ -182,7 +182,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return $fall;
+                return $validar;
 			break;
 			case '12': // No Sindicalizada
                 $validar = $this->validar_datos_bienestar($r);
@@ -190,7 +190,7 @@ class CuentaBienestarController extends Controller
                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
                     return $cuenta_be;
                 }
-                return $fall;
+                return $validar;
             break;
 
             //-------------------------------------------------------------------------------------------------
@@ -210,9 +210,13 @@ class CuentaBienestarController extends Controller
                 }
                 return $validar;
             break;
-            case '7'://Gastos medicos
-                $gm = Cuentabienestar::insertar_fall_nac_gm($r);
-                return $gm;
+			case '7'://Gastos medicos
+				$validar = $this->validar_datos_bienestar($r);
+				if ($validar['estado'] == "success") {
+					$gm = Cuentabienestar::insertar_fall_nac_gm($r);
+                	return $gm;
+				}
+				return $validar;
             break;
             default:
                 
@@ -530,8 +534,12 @@ class CuentaBienestarController extends Controller
     	}
     }
     //este metodo recibe el año como tal
-	public function existe_dinero_mes_anterior_caja_chica($anio, $mes)
+	public function existe_dinero_mes_anterior_caja_chica($anio = '', $mes = '')
 	{	
+		if ($anio == '' && $mes == '') {
+			return ['estado'=>'success', 'monto'=>0];
+		}
+
 		// dd($anio.'; '.$mes);
 		$mes_anterior = $mes - 1;
 		$anio_anterior = $anio;

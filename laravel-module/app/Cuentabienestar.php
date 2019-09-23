@@ -68,7 +68,7 @@ class Cuentabienestar extends Model
                 if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
 
                 $cbe->descripcion = $r->descripcion;
-
+                
                 if ($cbe->save()) {
                     return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
                 }
@@ -83,11 +83,10 @@ class Cuentabienestar extends Model
     }
      protected function insertar_cuenta_sindical($r)//caja chica, reunion y votacion
     {
+         $f = $this->div_fecha($r->fecha);
+        $anio = $this->anio_tipo_id($f['anio']);
 
         if ($r->tipo_cuenta_bienestar_id == '6') { // si el ingreso es una caja chica
-            $f = $this->div_fecha($r->fecha);
-            $anio = $this->anio_tipo_id($f['anio']);
-
 
             $verify = $this->where([
                     'mes_id' => $f['mes'],
@@ -170,7 +169,7 @@ class Cuentabienestar extends Model
                  if (!$verify) {
                     return [ 
                         'estado'=>'failed', 
-                        'mensaje'=> 'El rut del recien nacido puede que no exista en beneficios o ya esta asociado al item NACIMIENTO segun el socio'
+                        'mensaje'=> 'El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido'
                      ];
                  }
             break;

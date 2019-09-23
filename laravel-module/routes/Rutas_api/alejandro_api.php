@@ -21,8 +21,8 @@ Route::post('insertar_cs_prestamo', 'PrestamosController@insertar_cs');
 Route::get('listar_cs_prestamo/{anio}/{mes}', 'PrestamosController@listar_cs_prestamo');
 
 Route::get('usuario_logeado','DatosBasicosController@usuario_logeado');
-Route::get('calcular_caja_chica_anterior_cs/{anio}/{mes}', 'CuentaSindicatoController@existe_dinero_mes_anterior_caja_chica');
-Route::get('calcular_caja_chica_anterior_cs2/{anio}/{mes}','CuentaSindicatoController@dinero_mes_anterior_caja_chica_2');
+Route::get('calcular_caja_chica_anterior_cs/{anio?}/{mes?}', 'CuentaSindicatoController@existe_dinero_mes_anterior_caja_chica');
+Route::get('calcular_caja_chica_anterior_cs2/{anio?}/{mes?}','CuentaSindicatoController@dinero_mes_anterior_caja_chica_2');
 
 Route::post('actualizar_dato_cs','CuentaSindicatoController@actualizar_dato_cs');
 
@@ -95,6 +95,8 @@ Route::post('actualizar_datos_padres_suegros','SocioController@actualizar_datos_
 
 Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general_socio');
 
+Route::get('listar_beneficios_cobrados/{socio_id}','SocioController@listar_beneficios_cobrados');
+
 //---------------------------------------------------------------------------------------------------
 
 
@@ -106,8 +108,8 @@ Route::get('cbe_calcular_cm/{anio}/{mes}', 'InicioCierreMensualBienestarControll
 Route::get('listar_inicio_y_cierre_mensual_cbe/{anio}','InicioCierreMensualBienestarController@listar_cierre_mensual_cbe');
 
 Route::get('traer_monto_inicial_cbe/{anio}/{mes}','InicioCierreMensualBienestarController@traer_monto_inicial');
-Route::get('calcular_caja_chica_anterior_cbe/{anio}/{mes}', 'CuentaBienestarController@existe_dinero_mes_anterior_caja_chica');
-Route::get('calcular_caja_chica_anterior_cbe2/{anio}/{mes}','CuentaBienestarController@dinero_mes_anterior_caja_chica_2');
+Route::get('calcular_caja_chica_anterior_cbe/{anio?}/{mes?}', 'CuentaBienestarController@existe_dinero_mes_anterior_caja_chica');
+Route::get('calcular_caja_chica_anterior_cbe2/{anio?}/{mes?}','CuentaBienestarController@dinero_mes_anterior_caja_chica_2');
 
 Route::post('cbe_insertar', 'CuentaBienestarController@insertar');
 Route::get('cbe_listar/{anio}/{mes}', 'CuentaBienestarController@listar_cuenta');

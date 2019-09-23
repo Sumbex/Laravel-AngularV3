@@ -47,7 +47,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
         this.lockLogin = false;
-        this.router.navigate(['AuthMaster']);
+        this.router.navigate(['/AuthMaster']);
+        console.log("estoy despues del navigate");
         document.getElementById("closeModalLogin").click();
       }else{
         this.lockLogin = false;
@@ -78,7 +79,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
         this.lockLogin = false;
-        this.router.navigate(['SociosMaster']);
+        this.router.navigate(['/SociosMaster']);
+        console.log("estoy despues del navigate");
         document.getElementById("closeModalLogin").click();
       }else{
         this.lockLogin = false;

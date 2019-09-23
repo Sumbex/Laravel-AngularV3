@@ -285,12 +285,11 @@ class PortalSocioMisBeneficios extends Model
         $MN = DB::table('cuenta_bienestar as cb')
             ->select([
                 'cb.id',
-                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_pago"),
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
                 'cb.numero_documento_1 as codigo',
-                'cb.archivo_documento_1 as archivo',
-                'cb.monto_egreso',
-                'cb.descripcion',
-                'cn.rut_nacimiento'
+                'cb.archivo_documento_1 as comprobante',
+                'cb.monto_egreso as monto',
+                'cn.rut_nacimiento as rut'
             ])
             ->join('anio as a', 'a.id', 'cb.anio_id')
             ->join('mes as m', 'm.id', 'cb.mes_id')
@@ -304,10 +303,49 @@ class PortalSocioMisBeneficios extends Model
             ->get();
 
         if (!$MN->isEmpty()) {
-            
-            return ['estado' => 'success', 'nacimientos' => $MN];
+            $carga =  DB::table('cargas_legales_socio')
+                ->select([
+                    DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+                    'archivo as certificado'
+                ])
+                ->where([
+                    'activo' => 'S',
+                    'socio_id' => $this->socioID(),
+                    'rut' => $MN[0]->rut
+                ])
+                ->get();
+            if (!$carga->isEmpty()) {
+                $MN[0]->nombre = $carga[0]->nombre;
+                $MN[0]->certificado = $carga[0]->certificado;
+                return ['estado' => 'success', 'nacimientos' => $MN];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];
+            }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];
         }
+    }
+
+    protected function traerFallecimientos()
+    {
+        $MF = DB::table('cuenta_bienestar as cb')
+            ->select([
+                'cb.id',
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                'cb.numero_documento_1 as codigo',
+                'cb.archivo_documento_1 as comprobante',
+                'cb.monto_egreso as monto',
+                'cf.rut_fallecido as rut'
+            ])
+            ->join('anio as a', 'a.id', 'cb.anio_id')
+            ->join('mes as m', 'm.id', 'cb.mes_id')
+            ->join('cbe_fallecimiento as cf', 'cf.cuenta_bienestar_id', 'cb.id')
+            ->where([
+                'cb.activo' => 'S',
+                'cb.tipo_cuenta_bienestar_id' => 4,
+                'cf.activo' => 'S',
+                'cf.socio_id' => $this->socioID()
+            ])
+            ->get();
     }
 }

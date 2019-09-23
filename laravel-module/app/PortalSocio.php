@@ -1072,8 +1072,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 if ($validarRut == true) {
                     $existe = $this->verificarCargaIngresada($request->rut);
                     if ($existe['estado'] == 'success') {
-                        $edad = \Carbon\Carbon::parse($request->fecha_nacimiento)->age;
-                        if ($edad <= 24) {
+                        if ($request->tipo_carga_id == 5) {
                             $carga = new SocioCarga;
                             $carga->socio_id = $this->socioLogeado()->id;
                             $carga->tipo_carga_id = $request->tipo_carga_id;
@@ -1098,7 +1097,34 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                             }
                         } else {
-                            return ['estado' => 'failed', 'mensaje' => 'La carga que intentas ingresar ya supera la mayoria de edad legal.'];
+                            $edad = \Carbon\Carbon::parse($request->fecha_nacimiento)->age;
+                            if ($edad <= 24) {
+                                $carga = new SocioCarga;
+                                $carga->socio_id = $this->socioLogeado()->id;
+                                $carga->tipo_carga_id = $request->tipo_carga_id;
+                                $carga->rut = $request->rut;
+                                $carga->fecha_nacimiento = $request->fecha_nacimiento;
+                                $carga->nombres = $request->nombres;
+                                $carga->apellido_paterno = $request->apellido_paterno;
+                                $carga->apellido_materno = $request->apellido_materno;
+                                $carga->direccion = $request->direccion;
+                                $carga->celular = $request->celular;
+                                $carga->establecimiento = $request->establecimiento;
+                                $carga->activo = 'S';
+                                $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosSocios/ArchivosCargas/');
+                                if ($guardarArchivo['estado'] == "success") {
+                                    $carga->archivo = 'storage/' . $guardarArchivo['archivo'];
+                                } else {
+                                    return $guardarArchivo;
+                                }
+                                if ($carga->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Datos Ingresados Correctamente.'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                                }
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'La carga que intentas ingresar ya supera la mayoria de edad legal.'];
+                            }
                         }
                     } else {
                         return $existe;

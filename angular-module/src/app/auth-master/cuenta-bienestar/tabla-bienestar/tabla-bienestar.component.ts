@@ -260,7 +260,7 @@ export class TablaBienestarComponent implements OnInit {
               if (response.estado == "success") {
                 alert("" + response.mensaje + "");
                 this.modalActualizar.close();
-                //  this.refrescarSindical();
+                this.refrescarBienestar();
                 this.actualizarLoad = false;
                 this.pass = "";
               }
@@ -332,6 +332,8 @@ export class TablaBienestarComponent implements OnInit {
         } else {
           this.actualizarMontoCajaChica = null;
           this.load = false;
+          this.modalActualizar.close();
+          this.refrescarBienestar();
         }
       },
       error => {

@@ -7,10 +7,10 @@
           <a class="nav-link" id="socio-tab" data-toggle="tab" href="#socio" role="tab" aria-controls="socio"
             aria-selected="true">Cuenta Sindical</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" id="test-tab" data-toggle="tab" role="tab" aria-controls="conyuge"
-            aria-selected="false">--</a> href="#test"
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" id="test-tab" data-toggle="tab" href="#test" role="tab" aria-controls="conyuge"
+            aria-selected="false">Cuenta Bienestar</a> <!-- href="#test" -->
+        </li>
       </ul>
 
     <div class="tab-content" id="myTabContent">
@@ -55,7 +55,7 @@
      <div class="tab-pane fade show" id="test" role="tabpanel" aria-labelledby="test-tab">
 
         <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Detalles Cuentas Bienestar (En Desarrollo)</h6>
+            <h6 class="card-title">Detalles Cuentas Bienestar</h6>
           </div>
       
           <div class="card">
@@ -65,21 +65,14 @@
                 <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
                   <!-- <h3 class="text-center">Cuenta Sindical</h3> -->
                   <div class="form-group">
-                      <app-sindical></app-sindical> 
+                      <app-cuenta-bienestar-socios></app-cuenta-bienestar-socios> 
                   </div>
                 </div>
                               
                 <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
                   <!-- <h3 class="text-center">Caja Chica</h3> -->
                   <div class="form-group">
-                    <app-caja-chica></app-caja-chica> 
-                  </div>
-                </div>
-      
-                <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                  <!-- <h3 class="text-center">Cuenta Camping</h3> -->
-                  <div class="form-group">
-                    <app-camping></app-camping>
+                    <app-caja-bienestar-socios></app-caja-bienestar-socios> 
                   </div>
                 </div>
                 

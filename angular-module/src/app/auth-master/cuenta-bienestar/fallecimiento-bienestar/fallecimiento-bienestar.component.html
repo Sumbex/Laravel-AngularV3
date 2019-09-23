@@ -1,59 +1,124 @@
-<div class="card">
-
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="row justify-content-center">
-  
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <br><label><strong>Ingrese Fecha</strong></label> <br>
-            <input type="date" class="form-control form-control-sm" name="fecha">
-          </div>
-        </div>
-  
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <br><label><strong>N° de Folio</strong></label>
-            <input type="text" class="form-control form-control-sm" name="nDocumento" required>
-          </div>
-        </div>
-  
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <br><label><strong>Subir Certificado de Defunción</strong></label>
-            <input class="form-control-file" type="file">
-          </div>
-        </div>
-      </div>
+<ng-template #modalUsuarioFallecimiento let-modal>
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="row justify-content-center">
-  
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <br><label><strong>Seleccione Tipo</strong></label>
-            <select name="tipo" id="tipo" class="form-control form-control-sm">
-              <option value="">--Seleccione--</option>
-              <option value="2">Egreso</option>
-            </select>
-          </div>
-        </div><br>
-  
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <br><label><strong>Ingrese Monto</strong></label>
-            <input type="number" class="form-control form-control-sm" name="monto" required>
-          </div>
+    <div class="modal-body">
+      <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+      <br>
+      <input #password autocomplete="false" class="form-control form-control-sm" type="password"
+        placeholder="Ingrese su contraseña" name="">
+      <br>
+      <button class="btn btn-success btn-block btn-sm" (click)="btn_validar_usuario(rut,password,validar);">
+        Validar <img *ngIf="load" padding="15px" height="15px"
+          src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </button>
+    </div>
+  </ng-template>
+
+<div class="card">
+  <div class="container-fluid">
+
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="row justify-content-between">
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Ingrese Fecha</strong></label> <br>
+          <input type="date" class="form-control form-control-sm" name="fecha" [(ngModel)]="InsertarFallecimiento.fecha" required>
         </div>
-  
-        <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-          <div class="form-group">
-            <br><label><strong>Guardar Fallecimiento</strong></label><br>
-            <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar">Guardar</button>
-          </div>
-        </div>
-  
       </div>
-  
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>N° del Comprobante</strong></label>
+          <input type="text" class="form-control form-control-sm" name="nDocumento" [(ngModel)]="InsertarFallecimiento.numero_documento_1" required>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Subir Comprobante Bancario</strong></label>
+          <input class="form-control-file" type="file" (change)="onSelectPDF1($event)" required>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="row justify-content-between">
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Seleccione Tipo</strong></label>
+          <select name="tipo" id="tipo" class="form-control form-control-sm" [(ngModel)]="InsertarFallecimiento.definicion" required>
+            <option value="">--Seleccione--</option>
+            <option value="2">Egreso</option>
+          </select>
+        </div>
+      </div><br>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Ingrese Monto</strong></label>
+          <input type="number" class="form-control form-control-sm" name="monto" [(ngModel)]="InsertarFallecimiento.monto" required>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Ingrese Descripcion</strong></label>
+          <input type="text" class="form-control form-control-sm" minlength="5" maxlength="160" name="descripcion" [(ngModel)]="InsertarFallecimiento.descripcion" required>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="row justify-content-between">
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Rut del Fallecido</strong></label>
+          <input type="text" class="form-control form-control-sm" name="rutFal" [(ngModel)]="InsertarFallecimiento.rut" required>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Subir Certificado de Defunción</strong></label>
+          <input class="form-control-file" type="file" (change)="onSelectPDF2($event)"  required>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="form-group">
+          <br><label><strong>Guardar Fallecimiento</strong></label><br>
+          <button class="btn btn-success btn-block btn-sm" (click)="validar_usuario(modalUsuarioFallecimiento)"
+          [disabled]="getIdSocio == ''
+                   || getIdSocio == null
+                   || InsertarFallecimiento.fecha == ''
+                   || InsertarFallecimiento.numero_documento_1 == '' 
+                   || InsertarFallecimiento.archivo_documento_1 == null
+                   || InsertarFallecimiento.monto == ''
+                   || InsertarFallecimiento.monto == null
+                   || InsertarFallecimiento.definicion == ''
+                   || InsertarFallecimiento.descripcion == ''
+                   || InsertarFallecimiento.rut_carga == ''">
+                   Guardar
+            <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
+              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div> <br>
+</div> <br>

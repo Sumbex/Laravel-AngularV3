@@ -97,6 +97,7 @@ export class PortalSociosService{
     setDatosBeneficiarios(form): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
+        body.append('prioritario', form.prioridad)
         body.append('relacion', form.relacionParentesco);
         body.append('rut', form.rut);
         body.append('fecha_nacimiento', form.fechaNacimiento);
@@ -307,6 +308,38 @@ export class PortalSociosService{
     getPagosAbonos(id: string, tipo: string) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_abonos_prestamos_socio/" + id + "/" + tipo, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    //*******************OBTENER LOS BENEFICIOS COBRADOS POR NACIMIENTO************************/
+    getBeneficiosNacimientosCobrados() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_beneficios_nacimientos/", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getBeneficiosFalleciomientosCobrados() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_beneficios_fallecimientos/", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    //*************************OBTENER DATOS FONDOS MUTUOS*******************************/
+    getFondosMutuos() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_fondos_mutuos/", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'

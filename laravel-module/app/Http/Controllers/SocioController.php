@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\SocioBeneficiario;
+use App\User;
+use App\Socios;
 use App\SocioCarga;
 use App\SocioConyuge;
-use App\SocioPadresSuegros;
+use App\CbeNacimiento;
 use App\SocioSituacion;
+use App\CbeFallecimiento;
+use App\CbeGastosMedicos;
+use App\SocioBeneficiario;
+use App\SocioPadresSuegros;
 use App\Socio_datos_basicos;
-use App\Socios;
-use App\User;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -244,8 +247,12 @@ class SocioController extends Controller
                     'rut' => $rut_limpio,
                     'activo' => 'S',    
                   ])->first();
+        if ($socio) {
+            return $socio;
+        }
+        return ['estado'=>'failed','mensaje'=>'No hay datos encontrados'];
 
-        return $socio;
+        
     }
 
 //--DATOS SOCIO---------------------------------------------------------
@@ -1649,6 +1656,19 @@ class SocioController extends Controller
  
             if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
             return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
+    public function listar_beneficios_cobrados($socio_id)
+    {
+            $nac = CbeNacimiento::mis_beneficios($socio_id);
+            $fall = CbeFallecimiento::mis_beneficios($socio_id);
+            $gm = CbeGastosMedicos::mis_beneficios($socio_id);
+
+            return [
+                'nacimiento' => $nac,
+                'fallecimiento' => $fall,
+                'gastos_medicos' => $gm
+            ];
     }
 
 

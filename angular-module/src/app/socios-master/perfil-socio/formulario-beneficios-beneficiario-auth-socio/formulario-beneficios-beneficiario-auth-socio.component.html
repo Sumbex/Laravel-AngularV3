@@ -26,9 +26,10 @@
               <label><strong>Prioridad del Beneficiario* (Seleccione la prioridad que tendra cada uno de los beneficiarios ingresados)</strong></label>
               <select name="prioridad" id="prioridad" [(ngModel)]="datosBeneficiario.prioridad" class="form-control form-control-sm" required>
                 <option value="">--Seleccione--</option>
-                <option value="1">Primario</option>
-                <option value="2">Secundario</option>
-                <option value="3">Terciario</option>
+                <option value="1">PRIMARIO</option>
+                <option value="2">SECUNDARIO</option>
+                <option value="3">TERCIARIO</option>
+                <option value="10">SIN ORDEN</option>
               </select>
             </div>
           </div>
@@ -93,7 +94,7 @@
       </div>
 
       <div class="col-12 col-md-12 col-lg-12 col-xl-12"><br>
-        <div class="row justify-content-start">
+        <div class="row justify-content-between">
 
           <div class="col-12 col-md-4 col-lg-4 col-xl-4">
             <div class="form-group">
@@ -110,8 +111,8 @@
             </div>
           </div>
 
-          <div class="col-12 col-md-3 col-lg-3 col-xl-3 align-self-end">
-            <label><strong>Guardar Datos del Beneficiario</strong></label>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12 align-self-end">
+            <br>
             <div class="form-group">
               <button class="btn btn-block btn-outline-primary btn-sm" (click)="setDatosBeneficiario()"
                 [disabled]="blockIngreso">Guardar

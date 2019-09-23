@@ -10,6 +10,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TablaResumenSocioComponent implements OnInit {
 
   abrirTablaResumen;
+  abrirTablaBeneficiosCobrados;
   TraerDocumentoSocio;
 
   blockTablaSocio=false;
@@ -126,6 +127,9 @@ export class TablaResumenSocioComponent implements OnInit {
     this.traerDocumentoSocio();
   }
 
+  verTablaBeneficiosCobrados(BeneficiosCobrados) {
+    this.abrirTablaBeneficiosCobrados = this.modalService.open(BeneficiosCobrados, { size: 'lg' });
+  }
   traerDocumentoSocio() {
     this.vista_pdf = true;
     this._SociosService.getDocumentoResumen(this.getIdSocio).subscribe((response) => {

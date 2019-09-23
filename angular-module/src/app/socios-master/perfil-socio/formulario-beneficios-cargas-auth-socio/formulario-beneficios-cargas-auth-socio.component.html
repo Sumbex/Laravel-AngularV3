@@ -33,10 +33,11 @@
               <label><strong>Tipo de carga*</strong></label>
               <select name="Carga" id="carga" class="form-control form-control-sm" [(ngModel)]="datosCargas.tipoCargaId" required>
                 <option value="">--Seleccione--</option>
-                <option value="1">Hijo</option>
-                <option value="2">Nieto</option>
-                <option value="3">Adoptacion</option>
-                <option value="4">otros</option>
+                <option value="1">HIJO</option>
+                <option value="2">NIETO</option>
+                <option value="3">ADOPCIÓN</option>
+                <option value="5">CONYUGE</option>
+                <option value="4">OTROS</option>
               </select>
             </div>
           </div>
@@ -111,7 +112,8 @@
 
           <div class="col-12 col-md-3 col-lg-3 col-xl-3">
               <div class="form-group">
-                <label><strong>Archivo Comprobante*</strong></label>
+                <label *ngIf="datosCargas.tipoCargaId == 5"><strong>Certificado de Matrimonio/Conviviente*</strong></label>
+                <label *ngIf="datosCargas.tipoCargaId != 5"><strong>Certificado de Nacimiento*</strong></label>
                 <input type="file" accept="application/pdf" class="form-control-file form-control-sm" (change)="onSelectImage($event)"  required>
               </div>
             </div>
@@ -122,8 +124,8 @@
       <div class="col-12 col-md-12 col-lg-12 col-xl-12">
         <div class="row justify-content-end">
 
-          <div class="col-12 col-md-3 col-lg-3 col-xl-3"> <br>
-            <label><strong>Guardar Datos de la Carga</strong></label>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
+            <br>
             <div class="form-group">
               <button class="btn btn-block btn-outline-primary btn-sm" (click)="setDatosCarga()" [disabled]="blockIngreso">Guardar
                 <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif" [hidden]="!blockIngreso">

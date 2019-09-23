@@ -98,6 +98,11 @@ import { FormularioNacimientoBienestarComponent } from './auth-master/cuenta-bie
 import { TablaNacimientoBienestarComponent } from './auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component';
 import { FormularioGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component';
 import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component';
+import { BeneficiosCobradosComponent } from './socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component';
+import { FondosMutuosSocioComponent } from './socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component';
+import { BryanBienestarService } from './servicios/bryans-bienestar.service';
+import { CuentaBienestarSociosComponent } from './socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component';
+import { CajaBienestarSociosComponent } from './socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component';
 
 
 @NgModule({
@@ -240,7 +245,15 @@ import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-biene
 
     FormularioGastosMedicosBienestarComponent,
 
-    TablaGastosMedicosBienestarComponent
+    TablaGastosMedicosBienestarComponent,
+
+    BeneficiosCobradosComponent,
+
+    FondosMutuosSocioComponent,
+
+    CuentaBienestarSociosComponent,
+
+    CajaBienestarSociosComponent
 
   ],
   imports: [
@@ -260,7 +273,8 @@ import { TablaGastosMedicosBienestarComponent } from './auth-master/cuenta-biene
     TipoCuentasService,
     SindicalService,
     CajaChicaService,
-    PortalSociosService
+    PortalSociosService,
+    BryanBienestarService
   ],
   bootstrap: [AppComponent]
 })

@@ -20,13 +20,14 @@
           <div *ngIf="cargandoTabla" class="loader"></div>
           <table *ngIf="!cargandoTabla" class="table table-striped table-bordered table-sm">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <br>
               <div class="row justify-content-center">
   
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                   <tr>
                     <th class="text-right" style="background: #195fcf">Nombres:</th>
-                    <td><input #nombresSocio type="text" class="sinbordefondo centrado" value="{{infoPersonal?.nombres | uppercase}}"></td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><input #nombresSocio type="text" class="sinbordefondo centrado" value="{{infoPersonal?.nombres}}"></td>
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(nombresSocio,'nombres')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -34,8 +35,8 @@
                   </tr>
                   <tr>
                     <th class="text-right" style="background: #195fcf">Apellido Paterno:</th>
-                    <td><input #apellidoP type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.a_paterno | uppercase}}"></td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><input #apellidoP type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.a_paterno}}"></td>
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(apellidoP,'a_paterno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -44,9 +45,9 @@
                   <tr>
                     <th class="text-right" style="background: #195fcf;">Apellido Materno:</th>
                     <td><input #apellidoM type="text" class="sinbordefondo centrado"
-                        value="{{infoPersonal?.a_materno | uppercase}}">
+                        value="{{infoPersonal?.a_materno}}">
                     </td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(apellidoM,'a_materno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -57,7 +58,7 @@
                     <td><input #fechaN type="date" class="sinbordefondo centrado"
                         value="{{infoPersonal?.fecha_nacimiento | uppercase}}">
                     </td>
-                    <td><button class="btn btn-outline-success btn-sm"
+                    <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(fechaN,'fecha_nacimiento')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -83,11 +84,11 @@
       <i class="fas fa-print"></i>  Imprimir Datos
       </button> -->
   
-      <button type="button" class="btn btn-info" (click)="modal.close('Close click'); limpiar_tabla()"><i
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
           class="far fa-arrow-alt-circle-left"></i> Volver
       </button>
     </div>
   </ng-template>
   
   <!--Boton Para llamar al Modal inicio y cierre mensual-->
-  <button class="btn btn-primary btn-block btn-sm" type="button" (click)="vertTablaInfoPersonal(tablaBeneficiosSocio)">Cambiar informacion</button>
+  <button class="btn btn-primary btn-block" (click)="vertTablaInfoPersonal(tablaBeneficiosSocio)">Cambiar informacion Personal</button>

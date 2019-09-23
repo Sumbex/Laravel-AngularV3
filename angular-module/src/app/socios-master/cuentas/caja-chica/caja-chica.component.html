@@ -88,7 +88,7 @@
           <!--MODAL VISOR PDF-->
 
           <td colspan="2">
-            <a (click)="openPDF(visor)"><i class="far fa-file-alt" placement="top"
+            <a (click)="openPDF(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
                 ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
           </td>
 
@@ -100,6 +100,10 @@
           <td colspan="2">
             <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+        </tr>
+        <tr>
+          <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
+          <td scope="col" class="text-center"><b>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
         </tr>
         <br>
         <!--Tabla del total Modal Caja Chica-->
@@ -120,7 +124,7 @@
           <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
             CIERRE DEL MES</th>
           <td colspan="3" class="text-center">
-            <strong>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+            <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
         </tr>
       </tbody>
     </table>
@@ -145,6 +149,5 @@
 
 </ng-template>
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-block btn-sm" type="button" (click)="openModalCajaChica(cajaChica)">Ver
-  Datos
+<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCajaChica(cajaChica)"><b>Caja Chica</b>
 </button>

@@ -151,6 +151,15 @@ class PortalSocioController extends Controller
         return PortalSocioMisBeneficios::traerNacimientos();
     }
 
+    public function TraerFallecimientos()
+    {
+        return PortalSocioMisBeneficios::traerFallecimientos();
+    }
+
+    public function TraerGastosMedicos()
+    {
+        return PortalSocioMisBeneficios::traerGastosMedicos();
+    }
     //------------------------------------------>rutas portal socio mb
 
     //--------------------------------------------------------------------------------

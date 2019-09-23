@@ -35,6 +35,8 @@ Route::get('/traer_prestamos_socio', 'PortalSocioController@TraerPrestamos');
 Route::get('/traer_pagos_prestamos_socio/{id}/{tipo}', 'PortalSocioController@TraerPagosPrestamos');
 Route::get('/traer_abonos_prestamos_socio/{id}/{tipo}', 'PortalSocioController@TraerPagosAbonos');
 Route::get('/traer_nacimientos_socio', 'PortalSocioController@TraerNacimientos');
+Route::get('/traer_fallecimientos_socio', 'PortalSocioController@TraerFallecimientos');
+Route::get('/traer_gastos_medicos_socio', 'PortalSocioController@TraerGastosMedicos');
 //------------------------------------------>rutas portal socio mis beneficios
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//

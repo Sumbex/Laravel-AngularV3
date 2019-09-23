@@ -285,16 +285,16 @@ class PortalSocioMisBeneficios extends Model
         $MN = DB::table('cuenta_bienestar as cb')
             ->select([
                 'cb.id',
-                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_pago"),
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
                 'cb.numero_documento_1 as codigo',
-                'cb.archivo_documento_1 as archivo',
-                'cb.monto_egreso',
-                'cb.descripcion',
-                'cn.rut_nacimiento'
+                'cb.archivo_documento_1 as comprobante',
+                'cb.monto_egreso as monto',
+                'cn.rut_nacimiento as rut'
             ])
             ->join('anio as a', 'a.id', 'cb.anio_id')
             ->join('mes as m', 'm.id', 'cb.mes_id')
             ->join('cbe_nacimiento as cn', 'cn.cuenta_bienestar_id', 'cb.id')
+            ->orderBy('cb.dia', 'asc')
             ->where([
                 'cb.activo' => 'S',
                 'cb.tipo_cuenta_bienestar_id' => 5,
@@ -304,10 +304,172 @@ class PortalSocioMisBeneficios extends Model
             ->get();
 
         if (!$MN->isEmpty()) {
-            
+            foreach ($MN as $key) {
+                $carga =  DB::table('cargas_legales_socio')
+                    ->select([
+                        DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+                        'archivo as certificado'
+                    ])
+                    ->where([
+                        'activo' => 'S',
+                        'socio_id' => $this->socioID(),
+                        'rut' => $key->rut
+                    ])
+                    ->get();
+
+                if (!$carga->isEmpty()) {
+                    $key->nombre = $carga[0]->nombre;
+                    $key->certificado = $carga[0]->certificado;
+                }
+            }
             return ['estado' => 'success', 'nacimientos' => $MN];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];
+        }
+    }
+
+    protected function traerFallecimientos()
+    {
+        $MF = DB::table('cuenta_bienestar as cb')
+            ->select([
+                'cb.id',
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                'cb.numero_documento_1 as codigo',
+                'cb.archivo_documento_1 as comprobante',
+                'cb.archivo_documento_2 as certificado',
+                'cb.monto_egreso as monto',
+                'cf.rut_fallecido as rut'
+            ])
+            ->join('anio as a', 'a.id', 'cb.anio_id')
+            ->join('mes as m', 'm.id', 'cb.mes_id')
+            ->join('cbe_fallecimiento as cf', 'cf.cuenta_bienestar_id', 'cb.id')
+            ->orderBy('cb.dia', 'asc')
+            ->where([
+                'cb.activo' => 'S',
+                'cb.tipo_cuenta_bienestar_id' => 4,
+                'cf.activo' => 'S',
+                'cf.socio_id' => $this->socioID()
+            ])
+            ->get();
+
+        if (!$MF->isEmpty()) {
+            foreach ($MF as $key) {
+                $fallecido = $this->verificarFallecido($key->rut);
+                $key->nombre = $fallecido['nombre'];
+            }
+            return ['estado' => 'success', 'fallecimientos' => $MF];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por fallecimiento cobrados.'];
+        }
+    }
+
+    protected function verificarFallecido($rut)
+    {
+        $existeConyuge = false;
+        $existeBeneficiario = false;
+        $existeCarga = false;
+        $existePS = false;
+
+        $conyuge = DB::table('socio_conyuge')
+            ->select([
+                DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioID(),
+                'rut' => $rut
+            ])
+            ->get();
+
+        if (!$conyuge->isEmpty()) {
+            return ['estado' => 'success', 'nombre' => $conyuge[0]->nombre];
+        } else {
+            $existeConyuge = true;
+        }
+
+        $beneficiario = DB::table('socio_beneficiario')
+            ->select([
+                DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioID(),
+                'rut' => $rut
+            ])
+            ->get();
+
+        if (!$beneficiario->isEmpty()) {
+            return ['estado' => 'success', 'nombre' => $beneficiario[0]->nombre];
+        } else {
+            $existeBeneficiario = true;
+        }
+
+        $carga = DB::table('cargas_legales_socio')
+            ->select([
+                DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioID(),
+                'rut' => $rut
+            ])
+            ->get();
+
+        if (!$carga->isEmpty()) {
+            return ['estado' => 'success', 'nombre' => $carga[0]->nombre];
+        } else {
+            $existeCarga = true;
+        }
+
+        $PS = DB::table('padres_suegros_socio')
+            ->select([
+                DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+            ])
+            ->where([
+                'activo' => 'S',
+                'socio_id' => $this->socioID(),
+                'rut' => $rut
+            ])
+            ->get();
+
+        if (!$PS->isEmpty()) {
+            return ['estado' => 'success', 'nombre' => $PS[0]->nombre];
+        } else {
+            $existePS = true;
+        }
+
+        if ($existeConyuge && $existeBeneficiario && $existeCarga && $existePS) {
+            return ['estado' => 'failed', 'mensaje' => 'No existe el fallecido o no esta relacionado con el socio.'];
+        }
+    }
+
+    protected function traerGastosMedicos()
+    {
+        $MGM = DB::table('cuenta_bienestar as cb')
+            ->select([
+                'cb.id',
+                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                'cb.numero_documento_1 as codigo',
+                'cb.archivo_documento_1 as comprobante',
+                'cb.monto_egreso as monto',
+                'cb.descripcion'
+            ])
+            ->join('anio as a', 'a.id', 'cb.anio_id')
+            ->join('mes as m', 'm.id', 'cb.mes_id')
+            ->join('cbe_gastos_medicos as cmg', 'cmg.cuenta_bienestar_id', 'cb.id')
+            ->orderBy('cb.dia', 'asc')
+            ->where([
+                'cb.activo' => 'S',
+                'cb.tipo_cuenta_bienestar_id' => 7,
+                'cmg.activo' => 'S',
+                'cmg.socio_id' => $this->socioID()
+            ])
+            ->get();
+
+        if (!$MGM->isEmpty()) {
+            return ['estado' => 'success', 'GM' => $MGM];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por gastos medicos cobrados.'];
         }
     }
 }

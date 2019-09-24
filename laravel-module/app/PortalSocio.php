@@ -1062,31 +1062,26 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
-    /* protected function verificar(){
-        
+    protected function verificarConyuge($rut)
+    {
         $conyuge = DB::table('socio_conyuge')
             ->select([
-                'rut',
-                'fecha_nacimiento',
-                'nombres',
-                'apellido_paterno',
-                'apellido_materno',
-                'direccion',
-                'celular',
-                'archivo'
+                'rut'
             ])
             ->where([
                 'activo' => 'S',
-                'socio_id' => $this->socioLogeado()->id
+                'socio_id' => $this->socioLogeado()->id,
+                'rut' => $rut
             ])
             ->get();
 
         if (!$conyuge->isEmpty()) {
-            return ['estado' => 'success', 'conyuge' => $conyuge];
+            return ['estado' => 'success'];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes datos ingresados.'];
+            return ['estado' => 'failed', 'mensaje' => 'Aun no has ingresado a tu conyuge, si deseas ingresarla como carga legal debes dirigirte al formulario de conyuge.'];
+            //return ['estado' => 'failed', 'mensaje' => 'La conyuge que intentas ingresar no existe o no es la misma ingresada en el formulario de conyuge.'];
         }
-    } */
+    }
 
     protected function ingresarDatosCargasSocio($request)
     {
@@ -1099,7 +1094,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     $existe = $this->verificarCargaIngresada($request->rut);
                     if ($existe['estado'] == 'success') {
                         if ($request->tipo_carga_id == 5) {
-                            $conyuge = $this->traerDatosConyuge();
+                            $conyuge = $this->verificarConyuge($request->rut);
                             if ($conyuge['estado'] == 'success') {
                                 $carga = new SocioCarga;
                                 $carga->socio_id = $this->socioLogeado()->id;
@@ -1125,7 +1120,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                                 }
                             } else {
-                                return ['estado' => 'failed', 'mensaje' => 'Aun no has ingresado a tu conyuge, si deseas ingresarla como carga legal debes dirigirte al formulario de conyuge.'];
+                                return $conyuge;
+                                //return ['estado' => 'failed', 'mensaje' => 'Aun no has ingresado a tu conyuge, si deseas ingresarla como carga legal debes dirigirte al formulario de conyuge.'];
                             }
                         } else {
                             $edad = \Carbon\Carbon::parse($request->fecha_nacimiento)->age;

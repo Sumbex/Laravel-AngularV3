@@ -27,13 +27,13 @@
               <input class="form-control form-control-sm" placeholder="Buscar por nombre......" [(ngModel)]="search">
             </td>
 
-            <td style="background: #138D75" colspan="2">
+            <td style="background: #138D75" colspan="3">
               <button (click)="filtrar()" class="btn btn-secondary btn-sm">
                 BUSCAR <i [hidden]="blockLoad" class="fas fa-search"></i>
                 <img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
               </button>
             </td>
-            <td style="background: #138D75" colspan="2">
+            <td style="background: #138D75" colspan="3">
               <button (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
                 REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
                 <img [hidden]="!blockLoad2" height="15"
@@ -44,8 +44,10 @@
           <tr class="text-center">
             <th style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th>
             <th style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
+            <th style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
             <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> MES</th>
             <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> AÑO</th>
+            <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th>
             <th style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
             <th style="background: #138D75"> GUARDAR</th>
             <th style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO</th>
@@ -55,6 +57,7 @@
           <tr *ngFor="let item of socios" class="text-center">
             <td>{{ item.rut }}</td>
             <td>{{ item.nombres+' '+item.a_paterno+' '+item.a_materno | uppercase}}</td>
+            <td>{{ estado_socio | uppercase}}</td>
             <td> 
                 <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes disabled>
                   <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
@@ -63,6 +66,13 @@
               <td> 
                 <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm" disabled>
                   <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+                </select>
+              </td>
+              <td>
+                <select  class="form-control form-control-sm">
+                  <option value="">--Seleccione--</option>
+                  <option value="1">Dia de Sueldo</option>
+                  <option value="2">Cuota Extra</option>
                 </select>
               </td>
             <td><input type="number"></td>

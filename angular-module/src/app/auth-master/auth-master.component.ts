@@ -4,6 +4,7 @@ import { AniosService } from '../servicios/anios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
 import { UsuarioService } from '../servicios/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-master',
@@ -24,7 +25,7 @@ export class AuthMasterComponent implements OnInit {
   titleMensaje = 'Iniciando el sistema';
   bodyMensaje = 'Espere unos segundos mientras carga el sistema';
 
-  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, private _usuariosService: UsuarioService , private config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private _tipoCuentas: TipoCuentasService, private _getAnios: AniosService, private _usuariosService: UsuarioService , private config: NgbModalConfig, private modalService: NgbModal, private router: Router) {
 
     config.backdrop = 'static';
     config.keyboard = false;  
@@ -84,7 +85,7 @@ export class AuthMasterComponent implements OnInit {
       }else{
         let estadoToken = this._usuariosService.isAuthenticated();
         if(estadoToken == false){
-          window.location.reload();
+          this.router.navigate(['']);
         }else{
           this.tiempoEsperaToken = 1;
         }

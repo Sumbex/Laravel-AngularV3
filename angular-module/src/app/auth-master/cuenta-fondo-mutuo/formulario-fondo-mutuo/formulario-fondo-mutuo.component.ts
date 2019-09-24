@@ -4,6 +4,7 @@ import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service
 import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SindicalService } from '../../../servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 
 @Component({
   selector: 'app-formulario-fondo-mutuo',
@@ -59,7 +60,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
   constructor(private _socios: SociosService,
     private _time: AniosService,
     public _validarusuario: ValidarUsuarioService,
-    private modalService: NgbModal,
+    private _consorcioService: ConsorcioService,
     private _sindical: SindicalService
   ) {
 

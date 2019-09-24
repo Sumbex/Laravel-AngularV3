@@ -64,12 +64,18 @@ export class UsuarioService {
     isAuthenticated(): boolean {
         const token = localStorage.getItem('token');    // Check whether the token is expired and return
         // true or false
+        console.log(this.jwtHelper.isTokenExpired(token));
         return !this.jwtHelper.isTokenExpired(token);
     }
 
     logOut() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this._http.get(this.url + "auth/logout", {headers: new HttpHeaders(
+            {'Authorization':'Bearer' + token}
+        )});
         localStorage.clear();
         this.router.navigate(['']);
+        
     }
 
     validarUsuario(user, password, estado): Observable<any> {

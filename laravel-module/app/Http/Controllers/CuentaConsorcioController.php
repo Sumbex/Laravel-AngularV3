@@ -27,10 +27,13 @@ class CuentaConsorcioController extends Controller
         switch ($r->tipo_consorcio) {
             case '1': // DIA DE SUELDO
                 $ds = CuentaConsorcio::insertar_ds($r);
+                return $ds;
             break;
 
             case '2': // CUENTA EXTRAORDINARIA
+
                 $ds = CuentaConsorcio::insertar_cex($r);
+                return $ds;
             break;
             
             default:

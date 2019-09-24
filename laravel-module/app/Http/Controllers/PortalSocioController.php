@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\PortalSocio;
-use App\PortalSocioCuentaSindical;
+use App\CajaChicaBienestar;
+use App\PortalSocioCuentaBienestar;
+use Illuminate\Http\Request;
 use App\PortalSocioMisBeneficios;
+use App\PortalSocioCuentaSindical;
 
 class PortalSocioController extends Controller
 {
@@ -129,6 +131,17 @@ class PortalSocioController extends Controller
         return PortalSocioCuentaSindical::traerCampingTotal($anio, $mes);
     }
     //------------------------------------------>rutas portal socio cs
+
+    //------------------------------------------>rutas portal socio cb
+    public function TraerCuentaBienestar($anio, $mes)
+    {
+        return PortalSocioCuentaBienestar::traerCuentaBienestarTotal($anio, $mes);
+    }
+    public function TraerCajaChicaBienestar($anio, $mes)
+    {
+        return PortalSocioCuentaBienestar::traerCajaChicaBienestar($anio, $mes);
+    }
+    //------------------------------------------>rutas portal socio cb
 
     //------------------------------------------>rutas portal socio mb
     public function TraerPrestamos()

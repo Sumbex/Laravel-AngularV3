@@ -261,7 +261,7 @@ module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <div class=\"card-header\" id=\"demoFont\">\r\n    <strong>\r\n      <h5><i class=\"fas fa-list-ol\"></i> Lista de Socios</h5>\r\n    </strong>\r\n  </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"row\">\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Mes</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n              <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n        </div>\r\n      </div><br>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-striped table-bordered table-sm\">\r\n        <thead text-sm>\r\n          <tr>\r\n            <th style=\"background: #138D75\"><label class=\"float-right\"> BUSCAR SOCIO:</label></th>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n            </td>\r\n\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n                REFRESCAR TABLA &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n                <img [hidden]=\"!blockLoad2\" height=\"15\"\r\n                  src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"text-center\">\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> ESTADO SOCIO</th>\r\n            <th colspan=\"3\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> MES</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> AÑO</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> TIPO DE PAGO</th>\r\n            <th class=\"size\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> MONTO</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"> GUARDAR</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO D.S.</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO C.E.</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n            <!-- <td [hidden] [(ngModel)]=\"insertar_consorcio.socioId\">{{item.id}}</td> -->\r\n            <td colspan=\"1\">{{ item.rut }}</td>\r\n            <td colspan=\"2\">{{ item.nombre | uppercase}}</td>\r\n            <td colspan=\"2\">{{ item.estado_socio | uppercase}}</td>\r\n            <td colspan=\"2\" colspan=\"3\"> \r\n                <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes disabled>\r\n                  <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n                </select>\r\n            </td>\r\n            <td colspan=\"2\"> \r\n                <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\" disabled>\r\n                  <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n                </select>\r\n            </td>\r\n            <td colspan=\"2\">\r\n                <select  [(ngModel)]=\"tipo_consorcio\" class=\"form-control form-control-sm\">\r\n                  <option value=\"\">--Seleccione--</option>\r\n                  <option value=\"1\">Dia de Sueldo</option>\r\n                  <option value=\"2\">Cuota Extra</option>\r\n                </select>\r\n            </td>\r\n            <td [(ngModel)]=\"monto\" class=\"size\"><input type=\"number\"></td>\r\n            <td colspan=\"1\"><button class=\"btn btn-outline-success btn-sm\" (click)=\"insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)\"><i class=\"far fa-save\"></i></button></td>\r\n            <td colspan=\"1\">{{item.pago_actual +' '+ item.fecha}}</td>\r\n            <td colspan=\"1\">{{item.pago_actual +' '+ item.fecha}}</td>\r\n\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <div class=\"card-header\" id=\"demoFont\">\r\n    <strong>\r\n      <h5><i class=\"fas fa-list-ol\"></i> Lista de Socios</h5>\r\n    </strong>\r\n  </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"row\">\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Mes</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n              <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n        </div>\r\n      </div><br>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-striped table-bordered table-sm\">\r\n        <thead text-sm>\r\n          <tr>\r\n            <th style=\"background: #138D75\"><label class=\"float-right\"> BUSCAR SOCIO:</label></th>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n            </td>\r\n\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n                REFRESCAR TABLA &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n                <img [hidden]=\"!blockLoad2\" height=\"15\"\r\n                  src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"text-center\">\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> ESTADO SOCIO</th>\r\n            <!-- <th colspan=\"3\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> MES</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> AÑO</th> -->\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> TIPO DE PAGO</th>\r\n            <th class=\"size\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> MONTO</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"> GUARDAR</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO D.S.</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO C.E.</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n            <!-- <td [hidden] [(ngModel)]=\"insertar_consorcio.socioId\">{{item.id}}</td> -->\r\n            <td colspan=\"1\">{{ item.rut }}</td>\r\n            <td colspan=\"2\">{{ item.nombre | uppercase}}</td>\r\n            <td colspan=\"2\">{{ item.estado_socio | uppercase}}</td>\r\n            <!-- <td colspan=\"2\" colspan=\"3\"> \r\n                <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes disabled>\r\n                  <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n                </select>\r\n            </td>\r\n            <td colspan=\"2\"> \r\n                <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\" disabled>\r\n                  <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n                </select>\r\n            </td> -->\r\n            <td colspan=\"2\">\r\n                <select #tipo_consorcio class=\"form-control form-control-sm\">\r\n                  <option value=\"\">--Seleccione--</option>\r\n                  <option value=\"1\">Dia de Sueldo</option>\r\n                  <option value=\"2\">Cuota Extra</option>\r\n                </select>\r\n            </td>\r\n            <td class=\"size\"><input #monto type=\"number\"></td>\r\n            <td colspan=\"1\"><button class=\"btn btn-outline-success btn-sm\" (click)=\"insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)\"><i class=\"far fa-save\"></i></button></td>\r\n            <td colspan=\"1\">{{item.pago_actual_ds +' '+ item.fecha_ds}}</td>\r\n            <td colspan=\"1\">{{item.pago_actual_cex +' '+ item.fecha_cex}}</td>\r\n\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -3663,21 +3663,13 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
         this.btn_validar = false;
         this.buttonStatus = false;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
-        this.estado_socio = ['estado'];
+        // estado_socio: object = ['estado'];
         this.ver_load = true;
         this.ver_estado_soc = false;
         this.suc_res1 = false;
         this.suc_res2 = false;
         //ingresar consorcio
         this.blockIngreso = false;
-        this.InsertarCuentaConsorcio = {
-            socioId: '',
-            anioId: '',
-            mesId: '',
-            tipo_consorcio: '',
-            monto: '',
-            estado_socio: '',
-        };
     }
     ngOnInit() {
         if (localStorage.getItem('token') == '') {
@@ -3755,38 +3747,32 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
     btn_reload() {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
     }
-    insertar_consorcio() {
-        if (this.InsertarCuentaConsorcio == null) {
+    insertar_consorcio(id, anio, mes, tipo_consorcio, monto) {
+        if (id == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
         const data = new FormData();
-        data.append('socio_id', this.InsertarCuentaConsorcio.socioId);
-        data.append('anio_id', this.InsertarCuentaConsorcio.anioId);
-        data.append('mes_id', this.InsertarCuentaConsorcio.mesId);
-        data.append('tipo_consorcio', this.InsertarCuentaConsorcio.tipo_consorcio);
-        data.append('monto', this.InsertarCuentaConsorcio.monto);
-        data.append('estado_socio', this.InsertarCuentaConsorcio.estado_socio);
-        console.table(data);
+        data.append('socio_id', id);
+        data.append('anio_id', anio);
+        data.append('mes_id', mes);
+        data.append('tipo_consorcio', tipo_consorcio);
+        data.append('monto', monto);
+        // data.append('estado_socio',);
+        console.log(id, anio, mes, tipo_consorcio.value, monto.value);
         this._consorcioService.insertar_consorcio(data).subscribe((response) => {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
                 this.blockIngreso = false;
                 return false;
             }
-            if (response.estado == 'failed_v') {
-                alert("Verifique que los campos no esten duplicados");
-                this.blockIngreso = false;
-                return false;
-            }
             if (response.estado == 'success') {
-                this.InsertarCuentaConsorcio.socioId = '';
-                this.InsertarCuentaConsorcio.anioId = '';
-                this.InsertarCuentaConsorcio.mesId = '';
-                this.InsertarCuentaConsorcio.tipo_consorcio = '';
-                this.InsertarCuentaConsorcio.monto = '';
-                this.InsertarCuentaConsorcio.estado_socio = '';
+                id = '';
+                anio = '';
+                mes = '';
+                tipo_consorcio = '';
+                monto = '';
                 alert(response.mensaje);
                 this.blockIngreso = false;
                 return false;

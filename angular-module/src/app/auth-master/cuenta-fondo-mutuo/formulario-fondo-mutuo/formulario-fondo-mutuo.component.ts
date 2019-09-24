@@ -45,7 +45,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   buttonStatus = false;
   token = localStorage.getItem('token').replace(/['"]+/g, '');
-  estado_socio: object = ['estado'];
+  // estado_socio: object = ['estado'];
   ver_load: boolean = true;
   ver_estado_soc: boolean = false;
 
@@ -58,16 +58,6 @@ export class FormularioFondoMutuoComponent implements OnInit {
    suc_res2 = false;
 //ingresar consorcio
    blockIngreso: boolean = false;
-   InsertarCuentaConsorcio = {
-     socioId: '',
-     anioId: '',
-     mesId: '',
-     tipo_consorcio: '',
-     monto: '',
-     estado_socio: '',
-   }
-   tipo_consorcio;
-   monto;
 
   constructor(private _socios: SociosService,
     private _time: AniosService,
@@ -188,20 +178,20 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   }
 
-  insertar_consorcio(){
-    if (this.InsertarCuentaConsorcio == null) {
+  insertar_consorcio(id,anio,mes,tipo_consorcio,monto){
+    if (id == '') {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
     this.blockIngreso = true;
     const data = new FormData();
-    data.append('socio_id', this.InsertarCuentaConsorcio.socioId);
-    data.append('anio_id', this.InsertarCuentaConsorcio.anioId);
-    data.append('mes_id', this.InsertarCuentaConsorcio.mesId);
-    data.append('tipo_consorcio', this.InsertarCuentaConsorcio.tipo_consorcio);
-    data.append('monto', this.InsertarCuentaConsorcio.monto);
-    data.append('estado_socio', this.InsertarCuentaConsorcio.estado_socio);
-    console.table(data);
+    data.append('socio_id',id);
+    data.append('anio_id',anio);
+    data.append('mes_id',mes);
+    data.append('tipo_consorcio',tipo_consorcio);
+    data.append('monto',monto);
+    // data.append('estado_socio',);
+    console.log(id,anio,mes,tipo_consorcio.value,monto.value);
 
     this._consorcioService.insertar_consorcio(data).subscribe((response) => {
       if (response.estado == 'failed') {
@@ -209,18 +199,12 @@ export class FormularioFondoMutuoComponent implements OnInit {
         this.blockIngreso = false;
         return false;
       }
-      if (response.estado == 'failed_v') {
-        alert("Verifique que los campos no esten duplicados");
-        this.blockIngreso = false;
-        return false;
-      }
       if (response.estado == 'success') {
-        this.InsertarCuentaConsorcio.socioId = '';
-        this.InsertarCuentaConsorcio.anioId = '';
-        this.InsertarCuentaConsorcio.mesId = '';
-        this.InsertarCuentaConsorcio.tipo_consorcio = '';
-        this.InsertarCuentaConsorcio.monto = '';
-        this.InsertarCuentaConsorcio.estado_socio = '';
+        id = '';
+        anio = '';
+        mes = '';
+        tipo_consorcio = '';
+        monto = '';
         alert(response.mensaje);
         this.blockIngreso = false;
         return false;

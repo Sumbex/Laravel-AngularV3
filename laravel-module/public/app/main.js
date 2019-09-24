@@ -261,7 +261,7 @@ module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <div class=\"card-header\" id=\"demoFont\">\r\n    <strong>\r\n      <h5><i class=\"fas fa-list-ol\"></i> Lista de Socios</h5>\r\n    </strong>\r\n  </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"row\">\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Mes</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n              <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n        </div>\r\n      </div><br>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-striped table-bordered table-sm\">\r\n        <thead text-sm>\r\n          <tr>\r\n            <th style=\"background: #138D75\"><label class=\"float-right\"> BUSCAR SOCIO:</label></th>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n            </td>\r\n\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n                REFRESCAR TABLA &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n                <img [hidden]=\"!blockLoad2\" height=\"15\"\r\n                  src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"text-center\">\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> ESTADO SOCIO</th>\r\n            <!-- <th colspan=\"3\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> MES</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> AÑO</th> -->\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> TIPO DE PAGO</th>\r\n            <th class=\"size\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> MONTO</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"> GUARDAR</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO D.S.</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO C.E.</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n            <!-- <td [hidden] [(ngModel)]=\"insertar_consorcio.socioId\">{{item.id}}</td> -->\r\n            <td colspan=\"1\">{{ item.rut }}</td>\r\n            <td colspan=\"2\">{{ item.nombre | uppercase}}</td>\r\n            <td colspan=\"2\">{{ item.estado_socio | uppercase}}</td>\r\n            <!-- <td colspan=\"2\" colspan=\"3\"> \r\n                <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes disabled>\r\n                  <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n                </select>\r\n            </td>\r\n            <td colspan=\"2\"> \r\n                <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\" disabled>\r\n                  <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n                </select>\r\n            </td> -->\r\n            <td colspan=\"2\">\r\n                <select #tipo_consorcio class=\"form-control form-control-sm\">\r\n                  <option value=\"\">--Seleccione--</option>\r\n                  <option value=\"1\">Dia de Sueldo</option>\r\n                  <option value=\"2\">Cuota Extra</option>\r\n                </select>\r\n            </td>\r\n            <td class=\"size\"><input #monto type=\"number\"></td>\r\n            <td colspan=\"1\"><button class=\"btn btn-outline-success btn-sm\" (click)=\"insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)\"><i class=\"far fa-save\"></i></button></td>\r\n            <td colspan=\"1\">{{item.pago_actual_ds +' '+ item.fecha_ds}}</td>\r\n            <td colspan=\"1\">{{item.pago_actual_cex +' '+ item.fecha_cex}}</td>\r\n\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <div class=\"card-header\" id=\"demoFont\">\r\n    <strong>\r\n      <h5><i class=\"fas fa-list-ol\"></i> Lista de Socios</h5>\r\n    </strong>\r\n  </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"row\">\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Mes</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n              <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n        </div>\r\n      </div><br>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-striped table-bordered table-sm\">\r\n        <thead text-sm>\r\n          <tr>\r\n            <th style=\"background: #138D75\"><label class=\"float-right\"> BUSCAR SOCIO:</label></th>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n            </td>\r\n\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <button (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n                REFRESCAR TABLA &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n                <img [hidden]=\"!blockLoad2\" height=\"15\"\r\n                  src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"text-center\">\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> ESTADO SOCIO</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> TIPO DE PAGO</th>\r\n            <th class=\"size\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> MONTO</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"> GUARDAR</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO D.S.</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO C.E.</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n            <td colspan=\"1\">{{ item.rut }}</td>\r\n            <td colspan=\"2\">{{ item.nombre | uppercase}}</td>\r\n            <td colspan=\"2\">{{ item.estado_socio | uppercase}}</td>\r\n            <td colspan=\"2\">\r\n                <select #tipo_consorcio class=\"form-control form-control-sm\">\r\n                  <option value=\"\">--Seleccione--</option>\r\n                  <option value=\"1\">Dia de Sueldo</option>\r\n                  <option value=\"2\">Cuota Extra</option>\r\n                </select>\r\n            </td>\r\n            <td class=\"size\"><input #monto type=\"number\"></td>\r\n            <td colspan=\"1\"><button class=\"btn btn-outline-success btn-sm\" (click)=\"insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)\"><i class=\"far fa-save\"></i></button></td>\r\n            <td colspan=\"1\">{{item.pago_actual_ds +' '+ item.fecha_ds}}</td>\r\n            <td colspan=\"1\">{{item.pago_actual_cex +' '+ item.fecha_cex}}</td>\r\n\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -272,7 +272,7 @@ module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <di
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  tabla-fondo-mutuo works!\r\n</p>\r\n"
+module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n    <div class=\"card-body\">\r\n  \r\n      <div class=\"row\">\r\n  \r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n  \r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>REFRESCAR TABLA</strong></label> <br>\r\n          <button (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n            Actualizar &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n            <img [hidden]=\"!blockLoad2\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n          </button>\r\n        </div>\r\n        \r\n      </div><br>\r\n  \r\n      <div class=\"table-responsive\">\r\n        <table class=\"table table-striped table-bordered table-sm\">\r\n  \r\n          <thead text-sm>\r\n  \r\n            <tr>\r\n  \r\n              <th style=\"background: #138D75\">\r\n                <label class=\"float-right\"> BUSCAR SOCIO:</label>\r\n              </th>\r\n  \r\n              <td style=\"background: #138D75\" colspan=\"15\">\r\n                <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n              </td>\r\n  \r\n              <td style=\"background: #138D75\" colspan=\"15\">\r\n                <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                  BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                  <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n                </button>\r\n              </td>\r\n  \r\n            </tr>\r\n  \r\n            <tr class=\"text-center\">\r\n              <th colspan=\"1\" rowspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n              <th colspan=\"4\" rowspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> ENERO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> FEBRERO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> MARZO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> ABRIL</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> MAYO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> JUNIO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> JULIO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> AGOSTO</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> SEPTIEMBRE</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> OCTUBRE</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> NOVIEMBRE</th>\r\n              <th colspan=\"2\" style=\"background: #138D75\"> DICIEMBRE</th>\r\n              <th colspan=\"2\" rowspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> TOTAL ANUAL</th>\r\n            </tr>\r\n  \r\n            <tr>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> D.S.</th>\r\n              <th colspan=\"1\" style=\"background: #138D75\"> C.E.</th>\r\n            </tr>\r\n  \r\n          </thead>\r\n  \r\n          <tbody>\r\n  \r\n            <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n              <td colspan=\"1\">{{ item?.rut }}</td>\r\n              <td colspan=\"4\">{{ item?.nombre | uppercase}}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n            </tr>\r\n  \r\n            <tr>\r\n              <th colspan=\"5\" style=\"background: #138D75\"> TOTAL MENSUAL</th>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n              <td colspan=\"1\">{{item?.rut }}</td>\r\n            </tr>\r\n  \r\n          </tbody>\r\n  \r\n        </table>\r\n      </div>\r\n  \r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -3627,27 +3627,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioFondoMutuoComponent", function() { return FormularioFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
-/* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
-/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/servicios/consorcio.service */ "./src/app/servicios/consorcio.service.ts");
-
-
-
+/* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/consorcio.service */ "./src/app/servicios/consorcio.service.ts");
 
 
 
 
 
 let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
-    constructor(_socios, _time, _validarusuario, _consorcioService, _sindical) {
-        this._socios = _socios;
+    constructor(_time, _validarusuario, _consorcioService) {
         this._time = _time;
         this._validarusuario = _validarusuario;
         this._consorcioService = _consorcioService;
-        this._sindical = _sindical;
         this.search = '';
         this.mod_editar = null;
         this.mod_validar = null;
@@ -3686,32 +3678,19 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
             this.blockLoad2 = false;
         });
     }
-    // filtrar() {
-    //   this.blockLoad = true;
-    //   if (this.search == '') {
-    //     alert("Ingrese un nombre para filtrar");
-    //     this.blockLoad = false;
-    //     return false;
-    //   } else {
-    //     this._socios.getTablaFilter(this.search).subscribe(
-    //       response => {
-    //         console.log(response);
-    //         this.socios = response;
-    //         this.blockLoad = false;
-    //       }
-    //     )
-    //   }
-    // }
-    // fin del metodo para validar usuario
-    getDismissReason(reason) {
-        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["ModalDismissReasons"].ESC) {
-            return 'by pressing ESC';
-        }
-        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["ModalDismissReasons"].BACKDROP_CLICK) {
-            return 'by clicking on a backdrop';
+    filtrar() {
+        this.blockLoad = true;
+        if (this.search == '') {
+            alert("Ingrese un nombre para filtrar");
+            this.blockLoad = false;
+            return false;
         }
         else {
-            return `with: ${reason}`;
+            this._consorcioService.getTablaFilter(this.search).subscribe(response => {
+                console.log(response);
+                this.socios = response;
+                this.blockLoad = false;
+            });
         }
     }
     llenar_select() {
@@ -3757,10 +3736,10 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
         data.append('socio_id', id);
         data.append('anio_id', anio);
         data.append('mes_id', mes);
-        data.append('tipo_consorcio', tipo_consorcio);
-        data.append('monto', monto);
+        data.append('tipo_consorcio', tipo_consorcio.value);
+        data.append('monto', monto.value);
         // data.append('estado_socio',);
-        console.log(id, anio, mes, tipo_consorcio.value, monto.value);
+        // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
         this._consorcioService.insertar_consorcio(data).subscribe((response) => {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
@@ -3790,11 +3769,9 @@ FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
         template: __webpack_require__(/*! raw-loader!./formulario-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.html"),
         styles: [__webpack_require__(/*! ./formulario-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
-        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_6__["AniosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
-        src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_7__["ConsorcioService"],
-        _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_5__["SindicalService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
+        src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["ConsorcioService"]])
 ], FormularioFondoMutuoComponent);
 
 
@@ -3808,7 +3785,7 @@ FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        color: #fff;\r\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      #demoFont2 {\r\n        color: #fff;\r\n        background: #52c234;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      .nav-item a{\r\n          color: #fff;\r\n          background: #093028;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n          background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n          \r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n      .card{\r\n          background: rgba(255, 255, 255, 0.8);\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      .card-header{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n        }\r\n      #myTab{\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      hr{\r\n        border-top: 1px solid #000000 !important;\r\n        margin-bottom:5px !important; \r\n        margin-top:5px !important;\r\n        height: 10px;\r\n        }\r\n  \r\n  \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWZvbmRvLW11dHVvL3RhYmxhLWZvbmRvLW11dHVvL3RhYmxhLWZvbmRvLW11dHVvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLFdBQVc7UUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7UUFDakcsdURBQXVELEVBQUUscUVBQXFFO1FBQzlIO01BQ0Y7UUFDRSxXQUFXO1FBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2EsK0JBQStCO1FBQ2hHLHNEQUFzRCxFQUFFLHFFQUFxRTtRQUM3SDtNQUVBO1VBQ0UsV0FBVztVQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNZLCtCQUErQjtVQUMvRixxREFBcUQsRUFBRSxxRUFBcUU7O1FBRTlIO01BRUE7VUFDRSxhQUFhO1VBQ2IsdUJBQXVCO1VBQ3ZCLFdBQVc7UUFDYjtNQUVBO1VBQ0Usb0NBQW9DO1VBQ3BDLDBFQUEwRTtRQUM1RTtNQUVBO1VBQ0UsNEJBQTRCO1VBQzVCLDZCQUE2QjtRQUMvQjtNQUVBO1VBQ0UsMEVBQTBFO1FBQzVFO01BQ0E7UUFDQSx3Q0FBd0M7UUFDeEMsNEJBQTRCO1FBQzVCLHlCQUF5QjtRQUN6QixZQUFZO1FBQ1oiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtZm9uZG8tbXV0dW8vdGFibGEtZm9uZG8tbXV0dW8vdGFibGEtZm9uZG8tbXV0dW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4gICAgLmRhcmstbW9kYWwgLm1vZGFsLWNvbnRlbnQge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgIGxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgIHRyLHRoe1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgfVxyXG4gICAgICB0aHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICAjZGVtb0ZvbnQge1xyXG4gICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbiAgICAgICAgfVxyXG4gICAgICAjZGVtb0ZvbnQyIHtcclxuICAgICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjNTJjMjM0OyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMwNjE3MDAsICM1MmMyMzQpOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgICAgICB9XHJcbiAgICBcclxuICAgICAgICAubmF2LWl0ZW0gYXtcclxuICAgICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgICAgYmFja2dyb3VuZDogIzA5MzAyODsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cclxuICAgICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgICAgICAgIFxyXG4gICAgICAgIH1cclxuICAgICAgICBcclxuICAgICAgICAubWFyZ2Vue1xyXG4gICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgfVxyXG4gIFxyXG4gICAgICAgIC5jYXJke1xyXG4gICAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xyXG4gICAgICAgICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XHJcbiAgICAgICAgfVxyXG4gICAgICBcclxuICAgICAgICAuY2FyZC1oZWFkZXJ7XHJcbiAgICAgICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIFxyXG4gICAgICAgICNteVRhYntcclxuICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gICAgICAgIH1cclxuICAgICAgICBocntcclxuICAgICAgICBib3JkZXItdG9wOiAxcHggc29saWQgIzAwMDAwMCAhaW1wb3J0YW50O1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206NXB4ICFpbXBvcnRhbnQ7IFxyXG4gICAgICAgIG1hcmdpbi10b3A6NXB4ICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgaGVpZ2h0OiAxMHB4O1xyXG4gICAgICAgIH1cclxuICBcclxuICBcclxuICAiXX0= */"
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 12px;\r\n      }\r\n      tr,th{\r\n        font-size: 12px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        color: #fff;\r\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      #demoFont2 {\r\n        color: #fff;\r\n        background: #52c234;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      .nav-item a{\r\n          color: #fff;\r\n          background: #093028;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n          background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n          \r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n      .card{\r\n          background: rgba(255, 255, 255, 0.8);\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      .card-header{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n        }\r\n      #myTab{\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      hr{\r\n        border-top: 1px solid #000000 !important;\r\n        margin-bottom:5px !important; \r\n        margin-top:5px !important;\r\n        height: 10px;\r\n        }\r\n      table{\r\n          height: 300px;\r\n        }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLWZvbmRvLW11dHVvL3RhYmxhLWZvbmRvLW11dHVvL3RhYmxhLWZvbmRvLW11dHVvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLFdBQVc7UUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7UUFDakcsdURBQXVELEVBQUUscUVBQXFFO1FBQzlIO01BQ0Y7UUFDRSxXQUFXO1FBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2EsK0JBQStCO1FBQ2hHLHNEQUFzRCxFQUFFLHFFQUFxRTtRQUM3SDtNQUVBO1VBQ0UsV0FBVztVQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNZLCtCQUErQjtVQUMvRixxREFBcUQsRUFBRSxxRUFBcUU7O1FBRTlIO01BRUE7VUFDRSxhQUFhO1VBQ2IsdUJBQXVCO1VBQ3ZCLFdBQVc7UUFDYjtNQUVBO1VBQ0Usb0NBQW9DO1VBQ3BDLDBFQUEwRTtRQUM1RTtNQUVBO1VBQ0UsNEJBQTRCO1VBQzVCLDZCQUE2QjtRQUMvQjtNQUVBO1VBQ0UsMEVBQTBFO1FBQzVFO01BQ0E7UUFDQSx3Q0FBd0M7UUFDeEMsNEJBQTRCO1FBQzVCLHlCQUF5QjtRQUN6QixZQUFZO1FBQ1o7TUFFQTtVQUNFLGFBQWE7UUFDZiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1mb25kby1tdXR1by90YWJsYS1mb25kby1tdXR1by90YWJsYS1mb25kby1tdXR1by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIH1cclxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM1Y2IzZmQ7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgICAgICBmb250LXNpemU6IDEycHg7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgdHIsdGh7XHJcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICB9XHJcbiAgICAgIHRoe1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgICNkZW1vRm9udCB7XHJcbiAgICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cclxuICAgICAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgICAgICB9XHJcbiAgICAgICNkZW1vRm9udDIge1xyXG4gICAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICM1MmMyMzQ7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMDYxNzAwLCAjNTJjMjM0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgICAgIH1cclxuICAgIFxyXG4gICAgICAgIC5uYXYtaXRlbSBhe1xyXG4gICAgICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiAjMDkzMDI4OyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgICAgICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gdG9wLCAjMjM3QTU3LCAjMDkzMDI4KTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjMjM3QTU3LCAjMDkzMDI4KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgICAgICAgXHJcbiAgICAgICAgfVxyXG4gICAgICAgIFxyXG4gICAgICAgIC5tYXJnZW57XHJcbiAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICB9XHJcbiAgXHJcbiAgICAgICAgLmNhcmR7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOCk7XHJcbiAgICAgICAgICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDEpLCAwIDZweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE5KTtcclxuICAgICAgICB9XHJcbiAgICAgIFxyXG4gICAgICAgIC5jYXJkLWhlYWRlcntcclxuICAgICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgXHJcbiAgICAgICAgI215VGFie1xyXG4gICAgICAgICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGhye1xyXG4gICAgICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjMDAwMDAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTo1cHggIWltcG9ydGFudDsgXHJcbiAgICAgICAgbWFyZ2luLXRvcDo1cHggIWltcG9ydGFudDtcclxuICAgICAgICBoZWlnaHQ6IDEwcHg7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICB0YWJsZXtcclxuICAgICAgICAgIGhlaWdodDogMzAwcHg7XHJcbiAgICAgICAgfSJdfQ== */"
 
 /***/ }),
 
@@ -3824,11 +3801,137 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaFondoMutuoComponent", function() { return TablaFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+/* harmony import */ var src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/consorcio.service */ "./src/app/servicios/consorcio.service.ts");
+
+
 
 
 let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
-    constructor() { }
+    constructor(_time, _consorcioService) {
+        this._time = _time;
+        this._consorcioService = _consorcioService;
+        this.search = '';
+        this.mod_editar = null;
+        this.mod_validar = null;
+        this.blockLoad = false;
+        this.blockLoad2 = false;
+        //para validar usuario
+        this.user = [];
+        this.load = false;
+        this.modalReference = null;
+        this.m_val = null;
+        this.mod_opcion = null;
+        this.pass = '';
+        this.btn_validar = false;
+        this.buttonStatus = false;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        // estado_socio: object = ['estado'];
+        this.ver_load = true;
+        this.ver_estado_soc = false;
+        this.suc_res1 = false;
+        this.suc_res2 = false;
+        //ingresar consorcio
+        this.blockIngreso = false;
+    }
     ngOnInit() {
+        if (localStorage.getItem('token') == '') {
+            alert("La sesión ya expiro!");
+            location.reload();
+        }
+        this.listar();
+        this.llenar_select();
+    }
+    listar() {
+        this._consorcioService.listar_consorcio().subscribe(response => {
+            console.log(response);
+            this.socios = response;
+            this.blockLoad2 = false;
+        });
+    }
+    filtrar() {
+        this.blockLoad = true;
+        if (this.search == '') {
+            alert("Ingrese un nombre para filtrar");
+            this.blockLoad = false;
+            return false;
+        }
+        else {
+            this._consorcioService.getTablaFilter(this.search).subscribe(response => {
+                console.log(response);
+                this.socios = response;
+                this.blockLoad = false;
+            });
+        }
+    }
+    llenar_select() {
+        this._time.getAnios().subscribe(response => {
+            this.anios = response;
+            this._time.getAnioActual().subscribe((response) => {
+                this.anio = response.id;
+                this.suc_res1 = true;
+                this.listo_para_listar(this.suc_res1, this.suc_res2);
+            }, error => {
+                console.log(error);
+            });
+        }, error => {
+            console.log(error);
+        });
+        this._time.getMeses().subscribe(response => {
+            this.meses = response;
+            this._time.getMesActual().subscribe((response) => {
+                this.mes = response.id;
+                this.suc_res2 = true;
+                this.listo_para_listar(this.suc_res1, this.suc_res2);
+            }, error => {
+                console.log(error);
+            });
+        }, error => {
+            console.log(error);
+        });
+    }
+    listo_para_listar(res1, res2) {
+        if (res1 == true && res2 == true) {
+        }
+    }
+    btn_reload() {
+        this.listo_para_listar(this.suc_res1, this.suc_res2);
+    }
+    insertar_consorcio(id, anio, mes, tipo_consorcio, monto) {
+        if (id == '') {
+            alert('ingrese los datos obligatorios (*)');
+            return false;
+        }
+        this.blockIngreso = true;
+        const data = new FormData();
+        data.append('socio_id', id);
+        data.append('anio_id', anio);
+        data.append('mes_id', mes);
+        data.append('tipo_consorcio', tipo_consorcio.value);
+        data.append('monto', monto.value);
+        // data.append('estado_socio',);
+        // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
+        this._consorcioService.insertar_consorcio(data).subscribe((response) => {
+            if (response.estado == 'failed') {
+                alert(response.mensaje);
+                this.blockIngreso = false;
+                return false;
+            }
+            if (response.estado == 'success') {
+                id = '';
+                anio = '';
+                mes = '';
+                tipo_consorcio = '';
+                monto = '';
+                alert(response.mensaje);
+                this.blockIngreso = false;
+                return false;
+            }
+        }, error => {
+            console.log(error);
+            this.blockIngreso = false;
+            return false;
+        });
     }
 };
 TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -3837,7 +3940,8 @@ TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./tabla-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.html"),
         styles: [__webpack_require__(/*! ./tabla-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"],
+        src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"]])
 ], TablaFondoMutuoComponent);
 
 
@@ -9572,7 +9676,14 @@ let ConsorcioService = class ConsorcioService {
         });
     }
     insertar_consorcio(form) {
-        return this._http.post(this.url + "cbe_insertar", form, {
+        return this._http.post(this.url + "insertar_consorcio", form, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            })
+        });
+    }
+    getTablaFilter(buscar) {
+        return this._http.get(this.url + "filtrar_socios_consorcios/" + buscar, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SociosService } from 'src/app/servicios/socios.service';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
-import { NgbModalConfig, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { SindicalService } from '../../../servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 
@@ -59,11 +56,10 @@ export class FormularioFondoMutuoComponent implements OnInit {
 //ingresar consorcio
    blockIngreso: boolean = false;
 
-  constructor(private _socios: SociosService,
+  constructor(
     private _time: AniosService,
     public _validarusuario: ValidarUsuarioService,
-    private _consorcioService: ConsorcioService,
-    private _sindical: SindicalService
+    private _consorcioService: ConsorcioService
   ) {
 
   }
@@ -91,33 +87,22 @@ export class FormularioFondoMutuoComponent implements OnInit {
     )
   }
 
-  // filtrar() {
+  filtrar() {
 
-  //   this.blockLoad = true;
-  //   if (this.search == '') {
-  //     alert("Ingrese un nombre para filtrar");
-  //     this.blockLoad = false;
-  //     return false;
-  //   } else {
-  //     this._socios.getTablaFilter(this.search).subscribe(
-  //       response => {
-  //         console.log(response);
-  //         this.socios = response;
-  //         this.blockLoad = false;
-
-  //       }
-  //     )
-  //   }
-  // }
-
-  // fin del metodo para validar usuario
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+    this.blockLoad = true;
+    if (this.search == '') {
+      alert("Ingrese un nombre para filtrar");
+      this.blockLoad = false;
+      return false;
     } else {
-      return `with: ${reason}`;
+      this._consorcioService.getTablaFilter(this.search).subscribe(
+        response => {
+          console.log(response);
+          this.socios = response;
+          this.blockLoad = false;
+
+        }
+      )
     }
   }
 
@@ -188,10 +173,10 @@ export class FormularioFondoMutuoComponent implements OnInit {
     data.append('socio_id',id);
     data.append('anio_id',anio);
     data.append('mes_id',mes);
-    data.append('tipo_consorcio',tipo_consorcio);
-    data.append('monto',monto);
+    data.append('tipo_consorcio',tipo_consorcio.value);
+    data.append('monto',monto.value);
     // data.append('estado_socio',);
-    console.log(id,anio,mes,tipo_consorcio.value,monto.value);
+    // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
 
     this._consorcioService.insertar_consorcio(data).subscribe((response) => {
       if (response.estado == 'failed') {
@@ -217,6 +202,5 @@ export class FormularioFondoMutuoComponent implements OnInit {
       }
     );
   }
-
 
 }

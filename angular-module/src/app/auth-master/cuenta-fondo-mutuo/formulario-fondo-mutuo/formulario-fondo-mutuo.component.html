@@ -45,8 +45,6 @@
             <th colspan="1" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th>
             <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
             <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
-            <!-- <th colspan="3" style="background: #138D75"><i class="fas fa-calendar-alt"></i> MES</th>
-            <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> AÑO</th> -->
             <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th>
             <th class="size" style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
             <th colspan="1" style="background: #138D75"> GUARDAR</th>
@@ -56,20 +54,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of socios" class="text-center">
-            <!-- <td [hidden] [(ngModel)]="insertar_consorcio.socioId">{{item.id}}</td> -->
             <td colspan="1">{{ item.rut }}</td>
             <td colspan="2">{{ item.nombre | uppercase}}</td>
             <td colspan="2">{{ item.estado_socio | uppercase}}</td>
-            <!-- <td colspan="2" colspan="3"> 
-                <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes disabled>
-                  <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
-                </select>
-            </td>
-            <td colspan="2"> 
-                <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm" disabled>
-                  <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
-                </select>
-            </td> -->
             <td colspan="2">
                 <select #tipo_consorcio class="form-control form-control-sm">
                   <option value="">--Seleccione--</option>

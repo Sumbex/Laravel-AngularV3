@@ -32,7 +32,19 @@ export class ConsorcioService {
 
   insertar_consorcio(form): Observable<any> {
 
-    return this._http.post(this.url + "cbe_insertar", form, {
+    return this._http.post(this.url + "insertar_consorcio", form, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
+
+  getTablaFilter(buscar): Observable<any> {
+
+    return this._http.get(this.url + "filtrar_socios_consorcios/" + buscar, {
         headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,

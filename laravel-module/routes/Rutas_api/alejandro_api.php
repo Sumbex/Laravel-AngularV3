@@ -118,5 +118,5 @@ Route::post('actualizar_dato_cbe','CuentaBienestarController@actualizar_dato_cbe
 //CUENTA CONSORCIO------------------------------------------------------------------------------------
 
 Route::get('traer_socios_consorcios','CuentaConsorcioController@traer_socios_consorcios');
-
-
+Route::get('filtrar_socios_consorcios/{busca?}', 'CuentaConsorcioController@filtrar');
+Route::post('insertar_consorcio','CuentaConsorcioController@insertar');

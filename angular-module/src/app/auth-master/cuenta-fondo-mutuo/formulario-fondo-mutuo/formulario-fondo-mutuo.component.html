@@ -56,6 +56,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of socios" class="text-center">
+            <!-- <td [hidden] [(ngModel)]="insertar_consorcio.socioId">{{item.id}}</td> -->
             <td colspan="1">{{ item.rut }}</td>
             <td colspan="2">{{ item.nombre | uppercase}}</td>
             <td colspan="2">{{ item.estado_socio | uppercase}}</td>
@@ -70,14 +71,14 @@
                 </select>
             </td>
             <td colspan="2">
-                <select  class="form-control form-control-sm">
+                <select  [(ngModel)]="tipo_consorcio" class="form-control form-control-sm">
                   <option value="">--Seleccione--</option>
                   <option value="1">Dia de Sueldo</option>
                   <option value="2">Cuota Extra</option>
                 </select>
             </td>
-            <td class="size"><input type="number"></td>
-            <td colspan="1"><button class="btn btn-outline-success btn-sm"><i class="far fa-save"></i></button></td>
+            <td [(ngModel)]="monto" class="size"><input type="number"></td>
+            <td colspan="1"><button class="btn btn-outline-success btn-sm" (click)="insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)"><i class="far fa-save"></i></button></td>
             <td colspan="1">{{item.pago_actual +' '+ item.fecha}}</td>
             <td colspan="1">{{item.pago_actual +' '+ item.fecha}}</td>
 

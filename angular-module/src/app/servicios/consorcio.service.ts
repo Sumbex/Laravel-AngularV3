@@ -29,5 +29,16 @@ export class ConsorcioService {
       )
     });
   }
-  
+
+  insertar_consorcio(form): Observable<any> {
+
+    return this._http.post(this.url + "cbe_insertar", form, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
 }

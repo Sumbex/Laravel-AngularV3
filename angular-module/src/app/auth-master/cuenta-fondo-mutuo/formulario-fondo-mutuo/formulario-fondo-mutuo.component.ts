@@ -56,6 +56,18 @@ export class FormularioFondoMutuoComponent implements OnInit {
    idMesActual;
    suc_res1 = false;
    suc_res2 = false;
+//ingresar consorcio
+   blockIngreso: boolean = false;
+   InsertarCuentaConsorcio = {
+     socioId: '',
+     anioId: '',
+     mesId: '',
+     tipo_consorcio: '',
+     monto: '',
+     estado_socio: '',
+   }
+   tipo_consorcio;
+   monto;
 
   constructor(private _socios: SociosService,
     private _time: AniosService,
@@ -90,7 +102,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
   }
 
   // filtrar() {
-    
+
   //   this.blockLoad = true;
   //   if (this.search == '') {
   //     alert("Ingrese un nombre para filtrar");
@@ -174,6 +186,52 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
     this.listo_para_listar(this.suc_res1, this.suc_res2);
 
+  }
+
+  insertar_consorcio(){
+    if (this.InsertarCuentaConsorcio == null) {
+      alert('ingrese los datos obligatorios (*)');
+      return false;
+    }
+    this.blockIngreso = true;
+    const data = new FormData();
+    data.append('socio_id', this.InsertarCuentaConsorcio.socioId);
+    data.append('anio_id', this.InsertarCuentaConsorcio.anioId);
+    data.append('mes_id', this.InsertarCuentaConsorcio.mesId);
+    data.append('tipo_consorcio', this.InsertarCuentaConsorcio.tipo_consorcio);
+    data.append('monto', this.InsertarCuentaConsorcio.monto);
+    data.append('estado_socio', this.InsertarCuentaConsorcio.estado_socio);
+    console.table(data);
+
+    this._consorcioService.insertar_consorcio(data).subscribe((response) => {
+      if (response.estado == 'failed') {
+        alert(response.mensaje);
+        this.blockIngreso = false;
+        return false;
+      }
+      if (response.estado == 'failed_v') {
+        alert("Verifique que los campos no esten duplicados");
+        this.blockIngreso = false;
+        return false;
+      }
+      if (response.estado == 'success') {
+        this.InsertarCuentaConsorcio.socioId = '';
+        this.InsertarCuentaConsorcio.anioId = '';
+        this.InsertarCuentaConsorcio.mesId = '';
+        this.InsertarCuentaConsorcio.tipo_consorcio = '';
+        this.InsertarCuentaConsorcio.monto = '';
+        this.InsertarCuentaConsorcio.estado_socio = '';
+        alert(response.mensaje);
+        this.blockIngreso = false;
+        return false;
+      }
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
   }
 
 

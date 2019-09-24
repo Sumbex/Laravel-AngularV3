@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstadoConsorcioTable extends Migration
+class CreateEstadoConsorcioCuotaextTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEstadoConsorcioTable extends Migration
      */
     public function up()
     {
-        Schema::create('estado_consorcio_dia_sueldo', function (Blueprint $table) {
+        Schema::create('estado_consorcio_cuota_extra', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('socio_id');
             $table->string('descripcion');
@@ -30,6 +30,6 @@ class CreateEstadoConsorcioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado_consorcio');
+        Schema::dropIfExists('estado_consorcio_cuota_extra');
     }
 }

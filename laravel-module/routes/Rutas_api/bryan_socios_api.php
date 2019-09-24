@@ -31,6 +31,7 @@ Route::get('/traer_camping_socio/{anio}/{mes}', 'PortalSocioController@TraerCamp
 //------------------------------------------>rutas portal socio cs
 
 //------------------------------------------>rutas portal socio cb
+Route::get('/traer_cuenta_bienestar_socio/{anio}/{mes}', 'PortalSocioController@TraerCuentaBienestar');
 Route::get('/traer_caja_chica_bienestar_socio/{anio}/{mes}', 'PortalSocioController@TraerCajaChicaBienestar');
 //------------------------------------------>rutas portal socio cb
 

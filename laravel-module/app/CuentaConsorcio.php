@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\EstadoConsorcioDs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,33 +12,48 @@ class CuentaConsorcio extends Model
     
     protected function listar_formulario()
     {
-        $listar = DB::select("SELECT 
-                                s.id,
-                                s.rut,
-                                concat(nombres,' ',a_paterno,' ',a_materno) nombre,
-                                case when s.fecha_egreso is null then 'vigente'
-                                else concat('egresado (',to_char(s.fecha_egreso,'dd-mm-yyyy'),')')
+        $listar = DB::select("SELECT   
+                                x.id,
+                                x.rut,
+                                x.nombre,
+                                case when x.fecha_egreso is null then 'vigente'
+                                else concat('egresado (',to_char(x.fecha_egreso,'dd-mm-yyyy'),')')
                                 end AS estado_socio,
                                 
-                                case when ec.descripcion is null then 'Sin Registro'
-                                else ec.descripcion
+                                case when x.descripcion_ds is null then 'Sin Registro'
+                                else x.descripcion_ds
                                 end AS pago_actual_ds,
-                                concat(m.descripcion,' ',a.descripcion) as fecha_ds,
+                                concat(m_ds.descripcion,' ',a_ds.descripcion) as fecha_ds,
                                 
-                                case when ecx.descripcion is null then 'Sin Registro'
-                                else ecx.descripcion
+                                case when descripcion_ecx is null then 'Sin Registro'
+                                else descripcion_ecx
                                 end AS pago_actual_cex,
-                                concat(mx.descripcion,' ',ax.descripcion) as fecha_cex
-                                
-                                
-                                from socios s
-                                left join estado_consorcio_dia_sueldo ec on ec.socio_id = s.id
-                                left join estado_consorcio_cuota_extra ecx on ecx.socio_id = s.id
-                                left join mes m on m.id = ec.mes_id
-                                left join anio a on a.id = ec.anio_id
-                                left join mes mx on m.id = ecx.mes_id
-                                left join anio ax on a.id = ecx.anio_id
-                                order by s.a_paterno, s.a_materno");
+                                concat(m_cex.descripcion,' ',a_cex.descripcion) as fecha_cex
+
+                              from 
+                              (select    
+                                    s.id,
+                                    s.rut,
+                                    concat(nombres,' ',a_paterno,' ',a_materno) nombre,
+                                    ec.descripcion as descripcion_ds,
+                                    ec.mes_id as mes_ds_id,
+                                    ec.anio_id as anio_ds_id,
+                                    
+                                    ecx.descripcion as descripcion_ecx,
+                                    ecx.mes_id as mes_ecx_id,
+                                    ecx.anio_id as anio_ecx_id,
+                                    s.fecha_egreso
+                                    
+                                  from socios s
+                                  left join estado_consorcio_dia_sueldo ec on ec.socio_id = s.id
+                                  left join estado_consorcio_cuota_extra ecx on ecx.socio_id = s.id
+
+
+                              order by s.a_paterno, s.a_materno) AS x
+                              left join mes m_ds on m_ds.id = x.mes_ds_id
+                              left join anio a_ds on a_ds.id = x.anio_ds_id
+                              left join mes m_cex on m_cex.id = x.mes_ecx_id
+                              left join anio a_cex on a_cex.id = x.anio_ecx_id");
 
         if (count($listar) > 0) {
     		return $listar;
@@ -50,34 +66,49 @@ class CuentaConsorcio extends Model
     {
     	$busca = mb_strtolower($search);
 
-    	$filtro = DB::select("SELECT 
-                                s.id,
-                                s.rut,
-                                concat(nombres,' ',a_paterno,' ',a_materno) nombre,
-                                case when s.fecha_egreso is null then 'vigente'
-                                else concat('egresado (',to_char(s.fecha_egreso,'dd-mm-yyyy'),')')
+    	$filtro = DB::select("SELECT   
+                                x.id,
+                                x.rut,
+                                x.nombre,
+                                case when x.fecha_egreso is null then 'vigente'
+                                else concat('egresado (',to_char(x.fecha_egreso,'dd-mm-yyyy'),')')
                                 end AS estado_socio,
                                 
-                                case when ec.descripcion is null then 'Sin Registro'
-                                else ec.descripcion
+                                case when x.descripcion_ds is null then 'Sin Registro'
+                                else x.descripcion_ds
                                 end AS pago_actual_ds,
-                                concat(m.descripcion,' ',a.descripcion) as fecha_ds,
+                                concat(m_ds.descripcion,' ',a_ds.descripcion) as fecha_ds,
                                 
-                                case when ecx.descripcion is null then 'Sin Registro'
-                                else ecx.descripcion
+                                case when descripcion_ecx is null then 'Sin Registro'
+                                else descripcion_ecx
                                 end AS pago_actual_cex,
-                                concat(mx.descripcion,' ',ax.descripcion) as fecha_cex
+                                concat(m_cex.descripcion,' ',a_cex.descripcion) as fecha_cex
+
+                              from 
+                              (select    
+                                    s.id,
+                                    s.rut,
+                                    concat(nombres,' ',a_paterno,' ',a_materno) nombre,
+                                    ec.descripcion as descripcion_ds,
+                                    ec.mes_id as mes_ds_id,
+                                    ec.anio_id as anio_ds_id,
+                                    
+                                    ecx.descripcion as descripcion_ecx,
+                                    ecx.mes_id as mes_ecx_id,
+                                    ecx.anio_id as anio_ecx_id,
+                                    s.fecha_egreso
+                                    
+                                  from socios s
+                                  left join estado_consorcio_dia_sueldo ec on ec.socio_id = s.id
+                                  left join estado_consorcio_cuota_extra ecx on ecx.socio_id = s.id
+
+                              where lower(CONCAT(nombres,' ',a_paterno,' ',a_materno)) like  '%$busca%'
+                              order by s.a_paterno, s.a_materno) AS x
+                              left join mes m_ds on m_ds.id = x.mes_ds_id
+                              left join anio a_ds on a_ds.id = x.anio_ds_id
+                              left join mes m_cex on m_cex.id = x.mes_ecx_id
+                              left join anio a_cex on a_cex.id = x.anio_ecx_id
                                 
-                                
-                                from socios s
-                                left join estado_consorcio_dia_sueldo ec on ec.socio_id = s.id
-                                left join estado_consorcio_cuota_extra ecx on ecx.socio_id = s.id
-                                left join mes m on m.id = ec.mes_id
-                                left join anio a on a.id = ec.anio_id
-                                left join mes mx on m.id = ecx.mes_id
-                                left join anio ax on a.id = ecx.anio_id
-                                where lower(CONCAT(nombres,' ',a_paterno,' ',a_materno)) like  '%$busca%'
-                                order by s.a_paterno, s.a_materno
                        ");
                         
         if (count($filtro) > 0) {
@@ -114,7 +145,13 @@ class CuentaConsorcio extends Model
           }
 
           if ($verif->save()) {
-              return ['estado'=>'success', 'mensaje'=>'Día de sueldo actualizado'];
+
+              $estado = EstadoConsorcioDs::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al actualizar día de sueldo'];
             
@@ -142,7 +179,13 @@ class CuentaConsorcio extends Model
           }
 
           if ($ds->save()) {
-              return ['estado'=>'success', 'mensaje'=>'Día de sueldo ingresado'];
+
+            $estado = EstadoConsorcioDs::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al ingresar día de sueldo'];
       }
@@ -175,7 +218,12 @@ class CuentaConsorcio extends Model
           }
 
           if ($verif->save()) {
-              return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              $estado = EstadoConsorcioCex::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al actualizar cuota extraordinaria'];
             
@@ -203,7 +251,12 @@ class CuentaConsorcio extends Model
           }
 
           if ($ds->save()) {
-              return ['estado'=>'success', 'mensaje'=>'Día de sueldo ingresado'];
+              $estado = EstadoConsorcioCex::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al ingresar día de sueldo'];
       }

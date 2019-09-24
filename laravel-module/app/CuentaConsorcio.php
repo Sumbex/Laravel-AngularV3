@@ -146,11 +146,66 @@ class CuentaConsorcio extends Model
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al ingresar día de sueldo'];
       }
-      dd("dfsd");
+
 
     }
     protected function insertar_cex($r)
     {
-      
+       $verif = $this->where([
+        'anio_id' =>  $r->anio_id,
+        'socio_id' => $r->socio_id
+      ])->first();
+
+      if ($verif) {
+
+        switch ((string)$r->mes_id) {
+            case '1':  $verif->monto_mes_cex_1 = $r->monto;  break;
+            case '2':  $verif->monto_mes_cex_2 = $r->monto;  break;
+            case '3':  $verif->monto_mes_cex_3 = $r->monto;  break;
+            case '4':  $verif->monto_mes_cex_4 = $r->monto;  break;
+            case '5':  $verif->monto_mes_cex_5 = $r->monto;  break;
+            case '6':  $verif->monto_mes_cex_6 = $r->monto;  break;
+            case '7':  $verif->monto_mes_cex_7 = $r->monto;  break;
+            case '8':  $verif->monto_mes_cex_8 = $r->monto;  break;
+            case '9':  $verif->monto_mes_cex_9 = $r->monto;  break;
+            case '10': $verif->monto_mes_cex_10 = $r->monto;  break;
+            case '11': $verif->monto_mes_cex_11 = $r->monto;  break;
+            case '12': $verif->monto_mes_cex_12 = $r->monto;  break;
+            default: break;
+          }
+
+          if ($verif->save()) {
+              return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+          }
+          return ['estado'=>'failed', 'mensaje'=>'Error al actualizar cuota extraordinaria'];
+            
+
+      }else{
+          $ds = $this;
+          $ds->socio_id = $r->socio_id;
+          $ds->vinculado = 'S';
+          $ds->anio_id = $r->anio_id;
+        
+          switch ((string)$r->mes_id) {
+            case '1':  $ds->monto_mes_cex_1 = $r->monto;  break;
+            case '2':  $ds->monto_mes_cex_2 = $r->monto;  break;
+            case '3':  $ds->monto_mes_cex_3 = $r->monto;  break;
+            case '4':  $ds->monto_mes_cex_4 = $r->monto;  break;
+            case '5':  $ds->monto_mes_cex_5 = $r->monto;  break;
+            case '6':  $ds->monto_mes_cex_6 = $r->monto;  break;
+            case '7':  $ds->monto_mes_cex_7 = $r->monto;  break;
+            case '8':  $ds->monto_mes_cex_8 = $r->monto;  break;
+            case '9':  $ds->monto_mes_cex_9 = $r->monto;  break;
+            case '10': $ds->monto_mes_cex_10 = $r->monto;  break;
+            case '11': $ds->monto_mes_cex_11 = $r->monto;  break;
+            case '12': $ds->monto_mes_cex_12 = $r->monto;  break;
+            default: break;
+          }
+
+          if ($ds->save()) {
+              return ['estado'=>'success', 'mensaje'=>'Día de sueldo ingresado'];
+          }
+          return ['estado'=>'failed', 'mensaje'=>'Error al ingresar día de sueldo'];
+      }
     }
 }

@@ -48,11 +48,6 @@
           justify-content: center;
           width: 100%;
         }
-  
-        .card{
-          background: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
       
         .card-header{
           border-top-left-radius: 20px;
@@ -67,8 +62,4 @@
         margin-bottom:5px !important; 
         margin-top:5px !important;
         height: 10px;
-        }
-
-        table{
-          height: 300px;
         }

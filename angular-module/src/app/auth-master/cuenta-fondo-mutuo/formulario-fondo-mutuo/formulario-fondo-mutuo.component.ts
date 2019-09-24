@@ -79,7 +79,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
   }
 
   listar() {
-    this._socios.getTablaSocios().subscribe(
+    this._consorcioService.listar_consorcio().subscribe(
       response => {
         console.log(response);
         this.socios = response;
@@ -89,33 +89,24 @@ export class FormularioFondoMutuoComponent implements OnInit {
     )
   }
 
-  filtrar() {
-    this.blockLoad = true;
-    if (this.search == '') {
-      alert("Ingrese un nombre para filtrar");
-      this.blockLoad = false;
-      return false;
-    } else {
-      this._socios.getTablaFilter(this.search).subscribe(
-        response => {
-          console.log(response);
-          this.socios = response;
-          this.blockLoad = false;
+  // filtrar() {
+    
+  //   this.blockLoad = true;
+  //   if (this.search == '') {
+  //     alert("Ingrese un nombre para filtrar");
+  //     this.blockLoad = false;
+  //     return false;
+  //   } else {
+  //     this._socios.getTablaFilter(this.search).subscribe(
+  //       response => {
+  //         console.log(response);
+  //         this.socios = response;
+  //         this.blockLoad = false;
 
-        }
-      )
-    }
-  }
-
-  estado_socio_portal(socio_id) {
-    this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
-      (response: { 'estado' }) => {
-        this.estado_socio = response.estado;
-        this.ver_load = false;
-        this.ver_estado_soc = true;
-      }
-    )
-  }
+  //       }
+  //     )
+  //   }
+  // }
 
   // fin del metodo para validar usuario
   private getDismissReason(reason: any): string {

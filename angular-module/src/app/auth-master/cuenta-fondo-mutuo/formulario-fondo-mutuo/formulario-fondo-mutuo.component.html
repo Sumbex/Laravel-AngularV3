@@ -23,17 +23,17 @@
         <thead text-sm>
           <tr>
             <th style="background: #138D75"><label class="float-right"> BUSCAR SOCIO:</label></th>
-            <td style="background: #138D75" colspan="3">
+            <td style="background: #138D75" colspan="4">
               <input class="form-control form-control-sm" placeholder="Buscar por nombre......" [(ngModel)]="search">
             </td>
 
-            <td style="background: #138D75" colspan="3">
+            <td style="background: #138D75" colspan="4">
               <button (click)="filtrar()" class="btn btn-secondary btn-sm">
                 BUSCAR <i [hidden]="blockLoad" class="fas fa-search"></i>
                 <img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
               </button>
             </td>
-            <td style="background: #138D75" colspan="3">
+            <td style="background: #138D75" colspan="4">
               <button (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
                 REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
                 <img [hidden]="!blockLoad2" height="15"
@@ -42,42 +42,44 @@
             </td>
           </tr>
           <tr class="text-center">
-            <th style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th>
-            <th style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
-            <th style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
-            <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> MES</th>
-            <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> AÑO</th>
-            <th style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th>
-            <th style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
-            <th style="background: #138D75"> GUARDAR</th>
-            <th style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO</th>
+            <th colspan="1" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th>
+            <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
+            <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
+            <th colspan="3" style="background: #138D75"><i class="fas fa-calendar-alt"></i> MES</th>
+            <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> AÑO</th>
+            <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th>
+            <th class="size" style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
+            <th colspan="1" style="background: #138D75"> GUARDAR</th>
+            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO D.S.</th>
+            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO C.E.</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of socios" class="text-center">
-            <td>{{ item.rut }}</td>
-            <td>{{ item.nombres+' '+item.a_paterno+' '+item.a_materno | uppercase}}</td>
-            <td>{{ estado_socio | uppercase}}</td>
-            <td> 
+            <td colspan="1">{{ item.rut }}</td>
+            <td colspan="2">{{ item.nombre | uppercase}}</td>
+            <td colspan="2">{{ item.estado_socio | uppercase}}</td>
+            <td colspan="2" colspan="3"> 
                 <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes disabled>
                   <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
                 </select>
-              </td>
-              <td> 
+            </td>
+            <td colspan="2"> 
                 <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm" disabled>
                   <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
                 </select>
-              </td>
-              <td>
+            </td>
+            <td colspan="2">
                 <select  class="form-control form-control-sm">
                   <option value="">--Seleccione--</option>
                   <option value="1">Dia de Sueldo</option>
                   <option value="2">Cuota Extra</option>
                 </select>
-              </td>
-            <td><input type="number"></td>
-            <td><button class="btn btn-outline-success btn-sm"><i class="far fa-save"></i></button></td>
-            <td><i class="fas fa-check" style="color: #138D75"></i></td>
+            </td>
+            <td class="size"><input type="number"></td>
+            <td colspan="1"><button class="btn btn-outline-success btn-sm"><i class="far fa-save"></i></button></td>
+            <td colspan="1">{{item.pago_actual +' '+ item.fecha}}</td>
+            <td colspan="1">{{item.pago_actual +' '+ item.fecha}}</td>
 
           </tr>
         </tbody>

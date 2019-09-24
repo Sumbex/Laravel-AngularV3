@@ -115,4 +115,8 @@ Route::post('cbe_insertar', 'CuentaBienestarController@insertar');
 Route::get('cbe_listar/{anio}/{mes}', 'CuentaBienestarController@listar_cuenta');
 Route::post('actualizar_dato_cbe','CuentaBienestarController@actualizar_dato_cbe');
 
+//CUENTA CONSORCIO------------------------------------------------------------------------------------
+
+Route::get('traer_socios_consorcios','CuentaConsorcioController@traer_socios_consorcios');
+
 

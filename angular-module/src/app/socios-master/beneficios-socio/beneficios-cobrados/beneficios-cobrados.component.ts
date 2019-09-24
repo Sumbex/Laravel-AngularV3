@@ -15,8 +15,10 @@ export class BeneficiosCobradosComponent implements OnInit {
   //Objeto con los datos del Prestamo
   datosNacidos;
   datosFallecidos;
+  datosMedicos;
 
-  //Bloquear Muestro de pagos
+  //Variables para comrpobar si no hay ningún beneficio
+  contadorBeneficios = 3;
 
   //Loading tabla
   loadingTabla = true;
@@ -29,6 +31,7 @@ export class BeneficiosCobradosComponent implements OnInit {
   ngOnInit() {
     this.getNacimientosCobrados();
     this.getFallecimientosCobrados();
+    this.getGastosMedicosCobrados();
   }
 
   openPDF(content) {
@@ -38,9 +41,11 @@ export class BeneficiosCobradosComponent implements OnInit {
   getNacimientosCobrados(){
     this._portalSociosService.getBeneficiosNacimientosCobrados().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        console.log(response.mensaje);
+        this.contadorBeneficios--;
       }else{
         this.datosNacidos = response;
+        console.log(this.datosNacidos);
       }
     },
     error => {
@@ -51,9 +56,26 @@ export class BeneficiosCobradosComponent implements OnInit {
   getFallecimientosCobrados(){
     this._portalSociosService.getBeneficiosFalleciomientosCobrados().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        console.log(response.mensaje);
+        this.contadorBeneficios--;
       }else{
         this.datosFallecidos = response;
+        console.log(this.datosFallecidos);
+      }
+    },
+    error => {
+      console.log(error);
+    });
+  }
+
+  getGastosMedicosCobrados(){
+    this._portalSociosService.getBeneficiosGastosMedicos().subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        console.log(response.mensaje);
+        this.contadorBeneficios--;
+      }else{
+        this.datosMedicos = response;
+        console.log(this.datosMedicos);
       }
     },
     error => {
@@ -64,6 +86,7 @@ export class BeneficiosCobradosComponent implements OnInit {
   limpiarTabla(){
     this.datosNacidos = '';
     this.datosFallecidos = '';
+    this.datosMedicos = '';
   }
 
 }

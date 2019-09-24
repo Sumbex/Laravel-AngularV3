@@ -2,6 +2,8 @@
   <div class="container">
   <div class="col-12 col-md-12 col-lg-12 col-xl-12">
     <div class="row justify-content-center">
+      <p *ngIf="contadorBeneficios == 0">No tiene Ningún tipo de Beneficios Cobrados hasta el momento</p>
+      <div *ngIf="datosNacidos?.nacimientos.length > 0">
       <div class="table-responsive">
         <br>
         <h3 class="text-center">Cobros por Nacimiento</h3>
@@ -18,8 +20,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let itemNacido of datosNacidos?.nacidos" class="table-success text-center">
-              <th>{{itemNacido?.fecha}}</th>
+            <tr *ngFor="let itemNacido of datosNacidos?.nacimientos" class="text-center">
+              <th>{{itemNacido?.fecha_cobro}}</th>
               <td>{{itemNacido?.id}}</td>
               <td><a (click)="openPDF(visor1)"><i class="far fa-file-alt" placement="top"
                     ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
@@ -36,7 +38,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <iframe width="100%" height="500px" [src]="  '../' + itemNacido.archivo | safeUrl"
+                      <iframe width="100%" height="500px" [src]="  '../' + itemNacido.comprobante | safeUrl"
                         frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="modal-footer" [hidden]="true">
@@ -47,18 +49,42 @@
               </ng-template>
               <!--MODAL VISOR PDF-->
 
-              <td>{{itemNacido?.tipo}}</td>
-              <td>{{itemNacido?.cuotas}}</td>
-              <td>{{itemNacido?.estado_prestamo}}</td>
-              <td>{{itemNacido?.estado_prestamo}}</td>
+              <td>{{itemNacido?.rut}}</td>
+              <td>{{itemNacido?.nombre}}</td>
+              <td><a (click)="openPDF(visor3)"><i class="far fa-file-alt" placement="top"
+                ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+
+              <!--MODAL VISOR PDF-->
+              <ng-template #visor3 let-c="close" let-d="dismiss">
+                <div class="row">
+                  <div class="col">
+                    <div class="modal-header text-center" id="demoFont">
+                      <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                      <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                        (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <iframe width="100%" height="500px" [src]="  '../' + itemNacido.certificado| safeUrl"
+                        frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="modal-footer" [hidden]="true">
+                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+              <!--MODAL VISOR PDF-->
+
+              <td>{{itemNacido?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
 
-      <br>
-      <hr>
-
+      <div *ngIf="datosFallecidos?.fallecimientos.length > 0">
       <div class="table-responsive">
         <br>
         <h3 class="text-center">Cobros por Fallecimiento</h3>
@@ -75,8 +101,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let itemFallecido of datosFallecidos?.fallecidos" class="table-success text-center">
-              <th>{{itemFallecido?.fecha}}</th>
+            <tr *ngFor="let itemFallecido of datosFallecidos?.fallecimientos" class="text-center">
+              <th>{{itemFallecido?.fecha_cobro}}</th>
               <td>{{itemFallecido?.id}}</td>
               <td><a (click)="openPDF(visor2)"><i class="far fa-file-alt" placement="top"
                     ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
@@ -93,7 +119,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <iframe width="100%" height="500px" [src]="  '../' + itemFallecido.archivo | safeUrl"
+                      <iframe width="100%" height="500px" [src]="  '../' + itemFallecido.comprobante | safeUrl"
                         frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="modal-footer" [hidden]="true">
@@ -104,14 +130,94 @@
               </ng-template>
               <!--MODAL VISOR PDF-->
 
-              <td>{{itemFallecido?.tipo}}</td>
-              <td>{{itemFallecido?.cuotas}}</td>
-              <td>{{itemFallecido?.estado_prestamo}}</td>
-              <td>{{itemFallecido?.estado_prestamo}}</td>
+              <td>{{itemFallecido?.rut}}</td>
+              <td>{{itemFallecido?.nombre}}</td>
+              <td><a (click)="openPDF(visor4)"><i class="far fa-file-alt" placement="top"
+                ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+
+              <!--MODAL VISOR PDF-->
+              <ng-template #visor4 let-c="close" let-d="dismiss">
+                <div class="row">
+                  <div class="col">
+                    <div class="modal-header text-center" id="demoFont">
+                      <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                      <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                        (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <iframe width="100%" height="500px" [src]="  '../' + itemFallecido.certificado | safeUrl"
+                        frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="modal-footer" [hidden]="true">
+                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+              <!--MODAL VISOR PDF-->
+
+              <td>{{itemFallecido?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+
+
+    <div *ngIf="datosMedicos?.GM.length > 0">
+        <div class="table-responsive">
+          <br>
+          <h3 class="text-center">Cobros por Gastos Medicos</h3>
+          <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr class="text-center">
+                <th scope="col"><i class="far fa-calendar-alt"></i> Fecha Cobro</th>
+                <th scope="col"><i class="fas fa-ticket-alt"></i> N° Comprobante</th>
+                <th scope="col"><i class="far fa-file-pdf"></i> Archivo Comprobante</th>
+                <th colspan="4"><i class="far fa-id-card"></i> Descripción</th>
+                <th colspan="3"><i class="fas fa-user"></i> Monto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let itemMedico of datosMedicos?.GM" class="text-center">
+                <th>{{itemMedico?.fecha_cobro}}</th>
+                <td>{{itemMedico?.codigo}}</td>
+                <td><a (click)="openPDF(visor2)"><i class="far fa-file-alt" placement="top"
+                      ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;</td>
+  
+                <!--MODAL VISOR PDF-->
+                <ng-template #visor2 let-c="close" let-d="dismiss">
+                  <div class="row">
+                    <div class="col">
+                      <div class="modal-header text-center" id="demoFont">
+                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                          (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <iframe width="100%" height="500px" [src]="  '../' + itemMedico.comprobante | safeUrl"
+                          frameborder="0" allowfullscreen></iframe>
+                      </div>
+                      <div class="modal-footer" [hidden]="true">
+                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+                <!--MODAL VISOR PDF-->
+  
+                <td colspan="4">{{itemMedico?.descripcion}}</td>
+                <td colspan="3">{{itemMedico?.monto}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

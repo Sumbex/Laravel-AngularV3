@@ -11,12 +11,13 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   socios;
   sociosMensual;
-  sociosBuscar;
+  sociosAnual;
   search: string = '';
   mod_editar = null;
   mod_validar = null;
   blockLoad = false;
   blockLoad2 = false;
+  contador = 3;
 
   //actualizar_socio
   rut;
@@ -46,15 +47,15 @@ export class TablaFondoMutuoComponent implements OnInit {
   ver_load: boolean = true;
   ver_estado_soc: boolean = false;
 
-   //variables select año y mes
-   anio; anios;
-   mes; meses;
-   idAnioActual;
-   idMesActual;
-   suc_res1 = false;
-   suc_res2 = false;
-//ingresar consorcio
-   blockIngreso: boolean = false;
+  //variables select año y mes
+  anio; anios;
+  mes; meses;
+  idAnioActual;
+  idMesActual;
+  suc_res1 = false;
+  suc_res2 = false;
+  //ingresar consorcio
+  blockIngreso: boolean = false;
 
   constructor(
     private _time: AniosService,
@@ -80,19 +81,39 @@ export class TablaFondoMutuoComponent implements OnInit {
       response => {
         console.log(response);
         this.socios = response;
-        this.blockLoad2 = false;
+        this.contador--;
+        if (this.contador == 0) {
+          this.blockLoad2 = false;
+        }
 
       }
     )
   }
 
   listarMensual() {
-    this.blockLoad = true;
+    // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(
       response => {
         console.log(response);
         this.sociosMensual = response;
-        this.blockLoad = false;
+        this.contador--;
+        if (this.contador == 0) {
+          this.blockLoad2 = false;
+        }
+
+      }
+    )
+  }
+  listarAnual() {
+    // this.blockLoad2 = true;
+    this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
+      response => {
+        console.log(response);
+        this.sociosAnual = response;
+        this.contador--;
+        if (this.contador == 0) {
+          this.blockLoad2 = false;
+        }
 
       }
     )
@@ -109,7 +130,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       this._consorcioService.getTablaFilter(this.search).subscribe(
         response => {
           console.log(response);
-          this.sociosBuscar = response;
+          this.socios = response;
           this.blockLoad = false;
 
         }
@@ -166,11 +187,13 @@ export class TablaFondoMutuoComponent implements OnInit {
     if (res1 == true && res2 == true) {
       this.listar();
       this.listarMensual();
+      this.listarAnual();
     }
   }
 
   btn_reload() {
 
+    this.contador=3;
     this.listo_para_listar(this.suc_res1, this.suc_res2);
 
   }

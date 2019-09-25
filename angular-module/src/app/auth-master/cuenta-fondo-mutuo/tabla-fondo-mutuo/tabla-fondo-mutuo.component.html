@@ -11,7 +11,7 @@
       </div>
 
       <div class="col-12 col-md-3 col-lg-3"><br><label><strong>REFRESCAR TABLA</strong></label> <br>
-        <button (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
+        <button (click)="btn_reload(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
           Actualizar &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
           <img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
         </button>
@@ -123,7 +123,7 @@
           </tr>
           <tr class="text-center">
             <th colspan="28" class="text-right">TOTAL ANUAL</th>
-            <td colspan="1">{{socios?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+            <td colspan="1">{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           </tr>
 
         </tbody>

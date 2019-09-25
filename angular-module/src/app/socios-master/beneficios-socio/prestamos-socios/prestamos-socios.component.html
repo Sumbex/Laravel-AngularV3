@@ -2,7 +2,7 @@
   <div class="col-12 col-md-12 col-lg-12 col-xl-12">
     <div class="row justify-content-center">
       <div class="container">
-
+        <p *ngIf="contadorPrestamos == 0">No tiene Ningún tipo de Beneficios Cobrados hasta el momento</p>
         <div *ngIf="datosPrestamos?.vigente.length > 0">
           <div class="table-responsive">
             <br>

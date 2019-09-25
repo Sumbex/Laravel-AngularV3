@@ -1,7 +1,72 @@
 <div class="card">
   <div class="container">
     <div class="col-12">
-      <p>wena cabrops del yutu</p>
+      <div class="row text-center">
+        <div class="col-sm-12 col-md-6 col-lg-6"><br><label><strong>Filtro por Año <i
+                class="fas fa-calendar-check"></i></strong></label>
+          <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+            class="form-control form-control-sm">
+            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6"><br><label>
+            <strong>Recargar tabla </strong>
+
+          </label><br>
+          <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
+          <div *ngIf="cargandoTabla">
+            <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+            <label>Cargando tabla de Prestamos</label>
+          </div>
+        </div>
+      </div><br>
+      <table class="table table-hover">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th scope="col">Mes</th>
+            <th class="text-center" scope="col">Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Enero</th>
+            <td class="text-center" class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Febrero</th>
+            <td class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Marzo</th>
+            <td class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Abril</th>
+            <td class="text-center" class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Mayo</th>
+            <td class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Junio</th>
+            <td class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Julio</th>
+            <td class="text-center" class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Agosto</th>
+            <td class="text-center">$5.0000</td>
+          </tr>
+          <tr>
+            <th scope="row">Septiembre</th>
+            <td class="text-center">$5.0000</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

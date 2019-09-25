@@ -26,6 +26,9 @@ export class PrestamosSociosComponent implements OnInit {
   hideAbonosTrimestral = true;
   hideAllAbonos = true;
 
+  //Variables para comrpobar si no hay ningún beneficio
+  contadorPrestamos = 1;
+
   //Loading tabla
   loadingTabla = true;
 
@@ -57,6 +60,7 @@ export class PrestamosSociosComponent implements OnInit {
     this._portalSociosService.getPrestamosSocios().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.contadorPrestamos--;
       }else{
         this.datosPrestamos = response.prestamos;
         console.log(this.datosPrestamos);

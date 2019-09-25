@@ -99,7 +99,7 @@ export class CajaBienestarSociosComponent implements OnInit {
 
   cargarTablaCajaChica(){
     this.cargandoTabla = true;
-    this._bienestarService.getCajaChicaBienestar(this.idAnioActual, this.idMesActual).subscribe(response => {
+    this._bienestarService.getCajaChicaBienestarSocios(this.idAnioActual, this.idMesActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoTabla = false;

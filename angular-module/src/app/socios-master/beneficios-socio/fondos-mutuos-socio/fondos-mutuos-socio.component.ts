@@ -9,6 +9,13 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 })
 export class FondosMutuosSocioComponent implements OnInit {
 
+  //Variables para los select de año y mes
+  selectAnio;
+  idAnioActual;
+
+  //Variable para las cargas
+  cargandoTabla = false;
+
   //variable para asociar al modal
   modalPagosPrestamos;
 
@@ -27,24 +34,54 @@ export class FondosMutuosSocioComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getFondosMutuos();
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    this.cargarFechasActuales();
   }
 
-  openPDF(content) {
-    this.modalService.open(content, {size: 'lg'});
+  changeAnio(valorSelect){
+    this.limpiarTabla();
+    this.idAnioActual = valorSelect.target.value;
+    this.recargarTabla();
+  }
+
+  cargarFechasActuales() {
+    //Cargar id del Año actual
+    this._portalSociosService.getAnioActual().subscribe(
+      response => {
+        this.idAnioActual = response.id;
+        this.getFondosMutuos();
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   getFondosMutuos(){
+    this.cargandoTabla = true;
     this._portalSociosService.getFondosMutuos().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoTabla = false;
       }else{
         this.datosFondosMutuos = response;
+        this.cargandoTabla = false;
       }
     },
     error=> {
       console.log(error);
+      this.cargandoTabla = false;
     })
+  }
+
+  limpiarTabla(){
+    this.datosFondosMutuos = '';
+  }
+
+  recargarTabla(){
+    this.limpiarTabla();
+    this.getFondosMutuos();
   }
 
 }

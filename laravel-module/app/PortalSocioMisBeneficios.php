@@ -472,4 +472,55 @@ class PortalSocioMisBeneficios extends Model
             return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por gastos medicos cobrados.'];
         }
     }
+
+    protected function traerMisAhorros($anio)
+    {
+        $ahorro = DB::table('cuenta_consorcio as cc')
+            ->select([
+                'id',
+                DB::raw("coalesce(cc.monto_mes_ds_1, 0) as mes_ds_1"),
+                DB::raw("coalesce(cc.monto_mes_cex_1, 0) as mes_cex_1"),
+                DB::raw("coalesce(cc.monto_mes_ds_2, 0) as mes_ds_2"),
+                DB::raw("coalesce(cc.monto_mes_cex_2, 0) as mes_cex_2"),
+                DB::raw("coalesce(cc.monto_mes_ds_3, 0) as mes_ds_3"),
+                DB::raw("coalesce(cc.monto_mes_cex_3, 0) as mes_cex_3"),
+                DB::raw("coalesce(cc.monto_mes_ds_4, 0) as mes_ds_4"),
+                DB::raw("coalesce(cc.monto_mes_cex_4, 0) as mes_cex_4"),
+                DB::raw("coalesce(cc.monto_mes_ds_5, 0) as mes_ds_5"),
+                DB::raw("coalesce(cc.monto_mes_cex_5, 0) as mes_cex_5"),
+                DB::raw("coalesce(cc.monto_mes_ds_6, 0) as mes_ds_6"),
+                DB::raw("coalesce(cc.monto_mes_cex_6, 0) as mes_cex_6"),
+                DB::raw("coalesce(cc.monto_mes_ds_7, 0) as mes_ds_7"),
+                DB::raw("coalesce(cc.monto_mes_cex_7, 0) as mes_cex_7"),
+                DB::raw("coalesce(cc.monto_mes_ds_8, 0) as mes_ds_8"),
+                DB::raw("coalesce(cc.monto_mes_cex_8, 0) as mes_cex_8"),
+                DB::raw("coalesce(cc.monto_mes_ds_9, 0) as mes_ds_9"),
+                DB::raw("coalesce(cc.monto_mes_cex_9, 0) as mes_cex_9"),
+                DB::raw("coalesce(cc.monto_mes_ds_10, 0) as mes_ds_10"),
+                DB::raw("coalesce(cc.monto_mes_cex_10, 0) as mes_cex_10"),
+                DB::raw("coalesce(cc.monto_mes_ds_11, 0) as mes_ds_11"),
+                DB::raw("coalesce(cc.monto_mes_cex_11, 0) as mes_cex_11"),
+                DB::raw("coalesce(cc.monto_mes_ds_12, 0) as mes_ds_12"),
+                DB::raw("coalesce(cc.monto_mes_cex_12, 0) as mes_cex_12")
+            ])
+            ->where([
+                'cc.vinculado' => 'S',
+                'cc.anio_id' => $anio,
+                'cc.socio_id' => $this->socioID()
+            ])
+            ->get();
+
+        if (!$ahorro->isEmpty()) {
+            $sum = 0;
+            foreach ($ahorro[0] as $key) {
+                $sum = $sum + $key;
+            }
+
+            $total = $sum-$ahorro[0]->id;
+
+            return ['estado' => 'success', 'ahorro' => $ahorro, 'total' => $total];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes ahorros en el año ingresado.'];
+        }
+    }
 }

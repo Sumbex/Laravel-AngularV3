@@ -68,7 +68,7 @@ class PortalSocioCuentaBienestar extends Model
                 'cb.numero_documento_1 as numero_documento',
                 'cb.archivo_documento_1 as archivo_1',
                 'cb.archivo_documento_2 as archivo_2',
-                'cb.descripcion',
+                DB::raw("upper(cb.descripcion) as descripcion"),
                 'cb.monto_ingreso',
                 'cb.monto_egreso',
                 'cb.tipo_cuenta_bienestar_id as tipo',

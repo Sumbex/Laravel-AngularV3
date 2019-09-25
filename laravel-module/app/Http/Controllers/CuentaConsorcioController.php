@@ -55,4 +55,9 @@ class CuentaConsorcioController extends Controller
 
         return CuentaConsorcio::totales_mensuales_anual($anio_id);
     }
+
+    public function total_anual_socio($anio_id)
+    {
+        return CuentaConsorcio::total_anual_socio($anio_id);
+    }
 }

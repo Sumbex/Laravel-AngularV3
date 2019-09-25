@@ -71,8 +71,6 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
       location.reload();
     }
-
-    this.listar();
     this.llenar_select();
   }
 
@@ -153,7 +151,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   listo_para_listar(res1, res2) {
     if (res1 == true && res2 == true) {
-
+      this.listar();
     }
   }
 
@@ -188,10 +186,12 @@ export class FormularioFondoMutuoComponent implements OnInit {
         id = '';
         anio = '';
         mes = '';
-        tipo_consorcio = '';
-        monto = '';
+        tipo_consorcio.value = '';
+        monto.value = '';
         alert(response.mensaje);
         this.blockIngreso = false;
+        // this.listar();
+        document.getElementById('refrescarTabla').click();
         return false;
       }
     },

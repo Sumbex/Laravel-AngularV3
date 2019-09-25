@@ -53,4 +53,37 @@ export class ConsorcioService {
     });
   }
 
+  getTablaConsorcios(anio): Observable<any> {
+
+    return this._http.get(this.url + "cc_listar/" + anio, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
+  getTablaConsorciosTotalesMensuales(anio): Observable<any> {
+
+    return this._http.get(this.url + "totales_cc/" + anio, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
+  getTablaConsorciosTotalAnual(anio): Observable<any> {
+
+    return this._http.get(this.url + "total_anual_socio/" + anio, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
 }

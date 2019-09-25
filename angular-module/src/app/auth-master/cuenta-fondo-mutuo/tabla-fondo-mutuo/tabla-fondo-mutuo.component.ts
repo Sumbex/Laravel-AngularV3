@@ -10,6 +10,8 @@ import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 export class TablaFondoMutuoComponent implements OnInit {
 
   socios;
+  sociosMensual;
+  sociosBuscar;
   search: string = '';
   mod_editar = null;
   mod_validar = null;
@@ -69,16 +71,28 @@ export class TablaFondoMutuoComponent implements OnInit {
       location.reload();
     }
 
-    this.listar();
     this.llenar_select();
   }
 
   listar() {
-    this._consorcioService.listar_consorcio().subscribe(
+    this.blockLoad2 = true;
+    this._consorcioService.getTablaConsorcios(this.anio).subscribe(
       response => {
         console.log(response);
         this.socios = response;
         this.blockLoad2 = false;
+
+      }
+    )
+  }
+
+  listarMensual() {
+    this.blockLoad = true;
+    this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(
+      response => {
+        console.log(response);
+        this.sociosMensual = response;
+        this.blockLoad = false;
 
       }
     )
@@ -95,7 +109,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       this._consorcioService.getTablaFilter(this.search).subscribe(
         response => {
           console.log(response);
-          this.socios = response;
+          this.sociosBuscar = response;
           this.blockLoad = false;
 
         }
@@ -150,7 +164,8 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   listo_para_listar(res1, res2) {
     if (res1 == true && res2 == true) {
-
+      this.listar();
+      this.listarMensual();
     }
   }
 
@@ -158,46 +173,6 @@ export class TablaFondoMutuoComponent implements OnInit {
 
     this.listo_para_listar(this.suc_res1, this.suc_res2);
 
-  }
-
-  insertar_consorcio(id,anio,mes,tipo_consorcio,monto){
-    if (id == '') {
-      alert('ingrese los datos obligatorios (*)');
-      return false;
-    }
-    this.blockIngreso = true;
-    const data = new FormData();
-    data.append('socio_id',id);
-    data.append('anio_id',anio);
-    data.append('mes_id',mes);
-    data.append('tipo_consorcio',tipo_consorcio.value);
-    data.append('monto',monto.value);
-    // data.append('estado_socio',);
-    // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
-
-    this._consorcioService.insertar_consorcio(data).subscribe((response) => {
-      if (response.estado == 'failed') {
-        alert(response.mensaje);
-        this.blockIngreso = false;
-        return false;
-      }
-      if (response.estado == 'success') {
-        id = '';
-        anio = '';
-        mes = '';
-        tipo_consorcio = '';
-        monto = '';
-        alert(response.mensaje);
-        this.blockIngreso = false;
-        return false;
-      }
-    },
-      error => {
-        console.log(error);
-        this.blockIngreso = false;
-        return false;
-      }
-    );
   }
 
 

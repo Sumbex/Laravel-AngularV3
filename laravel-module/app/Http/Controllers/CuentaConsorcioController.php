@@ -44,4 +44,15 @@ class CuentaConsorcioController extends Controller
 
 
     }
+
+    public function cuenta_consorcio($anio_id)
+    {
+        return CuentaConsorcio::tabla_consorcio($anio_id);
+        
+    }
+    public function totales_cuenta_consorcio($anio_id)
+    {
+
+        return CuentaConsorcio::totales_mensuales_anual($anio_id);
+    }
 }

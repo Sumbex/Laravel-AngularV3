@@ -44,4 +44,10 @@ class CuentaConsorcioController extends Controller
 
 
     }
+
+    public function cuenta_consorcio($anio_id)
+    {
+        return CuentaConsorcio::tabla_consorcio($anio_id);
+        
+    }
 }

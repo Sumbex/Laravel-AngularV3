@@ -303,4 +303,68 @@ class CuentaConsorcio extends Model
     		return '';
     	}
     }
+
+    protected function totales_mensuales_anual($anio_id)//ESTA QUERY TIENE LOS TOTALES MENSUALES(12M) DE LOS SOCIOS (SEGUN AÑO)
+    {
+        $listar = DB::select("SELECT
+                                SUM(COALESCE(monto_mes_ds_1,0)) monto_mes_ds_1,
+                                SUM(COALESCE(monto_mes_cex_1,0)) monto_mes_cex_1,
+                                SUM(COALESCE(monto_mes_ds_2,0)) monto_mes_ds_2,
+                                SUM(COALESCE(monto_mes_cex_2,0)) monto_mes_cex_2,
+                                SUM(COALESCE(monto_mes_ds_3,0)) monto_mes_ds_3,
+                                SUM(COALESCE(monto_mes_cex_3,0)) monto_mes_cex_3,
+                                SUM(COALESCE(monto_mes_ds_4,0)) monto_mes_ds_4,
+                                SUM(COALESCE(monto_mes_cex_4,0)) monto_mes_cex_4,
+                                SUM(COALESCE(monto_mes_ds_5,0)) monto_mes_ds_5,
+                                SUM(COALESCE(monto_mes_cex_5,0)) monto_mes_cex_5,
+                                SUM(COALESCE(monto_mes_ds_6,0)) monto_mes_ds_6,
+                                SUM(COALESCE(monto_mes_cex_6,0)) monto_mes_cex_6,
+                                SUM(COALESCE(monto_mes_ds_7,0)) monto_mes_ds_7,
+                                SUM(COALESCE(monto_mes_cex_7,0)) monto_mes_cex_7,
+                                SUM(COALESCE(monto_mes_ds_8,0)) monto_mes_ds_8,
+                                SUM(COALESCE(monto_mes_cex_8,0)) monto_mes_cex_8,
+                                SUM(COALESCE(monto_mes_ds_9,0)) monto_mes_ds_9,
+                                SUM(COALESCE(monto_mes_cex_9,0)) monto_mes_cex_9,
+                                SUM(COALESCE(monto_mes_ds_10,0)) monto_mes_ds_10,
+                                SUM(COALESCE(monto_mes_cex_10,0)) monto_mes_cex_10,
+                                SUM(COALESCE(monto_mes_ds_11,0)) monto_mes_ds_11,
+                                SUM(COALESCE(monto_mes_cex_11,0)) monto_mes_cex_11,
+                                SUM(COALESCE(monto_mes_ds_12,0)) monto_mes_ds_12,
+                                SUM(COALESCE(monto_mes_cex_12,0)) monto_mes_cex_12,
+                                
+                                (
+                                SUM(COALESCE(monto_mes_ds_1,0)) +
+                                SUM(COALESCE(monto_mes_cex_1,0)) +
+                                SUM(COALESCE(monto_mes_ds_2,0)) +
+                                SUM(COALESCE(monto_mes_cex_2,0)) +
+                                SUM(COALESCE(monto_mes_ds_3,0)) +
+                                SUM(COALESCE(monto_mes_cex_3,0)) +
+                                SUM(COALESCE(monto_mes_ds_4,0)) +
+                                SUM(COALESCE(monto_mes_cex_4,0)) +
+                                SUM(COALESCE(monto_mes_ds_5,0)) +
+                                SUM(COALESCE(monto_mes_cex_5,0)) +
+                                SUM(COALESCE(monto_mes_ds_6,0)) +
+                                SUM(COALESCE(monto_mes_cex_6,0)) +
+                                SUM(COALESCE(monto_mes_ds_7,0)) +
+                                SUM(COALESCE(monto_mes_cex_7,0)) +
+                                SUM(COALESCE(monto_mes_ds_8,0)) +
+                                SUM(COALESCE(monto_mes_cex_8,0)) +
+                                SUM(COALESCE(monto_mes_ds_9,0)) +
+                                SUM(COALESCE(monto_mes_cex_9,0)) +
+                                SUM(COALESCE(monto_mes_ds_10,0)) +
+                                SUM(COALESCE(monto_mes_cex_10,0)) +
+                                SUM(COALESCE(monto_mes_ds_11,0)) +
+                                SUM(COALESCE(monto_mes_cex_11,0)) +
+                                SUM(COALESCE(monto_mes_ds_12,0)) +
+                                SUM(COALESCE(monto_mes_cex_12,0)) 
+                                ) SUMA_ANUAL
+                                
+                            from cuenta_consorcio where anio_id = $anio_id");
+
+        if (count($listar) > 0) {
+    		return response()->json($listar[0]);
+    	}else{
+    		return '';
+    	}
+    }
 }

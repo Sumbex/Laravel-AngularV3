@@ -121,3 +121,4 @@ Route::get('traer_socios_consorcios','CuentaConsorcioController@traer_socios_con
 Route::get('filtrar_socios_consorcios/{busca?}', 'CuentaConsorcioController@filtrar');
 Route::post('insertar_consorcio','CuentaConsorcioController@insertar');
 Route::get('cc_listar/{anio}','CuentaConsorcioController@cuenta_consorcio');
+Route::get('totales_cc/{anio}','CuentaConsorcioController@totales_cuenta_consorcio');

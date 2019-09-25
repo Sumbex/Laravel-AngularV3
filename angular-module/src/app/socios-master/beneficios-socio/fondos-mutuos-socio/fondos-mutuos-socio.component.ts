@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
+import { BryanBienestarService } from 'src/app/servicios/bryans-bienestar.service';
 
 @Component({
   selector: 'app-fondos-mutuos-socio',
@@ -20,7 +21,8 @@ export class FondosMutuosSocioComponent implements OnInit {
   modalPagosPrestamos;
 
   //Objeto con los datos del Prestamo
-  datosFondosMutuos;
+  datosAhorros;
+  totalAhorros;
 
   //Bloquear Muestro de pagos
 
@@ -28,7 +30,7 @@ export class FondosMutuosSocioComponent implements OnInit {
   loadingTabla = true;
 
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService, private _bienestarService: BryanBienestarService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -60,12 +62,14 @@ export class FondosMutuosSocioComponent implements OnInit {
 
   getFondosMutuos(){
     this.cargandoTabla = true;
-    this._portalSociosService.getFondosMutuos().subscribe(response => {
+    this._bienestarService.getAhorrosSocio(this.idAnioActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoTabla = false;
       }else{
-        this.datosFondosMutuos = response;
+        this.datosAhorros = response.ahorro[0];
+        this.totalAhorros = response.total;
+        console.log(this.datosAhorros);
         this.cargandoTabla = false;
       }
     },
@@ -76,7 +80,8 @@ export class FondosMutuosSocioComponent implements OnInit {
   }
 
   limpiarTabla(){
-    this.datosFondosMutuos = '';
+    this.datosAhorros = '';
+    this.totalAhorros = '';
   }
 
   recargarTabla(){

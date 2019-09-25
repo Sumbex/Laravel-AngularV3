@@ -79,9 +79,9 @@ export class BryanBienestarService{
 
     /**************************TRAER FONDOS MUTUTOS SOCIOS*****************************/
 
-    getFondosMutuosSocio(anio: string): Observable<any>{
+    getAhorrosSocio(anio: string): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_cuenta_bienestar_socio/" + anio, {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_mis_ahorros_socio/" + anio, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'

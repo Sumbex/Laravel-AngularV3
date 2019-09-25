@@ -21,52 +21,83 @@
           </div>
         </div>
       </div><br>
+      <div class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr class="bg-primary text-white">
             <th scope="col">Mes</th>
-            <th class="text-center" scope="col">Monto</th>
+            <th class="text-center" scope="col">Día Sueldo</th>
+            <th class="text-center" scope="col">Cuota Extraordinaria</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">Enero</th>
-            <td class="text-center" class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_1 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_1 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Febrero</th>
-            <td class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_2 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_2 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Marzo</th>
-            <td class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_3 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_3 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Abril</th>
-            <td class="text-center" class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_4 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_4 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Mayo</th>
-            <td class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_5 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_5 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Junio</th>
-            <td class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_6 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_6 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Julio</th>
-            <td class="text-center" class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_7 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_7 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Agosto</th>
-            <td class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_8 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_8 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
           </tr>
           <tr>
             <th scope="row">Septiembre</th>
-            <td class="text-center">$5.0000</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_9 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_9 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Octubre</th>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_10 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_10 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Noviembre</th>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_11 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_11 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Diciembre</th>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_ds_12 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+            <td class="text-center" class="text-center">{{ datosAhorros?.mes_cex_12 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+          </tr>
+          <tr class="bg-primary text-white">
+            <th scope="row" class="text-center">Total Acumulado en el año: </th>
+            <td colspan="2" class="text-center" class="text-center"><b>{{ totalAhorros | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
   </div>
 </div>

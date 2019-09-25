@@ -59,7 +59,7 @@ export class PrestamosSociosComponent implements OnInit {
   getPrestamos(){
     this._portalSociosService.getPrestamosSocios().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        console.log(response.mensaje);
         this.contadorPrestamos--;
       }else{
         this.datosPrestamos = response.prestamos;

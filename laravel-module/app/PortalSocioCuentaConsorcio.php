@@ -59,7 +59,7 @@ class PortalSocioCuentaConsorcio extends Model
                 foreach ($consorcio[0] as $key) {
                     $sum = $sum + $key;
                 }
-                return ['estado' => 'success', 'total' => $consorcio, 'anual' => $sum];
+                return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $sum];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
             }

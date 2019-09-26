@@ -1,3 +1,153 @@
+<ng-template #cajaChicaBienestar let-modal>
+
+        <!-- Header Del Modal -->
+        <div class="modal-header" id="demoFont">
+          <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Detalle Caja Chica</strong>
+          </h6>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Cuerpo del Modal Caja Chica -->
+        <div class="modal-body">
+          <div class="row centrarCajaChica">
+            <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
+                    class="fas fa-calendar-check"></i></strong></label>
+              <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+                class="form-control form-control-sm">
+                <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+              </select>
+            </div>
+        
+            <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
+                    class="fas fa-calendar-check"></i></strong></label>
+              <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
+                class="form-control form-control-sm">
+                <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
+              </select>
+            </div>
+        
+            <div class="col-md-4"><br><label>
+              <strong>Recargar tabla </strong>
+        
+            </label><br>
+            <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
+            <div *ngIf="cargandoTabla">
+              <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+              <label>Cargando tabla de Prestamos</label>
+            </div>
+          </div>
+          </div><br>
+        
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
+              <thead text-sm class="text-center">
+                <tr>
+                  <th colspan="11" class="ColorThCS">Tabla caja chica</th>
+                  <th colspan="2" class="ColorThCS">Monto Inicial</th>
+                  <td colspan="2"><strong>{{ datosCajaChica?.monto_inicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+                  <th colspan="2">N° de Doc</th>
+                  <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
+                  <th colspan="3"><i class="fas fa-file-signature"></i> Detalle</th>
+                  <th colspan="2"><i class="fas fa-plus-circle"></i> Ingresos</th>
+                  <th colspan="2"><i class="fas fa-minus-circle"></i> Egresos</th>
+                  <th colspan="2"><i class="fas fa-dollar-sign"></i> Actual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of datosCajaChica?.caja" class="text-center">
+                  <td colspan="2"><b>{{item?.fecha}}</b></td>
+                  <td colspan="2"><b>{{item?.numero_documento}}</b></td>
+        
+        
+                  <!--MODAL VISOR PDF-->
+                  <ng-template #visor let-c="close" let-d="dismiss">
+                    <div class="row">
+                      <div class="col">
+                        <div class="modal-header text-center" id="demoFont">
+                          <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                          <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                            (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento | safeUrl" frameborder="0"
+                            allowfullscreen></iframe>
+                        </div>
+                        <div class="modal-footer" [hidden]="true">
+                          <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <!--MODAL VISOR PDF-->
+        
+                  <td colspan="2">
+                    <a (click)="openPDF(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
+                        ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
+                  </td>
+        
+        
+        
+                  <td colspan="3"><b>{{item.descripcion}}</b>
+                  </td>
+                  <td colspan="2"><b>{{item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+                  <td colspan="2">
+                    <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+                  <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+                </tr>
+                <tr>
+                  <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
+                  <td scope="col" class="text-center"><b>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                </tr>
+                <br>
+                <!--Tabla del total Modal Caja Chica-->
+                <tr>
+                  <th colspan="9" class="text-right"><i class="fas fa-plus-circle"></i>
+                    INGRESOS</th>
+                  <td colspan="3" class="text-center">
+                    <strong>{{ totalesCajaChica?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                </tr>
+        
+                <tr>
+                  <th colspan="9" class="text-right"><i class="fas fa-minus-circle"></i>
+                    EGRESOS</th>
+                  <td colspan="3" class="text-center">
+                    <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                </tr>
+                <tr>
+                  <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
+                    CIERRE DEL MES</th>
+                  <td colspan="3" class="text-center">
+                    <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+        
+          <!--Boton para imprimir tabla caja chica-->
+          <!-- <button type="button" class="btn btn-success" onclick="printJS({
+              printable: 'printJS-table',
+              type:'html',
+              style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+            })">
+          <i class="fas fa-print"></i> Imprimir Datos
+        </button> -->
+        
+          <!--Boton para salir del modal caja chica-->
+          <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+              class="far fa-arrow-alt-circle-left"></i> Volver a Cuenta Sindical</button>
+        </div>
+        
+        </ng-template>
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCajaChica(cajaChica)"><b>Caja Chica</b>
+<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCajaChica(cajaChicaBienestar)"><b>Caja Chica</b>
 </button>

@@ -318,7 +318,7 @@ export class PortalSociosService{
     //*******************OBTENER LOS BENEFICIOS COBRADOS POR NACIMIENTO************************/
     getBeneficiosNacimientosCobrados() : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_beneficios_nacimientos/", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_nacimientos_socio", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
@@ -328,7 +328,17 @@ export class PortalSociosService{
 
     getBeneficiosFalleciomientosCobrados() : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_beneficios_fallecimientos/", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_fallecimientos_socio", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'application/json'
+            }
+        )});
+    }
+
+    getBeneficiosGastosMedicos() : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_gastos_medicos_socio", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'

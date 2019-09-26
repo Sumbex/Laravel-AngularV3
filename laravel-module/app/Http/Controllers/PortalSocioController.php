@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\PortalSocio;
-use App\PortalSocioCuentaSindical;
+use App\CajaChicaBienestar;
+use App\PortalSocioCuentaBienestar;
+use App\PortalSocioCuentaConsorcio;
+use Illuminate\Http\Request;
 use App\PortalSocioMisBeneficios;
+use App\PortalSocioCuentaSindical;
 
 class PortalSocioController extends Controller
 {
@@ -130,6 +133,24 @@ class PortalSocioController extends Controller
     }
     //------------------------------------------>rutas portal socio cs
 
+    //------------------------------------------>rutas portal socio cb
+    public function TraerCuentaBienestar($anio, $mes)
+    {
+        return PortalSocioCuentaBienestar::traerCuentaBienestarTotal($anio, $mes);
+    }
+    public function TraerCajaChicaBienestar($anio, $mes)
+    {
+        return PortalSocioCuentaBienestar::traerCajaChicaBienestar($anio, $mes);
+    }
+    //------------------------------------------>rutas portal socio cb
+
+    //------------------------------------------>rutas portal socio cc
+    public function TraerCuentaConsorcioAnual($anio)
+    {
+        return PortalSocioCuentaConsorcio::traerCuentaConsorcioAnual($anio);
+    }
+    //------------------------------------------>rutas portal socio cc
+
     //------------------------------------------>rutas portal socio mb
     public function TraerPrestamos()
     {
@@ -148,9 +169,23 @@ class PortalSocioController extends Controller
 
     public function TraerNacimientos()
     {
+        return PortalSocioMisBeneficios::traerNacimientos();
+    }
+
+    public function TraerFallecimientos()
+    {
         return PortalSocioMisBeneficios::traerFallecimientos();
     }
 
+    public function TraerGastosMedicos()
+    {
+        return PortalSocioMisBeneficios::traerGastosMedicos();
+    }
+
+    public function TraerMisAhorros($anio)
+    {
+        return PortalSocioMisBeneficios::traerMisAhorros($anio);
+    }
     //------------------------------------------>rutas portal socio mb
 
     //--------------------------------------------------------------------------------

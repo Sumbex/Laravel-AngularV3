@@ -22,6 +22,28 @@ export class BryanBienestarService{
         )});
     }
 
+    //Servicio para llamar a la caja chica
+    getCajaChicaBienestarSocios(anio: string, mes: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_caja_chica_bienestar_socio/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    //Servicio para llamar a la Cuenta de Bienestar
+    getCuentaBienestar(anio: string, mes: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_cuenta_bienestar_socio/" + anio + "/" + mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
     //*********************INGRESAR A CAJA CHICA*************************/
     setCajaChicaBienestar(form) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
@@ -54,4 +76,17 @@ export class BryanBienestarService{
             }
         )});
     }
+
+    /**************************TRAER FONDOS MUTUTOS SOCIOS*****************************/
+
+    getAhorrosSocio(anio: string): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_mis_ahorros_socio/" + anio, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
 }

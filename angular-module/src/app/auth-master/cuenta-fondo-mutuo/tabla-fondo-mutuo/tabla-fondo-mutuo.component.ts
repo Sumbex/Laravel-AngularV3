@@ -10,11 +10,14 @@ import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 export class TablaFondoMutuoComponent implements OnInit {
 
   socios;
+  sociosMensual;
+  sociosAnual;
   search: string = '';
   mod_editar = null;
   mod_validar = null;
   blockLoad = false;
   blockLoad2 = false;
+  contador = 3;
 
   //actualizar_socio
   rut;
@@ -44,15 +47,15 @@ export class TablaFondoMutuoComponent implements OnInit {
   ver_load: boolean = true;
   ver_estado_soc: boolean = false;
 
-   //variables select año y mes
-   anio; anios;
-   mes; meses;
-   idAnioActual;
-   idMesActual;
-   suc_res1 = false;
-   suc_res2 = false;
-//ingresar consorcio
-   blockIngreso: boolean = false;
+  //variables select año y mes
+  anio; anios;
+  mes; meses;
+  idAnioActual;
+  idMesActual;
+  suc_res1 = false;
+  suc_res2 = false;
+  //ingresar consorcio
+  blockIngreso: boolean = false;
 
   constructor(
     private _time: AniosService,
@@ -69,16 +72,48 @@ export class TablaFondoMutuoComponent implements OnInit {
       location.reload();
     }
 
-    this.listar();
     this.llenar_select();
   }
 
   listar() {
-    this._consorcioService.listar_consorcio().subscribe(
+    this.blockLoad2 = true;
+    this._consorcioService.getTablaConsorcios(this.anio).subscribe(
       response => {
         console.log(response);
         this.socios = response;
-        this.blockLoad2 = false;
+        this.contador--;
+        if (this.contador == 0) {
+          this.blockLoad2 = false;
+        }
+
+      }
+    )
+  }
+
+  listarMensual() {
+    // this.blockLoad2 = true;
+    this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(
+      response => {
+        console.log(response);
+        this.sociosMensual = response;
+        this.contador--;
+        if (this.contador == 0) {
+          this.blockLoad2 = false;
+        }
+
+      }
+    )
+  }
+  listarAnual() {
+    // this.blockLoad2 = true;
+    this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
+      response => {
+        console.log(response);
+        this.sociosAnual = response;
+        this.contador--;
+        if (this.contador == 0) {
+          this.blockLoad2 = false;
+        }
 
       }
     )
@@ -150,54 +185,17 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   listo_para_listar(res1, res2) {
     if (res1 == true && res2 == true) {
-
+      this.listar();
+      this.listarMensual();
+      this.listarAnual();
     }
   }
 
   btn_reload() {
 
+    this.contador=3;
     this.listo_para_listar(this.suc_res1, this.suc_res2);
 
-  }
-
-  insertar_consorcio(id,anio,mes,tipo_consorcio,monto){
-    if (id == '') {
-      alert('ingrese los datos obligatorios (*)');
-      return false;
-    }
-    this.blockIngreso = true;
-    const data = new FormData();
-    data.append('socio_id',id);
-    data.append('anio_id',anio);
-    data.append('mes_id',mes);
-    data.append('tipo_consorcio',tipo_consorcio.value);
-    data.append('monto',monto.value);
-    // data.append('estado_socio',);
-    // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
-
-    this._consorcioService.insertar_consorcio(data).subscribe((response) => {
-      if (response.estado == 'failed') {
-        alert(response.mensaje);
-        this.blockIngreso = false;
-        return false;
-      }
-      if (response.estado == 'success') {
-        id = '';
-        anio = '';
-        mes = '';
-        tipo_consorcio = '';
-        monto = '';
-        alert(response.mensaje);
-        this.blockIngreso = false;
-        return false;
-      }
-    },
-      error => {
-        console.log(error);
-        this.blockIngreso = false;
-        return false;
-      }
-    );
   }
 
 

@@ -63,3 +63,11 @@
       margin-top:5px !important;
       height: 10px;
       }
+      .red{
+        color: #ED213A;
+        font-weight: bold;
+      }
+      .green{
+        color: #52c234;
+        font-weight: bold;
+      }

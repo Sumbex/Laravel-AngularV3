@@ -10,7 +10,6 @@ import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 })
 export class FormularioFondoMutuoComponent implements OnInit {
 
-
   socios;
   search: string = '';
   mod_editar = null;
@@ -55,6 +54,9 @@ export class FormularioFondoMutuoComponent implements OnInit {
    suc_res2 = false;
 //ingresar consorcio
    blockIngreso: boolean = false;
+   tipoPago = 1;
+   verInput = false;
+   montoCE;
 
   constructor(
     private _time: AniosService,
@@ -71,8 +73,6 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
       location.reload();
     }
-
-    this.listar();
     this.llenar_select();
   }
 
@@ -153,7 +153,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   listo_para_listar(res1, res2) {
     if (res1 == true && res2 == true) {
-
+      this.listar();
     }
   }
 
@@ -188,10 +188,13 @@ export class FormularioFondoMutuoComponent implements OnInit {
         id = '';
         anio = '';
         mes = '';
-        tipo_consorcio = '';
-        monto = '';
+        if(this.tipoPago == 1){
+          alert(this.tipoPago);
+          monto.value= '';
+        }
         alert(response.mensaje);
         this.blockIngreso = false;
+        document.getElementById('refrescarTabla').click();
         return false;
       }
     },

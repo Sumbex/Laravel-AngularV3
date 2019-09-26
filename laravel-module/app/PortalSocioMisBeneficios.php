@@ -516,7 +516,7 @@ class PortalSocioMisBeneficios extends Model
                 $sum = $sum + $key;
             }
 
-            $total = $sum-$ahorro[0]->id;
+            $total = $sum - $ahorro[0]->id;
 
             return ['estado' => 'success', 'ahorro' => $ahorro, 'total' => $total];
         } else {

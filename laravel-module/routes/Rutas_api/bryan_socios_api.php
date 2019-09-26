@@ -35,6 +35,9 @@ Route::get('/traer_cuenta_bienestar_socio/{anio}/{mes}', 'PortalSocioController@
 Route::get('/traer_caja_chica_bienestar_socio/{anio}/{mes}', 'PortalSocioController@TraerCajaChicaBienestar');
 //------------------------------------------>rutas portal socio cb
 
+//------------------------------------------>rutas portal socio cc
+Route::get('/traer_cuenta_consorcio_socio/{anio}', 'PortalSocioController@TraerCuentaConsorcioAnual');
+//------------------------------------------>rutas portal socio cc
 
 //------------------------------------------>rutas portal socio mis beneficios
 Route::get('/traer_prestamos_socio', 'PortalSocioController@TraerPrestamos');

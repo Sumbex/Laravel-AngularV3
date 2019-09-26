@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PortalSocio;
 use App\CajaChicaBienestar;
 use App\PortalSocioCuentaBienestar;
+use App\PortalSocioCuentaConsorcio;
 use Illuminate\Http\Request;
 use App\PortalSocioMisBeneficios;
 use App\PortalSocioCuentaSindical;
@@ -142,6 +143,13 @@ class PortalSocioController extends Controller
         return PortalSocioCuentaBienestar::traerCajaChicaBienestar($anio, $mes);
     }
     //------------------------------------------>rutas portal socio cb
+
+    //------------------------------------------>rutas portal socio cc
+    public function TraerCuentaConsorcioAnual($anio)
+    {
+        return PortalSocioCuentaConsorcio::traerCuentaConsorcioAnual($anio);
+    }
+    //------------------------------------------>rutas portal socio cc
 
     //------------------------------------------>rutas portal socio mb
     public function TraerPrestamos()

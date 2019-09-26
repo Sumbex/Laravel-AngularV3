@@ -250,7 +250,7 @@ module.exports = "<!--Modal para el inicio y cierre mensual-->\r\n<ng-template #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"formConsorcio-tab\" data-toggle=\"tab\" href=\"#formConsorcio\" role=\"tab\"\r\n                    aria-controls=\"formConsorcio\" aria-selected=\"true\">Formulario Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaConsorcio-tab\" data-toggle=\"tab\" href=\"#TablaConsorcio\" role=\"tab\"\r\n                    aria-controls=\"TablaConsorcio\" aria-selected=\"false\">Tabla Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaDesvinculado-tab\" data-toggle=\"tab\" href=\"#TablaDesvinculado\" role=\"tab\"\r\n                    aria-controls=\"TablaDesvinculado\" aria-selected=\"false\">Tabla Desvinculados</a>\r\n            </li>\r\n            <!-- <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"med-tab\" data-toggle=\"tab\" href=\"#med\" role=\"tab\" aria-controls=\"med\"\r\n             aria-selected=\"false\">Gastos Medicos</a>\r\n        </li> -->\r\n        </ul> <br>\r\n\r\n        <div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n            <div class=\"tab-pane fade\" id=\"formConsorcio\" role=\"tabpanel\" aria-labelledby=\"formConsorcio-tab\">\r\n                <app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaConsorcio\" role=\"tabpanel\" aria-labelledby=\"TablaConsorcio-tab\">\r\n                <!--formulario fallecimiento-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Consorcio</strong></h6>\r\n                </div>\r\n                <app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaDesvinculado\" role=\"tabpanel\" aria-labelledby=\"TablaDesvinculado-tab\">\r\n                <!--formulario gastos medicos-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Desvinculados</strong></h6>\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"formConsorcio-tab\" data-toggle=\"tab\" href=\"#formConsorcio\" role=\"tab\"\r\n                    aria-controls=\"formConsorcio\" aria-selected=\"true\">Formulario Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaConsorcio-tab\" data-toggle=\"tab\" href=\"#TablaConsorcio\" role=\"tab\"\r\n                    aria-controls=\"TablaConsorcio\" aria-selected=\"false\">Tabla Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaDesvinculado-tab\" data-toggle=\"tab\" href=\"#TablaDesvinculado\" role=\"tab\"\r\n                    aria-controls=\"TablaDesvinculado\" aria-selected=\"false\">Tabla Desvinculados</a>\r\n            </li>\r\n            <!-- <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"med-tab\" data-toggle=\"tab\" href=\"#med\" role=\"tab\" aria-controls=\"med\"\r\n             aria-selected=\"false\">Gastos Medicos</a>\r\n        </li> -->\r\n        </ul> <br>\r\n\r\n        <div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n            <div class=\"tab-pane fade\" id=\"formConsorcio\" role=\"tabpanel\" aria-labelledby=\"formConsorcio-tab\">\r\n                <app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaConsorcio\" role=\"tabpanel\" aria-labelledby=\"TablaConsorcio-tab\">\r\n                <!--formulario fallecimiento-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Consorcio</strong></h6>\r\n                </div>\r\n                <app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaDesvinculado\" role=\"tabpanel\" aria-labelledby=\"TablaDesvinculado-tab\">\r\n                <!--formulario gastos medicos-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Desvinculados</strong></h6>\r\n                </div>\r\n                <app-tabla-desvinculados-consorcio></app-tabla-desvinculados-consorcio>\r\n\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -262,6 +262,17 @@ module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-
 /***/ (function(module, exports) {
 
 module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <div class=\"card-header\" id=\"demoFont\">\r\n    <strong>\r\n      <h5><i class=\"fas fa-list-ol\"></i> Lista de Socios</h5>\r\n    </strong>\r\n  </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"row\">\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Mes</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n              <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Tipo de Pago</strong></label>\r\n          <select #tipo_consorcio [(ngModel)]=\"tipoPago\" (change)=\"tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''\" class=\"form-control form-control-sm\">\r\n              <!-- <option value=\"\">--Seleccione--</option> -->\r\n              <option value=\"1\">Dia de Sueldo</option>\r\n              <option value=\"2\">Cuota Extra</option>\r\n            </select>\r\n        </div>\r\n        <div  *ngIf=\"verInput\" class=\"col-12 col-md-3 col-lg-3\">\r\n          <br><label><strong>Monto Cuota Extra</strong></label><br>\r\n          <input [(ngModel)]=\"montoCE\" type=\"number\">\r\n        </div>\r\n      </div><br>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-striped table-bordered table-sm\">\r\n        <thead text-sm>\r\n          <tr>\r\n            <th style=\"background: #138D75\"><label class=\"float-right\"> BUSCAR SOCIO:</label></th>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n            </td>\r\n\r\n            <td style=\"background: #138D75\" colspan=\"3\">\r\n              <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n            <td style=\"background: #138D75\" colspan=\"3\">\r\n              <button id=\"refrescarTabla\" (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n                REFRESCAR TABLA &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n                <img [hidden]=\"!blockLoad2\" height=\"15\"\r\n                  src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"text-center\">\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> ESTADO SOCIO</th>\r\n            <!-- <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> TIPO DE PAGO</th> -->\r\n            <th class=\"size\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> MONTO</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"> GUARDAR</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO D.S.</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO C.E.</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n            <td colspan=\"1\">{{ item?.rut }}</td>\r\n            <td colspan=\"2\">{{ item?.nombre | uppercase}}</td>\r\n            <td colspan=\"2\" [ngClass]=\"{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }\" >{{ item?.estado_socio | uppercase}}</td>\r\n            <!-- <td colspan=\"2\">\r\n               {{tipo_consorcio.value}}\r\n            </td> -->\r\n            <td class=\"size\"><input value=\"{{montoCE}}\" #monto type=\"number\" class=\"form-control form-control-sm\">\r\n                             <!-- <input *ngIf=\"tipo_consorcio.value == 1\" value=\"\"  #monto type=\"number\"> -->\r\n            </td>\r\n            <td colspan=\"1\"><button class=\"btn btn-outline-success btn-sm\" (click)=\"insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)\">\r\n              <i [hidden]=\"blockIngreso\" class=\"far fa-save\"></i>\r\n              <img [hidden]=\"!blockIngreso\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n            </button></td>\r\n            <td colspan=\"1\" [ngClass]=\"{'red': item?.pago_actual_ds == 'Sin Registro' , 'green': item?.pago_actual_ds != 'Sin Registro' }\">{{item?.pago_actual_ds +' '+ item?.fecha_ds}}</td>\r\n            <td colspan=\"1\" [ngClass]=\"{'red': item?.pago_actual_cex == 'Sin Registro' , 'green': item?.pago_actual_cex != 'Sin Registro' }\" >{{item?.pago_actual_cex +' '+ item.fecha_cex}}</td>\r\n\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html":
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html ***!
+  \*****************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  tabla-desvinculados-consorcio works!\n</p>\n"
 
 /***/ }),
 
@@ -1196,6 +1207,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__ = __webpack_require__(/*! ./servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
 /* harmony import */ var _socios_master_cuentas_bienestar_cuenta_bienestar_socios_cuenta_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_100__ = __webpack_require__(/*! ./socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component */ "./src/app/socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component.ts");
 /* harmony import */ var _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__ = __webpack_require__(/*! ./socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component */ "./src/app/socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component.ts");
+/* harmony import */ var _auth_master_cuenta_fondo_mutuo_tabla_desvinculados_consorcio_tabla_desvinculados_consorcio_component__WEBPACK_IMPORTED_MODULE_102__ = __webpack_require__(/*! ./auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.ts");
+
 
 
 
@@ -1387,7 +1400,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _socios_master_beneficios_socio_beneficios_cobrados_beneficios_cobrados_component__WEBPACK_IMPORTED_MODULE_97__["BeneficiosCobradosComponent"],
             _socios_master_beneficios_socio_fondos_mutuos_socio_fondos_mutuos_socio_component__WEBPACK_IMPORTED_MODULE_98__["FondosMutuosSocioComponent"],
             _socios_master_cuentas_bienestar_cuenta_bienestar_socios_cuenta_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_100__["CuentaBienestarSociosComponent"],
-            _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__["CajaBienestarSociosComponent"]
+            _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__["CajaBienestarSociosComponent"],
+            _auth_master_cuenta_fondo_mutuo_tabla_desvinculados_consorcio_tabla_desvinculados_consorcio_component__WEBPACK_IMPORTED_MODULE_102__["TablaDesvinculadosConsorcioComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -3778,6 +3792,49 @@ FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
         src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
         src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["ConsorcioService"]])
 ], FormularioFondoMutuoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css":
+/*!**************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1mb25kby1tdXR1by90YWJsYS1kZXN2aW5jdWxhZG9zLWNvbnNvcmNpby90YWJsYS1kZXN2aW5jdWxhZG9zLWNvbnNvcmNpby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.ts":
+/*!*************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.ts ***!
+  \*************************************************************************************************************************/
+/*! exports provided: TablaDesvinculadosConsorcioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaDesvinculadosConsorcioComponent", function() { return TablaDesvinculadosConsorcioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TablaDesvinculadosConsorcioComponent = class TablaDesvinculadosConsorcioComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TablaDesvinculadosConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-tabla-desvinculados-consorcio',
+        template: __webpack_require__(/*! raw-loader!./tabla-desvinculados-consorcio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html"),
+        styles: [__webpack_require__(/*! ./tabla-desvinculados-consorcio.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TablaDesvinculadosConsorcioComponent);
 
 
 

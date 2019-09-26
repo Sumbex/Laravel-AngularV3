@@ -22,6 +22,7 @@ export class FondosMutuosSocioComponent implements OnInit {
 
   //Objeto con los datos del Prestamo
   datosAhorros;
+  totalesMensuales;
   totalAhorros;
 
   //Bloquear Muestro de pagos
@@ -69,6 +70,7 @@ export class FondosMutuosSocioComponent implements OnInit {
       }else{
         this.datosAhorros = response.ahorro[0];
         this.totalAhorros = response.total;
+        this.totalesMensuales = response;
         console.log(this.datosAhorros);
         this.cargandoTabla = false;
       }
@@ -82,6 +84,7 @@ export class FondosMutuosSocioComponent implements OnInit {
   limpiarTabla(){
     this.datosAhorros = '';
     this.totalAhorros = '';
+    this.totalesMensuales = '';
   }
 
   recargarTabla(){

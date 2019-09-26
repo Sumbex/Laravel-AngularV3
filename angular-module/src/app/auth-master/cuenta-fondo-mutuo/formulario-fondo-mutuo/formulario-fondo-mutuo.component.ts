@@ -77,6 +77,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
   }
 
   listar() {
+    this.blockLoad2 = true;
     this._consorcioService.listar_consorcio().subscribe(
       response => {
         console.log(response);

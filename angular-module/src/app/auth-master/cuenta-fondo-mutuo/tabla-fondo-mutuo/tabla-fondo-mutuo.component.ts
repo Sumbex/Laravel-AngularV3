@@ -198,5 +198,10 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   }
 
+  ConvertToInt(val){
+    return parseInt(val);
+  }
+
+
 
 }

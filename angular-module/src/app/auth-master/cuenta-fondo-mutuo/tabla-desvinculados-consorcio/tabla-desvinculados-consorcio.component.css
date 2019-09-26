@@ -1,0 +1,65 @@
+
+    .dark-modal .modal-content {
+        background-color: #292b2c;
+        color: white;
+      }
+      .dark-modal .close {
+        color: white;
+      }
+      .light-blue-backdrop {
+        background-color: #5cb3fd;
+      }
+  
+      label,input, button{
+        font-size: 12px;
+      }
+  
+      tr,th{
+        font-size: 12px;
+      }
+      th{
+        color: white;
+        background: #138D75;
+      }
+  
+      #demoFont {
+        color: #fff;
+        background: #2C3E50;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+      #demoFont2 {
+        color: #fff;
+        background: #52c234;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #061700, #52c234);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    
+        .nav-item a{
+          color: #fff;
+          background: #093028;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to top, #237A57, #093028);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          
+        }
+        
+        .margen{
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+      
+        .card-header{
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+        }
+        
+        #myTab{
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        hr{
+        border-top: 1px solid #000000 !important;
+        margin-bottom:5px !important; 
+        margin-top:5px !important;
+        height: 10px;
+        }

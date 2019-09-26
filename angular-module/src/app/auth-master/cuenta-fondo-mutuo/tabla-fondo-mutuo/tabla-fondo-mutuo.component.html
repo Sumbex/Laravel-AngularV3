@@ -17,6 +17,15 @@
         </button>
       </div>
 
+      <div class="col-12 col-md-3 col-lg-3"><br><label><strong>DEFINICIONES</strong></label> <br>
+        <label>
+          <ngb-alert [dismissible]="false">
+            DIA DE SUELDO = <b>D.S.</b> <br>
+            CUOTA EXTRAORDINARIA = <b>C.E.</b>
+          </ngb-alert>
+        </label>
+      </div>
+
     </div><br>
 
     <div class="table-responsive">
@@ -61,7 +70,7 @@
             <th colspan="2" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL ANUAL</th>
           </tr>
 
-          <tr>
+          <tr class="text-center">
             <th colspan="1" style="background: #138D75"> D.S.</th>
             <th colspan="1" style="background: #138D75"> C.E.</th>
             <th colspan="1" style="background: #138D75"> D.S.</th>
@@ -94,7 +103,7 @@
 
           <tr *ngFor="let item of socios" class="text-center">
             <!-- <td colspan="1">{{ item?.rut }}</td> -->
-            <td colspan="4">{{ item?.nombre | uppercase}}</td>
+            <td colspan="4" class="text-left"><b>{{ item?.nombre | uppercase}}</b></td>
             <td colspan="1"> {{item?.monto_mes_ds_1  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
             <td colspan="1"> {{item?.monto_mes_cex_1  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
             <td colspan="1"> {{item?.monto_mes_ds_2  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
@@ -119,11 +128,11 @@
             <td colspan="1"> {{item?.monto_mes_cex_11  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
             <td colspan="1"> {{item?.monto_mes_ds_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
             <td colspan="1"> {{item?.monto_mes_cex_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1"> {{item?.monto_total_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+            <td colspan="1"> <b>{{item?.monto_total_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
           <tr class="text-center">
             <th colspan="28" class="text-right">TOTAL ANUAL</th>
-            <td colspan="1">{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+            <td colspan="1"><b>{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
 
         </tbody>
@@ -149,10 +158,10 @@
             <th colspan="2" style="background: #138D75"> OCTUBRE</th>
             <th colspan="2" style="background: #138D75"> NOVIEMBRE</th>
             <th colspan="2" style="background: #138D75"> DICIEMBRE</th>
-            <th colspan="2" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL ANUAL</th>
+            <th colspan="2" rowspan="4" style="background: #138D75"><i class="fas fa-user"></i> TOTAL ANUAL</th>
           </tr>
 
-          <tr>
+          <tr class="text-center">
             <th colspan="1" style="background: #138D75"> D.S.</th>
             <th colspan="1" style="background: #138D75"> C.E.</th>
             <th colspan="1" style="background: #138D75"> D.S.</th>
@@ -182,7 +191,7 @@
         </thead>
         <tbody>
           <tr class="text-center">
-            <th colspan="4" style="background: #138D75"> TOTAL MENSUAL</th>
+            <th colspan="4" rowspan="3" style="background: #138D75"> TOTAL MENSUAL</th>
             <td colspan="1">{{sociosMensual?.monto_mes_ds_1 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1">{{sociosMensual?.monto_mes_cex_1 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1">{{sociosMensual?.monto_mes_ds_2 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -207,7 +216,74 @@
             <td colspan="1">{{sociosMensual?.monto_mes_cex_11 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1">{{sociosMensual?.monto_mes_ds_12 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1">{{sociosMensual?.monto_mes_cex_12 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1">{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+            <td colspan="1"><b>{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          </tr>
+
+          <tr class="text-center">
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+            <th colspan="2" style="background: #138D75"> D.S. + C.E.</th>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_1) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_1)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_2) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_2)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_3) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_3)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_4) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_4)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_5) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_5)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_6) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_6)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_7) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_7)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_8) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_8)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_9) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_9)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_10) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_10)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_11) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_11)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <td colspan="2">
+              {{ConvertToInt(sociosMensual?.monto_mes_ds_12) + 
+                ConvertToInt(sociosMensual?.monto_mes_cex_12)  | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+
           </tr>
         </tbody>
       </table>

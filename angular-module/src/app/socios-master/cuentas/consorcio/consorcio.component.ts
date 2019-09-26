@@ -45,6 +45,7 @@ export class ConsorcioComponent implements OnInit {
     this._portalSociosService.getAnioActual().subscribe(
       response => {
         this.idAnioActual = response.id;
+        this.cargarConsorcio();
       },
       error => {
         console.log(error);
@@ -66,8 +67,8 @@ export class ConsorcioComponent implements OnInit {
         this.cargandoTabla = false;
       }else{
         console.log(response);
-        this.datosConsorcio = response;
-        this.totalConsorcio= response.total;
+        this.datosConsorcio = response.mensual[0];
+        this.totalConsorcio= response.anual;
         this.cargandoTabla = false;
       }
     },

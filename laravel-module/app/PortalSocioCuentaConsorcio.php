@@ -55,11 +55,22 @@ class PortalSocioCuentaConsorcio extends Model
                 ->get();
 
             if (!$consorcio->isEmpty()) {
+                $ttrue = false;
+                $tfalse = true;
                 $sum = 0;
                 foreach ($consorcio[0] as $key) {
                     $sum = $sum + $key;
+                    if (is_null($key)) {
+                        $tfalse = false;
+                    } else {
+                        $ttrue = true;
+                    }
                 }
-                return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $sum];
+                if ($ttrue) {
+                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $sum];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
+                }
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
             }

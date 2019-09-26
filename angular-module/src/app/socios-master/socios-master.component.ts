@@ -3,6 +3,7 @@ import { UsuarioService } from '../servicios/usuarios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PortalSociosService } from '../servicios/portal-socios.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-socios-master',
@@ -13,7 +14,7 @@ export class SociosMasterComponent implements OnInit {
 
   tiempoEsperaToken: number = 1;
 
-  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private _getAnios: PortalSociosService) {
+  constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private _getAnios: PortalSociosService, private router: Router) {
   }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class SociosMasterComponent implements OnInit {
       } else {
         let estadoToken = this._usuariosService.isAuthenticated();
         if (estadoToken == false) {
-          window.location.reload();
+          this.router.navigate(['']);
         } else {
           this.tiempoEsperaToken = 1;
         }

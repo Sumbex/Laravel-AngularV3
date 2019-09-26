@@ -92,7 +92,7 @@
         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
           <div class="form-group">
             <br><label><strong>Guardar Nacimiento</strong></label><br>
-            <button class="btn btn-success btn-block btn-sm" (click)="validar_usuario(modalUsuarioNacimiento)"
+            <button [disabled]="blockIngreso == true" class="btn btn-success btn-block btn-sm" (click)="validar_usuario(modalUsuarioNacimiento)"
             [disabled]="getIdSocio == ''
                      || getIdSocio == null
                      || InsertarNacimiento.fecha == ''

@@ -167,7 +167,8 @@ class DatosBasicosController extends Controller
                 'ingresar_socio_beneficios' =>'S', // socio beneficios
                 'modificar_socio_beneficios' => 'S', //socio beneficios
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'S'
+                'modificar_cch' => 'S',
+                'ingresar_cb' => 'S'
             ], 
             [ // david pass 1028
                 'rut' => '190523047',
@@ -181,7 +182,8 @@ class DatosBasicosController extends Controller
                 'ingresar_socio_beneficios' =>'S', 
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'S'
+                'modificar_cch' => 'S',
+                'ingresar_cb' => 'S'
             ], 
             [ //bryan vidal
                 'rut' => '185227839',
@@ -195,7 +197,8 @@ class DatosBasicosController extends Controller
                 'ingresar_socio_beneficios' =>'S', // socio beneficios
                 'modificar_socio_beneficios' => 'S', //socio beneficios
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'S'
+                'modificar_cch' => 'S',
+                'ingresar_cb' => 'S'
             ],
             [ //bryan montecino
                 'rut' => '191107861',
@@ -209,7 +212,8 @@ class DatosBasicosController extends Controller
                 'ingresar_socio_beneficios' =>'S', // socio beneficios
                 'modificar_socio_beneficios' => 'S', //socio beneficios
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'S'
+                'modificar_cch' => 'S',
+                'ingresar_cb' => 'S'
             ], 
             [ // don emilio 
                 'rut' => '9508866k',
@@ -223,7 +227,8 @@ class DatosBasicosController extends Controller
                 'ingresar_socio_beneficios' =>'S', 
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'S'
+                'modificar_cch' => 'S',
+                'ingresar_cb' => 'S'
             ], 
             [ // dña Oriana
                 'rut' => '81951845',
@@ -237,7 +242,8 @@ class DatosBasicosController extends Controller
                 'ingresar_socio_beneficios' =>'S', 
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
-                'modificar_cch' => 'N'
+                'modificar_cch' => 'N',
+                'ingresar_cb' => 'S'
             ]
              
         ];
@@ -290,6 +296,10 @@ class DatosBasicosController extends Controller
                     case 'modificar_cch':
                     
                         return ($u['modificar_cch']=='S')? true:false;
+                    break;
+                    case 'ingresar_cb':
+                    
+                        return ($u['ingresar_cb']=='S')? true:false;
                     break;
                     
                     default:

@@ -293,6 +293,36 @@ class CuentaConsorcio extends Model
                                 COALESCE(monto_mes_cex_11,0) monto_mes_cex_11,
                                 COALESCE(monto_mes_ds_12,0) monto_mes_ds_12,
                                 COALESCE(monto_mes_cex_12,0) monto_mes_cex_12,
+                                
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) 
+                                ) monto_total_ds_socio,
+                                
+                                (
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_cex_socio,
                                 (
                                   COALESCE(monto_mes_ds_1,0) +
                                   COALESCE(monto_mes_cex_1,0) +
@@ -319,7 +349,7 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_ds_12,0) +
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_socio
-                                
+                                                        
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
                             where cc.anio_id = $anio_id");
@@ -330,7 +360,108 @@ class CuentaConsorcio extends Model
     		return '';
     	}
     }
+    protected function filtrar_tabla_consorcio($anio_id, $search)
+    {
+       $busca = mb_strtolower($search);
+       
+       $listar = DB::select("SELECT 
+                                s.id socio_id,
+                                cc.id cuenta_consorcio_id,
+                                cc.vinculado,
+                                concat(nombres,' ',a_paterno,' ',a_materno) nombre,
+                                COALESCE(monto_mes_ds_1,0) monto_mes_ds_1,
+                                COALESCE(monto_mes_cex_1,0) monto_mes_cex_1,
+                                COALESCE(monto_mes_ds_2,0) monto_mes_ds_2,
+                                COALESCE(monto_mes_cex_2,0) monto_mes_cex_2,
+                                COALESCE(monto_mes_ds_3,0) monto_mes_ds_3,
+                                COALESCE(monto_mes_cex_3,0) monto_mes_cex_3,
+                                COALESCE(monto_mes_ds_4,0) monto_mes_ds_4,
+                                COALESCE(monto_mes_cex_4,0) monto_mes_cex_4,
+                                COALESCE(monto_mes_ds_5,0) monto_mes_ds_5,
+                                COALESCE(monto_mes_cex_5,0) monto_mes_cex_5,
+                                COALESCE(monto_mes_ds_6,0) monto_mes_ds_6,
+                                COALESCE(monto_mes_cex_6,0) monto_mes_cex_6,
+                                COALESCE(monto_mes_ds_7,0) monto_mes_ds_7,
+                                COALESCE(monto_mes_cex_7,0) monto_mes_cex_7,
+                                COALESCE(monto_mes_ds_8,0) monto_mes_ds_8,
+                                COALESCE(monto_mes_cex_8,0) monto_mes_cex_8,
+                                COALESCE(monto_mes_ds_9,0) monto_mes_ds_9,
+                                COALESCE(monto_mes_cex_9,0) monto_mes_cex_9,
+                                COALESCE(monto_mes_ds_10,0) monto_mes_ds_10,
+                                COALESCE(monto_mes_cex_10,0) monto_mes_cex_10,
+                                COALESCE(monto_mes_ds_11,0) monto_mes_ds_11,
+                                COALESCE(monto_mes_cex_11,0) monto_mes_cex_11,
+                                COALESCE(monto_mes_ds_12,0) monto_mes_ds_12,
+                                COALESCE(monto_mes_cex_12,0) monto_mes_cex_12,
+                                
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) 
+                                ) monto_total_ds_socio,
+                                
+                                (
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_cex_socio,
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_socio
+                                                        
+                            from cuenta_consorcio cc
+                            inner join socios s on s.id = cc.socio_id 
+                            where cc.anio_id = $anio_id
+                            and lower(CONCAT(nombres,' ',a_paterno,' ',a_materno)) like  '%$busca%'
+                            ");
 
+        if (count($listar) > 0) {
+    		return $listar;
+    	}else{
+    		return '';
+    	}
+    }
     protected function totales_mensuales_anual($anio_id)//ESTA QUERY TIENE LOS TOTALES MENSUALES(12M) DE LOS SOCIOS (SEGUN AÑO)
     {
         $listar = DB::select("SELECT
@@ -398,39 +529,42 @@ class CuentaConsorcio extends Model
     protected function total_anual_socio($anio_id)
     {
         $listar = DB::select("SELECT
-                              sum(monto_total_socio) monto_total_socio
+                              sum(X.monto_total_ds_socio) monto_total_ds_socio,
+                              sum(X.monto_total_cex_socio) monto_total_cex_socio,
+                              (sum(X.monto_total_ds_socio) + sum(X.monto_total_cex_socio)) monto_total_socio
                               from
                               ( select 
                                   s.id socio_id,
                                   cc.id cuenta_consorcio_id,
                                   concat(nombres,' ',a_paterno,' ',a_materno) nombre,
-                                
                                   (
                                       COALESCE(monto_mes_ds_1,0) +
-                                      COALESCE(monto_mes_cex_1,0) +
                                       COALESCE(monto_mes_ds_2,0) +
-                                      COALESCE(monto_mes_cex_2,0) +
                                       COALESCE(monto_mes_ds_3,0) +
-                                      COALESCE(monto_mes_cex_3,0) +
                                       COALESCE(monto_mes_ds_4,0) +
-                                      COALESCE(monto_mes_cex_4,0) +
                                       COALESCE(monto_mes_ds_5,0) +
-                                      COALESCE(monto_mes_cex_5,0) +
                                       COALESCE(monto_mes_ds_6,0) +
-                                      COALESCE(monto_mes_cex_6,0) +
                                       COALESCE(monto_mes_ds_7,0) +
-                                      COALESCE(monto_mes_cex_7,0) +
                                       COALESCE(monto_mes_ds_8,0) +
-                                      COALESCE(monto_mes_cex_8,0) +
                                       COALESCE(monto_mes_ds_9,0)+
-                                      COALESCE(monto_mes_cex_9,0)+ 
                                       COALESCE(monto_mes_ds_10,0) +
-                                      COALESCE(monto_mes_cex_10,0) +
                                       COALESCE(monto_mes_ds_11,0) +
+                                      COALESCE(monto_mes_ds_12,0) 
+                                  ) monto_total_ds_socio,
+                                  (
+                                      COALESCE(monto_mes_cex_1,0) +
+                                      COALESCE(monto_mes_cex_2,0) +
+                                      COALESCE(monto_mes_cex_3,0) +
+                                      COALESCE(monto_mes_cex_4,0) +
+                                      COALESCE(monto_mes_cex_5,0) +
+                                      COALESCE(monto_mes_cex_6,0) +
+                                      COALESCE(monto_mes_cex_7,0) +
+                                      COALESCE(monto_mes_cex_8,0) +
+                                      COALESCE(monto_mes_cex_9,0)+ 
+                                      COALESCE(monto_mes_cex_10,0) +
                                       COALESCE(monto_mes_cex_11,0) +
-                                      COALESCE(monto_mes_ds_12,0) +
                                       COALESCE(monto_mes_cex_12,0) 
-                                  ) monto_total_socio
+                                  ) monto_total_cex_socio
                                   
                                   from cuenta_consorcio cc
                                   inner join socios s on s.id = cc.socio_id 
@@ -441,5 +575,106 @@ class CuentaConsorcio extends Model
           }else{
             return '';
           }
+    }
+
+    // TABLA DE DESVINCULADOS
+
+    protected function tabla_desvinculados($anio_id)
+    {
+        $listar = DB::select("SELECT 
+                                s.id socio_id,
+                                cc.id cuenta_consorcio_id,
+                                cc.vinculado,
+                                concat(nombres,' ',a_paterno,' ',a_materno) nombre,
+                                COALESCE(monto_mes_ds_1,0) monto_mes_ds_1,
+                                COALESCE(monto_mes_cex_1,0) monto_mes_cex_1,
+                                COALESCE(monto_mes_ds_2,0) monto_mes_ds_2,
+                                COALESCE(monto_mes_cex_2,0) monto_mes_cex_2,
+                                COALESCE(monto_mes_ds_3,0) monto_mes_ds_3,
+                                COALESCE(monto_mes_cex_3,0) monto_mes_cex_3,
+                                COALESCE(monto_mes_ds_4,0) monto_mes_ds_4,
+                                COALESCE(monto_mes_cex_4,0) monto_mes_cex_4,
+                                COALESCE(monto_mes_ds_5,0) monto_mes_ds_5,
+                                COALESCE(monto_mes_cex_5,0) monto_mes_cex_5,
+                                COALESCE(monto_mes_ds_6,0) monto_mes_ds_6,
+                                COALESCE(monto_mes_cex_6,0) monto_mes_cex_6,
+                                COALESCE(monto_mes_ds_7,0) monto_mes_ds_7,
+                                COALESCE(monto_mes_cex_7,0) monto_mes_cex_7,
+                                COALESCE(monto_mes_ds_8,0) monto_mes_ds_8,
+                                COALESCE(monto_mes_cex_8,0) monto_mes_cex_8,
+                                COALESCE(monto_mes_ds_9,0) monto_mes_ds_9,
+                                COALESCE(monto_mes_cex_9,0) monto_mes_cex_9,
+                                COALESCE(monto_mes_ds_10,0) monto_mes_ds_10,
+                                COALESCE(monto_mes_cex_10,0) monto_mes_cex_10,
+                                COALESCE(monto_mes_ds_11,0) monto_mes_ds_11,
+                                COALESCE(monto_mes_cex_11,0) monto_mes_cex_11,
+                                COALESCE(monto_mes_ds_12,0) monto_mes_ds_12,
+                                COALESCE(monto_mes_cex_12,0) monto_mes_cex_12,
+                                
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) 
+                                ) monto_total_ds_socio,
+                                
+                                (
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_cex_socio,
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_socio
+                                                        
+                            from cuenta_consorcio cc
+                            inner join socios s on s.id = cc.socio_id 
+                            where cc.anio_id = $anio_id and cc.vinculado = 'N'");
+
+        if (count($listar) > 0) {
+    		    return $listar;
+        }else{
+            return '';
+        }
     }
 }

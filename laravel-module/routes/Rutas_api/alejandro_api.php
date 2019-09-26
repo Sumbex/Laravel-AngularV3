@@ -123,3 +123,6 @@ Route::post('insertar_consorcio','CuentaConsorcioController@insertar');
 Route::get('cc_listar/{anio}','CuentaConsorcioController@cuenta_consorcio');
 Route::get('totales_cc/{anio}','CuentaConsorcioController@totales_cuenta_consorcio');
 Route::get('total_anual_socio/{anio_id}','CuentaConsorcioController@total_anual_socio');
+Route::get('tabla_desvinculados/{anio_id}','CuentaConsorcioController@tabla_desvinculados');
+Route::get('filtrar_tabla_consorcio/{anio_id}/{search?}','CuentaConsorcioController@filtrar_tabla_consorcio');
+

@@ -1,94 +1,89 @@
- <!--buscador de socio-->
- <div class="card-header" id="demoFont">
-    <h6 class="card-title text-center"><strong>Formulario Consorcio</strong></h6>
+<!-- HTML NORMAL EN VISTA -->
+<div class="card">
+  <div class="card-header" id="demoFont">
+    <strong>
+      <h5><i class="fas fa-list-ol"></i> Lista de Socios</h5>
+    </strong>
   </div>
-
-  <div class="card">
-
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="row justify-content-center">
-
-        <div class="col-12 col-md-8 col-lg-8 col-xl-8">
-          <div class="form-group"> <br>
-            <label>
-              <strong>Ingrese Rut </strong>
-              <i class="fas fa-info-circle" placement="right"
-                ngbTooltip="El rut del socio debe de ser ingresado sin guion"></i>
-            </label>
-            <div class="input-group">
-              <input type="text" [(ngModel)]="rut" class="form-control form-control-sm"
-                placeholder="Ingrese rut del socio sin guion" name="rut" required>
-              <span class="input-group-btn">
-                <button type="button" (click)="buscarSocio()" class="btn btn-outline-success btn-sm">
-                  <i *ngIf="!blockSocio" class="fas fa-search"></i>
-                  <img *ngIf="blockSocio" padding-left="20px" height="12"
-                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                </button>
-              </span>
-            </div>
-          </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-md-3 col-lg-3"><br><label><strong>Año</strong></label>
+          <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
+            <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+          </select>
         </div>
+        <div class="col-12 col-md-3 col-lg-3"><br><label><strong>Mes</strong></label>
+          <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
+              <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-3 col-lg-3"><br><label><strong>Tipo de Pago</strong></label>
+          <select #tipo_consorcio [(ngModel)]="tipoPago" (change)="tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''" class="form-control form-control-sm">
+              <!-- <option value="">--Seleccione--</option> -->
+              <option value="1">Dia de Sueldo</option>
+              <option value="2">Cuota Extra</option>
+            </select>
+        </div>
+        <div  *ngIf="verInput" class="col-12 col-md-3 col-lg-3">
+          <br><label><strong>Monto Cuota Extra</strong></label><br>
+          <input [(ngModel)]="montoCE" type="number">
+        </div>
+      </div><br>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-sm">
+        <thead text-sm>
+          <tr>
+            <th style="background: #138D75"><label class="float-right"> BUSCAR SOCIO:</label></th>
+            <td style="background: #138D75" colspan="4">
+              <input class="form-control form-control-sm" placeholder="Buscar por nombre......" [(ngModel)]="search">
+            </td>
 
-      </div>
+            <td style="background: #138D75" colspan="3">
+              <button (click)="filtrar()" class="btn btn-secondary btn-sm">
+                BUSCAR <i [hidden]="blockLoad" class="fas fa-search"></i>
+                <img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button>
+            </td>
+            <td style="background: #138D75" colspan="3">
+              <button id="refrescarTabla" (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
+                REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
+                <img [hidden]="!blockLoad2" height="15"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button>
+            </td>
+          </tr>
+          <tr class="text-center">
+            <th colspan="1" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th>
+            <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
+            <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
+            <!-- <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th> -->
+            <th class="size" style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
+            <th colspan="1" style="background: #138D75"> GUARDAR</th>
+            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO D.S.</th>
+            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO C.E.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of socios" class="text-center">
+            <td colspan="1">{{ item?.rut }}</td>
+            <td colspan="2">{{ item?.nombre | uppercase}}</td>
+            <td colspan="2" [ngClass]="{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }" >{{ item?.estado_socio | uppercase}}</td>
+            <!-- <td colspan="2">
+               {{tipo_consorcio.value}}
+            </td> -->
+            <td class="size"><input value="{{montoCE}}" #monto type="number" class="form-control form-control-sm">
+                             <!-- <input *ngIf="tipo_consorcio.value == 1" value=""  #monto type="number"> -->
+            </td>
+            <td colspan="1"><button class="btn btn-outline-success btn-sm" (click)="insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)">
+              <i [hidden]="blockIngreso" class="far fa-save"></i>
+              <img [hidden]="!blockIngreso" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            </button></td>
+            <td colspan="1" [ngClass]="{'red': item?.pago_actual_ds == 'Sin Registro' , 'green': item?.pago_actual_ds != 'Sin Registro' }">{{item?.pago_actual_ds +' '+ item?.fecha_ds}}</td>
+            <td colspan="1" [ngClass]="{'red': item?.pago_actual_cex == 'Sin Registro' , 'green': item?.pago_actual_cex != 'Sin Registro' }" >{{item?.pago_actual_cex +' '+ item.fecha_cex}}</td>
+
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-      <div class="row justify-content-center">
-
-        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-          <div class="form-group"> <br>
-            <label><strong>Fecha Nacimiento</strong></label>
-            <input type="date" class="form-control form-control-sm" [(ngModel)]="fechaSocioTest" required
-              disabled>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-          <div class="form-group"> <br>
-            <label><strong>Rut del socio</strong></label>
-            <input type="text" class="form-control form-control-sm" [(ngModel)]="rutSocioTest" required
-              disabled>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-          <div class="form-group"> <br>
-            <label><strong>Nombre Completo del socio</strong></label>
-            <input type="text" class="form-control form-control-sm" [(ngModel)]="nombreUpperSocio" required
-              disabled>
-          </div>
-        </div>
-
-      </div>
-    </div> <br>
-
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="row justify-content-center">
-
-          <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-            <div class="form-group"> <br>
-              <label><strong>Fecha</strong></label>
-              <input type="date" class="form-control form-control-sm" required>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-2 col-lg-2 col-xl-2">
-            <div class="form-group"> <br>
-              <label><strong>Monto Dia de Sueldo</strong></label>
-              <input type="number" class="form-control form-control-sm" required>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-            <div class="form-group"> <br>
-              <label><strong>Guardar</strong></label> <br>
-              <button type="button" class="btn btn-outline-success btn-sm">
-                Guardar
-                </button>
-            </div>
-          </div>
-
-        </div>
-      </div> <br>
-
-  </div> <br>
+  </div>
+</div>

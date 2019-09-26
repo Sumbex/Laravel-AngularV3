@@ -106,6 +106,7 @@ import { CajaBienestarSociosComponent } from './socios-master/cuentas/bienestar/
 import { TablaDesvinculadosConsorcioComponent } from './auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component';
 import { ConsorcioComponent } from './socios-master/cuentas/consorcio/consorcio.component';
 import { BryanConsorcioService } from './servicios/bryan-consorcio.service';
+import { GraficoComponenteComponent } from './socios-master/grafico/grafico-componente/grafico-componente.component';
 
 
 @NgModule({
@@ -260,7 +261,9 @@ import { BryanConsorcioService } from './servicios/bryan-consorcio.service';
 
     TablaDesvinculadosConsorcioComponent,
 
-    ConsorcioComponent
+    ConsorcioComponent,
+
+    GraficoComponenteComponent
 
   ],
   imports: [

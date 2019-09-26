@@ -250,7 +250,7 @@ module.exports = "<!--Modal para el inicio y cierre mensual-->\r\n<ng-template #
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"formConsorcio-tab\" data-toggle=\"tab\" href=\"#formConsorcio\" role=\"tab\"\r\n                    aria-controls=\"formConsorcio\" aria-selected=\"true\">Formulario Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaConsorcio-tab\" data-toggle=\"tab\" href=\"#TablaConsorcio\" role=\"tab\"\r\n                    aria-controls=\"TablaConsorcio\" aria-selected=\"false\">Tabla Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaDesvinculado-tab\" data-toggle=\"tab\" href=\"#TablaDesvinculado\" role=\"tab\"\r\n                    aria-controls=\"TablaDesvinculado\" aria-selected=\"false\">Tabla Desvinculados</a>\r\n            </li>\r\n            <!-- <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"med-tab\" data-toggle=\"tab\" href=\"#med\" role=\"tab\" aria-controls=\"med\"\r\n             aria-selected=\"false\">Gastos Medicos</a>\r\n        </li> -->\r\n        </ul> <br>\r\n\r\n        <div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n            <div class=\"tab-pane fade\" id=\"formConsorcio\" role=\"tabpanel\" aria-labelledby=\"formConsorcio-tab\">\r\n                <app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaConsorcio\" role=\"tabpanel\" aria-labelledby=\"TablaConsorcio-tab\">\r\n                <!--formulario fallecimiento-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Consorcio</strong></h6>\r\n                </div>\r\n                <app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaDesvinculado\" role=\"tabpanel\" aria-labelledby=\"TablaDesvinculado-tab\">\r\n                <!--formulario gastos medicos-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Desvinculados</strong></h6>\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n\r\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"formConsorcio-tab\" data-toggle=\"tab\" href=\"#formConsorcio\" role=\"tab\"\r\n                    aria-controls=\"formConsorcio\" aria-selected=\"true\">Formulario Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaConsorcio-tab\" data-toggle=\"tab\" href=\"#TablaConsorcio\" role=\"tab\"\r\n                    aria-controls=\"TablaConsorcio\" aria-selected=\"false\">Tabla Consorcio</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"TablaDesvinculado-tab\" data-toggle=\"tab\" href=\"#TablaDesvinculado\" role=\"tab\"\r\n                    aria-controls=\"TablaDesvinculado\" aria-selected=\"false\">Tabla Desvinculados</a>\r\n            </li>\r\n            <!-- <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"med-tab\" data-toggle=\"tab\" href=\"#med\" role=\"tab\" aria-controls=\"med\"\r\n             aria-selected=\"false\">Gastos Medicos</a>\r\n        </li> -->\r\n        </ul> <br>\r\n\r\n        <div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n            <div class=\"tab-pane fade\" id=\"formConsorcio\" role=\"tabpanel\" aria-labelledby=\"formConsorcio-tab\">\r\n                <app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaConsorcio\" role=\"tabpanel\" aria-labelledby=\"TablaConsorcio-tab\">\r\n                <!--formulario fallecimiento-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Consorcio</strong></h6>\r\n                </div>\r\n                <app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>\r\n            </div>\r\n\r\n            <div class=\"tab-pane fade\" id=\"TablaDesvinculado\" role=\"tabpanel\" aria-labelledby=\"TablaDesvinculado-tab\">\r\n                <!--formulario gastos medicos-->\r\n\r\n                <div class=\"card-header\" id=\"demoFont\">\r\n                    <h6 class=\"card-title text-center\"><strong>Tabla Desvinculados</strong></h6>\r\n                </div>\r\n                <app-tabla-desvinculados-consorcio></app-tabla-desvinculados-consorcio>\r\n\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -262,6 +262,17 @@ module.exports = "<br>\r\n<div class=\"row\">\r\n    <div class=\"col-12 col-md-
 /***/ (function(module, exports) {
 
 module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <div class=\"card-header\" id=\"demoFont\">\r\n    <strong>\r\n      <h5><i class=\"fas fa-list-ol\"></i> Lista de Socios</h5>\r\n    </strong>\r\n  </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"row\">\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Año</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"anio\" class=\"form-control form-control-sm\">\r\n            <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Mes</strong></label>\r\n          <select (change)=\"btn_reload()\" [(ngModel)]=\"mes\" class=\"form-control form-control-sm\" #selectOptionMes>\r\n              <option *ngFor=\"let mes of meses\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n            </select>\r\n        </div>\r\n        <div class=\"col-12 col-md-3 col-lg-3\"><br><label><strong>Tipo de Pago</strong></label>\r\n          <select #tipo_consorcio [(ngModel)]=\"tipoPago\" (change)=\"tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''\" class=\"form-control form-control-sm\">\r\n              <!-- <option value=\"\">--Seleccione--</option> -->\r\n              <option value=\"1\">Dia de Sueldo</option>\r\n              <option value=\"2\">Cuota Extra</option>\r\n            </select>\r\n        </div>\r\n        <div  *ngIf=\"verInput\" class=\"col-12 col-md-3 col-lg-3\">\r\n          <br><label><strong>Monto Cuota Extra</strong></label><br>\r\n          <input [(ngModel)]=\"montoCE\" type=\"number\">\r\n        </div>\r\n      </div><br>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-striped table-bordered table-sm\">\r\n        <thead text-sm>\r\n          <tr>\r\n            <th style=\"background: #138D75\"><label class=\"float-right\"> BUSCAR SOCIO:</label></th>\r\n            <td style=\"background: #138D75\" colspan=\"4\">\r\n              <input class=\"form-control form-control-sm\" placeholder=\"Buscar por nombre......\" [(ngModel)]=\"search\">\r\n            </td>\r\n\r\n            <td style=\"background: #138D75\" colspan=\"3\">\r\n              <button (click)=\"filtrar()\" class=\"btn btn-secondary btn-sm\">\r\n                BUSCAR <i [hidden]=\"blockLoad\" class=\"fas fa-search\"></i>\r\n                <img [hidden]=\"!blockLoad\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n            <td style=\"background: #138D75\" colspan=\"3\">\r\n              <button id=\"refrescarTabla\" (click)=\"listar(); search=''; blockLoad2=true; \" class=\"btn btn-secondary btn-sm\">\r\n                REFRESCAR TABLA &nbsp; <i [hidden]=\"blockLoad2\" class=\"fas fa-sync\"></i>\r\n                <img [hidden]=\"!blockLoad2\" height=\"15\"\r\n                  src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n              </button>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"text-center\">\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE</th>\r\n            <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-user\"></i> ESTADO SOCIO</th>\r\n            <!-- <th colspan=\"2\" style=\"background: #138D75\"><i class=\"fas fa-calendar-alt\"></i> TIPO DE PAGO</th> -->\r\n            <th class=\"size\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> MONTO</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"> GUARDAR</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO D.S.</th>\r\n            <th colspan=\"1\" style=\"background: #138D75\"><i class=\"fas fa-dollar-sign\"></i> CANCELADO C.E.</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of socios\" class=\"text-center\">\r\n            <td colspan=\"1\">{{ item?.rut }}</td>\r\n            <td colspan=\"2\">{{ item?.nombre | uppercase}}</td>\r\n            <td colspan=\"2\" [ngClass]=\"{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }\" >{{ item?.estado_socio | uppercase}}</td>\r\n            <!-- <td colspan=\"2\">\r\n               {{tipo_consorcio.value}}\r\n            </td> -->\r\n            <td class=\"size\"><input value=\"{{montoCE}}\" #monto type=\"number\" class=\"form-control form-control-sm\">\r\n                             <!-- <input *ngIf=\"tipo_consorcio.value == 1\" value=\"\"  #monto type=\"number\"> -->\r\n            </td>\r\n            <td colspan=\"1\"><button class=\"btn btn-outline-success btn-sm\" (click)=\"insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)\">\r\n              <i [hidden]=\"blockIngreso\" class=\"far fa-save\"></i>\r\n              <img [hidden]=\"!blockIngreso\" height=\"15\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\r\n            </button></td>\r\n            <td colspan=\"1\" [ngClass]=\"{'red': item?.pago_actual_ds == 'Sin Registro' , 'green': item?.pago_actual_ds != 'Sin Registro' }\">{{item?.pago_actual_ds +' '+ item?.fecha_ds}}</td>\r\n            <td colspan=\"1\" [ngClass]=\"{'red': item?.pago_actual_cex == 'Sin Registro' , 'green': item?.pago_actual_cex != 'Sin Registro' }\" >{{item?.pago_actual_cex +' '+ item.fecha_cex}}</td>\r\n\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html":
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html ***!
+  \*****************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  tabla-desvinculados-consorcio works!\n</p>\n"
 
 /***/ }),
 
@@ -1200,6 +1211,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__ = __webpack_require__(/*! ./servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
 /* harmony import */ var _socios_master_cuentas_bienestar_cuenta_bienestar_socios_cuenta_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_100__ = __webpack_require__(/*! ./socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component */ "./src/app/socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component.ts");
 /* harmony import */ var _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__ = __webpack_require__(/*! ./socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component */ "./src/app/socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component.ts");
+/* harmony import */ var _auth_master_cuenta_fondo_mutuo_tabla_desvinculados_consorcio_tabla_desvinculados_consorcio_component__WEBPACK_IMPORTED_MODULE_102__ = __webpack_require__(/*! ./auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.ts");
 
 
 
@@ -1302,6 +1314,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+<<<<<<< HEAD:laravel-module/public/app/main-es5.js
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1419,6 +1433,123 @@ var AppModule = /** @class */ (function () {
     ], AppModule);
     return AppModule;
 }());
+=======
+let AppModule = class AppModule {
+};
+AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+        declarations: [
+            _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+            _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
+            _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_10__["PublicMasterComponent"],
+            _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_11__["AboutComponent"],
+            _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_12__["AuthMasterComponent"],
+            _auth_master_cuenta_sindical_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_13__["CuentaSindicalComponent"],
+            _auth_master_cuenta_sindical_formulario_sindical_formulario_sindical_component__WEBPACK_IMPORTED_MODULE_14__["FormularioSindicalComponent"],
+            _auth_master_cuenta_sindical_tabla_sindical_tabla_sindical_component__WEBPACK_IMPORTED_MODULE_15__["TablaSindicalComponent"],
+            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__["NavbarComponent"],
+            _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_17__["CuentaBienestarComponent"],
+            _auth_master_cuenta_bienestar_formulario_bienestar_formulario_bienestar_component__WEBPACK_IMPORTED_MODULE_18__["FormularioBienestarComponent"],
+            _auth_master_cuenta_bienestar_tabla_bienestar_tabla_bienestar_component__WEBPACK_IMPORTED_MODULE_19__["TablaBienestarComponent"],
+            _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_20__["CuentaFondoMutuoComponent"],
+            _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__["FormularioFondoMutuoComponent"],
+            _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__["TablaFondoMutuoComponent"],
+            _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"],
+            _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__["ModalCajaChicaComponent"],
+            _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__["TablaCajaChicaComponent"],
+            _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
+            _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
+            _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
+            _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
+            _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
+            _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"],
+            _auth_master_cuenta_socios_cuenta_socios_component__WEBPACK_IMPORTED_MODULE_38__["CuentaSociosComponent"],
+            _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_39__["FormularioSociosComponent"],
+            _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_40__["ListarSociosComponent"],
+            _auth_master_modal_prestamos_socios_modal_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_41__["ModalPrestamosSociosComponent"],
+            _auth_master_modal_camping_modal_camping_component__WEBPACK_IMPORTED_MODULE_42__["ModalCampingComponent"],
+            _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_43__["TablaPrestamosSociosComponent"],
+            _auth_master_modal_prestamos_socios_interes_prestamo_apuro_economico_interes_prestamo_apuro_economico_component__WEBPACK_IMPORTED_MODULE_44__["InteresPrestamoApuroEconomicoComponent"],
+            _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_45__["BeneficiosSociosComponent"],
+            _auth_master_modal_prestamos_socios_tabla_prestamos_historicos_socios_tabla_prestamos_historicos_socios_component__WEBPACK_IMPORTED_MODULE_46__["TablaPrestamosHistoricosSociosComponent"],
+            _auth_master_cuenta_socios_tablas_beneficios_tablas_beneficios_component__WEBPACK_IMPORTED_MODULE_47__["TablasBeneficiosComponent"],
+            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_socio_formulario_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_48__["FormularioBeneficiosSocioComponent"],
+            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_beneficiario_formulario_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_49__["FormularioBeneficiosBeneficiarioComponent"],
+            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_cargas_formulario_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_50__["FormularioBeneficiosCargasComponent"],
+            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_conyuge_formulario_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_51__["FormularioBeneficiosConyugeComponent"],
+            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_padres_suegros_formulario_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_52__["FormularioBeneficiosPadresSuegrosComponent"],
+            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_cargas_tabla_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_53__["TablaBeneficiosCargasComponent"],
+            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_conyuge_tabla_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_54__["TablaBeneficiosConyugeComponent"],
+            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_padres_suegros_tabla_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_55__["TablaBeneficiosPadresSuegrosComponent"],
+            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_socio_tabla_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_56__["TablaBeneficiosSocioComponent"],
+            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_beneficiario_tabla_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_68__["TablaBeneficiosBeneficiarioComponent"],
+            _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_57__["SociosMasterComponent"],
+            _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_58__["PerfilSocioComponent"],
+            _socios_master_navbar_socio_navbar_socio_component__WEBPACK_IMPORTED_MODULE_59__["NavbarSocioComponent"],
+            _socios_master_perfil_socio_formulario_beneficios_auth_socio_formulario_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_60__["FormularioBeneficiosAuthSocioComponent"],
+            _socios_master_perfil_socio_tabla_beneficios_auth_socio_tabla_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_61__["TablaBeneficiosAuthSocioComponent"],
+            _socios_master_perfil_socio_formulario_beneficios_conyuge_auth_socio_formulario_beneficios_conyuge_auth_socio_component__WEBPACK_IMPORTED_MODULE_62__["FormularioBeneficiosConyugeAuthSocioComponent"],
+            _socios_master_perfil_socio_formulario_beneficios_beneficiario_auth_socio_formulario_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_63__["FormularioBeneficiosBeneficiarioAuthSocioComponent"],
+            _socios_master_perfil_socio_formulario_beneficios_cargas_auth_socio_formulario_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_64__["FormularioBeneficiosCargasAuthSocioComponent"],
+            _socios_master_perfil_socio_formulario_beneficios_padres_suegros_auth_socio_formulario_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_65__["FormularioBeneficiosPadresSuegrosAuthSocioComponent"],
+            _safe_pipe__WEBPACK_IMPORTED_MODULE_69__["SafePipe"],
+            _auth_master_cuenta_socios_tablas_beneficios_tabla_resumen_socio_tabla_resumen_socio_component__WEBPACK_IMPORTED_MODULE_70__["TablaResumenSocioComponent"],
+            _socios_master_perfil_socio_tabla_beneficios_auth_conyuge_tabla_beneficios_auth_conyuge_component__WEBPACK_IMPORTED_MODULE_71__["TablaBeneficiosAuthConyugeComponent"],
+            _socios_master_perfil_socio_tabla_beneficios_beneficiario_auth_socio_tabla_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_72__["TablaBeneficiosBeneficiarioAuthSocioComponent"],
+            _socios_master_perfil_socio_tabla_beneficios_cargas_auth_socio_tabla_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_73__["TablaBeneficiosCargasAuthSocioComponent"],
+            _socios_master_perfil_socio_tabla_beneficios_padres_suegros_auth_socio_tabla_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_74__["TablaBeneficiosPadresSuegrosAuthSocioComponent"],
+            _socios_master_beneficios_socio_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_75__["BeneficiosSocioComponent"],
+            _socios_master_beneficios_socio_prestamos_socios_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_76__["PrestamosSociosComponent"],
+            _socios_master_configuracion_socio_configuracion_socio_component__WEBPACK_IMPORTED_MODULE_77__["ConfiguracionSocioComponent"],
+            _socios_master_configuracion_socio_cambio_contrasenia_socio_cambio_contrasenia_socio_component__WEBPACK_IMPORTED_MODULE_78__["CambioContraseniaSocioComponent"],
+            _socios_master_configuracion_socio_cambio_informacion_personal_socio_cambio_informacion_personal_socio_component__WEBPACK_IMPORTED_MODULE_79__["CambioInformacionPersonalSocioComponent"],
+            _socios_master_cuentas_cuentas_component__WEBPACK_IMPORTED_MODULE_80__["CuentasComponent"],
+            _socios_master_cuentas_sindical_sindical_component__WEBPACK_IMPORTED_MODULE_81__["SindicalComponent"],
+            _socios_master_cuentas_caja_chica_caja_chica_component__WEBPACK_IMPORTED_MODULE_82__["CajaChicaComponent"],
+            _socios_master_cuentas_camping_camping_component__WEBPACK_IMPORTED_MODULE_83__["CampingComponent"],
+            _auth_master_cuenta_bienestar_inicio_cierre_mensual_inicio_cierre_mensual_component__WEBPACK_IMPORTED_MODULE_84__["InicioCierreMensualComponent"],
+            _auth_master_cuenta_bienestar_caja_chica_bienestar_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_85__["CajaChicaBienestarComponent"],
+            _auth_master_cuenta_bienestar_fallecimiento_bienestar_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_86__["FallecimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_nacimiento_bienestar_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_87__["NacimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_88__["GastosMedicosBienestarComponent"],
+            _auth_master_cuenta_bienestar_caja_chica_bienestar_formulario_caja_chica_bienestar_formulario_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_89__["FormularioCajaChicaBienestarComponent"],
+            _auth_master_cuenta_bienestar_caja_chica_bienestar_tabla_caja_chica_bienestar_tabla_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_90__["TablaCajaChicaBienestarComponent"],
+            _auth_master_cuenta_bienestar_fallecimiento_bienestar_formulario_fallecimiento_bienestar_formulario_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_91__["FormularioFallecimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_fallecimiento_bienestar_tabla_fallecimiento_bienestar_tabla_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_92__["TablaFallecimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_nacimiento_bienestar_formulario_nacimiento_bienestar_formulario_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_93__["FormularioNacimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_nacimiento_bienestar_tabla_nacimiento_bienestar_tabla_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_94__["TablaNacimientoBienestarComponent"],
+            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_95__["FormularioGastosMedicosBienestarComponent"],
+            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_96__["TablaGastosMedicosBienestarComponent"],
+            _socios_master_beneficios_socio_beneficios_cobrados_beneficios_cobrados_component__WEBPACK_IMPORTED_MODULE_97__["BeneficiosCobradosComponent"],
+            _socios_master_beneficios_socio_fondos_mutuos_socio_fondos_mutuos_socio_component__WEBPACK_IMPORTED_MODULE_98__["FondosMutuosSocioComponent"],
+            _socios_master_cuentas_bienestar_cuenta_bienestar_socios_cuenta_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_100__["CuentaBienestarSociosComponent"],
+            _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__["CajaBienestarSociosComponent"],
+            _auth_master_cuenta_fondo_mutuo_tabla_desvinculados_consorcio_tabla_desvinculados_consorcio_component__WEBPACK_IMPORTED_MODULE_102__["TablaDesvinculadosConsorcioComponent"]
+        ],
+        imports: [
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
+        ],
+        providers: [
+            _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"],
+            _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
+            _guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_67__["AuthGuardSocioService"],
+            { provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"], useValue: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"] },
+            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JwtHelperService"],
+            _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__["AniosService"],
+            _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__["TipoCuentasService"],
+            _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__["SindicalService"],
+            _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"],
+            _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_66__["PortalSociosService"],
+            _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__["BryanBienestarService"]
+        ],
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+    })
+], AppModule);
+>>>>>>> david:laravel-module/public/app/main.js
 
 
 
@@ -3862,6 +3993,49 @@ var FormularioFondoMutuoComponent = /** @class */ (function () {
     ], FormularioFondoMutuoComponent);
     return FormularioFondoMutuoComponent;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css":
+/*!**************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1mb25kby1tdXR1by90YWJsYS1kZXN2aW5jdWxhZG9zLWNvbnNvcmNpby90YWJsYS1kZXN2aW5jdWxhZG9zLWNvbnNvcmNpby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.ts":
+/*!*************************************************************************************************************************!*\
+  !*** ./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.ts ***!
+  \*************************************************************************************************************************/
+/*! exports provided: TablaDesvinculadosConsorcioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaDesvinculadosConsorcioComponent", function() { return TablaDesvinculadosConsorcioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TablaDesvinculadosConsorcioComponent = class TablaDesvinculadosConsorcioComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TablaDesvinculadosConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-tabla-desvinculados-consorcio',
+        template: __webpack_require__(/*! raw-loader!./tabla-desvinculados-consorcio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html"),
+        styles: [__webpack_require__(/*! ./tabla-desvinculados-consorcio.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TablaDesvinculadosConsorcioComponent);
 
 
 

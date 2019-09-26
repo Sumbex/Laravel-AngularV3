@@ -282,84 +282,94 @@ class PortalSocioMisBeneficios extends Model
 
     protected function traerNacimientos()
     {
-        $MN = DB::table('cuenta_bienestar as cb')
-            ->select([
-                'cb.id',
-                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
-                'cb.numero_documento_1 as codigo',
-                'cb.archivo_documento_1 as comprobante',
-                'cb.monto_egreso as monto',
-                'cn.rut_nacimiento as rut'
-            ])
-            ->join('anio as a', 'a.id', 'cb.anio_id')
-            ->join('mes as m', 'm.id', 'cb.mes_id')
-            ->join('cbe_nacimiento as cn', 'cn.cuenta_bienestar_id', 'cb.id')
-            ->orderBy('cb.dia', 'asc')
-            ->where([
-                'cb.activo' => 'S',
-                'cb.tipo_cuenta_bienestar_id' => 5,
-                'cn.activo' => 'S',
-                'cn.socio_id' => $this->socioID()
-            ])
-            ->get();
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $MN = DB::table('cuenta_bienestar as cb')
+                ->select([
+                    'cb.id',
+                    DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                    'cb.numero_documento_1 as codigo',
+                    'cb.archivo_documento_1 as comprobante',
+                    'cb.monto_egreso as monto',
+                    'cn.rut_nacimiento as rut'
+                ])
+                ->join('anio as a', 'a.id', 'cb.anio_id')
+                ->join('mes as m', 'm.id', 'cb.mes_id')
+                ->join('cbe_nacimiento as cn', 'cn.cuenta_bienestar_id', 'cb.id')
+                ->orderBy('cb.dia', 'asc')
+                ->where([
+                    'cb.activo' => 'S',
+                    'cb.tipo_cuenta_bienestar_id' => 5,
+                    'cn.activo' => 'S',
+                    'cn.socio_id' => $this->socioID()
+                ])
+                ->get();
 
-        if (!$MN->isEmpty()) {
-            foreach ($MN as $key) {
-                $carga =  DB::table('cargas_legales_socio')
-                    ->select([
-                        DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
-                        'archivo as certificado'
-                    ])
-                    ->where([
-                        'activo' => 'S',
-                        'socio_id' => $this->socioID(),
-                        'rut' => $key->rut
-                    ])
-                    ->get();
+            if (!$MN->isEmpty()) {
+                foreach ($MN as $key) {
+                    $carga =  DB::table('cargas_legales_socio')
+                        ->select([
+                            DB::raw("concat(nombres,' ',apellido_paterno,' ',apellido_materno) as nombre"),
+                            'archivo as certificado'
+                        ])
+                        ->where([
+                            'activo' => 'S',
+                            'socio_id' => $this->socioID(),
+                            'rut' => $key->rut
+                        ])
+                        ->get();
 
-                if (!$carga->isEmpty()) {
-                    $key->nombre = $carga[0]->nombre;
-                    $key->certificado = $carga[0]->certificado;
+                    if (!$carga->isEmpty()) {
+                        $key->nombre = $carga[0]->nombre;
+                        $key->certificado = $carga[0]->certificado;
+                    }
                 }
+                return ['estado' => 'success', 'nacimientos' => $MN];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];
             }
-            return ['estado' => 'success', 'nacimientos' => $MN];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por nacimiento cobrados.'];
+            return $verificarSocio;
         }
     }
 
     protected function traerFallecimientos()
     {
-        $MF = DB::table('cuenta_bienestar as cb')
-            ->select([
-                'cb.id',
-                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
-                'cb.numero_documento_1 as codigo',
-                'cb.archivo_documento_1 as comprobante',
-                'cb.archivo_documento_2 as certificado',
-                'cb.monto_egreso as monto',
-                'cf.rut_fallecido as rut'
-            ])
-            ->join('anio as a', 'a.id', 'cb.anio_id')
-            ->join('mes as m', 'm.id', 'cb.mes_id')
-            ->join('cbe_fallecimiento as cf', 'cf.cuenta_bienestar_id', 'cb.id')
-            ->orderBy('cb.dia', 'asc')
-            ->where([
-                'cb.activo' => 'S',
-                'cb.tipo_cuenta_bienestar_id' => 4,
-                'cf.activo' => 'S',
-                'cf.socio_id' => $this->socioID()
-            ])
-            ->get();
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $MF = DB::table('cuenta_bienestar as cb')
+                ->select([
+                    'cb.id',
+                    DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                    'cb.numero_documento_1 as codigo',
+                    'cb.archivo_documento_1 as comprobante',
+                    'cb.archivo_documento_2 as certificado',
+                    'cb.monto_egreso as monto',
+                    'cf.rut_fallecido as rut'
+                ])
+                ->join('anio as a', 'a.id', 'cb.anio_id')
+                ->join('mes as m', 'm.id', 'cb.mes_id')
+                ->join('cbe_fallecimiento as cf', 'cf.cuenta_bienestar_id', 'cb.id')
+                ->orderBy('cb.dia', 'asc')
+                ->where([
+                    'cb.activo' => 'S',
+                    'cb.tipo_cuenta_bienestar_id' => 4,
+                    'cf.activo' => 'S',
+                    'cf.socio_id' => $this->socioID()
+                ])
+                ->get();
 
-        if (!$MF->isEmpty()) {
-            foreach ($MF as $key) {
-                $fallecido = $this->verificarFallecido($key->rut);
-                $key->nombre = $fallecido['nombre'];
+            if (!$MF->isEmpty()) {
+                foreach ($MF as $key) {
+                    $fallecido = $this->verificarFallecido($key->rut);
+                    $key->nombre = $fallecido['nombre'];
+                }
+                return ['estado' => 'success', 'fallecimientos' => $MF];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por fallecimiento cobrados.'];
             }
-            return ['estado' => 'success', 'fallecimientos' => $MF];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por fallecimiento cobrados.'];
+            return $verificarSocio;
         }
     }
 
@@ -445,84 +455,94 @@ class PortalSocioMisBeneficios extends Model
 
     protected function traerGastosMedicos()
     {
-        $MGM = DB::table('cuenta_bienestar as cb')
-            ->select([
-                'cb.id',
-                DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
-                'cb.numero_documento_1 as codigo',
-                'cb.archivo_documento_1 as comprobante',
-                'cb.monto_egreso as monto',
-                'cb.descripcion'
-            ])
-            ->join('anio as a', 'a.id', 'cb.anio_id')
-            ->join('mes as m', 'm.id', 'cb.mes_id')
-            ->join('cbe_gastos_medicos as cmg', 'cmg.cuenta_bienestar_id', 'cb.id')
-            ->orderBy('cb.dia', 'asc')
-            ->where([
-                'cb.activo' => 'S',
-                'cb.tipo_cuenta_bienestar_id' => 7,
-                'cmg.activo' => 'S',
-                'cmg.socio_id' => $this->socioID()
-            ])
-            ->get();
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $MGM = DB::table('cuenta_bienestar as cb')
+                ->select([
+                    'cb.id',
+                    DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
+                    'cb.numero_documento_1 as codigo',
+                    'cb.archivo_documento_1 as comprobante',
+                    'cb.monto_egreso as monto',
+                    'cb.descripcion'
+                ])
+                ->join('anio as a', 'a.id', 'cb.anio_id')
+                ->join('mes as m', 'm.id', 'cb.mes_id')
+                ->join('cbe_gastos_medicos as cmg', 'cmg.cuenta_bienestar_id', 'cb.id')
+                ->orderBy('cb.dia', 'asc')
+                ->where([
+                    'cb.activo' => 'S',
+                    'cb.tipo_cuenta_bienestar_id' => 7,
+                    'cmg.activo' => 'S',
+                    'cmg.socio_id' => $this->socioID()
+                ])
+                ->get();
 
-        if (!$MGM->isEmpty()) {
-            return ['estado' => 'success', 'GM' => $MGM];
+            if (!$MGM->isEmpty()) {
+                return ['estado' => 'success', 'GM' => $MGM];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por gastos medicos cobrados.'];
+            }
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes beneficios por gastos medicos cobrados.'];
+            return $verificarSocio;
         }
     }
 
     protected function traerMisAhorros($anio)
     {
-        $ahorro = DB::table('cuenta_consorcio as cc')
-            ->select([
-                'id',
-                DB::raw("coalesce(cc.monto_mes_ds_1, 0) as mes_ds_1"),
-                DB::raw("coalesce(cc.monto_mes_cex_1, 0) as mes_cex_1"),
-                DB::raw("coalesce(cc.monto_mes_ds_2, 0) as mes_ds_2"),
-                DB::raw("coalesce(cc.monto_mes_cex_2, 0) as mes_cex_2"),
-                DB::raw("coalesce(cc.monto_mes_ds_3, 0) as mes_ds_3"),
-                DB::raw("coalesce(cc.monto_mes_cex_3, 0) as mes_cex_3"),
-                DB::raw("coalesce(cc.monto_mes_ds_4, 0) as mes_ds_4"),
-                DB::raw("coalesce(cc.monto_mes_cex_4, 0) as mes_cex_4"),
-                DB::raw("coalesce(cc.monto_mes_ds_5, 0) as mes_ds_5"),
-                DB::raw("coalesce(cc.monto_mes_cex_5, 0) as mes_cex_5"),
-                DB::raw("coalesce(cc.monto_mes_ds_6, 0) as mes_ds_6"),
-                DB::raw("coalesce(cc.monto_mes_cex_6, 0) as mes_cex_6"),
-                DB::raw("coalesce(cc.monto_mes_ds_7, 0) as mes_ds_7"),
-                DB::raw("coalesce(cc.monto_mes_cex_7, 0) as mes_cex_7"),
-                DB::raw("coalesce(cc.monto_mes_ds_8, 0) as mes_ds_8"),
-                DB::raw("coalesce(cc.monto_mes_cex_8, 0) as mes_cex_8"),
-                DB::raw("coalesce(cc.monto_mes_ds_9, 0) as mes_ds_9"),
-                DB::raw("coalesce(cc.monto_mes_cex_9, 0) as mes_cex_9"),
-                DB::raw("coalesce(cc.monto_mes_ds_10, 0) as mes_ds_10"),
-                DB::raw("coalesce(cc.monto_mes_cex_10, 0) as mes_cex_10"),
-                DB::raw("coalesce(cc.monto_mes_ds_11, 0) as mes_ds_11"),
-                DB::raw("coalesce(cc.monto_mes_cex_11, 0) as mes_cex_11"),
-                DB::raw("coalesce(cc.monto_mes_ds_12, 0) as mes_ds_12"),
-                DB::raw("coalesce(cc.monto_mes_cex_12, 0) as mes_cex_12")
-            ])
-            ->where([
-                'cc.vinculado' => 'S',
-                'cc.anio_id' => $anio,
-                'cc.socio_id' => $this->socioID()
-            ])
-            ->get();
+        $verificarSocio = $this->verificarSocio($this->socioID());
+        if ($verificarSocio['estado'] == 'success') {
+            $ahorro = DB::table('cuenta_consorcio as cc')
+                ->select([
+                    'id',
+                    DB::raw("coalesce(cc.monto_mes_ds_1, 0) as mes_ds_1"),
+                    DB::raw("coalesce(cc.monto_mes_cex_1, 0) as mes_cex_1"),
+                    DB::raw("coalesce(cc.monto_mes_ds_2, 0) as mes_ds_2"),
+                    DB::raw("coalesce(cc.monto_mes_cex_2, 0) as mes_cex_2"),
+                    DB::raw("coalesce(cc.monto_mes_ds_3, 0) as mes_ds_3"),
+                    DB::raw("coalesce(cc.monto_mes_cex_3, 0) as mes_cex_3"),
+                    DB::raw("coalesce(cc.monto_mes_ds_4, 0) as mes_ds_4"),
+                    DB::raw("coalesce(cc.monto_mes_cex_4, 0) as mes_cex_4"),
+                    DB::raw("coalesce(cc.monto_mes_ds_5, 0) as mes_ds_5"),
+                    DB::raw("coalesce(cc.monto_mes_cex_5, 0) as mes_cex_5"),
+                    DB::raw("coalesce(cc.monto_mes_ds_6, 0) as mes_ds_6"),
+                    DB::raw("coalesce(cc.monto_mes_cex_6, 0) as mes_cex_6"),
+                    DB::raw("coalesce(cc.monto_mes_ds_7, 0) as mes_ds_7"),
+                    DB::raw("coalesce(cc.monto_mes_cex_7, 0) as mes_cex_7"),
+                    DB::raw("coalesce(cc.monto_mes_ds_8, 0) as mes_ds_8"),
+                    DB::raw("coalesce(cc.monto_mes_cex_8, 0) as mes_cex_8"),
+                    DB::raw("coalesce(cc.monto_mes_ds_9, 0) as mes_ds_9"),
+                    DB::raw("coalesce(cc.monto_mes_cex_9, 0) as mes_cex_9"),
+                    DB::raw("coalesce(cc.monto_mes_ds_10, 0) as mes_ds_10"),
+                    DB::raw("coalesce(cc.monto_mes_cex_10, 0) as mes_cex_10"),
+                    DB::raw("coalesce(cc.monto_mes_ds_11, 0) as mes_ds_11"),
+                    DB::raw("coalesce(cc.monto_mes_cex_11, 0) as mes_cex_11"),
+                    DB::raw("coalesce(cc.monto_mes_ds_12, 0) as mes_ds_12"),
+                    DB::raw("coalesce(cc.monto_mes_cex_12, 0) as mes_cex_12")
+                ])
+                ->where([
+                    'cc.vinculado' => 'S',
+                    'cc.anio_id' => $anio,
+                    'cc.socio_id' => $this->socioID()
+                ])
+                ->get();
 
-        if (!$ahorro->isEmpty()) {
-            $sum = 0;
+            if (!$ahorro->isEmpty()) {
+                $sum = 0;
 
-            foreach ($ahorro[0] as $key) {
-                $sum = $sum + $key;
+                foreach ($ahorro[0] as $key) {
+                    $sum = $sum + $key;
+                }
+                $DS = $this->sumaDSMisAhorros($anio);
+                $CE = $this->sumaCEMisAhorros($anio);
+                $total = $sum - $ahorro[0]->id;
+
+                return ['estado' => 'success', 'ahorro' => $ahorro, 'total' => $total, 'DS' => $DS['DS'], 'CE' => $CE['CE']];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'Aun no tienes ahorros en el año ingresado.'];
             }
-            $DS = $this->sumaDSMisAhorros($anio);
-            $CE = $this->sumaCEMisAhorros($anio);
-            $total = $sum - $ahorro[0]->id;
-
-            return ['estado' => 'success', 'ahorro' => $ahorro, 'total' => $total, 'DS' => $DS['DS'], 'CE' => $CE['CE']];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no tienes ahorros en el año ingresado.'];
+            return $verificarSocio;
         }
     }
 
@@ -564,7 +584,7 @@ class PortalSocioMisBeneficios extends Model
 
     protected function sumaCEMisAhorros($anio)
     {
-        $DS = DB::table('cuenta_consorcio')
+        $CE = DB::table('cuenta_consorcio')
             ->select([
                 DB::raw("coalesce(monto_mes_cex_1, 0) as mes_cex_1"),
                 DB::raw("coalesce(monto_mes_cex_2, 0) as mes_cex_2"),
@@ -586,10 +606,10 @@ class PortalSocioMisBeneficios extends Model
             ])
             ->get();
 
-        if (!$DS->isEmpty()) {
+        if (!$CE->isEmpty()) {
             $sum = 0;
 
-            foreach ($DS[0] as $key) {
+            foreach ($CE[0] as $key) {
                 $sum = $sum + $key;
             }
             return ['estado' => 'success', 'CE' => $sum];

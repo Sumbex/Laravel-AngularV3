@@ -8,6 +8,7 @@ use App\SocioCarga;
 use App\SocioConyuge;
 use App\CbeNacimiento;
 use App\SocioSituacion;
+use App\CuentaConsorcio;
 use App\CbeFallecimiento;
 use App\CbeGastosMedicos;
 use App\SocioBeneficiario;
@@ -224,7 +225,14 @@ class SocioController extends Controller
             case 'fecha_egreso':
                 $s->fecha_egreso = $r->valor;
                 if($s->save()){
-                    return ['estado'=>'success','mensaje' => 'Fecha de egreso actualizada!' ];
+
+                    $desvincular = $this->desvincular_socio_consorcio($s);
+
+                    if ($desvincular) {
+                        return ['estado'=>'success','mensaje' => 'Fecha de egreso actualizada, socio desvinculado!' ];
+                    }
+                    return ['estado'=>'failed','mensaje' => 'Fecha de egreso actualizada' ];
+
                 }else{
                     return ['estado'=>'failed','mensaje' => 'Error al actualizar!' ];
                 }
@@ -234,6 +242,26 @@ class SocioController extends Controller
                 # code...
                 break;
         }
+    }
+
+    function desvincular_socio_consorcio($s){
+
+        $f = $this->div_fecha($s->fecha_egreso);
+        $anio = $this->anio_tipo_id($f['anio']);
+
+        $cc = CuentaConsorcio::where(['anio_id' => $anio->id,'socio_id' => $s->id])->first();
+
+        if ($cc) {
+
+            $cc->vinculado = 'N'; //aqui el socio se desvincula de consorcio en el año indicado
+
+            if ($cc->save()) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+
     }
 
     public function socio_por_rut($rut)
@@ -1669,6 +1697,18 @@ class SocioController extends Controller
                 'fallecimiento' => $fall,
                 'gastos_medicos' => $gm
             ];
+    }
+
+    public function anio_tipo_id($value)
+    {
+
+    	$data = DB::table('anio')->where('descripcion', $value)->first();
+
+    	if(!empty($data)){
+
+    	 	return $data;
+    	} 
+    		
     }
 
 

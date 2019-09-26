@@ -267,6 +267,7 @@ class CuentaConsorcio extends Model
         $listar = DB::select("SELECT 
                                 s.id socio_id,
                                 cc.id cuenta_consorcio_id,
+                                cc.vinculado,
                                 concat(nombres,' ',a_paterno,' ',a_materno) nombre,
                                 COALESCE(monto_mes_ds_1,0) monto_mes_ds_1,
                                 COALESCE(monto_mes_cex_1,0) monto_mes_cex_1,

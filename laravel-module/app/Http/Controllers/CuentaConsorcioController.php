@@ -60,4 +60,15 @@ class CuentaConsorcioController extends Controller
     {
         return CuentaConsorcio::total_anual_socio($anio_id);
     }
+
+    public function filtrar_tabla_consorcio($anio_id, $search='')
+    {
+        return CuentaConsorcio::filtrar_tabla_consorcio($anio_id, $search);
+    }
+    // TABLA DESVINCULADOS
+
+    public function tabla_desvinculados($anio_id)
+    {
+         return CuentaConsorcio::tabla_desvinculados($anio_id);
+    }
 }

@@ -148,9 +148,9 @@ class CuentaConsorcio extends Model
 
               $estado = EstadoConsorcioDs::insertar($r->socio_id, $r->mes_id, $r->anio_id);
               if ($estado) {
-                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+                return ['estado'=>'success', 'mensaje'=>'Día de sueldo actualizado'];
               }
-              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado día de sueldo pero no se ha reecalculado el estado'];
               
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al actualizar día de sueldo'];
@@ -182,9 +182,9 @@ class CuentaConsorcio extends Model
 
             $estado = EstadoConsorcioDs::insertar($r->socio_id, $r->mes_id, $r->anio_id);
               if ($estado) {
-                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+                return ['estado'=>'success', 'mensaje'=>'Día de sueldo actualizado'];
               }
-              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado día de sueldo pero no se ha reecalculado el estado'];
               
           }
           return ['estado'=>'failed', 'mensaje'=>'Error al ingresar día de sueldo'];
@@ -258,7 +258,7 @@ class CuentaConsorcio extends Model
               return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
 
           }
-          return ['estado'=>'failed', 'mensaje'=>'Error al ingresar día de sueldo'];
+          return ['estado'=>'failed', 'mensaje'=>'Error al ingresar cuota extraordinaria'];
       }
     }
 
@@ -433,7 +433,7 @@ class CuentaConsorcio extends Model
                                   
                                   from cuenta_consorcio cc
                                   inner join socios s on s.id = cc.socio_id 
-                                  where cc.anio_id = 1
+                                  where cc.anio_id = $anio_id
                               ) x");
          if (count($listar) > 0) {
     		    return response()->json($listar[0]);

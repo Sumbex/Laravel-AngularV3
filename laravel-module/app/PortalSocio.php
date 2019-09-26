@@ -1078,8 +1078,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if (!$conyuge->isEmpty()) {
             return ['estado' => 'success'];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no has ingresado a tu conyuge, si deseas ingresarla como carga legal debes dirigirte al formulario de conyuge.'];
-            //return ['estado' => 'failed', 'mensaje' => 'La conyuge que intentas ingresar no existe o no es la misma ingresada en el formulario de conyuge.'];
+            //return ['estado' => 'failed', 'mensaje' => 'Aun no has ingresado a tu conyuge, si deseas ingresarla como carga legal debes dirigirte al formulario de conyuge.'];
+            return ['estado' => 'failed', 'mensaje' => 'La conyuge que intentas ingresar no existe o no es la misma ingresada en el formulario de conyuge.'];
         }
     }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
+import { BryanBienestarService } from 'src/app/servicios/bryans-bienestar.service';
 
 @Component({
   selector: 'app-fondos-mutuos-socio',
@@ -9,11 +10,21 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 })
 export class FondosMutuosSocioComponent implements OnInit {
 
+  //Variables para los select de año y mes
+  selectAnio;
+  idAnioActual;
+
+  //Variable para las cargas
+  cargandoTabla = false;
+
   //variable para asociar al modal
   modalPagosPrestamos;
 
   //Objeto con los datos del Prestamo
-  datosFondosMutuos;
+  datosAhorros;
+  totalesMensuales;
+  totalAhorros;
+  totalMesSolo;
 
   //Bloquear Muestro de pagos
 
@@ -21,30 +32,66 @@ export class FondosMutuosSocioComponent implements OnInit {
   loadingTabla = true;
 
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService, private _bienestarService: BryanBienestarService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
 
   ngOnInit() {
-    this.getFondosMutuos();
+    //Cargar Años
+    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    this.cargarFechasActuales();
   }
 
-  openPDF(content) {
-    this.modalService.open(content, {size: 'lg'});
+  changeAnio(valorSelect){
+    this.limpiarTabla();
+    this.idAnioActual = valorSelect.target.value;
+    this.recargarTabla();
+  }
+
+  cargarFechasActuales() {
+    //Cargar id del Año actual
+    this._portalSociosService.getAnioActual().subscribe(
+      response => {
+        this.idAnioActual = response.id;
+        this.getFondosMutuos();
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   getFondosMutuos(){
-    this._portalSociosService.getFondosMutuos().subscribe(response => {
+    this.cargandoTabla = true;
+    this._bienestarService.getAhorrosSocio(this.idAnioActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoTabla = false;
       }else{
-        this.datosFondosMutuos = response;
+        this.datosAhorros = response.ahorro[0];
+        this.totalMesSolo = response.mensual[0];
+        this.totalAhorros = response.total;
+        this.totalesMensuales = response;
+        console.log(this.datosAhorros);
+        this.cargandoTabla = false;
       }
     },
     error=> {
       console.log(error);
+      this.cargandoTabla = false;
     })
+  }
+
+  limpiarTabla(){
+    this.datosAhorros = '';
+    this.totalAhorros = '';
+    this.totalesMensuales = '';
+  }
+
+  recargarTabla(){
+    this.limpiarTabla();
+    this.getFondosMutuos();
   }
 
 }

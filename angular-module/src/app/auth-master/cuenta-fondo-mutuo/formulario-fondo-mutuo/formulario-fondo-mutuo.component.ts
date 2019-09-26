@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SociosService } from 'src/app/servicios/socios.service';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AniosService } from 'src/app/servicios/anios.service';
+import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 
 @Component({
   selector: 'app-formulario-fondo-mutuo',
@@ -10,55 +10,200 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FormularioFondoMutuoComponent implements OnInit {
 
-    //Variables buscador socio
-    blockSocio: boolean = false;
-    rut: '';
-    fechaSocioTest: '';
-    rutSocioTest: '';
-    idSocio: '';
-    nombreSocioTest = '';
-    nombreUpperSocio = '';
+  socios;
+  search: string = '';
+  mod_editar = null;
+  mod_validar = null;
+  blockLoad = false;
+  blockLoad2 = false;
 
-    constructor(
-      private _SociosService: SociosService,
-      private _validarusuario: ValidarUsuarioService,
-      config: NgbModalConfig,
-      private modalService: NgbModal) {
-      config.backdrop = 'static';
-      config.keyboard = false;
-    }
-  ngOnInit() {
+  //actualizar_socio
+  rut;
+  nombres;
+  a_paterno;
+  a_materno;
+  fecha_nacimiento;
+  fecha_ingreso;
+  fecha_egreso;
+
+  //para validar usuario
+  user: object = [];
+  load: boolean = false;
+  modalReference = null;
+  m_val = null;
+  mod_opcion = null;
+
+  closeResult: string;
+  pass: string = '';
+  btn_validar: boolean = false;
+
+  currentLesson: string;
+
+  buttonStatus = false;
+  token = localStorage.getItem('token').replace(/['"]+/g, '');
+  // estado_socio: object = ['estado'];
+  ver_load: boolean = true;
+  ver_estado_soc: boolean = false;
+
+   //variables select año y mes
+   anio; anios;
+   mes; meses;
+   idAnioActual;
+   idMesActual;
+   suc_res1 = false;
+   suc_res2 = false;
+//ingresar consorcio
+   blockIngreso: boolean = false;
+   tipoPago = 1;
+   verInput = false;
+   montoCE;
+
+  constructor(
+    private _time: AniosService,
+    public _validarusuario: ValidarUsuarioService,
+    private _consorcioService: ConsorcioService
+  ) {
+
   }
 
-  buscarSocio() {
-    this.blockSocio = true;
-    this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
-      console.log(response);
-      if (response.estado == "failed") {
-        alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-        this.rut = '';
-        this.fechaSocioTest = '';
-        this.rutSocioTest = '';
-        this.nombreSocioTest = '';
-        this.idSocio = '';
-        this.blockSocio = false;
+  ngOnInit() {
+
+    if (localStorage.getItem('token') == '') {
+      alert("La sesión ya expiro!");
+
+      location.reload();
+    }
+    this.llenar_select();
+  }
+
+  listar() {
+    this._consorcioService.listar_consorcio().subscribe(
+      response => {
+        console.log(response);
+        this.socios = response;
+        this.blockLoad2 = false;
+
+      }
+    )
+  }
+
+  filtrar() {
+
+    this.blockLoad = true;
+    if (this.search == '') {
+      alert("Ingrese un nombre para filtrar");
+      this.blockLoad = false;
+      return false;
+    } else {
+      this._consorcioService.getTablaFilter(this.search).subscribe(
+        response => {
+          console.log(response);
+          this.socios = response;
+          this.blockLoad = false;
+
+        }
+      )
+    }
+  }
+
+  llenar_select() {
+
+    this._time.getAnios().subscribe(
+      response => {
+        this.anios = response;
+
+
+        this._time.getAnioActual().subscribe(
+          (response: { id }) => {
+            this.anio = response.id;
+            this.suc_res1 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+    this._time.getMeses().subscribe(
+      response => {
+        this.meses = response;
+
+        this._time.getMesActual().subscribe(
+          (response: { id }) => {
+            this.mes = response.id;
+            this.suc_res2 = true;
+            this.listo_para_listar(this.suc_res1, this.suc_res2);
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  listo_para_listar(res1, res2) {
+    if (res1 == true && res2 == true) {
+      this.listar();
+    }
+  }
+
+  btn_reload() {
+
+    this.listo_para_listar(this.suc_res1, this.suc_res2);
+
+  }
+
+  insertar_consorcio(id,anio,mes,tipo_consorcio,monto){
+    if (id == '') {
+      alert('ingrese los datos obligatorios (*)');
+      return false;
+    }
+    this.blockIngreso = true;
+    const data = new FormData();
+    data.append('socio_id',id);
+    data.append('anio_id',anio);
+    data.append('mes_id',mes);
+    data.append('tipo_consorcio',tipo_consorcio.value);
+    data.append('monto',monto.value);
+    // data.append('estado_socio',);
+    // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
+
+    this._consorcioService.insertar_consorcio(data).subscribe((response) => {
+      if (response.estado == 'failed') {
+        alert(response.mensaje);
+        this.blockIngreso = false;
         return false;
-      } else {
-        this.rut = '';
-        this.fechaSocioTest = response.fecha_nacimiento;
-        this.rutSocioTest = response.rut;
-        this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
-        this.nombreUpperSocio = this.nombreSocioTest.toUpperCase();
-        this.idSocio = response.id;
-        this.blockSocio = false;
+      }
+      if (response.estado == 'success') {
+        id = '';
+        anio = '';
+        mes = '';
+        if(this.tipoPago == 1){
+          alert(this.tipoPago);
+          monto.value= '';
+        }
+        alert(response.mensaje);
+        this.blockIngreso = false;
+        document.getElementById('refrescarTabla').click();
+        return false;
       }
     },
       error => {
         console.log(error);
-        this.blockSocio = false;
+        this.blockIngreso = false;
+        return false;
       }
     );
-
   }
 
 }

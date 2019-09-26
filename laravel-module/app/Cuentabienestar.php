@@ -326,7 +326,7 @@ class Cuentabienestar extends Model
                         definicion,
                         tcb.id as tipo_cuenta_bienestar_id,
                         tcb.descripcion as tipo_cuenta,
-                        cbe.descripcion,
+                        upper(cbe.descripcion) descripcion,
                         tcb.orden 
                     from cuenta_bienestar cbe
                     inner join anio as a on a.id = cbe.anio_id

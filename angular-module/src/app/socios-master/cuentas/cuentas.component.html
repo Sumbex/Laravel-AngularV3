@@ -1,23 +1,27 @@
-    <!--Datos del socio-->
+<!--Datos del socio-->
 
-    <br>
-    
-    <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link" id="socio-tab" data-toggle="tab" href="#socio" role="tab" aria-controls="socio"
-            aria-selected="true">Cuenta Sindical</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="test-tab" data-toggle="tab" href="#test" role="tab" aria-controls="conyuge"
-            aria-selected="false">Cuenta Bienestar</a> <!-- href="#test" -->
-        </li>
-      </ul>
+<br>
 
-    <div class="tab-content" id="myTabContent">
+<ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" id="socio-tab" data-toggle="tab" href="#socio" role="tab" aria-controls="socio"
+      aria-selected="true">Cuenta Sindical</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="test-tab" data-toggle="tab" href="#test" role="tab" aria-controls="conyuge"
+      aria-selected="false">Cuenta Bienestar</a> <!-- href="#test" -->
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="consorcio-tab" data-toggle="tab" href="#consorcio" role="tab" aria-controls="consorcio"
+      aria-selected="false">Cuenta Consorcio</a> <!-- href="#test" -->
+  </li>
+</ul>
 
-    <br>
+<div class="tab-content" id="myTabContent">
 
-    <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
+  <br>
+
+  <div class="tab-pane fade show active" id="socio" role="tabpanel" aria-labelledby="socio-tab">
     <div class="card-header" id="demoFont2">
       <h6 class="card-title">Detalles Cuentas Sindical</h6>
     </div>
@@ -29,14 +33,14 @@
           <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
             <!-- <h3 class="text-center">Cuenta Sindical</h3> -->
             <div class="form-group">
-                <app-sindical></app-sindical> 
+              <app-sindical></app-sindical>
             </div>
           </div>
-                        
+
           <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
             <!-- <h3 class="text-center">Caja Chica</h3> -->
             <div class="form-group">
-              <app-caja-chica></app-caja-chica> 
+              <app-caja-chica></app-caja-chica>
             </div>
           </div>
 
@@ -46,40 +50,63 @@
               <app-camping></app-camping>
             </div>
           </div>
-          
-          </div>
+
         </div>
       </div>
-     </div>
+    </div>
+  </div>
 
-     <div class="tab-pane fade show" id="test" role="tabpanel" aria-labelledby="test-tab">
+  <div class="tab-pane fade show" id="test" role="tabpanel" aria-labelledby="test-tab">
 
-        <div class="card-header" id="demoFont2">
-            <h6 class="card-title">Detalles Cuentas Bienestar</h6>
-          </div>
-      
-          <div class="card">
-            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-              <div class="row justify-content-center">
-      
-                <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                  <!-- <h3 class="text-center">Cuenta Sindical</h3> -->
-                  <div class="form-group">
-                      <app-cuenta-bienestar-socios></app-cuenta-bienestar-socios> 
-                  </div>
-                </div>
-                              
-                <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                  <!-- <h3 class="text-center">Caja Chica</h3> -->
-                  <div class="form-group">
-                    <app-caja-bienestar-socios></app-caja-bienestar-socios> 
-                  </div>
-                </div>
-                
-                </div>
-              </div>
+    <div class="card-header" id="demoFont2">
+      <h6 class="card-title">Detalles Cuentas Bienestar</h6>
+    </div>
+
+    <div class="card">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row justify-content-center">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
+            <!-- <h3 class="text-center">Cuenta Sindical</h3> -->
+            <div class="form-group">
+              <app-cuenta-bienestar-socios></app-cuenta-bienestar-socios>
             </div>
+          </div>
 
-     </div>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
+            <!-- <h3 class="text-center">Caja Chica</h3> -->
+            <div class="form-group">
+              <app-caja-bienestar-socios></app-caja-bienestar-socios>
+            </div>
+          </div>
 
-    </div><br>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tab-pane fade show" id="consorcio" role="tabpanel" aria-labelledby="consorcio-tab">
+
+    <div class="card-header" id="demoFont2">
+      <h6 class="card-title">Detalles Cuenta Sindical</h6>
+    </div>
+
+    <div class="card">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row justify-content-center">
+
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12"> <br>
+            <!-- <h3 class="text-center">Cuenta Sindical</h3> -->
+            <div class="form-group">
+              <app-consorcio></app-consorcio>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div><br>

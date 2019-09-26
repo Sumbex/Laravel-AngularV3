@@ -11,12 +11,19 @@
       }
   
       label,input, button{
-        font-size: 12px;
+        font-size: 11px;
       }
   
       tr,th{
-        font-size: 12px;
+        font-size: 8.5px;
       }
+      .sociosNombre{
+        font-size: 8.5px;
+      }
+      .sociosNombre2{
+        font-size: 8px;
+      }
+
       th{
         color: white;
         background: #138D75;
@@ -62,4 +69,16 @@
         margin-bottom:5px !important; 
         margin-top:5px !important;
         height: 10px;
+        }
+
+        .red{
+          color: #ED213A;
+          font-weight: bold;
+        }
+        .black{
+          color: black;
+          font-weight: bold;
+        }
+        .green{
+          background: #82E0AA;
         }

@@ -182,18 +182,18 @@
              [ngClass]="{'green': item?.monto_mes_cex_12 != '0'}"> 
              {{item?.monto_mes_cex_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
             <td colspan="1" class="sociosNombre">
-              <b>{{item?.monto_total_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+              <b>{{item?.monto_total_ds_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
-              <b>{{item?.monto_total_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+              <b>{{item?.monto_total_cex_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
               <b>{{item?.monto_total_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
           <tr class="text-center">
             <th colspan="28" class="text-right">TOTAL ANUAL</th>
             <td colspan="1" class="sociosNombre">
-              <b>{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+              <b>{{sociosAnual?.monto_total_ds_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
-              <b>{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+              <b>{{sociosAnual?.monto_total_cex_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
               <b>{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>

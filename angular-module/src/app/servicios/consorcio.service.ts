@@ -53,6 +53,17 @@ export class ConsorcioService {
     });
   }
 
+  getTablaConsorcio(anio,buscar): Observable<any> {
+
+    return this._http.get(this.url + "filtrar_tabla_consorcio/" + anio +"/"+ buscar, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
   getTablaConsorcios(anio): Observable<any> {
 
     return this._http.get(this.url + "cc_listar/" + anio, {
@@ -78,6 +89,17 @@ export class ConsorcioService {
   getTablaConsorciosTotalAnual(anio): Observable<any> {
 
     return this._http.get(this.url + "total_anual_socio/" + anio, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
+  getTablaConsorciosDesvinculados(anio): Observable<any> {
+
+    return this._http.get(this.url + "tabla_desvinculados/" + anio, {
         headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,

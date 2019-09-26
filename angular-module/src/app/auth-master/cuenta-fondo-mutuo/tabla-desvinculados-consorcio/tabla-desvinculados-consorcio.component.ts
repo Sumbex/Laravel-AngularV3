@@ -77,44 +77,11 @@ export class TablaDesvinculadosConsorcioComponent implements OnInit {
 
   listar() {
     this.blockLoad2 = true;
-    this._consorcioService.getTablaConsorcios(this.anio).subscribe(
+    this._consorcioService.getTablaConsorciosDesvinculados(this.anio).subscribe(
       response => {
         console.log(response);
         this.socios = response;
-        this.contador--;
-        if (this.contador == 0) {
           this.blockLoad2 = false;
-        }
-
-      }
-    )
-  }
-
-  listarMensual() {
-    // this.blockLoad2 = true;
-    this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(
-      response => {
-        console.log(response);
-        this.sociosMensual = response;
-        this.contador--;
-        if (this.contador == 0) {
-          this.blockLoad2 = false;
-        }
-
-      }
-    )
-  }
-  listarAnual() {
-    // this.blockLoad2 = true;
-    this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
-      response => {
-        console.log(response);
-        this.sociosAnual = response;
-        this.contador--;
-        if (this.contador == 0) {
-          this.blockLoad2 = false;
-        }
-
       }
     )
   }
@@ -167,13 +134,10 @@ export class TablaDesvinculadosConsorcioComponent implements OnInit {
   listo_para_listar(res1, res2) {
     if (res1 == true && res2 == true) {
       this.listar();
-      this.listarMensual();
-      this.listarAnual();
     }
   }
 
   btn_reload() {
-    this.contador=3;
     this.listo_para_listar(this.suc_res1, this.suc_res2);
 
   }

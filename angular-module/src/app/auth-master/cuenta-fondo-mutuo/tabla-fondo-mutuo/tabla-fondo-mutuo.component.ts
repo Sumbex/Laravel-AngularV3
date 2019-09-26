@@ -127,7 +127,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       this.blockLoad = false;
       return false;
     } else {
-      this._consorcioService.getTablaFilter(this.search).subscribe(
+      this._consorcioService.getTablaConsorcio(this.anio, this.search).subscribe(
         response => {
           console.log(response);
           this.socios = response;

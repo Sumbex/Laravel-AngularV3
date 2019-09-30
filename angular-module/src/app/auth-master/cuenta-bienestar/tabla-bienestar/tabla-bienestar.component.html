@@ -1443,7 +1443,8 @@
           <tr class="text-center">
             <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
             <th style="background: #138D75">N° Doc</th>
-            <th colspan="2" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="1" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF 1</th>
+            <th colspan="1" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF 2</th>
             <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Gastos Medicos
             </th>
             <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
@@ -1534,7 +1535,7 @@
             </ng-template>
             <!--MODAL VISOR PDF-->
 
-            <td colspan="2" class="text-center">
+            <td colspan="1" class="text-center">
               <a (click)="openPDF(visorSindicalMedico1)" style="cursor: pointer" class="btn-primary-outline">
                 <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
               </a>&nbsp;
@@ -1567,6 +1568,63 @@
                 <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
               </a>
             </td>
+            <!--MODAL VISOR PDF-->
+            <ng-template #visorSindicalMedico2 let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
+                  <div class="modal-header text-center" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_2 | safeUrl"
+                      frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <!--MODAL VISOR PDF-->
+
+            <td colspan="1" class="text-center">
+              <a (click)="openPDF(visorSindicalMedico2)" style="cursor: pointer" class="btn-primary-outline">
+                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              </a>&nbsp;
+              <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocMedicoModal2)">
+                <ng-template #DocMedicoModal2 let-c="close" let-d="dismiss">
+                  <div class="modal-header" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                      <label> <strong>Reemplazar Documento Actual </strong></label><i class="far fa-file-pdf"></i>
+                      <input class="form-control-file form-control-file-sm" #DocMedico2 type="file"
+                        (change)="onSelectImage($event)">
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="actualizar(item.id,'archivo_2',DocMedico2,modalUsuario)">Guardar
+                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </div>
+                </ng-template>
+                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+              </a>
+            </td>
+
             <td colspan="4" (click)="openActualizar(descripcionMedicoModal)">
               {{item.descripcion}}
               <ng-template #descripcionMedicoModal let-c="close" let-d="dismiss">

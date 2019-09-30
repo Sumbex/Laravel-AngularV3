@@ -1097,11 +1097,7 @@ module.exports = "<ng-template #consorcio let-modal>\r\n\r\n  <!-- Header Del Mo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = "<!--Datos del socio-->\n\n<br>\n\n<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"socio-tab\" data-toggle=\"tab\" href=\"#socio\" role=\"tab\" aria-controls=\"socio\"\n      aria-selected=\"true\">Cuenta Sindical</a>\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"test-tab\" data-toggle=\"tab\" href=\"#test\" role=\"tab\" aria-controls=\"conyuge\"\n      aria-selected=\"false\">Cuenta Bienestar</a> <!-- href=\"#test\" -->\n  </li>\n  <li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"consorcio-tab\" data-toggle=\"tab\" href=\"#consorcio\" role=\"tab\" aria-controls=\"consorcio\"\n      aria-selected=\"false\">Cuenta Consorcio</a> <!-- href=\"#test\" -->\n  </li>\n</ul>\n\n<div class=\"tab-content\" id=\"myTabContent\">\n\n  <br>\n\n  <div class=\"tab-pane fade show active\" id=\"socio\" role=\"tabpanel\" aria-labelledby=\"socio-tab\">\n    <div class=\"card-header\" id=\"demoFont2\">\n      <h6 class=\"card-title\">Detalles Cuentas Sindical</h6>\n    </div>\n\n    <div class=\"card\">\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n        <div class=\"row justify-content-center\">\n\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n            <!-- <h3 class=\"text-center\">Cuenta Sindical</h3> -->\n            <div class=\"form-group\">\n              <app-sindical></app-sindical>\n            </div>\n          </div>\n\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n            <!-- <h3 class=\"text-center\">Caja Chica</h3> -->\n            <div class=\"form-group\">\n              <app-caja-chica></app-caja-chica>\n            </div>\n          </div>\n\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n            <!-- <h3 class=\"text-center\">Cuenta Camping</h3> -->\n            <div class=\"form-group\">\n              <app-camping></app-camping>\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"tab-pane fade show\" id=\"test\" role=\"tabpanel\" aria-labelledby=\"test-tab\">\n\n    <div class=\"card-header\" id=\"demoFont2\">\n      <h6 class=\"card-title\">Detalles Cuentas Bienestar</h6>\n    </div>\n\n    <div class=\"card\">\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n        <div class=\"row justify-content-center\">\n\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n            <!-- <h3 class=\"text-center\">Cuenta Sindical</h3> -->\n            <div class=\"form-group\">\n              <app-cuenta-bienestar-socios></app-cuenta-bienestar-socios>\n            </div>\n          </div>\n\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n            <!-- <h3 class=\"text-center\">Caja Chica</h3> -->\n            <div class=\"form-group\">\n              <app-caja-bienestar-socios></app-caja-bienestar-socios>\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"tab-pane fade show\" id=\"consorcio\" role=\"tabpanel\" aria-labelledby=\"consorcio-tab\">\n\n    <div class=\"card-header\" id=\"demoFont2\">\n      <h6 class=\"card-title\">Detalles Consorcio</h6>\n    </div>\n\n    <div class=\"card\">\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\n        <div class=\"row justify-content-center\">\n\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\n            <!-- <h3 class=\"text-center\">Cuenta Sindical</h3> -->\n            <div class=\"form-group\">\n              <app-consorcio></app-consorcio>\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n</div><br>"
-=======
 module.exports = "<!--Datos del socio-->\r\n\r\n<br>\r\n\r\n<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"socio-tab\" data-toggle=\"tab\" href=\"#socio\" role=\"tab\" aria-controls=\"socio\"\r\n      aria-selected=\"true\">Cuenta Sindical</a>\r\n  </li>\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"test-tab\" data-toggle=\"tab\" href=\"#test\" role=\"tab\" aria-controls=\"conyuge\"\r\n      aria-selected=\"false\">Cuenta Bienestar</a> <!-- href=\"#test\" -->\r\n  </li>\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"consorcio-tab\" data-toggle=\"tab\" href=\"#consorcio\" role=\"tab\" aria-controls=\"consorcio\"\r\n      aria-selected=\"false\">Cuenta Consorcio</a> <!-- href=\"#test\" -->\r\n  </li>\r\n</ul>\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n  <br>\r\n\r\n  <div class=\"tab-pane fade show active\" id=\"socio\" role=\"tabpanel\" aria-labelledby=\"socio-tab\">\r\n    <div class=\"card-header\" id=\"demoFont2\">\r\n      <h6 class=\"card-title\">Detalles Cuentas Sindical</h6>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n        <div class=\"row justify-content-center\">\r\n\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n            <!-- <h3 class=\"text-center\">Cuenta Sindical</h3> -->\r\n            <div class=\"form-group\">\r\n              <app-sindical></app-sindical>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n            <!-- <h3 class=\"text-center\">Caja Chica</h3> -->\r\n            <div class=\"form-group\">\r\n              <app-caja-chica></app-caja-chica>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n            <!-- <h3 class=\"text-center\">Cuenta Camping</h3> -->\r\n            <div class=\"form-group\">\r\n              <app-camping></app-camping>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade show\" id=\"test\" role=\"tabpanel\" aria-labelledby=\"test-tab\">\r\n\r\n    <div class=\"card-header\" id=\"demoFont2\">\r\n      <h6 class=\"card-title\">Detalles Cuentas Bienestar</h6>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n        <div class=\"row justify-content-center\">\r\n\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n            <!-- <h3 class=\"text-center\">Cuenta Sindical</h3> -->\r\n            <div class=\"form-group\">\r\n              <app-cuenta-bienestar-socios></app-cuenta-bienestar-socios>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n            <!-- <h3 class=\"text-center\">Caja Chica</h3> -->\r\n            <div class=\"form-group\">\r\n              <app-caja-bienestar-socios></app-caja-bienestar-socios>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade show\" id=\"consorcio\" role=\"tabpanel\" aria-labelledby=\"consorcio-tab\">\r\n\r\n    <div class=\"card-header\" id=\"demoFont2\">\r\n      <h6 class=\"card-title\">Detalles Cuenta Sindical</h6>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n        <div class=\"row justify-content-center\">\r\n\r\n          <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\"> <br>\r\n            <!-- <h3 class=\"text-center\">Cuenta Sindical</h3> -->\r\n            <div class=\"form-group\">\r\n              <app-consorcio></app-consorcio>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div><br>"
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 /***/ }),
 
@@ -1281,8 +1277,8 @@ module.exports = "<app-navbar-socio></app-navbar-socio>\r\n<router-outlet></rout
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./public-master/public-master.component */ "./src/app/public-master/public-master.component.ts");
 /* harmony import */ var _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./public-master/login/login.component */ "./src/app/public-master/login/login.component.ts");
 /* harmony import */ var _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./public-master/about/about.component */ "./src/app/public-master/about/about.component.ts");
@@ -1328,7 +1324,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [
+var routes = [
     { path: '', component: _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_3__["PublicMasterComponent"], children: [
             { path: '', component: _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
             { path: 'about', component: _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_5__["AboutComponent"] }
@@ -1352,14 +1348,17 @@ const routes = [
         ] },
     { path: '**', component: _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_10__["NoEncontradoComponent"] }
 ];
-let AppRoutingModule = class AppRoutingModule {
-};
-AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })
-], AppRoutingModule);
+var AppRoutingModule = /** @class */ (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
 
 
 
@@ -1387,24 +1386,25 @@ module.exports = "\r\n  body  {\r\n    background-image: url(\"/assets/hojas.jpg
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let AppComponent = class AppComponent {
-    constructor() {
+var AppComponent = /** @class */ (function () {
+    function AppComponent() {
         this.title = 'angular-module';
     }
-    ngOnInit() { }
-};
-AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-root',
-        template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
-        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
-        styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], AppComponent);
+    AppComponent.prototype.ngOnInit = function () { };
+    AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-root',
+            template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
+            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AppComponent);
+    return AppComponent;
+}());
 
 
 
@@ -1421,11 +1421,11 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./public-master/login/login.component */ "./src/app/public-master/login/login.component.ts");
@@ -1632,124 +1632,127 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AppModule = class AppModule {
-};
-AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-        declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-            _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
-            _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_10__["PublicMasterComponent"],
-            _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_11__["AboutComponent"],
-            _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_12__["AuthMasterComponent"],
-            _auth_master_cuenta_sindical_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_13__["CuentaSindicalComponent"],
-            _auth_master_cuenta_sindical_formulario_sindical_formulario_sindical_component__WEBPACK_IMPORTED_MODULE_14__["FormularioSindicalComponent"],
-            _auth_master_cuenta_sindical_tabla_sindical_tabla_sindical_component__WEBPACK_IMPORTED_MODULE_15__["TablaSindicalComponent"],
-            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__["NavbarComponent"],
-            _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_17__["CuentaBienestarComponent"],
-            _auth_master_cuenta_bienestar_formulario_bienestar_formulario_bienestar_component__WEBPACK_IMPORTED_MODULE_18__["FormularioBienestarComponent"],
-            _auth_master_cuenta_bienestar_tabla_bienestar_tabla_bienestar_component__WEBPACK_IMPORTED_MODULE_19__["TablaBienestarComponent"],
-            _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_20__["CuentaFondoMutuoComponent"],
-            _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__["FormularioFondoMutuoComponent"],
-            _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__["TablaFondoMutuoComponent"],
-            _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"],
-            _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__["ModalCajaChicaComponent"],
-            _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__["TablaCajaChicaComponent"],
-            _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
-            _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
-            _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
-            _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
-            _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
-            _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"],
-            _auth_master_cuenta_socios_cuenta_socios_component__WEBPACK_IMPORTED_MODULE_38__["CuentaSociosComponent"],
-            _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_39__["FormularioSociosComponent"],
-            _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_40__["ListarSociosComponent"],
-            _auth_master_modal_prestamos_socios_modal_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_41__["ModalPrestamosSociosComponent"],
-            _auth_master_modal_camping_modal_camping_component__WEBPACK_IMPORTED_MODULE_42__["ModalCampingComponent"],
-            _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_43__["TablaPrestamosSociosComponent"],
-            _auth_master_modal_prestamos_socios_interes_prestamo_apuro_economico_interes_prestamo_apuro_economico_component__WEBPACK_IMPORTED_MODULE_44__["InteresPrestamoApuroEconomicoComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_45__["BeneficiosSociosComponent"],
-            _auth_master_modal_prestamos_socios_tabla_prestamos_historicos_socios_tabla_prestamos_historicos_socios_component__WEBPACK_IMPORTED_MODULE_46__["TablaPrestamosHistoricosSociosComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tablas_beneficios_component__WEBPACK_IMPORTED_MODULE_47__["TablasBeneficiosComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_socio_formulario_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_48__["FormularioBeneficiosSocioComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_beneficiario_formulario_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_49__["FormularioBeneficiosBeneficiarioComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_cargas_formulario_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_50__["FormularioBeneficiosCargasComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_conyuge_formulario_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_51__["FormularioBeneficiosConyugeComponent"],
-            _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_padres_suegros_formulario_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_52__["FormularioBeneficiosPadresSuegrosComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_cargas_tabla_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_53__["TablaBeneficiosCargasComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_conyuge_tabla_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_54__["TablaBeneficiosConyugeComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_padres_suegros_tabla_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_55__["TablaBeneficiosPadresSuegrosComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_socio_tabla_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_56__["TablaBeneficiosSocioComponent"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_beneficiario_tabla_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_68__["TablaBeneficiosBeneficiarioComponent"],
-            _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_57__["SociosMasterComponent"],
-            _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_58__["PerfilSocioComponent"],
-            _socios_master_navbar_socio_navbar_socio_component__WEBPACK_IMPORTED_MODULE_59__["NavbarSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_auth_socio_formulario_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_60__["FormularioBeneficiosAuthSocioComponent"],
-            _socios_master_perfil_socio_tabla_beneficios_auth_socio_tabla_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_61__["TablaBeneficiosAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_conyuge_auth_socio_formulario_beneficios_conyuge_auth_socio_component__WEBPACK_IMPORTED_MODULE_62__["FormularioBeneficiosConyugeAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_beneficiario_auth_socio_formulario_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_63__["FormularioBeneficiosBeneficiarioAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_cargas_auth_socio_formulario_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_64__["FormularioBeneficiosCargasAuthSocioComponent"],
-            _socios_master_perfil_socio_formulario_beneficios_padres_suegros_auth_socio_formulario_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_65__["FormularioBeneficiosPadresSuegrosAuthSocioComponent"],
-            _safe_pipe__WEBPACK_IMPORTED_MODULE_69__["SafePipe"],
-            _auth_master_cuenta_socios_tablas_beneficios_tabla_resumen_socio_tabla_resumen_socio_component__WEBPACK_IMPORTED_MODULE_70__["TablaResumenSocioComponent"],
-            _socios_master_perfil_socio_tabla_beneficios_auth_conyuge_tabla_beneficios_auth_conyuge_component__WEBPACK_IMPORTED_MODULE_71__["TablaBeneficiosAuthConyugeComponent"],
-            _socios_master_perfil_socio_tabla_beneficios_beneficiario_auth_socio_tabla_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_72__["TablaBeneficiosBeneficiarioAuthSocioComponent"],
-            _socios_master_perfil_socio_tabla_beneficios_cargas_auth_socio_tabla_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_73__["TablaBeneficiosCargasAuthSocioComponent"],
-            _socios_master_perfil_socio_tabla_beneficios_padres_suegros_auth_socio_tabla_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_74__["TablaBeneficiosPadresSuegrosAuthSocioComponent"],
-            _socios_master_beneficios_socio_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_75__["BeneficiosSocioComponent"],
-            _socios_master_beneficios_socio_prestamos_socios_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_76__["PrestamosSociosComponent"],
-            _socios_master_configuracion_socio_configuracion_socio_component__WEBPACK_IMPORTED_MODULE_77__["ConfiguracionSocioComponent"],
-            _socios_master_configuracion_socio_cambio_contrasenia_socio_cambio_contrasenia_socio_component__WEBPACK_IMPORTED_MODULE_78__["CambioContraseniaSocioComponent"],
-            _socios_master_configuracion_socio_cambio_informacion_personal_socio_cambio_informacion_personal_socio_component__WEBPACK_IMPORTED_MODULE_79__["CambioInformacionPersonalSocioComponent"],
-            _socios_master_cuentas_cuentas_component__WEBPACK_IMPORTED_MODULE_80__["CuentasComponent"],
-            _socios_master_cuentas_sindical_sindical_component__WEBPACK_IMPORTED_MODULE_81__["SindicalComponent"],
-            _socios_master_cuentas_caja_chica_caja_chica_component__WEBPACK_IMPORTED_MODULE_82__["CajaChicaComponent"],
-            _socios_master_cuentas_camping_camping_component__WEBPACK_IMPORTED_MODULE_83__["CampingComponent"],
-            _auth_master_cuenta_bienestar_inicio_cierre_mensual_inicio_cierre_mensual_component__WEBPACK_IMPORTED_MODULE_84__["InicioCierreMensualComponent"],
-            _auth_master_cuenta_bienestar_caja_chica_bienestar_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_85__["CajaChicaBienestarComponent"],
-            _auth_master_cuenta_bienestar_fallecimiento_bienestar_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_86__["FallecimientoBienestarComponent"],
-            _auth_master_cuenta_bienestar_nacimiento_bienestar_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_87__["NacimientoBienestarComponent"],
-            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_88__["GastosMedicosBienestarComponent"],
-            _auth_master_cuenta_bienestar_caja_chica_bienestar_formulario_caja_chica_bienestar_formulario_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_89__["FormularioCajaChicaBienestarComponent"],
-            _auth_master_cuenta_bienestar_caja_chica_bienestar_tabla_caja_chica_bienestar_tabla_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_90__["TablaCajaChicaBienestarComponent"],
-            _auth_master_cuenta_bienestar_fallecimiento_bienestar_formulario_fallecimiento_bienestar_formulario_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_91__["FormularioFallecimientoBienestarComponent"],
-            _auth_master_cuenta_bienestar_fallecimiento_bienestar_tabla_fallecimiento_bienestar_tabla_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_92__["TablaFallecimientoBienestarComponent"],
-            _auth_master_cuenta_bienestar_nacimiento_bienestar_formulario_nacimiento_bienestar_formulario_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_93__["FormularioNacimientoBienestarComponent"],
-            _auth_master_cuenta_bienestar_nacimiento_bienestar_tabla_nacimiento_bienestar_tabla_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_94__["TablaNacimientoBienestarComponent"],
-            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_95__["FormularioGastosMedicosBienestarComponent"],
-            _auth_master_cuenta_bienestar_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_96__["TablaGastosMedicosBienestarComponent"],
-            _socios_master_beneficios_socio_beneficios_cobrados_beneficios_cobrados_component__WEBPACK_IMPORTED_MODULE_97__["BeneficiosCobradosComponent"],
-            _socios_master_beneficios_socio_fondos_mutuos_socio_fondos_mutuos_socio_component__WEBPACK_IMPORTED_MODULE_98__["FondosMutuosSocioComponent"],
-            _socios_master_cuentas_bienestar_cuenta_bienestar_socios_cuenta_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_100__["CuentaBienestarSociosComponent"],
-            _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__["CajaBienestarSociosComponent"],
-            _auth_master_cuenta_fondo_mutuo_tabla_desvinculados_consorcio_tabla_desvinculados_consorcio_component__WEBPACK_IMPORTED_MODULE_102__["TablaDesvinculadosConsorcioComponent"],
-            _socios_master_cuentas_consorcio_consorcio_component__WEBPACK_IMPORTED_MODULE_103__["ConsorcioComponent"],
-            _socios_master_grafico_grafico_componente_grafico_componente_component__WEBPACK_IMPORTED_MODULE_105__["GraficoComponenteComponent"]
-        ],
-        imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
-        ],
-        providers: [
-            _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"],
-            _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
-            _guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_67__["AuthGuardSocioService"],
-            { provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"], useValue: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"] },
-            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JwtHelperService"],
-            _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__["AniosService"],
-            _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__["TipoCuentasService"],
-            _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__["SindicalService"],
-            _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"],
-            _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_66__["PortalSociosService"],
-            _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__["BryanBienestarService"],
-            _servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_104__["BryanConsorcioService"]
-        ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
-    })
-], AppModule);
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+            declarations: [
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _public_master_login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
+                _public_master_public_master_component__WEBPACK_IMPORTED_MODULE_10__["PublicMasterComponent"],
+                _public_master_about_about_component__WEBPACK_IMPORTED_MODULE_11__["AboutComponent"],
+                _auth_master_auth_master_component__WEBPACK_IMPORTED_MODULE_12__["AuthMasterComponent"],
+                _auth_master_cuenta_sindical_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_13__["CuentaSindicalComponent"],
+                _auth_master_cuenta_sindical_formulario_sindical_formulario_sindical_component__WEBPACK_IMPORTED_MODULE_14__["FormularioSindicalComponent"],
+                _auth_master_cuenta_sindical_tabla_sindical_tabla_sindical_component__WEBPACK_IMPORTED_MODULE_15__["TablaSindicalComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__["NavbarComponent"],
+                _auth_master_cuenta_bienestar_cuenta_bienestar_component__WEBPACK_IMPORTED_MODULE_17__["CuentaBienestarComponent"],
+                _auth_master_cuenta_bienestar_formulario_bienestar_formulario_bienestar_component__WEBPACK_IMPORTED_MODULE_18__["FormularioBienestarComponent"],
+                _auth_master_cuenta_bienestar_tabla_bienestar_tabla_bienestar_component__WEBPACK_IMPORTED_MODULE_19__["TablaBienestarComponent"],
+                _auth_master_cuenta_fondo_mutuo_cuenta_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_20__["CuentaFondoMutuoComponent"],
+                _auth_master_cuenta_fondo_mutuo_formulario_fondo_mutuo_formulario_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_21__["FormularioFondoMutuoComponent"],
+                _auth_master_cuenta_fondo_mutuo_tabla_fondo_mutuo_tabla_fondo_mutuo_component__WEBPACK_IMPORTED_MODULE_22__["TablaFondoMutuoComponent"],
+                _no_encontrado_no_encontrado_component__WEBPACK_IMPORTED_MODULE_23__["NoEncontradoComponent"],
+                _auth_master_modal_caja_chica_modal_caja_chica_component__WEBPACK_IMPORTED_MODULE_29__["ModalCajaChicaComponent"],
+                _auth_master_modal_caja_chica_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_30__["TablaCajaChicaComponent"],
+                _auth_master_modal_caja_chica_total_caja_chica_total_caja_chica_component__WEBPACK_IMPORTED_MODULE_31__["TotalCajaChicaComponent"],
+                _auth_master_modal_inicio_mes_modal_inicio_mes_component__WEBPACK_IMPORTED_MODULE_32__["ModalInicioMesComponent"],
+                _auth_master_modal_inicio_mes_tabla_inicio_mes_tabla_inicio_mes_component__WEBPACK_IMPORTED_MODULE_33__["TablaInicioMesComponent"],
+                _auth_master_configuraciones_configuraciones_component__WEBPACK_IMPORTED_MODULE_34__["ConfiguracionesComponent"],
+                _auth_master_configuraciones_cambio_contrasenia_cambio_contrasenia_component__WEBPACK_IMPORTED_MODULE_35__["CambioContraseniaComponent"],
+                _auth_master_cuenta_sindical_total_cuenta_sindical_total_cuenta_sindical_component__WEBPACK_IMPORTED_MODULE_37__["TotalCuentaSindicalComponent"],
+                _auth_master_cuenta_socios_cuenta_socios_component__WEBPACK_IMPORTED_MODULE_38__["CuentaSociosComponent"],
+                _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_39__["FormularioSociosComponent"],
+                _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_40__["ListarSociosComponent"],
+                _auth_master_modal_prestamos_socios_modal_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_41__["ModalPrestamosSociosComponent"],
+                _auth_master_modal_camping_modal_camping_component__WEBPACK_IMPORTED_MODULE_42__["ModalCampingComponent"],
+                _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_43__["TablaPrestamosSociosComponent"],
+                _auth_master_modal_prestamos_socios_interes_prestamo_apuro_economico_interes_prestamo_apuro_economico_component__WEBPACK_IMPORTED_MODULE_44__["InteresPrestamoApuroEconomicoComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_45__["BeneficiosSociosComponent"],
+                _auth_master_modal_prestamos_socios_tabla_prestamos_historicos_socios_tabla_prestamos_historicos_socios_component__WEBPACK_IMPORTED_MODULE_46__["TablaPrestamosHistoricosSociosComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tablas_beneficios_component__WEBPACK_IMPORTED_MODULE_47__["TablasBeneficiosComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_socio_formulario_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_48__["FormularioBeneficiosSocioComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_beneficiario_formulario_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_49__["FormularioBeneficiosBeneficiarioComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_cargas_formulario_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_50__["FormularioBeneficiosCargasComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_conyuge_formulario_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_51__["FormularioBeneficiosConyugeComponent"],
+                _auth_master_cuenta_socios_beneficios_socios_formulario_beneficios_padres_suegros_formulario_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_52__["FormularioBeneficiosPadresSuegrosComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_cargas_tabla_beneficios_cargas_component__WEBPACK_IMPORTED_MODULE_53__["TablaBeneficiosCargasComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_conyuge_tabla_beneficios_conyuge_component__WEBPACK_IMPORTED_MODULE_54__["TablaBeneficiosConyugeComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_padres_suegros_tabla_beneficios_padres_suegros_component__WEBPACK_IMPORTED_MODULE_55__["TablaBeneficiosPadresSuegrosComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_socio_tabla_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_56__["TablaBeneficiosSocioComponent"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_beneficios_beneficiario_tabla_beneficios_beneficiario_component__WEBPACK_IMPORTED_MODULE_68__["TablaBeneficiosBeneficiarioComponent"],
+                _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_57__["SociosMasterComponent"],
+                _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_58__["PerfilSocioComponent"],
+                _socios_master_navbar_socio_navbar_socio_component__WEBPACK_IMPORTED_MODULE_59__["NavbarSocioComponent"],
+                _socios_master_perfil_socio_formulario_beneficios_auth_socio_formulario_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_60__["FormularioBeneficiosAuthSocioComponent"],
+                _socios_master_perfil_socio_tabla_beneficios_auth_socio_tabla_beneficios_auth_socio_component__WEBPACK_IMPORTED_MODULE_61__["TablaBeneficiosAuthSocioComponent"],
+                _socios_master_perfil_socio_formulario_beneficios_conyuge_auth_socio_formulario_beneficios_conyuge_auth_socio_component__WEBPACK_IMPORTED_MODULE_62__["FormularioBeneficiosConyugeAuthSocioComponent"],
+                _socios_master_perfil_socio_formulario_beneficios_beneficiario_auth_socio_formulario_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_63__["FormularioBeneficiosBeneficiarioAuthSocioComponent"],
+                _socios_master_perfil_socio_formulario_beneficios_cargas_auth_socio_formulario_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_64__["FormularioBeneficiosCargasAuthSocioComponent"],
+                _socios_master_perfil_socio_formulario_beneficios_padres_suegros_auth_socio_formulario_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_65__["FormularioBeneficiosPadresSuegrosAuthSocioComponent"],
+                _safe_pipe__WEBPACK_IMPORTED_MODULE_69__["SafePipe"],
+                _auth_master_cuenta_socios_tablas_beneficios_tabla_resumen_socio_tabla_resumen_socio_component__WEBPACK_IMPORTED_MODULE_70__["TablaResumenSocioComponent"],
+                _socios_master_perfil_socio_tabla_beneficios_auth_conyuge_tabla_beneficios_auth_conyuge_component__WEBPACK_IMPORTED_MODULE_71__["TablaBeneficiosAuthConyugeComponent"],
+                _socios_master_perfil_socio_tabla_beneficios_beneficiario_auth_socio_tabla_beneficios_beneficiario_auth_socio_component__WEBPACK_IMPORTED_MODULE_72__["TablaBeneficiosBeneficiarioAuthSocioComponent"],
+                _socios_master_perfil_socio_tabla_beneficios_cargas_auth_socio_tabla_beneficios_cargas_auth_socio_component__WEBPACK_IMPORTED_MODULE_73__["TablaBeneficiosCargasAuthSocioComponent"],
+                _socios_master_perfil_socio_tabla_beneficios_padres_suegros_auth_socio_tabla_beneficios_padres_suegros_auth_socio_component__WEBPACK_IMPORTED_MODULE_74__["TablaBeneficiosPadresSuegrosAuthSocioComponent"],
+                _socios_master_beneficios_socio_beneficios_socio_component__WEBPACK_IMPORTED_MODULE_75__["BeneficiosSocioComponent"],
+                _socios_master_beneficios_socio_prestamos_socios_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_76__["PrestamosSociosComponent"],
+                _socios_master_configuracion_socio_configuracion_socio_component__WEBPACK_IMPORTED_MODULE_77__["ConfiguracionSocioComponent"],
+                _socios_master_configuracion_socio_cambio_contrasenia_socio_cambio_contrasenia_socio_component__WEBPACK_IMPORTED_MODULE_78__["CambioContraseniaSocioComponent"],
+                _socios_master_configuracion_socio_cambio_informacion_personal_socio_cambio_informacion_personal_socio_component__WEBPACK_IMPORTED_MODULE_79__["CambioInformacionPersonalSocioComponent"],
+                _socios_master_cuentas_cuentas_component__WEBPACK_IMPORTED_MODULE_80__["CuentasComponent"],
+                _socios_master_cuentas_sindical_sindical_component__WEBPACK_IMPORTED_MODULE_81__["SindicalComponent"],
+                _socios_master_cuentas_caja_chica_caja_chica_component__WEBPACK_IMPORTED_MODULE_82__["CajaChicaComponent"],
+                _socios_master_cuentas_camping_camping_component__WEBPACK_IMPORTED_MODULE_83__["CampingComponent"],
+                _auth_master_cuenta_bienestar_inicio_cierre_mensual_inicio_cierre_mensual_component__WEBPACK_IMPORTED_MODULE_84__["InicioCierreMensualComponent"],
+                _auth_master_cuenta_bienestar_caja_chica_bienestar_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_85__["CajaChicaBienestarComponent"],
+                _auth_master_cuenta_bienestar_fallecimiento_bienestar_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_86__["FallecimientoBienestarComponent"],
+                _auth_master_cuenta_bienestar_nacimiento_bienestar_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_87__["NacimientoBienestarComponent"],
+                _auth_master_cuenta_bienestar_gastos_medicos_bienestar_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_88__["GastosMedicosBienestarComponent"],
+                _auth_master_cuenta_bienestar_caja_chica_bienestar_formulario_caja_chica_bienestar_formulario_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_89__["FormularioCajaChicaBienestarComponent"],
+                _auth_master_cuenta_bienestar_caja_chica_bienestar_tabla_caja_chica_bienestar_tabla_caja_chica_bienestar_component__WEBPACK_IMPORTED_MODULE_90__["TablaCajaChicaBienestarComponent"],
+                _auth_master_cuenta_bienestar_fallecimiento_bienestar_formulario_fallecimiento_bienestar_formulario_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_91__["FormularioFallecimientoBienestarComponent"],
+                _auth_master_cuenta_bienestar_fallecimiento_bienestar_tabla_fallecimiento_bienestar_tabla_fallecimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_92__["TablaFallecimientoBienestarComponent"],
+                _auth_master_cuenta_bienestar_nacimiento_bienestar_formulario_nacimiento_bienestar_formulario_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_93__["FormularioNacimientoBienestarComponent"],
+                _auth_master_cuenta_bienestar_nacimiento_bienestar_tabla_nacimiento_bienestar_tabla_nacimiento_bienestar_component__WEBPACK_IMPORTED_MODULE_94__["TablaNacimientoBienestarComponent"],
+                _auth_master_cuenta_bienestar_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_formulario_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_95__["FormularioGastosMedicosBienestarComponent"],
+                _auth_master_cuenta_bienestar_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_tabla_gastos_medicos_bienestar_component__WEBPACK_IMPORTED_MODULE_96__["TablaGastosMedicosBienestarComponent"],
+                _socios_master_beneficios_socio_beneficios_cobrados_beneficios_cobrados_component__WEBPACK_IMPORTED_MODULE_97__["BeneficiosCobradosComponent"],
+                _socios_master_beneficios_socio_fondos_mutuos_socio_fondos_mutuos_socio_component__WEBPACK_IMPORTED_MODULE_98__["FondosMutuosSocioComponent"],
+                _socios_master_cuentas_bienestar_cuenta_bienestar_socios_cuenta_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_100__["CuentaBienestarSociosComponent"],
+                _socios_master_cuentas_bienestar_caja_bienestar_socios_caja_bienestar_socios_component__WEBPACK_IMPORTED_MODULE_101__["CajaBienestarSociosComponent"],
+                _auth_master_cuenta_fondo_mutuo_tabla_desvinculados_consorcio_tabla_desvinculados_consorcio_component__WEBPACK_IMPORTED_MODULE_102__["TablaDesvinculadosConsorcioComponent"],
+                _socios_master_cuentas_consorcio_consorcio_component__WEBPACK_IMPORTED_MODULE_103__["ConsorcioComponent"],
+                _socios_master_grafico_grafico_componente_grafico_componente_component__WEBPACK_IMPORTED_MODULE_105__["GraficoComponenteComponent"]
+            ],
+            imports: [
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
+            ],
+            providers: [
+                _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_9__["UsuarioService"],
+                _guardianes_auth_guard_service__WEBPACK_IMPORTED_MODULE_24__["AuthGuardService"],
+                _guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_67__["AuthGuardSocioService"],
+                { provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"], useValue: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JWT_OPTIONS"] },
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_25__["JwtHelperService"],
+                _servicios_anios_service__WEBPACK_IMPORTED_MODULE_26__["AniosService"],
+                _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_27__["TipoCuentasService"],
+                _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_28__["SindicalService"],
+                _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"],
+                _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_66__["PortalSociosService"],
+                _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__["BryanBienestarService"],
+                _servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_104__["BryanConsorcioService"]
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+        })
+    ], AppModule);
+    return AppModule;
+}());
 
 
 
@@ -1777,12 +1780,12 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthMasterComponent", function() { return AuthMasterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/tipo-cuentas.service */ "./src/app/servicios/tipo-cuentas.service.ts");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
@@ -1790,8 +1793,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AuthMasterComponent = class AuthMasterComponent {
-    constructor(_tipoCuentas, _getAnios, _usuariosService, config, modalService, router) {
+var AuthMasterComponent = /** @class */ (function () {
+    function AuthMasterComponent(_tipoCuentas, _getAnios, _usuariosService, config, modalService, router) {
         this._tipoCuentas = _tipoCuentas;
         this._getAnios = _getAnios;
         this._usuariosService = _usuariosService;
@@ -1807,74 +1810,90 @@ let AuthMasterComponent = class AuthMasterComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    AuthMasterComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (localStorage.getItem('definicion') === null && localStorage.getItem('detalle') === null && localStorage.getItem('anios') === null && localStorage.getItem('meses') === null) {
             //Guardar definicion
-            this._tipoCuentas.getDefinicion().subscribe((res) => {
-                this.filtroDefiniciones = res.map(({ id, descripcion }) => ({ id, descripcion }));
-                localStorage.setItem('definicion', JSON.stringify(this.filtroDefiniciones));
+            this._tipoCuentas.getDefinicion().subscribe(function (res) {
+                _this.filtroDefiniciones = res.map(function (_a) {
+                    var id = _a.id, descripcion = _a.descripcion;
+                    return ({ id: id, descripcion: descripcion });
+                });
+                localStorage.setItem('definicion', JSON.stringify(_this.filtroDefiniciones));
             });
             //Guardar Detalle
-            this._tipoCuentas.getTipoCuenta().subscribe((res) => {
-                this.filtroDetalle = res.map(({ id, descripcion }) => ({ id, descripcion }));
-                localStorage.setItem('detalle', JSON.stringify(this.filtroDetalle));
+            this._tipoCuentas.getTipoCuenta().subscribe(function (res) {
+                _this.filtroDetalle = res.map(function (_a) {
+                    var id = _a.id, descripcion = _a.descripcion;
+                    return ({ id: id, descripcion: descripcion });
+                });
+                localStorage.setItem('detalle', JSON.stringify(_this.filtroDetalle));
             });
             //Guardar Anios
-            this._getAnios.getAnios().subscribe((res) => {
-                this.filtroAnios = res.map(({ id, descripcion }) => ({ id, descripcion }));
-                localStorage.setItem('anios', JSON.stringify(this.filtroAnios));
+            this._getAnios.getAnios().subscribe(function (res) {
+                _this.filtroAnios = res.map(function (_a) {
+                    var id = _a.id, descripcion = _a.descripcion;
+                    return ({ id: id, descripcion: descripcion });
+                });
+                localStorage.setItem('anios', JSON.stringify(_this.filtroAnios));
             });
             //Guardar Meses
-            this._getAnios.getMeses().subscribe((res) => {
-                this.filtroMeses = res.map(({ id, descripcion }) => ({ id, descripcion }));
-                localStorage.setItem('meses', JSON.stringify(this.filtroMeses));
+            this._getAnios.getMeses().subscribe(function (res) {
+                _this.filtroMeses = res.map(function (_a) {
+                    var id = _a.id, descripcion = _a.descripcion;
+                    return ({ id: id, descripcion: descripcion });
+                });
+                localStorage.setItem('meses', JSON.stringify(_this.filtroMeses));
                 document.getElementById("closeModalButton").click();
             });
             document.getElementById("openModalButton").click();
             this.startTimer();
             this.startTimerToken();
         }
-    }
-    open(content) {
+    };
+    AuthMasterComponent.prototype.open = function (content) {
         this.modalService.open(content, { centered: true });
-    }
+    };
     //Timer para loading en caso de superar el limite de espera
-    startTimer() {
-        setInterval(() => {
-            if (this.tiempoEspera > 0) {
-                this.tiempoEspera--;
+    AuthMasterComponent.prototype.startTimer = function () {
+        var _this = this;
+        setInterval(function () {
+            if (_this.tiempoEspera > 0) {
+                _this.tiempoEspera--;
             }
             else {
-                this.titleMensaje = 'Error al cargar';
-                this.bodyMensaje = 'La carga esta tardando más de lo esperado, si el problema persiste por favor compruebe su conexión a internet y refresque esta pagina';
+                _this.titleMensaje = 'Error al cargar';
+                _this.bodyMensaje = 'La carga esta tardando más de lo esperado, si el problema persiste por favor compruebe su conexión a internet y refresque esta pagina';
             }
         }, 1000);
-    }
-    startTimerToken() {
-        setInterval(() => {
-            if (this.tiempoEsperaToken > 0) {
-                this.tiempoEsperaToken--;
+    };
+    AuthMasterComponent.prototype.startTimerToken = function () {
+        var _this = this;
+        setInterval(function () {
+            if (_this.tiempoEsperaToken > 0) {
+                _this.tiempoEsperaToken--;
             }
             else {
-                let estadoToken = this._usuariosService.isAuthenticated();
+                var estadoToken = _this._usuariosService.isAuthenticated();
                 if (estadoToken == false) {
-                    this.router.navigate(['']);
+                    _this.router.navigate(['']);
                 }
                 else {
-                    this.tiempoEsperaToken = 1;
+                    _this.tiempoEsperaToken = 1;
                 }
             }
         }, 1000);
-    }
-};
-AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-auth-master',
-        template: __webpack_require__(/*! raw-loader!./auth-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html"),
-        styles: [__webpack_require__(/*! ./auth-master.component.css */ "./src/app/auth-master/auth-master.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
-], AuthMasterComponent);
+    };
+    AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-auth-master',
+            template: __webpack_require__(/*! raw-loader!./auth-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html"),
+            styles: [__webpack_require__(/*! ./auth-master.component.css */ "./src/app/auth-master/auth-master.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+    ], AuthMasterComponent);
+    return AuthMasterComponent;
+}());
 
 
 
@@ -1902,22 +1921,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CambioContraseniaComponent", function() { return CambioContraseniaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
 
 
 
-let CambioContraseniaComponent = 
-// class Abc {
-//     private noLiterals: undefined;
-//     constructor(public estado: string, mensaje:string) { }
-// }
-class CambioContraseniaComponent {
-    constructor(_http, config, modalService) {
+var CambioContraseniaComponent = /** @class */ (function () {
+    function CambioContraseniaComponent(_http, config, modalService) {
         this._http = _http;
         this.modalService = modalService;
         this.load = false;
@@ -1932,65 +1946,67 @@ class CambioContraseniaComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openMensual(Mensual) {
+    CambioContraseniaComponent.prototype.ngOnInit = function () {
+    };
+    CambioContraseniaComponent.prototype.openMensual = function (Mensual) {
         this.modalService.open(Mensual, { size: 'lg' });
-    }
-    send(password, new_password, conf_new_password) {
+    };
+    CambioContraseniaComponent.prototype.send = function (password, new_password, conf_new_password) {
+        var _this = this;
         this.load = true;
         var pass = password.value;
         var new_pass = new_password.value;
         var conf_new_pass = conf_new_password.value;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('password', pass);
         formData.append('new_password', new_pass);
         formData.append('conf_new_password', conf_new_pass);
         this._http.post(this.url + "cambiar_password", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
-            }) }).subscribe((val) => {
+            }) }).subscribe(function (val) {
             //console.log(val.estado);
             if (val.estado == "success") {
                 password.value = '';
                 conf_new_password.value = '';
                 new_password.value = '';
-                this.success_visible = true;
-                this.fail_visible = false;
-                this.success_texto = 'Se ha actualizado la contraseña!.';
-                this.load = false;
+                _this.success_visible = true;
+                _this.fail_visible = false;
+                _this.success_texto = 'Se ha actualizado la contraseña!.';
+                _this.load = false;
             }
             if (val.estado == "false") {
-                this.fail_visible = true;
-                this.success_visible = false;
-                this.success_texto = val.mensaje;
-                this.load = false;
+                _this.fail_visible = true;
+                _this.success_visible = false;
+                _this.success_texto = val.mensaje;
+                _this.load = false;
             }
-        }, response => {
+        }, function (response) {
             console.log("POST call in error", response);
-        }, () => {
+        }, function () {
             console.log("The POST observable is now completed.");
         });
-    }
-    close() {
+    };
+    CambioContraseniaComponent.prototype.close = function () {
         this.success_visible = false;
         this.fail_visible = false;
-    }
-};
-CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cambio-contrasenia',
-        template: __webpack_require__(/*! raw-loader!./cambio-contrasenia.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html"),
-        styles: [__webpack_require__(/*! ./cambio-contrasenia.component.css */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css")]
-    })
-    // class Abc {
-    //     private noLiterals: undefined;
-    //     constructor(public estado: string, mensaje:string) { }
-    // }
-    ,
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], CambioContraseniaComponent);
+    };
+    CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cambio-contrasenia',
+            template: __webpack_require__(/*! raw-loader!./cambio-contrasenia.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.html"),
+            styles: [__webpack_require__(/*! ./cambio-contrasenia.component.css */ "./src/app/auth-master/configuraciones/cambio-contrasenia/cambio-contrasenia.component.css")]
+        })
+        // class Abc {
+        //     private noLiterals: undefined;
+        //     constructor(public estado: string, mensaje:string) { }
+        // }
+        ,
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], CambioContraseniaComponent);
+    return CambioContraseniaComponent;
+}());
 
 
 
@@ -2018,22 +2034,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfiguracionesComponent", function() { return ConfiguracionesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let ConfiguracionesComponent = class ConfiguracionesComponent {
-    constructor() { }
-    ngOnInit() {
+var ConfiguracionesComponent = /** @class */ (function () {
+    function ConfiguracionesComponent() {
     }
-};
-ConfiguracionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-configuraciones',
-        template: __webpack_require__(/*! raw-loader!./configuraciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/configuraciones.component.html"),
-        styles: [__webpack_require__(/*! ./configuraciones.component.css */ "./src/app/auth-master/configuraciones/configuraciones.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], ConfiguracionesComponent);
+    ConfiguracionesComponent.prototype.ngOnInit = function () {
+    };
+    ConfiguracionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-configuraciones',
+            template: __webpack_require__(/*! raw-loader!./configuraciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/configuraciones/configuraciones.component.html"),
+            styles: [__webpack_require__(/*! ./configuraciones.component.css */ "./src/app/auth-master/configuraciones/configuraciones.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ConfiguracionesComponent);
+    return ConfiguracionesComponent;
+}());
 
 
 
@@ -2061,32 +2079,33 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n\r\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CajaChicaBienestarComponent", function() { return CajaChicaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
-let CajaChicaBienestarComponent = class CajaChicaBienestarComponent {
-    constructor(config, modalService) {
+var CajaChicaBienestarComponent = /** @class */ (function () {
+    function CajaChicaBienestarComponent(config, modalService) {
         this.modalService = modalService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openModal(Modal) {
+    CajaChicaBienestarComponent.prototype.ngOnInit = function () {
+    };
+    CajaChicaBienestarComponent.prototype.openModal = function (Modal) {
         this.modalPrincipal = this.modalService.open(Modal, { size: 'xl' });
-    }
-};
-CajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-caja-chica-bienestar',
-        template: __webpack_require__(/*! raw-loader!./caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], CajaChicaBienestarComponent);
+    };
+    CajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-caja-chica-bienestar',
+            template: __webpack_require__(/*! raw-loader!./caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/caja-chica-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], CajaChicaBienestarComponent);
+    return CajaChicaBienestarComponent;
+}());
 
 
 
@@ -2114,13 +2133,13 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioCajaChicaBienestarComponent", function() { return FormularioCajaChicaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
 
 
 
-let FormularioCajaChicaBienestarComponent = class FormularioCajaChicaBienestarComponent {
-    constructor(_binestarService) {
+var FormularioCajaChicaBienestarComponent = /** @class */ (function () {
+    function FormularioCajaChicaBienestarComponent(_binestarService) {
         this._binestarService = _binestarService;
         this.datosCajaChica = {
             numero_documento: '',
@@ -2132,30 +2151,31 @@ let FormularioCajaChicaBienestarComponent = class FormularioCajaChicaBienestarCo
             monto_egreso: null
         };
     }
-    ngOnInit() {
-    }
-    onSelectImage(event) {
+    FormularioCajaChicaBienestarComponent.prototype.ngOnInit = function () {
+    };
+    FormularioCajaChicaBienestarComponent.prototype.onSelectImage = function (event) {
         this.datosCajaChica.archivo_documento = event.srcElement.files[0];
-    }
-    onSubmit(form) {
+    };
+    FormularioCajaChicaBienestarComponent.prototype.onSubmit = function (form) {
+        var _this = this;
         if (form.valid) {
-            this._binestarService.setCajaChicaBienestar(this.datosCajaChica).subscribe(response => {
+            this._binestarService.setCajaChicaBienestar(this.datosCajaChica).subscribe(function (response) {
                 if (response.estado == 'failed' || response.estado == 'failed_v') {
                     alert(response.mensaje);
                 }
                 else {
                     alert(response.mensaje);
                 }
-            }, error => {
-                this.limpiarFormulario();
+            }, function (error) {
+                _this.limpiarFormulario();
                 console.log(error);
             });
         }
         else {
             alert("Formulario no valido");
         }
-    }
-    limpiarFormulario() {
+    };
+    FormularioCajaChicaBienestarComponent.prototype.limpiarFormulario = function () {
         this.datosCajaChica.archivo_documento = null;
         this.datosCajaChica.definicion = '';
         this.datosCajaChica.descripcion = '';
@@ -2163,16 +2183,17 @@ let FormularioCajaChicaBienestarComponent = class FormularioCajaChicaBienestarCo
         this.datosCajaChica.monto_egreso = '';
         this.datosCajaChica.monto_ingreso = '';
         this.datosCajaChica.numero_documento = '';
-    }
-};
-FormularioCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-caja-chica-bienestar',
-        template: __webpack_require__(/*! raw-loader!./formulario-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_2__["BryanBienestarService"]])
-], FormularioCajaChicaBienestarComponent);
+    };
+    FormularioCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-caja-chica-bienestar',
+            template: __webpack_require__(/*! raw-loader!./formulario-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/formulario-caja-chica-bienestar/formulario-caja-chica-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_2__["BryanBienestarService"]])
+    ], FormularioCajaChicaBienestarComponent);
+    return FormularioCajaChicaBienestarComponent;
+}());
 
 
 
@@ -2200,12 +2221,12 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaCajaChicaBienestarComponent", function() { return TablaCajaChicaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 /* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../servicios/global */ "./src/app/servicios/global.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
@@ -2215,8 +2236,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaCajaChicaBienestarComponent = class TablaCajaChicaBienestarComponent {
-    constructor(config, modalService, _usuariosSevice, _bienestarService, _portalSociosService, _http) {
+var TablaCajaChicaBienestarComponent = /** @class */ (function () {
+    function TablaCajaChicaBienestarComponent(config, modalService, _usuariosSevice, _bienestarService, _portalSociosService, _http) {
         this.modalService = modalService;
         this._usuariosSevice = _usuariosSevice;
         this._bienestarService = _bienestarService;
@@ -2237,99 +2258,102 @@ let TablaCajaChicaBienestarComponent = class TablaCajaChicaBienestarComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    TablaCajaChicaBienestarComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         this.cargarFechasActuales();
         this.usuarioLogeado();
-    }
+    };
     //Abrir visor de PDF
-    openPDF(content) {
+    TablaCajaChicaBienestarComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    cargarFechasActuales() {
+    };
+    TablaCajaChicaBienestarComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaCajaChica();
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaCajaChica();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(response => {
-            this.idMesActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaCajaChica();
+        this._portalSociosService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaCajaChica();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(valorSelect) {
+    };
+    TablaCajaChicaBienestarComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    changeMes(valorSelect) {
+    };
+    TablaCajaChicaBienestarComponent.prototype.changeMes = function (valorSelect) {
         this.limpiarTabla();
         this.idMesActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    cargarTablaCajaChica() {
+    };
+    TablaCajaChicaBienestarComponent.prototype.cargarTablaCajaChica = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._bienestarService.getCajaChicaBienestar(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._bienestarService.getCajaChicaBienestar(this.idAnioActual, this.idMesActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.datosCajaChica = response;
-                this.totalesCajaChica = response.total;
-                this.montoInicio = response.monto_inicio;
-                this.cargandoTabla = false;
+                _this.datosCajaChica = response;
+                _this.totalesCajaChica = response.total;
+                _this.montoInicio = response.monto_inicio;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    limpiarTabla() {
+    };
+    TablaCajaChicaBienestarComponent.prototype.limpiarTabla = function () {
         this.datosCajaChica = '';
         this.totalesCajaChica = '';
         this.montoInicio = '';
-    }
-    recargarTabla() {
+    };
+    TablaCajaChicaBienestarComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.cargarTablaCajaChica();
-    }
+    };
     //******************CODIGO PARA LA EDICIÓN****************/
-    openEdicionModal(edicion) {
+    TablaCajaChicaBienestarComponent.prototype.openEdicionModal = function (edicion) {
         this.modalService.open(edicion, { size: 'sm' });
-    }
-    onSelectImageEdicion(event) {
+    };
+    TablaCajaChicaBienestarComponent.prototype.onSelectImageEdicion = function (event) {
         this.edicionArchivo = event.srcElement.files[0];
-    }
-    usuarioLogeado() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    TablaCajaChicaBienestarComponent.prototype.usuarioLogeado = function () {
+        var _this = this;
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         this._http.get(this.url + "usuario_logeado", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
-        }).subscribe(response => {
-            this.usuario = response;
-            this.rut = this.usuario.rut;
-        }, error => {
+        }).subscribe(function (response) {
+            _this.usuario = response;
+            _this.rut = _this.usuario.rut;
+        }, function (error) {
             console.log(error);
         });
-    }
-    editarParametro(id, campo, valor) {
+    };
+    TablaCajaChicaBienestarComponent.prototype.editarParametro = function (id, campo, valor) {
         this.idEdicion = id;
         this.campoEdicion = campo;
         this.parametroEdicion = valor;
@@ -2348,62 +2372,65 @@ let TablaCajaChicaBienestarComponent = class TablaCajaChicaBienestarComponent {
             this.edicionTexto = true;
         }
         document.getElementById("openModalButtonEdicion").click();
-    }
-    ingresarModificacionTexto(input) {
+    };
+    TablaCajaChicaBienestarComponent.prototype.ingresarModificacionTexto = function (input) {
         this.blockCajaChica = true;
         this.loadingModificacion = true;
         this.valorInput = input;
         document.getElementById("openModalButtonPass").click();
-    }
-    ingresarModificacionDocumento() {
+    };
+    TablaCajaChicaBienestarComponent.prototype.ingresarModificacionDocumento = function () {
         this.blockCajaChica = true;
         this.loadingModificacion = true;
         document.getElementById("openModalButtonPass").click();
-    }
-    validarUsuario(pass) {
-        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(response => {
+    };
+    TablaCajaChicaBienestarComponent.prototype.validarUsuario = function (pass) {
+        var _this = this;
+        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(function (response) {
             if (response > 0) {
                 document.getElementById("closeModalButtonValidacion").click();
                 //llamar a la función para ingresar la kkck de modificación
-                this.modificacionAprobada();
+                _this.modificacionAprobada();
             }
             else {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert("Acceso denegado");
                 document.getElementById("closeModalButtonEdicion").click();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    modificacionAprobada() {
-        this._bienestarService.updateCampoCajaChica(this.idEdicion, this.campoEdicion, this.valorInput).subscribe(response => {
+    };
+    TablaCajaChicaBienestarComponent.prototype.modificacionAprobada = function () {
+        var _this = this;
+        this._bienestarService.updateCampoCajaChica(this.idEdicion, this.campoEdicion, this.valorInput).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert(response.mensaje.input[0] + "\n " + response.mensaje.input[1]);
             }
             else {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert(response.mensaje);
-                this.cargarTablaCajaChica();
+                _this.cargarTablaCajaChica();
                 document.getElementById("closeModalButtonEdicion").click();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-TablaCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-caja-chica-bienestar',
-        template: __webpack_require__(/*! raw-loader!./tabla-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"]])
-], TablaCajaChicaBienestarComponent);
+    };
+    TablaCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-caja-chica-bienestar',
+            template: __webpack_require__(/*! raw-loader!./tabla-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"]])
+    ], TablaCajaChicaBienestarComponent);
+    return TablaCajaChicaBienestarComponent;
+}());
 
 
 
@@ -2431,22 +2458,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaBienestarComponent", function() { return CuentaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaBienestarComponent = class CuentaBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaBienestarComponent = /** @class */ (function () {
+    function CuentaBienestarComponent() {
     }
-};
-CuentaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-bienestar',
-        template: __webpack_require__(/*! raw-loader!./cuenta-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaBienestarComponent);
+    CuentaBienestarComponent.prototype.ngOnInit = function () {
+    };
+    CuentaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-bienestar',
+            template: __webpack_require__(/*! raw-loader!./cuenta-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/cuenta-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaBienestarComponent);
+    return CuentaBienestarComponent;
+}());
 
 
 
@@ -2474,17 +2503,17 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n\r\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FallecimientoBienestarComponent", function() { return FallecimientoBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let FallecimientoBienestarComponent = class FallecimientoBienestarComponent {
-    constructor(_validarusuario, _bienestarService, config, modalService) {
+var FallecimientoBienestarComponent = /** @class */ (function () {
+    function FallecimientoBienestarComponent(_validarusuario, _bienestarService, config, modalService) {
         this._validarusuario = _validarusuario;
         this._bienestarService = _bienestarService;
         this.modalService = modalService;
@@ -2508,22 +2537,23 @@ let FallecimientoBienestarComponent = class FallecimientoBienestarComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    FallecimientoBienestarComponent.prototype.ngOnInit = function () {
         this.usuario_logeado();
-    }
-    onSelectPDF1(event) {
+    };
+    FallecimientoBienestarComponent.prototype.onSelectPDF1 = function (event) {
         this.InsertarFallecimiento.archivo_documento_1 = event.srcElement.files[0];
-    }
-    onSelectPDF2(event) {
+    };
+    FallecimientoBienestarComponent.prototype.onSelectPDF2 = function (event) {
         this.InsertarFallecimiento.archivo_documento_2 = event.srcElement.files[0];
-    }
-    guardarCuentaBienestar() {
+    };
+    FallecimientoBienestarComponent.prototype.guardarCuentaBienestar = function () {
+        var _this = this;
         if (this.InsertarFallecimiento == null) {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('fecha', this.InsertarFallecimiento.fecha);
         data.append('tipo_cuenta_bienestar_id', '4');
@@ -2534,87 +2564,90 @@ let FallecimientoBienestarComponent = class FallecimientoBienestarComponent {
         data.append('definicion', this.InsertarFallecimiento.definicion);
         data.append('descripcion', this.InsertarFallecimiento.descripcion);
         data.append('rut', this.InsertarFallecimiento.rut);
-        this._bienestarService.insertar_CuentaBienestar(data).subscribe((response) => {
+        this._bienestarService.insertar_CuentaBienestar(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarFallecimiento.fecha = '';
-                this.InsertarFallecimiento.numero_documento_1 = '';
-                this.InsertarFallecimiento.archivo_documento_1 = null;
-                this.InsertarFallecimiento.archivo_documento_2 = null;
-                this.InsertarFallecimiento.monto = '';
-                this.InsertarFallecimiento.definicion = '';
-                this.InsertarFallecimiento.descripcion = '';
-                this.InsertarFallecimiento.rut = '';
+                _this.InsertarFallecimiento.fecha = '';
+                _this.InsertarFallecimiento.numero_documento_1 = '';
+                _this.InsertarFallecimiento.archivo_documento_1 = null;
+                _this.InsertarFallecimiento.archivo_documento_2 = null;
+                _this.InsertarFallecimiento.monto = '';
+                _this.InsertarFallecimiento.definicion = '';
+                _this.InsertarFallecimiento.descripcion = '';
+                _this.InsertarFallecimiento.rut = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
             return false;
         });
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    FallecimientoBienestarComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    FallecimientoBienestarComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', 'ingresar_cb');
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.guardarCuentaBienestar();
-                this.validarFormFallecimiento.close();
+                _this.load = false;
+                _this.guardarCuentaBienestar();
+                _this.validarFormFallecimiento.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.validarFormFallecimiento.close();
+                _this.load = false;
+                _this.validarFormFallecimiento.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(modalUsuario) {
+    };
+    FallecimientoBienestarComponent.prototype.validar_usuario = function (modalUsuario) {
         this.validarFormFallecimiento = this.modalService.open(modalUsuario, { size: 'sm' });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FallecimientoBienestarComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FallecimientoBienestarComponent.prototype, "getNombreSocio", void 0);
-FallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-fallecimiento-bienestar',
-        template: __webpack_require__(/*! raw-loader!./fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
-        src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], FallecimientoBienestarComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FallecimientoBienestarComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FallecimientoBienestarComponent.prototype, "getNombreSocio", void 0);
+    FallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-fallecimiento-bienestar',
+            template: __webpack_require__(/*! raw-loader!./fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/fallecimiento-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
+            src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], FallecimientoBienestarComponent);
+    return FallecimientoBienestarComponent;
+}());
 
 
 
@@ -2642,22 +2675,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioFallecimientoBienestarComponent", function() { return FormularioFallecimientoBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioFallecimientoBienestarComponent = class FormularioFallecimientoBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioFallecimientoBienestarComponent = /** @class */ (function () {
+    function FormularioFallecimientoBienestarComponent() {
     }
-};
-FormularioFallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-fallecimiento-bienestar',
-        template: __webpack_require__(/*! raw-loader!./formulario-fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioFallecimientoBienestarComponent);
+    FormularioFallecimientoBienestarComponent.prototype.ngOnInit = function () {
+    };
+    FormularioFallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-fallecimiento-bienestar',
+            template: __webpack_require__(/*! raw-loader!./formulario-fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/formulario-fallecimiento-bienestar/formulario-fallecimiento-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioFallecimientoBienestarComponent);
+    return FormularioFallecimientoBienestarComponent;
+}());
 
 
 
@@ -2685,22 +2720,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaFallecimientoBienestarComponent", function() { return TablaFallecimientoBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaFallecimientoBienestarComponent = class TablaFallecimientoBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaFallecimientoBienestarComponent = /** @class */ (function () {
+    function TablaFallecimientoBienestarComponent() {
     }
-};
-TablaFallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-fallecimiento-bienestar',
-        template: __webpack_require__(/*! raw-loader!./tabla-fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaFallecimientoBienestarComponent);
+    TablaFallecimientoBienestarComponent.prototype.ngOnInit = function () {
+    };
+    TablaFallecimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-fallecimiento-bienestar',
+            template: __webpack_require__(/*! raw-loader!./tabla-fallecimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-fallecimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/fallecimiento-bienestar/tabla-fallecimiento-bienestar/tabla-fallecimiento-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaFallecimientoBienestarComponent);
+    return TablaFallecimientoBienestarComponent;
+}());
 
 
 
@@ -2728,19 +2765,19 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBienestarComponent", function() { return FormularioBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
 
-let FormularioBienestarComponent = class FormularioBienestarComponent {
-    constructor(_SociosService, _validarusuario, _bienestarService, config, modalService) {
+var FormularioBienestarComponent = /** @class */ (function () {
+    function FormularioBienestarComponent(_SociosService, _validarusuario, _bienestarService, config, modalService) {
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
         this._bienestarService = _bienestarService;
@@ -2774,38 +2811,39 @@ let FormularioBienestarComponent = class FormularioBienestarComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    FormularioBienestarComponent.prototype.ngOnInit = function () {
         this.usuario_logeado();
-    }
-    buscarSocio() {
+    };
+    FormularioBienestarComponent.prototype.buscarSocio = function () {
+        var _this = this;
         this.blockSocio = true;
-        this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
+        this._SociosService.traerDatosSocio(this.rut).subscribe(function (response) {
             console.log(response);
             if (response.estado == "failed") {
                 alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.rut = '';
-                this.fechaSocioTest = '';
-                this.rutSocioTest = '';
-                this.nombreSocioTest = '';
-                this.idSocio = '';
-                this.blockSocio = false;
+                _this.rut = '';
+                _this.fechaSocioTest = '';
+                _this.rutSocioTest = '';
+                _this.nombreSocioTest = '';
+                _this.idSocio = '';
+                _this.blockSocio = false;
                 return false;
             }
             else {
-                this.rut = '';
-                this.fechaSocioTest = response.fecha_nacimiento;
-                this.rutSocioTest = response.rut;
-                this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
-                this.nombreUpperSocio = this.nombreSocioTest.toUpperCase();
-                this.idSocio = response.id;
-                this.blockSocio = false;
+                _this.rut = '';
+                _this.fechaSocioTest = response.fecha_nacimiento;
+                _this.rutSocioTest = response.rut;
+                _this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
+                _this.nombreUpperSocio = _this.nombreSocioTest.toUpperCase();
+                _this.idSocio = response.id;
+                _this.blockSocio = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockSocio = false;
+            _this.blockSocio = false;
         });
-    }
-    ocultarBuscadorSocio(valor) {
+    };
+    FormularioBienestarComponent.prototype.ocultarBuscadorSocio = function (valor) {
         if (valor == true) {
             this.ocultarBuscador = true;
             this.ocultarNac = true;
@@ -2818,17 +2856,18 @@ let FormularioBienestarComponent = class FormularioBienestarComponent {
             this.ocultarFalle = false;
             this.ocultarMed = false;
         }
-    }
-    onSelectPDF(event) {
+    };
+    FormularioBienestarComponent.prototype.onSelectPDF = function (event) {
         this.InsertarCuentaBienestar.archivo_documento_1 = event.srcElement.files[0];
-    }
-    guardarCuentaBienestar() {
+    };
+    FormularioBienestarComponent.prototype.guardarCuentaBienestar = function () {
+        var _this = this;
         if (this.InsertarCuentaBienestar == null) {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.InsertarCuentaBienestar.socioId);
         data.append('fecha', this.InsertarCuentaBienestar.fecha);
         data.append('tipo_cuenta_bienestar_id', this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id);
@@ -2837,104 +2876,108 @@ let FormularioBienestarComponent = class FormularioBienestarComponent {
         data.append('monto', this.InsertarCuentaBienestar.monto);
         data.append('definicion', this.InsertarCuentaBienestar.definicion);
         data.append('descripcion', this.InsertarCuentaBienestar.descripcion);
-        this._bienestarService.insertar_CuentaBienestar(data).subscribe((response) => {
+        this._bienestarService.insertar_CuentaBienestar(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'failed_v') {
                 alert("Verifique que los campos no esten duplicados");
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarCuentaBienestar.socioId = '0';
-                this.InsertarCuentaBienestar.fecha = '';
-                this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id = '';
-                this.InsertarCuentaBienestar.numero_documento_1 = '';
-                this.InsertarCuentaBienestar.archivo_documento_1 = null;
-                this.InsertarCuentaBienestar.monto = '';
-                this.InsertarCuentaBienestar.definicion = '';
-                this.InsertarCuentaBienestar.descripcion = '';
+                _this.InsertarCuentaBienestar.socioId = '0';
+                _this.InsertarCuentaBienestar.fecha = '';
+                _this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id = '';
+                _this.InsertarCuentaBienestar.numero_documento_1 = '';
+                _this.InsertarCuentaBienestar.archivo_documento_1 = null;
+                _this.InsertarCuentaBienestar.monto = '';
+                _this.InsertarCuentaBienestar.definicion = '';
+                _this.InsertarCuentaBienestar.descripcion = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
             return false;
         });
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    FormularioBienestarComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    FormularioBienestarComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', 'ingresar_cb');
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.guardarCuentaBienestar();
-                this.validarFormBienestar.close();
+                _this.load = false;
+                _this.guardarCuentaBienestar();
+                _this.validarFormBienestar.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.validarFormBienestar.close();
+                _this.load = false;
+                _this.validarFormBienestar.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(modalUsuario) {
+    };
+    FormularioBienestarComponent.prototype.validar_usuario = function (modalUsuario) {
         this.validarFormBienestar = this.modalService.open(modalUsuario, { size: 'sm' });
-    }
-    changeDetalle(evento) {
+    };
+    FormularioBienestarComponent.prototype.changeDetalle = function (evento) {
+        var _this = this;
         this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id = evento.target.value;
         if (this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id == '6') {
             var anio = this.InsertarCuentaBienestar.fecha.substring(0, 4);
             var mes = this.InsertarCuentaBienestar.fecha.substring(5, 7);
             this.loadCajaChica = true;
-            this._bienestarService.calcular_caja_chica_cbe(anio, mes).subscribe(response => {
+            this._bienestarService.calcular_caja_chica_cbe(anio, mes).subscribe(function (response) {
                 //console.log(response);
                 if (response.estado == "success") {
-                    this.InsertarCuentaBienestar.monto = response.monto;
-                    this.loadCajaChica = false;
+                    _this.InsertarCuentaBienestar.monto = response.monto;
+                    _this.loadCajaChica = false;
                 }
                 else {
-                    this.InsertarCuentaBienestar.monto = null;
-                    this.loadCajaChica = false;
+                    _this.InsertarCuentaBienestar.monto = null;
+                    _this.loadCajaChica = false;
                 }
-            }, error => {
+            }, function (error) {
                 console.log(error);
             });
         }
         else {
             this.InsertarCuentaBienestar.monto = null;
         }
-    }
-};
-FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-bienestar',
-        template: __webpack_require__(/*! raw-loader!./formulario-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
-        src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]])
-], FormularioBienestarComponent);
+    };
+    FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-bienestar',
+            template: __webpack_require__(/*! raw-loader!./formulario-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/formulario-bienestar/formulario-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
+            src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]])
+    ], FormularioBienestarComponent);
+    return FormularioBienestarComponent;
+}());
 
 
 
@@ -2962,22 +3005,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioGastosMedicosBienestarComponent", function() { return FormularioGastosMedicosBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioGastosMedicosBienestarComponent = class FormularioGastosMedicosBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioGastosMedicosBienestarComponent = /** @class */ (function () {
+    function FormularioGastosMedicosBienestarComponent() {
     }
-};
-FormularioGastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-gastos-medicos-bienestar',
-        template: __webpack_require__(/*! raw-loader!./formulario-gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioGastosMedicosBienestarComponent);
+    FormularioGastosMedicosBienestarComponent.prototype.ngOnInit = function () {
+    };
+    FormularioGastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-gastos-medicos-bienestar',
+            template: __webpack_require__(/*! raw-loader!./formulario-gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/formulario-gastos-medicos-bienestar/formulario-gastos-medicos-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioGastosMedicosBienestarComponent);
+    return FormularioGastosMedicosBienestarComponent;
+}());
 
 
 
@@ -3005,8 +3050,8 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n\r\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GastosMedicosBienestarComponent", function() { return GastosMedicosBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
 
@@ -3014,8 +3059,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let GastosMedicosBienestarComponent = class GastosMedicosBienestarComponent {
-    constructor(_validarusuario, _bienestarService, config, modalService) {
+var GastosMedicosBienestarComponent = /** @class */ (function () {
+    function GastosMedicosBienestarComponent(_validarusuario, _bienestarService, config, modalService) {
         this._validarusuario = _validarusuario;
         this._bienestarService = _bienestarService;
         this.modalService = modalService;
@@ -3037,19 +3082,20 @@ let GastosMedicosBienestarComponent = class GastosMedicosBienestarComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    GastosMedicosBienestarComponent.prototype.ngOnInit = function () {
         this.usuario_logeado();
-    }
-    onSelectPDF(event) {
+    };
+    GastosMedicosBienestarComponent.prototype.onSelectPDF = function (event) {
         this.InsertarMedico.archivo_documento_1 = event.srcElement.files[0];
-    }
-    guardarCuentaBienestar() {
+    };
+    GastosMedicosBienestarComponent.prototype.guardarCuentaBienestar = function () {
+        var _this = this;
         if (this.InsertarMedico == null) {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('fecha', this.InsertarMedico.fecha);
         data.append('tipo_cuenta_bienestar_id', '7');
@@ -3059,89 +3105,92 @@ let GastosMedicosBienestarComponent = class GastosMedicosBienestarComponent {
         data.append('definicion', this.InsertarMedico.definicion);
         data.append('descripcion', this.InsertarMedico.descripcion);
         data.append('rut', this.getRutSocio);
-        this._bienestarService.insertar_CuentaBienestar(data).subscribe((response) => {
+        this._bienestarService.insertar_CuentaBienestar(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarMedico.fecha = '';
-                this.InsertarMedico.numero_documento_1 = '';
-                this.InsertarMedico.archivo_documento_1 = null;
-                this.InsertarMedico.monto = '';
-                this.InsertarMedico.definicion = '';
-                this.InsertarMedico.descripcion = '';
+                _this.InsertarMedico.fecha = '';
+                _this.InsertarMedico.numero_documento_1 = '';
+                _this.InsertarMedico.archivo_documento_1 = null;
+                _this.InsertarMedico.monto = '';
+                _this.InsertarMedico.definicion = '';
+                _this.InsertarMedico.descripcion = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
             return false;
         });
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    GastosMedicosBienestarComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    GastosMedicosBienestarComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', 'ingresar_cb');
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.guardarCuentaBienestar();
-                this.validarFormMedico.close();
+                _this.load = false;
+                _this.guardarCuentaBienestar();
+                _this.validarFormMedico.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.validarFormMedico.close();
+                _this.load = false;
+                _this.validarFormMedico.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(modalUsuario) {
+    };
+    GastosMedicosBienestarComponent.prototype.validar_usuario = function (modalUsuario) {
         this.validarFormMedico = this.modalService.open(modalUsuario, { size: 'sm' });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], GastosMedicosBienestarComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], GastosMedicosBienestarComponent.prototype, "getNombreSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], GastosMedicosBienestarComponent.prototype, "getRutSocio", void 0);
-GastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-gastos-medicos-bienestar',
-        template: __webpack_require__(/*! raw-loader!./gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
-        src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], GastosMedicosBienestarComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], GastosMedicosBienestarComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], GastosMedicosBienestarComponent.prototype, "getNombreSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], GastosMedicosBienestarComponent.prototype, "getRutSocio", void 0);
+    GastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-gastos-medicos-bienestar',
+            template: __webpack_require__(/*! raw-loader!./gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/gastos-medicos-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
+            src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], GastosMedicosBienestarComponent);
+    return GastosMedicosBienestarComponent;
+}());
 
 
 
@@ -3169,22 +3218,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaGastosMedicosBienestarComponent", function() { return TablaGastosMedicosBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaGastosMedicosBienestarComponent = class TablaGastosMedicosBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaGastosMedicosBienestarComponent = /** @class */ (function () {
+    function TablaGastosMedicosBienestarComponent() {
     }
-};
-TablaGastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-gastos-medicos-bienestar',
-        template: __webpack_require__(/*! raw-loader!./tabla-gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaGastosMedicosBienestarComponent);
+    TablaGastosMedicosBienestarComponent.prototype.ngOnInit = function () {
+    };
+    TablaGastosMedicosBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-gastos-medicos-bienestar',
+            template: __webpack_require__(/*! raw-loader!./tabla-gastos-medicos-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-gastos-medicos-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/gastos-medicos-bienestar/tabla-gastos-medicos-bienestar/tabla-gastos-medicos-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaGastosMedicosBienestarComponent);
+    return TablaGastosMedicosBienestarComponent;
+}());
 
 
 
@@ -3212,11 +3263,11 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InicioCierreMensualComponent", function() { return InicioCierreMensualComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
@@ -3225,8 +3276,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let InicioCierreMensualComponent = class InicioCierreMensualComponent {
-    constructor(config, modalService, _cbe, _time, _http) {
+var InicioCierreMensualComponent = /** @class */ (function () {
+    function InicioCierreMensualComponent(config, modalService, _cbe, _time, _http) {
         this.modalService = modalService;
         this._cbe = _cbe;
         this._time = _time;
@@ -3241,112 +3292,119 @@ let InicioCierreMensualComponent = class InicioCierreMensualComponent {
         config.keyboard = false;
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_6__["global"].url;
     }
-    ngOnInit() {
-    }
-    openMensual(Mensual) {
+    InicioCierreMensualComponent.prototype.ngOnInit = function () {
+    };
+    InicioCierreMensualComponent.prototype.openMensual = function (Mensual) {
         this.modalPrincipal = this.modalService.open(Mensual, { size: 'lg' });
         this.llenar_select();
         this.usuario_logeado();
         //console.log(document.getElementById('anio').options.value);
-    }
-    llenar_select() {
-        this._time.getAnios().subscribe(response => {
-            this.anios = response;
-            this.f_anios = response;
-            this._time.getAnioActual().subscribe((response) => {
-                this.anio = response.id;
-                this.f_anio = response.id;
-                this.listar();
-            }, error => {
+    };
+    InicioCierreMensualComponent.prototype.llenar_select = function () {
+        var _this = this;
+        this._time.getAnios().subscribe(function (response) {
+            _this.anios = response;
+            _this.f_anios = response;
+            _this._time.getAnioActual().subscribe(function (response) {
+                _this.anio = response.id;
+                _this.f_anio = response.id;
+                _this.listar();
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-        this._time.getMeses().subscribe(response => {
-            this.meses = response;
-            this._time.getMesActual().subscribe((response) => {
-                this.mes = response.id;
-            }, error => {
+        this._time.getMeses().subscribe(function (response) {
+            _this.meses = response;
+            _this._time.getMesActual().subscribe(function (response) {
+                _this.mes = response.id;
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    guardar() {
-        this._cbe.guardar_iniciomensual(this.anio, this.mes, this.monto).subscribe((response) => {
+    };
+    InicioCierreMensualComponent.prototype.guardar = function () {
+        var _this = this;
+        this._cbe.guardar_iniciomensual(this.anio, this.mes, this.monto).subscribe(function (response) {
             if (response.estado == 'success') {
                 alert("Monto inicial guardado");
-                this.monto = '';
+                _this.monto = '';
             }
             else {
                 alert("Error al guardar");
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    usuario_logeado() {
+    };
+    InicioCierreMensualComponent.prototype.usuario_logeado = function () {
+        var _this = this;
         this._http.get(this.url + "usuario_logeado", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
-        }).subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+        }).subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    InicioCierreMensualComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    InicioCierreMensualComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         this._http.post(this.url + "confirmar_usuario", formData, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
-        }).subscribe((val) => {
+        }).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.guardar();
-                this.load = false;
+                _this.guardar();
+                _this.load = false;
                 // this.modalReference.close();
                 //this.modalService.dismissAll();
-                this.modalReference.close();
+                _this.modalReference.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    calcular() {
-        this._cbe.calcular(this.anio, this.mes).subscribe((response) => {
-            this.monto = response;
-        }, error => {
+    };
+    InicioCierreMensualComponent.prototype.calcular = function () {
+        var _this = this;
+        this._cbe.calcular(this.anio, this.mes).subscribe(function (response) {
+            _this.monto = response;
+        }, function (error) {
         });
-    }
-    listar() {
-        this._cbe.listar_inicio_cierre(this.f_anio).subscribe((response) => {
-            this.tabla = response;
+    };
+    InicioCierreMensualComponent.prototype.listar = function () {
+        var _this = this;
+        this._cbe.listar_inicio_cierre(this.f_anio).subscribe(function (response) {
+            _this.tabla = response;
         });
-    }
-};
-InicioCierreMensualComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-inicio-cierre-mensual',
-        template: __webpack_require__(/*! raw-loader!./inicio-cierre-mensual.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.html"),
-        styles: [__webpack_require__(/*! ./inicio-cierre-mensual.component.css */ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        _servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
-        _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
-], InicioCierreMensualComponent);
+    };
+    InicioCierreMensualComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-inicio-cierre-mensual',
+            template: __webpack_require__(/*! raw-loader!./inicio-cierre-mensual.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.html"),
+            styles: [__webpack_require__(/*! ./inicio-cierre-mensual.component.css */ "./src/app/auth-master/cuenta-bienestar/inicio-cierre-mensual/inicio-cierre-mensual.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            _servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
+            _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
+    ], InicioCierreMensualComponent);
+    return InicioCierreMensualComponent;
+}());
 
 
 
@@ -3374,22 +3432,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioNacimientoBienestarComponent", function() { return FormularioNacimientoBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let FormularioNacimientoBienestarComponent = class FormularioNacimientoBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var FormularioNacimientoBienestarComponent = /** @class */ (function () {
+    function FormularioNacimientoBienestarComponent() {
     }
-};
-FormularioNacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-nacimiento-bienestar',
-        template: __webpack_require__(/*! raw-loader!./formulario-nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], FormularioNacimientoBienestarComponent);
+    FormularioNacimientoBienestarComponent.prototype.ngOnInit = function () {
+    };
+    FormularioNacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-nacimiento-bienestar',
+            template: __webpack_require__(/*! raw-loader!./formulario-nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/formulario-nacimiento-bienestar/formulario-nacimiento-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FormularioNacimientoBienestarComponent);
+    return FormularioNacimientoBienestarComponent;
+}());
 
 
 
@@ -3417,17 +3477,17 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n\r\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NacimientoBienestarComponent", function() { return NacimientoBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let NacimientoBienestarComponent = class NacimientoBienestarComponent {
-    constructor(_validarusuario, _bienestarService, config, modalService) {
+var NacimientoBienestarComponent = /** @class */ (function () {
+    function NacimientoBienestarComponent(_validarusuario, _bienestarService, config, modalService) {
         this._validarusuario = _validarusuario;
         this._bienestarService = _bienestarService;
         this.modalService = modalService;
@@ -3450,19 +3510,20 @@ let NacimientoBienestarComponent = class NacimientoBienestarComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    NacimientoBienestarComponent.prototype.ngOnInit = function () {
         this.usuario_logeado();
-    }
-    onSelectPDF(event) {
+    };
+    NacimientoBienestarComponent.prototype.onSelectPDF = function (event) {
         this.InsertarNacimiento.archivo_documento_1 = event.srcElement.files[0];
-    }
-    guardarCuentaBienestar() {
+    };
+    NacimientoBienestarComponent.prototype.guardarCuentaBienestar = function () {
+        var _this = this;
         if (this.InsertarNacimiento == null) {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('fecha', this.InsertarNacimiento.fecha);
         data.append('tipo_cuenta_bienestar_id', '5');
@@ -3472,87 +3533,90 @@ let NacimientoBienestarComponent = class NacimientoBienestarComponent {
         data.append('definicion', this.InsertarNacimiento.definicion);
         data.append('descripcion', this.InsertarNacimiento.descripcion);
         data.append('rut', this.InsertarNacimiento.rut_carga);
-        this._bienestarService.insertar_CuentaBienestar(data).subscribe((response) => {
+        this._bienestarService.insertar_CuentaBienestar(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'failed_v') {
                 alert("El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido.");
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
                 console.log("AQUI ESTOY");
-                this.InsertarNacimiento.fecha = '';
-                this.InsertarNacimiento.numero_documento_1 = '';
-                this.InsertarNacimiento.archivo_documento_1 = null;
-                this.InsertarNacimiento.monto = '';
-                this.InsertarNacimiento.definicion = '';
-                this.InsertarNacimiento.descripcion = '';
-                this.InsertarNacimiento.rut_carga = '';
+                _this.InsertarNacimiento.fecha = '';
+                _this.InsertarNacimiento.numero_documento_1 = '';
+                _this.InsertarNacimiento.archivo_documento_1 = null;
+                _this.InsertarNacimiento.monto = '';
+                _this.InsertarNacimiento.definicion = '';
+                _this.InsertarNacimiento.descripcion = '';
+                _this.InsertarNacimiento.rut_carga = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
             return false;
         });
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    NacimientoBienestarComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    NacimientoBienestarComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', 'ingresar_cb');
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.guardarCuentaBienestar();
-                this.validarFormNacimiento.close();
+                _this.load = false;
+                _this.guardarCuentaBienestar();
+                _this.validarFormNacimiento.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.validarFormNacimiento.close();
+                _this.load = false;
+                _this.validarFormNacimiento.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(modalUsuario) {
+    };
+    NacimientoBienestarComponent.prototype.validar_usuario = function (modalUsuario) {
         this.validarFormNacimiento = this.modalService.open(modalUsuario, { size: 'sm' });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], NacimientoBienestarComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], NacimientoBienestarComponent.prototype, "getNombreSocio", void 0);
-NacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-nacimiento-bienestar',
-        template: __webpack_require__(/*! raw-loader!./nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
-        src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], NacimientoBienestarComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], NacimientoBienestarComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], NacimientoBienestarComponent.prototype, "getNombreSocio", void 0);
+    NacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-nacimiento-bienestar',
+            template: __webpack_require__(/*! raw-loader!./nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/nacimiento-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
+            src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], NacimientoBienestarComponent);
+    return NacimientoBienestarComponent;
+}());
 
 
 
@@ -3580,22 +3644,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaNacimientoBienestarComponent", function() { return TablaNacimientoBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablaNacimientoBienestarComponent = class TablaNacimientoBienestarComponent {
-    constructor() { }
-    ngOnInit() {
+var TablaNacimientoBienestarComponent = /** @class */ (function () {
+    function TablaNacimientoBienestarComponent() {
     }
-};
-TablaNacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-nacimiento-bienestar',
-        template: __webpack_require__(/*! raw-loader!./tabla-nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablaNacimientoBienestarComponent);
+    TablaNacimientoBienestarComponent.prototype.ngOnInit = function () {
+    };
+    TablaNacimientoBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-nacimiento-bienestar',
+            template: __webpack_require__(/*! raw-loader!./tabla-nacimiento-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-nacimiento-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/nacimiento-bienestar/tabla-nacimiento-bienestar/tabla-nacimiento-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablaNacimientoBienestarComponent);
+    return TablaNacimientoBienestarComponent;
+}());
 
 
 
@@ -3623,8 +3689,8 @@ module.exports = ".my-class { \r\n  color: red;\r\n  font-size: 15px;\r\n  margi
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBienestarComponent", function() { return TablaBienestarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
@@ -3634,8 +3700,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaBienestarComponent = class TablaBienestarComponent {
-    constructor(config, modalService, _time, _validarusuario, _bienestarService) {
+var TablaBienestarComponent = /** @class */ (function () {
+    function TablaBienestarComponent(config, modalService, _time, _validarusuario, _bienestarService) {
         this.modalService = modalService;
         this._time = _time;
         this._validarusuario = _validarusuario;
@@ -3658,55 +3724,57 @@ let TablaBienestarComponent = class TablaBienestarComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openTablaBienestar(TablaBienestar) {
+    TablaBienestarComponent.prototype.ngOnInit = function () {
+    };
+    TablaBienestarComponent.prototype.openTablaBienestar = function (TablaBienestar) {
         this.modalTablaBienestar = this.modalService.open(TablaBienestar, { size: 'xl' });
         this.llenar_select();
-    }
-    openActualizar(Actualizar) {
+    };
+    TablaBienestarComponent.prototype.openActualizar = function (Actualizar) {
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
         this.usuario_logeado();
-    }
-    cerrarActualizar() {
+    };
+    TablaBienestarComponent.prototype.cerrarActualizar = function () {
         this.modalActualizar.close();
-    }
-    openPDF(content) {
+    };
+    TablaBienestarComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    llenar_select() {
-        this._time.getAnios().subscribe(response => {
-            this.anios = response;
-            this._time.getAnioActual().subscribe((response) => {
-                this.anio = response.id;
-                this.suc_res1 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+    };
+    TablaBienestarComponent.prototype.llenar_select = function () {
+        var _this = this;
+        this._time.getAnios().subscribe(function (response) {
+            _this.anios = response;
+            _this._time.getAnioActual().subscribe(function (response) {
+                _this.anio = response.id;
+                _this.suc_res1 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-        this._time.getMeses().subscribe(response => {
-            this.meses = response;
-            this._time.getMesActual().subscribe((response) => {
-                this.mes = response.id;
-                this.suc_res2 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+        this._time.getMeses().subscribe(function (response) {
+            _this.meses = response;
+            _this._time.getMesActual().subscribe(function (response) {
+                _this.mes = response.id;
+                _this.suc_res2 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    TablaBienestarComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             this.cierreMensualAnterior();
             this.refrescarBienestar();
         }
-    }
-    refrescarBienestar() {
+    };
+    TablaBienestarComponent.prototype.refrescarBienestar = function () {
+        var _this = this;
         this.tablaBienestar = [];
         this.gas = [];
         this.reunion = [];
@@ -3722,55 +3790,57 @@ let TablaBienestarComponent = class TablaBienestarComponent {
         this.consorcio = [];
         this.cuotaExtraordinaria = [];
         this.noSindicalizados = [];
-        this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(response => {
+        this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(function (response) {
             if (response == null) {
-                this.tablaBienestar = [];
-                this.gas = [];
-                this.reunion = [];
-                this.votacion = [];
-                this.cajaChica = [];
-                this.fallecimiento = [];
-                this.nacimiento = [];
-                this.medico = [];
-                this.resultado = [];
-                this.actualizarMontoCajaChica = '';
-                this.socioCuota = [];
-                this.inasistenciaElecciones = [];
-                this.consorcio = [];
-                this.cuotaExtraordinaria = [];
-                this.noSindicalizados = [];
+                _this.tablaBienestar = [];
+                _this.gas = [];
+                _this.reunion = [];
+                _this.votacion = [];
+                _this.cajaChica = [];
+                _this.fallecimiento = [];
+                _this.nacimiento = [];
+                _this.medico = [];
+                _this.resultado = [];
+                _this.actualizarMontoCajaChica = '';
+                _this.socioCuota = [];
+                _this.inasistenciaElecciones = [];
+                _this.consorcio = [];
+                _this.cuotaExtraordinaria = [];
+                _this.noSindicalizados = [];
             }
             else {
-                this.tablaBienestar = response;
-                this.gas = this.tablaBienestar.Cuenta_gas;
-                this.reunion = this.tablaBienestar.inasistencia_reunion;
-                this.votacion = this.tablaBienestar.inasistencia_votacion;
-                this.cajaChica = this.tablaBienestar.caja_chica;
-                this.fallecimiento = this.tablaBienestar.fallecimiento;
-                this.nacimiento = this.tablaBienestar.nacimiento;
-                this.medico = this.tablaBienestar.gastos_medicos;
-                this.resultado = this.tablaBienestar.resultado;
-                this.socioCuota = this.tablaBienestar.socio_cuota;
-                this.inasistenciaElecciones = this.tablaBienestar.inasistencia_elecciones;
-                this.consorcio = this.tablaBienestar.consorcio;
-                this.cuotaExtraordinaria = this.tablaBienestar.cuota_extraordinaria;
-                this.noSindicalizados = this.tablaBienestar.no_sindicalizados;
+                _this.tablaBienestar = response;
+                _this.gas = _this.tablaBienestar.Cuenta_gas;
+                _this.reunion = _this.tablaBienestar.inasistencia_reunion;
+                _this.votacion = _this.tablaBienestar.inasistencia_votacion;
+                _this.cajaChica = _this.tablaBienestar.caja_chica;
+                _this.fallecimiento = _this.tablaBienestar.fallecimiento;
+                _this.nacimiento = _this.tablaBienestar.nacimiento;
+                _this.medico = _this.tablaBienestar.gastos_medicos;
+                _this.resultado = _this.tablaBienestar.resultado;
+                _this.socioCuota = _this.tablaBienestar.socio_cuota;
+                _this.inasistenciaElecciones = _this.tablaBienestar.inasistencia_elecciones;
+                _this.consorcio = _this.tablaBienestar.consorcio;
+                _this.cuotaExtraordinaria = _this.tablaBienestar.cuota_extraordinaria;
+                _this.noSindicalizados = _this.tablaBienestar.no_sindicalizados;
             }
-            this.loading = false;
-        }, error => {
+            _this.loading = false;
+        }, function (error) {
             console.log(error);
         });
         this.loading = true;
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    TablaBienestarComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(id, campo, input, validar) {
+    TablaBienestarComponent.prototype.actualizar = function (id, campo, input, validar) {
+        var _this = this;
         if (campo == "archivo_1" || campo == "archivo_2") {
             if (campo == "undefined") {
                 alert("ingrese documento porfavor!");
@@ -3785,115 +3855,118 @@ let TablaBienestarComponent = class TablaBienestarComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
             formData.append('estado', 'modificar_cb');
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', input.value);
-                    this.actualizarLoad = true;
-                    this._bienestarService.getTablaBienestarActualizar(id, campo, this.entrada).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._bienestarService.getTablaBienestarActualizar(id, campo, _this.entrada).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.modalActualizar.close();
-                            this.refrescarBienestar();
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.modalActualizar.close();
+                            _this.refrescarBienestar();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-    cierreMensualAnterior() {
+    };
+    TablaBienestarComponent.prototype.cierreMensualAnterior = function () {
+        var _this = this;
         this.cierreAnterior = [];
-        this._bienestarService.traer_monto_inicial_cbe(this.anio, this.mes).subscribe(response => {
+        this._bienestarService.traer_monto_inicial_cbe(this.anio, this.mes).subscribe(function (response) {
             console.log(response);
             if (response['estado'] == "failed") {
-                this.get_numero = 0;
+                _this.get_numero = 0;
             }
             if (response['estado'] == "success") {
-                this.cierreAnterior = response[0].inicio_mensual;
-                this.get_numero = this.cierreAnterior;
+                _this.cierreAnterior = response[0].inicio_mensual;
+                _this.get_numero = _this.cierreAnterior;
             }
         });
-    }
-    actualizarCaja() {
+    };
+    TablaBienestarComponent.prototype.actualizarCaja = function () {
+        var _this = this;
         this.actualizarRecalcular = true;
-        this._bienestarService.getCalcularCajaChicaActualizar(this.anio, this.mes).subscribe(response => {
+        this._bienestarService.getCalcularCajaChicaActualizar(this.anio, this.mes).subscribe(function (response) {
             //console.log(response);
             if (response.estado == "success") {
                 if (response.monto == 0) {
                     alert("no existe monto el mes anterior");
                     response.monto = "";
-                    this.actualizarRecalcular = false;
-                    this.modalActualizar.close();
+                    _this.actualizarRecalcular = false;
+                    _this.modalActualizar.close();
                 }
-                this.actualizarMontoCajaChica = response.monto;
-                this.actualizarRecalcular = false;
+                _this.actualizarMontoCajaChica = response.monto;
+                _this.actualizarRecalcular = false;
             }
             else {
-                this.actualizarMontoCajaChica = null;
-                this.load = false;
-                this.modalActualizar.close();
-                this.refrescarBienestar();
+                _this.actualizarMontoCajaChica = null;
+                _this.load = false;
+                _this.modalActualizar.close();
+                _this.refrescarBienestar();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    onSelectImage(event) {
+    };
+    TablaBienestarComponent.prototype.onSelectImage = function (event) {
         this.archivoDocumento = event.srcElement.files[0];
-    }
-    btn_reload() {
+    };
+    TablaBienestarComponent.prototype.btn_reload = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-};
-TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-bienestar',
-        template: __webpack_require__(/*! raw-loader!./tabla-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"],
-        src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_5__["BienestarService"]])
-], TablaBienestarComponent);
+    };
+    TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-bienestar',
+            template: __webpack_require__(/*! raw-loader!./tabla-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/tabla-bienestar/tabla-bienestar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"],
+            src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_5__["BienestarService"]])
+    ], TablaBienestarComponent);
+    return TablaBienestarComponent;
+}());
 
 
 
@@ -3921,22 +3994,24 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaFondoMutuoComponent", function() { return CuentaFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaFondoMutuoComponent = class CuentaFondoMutuoComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaFondoMutuoComponent = /** @class */ (function () {
+    function CuentaFondoMutuoComponent() {
     }
-};
-CuentaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-fondo-mutuo',
-        template: __webpack_require__(/*! raw-loader!./cuenta-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaFondoMutuoComponent);
+    CuentaFondoMutuoComponent.prototype.ngOnInit = function () {
+    };
+    CuentaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-fondo-mutuo',
+            template: __webpack_require__(/*! raw-loader!./cuenta-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/cuenta-fondo-mutuo.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaFondoMutuoComponent);
+    return CuentaFondoMutuoComponent;
+}());
 
 
 
@@ -3964,7 +4039,7 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioFondoMutuoComponent", function() { return FormularioFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/consorcio.service */ "./src/app/servicios/consorcio.service.ts");
@@ -3973,8 +4048,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
-    constructor(_time, _validarusuario, _consorcioService) {
+var FormularioFondoMutuoComponent = /** @class */ (function () {
+    function FormularioFondoMutuoComponent(_time, _validarusuario, _consorcioService) {
         this._time = _time;
         this._validarusuario = _validarusuario;
         this._consorcioService = _consorcioService;
@@ -4003,22 +4078,24 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
         this.tipoPago = 1;
         this.verInput = false;
     }
-    ngOnInit() {
+    FormularioFondoMutuoComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('token') == '') {
             alert("La sesión ya expiro!");
             location.reload();
         }
         this.llenar_select();
-    }
-    listar() {
+    };
+    FormularioFondoMutuoComponent.prototype.listar = function () {
+        var _this = this;
         this.blockLoad2 = true;
-        this._consorcioService.listar_consorcio().subscribe(response => {
+        this._consorcioService.listar_consorcio().subscribe(function (response) {
             console.log(response);
-            this.socios = response;
-            this.blockLoad2 = false;
+            _this.socios = response;
+            _this.blockLoad2 = false;
         });
-    }
-    filtrar() {
+    };
+    FormularioFondoMutuoComponent.prototype.filtrar = function () {
+        var _this = this;
         this.blockLoad = true;
         if (this.search == '') {
             alert("Ingrese un nombre para filtrar");
@@ -4026,54 +4103,56 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
             return false;
         }
         else {
-            this._consorcioService.getTablaFilter(this.search).subscribe(response => {
+            this._consorcioService.getTablaFilter(this.search).subscribe(function (response) {
                 console.log(response);
-                this.socios = response;
-                this.blockLoad = false;
+                _this.socios = response;
+                _this.blockLoad = false;
             });
         }
-    }
-    llenar_select() {
-        this._time.getAnios().subscribe(response => {
-            this.anios = response;
-            this._time.getAnioActual().subscribe((response) => {
-                this.anio = response.id;
-                this.suc_res1 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+    };
+    FormularioFondoMutuoComponent.prototype.llenar_select = function () {
+        var _this = this;
+        this._time.getAnios().subscribe(function (response) {
+            _this.anios = response;
+            _this._time.getAnioActual().subscribe(function (response) {
+                _this.anio = response.id;
+                _this.suc_res1 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-        this._time.getMeses().subscribe(response => {
-            this.meses = response;
-            this._time.getMesActual().subscribe((response) => {
-                this.mes = response.id;
-                this.suc_res2 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+        this._time.getMeses().subscribe(function (response) {
+            _this.meses = response;
+            _this._time.getMesActual().subscribe(function (response) {
+                _this.mes = response.id;
+                _this.suc_res2 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    FormularioFondoMutuoComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             this.listar();
         }
-    }
-    btn_reload() {
+    };
+    FormularioFondoMutuoComponent.prototype.btn_reload = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-    insertar_consorcio(id, anio, mes, tipo_consorcio, monto) {
+    };
+    FormularioFondoMutuoComponent.prototype.insertar_consorcio = function (id, anio, mes, tipo_consorcio, monto) {
+        var _this = this;
         if (id == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', id);
         data.append('anio_id', anio);
         data.append('mes_id', mes);
@@ -4081,42 +4160,43 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
         data.append('monto', monto.value);
         // data.append('estado_socio',);
         // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
-        this._consorcioService.insertar_consorcio(data).subscribe((response) => {
+        this._consorcioService.insertar_consorcio(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
                 id = '';
                 anio = '';
                 mes = '';
-                if (this.tipoPago == 1) {
-                    alert(this.tipoPago);
+                if (_this.tipoPago == 1) {
+                    alert(_this.tipoPago);
                     monto.value = '';
                 }
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 document.getElementById('refrescarTabla').click();
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
             return false;
         });
-    }
-};
-FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-fondo-mutuo',
-        template: __webpack_require__(/*! raw-loader!./formulario-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
-        src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["ConsorcioService"]])
-], FormularioFondoMutuoComponent);
+    };
+    FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-fondo-mutuo',
+            template: __webpack_require__(/*! raw-loader!./formulario-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/formulario-fondo-mutuo/formulario-fondo-mutuo.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"],
+            src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["ConsorcioService"]])
+    ], FormularioFondoMutuoComponent);
+    return FormularioFondoMutuoComponent;
+}());
 
 
 
@@ -4144,15 +4224,15 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaDesvinculadosConsorcioComponent", function() { return TablaDesvinculadosConsorcioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/consorcio.service */ "./src/app/servicios/consorcio.service.ts");
 
 
 
 
-let TablaDesvinculadosConsorcioComponent = class TablaDesvinculadosConsorcioComponent {
-    constructor(_time, _consorcioService) {
+var TablaDesvinculadosConsorcioComponent = /** @class */ (function () {
+    function TablaDesvinculadosConsorcioComponent(_time, _consorcioService) {
         this._time = _time;
         this._consorcioService = _consorcioService;
         this.search = '';
@@ -4179,68 +4259,71 @@ let TablaDesvinculadosConsorcioComponent = class TablaDesvinculadosConsorcioComp
         //ingresar consorcio
         this.blockIngreso = false;
     }
-    ngOnInit() {
+    TablaDesvinculadosConsorcioComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('token') == '') {
             alert("La sesión ya expiro!");
             location.reload();
         }
         this.llenar_select();
-    }
-    listar() {
+    };
+    TablaDesvinculadosConsorcioComponent.prototype.listar = function () {
+        var _this = this;
         this.blockLoad2 = true;
-        this._consorcioService.getTablaConsorciosDesvinculados(this.anio).subscribe(response => {
+        this._consorcioService.getTablaConsorciosDesvinculados(this.anio).subscribe(function (response) {
             console.log(response);
-            this.socios = response;
-            this.blockLoad2 = false;
+            _this.socios = response;
+            _this.blockLoad2 = false;
         });
-    }
-    llenar_select() {
-        this._time.getAnios().subscribe(response => {
-            this.anios = response;
-            this._time.getAnioActual().subscribe((response) => {
-                this.anio = response.id;
-                this.suc_res1 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+    };
+    TablaDesvinculadosConsorcioComponent.prototype.llenar_select = function () {
+        var _this = this;
+        this._time.getAnios().subscribe(function (response) {
+            _this.anios = response;
+            _this._time.getAnioActual().subscribe(function (response) {
+                _this.anio = response.id;
+                _this.suc_res1 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-        this._time.getMeses().subscribe(response => {
-            this.meses = response;
-            this._time.getMesActual().subscribe((response) => {
-                this.mes = response.id;
-                this.suc_res2 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+        this._time.getMeses().subscribe(function (response) {
+            _this.meses = response;
+            _this._time.getMesActual().subscribe(function (response) {
+                _this.mes = response.id;
+                _this.suc_res2 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    TablaDesvinculadosConsorcioComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             this.listar();
         }
-    }
-    btn_reload() {
+    };
+    TablaDesvinculadosConsorcioComponent.prototype.btn_reload = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-    ConvertToInt(val) {
+    };
+    TablaDesvinculadosConsorcioComponent.prototype.ConvertToInt = function (val) {
         return parseInt(val);
-    }
-};
-TablaDesvinculadosConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-desvinculados-consorcio',
-        template: __webpack_require__(/*! raw-loader!./tabla-desvinculados-consorcio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-desvinculados-consorcio.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"],
-        src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"]])
-], TablaDesvinculadosConsorcioComponent);
+    };
+    TablaDesvinculadosConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-desvinculados-consorcio',
+            template: __webpack_require__(/*! raw-loader!./tabla-desvinculados-consorcio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-desvinculados-consorcio.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-desvinculados-consorcio/tabla-desvinculados-consorcio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"],
+            src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"]])
+    ], TablaDesvinculadosConsorcioComponent);
+    return TablaDesvinculadosConsorcioComponent;
+}());
 
 
 
@@ -4268,15 +4351,15 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaFondoMutuoComponent", function() { return TablaFondoMutuoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/consorcio.service */ "./src/app/servicios/consorcio.service.ts");
 
 
 
 
-let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
-    constructor(_time, _consorcioService) {
+var TablaFondoMutuoComponent = /** @class */ (function () {
+    function TablaFondoMutuoComponent(_time, _consorcioService) {
         this._time = _time;
         this._consorcioService = _consorcioService;
         this.search = '';
@@ -4303,47 +4386,51 @@ let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
         //ingresar consorcio
         this.blockIngreso = false;
     }
-    ngOnInit() {
+    TablaFondoMutuoComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('token') == '') {
             alert("La sesión ya expiro!");
             location.reload();
         }
         this.llenar_select();
-    }
-    listar() {
+    };
+    TablaFondoMutuoComponent.prototype.listar = function () {
+        var _this = this;
         this.blockLoad2 = true;
-        this._consorcioService.getTablaConsorcios(this.anio).subscribe(response => {
+        this._consorcioService.getTablaConsorcios(this.anio).subscribe(function (response) {
             console.log(response);
-            this.socios = response;
-            this.contador--;
-            if (this.contador == 0) {
-                this.blockLoad2 = false;
+            _this.socios = response;
+            _this.contador--;
+            if (_this.contador == 0) {
+                _this.blockLoad2 = false;
             }
         });
-    }
-    listarMensual() {
+    };
+    TablaFondoMutuoComponent.prototype.listarMensual = function () {
+        var _this = this;
         // this.blockLoad2 = true;
-        this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(response => {
+        this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(function (response) {
             console.log(response);
-            this.sociosMensual = response;
-            this.contador--;
-            if (this.contador == 0) {
-                this.blockLoad2 = false;
+            _this.sociosMensual = response;
+            _this.contador--;
+            if (_this.contador == 0) {
+                _this.blockLoad2 = false;
             }
         });
-    }
-    listarAnual() {
+    };
+    TablaFondoMutuoComponent.prototype.listarAnual = function () {
+        var _this = this;
         // this.blockLoad2 = true;
-        this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(response => {
+        this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(function (response) {
             console.log(response);
-            this.sociosAnual = response;
-            this.contador--;
-            if (this.contador == 0) {
-                this.blockLoad2 = false;
+            _this.sociosAnual = response;
+            _this.contador--;
+            if (_this.contador == 0) {
+                _this.blockLoad2 = false;
             }
         });
-    }
-    filtrar() {
+    };
+    TablaFondoMutuoComponent.prototype.filtrar = function () {
+        var _this = this;
         this.blockLoad = true;
         if (this.search == '') {
             alert("Ingrese un nombre para filtrar");
@@ -4351,63 +4438,65 @@ let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
             return false;
         }
         else {
-            this._consorcioService.getTablaConsorcio(this.anio, this.search).subscribe(response => {
+            this._consorcioService.getTablaConsorcio(this.anio, this.search).subscribe(function (response) {
                 console.log(response);
-                this.socios = response;
-                this.blockLoad = false;
+                _this.socios = response;
+                _this.blockLoad = false;
             });
         }
-    }
-    llenar_select() {
-        this._time.getAnios().subscribe(response => {
-            this.anios = response;
-            this._time.getAnioActual().subscribe((response) => {
-                this.anio = response.id;
-                this.suc_res1 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+    };
+    TablaFondoMutuoComponent.prototype.llenar_select = function () {
+        var _this = this;
+        this._time.getAnios().subscribe(function (response) {
+            _this.anios = response;
+            _this._time.getAnioActual().subscribe(function (response) {
+                _this.anio = response.id;
+                _this.suc_res1 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-        this._time.getMeses().subscribe(response => {
-            this.meses = response;
-            this._time.getMesActual().subscribe((response) => {
-                this.mes = response.id;
-                this.suc_res2 = true;
-                this.listo_para_listar(this.suc_res1, this.suc_res2);
-            }, error => {
+        this._time.getMeses().subscribe(function (response) {
+            _this.meses = response;
+            _this._time.getMesActual().subscribe(function (response) {
+                _this.mes = response.id;
+                _this.suc_res2 = true;
+                _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+            }, function (error) {
                 console.log(error);
             });
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    TablaFondoMutuoComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             this.listar();
             this.listarMensual();
             this.listarAnual();
         }
-    }
-    btn_reload() {
+    };
+    TablaFondoMutuoComponent.prototype.btn_reload = function () {
         this.contador = 3;
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-    ConvertToInt(val) {
+    };
+    TablaFondoMutuoComponent.prototype.ConvertToInt = function (val) {
         return parseInt(val);
-    }
-};
-TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-fondo-mutuo',
-        template: __webpack_require__(/*! raw-loader!./tabla-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"],
-        src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"]])
-], TablaFondoMutuoComponent);
+    };
+    TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-fondo-mutuo',
+            template: __webpack_require__(/*! raw-loader!./tabla-fondo-mutuo.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-fondo-mutuo.component.css */ "./src/app/auth-master/cuenta-fondo-mutuo/tabla-fondo-mutuo/tabla-fondo-mutuo.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"],
+            src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"]])
+    ], TablaFondoMutuoComponent);
+    return TablaFondoMutuoComponent;
+}());
 
 
 
@@ -4435,22 +4524,24 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n/*# sou
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaSindicalComponent", function() { return CuentaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaSindicalComponent = class CuentaSindicalComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaSindicalComponent = /** @class */ (function () {
+    function CuentaSindicalComponent() {
     }
-};
-CuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-sindical',
-        template: __webpack_require__(/*! raw-loader!./cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaSindicalComponent);
+    CuentaSindicalComponent.prototype.ngOnInit = function () {
+    };
+    CuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-sindical',
+            template: __webpack_require__(/*! raw-loader!./cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/cuenta-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaSindicalComponent);
+    return CuentaSindicalComponent;
+}());
 
 
 
@@ -4478,17 +4569,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSindicalComponent", function() { return FormularioSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let FormularioSindicalComponent = class FormularioSindicalComponent {
-    constructor(_sindicalService, _validarusuario, config, modalService2) {
+var FormularioSindicalComponent = /** @class */ (function () {
+    function FormularioSindicalComponent(_sindicalService, _validarusuario, config, modalService2) {
         this._sindicalService = _sindicalService;
         this._validarusuario = _validarusuario;
         this.modalService2 = modalService2;
@@ -4514,7 +4605,7 @@ let FormularioSindicalComponent = class FormularioSindicalComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    FormularioSindicalComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
@@ -4524,107 +4615,112 @@ let FormularioSindicalComponent = class FormularioSindicalComponent {
         //Cargar detalles
         this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
         this.usuario_logeado();
-    }
-    ingresoFormulario() {
+    };
+    FormularioSindicalComponent.prototype.ingresoFormulario = function () {
+        var _this = this;
         this.guardarLoad = true;
-        this._sindicalService.ingresarValor(this.datosSindicales).subscribe(response => {
+        this._sindicalService.ingresarValor(this.datosSindicales).subscribe(function (response) {
             if (response.estado == "success") {
-                this.datosSindicales.fecha = '';
-                this.datosSindicales.nDocumento = '';
-                this.datosSindicales.descripcion = '';
-                this.datosSindicales.monto = null;
+                _this.datosSindicales.fecha = '';
+                _this.datosSindicales.nDocumento = '';
+                _this.datosSindicales.descripcion = '';
+                _this.datosSindicales.monto = null;
                 alert(response.mensaje);
-                this.guardarLoad = false;
+                _this.guardarLoad = false;
             }
             if (response.estado == "failed") {
                 alert(response.mensaje);
-                this.guardarLoad = false;
+                _this.guardarLoad = false;
             }
             if (response.estado == "failed_v") {
                 alert("error de ingreso, verifique que los datos esten bien ingresados y no duplicados ya en la base de datos.");
-                this.guardarLoad = false;
+                _this.guardarLoad = false;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-            };
+            });
         });
-    }
-    onSelectImage(event) {
+    };
+    FormularioSindicalComponent.prototype.onSelectImage = function (event) {
         this.datosSindicales.archivoDocumento = event.srcElement.files[0];
-    }
-    changeDefinicion(evento) {
+    };
+    FormularioSindicalComponent.prototype.changeDefinicion = function (evento) {
         this.datosSindicales.definicion = evento.target.value;
-    }
-    changeDetalle(evento) {
+    };
+    FormularioSindicalComponent.prototype.changeDetalle = function (evento) {
+        var _this = this;
         this.datosSindicales.tipoCuentaSindicato = evento.target.value;
         if (this.datosSindicales.tipoCuentaSindicato == '3') {
             var anio = this.datosSindicales.fecha.substring(0, 4);
             var mes = this.datosSindicales.fecha.substring(5, 7);
             this.loadCajaChica = true;
-            this._sindicalService.getCalcularCajaChica(anio, mes).subscribe(response => {
+            this._sindicalService.getCalcularCajaChica(anio, mes).subscribe(function (response) {
                 //console.log(response);
                 if (response.estado == "success") {
-                    this.datosSindicales.monto = response.monto;
-                    this.loadCajaChica = false;
+                    _this.datosSindicales.monto = response.monto;
+                    _this.loadCajaChica = false;
                 }
                 else {
-                    this.datosSindicales.monto = null;
-                    this.loadCajaChica = false;
+                    _this.datosSindicales.monto = null;
+                    _this.loadCajaChica = false;
                 }
-            }, error => {
+            }, function (error) {
                 console.log(error);
             });
         }
         else {
             this.datosSindicales.monto = null;
         }
-    }
+    };
     //validar usuario
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    FormularioSindicalComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    FormularioSindicalComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', 'ingresar_cs');
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.ingresoFormulario();
-                this.validarFormSindical.close();
+                _this.load = false;
+                _this.ingresoFormulario();
+                _this.validarFormSindical.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.validarFormSindical.close();
+                _this.load = false;
+                _this.validarFormSindical.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(modalUsuario) {
+    };
+    FormularioSindicalComponent.prototype.validar_usuario = function (modalUsuario) {
         //var passwordVacio = <HTMLInputElement>document.getElementById('password');
         //passwordVacio.value ='';
         this.validarFormSindical = this.modalService2.open(modalUsuario, { size: 'sm' });
-    }
-};
-FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-sindical',
-        template: __webpack_require__(/*! raw-loader!./formulario-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], FormularioSindicalComponent);
+    };
+    FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-sindical',
+            template: __webpack_require__(/*! raw-loader!./formulario-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/formulario-sindical/formulario-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], FormularioSindicalComponent);
+    return FormularioSindicalComponent;
+}());
 
 
 
@@ -4652,8 +4748,8 @@ module.exports = ".my-class { \r\n  color: red;\r\n  font-size: 15px;\r\n  margi
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaSindicalComponent", function() { return TablaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
@@ -4665,8 +4761,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaSindicalComponent = class TablaSindicalComponent {
-    constructor(config, modalService, _sindicalService, _fechasService, _validarusuario, _socios) {
+var TablaSindicalComponent = /** @class */ (function () {
+    function TablaSindicalComponent(config, modalService, _sindicalService, _fechasService, _validarusuario, _socios) {
         this.modalService = modalService;
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
@@ -4702,58 +4798,60 @@ let TablaSindicalComponent = class TablaSindicalComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    TablaSindicalComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         //Cargar definiciones
         this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
-    }
-    open(content) {
+    };
+    TablaSindicalComponent.prototype.open = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    cargar_select() {
+    };
+    TablaSindicalComponent.prototype.cargar_select = function () {
+        var _this = this;
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response;
-            this.valorAnio.descripcion = this.idAnioActual.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, error => {
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response;
+            _this.valorAnio.descripcion = _this.idAnioActual.id;
+            _this.suc_res1 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            this.idMesActual = response;
-            this.valorMes.descripcion = this.idMesActual.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, error => {
+        this._fechasService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response;
+            _this.valorMes.descripcion = _this.idMesActual.id;
+            _this.suc_res2 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (error) {
             console.log(error);
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    TablaSindicalComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             this.cierreMensualAnterior();
             this.refrescarSindical();
         }
-    }
-    changeAnio(evento) {
+    };
+    TablaSindicalComponent.prototype.changeAnio = function (evento) {
         this.valorAnio.descripcion = evento.target.value;
         this.cierreMensualAnterior();
         this.refrescarSindical();
-    }
-    changeMes(evento) {
+    };
+    TablaSindicalComponent.prototype.changeMes = function (evento) {
         this.valorMes.descripcion = evento.target.value;
         this.cierreMensualAnterior();
         this.refrescarSindical();
-    }
-    verTablaSindical(tablaGeneral) {
+    };
+    TablaSindicalComponent.prototype.verTablaSindical = function (tablaGeneral) {
         this.abrirTablaSindical = this.modalService.open(tablaGeneral, { size: 'xl' });
         this.cargar_select();
-    }
-    refrescarSindical() {
+    };
+    TablaSindicalComponent.prototype.refrescarSindical = function () {
+        var _this = this;
         this.tablaSindical = [];
         this.fijos = [];
         this.variable = [];
@@ -4762,62 +4860,65 @@ let TablaSindicalComponent = class TablaSindicalComponent {
         this.camping = [];
         this.resultado = [];
         this.actualizarMontoCajaChica = '';
-        this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             if (response == null) {
-                this.tablaSindical = [];
-                this.fijos = [];
-                this.variable = [];
-                this.cajaChica = [];
-                this.prestamo = [];
-                this.camping = [];
-                this.resultado = [];
-                this.actualizarMontoCajaChica = '';
+                _this.tablaSindical = [];
+                _this.fijos = [];
+                _this.variable = [];
+                _this.cajaChica = [];
+                _this.prestamo = [];
+                _this.camping = [];
+                _this.resultado = [];
+                _this.actualizarMontoCajaChica = '';
             }
             else {
-                this.tablaSindical = response;
-                this.fijos = this.tablaSindical.fijo;
-                this.variable = this.tablaSindical.variable;
-                this.cajaChica = this.tablaSindical.caja_chica;
-                this.prestamo = this.tablaSindical.prestamo;
-                this.camping = this.tablaSindical.camping;
-                this.resultado = this.tablaSindical.resultado;
+                _this.tablaSindical = response;
+                _this.fijos = _this.tablaSindical.fijo;
+                _this.variable = _this.tablaSindical.variable;
+                _this.cajaChica = _this.tablaSindical.caja_chica;
+                _this.prestamo = _this.tablaSindical.prestamo;
+                _this.camping = _this.tablaSindical.camping;
+                _this.resultado = _this.tablaSindical.resultado;
             }
-            this.loading = false;
-        }, error => {
+            _this.loading = false;
+        }, function (error) {
             console.log(error);
         });
         this.loading = true;
-    }
-    cierreMensualAnterior() {
+    };
+    TablaSindicalComponent.prototype.cierreMensualAnterior = function () {
+        var _this = this;
         this.cierreAnterior = [];
-        this._sindicalService.getTablaSindicalMontoInicial(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._sindicalService.getTablaSindicalMontoInicial(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             if (response['estado'] == "failed") {
-                this.get_numero = 0;
+                _this.get_numero = 0;
             }
             if (response['estado'] == "success") {
-                this.cierreAnterior = response[0].inicio_mensual;
-                this.get_numero = this.cierreAnterior;
+                _this.cierreAnterior = response[0].inicio_mensual;
+                _this.get_numero = _this.cierreAnterior;
             }
         });
-    }
-    openActualizar(Actualizar) {
+    };
+    TablaSindicalComponent.prototype.openActualizar = function (Actualizar) {
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
         this.usuario_logeado();
-    }
-    cerrarActualizar() {
+    };
+    TablaSindicalComponent.prototype.cerrarActualizar = function () {
         this.modalActualizar.close();
         this.actualizarMontoCajaChica = '';
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaSindicalComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(id, campo, input, validar) {
+    TablaSindicalComponent.prototype.actualizar = function (id, campo, input, validar) {
+        var _this = this;
         if (campo == "archivo") {
             if (campo == "undefined") {
                 alert("ingrese documento porfavor!");
@@ -4832,102 +4933,104 @@ let TablaSindicalComponent = class TablaSindicalComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
             formData.append('estado', 'modificar_cs');
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', input.value);
-                    this.actualizarLoad = true;
-                    this._sindicalService.getTablaSindicalActualizar(id, campo, this.entrada).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._sindicalService.getTablaSindicalActualizar(id, campo, _this.entrada).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.modalActualizar.close();
-                            this.refrescarSindical();
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.modalActualizar.close();
+                            _this.refrescarSindical();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
+    };
     //-------------------------------------------------------------------------------------------
-    onSelectImage(event) {
+    TablaSindicalComponent.prototype.onSelectImage = function (event) {
         this.archivoDocumento = event.srcElement.files[0];
-    }
-    actualizarCaja() {
+    };
+    TablaSindicalComponent.prototype.actualizarCaja = function () {
+        var _this = this;
         this.actualizarRecalcular = true;
-        this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._sindicalService.getCalcularCajaChicaActualizar(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             //console.log(response);
             if (response.estado == "success") {
                 if (response.monto == 0) {
                     alert("no existe monto el mes anterior");
                     response.monto = "";
-                    this.actualizarRecalcular = false;
-                    this.modalActualizar.close();
+                    _this.actualizarRecalcular = false;
+                    _this.modalActualizar.close();
                 }
-                this.actualizarMontoCajaChica = response.monto;
-                this.actualizarRecalcular = false;
+                _this.actualizarMontoCajaChica = response.monto;
+                _this.actualizarRecalcular = false;
             }
             else {
-                this.actualizarMontoCajaChica = null;
-                this.load = false;
+                _this.actualizarMontoCajaChica = null;
+                _this.load = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    btn_reload() {
+    };
+    TablaSindicalComponent.prototype.btn_reload = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-};
-TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-sindical',
-        template: __webpack_require__(/*! raw-loader!./tabla-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"],
-        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_6__["SociosService"]])
-], TablaSindicalComponent);
+    };
+    TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-sindical',
+            template: __webpack_require__(/*! raw-loader!./tabla-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/tabla-sindical/tabla-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"],
+            src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_6__["SociosService"]])
+    ], TablaSindicalComponent);
+    return TablaSindicalComponent;
+}());
 
 
 
@@ -4955,22 +5058,24 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TotalCuentaSindicalComponent", function() { return TotalCuentaSindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TotalCuentaSindicalComponent = class TotalCuentaSindicalComponent {
-    constructor() { }
-    ngOnInit() {
+var TotalCuentaSindicalComponent = /** @class */ (function () {
+    function TotalCuentaSindicalComponent() {
     }
-};
-TotalCuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-total-cuenta-sindical',
-        template: __webpack_require__(/*! raw-loader!./total-cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.html"),
-        styles: [__webpack_require__(/*! ./total-cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TotalCuentaSindicalComponent);
+    TotalCuentaSindicalComponent.prototype.ngOnInit = function () {
+    };
+    TotalCuentaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-total-cuenta-sindical',
+            template: __webpack_require__(/*! raw-loader!./total-cuenta-sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.html"),
+            styles: [__webpack_require__(/*! ./total-cuenta-sindical.component.css */ "./src/app/auth-master/cuenta-sindical/total-cuenta-sindical/total-cuenta-sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TotalCuentaSindicalComponent);
+    return TotalCuentaSindicalComponent;
+}());
 
 
 
@@ -4998,17 +5103,17 @@ module.exports = "  label,input, button, strong{\r\n    font-size: 12px;\r\n  }\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BeneficiosSociosComponent", function() { return BeneficiosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
 
 
 
 
-let BeneficiosSociosComponent = class BeneficiosSociosComponent {
-    constructor(config, modalService, _SociosService, _validarusuario) {
+var BeneficiosSociosComponent = /** @class */ (function () {
+    function BeneficiosSociosComponent(config, modalService, _SociosService, _validarusuario) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
@@ -5032,40 +5137,42 @@ let BeneficiosSociosComponent = class BeneficiosSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    buscarSocio() {
+    BeneficiosSociosComponent.prototype.ngOnInit = function () {
+    };
+    BeneficiosSociosComponent.prototype.buscarSocio = function () {
+        var _this = this;
         this.blockSocio = true;
-        this._SociosService.traerDatosSocio(this.rut).subscribe((response) => {
+        this._SociosService.traerDatosSocio(this.rut).subscribe(function (response) {
             console.log(response);
             if (response.estado == "failed") {
                 alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.rut = '';
-                this.fechaSocioTest = '';
-                this.rutSocioTest = '';
-                this.nombreSocioTest = '';
-                this.idSocio = '';
-                this.blockSocio = false;
+                _this.rut = '';
+                _this.fechaSocioTest = '';
+                _this.rutSocioTest = '';
+                _this.nombreSocioTest = '';
+                _this.idSocio = '';
+                _this.blockSocio = false;
                 return false;
             }
             else {
-                this.rut = '';
-                this.fechaSocioTest = response.fecha_nacimiento;
-                this.rutSocioTest = response.rut;
-                this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
-                this.nombreUpperSocio = this.nombreSocioTest.toUpperCase();
-                this.idSocio = response.id;
-                this.blockSocio = false;
+                _this.rut = '';
+                _this.fechaSocioTest = response.fecha_nacimiento;
+                _this.rutSocioTest = response.rut;
+                _this.nombreSocioTest = response.nombres + ' ' + response.a_paterno + ' ' + response.a_materno;
+                _this.nombreUpperSocio = _this.nombreSocioTest.toUpperCase();
+                _this.idSocio = response.id;
+                _this.blockSocio = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockSocio = false;
+            _this.blockSocio = false;
         });
-    }
-    onSelectImage(event) {
+    };
+    BeneficiosSociosComponent.prototype.onSelectImage = function (event) {
         this.archivoDocumento = event.srcElement.files[0];
-    }
-    SubirDocumento() {
+    };
+    BeneficiosSociosComponent.prototype.SubirDocumento = function () {
+        var _this = this;
         if (this.archivoDocumento == null) {
             // this.blockGuardar=true;
             alert('ingrese el documento PDF');
@@ -5073,38 +5180,39 @@ let BeneficiosSociosComponent = class BeneficiosSociosComponent {
             return false;
         }
         this.blockGuardar = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('id', this.idSocio);
         data.append('archivo', this.archivoDocumento);
-        this._SociosService.SubirDocumentoGeneral(data).subscribe((response) => {
+        this._SociosService.SubirDocumentoGeneral(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockGuardar = false;
+                _this.blockGuardar = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.archivoDocumento = null;
+                _this.archivoDocumento = null;
                 alert(response.mensaje);
-                this.blockGuardar = false;
+                _this.blockGuardar = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockGuardar = false;
+            _this.blockGuardar = false;
         });
-    }
-};
-BeneficiosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-beneficios-socios',
-        template: __webpack_require__(/*! raw-loader!./beneficios-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.html"),
-        styles: [__webpack_require__(/*! ./beneficios-socios.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
-], BeneficiosSociosComponent);
+    };
+    BeneficiosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-beneficios-socios',
+            template: __webpack_require__(/*! raw-loader!./beneficios-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.html"),
+            styles: [__webpack_require__(/*! ./beneficios-socios.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/beneficios-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
+    ], BeneficiosSociosComponent);
+    return BeneficiosSociosComponent;
+}());
 
 
 
@@ -5132,15 +5240,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosBeneficiarioComponent", function() { return FormularioBeneficiosBeneficiarioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let FormularioBeneficiosBeneficiarioComponent = class FormularioBeneficiosBeneficiarioComponent {
-    constructor(config, modalService, _SociosService) {
+var FormularioBeneficiosBeneficiarioComponent = /** @class */ (function () {
+    function FormularioBeneficiosBeneficiarioComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.blockIngreso = false;
@@ -5158,18 +5266,19 @@ let FormularioBeneficiosBeneficiarioComponent = class FormularioBeneficiosBenefi
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosBeneficiarioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosBeneficiarioComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosBeneficiario = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    }
-    guardarDatosBeneficiario() {
+    };
+    FormularioBeneficiosBeneficiarioComponent.prototype.guardarDatosBeneficiario = function () {
+        var _this = this;
         if (this.InsertarBeneficiosBeneficiario.relacion == '' && this.InsertarBeneficiosBeneficiario.rut_beneficiario == '' && this.InsertarBeneficiosBeneficiario.fecha_nacimiento == '' && this.InsertarBeneficiosBeneficiario.nombres == '' && this.InsertarBeneficiosBeneficiario.apellido_paterno == '' && this.InsertarBeneficiosBeneficiario.apellido_materno == '' && this.InsertarBeneficiosBeneficiario.direccion == '' && this.InsertarBeneficiosBeneficiario.celular == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('prioritario', this.InsertarBeneficiosBeneficiario.prioritario);
         data.append('relacion', this.InsertarBeneficiosBeneficiario.relacion);
@@ -5180,50 +5289,51 @@ let FormularioBeneficiosBeneficiarioComponent = class FormularioBeneficiosBenefi
         data.append('apellido_materno', this.InsertarBeneficiosBeneficiario.apellido_materno);
         data.append('direccion', this.InsertarBeneficiosBeneficiario.direccion);
         data.append('celular', this.InsertarBeneficiosBeneficiario.celular);
-        this._SociosService.insertarDatosBeneficiario(data).subscribe((response) => {
+        this._SociosService.insertarDatosBeneficiario(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarBeneficiosBeneficiario.prioritario = '';
-                this.InsertarBeneficiosBeneficiario.relacion = '';
-                this.InsertarBeneficiosBeneficiario.rut_beneficiario = '';
-                this.InsertarBeneficiosBeneficiario.fecha_nacimiento = '';
-                this.InsertarBeneficiosBeneficiario.nombres = '';
-                this.InsertarBeneficiosBeneficiario.apellido_paterno = '';
-                this.InsertarBeneficiosBeneficiario.apellido_materno = '';
-                this.InsertarBeneficiosBeneficiario.direccion = '';
-                this.InsertarBeneficiosBeneficiario.celular = '';
+                _this.InsertarBeneficiosBeneficiario.prioritario = '';
+                _this.InsertarBeneficiosBeneficiario.relacion = '';
+                _this.InsertarBeneficiosBeneficiario.rut_beneficiario = '';
+                _this.InsertarBeneficiosBeneficiario.fecha_nacimiento = '';
+                _this.InsertarBeneficiosBeneficiario.nombres = '';
+                _this.InsertarBeneficiosBeneficiario.apellido_paterno = '';
+                _this.InsertarBeneficiosBeneficiario.apellido_materno = '';
+                _this.InsertarBeneficiosBeneficiario.direccion = '';
+                _this.InsertarBeneficiosBeneficiario.celular = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosBeneficiarioComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosBeneficiarioComponent.prototype, "getNombreSocio", void 0);
-FormularioBeneficiosBeneficiarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-beneficiario',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], FormularioBeneficiosBeneficiarioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosBeneficiarioComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosBeneficiarioComponent.prototype, "getNombreSocio", void 0);
+    FormularioBeneficiosBeneficiarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-beneficiario',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-beneficiario/formulario-beneficios-beneficiario.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], FormularioBeneficiosBeneficiarioComponent);
+    return FormularioBeneficiosBeneficiarioComponent;
+}());
 
 
 
@@ -5251,15 +5361,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosCargasComponent", function() { return FormularioBeneficiosCargasComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let FormularioBeneficiosCargasComponent = class FormularioBeneficiosCargasComponent {
-    constructor(config, modalService, _SociosService) {
+var FormularioBeneficiosCargasComponent = /** @class */ (function () {
+    function FormularioBeneficiosCargasComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.blockIngreso = false;
@@ -5278,21 +5388,22 @@ let FormularioBeneficiosCargasComponent = class FormularioBeneficiosCargasCompon
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosCargasComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosCargasComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosCargas = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    }
-    onSelectImage(event) {
+    };
+    FormularioBeneficiosCargasComponent.prototype.onSelectImage = function (event) {
         this.InsertarBeneficiosCargas.archivoDocumento = event.srcElement.files[0];
-    }
-    guardarDatosCarga() {
+    };
+    FormularioBeneficiosCargasComponent.prototype.guardarDatosCarga = function () {
+        var _this = this;
         if (this.InsertarBeneficiosCargas.tipo_carga_id == '' && this.InsertarBeneficiosCargas.rut_carga == '' && this.InsertarBeneficiosCargas.fecha_nacimiento == '' && this.InsertarBeneficiosCargas.nombres == '' && this.InsertarBeneficiosCargas.apellido_paterno == '' && this.InsertarBeneficiosCargas.apellido_materno == '' && this.InsertarBeneficiosCargas.direccion == '' && this.InsertarBeneficiosCargas.celular == '' && this.InsertarBeneficiosCargas.establecimiento == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('tipo_carga_id', this.InsertarBeneficiosCargas.tipo_carga_id);
         data.append('rut', this.InsertarBeneficiosCargas.rut_carga);
@@ -5304,51 +5415,52 @@ let FormularioBeneficiosCargasComponent = class FormularioBeneficiosCargasCompon
         data.append('celular', this.InsertarBeneficiosCargas.celular);
         data.append('establecimiento', this.InsertarBeneficiosCargas.establecimiento);
         data.append('archivo', this.InsertarBeneficiosCargas.archivoDocumento);
-        this._SociosService.insertarDatosCarga(data).subscribe((response) => {
+        this._SociosService.insertarDatosCarga(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarBeneficiosCargas.tipo_carga_id = '';
-                this.InsertarBeneficiosCargas.rut_carga = '';
-                this.InsertarBeneficiosCargas.fecha_nacimiento = '';
-                this.InsertarBeneficiosCargas.nombres = '';
-                this.InsertarBeneficiosCargas.apellido_paterno = '';
-                this.InsertarBeneficiosCargas.apellido_materno = '';
-                this.InsertarBeneficiosCargas.direccion = '';
-                this.InsertarBeneficiosCargas.celular = '';
-                this.InsertarBeneficiosCargas.establecimiento = '';
-                this.InsertarBeneficiosCargas.archivoDocumento = null;
+                _this.InsertarBeneficiosCargas.tipo_carga_id = '';
+                _this.InsertarBeneficiosCargas.rut_carga = '';
+                _this.InsertarBeneficiosCargas.fecha_nacimiento = '';
+                _this.InsertarBeneficiosCargas.nombres = '';
+                _this.InsertarBeneficiosCargas.apellido_paterno = '';
+                _this.InsertarBeneficiosCargas.apellido_materno = '';
+                _this.InsertarBeneficiosCargas.direccion = '';
+                _this.InsertarBeneficiosCargas.celular = '';
+                _this.InsertarBeneficiosCargas.establecimiento = '';
+                _this.InsertarBeneficiosCargas.archivoDocumento = null;
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosCargasComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosCargasComponent.prototype, "getNombreSocio", void 0);
-FormularioBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-cargas',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], FormularioBeneficiosCargasComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosCargasComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosCargasComponent.prototype, "getNombreSocio", void 0);
+    FormularioBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-cargas',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-cargas/formulario-beneficios-cargas.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], FormularioBeneficiosCargasComponent);
+    return FormularioBeneficiosCargasComponent;
+}());
 
 
 
@@ -5376,15 +5488,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosConyugeComponent", function() { return FormularioBeneficiosConyugeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let FormularioBeneficiosConyugeComponent = class FormularioBeneficiosConyugeComponent {
-    constructor(config, modalService, _SociosService) {
+var FormularioBeneficiosConyugeComponent = /** @class */ (function () {
+    function FormularioBeneficiosConyugeComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.blockIngreso = false;
@@ -5401,21 +5513,22 @@ let FormularioBeneficiosConyugeComponent = class FormularioBeneficiosConyugeComp
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosConyugeComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosConyugeComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosConyuge = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    }
-    onSelectImage(event) {
+    };
+    FormularioBeneficiosConyugeComponent.prototype.onSelectImage = function (event) {
         this.InsertarBeneficiosConyuge.archivoDocumento = event.srcElement.files[0];
-    }
-    guardarDatosConyuge() {
+    };
+    FormularioBeneficiosConyugeComponent.prototype.guardarDatosConyuge = function () {
+        var _this = this;
         if (this.InsertarBeneficiosConyuge.rut_conyuge == '' && this.InsertarBeneficiosConyuge.fecha_nacimiento == '' && this.InsertarBeneficiosConyuge.fecha_nacimiento == '' && this.InsertarBeneficiosConyuge.nombres == '' && this.InsertarBeneficiosConyuge.apellido_paterno == '' && this.InsertarBeneficiosConyuge.apellido_materno == '' && this.InsertarBeneficiosConyuge.direccion == '' && this.InsertarBeneficiosConyuge.celular == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('rut', this.InsertarBeneficiosConyuge.rut_conyuge);
         data.append('fecha_nacimiento', this.InsertarBeneficiosConyuge.fecha_nacimiento);
@@ -5425,49 +5538,50 @@ let FormularioBeneficiosConyugeComponent = class FormularioBeneficiosConyugeComp
         data.append('direccion', this.InsertarBeneficiosConyuge.direccion);
         data.append('celular', this.InsertarBeneficiosConyuge.celular);
         data.append('archivo', this.InsertarBeneficiosConyuge.archivoDocumento);
-        this._SociosService.insertarDatosConyuge(data).subscribe((response) => {
+        this._SociosService.insertarDatosConyuge(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarBeneficiosConyuge.rut_conyuge = '';
-                this.InsertarBeneficiosConyuge.fecha_nacimiento = '';
-                this.InsertarBeneficiosConyuge.nombres = '';
-                this.InsertarBeneficiosConyuge.apellido_paterno = '';
-                this.InsertarBeneficiosConyuge.apellido_materno = '';
-                this.InsertarBeneficiosConyuge.direccion = '';
-                this.InsertarBeneficiosConyuge.celular = '';
-                this.InsertarBeneficiosConyuge.archivoDocumento = null;
+                _this.InsertarBeneficiosConyuge.rut_conyuge = '';
+                _this.InsertarBeneficiosConyuge.fecha_nacimiento = '';
+                _this.InsertarBeneficiosConyuge.nombres = '';
+                _this.InsertarBeneficiosConyuge.apellido_paterno = '';
+                _this.InsertarBeneficiosConyuge.apellido_materno = '';
+                _this.InsertarBeneficiosConyuge.direccion = '';
+                _this.InsertarBeneficiosConyuge.celular = '';
+                _this.InsertarBeneficiosConyuge.archivoDocumento = null;
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosConyugeComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosConyugeComponent.prototype, "getNombreSocio", void 0);
-FormularioBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-conyuge',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], FormularioBeneficiosConyugeComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosConyugeComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosConyugeComponent.prototype, "getNombreSocio", void 0);
+    FormularioBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-conyuge',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-conyuge/formulario-beneficios-conyuge.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], FormularioBeneficiosConyugeComponent);
+    return FormularioBeneficiosConyugeComponent;
+}());
 
 
 
@@ -5495,15 +5609,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosPadresSuegrosComponent", function() { return FormularioBeneficiosPadresSuegrosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let FormularioBeneficiosPadresSuegrosComponent = class FormularioBeneficiosPadresSuegrosComponent {
-    constructor(config, modalService, _SociosService) {
+var FormularioBeneficiosPadresSuegrosComponent = /** @class */ (function () {
+    function FormularioBeneficiosPadresSuegrosComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.blockIngreso = false;
@@ -5520,18 +5634,19 @@ let FormularioBeneficiosPadresSuegrosComponent = class FormularioBeneficiosPadre
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosPadresSuegrosComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosPadresSuegrosComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosPadresSuegros = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    }
-    guardarDatosPadresSuegros() {
+    };
+    FormularioBeneficiosPadresSuegrosComponent.prototype.guardarDatosPadresSuegros = function () {
+        var _this = this;
         if (this.InsertarBeneficiosPadresSuegros.relacion_socio_id == '' && this.InsertarBeneficiosPadresSuegros.rut == '' && this.InsertarBeneficiosPadresSuegros.fecha_nacimiento == '' && this.InsertarBeneficiosPadresSuegros.nombres == '' && this.InsertarBeneficiosPadresSuegros.apellido_paterno == '' && this.InsertarBeneficiosPadresSuegros.apellido_materno == '' && this.InsertarBeneficiosPadresSuegros.direccion == '' && this.InsertarBeneficiosPadresSuegros.celular == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('relacion_socio_id', this.InsertarBeneficiosPadresSuegros.relacion_socio_id);
         data.append('rut', this.InsertarBeneficiosPadresSuegros.rut);
@@ -5541,49 +5656,50 @@ let FormularioBeneficiosPadresSuegrosComponent = class FormularioBeneficiosPadre
         data.append('apellido_materno', this.InsertarBeneficiosPadresSuegros.apellido_materno);
         data.append('direccion', this.InsertarBeneficiosPadresSuegros.direccion);
         data.append('celular', this.InsertarBeneficiosPadresSuegros.celular);
-        this._SociosService.insertarDatosPS(data).subscribe((response) => {
+        this._SociosService.insertarDatosPS(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarBeneficiosPadresSuegros.relacion_socio_id = '';
-                this.InsertarBeneficiosPadresSuegros.rut = '';
-                this.InsertarBeneficiosPadresSuegros.fecha_nacimiento = '';
-                this.InsertarBeneficiosPadresSuegros.nombres = '';
-                this.InsertarBeneficiosPadresSuegros.apellido_paterno = '';
-                this.InsertarBeneficiosPadresSuegros.apellido_materno = '';
-                this.InsertarBeneficiosPadresSuegros.direccion = '';
-                this.InsertarBeneficiosPadresSuegros.celular = '';
+                _this.InsertarBeneficiosPadresSuegros.relacion_socio_id = '';
+                _this.InsertarBeneficiosPadresSuegros.rut = '';
+                _this.InsertarBeneficiosPadresSuegros.fecha_nacimiento = '';
+                _this.InsertarBeneficiosPadresSuegros.nombres = '';
+                _this.InsertarBeneficiosPadresSuegros.apellido_paterno = '';
+                _this.InsertarBeneficiosPadresSuegros.apellido_materno = '';
+                _this.InsertarBeneficiosPadresSuegros.direccion = '';
+                _this.InsertarBeneficiosPadresSuegros.celular = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosPadresSuegrosComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosPadresSuegrosComponent.prototype, "getNombreSocio", void 0);
-FormularioBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-padres-suegros',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], FormularioBeneficiosPadresSuegrosComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosPadresSuegrosComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosPadresSuegrosComponent.prototype, "getNombreSocio", void 0);
+    FormularioBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-padres-suegros',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-padres-suegros/formulario-beneficios-padres-suegros.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], FormularioBeneficiosPadresSuegrosComponent);
+    return FormularioBeneficiosPadresSuegrosComponent;
+}());
 
 
 
@@ -5611,15 +5727,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosSocioComponent", function() { return FormularioBeneficiosSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
 
 
 
-let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponent {
-    constructor(config, modalService, _SociosService) {
+var FormularioBeneficiosSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosSocioComponent(config, modalService, _SociosService) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this.blockIngreso = false;
@@ -5646,19 +5762,20 @@ let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponen
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosSocioComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
         console.log(this.getIdSocio);
-    }
-    guardarDatosSocio() {
+    };
+    FormularioBeneficiosSocioComponent.prototype.guardarDatosSocio = function () {
+        var _this = this;
         if (this.InsertarBeneficiosSocio.email_1 == '' && this.InsertarBeneficiosSocio.direccion == '') {
             alert('ingrese los datos obligatorios (*)');
             return false;
         }
         this.blockIngreso = true;
-        const data = new FormData();
+        var data = new FormData();
         data.append('socio_id', this.getIdSocio);
         data.append('direccion', this.InsertarBeneficiosSocio.direccion);
         data.append('telefono', this.InsertarBeneficiosSocio.telefono);
@@ -5677,58 +5794,59 @@ let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponen
         data.append('rol_turno', this.InsertarBeneficiosSocio.rol_turno);
         data.append('estado_civil_id', this.InsertarBeneficiosSocio.estado_civil_id);
         data.append('conyuge', this.InsertarBeneficiosSocio.conyuge);
-        this._SociosService.insertarDatosSocio(data).subscribe((response) => {
+        this._SociosService.insertarDatosSocio(data).subscribe(function (response) {
             if (response.estado == 'failed') {
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
             if (response.estado == 'success') {
-                this.InsertarBeneficiosSocio.direccion = '';
-                this.InsertarBeneficiosSocio.telefono = '';
-                this.InsertarBeneficiosSocio.celular = '';
-                this.InsertarBeneficiosSocio.anexo = '';
-                this.InsertarBeneficiosSocio.email_1 = '';
-                this.InsertarBeneficiosSocio.email_2 = '';
-                this.InsertarBeneficiosSocio.cargo_planta = '';
-                this.InsertarBeneficiosSocio.cargo_comision_sindicato = '';
-                this.InsertarBeneficiosSocio.numero_cuenta = '';
-                this.InsertarBeneficiosSocio.tipo_cuenta_banco_id = '';
-                this.InsertarBeneficiosSocio.banco = '';
-                this.InsertarBeneficiosSocio.isapre_fonasa = '';
-                this.InsertarBeneficiosSocio.grupo_sangre = '';
-                this.InsertarBeneficiosSocio.casa_propia = '';
-                this.InsertarBeneficiosSocio.rol_turno = '';
-                this.InsertarBeneficiosSocio.estado_civil_id = '';
-                this.InsertarBeneficiosSocio.conyuge = '';
+                _this.InsertarBeneficiosSocio.direccion = '';
+                _this.InsertarBeneficiosSocio.telefono = '';
+                _this.InsertarBeneficiosSocio.celular = '';
+                _this.InsertarBeneficiosSocio.anexo = '';
+                _this.InsertarBeneficiosSocio.email_1 = '';
+                _this.InsertarBeneficiosSocio.email_2 = '';
+                _this.InsertarBeneficiosSocio.cargo_planta = '';
+                _this.InsertarBeneficiosSocio.cargo_comision_sindicato = '';
+                _this.InsertarBeneficiosSocio.numero_cuenta = '';
+                _this.InsertarBeneficiosSocio.tipo_cuenta_banco_id = '';
+                _this.InsertarBeneficiosSocio.banco = '';
+                _this.InsertarBeneficiosSocio.isapre_fonasa = '';
+                _this.InsertarBeneficiosSocio.grupo_sangre = '';
+                _this.InsertarBeneficiosSocio.casa_propia = '';
+                _this.InsertarBeneficiosSocio.rol_turno = '';
+                _this.InsertarBeneficiosSocio.estado_civil_id = '';
+                _this.InsertarBeneficiosSocio.conyuge = '';
                 alert(response.mensaje);
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
                 return false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], FormularioBeneficiosSocioComponent.prototype, "getNombreSocio", void 0);
-FormularioBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
-], FormularioBeneficiosSocioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], FormularioBeneficiosSocioComponent.prototype, "getNombreSocio", void 0);
+    FormularioBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/beneficios-socios/formulario-beneficios-socio/formulario-beneficios-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"]])
+    ], FormularioBeneficiosSocioComponent);
+    return FormularioBeneficiosSocioComponent;
+}());
 
 
 
@@ -5756,22 +5874,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaSociosComponent", function() { return CuentaSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentaSociosComponent = class CuentaSociosComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentaSociosComponent = /** @class */ (function () {
+    function CuentaSociosComponent() {
     }
-};
-CuentaSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-socios',
-        template: __webpack_require__(/*! raw-loader!./cuenta-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/cuenta-socios.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-socios.component.css */ "./src/app/auth-master/cuenta-socios/cuenta-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentaSociosComponent);
+    CuentaSociosComponent.prototype.ngOnInit = function () {
+    };
+    CuentaSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-socios',
+            template: __webpack_require__(/*! raw-loader!./cuenta-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/cuenta-socios.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-socios.component.css */ "./src/app/auth-master/cuenta-socios/cuenta-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentaSociosComponent);
+    return CuentaSociosComponent;
+}());
 
 
 
@@ -5799,9 +5919,9 @@ module.exports = "label,input, button{\r\n  font-size: 12px;\r\n}\r\n\r\ntr,th{\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioSociosComponent", function() { return FormularioSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -5810,8 +5930,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let FormularioSociosComponent = class FormularioSociosComponent {
-    constructor(_http, _validarusuario, modalService) {
+var FormularioSociosComponent = /** @class */ (function () {
+    function FormularioSociosComponent(_http, _validarusuario, modalService) {
         this._http = _http;
         this._validarusuario = _validarusuario;
         this.modalService = modalService;
@@ -5827,16 +5947,17 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         this.user = [];
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
     }
-    ngOnInit() {
+    FormularioSociosComponent.prototype.ngOnInit = function () {
         this.usuario_logeado();
-    }
-    onSelectImage(event) {
+    };
+    FormularioSociosComponent.prototype.onSelectImage = function (event) {
         //console.log(event.srcElement.files[0])
         this.selectedImage = event.srcElement.files[0];
         //console.log(this.selectedImage);
-    }
-    onSubmit() {
-        const form = new FormData();
+    };
+    FormularioSociosComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var form = new FormData();
         form.append('foto', this.selectedImage);
         form.append('rut', this.rut);
         form.append('fecha_nacimiento', this.fecha_nacimiento);
@@ -5847,15 +5968,15 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         console.log(form);
         this._http.post(this.url + "ingresar_socio", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
-            }) }).subscribe((val) => {
+            }) }).subscribe(function (val) {
             if (val.estado == "success") {
                 alert("" + val.mensaje + "");
-                this.rut = '';
-                this.fecha_nacimiento = '';
-                this.fecha_ingreso = '';
-                this.nombres = '';
-                this.a_paterno = '';
-                this.a_materno = '';
+                _this.rut = '';
+                _this.fecha_nacimiento = '';
+                _this.fecha_ingreso = '';
+                _this.nombres = '';
+                _this.a_paterno = '';
+                _this.a_materno = '';
                 return false;
             }
             if (val.estado == "failed") {
@@ -5866,48 +5987,50 @@ let FormularioSociosComponent = class FormularioSociosComponent {
                 alert("" + val.mensaje + "");
                 return false;
             }
-        }, response => {
+        }, function (response) {
             console.log("POST call in error", response);
-        }, () => {
+        }, function () {
             console.log("The POST observable is now completed.");
         });
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    FormularioSociosComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    FormularioSociosComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
         //  validar = this.validar_inputs();
         // if (validar == true) {
         //   this.modalReference = this.modalService.open(validar, { size: 'sm' });
         // }
-    }
-    btn_validar_usuario($rut, $password, validar, estado) {
+    };
+    FormularioSociosComponent.prototype.btn_validar_usuario = function ($rut, $password, validar, estado) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', estado);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.modalReference.close();
-                this.onSubmit();
+                _this.load = false;
+                _this.modalReference.close();
+                _this.onSubmit();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_inputs(validar) {
+    };
+    FormularioSociosComponent.prototype.validar_inputs = function (validar) {
         if (this.rut == '') {
             alert("Ingrese rut");
             return false;
@@ -5934,16 +6057,17 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         }
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
         return true;
-    }
-};
-FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-socios',
-        template: __webpack_require__(/*! raw-loader!./formulario-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-socios.component.css */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
-], FormularioSociosComponent);
+    };
+    FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-socios',
+            template: __webpack_require__(/*! raw-loader!./formulario-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-socios.component.css */ "./src/app/auth-master/cuenta-socios/formulario-socios/formulario-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], FormularioSociosComponent);
+    return FormularioSociosComponent;
+}());
 
 
 
@@ -5971,9 +6095,9 @@ module.exports = "label,input, button{\r\n  font-size: 13px;\r\n}\r\n\r\ntr,th{\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListarSociosComponent", function() { return ListarSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 /* harmony import */ var _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 
@@ -5982,8 +6106,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ListarSociosComponent = class ListarSociosComponent {
-    constructor(_socios, _validarusuario, modalService, _sindical) {
+var ListarSociosComponent = /** @class */ (function () {
+    function ListarSociosComponent(_socios, _validarusuario, modalService, _sindical) {
         this._socios = _socios;
         this._validarusuario = _validarusuario;
         this.modalService = modalService;
@@ -6008,22 +6132,24 @@ let ListarSociosComponent = class ListarSociosComponent {
         this.ver_estado_soc = false;
         //this.currentLesson=this.classes[0].currentLesson
     }
-    ngOnInit() {
+    ListarSociosComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('token') == '') {
             alert("La sesión ya expiro!");
             location.reload();
         }
         this.listar();
         this.usuario_logeado();
-    }
-    listar() {
-        this._socios.getTablaSocios().subscribe(response => {
+    };
+    ListarSociosComponent.prototype.listar = function () {
+        var _this = this;
+        this._socios.getTablaSocios().subscribe(function (response) {
             console.log(response);
-            this.socios = response;
-            this.blockLoad2 = false;
+            _this.socios = response;
+            _this.blockLoad2 = false;
         });
-    }
-    filtrar() {
+    };
+    ListarSociosComponent.prototype.filtrar = function () {
+        var _this = this;
         this.blockLoad = true;
         if (this.search == '') {
             alert("Ingrese un nombre para filtrar");
@@ -6031,49 +6157,50 @@ let ListarSociosComponent = class ListarSociosComponent {
             return false;
         }
         else {
-            this._socios.getTablaFilter(this.search).subscribe(response => {
+            this._socios.getTablaFilter(this.search).subscribe(function (response) {
                 console.log(response);
-                this.socios = response;
-                this.blockLoad = false;
+                _this.socios = response;
+                _this.blockLoad = false;
             });
         }
-    }
-    modal_editar(modal) {
+    };
+    ListarSociosComponent.prototype.modal_editar = function (modal) {
         this.mod_editar = this.modalService.open(modal, { size: 'lg' });
-    }
-    cerrar_editar(modal) {
+    };
+    ListarSociosComponent.prototype.cerrar_editar = function (modal) {
         this.mod_editar.close();
-    }
-    actualizar(id, campo, valor, validar) {
+    };
+    ListarSociosComponent.prototype.actualizar = function (id, campo, valor, validar) {
+        var _this = this;
         if (valor.value == '') {
             alert("Ingrese dato en este campo para actualizar");
             return false;
         }
         //this.modalReference = this.modalService.open(validar, { size: 'sm' });
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
             formData.append('estado', 'modificar_socio');
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 // var inputValue = (<HTMLInputElement>document.getElementById("password")).value;
                 if (val > 0) { //si tiene acceso;
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', valor.value);
-                    this._socios.getEditar(form).subscribe(response => {
+                    _this._socios.getEditar(form).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.listar();
-                            this.pass = "";
+                            _this.listar();
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
@@ -6083,80 +6210,84 @@ let ListarSociosComponent = class ListarSociosComponent {
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
-            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }, function (reason) {
+            console.log("" + reason);
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    ListarSociosComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    ListarSociosComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
                 return true;
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
                 return false;
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    ListarSociosComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
         window.stop();
-    }
-    modal_opcion(modal, id) {
+    };
+    ListarSociosComponent.prototype.modal_opcion = function (modal, id) {
         this.ver_load = true;
         this.ver_estado_soc = false;
         this.mod_opcion = this.modalService.open(modal, { size: 'lg' });
         this.estado_socio_portal(id);
-    }
-    cerrar_opcion() {
+    };
+    ListarSociosComponent.prototype.cerrar_opcion = function () {
         this.mod_opcion.close();
-    }
-    asignar_portal(socio_id) {
-        this._sindical.asignar_portal_socio(socio_id).subscribe(response => {
+    };
+    ListarSociosComponent.prototype.asignar_portal = function (socio_id) {
+        var _this = this;
+        this._sindical.asignar_portal_socio(socio_id).subscribe(function (response) {
             console.log(response);
-            this.ver_load = true;
-            this.ver_estado_soc = false;
-            this.estado_socio_portal(socio_id);
+            _this.ver_load = true;
+            _this.ver_estado_soc = false;
+            _this.estado_socio_portal(socio_id);
         });
-    }
-    estado_socio_portal(socio_id) {
-        this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe((response) => {
-            this.estado_socio = response.estado;
-            this.ver_load = false;
-            this.ver_estado_soc = true;
+    };
+    ListarSociosComponent.prototype.estado_socio_portal = function (socio_id) {
+        var _this = this;
+        this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(function (response) {
+            _this.estado_socio = response.estado;
+            _this.ver_load = false;
+            _this.ver_estado_soc = true;
         });
-    }
+    };
     // fin del metodo para validar usuario
-    getDismissReason(reason) {
+    ListarSociosComponent.prototype.getDismissReason = function (reason) {
         if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].ESC) {
             return 'by pressing ESC';
         }
@@ -6164,21 +6295,22 @@ let ListarSociosComponent = class ListarSociosComponent {
             return 'by clicking on a backdrop';
         }
         else {
-            return `with: ${reason}`;
+            return "with: " + reason;
         }
-    }
-};
-ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-listar-socios',
-        template: __webpack_require__(/*! raw-loader!./listar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.html"),
-        styles: [__webpack_require__(/*! ./listar-socios.component.css */ "./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
-        _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"],
-        _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_5__["SindicalService"]])
-], ListarSociosComponent);
+    };
+    ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-listar-socios',
+            template: __webpack_require__(/*! raw-loader!./listar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.html"),
+            styles: [__webpack_require__(/*! ./listar-socios.component.css */ "./src/app/auth-master/cuenta-socios/listar-socios/listar-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
+            _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"],
+            _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_5__["SindicalService"]])
+    ], ListarSociosComponent);
+    return ListarSociosComponent;
+}());
 
 
 
@@ -6206,8 +6338,8 @@ module.exports = ".sinbordefondo {\r\n  background-color: #fff;\r\n  border: 0;\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosBeneficiarioComponent", function() { return TablaBeneficiosBeneficiarioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -6215,8 +6347,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaBeneficiosBeneficiarioComponent = class TablaBeneficiosBeneficiarioComponent {
-    constructor(config, modalService, _SociosService, _validarusuario) {
+var TablaBeneficiosBeneficiarioComponent = /** @class */ (function () {
+    function TablaBeneficiosBeneficiarioComponent(config, modalService, _SociosService, _validarusuario) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
@@ -6246,119 +6378,123 @@ let TablaBeneficiosBeneficiarioComponent = class TablaBeneficiosBeneficiarioComp
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosBeneficiarioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosBeneficiarioComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosBeneficiario = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosBeneficiario();
         this.usuario_logeado();
-    }
-    limpiar_tabla() {
+    };
+    TablaBeneficiosBeneficiarioComponent.prototype.limpiar_tabla = function () {
         this.vista_tabla = false;
-    }
-    listarDatosBeneficiario() {
-        this._SociosService.getDatosBeneficiario(this.getIdSocio).subscribe((response) => {
+    };
+    TablaBeneficiosBeneficiarioComponent.prototype.listarDatosBeneficiario = function () {
+        var _this = this;
+        this._SociosService.getDatosBeneficiario(this.getIdSocio).subscribe(function (response) {
             console.log(response);
             if (response.estado == "failed") {
                 //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.vista_tabla = false;
+                _this.vista_tabla = false;
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosBeneficiario.close();
+                _this.abrirTablaBeneficiosBeneficiario.close();
                 return false;
             }
             else {
-                this.traerDatosBeneficiario = response.body;
-                this.vista_tabla = true;
+                _this.traerDatosBeneficiario = response.body;
+                _this.vista_tabla = true;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_tabla = false;
-            };
+                _this.vista_tabla = false;
+            });
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaBeneficiosBeneficiarioComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(campo, valor, validar, id) {
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+    TablaBeneficiosBeneficiarioComponent.prototype.actualizar = function (campo, valor, validar, id) {
+        var _this = this;
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const data = new FormData();
-                    data.append('id', this.getIdSocio);
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var data = new FormData();
+                    data.append('id', _this.getIdSocio);
                     data.append('campo', campo);
                     data.append('valor', valor.value);
                     data.append('socio_beneficiario_id', id);
-                    this.actualizarLoad = true;
-                    this._SociosService.ActualizarDatosBeneficiarios(data).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._SociosService.ActualizarDatosBeneficiarios(data).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.listarDatosBeneficiario();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.listarDatosBeneficiario();
                         }
                         if (response.estado == "failed") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.listarDatosBeneficiario();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.listarDatosBeneficiario();
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], TablaBeneficiosBeneficiarioComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], TablaBeneficiosBeneficiarioComponent.prototype, "getNombreSocio", void 0);
-TablaBeneficiosBeneficiarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-beneficiario',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-beneficiario.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-beneficiario.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
-], TablaBeneficiosBeneficiarioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], TablaBeneficiosBeneficiarioComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], TablaBeneficiosBeneficiarioComponent.prototype, "getNombreSocio", void 0);
+    TablaBeneficiosBeneficiarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-beneficiario',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-beneficiario.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-beneficiario.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-beneficiario/tabla-beneficios-beneficiario.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
+    ], TablaBeneficiosBeneficiarioComponent);
+    return TablaBeneficiosBeneficiarioComponent;
+}());
 
 
 
@@ -6386,8 +6522,8 @@ module.exports = ".sinbordefondo {\r\n  background-color: #fff;\r\n  border: 0;\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosCargasComponent", function() { return TablaBeneficiosCargasComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -6395,8 +6531,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
-    constructor(config, modalService, _SociosService, _validarusuario) {
+var TablaBeneficiosCargasComponent = /** @class */ (function () {
+    function TablaBeneficiosCargasComponent(config, modalService, _SociosService, _validarusuario) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
@@ -6427,73 +6563,77 @@ let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosCargasComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosCargasComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosCarga = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosCarga();
         this.usuario_logeado();
-    }
-    verDocumento(Documento, idCarga) {
+    };
+    TablaBeneficiosCargasComponent.prototype.verDocumento = function (Documento, idCarga) {
         this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
         this.traerDocumentoCarga(idCarga);
-    }
-    onSelectImage(event) {
+    };
+    TablaBeneficiosCargasComponent.prototype.onSelectImage = function (event) {
         this.UpdDocumento = event.srcElement.files[0];
-    }
-    traerDocumentoCarga(idCarga) {
+    };
+    TablaBeneficiosCargasComponent.prototype.traerDocumentoCarga = function (idCarga) {
+        var _this = this;
         this.vista_pdf = true;
-        this._SociosService.getCertificadoNacimiento(idCarga).subscribe((response) => {
+        this._SociosService.getCertificadoNacimiento(idCarga).subscribe(function (response) {
             // console.log(response);
             if (response.estado == "failed") {
-                this.vista_pdf = false;
+                _this.vista_pdf = false;
                 alert(response.mensaje);
-                this.abrirDocumento.close();
+                _this.abrirDocumento.close();
                 return false;
             }
             else {
-                this.DocumentoCarga = response.body[0].archivo;
+                _this.DocumentoCarga = response.body[0].archivo;
                 //  console.log(this.TraerDocumentoSocio);
-                this.vista_pdf = false;
+                _this.vista_pdf = false;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_pdf = false;
-            };
+                _this.vista_pdf = false;
+            });
         });
-    }
-    limpiar_tabla() {
+    };
+    TablaBeneficiosCargasComponent.prototype.limpiar_tabla = function () {
         this.vista_tabla = false;
-    }
-    listarDatosCarga() {
-        this._SociosService.getDatosCarga(this.getIdSocio).subscribe((response) => {
+    };
+    TablaBeneficiosCargasComponent.prototype.listarDatosCarga = function () {
+        var _this = this;
+        this._SociosService.getDatosCarga(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.vista_tabla = false;
+                _this.vista_tabla = false;
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosCarga.close();
+                _this.abrirTablaBeneficiosCarga.close();
                 return false;
             }
             else {
-                this.traerDatosCarga = response.body;
-                this.vista_tabla = true;
+                _this.traerDatosCarga = response.body;
+                _this.vista_tabla = true;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_tabla = false;
-            };
+                _this.vista_tabla = false;
+            });
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaBeneficiosCargasComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(campo, valor, validar, id) {
+    TablaBeneficiosCargasComponent.prototype.actualizar = function (campo, valor, validar, id) {
+        var _this = this;
         if (campo == "archivo") {
             if (valor.value == null) {
                 alert("ingrese documento porfavor!");
@@ -6508,82 +6648,83 @@ let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const data = new FormData();
-                    data.append('id', this.getIdSocio);
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var data = new FormData();
+                    data.append('id', _this.getIdSocio);
                     data.append('campo', campo);
-                    data.append('valor', this.entrada);
+                    data.append('valor', _this.entrada);
                     data.append('carga_socio_id', id);
-                    this.actualizarLoad = true;
-                    this._SociosService.ActualizarDatosCargas(data).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._SociosService.ActualizarDatosCargas(data).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.UpdDocumento = null;
-                            this.listarDatosCarga();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.UpdDocumento = null;
+                            _this.listarDatosCarga();
                         }
                         if (response.estado == "failed") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.UpdDocumento = null;
-                            this.listarDatosCarga();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.UpdDocumento = null;
+                            _this.listarDatosCarga();
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.UpdDocumento = null;
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.UpdDocumento = null;
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaBeneficiosCargasComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaBeneficiosCargasComponent.prototype, "getNombreSocio", void 0);
-TablaBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-cargas',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
-], TablaBeneficiosCargasComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaBeneficiosCargasComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaBeneficiosCargasComponent.prototype, "getNombreSocio", void 0);
+    TablaBeneficiosCargasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-cargas',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-cargas.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-cargas/tabla-beneficios-cargas.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
+    ], TablaBeneficiosCargasComponent);
+    return TablaBeneficiosCargasComponent;
+}());
 
 
 
@@ -6611,8 +6752,8 @@ module.exports = "\r\n.sinbordefondo {\r\n    background-color: #fff;\r\n    bor
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosConyugeComponent", function() { return TablaBeneficiosConyugeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -6620,8 +6761,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaBeneficiosConyugeComponent = class TablaBeneficiosConyugeComponent {
-    constructor(config, modalService, _SociosService, _validarusuario) {
+var TablaBeneficiosConyugeComponent = /** @class */ (function () {
+    function TablaBeneficiosConyugeComponent(config, modalService, _SociosService, _validarusuario) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
@@ -6650,74 +6791,78 @@ let TablaBeneficiosConyugeComponent = class TablaBeneficiosConyugeComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosConyugeComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosConyugeComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosConyuge = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosConyuge();
         this.usuario_logeado();
-    }
-    verDocumento(Documento) {
+    };
+    TablaBeneficiosConyugeComponent.prototype.verDocumento = function (Documento) {
         this.abrirDocumento = this.modalService.open(Documento, { size: 'lg' });
         this.traerDocumentoConyuge();
-    }
-    onSelectImage(event) {
+    };
+    TablaBeneficiosConyugeComponent.prototype.onSelectImage = function (event) {
         this.UpdDocumento = event.srcElement.files[0];
-    }
-    traerDocumentoConyuge() {
+    };
+    TablaBeneficiosConyugeComponent.prototype.traerDocumentoConyuge = function () {
+        var _this = this;
         this.vista_pdf = true;
-        this._SociosService.getRegistroCivil(this.getIdSocio).subscribe((response) => {
+        this._SociosService.getRegistroCivil(this.getIdSocio).subscribe(function (response) {
             // console.log(response);
             if (response.estado == "failed") {
-                this.vista_pdf = false;
+                _this.vista_pdf = false;
                 alert(response.mensaje);
-                this.abrirDocumento.close();
+                _this.abrirDocumento.close();
                 return false;
             }
             else {
-                this.DocumentoConyuge = response.body[0].archivo;
+                _this.DocumentoConyuge = response.body[0].archivo;
                 //  console.log(this.TraerDocumentoSocio);
-                this.vista_pdf = false;
+                _this.vista_pdf = false;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_pdf = false;
-            };
+                _this.vista_pdf = false;
+            });
         });
-    }
-    limpiar_tabla() {
+    };
+    TablaBeneficiosConyugeComponent.prototype.limpiar_tabla = function () {
         this.vista_tabla = false;
-    }
-    listarDatosConyuge() {
-        this._SociosService.getDatosConyuge(this.getIdSocio).subscribe((response) => {
+    };
+    TablaBeneficiosConyugeComponent.prototype.listarDatosConyuge = function () {
+        var _this = this;
+        this._SociosService.getDatosConyuge(this.getIdSocio).subscribe(function (response) {
             console.log(response);
             if (response.estado == "failed") {
                 //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.vista_tabla = false;
+                _this.vista_tabla = false;
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosConyuge.close();
+                _this.abrirTablaBeneficiosConyuge.close();
                 return false;
             }
             else {
-                this.traerDatosConyuge = response.body;
-                this.vista_tabla = true;
+                _this.traerDatosConyuge = response.body;
+                _this.vista_tabla = true;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_tabla = false;
-            };
+                _this.vista_tabla = false;
+            });
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaBeneficiosConyugeComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(campo, valor, validar) {
+    TablaBeneficiosConyugeComponent.prototype.actualizar = function (campo, valor, validar) {
+        var _this = this;
         if (campo == "archivo") {
             if (valor.value == null) {
                 alert("ingrese documento porfavor!");
@@ -6732,81 +6877,82 @@ let TablaBeneficiosConyugeComponent = class TablaBeneficiosConyugeComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const data = new FormData();
-                    data.append('id', this.getIdSocio);
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var data = new FormData();
+                    data.append('id', _this.getIdSocio);
                     data.append('campo', campo);
-                    data.append('valor', this.entrada);
-                    this.actualizarLoad = true;
-                    this._SociosService.ActualizarDatosConyuge(data).subscribe(response => {
+                    data.append('valor', _this.entrada);
+                    _this.actualizarLoad = true;
+                    _this._SociosService.ActualizarDatosConyuge(data).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.UpdDocumento = null;
-                            this.listarDatosConyuge();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.UpdDocumento = null;
+                            _this.listarDatosConyuge();
                         }
                         if (response.estado == "failed") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.UpdDocumento = null;
-                            this.listarDatosConyuge();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.UpdDocumento = null;
+                            _this.listarDatosConyuge();
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.UpdDocumento = null;
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.UpdDocumento = null;
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], TablaBeneficiosConyugeComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], TablaBeneficiosConyugeComponent.prototype, "getNombreSocio", void 0);
-TablaBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-conyuge',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
-], TablaBeneficiosConyugeComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], TablaBeneficiosConyugeComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], TablaBeneficiosConyugeComponent.prototype, "getNombreSocio", void 0);
+    TablaBeneficiosConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-conyuge',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-conyuge.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-conyuge/tabla-beneficios-conyuge.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
+    ], TablaBeneficiosConyugeComponent);
+    return TablaBeneficiosConyugeComponent;
+}());
 
 
 
@@ -6834,8 +6980,8 @@ module.exports = ".sinbordefondo {\r\n  background-color: #fff;\r\n  border: 0;\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosPadresSuegrosComponent", function() { return TablaBeneficiosPadresSuegrosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -6843,8 +6989,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaBeneficiosPadresSuegrosComponent = class TablaBeneficiosPadresSuegrosComponent {
-    constructor(config, modalService, _SociosService, _validarusuario) {
+var TablaBeneficiosPadresSuegrosComponent = /** @class */ (function () {
+    function TablaBeneficiosPadresSuegrosComponent(config, modalService, _SociosService, _validarusuario) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
@@ -6873,119 +7019,123 @@ let TablaBeneficiosPadresSuegrosComponent = class TablaBeneficiosPadresSuegrosCo
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosPadresSuegrosComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosPadresSuegrosComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosPS = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosPS();
         this.usuario_logeado();
-    }
-    limpiar_tabla() {
+    };
+    TablaBeneficiosPadresSuegrosComponent.prototype.limpiar_tabla = function () {
         this.vista_tabla = false;
-    }
-    listarDatosPS() {
-        this._SociosService.getDatosPS(this.getIdSocio).subscribe((response) => {
+    };
+    TablaBeneficiosPadresSuegrosComponent.prototype.listarDatosPS = function () {
+        var _this = this;
+        this._SociosService.getDatosPS(this.getIdSocio).subscribe(function (response) {
             console.log(response);
             if (response.estado == "failed") {
                 //  alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.vista_tabla = false;
+                _this.vista_tabla = false;
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosPS.close();
+                _this.abrirTablaBeneficiosPS.close();
                 return false;
             }
             else {
-                this.traerDatosPS = response.body;
-                this.vista_tabla = true;
+                _this.traerDatosPS = response.body;
+                _this.vista_tabla = true;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_tabla = false;
-            };
+                _this.vista_tabla = false;
+            });
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaBeneficiosPadresSuegrosComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(campo, valor, validar, id) {
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+    TablaBeneficiosPadresSuegrosComponent.prototype.actualizar = function (campo, valor, validar, id) {
+        var _this = this;
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const data = new FormData();
-                    data.append('id', this.getIdSocio);
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var data = new FormData();
+                    data.append('id', _this.getIdSocio);
                     data.append('campo', campo);
                     data.append('valor', valor.value);
                     data.append('socio_padre_suegro_id', id);
-                    this.actualizarLoad = true;
-                    this._SociosService.ActualizarDatosPadresSuegros(data).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._SociosService.ActualizarDatosPadresSuegros(data).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.listarDatosPS();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.listarDatosPS();
                         }
                         if (response.estado == "failed") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.listarDatosPS();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.listarDatosPS();
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], TablaBeneficiosPadresSuegrosComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-], TablaBeneficiosPadresSuegrosComponent.prototype, "getNombreSocio", void 0);
-TablaBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-padres-suegros',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
-], TablaBeneficiosPadresSuegrosComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], TablaBeneficiosPadresSuegrosComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], TablaBeneficiosPadresSuegrosComponent.prototype, "getNombreSocio", void 0);
+    TablaBeneficiosPadresSuegrosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-padres-suegros',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-padres-suegros.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-padres-suegros.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-padres-suegros/tabla-beneficios-padres-suegros.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
+    ], TablaBeneficiosPadresSuegrosComponent);
+    return TablaBeneficiosPadresSuegrosComponent;
+}());
 
 
 
@@ -7013,8 +7163,8 @@ module.exports = ".sinbordefondo {\r\n    background-color: #fff;\r\n    border:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosSocioComponent", function() { return TablaBeneficiosSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
 
@@ -7022,8 +7172,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let TablaBeneficiosSocioComponent = class TablaBeneficiosSocioComponent {
-    constructor(config, modalService, _SociosService, _validarusuario) {
+var TablaBeneficiosSocioComponent = /** @class */ (function () {
+    function TablaBeneficiosSocioComponent(config, modalService, _SociosService, _validarusuario) {
         this.modalService = modalService;
         this._SociosService = _SociosService;
         this._validarusuario = _validarusuario;
@@ -7063,117 +7213,121 @@ let TablaBeneficiosSocioComponent = class TablaBeneficiosSocioComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosSocioComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosSocios = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.listarDatosSocio();
         this.usuario_logeado();
-    }
-    limpiar_tabla() {
+    };
+    TablaBeneficiosSocioComponent.prototype.limpiar_tabla = function () {
         this.vista_tabla = false;
-    }
-    listarDatosSocio() {
-        this._SociosService.getDatosSocio(this.getIdSocio).subscribe((response) => {
+    };
+    TablaBeneficiosSocioComponent.prototype.listarDatosSocio = function () {
+        var _this = this;
+        this._SociosService.getDatosSocio(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 // alert('Error, El rut ingresado no existe en nuestra base de datos, pruebe digitando otro rut.');
-                this.vista_tabla = false;
+                _this.vista_tabla = false;
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosSocios.close();
+                _this.abrirTablaBeneficiosSocios.close();
                 return false;
             }
             else {
-                this.traerDatosSocio = response[0];
-                this.vista_tabla = true;
+                _this.traerDatosSocio = response[0];
+                _this.vista_tabla = true;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_tabla = false;
-            };
+                _this.vista_tabla = false;
+            });
         });
-    }
+    };
     //metodos para validar usuario-------------------------------
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    TablaBeneficiosSocioComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
+    };
     //actualizar items
-    actualizar(campo, valor, validar) {
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+    TablaBeneficiosSocioComponent.prototype.actualizar = function (campo, valor, validar) {
+        var _this = this;
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const data = new FormData();
-                    data.append('id', this.getIdSocio);
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var data = new FormData();
+                    data.append('id', _this.getIdSocio);
                     data.append('campo', campo);
                     data.append('valor', valor.value);
-                    this.actualizarLoad = true;
-                    this._SociosService.ActualizarDatosSocio(data).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._SociosService.ActualizarDatosSocio(data).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.listarDatosSocio();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.listarDatosSocio();
                         }
                         if (response.estado == "failed") {
                             alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.pass = "";
-                            this.listarDatosSocio();
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
+                            _this.listarDatosSocio();
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaBeneficiosSocioComponent.prototype, "getNombreSocio", void 0);
-TablaBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
-], TablaBeneficiosSocioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaBeneficiosSocioComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaBeneficiosSocioComponent.prototype, "getNombreSocio", void 0);
+    TablaBeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-socio.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-beneficios-socio/tabla-beneficios-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"],
+            src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"]])
+    ], TablaBeneficiosSocioComponent);
+    return TablaBeneficiosSocioComponent;
+}());
 
 
 
@@ -7201,17 +7355,17 @@ module.exports = ".sinbordefondo {\r\n    background-color: #fff;\r\n    border:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaResumenSocioComponent", function() { return TablaResumenSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bienestar.service */ "./src/app/servicios/bienestar.service.ts");
 
 
 
 
 
-let TablaResumenSocioComponent = class TablaResumenSocioComponent {
-    constructor(_SociosService, _BienestarService, config, modalService) {
+var TablaResumenSocioComponent = /** @class */ (function () {
+    function TablaResumenSocioComponent(_SociosService, _BienestarService, config, modalService) {
         this._SociosService = _SociosService;
         this._BienestarService = _BienestarService;
         this.modalService = modalService;
@@ -7303,119 +7457,122 @@ let TablaResumenSocioComponent = class TablaResumenSocioComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaResumen(TablaResumen) {
+    TablaResumenSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaResumenSocioComponent.prototype.verTablaResumen = function (TablaResumen) {
         this.abrirTablaResumen = this.modalService.open(TablaResumen, { size: 'lg' });
         this.traerDocumentoSocio();
-    }
-    verTablaBeneficiosCobrados(BeneficiosCobrados) {
+    };
+    TablaResumenSocioComponent.prototype.verTablaBeneficiosCobrados = function (BeneficiosCobrados) {
         this.abrirTablaBeneficiosCobrados = this.modalService.open(BeneficiosCobrados, { size: 'lg' });
         this.listarBeneficiosCobrados();
-    }
-    traerDocumentoSocio() {
+    };
+    TablaResumenSocioComponent.prototype.traerDocumentoSocio = function () {
+        var _this = this;
         this.vista_pdf = true;
-        this._SociosService.getDocumentoResumen(this.getIdSocio).subscribe((response) => {
+        this._SociosService.getDocumentoResumen(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
-                this.vista_pdf = false;
+                _this.vista_pdf = false;
                 alert(response.mensaje);
-                this.abrirTablaResumen.close();
+                _this.abrirTablaResumen.close();
                 return false;
             }
             else {
-                this.TraerDocumentoSocio = response.body[0].archivo;
-                console.log(this.TraerDocumentoSocio);
-                this.vista_pdf = false;
+                _this.TraerDocumentoSocio = response.body[0].archivo;
+                console.log(_this.TraerDocumentoSocio);
+                _this.vista_pdf = false;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_pdf = false;
-            };
+                _this.vista_pdf = false;
+            });
         });
-    }
-    listarDatosResumenSocio() {
+    };
+    TablaResumenSocioComponent.prototype.listarDatosResumenSocio = function () {
+        var _this = this;
         this.vista_tabla = true;
-        let num = 5;
-        this._SociosService.getDatosSocio(this.getIdSocio).subscribe((response) => {
+        var num = 5;
+        this._SociosService.getDatosSocio(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 num--;
-                this.blockTablaSocio = true;
+                _this.blockTablaSocio = true;
             }
             else {
-                this.traerDatosSocio = response[0];
+                _this.traerDatosSocio = response[0];
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.vista_tabla = false;
+            _this.vista_tabla = false;
         });
-        this._SociosService.getDatosConyuge(this.getIdSocio).subscribe((response) => {
+        this._SociosService.getDatosConyuge(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 num--;
-                this.blockTablaConyuge = true;
+                _this.blockTablaConyuge = true;
             }
             else {
-                this.traerDatosConyuge = response.body;
+                _this.traerDatosConyuge = response.body;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.vista_tabla = false;
+            _this.vista_tabla = false;
         });
-        this._SociosService.getDatosBeneficiario(this.getIdSocio).subscribe((response) => {
+        this._SociosService.getDatosBeneficiario(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 num--;
-                this.blockTablaBeneficiario = true;
+                _this.blockTablaBeneficiario = true;
             }
             else {
-                this.traerDatosBeneficiario = response.body;
+                _this.traerDatosBeneficiario = response.body;
                 // console.log(this.traerDatosBeneficiario);
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.vista_tabla = false;
+            _this.vista_tabla = false;
         });
-        this._SociosService.getDatosCarga(this.getIdSocio).subscribe((response) => {
+        this._SociosService.getDatosCarga(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 num--;
-                this.blockTablaCarga = true;
+                _this.blockTablaCarga = true;
             }
             else {
-                this.traerDatosCarga = response.body;
+                _this.traerDatosCarga = response.body;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.vista_tabla = false;
+            _this.vista_tabla = false;
         });
-        this._SociosService.getDatosPS(this.getIdSocio).subscribe((response) => {
+        this._SociosService.getDatosPS(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 num--;
-                this.blockTablaPS = true;
+                _this.blockTablaPS = true;
             }
             if (num == 0) {
                 alert("No se han encontrado datos aun para mostrar.");
-                this.vista_tabla = false;
+                _this.vista_tabla = false;
             }
             else {
-                this.traerDatosPS = response.body;
-                console.log(this.traerDatosPS);
-                this.firma;
-                this.vista_tabla = false;
-                this.ocultar_imprimir = false;
-                this.ocultar_tabla = false;
+                _this.traerDatosPS = response.body;
+                console.log(_this.traerDatosPS);
+                _this.firma;
+                _this.vista_tabla = false;
+                _this.ocultar_imprimir = false;
+                _this.ocultar_tabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.vista_tabla = false;
+            _this.vista_tabla = false;
         });
-    }
-    listarBeneficiosCobrados() {
+    };
+    TablaResumenSocioComponent.prototype.listarBeneficiosCobrados = function () {
+        var _this = this;
         this.vista_tabla_2 = true;
-        let num = 3;
-        this._BienestarService.getBeneficiosCobrados(this.getIdSocio).subscribe((response) => {
+        var num = 3;
+        this._BienestarService.getBeneficiosCobrados(this.getIdSocio).subscribe(function (response) {
             if (response.estado == "failed") {
                 console.log(response);
-                this.vista_tabla_2 = false;
+                _this.vista_tabla_2 = false;
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosCobrados.close();
+                _this.abrirTablaBeneficiosCobrados.close();
                 return false;
             }
             if (response.fallecimiento == "") {
@@ -7428,51 +7585,52 @@ let TablaResumenSocioComponent = class TablaResumenSocioComponent {
                 num--;
             }
             if (num == 0) {
-                this.vista_tabla_2 = false;
+                _this.vista_tabla_2 = false;
                 alert("El socio aun no tienen beneficios cobrados.");
-                this.abrirTablaBeneficiosCobrados.close();
+                _this.abrirTablaBeneficiosCobrados.close();
                 return false;
             }
             else {
-                this.traerFallecimientos = response.fallecimiento;
-                this.traerGastosMedicos = response.gastos_medicos;
-                this.traerNacimientos = response.nacimiento;
-                this.vista_tabla_2 = false;
+                _this.traerFallecimientos = response.fallecimiento;
+                _this.traerGastosMedicos = response.gastos_medicos;
+                _this.traerNacimientos = response.nacimiento;
+                _this.vista_tabla_2 = false;
             }
-            error => {
+            (function (error) {
                 console.log(error);
-                this.vista_tabla_2 = false;
-            };
+                _this.vista_tabla_2 = false;
+            });
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaResumenSocioComponent.prototype, "getIdSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaResumenSocioComponent.prototype, "getNombreSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaResumenSocioComponent.prototype, "getRutSocio", void 0);
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-], TablaResumenSocioComponent.prototype, "getFechaSocio", void 0);
-TablaResumenSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-resumen-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-resumen-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-resumen-socio/tabla-resumen-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-resumen-socio.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-resumen-socio/tabla-resumen-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
-        src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
-], TablaResumenSocioComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaResumenSocioComponent.prototype, "getIdSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaResumenSocioComponent.prototype, "getNombreSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaResumenSocioComponent.prototype, "getRutSocio", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], TablaResumenSocioComponent.prototype, "getFechaSocio", void 0);
+    TablaResumenSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-resumen-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-resumen-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-resumen-socio/tabla-resumen-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-resumen-socio.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tabla-resumen-socio/tabla-resumen-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"],
+            src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
+    ], TablaResumenSocioComponent);
+    return TablaResumenSocioComponent;
+}());
 
 
 
@@ -7500,22 +7658,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablasBeneficiosComponent", function() { return TablasBeneficiosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TablasBeneficiosComponent = class TablasBeneficiosComponent {
-    constructor() { }
-    ngOnInit() {
+var TablasBeneficiosComponent = /** @class */ (function () {
+    function TablasBeneficiosComponent() {
     }
-};
-TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tablas-beneficios',
-        template: __webpack_require__(/*! raw-loader!./tablas-beneficios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.html"),
-        styles: [__webpack_require__(/*! ./tablas-beneficios.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TablasBeneficiosComponent);
+    TablasBeneficiosComponent.prototype.ngOnInit = function () {
+    };
+    TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tablas-beneficios',
+            template: __webpack_require__(/*! raw-loader!./tablas-beneficios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.html"),
+            styles: [__webpack_require__(/*! ./tablas-beneficios.component.css */ "./src/app/auth-master/cuenta-socios/tablas-beneficios/tablas-beneficios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TablasBeneficiosComponent);
+    return TablasBeneficiosComponent;
+}());
 
 
 
@@ -7543,15 +7703,15 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalCajaChicaComponent", function() { return ModalCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
 /* harmony import */ var _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tabla-caja-chica/tabla-caja-chica.component */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 
 
 
@@ -7562,8 +7722,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ModalCajaChicaComponent = class ModalCajaChicaComponent {
-    constructor(config, modalService, _cajaChicaService, _fechasService, _usuariosSevice, _http, sanitizer) {
+var ModalCajaChicaComponent = /** @class */ (function () {
+    function ModalCajaChicaComponent(config, modalService, _cajaChicaService, _fechasService, _usuariosSevice, _http, sanitizer) {
         this.modalService = modalService;
         this._cajaChicaService = _cajaChicaService;
         this._fechasService = _fechasService;
@@ -7621,7 +7781,8 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ModalCajaChicaComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
@@ -7629,49 +7790,49 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         //Cargar definiciones
         this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response;
-            this.valorAnio.descripcion = this.idAnioActual.id;
-        }, error => {
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response;
+            _this.valorAnio.descripcion = _this.idAnioActual.id;
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            this.idMesActual = response;
-            this.valorMes.descripcion = this.idMesActual.id;
-        }, error => {
+        this._fechasService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response;
+            _this.valorMes.descripcion = _this.idMesActual.id;
+        }, function (error) {
             console.log(error);
         });
-    }
-    openPDF(content) {
+    };
+    ModalCajaChicaComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    openCajaChica(CajaChica) {
+    };
+    ModalCajaChicaComponent.prototype.openCajaChica = function (CajaChica) {
         this.modalService.open(CajaChica, { size: 'xl' });
         //Cargar Caja chica
         this.refrescarCajaChica();
         this.usuarioLogeado();
-    }
-    changeDefinicion(evento) {
+    };
+    ModalCajaChicaComponent.prototype.changeDefinicion = function (evento) {
         this.datosCajaChica.definicion = evento.target.value;
-    }
-    changeAnio(evento) {
+    };
+    ModalCajaChicaComponent.prototype.changeAnio = function (evento) {
         this.valorAnio.descripcion = evento.target.value;
         //this.cajaChicaError = false;
         this.refrescarCajaChica();
-    }
-    changeMes(evento) {
+    };
+    ModalCajaChicaComponent.prototype.changeMes = function (evento) {
         this.valorMes.descripcion = evento.target.value;
         //this.cajaChicaError = false;
         this.refrescarCajaChica();
-    }
-    onSelectImage(event) {
+    };
+    ModalCajaChicaComponent.prototype.onSelectImage = function (event) {
         this.datosCajaChica.archivo_documento = event.srcElement.files[0];
-    }
-    onSelectImageEdicion(event) {
+    };
+    ModalCajaChicaComponent.prototype.onSelectImageEdicion = function (event) {
         this.edicionArchivo = event.srcElement.files[0];
-    }
-    onSubmit(valid) {
+    };
+    ModalCajaChicaComponent.prototype.onSubmit = function (valid) {
         if (!valid) {
         }
         else {
@@ -7680,31 +7841,32 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
             document.getElementById("openModalButtonPass").click();
             /*  */
         }
-    }
-    refrescarCajaChica() {
+    };
+    ModalCajaChicaComponent.prototype.refrescarCajaChica = function () {
+        var _this = this;
         //Cargar Caja chica
         this.cajaChica = [];
-        this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(response => {
+        this._cajaChicaService.getCajaChica(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.cajaChicaError = true;
-                this.cajaChicaTotales.total = 0;
-                this.cajaChicaTotales.total_egreso = 0;
-                this.cajaChicaTotales.total_ingreso = 0;
+                _this.cajaChicaError = true;
+                _this.cajaChicaTotales.total = 0;
+                _this.cajaChicaTotales.total_egreso = 0;
+                _this.cajaChicaTotales.total_ingreso = 0;
                 alert(response.mensaje);
             }
             else {
-                this.cajaChicaError = false;
-                this.cajaChica = response.caja;
-                this.cajaChicaTotales = response.totales[0];
+                _this.cajaChicaError = false;
+                _this.cajaChica = response.caja;
+                _this.cajaChicaTotales = response.totales[0];
             }
-            this.loading = false;
-        }, error => {
+            _this.loading = false;
+        }, function (error) {
             console.log(error);
         });
         this.loading = true;
-    }
+    };
     //Funciones para la edicion de los campos*********************************************************
-    editarParametro(id, campo, parametro) {
+    ModalCajaChicaComponent.prototype.editarParametro = function (id, campo, parametro) {
         this.idEdicion = id;
         this.campoEdicion = campo;
         this.parametroEdicion = parametro;
@@ -7724,157 +7886,162 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         }
         //aqui modificar el input del modal edicion
         document.getElementById("openModalButtonEdicion").click();
-    }
-    ingresarModificacionDocumento() {
+    };
+    ModalCajaChicaComponent.prototype.ingresarModificacionDocumento = function () {
         this.blockCajaChica = true;
         this.loadingModificacion = true;
         document.getElementById("openModalButtonPass3").click();
-    }
-    ingresarModificacionTexto(input) {
+    };
+    ModalCajaChicaComponent.prototype.ingresarModificacionTexto = function (input) {
         this.blockCajaChica = true;
         this.loadingModificacion = true;
         this.valorInput = input;
         document.getElementById("openModalButtonPass2").click();
-    }
-    openEdicionModal(edicion) {
+    };
+    ModalCajaChicaComponent.prototype.openEdicionModal = function (edicion) {
         this.modalReference = this.modalService.open(edicion, { size: 'sm' });
-    }
+    };
     //Funciones del modal validacion de conraseña++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    openContraseniaModal(validar) {
+    ModalCajaChicaComponent.prototype.openContraseniaModal = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    openContraseniaModalEdicion(validar) {
+    };
+    ModalCajaChicaComponent.prototype.openContraseniaModalEdicion = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    openContraseniaModalEdicionDocumento(validar) {
+    };
+    ModalCajaChicaComponent.prototype.openContraseniaModalEdicionDocumento = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    usuarioLogeado() {
+    };
+    ModalCajaChicaComponent.prototype.usuarioLogeado = function () {
+        var _this = this;
         this._http.get(this.url + "usuario_logeado", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
-        }).subscribe(response => {
-            this.usuario = response;
-            this.rut = this.usuario.rut;
-        }, error => {
+        }).subscribe(function (response) {
+            _this.usuario = response;
+            _this.rut = _this.usuario.rut;
+        }, function (error) {
             console.log(error);
         });
-    }
-    validarUsuarioModificacionDocumento(pass) {
-        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(response => {
+    };
+    ModalCajaChicaComponent.prototype.validarUsuarioModificacionDocumento = function (pass) {
+        var _this = this;
+        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(function (response) {
             if (response > 0) {
                 document.getElementById("closeModalButtonValidacion").click();
-                this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(response => {
+                _this._cajaChicaService.modificarValor(_this.idEdicion, _this.campoEdicion, _this.edicionArchivo).subscribe(function (response) {
                     if (response.estado == "failed" || response.estado == "failed_v") {
-                        this.blockCajaChica = false;
-                        this.loadingModificacion = false;
+                        _this.blockCajaChica = false;
+                        _this.loadingModificacion = false;
                         alert(response.mensaje.input[0] + "\n " + response.mensaje.input[1]);
                     }
                     else {
-                        this.blockCajaChica = false;
-                        this.loadingModificacion = false;
+                        _this.blockCajaChica = false;
+                        _this.loadingModificacion = false;
                         alert(response.mensaje);
-                        this.refrescarCajaChica();
+                        _this.refrescarCajaChica();
                         document.getElementById("closeModalButtonEdicion").click();
                     }
-                }, error => {
+                }, function (error) {
                     console.log(error);
                 });
             }
             else {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert("Acceso denegado");
                 document.getElementById("closeModalButtonEdicion").click();
-                this.modalReference.close();
+                _this.modalReference.close();
             }
         });
-    }
-    validarUsuarioModificaciones(pass) {
-        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(response => {
+    };
+    ModalCajaChicaComponent.prototype.validarUsuarioModificaciones = function (pass) {
+        var _this = this;
+        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(function (response) {
             if (response > 0) {
                 document.getElementById("closeModalButtonValidacion").click();
-                this._cajaChicaService.modificarValor(this.idEdicion, this.campoEdicion, this.valorInput).subscribe(response => {
+                _this._cajaChicaService.modificarValor(_this.idEdicion, _this.campoEdicion, _this.valorInput).subscribe(function (response) {
                     if (response.estado == "failed" || response.estado == "failed_v") {
-                        this.blockCajaChica = false;
-                        this.loadingModificacion = false;
+                        _this.blockCajaChica = false;
+                        _this.loadingModificacion = false;
                         alert("Compruebe que la fecha nueva corresponda al mes anterior, que el numero de documento no se encuentre duplicado o no ingresar valores negativos en egreso");
                         document.getElementById("closeModalButtonEdicion").click();
                     }
                     else {
-                        this.blockCajaChica = false;
-                        this.loadingModificacion = false;
+                        _this.blockCajaChica = false;
+                        _this.loadingModificacion = false;
                         alert(response.mensaje);
-                        this.refrescarCajaChica();
+                        _this.refrescarCajaChica();
                         document.getElementById("closeModalButtonEdicion").click();
                     }
-                }, error => {
+                }, function (error) {
                     console.log(error);
                 });
             }
             else {
-                this.blockCajaChica = false;
-                this.loadingModificacion = false;
+                _this.blockCajaChica = false;
+                _this.loadingModificacion = false;
                 alert("Acceso denegado");
                 document.getElementById("closeModalButtonEdicion").click();
-                this.modalReference.close();
+                _this.modalReference.close();
             }
         });
-    }
-    validarUsuario(pass) {
-        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(response => {
+    };
+    ModalCajaChicaComponent.prototype.validarUsuario = function (pass) {
+        var _this = this;
+        this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(function (response) {
             if (response > 0) {
                 document.getElementById("closeModalButtonValidacion").click();
-                this._cajaChicaService.ingresarValor(this.datosCajaChica).subscribe(response => {
+                _this._cajaChicaService.ingresarValor(_this.datosCajaChica).subscribe(function (response) {
                     if (response.estado == 'failed_v') {
-                        this.blockCajaChica = false;
+                        _this.blockCajaChica = false;
                         alert("ERROR: Compruebe que el número de documento no se encuentre duplicado o falte un campo en el formulario");
-                        this.ingresoStatus = 'Se ha encontrado un error en el formulario, revisar que se encuentre todos los campos llenos y validados';
-                        this.errorIngreso = true;
+                        _this.ingresoStatus = 'Se ha encontrado un error en el formulario, revisar que se encuentre todos los campos llenos y validados';
+                        _this.errorIngreso = true;
                         return false;
                     }
                     if (response.estado == 'failed') {
-                        this.blockCajaChica = false;
+                        _this.blockCajaChica = false;
                         alert(response.mensaje);
-                        this.ingresoStatus = response.mensaje;
-                        this.errorIngreso = true;
+                        _this.ingresoStatus = response.mensaje;
+                        _this.errorIngreso = true;
                         return false;
                     }
                     else {
-                        this.blockCajaChica = false;
+                        _this.blockCajaChica = false;
                         alert("¡Ingreso correcto!");
-                        this.errorIngreso = false;
-                        this.ingresoStatus = '';
-                        this.datosCajaChica.numero_documento = '';
-                        this.datosCajaChica.archivo_documento = null;
-                        this.datosCajaChica.fecha = '';
-                        this.datosCajaChica.descripcion = '';
-                        this.datosCajaChica.monto_egreso = null;
-                        this.refrescarCajaChica();
+                        _this.errorIngreso = false;
+                        _this.ingresoStatus = '';
+                        _this.datosCajaChica.numero_documento = '';
+                        _this.datosCajaChica.archivo_documento = null;
+                        _this.datosCajaChica.fecha = '';
+                        _this.datosCajaChica.descripcion = '';
+                        _this.datosCajaChica.monto_egreso = null;
+                        _this.refrescarCajaChica();
                     }
-                }, error => {
+                }, function (error) {
                     console.log(error);
                 });
             }
             else {
-                this.blockCajaChica = false;
+                _this.blockCajaChica = false;
                 alert("Acceso denegado");
-                this.modalReference.close();
+                _this.modalReference.close();
             }
         });
-    }
-};
-tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
-], ModalCajaChicaComponent.prototype, "tablaComponent", void 0);
-ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./modal-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./modal-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__["CajaChicaService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__["AniosService"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClient"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__["DomSanitizer"]])
-], ModalCajaChicaComponent);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
+    ], ModalCajaChicaComponent.prototype, "tablaComponent", void 0);
+    ModalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./modal-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./modal-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__["CajaChicaService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__["AniosService"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClient"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__["DomSanitizer"]])
+    ], ModalCajaChicaComponent);
+    return ModalCajaChicaComponent;
+}());
 
 
 
@@ -7902,26 +8069,27 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaCajaChicaComponent", function() { return TablaCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/caja-chica.service */ "./src/app/servicios/caja-chica.service.ts");
 
 
 
-let TablaCajaChicaComponent = class TablaCajaChicaComponent {
-    constructor(_cajaChicaService) {
+var TablaCajaChicaComponent = /** @class */ (function () {
+    function TablaCajaChicaComponent(_cajaChicaService) {
         this._cajaChicaService = _cajaChicaService;
     }
-    ngOnInit() {
-    }
-};
-TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./tabla-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__["CajaChicaService"]])
-], TablaCajaChicaComponent);
+    TablaCajaChicaComponent.prototype.ngOnInit = function () {
+    };
+    TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./tabla-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/tabla-caja-chica/tabla-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__["CajaChicaService"]])
+    ], TablaCajaChicaComponent);
+    return TablaCajaChicaComponent;
+}());
 
 
 
@@ -7949,22 +8117,24 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TotalCajaChicaComponent", function() { return TotalCajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let TotalCajaChicaComponent = class TotalCajaChicaComponent {
-    constructor() { }
-    ngOnInit() {
+var TotalCajaChicaComponent = /** @class */ (function () {
+    function TotalCajaChicaComponent() {
     }
-};
-TotalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-total-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./total-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./total-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], TotalCajaChicaComponent);
+    TotalCajaChicaComponent.prototype.ngOnInit = function () {
+    };
+    TotalCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-total-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./total-caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./total-caja-chica.component.css */ "./src/app/auth-master/modal-caja-chica/total-caja-chica/total-caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], TotalCajaChicaComponent);
+    return TotalCajaChicaComponent;
+}());
 
 
 
@@ -7992,8 +8162,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalCampingComponent", function() { return ModalCampingComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/cs-detalle-camping.service */ "./src/app/servicios/cs-detalle-camping.service.ts");
 /* harmony import */ var _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
@@ -8005,8 +8175,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ModalCampingComponent = class ModalCampingComponent {
-    constructor(config, modalService, _anios, _camping, _validarusuario, _sindicalService) {
+var ModalCampingComponent = /** @class */ (function () {
+    function ModalCampingComponent(config, modalService, _anios, _camping, _validarusuario, _sindicalService) {
         this.modalService = modalService;
         this._anios = _anios;
         this._camping = _camping;
@@ -8030,134 +8200,141 @@ let ModalCampingComponent = class ModalCampingComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ModalCampingComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.anios = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.meses = JSON.parse(localStorage.getItem('meses'));
-    }
-    open(content) {
+    };
+    ModalCampingComponent.prototype.open = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    openCamping(Camping) {
+    };
+    ModalCampingComponent.prototype.openCamping = function (Camping) {
         this.modalService.open(Camping, { size: 'lg' });
         this.cargar_select();
         this.usuario_logeado();
         //this.listo_para_listar();
-    }
-    cargar_select() {
-        this._anios.getAnioActual().subscribe((val) => {
-            this.anio = val.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalCampingComponent.prototype.cargar_select = function () {
+        var _this = this;
+        this._anios.getAnioActual().subscribe(function (val) {
+            _this.anio = val.id;
+            _this.suc_res1 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-        this._anios.getMesActual().subscribe((val) => {
-            this.mes = val.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+        this._anios.getMesActual().subscribe(function (val) {
+            _this.mes = val.id;
+            _this.suc_res2 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listar_detalle_camping() {
+    };
+    ModalCampingComponent.prototype.listar_detalle_camping = function () {
+        var _this = this;
         // listar_detalle_camping/{anio}/{mes}
-        this._camping.getLista(this.anio, this.mes).subscribe((val) => {
+        this._camping.getLista(this.anio, this.mes).subscribe(function (val) {
             if (val.estado == "success") {
-                this.detallecamping = val.tabla;
-                this.resumen = val.resumen;
+                _this.detallecamping = val.tabla;
+                _this.resumen = val.resumen;
             }
             if (val.estado == "failed") {
                 alert("No existen registros en este periodo de tiempo");
-                this.detallecamping = val.tabla;
-                this.resumen = val.resumen;
+                _this.detallecamping = val.tabla;
+                _this.resumen = val.resumen;
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    traer_monto() {
-        this._camping.getMonto(this.anio, this.mes).subscribe((val) => {
-            this.monto = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalCampingComponent.prototype.traer_monto = function () {
+        var _this = this;
+        this._camping.getMonto(this.anio, this.mes).subscribe(function (val) {
+            _this.monto = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    guarda_monto() {
+    };
+    ModalCampingComponent.prototype.guarda_monto = function () {
+        var _this = this;
         if (this.monto == '') {
             alert("No ha ingresado un monto en este campo");
             return false;
         }
-        this._camping.guardar(this.anio, this.mes, this.monto).subscribe((val) => {
+        this._camping.guardar(this.anio, this.mes, this.monto).subscribe(function (val) {
             //this.detallecamping = val;
             if (val.estado == 'success') {
                 alert("" + val.mensaje + "");
-                this.listar_detalle_camping();
+                _this.listar_detalle_camping();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    change_mes() {
+    };
+    ModalCampingComponent.prototype.change_mes = function () {
         this.traer_monto();
         this.listar_detalle_camping();
-    }
-    change_anio() {
+    };
+    ModalCampingComponent.prototype.change_anio = function () {
         this.traer_monto();
         this.listar_detalle_camping();
-    }
-    listo_para_listar(res1, res2) {
+    };
+    ModalCampingComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             console.log("ready to get");
             this.traer_monto();
             this.listar_detalle_camping();
         }
-    }
-    usuario_logeado() {
-        this._validarusuario.usuario_logeado().subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalCampingComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._validarusuario.usuario_logeado().subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    btn_validar_usuario($rut, $password, validar) {
+    };
+    ModalCampingComponent.prototype.btn_validar_usuario = function ($rut, $password, validar) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', this.estado);
-        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this._validarusuario.validar_usuario(formData).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.load = false;
-                this.modalReference.close();
-                this.guarda_monto();
+                _this.load = false;
+                _this.modalReference.close();
+                _this.guarda_monto();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    ModalCampingComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    openActualizar(Actualizar) {
+    };
+    ModalCampingComponent.prototype.openActualizar = function (Actualizar) {
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
         this.usuario_logeado();
-    }
-    cerrarActualizar() {
+    };
+    ModalCampingComponent.prototype.cerrarActualizar = function () {
         this.modalActualizar.close();
         //this.actualizarMontoCajaChica = '';
-    }
-    onSelectImage(event) {
+    };
+    ModalCampingComponent.prototype.onSelectImage = function (event) {
         this.archivoDocumento = event.srcElement.files[0];
-    }
+    };
     //actualizar items
-    actualizar(id, campo, input, validar) {
+    ModalCampingComponent.prototype.actualizar = function (id, campo, input, validar) {
+        var _this = this;
         if (campo == "archivo") {
             if (validar == "undefined") {
                 alert("ingrese documento porfavor!");
@@ -8172,75 +8349,76 @@ let ModalCampingComponent = class ModalCampingComponent {
             alert("ingrese datos porfavor!");
             return false;
         }
-        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-            this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
-            this.buttonStatus = true;
-            const formData = new FormData();
-            formData.append('rut', this.user['rut']);
-            formData.append('password', this.pass);
-            formData.append('estado', this.estado);
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then(function (result) {
+            _this.m_val = _this.modalService.open(validar, { size: 'sm' });
+            _this.load = true;
+            _this.buttonStatus = true;
+            var formData = new FormData();
+            formData.append('rut', _this.user['rut']);
+            formData.append('password', _this.pass);
+            formData.append('estado', _this.estado);
+            _this._validarusuario.validar_usuario(formData).subscribe(function (val) {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    const form = new FormData();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
+                    var form = new FormData();
                     form.append('id', id);
                     form.append('campo', campo);
                     form.append('valor', input.value);
-                    this.actualizarLoad = true;
-                    this._sindicalService.getTablaSindicalActualizar(id, campo, this.entrada).subscribe(response => {
+                    _this.actualizarLoad = true;
+                    _this._sindicalService.getTablaSindicalActualizar(id, campo, _this.entrada).subscribe(function (response) {
                         if (response.estado == "success") {
                             alert("" + response.mensaje + "");
-                            this.modalActualizar.close();
+                            _this.modalActualizar.close();
                             //this.archivoDocumento = null;
-                            this.listo_para_listar(this.suc_res1, this.suc_res2);
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                         }
                         if (response.estado == "failed") {
                             alert("" + response.mensaje + "");
                             //this.archivoDocumento = null;
-                            this.actualizarLoad = false;
-                            this.pass = "";
+                            _this.actualizarLoad = false;
+                            _this.pass = "";
                             return false;
                         }
                     });
                 }
                 else {
                     alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
+                    _this.load = false;
+                    _this.buttonStatus = false;
+                    _this.pass = "";
+                    _this.m_val.close();
                     return false;
                 }
-            }, response => { console.log("POST call in error", response); }, () => {
+            }, function (response) { console.log("POST call in error", response); }, function () {
                 console.log("The POST success.");
             });
             return false;
-        }, (reason) => {
-            console.log(`${reason}`);
+        }, function (reason) {
+            console.log("" + reason);
             //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         });
-    }
-};
-ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-camping',
-        template: __webpack_require__(/*! raw-loader!./modal-camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-camping/modal-camping.component.html"),
-        styles: [__webpack_require__(/*! ./modal-camping.component.css */ "./src/app/auth-master/modal-camping/modal-camping.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"],
-        _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
-        src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_6__["SindicalService"]])
-], ModalCampingComponent);
+    };
+    ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-camping',
+            template: __webpack_require__(/*! raw-loader!./modal-camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-camping/modal-camping.component.html"),
+            styles: [__webpack_require__(/*! ./modal-camping.component.css */ "./src/app/auth-master/modal-camping/modal-camping.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+            _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"],
+            _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
+            src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_6__["SindicalService"]])
+    ], ModalCampingComponent);
+    return ModalCampingComponent;
+}());
 
 
 
@@ -8268,11 +8446,11 @@ module.exports = "label,input, button{\r\n  font-size: 12px;\r\n}\r\n\r\ntr,th{\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalInicioMesComponent", function() { return ModalInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
 
@@ -8280,9 +8458,9 @@ __webpack_require__.r(__webpack_exports__);
 //import-------------
 
 
-let ModalInicioMesComponent = class ModalInicioMesComponent {
+var ModalInicioMesComponent = /** @class */ (function () {
     //-------------------------
-    constructor(config, modalService, _http, _anios) {
+    function ModalInicioMesComponent(config, modalService, _http, _anios) {
         this.modalService = modalService;
         this._http = _http;
         this._anios = _anios;
@@ -8317,136 +8495,144 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
         //---------------------
     }
-    ngOnInit() {
-    }
-    openMensual(Mensual) {
+    ModalInicioMesComponent.prototype.ngOnInit = function () {
+    };
+    ModalInicioMesComponent.prototype.openMensual = function (Mensual) {
         this.llenar_anio_y_mes();
         this.modalService.open(Mensual, { size: 'lg' });
         this.anio_actual();
         this.mes_actual();
         this.usuario_logeado();
         //console.log(document.getElementById('anio').options.value);
-    }
-    llenar_anio_y_mes() {
-        this._anios.getAnios().subscribe((val) => {
-            this.selectAnio = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.llenar_anio_y_mes = function () {
+        var _this = this;
+        this._anios.getAnios().subscribe(function (val) {
+            _this.selectAnio = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-        this._anios.getMeses().subscribe((val) => {
-            this.selectMes = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+        this._anios.getMeses().subscribe(function (val) {
+            _this.selectMes = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
         //Cargar Años
         //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         //this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
+    };
     //metodos---------------------------------------------------------------------------------------
-    calcular_cierre_mensual(anio, mes) {
+    ModalInicioMesComponent.prototype.calcular_cierre_mensual = function (anio, mes) {
+        var _this = this;
         this.failed_visible = false;
         this.success_visible = false;
-        this._http.get(this.url + "calcular_cm/" + this.anio + "/" + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.monto = val;
+        this._http.get(this.url + "calcular_cm/" + this.anio + "/" + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.monto = val;
             console.log(val);
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    anio_actual() {
-        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.anio = val.id;
-            this.fil_anio = val.id;
-            this.listar_tabla();
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.anio_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.anio = val.id;
+            _this.fil_anio = val.id;
+            _this.listar_tabla();
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    mes_actual() {
-        this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.mes = val.id;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.mes_actual = function () {
+        var _this = this;
+        this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.mes = val.id;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    guardar() {
+    };
+    ModalInicioMesComponent.prototype.guardar = function () {
+        var _this = this;
         this.failed_visible = false;
         this.success_visible = false;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('anio', this.anio);
         formData.append('mes', this.mes);
         formData.append('cierre_mensual', this.monto);
-        this._http.post(this.url + "guardar_inicio_mensual", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+        this._http.post(this.url + "guardar_inicio_mensual", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
             if (val['estado'] == 'failed') {
                 // console.log(val);
-                this.monto = '';
-                this.failed_visible = true;
-                this.success_visible = false;
-                this.txt = val['mensaje'];
-                this.listar_tabla();
+                _this.monto = '';
+                _this.failed_visible = true;
+                _this.success_visible = false;
+                _this.txt = val['mensaje'];
+                _this.listar_tabla();
             }
             if (val['estado'] == 'success') {
                 // console.log(val);
-                this.monto = '';
-                this.failed_visible = false;
-                this.success_visible = true;
-                this.txt = val['mensaje'];
-                this.listar_tabla();
+                _this.monto = '';
+                _this.failed_visible = false;
+                _this.success_visible = true;
+                _this.txt = val['mensaje'];
+                _this.listar_tabla();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listar_tabla() {
-        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/" + this.fil_anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.tabla = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.listar_tabla = function () {
+        var _this = this;
+        this._http.get(this.url + "listar_inicio_y_cierre_mensual_cs/" + this.fil_anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.tabla = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    cambiar_anio() {
+    };
+    ModalInicioMesComponent.prototype.cambiar_anio = function () {
         this.listar_tabla();
-    }
-    usuario_logeado() {
-        this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.user = val;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    ModalInicioMesComponent.prototype.usuario_logeado = function () {
+        var _this = this;
+        this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.user = val;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    validar_usuario(validar) {
+    };
+    ModalInicioMesComponent.prototype.validar_usuario = function (validar) {
         this.modalReference = this.modalService.open(validar, { size: 'sm' });
-    }
-    btn_validar_usuario($rut, $password, validar, estado) {
+    };
+    ModalInicioMesComponent.prototype.btn_validar_usuario = function ($rut, $password, validar, estado) {
+        var _this = this;
         this.load = true;
-        const formData = new FormData();
+        var formData = new FormData();
         formData.append('rut', $rut.value);
         formData.append('password', $password.value);
         formData.append('estado', estado);
-        this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
+        this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
             if (val > 0) { //si tiene acceso;
-                this.guardar();
-                this.load = false;
+                _this.guardar();
+                _this.load = false;
                 // this.modalReference.close();
                 //this.modalService.dismissAll();
-                this.modalReference.close();
+                _this.modalReference.close();
             }
             else {
                 alert("Acceso denegado");
-                this.load = false;
-                this.modalReference.close();
+                _this.load = false;
+                _this.modalReference.close();
             }
-        }, response => { console.log("POST call in error", response); }, () => {
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    quitar_alerts() {
+    };
+    ModalInicioMesComponent.prototype.quitar_alerts = function () {
         this.success_visible = false;
         this.txt = '';
         this.failed_visible = false;
-    }
-    getDismissReason(reason) {
+    };
+    ModalInicioMesComponent.prototype.getDismissReason = function (reason) {
         if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ModalDismissReasons"].ESC) {
             return 'by pressing ESC';
         }
@@ -8454,18 +8640,19 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
             return 'by clicking on a backdrop';
         }
         else {
-            return `with: ${reason}`;
+            return "with: " + reason;
         }
-    }
-};
-ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-inicio-mes',
-        template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
-        styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
-], ModalInicioMesComponent);
+    };
+    ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-inicio-mes',
+            template: __webpack_require__(/*! raw-loader!./modal-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.html"),
+            styles: [__webpack_require__(/*! ./modal-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/modal-inicio-mes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"]])
+    ], ModalInicioMesComponent);
+    return ModalInicioMesComponent;
+}());
 
 
 
@@ -8493,8 +8680,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaInicioMesComponent", function() { return TablaInicioMesComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
@@ -8502,9 +8689,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /////////////////////
-let TablaInicioMesComponent = class TablaInicioMesComponent {
+var TablaInicioMesComponent = /** @class */ (function () {
     //-------------------------
-    constructor(_http) {
+    function TablaInicioMesComponent(_http) {
         this._http = _http;
         this.selectAnio = [];
         //variables-----------------
@@ -8515,20 +8702,21 @@ let TablaInicioMesComponent = class TablaInicioMesComponent {
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
         //---------------------
     }
-    ngOnInit() {
+    TablaInicioMesComponent.prototype.ngOnInit = function () {
         //Cargar Años
         //this.anio_actual();
         //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
-    }
-};
-TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-inicio-mes',
-        template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], TablaInicioMesComponent);
+    };
+    TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-inicio-mes',
+            template: __webpack_require__(/*! raw-loader!./tabla-inicio-mes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-inicio-mes.component.css */ "./src/app/auth-master/modal-inicio-mes/tabla-inicio-mes/tabla-inicio-mes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], TablaInicioMesComponent);
+    return TablaInicioMesComponent;
+}());
 
 
 
@@ -8556,17 +8744,17 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InteresPrestamoApuroEconomicoComponent", function() { return InteresPrestamoApuroEconomicoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/global */ "./src/app/servicios/global.ts");
 
 
 
 
 
-let InteresPrestamoApuroEconomicoComponent = class InteresPrestamoApuroEconomicoComponent {
-    constructor(_http, _anios) {
+var InteresPrestamoApuroEconomicoComponent = /** @class */ (function () {
+    function InteresPrestamoApuroEconomicoComponent(_http, _anios) {
         this._http = _http;
         this._anios = _anios;
         this.suc_res1 = false;
@@ -8578,58 +8766,61 @@ let InteresPrestamoApuroEconomicoComponent = class InteresPrestamoApuroEconomico
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
     }
-    ngOnInit() {
+    InteresPrestamoApuroEconomicoComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.anios = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.meses = JSON.parse(localStorage.getItem('meses'));
         this.cargar_select();
-    }
-    cargar_select() {
-        this._anios.getAnioActual().subscribe((val) => {
-            this.anio = val.id;
-            this.suc_res1 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.cargar_select = function () {
+        var _this = this;
+        this._anios.getAnioActual().subscribe(function (val) {
+            _this.anio = val.id;
+            _this.suc_res1 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-        this._anios.getMesActual().subscribe((val) => {
-            this.mes = val.id;
-            this.suc_res2 = true;
-            this.listo_para_listar(this.suc_res1, this.suc_res2);
-        }, response => { console.log("POST call in error", response); }, () => {
+        this._anios.getMesActual().subscribe(function (val) {
+            _this.mes = val.id;
+            _this.suc_res2 = true;
+            _this.listo_para_listar(_this.suc_res1, _this.suc_res2);
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listar_intereses() {
-        this._http.get(this.url + "listar_interes_prestamo/" + this.anio + '/' + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe((val) => {
-            this.tabla = val.tabla;
-            this.total = val.total;
-        }, response => { console.log("POST call in error", response); }, () => {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.listar_intereses = function () {
+        var _this = this;
+        this._http.get(this.url + "listar_interes_prestamo/" + this.anio + '/' + this.mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) }).subscribe(function (val) {
+            _this.tabla = val.tabla;
+            _this.total = val.total;
+        }, function (response) { console.log("POST call in error", response); }, function () {
             console.log("The POST success.");
         });
-    }
-    listo_para_listar(res1, res2) {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.listo_para_listar = function (res1, res2) {
         if (res1 == true && res2 == true) {
             console.log("ready to get");
             this.listar_intereses();
         }
-    }
-    change_anio() {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.change_anio = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-    change_mes() {
+    };
+    InteresPrestamoApuroEconomicoComponent.prototype.change_mes = function () {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
-    }
-};
-InteresPrestamoApuroEconomicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-interes-prestamo-apuro-economico',
-        template: __webpack_require__(/*! raw-loader!./interes-prestamo-apuro-economico.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.html"),
-        styles: [__webpack_require__(/*! ./interes-prestamo-apuro-economico.component.css */ "./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"]])
-], InteresPrestamoApuroEconomicoComponent);
+    };
+    InteresPrestamoApuroEconomicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-interes-prestamo-apuro-economico',
+            template: __webpack_require__(/*! raw-loader!./interes-prestamo-apuro-economico.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.html"),
+            styles: [__webpack_require__(/*! ./interes-prestamo-apuro-economico.component.css */ "./src/app/auth-master/modal-prestamos-socios/interes-prestamo-apuro-economico/interes-prestamo-apuro-economico.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"]])
+    ], InteresPrestamoApuroEconomicoComponent);
+    return InteresPrestamoApuroEconomicoComponent;
+}());
 
 
 
@@ -8657,8 +8848,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalPrestamosSociosComponent", function() { return ModalPrestamosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/socios.service */ "./src/app/servicios/socios.service.ts");
 
@@ -8666,8 +8857,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
-    constructor(config, modalService, _sindicalService, _sociosService) {
+var ModalPrestamosSociosComponent = /** @class */ (function () {
+    function ModalPrestamosSociosComponent(config, modalService, _sindicalService, _sociosService) {
         this.modalService = modalService;
         this._sindicalService = _sindicalService;
         this._sociosService = _sociosService;
@@ -8699,22 +8890,26 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ModalPrestamosSociosComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Guardar Tipo Prestamo
-        this._sindicalService.getTipoPrestamo().subscribe((res) => {
-            this.selectTipoPrestamo = res.map(({ id, descripcion }) => ({ id, descripcion }));
-            this.datosTipoPrestamo.descripcion = "";
-        }, error => {
+        this._sindicalService.getTipoPrestamo().subscribe(function (res) {
+            _this.selectTipoPrestamo = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
+            _this.datosTipoPrestamo.descripcion = "";
+        }, function (error) {
             console.log(error);
         });
-    }
-    openPrestamo(Prestamo) {
+    };
+    ModalPrestamosSociosComponent.prototype.openPrestamo = function (Prestamo) {
         this.modalService.open(Prestamo, { size: 'xl' });
-    }
-    onSelectImage(event) {
+    };
+    ModalPrestamosSociosComponent.prototype.onSelectImage = function (event) {
         this.datosEnvioPrestamo.archivoDocumento = event.srcElement.files[0];
-    }
-    changeTipoPrestamo(evento) {
+    };
+    ModalPrestamosSociosComponent.prototype.changeTipoPrestamo = function (evento) {
         this.datosTipoPrestamo.id = evento.target.value;
         this.datosEnvioPrestamo.selectId = this.datosTipoPrestamo.id;
         console.log(this.datosEnvioPrestamo.selectId);
@@ -8730,30 +8925,31 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
             this.datosTipoPrestamo.descripcion = "aporteEconomico";
             this.datosEnvioPrestamo.cuotas = "0";
         }
-    }
-    consultarSocio(rut) {
+    };
+    ModalPrestamosSociosComponent.prototype.consultarSocio = function (rut) {
+        var _this = this;
         this.blockPrestamo = true;
-        this._sociosService.getSocio(rut).subscribe((res) => {
+        this._sociosService.getSocio(rut).subscribe(function (res) {
             if (res.estado == 'failed') {
                 alert(res.mensaje);
-                this.nombreSocioTest = "";
-                this.rutSocioTest = "";
-                this.errorSocio = true;
-                this.blockPrestamo = false;
+                _this.nombreSocioTest = "";
+                _this.rutSocioTest = "";
+                _this.errorSocio = true;
+                _this.blockPrestamo = false;
             }
             else {
-                this.datosSocio = res;
-                this.nombreSocioTest = this.datosSocio[0].socio;
-                this.rutSocioTest = this.datosSocio[0].rut;
-                this.datosEnvioPrestamo.socioId = this.datosSocio[0].id;
-                this.errorSocio = false;
-                this.blockPrestamo = false;
+                _this.datosSocio = res;
+                _this.nombreSocioTest = _this.datosSocio[0].socio;
+                _this.rutSocioTest = _this.datosSocio[0].rut;
+                _this.datosEnvioPrestamo.socioId = _this.datosSocio[0].id;
+                _this.errorSocio = false;
+                _this.blockPrestamo = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeRadioAbono(val) {
+    };
+    ModalPrestamosSociosComponent.prototype.changeRadioAbono = function (val) {
         console.log(val);
         console.log(this.datosEnvioPrestamo.checkAbono);
         if (val == false) {
@@ -8764,8 +8960,8 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
             this.datosEnvioPrestamo.montoTri = "";
             this.datosEnvioPrestamo.montoCon = "";
         }
-    }
-    changeCheckAbono(val) {
+    };
+    ModalPrestamosSociosComponent.prototype.changeCheckAbono = function (val) {
         if (val == 1) {
             console.log("monto del dia en 0");
             this.datosEnvioPrestamo.montoDia = "";
@@ -8776,57 +8972,58 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
         else if (val == 3) {
             this.datosEnvioPrestamo.montoCon = "";
         }
-    }
-    onSubmit() {
+    };
+    ModalPrestamosSociosComponent.prototype.onSubmit = function () {
+        var _this = this;
         this.blockPrestamo = true;
         console.log(this.blockPrestamo);
         console.log(this.datosEnvioPrestamo);
-        this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe((res) => {
+        this._sindicalService.setPrestamo(this.datosEnvioPrestamo).subscribe(function (res) {
             console.log(res);
             if (res.estado == 'failed_v' || res.estado == 'failed') {
                 //alert('ERROR: Compruebe que los valores ingresados son correctos');
-                let mensaje = JSON.stringify(res.mensaje);
+                var mensaje = JSON.stringify(res.mensaje);
                 mensaje = mensaje.replace(/[\[\]'"{}]+/g, '');
                 alert(mensaje);
-                this.blockPrestamo = false;
+                _this.blockPrestamo = false;
             }
             else {
                 alert('Ingreso correcto');
-                this.blockPrestamo = false;
+                _this.blockPrestamo = false;
                 //limpieza de campos
-                this.datosTipoPrestamo.id = 0;
-                this.datosEnvioPrestamo.fecha = "";
-                this.datosEnvioPrestamo.selectId = 1;
-                this.datosEnvioPrestamo.socioId = "";
-                this.datosEnvioPrestamo.numeroDocumento = "";
-                this.datosEnvioPrestamo.archivoDocumento = null;
-                this.datosEnvioPrestamo.montoPrestamo = "";
-                this.datosEnvioPrestamo.checkAbono = false;
-                this.datosEnvioPrestamo.cuotas = "";
-                this.datosEnvioPrestamo.montoDia = "";
-                this.datosEnvioPrestamo.montoTri = "";
-                this.datosEnvioPrestamo.montoCon = "";
-                this.datosEnvioPrestamo.checkDia = false;
-                this.datosEnvioPrestamo.checkTri = false;
-                this.datosEnvioPrestamo.checkCon = false;
-                this.nombreSocioTest = "";
-                this.rutSocioTest = "";
-                this.inputRut = "";
-                this.inputPrestamoRestante = null;
+                _this.datosTipoPrestamo.id = 0;
+                _this.datosEnvioPrestamo.fecha = "";
+                _this.datosEnvioPrestamo.selectId = 1;
+                _this.datosEnvioPrestamo.socioId = "";
+                _this.datosEnvioPrestamo.numeroDocumento = "";
+                _this.datosEnvioPrestamo.archivoDocumento = null;
+                _this.datosEnvioPrestamo.montoPrestamo = "";
+                _this.datosEnvioPrestamo.checkAbono = false;
+                _this.datosEnvioPrestamo.cuotas = "";
+                _this.datosEnvioPrestamo.montoDia = "";
+                _this.datosEnvioPrestamo.montoTri = "";
+                _this.datosEnvioPrestamo.montoCon = "";
+                _this.datosEnvioPrestamo.checkDia = false;
+                _this.datosEnvioPrestamo.checkTri = false;
+                _this.datosEnvioPrestamo.checkCon = false;
+                _this.nombreSocioTest = "";
+                _this.rutSocioTest = "";
+                _this.inputRut = "";
+                _this.inputPrestamoRestante = null;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    calcularInteres(event) {
-        let valor = Math.ceil(event.target.value * 0.10);
+    };
+    ModalPrestamosSociosComponent.prototype.calcularInteres = function (event) {
+        var valor = Math.ceil(event.target.value * 0.10);
         this.inputGanancia = valor;
         console.log(this.inputGanancia);
-    }
-    calcularPrestamoRestante() {
-        let montoDia;
-        let montoTri;
-        let montoCon;
+    };
+    ModalPrestamosSociosComponent.prototype.calcularPrestamoRestante = function () {
+        var montoDia;
+        var montoTri;
+        var montoCon;
         montoDia = parseInt(this.datosEnvioPrestamo.montoDia);
         montoTri = parseInt(this.datosEnvioPrestamo.montoTri);
         montoCon = parseInt(this.datosEnvioPrestamo.montoCon);
@@ -8846,7 +9043,7 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
             montoCon = 0;
             console.log("montoCon" + montoCon);
         }
-        let valor = (parseInt(this.datosEnvioPrestamo.montoPrestamo) - montoDia - montoTri - montoCon);
+        var valor = (parseInt(this.datosEnvioPrestamo.montoPrestamo) - montoDia - montoTri - montoCon);
         if (valor < 0) {
             alert("monto restante negativo");
         }
@@ -8854,16 +9051,17 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
         if (this.inputPrestamoRestante == 0) {
             this.datosEnvioPrestamo.cuotas = "0";
         }
-    }
-};
-ModalPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-modal-prestamos-socios',
-        template: __webpack_require__(/*! raw-loader!./modal-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./modal-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"], src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__["SociosService"]])
-], ModalPrestamosSociosComponent);
+    };
+    ModalPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-modal-prestamos-socios',
+            template: __webpack_require__(/*! raw-loader!./modal-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./modal-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/modal-prestamos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"], src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__["SociosService"]])
+    ], ModalPrestamosSociosComponent);
+    return ModalPrestamosSociosComponent;
+}());
 
 
 
@@ -8891,17 +9089,17 @@ module.exports = ".dark-modal .modal-content {\r\n    background-color: #292b2c;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaPrestamosHistoricosSociosComponent", function() { return TablaPrestamosHistoricosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSociosComponent {
-    constructor(_sindicalService, _fechasService, config, modalService) {
+var TablaPrestamosHistoricosSociosComponent = /** @class */ (function () {
+    function TablaPrestamosHistoricosSociosComponent(_sindicalService, _fechasService, config, modalService) {
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
         this.modalService = modalService;
@@ -8933,7 +9131,8 @@ let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSoci
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    TablaPrestamosHistoricosSociosComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         this.selectAnio.id = '1';
@@ -8941,226 +9140,237 @@ let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSoci
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         this.selectMes.id = '1';
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            let AnioActual;
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            var AnioActual;
             AnioActual = response;
-            this.selectAnio.id = AnioActual.id;
-        }, error => {
+            _this.selectAnio.id = AnioActual.id;
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            let mesActual;
+        this._fechasService.getMesActual().subscribe(function (response) {
+            var mesActual;
             mesActual = response;
-            this.selectMes.id = mesActual.id;
-            this.refrescarTablaPrestamosClientes();
-        }, error => {
+            _this.selectMes.id = mesActual.id;
+            _this.refrescarTablaPrestamosClientes();
+        }, function (error) {
             console.log(error);
         });
-    }
-    open(content) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.open = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    refrescarTablaPrestamosClientes() {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.refrescarTablaPrestamosClientes = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._sindicalService.getPrestamosHistoricos(this.selectAnio.id, this.selectMes.id).subscribe(response => {
+        this._sindicalService.getPrestamosHistoricos(this.selectAnio.id, this.selectMes.id).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.valoresPrestamosSalud = null;
-                this.valoresPrestamosApuro = null;
-                this.valoresPrestamosAporte = null;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = null;
+                _this.valoresPrestamosApuro = null;
+                _this.valoresPrestamosAporte = null;
+                _this.cargandoTabla = false;
                 alert(response.mensaje);
             }
             else {
-                this.valoresPrestamosSalud = response.salud;
-                this.valoresPrestamosApuro = response.apuro;
-                this.valoresPrestamosAporte = response.aporte;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = response.salud;
+                _this.valoresPrestamosApuro = response.apuro;
+                _this.valoresPrestamosAporte = response.aporte;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         this.listar_resumen_prestamos();
-    }
-    changeAnio(evento) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.changeAnio = function (evento) {
         this.selectAnio.id = evento.target.value;
         console.log(this.selectAnio.id);
         this.refrescarTablaPrestamosClientes();
         this.listar_resumen_prestamos();
-    }
-    changeMes(evento) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.changeMes = function (evento) {
         this.selectMes.id = evento.target.value;
         console.log(this.selectMes.id);
         this.refrescarTablaPrestamosClientes();
         //this.listar_resumen_prestamos();
-    }
-    pagarPrestamo(fecha, prestamoId, montoPagar) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.pagarPrestamo = function (fecha, prestamoId, montoPagar) {
+        var _this = this;
         this.blockPagoPrestamo = true;
-        this._sindicalService.pagarPrestamoSalud(fecha.value, prestamoId, montoPagar.value).subscribe(response => {
+        this._sindicalService.pagarPrestamoSalud(fecha.value, prestamoId, montoPagar.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoPrestamo = false;
+                _this.blockPagoPrestamo = false;
                 alert(response.mensaje);
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoPrestamo = false;
+                _this.cerrarActualizar();
+                _this.blockPagoPrestamo = false;
                 alert("Se ha realizado el pago correctamente");
             }
-        }, error => {
-            this.blockPagoPrestamo = false;
+        }, function (error) {
+            _this.blockPagoPrestamo = false;
             alert("Ha ocurrido un error");
         });
-    }
-    pagarPrestamoApu(fecha, prestamoId, montoPagar) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.pagarPrestamoApu = function (fecha, prestamoId, montoPagar) {
+        var _this = this;
         this.blockPagoPrestamo = true;
-        this._sindicalService.pagarPrestamoApuro(fecha.value, prestamoId, montoPagar.value).subscribe(response => {
+        this._sindicalService.pagarPrestamoApuro(fecha.value, prestamoId, montoPagar.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoPrestamo = false;
+                _this.blockPagoPrestamo = false;
                 alert(response.mensaje);
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoPrestamo = false;
+                _this.cerrarActualizar();
+                _this.blockPagoPrestamo = false;
                 alert("Se ha realizado el pago correctamente");
             }
-        }, error => {
-            this.blockPagoPrestamo = false;
+        }, function (error) {
+            _this.blockPagoPrestamo = false;
             alert("Ha ocurrido un error");
         });
-    }
-    openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.openActualizar = function (Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
         this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
         console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
         this.montoDelInteresPagar = interes / cuotaP;
         this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
         this.montoFinalPagar = totalPrestamo / cuotaP;
         console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
-    }
-    cerrarActualizar() {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.cerrarActualizar = function () {
         this.modalActualizarPagoSalud.close();
-    }
-    openAbono(modal, id, tipo) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.openAbono = function (modal, id, tipo) {
         this.mostrar_1 = false;
         this.cargar_1 = true;
         this.m_bono = this.modalService.open(modal, { size: 'lg' });
         this.abonos(id, tipo);
-    }
-    pagarAbono(id, definicionSelectAbono, fecha, monto) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.pagarAbono = function (id, definicionSelectAbono, fecha, monto) {
+        var _this = this;
         this.blockPagoAbono = true;
         console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
-        this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(response => {
+        this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoAbono = false;
-                this.refrescarTablaPrestamosClientes();
+                _this.blockPagoAbono = false;
+                _this.refrescarTablaPrestamosClientes();
                 //this.listar_resumen_prestamos();
                 alert("" + response.mensaje + "");
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoAbono = false;
+                _this.cerrarActualizar();
+                _this.blockPagoAbono = false;
                 alert("" + response.mensaje + "");
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockPagoAbono = false;
+            _this.blockPagoAbono = false;
             alert("Error de proceso");
         });
-    }
-    abonos(id, tipo) {
-        this._sindicalService.listar_abonos_por_prestamo(id, tipo).subscribe(response => {
-            this.get_abonos = response;
-            this.cargar_1 = false;
-            this.mostrar_1 = true;
-        }, error => {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.abonos = function (id, tipo) {
+        var _this = this;
+        this._sindicalService.listar_abonos_por_prestamo(id, tipo).subscribe(function (response) {
+            _this.get_abonos = response;
+            _this.cargar_1 = false;
+            _this.mostrar_1 = true;
+        }, function (error) {
             console.log(error);
             alert("No se encontraron datos");
-            this.get_abonos = "No existen datos";
-            this.cargar_1 = false;
-            this.mostrar_1 = true;
-            this.m_bono.close();
+            _this.get_abonos = "No existen datos";
+            _this.cargar_1 = false;
+            _this.mostrar_1 = true;
+            _this.m_bono.close();
         });
-    }
-    listar_resumen_prestamos() {
-        this._sindicalService.lista_ultima_prestamos(this.selectAnio.id, this.selectMes.id).subscribe(response => {
-            this.resumen = response;
-        }, error => {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.listar_resumen_prestamos = function () {
+        var _this = this;
+        this._sindicalService.lista_ultima_prestamos(this.selectAnio.id, this.selectMes.id).subscribe(function (response) {
+            _this.resumen = response;
+        }, function (error) {
             console.log(error);
             alert("No se encontraron datos");
-            this.get_abonos = "No existen datos";
-            this.m_bono.close();
+            _this.get_abonos = "No existen datos";
+            _this.m_bono.close();
         });
-    }
-    modal_pni(modal) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.modal_pni = function (modal) {
         this.m_pni = this.modalService.open(modal, { size: 'xl' });
         this.listar_prestamos_no_iniciados();
-    }
-    modal_pc(modal) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.modal_pc = function (modal) {
         this.m_pc = this.modalService.open(modal, { size: 'xl' });
         this.listar_prestamos_finalizados();
-    }
-    listar_prestamos_no_iniciados() {
-        this._sindicalService.listar_pni().subscribe(response => {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.listar_prestamos_no_iniciados = function () {
+        var _this = this;
+        this._sindicalService.listar_pni().subscribe(function (response) {
             if (response.estado == "success") {
-                this.get_pni = response.body;
+                _this.get_pni = response.body;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
             alert("No se encontraron datos");
-            this.get_abonos = "No existen datos";
-            this.m_pc.close();
+            _this.get_abonos = "No existen datos";
+            _this.m_pc.close();
         });
-    }
-    listar_prestamos_finalizados() {
-        this._sindicalService.listar_pc().subscribe(response => {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.listar_prestamos_finalizados = function () {
+        var _this = this;
+        this._sindicalService.listar_pc().subscribe(function (response) {
             if (response.estado == "success") {
-                this.get_pc = response.body;
+                _this.get_pc = response.body;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
             alert("No se encontraron datos");
-            this.get_pc = "No existen datos";
-            this.m_bono.close();
+            _this.get_pc = "No existen datos";
+            _this.m_bono.close();
         });
-    }
-    calcular_cuota_prestamo2(id) {
-        this._sindicalService.calcular_cuota(id).subscribe(response => {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.calcular_cuota_prestamo2 = function (id) {
+        var _this = this;
+        this._sindicalService.calcular_cuota(id).subscribe(function (response) {
             if (response.estado == "success") {
-                this.calculo_cuota = response.calculo_cuota;
+                _this.calculo_cuota = response.calculo_cuota;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
             alert("No se encontraron datos");
         });
-    }
-    calcular_el_abono(id) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.calcular_el_abono = function (id) {
+        var _this = this;
         this.m_abono = '';
         this.if_abono = true;
-        this._sindicalService.calcular_abono(id, this.s_abono).subscribe(response => {
+        this._sindicalService.calcular_abono(id, this.s_abono).subscribe(function (response) {
             if (response.estado == "success") {
-                this.m_abono = response.monto;
-                this.if_abono = false;
-                console.log(this.if_abono);
+                _this.m_abono = response.monto;
+                _this.if_abono = false;
+                console.log(_this.if_abono);
             }
-        }, error => {
-            this.m_abono = '';
-            this.if_abono = false;
+        }, function (error) {
+            _this.m_abono = '';
+            _this.if_abono = false;
             console.log(error);
             alert("No se encontraron datos");
         });
-    }
-    changeAbono(id) {
+    };
+    TablaPrestamosHistoricosSociosComponent.prototype.changeAbono = function (id) {
         this.calcular_el_abono(id);
-    }
-};
-TablaPrestamosHistoricosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-prestamos-historicos-socios',
-        template: __webpack_require__(/*! raw-loader!./tabla-prestamos-historicos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-prestamos-historicos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], TablaPrestamosHistoricosSociosComponent);
+    };
+    TablaPrestamosHistoricosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-prestamos-historicos-socios',
+            template: __webpack_require__(/*! raw-loader!./tabla-prestamos-historicos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-prestamos-historicos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-historicos-socios/tabla-prestamos-historicos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], TablaPrestamosHistoricosSociosComponent);
+    return TablaPrestamosHistoricosSociosComponent;
+}());
 
 
 
@@ -9188,17 +9398,17 @@ module.exports = "    .dark-modal .modal-content {\r\n        background-color: 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaPrestamosSociosComponent", function() { return TablaPrestamosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/sindical.service */ "./src/app/servicios/sindical.service.ts");
 /* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
 
-let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
-    constructor(_sindicalService, _fechasService, config, modalService) {
+var TablaPrestamosSociosComponent = /** @class */ (function () {
+    function TablaPrestamosSociosComponent(_sindicalService, _fechasService, config, modalService) {
         this._sindicalService = _sindicalService;
         this._fechasService = _fechasService;
         this.modalService = modalService;
@@ -9220,7 +9430,8 @@ let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    TablaPrestamosSociosComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         this.selectAnio.id = '1';
@@ -9228,116 +9439,120 @@ let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
         this.selectMes.id = '1';
         //Cargar id del Año actual
-        this._fechasService.getAnioActual().subscribe(response => {
-            let AnioActual;
+        this._fechasService.getAnioActual().subscribe(function (response) {
+            var AnioActual;
             AnioActual = response;
-            this.selectAnio.id = AnioActual.id;
-        }, error => {
+            _this.selectAnio.id = AnioActual.id;
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._fechasService.getMesActual().subscribe(response => {
-            let mesActual;
+        this._fechasService.getMesActual().subscribe(function (response) {
+            var mesActual;
             mesActual = response;
-            this.selectMes.id = mesActual.id;
-            this.refrescarTablaPrestamosClientes();
-        }, error => {
+            _this.selectMes.id = mesActual.id;
+            _this.refrescarTablaPrestamosClientes();
+        }, function (error) {
             console.log(error);
         });
-    }
-    open(content) {
+    };
+    TablaPrestamosSociosComponent.prototype.open = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
+    };
+    TablaPrestamosSociosComponent.prototype.openActualizar = function (Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
         this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
         console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
         this.montoDelInteresPagar = interes / cuotaP;
         this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
         this.montoFinalPagar = totalPrestamo / cuotaP;
         console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
-    }
-    cerrarActualizar() {
+    };
+    TablaPrestamosSociosComponent.prototype.cerrarActualizar = function () {
         this.modalActualizarPagoSalud.close();
-    }
-    refrescarTablaPrestamosClientes() {
+    };
+    TablaPrestamosSociosComponent.prototype.refrescarTablaPrestamosClientes = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(response => {
+        this._sindicalService.getPrestramosSocios(this.selectAnio.id, this.selectMes.id).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.valoresPrestamosSalud = null;
-                this.valoresPrestamosApuro = null;
-                this.valoresPrestamosAporte = null;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = null;
+                _this.valoresPrestamosApuro = null;
+                _this.valoresPrestamosAporte = null;
+                _this.cargandoTabla = false;
                 alert(response.mensaje);
             }
             else {
-                this.valoresPrestamosSalud = response.salud;
-                this.valoresPrestamosApuro = response.apuro;
-                this.valoresPrestamosAporte = response.aporte;
-                this.cargandoTabla = false;
+                _this.valoresPrestamosSalud = response.salud;
+                _this.valoresPrestamosApuro = response.apuro;
+                _this.valoresPrestamosAporte = response.aporte;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(evento) {
+    };
+    TablaPrestamosSociosComponent.prototype.changeAnio = function (evento) {
         this.selectAnio.id = evento.target.value;
         console.log(this.selectAnio.id);
         this.refrescarTablaPrestamosClientes();
-    }
-    changeMes(evento) {
+    };
+    TablaPrestamosSociosComponent.prototype.changeMes = function (evento) {
         this.selectMes.id = evento.target.value;
         console.log(this.selectMes.id);
         this.refrescarTablaPrestamosClientes();
-    }
-    pagarPrestamo(fecha, prestamoId, montoPagar) {
+    };
+    TablaPrestamosSociosComponent.prototype.pagarPrestamo = function (fecha, prestamoId, montoPagar) {
+        var _this = this;
         this.blockPagoPrestamo = true;
-        this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(response => {
+        this._sindicalService.pagarPrestamo(fecha.value, prestamoId, montoPagar.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoPrestamo = false;
+                _this.blockPagoPrestamo = false;
                 alert(response.mensaje);
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoPrestamo = false;
+                _this.cerrarActualizar();
+                _this.blockPagoPrestamo = false;
                 alert("Se ha realizado el pago correctamente");
             }
-        }, error => {
-            this.blockPagoPrestamo = false;
+        }, function (error) {
+            _this.blockPagoPrestamo = false;
             alert("Ha ocurrido un error");
         });
-    }
-    pagarAbono(id, definicionSelectAbono, fecha, monto) {
+    };
+    TablaPrestamosSociosComponent.prototype.pagarAbono = function (id, definicionSelectAbono, fecha, monto) {
+        var _this = this;
         this.blockPagoAbono = true;
         console.log(id, definicionSelectAbono.value, fecha.value, monto.value);
-        this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(response => {
+        this._sindicalService.pagarAbono(id, definicionSelectAbono.value, fecha.value, monto.value).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
-                this.blockPagoAbono = false;
-                this.refrescarTablaPrestamosClientes();
+                _this.blockPagoAbono = false;
+                _this.refrescarTablaPrestamosClientes();
                 alert("Ha ocurrido un error compruebe que los datos sean validos");
             }
             else {
-                this.cerrarActualizar();
-                this.blockPagoAbono = false;
+                _this.cerrarActualizar();
+                _this.blockPagoAbono = false;
                 alert("Se ha realizado el pago correctamente");
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockPagoAbono = false;
+            _this.blockPagoAbono = false;
             alert("Ha ocurrido un error");
         });
-    }
-};
-TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-prestamos-socios',
-        template: __webpack_require__(/*! raw-loader!./tabla-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
-        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
-], TablaPrestamosSociosComponent);
+    };
+    TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-prestamos-socios',
+            template: __webpack_require__(/*! raw-loader!./tabla-prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-prestamos-socios.component.css */ "./src/app/auth-master/modal-prestamos-socios/tabla-prestamos-socios/tabla-prestamos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"],
+            src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
+    ], TablaPrestamosSociosComponent);
+    return TablaPrestamosSociosComponent;
+}());
 
 
 
@@ -9354,31 +9569,32 @@ TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuardService", function() { return AuthGuardService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
 
 
-let AuthGuardService = class AuthGuardService {
-    constructor(auth, router) {
+var AuthGuardService = /** @class */ (function () {
+    function AuthGuardService(auth, router) {
         this.auth = auth;
         this.router = router;
         this.rol = localStorage.getItem('rol');
     }
-    canActivate() {
+    AuthGuardService.prototype.canActivate = function () {
         if ((this.rol != '1' && this.rol != '5') || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }
         return true;
-    }
-};
-AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-], AuthGuardService);
+    };
+    AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AuthGuardService);
+    return AuthGuardService;
+}());
 
 
 
@@ -9395,8 +9611,8 @@ AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuardSocioService", function() { return AuthGuardSocioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
@@ -9404,25 +9620,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AuthGuardSocioService = class AuthGuardSocioService {
-    constructor(auth, _portalSociosService, router) {
+var AuthGuardSocioService = /** @class */ (function () {
+    function AuthGuardSocioService(auth, _portalSociosService, router) {
         this.auth = auth;
         this._portalSociosService = _portalSociosService;
         this.router = router;
         this.rol = localStorage.getItem('rol');
     }
-    canActivate() {
+    AuthGuardSocioService.prototype.canActivate = function () {
         if ((this.rol != '10' && this.rol != '5') || !this.auth.isAuthenticated()) {
             this.router.navigate(['']);
             return false;
         }
         return true;
-    }
-};
-AuthGuardSocioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_4__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-], AuthGuardSocioService);
+    };
+    AuthGuardSocioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_4__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AuthGuardSocioService);
+    return AuthGuardSocioService;
+}());
 
 
 
@@ -9438,8 +9655,12 @@ AuthGuardSocioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Usuario", function() { return Usuario; });
-class Usuario {
-}
+var Usuario = /** @class */ (function () {
+    function Usuario() {
+    }
+    return Usuario;
+}());
+
 
 
 /***/ }),
@@ -9466,16 +9687,16 @@ module.exports = "nav.navbar {\r\n    background: #093028;  /* fallback for old 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
 
-let NavbarComponent = class NavbarComponent {
-    constructor(_userService) {
+var NavbarComponent = /** @class */ (function () {
+    function NavbarComponent(_userService) {
         this._userService = _userService;
     }
-    ngOnInit() {
+    NavbarComponent.prototype.ngOnInit = function () {
         this.usuario = this._userService.getUsuario();
         if (this.usuario != null) {
             this.isLogged = true;
@@ -9484,26 +9705,28 @@ let NavbarComponent = class NavbarComponent {
             this.isLogged = false;
         }
         this.getNombre();
-    }
-    logOut() {
+    };
+    NavbarComponent.prototype.logOut = function () {
         this._userService.logOut();
-    }
-    getNombre() {
-        this._userService.getUsuarioLogeado().subscribe(response => {
-            this.nombreUsuario = response.name + " " + response.a_paterno;
-        }, error => {
+    };
+    NavbarComponent.prototype.getNombre = function () {
+        var _this = this;
+        this._userService.getUsuarioLogeado().subscribe(function (response) {
+            _this.nombreUsuario = response.name + " " + response.a_paterno;
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-navbar',
-        template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
-        styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
-], NavbarComponent);
+    };
+    NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-navbar',
+            template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
+            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
+    ], NavbarComponent);
+    return NavbarComponent;
+}());
 
 
 
@@ -9531,22 +9754,24 @@ module.exports = "\r\n#demoFont {\r\n    color: white;\r\n    background: #2C3E5
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoEncontradoComponent", function() { return NoEncontradoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let NoEncontradoComponent = class NoEncontradoComponent {
-    constructor() { }
-    ngOnInit() {
+var NoEncontradoComponent = /** @class */ (function () {
+    function NoEncontradoComponent() {
     }
-};
-NoEncontradoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-no-encontrado',
-        template: __webpack_require__(/*! raw-loader!./no-encontrado.component.html */ "./node_modules/raw-loader/index.js!./src/app/no-encontrado/no-encontrado.component.html"),
-        styles: [__webpack_require__(/*! ./no-encontrado.component.css */ "./src/app/no-encontrado/no-encontrado.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], NoEncontradoComponent);
+    NoEncontradoComponent.prototype.ngOnInit = function () {
+    };
+    NoEncontradoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-no-encontrado',
+            template: __webpack_require__(/*! raw-loader!./no-encontrado.component.html */ "./node_modules/raw-loader/index.js!./src/app/no-encontrado/no-encontrado.component.html"),
+            styles: [__webpack_require__(/*! ./no-encontrado.component.css */ "./src/app/no-encontrado/no-encontrado.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], NoEncontradoComponent);
+    return NoEncontradoComponent;
+}());
 
 
 
@@ -9574,22 +9799,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutComponent", function() { return AboutComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let AboutComponent = class AboutComponent {
-    constructor() { }
-    ngOnInit() {
+var AboutComponent = /** @class */ (function () {
+    function AboutComponent() {
     }
-};
-AboutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-about',
-        template: __webpack_require__(/*! raw-loader!./about.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/about/about.component.html"),
-        styles: [__webpack_require__(/*! ./about.component.css */ "./src/app/public-master/about/about.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], AboutComponent);
+    AboutComponent.prototype.ngOnInit = function () {
+    };
+    AboutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-about',
+            template: __webpack_require__(/*! raw-loader!./about.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/about/about.component.html"),
+            styles: [__webpack_require__(/*! ./about.component.css */ "./src/app/public-master/about/about.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AboutComponent);
+    return AboutComponent;
+}());
 
 
 
@@ -9617,11 +9844,11 @@ module.exports = "\r\n#test{\r\n  color: #fff;\r\n  text-shadow: 2px 2px 4px #00
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _modelos_usuarios_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../modelos/usuarios.model */ "./src/app/modelos/usuarios.model.ts");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
@@ -9630,8 +9857,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let LoginComponent = class LoginComponent {
-    constructor(_userService, _portalSocios, router, config, modalService) {
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(_userService, _portalSocios, router, config, modalService) {
         this._userService = _userService;
         this._portalSocios = _portalSocios;
         this.router = router;
@@ -9643,82 +9870,85 @@ let LoginComponent = class LoginComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    LoginComponent.prototype.ngOnInit = function () {
         this.token = localStorage.getItem('token');
         if (this.token != null) {
             localStorage.clear();
         }
-    }
-    openLoginAdmins(Admins) {
+    };
+    LoginComponent.prototype.openLoginAdmins = function (Admins) {
         this.modalService.open(Admins, { size: 'sm' });
-    }
-    onSubmit(form) {
+    };
+    LoginComponent.prototype.onSubmit = function (form) {
+        var _this = this;
         if (this.lockLogin == false) {
             this.lockLogin = true;
-            this._userService.login(this.usuario, true).subscribe(response => {
+            this._userService.login(this.usuario, true).subscribe(function (response) {
                 if (response.status == 'success') {
                     localStorage.setItem('rol', response.rol);
-                    this.token = response.token;
-                    localStorage.setItem('token', JSON.stringify(this.token));
-                    localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-                    this.lockLogin = false;
-                    this.router.navigate(['/AuthMaster']);
+                    _this.token = response.token;
+                    localStorage.setItem('token', JSON.stringify(_this.token));
+                    localStorage.setItem('usuario', JSON.stringify(_this.usuario.email));
+                    _this.lockLogin = false;
+                    _this.router.navigate(['/AuthMaster']);
                     console.log("estoy despues del navigate");
                     document.getElementById("closeModalLogin").click();
                 }
                 else {
-                    this.lockLogin = false;
-                    this.noEncontrado = true;
-                    this.loading = false;
+                    _this.lockLogin = false;
+                    _this.noEncontrado = true;
+                    _this.loading = false;
                 }
-            }, error => {
-                this.status = error;
-                this.lockLogin = false;
-                this.noEncontrado = true;
-                this.loading = false;
+            }, function (error) {
+                _this.status = error;
+                _this.lockLogin = false;
+                _this.noEncontrado = true;
+                _this.loading = false;
             });
             this.noEncontrado = false;
             this.loading = true;
         }
-    }
-    onSubmitSocios(form) {
+    };
+    LoginComponent.prototype.onSubmitSocios = function (form) {
+        var _this = this;
         if (this.lockLogin == false) {
             this.lockLogin = true;
-            this._portalSocios.loginSocios(this.usuario).subscribe(response => {
+            this._portalSocios.loginSocios(this.usuario).subscribe(function (response) {
                 if (response.status == 'success') {
                     localStorage.setItem('rol', response.rol);
-                    this.token = response.token;
-                    localStorage.setItem('token', JSON.stringify(this.token));
-                    localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
-                    this.lockLogin = false;
-                    this.router.navigate(['/SociosMaster']);
+                    _this.token = response.token;
+                    localStorage.setItem('token', JSON.stringify(_this.token));
+                    localStorage.setItem('usuario', JSON.stringify(_this.usuario.email));
+                    _this.lockLogin = false;
+                    _this.router.navigate(['/SociosMaster']);
                     console.log("estoy despues del navigate");
                     document.getElementById("closeModalLogin").click();
                 }
                 else {
-                    this.lockLogin = false;
-                    this.noEncontrado = true;
-                    this.loading = false;
+                    _this.lockLogin = false;
+                    _this.noEncontrado = true;
+                    _this.loading = false;
                 }
-            }, error => {
-                this.status = error;
-                this.lockLogin = false;
-                this.noEncontrado = true;
-                this.loading = false;
+            }, function (error) {
+                _this.status = error;
+                _this.lockLogin = false;
+                _this.noEncontrado = true;
+                _this.loading = false;
             });
             this.noEncontrado = false;
             this.loading = true;
         }
-    }
-};
-LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-login',
-        template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/login/login.component.html"),
-        styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/public-master/login/login.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_6__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]])
-], LoginComponent);
+    };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/public-master/login/login.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_6__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
 
 
 
@@ -9746,22 +9976,24 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicMasterComponent", function() { return PublicMasterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let PublicMasterComponent = class PublicMasterComponent {
-    constructor() { }
-    ngOnInit() {
+var PublicMasterComponent = /** @class */ (function () {
+    function PublicMasterComponent() {
     }
-};
-PublicMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-public-master',
-        template: __webpack_require__(/*! raw-loader!./public-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/public-master.component.html"),
-        styles: [__webpack_require__(/*! ./public-master.component.css */ "./src/app/public-master/public-master.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], PublicMasterComponent);
+    PublicMasterComponent.prototype.ngOnInit = function () {
+    };
+    PublicMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-public-master',
+            template: __webpack_require__(/*! raw-loader!./public-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/public-master/public-master.component.html"),
+            styles: [__webpack_require__(/*! ./public-master.component.css */ "./src/app/public-master/public-master.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PublicMasterComponent);
+    return PublicMasterComponent;
+}());
 
 
 
@@ -9778,25 +10010,27 @@ PublicMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SafePipe", function() { return SafePipe; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 
 
 
-let SafePipe = class SafePipe {
-    constructor(_domSanitizer) {
+var SafePipe = /** @class */ (function () {
+    function SafePipe(_domSanitizer) {
         this._domSanitizer = _domSanitizer;
     }
-    transform(value, url = '') {
+    SafePipe.prototype.transform = function (value, url) {
+        if (url === void 0) { url = ''; }
         return this._domSanitizer.bypassSecurityTrustResourceUrl(url + value);
-    }
-};
-SafePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-        name: 'safeUrl'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
-], SafePipe);
+    };
+    SafePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+            name: 'safeUrl'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
+    ], SafePipe);
+    return SafePipe;
+}());
 
 
 
@@ -9813,52 +10047,53 @@ SafePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AniosService", function() { return AniosService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let AniosService = class AniosService {
-    constructor(_http) {
+var AniosService = /** @class */ (function () {
+    function AniosService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getAnios() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    AniosService.prototype.getAnios = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_anios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getMeses() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    AniosService.prototype.getMeses = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_meses", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getAnioActual() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    AniosService.prototype.getAnioActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getMesActual() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    AniosService.prototype.getMesActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-};
-AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-], AniosService);
+    };
+    AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], AniosService);
+    return AniosService;
+}());
 
 
 
@@ -9875,21 +10110,21 @@ AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BienestarService", function() { return BienestarService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let BienestarService = class BienestarService {
-    constructor(_http) {
+var BienestarService = /** @class */ (function () {
+    function BienestarService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    guardar_iniciomensual(anio, mes, cierre_mensual) {
-        const body = new FormData();
+    BienestarService.prototype.guardar_iniciomensual = function (anio, mes, cierre_mensual) {
+        var body = new FormData();
         body.append('anio', anio);
         body.append('mes', mes);
         body.append('cierre_mensual', cierre_mensual);
@@ -9898,78 +10133,79 @@ let BienestarService = class BienestarService {
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    calcular(anio, mes) {
+    };
+    BienestarService.prototype.calcular = function (anio, mes) {
         return this._http.get(this.url + "cbe_calcular_cm/" + anio + '/' + mes, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-    listar_inicio_cierre(anio) {
+    };
+    BienestarService.prototype.listar_inicio_cierre = function (anio) {
         return this._http.get(this.url + "listar_inicio_y_cierre_mensual_cbe/" + anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-    insertar_CuentaBienestar(form) {
+    };
+    BienestarService.prototype.insertar_CuentaBienestar = function (form) {
         return this._http.post(this.url + "cbe_insertar", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaBienestar(anio, mes) {
+    };
+    BienestarService.prototype.getTablaBienestar = function (anio, mes) {
         return this._http.get(this.url + "cbe_listar/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTablaBienestarActualizar(id, campo, input) {
-        const body = new FormData();
+    };
+    BienestarService.prototype.getTablaBienestarActualizar = function (id, campo, input) {
+        var body = new FormData();
         body.append('id', id);
         body.append('campo', campo);
         body.append('input', input);
         return this._http.post(this.url + "actualizar_dato_cbe", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    traer_monto_inicial_cbe(anio, mes) {
+    };
+    BienestarService.prototype.traer_monto_inicial_cbe = function (anio, mes) {
         return this._http.get(this.url + "traer_monto_inicial_cbe/" + anio + '/' + mes, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-    calcular_caja_chica_cbe(anio, mes) {
+    };
+    BienestarService.prototype.calcular_caja_chica_cbe = function (anio, mes) {
         return this._http.get(this.url + "calcular_caja_chica_anterior_cbe/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getCalcularCajaChicaActualizar(anio, mes) {
+    };
+    BienestarService.prototype.getCalcularCajaChicaActualizar = function (anio, mes) {
         return this._http.get(this.url + "calcular_caja_chica_anterior_cbe2/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getBeneficiosCobrados(idSocio) {
+    };
+    BienestarService.prototype.getBeneficiosCobrados = function (idSocio) {
         return this._http.get(this.url + "listar_beneficios_cobrados/" + idSocio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-BienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], BienestarService);
+    };
+    BienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], BienestarService);
+    return BienestarService;
+}());
 
 
 
@@ -9986,34 +10222,35 @@ BienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BryanConsorcioService", function() { return BryanConsorcioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let BryanConsorcioService = class BryanConsorcioService {
-    constructor(_http) {
+var BryanConsorcioService = /** @class */ (function () {
+    function BryanConsorcioService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getConsorcio(anio) {
+    BryanConsorcioService.prototype.getConsorcio = function (anio) {
         return this._http.get(this.url + "traer_cuenta_consorcio_socio/" + anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-};
-BryanConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], BryanConsorcioService);
+    };
+    BryanConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], BryanConsorcioService);
+    return BryanConsorcioService;
+}());
 
 
 
@@ -10030,46 +10267,46 @@ BryanConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BryanBienestarService", function() { return BryanBienestarService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let BryanBienestarService = class BryanBienestarService {
-    constructor(_http) {
+var BryanBienestarService = /** @class */ (function () {
+    function BryanBienestarService(_http) {
         this._http = _http;
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     //Servicio para llamar a la caja chica
-    getCajaChicaBienestar(anio, mes) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    BryanBienestarService.prototype.getCajaChicaBienestar = function (anio, mes) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_caja_chica_bienestar/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //Servicio para llamar a la caja chica
-    getCajaChicaBienestarSocios(anio, mes) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    BryanBienestarService.prototype.getCajaChicaBienestarSocios = function (anio, mes) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_caja_chica_bienestar_socio/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //Servicio para llamar a la Cuenta de Bienestar
-    getCuentaBienestar(anio, mes) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    BryanBienestarService.prototype.getCuentaBienestar = function (anio, mes) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_cuenta_bienestar_socio/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //*********************INGRESAR A CAJA CHICA*************************/
-    setCajaChicaBienestar(form) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    BryanBienestarService.prototype.setCajaChicaBienestar = function (form) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('fecha', form.fecha);
         body.append('archivo_documento', form.archivo_documento);
         body.append('numero_documento', form.numero_documento);
@@ -10079,31 +10316,32 @@ let BryanBienestarService = class BryanBienestarService {
         return this._http.post(this.url + "ingresar_caja_chica_bienestar", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
+    };
     //*********************ACTUALIZAR CAMPO EN CAJA CHICA*************************/
-    updateCampoCajaChica(valor, campo, input) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    BryanBienestarService.prototype.updateCampoCajaChica = function (valor, campo, input) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('input', valor);
         body.append('nombre_campo', campo);
         body.append('valor', input);
         return this._http.post(this.url + "modificar_caja_chica_bienestar", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
+    };
     /**************************TRAER FONDOS MUTUTOS SOCIOS*****************************/
-    getAhorrosSocio(anio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    BryanBienestarService.prototype.getAhorrosSocio = function (anio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_mis_ahorros_socio/" + anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-BryanBienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], BryanBienestarService);
+    };
+    BryanBienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], BryanBienestarService);
+    return BryanBienestarService;
+}());
 
 
 
@@ -10120,21 +10358,21 @@ BryanBienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CajaChicaService", function() { return CajaChicaService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let CajaChicaService = class CajaChicaService {
-    constructor(_http) {
+var CajaChicaService = /** @class */ (function () {
+    function CajaChicaService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    ingresarValor(datos) {
-        const form = new FormData();
+    CajaChicaService.prototype.ingresarValor = function (datos) {
+        var form = new FormData();
         form.append('fecha', datos.fecha);
         form.append('archivo_documento', datos.archivo_documento);
         form.append('numero_documento', datos.numero_documento);
@@ -10144,33 +10382,34 @@ let CajaChicaService = class CajaChicaService {
         return this._http.post(this.url + "ingresar_caja_chica", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    modificarValor(id, campo, nuevoValor) {
-        const form = new FormData();
+    };
+    CajaChicaService.prototype.modificarValor = function (id, campo, nuevoValor) {
+        var form = new FormData();
         form.append('id', id);
         form.append('campo', campo);
         form.append('input', nuevoValor);
         return this._http.post(this.url + "modificar_caja_chica", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getCajaChica(anio, mes) {
+    };
+    CajaChicaService.prototype.getCajaChica = function (anio, mes) {
         return this._http.get(this.url + "traer_caja_chica/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTotalesCajaChica(anio, mes) {
+    };
+    CajaChicaService.prototype.getTotalesCajaChica = function (anio, mes) {
         return this._http.get(this.url + "totales_caja_chica/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], CajaChicaService);
+    };
+    CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], CajaChicaService);
+    return CajaChicaService;
+}());
 
 
 
@@ -10187,83 +10426,84 @@ CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsorcioService", function() { return ConsorcioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let ConsorcioService = class ConsorcioService {
-    constructor(_http) {
+var ConsorcioService = /** @class */ (function () {
+    function ConsorcioService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    listar_consorcio() {
+    ConsorcioService.prototype.listar_consorcio = function () {
         return this._http.get(this.url + "traer_socios_consorcios", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-    insertar_consorcio(form) {
+    };
+    ConsorcioService.prototype.insertar_consorcio = function (form) {
         return this._http.post(this.url + "insertar_consorcio", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaFilter(buscar) {
+    };
+    ConsorcioService.prototype.getTablaFilter = function (buscar) {
         return this._http.get(this.url + "filtrar_socios_consorcios/" + buscar, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaConsorcio(anio, buscar) {
+    };
+    ConsorcioService.prototype.getTablaConsorcio = function (anio, buscar) {
         return this._http.get(this.url + "filtrar_tabla_consorcio/" + anio + "/" + buscar, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaConsorcios(anio) {
+    };
+    ConsorcioService.prototype.getTablaConsorcios = function (anio) {
         return this._http.get(this.url + "cc_listar/" + anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaConsorciosTotalesMensuales(anio) {
+    };
+    ConsorcioService.prototype.getTablaConsorciosTotalesMensuales = function (anio) {
         return this._http.get(this.url + "totales_cc/" + anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaConsorciosTotalAnual(anio) {
+    };
+    ConsorcioService.prototype.getTablaConsorciosTotalAnual = function (anio) {
         return this._http.get(this.url + "total_anual_socio/" + anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getTablaConsorciosDesvinculados(anio) {
+    };
+    ConsorcioService.prototype.getTablaConsorciosDesvinculados = function (anio) {
         return this._http.get(this.url + "tabla_desvinculados/" + anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-};
-ConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], ConsorcioService);
+    };
+    ConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ConsorcioService);
+    return ConsorcioService;
+}());
 
 
 
@@ -10280,47 +10520,48 @@ ConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CsDetalleCampingService", function() { return CsDetalleCampingService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let CsDetalleCampingService = class CsDetalleCampingService {
-    constructor(_http) {
+var CsDetalleCampingService = /** @class */ (function () {
+    function CsDetalleCampingService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getLista(anio, mes) {
+    CsDetalleCampingService.prototype.getLista = function (anio, mes) {
         return this._http.get(this.url + "listar_detalle_camping/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    guardar(anio, mes, monto) {
-        let data = new FormData();
+    };
+    CsDetalleCampingService.prototype.guardar = function (anio, mes, monto) {
+        var data = new FormData();
         data.append('anio', anio);
         data.append('mes', mes);
         data.append('monto', monto);
         return this._http.post(this.url + "guardar_cierre_monto_detalle_camping_cs", data, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getMonto(anio, mes) {
+    };
+    CsDetalleCampingService.prototype.getMonto = function (anio, mes) {
         return this._http.get(this.url + "traer_cierre_monto_detalle_camping_cs/" + anio + '/' + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], CsDetalleCampingService);
+    };
+    CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], CsDetalleCampingService);
+    return CsDetalleCampingService;
+}());
 
 
 
@@ -10355,38 +10596,38 @@ var global = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalSociosService", function() { return PortalSociosService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let PortalSociosService = class PortalSociosService {
+var PortalSociosService = /** @class */ (function () {
     //token = localStorage.getItem('token').replace(/['"]+/g, '');
-    constructor(_http) {
+    function PortalSociosService(_http) {
         this._http = _http;
         this.rol = '';
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    loginSocios(form) {
-        const body = new FormData();
+    PortalSociosService.prototype.loginSocios = function (form) {
+        var body = new FormData();
         body.append('rut', form.email);
         body.append('password', form.password);
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + "login_socios?", "rut=" + form.email + "&" + "password=" + form.password, { headers: headers });
-    }
-    getSocioLogeado() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getSocioLogeado = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "socio_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-    getDatosSocios() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getDatosSocios = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_basicos_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-    setDatosBasicosSocios(form) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.setDatosBasicosSocios = function (form) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('direccion', form.direccion);
         body.append('telefono', form.telefono);
         body.append('celular', form.celular);
@@ -10408,10 +10649,10 @@ let PortalSociosService = class PortalSociosService {
         return this._http.post(this.url + "ingresar_datos_basicos_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    setDatosConyugeSocio(form) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.setDatosConyugeSocio = function (form) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('rut', form.rut);
         body.append('fecha_nacimiento', form.fechaNacimiento);
         body.append('nombres', form.nombres);
@@ -10423,14 +10664,14 @@ let PortalSociosService = class PortalSociosService {
         return this._http.post(this.url + "ingresar_datos_conyuge_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getDatosConyuge() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getDatosConyuge = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_conyuge_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-    setDatosBeneficiarios(form) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.setDatosBeneficiarios = function (form) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('prioritario', form.prioridad);
         body.append('relacion', form.relacionParentesco);
         body.append('rut', form.rut);
@@ -10443,14 +10684,14 @@ let PortalSociosService = class PortalSociosService {
         return this._http.post(this.url + "ingresar_datos_beneficiarios_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getDatosBeneficiario() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getDatosBeneficiario = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_beneficiarios_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-    setDatosCargas(form) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.setDatosCargas = function (form) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('tipo_carga_id', form.tipoCargaId);
         body.append('rut', form.rut);
         body.append('fecha_nacimiento', form.fechaNacimiento);
@@ -10464,14 +10705,14 @@ let PortalSociosService = class PortalSociosService {
         return this._http.post(this.url + "ingresar_datos_cargas_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getDatosCargas() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getDatosCargas = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_cargas_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-    setDatosPadresSuegros(form) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.setDatosPadresSuegros = function (form) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('relacion_socio_id', form.relacionSocioId);
         body.append('rut', form.rut);
         body.append('fecha_nacimiento', form.fechaNacimiento);
@@ -10483,144 +10724,145 @@ let PortalSociosService = class PortalSociosService {
         return this._http.post(this.url + "ingresar_datos_padres_suegros_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getDatosPadresSuegros() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getDatosPadresSuegros = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_padres_suegros_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-    cambiarPassSocio(passAct, passNue, passCon) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.cambiarPassSocio = function (passAct, passNue, passCon) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('password', passAct);
         body.append('new_password', passNue);
         body.append('conf_new_password', passCon);
         return this._http.post(this.url + "cambiar_contrasena_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    updateInfoSocio(valor, campo) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const body = new FormData();
+    };
+    PortalSociosService.prototype.updateInfoSocio = function (valor, campo) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var body = new FormData();
         body.append('input', valor);
         body.append('nombre_campo', campo);
         return this._http.post(this.url + "modificar_datos_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getResumenSocio() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getResumenSocio = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_archivo_resumen_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
+    };
     //OBTENER FECHAS PARA EL PORTAL DE SOCIOS
-    getAnios() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getAnios = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_anios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getMeses() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getMeses = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_meses", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getAnioActual() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getAnioActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_anio_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getMesActual() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getMesActual = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_mes_actual", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
+    };
     //Servicio para llamar a la cuenta sindical
-    getTablaSindical(anio, mes) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getTablaSindical = function (anio, mes) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_cuenta_sindical_socio/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //Servicio para llamar a la caja chica
-    getCajaChica(anio, mes) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getCajaChica = function (anio, mes) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_caja_chica_socio/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //Servicio para llamar al detalle Camping
-    getCamping(anio, mes) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getCamping = function (anio, mes) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_camping_socio/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //Servicio para llamar a los prestamos del socio
-    getPrestamosSocios() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getPrestamosSocios = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_prestamos_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getPagosPrestamos(id, tipo) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getPagosPrestamos = function (id, tipo) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_pagos_prestamos_socio/" + id + "/" + tipo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getPagosAbonos(id, tipo) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getPagosAbonos = function (id, tipo) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_abonos_prestamos_socio/" + id + "/" + tipo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
+    };
     //*******************OBTENER LOS BENEFICIOS COBRADOS POR NACIMIENTO************************/
-    getBeneficiosNacimientosCobrados() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getBeneficiosNacimientosCobrados = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_nacimientos_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getBeneficiosFalleciomientosCobrados() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getBeneficiosFalleciomientosCobrados = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_fallecimientos_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getBeneficiosGastosMedicos() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    PortalSociosService.prototype.getBeneficiosGastosMedicos = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_gastos_medicos_socio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
+    };
     //*************************OBTENER DATOS FONDOS MUTUOS*******************************/
-    getFondosMutuos() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    PortalSociosService.prototype.getFondosMutuos = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_fondos_mutuos/", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-};
-PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], PortalSociosService);
+    };
+    PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], PortalSociosService);
+    return PortalSociosService;
+}());
 
 
 
@@ -10637,21 +10879,21 @@ PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SindicalService", function() { return SindicalService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let SindicalService = class SindicalService {
-    constructor(_http) {
+var SindicalService = /** @class */ (function () {
+    function SindicalService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    ingresarValor(form) {
-        const body = new FormData();
+    SindicalService.prototype.ingresarValor = function (form) {
+        var body = new FormData();
         body.append('fecha', form.fecha);
         body.append('n_documento', form.nDocumento);
         body.append('archivo', form.archivoDocumento);
@@ -10662,48 +10904,48 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "guardar_item_c_s", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    getTablaSindical(anio, mes) {
+    };
+    SindicalService.prototype.getTablaSindical = function (anio, mes) {
         return this._http.get(this.url + "listar_c_s/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTablaSindicalMontoInicial(anio, mes) {
+    };
+    SindicalService.prototype.getTablaSindicalMontoInicial = function (anio, mes) {
         return this._http.get(this.url + "traer_monto_inicial_cs/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTablaSindicalActualizar(id, campo, input) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.getTablaSindicalActualizar = function (id, campo, input) {
+        var body = new FormData();
         body.append('id', id);
         body.append('campo', campo);
         body.append('input', input);
         return this._http.post(this.url + "actualizar_dato_cs", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             }) });
-    }
-    getCalcularCajaChica(anio, mes) {
+    };
+    SindicalService.prototype.getCalcularCajaChica = function (anio, mes) {
         return this._http.get(this.url + "calcular_caja_chica_anterior_cs/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getCalcularCajaChicaActualizar(anio, mes) {
+    };
+    SindicalService.prototype.getCalcularCajaChicaActualizar = function (anio, mes) {
         return this._http.get(this.url + "calcular_caja_chica_anterior_cs2/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getTipoPrestamo() {
+    };
+    SindicalService.prototype.getTipoPrestamo = function () {
         return this._http.get(this.url + "traer_tipo_prestamo", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    setPrestamo(form) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.setPrestamo = function (form) {
+        var body = new FormData();
         body.append('fecha', form.fecha);
         body.append('select_id', form.selectId);
         body.append('socio_id', form.socioId);
@@ -10721,48 +10963,48 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "guardar_prestamo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    getPrestramosSocios(anio, mes) {
+    };
+    SindicalService.prototype.getPrestramosSocios = function (anio, mes) {
         return this._http.get(this.url + "traer_prestamos/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    getPrestamosHistoricos(anio, mes) {
+    };
+    SindicalService.prototype.getPrestamosHistoricos = function (anio, mes) {
         return this._http.get(this.url + "listar_p_salud_retornable/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    pagarPrestamo(fecha, id, monto) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.pagarPrestamo = function (fecha, id, monto) {
+        var body = new FormData();
         body.append('detalle_prestamo_id', id);
         body.append('fecha', fecha);
         body.append('monto', monto);
         return this._http.post(this.url + "ingresar_pago_prestamo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    pagarPrestamoSalud(fecha, id, monto) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.pagarPrestamoSalud = function (fecha, id, monto) {
+        var body = new FormData();
         body.append('p_salud_retornable_id', id);
         body.append('fecha', fecha);
         body.append('monto', monto);
         return this._http.post(this.url + "pagar_p_salud_retornable", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    pagarPrestamoApuro(fecha, id, monto) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.pagarPrestamoApuro = function (fecha, id, monto) {
+        var body = new FormData();
         body.append('p_apuro_id', id);
         body.append('fecha', fecha);
         body.append('monto', monto);
         return this._http.post(this.url + "pagar_p_apuro_economico_retornable", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    pagarAbono(id, definicionSelectAbono, fecha, monto) {
-        const body = new FormData();
+    };
+    SindicalService.prototype.pagarAbono = function (id, definicionSelectAbono, fecha, monto) {
+        var body = new FormData();
         body.append('p_salud_retornable_id', id);
         body.append('fecha', fecha);
         body.append('abono', definicionSelectAbono);
@@ -10770,62 +11012,63 @@ let SindicalService = class SindicalService {
         return this._http.post(this.url + "pago_abono", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    listar_abonos_por_prestamo(id, tipo) {
+    };
+    SindicalService.prototype.listar_abonos_por_prestamo = function (id, tipo) {
         return this._http.get(this.url + "listar_abonos_por_prestamo/" + id + "/" + tipo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    lista_ultima_prestamos(anio, mes) {
+    };
+    SindicalService.prototype.lista_ultima_prestamos = function (anio, mes) {
         return this._http.get(this.url + "tabla_final_prestamo/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    listar_pni() {
+    };
+    SindicalService.prototype.listar_pni = function () {
         return this._http.get(this.url + "listar_prestamos_vigentes", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    listar_pc() {
+    };
+    SindicalService.prototype.listar_pc = function () {
         return this._http.get(this.url + "listar_prestamos_finalizados", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
+    };
     //esto es del modulo socios
-    asignar_portal_socio(id) {
-        const body = new FormData();
+    SindicalService.prototype.asignar_portal_socio = function (id) {
+        var body = new FormData();
         body.append('id', id);
         return this._http.post(this.url + "crear_usuario_socio", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
-    }
-    estado_de_socio_en_portal_beneficio(id) {
+    };
+    SindicalService.prototype.estado_de_socio_en_portal_beneficio = function (id) {
         return this._http.get(this.url + "estado_de_socio_en_portal_beneficio/" + id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    calcular_cuota(id) {
+    };
+    SindicalService.prototype.calcular_cuota = function (id) {
         return this._http.get(this.url + "calcular_cuota_prestamo/" + id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-    calcular_abono(id, abono_id) {
+    };
+    SindicalService.prototype.calcular_abono = function (id, abono_id) {
         return this._http.get(this.url + "calcular_abono/" + id + "/" + abono_id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], SindicalService);
+    };
+    SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], SindicalService);
+    return SindicalService;
+}());
 
 
 
@@ -10842,216 +11085,217 @@ SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SociosService", function() { return SociosService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let SociosService = class SociosService {
-    constructor(_http) {
+var SociosService = /** @class */ (function () {
+    function SociosService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getTablaSocios() {
+    SociosService.prototype.getTablaSocios = function () {
         return this._http.get(this.url + "listar_socios", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-    getTablaFilter(search) {
+    };
+    SociosService.prototype.getTablaFilter = function (search) {
         return this._http.get(this.url + "filtrar_socios/" + search, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             })
         });
-    }
-    getEditar(form) {
+    };
+    SociosService.prototype.getEditar = function (form) {
         return this._http.post(this.url + "editar_socios", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getSocio(rut) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getSocio = function (rut) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_socio/" + rut, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    traerDatosSocio(rut) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.traerDatosSocio = function (rut) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "buscar_socio_por_rut/" + rut, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    insertarDatosSocio(form) {
+    };
+    SociosService.prototype.insertarDatosSocio = function (form) {
         return this._http.post(this.url + "guardar_datos_socio", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getDatosSocio(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDatosSocio = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_socio/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    insertarDatosConyuge(form) {
+    };
+    SociosService.prototype.insertarDatosConyuge = function (form) {
         return this._http.post(this.url + "guardar_datos_conyuge", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getDatosConyuge(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDatosConyuge = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_conyuge/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    insertarDatosBeneficiario(form) {
+    };
+    SociosService.prototype.insertarDatosBeneficiario = function (form) {
         return this._http.post(this.url + "guardar_datos_beneficiario", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getDatosBeneficiario(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDatosBeneficiario = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_beneficiario/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    insertarDatosCarga(form) {
+    };
+    SociosService.prototype.insertarDatosCarga = function (form) {
         return this._http.post(this.url + "guardar_datos_carga", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getDatosCarga(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDatosCarga = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_carga/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    insertarDatosPS(form) {
+    };
+    SociosService.prototype.insertarDatosPS = function (form) {
         return this._http.post(this.url + "guardar_datos_padres_suegros", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getDatosPS(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDatosPS = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_datos_padres_suegros/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    ActualizarDatosSocio(form) {
+    };
+    SociosService.prototype.ActualizarDatosSocio = function (form) {
         return this._http.post(this.url + "actualizar_datos_socio", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    ActualizarDatosConyuge(form) {
+    };
+    SociosService.prototype.ActualizarDatosConyuge = function (form) {
         return this._http.post(this.url + "actualizar_datos_conyuge", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    ActualizarDatosBeneficiarios(form) {
+    };
+    SociosService.prototype.ActualizarDatosBeneficiarios = function (form) {
         return this._http.post(this.url + "actualizar_datos_beneficiario", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    ActualizarDatosCargas(form) {
+    };
+    SociosService.prototype.ActualizarDatosCargas = function (form) {
         return this._http.post(this.url + "actualizar_datos_carga", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    ActualizarDatosPadresSuegros(form) {
+    };
+    SociosService.prototype.ActualizarDatosPadresSuegros = function (form) {
         return this._http.post(this.url + "actualizar_datos_padres_suegros", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    SubirDocumentoGeneral(form) {
+    };
+    SociosService.prototype.SubirDocumentoGeneral = function (form) {
         return this._http.post(this.url + "subir_archivo_general_socio", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
         });
-    }
-    getDocumentoResumen(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getDocumentoResumen = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "documento_resumen_socio/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    getRegistroCivil(idSocio) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getRegistroCivil = function (idSocio) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "documento_registro_civil/" + idSocio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-    getCertificadoNacimiento(idCarga) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    SociosService.prototype.getCertificadoNacimiento = function (idCarga) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "documento_certificado_nacimiento/" + idCarga, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             })
         });
-    }
-};
-SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], SociosService);
+    };
+    SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], SociosService);
+    return SociosService;
+}());
 
 
 
@@ -11068,39 +11312,40 @@ SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TipoCuentasService", function() { return TipoCuentasService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let TipoCuentasService = class TipoCuentasService {
-    constructor(_http) {
+var TipoCuentasService = /** @class */ (function () {
+    function TipoCuentasService(_http) {
         this._http = _http;
         this.selectDefinicion = [];
         this.selectDetalle = [];
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    getDefinicion() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    TipoCuentasService.prototype.getDefinicion = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_definicion", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'
             }) });
-    }
-    getTipoCuenta() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    TipoCuentasService.prototype.getTipoCuenta = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "listar_tipo_cuenta_sindicato", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
-    }
-};
-TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-], TipoCuentasService);
+    };
+    TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], TipoCuentasService);
+    return TipoCuentasService;
+}());
 
 
 
@@ -11117,19 +11362,19 @@ TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuarioService", function() { return UsuarioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
 
-let UsuarioService = class UsuarioService {
-    constructor(_http, jwtHelper, router) {
+var UsuarioService = /** @class */ (function () {
+    function UsuarioService(_http, jwtHelper, router) {
         this._http = _http;
         this.jwtHelper = jwtHelper;
         this.router = router;
@@ -11137,23 +11382,24 @@ let UsuarioService = class UsuarioService {
         this.rol = '';
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    register(user) {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+    UsuarioService.prototype.register = function (user) {
+        var json = JSON.stringify(user);
+        var params = 'json=' + json;
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + 'register', params, { headers: headers });
-    }
-    login(user, getToken = null) {
+    };
+    UsuarioService.prototype.login = function (user, getToken) {
+        if (getToken === void 0) { getToken = null; }
         if (getToken != null) {
             user.getToken = 'true';
         }
-        let json = JSON.stringify(user);
+        var json = JSON.stringify(user);
         //let params = 'json='+json;
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + 'login_rut?', "email=" + user.email + "&" + "password=" + user.password, { headers: headers });
-    }
-    getToken() {
-        let token = localStorage.getItem('token');
+    };
+    UsuarioService.prototype.getToken = function () {
+        var token = localStorage.getItem('token');
         if (token && token != "undefinided") {
             this.token = token;
         }
@@ -11161,9 +11407,9 @@ let UsuarioService = class UsuarioService {
             this.token = null;
         }
         return this.token;
-    }
-    getUsuario() {
-        let user = localStorage.getItem('usuario');
+    };
+    UsuarioService.prototype.getUsuario = function () {
+        var user = localStorage.getItem('usuario');
         if (user && user != "undefinided") {
             this.usuario = user;
         }
@@ -11171,38 +11417,39 @@ let UsuarioService = class UsuarioService {
             this.usuario = null;
         }
         return this.usuario;
-    }
-    isAuthenticated() {
-        const token = localStorage.getItem('token'); // Check whether the token is expired and return
+    };
+    UsuarioService.prototype.isAuthenticated = function () {
+        var token = localStorage.getItem('token'); // Check whether the token is expired and return
         // true or false
         console.log(this.jwtHelper.isTokenExpired(token));
         return !this.jwtHelper.isTokenExpired(token);
-    }
-    logOut() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    UsuarioService.prototype.logOut = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         this._http.get(this.url + "auth/logout", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
         localStorage.clear();
         this.router.navigate(['']);
-    }
-    validarUsuario(user, password, estado) {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        const formData = new FormData();
+    };
+    UsuarioService.prototype.validarUsuario = function (user, password, estado) {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
+        var formData = new FormData();
         formData.append('rut', user);
         formData.append('password', password);
         formData.append('estado', estado);
         return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
-    }
-    getUsuarioLogeado() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    };
+    UsuarioService.prototype.getUsuarioLogeado = function () {
+        var token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-    }
-};
-UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
-], UsuarioService);
+    };
+    UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+    ], UsuarioService);
+    return UsuarioService;
+}());
 
 
 
@@ -11219,32 +11466,33 @@ UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidarUsuarioService", function() { return ValidarUsuarioService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
 
 
 
 
-let ValidarUsuarioService = class ValidarUsuarioService {
-    constructor(_http) {
+var ValidarUsuarioService = /** @class */ (function () {
+    function ValidarUsuarioService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    usuario_logeado() {
+    ValidarUsuarioService.prototype.usuario_logeado = function () {
         return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
-    }
-    validar_usuario(formData) {
+    };
+    ValidarUsuarioService.prototype.validar_usuario = function (formData) {
         return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
-    }
-};
-ValidarUsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], ValidarUsuarioService);
+    };
+    ValidarUsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ValidarUsuarioService);
+    return ValidarUsuarioService;
+}());
 
 
 
@@ -11272,15 +11520,15 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BeneficiosCobradosComponent", function() { return BeneficiosCobradosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let BeneficiosCobradosComponent = class BeneficiosCobradosComponent {
-    constructor(config, modalService, _portalSociosService) {
+var BeneficiosCobradosComponent = /** @class */ (function () {
+    function BeneficiosCobradosComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Variables para comrpobar si no hay ningún beneficio
@@ -11290,70 +11538,74 @@ let BeneficiosCobradosComponent = class BeneficiosCobradosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    BeneficiosCobradosComponent.prototype.ngOnInit = function () {
         this.getNacimientosCobrados();
         this.getFallecimientosCobrados();
         this.getGastosMedicosCobrados();
-    }
-    openPDF(content) {
+    };
+    BeneficiosCobradosComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    getNacimientosCobrados() {
-        this._portalSociosService.getBeneficiosNacimientosCobrados().subscribe(response => {
+    };
+    BeneficiosCobradosComponent.prototype.getNacimientosCobrados = function () {
+        var _this = this;
+        this._portalSociosService.getBeneficiosNacimientosCobrados().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 console.log(response.mensaje);
-                this.contadorBeneficios--;
+                _this.contadorBeneficios--;
             }
             else {
-                this.datosNacidos = response;
-                console.log(this.datosNacidos);
+                _this.datosNacidos = response;
+                console.log(_this.datosNacidos);
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    getFallecimientosCobrados() {
-        this._portalSociosService.getBeneficiosFalleciomientosCobrados().subscribe(response => {
+    };
+    BeneficiosCobradosComponent.prototype.getFallecimientosCobrados = function () {
+        var _this = this;
+        this._portalSociosService.getBeneficiosFalleciomientosCobrados().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 console.log(response.mensaje);
-                this.contadorBeneficios--;
+                _this.contadorBeneficios--;
             }
             else {
-                this.datosFallecidos = response;
-                console.log(this.datosFallecidos);
+                _this.datosFallecidos = response;
+                console.log(_this.datosFallecidos);
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    getGastosMedicosCobrados() {
-        this._portalSociosService.getBeneficiosGastosMedicos().subscribe(response => {
+    };
+    BeneficiosCobradosComponent.prototype.getGastosMedicosCobrados = function () {
+        var _this = this;
+        this._portalSociosService.getBeneficiosGastosMedicos().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 console.log(response.mensaje);
-                this.contadorBeneficios--;
+                _this.contadorBeneficios--;
             }
             else {
-                this.datosMedicos = response;
-                console.log(this.datosMedicos);
+                _this.datosMedicos = response;
+                console.log(_this.datosMedicos);
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    limpiarTabla() {
+    };
+    BeneficiosCobradosComponent.prototype.limpiarTabla = function () {
         this.datosNacidos = '';
         this.datosFallecidos = '';
         this.datosMedicos = '';
-    }
-};
-BeneficiosCobradosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-beneficios-cobrados',
-        template: __webpack_require__(/*! raw-loader!./beneficios-cobrados.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component.html"),
-        styles: [__webpack_require__(/*! ./beneficios-cobrados.component.css */ "./src/app/socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], BeneficiosCobradosComponent);
+    };
+    BeneficiosCobradosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-beneficios-cobrados',
+            template: __webpack_require__(/*! raw-loader!./beneficios-cobrados.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component.html"),
+            styles: [__webpack_require__(/*! ./beneficios-cobrados.component.css */ "./src/app/socios-master/beneficios-socio/beneficios-cobrados/beneficios-cobrados.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], BeneficiosCobradosComponent);
+    return BeneficiosCobradosComponent;
+}());
 
 
 
@@ -11381,22 +11633,24 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BeneficiosSocioComponent", function() { return BeneficiosSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let BeneficiosSocioComponent = class BeneficiosSocioComponent {
-    constructor() { }
-    ngOnInit() {
+var BeneficiosSocioComponent = /** @class */ (function () {
+    function BeneficiosSocioComponent() {
     }
-};
-BeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-beneficios-socio',
-        template: __webpack_require__(/*! raw-loader!./beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/beneficios-socio.component.html"),
-        styles: [__webpack_require__(/*! ./beneficios-socio.component.css */ "./src/app/socios-master/beneficios-socio/beneficios-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], BeneficiosSocioComponent);
+    BeneficiosSocioComponent.prototype.ngOnInit = function () {
+    };
+    BeneficiosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-beneficios-socio',
+            template: __webpack_require__(/*! raw-loader!./beneficios-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/beneficios-socio.component.html"),
+            styles: [__webpack_require__(/*! ./beneficios-socio.component.css */ "./src/app/socios-master/beneficios-socio/beneficios-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], BeneficiosSocioComponent);
+    return BeneficiosSocioComponent;
+}());
 
 
 
@@ -11424,8 +11678,8 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FondosMutuosSocioComponent", function() { return FondosMutuosSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 /* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
 
@@ -11433,8 +11687,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let FondosMutuosSocioComponent = class FondosMutuosSocioComponent {
-    constructor(config, modalService, _portalSociosService, _bienestarService) {
+var FondosMutuosSocioComponent = /** @class */ (function () {
+    function FondosMutuosSocioComponent(config, modalService, _portalSociosService, _bienestarService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         this._bienestarService = _bienestarService;
@@ -11446,63 +11700,66 @@ let FondosMutuosSocioComponent = class FondosMutuosSocioComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    FondosMutuosSocioComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         this.cargarFechasActuales();
-    }
-    changeAnio(valorSelect) {
+    };
+    FondosMutuosSocioComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    cargarFechasActuales() {
+    };
+    FondosMutuosSocioComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.getFondosMutuos();
-        }, error => {
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.getFondosMutuos();
+        }, function (error) {
             console.log(error);
         });
-    }
-    getFondosMutuos() {
+    };
+    FondosMutuosSocioComponent.prototype.getFondosMutuos = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._bienestarService.getAhorrosSocio(this.idAnioActual).subscribe(response => {
+        this._bienestarService.getAhorrosSocio(this.idAnioActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.datosAhorros = response.ahorro[0];
-                this.totalMesSolo = response.mensual[0];
-                this.totalAhorros = response.total;
-                this.totalesMensuales = response;
-                console.log(this.datosAhorros);
-                this.cargandoTabla = false;
+                _this.datosAhorros = response.ahorro[0];
+                _this.totalMesSolo = response.mensual[0];
+                _this.totalAhorros = response.total;
+                _this.totalesMensuales = response;
+                console.log(_this.datosAhorros);
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    limpiarTabla() {
+    };
+    FondosMutuosSocioComponent.prototype.limpiarTabla = function () {
         this.datosAhorros = '';
         this.totalAhorros = '';
         this.totalesMensuales = '';
-    }
-    recargarTabla() {
+    };
+    FondosMutuosSocioComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.getFondosMutuos();
-    }
-};
-FondosMutuosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-fondos-mutuos-socio',
-        template: __webpack_require__(/*! raw-loader!./fondos-mutuos-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component.html"),
-        styles: [__webpack_require__(/*! ./fondos-mutuos-socio.component.css */ "./src/app/socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"]])
-], FondosMutuosSocioComponent);
+    };
+    FondosMutuosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-fondos-mutuos-socio',
+            template: __webpack_require__(/*! raw-loader!./fondos-mutuos-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component.html"),
+            styles: [__webpack_require__(/*! ./fondos-mutuos-socio.component.css */ "./src/app/socios-master/beneficios-socio/fondos-mutuos-socio/fondos-mutuos-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"]])
+    ], FondosMutuosSocioComponent);
+    return FondosMutuosSocioComponent;
+}());
 
 
 
@@ -11530,15 +11787,15 @@ module.exports = ".red{\r\n    background: red;\r\n    color: red;\r\n    backgr
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrestamosSociosComponent", function() { return PrestamosSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
-let PrestamosSociosComponent = class PrestamosSociosComponent {
-    constructor(config, modalService, _portalSociosService) {
+var PrestamosSociosComponent = /** @class */ (function () {
+    function PrestamosSociosComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Bloquear Muestro de pagos
@@ -11554,13 +11811,13 @@ let PrestamosSociosComponent = class PrestamosSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    PrestamosSociosComponent.prototype.ngOnInit = function () {
         this.getPrestamos();
-    }
-    openPDF(content) {
+    };
+    PrestamosSociosComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    openModalHistorialPagos(historial) {
+    };
+    PrestamosSociosComponent.prototype.openModalHistorialPagos = function (historial) {
         this.modalPagosPrestamos = this.modalService.open(historial, { size: 'xl' });
         this.limpiarHistorial();
         this.loadingTabla = true;
@@ -11569,91 +11826,95 @@ let PrestamosSociosComponent = class PrestamosSociosComponent {
         this.hideAbonosConflicto = true;
         this.hideAbonosTrimestral = true;
         this.hideAllAbonos = true;
-    }
-    getPrestamos() {
-        this._portalSociosService.getPrestamosSocios().subscribe(response => {
+    };
+    PrestamosSociosComponent.prototype.getPrestamos = function () {
+        var _this = this;
+        this._portalSociosService.getPrestamosSocios().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 console.log(response.mensaje);
-                this.contadorPrestamos--;
+                _this.contadorPrestamos--;
             }
             else {
-                this.datosPrestamos = response.prestamos;
-                console.log(this.datosPrestamos);
+                _this.datosPrestamos = response.prestamos;
+                console.log(_this.datosPrestamos);
             }
         });
-    }
-    getPagosPrestamos(id, tipo) {
-        this._portalSociosService.getPagosPrestamos(id, tipo).subscribe(response => {
+    };
+    PrestamosSociosComponent.prototype.getPagosPrestamos = function (id, tipo) {
+        var _this = this;
+        this._portalSociosService.getPagosPrestamos(id, tipo).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
-                this.hideCuotas = true;
-                this.historialCuotas = ['Apple', 'Orange', 'Banana'];
-                console.log(this.historialCuotas);
+                _this.hideCuotas = true;
+                _this.historialCuotas = ['Apple', 'Orange', 'Banana'];
+                console.log(_this.historialCuotas);
             }
             else {
-                this.hideCuotas = false; //mostrar los prestamos encontrados
-                this.historialCuotas = response.mensaje;
-                console.log(this.historialCuotas);
+                _this.hideCuotas = false; //mostrar los prestamos encontrados
+                _this.historialCuotas = response.mensaje;
+                console.log(_this.historialCuotas);
             }
         });
-    }
-    getPagosAbonos(id, tipo) {
-        this._portalSociosService.getPagosAbonos(id, tipo).subscribe(response => {
+    };
+    PrestamosSociosComponent.prototype.getPagosAbonos = function (id, tipo) {
+        var _this = this;
+        this._portalSociosService.getPagosAbonos(id, tipo).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 if (tipo == 1) {
-                    this.historialAbonoDiaSueldo = ['Apple', 'Orange', 'Banana'];
-                    this.hideAbonosDiaSueldo = true;
-                    console.log(this.historialAbonoDiaSueldo);
+                    _this.historialAbonoDiaSueldo = ['Apple', 'Orange', 'Banana'];
+                    _this.hideAbonosDiaSueldo = true;
+                    console.log(_this.historialAbonoDiaSueldo);
                 }
                 else if (tipo == 2) {
-                    this.historialAbonoTerminoConflicto = ['Apple', 'Orange', 'Banana'];
-                    this.hideAbonosConflicto = true;
-                    console.log(this.historialAbonoTerminoConflicto);
+                    _this.historialAbonoTerminoConflicto = ['Apple', 'Orange', 'Banana'];
+                    _this.hideAbonosConflicto = true;
+                    console.log(_this.historialAbonoTerminoConflicto);
                 }
                 else if (tipo == 3) {
-                    this.historialAbonoTrimestral = ['Apple', 'Orange', 'Banana'];
-                    this.hideAbonosTrimestral = true;
-                    this.hideAllAbonos = false;
-                    this.loadingTabla = false;
-                    console.log(this.historialAbonoTrimestral);
+                    _this.historialAbonoTrimestral = ['Apple', 'Orange', 'Banana'];
+                    _this.hideAbonosTrimestral = true;
+                    _this.hideAllAbonos = false;
+                    _this.loadingTabla = false;
+                    console.log(_this.historialAbonoTrimestral);
                 }
             }
             else {
                 if (tipo == 1) {
-                    this.historialAbonoDiaSueldo = response.mensaje;
-                    this.hideAbonosDiaSueldo = false;
-                    console.log(this.historialAbonoDiaSueldo);
+                    _this.historialAbonoDiaSueldo = response.mensaje;
+                    _this.hideAbonosDiaSueldo = false;
+                    console.log(_this.historialAbonoDiaSueldo);
                 }
                 else if (tipo == 2) {
-                    this.historialAbonoTerminoConflicto = response.mensaje;
-                    this.hideAbonosConflicto = false;
-                    console.log(this.historialAbonoTerminoConflicto);
+                    _this.historialAbonoTerminoConflicto = response.mensaje;
+                    _this.hideAbonosConflicto = false;
+                    console.log(_this.historialAbonoTerminoConflicto);
                 }
                 else if (tipo == 3) {
-                    this.historialAbonoTrimestral = response.mensaje;
-                    this.hideAbonosTrimestral = false;
+                    _this.historialAbonoTrimestral = response.mensaje;
+                    _this.hideAbonosTrimestral = false;
                     /* this.hideCuotas = false; */
-                    this.hideAllAbonos = false;
-                    this.loadingTabla = false;
-                    console.log(this.historialAbonoTrimestral);
+                    _this.hideAllAbonos = false;
+                    _this.loadingTabla = false;
+                    console.log(_this.historialAbonoTrimestral);
                 }
             }
         });
-    }
-    limpiarHistorial() {
+    };
+    PrestamosSociosComponent.prototype.limpiarHistorial = function () {
         this.historialAbonoDiaSueldo = '';
         this.historialAbonoTerminoConflicto = '';
         this.historialAbonoTrimestral = '';
         this.historialCuotas = '';
-    }
-};
-PrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-prestamos-socios',
-        template: __webpack_require__(/*! raw-loader!./prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component.html"),
-        styles: [__webpack_require__(/*! ./prestamos-socios.component.css */ "./src/app/socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
-], PrestamosSociosComponent);
+    };
+    PrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-prestamos-socios',
+            template: __webpack_require__(/*! raw-loader!./prestamos-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component.html"),
+            styles: [__webpack_require__(/*! ./prestamos-socios.component.css */ "./src/app/socios-master/beneficios-socio/prestamos-socios/prestamos-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
+    ], PrestamosSociosComponent);
+    return PrestamosSociosComponent;
+}());
 
 
 
@@ -11681,52 +11942,54 @@ module.exports = "#demoFont2 {\r\n    color: #fff;\r\n    \r\n    background: #3
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CambioContraseniaSocioComponent", function() { return CambioContraseniaSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
-let CambioContraseniaSocioComponent = class CambioContraseniaSocioComponent {
-    constructor(config, modalService, _portalSocioService, _router) {
+var CambioContraseniaSocioComponent = /** @class */ (function () {
+    function CambioContraseniaSocioComponent(config, modalService, _portalSocioService, _router) {
         this.modalService = modalService;
         this._portalSocioService = _portalSocioService;
         this._router = _router;
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openModalPassCambio(cambioPass) {
+    CambioContraseniaSocioComponent.prototype.ngOnInit = function () {
+    };
+    CambioContraseniaSocioComponent.prototype.openModalPassCambio = function (cambioPass) {
         this.modalCambioPass = this.modalService.open(cambioPass, { size: 'lg' });
-    }
-    cambiarPass(passActual, passNueva, passNuevaValida) {
+    };
+    CambioContraseniaSocioComponent.prototype.cambiarPass = function (passActual, passNueva, passNuevaValida) {
+        var _this = this;
         //Aquí llamar al servicio para cambiar pass
-        this._portalSocioService.cambiarPassSocio(passActual.value, passNueva.value, passNuevaValida.value).subscribe(response => {
+        this._portalSocioService.cambiarPassSocio(passActual.value, passNueva.value, passNuevaValida.value).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(JSON.stringify(response.mensaje));
             }
             else {
                 alert(response.mensaje);
-                this.modalCambioPass.close();
-                this._router.navigate(['/']);
+                _this.modalCambioPass.close();
+                _this._router.navigate(['/']);
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-CambioContraseniaSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cambio-contrasenia-socio',
-        template: __webpack_require__(/*! raw-loader!./cambio-contrasenia-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component.html"),
-        styles: [__webpack_require__(/*! ./cambio-contrasenia-socio.component.css */ "./src/app/socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
-], CambioContraseniaSocioComponent);
+    };
+    CambioContraseniaSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cambio-contrasenia-socio',
+            template: __webpack_require__(/*! raw-loader!./cambio-contrasenia-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component.html"),
+            styles: [__webpack_require__(/*! ./cambio-contrasenia-socio.component.css */ "./src/app/socios-master/configuracion-socio/cambio-contrasenia-socio/cambio-contrasenia-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+    ], CambioContraseniaSocioComponent);
+    return CambioContraseniaSocioComponent;
+}());
 
 
 
@@ -11754,15 +12017,15 @@ module.exports = ".sinbordefondo {\r\n    background-color: #fff;\r\n    border:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CambioInformacionPersonalSocioComponent", function() { return CambioInformacionPersonalSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let CambioInformacionPersonalSocioComponent = class CambioInformacionPersonalSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var CambioInformacionPersonalSocioComponent = /** @class */ (function () {
+    function CambioInformacionPersonalSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //variable para mostrar el loading
@@ -11772,50 +12035,53 @@ let CambioInformacionPersonalSocioComponent = class CambioInformacionPersonalSoc
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    vertTablaInfoPersonal(infoPersonal) {
+    CambioInformacionPersonalSocioComponent.prototype.ngOnInit = function () {
+    };
+    CambioInformacionPersonalSocioComponent.prototype.vertTablaInfoPersonal = function (infoPersonal) {
         this.abrirModalInfoPersonal = this.modalService.open(infoPersonal, { size: 'xl' });
         this.getInfoPersonal();
-    }
-    getInfoPersonal() {
+    };
+    CambioInformacionPersonalSocioComponent.prototype.getInfoPersonal = function () {
+        var _this = this;
         //Aquí se llama al servicio para obtener los datos personales
         this.cargandoTabla = true;
-        this._portalSociosService.getSocioLogeado().subscribe(response => {
-            this.infoPersonal = response;
-            this.cargandoTabla = false;
-        }, error => {
+        this._portalSociosService.getSocioLogeado().subscribe(function (response) {
+            _this.infoPersonal = response;
+            _this.cargandoTabla = false;
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    setNuevosDatos(valor, input) {
+    };
+    CambioInformacionPersonalSocioComponent.prototype.setNuevosDatos = function (valor, input) {
+        var _this = this;
         //Aquí se llama al servicio para ingresar los nuevos datos
         this.blockUpdate = true;
-        this._portalSociosService.updateInfoSocio(valor.value, input).subscribe(response => {
+        this._portalSociosService.updateInfoSocio(valor.value, input).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.blockUpdate = false;
+                _this.blockUpdate = false;
             }
             else {
                 alert('Datos actualizados correctamente, el sistema se reiniciará para aplicar los nuevos cambios.');
-                this.blockUpdate = false;
+                _this.blockUpdate = false;
                 window.location.reload();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockUpdate = false;
+            _this.blockUpdate = false;
         });
-    }
-};
-CambioInformacionPersonalSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cambio-informacion-personal-socio',
-        template: __webpack_require__(/*! raw-loader!./cambio-informacion-personal-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/cambio-informacion-personal-socio/cambio-informacion-personal-socio.component.html"),
-        styles: [__webpack_require__(/*! ./cambio-informacion-personal-socio.component.css */ "./src/app/socios-master/configuracion-socio/cambio-informacion-personal-socio/cambio-informacion-personal-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], CambioInformacionPersonalSocioComponent);
+    };
+    CambioInformacionPersonalSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cambio-informacion-personal-socio',
+            template: __webpack_require__(/*! raw-loader!./cambio-informacion-personal-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/cambio-informacion-personal-socio/cambio-informacion-personal-socio.component.html"),
+            styles: [__webpack_require__(/*! ./cambio-informacion-personal-socio.component.css */ "./src/app/socios-master/configuracion-socio/cambio-informacion-personal-socio/cambio-informacion-personal-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], CambioInformacionPersonalSocioComponent);
+    return CambioInformacionPersonalSocioComponent;
+}());
 
 
 
@@ -11843,22 +12109,24 @@ module.exports = "#demoFont2 {\r\n    color: #fff;\r\n    \r\n    background: #3
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfiguracionSocioComponent", function() { return ConfiguracionSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let ConfiguracionSocioComponent = class ConfiguracionSocioComponent {
-    constructor() { }
-    ngOnInit() {
+var ConfiguracionSocioComponent = /** @class */ (function () {
+    function ConfiguracionSocioComponent() {
     }
-};
-ConfiguracionSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-configuracion-socio',
-        template: __webpack_require__(/*! raw-loader!./configuracion-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/configuracion-socio.component.html"),
-        styles: [__webpack_require__(/*! ./configuracion-socio.component.css */ "./src/app/socios-master/configuracion-socio/configuracion-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], ConfiguracionSocioComponent);
+    ConfiguracionSocioComponent.prototype.ngOnInit = function () {
+    };
+    ConfiguracionSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-configuracion-socio',
+            template: __webpack_require__(/*! raw-loader!./configuracion-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/configuracion-socio/configuracion-socio.component.html"),
+            styles: [__webpack_require__(/*! ./configuracion-socio.component.css */ "./src/app/socios-master/configuracion-socio/configuracion-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ConfiguracionSocioComponent);
+    return ConfiguracionSocioComponent;
+}());
 
 
 
@@ -11886,8 +12154,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CajaBienestarSociosComponent", function() { return CajaBienestarSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
@@ -11897,8 +12165,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let CajaBienestarSociosComponent = class CajaBienestarSociosComponent {
-    constructor(config, modalService, _portalSociosService, _usuariosSevice, _bienestarService) {
+var CajaBienestarSociosComponent = /** @class */ (function () {
+    function CajaBienestarSociosComponent(config, modalService, _portalSociosService, _usuariosSevice, _bienestarService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         this._usuariosSevice = _usuariosSevice;
@@ -11909,90 +12177,93 @@ let CajaBienestarSociosComponent = class CajaBienestarSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    CajaBienestarSociosComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
-    openModalCajaChica(cajaChicaModal) {
+    };
+    CajaBienestarSociosComponent.prototype.openModalCajaChica = function (cajaChicaModal) {
         this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
         this.limpiarTabla();
         this.cargarFechasActuales();
-    }
+    };
     //Abrir visor de PDF
-    openPDF(content) {
+    CajaBienestarSociosComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    cargarFechasActuales() {
+    };
+    CajaBienestarSociosComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaCajaChica();
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaCajaChica();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(response => {
-            this.idMesActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaCajaChica();
+        this._portalSociosService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaCajaChica();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(valorSelect) {
+    };
+    CajaBienestarSociosComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    changeMes(valorSelect) {
+    };
+    CajaBienestarSociosComponent.prototype.changeMes = function (valorSelect) {
         this.limpiarTabla();
         this.idMesActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    cargarTablaCajaChica() {
+    };
+    CajaBienestarSociosComponent.prototype.cargarTablaCajaChica = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._bienestarService.getCajaChicaBienestarSocios(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._bienestarService.getCajaChicaBienestarSocios(this.idAnioActual, this.idMesActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.datosCajaChica = response;
-                this.totalesCajaChica = response.total;
-                this.cargandoTabla = false;
+                _this.datosCajaChica = response;
+                _this.totalesCajaChica = response.total;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    limpiarTabla() {
+    };
+    CajaBienestarSociosComponent.prototype.limpiarTabla = function () {
         this.datosCajaChica = '';
         this.totalesCajaChica = '';
-    }
-    recargarTabla() {
+    };
+    CajaBienestarSociosComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.cargarTablaCajaChica();
-    }
-};
-CajaBienestarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-caja-bienestar-socios',
-        template: __webpack_require__(/*! raw-loader!./caja-bienestar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component.html"),
-        styles: [__webpack_require__(/*! ./caja-bienestar-socios.component.css */ "./src/app/socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_5__["BryanBienestarService"]])
-], CajaBienestarSociosComponent);
+    };
+    CajaBienestarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-caja-bienestar-socios',
+            template: __webpack_require__(/*! raw-loader!./caja-bienestar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component.html"),
+            styles: [__webpack_require__(/*! ./caja-bienestar-socios.component.css */ "./src/app/socios-master/cuentas/bienestar/caja-bienestar-socios/caja-bienestar-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_5__["BryanBienestarService"]])
+    ], CajaBienestarSociosComponent);
+    return CajaBienestarSociosComponent;
+}());
 
 
 
@@ -12020,8 +12291,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n      background-color
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentaBienestarSociosComponent", function() { return CuentaBienestarSociosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 /* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
 
@@ -12029,8 +12300,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let CuentaBienestarSociosComponent = class CuentaBienestarSociosComponent {
-    constructor(config, modalService, _portalSociosService, _bienestarService) {
+var CuentaBienestarSociosComponent = /** @class */ (function () {
+    function CuentaBienestarSociosComponent(config, modalService, _portalSociosService, _bienestarService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         this._bienestarService = _bienestarService;
@@ -12040,87 +12311,89 @@ let CuentaBienestarSociosComponent = class CuentaBienestarSociosComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    CuentaBienestarSociosComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
-    openModalCajaChica(cajaChicaModal) {
+    };
+    CuentaBienestarSociosComponent.prototype.openModalCajaChica = function (cajaChicaModal) {
         this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
         this.limpiarTabla();
         this.cargarFechasActuales();
-    }
+    };
     //Abrir visor de PDF
-    openPDF(content) {
+    CuentaBienestarSociosComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    cargarFechasActuales() {
+    };
+    CuentaBienestarSociosComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarCuentaBienestar();
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarCuentaBienestar();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(response => {
-            this.idMesActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarCuentaBienestar();
+        this._portalSociosService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarCuentaBienestar();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(valorSelect) {
+    };
+    CuentaBienestarSociosComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    changeMes(valorSelect) {
+    };
+    CuentaBienestarSociosComponent.prototype.changeMes = function (valorSelect) {
         this.limpiarTabla();
         this.idMesActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    cargarCuentaBienestar() {
+    };
+    CuentaBienestarSociosComponent.prototype.cargarCuentaBienestar = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._bienestarService.getCuentaBienestar(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._bienestarService.getCuentaBienestar(this.idAnioActual, this.idMesActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.montoInicio = response.monto_inicio;
-                this.datosGas = response.CB.gas;
-                this.datosReunion = response.CB.reunion;
-                this.datosVotacion = response.CB.votacion;
-                this.datosCajaChica = response.CB.caja_chica;
-                this.datosNacimiento = response.CB.nacimientos;
-                this.datosFallecimientos = response.CB.fallecimientos;
-                console.log(this.datosFallecimientos);
-                this.datosMedico = response.CB.gastos_medicos;
-                this.datosCuotaSocio = response.CB.cuota_sindical;
-                this.datosElecciones = response.CB.elecciones;
-                this.datosConsorcio = response.CB.consorcio;
-                this.datosExtraordinaria = response.CB.cuota_extra;
-                this.datosSindicalizados = response.CB.no_sindicalizados;
-                this.montosTotales = response.totales;
-                this.cargandoTabla = false;
+                _this.montoInicio = response.monto_inicio;
+                _this.datosGas = response.CB.gas;
+                _this.datosReunion = response.CB.reunion;
+                _this.datosVotacion = response.CB.votacion;
+                _this.datosCajaChica = response.CB.caja_chica;
+                _this.datosNacimiento = response.CB.nacimientos;
+                _this.datosFallecimientos = response.CB.fallecimientos;
+                console.log(_this.datosFallecimientos);
+                _this.datosMedico = response.CB.gastos_medicos;
+                _this.datosCuotaSocio = response.CB.cuota_sindical;
+                _this.datosElecciones = response.CB.elecciones;
+                _this.datosConsorcio = response.CB.consorcio;
+                _this.datosExtraordinaria = response.CB.cuota_extra;
+                _this.datosSindicalizados = response.CB.no_sindicalizados;
+                _this.montosTotales = response.totales;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    limpiarTabla() {
+    };
+    CuentaBienestarSociosComponent.prototype.limpiarTabla = function () {
         this.montoInicio = '';
         this.datosGas = null;
         this.datosReunion = null;
@@ -12135,20 +12408,21 @@ let CuentaBienestarSociosComponent = class CuentaBienestarSociosComponent {
         this.datosExtraordinaria = null;
         this.datosSindicalizados = null;
         this.montosTotales = '';
-    }
-    recargarTabla() {
+    };
+    CuentaBienestarSociosComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.cargarCuentaBienestar();
-    }
-};
-CuentaBienestarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuenta-bienestar-socios',
-        template: __webpack_require__(/*! raw-loader!./cuenta-bienestar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component.html"),
-        styles: [__webpack_require__(/*! ./cuenta-bienestar-socios.component.css */ "./src/app/socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"]])
-], CuentaBienestarSociosComponent);
+    };
+    CuentaBienestarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuenta-bienestar-socios',
+            template: __webpack_require__(/*! raw-loader!./cuenta-bienestar-socios.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component.html"),
+            styles: [__webpack_require__(/*! ./cuenta-bienestar-socios.component.css */ "./src/app/socios-master/cuentas/bienestar/cuenta-bienestar-socios/cuenta-bienestar-socios.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"]])
+    ], CuentaBienestarSociosComponent);
+    return CuentaBienestarSociosComponent;
+}());
 
 
 
@@ -12176,15 +12450,15 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CajaChicaComponent", function() { return CajaChicaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let CajaChicaComponent = class CajaChicaComponent {
-    constructor(config, modalService, _portalSociosService) {
+var CajaChicaComponent = /** @class */ (function () {
+    function CajaChicaComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Variable para las cargas
@@ -12193,90 +12467,93 @@ let CajaChicaComponent = class CajaChicaComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    CajaChicaComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
-    openModalCajaChica(cajaChicaModal) {
+    };
+    CajaChicaComponent.prototype.openModalCajaChica = function (cajaChicaModal) {
         this.modalCajaChica = this.modalService.open(cajaChicaModal, { size: 'xl' });
         this.limpiarTabla();
         this.cargarFechasActuales();
-    }
+    };
     //Abrir visor de PDF
-    openPDF(content) {
+    CajaChicaComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    cargarFechasActuales() {
+    };
+    CajaChicaComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaCajaChica();
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaCajaChica();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(response => {
-            this.idMesActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaCajaChica();
+        this._portalSociosService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaCajaChica();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(valorSelect) {
+    };
+    CajaChicaComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    changeMes(valorSelect) {
+    };
+    CajaChicaComponent.prototype.changeMes = function (valorSelect) {
         this.limpiarTabla();
         this.idMesActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    cargarTablaCajaChica() {
+    };
+    CajaChicaComponent.prototype.cargarTablaCajaChica = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._portalSociosService.getCajaChica(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._portalSociosService.getCajaChica(this.idAnioActual, this.idMesActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.datosCajaChica = response;
-                this.totalesCajaChica = response.total;
-                this.cargandoTabla = false;
+                _this.datosCajaChica = response;
+                _this.totalesCajaChica = response.total;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    limpiarTabla() {
+    };
+    CajaChicaComponent.prototype.limpiarTabla = function () {
         this.datosCajaChica = '';
         this.totalesCajaChica = '';
-    }
-    recargarTabla() {
+    };
+    CajaChicaComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.cargarTablaCajaChica();
-    }
-};
-CajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-caja-chica',
-        template: __webpack_require__(/*! raw-loader!./caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/caja-chica/caja-chica.component.html"),
-        styles: [__webpack_require__(/*! ./caja-chica.component.css */ "./src/app/socios-master/cuentas/caja-chica/caja-chica.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], CajaChicaComponent);
+    };
+    CajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-caja-chica',
+            template: __webpack_require__(/*! raw-loader!./caja-chica.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/caja-chica/caja-chica.component.html"),
+            styles: [__webpack_require__(/*! ./caja-chica.component.css */ "./src/app/socios-master/cuentas/caja-chica/caja-chica.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], CajaChicaComponent);
+    return CajaChicaComponent;
+}());
 
 
 
@@ -12304,15 +12581,15 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CampingComponent", function() { return CampingComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let CampingComponent = class CampingComponent {
-    constructor(config, modalService, _portalSociosService) {
+var CampingComponent = /** @class */ (function () {
+    function CampingComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Variable para las cargas
@@ -12321,92 +12598,95 @@ let CampingComponent = class CampingComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    CampingComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
+    };
     //Abrir visor de PDF
-    openPDF(content) {
+    CampingComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    openModalCamping(Modal) {
+    };
+    CampingComponent.prototype.openModalCamping = function (Modal) {
         this.modalCamping = this.modalService.open(Modal, { size: 'xl' });
         this.limpiarTabla();
         this.cargarFechasActuales();
-    }
-    cargarFechasActuales() {
+    };
+    CampingComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarCamping();
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarCamping();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(response => {
-            this.idMesActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarCamping();
+        this._portalSociosService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarCamping();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    cargarCamping() {
+    };
+    CampingComponent.prototype.cargarCamping = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._portalSociosService.getCamping(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._portalSociosService.getCamping(this.idAnioActual, this.idMesActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.datosCamping = response;
-                this.totalesCamping = response.totales;
-                this.montoAcumulado = response.monto_inicio;
-                this.cargandoTabla = false;
+                _this.datosCamping = response;
+                _this.totalesCamping = response.totales;
+                _this.montoAcumulado = response.monto_inicio;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    changeAnio(valorSelect) {
+    };
+    CampingComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    changeMes(valorSelect) {
+    };
+    CampingComponent.prototype.changeMes = function (valorSelect) {
         this.limpiarTabla();
         this.idMesActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    limpiarTabla() {
+    };
+    CampingComponent.prototype.limpiarTabla = function () {
         this.datosCamping = '';
         this.totalesCamping = '';
         this.montoAcumulado = '';
-    }
-    recargarTabla() {
+    };
+    CampingComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.cargarCamping();
-    }
-};
-CampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-camping',
-        template: __webpack_require__(/*! raw-loader!./camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/camping/camping.component.html"),
-        styles: [__webpack_require__(/*! ./camping.component.css */ "./src/app/socios-master/cuentas/camping/camping.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], CampingComponent);
+    };
+    CampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-camping',
+            template: __webpack_require__(/*! raw-loader!./camping.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/camping/camping.component.html"),
+            styles: [__webpack_require__(/*! ./camping.component.css */ "./src/app/socios-master/cuentas/camping/camping.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], CampingComponent);
+    return CampingComponent;
+}());
 
 
 
@@ -12434,8 +12714,8 @@ module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-col
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsorcioComponent", function() { return ConsorcioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 /* harmony import */ var src_app_servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bryan-consorcio.service */ "./src/app/servicios/bryan-consorcio.service.ts");
 
@@ -12443,8 +12723,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ConsorcioComponent = class ConsorcioComponent {
-    constructor(config, modalService, _portalSociosService, _consorcioService) {
+var ConsorcioComponent = /** @class */ (function () {
+    function ConsorcioComponent(config, modalService, _portalSociosService, _consorcioService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         this._consorcioService = _consorcioService;
@@ -12453,66 +12733,68 @@ let ConsorcioComponent = class ConsorcioComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    ConsorcioComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
-    }
-    openModalConsorcio(consorcio) {
+    };
+    ConsorcioComponent.prototype.openModalConsorcio = function (consorcio) {
         this.modalCajaChica = this.modalService.open(consorcio, { size: 'xl' });
         this.limpiarTabla();
         this.cargarFechasActuales();
-    }
-    cargarFechasActuales() {
+    };
+    ConsorcioComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarConsorcio();
-        }, error => {
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarConsorcio();
+        }, function (error) {
             console.log(error);
         });
-    }
-    changeAnio(valorSelect) {
+    };
+    ConsorcioComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTabla();
-    }
-    cargarConsorcio() {
+    };
+    ConsorcioComponent.prototype.cargarConsorcio = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._consorcioService.getConsorcio(this.idAnioActual).subscribe(response => {
+        this._consorcioService.getConsorcio(this.idAnioActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
                 console.log(response);
-                this.datosConsorcio = response.mensual[0];
-                this.totalMensual = response.DSCE[0];
-                this.totalConsorcio = response.anual;
-                this.cargandoTabla = false;
+                _this.datosConsorcio = response.mensual[0];
+                _this.totalMensual = response.DSCE[0];
+                _this.totalConsorcio = response.anual;
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    limpiarTabla() {
+    };
+    ConsorcioComponent.prototype.limpiarTabla = function () {
         this.datosConsorcio = '';
         this.totalConsorcio = '';
-        this.totalMensual = '';
-    }
-    recargarTabla() {
+    };
+    ConsorcioComponent.prototype.recargarTabla = function () {
         this.limpiarTabla();
         this.cargarConsorcio();
-    }
-};
-ConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-consorcio',
-        template: __webpack_require__(/*! raw-loader!./consorcio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/consorcio/consorcio.component.html"),
-        styles: [__webpack_require__(/*! ./consorcio.component.css */ "./src/app/socios-master/cuentas/consorcio/consorcio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["BryanConsorcioService"]])
-], ConsorcioComponent);
+    };
+    ConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-consorcio',
+            template: __webpack_require__(/*! raw-loader!./consorcio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/consorcio/consorcio.component.html"),
+            styles: [__webpack_require__(/*! ./consorcio.component.css */ "./src/app/socios-master/cuentas/consorcio/consorcio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], src_app_servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["BryanConsorcioService"]])
+    ], ConsorcioComponent);
+    return ConsorcioComponent;
+}());
 
 
 
@@ -12540,22 +12822,24 @@ module.exports = "label,input, button{\r\n    font-size: 12px;\r\n  }\r\n\r\n  t
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuentasComponent", function() { return CuentasComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
-let CuentasComponent = class CuentasComponent {
-    constructor() { }
-    ngOnInit() {
+var CuentasComponent = /** @class */ (function () {
+    function CuentasComponent() {
     }
-};
-CuentasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-cuentas',
-        template: __webpack_require__(/*! raw-loader!./cuentas.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/cuentas.component.html"),
-        styles: [__webpack_require__(/*! ./cuentas.component.css */ "./src/app/socios-master/cuentas/cuentas.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CuentasComponent);
+    CuentasComponent.prototype.ngOnInit = function () {
+    };
+    CuentasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-cuentas',
+            template: __webpack_require__(/*! raw-loader!./cuentas.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/cuentas.component.html"),
+            styles: [__webpack_require__(/*! ./cuentas.component.css */ "./src/app/socios-master/cuentas/cuentas.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CuentasComponent);
+    return CuentasComponent;
+}());
 
 
 
@@ -12583,15 +12867,15 @@ module.exports = ".my-class { \r\n    color: red;\r\n    font-size: 15px;\r\n   
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SindicalComponent", function() { return SindicalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let SindicalComponent = class SindicalComponent {
-    constructor(config, modalService, _portalSociosService) {
+var SindicalComponent = /** @class */ (function () {
+    function SindicalComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Variable para las cargas
@@ -12600,83 +12884,85 @@ let SindicalComponent = class SindicalComponent {
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
+    SindicalComponent.prototype.ngOnInit = function () {
         //Cargar Años
         this.selectAnio = JSON.parse(localStorage.getItem('anios'));
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
-    }
-    openModalTablaSindical(tablaSindical) {
+    };
+    SindicalComponent.prototype.openModalTablaSindical = function (tablaSindical) {
         this.modalTablaSindical = this.modalService.open(tablaSindical, { size: 'xl' });
         this.limpiarTabla();
         this.cargarFechasActuales();
-    }
+    };
     //Abrir visor de PDF
-    open(content) {
+    SindicalComponent.prototype.open = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    cargarFechasActuales() {
+    };
+    SindicalComponent.prototype.cargarFechasActuales = function () {
+        var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(response => {
-            this.idAnioActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaSindical();
+        this._portalSociosService.getAnioActual().subscribe(function (response) {
+            _this.idAnioActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaSindical();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(response => {
-            this.idMesActual = response.id;
-            this.cargarDatos++;
-            console.log(this.cargarDatos);
-            if (this.cargarDatos == 2) {
-                this.cargarTablaSindical();
+        this._portalSociosService.getMesActual().subscribe(function (response) {
+            _this.idMesActual = response.id;
+            _this.cargarDatos++;
+            console.log(_this.cargarDatos);
+            if (_this.cargarDatos == 2) {
+                _this.cargarTablaSindical();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-    cargarTablaSindical() {
+    };
+    SindicalComponent.prototype.cargarTablaSindical = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._portalSociosService.getTablaSindical(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._portalSociosService.getTablaSindical(this.idAnioActual, this.idMesActual).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.cargandoTabla = false;
+                _this.cargandoTabla = false;
             }
             else {
-                this.cargandoTabla = false;
-                this.montoInicio = response.monto_inicio;
-                this.cajaChica = response.CS.caja_chica;
-                this.camping = response.CS.camping;
-                this.fijos = response.CS.fijos;
-                this.prestamo = response.CS.prestamos;
-                this.variable = response.CS.variables;
-                this.resultado = response.totales;
+                _this.cargandoTabla = false;
+                _this.montoInicio = response.monto_inicio;
+                _this.cajaChica = response.CS.caja_chica;
+                _this.camping = response.CS.camping;
+                _this.fijos = response.CS.fijos;
+                _this.prestamo = response.CS.prestamos;
+                _this.variable = response.CS.variables;
+                _this.resultado = response.totales;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-    recargarTablaSindical() {
+    };
+    SindicalComponent.prototype.recargarTablaSindical = function () {
         this.limpiarTabla();
         this.cargarTablaSindical();
-    }
-    changeAnio(valorSelect) {
+    };
+    SindicalComponent.prototype.changeAnio = function (valorSelect) {
         this.limpiarTabla();
         this.idAnioActual = valorSelect.target.value;
         this.recargarTablaSindical();
-    }
-    changeMes(valorSelect) {
+    };
+    SindicalComponent.prototype.changeMes = function (valorSelect) {
         this.limpiarTabla();
         this.idMesActual = valorSelect.target.value;
         this.recargarTablaSindical();
-    }
-    limpiarTabla() {
+    };
+    SindicalComponent.prototype.limpiarTabla = function () {
         this.montoInicio = null;
         this.cajaChica = null;
         this.camping = null;
@@ -12684,16 +12970,17 @@ let SindicalComponent = class SindicalComponent {
         this.prestamo = null;
         this.variable = null;
         this.resultado = null;
-    }
-};
-SindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-sindical',
-        template: __webpack_require__(/*! raw-loader!./sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/sindical/sindical.component.html"),
-        styles: [__webpack_require__(/*! ./sindical.component.css */ "./src/app/socios-master/cuentas/sindical/sindical.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], SindicalComponent);
+    };
+    SindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-sindical',
+            template: __webpack_require__(/*! raw-loader!./sindical.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/cuentas/sindical/sindical.component.html"),
+            styles: [__webpack_require__(/*! ./sindical.component.css */ "./src/app/socios-master/cuentas/sindical/sindical.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], SindicalComponent);
+    return SindicalComponent;
+}());
 
 
 
@@ -12721,17 +13008,17 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraficoComponenteComponent", function() { return GraficoComponenteComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-let GraficoComponenteComponent = class GraficoComponenteComponent {
-    constructor() {
+var GraficoComponenteComponent = /** @class */ (function () {
+    function GraficoComponenteComponent() {
         this.chart = [];
     }
-    ngOnInit() {
+    GraficoComponenteComponent.prototype.ngOnInit = function () {
         this.chart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"]('canvas', {
             type: 'line',
             data: {
@@ -12776,16 +13063,17 @@ let GraficoComponenteComponent = class GraficoComponenteComponent {
                 }
             }
         });
-    }
-};
-GraficoComponenteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-grafico-componente',
-        template: __webpack_require__(/*! raw-loader!./grafico-componente.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/grafico/grafico-componente/grafico-componente.component.html"),
-        styles: [__webpack_require__(/*! ./grafico-componente.component.css */ "./src/app/socios-master/grafico/grafico-componente/grafico-componente.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], GraficoComponenteComponent);
+    };
+    GraficoComponenteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-grafico-componente',
+            template: __webpack_require__(/*! raw-loader!./grafico-componente.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/grafico/grafico-componente/grafico-componente.component.html"),
+            styles: [__webpack_require__(/*! ./grafico-componente.component.css */ "./src/app/socios-master/grafico/grafico-componente/grafico-componente.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], GraficoComponenteComponent);
+    return GraficoComponenteComponent;
+}());
 
 
 
@@ -12813,36 +13101,38 @@ module.exports = "nav.navbar {\r\n  background: #373b44; /* fallback for old bro
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarSocioComponent", function() { return NavbarSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let NavbarSocioComponent = class NavbarSocioComponent {
-    constructor(_userService, _portalSociosService) {
+var NavbarSocioComponent = /** @class */ (function () {
+    function NavbarSocioComponent(_userService, _portalSociosService) {
         this._userService = _userService;
         this._portalSociosService = _portalSociosService;
     }
-    ngOnInit() {
+    NavbarSocioComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //Guardar nombre socio
-        this._portalSociosService.getSocioLogeado().subscribe((res) => {
-            this.nombreSocio = res.nombres;
+        this._portalSociosService.getSocioLogeado().subscribe(function (res) {
+            _this.nombreSocio = res.nombres;
         });
-    }
-    logOut() {
+    };
+    NavbarSocioComponent.prototype.logOut = function () {
         this._userService.logOut();
-    }
-};
-NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-navbar-socio',
-        template: __webpack_require__(/*! raw-loader!./navbar-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html"),
-        styles: [__webpack_require__(/*! ./navbar-socio.component.css */ "./src/app/socios-master/navbar-socio/navbar-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], NavbarSocioComponent);
+    };
+    NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-navbar-socio',
+            template: __webpack_require__(/*! raw-loader!./navbar-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html"),
+            styles: [__webpack_require__(/*! ./navbar-socio.component.css */ "./src/app/socios-master/navbar-socio/navbar-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], NavbarSocioComponent);
+    return NavbarSocioComponent;
+}());
 
 
 
@@ -12870,15 +13160,15 @@ module.exports = "label,input, button, strong{\r\n  font-size: 12px;\r\n}\r\n\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosAuthSocioComponent", function() { return FormularioBeneficiosAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var FormularioBeneficiosAuthSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Objeto para almacenar los datos
@@ -12907,29 +13197,30 @@ let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocio
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioBeneficios(FormularioBeneficios) {
+    FormularioBeneficiosAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosAuthSocioComponent.prototype.verFormularioBeneficios = function (FormularioBeneficios) {
         this.abrirFormularioBeneficiosSocios = this.modalService.open(FormularioBeneficios, { size: 'xl' });
-    }
-    guardarDatosSocio() {
+    };
+    FormularioBeneficiosAuthSocioComponent.prototype.guardarDatosSocio = function () {
+        var _this = this;
         this.blockIngreso = true;
-        this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(response => {
+        this._portalSociosService.setDatosBasicosSocios(this.InsertarBeneficiosSocio).subscribe(function (response) {
             if (response.estado == "failed" || response.estado == "failed_v") {
                 alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g, ''));
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
             }
             else {
                 alert(response.mensaje);
-                this.limpiarFormulario();
-                this.blockIngreso = false;
+                _this.limpiarFormulario();
+                _this.blockIngreso = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-    limpiarFormulario() {
+    };
+    FormularioBeneficiosAuthSocioComponent.prototype.limpiarFormulario = function () {
         this.InsertarBeneficiosSocio.socio_id = '';
         this.InsertarBeneficiosSocio.direccion = '';
         this.InsertarBeneficiosSocio.celular = '';
@@ -12948,18 +13239,19 @@ let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocio
         this.InsertarBeneficiosSocio.estado_civil_id = '';
         this.InsertarBeneficiosSocio.conyuge = '';
         this.InsertarBeneficiosSocio.telefono = '';
-    }
-};
-FormularioBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], FormularioBeneficiosAuthSocioComponent);
+    };
+    FormularioBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-auth-socio/formulario-beneficios-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], FormularioBeneficiosAuthSocioComponent);
+    return FormularioBeneficiosAuthSocioComponent;
+}());
 
 
 
@@ -12987,15 +13279,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosBeneficiarioAuthSocioComponent", function() { return FormularioBeneficiosBeneficiarioAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
-let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBeneficiosBeneficiarioAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var FormularioBeneficiosBeneficiarioAuthSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosBeneficiarioAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         this.datosBeneficiario = {
@@ -13014,34 +13306,35 @@ let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBenefic
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    abrirModalBeneficiario(formularioBeneficiario) {
+    FormularioBeneficiosBeneficiarioAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosBeneficiarioAuthSocioComponent.prototype.abrirModalBeneficiario = function (formularioBeneficiario) {
         this.abrirFormularioBeneficiario = this.modalService.open(formularioBeneficiario, { size: 'xl' });
-    }
-    setDatosBeneficiario() {
+    };
+    FormularioBeneficiosBeneficiarioAuthSocioComponent.prototype.setDatosBeneficiario = function () {
+        var _this = this;
         this.blockIngreso = true;
         //Llamar al servicio para ingresar datos del beneficiario
         console.log(this.datosBeneficiario);
-        this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(response => {
+        this._portalSociosService.setDatosBeneficiarios(this.datosBeneficiario).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
-                let mensaje = JSON.stringify(response.mensaje);
+                var mensaje = JSON.stringify(response.mensaje);
                 mensaje.replace(/'/g, "");
                 alert(mensaje);
                 /* alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g,'')); */
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
             }
             else {
                 alert('Ingreso del Beneficiario correcto');
-                this.limpiarDatos();
-                this.blockIngreso = false;
+                _this.limpiarDatos();
+                _this.blockIngreso = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-    limpiarDatos() {
+    };
+    FormularioBeneficiosBeneficiarioAuthSocioComponent.prototype.limpiarDatos = function () {
         this.datosBeneficiario.prioridad = '';
         this.datosBeneficiario.relacionParentesco = '';
         this.datosBeneficiario.rut = '';
@@ -13051,16 +13344,17 @@ let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBenefic
         this.datosBeneficiario.apellidoMaterno = '';
         this.datosBeneficiario.direccion = '';
         this.datosBeneficiario.celular = '';
-    }
-};
-FormularioBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-beneficiario-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
-], FormularioBeneficiosBeneficiarioAuthSocioComponent);
+    };
+    FormularioBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-beneficiario-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-beneficiario-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-beneficiario-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-beneficiario-auth-socio/formulario-beneficios-beneficiario-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
+    ], FormularioBeneficiosBeneficiarioAuthSocioComponent);
+    return FormularioBeneficiosBeneficiarioAuthSocioComponent;
+}());
 
 
 
@@ -13088,15 +13382,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosCargasAuthSocioComponent", function() { return FormularioBeneficiosCargasAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCargasAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var FormularioBeneficiosCargasAuthSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosCargasAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Datos de la carga
@@ -13117,33 +13411,34 @@ let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCar
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verModalCargas(formularioCargas) {
+    FormularioBeneficiosCargasAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosCargasAuthSocioComponent.prototype.verModalCargas = function (formularioCargas) {
         this.abrirModalFormularioCarga = this.modalService.open(formularioCargas, { size: 'xl' });
-    }
-    onSelectImage(event) {
+    };
+    FormularioBeneficiosCargasAuthSocioComponent.prototype.onSelectImage = function (event) {
         this.datosCargas.archivoDocumento = event.srcElement.files[0];
-    }
-    setDatosCarga() {
+    };
+    FormularioBeneficiosCargasAuthSocioComponent.prototype.setDatosCarga = function () {
+        var _this = this;
         //Aquí se llamá al servicio para ingresar los datos de la carga
         this.blockIngreso = true;
-        this._portalSociosService.setDatosCargas(this.datosCargas).subscribe(response => {
+        this._portalSociosService.setDatosCargas(this.datosCargas).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g, ''));
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
             }
             else {
                 alert('Ingreso de la carga correcto');
-                this.limpiarDatos();
-                this.blockIngreso = false;
+                _this.limpiarDatos();
+                _this.blockIngreso = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-    limpiarDatos() {
+    };
+    FormularioBeneficiosCargasAuthSocioComponent.prototype.limpiarDatos = function () {
         this.datosCargas.tipoCargaId = '';
         this.datosCargas.rut = '';
         this.datosCargas.fechaNacimiento = '';
@@ -13154,16 +13449,17 @@ let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCar
         this.datosCargas.celular = '';
         this.datosCargas.establecimiento = '';
         this.datosCargas.archivoDocumento = '';
-    }
-};
-FormularioBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-cargas-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-cargas-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], FormularioBeneficiosCargasAuthSocioComponent);
+    };
+    FormularioBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-cargas-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-cargas-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-cargas-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-cargas-auth-socio/formulario-beneficios-cargas-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], FormularioBeneficiosCargasAuthSocioComponent);
+    return FormularioBeneficiosCargasAuthSocioComponent;
+}());
 
 
 
@@ -13191,15 +13487,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosConyugeAuthSocioComponent", function() { return FormularioBeneficiosConyugeAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
-let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosConyugeAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var FormularioBeneficiosConyugeAuthSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosConyugeAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Objeto con los datos del conyuge
@@ -13218,34 +13514,35 @@ let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosCo
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verFormularioConyuge(formularioBeneficiosConyuge) {
+    FormularioBeneficiosConyugeAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosConyugeAuthSocioComponent.prototype.verFormularioConyuge = function (formularioBeneficiosConyuge) {
         this.abrirFormularioBeneficiosConyuge = this.modalService.open(formularioBeneficiosConyuge, { size: 'xl' });
-    }
-    onSelectImage(event) {
+    };
+    FormularioBeneficiosConyugeAuthSocioComponent.prototype.onSelectImage = function (event) {
         this.datosConyuge.archivoDocumento = event.srcElement.files[0];
-    }
-    setDatosConyuge() {
+    };
+    FormularioBeneficiosConyugeAuthSocioComponent.prototype.setDatosConyuge = function () {
+        var _this = this;
         //Llamar al servicio para ingresar los valores del objeto
         this.blockIngreso = true;
-        this._portalSociosService.setDatosConyugeSocio(this.datosConyuge).subscribe(response => {
+        this._portalSociosService.setDatosConyugeSocio(this.datosConyuge).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g, ''));
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
             }
             else {
                 alert('Se ha ingresado correctamente la conyuge en la base de datos');
-                this.limpiarDatos();
-                this.blockIngreso = false;
+                _this.limpiarDatos();
+                _this.blockIngreso = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
         console.log(this.datosConyuge);
-    }
-    limpiarDatos() {
+    };
+    FormularioBeneficiosConyugeAuthSocioComponent.prototype.limpiarDatos = function () {
         this.datosConyuge.rut = '';
         this.datosConyuge.fechaNacimiento = '';
         this.datosConyuge.nombres = '';
@@ -13254,16 +13551,17 @@ let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosCo
         this.datosConyuge.direccion = '';
         this.datosConyuge.celular = '';
         this.datosConyuge.archivoDocumento = '';
-    }
-};
-FormularioBeneficiosConyugeAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-conyuge-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
-], FormularioBeneficiosConyugeAuthSocioComponent);
+    };
+    FormularioBeneficiosConyugeAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-conyuge-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-conyuge-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-conyuge-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-conyuge-auth-socio/formulario-beneficios-conyuge-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
+    ], FormularioBeneficiosConyugeAuthSocioComponent);
+    return FormularioBeneficiosConyugeAuthSocioComponent;
+}());
 
 
 
@@ -13291,15 +13589,15 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormularioBeneficiosPadresSuegrosAuthSocioComponent", function() { return FormularioBeneficiosPadresSuegrosAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let FormularioBeneficiosPadresSuegrosAuthSocioComponent = class FormularioBeneficiosPadresSuegrosAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var FormularioBeneficiosPadresSuegrosAuthSocioComponent = /** @class */ (function () {
+    function FormularioBeneficiosPadresSuegrosAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Objeto que almacena los datos
@@ -13318,30 +13616,31 @@ let FormularioBeneficiosPadresSuegrosAuthSocioComponent = class FormularioBenefi
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    abrirModalPadresSuegros(modalPadresSuegros) {
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent.prototype.abrirModalPadresSuegros = function (modalPadresSuegros) {
         this.abrirModalFormularioPadresSuegros = this.modalService.open(modalPadresSuegros, { size: 'xl' });
-    }
-    setDatosPadresSuegros() {
+    };
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent.prototype.setDatosPadresSuegros = function () {
+        var _this = this;
         //Aquí se dede de llamar al servicio para ingresar los datos del objeto datosPadresSuegros
         this.blockIngreso = true;
-        this._portalSociosService.setDatosPadresSuegros(this.datosPadresSuegros).subscribe(response => {
+        this._portalSociosService.setDatosPadresSuegros(this.datosPadresSuegros).subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(JSON.stringify(response.mensaje).replace(/[\[\]']+/g, ''));
-                this.blockIngreso = false;
+                _this.blockIngreso = false;
             }
             else {
                 alert(response.mensaje);
-                this.limpiarDatos();
-                this.blockIngreso = false;
+                _this.limpiarDatos();
+                _this.blockIngreso = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.blockIngreso = false;
+            _this.blockIngreso = false;
         });
-    }
-    limpiarDatos() {
+    };
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent.prototype.limpiarDatos = function () {
         this.datosPadresSuegros.relacionSocioId = '';
         this.datosPadresSuegros.rut = '';
         this.datosPadresSuegros.fechaNacimiento = '';
@@ -13350,16 +13649,17 @@ let FormularioBeneficiosPadresSuegrosAuthSocioComponent = class FormularioBenefi
         this.datosPadresSuegros.apellidoMaterno = '';
         this.datosPadresSuegros.direccion = '';
         this.datosPadresSuegros.celular = '';
-    }
-};
-FormularioBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-formulario-beneficios-padres-suegros-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], FormularioBeneficiosPadresSuegrosAuthSocioComponent);
+    };
+    FormularioBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-formulario-beneficios-padres-suegros-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./formulario-beneficios-padres-suegros-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./formulario-beneficios-padres-suegros-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/formulario-beneficios-padres-suegros-auth-socio/formulario-beneficios-padres-suegros-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], FormularioBeneficiosPadresSuegrosAuthSocioComponent);
+    return FormularioBeneficiosPadresSuegrosAuthSocioComponent;
+}());
 
 
 
@@ -13387,49 +13687,51 @@ module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerfilSocioComponent", function() { return PerfilSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
-let PerfilSocioComponent = class PerfilSocioComponent {
-    constructor(config, modalService, _portalSocioService) {
+var PerfilSocioComponent = /** @class */ (function () {
+    function PerfilSocioComponent(config, modalService, _portalSocioService) {
         this.modalService = modalService;
         this._portalSocioService = _portalSocioService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openPDF(content) {
+    PerfilSocioComponent.prototype.ngOnInit = function () {
+    };
+    PerfilSocioComponent.prototype.openPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    getResumen() {
+    };
+    PerfilSocioComponent.prototype.getResumen = function () {
+        var _this = this;
         console.log('test');
         //Llamar al servicio que trae el link del resumen PDF
-        this._portalSocioService.getResumenSocio().subscribe(response => {
+        this._portalSocioService.getResumenSocio().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
             }
             else {
-                this.rutaResumen = response.archivo;
+                _this.rutaResumen = response.archivo;
                 document.getElementById('showModal').click();
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
         });
-    }
-};
-PerfilSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-perfil-socio',
-        template: __webpack_require__(/*! raw-loader!./perfil-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/perfil-socio.component.html"),
-        styles: [__webpack_require__(/*! ./perfil-socio.component.css */ "./src/app/socios-master/perfil-socio/perfil-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
-], PerfilSocioComponent);
+    };
+    PerfilSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-perfil-socio',
+            template: __webpack_require__(/*! raw-loader!./perfil-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/perfil-socio.component.html"),
+            styles: [__webpack_require__(/*! ./perfil-socio.component.css */ "./src/app/socios-master/perfil-socio/perfil-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
+    ], PerfilSocioComponent);
+    return PerfilSocioComponent;
+}());
 
 
 
@@ -13457,55 +13759,57 @@ module.exports = ".sinbordefondo {\r\n    background-color: #fff;\r\n    border:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosAuthConyugeComponent", function() { return TablaBeneficiosAuthConyugeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let TablaBeneficiosAuthConyugeComponent = class TablaBeneficiosAuthConyugeComponent {
-    constructor(config, modalService, _portalSociosService) {
+var TablaBeneficiosAuthConyugeComponent = /** @class */ (function () {
+    function TablaBeneficiosAuthConyugeComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Loading tabla
         this.loadingTabla = false;
     }
-    ngOnInit() {
-    }
-    verTablaModalConyuge(tablaConyuge) {
+    TablaBeneficiosAuthConyugeComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosAuthConyugeComponent.prototype.verTablaModalConyuge = function (tablaConyuge) {
         this.verTablaConyuge = this.modalService.open(tablaConyuge, { size: 'xl' });
         this.getDatosConyuge();
-    }
-    openModalPDF(content) {
+    };
+    TablaBeneficiosAuthConyugeComponent.prototype.openModalPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    getDatosConyuge() {
+    };
+    TablaBeneficiosAuthConyugeComponent.prototype.getDatosConyuge = function () {
+        var _this = this;
         this.loadingTabla = true;
-        this._portalSociosService.getDatosConyuge().subscribe(response => {
+        this._portalSociosService.getDatosConyuge().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.verTablaConyuge.close();
-                this.loadingTabla = false;
+                _this.verTablaConyuge.close();
+                _this.loadingTabla = false;
             }
             else {
-                this.datosConyuge = response.conyuge[0];
-                this.loadingTabla = false;
+                _this.datosConyuge = response.conyuge[0];
+                _this.loadingTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.loadingTabla = false;
+            _this.loadingTabla = false;
         });
-    }
-};
-TablaBeneficiosAuthConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-auth-conyuge',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-auth-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-conyuge/tabla-beneficios-auth-conyuge.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-auth-conyuge.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-conyuge/tabla-beneficios-auth-conyuge.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], TablaBeneficiosAuthConyugeComponent);
+    };
+    TablaBeneficiosAuthConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-auth-conyuge',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-auth-conyuge.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-conyuge/tabla-beneficios-auth-conyuge.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-auth-conyuge.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-conyuge/tabla-beneficios-auth-conyuge.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], TablaBeneficiosAuthConyugeComponent);
+    return TablaBeneficiosAuthConyugeComponent;
+}());
 
 
 
@@ -13533,53 +13837,55 @@ module.exports = ".sinbordefondo {\r\n  background-color: #fff;\r\n  border: 0;\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosAuthSocioComponent", function() { return TablaBeneficiosAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let TablaBeneficiosAuthSocioComponent = class TablaBeneficiosAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var TablaBeneficiosAuthSocioComponent = /** @class */ (function () {
+    function TablaBeneficiosAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficios(TablaBeneficios) {
+    TablaBeneficiosAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosAuthSocioComponent.prototype.verTablaBeneficios = function (TablaBeneficios) {
         this.abrirTablaBeneficiosSocios = this.modalService.open(TablaBeneficios, { size: 'xl' });
         this.getDatosSocio();
-    }
-    getDatosSocio() {
+    };
+    TablaBeneficiosAuthSocioComponent.prototype.getDatosSocio = function () {
+        var _this = this;
         this.cargandoTabla = true;
-        this._portalSociosService.getDatosSocios().subscribe(response => {
+        this._portalSociosService.getDatosSocios().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.abrirTablaBeneficiosSocios.close();
+                _this.abrirTablaBeneficiosSocios.close();
             }
             else {
-                this.traerDatosSocio = response.socio[0];
-                this.cargandoTabla = false;
+                _this.traerDatosSocio = response.socio[0];
+                _this.cargandoTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.cargandoTabla = false;
+            _this.cargandoTabla = false;
         });
-    }
-};
-TablaBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
-        src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], TablaBeneficiosAuthSocioComponent);
+    };
+    TablaBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-auth-socio/tabla-beneficios-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+            src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], TablaBeneficiosAuthSocioComponent);
+    return TablaBeneficiosAuthSocioComponent;
+}());
 
 
 
@@ -13607,15 +13913,15 @@ module.exports = ".sinbordefondo {\r\n    background-color:#fff;\r\n    border: 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosBeneficiarioAuthSocioComponent", function() { return TablaBeneficiosBeneficiarioAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBeneficiarioAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var TablaBeneficiosBeneficiarioAuthSocioComponent = /** @class */ (function () {
+    function TablaBeneficiosBeneficiarioAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Loading tabla
@@ -13623,40 +13929,42 @@ let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBenefic
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    verTablaBeneficiario(tablaBeneficiario) {
+    TablaBeneficiosBeneficiarioAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosBeneficiarioAuthSocioComponent.prototype.verTablaBeneficiario = function (tablaBeneficiario) {
         this.abrirModalBeneficiosBeneficiario = this.modalService.open(tablaBeneficiario, { size: 'xl' });
         this.getDatosBeneficiario();
-    }
-    getDatosBeneficiario() {
+    };
+    TablaBeneficiosBeneficiarioAuthSocioComponent.prototype.getDatosBeneficiario = function () {
+        var _this = this;
         //llamar al servici para llenar la variable datosBeneficiario
         this.loadingTabla = true;
-        this._portalSociosService.getDatosBeneficiario().subscribe(response => {
+        this._portalSociosService.getDatosBeneficiario().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.abrirModalBeneficiosBeneficiario.close();
-                this.loadingTabla = false;
+                _this.abrirModalBeneficiosBeneficiario.close();
+                _this.loadingTabla = false;
             }
             else {
-                this.datosBeneficiario = response.beneficiario;
-                console.log(this.datosBeneficiario);
-                this.loadingTabla = false;
+                _this.datosBeneficiario = response.beneficiario;
+                console.log(_this.datosBeneficiario);
+                _this.loadingTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.loadingTabla = false;
+            _this.loadingTabla = false;
         });
-    }
-};
-TablaBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-beneficiario-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-beneficiario-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-beneficiario-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], TablaBeneficiosBeneficiarioAuthSocioComponent);
+    };
+    TablaBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-beneficiario-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-beneficiario-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-beneficiario-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-beneficiario-auth-socio/tabla-beneficios-beneficiario-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], TablaBeneficiosBeneficiarioAuthSocioComponent);
+    return TablaBeneficiosBeneficiarioAuthSocioComponent;
+}());
 
 
 
@@ -13684,15 +13992,15 @@ module.exports = ".sinbordefondo {\r\n    background-color: #fff;\r\n    border:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosCargasAuthSocioComponent", function() { return TablaBeneficiosCargasAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
 
 
 
 
-let TablaBeneficiosCargasAuthSocioComponent = class TablaBeneficiosCargasAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var TablaBeneficiosCargasAuthSocioComponent = /** @class */ (function () {
+    function TablaBeneficiosCargasAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Loading tabla
@@ -13700,42 +14008,44 @@ let TablaBeneficiosCargasAuthSocioComponent = class TablaBeneficiosCargasAuthSoc
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    abrirModalCargas(modalCargas) {
+    TablaBeneficiosCargasAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosCargasAuthSocioComponent.prototype.abrirModalCargas = function (modalCargas) {
         this.abrirModalTablaCargas = this.modalService.open(modalCargas, { size: 'xl' });
         this.getDatosCargas();
-    }
-    openModalPDF(content) {
+    };
+    TablaBeneficiosCargasAuthSocioComponent.prototype.openModalPDF = function (content) {
         this.modalService.open(content, { size: 'lg' });
-    }
-    getDatosCargas() {
+    };
+    TablaBeneficiosCargasAuthSocioComponent.prototype.getDatosCargas = function () {
+        var _this = this;
         //Aquí se llamá al servicio para obtener los datos de las cargas
         this.loadingTabla = true;
-        this._portalSociosService.getDatosCargas().subscribe(response => {
+        this._portalSociosService.getDatosCargas().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.abrirModalTablaCargas.close();
-                this.loadingTabla = false;
+                _this.abrirModalTablaCargas.close();
+                _this.loadingTabla = false;
             }
             else {
-                this.datosCargas = response.cargas;
-                this.loadingTabla = false;
+                _this.datosCargas = response.cargas;
+                _this.loadingTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.loadingTabla = false;
+            _this.loadingTabla = false;
         });
-    }
-};
-TablaBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-cargas-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-cargas-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
-], TablaBeneficiosCargasAuthSocioComponent);
+    };
+    TablaBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-cargas-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-cargas-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-cargas-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-cargas-auth-socio/tabla-beneficios-cargas-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    ], TablaBeneficiosCargasAuthSocioComponent);
+    return TablaBeneficiosCargasAuthSocioComponent;
+}());
 
 
 
@@ -13763,15 +14073,15 @@ module.exports = ".sinbordefondo {\r\n    background-color: #fff;\r\n    border:
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablaBeneficiosPadresSuegrosAuthSocioComponent", function() { return TablaBeneficiosPadresSuegrosAuthSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 
 
 
 
-let TablaBeneficiosPadresSuegrosAuthSocioComponent = class TablaBeneficiosPadresSuegrosAuthSocioComponent {
-    constructor(config, modalService, _portalSociosService) {
+var TablaBeneficiosPadresSuegrosAuthSocioComponent = /** @class */ (function () {
+    function TablaBeneficiosPadresSuegrosAuthSocioComponent(config, modalService, _portalSociosService) {
         this.modalService = modalService;
         this._portalSociosService = _portalSociosService;
         //Loading tabla
@@ -13779,40 +14089,42 @@ let TablaBeneficiosPadresSuegrosAuthSocioComponent = class TablaBeneficiosPadres
         config.backdrop = 'static';
         config.keyboard = false;
     }
-    ngOnInit() {
-    }
-    openModalPadresSuegros(modalPadresSuegros) {
+    TablaBeneficiosPadresSuegrosAuthSocioComponent.prototype.ngOnInit = function () {
+    };
+    TablaBeneficiosPadresSuegrosAuthSocioComponent.prototype.openModalPadresSuegros = function (modalPadresSuegros) {
         this.abrirModalPadresSuegros = this.modalService.open(modalPadresSuegros, { size: 'xl' });
         this.getDatosPadresSuegros();
-    }
-    getDatosPadresSuegros() {
+    };
+    TablaBeneficiosPadresSuegrosAuthSocioComponent.prototype.getDatosPadresSuegros = function () {
+        var _this = this;
         //Llamar al servicio para almacenar los datos
         this.loadingTabla = true;
-        this._portalSociosService.getDatosPadresSuegros().subscribe(response => {
+        this._portalSociosService.getDatosPadresSuegros().subscribe(function (response) {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
-                this.abrirModalPadresSuegros.close();
-                this.loadingTabla = false;
+                _this.abrirModalPadresSuegros.close();
+                _this.loadingTabla = false;
             }
             else {
-                this.datosPadresSuegros = response.padres_suegros;
-                console.log(this.datosPadresSuegros);
-                this.loadingTabla = false;
+                _this.datosPadresSuegros = response.padres_suegros;
+                console.log(_this.datosPadresSuegros);
+                _this.loadingTabla = false;
             }
-        }, error => {
+        }, function (error) {
             console.log(error);
-            this.loadingTabla = false;
+            _this.loadingTabla = false;
         });
-    }
-};
-TablaBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-tabla-beneficios-padres-suegros-auth-socio',
-        template: __webpack_require__(/*! raw-loader!./tabla-beneficios-padres-suegros-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.html"),
-        styles: [__webpack_require__(/*! ./tabla-beneficios-padres-suegros-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
-], TablaBeneficiosPadresSuegrosAuthSocioComponent);
+    };
+    TablaBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tabla-beneficios-padres-suegros-auth-socio',
+            template: __webpack_require__(/*! raw-loader!./tabla-beneficios-padres-suegros-auth-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.html"),
+            styles: [__webpack_require__(/*! ./tabla-beneficios-padres-suegros-auth-socio.component.css */ "./src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"]])
+    ], TablaBeneficiosPadresSuegrosAuthSocioComponent);
+    return TablaBeneficiosPadresSuegrosAuthSocioComponent;
+}());
 
 
 
@@ -13840,61 +14152,69 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SociosMasterComponent", function() { return SociosMasterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
-let SociosMasterComponent = class SociosMasterComponent {
-    constructor(_usuariosService, _portalSociosService, _getAnios, router) {
+var SociosMasterComponent = /** @class */ (function () {
+    function SociosMasterComponent(_usuariosService, _portalSociosService, _getAnios, router) {
         this._usuariosService = _usuariosService;
         this._portalSociosService = _portalSociosService;
         this._getAnios = _getAnios;
         this.router = router;
         this.tiempoEsperaToken = 1;
     }
-    ngOnInit() {
+    SociosMasterComponent.prototype.ngOnInit = function () {
         //Guardar Anios
-        this._getAnios.getAnios().subscribe((res) => {
-            let filtroAnios = res.map(({ id, descripcion }) => ({ id, descripcion }));
+        this._getAnios.getAnios().subscribe(function (res) {
+            var filtroAnios = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
             localStorage.setItem('anios', JSON.stringify(filtroAnios));
         });
         //Guardar Meses
-        this._getAnios.getMeses().subscribe((res) => {
-            let filtroMeses = res.map(({ id, descripcion }) => ({ id, descripcion }));
+        this._getAnios.getMeses().subscribe(function (res) {
+            var filtroMeses = res.map(function (_a) {
+                var id = _a.id, descripcion = _a.descripcion;
+                return ({ id: id, descripcion: descripcion });
+            });
             localStorage.setItem('meses', JSON.stringify(filtroMeses));
         });
         this.startTimerToken();
-    }
-    startTimerToken() {
-        setInterval(() => {
-            if (this.tiempoEsperaToken > 0) {
-                this.tiempoEsperaToken--;
+    };
+    SociosMasterComponent.prototype.startTimerToken = function () {
+        var _this = this;
+        setInterval(function () {
+            if (_this.tiempoEsperaToken > 0) {
+                _this.tiempoEsperaToken--;
             }
             else {
-                let estadoToken = this._usuariosService.isAuthenticated();
+                var estadoToken = _this._usuariosService.isAuthenticated();
                 if (estadoToken == false) {
-                    this.router.navigate(['']);
+                    _this.router.navigate(['']);
                 }
                 else {
-                    this.tiempoEsperaToken = 1;
+                    _this.tiempoEsperaToken = 1;
                 }
             }
         }, 1000);
-    }
-};
-SociosMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-socios-master',
-        template: __webpack_require__(/*! raw-loader!./socios-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/socios-master.component.html"),
-        styles: [__webpack_require__(/*! ./socios-master.component.css */ "./src/app/socios-master/socios-master.component.css")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
-], SociosMasterComponent);
+    };
+    SociosMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-socios-master',
+            template: __webpack_require__(/*! raw-loader!./socios-master.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/socios-master.component.html"),
+            styles: [__webpack_require__(/*! ./socios-master.component.css */ "./src/app/socios-master/socios-master.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+    ], SociosMasterComponent);
+    return SociosMasterComponent;
+}());
 
 
 
@@ -13913,7 +14233,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const environment = {
+var environment = {
     production: false
 };
 /*
@@ -13937,8 +14257,8 @@ const environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 
@@ -13949,7 +14269,7 @@ if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].produc
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }
 Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
-    .catch(err => console.error(err));
+    .catch(function (err) { return console.error(err); });
 
 
 /***/ }),
@@ -13961,14 +14281,10 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD:laravel-module/public/app/main.js
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/Laravel-AngularV3/angular-module/src/main.ts */"./src/main.ts");
-=======
 module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
->>>>>>> bryanm:laravel-module/public/app/main-es2015.js
 
 
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=main-es5.js.map

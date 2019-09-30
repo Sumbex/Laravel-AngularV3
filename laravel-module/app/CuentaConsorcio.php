@@ -324,29 +324,29 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_cex_socio,
                                 (
-                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_1,0) -
                                   COALESCE(monto_mes_cex_1,0) +
-                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_2,0) -
                                   COALESCE(monto_mes_cex_2,0) +
-                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_3,0) -
                                   COALESCE(monto_mes_cex_3,0) +
-                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_4,0) -
                                   COALESCE(monto_mes_cex_4,0) +
-                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_5,0) -
                                   COALESCE(monto_mes_cex_5,0) +
-                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_6,0) -
                                   COALESCE(monto_mes_cex_6,0) +
-                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_7,0) -
                                   COALESCE(monto_mes_cex_7,0) +
-                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_8,0) -
                                   COALESCE(monto_mes_cex_8,0) +
-                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_9,0)-
                                   COALESCE(monto_mes_cex_9,0)+ 
-                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_10,0) -
                                   COALESCE(monto_mes_cex_10,0) +
-                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_11,0) -
                                   COALESCE(monto_mes_cex_11,0) +
-                                  COALESCE(monto_mes_ds_12,0) +
+                                  COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_socio
                                                         
@@ -424,29 +424,29 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_cex_socio,
                                 (
-                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_1,0) -
                                   COALESCE(monto_mes_cex_1,0) +
-                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_2,0) -
                                   COALESCE(monto_mes_cex_2,0) +
-                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_3,0) -
                                   COALESCE(monto_mes_cex_3,0) +
-                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_4,0) -
                                   COALESCE(monto_mes_cex_4,0) +
-                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_5,0) -
                                   COALESCE(monto_mes_cex_5,0) +
-                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_6,0) -
                                   COALESCE(monto_mes_cex_6,0) +
-                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_7,0) -
                                   COALESCE(monto_mes_cex_7,0) +
-                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_8,0) -
                                   COALESCE(monto_mes_cex_8,0) +
-                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_9,0)-
                                   COALESCE(monto_mes_cex_9,0)+ 
-                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_10,0) -
                                   COALESCE(monto_mes_cex_10,0) +
-                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_11,0) -
                                   COALESCE(monto_mes_cex_11,0) +
-                                  COALESCE(monto_mes_ds_12,0) +
+                                  COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_socio
                                                         
@@ -491,29 +491,29 @@ class CuentaConsorcio extends Model
                                 SUM(COALESCE(monto_mes_cex_12,0)) monto_mes_cex_12,
                                 
                                 (
-                                SUM(COALESCE(monto_mes_ds_1,0)) +
+                                SUM(COALESCE(monto_mes_ds_1,0)) -
                                 SUM(COALESCE(monto_mes_cex_1,0)) +
-                                SUM(COALESCE(monto_mes_ds_2,0)) +
+                                SUM(COALESCE(monto_mes_ds_2,0)) -
                                 SUM(COALESCE(monto_mes_cex_2,0)) +
-                                SUM(COALESCE(monto_mes_ds_3,0)) +
+                                SUM(COALESCE(monto_mes_ds_3,0)) -
                                 SUM(COALESCE(monto_mes_cex_3,0)) +
-                                SUM(COALESCE(monto_mes_ds_4,0)) +
+                                SUM(COALESCE(monto_mes_ds_4,0)) -
                                 SUM(COALESCE(monto_mes_cex_4,0)) +
-                                SUM(COALESCE(monto_mes_ds_5,0)) +
+                                SUM(COALESCE(monto_mes_ds_5,0)) -
                                 SUM(COALESCE(monto_mes_cex_5,0)) +
-                                SUM(COALESCE(monto_mes_ds_6,0)) +
+                                SUM(COALESCE(monto_mes_ds_6,0)) -
                                 SUM(COALESCE(monto_mes_cex_6,0)) +
-                                SUM(COALESCE(monto_mes_ds_7,0)) +
+                                SUM(COALESCE(monto_mes_ds_7,0)) -
                                 SUM(COALESCE(monto_mes_cex_7,0)) +
-                                SUM(COALESCE(monto_mes_ds_8,0)) +
+                                SUM(COALESCE(monto_mes_ds_8,0)) -
                                 SUM(COALESCE(monto_mes_cex_8,0)) +
-                                SUM(COALESCE(monto_mes_ds_9,0)) +
+                                SUM(COALESCE(monto_mes_ds_9,0)) -
                                 SUM(COALESCE(monto_mes_cex_9,0)) +
-                                SUM(COALESCE(monto_mes_ds_10,0)) +
+                                SUM(COALESCE(monto_mes_ds_10,0)) -
                                 SUM(COALESCE(monto_mes_cex_10,0)) +
-                                SUM(COALESCE(monto_mes_ds_11,0)) +
+                                SUM(COALESCE(monto_mes_ds_11,0)) -
                                 SUM(COALESCE(monto_mes_cex_11,0)) +
-                                SUM(COALESCE(monto_mes_ds_12,0)) +
+                                SUM(COALESCE(monto_mes_ds_12,0)) -
                                 SUM(COALESCE(monto_mes_cex_12,0)) 
                                 ) SUMA_ANUAL
                                 
@@ -531,7 +531,7 @@ class CuentaConsorcio extends Model
         $listar = DB::select("SELECT
                               sum(X.monto_total_ds_socio) monto_total_ds_socio,
                               sum(X.monto_total_cex_socio) monto_total_cex_socio,
-                              (sum(X.monto_total_ds_socio) + sum(X.monto_total_cex_socio)) monto_total_socio
+                              (sum(X.monto_total_ds_socio) - sum(X.monto_total_cex_socio)) monto_total_socio
                               from
                               ( select 
                                   s.id socio_id,

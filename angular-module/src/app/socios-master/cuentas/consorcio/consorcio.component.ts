@@ -83,6 +83,7 @@ export class ConsorcioComponent implements OnInit {
   limpiarTabla(){
     this.datosConsorcio = '';
     this.totalConsorcio = '';
+    this.totalMensual = '';
   }
 
   recargarTabla(){

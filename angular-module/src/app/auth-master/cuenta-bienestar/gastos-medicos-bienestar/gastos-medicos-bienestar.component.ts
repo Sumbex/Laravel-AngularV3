@@ -20,6 +20,7 @@ export class GastosMedicosBienestarComponent implements OnInit {
     fecha:'',
     numero_documento_1: '',
     archivo_documento_1: null,
+    archivo_documento_2: null,
     definicion: '',
     descripcion: '',
     monto: ''
@@ -47,6 +48,10 @@ export class GastosMedicosBienestarComponent implements OnInit {
   onSelectPDF(event) {
     this.InsertarMedico.archivo_documento_1 = event.srcElement.files[0];
   }
+  onSelectPDF2(event) {
+    this.InsertarMedico.archivo_documento_2 = event.srcElement.files[0];
+  }
+
 
   guardarCuentaBienestar() {
     if (this.InsertarMedico == null) {
@@ -60,6 +65,7 @@ export class GastosMedicosBienestarComponent implements OnInit {
     data.append('tipo_cuenta_bienestar_id', '7');
     data.append('numero_documento_1', this.InsertarMedico.numero_documento_1);
     data.append('archivo_documento_1', this.InsertarMedico.archivo_documento_1);
+    data.append('archivo_documento_2', this.InsertarMedico.archivo_documento_2);
     data.append('monto', this.InsertarMedico.monto);
     data.append('definicion', this.InsertarMedico.definicion);
     data.append('descripcion', this.InsertarMedico.descripcion);
@@ -73,7 +79,7 @@ export class GastosMedicosBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'failed_v') {
-        alert(response.mensaje);
+        alert("Verifique que los campos no se encuentren vacios o no esten duplicados");
         this.blockIngreso = false;
         return false;
       }

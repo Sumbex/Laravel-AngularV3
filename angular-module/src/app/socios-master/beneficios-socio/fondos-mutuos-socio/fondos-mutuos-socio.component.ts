@@ -87,6 +87,7 @@ export class FondosMutuosSocioComponent implements OnInit {
     this.datosAhorros = '';
     this.totalAhorros = '';
     this.totalesMensuales = '';
+    this.totalMesSolo = '';
   }
 
   recargarTabla(){

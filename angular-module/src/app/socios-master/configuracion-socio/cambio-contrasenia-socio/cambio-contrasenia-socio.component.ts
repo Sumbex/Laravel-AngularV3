@@ -29,7 +29,7 @@ export class CambioContraseniaSocioComponent implements OnInit {
     //Aquí llamar al servicio para cambiar pass
     this._portalSocioService.cambiarPassSocio(passActual.value, passNueva.value, passNuevaValida.value).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(JSON.stringify(response.mensaje));
+        alert("Se ha encontrado un error en los datos ingresados, favor de verificar e ingresar nuevamente");
       }else{
         alert(response.mensaje);
         this.modalCambioPass.close();

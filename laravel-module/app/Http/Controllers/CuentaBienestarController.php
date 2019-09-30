@@ -525,6 +525,34 @@ class CuentaBienestarController extends Controller
                 	return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
                 }
 
+			break;
+			case 'archivo_2_gm':
+    			if($valida_pdf['estado'] == 'success'){
+    			 $ruta = substr($cs->archivo_documento_2, 8);
+				//$ruta = $cs->archivo_documento;
+					
+                    $borrar = Storage::delete($ruta);
+
+                    if ($borrar) {
+                        $guardarArchivo = $this->guardarArchivo($r->input, 'archivos_bienestar/gastosmedicos/');
+
+                        if ($guardarArchivo['estado'] == "success") {
+                            $cs->archivo_documento_2 = 'storage/'.$guardarArchivo['archivo'];
+                            if ($cs->save()) {
+                                return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                            } else {
+                                return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                            }
+                        } else {
+                            return $guardarArchivo;
+                        }
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                    }
+                }else{
+                	return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
+                }
+
     		break;
 
     		

@@ -45,18 +45,24 @@ export class FormularioFondoMutuoComponent implements OnInit {
   ver_load: boolean = true;
   ver_estado_soc: boolean = false;
 
-   //variables select año y mes
-   anio; anios;
-   mes; meses;
-   idAnioActual;
-   idMesActual;
-   suc_res1 = false;
-   suc_res2 = false;
-//ingresar consorcio
-   blockIngreso: boolean = false;
-   tipoPago = 1;
-   verInput = false;
-   montoCE;
+  //variables select año y mes
+  anio; anios;
+  mes; meses;
+  idAnioActual;
+  idMesActual;
+  suc_res1 = false;
+  suc_res2 = false;
+  //ingresar consorcio
+  blockIngreso: boolean = false;
+  tipoPago = 1;
+  verInput = false;
+  montoCE;
+  tipoRetiro = 1;
+  tipoDescuento = 1;
+  verDescEnfermedad = false;
+  verDescJubilacion = false;
+  verDescDespido = false;
+  verDescFallecimiento = false;
 
   constructor(
     private _time: AniosService,
@@ -164,18 +170,18 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   }
 
-  insertar_consorcio(id,anio,mes,tipo_consorcio,monto){
+  insertar_consorcio(id, anio, mes, tipo_consorcio, monto) {
     if (id == '') {
       alert('ingrese los datos obligatorios (*)');
       return false;
     }
     this.blockIngreso = true;
     const data = new FormData();
-    data.append('socio_id',id);
-    data.append('anio_id',anio);
-    data.append('mes_id',mes);
-    data.append('tipo_consorcio',tipo_consorcio.value);
-    data.append('monto',monto.value);
+    data.append('socio_id', id);
+    data.append('anio_id', anio);
+    data.append('mes_id', mes);
+    data.append('tipo_consorcio', tipo_consorcio.value);
+    data.append('monto', monto.value);
     // data.append('estado_socio',);
     // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
 
@@ -189,13 +195,14 @@ export class FormularioFondoMutuoComponent implements OnInit {
         id = '';
         anio = '';
         mes = '';
-        if(this.tipoPago == 1){
+        if (this.tipoPago == 1) {
           alert(this.tipoPago);
-          monto.value= '';
+          monto.value = '';
         }
         alert(response.mensaje);
+        monto.value = '';
         this.blockIngreso = false;
-        document.getElementById('refrescarTabla').click();
+        // document.getElementById('refrescarTabla').click();
         return false;
       }
     },

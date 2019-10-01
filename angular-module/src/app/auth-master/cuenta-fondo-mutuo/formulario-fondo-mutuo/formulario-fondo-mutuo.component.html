@@ -5,30 +5,120 @@
       <h5><i class="fas fa-list-ol"></i> Lista de Socios</h5>
     </strong>
   </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12 col-md-3 col-lg-3"><br><label><strong>Año</strong></label>
-          <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
-            <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
-          </select>
-        </div>
-        <div class="col-12 col-md-3 col-lg-3"><br><label><strong>Mes</strong></label>
-          <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
+  <div class="card-body">
+    <div class="col-12 col-md-3 col-lg-3"><br><label><strong>DEFINICIONES</strong></label> <br>
+      <label>
+        <ngb-alert [dismissible]="false">
+          DIA DE SUELDO = <b>D.S.</b> <br>
+          PAGO DE BENEFICIOS = <b>P.B.</b>
+        </ngb-alert>
+      </label>
+    </div>
+
+    <div class="row">
+
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="row">
+
+          <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Año</strong></label>
+            <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
+              <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Mes</strong></label>
+            <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
               <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
             </select>
-        </div>
-        <div class="col-12 col-md-3 col-lg-3"><br><label><strong>Tipo de Pago</strong></label>
-          <select #tipo_consorcio [(ngModel)]="tipoPago" (change)="tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''" class="form-control form-control-sm">
+          </div>
+          <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Tipo de Pago</strong></label>
+            <select #tipo_consorcio [(ngModel)]="tipoPago"
+              (change)="tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''"
+              class="form-control form-control-sm">
               <!-- <option value="">--Seleccione--</option> -->
               <option value="1">Dia de Sueldo</option>
-              <option value="2">Cuota Extraordinaria</option>
+              <option value="2">Pago Beneficio</option>
             </select>
+          </div>
+
         </div>
-        <div  *ngIf="verInput" class="col-12 col-md-3 col-lg-3">
-          <br><label><strong>Monto Cuota Extra</strong></label><br>
-          <input [(ngModel)]="montoCE" type="number">
+      </div>
+
+      <!-- <div *ngIf="verInput" class="col-12 col-md-3 col-lg-3">
+        <br><label><strong>Monto Cuota Extra</strong></label><br>
+        <input [(ngModel)]="montoCE" type="number">
+      </div> -->
+
+      <div class="col-12 col-md-6 col-lg-6" *ngIf="verInput">
+        <div class="row">
+
+          <div class="col-12 col-md-4 col-lg-4">
+            <br><label><strong>Tipo de Retiro</strong></label>
+            <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" (change)="tipoRetiro == 1 ? verDescEnfermedad = true: verDescEnfermedad = false;
+            tipoRetiro == 2 ? verDescJubilacion = true: verDescJubilacion = false;
+            tipoRetiro == 3 ? verDescDespido = true: verDescDespido = false;
+            tipoRetiro == 4 ? verDescFallecimiento = true: verDescFallecimiento = false;"
+              class="form-control form-control-sm">
+              <!-- <option value="">--Seleccione--</option> -->
+              <option value="1">Enfermedad</option>
+              <option value="2">Jubilacion</option>
+              <option value="3">Despido</option>
+              <option value="4">Fallecimiento</option>
+            </select>
+          </div>
+
+          <div *ngIf="verDescEnfermedad" class="col-12 col-md-4 col-lg-4">
+            <br><label><strong>Descuento</strong></label>
+            <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" class="form-control form-control-sm">
+              <!-- <option value="">--Seleccione--</option> -->
+              <option value="1">100%</option>
+              <option value="5">50%</option>
+              <option value="7">30%</option>
+            </select>
+          </div>
+
+          <div *ngIf="verDescJubilacion" class="col-12 col-md-4 col-lg-4">
+            <br><label><strong>Descuento</strong></label>
+            <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" class="form-control form-control-sm">
+              <!-- <option value="">--Seleccione--</option> -->
+              <option value="1">100%</option>
+              <option value="2">90%</option>
+              <option value="3">75%</option>
+              <option value="4">60%</option>
+              <option value="5">50%</option>
+              <option value="6">40%</option>
+              <option value="7">30%</option>
+              <option value="8">25%</option>
+              <option value="9">20%</option>
+            </select>
+          </div>
+
+          <div *ngIf="verDescDespido" class="col-12 col-md-4 col-lg-4">
+            <br><label><strong>Descuento</strong></label>
+            <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" class="form-control form-control-sm">
+              <!-- <option value="">--Seleccione--</option> -->
+              <option value="1">100%</option>
+            </select>
+          </div>
+
+          <div *ngIf="verDescFallecimiento" class="col-12 col-md-4 col-lg-4">
+            <br><label><strong>Descuento</strong></label>
+            <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" class="form-control form-control-sm">
+              <!-- <option value="">--Seleccione--</option> -->
+              <option value="1">100%</option>
+            </select>
+          </div>
+
+          <!-- <div class="col-12 col-md-4 col-lg-4">
+            <br><label><strong>Generar Descuento</strong></label><br>
+            <button class="btn btn-outline-success btn-sm">Generar</button>
+          </div> -->
+
         </div>
-      </div><br>
+      </div>
+
+    </div>
+    <br>
+
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-sm">
         <thead text-sm>
@@ -45,7 +135,8 @@
               </button>
             </td>
             <td style="background: #138D75" colspan="3">
-              <button id="refrescarTabla" (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
+              <button id="refrescarTabla" (click)="listar(); search=''; blockLoad2=true; "
+                class="btn btn-secondary btn-sm">
                 REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
                 <img [hidden]="!blockLoad2" height="15"
                   src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -58,28 +149,42 @@
             <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
             <!-- <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th> -->
             <th class="size" style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
+            <th colspan="1" style="background: #138D75"> GENERAR DESC.</th>
             <th colspan="1" style="background: #138D75"> GUARDAR</th>
             <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO D.S.</th>
-            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO C.E.</th>
+            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO P.B.</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of socios" class="text-center">
             <td colspan="1">{{ item?.rut }}</td>
             <td colspan="2">{{ item?.nombre | uppercase}}</td>
-            <td colspan="2" [ngClass]="{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }" >{{ item?.estado_socio | uppercase}}</td>
+            <td colspan="2"
+              [ngClass]="{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }">
+              {{ item?.estado_socio | uppercase}}</td>
             <!-- <td colspan="2">
                {{tipo_consorcio.value}}
             </td> -->
             <td class="size"><input value="{{montoCE}}" #monto type="number" class="form-control form-control-sm">
-                             <!-- <input *ngIf="tipo_consorcio.value == 1" value=""  #monto type="number"> -->
+              <!-- <input *ngIf="tipo_consorcio.value == 1" value=""  #monto type="number"> -->
             </td>
-            <td colspan="1"><button class="btn btn-outline-success btn-sm" (click)="insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)">
-              <i [hidden]="blockIngreso" class="far fa-save"></i>
-              <img [hidden]="!blockIngreso" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-            </button></td>
-            <td colspan="1" [ngClass]="{'red': item?.pago_actual_ds == 'Sin Registro' , 'green': item?.pago_actual_ds != 'Sin Registro' }">{{item?.pago_actual_ds +' '+ item?.fecha_ds}}</td>
-            <td colspan="1" [ngClass]="{'red': item?.pago_actual_cex == 'Sin Registro' , 'green': item?.pago_actual_cex != 'Sin Registro' }" >{{item?.pago_actual_cex +' '+ item.fecha_cex}}</td>
+            <td colspan="1"><button class="btn btn-outline-success btn-sm">
+                <i [hidden]="blockIngreso" class="fas fa-percentage"></i>
+                <img [hidden]="!blockIngreso" height="15"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button></td>
+            <td colspan="1"><button class="btn btn-outline-success btn-sm"
+                (click)="insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)">
+                <i [hidden]="blockIngreso" class="far fa-save"></i>
+                <img [hidden]="!blockIngreso" height="15"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button></td>
+            <td colspan="1"
+              [ngClass]="{'red': item?.pago_actual_ds == 'Sin Registro' , 'green': item?.pago_actual_ds != 'Sin Registro' }">
+              {{item?.pago_actual_ds +' '+ item?.fecha_ds}}</td>
+            <td colspan="1"
+              [ngClass]="{'red': item?.pago_actual_cex == 'Sin Registro' , 'green': item?.pago_actual_cex != 'Sin Registro' }">
+              {{item?.pago_actual_cex +' '+ item.fecha_cex}}</td>
 
           </tr>
         </tbody>

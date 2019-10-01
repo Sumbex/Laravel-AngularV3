@@ -1,0 +1,44 @@
+<div class="container">
+  <br><br>
+    <p>
+        <ngb-alert [dismissible]="false">
+          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con un bloque azul.
+        </ngb-alert>
+      </p>
+  <br><br>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Reuniones Activas</h6>
+        <div class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <strong class="text-gray-dark">Reunión planificada para el día 10 de octubre del 2019</strong>
+                <app-detalle-reunion></app-detalle-reunion>
+              </div>
+              <span class="d-block">Reunión donde se acordará la penetración consentida del Tío Emilianos</span>
+            </div>
+          </div>
+        <small class="d-block text-right mt-3">
+          <p>Es posible justificarse de las reuniones aún vigentes</p>
+        </small>
+      </div>
+
+      <br>
+
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+          <h6 class="border-bottom border-gray pb-2 mb-0">Reuniones Anteriores</h6>
+          <div class="media text-muted pt-3">
+              <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"/><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                  <strong class="text-gray-dark">Reunión realizada el día 05 de Septiembre del 2019</strong>
+                  <app-historial-detalle-reunion></app-historial-detalle-reunion>
+                </div>
+                <span class="d-block">Reunión donde se acordará acariciarle la pelada a tio Emilio sin su consentimiento</span>
+              </div>
+            </div>
+          <small class="d-block text-right mt-3">
+            <a href="#">Ver historial de reuniones</a>
+          </small>
+        </div>
+</div>

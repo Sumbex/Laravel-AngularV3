@@ -20,7 +20,7 @@ export class AuthMasterComponent implements OnInit {
 
   //Tiempo fuerra Loading
   tiempoEspera: number = 20;
-  tiempoEsperaToken: number = 1;
+  tiempoEsperaToken: number = 5;
   test2 = 1000;
   titleMensaje = 'Iniciando el sistema';
   bodyMensaje = 'Espere unos segundos mientras carga el sistema';

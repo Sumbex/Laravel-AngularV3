@@ -463,6 +463,7 @@ class PortalSocioMisBeneficios extends Model
                     DB::raw("concat(cb.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha_cobro"),
                     'cb.numero_documento_1 as codigo',
                     'cb.archivo_documento_1 as comprobante',
+                    'cb.archivo_documento_2 as gasto',
                     'cb.monto_egreso as monto',
                     'cb.descripcion'
                 ])

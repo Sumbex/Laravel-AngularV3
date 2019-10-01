@@ -62,8 +62,8 @@
 
                 <tbody>
                     <tr *ngFor="let itemGas of datosGas">
-                        <td colspan="3" class="text-center">{{ itemGas?.fecha }}</td>
-                        <td class="text-center">{{itemGas?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemGas?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemGas?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorGas)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -94,11 +94,11 @@
                             </div>
                         </ng-template>
                         <!--MODAL VISOR PDF-->
-                        <td colspan="4">{{itemGas?.descripcion}}</td>
-                        <td class="text-center">{{ itemGas?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <td colspan="4"><b>{{itemGas?.descripcion}}</b></td>
+                        <td class="text-center"><b>{{ itemGas?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
-                        <td class="text-center">{{ itemGas?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                        <td class="text-center">{{ itemGas?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <td class="text-center"><b>{{ itemGas?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+                        <td class="text-center"><b>{{ itemGas?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -116,8 +116,8 @@
                     </tr>
 
                     <tr *ngFor="let itemReunion of datosReunion">
-                        <td colspan="3" class="text-center">{{ itemReunion?.fecha }}</td>
-                        <td class="text-center">{{itemReunion?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemReunion?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemReunion?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorReunion)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -150,13 +150,13 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemReunion?.descripcion}}</td>
-                        <td class="text-center">{{ itemReunion?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <td colspan="4"><b>{{itemReunion?.descripcion}}</b></td>
+                        <td class="text-center"><b>{{ itemReunion?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
-                        <td class="text-center">{{ itemReunion?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <td class="text-center"><b>{{ itemReunion?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemReunion?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemReunion?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -175,8 +175,8 @@
                     </tr>
 
                     <tr *ngFor="let itemVotacion of datosVotacion">
-                        <td colspan="3" class="text-center">{{ itemVotacion?.fecha }}</td>
-                        <td class="text-center">{{itemVotacion?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemVotacion?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemVotacion?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorVotacion)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -209,14 +209,14 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemVotacion?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemVotacion?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemVotacion?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemVotacion?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
-                        <td class="text-center">{{ itemVotacion?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <td class="text-center"><b>{{ itemVotacion?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemVotacion?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemVotacion?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -233,8 +233,8 @@
                     </tr>
 
                     <tr *ngFor="let itemCajaChica of datosCajaChica">
-                        <td colspan="3" class="text-center">{{ itemCajaChica?.fecha }}</td>
-                        <td class="text-center">{{itemCajaChica?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemCajaChica?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemCajaChica?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorCajaChica)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -267,15 +267,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemCajaChica?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemCajaChica?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemCajaChica?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemCajaChica?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemCajaChica?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemCajaChica?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemCajaChica?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemCajaChica?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -292,8 +292,8 @@
                     </tr>
 
                     <tr *ngFor="let itemNacimiento of datosNacimiento">
-                        <td colspan="3" class="text-center">{{ itemNacimiento?.fecha }}</td>
-                        <td class="text-center">{{itemNacimiento?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemNacimiento?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemNacimiento?.numero_documento}}</b>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorNacimiento)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -326,15 +326,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemNacimiento?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemNacimiento?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemNacimiento?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemNacimiento?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemNacimiento?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemNacimiento?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemNacimiento?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemNacimiento?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -354,8 +354,8 @@
                     </tr>
 
                     <tr *ngFor="let itemFallecimiento of datosFallecimientos">
-                        <td colspan="3" class="text-center">{{ itemFallecimiento?.fecha }}</td>
-                        <td class="text-center">{{itemFallecimiento?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemFallecimiento?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemFallecimiento?.numero_documento}}</b></td>
                         <td class="text-center">
                             <a (click)="openPDF(visorFallecimiento1)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -420,15 +420,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemFallecimiento?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemFallecimiento?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemFallecimiento?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemFallecimiento?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemFallecimiento?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemFallecimiento?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemFallecimiento?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemFallecimiento?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -436,7 +436,8 @@
                     <tr class="text-center">
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
-                        <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
+                        <th><i class="far fa-file-pdf"></i> PDF 1</th>
+                        <th><i class="far fa-file-pdf"></i> PDF 2</th>
                         <th colspan="4"><i class="fas fa-file-signature"></i> Gastos
                             Medicos
                         </th>
@@ -446,9 +447,9 @@
                     </tr>
 
                     <tr *ngFor="let itemMedico of datosMedico">
-                        <td colspan="3" class="text-center">{{ itemMedico?.fecha }}</td>
-                        <td class="text-center">{{itemMedico?.numero_documento}}</td>
-                        <td colspan="2" class="text-center">
+                        <td colspan="3" class="text-center"><b>{{ itemMedico?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemMedico?.numero_documento}}</b></td>
+                        <td colspan="1" class="text-center">
                             <a (click)="openPDF(visorMedico)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
                                     ngbTooltip="Presione aqui visualizar documento PDF"></i>
@@ -480,14 +481,46 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemMedico?.descripcion}}</td>
-                        <td class="text-center">
-                            {{ itemMedico?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                        <td colspan="1" class="text-center">
+                            <a (click)="openPDF(visorMedicamento2)" style="cursor: pointer" class="btn-primary-outline">
+                                <i class="far fa-file-alt" placement="top"
+                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                            </a>&nbsp;
                         </td>
-                        <td class="text-center">{{ itemMedico?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+
+                        <!--MODAL VISOR PDF-->
+                        <ng-template #visorMedicamento2 let-c="close" let-d="dismiss">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="modal-header text-center" id="demoFont">
+                                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                                            (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe width="100%" height="500px"
+                                            [src]="  '../' + itemFallecimiento.archivo_2 | safeUrl" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="modal-footer" [hidden]="true">
+                                        <button type="button" class="btn btn-outline-dark"
+                                            (click)="c('Save click')">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <!--MODAL VISOR PDF-->
+
+                        <td colspan="4"><b>{{itemMedico?.descripcion}}</b></td>
+                        <td class="text-center">
+                            <b>{{ itemMedico?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                        </td>
+                        <td class="text-center"><b>{{ itemMedico?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemMedico?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemMedico?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -505,8 +538,8 @@
                     </tr>
 
                     <tr *ngFor="let itemSocioCuota of datosCuotaSocio">
-                        <td colspan="3" class="text-center">{{ itemSocioCuota?.fecha }}</td>
-                        <td class="text-center">{{itemSocioCuota?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemSocioCuota?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemSocioCuota?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorCuotaSocio)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -539,15 +572,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemSocioCuota?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemSocioCuota?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemSocioCuota?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemSocioCuota?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemSocioCuota?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemSocioCuota?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemSocioCuota?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemSocioCuota?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -599,15 +632,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemElecciones?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemElecciones?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemElecciones?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemElecciones?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemElecciones?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemElecciones?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemElecciones?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemElecciones?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -624,8 +657,8 @@
                     </tr>
 
                     <tr *ngFor="let itemConsorcio of datosConsorcio">
-                        <td colspan="3" class="text-center">{{ itemConsorcio?.fecha }}</td>
-                        <td class="text-center">{{itemConsorcio?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemConsorcio?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemConsorcio?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorConsorcio)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -658,15 +691,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemConsorcio?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemConsorcio?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemConsorcio?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemConsorcio?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemConsorcio?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemConsorcio?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemConsorcio?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemConsorcio?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -684,8 +717,8 @@
                     </tr>
 
                     <tr *ngFor="let itemExtraordinaria of datosExtraordinaria">
-                        <td colspan="3" class="text-center">{{ itemExtraordinaria?.fecha }}</td>
-                        <td class="text-center">{{itemExtraordinaria?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemExtraordinaria?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemExtraordinaria?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorExtraordinaria)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -718,15 +751,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemExtraordinaria?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemExtraordinaria?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemExtraordinaria?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemExtraordinaria?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemExtraordinaria?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemExtraordinaria?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemExtraordinaria?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemExtraordinaria?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -744,8 +777,8 @@
                     </tr>
 
                     <tr *ngFor="let itemNoSindicalizados of datosSindicalizados">
-                        <td colspan="3" class="text-center">{{ itemNoSindicalizados?.fecha }}</td>
-                        <td class="text-center">{{itemNoSindicalizados?.numero_documento}}</td>
+                        <td colspan="3" class="text-center"><b>{{ itemNoSindicalizados?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemNoSindicalizados?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorNoSindicalizado)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top"
@@ -778,15 +811,15 @@
                         </ng-template>
                         <!--MODAL VISOR PDF-->
 
-                        <td colspan="4">{{itemNoSindicalizados?.descripcion}}</td>
+                        <td colspan="4"><b>{{itemNoSindicalizados?.descripcion}}</b></td>
                         <td class="text-center">
-                            {{ itemNoSindicalizados?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemNoSindicalizados?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemNoSindicalizados?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemNoSindicalizados?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                         <td class="text-center">
-                            {{ itemNoSindicalizados?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <b>{{ itemNoSindicalizados?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
                         </td>
                     </tr>
 
@@ -795,7 +828,7 @@
                         <th colspan="12" class="text-right"><i class="fas fa-dollar-sign"></i> Total
                             Cierre del Mes</th>
                         <td scope="col" class="text-center">
-                            <strong>{{ montosTotales?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+                            <strong><b>{{ montosTotales?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</b></strong>
                         </td>
                     </tr>
 

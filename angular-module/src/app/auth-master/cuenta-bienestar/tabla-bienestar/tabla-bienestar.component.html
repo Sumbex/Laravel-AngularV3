@@ -7,7 +7,7 @@
     </button>
   </div>
   <!--Cuerpo del body inicio y cierre mensual-->
-  <div class="modal-body">
+  <div class="modal-body" id="printJS-table">
     <div class="row">
       <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Año</strong></label>
         <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
@@ -2870,6 +2870,15 @@
 
   <!--boton para volver a cuenta bienestar-->
   <div class="modal-footer">
+
+      <button type="button" class="btn btn-success" onclick="printJS({
+        printable: 'printJS-table',
+        type:'html',
+        style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+      })">
+        <i class="fas fa-print"></i> Imprimir Datos
+      </button>
+
     <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Bienestar
     </button>
   </div>

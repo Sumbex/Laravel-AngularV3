@@ -195,14 +195,13 @@ export class FormularioFondoMutuoComponent implements OnInit {
         id = '';
         anio = '';
         mes = '';
-        if (this.tipoPago == 1) {
-          alert(this.tipoPago);
-          monto.value = '';
-        }
-        alert(response.mensaje);
         monto.value = '';
+        // if (this.tipoPago == 1) {
+        //   monto.value = '';
+        // }
+        alert(response.mensaje);
         this.blockIngreso = false;
-        // document.getElementById('refrescarTabla').click();
+        document.getElementById('refrescarTabla').click();
         return false;
       }
     },

@@ -31,22 +31,17 @@
             </select>
           </div>
           <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Tipo de Pago</strong></label>
-            <select #tipo_consorcio [(ngModel)]="tipoPago"
-              (change)="tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''"
+            <!-- (change)="tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''" -->
+            <select #tipo_consorcio [(ngModel)]="tipoPago" 
               class="form-control form-control-sm">
               <!-- <option value="">--Seleccione--</option> -->
               <option value="1">Dia de Sueldo</option>
-              <option value="2">Pago Beneficio</option>
+              <!-- <option value="2">Pago Beneficio</option> -->
             </select>
           </div>
 
         </div>
       </div>
-
-      <!-- <div *ngIf="verInput" class="col-12 col-md-3 col-lg-3">
-        <br><label><strong>Monto Cuota Extra</strong></label><br>
-        <input [(ngModel)]="montoCE" type="number">
-      </div> -->
 
       <div class="col-12 col-md-6 col-lg-6" *ngIf="verInput">
         <div class="row">
@@ -108,11 +103,6 @@
             </select>
           </div>
 
-          <!-- <div class="col-12 col-md-4 col-lg-4">
-            <br><label><strong>Generar Descuento</strong></label><br>
-            <button class="btn btn-outline-success btn-sm">Generar</button>
-          </div> -->
-
         </div>
       </div>
 
@@ -149,7 +139,7 @@
             <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
             <!-- <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th> -->
             <th class="size" style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
-            <th colspan="1" style="background: #138D75"> GENERAR DESC.</th>
+            <!-- <th *ngIf="verInput" colspan="1" style="background: #138D75"> GENERAR DESC.</th> -->
             <th colspan="1" style="background: #138D75"> GUARDAR</th>
             <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO D.S.</th>
             <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO P.B.</th>
@@ -162,17 +152,13 @@
             <td colspan="2"
               [ngClass]="{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }">
               {{ item?.estado_socio | uppercase}}</td>
-            <!-- <td colspan="2">
-               {{tipo_consorcio.value}}
-            </td> -->
             <td class="size"><input value="{{montoCE}}" #monto type="number" class="form-control form-control-sm">
-              <!-- <input *ngIf="tipo_consorcio.value == 1" value=""  #monto type="number"> -->
             </td>
-            <td colspan="1"><button class="btn btn-outline-success btn-sm">
+            <!-- <td *ngIf="verInput" colspan="1"><button class="btn btn-outline-success btn-sm">
                 <i [hidden]="blockIngreso" class="fas fa-percentage"></i>
                 <img [hidden]="!blockIngreso" height="15"
                   src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-              </button></td>
+              </button></td> -->
             <td colspan="1"><button class="btn btn-outline-success btn-sm"
                 (click)="insertar_consorcio(item.id,anio,mes,tipo_consorcio,monto)">
                 <i [hidden]="blockIngreso" class="far fa-save"></i>

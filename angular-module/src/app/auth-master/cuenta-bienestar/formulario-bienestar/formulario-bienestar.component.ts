@@ -129,7 +129,7 @@ export class FormularioBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'failed_v') {
-        alert("Verifique que los campos no esten duplicados");
+        alert("Verifique que los campos no esten vacios, erroneos o duplicados");
         this.blockIngreso = false;
         return false;
       }

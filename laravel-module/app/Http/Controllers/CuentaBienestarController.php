@@ -137,7 +137,8 @@ class CuentaBienestarController extends Controller
 
                 $validar = $this->validar_datos_bienestar($r);
                 if ($validar['estado'] == "success") {
-                     $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+					 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+					 return $cuenta_be;
                 }
                 return $validar;
             break;

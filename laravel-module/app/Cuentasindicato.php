@@ -25,7 +25,7 @@ class Cuentasindicato extends Model
 
 		if($interes != null){ // si existe interes de prestamo
 			$verify_interes = $this->where([
-				'interes' => 'S',
+				'interes' => 'S', // si es un automatico de interes
 				'activo' => 'S',
 				'tipo_cuenta_sindicato' => '1',//cuenta tipo fijo
 				'anio_id' => $anio,

@@ -110,78 +110,232 @@
               class="text-left sociosNombre2" style="background: #F9E79F">
               {{ item?.nombre | uppercase}}
             </td>
+
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_1 != '0'}">
               {{item?.monto_mes_ds_1  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_1 != '0'}"> 
-             {{item?.monto_mes_cex_1  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_2 != '0'}"> 
-             {{item?.monto_mes_ds_2  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_2 != '0'}"> 
-             {{item?.monto_mes_cex_2  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_3 != '0'}"> 
-             {{item?.monto_mes_ds_3  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_3 != '0'}"> 
-             {{item?.monto_mes_cex_3  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_4 != '0'}"> 
-             {{item?.monto_mes_ds_4  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_4 != '0'}"> 
-             {{item?.monto_mes_cex_4  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_5 != '0'}"> 
-             {{item?.monto_mes_ds_5  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_5 != '0'}"> 
-             {{item?.monto_mes_cex_5  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_6 != '0'}"> 
-             {{item?.monto_mes_ds_6  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_6 != '0'}"> 
-             {{item?.monto_mes_cex_6  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_7 != '0'}"> 
-             {{item?.monto_mes_ds_7  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_7 != '0'}"> 
-             {{item?.monto_mes_cex_7  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_8 != '0'}"> 
-             {{item?.monto_mes_ds_8  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_8 != '0'}"> 
-             {{item?.monto_mes_cex_8  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_9 != '0'}"> 
-             {{item?.monto_mes_ds_9  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_9 != '0'}"> 
-             {{item?.monto_mes_cex_9  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_10 != '0'}"> 
-             {{item?.monto_mes_ds_10  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_10 != '0'}"> 
-             {{item?.monto_mes_cex_10  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_11 != '0'}"> 
-             {{item?.monto_mes_ds_11  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_12 != '0'}"> 
-             {{item?.monto_mes_cex_11  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_ds_12 != '0'}"> 
-             {{item?.monto_mes_ds_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
-            <td colspan="1" 
-             [ngClass]="{'green': item?.monto_mes_cex_12 != '0'}"> 
-             {{item?.monto_mes_cex_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio1); mesBeneficio = 1"
+              [ngClass]="{'green': item?.monto_mes_cex_1 != '0'}">
+              {{item?.monto_mes_cex_1  | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <ng-template #modalPagoBeneficio1 let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <div class="row">
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                          <label><strong>Seleccione Nuevo Tipo</strong></label>
+                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
+                            <!-- <option value="0">--Seleccione--</option> -->
+                            <option value="2">Pago Beneficio</option>
+                          </select>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                          <br><label><strong>Tipo de Retiro</strong></label>
+                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
+                            <option value="0">--Seleccione--</option>
+                            <option value="1">Enfermedad</option>
+                            <option value="2">Jubilacion</option>
+                            <option value="3">Despido</option>
+                            <option value="4">Fallecimiento</option>
+                          </select>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                          <br><label><strong>Descuento</strong></label>
+                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
+                            class="form-control form-control-sm">
+                            <option value="0">--Seleccione--</option>
+                            <option value="1">100%</option>
+                            <option value="2">90%</option>
+                            <option value="3">75%</option>
+                            <option value="4">60%</option>
+                            <option value="5">50%</option>
+                            <option value="6">40%</option>
+                            <option value="7">30%</option>
+                            <option value="8">25%</option>
+                            <option value="9">20%</option>
+                          </select>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12"> <br>
+                          <label><strong>Dia de Sueldo:</strong></label> <br>
+                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_1}}"
+                            disabled>
+
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-12">
+                          {{rescatarDiaSueldo(item?.monto_mes_ds_1)}}
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-12"> <br>
+                          <label><strong>Pago de Beneficio: </strong></label> <br>
+                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
+                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_2 != '0'}">
+              {{item?.monto_mes_ds_2  | currency:"CLP" : "symbol-narrow":'1.0'}} 
+            </td>
+
+            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio2); mesBeneficio = 2"
+              [ngClass]="{'green': item?.monto_mes_cex_2 != '0'}">
+              {{item?.monto_mes_cex_2  | currency:"CLP" : "symbol-narrow":'1.0'}}
+              <ng-template #modalPagoBeneficio2 let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <div class="row">
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                          <label><strong>Seleccione Nuevo Tipo</strong></label>
+                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
+                            <!-- <option value="0">--Seleccione--</option> -->
+                            <option value="2">Pago Beneficio</option>
+                          </select>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                          <br><label><strong>Tipo de Retiro</strong></label>
+                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
+                            <option value="0">--Seleccione--</option>
+                            <option value="1">Enfermedad</option>
+                            <option value="2">Jubilacion</option>
+                            <option value="3">Despido</option>
+                            <option value="4">Fallecimiento</option>
+                          </select>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                          <br><label><strong>Descuento</strong></label>
+                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
+                            class="form-control form-control-sm">
+                            <option value="0">--Seleccione--</option>
+                            <option value="1">100%</option>
+                            <option value="2">90%</option>
+                            <option value="3">75%</option>
+                            <option value="4">60%</option>
+                            <option value="5">50%</option>
+                            <option value="6">40%</option>
+                            <option value="7">30%</option>
+                            <option value="8">25%</option>
+                            <option value="9">20%</option>
+                          </select>
+                        </div>
+
+                        <div class="col-12 col-md-12 col-lg-12"> <br>
+                          <label><strong>Dia de Sueldo:</strong></label> <br>
+                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_2}}"
+                            disabled>
+
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-12">
+                          {{rescatarDiaSueldo(item?.monto_mes_ds_2)}}
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-12"> <br>
+                          <label><strong>Pago de Beneficio: </strong></label> <br>
+                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
+                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_3 != '0'}">
+              {{item?.monto_mes_ds_3  | currency:"CLP" : "symbol-narrow":'1.0'}}
+             </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_3 != '0'}">
+              {{item?.monto_mes_cex_3  | currency:"CLP" : "symbol-narrow":'1.0'}} 
+            </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_4 != '0'}">
+              {{item?.monto_mes_ds_4  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_4 != '0'}">
+              {{item?.monto_mes_cex_4  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_5 != '0'}">
+              {{item?.monto_mes_ds_5  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_5 != '0'}">
+              {{item?.monto_mes_cex_5  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_6 != '0'}">
+              {{item?.monto_mes_ds_6  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_6 != '0'}">
+              {{item?.monto_mes_cex_6  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_7 != '0'}">
+              {{item?.monto_mes_ds_7  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_7 != '0'}">
+              {{item?.monto_mes_cex_7  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_8 != '0'}">
+              {{item?.monto_mes_ds_8  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_8 != '0'}">
+              {{item?.monto_mes_cex_8  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_9 != '0'}">
+              {{item?.monto_mes_ds_9  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_9 != '0'}">
+              {{item?.monto_mes_cex_9  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_10 != '0'}">
+              {{item?.monto_mes_ds_10  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_10 != '0'}">
+              {{item?.monto_mes_cex_10  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_11 != '0'}">
+              {{item?.monto_mes_ds_11  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_12 != '0'}">
+              {{item?.monto_mes_cex_11  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_12 != '0'}">
+              {{item?.monto_mes_ds_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_cex_12 != '0'}">
+              {{item?.monto_mes_cex_12  | currency:"CLP" : "symbol-narrow":'1.0'}} </td>
+
             <td colspan="1" class="sociosNombre">
               <b>{{item?.monto_total_ds_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
@@ -355,3 +509,16 @@
 
   </div>
 </div>
+
+<!-- <ng-template #modalPagoBeneficio let-modal>
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Pagar Beneficio</strong></h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <button class="btn btn-success btn-block btn-sm" (click)="modal.close('Save click')">Salir</button>
+    </div>
+  </ng-template> -->

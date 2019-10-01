@@ -110,6 +110,7 @@ import { GraficoComponenteComponent } from './socios-master/grafico/grafico-comp
 import { GeneralReunionComponent } from './socios-master/reuniones/general-reunion/general-reunion.component';
 import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reunion/detalle-reunion.component';
 import { HistorialDetalleReunionComponent } from './socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component';
+import { ReunionesService } from './servicios/reuniones.service';
 
 
 @NgModule({
@@ -294,7 +295,8 @@ import { HistorialDetalleReunionComponent } from './socios-master/reuniones/hist
     CajaChicaService,
     PortalSociosService,
     BryanBienestarService,
-    BryanConsorcioService
+    BryanConsorcioService,
+    ReunionesService
   ],
   bootstrap: [AppComponent]
 })

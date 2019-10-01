@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SociosMasterComponent implements OnInit {
 
-  tiempoEsperaToken: number = 1;
+  tiempoEsperaToken: number = 5;
 
   constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private _getAnios: PortalSociosService, private router: Router) {
   }

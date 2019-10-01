@@ -12,55 +12,73 @@
   <div class="modal-body">
     <div class="container">
       <b class="text-center">Justifiación para la reunión del 10-10-19</b>
-      <p>Escriba un mensaje detallando el motivo de su inasistencia y luego seleccione el motivo de los que se muestran
-        a continuación.</p>
-        <br>
+
+      <br><br>
+
+      <p>
+        <ngb-alert [dismissible]="false">
+          <strong>¡Advertencia!</strong> Escriba un mensaje detallando el motivo de su inasistencia y seleccione el motivo (En reuniones relacionadas con votaciones solo podra justificarse seleecionando "Vacaciones" o "Licencia").
+        </ngb-alert>
+      </p>
+
+      <br>
 
       <form>
-          <div class="form-group">
-              <label for="exampleFormControlTextarea1"><b>Motivo de la falta:</b></label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"><b>Motivo de la falta (Opcional):</b></label>
+          <textarea name="mensaje" #mensaje="ngModel"
+          [(ngModel)]="motivoInasistencia.mensaje" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="(Máximo 500 cacacteres)"
+            minlength="4" maxlength="500" required></textarea>
+        </div>
+        {{motivoInasistencia.mensaje}}
         <fieldset class="form-group">
           <div class="row">
             <legend class="col-form-label col-sm-2 pt-0"><b>Motivo Inasistencia:</b></legend>
             <div class="col-sm-10">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <input name="motivo" #motivo="ngModel"
+                [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked>
                 <label class="form-check-label" for="gridRadios1">
                   Turno
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <input name="motivo" #motivo="ngModel"
+                [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
                 <label class="form-check-label" for="gridRadios2">
                   Vacaciones
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                <input name="motivo" #motivo="ngModel"
+                [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
                 <label class="form-check-label" for="gridRadios3">
                   Licencia
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="option4">
+                <input name="motivo" #motivo="ngModel"
+                [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="4">
                 <label class="form-check-label" for="gridRadios4">
                   Estudio
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="option5">
+                <input name="motivo" #motivo="ngModel"
+                [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="5">
                 <label class="form-check-label" for="gridRadios5">
                   Fuera de la Ciudad
                 </label>
               </div>
+
+              {{motivoInasistencia.motivo}}
+
             </div>
           </div>
         </fieldset>
         <div class="form-group row">
           <div class="mx-auto">
-            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            <button [disabled]="loadingEnvio" type="submit" class="btn btn-primary btn-block" (click)="enviarJustificacion()">Enviar <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif" [hidden]="!loadingEnvio"></button>
           </div>
         </div>
       </form>

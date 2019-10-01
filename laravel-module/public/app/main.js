@@ -1262,7 +1262,7 @@ module.exports = "<ng-template #tablaBeneficiosPS let-modal>\n  <div class=\"mod
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-template #detalleReunion let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la reunion</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n\n  <!-- Cuerpo del Modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <b class=\"text-center\">Justifiación para la reunión del 10-10-19</b>\n      <p>Escriba un mensaje detallando el motivo de su inasistencia y luego seleccione el motivo de los que se muestran\n        a continuación.</p>\n        <br>\n\n      <form>\n          <div class=\"form-group\">\n              <label for=\"exampleFormControlTextarea1\"><b>Motivo de la falta:</b></label>\n              <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n            </div>\n        <fieldset class=\"form-group\">\n          <div class=\"row\">\n            <legend class=\"col-form-label col-sm-2 pt-0\"><b>Motivo Inasistencia:</b></legend>\n            <div class=\"col-sm-10\">\n              <div class=\"form-check\">\n                <input class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios1\" value=\"option1\" checked>\n                <label class=\"form-check-label\" for=\"gridRadios1\">\n                  Turno\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios2\" value=\"option2\">\n                <label class=\"form-check-label\" for=\"gridRadios2\">\n                  Vacaciones\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios3\" value=\"option3\">\n                <label class=\"form-check-label\" for=\"gridRadios3\">\n                  Licencia\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios4\" value=\"option4\">\n                <label class=\"form-check-label\" for=\"gridRadios4\">\n                  Estudio\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios5\" value=\"option5\">\n                <label class=\"form-check-label\" for=\"gridRadios5\">\n                  Fuera de la Ciudad\n                </label>\n              </div>\n            </div>\n          </div>\n        </fieldset>\n        <div class=\"form-group row\">\n          <div class=\"mx-auto\">\n            <button type=\"submit\" class=\"btn btn-primary btn-block\">Enviar</button>\n          </div>\n        </div>\n      </form>\n\n    </div>\n  </div>\n\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n\n<button class=\"btn btn-primary\" type=\"button\" (click)=\"abrirModalDetalleMensaje(detalleReunion)\">Justificarse</button>"
+module.exports = "<ng-template #detalleReunion let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la reunion</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n\n  <!-- Cuerpo del Modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <b class=\"text-center\">Justifiación para la reunión del 10-10-19</b>\n\n      <br><br>\n\n      <p>\n        <ngb-alert [dismissible]=\"false\">\n          <strong>¡Advertencia!</strong> Escriba un mensaje detallando el motivo de su inasistencia y seleccione el motivo (En reuniones relacionadas con votaciones solo podra justificarse seleecionando \"Vacaciones\" o \"Licencia\").\n        </ngb-alert>\n      </p>\n\n      <br>\n\n      <form>\n        <div class=\"form-group\">\n          <label for=\"exampleFormControlTextarea1\"><b>Motivo de la falta (Opcional):</b></label>\n          <textarea name=\"mensaje\" #mensaje=\"ngModel\"\n          [(ngModel)]=\"motivoInasistencia.mensaje\" class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\" placeholder=\"(Máximo 500 cacacteres)\"\n            minlength=\"4\" maxlength=\"500\" required></textarea>\n        </div>\n        {{motivoInasistencia.mensaje}}\n        <fieldset class=\"form-group\">\n          <div class=\"row\">\n            <legend class=\"col-form-label col-sm-2 pt-0\"><b>Motivo Inasistencia:</b></legend>\n            <div class=\"col-sm-10\">\n              <div class=\"form-check\">\n                <input name=\"motivo\" #motivo=\"ngModel\"\n                [(ngModel)]=\"motivoInasistencia.motivo\" class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios1\" value=\"1\" checked>\n                <label class=\"form-check-label\" for=\"gridRadios1\">\n                  Turno\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input name=\"motivo\" #motivo=\"ngModel\"\n                [(ngModel)]=\"motivoInasistencia.motivo\" class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios2\" value=\"2\">\n                <label class=\"form-check-label\" for=\"gridRadios2\">\n                  Vacaciones\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input name=\"motivo\" #motivo=\"ngModel\"\n                [(ngModel)]=\"motivoInasistencia.motivo\" class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios3\" value=\"3\">\n                <label class=\"form-check-label\" for=\"gridRadios3\">\n                  Licencia\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input name=\"motivo\" #motivo=\"ngModel\"\n                [(ngModel)]=\"motivoInasistencia.motivo\" class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios4\" value=\"4\">\n                <label class=\"form-check-label\" for=\"gridRadios4\">\n                  Estudio\n                </label>\n              </div>\n              <div class=\"form-check\">\n                <input name=\"motivo\" #motivo=\"ngModel\"\n                [(ngModel)]=\"motivoInasistencia.motivo\" class=\"form-check-input\" type=\"radio\" name=\"gridRadios\" id=\"gridRadios5\" value=\"5\">\n                <label class=\"form-check-label\" for=\"gridRadios5\">\n                  Fuera de la Ciudad\n                </label>\n              </div>\n\n              {{motivoInasistencia.motivo}}\n\n            </div>\n          </div>\n        </fieldset>\n        <div class=\"form-group row\">\n          <div class=\"mx-auto\">\n            <button [disabled]=\"loadingEnvio\" type=\"submit\" class=\"btn btn-primary btn-block\" (click)=\"enviarJustificacion()\">Enviar <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\" [hidden]=\"!loadingEnvio\"></button>\n          </div>\n        </div>\n      </form>\n\n    </div>\n  </div>\n\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n\n<button class=\"btn btn-primary\" type=\"button\" (click)=\"abrirModalDetalleMensaje(detalleReunion)\">Justificarse</button>"
 
 /***/ }),
 
@@ -1273,7 +1273,7 @@ module.exports = "<ng-template #detalleReunion let-modal>\n  <!-- Header Del Mod
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br><br>\n    <p>\n        <ngb-alert [dismissible]=\"false\">\n          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con un bloque azul.\n        </ngb-alert>\n      </p>\n  <br><br>\n    <div class=\"my-3 p-3 bg-white rounded shadow-sm\">\n        <h6 class=\"border-bottom border-gray pb-2 mb-0\">Reuniones Activas</h6>\n        <div class=\"media text-muted pt-3\">\n            <svg class=\"bd-placeholder-img mr-2 rounded\" width=\"32\" height=\"32\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 32x32\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#007bff\"/><text x=\"50%\" y=\"50%\" fill=\"#007bff\" dy=\".3em\">32x32</text></svg>\n            <div class=\"media-body pb-3 mb-0 small lh-125 border-bottom border-gray\">\n              <div class=\"d-flex justify-content-between align-items-center w-100\">\n                <strong class=\"text-gray-dark\">Reunión planificada para el día 10 de octubre del 2019</strong>\n                <app-detalle-reunion></app-detalle-reunion>\n              </div>\n              <span class=\"d-block\">Reunión donde se acordará la penetración consentida del Tío Emilianos</span>\n            </div>\n          </div>\n        <small class=\"d-block text-right mt-3\">\n          <p>Es posible justificarse de las reuniones aún vigentes</p>\n        </small>\n      </div>\n\n      <br>\n\n      <div class=\"my-3 p-3 bg-white rounded shadow-sm\">\n          <h6 class=\"border-bottom border-gray pb-2 mb-0\">Reuniones Anteriores</h6>\n          <div class=\"media text-muted pt-3\">\n              <svg class=\"bd-placeholder-img mr-2 rounded\" width=\"32\" height=\"32\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 32x32\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#e83e8c\"/><text x=\"50%\" y=\"50%\" fill=\"#e83e8c\" dy=\".3em\">32x32</text></svg>\n              <div class=\"media-body pb-3 mb-0 small lh-125 border-bottom border-gray\">\n                <div class=\"d-flex justify-content-between align-items-center w-100\">\n                  <strong class=\"text-gray-dark\">Reunión realizada el día 05 de Septiembre del 2019</strong>\n                  <button class=\"btn btn-danger\">Ver Detalles</button>\n                </div>\n                <span class=\"d-block\">Reunión donde se acordará acariciarle la pelada a tio Emilio sin su consentimiento</span>\n              </div>\n            </div>\n          <small class=\"d-block text-right mt-3\">\n            <a href=\"#\">Ver historial de reuniones</a>\n          </small>\n        </div>\n</div>"
+module.exports = "<div class=\"container\">\n  <br><br>\n    <p>\n        <ngb-alert [dismissible]=\"false\">\n          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con un bloque azul.\n        </ngb-alert>\n      </p>\n  <br><br>\n    <div class=\"my-3 p-3 bg-white rounded shadow-sm\">\n        <h6 class=\"border-bottom border-gray pb-2 mb-0\">Reuniones Activas</h6>\n        <div class=\"media text-muted pt-3\">\n            <svg class=\"bd-placeholder-img mr-2 rounded\" width=\"32\" height=\"32\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 32x32\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#007bff\"/><text x=\"50%\" y=\"50%\" fill=\"#007bff\" dy=\".3em\">32x32</text></svg>\n            <div class=\"media-body pb-3 mb-0 small lh-125 border-bottom border-gray\">\n              <div class=\"d-flex justify-content-between align-items-center w-100\">\n                <strong class=\"text-gray-dark\">Reunión planificada para el día 10 de octubre del 2019</strong>\n                <app-detalle-reunion></app-detalle-reunion>\n              </div>\n              <span class=\"d-block\">Reunión donde se acordará la penetración consentida del Tío Emilianos</span>\n            </div>\n          </div>\n        <small class=\"d-block text-right mt-3\">\n          <p>Es posible justificarse de las reuniones aún vigentes</p>\n        </small>\n      </div>\n\n      <br>\n\n      <div class=\"my-3 p-3 bg-white rounded shadow-sm\">\n          <h6 class=\"border-bottom border-gray pb-2 mb-0\">Reuniones Anteriores</h6>\n          <div class=\"media text-muted pt-3\">\n              <svg class=\"bd-placeholder-img mr-2 rounded\" width=\"32\" height=\"32\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 32x32\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#e83e8c\"/><text x=\"50%\" y=\"50%\" fill=\"#e83e8c\" dy=\".3em\">32x32</text></svg>\n              <div class=\"media-body pb-3 mb-0 small lh-125 border-bottom border-gray\">\n                <div class=\"d-flex justify-content-between align-items-center w-100\">\n                  <strong class=\"text-gray-dark\">Reunión realizada el día 05 de Septiembre del 2019</strong>\n                  <app-historial-detalle-reunion></app-historial-detalle-reunion>\n                </div>\n                <span class=\"d-block\">Reunión donde se acordará acariciarle la pelada a tio Emilio sin su consentimiento</span>\n              </div>\n            </div>\n          <small class=\"d-block text-right mt-3\">\n            <a href=\"#\">Ver historial de reuniones</a>\n          </small>\n        </div>\n</div>"
 
 /***/ }),
 
@@ -1284,7 +1284,7 @@ module.exports = "<div class=\"container\">\n  <br><br>\n    <p>\n        <ngb-a
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  historial-detalle-reunion works!\n</p>\n"
+module.exports = "<ng-template #detalleHistorial let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la reunion</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n        <b class=\"text-center\">Rerunión realizada el día 10-10-15</b>\n        <br>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis totam rem quidem enim, deserunt autem esse consequuntur, accusamus debitis dolorem quae magnam. Deserunt, eum? Repellat aperiam adipisci sint magnam nihil?\n        Quis expedita eveniet sit commodi sequi dicta consequuntur quo facilis est doloribus iusto maiores a quos officiis quam, voluptates magnam. Voluptate impedit in veritatis nisi provident odit harum reprehenderit obcaecati.\n        Quisquam nisi odio omnis aliquid saepe voluptate vitae, velit eligendi obcaecati ratione amet animi labore? Aut quasi alias necessitatibus repellendus tempore autem itaque deleniti, ullam quidem veniam dicta minus at.</p>\n      </div>\n    </div>\n\n    <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-danger\">\n      Inasistencias\n    </button>\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n</ng-template>\n\n\n<button class=\"btn btn-danger\" type=\"button\" (click)=\"abrirModalHistorial(detalleHistorial)\">Ver Detalle</button>"
 
 /***/ }),
 
@@ -1561,6 +1561,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_reuniones_general_reunion_general_reunion_component__WEBPACK_IMPORTED_MODULE_106__ = __webpack_require__(/*! ./socios-master/reuniones/general-reunion/general-reunion.component */ "./src/app/socios-master/reuniones/general-reunion/general-reunion.component.ts");
 /* harmony import */ var _socios_master_reuniones_detalle_reunion_detalle_reunion_component__WEBPACK_IMPORTED_MODULE_107__ = __webpack_require__(/*! ./socios-master/reuniones/detalle-reunion/detalle-reunion.component */ "./src/app/socios-master/reuniones/detalle-reunion/detalle-reunion.component.ts");
 /* harmony import */ var _socios_master_reuniones_historial_detalle_reunion_historial_detalle_reunion_component__WEBPACK_IMPORTED_MODULE_108__ = __webpack_require__(/*! ./socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component */ "./src/app/socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component.ts");
+/* harmony import */ var _servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_109__ = __webpack_require__(/*! ./servicios/reuniones.service */ "./src/app/servicios/reuniones.service.ts");
+
 
 
 
@@ -1786,7 +1788,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_36__["CajaChicaService"],
             _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_66__["PortalSociosService"],
             _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__["BryanBienestarService"],
-            _servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_104__["BryanConsorcioService"]
+            _servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_104__["BryanConsorcioService"],
+            _servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_109__["ReunionesService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
@@ -1841,7 +1844,7 @@ let AuthMasterComponent = class AuthMasterComponent {
         this.router = router;
         //Tiempo fuerra Loading
         this.tiempoEspera = 20;
-        this.tiempoEsperaToken = 1;
+        this.tiempoEsperaToken = 5;
         this.test2 = 1000;
         this.titleMensaje = 'Iniciando el sistema';
         this.bodyMensaje = 'Espere unos segundos mientras carga el sistema';
@@ -10667,6 +10670,65 @@ PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/servicios/reuniones.service.ts":
+/*!************************************************!*\
+  !*** ./src/app/servicios/reuniones.service.ts ***!
+  \************************************************/
+/*! exports provided: ReunionesService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReunionesService", function() { return ReunionesService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let ReunionesService = class ReunionesService {
+    constructor(_http) {
+        this._http = _http;
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    //*********************INSERTAR DATOS DE JUSTIFICACION*************************/
+    setDatosJustificacion(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('input', form.mensaje);
+        body.append('nombre_campo', form.motivo);
+        return this._http.post(this.url + "ingresar_justificacion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    /*********************************OBTENER LA REUNION ACTIVA***************************************/
+    getReunionActiva() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_reunion_bienestar/", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    /*********************************OBTENER LA REUNION INACTIVA***************************************/
+    getReunionInactiva() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_reunion_inactiva/", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+};
+ReunionesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], ReunionesService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/servicios/sindical.service.ts":
 /*!***********************************************!*\
   !*** ./src/app/servicios/sindical.service.ts ***!
@@ -13884,19 +13946,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/reuniones.service */ "./src/app/servicios/reuniones.service.ts");
+
 
 
 
 let DetalleReunionComponent = class DetalleReunionComponent {
-    constructor(config, modalService) {
+    constructor(config, modalService, _reunionesService) {
         this.modalService = modalService;
+        this._reunionesService = _reunionesService;
+        //Variables para almacenar el motivo
+        this.motivoInasistencia = {
+            mensaje: '',
+            motivo: '1'
+        };
+        //Variable para las cargas del boton
+        this.loadingEnvio = false;
         config.backdrop = 'static';
         config.keyboard = false;
     }
     ngOnInit() {
     }
+    getDetalleReunion() {
+        this._reunionesService.getReunionActiva().subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                this.datosReunion = response;
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    enviarJustificacion() {
+        console.log("los datos a enviar son los siguientes: " + this.motivoInasistencia.mensaje + this.motivoInasistencia.motivo);
+        this.loadingEnvio = true;
+        this._reunionesService.setDatosJustificacion(this.motivoInasistencia).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                this.loadingEnvio = false;
+                alert("Justificación ingresada correctamente");
+            }
+        }, error => {
+            this.loadingEnvio = false;
+            console.log(error);
+        });
+    }
     abrirModalDetalleMensaje(cajaChicaModal) {
         this.modalDetalleMensaje = this.modalService.open(cajaChicaModal, { size: 'xl' });
+        this.getDetalleReunion();
     }
 };
 DetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -13905,7 +14006,7 @@ DetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./detalle-reunion.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/reuniones/detalle-reunion/detalle-reunion.component.html"),
         styles: [__webpack_require__(/*! ./detalle-reunion.component.css */ "./src/app/socios-master/reuniones/detalle-reunion/detalle-reunion.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_3__["ReunionesService"]])
 ], DetalleReunionComponent);
 
 
@@ -13978,11 +14079,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistorialDetalleReunionComponent", function() { return HistorialDetalleReunionComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
 
 
 let HistorialDetalleReunionComponent = class HistorialDetalleReunionComponent {
-    constructor() { }
+    constructor(config, modalService) {
+        this.modalService = modalService;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
     ngOnInit() {
+    }
+    abrirModalHistorial(modalHistorial) {
+        this.modalHistorialMensaje = this.modalService.open(modalHistorial, { size: 'xl' });
     }
 };
 HistorialDetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -13991,7 +14101,7 @@ HistorialDetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
         template: __webpack_require__(/*! raw-loader!./historial-detalle-reunion.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component.html"),
         styles: [__webpack_require__(/*! ./historial-detalle-reunion.component.css */ "./src/app/socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
 ], HistorialDetalleReunionComponent);
 
 
@@ -14035,7 +14145,7 @@ let SociosMasterComponent = class SociosMasterComponent {
         this._portalSociosService = _portalSociosService;
         this._getAnios = _getAnios;
         this.router = router;
-        this.tiempoEsperaToken = 1;
+        this.tiempoEsperaToken = 5;
     }
     ngOnInit() {
         //Guardar Anios

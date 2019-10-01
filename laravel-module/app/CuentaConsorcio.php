@@ -266,6 +266,80 @@ class CuentaConsorcio extends Model
           return ['estado'=>'failed', 'mensaje'=>'Error al ingresar cuota extraordinaria'];
       }
     }
+    protected function insertar_cex_desde_table($r)
+    {
+        $cc_id ='';
+        $mes ='';
+        $tipo_pago = '2';
+        $tipo_retiro ='';
+        $porcentaje='';
+        $monto='';
+
+       $verif = $this->find($r->cc_id);
+
+      if ($verif) {
+
+        switch ((string)$r->mes_id) {
+            case '1':  $verif->monto_mes_cex_1 = $r->monto;  break;
+            case '2':  $verif->monto_mes_cex_2 = $r->monto;  break;
+            case '3':  $verif->monto_mes_cex_3 = $r->monto;  break;
+            case '4':  $verif->monto_mes_cex_4 = $r->monto;  break;
+            case '5':  $verif->monto_mes_cex_5 = $r->monto;  break;
+            case '6':  $verif->monto_mes_cex_6 = $r->monto;  break;
+            case '7':  $verif->monto_mes_cex_7 = $r->monto;  break;
+            case '8':  $verif->monto_mes_cex_8 = $r->monto;  break;
+            case '9':  $verif->monto_mes_cex_9 = $r->monto;  break;
+            case '10': $verif->monto_mes_cex_10 = $r->monto;  break;
+            case '11': $verif->monto_mes_cex_11 = $r->monto;  break;
+            case '12': $verif->monto_mes_cex_12 = $r->monto;  break;
+            default: break;
+          }
+
+          if ($verif->save()) {
+              $estado = EstadoConsorcioCex::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              
+          }
+          return ['estado'=>'failed', 'mensaje'=>'Error al actualizar cuota extraordinaria'];
+            
+
+      }else{
+          $ds = $this;
+          $ds->socio_id = $r->socio_id;
+          $ds->vinculado = 'S';
+          $ds->anio_id = $r->anio_id;
+        
+          switch ((string)$r->mes_id) {
+            case '1':  $ds->monto_mes_cex_1 = $r->monto;  break;
+            case '2':  $ds->monto_mes_cex_2 = $r->monto;  break;
+            case '3':  $ds->monto_mes_cex_3 = $r->monto;  break;
+            case '4':  $ds->monto_mes_cex_4 = $r->monto;  break;
+            case '5':  $ds->monto_mes_cex_5 = $r->monto;  break;
+            case '6':  $ds->monto_mes_cex_6 = $r->monto;  break;
+            case '7':  $ds->monto_mes_cex_7 = $r->monto;  break;
+            case '8':  $ds->monto_mes_cex_8 = $r->monto;  break;
+            case '9':  $ds->monto_mes_cex_9 = $r->monto;  break;
+            case '10': $ds->monto_mes_cex_10 = $r->monto;  break;
+            case '11': $ds->monto_mes_cex_11 = $r->monto;  break;
+            case '12': $ds->monto_mes_cex_12 = $r->monto;  break;
+            default: break;
+          }
+
+          if ($ds->save()) {
+              $estado = EstadoConsorcioCex::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+
+          }
+          return ['estado'=>'failed', 'mensaje'=>'Error al ingresar cuota extraordinaria'];
+      }
+    }
+    
 
     protected function tabla_consorcio($anio_id)//CUENTA CONSORCIO
     {
@@ -727,14 +801,17 @@ class CuentaConsorcio extends Model
                               and socio_id = $socio_id 
                               ) x");
               if (count($ds) > 0) {
-                  return $ds[0]->dia_sueldo;
+                  return [
+                          'cuenta-consorcio_id' => $ultimo,
+                          'dia_sueldo' => $ds[0]->dia_sueldo
+                  ];
               }
               return '';
 
 
-          }else{
+        }else{
             return '';
-          }
+        }
 
     }
 }

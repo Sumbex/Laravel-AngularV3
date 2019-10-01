@@ -71,4 +71,28 @@ class CuentaConsorcioController extends Controller
     {
          return CuentaConsorcio::tabla_desvinculados($anio_id);
     }
+
+    public function calcular_dia_sueldo($socio_id, $porc)
+    {
+        $dia_sueldo = CuentaConsorcio::calcular_dia_sueldo($socio_id);
+
+        $ds = (int)$dia_sueldo;
+        $mult = $ds * $porc;
+        $result = $ds - $mult;
+        echo $result; 
+         return ['ds' => $ds,'porc ' => $result];
+
+        // content
+    }
+    public function calcular_dia_sueldo_manual($dia_sueldo, $porc)
+    {
+
+        $ds = (int)$dia_sueldo;
+        $mult = $ds * $porc;
+        $result = $ds - $mult;
+        echo $result; 
+         return ['ds' => $ds,'porc ' => $result];
+
+        // content
+    }
 }

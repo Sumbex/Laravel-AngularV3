@@ -49,7 +49,12 @@ class CuentaConsorcio extends Model
                                   left join estado_consorcio_cuota_extra ecx on ecx.socio_id = s.id
 
 
-                              order by s.a_paterno, s.a_materno) AS x
+                              order by 
+                                (case when fecha_egreso is null then 'vigente'
+                                else concat('egresado (',to_char(fecha_egreso,'dd-mm-yyyy'),')')
+                                end) desc, s.a_paterno, s.a_materno
+                              
+                              ) AS x
                               left join mes m_ds on m_ds.id = x.mes_ds_id
                               left join anio a_ds on a_ds.id = x.anio_ds_id
                               left join mes m_cex on m_cex.id = x.mes_ecx_id
@@ -676,5 +681,60 @@ class CuentaConsorcio extends Model
         }else{
             return '';
         }
+    }
+
+    protected function calcular_dia_sueldo($socio_id)
+    {
+        $ultimo = DB::select("select max(id) id from cuenta_consorcio where socio_id = $socio_id");
+        if (count($ultimo) > 0) {
+          
+             $ultimo_id_socio = $ultimo[0];
+            $ultimo = $ultimo_id_socio->id;
+            
+            $ds = DB::select("SELECT 
+                                  COALESCE(
+                                      x.monto_mes_ds_12,
+                                      x.monto_mes_ds_11,
+                                      x.monto_mes_ds_10,
+                                      x.monto_mes_ds_9,
+                                      x.monto_mes_ds_8,
+                                      x.monto_mes_ds_7,
+                                      x.monto_mes_ds_6,
+                                      x.monto_mes_ds_5,
+                                      x.monto_mes_ds_4,
+                                      x.monto_mes_ds_3,
+                                      x.monto_mes_ds_2,
+                                      x.monto_mes_ds_1    
+                                  ) dia_sueldo
+                              from
+
+                              (select 
+                                  
+                                case when  (COALESCE(monto_mes_ds_12, 0)) = 0 then null else monto_mes_ds_12 end monto_mes_ds_12,
+                                case when  (COALESCE(monto_mes_ds_11,0) ) = 0 then null else monto_mes_ds_11 end monto_mes_ds_11,
+                                case when  (COALESCE(monto_mes_ds_10,0) ) = 0 then null else monto_mes_ds_10 end monto_mes_ds_10,
+                                case when  (COALESCE(monto_mes_ds_9,0) )  = 0 then null else monto_mes_ds_9 end monto_mes_ds_9,
+                                case when  (COALESCE(monto_mes_ds_8,0) )  = 0 then null else monto_mes_ds_8 end monto_mes_ds_8,
+                                case when  (COALESCE(monto_mes_ds_7,0) ) = 0 then null else monto_mes_ds_7 end monto_mes_ds_7,
+                                case when  (COALESCE(monto_mes_ds_6,0) ) = 0 then null else monto_mes_ds_6 end monto_mes_ds_6,
+                                case when  (COALESCE(monto_mes_ds_5,0) ) = 0 then null else monto_mes_ds_5 end monto_mes_ds_5,
+                                case when  (COALESCE(monto_mes_ds_4,0) ) = 0 then null else monto_mes_ds_4 end monto_mes_ds_4,
+                                case when  (COALESCE(monto_mes_ds_3,0) ) = 0 then null else monto_mes_ds_3 end monto_mes_ds_3,
+                                case when  (COALESCE(monto_mes_ds_2,0) ) = 0 then null else monto_mes_ds_2 end monto_mes_ds_2,
+                                case when  (COALESCE(monto_mes_ds_1,0) ) = 0 then null else monto_mes_ds_1 end monto_mes_ds_1
+                              
+                              from cuenta_consorcio where id = $ultimo
+                              and socio_id = $socio_id 
+                              ) x");
+              if (count($ds) > 0) {
+                  return $ds[0]->dia_sueldo;
+              }
+              return '';
+
+
+          }else{
+            return '';
+          }
+
     }
 }

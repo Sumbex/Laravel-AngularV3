@@ -1,0 +1,79 @@
+<ng-template #detalleReunion let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la reunion</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- Cuerpo del Modal -->
+  <div class="modal-body">
+    <div class="container">
+      <b class="text-center">Justifiación para la reunión del 10-10-19</b>
+      <p>Escriba un mensaje detallando el motivo de su inasistencia y luego seleccione el motivo de los que se muestran
+        a continuación.</p>
+        <br>
+
+      <form>
+          <div class="form-group">
+              <label for="exampleFormControlTextarea1"><b>Motivo de la falta:</b></label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0"><b>Motivo Inasistencia:</b></legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  Turno
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  Vacaciones
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                <label class="form-check-label" for="gridRadios3">
+                  Licencia
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="option4">
+                <label class="form-check-label" for="gridRadios4">
+                  Estudio
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="option5">
+                <label class="form-check-label" for="gridRadios5">
+                  Fuera de la Ciudad
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="mx-auto">
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>
+
+
+<button class="btn btn-primary" type="button" (click)="abrirModalDetalleMensaje(detalleReunion)">Justificarse</button>

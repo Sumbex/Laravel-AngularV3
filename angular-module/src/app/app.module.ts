@@ -107,6 +107,9 @@ import { TablaDesvinculadosConsorcioComponent } from './auth-master/cuenta-fondo
 import { ConsorcioComponent } from './socios-master/cuentas/consorcio/consorcio.component';
 import { BryanConsorcioService } from './servicios/bryan-consorcio.service';
 import { GraficoComponenteComponent } from './socios-master/grafico/grafico-componente/grafico-componente.component';
+import { GeneralReunionComponent } from './socios-master/reuniones/general-reunion/general-reunion.component';
+import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reunion/detalle-reunion.component';
+import { HistorialDetalleReunionComponent } from './socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component';
 
 
 @NgModule({
@@ -263,7 +266,13 @@ import { GraficoComponenteComponent } from './socios-master/grafico/grafico-comp
 
     ConsorcioComponent,
 
-    GraficoComponenteComponent
+    GraficoComponenteComponent,
+
+    GeneralReunionComponent,
+
+    DetalleReunionComponent,
+
+    HistorialDetalleReunionComponent
 
   ],
   imports: [

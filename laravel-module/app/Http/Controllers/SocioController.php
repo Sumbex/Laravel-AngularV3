@@ -1714,27 +1714,40 @@ class SocioController extends Controller
     }
 
     public function listar_beneficios_cobrados($socio_id)
-    {
-            $nac = CbeNacimiento::mis_beneficios($socio_id);
-            $fall = CbeFallecimiento::mis_beneficios($socio_id);
-            $gm = CbeGastosMedicos::mis_beneficios($socio_id);
+    {   
+        try{
+                $nac = CbeNacimiento::mis_beneficios($socio_id);
+                $fall = CbeFallecimiento::mis_beneficios($socio_id);
+                $gm = CbeGastosMedicos::mis_beneficios($socio_id);
 
-            //excepcion con fallecimientos; dibujar un arreglo
-            foreach ($nac as $n) {
-                 $persona = Socios::nombre_por_rut($n->rut, $socio_id);
-                 $n->nombre = $persona;
-            }
-// 225698724
-            foreach ($fall as $f) {
-                 $persona = Socios::nombre_por_rut($f->rut_fallecido, $socio_id);
-                 $f->nombre = $persona;
-            }
+                //excepcion con fallecimientos; dibujar un arreglo
+                foreach ($nac as $n) {
+                    $persona = Socios::nombre_por_rut($n->rut, $socio_id);
+                    $n->nombre = $persona;
+                }
+    // 225698724
+                foreach ($fall as $f) {
+                    $persona = Socios::nombre_por_rut($f->rut_fallecido, $socio_id);
+                    $f->nombre = $persona;
+                }
 
-            return [
-                'nacimiento' => $nac,
-                'fallecimiento' => $fall,
-                'gastos_medicos' => $gm
+                return [
+                    'nacimiento' => $nac,
+                    'fallecimiento' => $fall,
+                    'gastos_medicos' => $gm
+                ];
+        }catch(QueryException $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
             ];
+        }
+        catch(\Exception $e){
+            return[
+                'estado'  => 'failed', 
+                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+            ];
+        }
     }
 
     public function anio_tipo_id($value)

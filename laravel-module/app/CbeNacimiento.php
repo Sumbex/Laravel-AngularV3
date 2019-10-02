@@ -80,13 +80,13 @@ class CbeNacimiento extends Model
 
         $listar = DB::select("SELECT 
                                 concat(cbe.dia,' de ',m.descripcion,',',a.descripcion) as fecha,
-                                c.rut,
-                                concat(c.nombres,' ',c.apellido_paterno,' ',c.apellido_materno) nombre,
+                                n.rut_nacimiento rut,
+                               -- concat(c.nombres,' ',c.apellido_paterno,' ',c.apellido_materno) nombre,
                                 cbe.descripcion,
                                 cbe.monto_egreso     
                             from cbe_nacimiento n
                             inner join cuenta_bienestar cbe on cbe.id = n.cuenta_bienestar_id
-                            inner join cargas_legales_socio c on c.rut = n.rut_nacimiento
+                           -- inner join cargas_legales_socio c on c.rut = n.rut_nacimiento
                             inner join anio a on a.id = cbe.anio_id
                             inner join mes m on m.id = cbe.mes_id
                             where n.socio_id = $socio_id  and cbe.activo = 'S'");

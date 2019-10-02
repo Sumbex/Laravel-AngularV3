@@ -145,7 +145,7 @@
 
               <div [hidden]="blockTablaConyuge" class="col-12 col-md-12 col-lg-12 col-xl-12">
                 <label><strong>CONYUGE:
-                    {{traerDatosConyuge.nombres | uppercase}}{{traerDatosConyuge.apellido_paterno | uppercase}}
+                    {{traerDatosConyuge.nombres | uppercase}} {{traerDatosConyuge.apellido_paterno | uppercase}}
                     {{traerDatosConyuge.apellido_materno | uppercase}}<br> </strong></label>
                 <tr>
                   <th id="fusion" style="background: #138D75" class="text-right">RUT:</th>
@@ -200,16 +200,19 @@
                       <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo centrado"
                         [(ngModel)]="itemCarga.tipo_carga_id" required
                         style="-webkit-appearance: none;-moz-appearance: none; appearance: none;" disabled>
-                        <option value="1">HIJO: {{itemCarga.nombres | uppercase}}
+                        <option value="5">CARGA CONYUGE: {{itemCarga.nombres | uppercase}}
                           {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}}
                         </option>
-                        <option value="2">NIETO: {{itemCarga.nombres | uppercase}}
+                        <option value="1">CARGA HIJO: {{itemCarga.nombres | uppercase}}
                           {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}}
                         </option>
-                        <option value="3">ADOPCION: {{itemCarga.nombres | uppercase}}
+                        <option value="2">CARGA NIETO: {{itemCarga.nombres | uppercase}}
                           {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}}
                         </option>
-                        <option value="4">OTROS: {{itemCarga.nombres | uppercase}}
+                        <option value="3">CARGA ADOPCION: {{itemCarga.nombres | uppercase}}
+                          {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}}
+                        </option>
+                        <option value="4">CARGA OTROS: {{itemCarga.nombres | uppercase}}
                           {{itemCarga.apellido_paterno | uppercase}} {{itemCarga.apellido_materno | uppercase}}
                         </option>
                       </select>

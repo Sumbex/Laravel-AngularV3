@@ -75,7 +75,7 @@ export class NacimientoBienestarComponent implements OnInit {
         return false;
       } 
       if (response.estado == 'failed_v') {
-        alert("El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido.");
+        alert("Verifique que los campos no esten vacios, erroneos o duplicados");
         this.blockIngreso = false;
         return false;
       }

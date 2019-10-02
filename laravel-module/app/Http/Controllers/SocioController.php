@@ -1035,6 +1035,33 @@ class SocioController extends Controller
         try{
             $validar = $this->validar_datos_carga($r);
 
+            if ($r->tipo_carga_id == '5') { // si es conyuge el tipo
+                
+                $ca = SocioConyuge::where([
+                                'socio_id' => $r->socio_id,
+                ])->first();
+                
+                if ($ca) {
+                    $rut_limpio = $this->limpiar($r->rut);
+                        
+                    if (strtolower($ca->rut) != strtolower($rut_limpio)) {
+                        return ['estado' => 'failed', 'mensaje'=> 'El rut de la conyugue no coincide con el socio'];
+                    }
+                }
+
+                $con = SocioCarga::where([
+                                'socio_id' => $r->socio_id,
+                                'tipo_carga_id' =>'5'
+                ])->first();
+
+                if ($con) {
+                    return ['estado' => 'failed', 'mensaje'=> 'Este socio ya tiene una conyuge como carga'];
+                }
+            
+        
+            }
+            // SI NO SIGUE SU PROCESO NORMAL
+
 
             if ($validar['estado'] == 'success') {
                         
@@ -1691,6 +1718,17 @@ class SocioController extends Controller
             $nac = CbeNacimiento::mis_beneficios($socio_id);
             $fall = CbeFallecimiento::mis_beneficios($socio_id);
             $gm = CbeGastosMedicos::mis_beneficios($socio_id);
+
+            //excepcion con fallecimientos; dibujar un arreglo
+            foreach ($nac as $n) {
+                 $persona = Socios::nombre_por_rut($n->rut, $socio_id);
+                 $n->nombre = $persona;
+            }
+// 225698724
+            foreach ($fall as $f) {
+                 $persona = Socios::nombre_por_rut($f->rut_fallecido, $socio_id);
+                 $f->nombre = $persona;
+            }
 
             return [
                 'nacimiento' => $nac,

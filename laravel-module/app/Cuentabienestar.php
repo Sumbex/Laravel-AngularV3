@@ -28,7 +28,7 @@ class Cuentabienestar extends Model
                         ])->first();
         
         if(empty($exis_monto_init)){
-			$borrar = Storage::delete('/'.$archivo);
+			//$borrar = Storage::delete('/'.$archivo);
 			return [
 				"estado"  => "failed", 
 				"mensaje" => "No existe monto inicial, primero calcule"
@@ -108,7 +108,7 @@ class Cuentabienestar extends Model
                         ])->first();
         
         if(empty($exis_monto_init)){
-			$borrar = Storage::delete('/'.$archivo);
+			//$borrar = Storage::delete('/'.$archivo);
 			return [
 				"estado"  => "failed", 
 				"mensaje" => "No existe monto inicial, primero calcule"
@@ -190,6 +190,7 @@ class Cuentabienestar extends Model
 
         $f = $this->div_fecha($r->fecha);
         $anio = $this->anio_tipo_id($f['anio']);
+        
 
          // PRIMERO VERIFICAR SI EXISTE 
         $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
@@ -199,7 +200,7 @@ class Cuentabienestar extends Model
                         ])->first();
         
         if(empty($exis_monto_init)){
-			$borrar = Storage::delete('/'.$archivo);
+			// $borrar = Storage::delete('/'.$archivo);
 			return [
 				"estado"  => "failed", 
 				"mensaje" => "No existe monto inicial, primero calcule"
@@ -262,6 +263,13 @@ class Cuentabienestar extends Model
         }
         if ($r->tipo_cuenta_bienestar_id == '7') { // tipo gastos medicos
            
+            // $validar_pdf_gm = $this->validar_pdf_gm($r);
+            // if($valida_pdf['estado'] == 'failed_v'){
+            //     return ['estado'=>'failed', 
+            //             'mensaje'=>'El documento del gasto medico puede que no sea un PDF o no exista'];
+            // }
+
+
             $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
             $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/gastosmedicos/');    
         
@@ -415,7 +423,8 @@ class Cuentabienestar extends Model
     	if(!empty($data)){
 
     	 	return $data;
-    	} 
+        } 
+        return ['id'=>0];
     		
     }
 
@@ -457,6 +466,22 @@ class Cuentabienestar extends Model
 	        [
 	        	'input.required' => 'El PDF es necesario',
 	        	'input.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    public function validar_pdf_gm($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'archivo_documento_2' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'archivo_documento_2.required' => 'El PDF es necesario',
+	        	'archivo_documento_2.mimes' => 'El archivo no es PDF',
 	        ]);
 
  

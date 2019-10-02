@@ -1,8 +1,9 @@
 <ng-template #tablaBeneficiosSocio let-modal>
   <div class="modal-header sticky-top" id="demoFont">
     <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
-        {{getNombreSocio | uppercase}}<!-- <div *ngIf="actualizarLoad" class="loader2"></div> --></strong>
-      </h6>
+        {{getNombreSocio | uppercase}}
+        <!-- <div *ngIf="actualizarLoad" class="loader2"></div> --></strong>
+    </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -20,15 +21,23 @@
         <div *ngIf="!vista_tabla" class="loader"></div>
         <table *ngIf="vista_tabla" class="table table-striped table-bordered table-sm">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="row justify-content-between">
 
+            <p>
+              <ngb-alert [dismissible]="false">
+                <strong>¡Advertencia!</strong> Solo se puede actualizar un campo a la vez.
+              </ngb-alert>
+            </p>
+
+
+            <div class="row justify-content-between">
               <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <tr>
                   <th class="text-right" style="background: #138D75">N° CTA:</th>
                   <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.numero_cuenta}}"
                       #ctaUpdate></td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_numero_cuenta',ctaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_numero_cuenta',ctaUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -36,7 +45,7 @@
                   <td><input type="text" class="sinbordefondo centrado" value="{{ traerDatosSocio.banco | uppercase}}"
                       #bancoUpdate></td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_banco',bancoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_banco',bancoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -50,7 +59,8 @@
                     </select>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_tipo_cuenta_banco_id',tipoCtaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_tipo_cuenta_banco_id',tipoCtaUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -59,7 +69,8 @@
                       value="{{traerDatosSocio.isapre_fonasa | uppercase}}" #isapreFonasaUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_isapre_fonasa',isapreFonasaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_isapre_fonasa',isapreFonasaUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -68,7 +79,8 @@
                       value="{{traerDatosSocio.grupo_sangre | uppercase}}" #grupoSangreUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_grupo_sangre',grupoSangreUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_grupo_sangre',grupoSangreUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -77,34 +89,37 @@
                       value="{{traerDatosSocio.direccion | uppercase}}" #direccionUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_direccion',direccionUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_direccion',direccionUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">TELEFONO:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.telefono}}" #telefonoUpdate>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.telefono}}"
+                      #telefonoUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_telefono',telefonoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_telefono',telefonoUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">CELULAR:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.celular}}" #celularUpdate>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.celular}}"
+                      #celularUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_celular',celularUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_celular',celularUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">ANEXO:</th>
-                  <td><input type="text" class="sinbordefondo centrado" 
-                    value="{{traerDatosSocio.anexo | uppercase}}" #anexoUpdate>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.anexo | uppercase}}"
+                      #anexoUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_anexo',anexoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_anexo',anexoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
                   </td>
                 </tr><br>
               </div>
@@ -113,20 +128,22 @@
 
                 <tr>
                   <th class="text-right" style="background: #138D75;">EMAIL PERSONAL:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.email_1 | uppercase}}" #email1Update>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.email_1 | uppercase}}"
+                      #email1Update>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_email_1',email1Update,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_email_1',email1Update,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #138D75;">EMAIL CORPORATIVO:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.email_2 | uppercase}}" #email2Update>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.email_2 | uppercase}}"
+                      #email2Update>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_email_2',email2Update,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_email_2',email2Update,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -135,7 +152,8 @@
                       value="{{traerDatosSocio.cargo_planta | uppercase}}" #cargoPlantaUpdate>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_cargo_planta',cargoPlantaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_cargo_planta',cargoPlantaUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -148,7 +166,8 @@
                     </select>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_cargo_comision_sindicato',cargoComisionUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_cargo_comision_sindicato',cargoComisionUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -161,7 +180,8 @@
                     </select>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_casa_propia',casaPropiaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_casa_propia',casaPropiaUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -174,7 +194,8 @@
                     </select>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_rol_turno',rolTurnoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_rol_turno',rolTurnoUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -190,7 +211,8 @@
                     </select>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_estado_civil_id',estadoCivilUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_estado_civil_id',estadoCivilUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr>
                 <tr>
@@ -203,7 +225,8 @@
                     </select>
                   </td>
                   <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_conyuge',conyugeUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
+                      (click)="actualizar('socio_conyuge',conyugeUpdate,modalUsuario)"><i
+                        class="far fa-edit"></i></button>
                   </td>
                 </tr> <br>
               </div>

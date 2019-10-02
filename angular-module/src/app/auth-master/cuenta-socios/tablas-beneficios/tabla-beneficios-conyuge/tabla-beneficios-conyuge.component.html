@@ -1,95 +1,116 @@
 <ng-template #tablaBeneficiosConyuge let-modal>
-    <div class="modal-header sticky-top" id="demoFont">
-        <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
+  <div class="modal-header sticky-top" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:
         {{getNombreSocio | uppercase}}</strong></h6>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
+  </div>
+  <!--Cuerpo del body inicio y cierre mensual-->
+  <div class="modal-body" id="printJS-table">
+    <div class="card-header" id="demoFont2">
+      <h6 class="card-title">CONYUGE
+        <img *ngIf="actualizarLoad" padding-left="20px" height="15px"
+          src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </h6>
     </div>
-    <!--Cuerpo del body inicio y cierre mensual-->
-    <div class="modal-body" id="printJS-table">
-        <div class="card-header" id="demoFont2">
-            <h6 class="card-title">CONYUGE
-                <img *ngIf="actualizarLoad" padding-left="20px" height="15px"
-                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-            </h6>
-        </div>
-        <div class="card"> <br>
-            <div class="table-responsive">
-                <div *ngIf="!vista_tabla" class="loader"></div>
-                <table *ngIf="vista_tabla" class="table table-striped table-bordered table-sm text-center">
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-md-7 col-lg-7 col-xl-7">
-                                <tr>
-                                    <th style="background: #138D75" class="text-right">RUT:</th>
-                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.rut}}" #rutUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('rut',rutUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
-                                    <td><input type="date" class="sinbordefondo centrado" value="{{ traerDatosConyuge.fecha_nacimiento }}" #fechaUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('fecha_nacimiento',fechaUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <th style="background: #138D75;" class="text-right">NOMBRES:</th>
-                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.nombres | uppercase}}" #nombresUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('nombres',nombresUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
-                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.apellido_paterno | uppercase}}" #apellidoPaternoUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('apellido_paterno',apellidoPaternoUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
-                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.apellido_materno | uppercase}}"#apellidoMaternoUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('apellido_materno',apellidoMaternoUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <th style="background: #138D75;" class="text-right">DIRECCION:</th>
-                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.direccion | uppercase}}" #direccionUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('direccion',direccionUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <th style="background: #138D75;" class="text-right">CELULAR:</th>
-                                    <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.celular}}" #celularUpd></td>
-                                    <td><button class="btn btn-outline-success btn-sm"
-                                        (click)="actualizar('celular',celularUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                                </tr>
-                                <tr>
-                                  <th style="background: #138D75;" class="text-right">CAMBIAR CERTIFICADO:</th>
-                                  <td> 
-                                      <input class="form-file-input float-left" type="file" (change)="onSelectImage($event)" #documentoUpd required>
-                                  </td>
-                                  <td><button class="btn btn-outline-success btn-sm"
-                                      (click)="actualizar('archivo',documentoUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
-                              </tr>
-                                <tr>
-                                  <th style="background: #138D75;" class="text-right">VER CERTIFICADO:</th>
-                                  <td colspan="2"><button class="btn btn-outline-dark btn-sm float-left"
-                                    (click)="verDocumento(visorRegistroCivil)">Haga click para ver el archivo <i class="far fa-file-pdf" ></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </div>
+    <div class="card"> <br>
+      <div class="table-responsive">
+        <div *ngIf="!vista_tabla" class="loader"></div>
+        <table *ngIf="vista_tabla" class="table table-striped table-bordered table-sm text-center">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-                        </div>
-                    </div>
-                </table>
+            <p>
+              <ngb-alert [dismissible]="false">
+                <strong>¡Advertencia!</strong> Solo se puede actualizar un campo a la vez.
+              </ngb-alert>
+            </p>
+
+
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-7 col-lg-7 col-xl-7">
+                <tr>
+                  <th style="background: #138D75" class="text-right">RUT:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.rut}}" #rutUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm" (click)="actualizar('rut',rutUpd,modalUsuario)"><i
+                        class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75" class="text-right">FECHA DE NACIMIENTO:</th>
+                  <td><input type="date" class="sinbordefondo centrado" value="{{ traerDatosConyuge.fecha_nacimiento }}"
+                      #fechaUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('fecha_nacimiento',fechaUpd,modalUsuario)"><i
+                        class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">NOMBRES:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosConyuge.nombres | uppercase}}" #nombresUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('nombres',nombresUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">APELLIDO PATERNO:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosConyuge.apellido_paterno | uppercase}}" #apellidoPaternoUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('apellido_paterno',apellidoPaternoUpd,modalUsuario)"><i
+                        class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75" class="text-right">APELLIDO MATERNO:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosConyuge.apellido_materno | uppercase}}" #apellidoMaternoUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('apellido_materno',apellidoMaternoUpd,modalUsuario)"><i
+                        class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">DIRECCION:</th>
+                  <td><input type="text" class="sinbordefondo centrado"
+                      value="{{traerDatosConyuge.direccion | uppercase}}" #direccionUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('direccion',direccionUpd,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">CELULAR:</th>
+                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosConyuge.celular}}"
+                      #celularUpd></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('celular',celularUpd,modalUsuario)"><i class="far fa-edit"></i></button></td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">CAMBIAR CERTIFICADO:</th>
+                  <td>
+                    <input class="form-file-input float-left" type="file" (change)="onSelectImage($event)" #documentoUpd
+                      required>
+                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                      (click)="actualizar('archivo',documentoUpd,modalUsuario)"><i class="far fa-edit"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="background: #138D75;" class="text-right">VER CERTIFICADO:</th>
+                  <td colspan="2"><button class="btn btn-outline-dark btn-sm float-left"
+                      (click)="verDocumento(visorRegistroCivil)">Haga click para ver el archivo <i
+                        class="far fa-file-pdf"></i>
+                    </button>
+                  </td>
+                </tr>
+              </div>
+
             </div>
-        </div>
+          </div>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
-    <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-success" 
+  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-success" 
   onclick="printJS({
     printable: 'printJS-table',
     type:'html',
@@ -98,51 +119,51 @@
   <i class="fas fa-print"></i>  Imprimir Datos
   </button> -->
 
-        <button type="button" class="btn btn-info" (click)="modal.close('Close click'); limpiar_tabla()"><i
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click'); limpiar_tabla()"><i
         class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Conyuge
     </button>
-    </div>
+  </div>
 </ng-template>
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
 <button class="btn btn btn-success btn-block btn-sm" type="button"
-    [disabled] = "this.getIdSocio == '' || this.getIdSocio == null"
-    (click)="verTablaBeneficios(tablaBeneficiosConyuge)">Ver Datos
+  [disabled]="this.getIdSocio == '' || this.getIdSocio == null" (click)="verTablaBeneficios(tablaBeneficiosConyuge)">Ver
+  Datos
 </button>
 
 <ng-template #modalUsuario let-modal>
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="row justify-content-center">
-  
-          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-            <input #rut class="form-control form-control-sm " [value]="user.rut"> <br>
-          </div>
-          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-            <input #password [(ngModel)]="pass" class="form-control form-control-sm " type="password"
-              placeholder="Ingrese su contraseña"> <br>
-          </div>
-          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-            <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
-              (click)="modal.close('Save click')">
-              Validar
-              <img *ngIf="load" padding-left="10px" height="12" class="text-center"
-                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-            </button>
-          </div>
-  
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="row justify-content-center">
+
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <input #rut class="form-control form-control-sm " [value]="user.rut"> <br>
         </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <input #password [(ngModel)]="pass" class="form-control form-control-sm " type="password"
+            placeholder="Ingrese su contraseña"> <br>
+        </div>
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+            (click)="modal.close('Save click')">
+            Validar
+            <img *ngIf="load" padding-left="10px" height="12" class="text-center"
+              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+          </button>
+        </div>
+
       </div>
     </div>
-  </ng-template>
+  </div>
+</ng-template>
 
-  <!--MODAL VISOR PDF-->
+<!--MODAL VISOR PDF-->
 <ng-template #visorRegistroCivil let-c="close" let-d="dismiss">
   <div class="row">
     <div class="col">

@@ -47,4 +47,15 @@ export class ReunionesService{
             }
         )});
     }
+
+    /*********************************OBTENER INASISTENCIAS***************************************/
+    getInasistenciasReunion(): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_inasistencias/", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 }

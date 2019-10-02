@@ -1739,13 +1739,13 @@ class SocioController extends Controller
         }catch(QueryException $e){
             return[
                 'estado'  => 'failed', 
-                'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+                'mensaje' => 'QEx:Error, posiblemente no existen beneficios cobrados, intente nuevamente o verifique sus datos'
             ];
         }
         catch(\Exception $e){
             return[
                 'estado'  => 'failed', 
-                'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+                'mensaje' => 'Ex: Error, posiblemente no existen beneficios cobrados, intente nuevamente o verifique sus datos'
             ];
         }
     }

@@ -5,6 +5,7 @@ import { BryanBienestarService } from 'src/app/servicios/bryans-bienestar.servic
 import { global } from '../../../../servicios/global';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UsuarioService } from 'src/app/servicios/usuarios.service';
+import { AniosService } from 'src/app/servicios/anios.service';
 
 @Component({
   selector: 'app-tabla-caja-chica-bienestar',
@@ -54,7 +55,7 @@ export class TablaCajaChicaBienestarComponent implements OnInit {
   //variable para asociar al modal
   modalCajaChica;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _usuariosSevice: UsuarioService, private _bienestarService: BryanBienestarService, private _portalSociosService: PortalSociosService, public _http: HttpClient) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _usuariosSevice: UsuarioService, private _bienestarService: BryanBienestarService, private _fechasService: AniosService, public _http: HttpClient) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -79,7 +80,7 @@ export class TablaCajaChicaBienestarComponent implements OnInit {
   cargarFechasActuales() {
     this.cargarDatos = 0;
     //Cargar id del Año actual
-    this._portalSociosService.getAnioActual().subscribe(
+    this._fechasService.getAnioActual().subscribe(
       response => {
         this.idAnioActual = response.id;
         this.cargarDatos++;
@@ -93,7 +94,7 @@ export class TablaCajaChicaBienestarComponent implements OnInit {
       }
     )
     //Cargar id del Mes actual
-    this._portalSociosService.getMesActual().subscribe(
+    this._fechasService.getMesActual().subscribe(
       response => {
         this.idMesActual = response.id;
         this.cargarDatos++;

@@ -2272,11 +2272,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
-/* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
-/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../servicios/global */ "./src/app/servicios/global.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+/* harmony import */ var src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/bryans-bienestar.service */ "./src/app/servicios/bryans-bienestar.service.ts");
+/* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../servicios/global */ "./src/app/servicios/global.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
 
 
 
@@ -2286,11 +2286,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var TablaCajaChicaBienestarComponent = /** @class */ (function () {
-    function TablaCajaChicaBienestarComponent(config, modalService, _usuariosSevice, _bienestarService, _portalSociosService, _http) {
+    function TablaCajaChicaBienestarComponent(config, modalService, _usuariosSevice, _bienestarService, _fechasService, _http) {
         this.modalService = modalService;
         this._usuariosSevice = _usuariosSevice;
         this._bienestarService = _bienestarService;
-        this._portalSociosService = _portalSociosService;
+        this._fechasService = _fechasService;
         this._http = _http;
         //Variable para las cargas
         this.cargandoTabla = false;
@@ -2303,7 +2303,7 @@ var TablaCajaChicaBienestarComponent = /** @class */ (function () {
         this.blockCajaChica = false;
         this.valorInput = '';
         //Variables para el modal de validar usuario
-        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_5__["global"].url;
+        this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -2323,7 +2323,7 @@ var TablaCajaChicaBienestarComponent = /** @class */ (function () {
         var _this = this;
         this.cargarDatos = 0;
         //Cargar id del Año actual
-        this._portalSociosService.getAnioActual().subscribe(function (response) {
+        this._fechasService.getAnioActual().subscribe(function (response) {
             _this.idAnioActual = response.id;
             _this.cargarDatos++;
             console.log(_this.cargarDatos);
@@ -2334,7 +2334,7 @@ var TablaCajaChicaBienestarComponent = /** @class */ (function () {
             console.log(error);
         });
         //Cargar id del Mes actual
-        this._portalSociosService.getMesActual().subscribe(function (response) {
+        this._fechasService.getMesActual().subscribe(function (response) {
             _this.idMesActual = response.id;
             _this.cargarDatos++;
             console.log(_this.cargarDatos);
@@ -2394,7 +2394,7 @@ var TablaCajaChicaBienestarComponent = /** @class */ (function () {
         var _this = this;
         var token = localStorage.getItem('token').replace(/['"]+/g, '');
         this._http.get(this.url + "usuario_logeado", {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
         }).subscribe(function (response) {
             _this.usuario = response;
             _this.rut = _this.usuario.rut;
@@ -2476,7 +2476,7 @@ var TablaCajaChicaBienestarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./tabla-caja-chica-bienestar.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.html"),
             styles: [__webpack_require__(/*! ./tabla-caja-chica-bienestar.component.css */ "./src/app/auth-master/cuenta-bienestar/caja-chica-bienestar/tabla-caja-chica-bienestar/tabla-caja-chica-bienestar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"], src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BryanBienestarService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_7__["AniosService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
     ], TablaCajaChicaBienestarComponent);
     return TablaCajaChicaBienestarComponent;
 }());
@@ -11601,7 +11601,8 @@ var UsuarioService = /** @class */ (function () {
         return this.token;
     };
     UsuarioService.prototype.getUsuario = function () {
-        var user = localStorage.getItem('usuario');
+        var user = localStorage.getItem('usuario').replace(/['"]+/g, '');
+        ;
         if (user && user != "undefinided") {
             this.usuario = user;
         }
@@ -11611,9 +11612,14 @@ var UsuarioService = /** @class */ (function () {
         return this.usuario;
     };
     UsuarioService.prototype.isAuthenticated = function () {
-        var token = localStorage.getItem('token'); // Check whether the token is expired and return
-        // true or false
-        return !this.jwtHelper.isTokenExpired(token);
+        if (localStorage.getItem('token') === null) {
+            return false;
+        }
+        else {
+            var token = localStorage.getItem('token').replace(/['"]+/g, ''); // Check whether the token is expired and return
+            // true or false
+            return !this.jwtHelper.isTokenExpired(token);
+        }
     };
     UsuarioService.prototype.logOut = function () {
         var token = localStorage.getItem('token').replace(/['"]+/g, '');

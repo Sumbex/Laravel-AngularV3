@@ -84,10 +84,11 @@ export class AuthMasterComponent implements OnInit {
         this.tiempoEsperaToken--;
       }else{
         let estadoToken = this._usuariosService.isAuthenticated();
+        console.log(estadoToken);
         if(estadoToken == false){
           this.router.navigate(['']);
         }else{
-          this.tiempoEsperaToken = 1;
+          this.tiempoEsperaToken = 5;
         }
       }
     },1000)

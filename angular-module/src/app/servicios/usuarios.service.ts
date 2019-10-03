@@ -64,7 +64,6 @@ export class UsuarioService {
     isAuthenticated(): boolean {
         const token = localStorage.getItem('token');    // Check whether the token is expired and return
         // true or false
-        console.log(this.jwtHelper.isTokenExpired(token));
         return !this.jwtHelper.isTokenExpired(token);
     }
 

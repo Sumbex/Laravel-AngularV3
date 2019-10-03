@@ -169,6 +169,7 @@ export class TablaResumenSocioComponent implements OnInit {
         this.blockTablaSocio=true;
       } else {
         this.traerDatosSocio = response[0];
+        this.blockTablaSocio=false;
       }
     },
       error => {
@@ -182,6 +183,7 @@ export class TablaResumenSocioComponent implements OnInit {
         this.blockTablaConyuge=true;
       } else {
         this.traerDatosConyuge = response.body;
+        this.blockTablaConyuge=false;
       }
     },
       error => {
@@ -195,7 +197,7 @@ export class TablaResumenSocioComponent implements OnInit {
         this.blockTablaBeneficiario=true;
       } else {
         this.traerDatosBeneficiario = response.body;
-        // console.log(this.traerDatosBeneficiario);
+        this.blockTablaBeneficiario=false;
       }
     },
       error => {
@@ -209,6 +211,7 @@ export class TablaResumenSocioComponent implements OnInit {
         this.blockTablaCarga=true;
       } else {
         this.traerDatosCarga = response.body;
+        this.blockTablaCarga=false;
       }
     },
       error => {
@@ -224,10 +227,12 @@ export class TablaResumenSocioComponent implements OnInit {
       } 
       if (num == 0) {
         alert("No se han encontrado datos aun para mostrar.");
+        // console.log("1:" + num);
         this.vista_tabla = false;
       } else {
         this.traerDatosPS = response.body;
-        console.log(this.traerDatosPS);
+        this.blockTablaPS=false;
+
         this.firma;
         this.vista_tabla = false;
         this.ocultar_imprimir = false;

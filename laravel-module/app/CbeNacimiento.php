@@ -24,7 +24,7 @@ class CbeNacimiento extends Model
             $this->activo = 'S';
             $this->rut_nacimiento = $rut;
             if ($this->save()) {
-                return ['estado'=>'failed', 'mensaje'=> 'Item de nacimiento ingresado con exito' ];
+                return ['estado'=>'success', 'mensaje'=> 'Item de nacimiento ingresado con exito' ];
             }
             return [ 'estado'=>'failed', 'mensaje'=> 'Error al guardar item' ];
         }

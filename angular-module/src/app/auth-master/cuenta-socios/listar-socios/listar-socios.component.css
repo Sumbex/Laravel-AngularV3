@@ -1,9 +1,9 @@
 label,input, button{
-  font-size: 13px;
+  font-size: 14px;
 }
 
 tr,th{
-  font-size: 13px;
+  font-size: 14px;
 }
 th{
   color: white;
@@ -29,6 +29,19 @@ th{
     background: -webkit-linear-gradient(to top, #237A57, #093028);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
+  }
+
+  .card{
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .card-header{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
   }
   
   

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { ConsorcioService } from 'src/app/servicios/consorcio.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tabla-fondo-mutuo',
@@ -57,10 +58,23 @@ export class TablaFondoMutuoComponent implements OnInit {
   //ingresar consorcio
   blockIngreso: boolean = false;
 
+  //pago beneficio
+  modalPagoBeneficio;
+  tipoPago = 2;
+  tipoRetiro = 0;
+  tipoDescuento = 0;
+  calcularBeneficio;
+  valorBeneficio;
+  mesBeneficio;
+  
+
   constructor(
     private _time: AniosService,
-    private _consorcioService: ConsorcioService
-  ) {
+    private _consorcioService: ConsorcioService,
+    config: NgbModalConfig,
+    private modalService: NgbModal) {
+      config.backdrop = 'static';
+      config.keyboard = false;
 
   }
 
@@ -73,6 +87,13 @@ export class TablaFondoMutuoComponent implements OnInit {
     }
 
     this.llenar_select();
+  }
+  openPagoBeneficio(PagoBeneficio) {
+    this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'sm' });
+  }
+
+  cerrarPagoBeneficio() {
+    this.modalPagoBeneficio.close();
   }
 
   listar() {
@@ -202,6 +223,46 @@ export class TablaFondoMutuoComponent implements OnInit {
     return parseInt(val);
   }
 
+  rescatarDiaSueldo(id){
+    this.valorBeneficio = id;
+  }
 
+  calcularPorcentaje(){
+    if(this.tipoDescuento == 1){
+      // console.log("estoy aqui 1");
+      this.calcularBeneficio = this.valorBeneficio;
+    }else if(this.tipoDescuento == 2){
+      // console.log("estoy aqui 2");
+      this.calcularBeneficio = (this.valorBeneficio * 0.90); 
+    
+    }else if(this.tipoDescuento == 3){
+      // console.log("estoy aqui 3");
+      this.calcularBeneficio = (this.valorBeneficio * 0.75); 
+    
+    }else if(this.tipoDescuento == 4){
+      // console.log("estoy aqui 4");
+      this.calcularBeneficio = (this.valorBeneficio * 0.60); 
+    
+    }else if(this.tipoDescuento == 5){
+      // console.log("estoy aqui 5");
+      this.calcularBeneficio = (this.valorBeneficio * 0.50); 
+    
+    }else if(this.tipoDescuento == 6){
+      // console.log("estoy aqui 6");
+      this.calcularBeneficio = (this.valorBeneficio * 0.40); 
+    
+    }else if(this.tipoDescuento == 7){
+      // console.log("estoy aqui 7");
+      this.calcularBeneficio = (this.valorBeneficio * 0.30); 
+    
+    }else if(this.tipoDescuento == 8){
+      // console.log("estoy aqui 8");
+      this.calcularBeneficio = (this.valorBeneficio * 0.25); 
+    
+    }else if(this.tipoDescuento == 9){
+      // console.log("estoy aqui 9");
+      this.calcularBeneficio = (this.valorBeneficio * 0.20); 
+    }
+  }
 
 }

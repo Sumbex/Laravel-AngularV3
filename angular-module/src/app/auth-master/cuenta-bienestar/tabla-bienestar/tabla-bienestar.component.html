@@ -7,7 +7,7 @@
     </button>
   </div>
   <!--Cuerpo del body inicio y cierre mensual-->
-  <div class="modal-body">
+  <div class="modal-body" id="printJS-table">
     <div class="row">
       <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Año</strong></label>
         <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
@@ -59,7 +59,7 @@
 
           <tr *ngFor="let item of gas">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaGasModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaGasModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -70,7 +70,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaGas
                       type="date"></label>
 
@@ -78,7 +78,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaGas,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaGas,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12px"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -87,7 +87,7 @@
 
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocGasModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocGasModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -98,7 +98,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -110,7 +110,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocGas,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocGas,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12px"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -130,7 +130,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -165,7 +165,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocGas,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocGas,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -176,7 +176,7 @@
             </td>
 
             <td colspan="4" (click)="openActualizar(descripcionGasModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionGasModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -188,7 +188,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -199,7 +199,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionGas,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionGas,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -208,7 +208,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoGasModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoGasModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -229,7 +229,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionGas,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -239,7 +239,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -249,7 +249,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoGas,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoGas,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -261,11 +261,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoGasModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -283,7 +283,7 @@
 
           <tr *ngFor="let item of reunion">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaReunionModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaReunionModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -294,7 +294,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaReunion
                       type="date"></label>
 
@@ -302,7 +302,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaReunion,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaReunion,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -310,7 +310,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocReunionModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocReunionModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -321,7 +321,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -333,7 +333,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocReunion,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocReunion,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -353,7 +353,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -388,7 +388,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocReunion,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocReunion,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -399,7 +399,7 @@
             </td>
 
             <td colspan="4" (click)="openActualizar(descripcionReunionModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionReunionModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -411,7 +411,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -422,7 +422,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionReunion,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionReunion,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -431,7 +431,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoReunionModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoReunionModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -452,7 +452,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionReunion,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionReunion,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -462,7 +462,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -472,7 +472,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoReunion,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoReunion,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -484,11 +484,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoReunionModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -506,7 +506,7 @@
 
           <tr *ngFor="let item of votacion">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaVotacionModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaVotacionModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -517,7 +517,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaVotacion
                       type="date"></label>
 
@@ -525,7 +525,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaVotacion,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaVotacion,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -533,7 +533,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocVotacionModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocVotacionModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -544,7 +544,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -556,7 +556,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocVotacion,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocVotacion,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -576,7 +576,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -611,7 +611,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocVotacion,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocVotacion,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -622,7 +622,7 @@
             </td>
 
             <td colspan="4" (click)="openActualizar(descripcionVotacionModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionVotacionModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -634,7 +634,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -645,7 +645,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionVotacion,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionVotacion,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -654,7 +654,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoVotacionModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoVotacionModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -675,7 +675,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionVotacion,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionVotacion,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -685,7 +685,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -695,7 +695,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoVotacion,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoVotacion,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -707,11 +707,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoVotacionModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -729,7 +729,7 @@
 
           <tr *ngFor="let itemCajaChica of cajaChica">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaCajaModal)">
-              {{itemCajaChica.fecha}}
+              {{itemCajaChica?.fecha}}
               <ng-template #fechaCajaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -740,7 +740,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{itemCajaChica.fecha}}" disabled></label>
+                      value="{{itemCajaChica?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaCaja
                       type="date"></label>
 
@@ -748,7 +748,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(itemCajaChica.id,'fecha',fechaCaja,modalUsuario)">Guardar
+                    (click)="actualizar(itemCajaChica?.id,'fecha',fechaCaja,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -757,7 +757,7 @@
             </td>
 
             <td scope="col" class="text-center" (click)="openActualizar(numeroDocCajaModal)">
-              {{itemCajaChica.numero_documento_1}}
+              {{itemCajaChica?.numero_documento_1}}
               <ng-template #numeroDocCajaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -769,7 +769,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{itemCajaChica.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{itemCajaChica?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -781,7 +781,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(itemCajaChica.id,'numero_documento_1',numeroDocCaja,modalUsuario)">Guardar
+                    (click)="actualizar(itemCajaChica?.id,'numero_documento_1',numeroDocCaja,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -802,7 +802,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + itemCajaChica.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + itemCajaChica?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -837,7 +837,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(itemCajaChica.id,'archivo_1',DocCajaChica,modalUsuario)">Guardar
+                      (click)="actualizar(itemCajaChica?.id,'archivo_1',DocCajaChica,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -848,7 +848,7 @@
             </td>
 
             <td scope="col" colspan="4" (click)="openActualizar(descripcionCajaModal)">
-              {{itemCajaChica.descripcion}}
+              {{itemCajaChica?.descripcion}}
               <ng-template #descripcionCajaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -861,7 +861,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{itemCajaChica.descripcion}}"
+                    <input type="text" class="form-control form-control-sm" value="{{itemCajaChica?.descripcion}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -873,7 +873,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(itemCajaChica.id,'descripcion',descripcionCaja,modalUsuario)">Guardar
+                    (click)="actualizar(itemCajaChica?.id,'descripcion',descripcionCaja,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -883,7 +883,7 @@
             </td>
 
             <td scope="col" class="text-center" (click)="openActualizar(montoCajaChicaModal)">
-              {{ itemCajaChica.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ itemCajaChica?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoCajaChicaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Recalcular Egreso</h4>
@@ -897,7 +897,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{itemCajaChica.monto_ingreso}} {{itemCajaChica.monto_egreso}}" disabled>
+                      value="{{itemCajaChica?.monto_ingreso}} {{itemCajaChica?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -918,7 +918,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(itemCajaChica.id,'monto',montoCajaChica,modalUsuario)">Guardar
+                      (click)="actualizar(itemCajaChica?.id,'monto',montoCajaChica,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -928,11 +928,11 @@
               </ng-template>
             </td>
             <td scope="col" class="text-center" (click)="openActualizar(montoCajaChicaModal)">
-              {{ itemCajaChica.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ itemCajaChica?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td scope="col" class="text-center">
-              {{ itemCajaChica.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+              {{ itemCajaChica?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           </tr>
 
           <!--nacimiento-->
@@ -949,7 +949,7 @@
 
           <tr *ngFor="let item of nacimiento">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaNacimientoModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaNacimientoModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -960,7 +960,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaNacimiento
                       type="date"></label>
 
@@ -968,7 +968,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaNacimiento,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaNacimiento,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -976,7 +976,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocNacimientoModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocNacimientoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -987,7 +987,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -999,7 +999,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocNacimiento,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocNacimiento,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1019,7 +1019,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -1054,7 +1054,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocNacimiento,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocNacimiento,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1065,7 +1065,7 @@
             </td>
 
             <td colspan="4" (click)="openActualizar(descripcionNacimientoModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionNacimientoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -1077,7 +1077,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -1088,7 +1088,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionNacimiento,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionNacimiento,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1097,7 +1097,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoNacimientoModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoNacimientoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -1118,7 +1118,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionNacimiento,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionNacimiento,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1128,7 +1128,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -1138,7 +1138,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoNacimiento,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoNacimiento,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1150,11 +1150,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoNacimientoModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -1173,7 +1173,7 @@
 
           <tr *ngFor="let item of fallecimiento">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaFallecimientoModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaFallecimientoModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -1184,7 +1184,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaFallecimiento
                       type="date"></label>
 
@@ -1192,7 +1192,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaFallecimiento,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaFallecimiento,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1200,7 +1200,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocFallecimientoModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocFallecimientoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -1211,7 +1211,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -1223,7 +1223,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocFallecimiento,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocFallecimiento,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1243,7 +1243,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -1278,7 +1278,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocFallecimiento,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocFallecimiento,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1300,7 +1300,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_2 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_2 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -1335,7 +1335,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_2',DocFallecimiento2,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_2',DocFallecimiento2,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1346,7 +1346,7 @@
             </td>
 
             <td colspan="4" (click)="openActualizar(descripcionFallecimientoModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionFallecimientoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -1358,7 +1358,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -1369,7 +1369,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionFallecimiento,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionFallecimiento,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1378,7 +1378,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoFallecimientoModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoFallecimientoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -1399,7 +1399,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionFallecimiento,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionFallecimiento,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1409,7 +1409,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -1419,7 +1419,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoFallecimiento,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoFallecimiento,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1431,11 +1431,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoFallecimientoModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -1443,7 +1443,8 @@
           <tr class="text-center">
             <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
             <th style="background: #138D75">N° Doc</th>
-            <th colspan="2" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="1" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF 1</th>
+            <th colspan="1" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF 2</th>
             <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Gastos Medicos
             </th>
             <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
@@ -1453,7 +1454,7 @@
 
           <tr *ngFor="let item of medico">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaMedicoModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaMedicoModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -1464,7 +1465,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaMedico
                       type="date"></label>
 
@@ -1472,7 +1473,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaMedico,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaMedico,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1480,7 +1481,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocMedicoModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocMedicoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -1491,7 +1492,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -1503,7 +1504,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocMedico,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocMedico,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1523,7 +1524,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -1534,7 +1535,7 @@
             </ng-template>
             <!--MODAL VISOR PDF-->
 
-            <td colspan="2" class="text-center">
+            <td colspan="1" class="text-center">
               <a (click)="openPDF(visorSindicalMedico1)" style="cursor: pointer" class="btn-primary-outline">
                 <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
               </a>&nbsp;
@@ -1558,7 +1559,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocMedico,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocMedico,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1567,8 +1568,65 @@
                 <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
               </a>
             </td>
+            <!--MODAL VISOR PDF-->
+            <ng-template #visorSindicalMedico2 let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
+                  <div class="modal-header text-center" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_2 | safeUrl"
+                      frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <!--MODAL VISOR PDF-->
+
+            <td colspan="1" class="text-center">
+              <a (click)="openPDF(visorSindicalMedico2)" style="cursor: pointer" class="btn-primary-outline">
+                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              </a>&nbsp;
+              <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocMedicoModal2)">
+                <ng-template #DocMedicoModal2 let-c="close" let-d="dismiss">
+                  <div class="modal-header" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                      <label> <strong>Reemplazar Documento Actual </strong></label><i class="far fa-file-pdf"></i>
+                      <input class="form-control-file form-control-file-sm" #DocMedico2 type="file"
+                        (change)="onSelectImage($event)">
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="actualizar(item?.id,'archivo_2_gm',DocMedico2,modalUsuario)">Guardar
+                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </div>
+                </ng-template>
+                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+              </a>
+            </td>
+
             <td colspan="4" (click)="openActualizar(descripcionMedicoModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionMedicoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -1580,7 +1638,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -1591,7 +1649,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionMedico,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionMedico,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1600,7 +1658,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoMedicoModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoMedicoModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -1621,7 +1679,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionMedico,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionMedico,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1631,7 +1689,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -1641,7 +1699,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoMedico,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoMedico,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1653,11 +1711,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoMedicoModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -1675,7 +1733,7 @@
 
           <tr *ngFor="let item of socioCuota">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaCuotaSocioModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaCuotaSocioModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -1686,7 +1744,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaCuotaSocio
                       type="date"></label>
 
@@ -1694,7 +1752,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaCuotaSocio,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaCuotaSocio,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1702,7 +1760,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocCuotaSocioModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocCuotaSocioModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -1713,7 +1771,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -1725,7 +1783,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocCuotaSocio,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocCuotaSocio,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1745,7 +1803,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -1780,7 +1838,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocCuotaSocio,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocCuotaSocio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1790,7 +1848,7 @@
               </a>
             </td>
             <td colspan="4" (click)="openActualizar(descripcionCuotaSocioModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionCuotaSocioModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -1802,7 +1860,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -1813,7 +1871,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionCuotaSocio,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionCuotaSocio,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1822,7 +1880,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoCuotaSocioModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoCuotaSocioModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -1843,7 +1901,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionCuotaSocio,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionCuotaSocio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1853,7 +1911,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -1863,7 +1921,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoCuotaSocio,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoCuotaSocio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -1875,11 +1933,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoCuotaSocioModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -1897,7 +1955,7 @@
 
           <tr *ngFor="let item of inasistenciaElecciones">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaEleccionesModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaEleccionesModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -1908,7 +1966,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaElecciones
                       type="date"></label>
 
@@ -1916,7 +1974,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaElecciones,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaElecciones,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1924,7 +1982,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocEleccionesModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocEleccionesModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -1935,7 +1993,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -1947,7 +2005,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocElecciones,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocElecciones,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -1967,7 +2025,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -2002,7 +2060,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocElecciones,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocElecciones,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2012,7 +2070,7 @@
               </a>
             </td>
             <td colspan="4" (click)="openActualizar(descripcionEleccionesModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionEleccionesModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -2024,7 +2082,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -2035,7 +2093,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionElecciones,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionElecciones,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2044,7 +2102,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoEleccionesModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoEleccionesModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -2065,7 +2123,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionElecciones,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionElecciones,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2075,7 +2133,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -2085,7 +2143,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoElecciones,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoElecciones,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2097,11 +2155,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoEleccionesModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -2119,7 +2177,7 @@
 
           <tr *ngFor="let item of consorcio">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaConsorcioModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaConsorcioModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -2130,7 +2188,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaConsorcio
                       type="date"></label>
 
@@ -2138,7 +2196,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaConsorcio,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaConsorcio,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2146,7 +2204,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocConsorcioModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocConsorcioModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -2157,7 +2215,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -2169,7 +2227,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocConsorcio,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocConsorcio,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2189,7 +2247,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -2224,7 +2282,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocConsorcio,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocConsorcio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2234,7 +2292,7 @@
               </a>
             </td>
             <td colspan="4" (click)="openActualizar(descripcionConsorcioModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionConsorcioModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -2246,7 +2304,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -2257,7 +2315,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionConsorcio,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionConsorcio,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2266,7 +2324,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoConsorcioModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoConsorcioModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -2287,7 +2345,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionConsorcio,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionConsorcio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2297,7 +2355,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -2307,7 +2365,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoConsorcio,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoConsorcio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2319,11 +2377,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoConsorcioModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -2341,7 +2399,7 @@
 
           <tr *ngFor="let item of cuotaExtraordinaria">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaExtraordinariaModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaExtraordinariaModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -2352,7 +2410,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaExtraordinaria
                       type="date"></label>
 
@@ -2360,7 +2418,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaExtraordinaria,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaExtraordinaria,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2368,7 +2426,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocExtraordinariaModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocExtraordinariaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -2379,7 +2437,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -2391,7 +2449,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocExtraordinaria,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocExtraordinaria,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2411,7 +2469,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -2446,7 +2504,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocExtraordinaria,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocExtraordinaria,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2456,7 +2514,7 @@
               </a>
             </td>
             <td colspan="4" (click)="openActualizar(descripcionExtraordinariaModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionExtraordinariaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -2468,7 +2526,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -2479,7 +2537,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionExtraordinaria,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionExtraordinaria,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2488,7 +2546,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoExtraordinariaModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoExtraordinariaModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -2509,7 +2567,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionExtraordinaria,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionExtraordinaria,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2519,7 +2577,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -2529,7 +2587,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoExtraordinaria,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoExtraordinaria,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2541,11 +2599,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoExtraordinariaModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -2563,7 +2621,7 @@
 
           <tr *ngFor="let item of noSindicalizados">
             <td colspan="3" class="text-center" (click)="openActualizar(fechaNoSindicalizadosModal)">
-              {{item.fecha}}
+              {{item?.fecha}}
               <ng-template #fechaNoSindicalizadosModal let-c="closeFecha" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
@@ -2574,7 +2632,7 @@
                 <div class="modal-body">
 
                   <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
-                      value="{{item.fecha}}" disabled></label>
+                      value="{{item?.fecha}}" disabled></label>
                   <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaNoSindicalizados
                       type="date"></label>
 
@@ -2582,7 +2640,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'fecha',fechaNoSindicalizados,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'fecha',fechaNoSindicalizados,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2590,7 +2648,7 @@
               </ng-template>
             </td>
             <td class="text-center" (click)="openActualizar(numeroDocNoSindicalizadosModal)">
-              {{item.numero_documento_1}}
+              {{item?.numero_documento_1}}
               <ng-template #numeroDocNoSindicalizadosModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
@@ -2601,7 +2659,7 @@
                 <div class="modal-body">
                   <div class="form-group">
                     <label><strong>N° Documento Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.numero_documento_1}}"
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}"
                       disabled>
                   </div>
                   <div class="form-group">
@@ -2613,7 +2671,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'numero_documento_1',numeroDocNoSindicalizados,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocNoSindicalizados,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2633,7 +2691,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento_1 | safeUrl"
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl"
                       frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer" [hidden]="true">
@@ -2668,7 +2726,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'archivo_1',DocNoSindicalizados,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'archivo_1',DocNoSindicalizados,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2678,7 +2736,7 @@
               </a>
             </td>
             <td colspan="4" (click)="openActualizar(descripcionNoSindicalizadosModal)">
-              {{item.descripcion}}
+              {{item?.descripcion}}
               <ng-template #descripcionNoSindicalizadosModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
@@ -2690,7 +2748,7 @@
 
                   <div class="form-group">
                     <label><strong>Descripcion Actual</strong></label>
-                    <input type="text" class="form-control form-control-sm" value="{{item.descripcion}}" disabled>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.descripcion}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nueva Descripcion</strong></label>
@@ -2701,7 +2759,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                   <button type="button" class="btn btn-outline-success"
-                    (click)="actualizar(item.id,'descripcion',descripcionNoSindicalizados,modalUsuario)">Guardar
+                    (click)="actualizar(item?.id,'descripcion',descripcionNoSindicalizados,modalUsuario)">Guardar
                     <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                       src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                   </button>
@@ -2710,7 +2768,7 @@
             </td>
 
             <td class="text-center" (click)="openActualizar(montoNoSindicalizadosModal)">
-              {{ item.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
               <ng-template #montoNoSindicalizadosModal let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
                   <h4 class="modal-title" id="modal-basic-title">Ingreso y Egreso</h4>
@@ -2731,7 +2789,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionNoSindicalizados,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'definicion',definicionNoSindicalizados,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2741,7 +2799,7 @@
                   <div class="form-group">
                     <label><strong>Monto Actual</strong></label>
                     <input type="text" class="form-control form-control-sm"
-                      value="{{item.monto_ingreso}} {{item.monto_egreso}}" disabled>
+                      value="{{item?.monto_ingreso}} {{item?.monto_egreso}}" disabled>
                   </div>
                   <div class="form-group">
                     <label> <strong>Nuevo Monto</strong></label>
@@ -2751,7 +2809,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'monto',montoNoSindicalizados,modalUsuario)">Guardar
+                      (click)="actualizar(item?.id,'monto',montoNoSindicalizados,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
@@ -2763,11 +2821,11 @@
 
 
             <td class="text-center" (click)="openActualizar(montoNoSindicalizadosModal)">
-              {{ item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
             <!--acumulado cierre del mes actual-->
             <td class="text-center">
-              {{ item.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
           </tr>
 
@@ -2776,7 +2834,7 @@
             <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i> Total
               Cierre del Mes</th>
             <td scope="col" class="text-center">
-              <strong>{{ resultado.total_final | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+              <strong>{{ resultado?.total_final | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
             </td>
           </tr>
 
@@ -2785,21 +2843,21 @@
             <th colspan="10" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i> INGRESOS
             </th>
             <td colspan="2" class="text-center">
-              <strong>{{ resultado.ingreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <strong>{{ resultado?.ingreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
 
           <tr>
             <th colspan="10" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i> EGRESOS
             </th>
             <td colspan="2" class="text-center">
-              <strong>{{ resultado.egreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <strong>{{ resultado?.egreso_total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
 
           <tr>
             <th colspan="10" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i> CIERRE
               MENSUAL ACTUAL (INGRESO - EGRESO)</th>
             <td colspan="2" class="text-center">
-              <strong>{{ resultado.total_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <strong>{{ resultado?.total_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
 
         </tbody>
@@ -2812,6 +2870,15 @@
 
   <!--boton para volver a cuenta bienestar-->
   <div class="modal-footer">
+
+      <button type="button" class="btn btn-success" onclick="printJS({
+        printable: 'printJS-table',
+        type:'html',
+        style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'
+      })">
+        <i class="fas fa-print"></i> Imprimir Datos
+      </button>
+
     <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Volver a Cuenta Bienestar
     </button>
   </div>

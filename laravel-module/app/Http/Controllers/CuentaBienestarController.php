@@ -108,121 +108,165 @@ class CuentaBienestarController extends Controller
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
+	 public function validar_datos_gm($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
+	            'descripcion' => 'required|min:0',
+	            'definicion' => 'required|min:0',
+	            'tipo_cuenta_bienestar_id' => 'required',
+	            'monto' => 'required',
+				'archivo_documento_1' => 'required|mimes:pdf',
+				'archivo_documento_2' => 'required|mimes:pdf'
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento_1.required' => 'El numero de documento es necesario',
+	        	'numero_documento_1.unique' => 'El numero de documento ya existe en tus registros',
+	        	'descripcion.required' => 'La descripcion es necesaria',
+	        	'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
+	        	'tipo_cuenta_bienestar_id.required' => 'Especifique el tipo de cuenta de su detalle',
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento_1.required' =>'El documento es necesario',
+				'archivo_documento_1.mimes' =>'El documento debe ser un PDF',
+				'archivo_documento_2.required' =>'El documento es necesario',
+                'archivo_documento_2.mimes' =>'El documento debe ser un PDF'
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
 
 
     public function insertar(Request $r)
     {
+		try{
 
-        $tipo_cuenta = $r->tipo_cuenta_bienestar_id;
+			$tipo_cuenta = $r->tipo_cuenta_bienestar_id;
 
-        switch ((string)$tipo_cuenta) {
-            case '1': // cuenta del gas
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
-                    return $cuenta_be;
-                }
-                return $validar;
+			switch ((string)$tipo_cuenta) {
+				case '1': // cuenta del gas
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical_gas($r);
+						return $cuenta_be;
+					}
+					return $validar;
 
-            break;
-            case '2': //inasistencia por reunion
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-            break;
-            case '3': // inasistencia por votacion
+				break;
+				case '2': //inasistencia por reunion
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				case '3': // inasistencia por votacion
 
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-					 $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-					 return $cuenta_be;
-                }
-                return $validar;
-            break;
-            case '6': // detalle caja chica
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-			break;
-			
-			case '8': // 10% cuota socio
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-			break;
-			
-			case '9': // Inasistencia por elecciones
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-			break;
-			
-			case '10': // Consorcio
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-			break;
-			case '11': // Cuota extraordinaria
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-			break;
-			case '12': // No Sindicalizada
-                $validar = $this->validar_datos_bienestar($r);
-                if ($validar['estado'] == "success") {
-                    $cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
-                    return $cuenta_be;
-                }
-                return $validar;
-            break;
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				case '6': // detalle caja chica
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				
+				case '8': // 10% cuota socio
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				
+				case '9': // Inasistencia por elecciones
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				
+				case '10': // Consorcio
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				case '11': // Cuota extraordinaria
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+				case '12': // No Sindicalizada
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
 
-            //-------------------------------------------------------------------------------------------------
-            case '4': //Fallecimiento
-                $validar = $this->validar_datos_fallecimiento($r);
-                if ($validar['estado'] == "success") {
-                    $fall = Cuentabienestar::insertar_fall_nac_gm($r);
-                    return $fall;
-                }
-                return $validar;
-            break;
-            case '5'://Nacimiento
-                $validar = $this->validar_datos_nacimiento($r);
-                if ($validar['estado'] == "success") {
-                    $nac = Cuentabienestar::insertar_fall_nac_gm($r);
-                    return $nac;
-                }
-                return $validar;
-            break;
-			case '7'://Gastos medicos
-				$validar = $this->validar_datos_bienestar($r);
-				if ($validar['estado'] == "success") {
-					$gm = Cuentabienestar::insertar_fall_nac_gm($r);
-                	return $gm;
-				}
-				return $validar;
-            break;
-            default:
-                
-            break;
-        }
+				//-------------------------------------------------------------------------------------------------
+				case '4': //Fallecimiento
+					$validar = $this->validar_datos_fallecimiento($r);
+					if ($validar['estado'] == "success") {
+						$fall = Cuentabienestar::insertar_fall_nac_gm($r);
+						return $fall;
+					}
+					return $validar;
+				break;
+				case '5'://Nacimiento
+					$validar = $this->validar_datos_nacimiento($r);
+					if ($validar['estado'] == "success") {
+						$nac = Cuentabienestar::insertar_fall_nac_gm($r);
+						return $nac;
+					}
+					return $validar;
+				break;
+				case '7'://Gastos medicos
+					$validar = $this->validar_datos_gm($r);
+					if ($validar['estado'] == "success") {
+						$gm = Cuentabienestar::insertar_fall_nac_gm($r);
+						return $gm;
+					}
+					return $validar;
+				break;
+				default:
+					
+				break;
+			}
+		}catch(QueryException $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}
+		catch(\Exception $e){
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}	
 
     }
 

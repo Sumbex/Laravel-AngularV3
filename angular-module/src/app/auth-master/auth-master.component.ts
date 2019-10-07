@@ -20,7 +20,7 @@ export class AuthMasterComponent implements OnInit {
 
   //Tiempo fuerra Loading
   tiempoEspera: number = 20;
-  tiempoEsperaToken: number = 1;
+  tiempoEsperaToken: number = 5;
   test2 = 1000;
   titleMensaje = 'Iniciando el sistema';
   bodyMensaje = 'Espere unos segundos mientras carga el sistema';
@@ -84,10 +84,11 @@ export class AuthMasterComponent implements OnInit {
         this.tiempoEsperaToken--;
       }else{
         let estadoToken = this._usuariosService.isAuthenticated();
+        console.log(estadoToken);
         if(estadoToken == false){
           this.router.navigate(['']);
         }else{
-          this.tiempoEsperaToken = 1;
+          this.tiempoEsperaToken = 5;
         }
       }
     },1000)

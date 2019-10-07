@@ -57,6 +57,22 @@ class CuentaConsorcioController extends Controller
 
     }
 
+
+    public function insertar_cex_desde_tabla(Request $r)
+    {
+        $cc_id ='';
+        $mes ='';
+        $tipo_pago = '2';
+        $tipo_retiro ='';
+        $porcentaje='';
+        $monto='';
+
+        $ds = CuentaConsorcio::insertar_cex_desde_table($r);
+        return $ds;
+    
+        
+    }
+
     public function cuenta_consorcio($anio_id)
     {
         return CuentaConsorcio::tabla_consorcio($anio_id);
@@ -84,11 +100,11 @@ class CuentaConsorcioController extends Controller
          return CuentaConsorcio::tabla_desvinculados($anio_id);
     }
 
-    public function calcular_dia_sueldo($socio_id, $porc)
+    public function calcular_dia_sueldo($socio_id, $porc, $desc, $mes)
     {
         $dia_sueldo = CuentaConsorcio::calcular_dia_sueldo($socio_id);
 
-        $ds = (int)$dia_sueldo;
+        $ds = (int)$dia_sueldo->dia_sueldo;
         $mult = $ds * $porc;
         $result = $ds - $mult;
         echo $result; 
@@ -96,7 +112,7 @@ class CuentaConsorcioController extends Controller
 
         // content
     }
-    public function calcular_dia_sueldo_manual($dia_sueldo, $porc)
+    public function calcular_dia_sueldo_manual($dia_sueldo, $porc, $desc, $mes)
     {
 
         $ds = (int)$dia_sueldo;

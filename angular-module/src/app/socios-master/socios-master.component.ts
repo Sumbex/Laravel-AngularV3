@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SociosMasterComponent implements OnInit {
 
-  tiempoEsperaToken: number = 1;
+  tiempoEsperaToken: number = 5;
 
   constructor(private _usuariosService: UsuarioService, public _portalSociosService: PortalSociosService, private _getAnios: PortalSociosService, private router: Router) {
   }
@@ -37,10 +37,11 @@ export class SociosMasterComponent implements OnInit {
         this.tiempoEsperaToken--;
       } else {
         let estadoToken = this._usuariosService.isAuthenticated();
+        console.log(estadoToken);
         if (estadoToken == false) {
           this.router.navigate(['']);
         } else {
-          this.tiempoEsperaToken = 1;
+          this.tiempoEsperaToken = 5;
         }
       }
     }, 1000)

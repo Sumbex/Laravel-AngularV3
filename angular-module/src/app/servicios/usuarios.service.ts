@@ -51,7 +51,7 @@ export class UsuarioService {
     }
 
     getUsuario() {
-        let user = localStorage.getItem('usuario');
+        let user = localStorage.getItem('usuario').replace(/['"]+/g, '');;
         if (user && user != "undefinided") {
             this.usuario = user;
         } else {
@@ -62,10 +62,13 @@ export class UsuarioService {
     }
 
     isAuthenticated(): boolean {
-        const token = localStorage.getItem('token');    // Check whether the token is expired and return
+        if(localStorage.getItem('token') === null){
+            return false;
+        }else{
+        const token = localStorage.getItem('token').replace(/['"]+/g, '');    // Check whether the token is expired and return
         // true or false
-        console.log(this.jwtHelper.isTokenExpired(token));
         return !this.jwtHelper.isTokenExpired(token);
+    }
     }
 
     logOut() {

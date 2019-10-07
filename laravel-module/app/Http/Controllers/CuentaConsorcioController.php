@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Socios;
+use App\CcPagoBeneficio;
 use App\CuentaConsorcio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -122,5 +124,102 @@ class CuentaConsorcioController extends Controller
          return ['ds' => $ds,'porc ' => $result];
 
         // content
+    }
+
+    public function socios_sin_pb()
+    {
+        $listar = Socios::select([
+            'id',
+            DB::raw("concat(nombres,' ',a_paterno,' ',a_materno,' - egreso: ',to_char(fecha_egreso, 'dd-mm-yyyy')) as sin_pb")
+        ])->where([
+            'retiro_pago_beneficio' => 'N'
+        ])->get();
+
+        if (count($listar)>0) {
+            return $listar;
+        }
+    }
+
+    public function descontar_dia_sueldo($porc, $mes, $anio)
+    {
+
+        $cc = CuentaConsorcio::select([
+            'socio_id',
+            'monto_mes_ds_'.$mes
+        ])
+        ->where([
+            'anio_id' => $anio
+        ])->get();
+        
+        $sum=0;
+        $monto_beneficio =0;
+
+        foreach ($cc as $key) {
+          
+                if ($key['monto_mes_ds_'.$mes] != 0 || $key['monto_mes_ds_'.$mes] != null ) {
+                    
+                    $update = CuentaConsorcio::where([
+                        'socio_id' => $key->socio_id,
+                        'anio_id' => $anio
+                    ])->first();
+
+
+                    $ds = (int) $key['monto_mes_ds_'.$mes];
+                    $mult = $ds * $porc;
+                    $result = $ds - $mult;
+
+                    $update['monto_mes_cex_'.$mes] = round($result);
+                    $monto_beneficio = $monto_beneficio + round($result);
+                    if ($update->save()) {
+                        $sum++;
+                    }
+                }
+            
+        }
+
+    
+        if ($sum > 0) {
+            return [
+                'estado'=>'success',
+                'mensaje'=>'Se han calculado '.$sum.' registro(s)',
+                'monto_beneficio' => $monto_beneficio
+            ];
+        }
+        return ['estado'=>'failed','mensaje'=>'ningun dato calculado'];
+
+    }
+    public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio)
+    {
+        $verify = CcPagoBeneficio::where([
+                    'anio_id' =>$anio,
+                    'mes_id' => $mes,
+                    'socio_id' => $socio_id
+                ])->first();
+        
+        if ($verify) {
+
+            if ($verify->descripcion != $desc) {
+                return ['estado'=>'failed','mensaje'=>'Ya no puede cambiar el tipo de descuento'];
+            }
+
+            $verify->mes_id = $mes;
+            $verify->descripcion = $desc;
+            $verify->porcentaje = $porc;
+            $verify->save();
+
+        }else{
+            $pb = new CcPagoBeneficio;
+            $pb->socio_id = $socio_id;
+            $pb->anio_id = $anio;
+            $pb->mes_id = $mes;
+            $pb->descripcion = $desc;
+            $pb->porcentaje = $porc;
+            $pb->save();
+
+        }
+
+        $desv = CuentaConsorcio::where(['anio_id'=> $anio, 'socio_id'=>$socio_id])->first();
+        $desv->vinculado = 'N';
+        $desv->save();
     }
 }

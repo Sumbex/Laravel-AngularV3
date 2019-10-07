@@ -231,7 +231,7 @@ class SocioController extends Controller
                     if ($desvincular) {
                         return ['estado'=>'success','mensaje' => 'Fecha de egreso actualizada, socio desvinculado!' ];
                     }
-                    return ['estado'=>'failed','mensaje' => 'Fecha de egreso actualizada' ];
+                    return ['estado'=>'failed','mensaje' => 'Se actualizó la fecha, pero no se ha desvinculado porque no existe como tal en la cuenta consorcio' ];
 
                 }else{
                     return ['estado'=>'failed','mensaje' => 'Error al actualizar!' ];
@@ -250,6 +250,9 @@ class SocioController extends Controller
         $anio = $this->anio_tipo_id($f['anio']);
 
         $cc = CuentaConsorcio::where(['anio_id' => $anio->id,'socio_id' => $s->id])->first();
+        $socio = Socios::find($s->id);
+        $socio->retiro_pago_beneficio = 'N';
+        $socio->save();
 
         if ($cc) {
 

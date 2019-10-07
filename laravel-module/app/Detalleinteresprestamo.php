@@ -70,7 +70,7 @@ class Detalleinteresprestamo extends Model
 	    		'fecha' => '',
 	    		'archivo_documento' => '',
 	    		'tipo_cuenta_sindicato' => 1,
-	    		'descripcion' =>  'Interes prestamo apuro del mes de '.$get_anio->descripcion,
+	    		'descripcion' =>  'Aporte de prestamo de apuro económico del mes de '.$get_anio->descripcion,
 	    		'monto_ingreso' =>	(int)$list[0]->interes_mensual,
 	    		'monto_egreso' => '',
 	    		'definicion' => 1,

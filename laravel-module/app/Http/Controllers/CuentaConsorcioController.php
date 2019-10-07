@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CuentaConsorcio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CuentaConsorcioController extends Controller
 {
@@ -23,6 +24,17 @@ class CuentaConsorcioController extends Controller
 
     public function insertar(Request $r)
     {
+      ///VALIDAR SI ESTA DESVINCULADO EL SOCIO/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+      /**/  $desv = DB::select("SELECT                                                                /**/
+      /**/                          concat(nombres,' ',a_paterno,' ',a_materno) nombre                /**/
+      /**/                      FROM socios where id = $r->socio_id and fecha_egreso is not null");   /**/
+      /**/  if (count($desv)>0) {                                                                     /**/
+      /**/      $nombre = $desv[0]->nombre;                                                           /**/
+      /**/      return ['estado' => 'failed', 'mensaje'=> $nombre.' se ha desvinculado'];             /**/
+      /**/  }                                                                                         /**/
+      /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+      // si no pues sigue su camino ->
 
         switch ($r->tipo_consorcio) {
             case '1': // DIA DE SUELDO
@@ -30,7 +42,7 @@ class CuentaConsorcioController extends Controller
                 return $ds;
             break;
 
-            case '2': // CUENTA EXTRAORDINARIA
+            case '2': // DESCUENTOS
 
                 $ds = CuentaConsorcio::insertar_cex($r);
                 return $ds;
@@ -70,5 +82,29 @@ class CuentaConsorcioController extends Controller
     public function tabla_desvinculados($anio_id)
     {
          return CuentaConsorcio::tabla_desvinculados($anio_id);
+    }
+
+    public function calcular_dia_sueldo($socio_id, $porc)
+    {
+        $dia_sueldo = CuentaConsorcio::calcular_dia_sueldo($socio_id);
+
+        $ds = (int)$dia_sueldo;
+        $mult = $ds * $porc;
+        $result = $ds - $mult;
+        echo $result; 
+         return ['ds' => $ds,'porc ' => $result];
+
+        // content
+    }
+    public function calcular_dia_sueldo_manual($dia_sueldo, $porc)
+    {
+
+        $ds = (int)$dia_sueldo;
+        $mult = $ds * $porc;
+        $result = $ds - $mult;
+        echo $result; 
+         return ['ds' => $ds,'porc ' => $result];
+
+        // content
     }
 }

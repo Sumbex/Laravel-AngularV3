@@ -80,7 +80,7 @@ export class FallecimientoBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'failed_v') {
-        alert(response.mensaje);
+        alert("Verifique que los campos no esten vacios, erroneos o duplicados");
         this.blockIngreso = false;
         return false;
       }

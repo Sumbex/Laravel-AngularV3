@@ -126,3 +126,6 @@ Route::get('total_anual_socio/{anio_id}','CuentaConsorcioController@total_anual_
 Route::get('tabla_desvinculados/{anio_id}','CuentaConsorcioController@tabla_desvinculados');
 Route::get('filtrar_tabla_consorcio/{anio_id}/{search?}','CuentaConsorcioController@filtrar_tabla_consorcio');
 
+Route::get('calcular_dia_sueldo/{socio_id}/{porc}', 'CuentaConsorcioController@calcular_dia_sueldo');
+Route::get('calcular_dia_sueldo_manual/{dia_sueldo}/{porc}', 'CuentaConsorcioController@calcular_dia_sueldo_manual');
+

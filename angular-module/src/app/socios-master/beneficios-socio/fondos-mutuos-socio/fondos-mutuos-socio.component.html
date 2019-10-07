@@ -17,7 +17,7 @@
           <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
           <div *ngIf="cargandoTabla">
             <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
-            <label>Cargando tabla de Prestamos</label>
+            <label>Actualizando</label>
           </div>
         </div>
       </div><br>
@@ -27,7 +27,7 @@
             <tr class="bg-primary text-white">
               <th scope="col">Mes</th>
               <th class="text-center" scope="col">Día Sueldo</th>
-              <th class="text-center" scope="col">Cuota Extraordinaria</th>
+              <th class="text-center" scope="col">Descuento</th>
               <th class="text-center" scope="col">Total Mes</th>
             </tr>
           </thead>
@@ -146,13 +146,13 @@
                 {{ totalesMensuales?.DS | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
               <td class="text-center" class="text-center">
                 {{ totalesMensuales?.CE | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
-                <td></td>
+                <td class="text-center"><b>{{ totalAhorros | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
             </tr>
-            <tr class="bg-primary text-white">
+            <!-- <tr class="bg-primary text-white">
               <th scope="row" class="text-center">Total Acumulado en el año: </th>
               <td colspan="3" class="text-center" class="text-center">
                 <b>{{ totalAhorros | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>

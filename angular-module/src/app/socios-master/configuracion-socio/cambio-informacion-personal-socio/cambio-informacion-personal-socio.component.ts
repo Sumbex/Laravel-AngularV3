@@ -52,7 +52,7 @@ export class CambioInformacionPersonalSocioComponent implements OnInit {
     this.blockUpdate = true;
     this._portalSociosService.updateInfoSocio(valor.value, input).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        alert("Se ha encontrado un error en los datos ingresados, favor de revisar y corregir los campos erroneos");
         this.blockUpdate = false;
       }else{
         alert('Datos actualizados correctamente, el sistema se reiniciará para aplicar los nuevos cambios.');

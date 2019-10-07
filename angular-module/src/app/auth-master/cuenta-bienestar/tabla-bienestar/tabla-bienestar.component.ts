@@ -214,7 +214,7 @@ export class TablaBienestarComponent implements OnInit {
   }
   //actualizar items
   actualizar(id, campo, input, validar) {
-    if (campo == "archivo_1" || campo == "archivo_2") {
+    if (campo == "archivo_1" || campo == "archivo_2" || campo == "archivo_2_gm") {
       if (campo == "undefined") {
         alert("ingrese documento porfavor!")
         return false;

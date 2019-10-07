@@ -107,5 +107,15 @@ export class ConsorcioService {
         )
     });
   }
+  calcularPagoBeneficio(idSocio,tipo,porcentaje): Observable<any> {
+
+    return this._http.get(this.url + "calcular_dia_sueldo/" + idSocio +"/"+ tipo +"/"+ porcentaje, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
 
 }

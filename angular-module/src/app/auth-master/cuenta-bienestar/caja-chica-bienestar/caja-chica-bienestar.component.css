@@ -1,9 +1,12 @@
 label,input, button{
-    font-size: 12px;
+    font-size: 14px;
   }
 
   tr,th{
-    font-size: 12px;
+    font-size: 14px;
+  }
+  li{
+    font-size: 14px;
   }
   th{
     color: white;

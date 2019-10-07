@@ -6,11 +6,11 @@
     </strong>
   </div>
   <div class="card-body">
-    <div class="col-12 col-md-3 col-lg-3"><br><label><strong>DEFINICIONES</strong></label> <br>
+    <div class="col-12 col-md-6 col-lg-6"><br><label><strong>DEFINICIONES</strong></label> <br>
       <label>
         <ngb-alert [dismissible]="false">
           DIA DE SUELDO = <b>D.S.</b> <br>
-          PAGO DE BENEFICIOS = <b>P.B.</b>
+          <b>Advertencia!</b> Solo se puede ingresar un campo a la vez.
         </ngb-alert>
       </label>
     </div>
@@ -32,8 +32,7 @@
           </div>
           <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Tipo de Pago</strong></label>
             <!-- (change)="tipoPago == 2 ? verInput = true: verInput = false; montoCE = ''" -->
-            <select #tipo_consorcio [(ngModel)]="tipoPago" 
-              class="form-control form-control-sm">
+            <select #tipo_consorcio [(ngModel)]="tipoPago" class="form-control form-control-sm">
               <!-- <option value="">--Seleccione--</option> -->
               <option value="1">Dia de Sueldo</option>
               <!-- <option value="2">Pago Beneficio</option> -->
@@ -114,17 +113,17 @@
         <thead text-sm>
           <tr>
             <th style="background: #138D75"><label class="float-right"> BUSCAR SOCIO:</label></th>
-            <td style="background: #138D75" colspan="4">
+            <td style="background: #138D75" colspan="3">
               <input class="form-control form-control-sm" placeholder="Buscar por nombre......" [(ngModel)]="search">
             </td>
 
-            <td style="background: #138D75" colspan="3">
+            <td style="background: #138D75" colspan="4">
               <button (click)="filtrar()" class="btn btn-secondary btn-sm">
                 BUSCAR <i [hidden]="blockLoad" class="fas fa-search"></i>
                 <img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
               </button>
             </td>
-            <td style="background: #138D75" colspan="3">
+            <td style="background: #138D75" colspan="4">
               <button id="refrescarTabla" (click)="listar(); search=''; blockLoad2=true; "
                 class="btn btn-secondary btn-sm">
                 REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
@@ -137,12 +136,12 @@
             <th colspan="1" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th>
             <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
             <th colspan="2" style="background: #138D75"><i class="fas fa-user"></i> ESTADO SOCIO</th>
-            <!-- <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> TIPO DE PAGO</th> -->
+            <th colspan="2" style="background: #138D75"><i class="fas fa-calendar-alt"></i> MES</th>
             <th class="size" style="background: #138D75"><i class="fas fa-dollar-sign"></i> MONTO</th>
             <!-- <th *ngIf="verInput" colspan="1" style="background: #138D75"> GENERAR DESC.</th> -->
             <th colspan="1" style="background: #138D75"> GUARDAR</th>
             <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO D.S.</th>
-            <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO P.B.</th>
+            <!-- <th colspan="1" style="background: #138D75"><i class="fas fa-dollar-sign"></i> CANCELADO P.B.</th> -->
           </tr>
         </thead>
         <tbody>
@@ -152,6 +151,11 @@
             <td colspan="2"
               [ngClass]="{'green': item?.estado_socio == 'vigente' , 'red': item?.estado_socio != 'vigente' }">
               {{ item?.estado_socio | uppercase}}</td>
+            <td colspan="2">
+              <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes disabled>
+                <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
+              </select>
+            </td>
             <td class="size"><input value="{{montoCE}}" #monto type="number" class="form-control form-control-sm">
             </td>
             <!-- <td *ngIf="verInput" colspan="1"><button class="btn btn-outline-success btn-sm">
@@ -168,9 +172,10 @@
             <td colspan="1"
               [ngClass]="{'red': item?.pago_actual_ds == 'Sin Registro' , 'green': item?.pago_actual_ds != 'Sin Registro' }">
               {{item?.pago_actual_ds +' '+ item?.fecha_ds}}</td>
-            <td colspan="1"
+            <!-- <td colspan="1"
               [ngClass]="{'red': item?.pago_actual_cex == 'Sin Registro' , 'green': item?.pago_actual_cex != 'Sin Registro' }">
-              {{item?.pago_actual_cex +' '+ item.fecha_cex}}</td>
+              {{item?.pago_actual_cex +' '+ item.fecha_cex}}
+            </td> -->
 
           </tr>
         </tbody>

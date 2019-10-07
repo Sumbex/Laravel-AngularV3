@@ -21,6 +21,7 @@
         <label>
           <ngb-alert [dismissible]="false">
             DIA DE SUELDO = <b>D.S.</b> <br>
+            DIA DE SUELDO - EL DIA DE SUELDO DEL DESVINCULADO = <b>D.S.D.</b> <br>
             PAGO DE BENEFICIOS = <b>P.B.</b> <br>
             LOS SOCIOS DE COLOR <b class="red">ROJO</b> ESTAN <b>DESVINCULADOS</b> DEL AÑO SELECCIONADO
           </ngb-alert>
@@ -69,36 +70,178 @@
             <th colspan="2" style="background: #138D75"> NOVIEMBRE</th>
             <th colspan="2" style="background: #138D75"> DICIEMBRE</th>
             <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL D.S.</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL D.S.D.</th>
             <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL P.B.</th>
             <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL ANUAL</th>
           </tr>
 
           <tr class="text-center">
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+                <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+              </th>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 1" style="background: #138D75; cursor: pointer"> P.B. 
+              <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 2" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 3" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 4" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 5" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 6" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 7" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 8" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 9" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 10" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 11" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S. 
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 12" style="background: #138D75; cursor: pointer"> P.B.
+            <i class="fas fa-info-circle" style="color: black" placement="top" ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
           </tr>
+
+          <ng-template #modalPagoBeneficio let-c="close" let-d="dismiss">
+              <div class="modal-header" id="demoFont">
+                <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio en el Mes {{this.mesBeneficio}}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+          
+                  <div class="col-12 col-md-12 col-lg-12">
+                    <div class="row">
+          
+                      <div class="col-12 col-md-12 col-lg-12">
+                        <label><strong>SELECCIONE EL SOCIO A PAGAR EL BENEFICIO</strong></label>
+                        <select [(ngModel)]="socioPB" class="form-control form-control-sm">
+                          <!-- <option value="0">--Seleccione--</option> -->
+                          <option value="">DAVID ANTONIO LUNA CUEVAS - 24-04-2019</option>
+                        </select>
+                      </div>
+          
+                      <div class="col-12 col-md-4 col-lg-4">
+                        <br><label><strong>SELECCIONE EL TIPO DE PAGO</strong></label>
+                        <select [(ngModel)]="tipoPago" class="form-control form-control-sm">
+                          <!-- <option value="0">--Seleccione--</option> -->
+                          <option value="2">Pago Beneficio</option>
+                        </select>
+                      </div>
+          
+                      <div class="col-12 col-md-4 col-lg-4">
+                        <br><label><strong>SELECCIONE EL TIPO DE RETIRO DEL SOCIO</strong></label>
+                        <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
+                          <option value="0">--Seleccione--</option>
+                          <option value="1">Enfermedad</option>
+                          <option value="2">Jubilacion</option>
+                          <option value="3">Despido</option>
+                          <option value="4">Fallecimiento</option>
+                        </select>
+                      </div>
+          
+                      <div class="col-12 col-md-4 col-lg-4">
+                        <br><label><strong>SELECCIONE DESCUENTO A APLICAR</strong></label>
+                        <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
+                          class="form-control form-control-sm">
+                          <option value="0">--Seleccione--</option>
+                          <option value="1">100%</option>
+                          <option value="2">90%</option>
+                          <option value="3">75%</option>
+                          <option value="4">60%</option>
+                          <option value="5">50%</option>
+                          <option value="6">40%</option>
+                          <option value="7">30%</option>
+                          <option value="8">25%</option>
+                          <option value="9">20%</option>
+                        </select>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-6">
+                        <br><label><strong>MONTO TOTAL CALCULADO</strong></label>
+                       <input value="100000" #monto type="number" class="form-control form-control-sm" disabled>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-6">
+                        <br><label><strong>INGRESE MONTO DEL BENEFICIO</strong></label>
+                       <input #monto type="number" class="form-control form-control-sm">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
+                  <button type="button" class="btn btn-outline-success">Generar
+                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                  </button>
+                  <button type="button" class="btn btn-success">Guardar
+                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                  </button>
+                </div>
+              </div>
+          </ng-template>
 
         </thead>
 
@@ -115,1034 +258,111 @@
               {{item?.monto_mes_ds_1  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio1); mesBeneficio = 1"
-              [ngClass]="{'green': item?.monto_mes_cex_1 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_1 != '0' }">
               {{item?.monto_mes_cex_1  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio1 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_1}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_1)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_2 != '0'}">
               {{item?.monto_mes_ds_2  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio2); mesBeneficio = 2"
-              [ngClass]="{'green': item?.monto_mes_cex_2 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_2 != '0'}">
               {{item?.monto_mes_cex_2  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio2 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_2}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_2)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_3 != '0'}">
               {{item?.monto_mes_ds_3  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio3); mesBeneficio = 3"
-             [ngClass]="{'green': item?.monto_mes_cex_3 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_3 != '0'}">
               {{item?.monto_mes_cex_3  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio3 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_3}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_3)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_4 != '0'}">
               {{item?.monto_mes_ds_4  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio4); mesBeneficio = 4"
-             [ngClass]="{'green': item?.monto_mes_cex_4 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_4 != '0'}">
               {{item?.monto_mes_cex_4  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio4 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_4}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_4)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_5 != '0'}">
               {{item?.monto_mes_ds_5  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
-            
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio5); mesBeneficio = 5"
-             [ngClass]="{'green': item?.monto_mes_cex_5 != '0'}">
+
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_5 != '0'}">
               {{item?.monto_mes_cex_5  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio5 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_5}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_5)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_6 != '0'}">
               {{item?.monto_mes_ds_6  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio6); mesBeneficio = 6"
-             [ngClass]="{'green': item?.monto_mes_cex_6 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_6 != '0'}">
               {{item?.monto_mes_cex_6  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio6 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_6}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_6)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_7 != '0'}">
               {{item?.monto_mes_ds_7  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio7); mesBeneficio = 7"
-             [ngClass]="{'green': item?.monto_mes_cex_7 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_7 != '0'}">
               {{item?.monto_mes_cex_7  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio7 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_7}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_7)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_8 != '0'}">
               {{item?.monto_mes_ds_8  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio8); mesBeneficio = 8"
-             [ngClass]="{'green': item?.monto_mes_cex_8 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_8 != '0'}">
               {{item?.monto_mes_cex_8  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio8 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_8}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_8)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_9 != '0'}">
               {{item?.monto_mes_ds_9  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio9); mesBeneficio = 9"
-             [ngClass]="{'green': item?.monto_mes_cex_9 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red': item?.monto_mes_ds_9 != '0'}">
               {{item?.monto_mes_cex_9  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio9 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_9}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_9)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_10 != '0'}">
               {{item?.monto_mes_ds_10  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio10); mesBeneficio = 10"
-             [ngClass]="{'green': item?.monto_mes_cex_10 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red' : item?.monto_mes_ds_10 != '0'}">
               {{item?.monto_mes_cex_10  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio10 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_10}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_10)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_11 != '0'}">
               {{item?.monto_mes_ds_11  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio11); mesBeneficio = 11"
-             [ngClass]="{'green': item?.monto_mes_cex_11 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red' : item?.monto_mes_ds_11 != '0'}">
               {{item?.monto_mes_cex_11  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio11 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_11}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_11)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_12 != '0'}">
               {{item?.monto_mes_ds_12  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio12); mesBeneficio = 12"
-             [ngClass]="{'green': item?.monto_mes_cex_12 != '0'}">
+            <td colspan="1"
+              [ngClass]="{'red' : item?.monto_mes_ds_12 != '0'}">
               {{item?.monto_mes_cex_12  | currency:"CLP" : "symbol-narrow":'1.0'}}
-              <ng-template #modalPagoBeneficio12 let-c="close" let-d="dismiss">
-                <div class="modal-header" id="demoFont">
-                  <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <div class="row">
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <label><strong>Seleccione Nuevo Tipo</strong></label>
-                          <select #definicionGas [(ngModel)]="tipoPago" class="form-control form-control-sm">
-                            <!-- <option value="0">--Seleccione--</option> -->
-                            <option value="2">Pago Beneficio</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Tipo de Retiro</strong></label>
-                          <select #tipo_consorcio_retiro [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">Enfermedad</option>
-                            <option value="2">Jubilacion</option>
-                            <option value="3">Despido</option>
-                            <option value="4">Fallecimiento</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12">
-                          <br><label><strong>Descuento</strong></label>
-                          <select #tipo_consorcio_descuento [(ngModel)]="tipoDescuento" (change)="calcularPorcentaje()"
-                            class="form-control form-control-sm">
-                            <option value="0">--Seleccione--</option>
-                            <option value="1">100%</option>
-                            <option value="2">90%</option>
-                            <option value="3">75%</option>
-                            <option value="4">60%</option>
-                            <option value="5">50%</option>
-                            <option value="6">40%</option>
-                            <option value="7">30%</option>
-                            <option value="8">25%</option>
-                            <option value="9">20%</option>
-                          </select>
-                        </div>
-
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Dia de Sueldo:</strong></label> <br>
-                          <input type="text" class="form-control form-control-sm" value="{{item?.monto_mes_ds_12}}"
-                            disabled>
-
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12">
-                          {{rescatarDiaSueldo(item?.monto_mes_ds_12)}}
-                        </div>
-                        <div class="col-12 col-md-12 col-lg-12"> <br>
-                          <label><strong>Pago de Beneficio: </strong></label> <br>
-                          <input class="form-control form-control-sm" type="text" [(ngModel)]="calcularBeneficio">
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                    <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(item.id,'definicion',definicionGas,modalUsuario)">Guardar
-                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
-                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    </button>
-                  </div>
-                </div>
-              </ng-template>
             </td>
 
+            <td colspan="1" class="sociosNombre">
+              <b>{{item?.monto_total_ds_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
               <b>{{item?.monto_total_ds_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
@@ -1316,16 +536,3 @@
 
   </div>
 </div>
-
-<!-- <ng-template #modalPagoBeneficio let-modal>
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Pagar Beneficio</strong></h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-
-      <button class="btn btn-success btn-block btn-sm" (click)="modal.close('Save click')">Salir</button>
-    </div>
-  </ng-template> -->

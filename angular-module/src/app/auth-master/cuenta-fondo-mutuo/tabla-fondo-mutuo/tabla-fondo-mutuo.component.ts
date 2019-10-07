@@ -89,10 +89,13 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.llenar_select();
   }
   openPagoBeneficio(PagoBeneficio) {
-    this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'sm' });
+    this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'lg' });
   }
 
   cerrarPagoBeneficio() {
+    this.tipoPago = 2;
+    this.tipoRetiro = 0;
+    this.tipoDescuento = 0;
     this.modalPagoBeneficio.close();
   }
 
@@ -125,6 +128,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       }
     )
   }
+  
   listarAnual() {
     // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
@@ -227,42 +231,42 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.valorBeneficio = id;
   }
 
-  calcularPorcentaje(){
-    if(this.tipoDescuento == 1){
-      // console.log("estoy aqui 1");
-      this.calcularBeneficio = this.valorBeneficio;
-    }else if(this.tipoDescuento == 2){
-      // console.log("estoy aqui 2");
-      this.calcularBeneficio = (this.valorBeneficio * 0.90); 
+  // calcularPorcentaje(){
+  //   if(this.tipoDescuento == 1){
+  //     // console.log("estoy aqui 1");
+  //     this.calcularBeneficio = this.valorBeneficio;
+  //   }else if(this.tipoDescuento == 2){
+  //     // console.log("estoy aqui 2");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.90); 
     
-    }else if(this.tipoDescuento == 3){
-      // console.log("estoy aqui 3");
-      this.calcularBeneficio = (this.valorBeneficio * 0.75); 
+  //   }else if(this.tipoDescuento == 3){
+  //     // console.log("estoy aqui 3");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.75); 
     
-    }else if(this.tipoDescuento == 4){
-      // console.log("estoy aqui 4");
-      this.calcularBeneficio = (this.valorBeneficio * 0.60); 
+  //   }else if(this.tipoDescuento == 4){
+  //     // console.log("estoy aqui 4");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.60); 
     
-    }else if(this.tipoDescuento == 5){
-      // console.log("estoy aqui 5");
-      this.calcularBeneficio = (this.valorBeneficio * 0.50); 
+  //   }else if(this.tipoDescuento == 5){
+  //     // console.log("estoy aqui 5");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.50); 
     
-    }else if(this.tipoDescuento == 6){
-      // console.log("estoy aqui 6");
-      this.calcularBeneficio = (this.valorBeneficio * 0.40); 
+  //   }else if(this.tipoDescuento == 6){
+  //     // console.log("estoy aqui 6");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.40); 
     
-    }else if(this.tipoDescuento == 7){
-      // console.log("estoy aqui 7");
-      this.calcularBeneficio = (this.valorBeneficio * 0.30); 
+  //   }else if(this.tipoDescuento == 7){
+  //     // console.log("estoy aqui 7");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.30); 
     
-    }else if(this.tipoDescuento == 8){
-      // console.log("estoy aqui 8");
-      this.calcularBeneficio = (this.valorBeneficio * 0.25); 
+  //   }else if(this.tipoDescuento == 8){
+  //     // console.log("estoy aqui 8");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.25); 
     
-    }else if(this.tipoDescuento == 9){
-      // console.log("estoy aqui 9");
-      this.calcularBeneficio = (this.valorBeneficio * 0.20); 
-    }
-  }
+  //   }else if(this.tipoDescuento == 9){
+  //     // console.log("estoy aqui 9");
+  //     this.calcularBeneficio = (this.valorBeneficio * 0.20); 
+  //   }
+  // }
 
 }

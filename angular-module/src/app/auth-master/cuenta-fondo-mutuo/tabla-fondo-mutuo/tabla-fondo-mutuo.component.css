@@ -73,6 +73,7 @@
 
         .red{
           color: #ED213A;
+          background: #82E0AA;
           font-weight: bold;
         }
         .black{
@@ -80,5 +81,8 @@
           font-weight: bold;
         }
         .green{
+          color: black;
           background: #82E0AA;
+          font-weight: bold;
+
         }

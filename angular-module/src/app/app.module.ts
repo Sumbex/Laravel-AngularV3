@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -111,6 +111,7 @@ import { GeneralReunionComponent } from './socios-master/reuniones/general-reuni
 import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reunion/detalle-reunion.component';
 import { HistorialDetalleReunionComponent } from './socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component';
 import { ReunionesService } from './servicios/reuniones.service';
+import { AuthInterceptorService } from './servicios/auth-interceptor.service';
 
 
 @NgModule({
@@ -296,7 +297,12 @@ import { ReunionesService } from './servicios/reuniones.service';
     PortalSociosService,
     BryanBienestarService,
     BryanConsorcioService,
-    ReunionesService
+    ReunionesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,7 @@ import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
 export class NavbarSocioComponent implements OnInit {
 
   nombreSocio;
+  rol;
 
   constructor(private _userService: UsuarioService, private _portalSociosService: PortalSociosService) { }
 
@@ -18,6 +19,8 @@ export class NavbarSocioComponent implements OnInit {
     this._portalSociosService.getSocioLogeado().subscribe((res) => {
       this.nombreSocio = res.nombres;
     });
+    //obtener rol para habilitar boton cambio de portal
+    this.rol = localStorage.getItem('rol');
   }
 
   logOut(){

@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   usuario: string;
   nombreUsuario;
   isLogged: boolean;
+  rol;
 
   constructor(private _userService: UsuarioService) { }
 
@@ -23,6 +24,8 @@ export class NavbarComponent implements OnInit {
     }
 
     this.getNombre();
+    //obtener rol para habilitar boton cambio de portal
+    this.rol = localStorage.getItem('rol');
   }
 
   logOut(){

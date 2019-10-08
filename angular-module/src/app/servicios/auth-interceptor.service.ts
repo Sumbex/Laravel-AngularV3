@@ -28,8 +28,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401){
-          alert("Ha caducado la sesión con el servidor, el sistema se cerrara para evityar perdida de información");
-          this.router.navigate(['']);
+          window.location.reload();
         }
         return throwError(err);
       })

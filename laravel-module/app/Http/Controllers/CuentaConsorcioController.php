@@ -78,15 +78,17 @@ class CuentaConsorcioController extends Controller
     public function cuenta_consorcio($anio_id)
     {
         $listar = CuentaConsorcio::tabla_consorcio($anio_id);
-
-        foreach ($listar as $key) {
-            if ($key->vinculado == 'N') {
-                $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
-                $key->total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
+        if ($listar != '') {
+            foreach ($listar as $key) {
+                if ($key->vinculado == 'N') {
+                    $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
+                    //$key->monto_total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
+                    $key->monto_total_menos_ds = (int)$key->monto_total_ds_socio - (int)$ultimo_ds['dia_sueldo'];
+                }
             }
-        }
 
-        return $listar;
+            return $listar;
+        }
         
     }
     public function totales_cuenta_consorcio($anio_id)
@@ -206,11 +208,11 @@ class CuentaConsorcioController extends Controller
                     'socio_id' => $socio_id
                 ])->first();
         
-        if ($verify) {
+        if ($verify) {  
 
-            if ($verify->descripcion != $desc) {
-                return ['estado'=>'failed','mensaje'=>'Ya no puede cambiar el tipo de descuento'];
-            }
+            // if ($verify->descripcion != $desc) {
+            //     return ['estado'=>'failed','mensaje'=>'Ya no puede cambiar el tipo de descuento'];
+            // }
 
             $verify->mes_id = $mes;
             $verify->descripcion = $desc;
@@ -236,6 +238,9 @@ class CuentaConsorcioController extends Controller
         $sum++;
 
         if ($sum == 2) {
+            $socio = Socios::find($socio_id);
+            $socio->retiro_pago_beneficio = 'S'; //Se le dio su beneficio
+            $socio->save();
             return [
                 'estado' => 'success',
                 'menjsaje' => 'Pago de beneficio y desvinculacion exitosa'

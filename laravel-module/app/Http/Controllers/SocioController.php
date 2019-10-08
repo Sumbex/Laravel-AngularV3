@@ -224,6 +224,7 @@ class SocioController extends Controller
 
             case 'fecha_egreso':
                 $s->fecha_egreso = $r->valor;
+                $s->activo = 'N';
                 if($s->save()){
 
                     $desvincular = $this->desvincular_socio_consorcio($s);

@@ -76,6 +76,10 @@
           background: #82E0AA;
           font-weight: bold;
         }
+        .red2{
+          color: #ED213A;
+          font-weight: bold;
+        }
         .black{
           color: black;
           font-weight: bold;
@@ -86,3 +90,6 @@
           font-weight: bold;
 
         }
+
+        .tableFixHead       { overflow-y: auto; height: 500px; }
+        .tableFixHead thead { position: sticky; top: 0; }

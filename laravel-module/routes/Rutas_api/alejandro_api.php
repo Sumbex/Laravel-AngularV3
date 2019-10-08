@@ -128,4 +128,6 @@ Route::get('filtrar_tabla_consorcio/{anio_id}/{search?}','CuentaConsorcioControl
 
 Route::get('calcular_dia_sueldo/{socio_id}/{porc}', 'CuentaConsorcioController@calcular_dia_sueldo');
 Route::get('calcular_dia_sueldo_manual/{dia_sueldo}/{porc}/{desc}/{mes}', 'CuentaConsorcioController@calcular_dia_sueldo_manual');
-
+Route::get('socios_sin_pb','CuentaConsorcioController@socios_sin_pb');
+Route::get('descontar_dia_sueldo/{porc}/{mes}/{anio}','CuentaConsorcioController@descontar_dia_sueldo');
+Route::get('aplicar_descuento_dia_sueldo/{socio_id}/{porc}/{desc}/{mes}/{anio}','CuentaConsorcioController@aplicar_descuento_dia_sueldo');

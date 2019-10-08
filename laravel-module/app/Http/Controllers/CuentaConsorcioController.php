@@ -77,7 +77,16 @@ class CuentaConsorcioController extends Controller
 
     public function cuenta_consorcio($anio_id)
     {
-        return CuentaConsorcio::tabla_consorcio($anio_id);
+        $listar = CuentaConsorcio::tabla_consorcio($anio_id);
+
+        foreach ($listar as $key) {
+            if ($key->vinculado == 'N') {
+                $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
+                $key->total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
+            }
+        }
+
+        return $listar;
         
     }
     public function totales_cuenta_consorcio($anio_id)
@@ -166,7 +175,7 @@ class CuentaConsorcioController extends Controller
 
                     $ds = (int) $key['monto_mes_ds_'.$mes];
                     $mult = $ds * $porc;
-                    $result = $ds - $mult;
+                    $result = $mult; //$ds - $mult;
 
                     $update['monto_mes_cex_'.$mes] = round($result);
                     $monto_beneficio = $monto_beneficio + round($result);
@@ -190,6 +199,7 @@ class CuentaConsorcioController extends Controller
     }
     public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio)
     {
+        $sum =0;
         $verify = CcPagoBeneficio::where([
                     'anio_id' =>$anio,
                     'mes_id' => $mes,
@@ -206,6 +216,7 @@ class CuentaConsorcioController extends Controller
             $verify->descripcion = $desc;
             $verify->porcentaje = $porc;
             $verify->save();
+            $sum++;
 
         }else{
             $pb = new CcPagoBeneficio;
@@ -215,11 +226,24 @@ class CuentaConsorcioController extends Controller
             $pb->descripcion = $desc;
             $pb->porcentaje = $porc;
             $pb->save();
+            $sum++;
 
         }
 
         $desv = CuentaConsorcio::where(['anio_id'=> $anio, 'socio_id'=>$socio_id])->first();
         $desv->vinculado = 'N';
         $desv->save();
+        $sum++;
+
+        if ($sum == 2) {
+            return [
+                'estado' => 'success',
+                'menjsaje' => 'Pago de beneficio y desvinculacion exitosa'
+            ];
+        }
+        return [
+                'estado' => 'failed',
+                'menjsaje' => 'Pago de beneficio o desvinculacion erronea'
+        ];
     }
 }

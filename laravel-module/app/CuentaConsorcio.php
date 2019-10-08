@@ -52,7 +52,7 @@ class CuentaConsorcio extends Model
                               order by 
                                 (case when fecha_egreso is null then 'vigente'
                                 else concat('egresado (',to_char(fecha_egreso,'dd-mm-yyyy'),')')
-                                end) desc, s.a_paterno, s.a_materno
+                                end) asc, s.a_paterno, s.a_materno
                               
                               ) AS x
                               left join mes m_ds on m_ds.id = x.mes_ds_id
@@ -431,7 +431,9 @@ class CuentaConsorcio extends Model
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
-                            where cc.anio_id = $anio_id");
+                            where cc.anio_id = $anio_id
+                            order by a_paterno, a_materno asc
+                            ");
 
         if (count($listar) > 0) {
     		return $listar;

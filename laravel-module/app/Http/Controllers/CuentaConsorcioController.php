@@ -199,6 +199,7 @@ class CuentaConsorcioController extends Controller
     }
     public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio)
     {
+        $sum =0;
         $verify = CcPagoBeneficio::where([
                     'anio_id' =>$anio,
                     'mes_id' => $mes,
@@ -215,6 +216,7 @@ class CuentaConsorcioController extends Controller
             $verify->descripcion = $desc;
             $verify->porcentaje = $porc;
             $verify->save();
+            $sum++;
 
         }else{
             $pb = new CcPagoBeneficio;
@@ -224,11 +226,24 @@ class CuentaConsorcioController extends Controller
             $pb->descripcion = $desc;
             $pb->porcentaje = $porc;
             $pb->save();
+            $sum++;
 
         }
 
         $desv = CuentaConsorcio::where(['anio_id'=> $anio, 'socio_id'=>$socio_id])->first();
         $desv->vinculado = 'N';
         $desv->save();
+        $sum++;
+
+        if ($sum == 2) {
+            return [
+                'estado' => 'success',
+                'menjsaje' => 'Pago de beneficio y desvinculacion exitosa'
+            ];
+        }
+        return [
+                'estado' => 'failed',
+                'menjsaje' => 'Pago de beneficio o desvinculacion erronea'
+        ];
     }
 }

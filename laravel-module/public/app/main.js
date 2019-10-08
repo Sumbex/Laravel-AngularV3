@@ -4387,9 +4387,10 @@ let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
         this.modalPagoBeneficio.close();
     }
     limpiarPagoBeneficio() {
-        this.tipoPorc = '0';
+        this.tipoPorc = '1';
         this.tipoRetiro = '0';
         this.montoBeneficio = '';
+        this.socio = '';
     }
     listar() {
         this.blockLoad2 = true;

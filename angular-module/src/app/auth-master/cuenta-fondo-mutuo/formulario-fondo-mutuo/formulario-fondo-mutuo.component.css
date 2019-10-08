@@ -71,3 +71,7 @@
         color: #1E8449;
         font-weight: bold;
       }
+
+      
+      .tableFixHead       { overflow-y: auto; height: 500px; }
+      .tableFixHead thead { position: sticky; top: 0; }

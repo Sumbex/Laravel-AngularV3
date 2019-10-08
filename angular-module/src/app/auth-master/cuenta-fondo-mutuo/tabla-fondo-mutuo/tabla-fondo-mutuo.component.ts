@@ -61,11 +61,14 @@ export class TablaFondoMutuoComponent implements OnInit {
   //pago beneficio
   modalPagoBeneficio;
   tipoPago = 2;
-  tipoRetiro = 0;
-  tipoDescuento = 0;
-  calcularBeneficio;
-  valorBeneficio;
+  tipoRetiro = '0';
+  tipoPorc = '1';
   mesBeneficio;
+  montoBeneficio;
+  socioPB;
+  actualizarLoad = false;
+  actualizarLoad2 = false;
+  socio = '';
   
 
   constructor(
@@ -90,13 +93,16 @@ export class TablaFondoMutuoComponent implements OnInit {
   }
   openPagoBeneficio(PagoBeneficio) {
     this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'lg' });
+    this.socioDesvinculado();
   }
 
   cerrarPagoBeneficio() {
-    this.tipoPago = 2;
-    this.tipoRetiro = 0;
-    this.tipoDescuento = 0;
     this.modalPagoBeneficio.close();
+  }
+  limpiarPagoBeneficio(){
+    this.tipoPorc = '0';
+    this.tipoRetiro = '0';
+    this.montoBeneficio = '';
   }
 
   listar() {
@@ -227,9 +233,65 @@ export class TablaFondoMutuoComponent implements OnInit {
     return parseInt(val);
   }
 
-  rescatarDiaSueldo(id){
-    this.valorBeneficio = id;
+  calcularPagoBeneficio() {
+    this.actualizarLoad = true;
+    this._consorcioService.calcularPagoBeneficio(this.tipoPorc,this.mesBeneficio,this.anio).subscribe((response) => {
+      if(response.estado == 'success'){
+        alert(response.mensaje);
+        this.actualizarLoad = false;
+        this.montoBeneficio = response.monto_beneficio;
+      }
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
   }
+
+  guardarSocioDesv() {
+    this.actualizarLoad2 = true;
+    this._consorcioService.guardarPagoBeneficio(this.socio,this.tipoPorc,this.tipoRetiro,this.mesBeneficio,this.anio).subscribe((response) => {
+      if (response.estado == 'failed') {
+        alert(response.mensaje);
+        this.actualizarLoad2 = false;
+      }
+      if (response.estado == 'success') {
+        this.socio = '';
+        this.tipoPorc = '0';
+        this.tipoRetiro = '0';
+        this.mesBeneficio = '';
+        this.montoBeneficio = '';
+        alert(response.mensaje);
+        this.actualizarLoad2 = false;
+        this.modalPagoBeneficio.close();
+      }
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
+  }
+
+  socioDesvinculado(){
+    this._consorcioService.socios_sin_pb().subscribe((response) => {
+        this.socioPB = response;
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
+  }
+
+
+  // rescatarDiaSueldo(id){
+  //   this.valorBeneficio = id;
+  // }
 
   // calcularPorcentaje(){
   //   if(this.tipoDescuento == 1){

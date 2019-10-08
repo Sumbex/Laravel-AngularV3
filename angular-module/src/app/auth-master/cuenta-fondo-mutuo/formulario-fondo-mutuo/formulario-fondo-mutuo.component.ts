@@ -182,8 +182,6 @@ export class FormularioFondoMutuoComponent implements OnInit {
     data.append('mes_id', mes);
     data.append('tipo_consorcio', tipo_consorcio.value);
     data.append('monto', monto.value);
-    // data.append('estado_socio',);
-    // console.log(id,anio,mes,tipo_consorcio.value,monto.value);
 
     this._consorcioService.insertar_consorcio(data).subscribe((response) => {
       if (response.estado == 'failed') {
@@ -196,9 +194,6 @@ export class FormularioFondoMutuoComponent implements OnInit {
         anio = '';
         mes = '';
         monto.value = '';
-        // if (this.tipoPago == 1) {
-        //   monto.value = '';
-        // }
         alert(response.mensaje);
         this.blockIngreso = false;
         document.getElementById('refrescarTabla').click();

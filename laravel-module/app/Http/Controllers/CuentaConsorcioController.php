@@ -77,7 +77,16 @@ class CuentaConsorcioController extends Controller
 
     public function cuenta_consorcio($anio_id)
     {
-        return CuentaConsorcio::tabla_consorcio($anio_id);
+        $listar = CuentaConsorcio::tabla_consorcio($anio_id);
+
+        foreach ($listar as $key) {
+            if ($key->vinculado == 'N') {
+                $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
+                $key->total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
+            }
+        }
+
+        return $listar;
         
     }
     public function totales_cuenta_consorcio($anio_id)
@@ -166,7 +175,7 @@ class CuentaConsorcioController extends Controller
 
                     $ds = (int) $key['monto_mes_ds_'.$mes];
                     $mult = $ds * $porc;
-                    $result = $ds - $mult;
+                    $result = $mult; //$ds - $mult;
 
                     $update['monto_mes_cex_'.$mes] = round($result);
                     $monto_beneficio = $monto_beneficio + round($result);

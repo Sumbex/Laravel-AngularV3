@@ -70,6 +70,7 @@ export class TablaFondoMutuoComponent implements OnInit {
   actualizarLoad = false;
   actualizarLoad2 = false;
   socio = '';
+  descripcionDesc;
   
 
   constructor(
@@ -300,6 +301,23 @@ export class TablaFondoMutuoComponent implements OnInit {
       }
     );
   }
+
+  descripcionDescuento(){
+    this._consorcioService.descripcion_descuento(this.anio,this.mesBeneficio).subscribe((response) => {
+      this.descripcionDesc = '';
+      if(response.estado == "success"){
+        this.descripcionDesc = response.mensaje;
+      }else{
+        this.descripcionDesc = "No Existe un pago de beneficio aun en este mes";
+      }
+ 
+  },
+    error => {
+      console.log(error);
+      return false;
+    }
+  );
+}
 
 
   // rescatarDiaSueldo(id){

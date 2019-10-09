@@ -137,6 +137,16 @@ export class ConsorcioService {
         )
     });
   }
+  descripcion_descuento(anio,mes): Observable<any> {
+
+    return this._http.get(this.url + "descripcion_descuento/" + anio +"/"+ mes, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
 
 
 }

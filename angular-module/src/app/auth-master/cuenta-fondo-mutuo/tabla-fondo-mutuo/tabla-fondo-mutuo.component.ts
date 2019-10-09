@@ -65,6 +65,7 @@ export class TablaFondoMutuoComponent implements OnInit {
   tipoPorc = '1';
   mesBeneficio;
   montoBeneficio;
+  montoFinal;
   socioPB;
   actualizarLoad = false;
   actualizarLoad2 = false;
@@ -241,6 +242,7 @@ export class TablaFondoMutuoComponent implements OnInit {
         alert(response.mensaje);
         this.actualizarLoad = false;
         this.montoBeneficio = response.monto_beneficio;
+        document.getElementById('refrescarTabla').click();
       }
     },
       error => {
@@ -253,7 +255,7 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   guardarSocioDesv() {
     this.actualizarLoad2 = true;
-    this._consorcioService.guardarPagoBeneficio(this.socio,this.tipoPorc,this.tipoRetiro,this.mesBeneficio,this.anio).subscribe((response) => {
+    this._consorcioService.guardarPagoBeneficio(this.socio,this.tipoPorc,this.tipoRetiro,this.mesBeneficio,this.anio,this.montoFinal).subscribe((response) => {
       if (response.estado == 'failed') {
         alert(response.mensaje);
         this.actualizarLoad2 = false;
@@ -264,6 +266,7 @@ export class TablaFondoMutuoComponent implements OnInit {
         this.tipoRetiro = '0';
         this.mesBeneficio = '';
         this.montoBeneficio = '';
+        this.montoFinal = '';
         alert(response.mensaje);
         this.actualizarLoad2 = false;
         this.modalPagoBeneficio.close();

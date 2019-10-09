@@ -117,9 +117,9 @@ export class ConsorcioService {
         )
     });
   }
-  guardarPagoBeneficio(socioId,porc,desc,mes,anio): Observable<any> {
+  guardarPagoBeneficio(socioId,porc,desc,mes,anio,monto): Observable<any> {
 
-    return this._http.get(this.url + "aplicar_descuento_dia_sueldo/" + socioId +"/"+ porc +"/"+ desc +"/"+ mes +"/"+ anio, {
+    return this._http.get(this.url + "aplicar_descuento_dia_sueldo/" + socioId +"/"+ porc +"/"+ desc +"/"+ mes +"/"+ anio +"/"+ monto, {
         headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,

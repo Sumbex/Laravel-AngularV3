@@ -11,7 +11,7 @@
       </div>
 
       <div class="col-12 col-md-3 col-lg-3"><br><label><strong>REFRESCAR TABLA</strong></label> <br>
-        <button (click)="btn_reload(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
+        <button id="refrescarTabla" (click)="btn_reload(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
           Actualizar &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
           <img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
         </button>
@@ -250,14 +250,14 @@
                         <option value="0.20">20%</option>
                       </select>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-6">
+                    <div class="col-6 col-md-6 col-lg-6">
                       <br><label><strong>MONTO TOTAL CALCULADO</strong></label>
                       <input value="{{montoBeneficio}}" #monto type="number" class="form-control form-control-sm"
                         disabled>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-6">
+                    <div class="col-6 col-md-6 col-lg-6">
                       <br><label><strong><i class="fas fa-arrow-left"></i> INGRESE MONTO DEL BENEFICIO</strong></label>
-                      <input #monto type="number" class="form-control form-control-sm">
+                      <input #monto [(ngModel)]="montoFinal" type="number" class="form-control form-control-sm">
                     </div>
                   </div>
                 </div>

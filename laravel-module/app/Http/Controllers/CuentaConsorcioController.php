@@ -251,12 +251,12 @@ class CuentaConsorcioController extends Controller
                 DB::commit();
                 return [
                     'estado' => 'success',
-                    'menjsaje' => 'Pago de beneficio y desvinculacion exitosa'
+                    'mensaje' => 'Pago de beneficio y desvinculacion exitosa'
                 ];
             }
             return [
                     'estado' => 'failed',
-                    'menjsaje' => 'Pago de beneficio o desvinculacion erronea'
+                    'mensaje' => 'Pago de beneficio o desvinculacion erronea'
             ];
         }catch(QueryException $e){
             DB::rollBack();
@@ -272,5 +272,31 @@ class CuentaConsorcioController extends Controller
 				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
 			];
 		}
+    }
+
+    public function descripcion_descuento($anio, $mes)
+    {
+        $desc = CcPagoBeneficio::select([
+            DB::raw("concat('Retiro por ',descripcion,', con un porcentaje de ',CAST (porcentaje AS float) *100,'% , el monto a dar es ') texto"),
+            'monto_dia_sueldo',
+            DB::raw("concat(nombres,' ',a_paterno) nombre")
+        ])
+        ->join('socios as s','s.id','socio_id')
+        ->where([
+            'anio_id' => $anio,
+            'mes_id' => $mes
+        ])->first();
+
+        if ($desc) {
+            return [
+                'estado' =>'success',
+                'mensaje' => 'Socio desvinculado: '.$desc->nombre.', '.$desc->texto.
+                '$'.number_format($desc->monto_dia_sueldo,0,'.',',').' peso(s)'
+            ];
+        }
+        return [
+            'estado' => 'failed',
+            'mensaje' => 'No hay Descuentos en este mes'
+        ];
     }
 }

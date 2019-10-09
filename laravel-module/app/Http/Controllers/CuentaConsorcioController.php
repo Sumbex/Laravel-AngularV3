@@ -7,6 +7,7 @@ use App\CcPagoBeneficio;
 use App\CuentaConsorcio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class CuentaConsorcioController extends Controller
 {
@@ -199,56 +200,77 @@ class CuentaConsorcioController extends Controller
         return ['estado'=>'failed','mensaje'=>'ningun dato calculado'];
 
     }
-    public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio)
+    public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio, $monto=0)
     {
-        $sum =0;
-        $verify = CcPagoBeneficio::where([
-                    'anio_id' =>$anio,
-                    'mes_id' => $mes,
-                    'socio_id' => $socio_id
-                ])->first();
-        
-        if ($verify) {  
+        try{
+            DB::beginTransaction();
+            
+            $sum =0;
+            $verify = CcPagoBeneficio::where([
+                        'anio_id' =>$anio,
+                        'mes_id' => $mes,
+                        'socio_id' => $socio_id
+                    ])->first();
+            
+            if ($verify) {  
 
-            // if ($verify->descripcion != $desc) {
-            //     return ['estado'=>'failed','mensaje'=>'Ya no puede cambiar el tipo de descuento'];
-            // }
+                // if ($verify->descripcion != $desc) {
+                //     return ['estado'=>'failed','mensaje'=>'Ya no puede cambiar el tipo de descuento'];
+                // }
 
-            $verify->mes_id = $mes;
-            $verify->descripcion = $desc;
-            $verify->porcentaje = $porc;
-            $verify->save();
+                $verify->mes_id = $mes;
+                $verify->descripcion = $desc;
+                $verify->porcentaje = $porc;
+                $verify->monto_dia_sueldo = $monto;
+                $verify->save();
+                $sum++;
+
+            }else{
+                $pb = new CcPagoBeneficio;
+                $pb->socio_id = $socio_id;
+                $pb->anio_id = $anio;
+                $pb->mes_id = $mes;
+                $pb->descripcion = $desc;
+                $pb->porcentaje = $porc;
+                $pb->monto_dia_sueldo = $monto;
+                $pb->save();
+                $sum++;
+
+            }
+
+            $desv = CuentaConsorcio::where(['anio_id'=> $anio, 'socio_id'=>$socio_id])->first();
+            $desv->vinculado = 'N';
+            $desv->save();
             $sum++;
 
-        }else{
-            $pb = new CcPagoBeneficio;
-            $pb->socio_id = $socio_id;
-            $pb->anio_id = $anio;
-            $pb->mes_id = $mes;
-            $pb->descripcion = $desc;
-            $pb->porcentaje = $porc;
-            $pb->save();
-            $sum++;
+            if ($sum == 2) {
+                $socio = Socios::find($socio_id);
+                $socio->retiro_pago_beneficio = 'S'; //Se le dio su beneficio
+                $socio->save();
 
-        }
-
-        $desv = CuentaConsorcio::where(['anio_id'=> $anio, 'socio_id'=>$socio_id])->first();
-        $desv->vinculado = 'N';
-        $desv->save();
-        $sum++;
-
-        if ($sum == 2) {
-            $socio = Socios::find($socio_id);
-            $socio->retiro_pago_beneficio = 'S'; //Se le dio su beneficio
-            $socio->save();
+                DB::commit();
+                return [
+                    'estado' => 'success',
+                    'menjsaje' => 'Pago de beneficio y desvinculacion exitosa'
+                ];
+            }
             return [
-                'estado' => 'success',
-                'menjsaje' => 'Pago de beneficio y desvinculacion exitosa'
+                    'estado' => 'failed',
+                    'menjsaje' => 'Pago de beneficio o desvinculacion erronea'
             ];
-        }
-        return [
-                'estado' => 'failed',
-                'menjsaje' => 'Pago de beneficio o desvinculacion erronea'
-        ];
+        }catch(QueryException $e){
+            DB::rollBack();
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}
+		catch(\Exception $e){
+            DB::rollBack();
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+			];
+		}
     }
 }

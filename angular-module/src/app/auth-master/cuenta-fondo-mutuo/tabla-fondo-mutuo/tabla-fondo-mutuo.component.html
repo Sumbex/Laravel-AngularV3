@@ -11,7 +11,8 @@
       </div>
 
       <div class="col-12 col-md-3 col-lg-3"><br><label><strong>REFRESCAR TABLA</strong></label> <br>
-        <button id="refrescarTabla" (click)="btn_reload(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
+        <button id="refrescarTabla" (click)="btn_reload(); search=''; blockLoad2=true; "
+          class="btn btn-secondary btn-sm">
           Actualizar &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
           <img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
         </button>
@@ -55,22 +56,58 @@
           <tr class="text-center">
             <!-- <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th> -->
             <th colspan="4" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
-            <th colspan="2" style="background: #138D75"> ENERO</th>
-            <th colspan="2" style="background: #138D75"> FEBRERO</th>
-            <th colspan="2" style="background: #138D75"> MARZO</th>
-            <th colspan="2" style="background: #138D75"> ABRIL</th>
-            <th colspan="2" style="background: #138D75"> MAYO</th>
-            <th colspan="2" style="background: #138D75"> JUNIO</th>
-            <th colspan="2" style="background: #138D75"> JULIO</th>
-            <th colspan="2" style="background: #138D75"> AGOSTO</th>
-            <th colspan="2" style="background: #138D75"> SEPTIEMBRE</th>
-            <th colspan="2" style="background: #138D75"> OCTUBRE</th>
-            <th colspan="2" style="background: #138D75"> NOVIEMBRE</th>
-            <th colspan="2" style="background: #138D75"> DICIEMBRE</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL D.S.</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL D.S.D.</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL P.B.</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL ANUAL</th>
+            <th colspan="2" style="background: #138D75"> ENERO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> FEBRERO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> MARZO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> ABRIL
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> MAYO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> JUNIO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> JULIO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> AGOSTO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> SEPT
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> OCTUBRE
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> NOV
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> DIC
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL D.S.</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL D.S.D.</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL P.B.</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL ANUAL</th>
           </tr>
 
           <tr class="text-center">
@@ -264,9 +301,10 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-info" (click)="cerrarPagoBeneficio()">Salir </button>
-                <button type="button" class="btn btn-info" (click)="limpiarPagoBeneficio()">Limpiar </button>
-                <button type="button" class="btn btn-outline-success" (click)="calcularPagoBeneficio()">Generar
+                <button type="button" class="btn btn-outline-danger" (click)="cerrarPagoBeneficio()">Salir </button>
+                <button type="button" class="btn btn-outline-success" (click)="limpiarPagoBeneficio()">Limpiar </button>
+                <button type="button" class="btn btn-info" [disabled]="blockLoad"
+                  (click)="calcularPagoBeneficio()">Generar
                   <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
@@ -423,52 +461,183 @@
           <tr class="text-center">
             <!-- <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th> -->
             <th colspan="4" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> </th>
-            <th colspan="2" style="background: #138D75"> ENERO</th>
-            <th colspan="2" style="background: #138D75"> FEBRERO</th>
-            <th colspan="2" style="background: #138D75"> MARZO</th>
-            <th colspan="2" style="background: #138D75"> ABRIL</th>
-            <th colspan="2" style="background: #138D75"> MAYO</th>
-            <th colspan="2" style="background: #138D75"> JUNIO</th>
-            <th colspan="2" style="background: #138D75"> JULIO</th>
-            <th colspan="2" style="background: #138D75"> AGOSTO</th>
-            <th colspan="2" style="background: #138D75"> SEPTIEMBRE</th>
-            <th colspan="2" style="background: #138D75"> OCTUBRE</th>
-            <th colspan="2" style="background: #138D75"> NOVIEMBRE</th>
-            <th colspan="2" style="background: #138D75"> DICIEMBRE</th>
+            <th colspan="2" style="background: #138D75"> ENERO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> FEBRERO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> MARZO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> ABRIL
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> MAYO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> JUNIO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> JULIO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> AGOSTO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> SEPT
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> OCTUBRE
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> NOV
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="2" style="background: #138D75"> DIC
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7)" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
             <th colspan="2" rowspan="4" style="background: #138D75"><i class="fas fa-user"></i> TOTAL ANUAL</th>
           </tr>
 
           <tr class="text-center">
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
-            <th colspan="1" style="background: #138D75"> D.S.</th>
-            <th colspan="1" style="background: #138D75"> P.B.</th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 1"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 2"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 3"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 4"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 5"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 6"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 7"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 8"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 9"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 10"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 11"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
+            <th colspan="1" style="background: #138D75"> D.S.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+            </th>
+
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 12"
+              style="background: #138D75; cursor: pointer"> P.B.
+              <i class="fas fa-info-circle" style="color: black" placement="top"
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
+            </th>
           </tr>
 
         </thead>
         <tbody>
           <tr class="text-center">
-            <th colspan="4" rowspan="3" style="background: #138D75"> TOTAL MENSUAL</th>
+            <th colspan="4" rowspan="3" style="background: #138D75"> <br> TOTAL MENSUAL</th>
             <td colspan="1">{{sociosMensual?.monto_mes_ds_1 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1">{{sociosMensual?.monto_mes_cex_1 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1">{{sociosMensual?.monto_mes_ds_2 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
@@ -511,7 +680,7 @@
             <th colspan="2" style="background: #138D75"> D.S. - P.B.</th>
           </tr>
 
-          <tr>
+          <tr class="text-center">
             <td colspan="2">
               {{ConvertToInt(sociosMensual?.monto_mes_ds_1) - 
                 ConvertToInt(sociosMensual?.monto_mes_cex_1)  | currency:"CLP" : "symbol-narrow":'1.0'}}

@@ -237,17 +237,26 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   calcularPagoBeneficio() {
     this.actualizarLoad = true;
+    this.blockLoad = true;
     this._consorcioService.calcularPagoBeneficio(this.tipoPorc,this.mesBeneficio,this.anio).subscribe((response) => {
+      if(response.estado == 'failed'){
+        alert(response.mensaje);
+        this.actualizarLoad = false;
+        this.blockLoad = false;
+      }
       if(response.estado == 'success'){
         alert(response.mensaje);
         this.actualizarLoad = false;
+        this.blockLoad = false;
         this.montoBeneficio = response.monto_beneficio;
         document.getElementById('refrescarTabla').click();
       }
     },
       error => {
         console.log(error);
-        this.blockIngreso = false;
+        alert("Supero el limite de 60 segundos al generar la insercion masiva");
+        this.actualizarLoad = false;
+        this.blockLoad = false;
         return false;
       }
     );

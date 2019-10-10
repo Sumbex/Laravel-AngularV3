@@ -1,0 +1,118 @@
+<ng-template #editarReunion let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Editando Reunión</strong>
+      </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3>Se encuentra editando la reunión TITULO del día 10.10.10</h3>
+            <p class="text-muted">Reunión creada por usuario de pruebas</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <p class="mt-2">
+              <ngb-alert [dismissible]="false">
+                <strong>¡Advertencia!</strong> Esta tabla cuenta con los datos de la reunión actualmente activa, solo cambie los valores que desea editar y guartdelos con el boton verde, si esea cancelar la reunión presione el botón de color rojo.
+              </ngb-alert>
+            </p>
+          </div>
+        </div>
+        <form #formulario="ngForm" (ngSubmit)="editarReunion(formulario)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fecha"><b>Ingrese una fecha para la reunión</b></label>
+                <input class="form-control" type="datetime-local" name="fecha" #fecha="ngModel" [(ngModel)]="datosReunion.fecha" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="tipo"><b>Seleccione el Tipo de Reunión</b></label>
+                <select class="form-control" name="tipoReunion" #tipoReunion="ngModel" [(ngModel)]="datosReunion.tipoReunion" required>
+                  <option value="0">Test</option>
+                  <option value="1">Test 2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="titulo"><b>Titulo de la reunión</b></label>
+                <input class="form-control" type="text" placeholder="Ingrese un Nombre para la reunión (Máximo 90 caracteres)" maxlength="90" name="titulo" #titulo="ngModel" [(ngModel)]="datosReunion.titulo" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión a realizar</b></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
+                  placeholder="(Minimo 4 caracteres, máximo 500 cacacteres)" minlength="4" maxlength="500" name="descripcion" #descripcion="ngModel" [(ngModel)]="datosReunion.descripcion" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <button type="submit" [disabled]="!formulario.valid" class="btn btn-success btn-block">Actualizar Reunión</button>
+            </div>
+            <div class="col-md-6 mt-2">
+                <button (click)="modalConfirmacion(confirmacion)" type="submit" class="btn btn-danger btn-block">Cancelar Reunión</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </ng-template>
+
+<div (click)="abrirModal(editarReunion)" class="card card-body text-white text-center bg-success" style="cursor: pointer">
+  <h3><i class="fas fa-hourglass-end"></i> Reunión Activa</h3>
+  <p>Realizar cambios de fecha o cancelar la reunión a realizar</p>
+</div>
+
+<ng-template #confirmacion let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title text-center"><strong><i class="fas fa-cash-register"></i> ¿Esta Seguro?</strong>
+      </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p><b>¿Esta seguro que desea cancelar la reunión <span class="text-danger">Votaciones de Sindicato</span> con fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span class="text-danger">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-6">
+            <button class="btn btn-danger btn-lg">Sí</button>
+          </div>
+          <div class="col-md-6">
+              <button class="btn btn-success btn-lg">No</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </ng-template>

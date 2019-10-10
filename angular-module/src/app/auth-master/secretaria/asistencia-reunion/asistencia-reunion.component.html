@@ -1,0 +1,262 @@
+<!-- MENU DE REUNION FINALIZADA -->
+<ng-template #menuAdministrarReunion let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Administrador de Asistencia</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mt-2">
+          <h3 class="text-center">Administrador de Reunión Activa</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-4">
+          <button class="btn btn-primary btn-lg btn-block" (click)="abrirModal(formularioAsistencia)">Formulario de
+            Asistencia</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-4">
+          <button class="btn btn-success btn-lg btn-block" (click)="abrirModal(listaAsistencia)">Lista de Asistentes</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-4">
+          <button class="btn btn-danger btn-lg btn-block" (click)="abrirConfirmacion(confirmacionArchivar)">Archivar Reunión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>
+
+<div (click)="abrirModal(menuAdministrarReunion)" class="card card-body text-white text-center bg-danger"
+  style="cursor: pointer">
+  <h3><i class="far fa-thumbs-up"></i> Reunión Finalizada</h3>
+  <p>Ingresar la asistencia de la ultima reunión realizada para generar informes</p>
+</div>
+
+<!-- FORMULARIO DE JUSTIFICACIONES -->
+<ng-template #formularioAsistencia let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Crear una nueva Reunión</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-center">Reunión del día 10.10.10</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="mt-2">
+            <ngb-alert [dismissible]="false">
+              <strong>¡Advertencia!</strong> Ingrese a todos los socios que asistieron a la reunión, los socios que no
+              se ingresen quedarán como inasistentes a excepción de los justificados.
+            </ngb-alert>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="rut"><b>Ingrese el rut del socio que asistio a la reunión</b></label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Rut del Socio" aria-label="Recipient's username"
+              aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mt-4">
+          <div class="form-group">
+            <label for="nombre"><b>Nombre del Socio</b></label>
+            <input class="form-control" type="text" name="nombre" disabled>
+          </div>
+        </div>
+        <div class="col-md-3 mt-4">
+          <div class="form-group">
+            <label for="estado"><b>Estado Actual</b></label>
+            <input class="form-control" type="text" name="estado" disabled>
+          </div>
+        </div>
+        <div class="col-md-3 mt-4">
+          <div class="form-group">
+            <label for="boton"><b>Cambiar Estado</b></label>
+            <button class="btn btn-primary" name="boton">Marcar como asistido</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <h3>Lista de Asistentes</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="text-center">
+                  <th>Nombre</th>
+                  <th>Asistencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center">
+                  <th>Bryan Montecinos Jara</th>
+                  <th>Sí</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>
+
+<!-- LISTA DE ASISTENCIA -->
+<ng-template #listaAsistencia let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Asistencia</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-center">Reunión del día 10.10.10</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="mt-2">
+            <ngb-alert [dismissible]="false">
+              <strong>¡Advertencia!</strong> En la siguiente lista se mosytraran tanto a los socios que asistieron como
+              los justificados y los inasistentes, basado en estos datos se le otorgara un monto recomendado de ganacias
+              por inasistencias de reunión.
+            </ngb-alert>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <h3>Lista de Asistencia</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="monto"><b>Monto a cobrar por inasistencia</b></label>
+            <input class="form-control" type="text" placeholder="Ingrese monto a cobrar" autofocus>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label for="monto"><b>Total generado en inasistencias</b></label>
+              <input class="form-control" type="text" value="$50.000" disabled>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr class="text-center">
+                  <th>Nombre Socio</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center table-success">
+                  <th>Bryan Vidal Díaz</th>
+                  <th>Asistente</th>
+                </tr>
+                <tr class="text-center table-secondary">
+                  <th>Bryan Montecinos Jara</th>
+                  <th>Justificado</th>
+                </tr>
+                <tr class="text-center table-danger">
+                  <th>David Luna Cuevas</th>
+                  <th>Inasistente</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>
+
+<!-- CONFIRMACIÓN ARCHIVAR -->
+<ng-template #confirmacionArchivar let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Archivar Reunión</strong>
+      </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 text-center">
+                <p><b>¿Esta seguro que desea archivar la reunión <span class="text-danger">Votaciones de Sindicato</span> con fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span class="text-danger">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-md-6">
+                <button class="btn btn-danger btn-lg btn-block">Sí</button>
+              </div>
+              <div class="col-md-6">
+                  <button class="btn btn-success btn-lg btn-block">No</button>
+                </div>
+            </div>
+      </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </ng-template>

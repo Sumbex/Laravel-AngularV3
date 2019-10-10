@@ -903,6 +903,61 @@ module.exports = "<!--Tabla Del Prestamo Socios-->\n<div class=\"modal-body\"><b
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.html":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.html ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- MENU DE REUNION FINALIZADA -->\n<ng-template #menuAdministrarReunion let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Administrador de Asistencia</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-12 mt-2\">\n          <h3 class=\"text-center\">Administrador de Reunión Activa</h3>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12 mt-4\">\n          <button class=\"btn btn-primary btn-lg btn-block\" (click)=\"abrirModal(formularioAsistencia)\">Formulario de\n            Asistencia</button>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12 mt-4\">\n          <button class=\"btn btn-success btn-lg btn-block\" (click)=\"abrirModal(listaAsistencia)\">Lista de Asistentes</button>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12 mt-4\">\n          <button class=\"btn btn-danger btn-lg btn-block\" (click)=\"abrirConfirmacion(confirmacionArchivar)\">Archivar Reunión</button>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n<div (click)=\"abrirModal(menuAdministrarReunion)\" class=\"card card-body text-white text-center bg-danger\"\n  style=\"cursor: pointer\">\n  <h3><i class=\"far fa-thumbs-up\"></i> Reunión Finalizada</h3>\n  <p>Ingresar la asistencia de la ultima reunión realizada para generar informes</p>\n</div>\n\n<!-- FORMULARIO DE JUSTIFICACIONES -->\n<ng-template #formularioAsistencia let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Crear una nueva Reunión</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <h3 class=\"text-center\">Reunión del día 10.10.10</h3>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <p class=\"mt-2\">\n            <ngb-alert [dismissible]=\"false\">\n              <strong>¡Advertencia!</strong> Ingrese a todos los socios que asistieron a la reunión, los socios que no\n              se ingresen quedarán como inasistentes a excepción de los justificados.\n            </ngb-alert>\n          </p>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <label for=\"rut\"><b>Ingrese el rut del socio que asistio a la reunión</b></label>\n          <div class=\"input-group\">\n            <input type=\"text\" class=\"form-control\" placeholder=\"Rut del Socio\" aria-label=\"Recipient's username\"\n              aria-describedby=\"basic-addon2\">\n            <div class=\"input-group-append\">\n              <button class=\"btn btn-outline-secondary\" type=\"button\">Buscar</button>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-6 mt-4\">\n          <div class=\"form-group\">\n            <label for=\"nombre\"><b>Nombre del Socio</b></label>\n            <input class=\"form-control\" type=\"text\" name=\"nombre\" disabled>\n          </div>\n        </div>\n        <div class=\"col-md-3 mt-4\">\n          <div class=\"form-group\">\n            <label for=\"estado\"><b>Estado Actual</b></label>\n            <input class=\"form-control\" type=\"text\" name=\"estado\" disabled>\n          </div>\n        </div>\n        <div class=\"col-md-3 mt-4\">\n          <div class=\"form-group\">\n            <label for=\"boton\"><b>Cambiar Estado</b></label>\n            <button class=\"btn btn-primary\" name=\"boton\">Marcar como asistido</button>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12 mt-3\">\n          <h3>Lista de Asistentes</h3>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"table-responsive\">\n            <table class=\"table table-bordered\">\n              <thead>\n                <tr class=\"text-center\">\n                  <th>Nombre</th>\n                  <th>Asistencia</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr class=\"text-center\">\n                  <th>Bryan Montecinos Jara</th>\n                  <th>Sí</th>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n<!-- LISTA DE ASISTENCIA -->\n<ng-template #listaAsistencia let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Asistencia</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <h3 class=\"text-center\">Reunión del día 10.10.10</h3>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <p class=\"mt-2\">\n            <ngb-alert [dismissible]=\"false\">\n              <strong>¡Advertencia!</strong> En la siguiente lista se mosytraran tanto a los socios que asistieron como\n              los justificados y los inasistentes, basado en estos datos se le otorgara un monto recomendado de ganacias\n              por inasistencias de reunión.\n            </ngb-alert>\n          </p>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12 mt-3\">\n          <h3>Lista de Asistencia</h3>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <div class=\"form-group\">\n            <label for=\"monto\"><b>Monto a cobrar por inasistencia</b></label>\n            <input class=\"form-control\" type=\"text\" placeholder=\"Ingrese monto a cobrar\" autofocus>\n          </div>\n        </div>\n        <div class=\"col-md-6\">\n            <div class=\"form-group\">\n              <label for=\"monto\"><b>Total generado en inasistencias</b></label>\n              <input class=\"form-control\" type=\"text\" value=\"$50.000\" disabled>\n            </div>\n          </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"table-responsive\">\n            <table class=\"table table-bordered table-hover\">\n              <thead class=\"thead-dark\">\n                <tr class=\"text-center\">\n                  <th>Nombre Socio</th>\n                  <th>Estado</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr class=\"text-center table-success\">\n                  <th>Bryan Vidal Díaz</th>\n                  <th>Asistente</th>\n                </tr>\n                <tr class=\"text-center table-secondary\">\n                  <th>Bryan Montecinos Jara</th>\n                  <th>Justificado</th>\n                </tr>\n                <tr class=\"text-center table-danger\">\n                  <th>David Luna Cuevas</th>\n                  <th>Inasistente</th>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n<!-- CONFIRMACIÓN ARCHIVAR -->\n<ng-template #confirmacionArchivar let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Archivar Reunión</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n          <div class=\"row\">\n              <div class=\"col-md-12 text-center\">\n                <p><b>¿Esta seguro que desea archivar la reunión <span class=\"text-danger\">Votaciones de Sindicato</span> con fecha <span class=\"text-danger\">10-10-10</span>? Esta reunión fue creada por <span class=\"text-danger\">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>\n              </div>\n            </div>\n            <div class=\"row text-center\">\n              <div class=\"col-md-6\">\n                <button class=\"btn btn-danger btn-lg btn-block\">Sí</button>\n              </div>\n              <div class=\"col-md-6\">\n                  <button class=\"btn btn-success btn-lg btn-block\">No</button>\n                </div>\n            </div>\n      </div>\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.html":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.html ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-template #editarReunion let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Editando Reunión</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-12 text-center\">\n            <h3>Se encuentra editando la reunión TITULO del día 10.10.10</h3>\n            <p class=\"text-muted\">Reunión creada por usuario de pruebas</p>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12 mt-2\">\n            <p class=\"mt-2\">\n              <ngb-alert [dismissible]=\"false\">\n                <strong>¡Advertencia!</strong> Esta tabla cuenta con los datos de la reunión actualmente activa, solo cambie los valores que desea editar y guartdelos con el boton verde, si esea cancelar la reunión presione el botón de color rojo.\n              </ngb-alert>\n            </p>\n          </div>\n        </div>\n        <form #formulario=\"ngForm\" (ngSubmit)=\"editarReunion(formulario)\">\n          <div class=\"row\">\n            <div class=\"col-md-6\">\n              <div class=\"form-group\">\n                <label for=\"fecha\"><b>Ingrese una fecha para la reunión</b></label>\n                <input class=\"form-control\" type=\"datetime-local\" name=\"fecha\" #fecha=\"ngModel\" [(ngModel)]=\"datosReunion.fecha\" required>\n              </div>\n            </div>\n            <div class=\"col-md-6\">\n              <div class=\"form-group\">\n                <label for=\"tipo\"><b>Seleccione el Tipo de Reunión</b></label>\n                <select class=\"form-control\" name=\"tipoReunion\" #tipoReunion=\"ngModel\" [(ngModel)]=\"datosReunion.tipoReunion\" required>\n                  <option value=\"0\">Test</option>\n                  <option value=\"1\">Test 2</option>\n                </select>\n              </div>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"titulo\"><b>Titulo de la reunión</b></label>\n                <input class=\"form-control\" type=\"text\" placeholder=\"Ingrese un Nombre para la reunión (Máximo 90 caracteres)\" maxlength=\"90\" name=\"titulo\" #titulo=\"ngModel\" [(ngModel)]=\"datosReunion.titulo\" required>\n              </div>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label for=\"exampleFormControlTextarea1\"><b>Ingrese una descripción para la reunión a realizar</b></label>\n                <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\"\n                  placeholder=\"(Minimo 4 caracteres, máximo 500 cacacteres)\" minlength=\"4\" maxlength=\"500\" name=\"descripcion\" #descripcion=\"ngModel\" [(ngModel)]=\"datosReunion.descripcion\" required></textarea>\n              </div>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-md-6 mt-2\">\n              <button type=\"submit\" [disabled]=\"!formulario.valid\" class=\"btn btn-success btn-block\">Actualizar Reunión</button>\n            </div>\n            <div class=\"col-md-6 mt-2\">\n                <button (click)=\"modalConfirmacion(confirmacion)\" type=\"submit\" class=\"btn btn-danger btn-block\">Cancelar Reunión</button>\n              </div>\n          </div>\n        </form>\n      </div>\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>\n\n<div (click)=\"abrirModal(editarReunion)\" class=\"card card-body text-white text-center bg-success\" style=\"cursor: pointer\">\n  <h3><i class=\"fas fa-hourglass-end\"></i> Reunión Activa</h3>\n  <p>Realizar cambios de fecha o cancelar la reunión a realizar</p>\n</div>\n\n<ng-template #confirmacion let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title text-center\"><strong><i class=\"fas fa-cash-register\"></i> ¿Esta Seguro?</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-12 text-center\">\n            <p><b>¿Esta seguro que desea cancelar la reunión <span class=\"text-danger\">Votaciones de Sindicato</span> con fecha <span class=\"text-danger\">10-10-10</span>? Esta reunión fue creada por <span class=\"text-danger\">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>\n          </div>\n        </div>\n        <div class=\"row text-center\">\n          <div class=\"col-md-6\">\n            <button class=\"btn btn-danger btn-lg\">Sí</button>\n          </div>\n          <div class=\"col-md-6\">\n              <button class=\"btn btn-success btn-lg\">No</button>\n            </div>\n        </div>\n      </div>\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.html":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.html ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-template #historialReunion let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Asistencia</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <p class=\"mt-2\">\n              <ngb-alert [dismissible]=\"false\">\n                <strong>¡Advertencia!</strong> La siguiente lista son las reuniones anteriormente realizadas, se componen meramente de datos visuales, por lo tanto no se pueden editar ninguno de sus valores.\n              </ngb-alert>\n            </p>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <div class=\"table-responsive\">\n              <table class=\"table table-bordered table-hover\">\n                <thead>\n                  <tr class=\"text-center\">\n                    <th>Reunion</th>\n                    <th>Fecha</th>\n                    <th>Detalle</th>\n                    <th>Asistencia</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr class=\"text-center\">\n                    <th>Votaciones</th>\n                    <th>10.10.10</th>\n                    <th><button class=\"btn btn-primary\">Ver Detalle Reunión</button></th>\n                    <th><button class=\"btn btn-secondary\">Ver Asistencia</button></th>\n                  </tr>\n                  <tr class=\"text-center\">\n                      <th>Reunión General</th>\n                      <th>11.11.11</th>\n                      <th><button class=\"btn btn-primary\">Ver Detalle Reunión</button></th>\n                      <th><button class=\"btn btn-secondary\">Ver Asistencia</button></th>\n                    </tr>\n                    <tr class=\"text-center\">\n                        <th>Elecciones</th>\n                        <th>12.12.12</th>\n                        <th><button class=\"btn btn-primary\">Ver Detalle Reunión</button></th>\n                        <th><button class=\"btn btn-secondary\">Ver Asistencia</button></th>\n                      </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>\n\n<div (click)=\"abrirModal(historialReunion)\" class=\"card card-body text-white text-center bg-secondary\" style=\"cursor: pointer\">\n  <h3><i class=\"fas fa-list\"></i> Historial de Reuniones</h3>\n  <p>Ver las reuniones anteriormente realizadas</p>\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.html":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.html ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-template #generarNuevaReunion let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Crear una nueva Reunión</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <p class=\"mt-2\">\n            <ngb-alert [dismissible]=\"false\">\n              <strong>¡Advertencia!</strong> Todos los campos son obligatorios, una vez generada la reunión sera\n              publicada en el portal de socios para informarles con todos los datos solicitados en este formulario.\n            </ngb-alert>\n          </p>\n        </div>\n      </div>\n      <form #formulario=\"ngForm\" (ngSubmit)=\"ingresarReunion(formulario)\">\n        <div class=\"row\">\n          <div class=\"col-md-6\">\n            <div class=\"form-group\">\n              <label for=\"fecha\"><b>Ingrese una fecha para la reunión</b></label>\n              <input class=\"form-control\" type=\"datetime-local\" name=\"fecha\" #fecha=\"ngModel\" [(ngModel)]=\"datosReunion.fecha\" required>\n            </div>\n          </div>\n          <div class=\"col-md-6\">\n            <div class=\"form-group\">\n              <label for=\"tipo\"><b>Seleccione el Tipo de Reunión</b></label>\n              <select class=\"form-control\" name=\"tipoReunion\" #tipoReunion=\"ngModel\" [(ngModel)]=\"datosReunion.tipoReunion\" required>\n                <option value=\"1\">General</option>\n                <option value=\"2\">Eleccion</option>\n                <option value=\"3\">Votación</option>\n              </select>\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <div class=\"form-group\">\n              <label for=\"titulo\"><b>Titulo de la reunión</b></label>\n              <input class=\"form-control\" type=\"text\" placeholder=\"Ingrese un Nombre para la reunión (Máximo 90 caracteres)\" maxlength=\"90\" name=\"titulo\" #titulo=\"ngModel\" [(ngModel)]=\"datosReunion.titulo\" required>\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <div class=\"form-group\">\n              <label for=\"exampleFormControlTextarea1\"><b>Ingrese una descripción para la reunión a realizar</b></label>\n              <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\"\n                placeholder=\"(Minimo 4 caracteres, máximo 500 cacacteres)\" minlength=\"4\" maxlength=\"500\" name=\"descripcion\" #descripcion=\"ngModel\" [(ngModel)]=\"datosReunion.descripcion\" required></textarea>\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <button type=\"submit\" [disabled]=\"!formulario.valid\" class=\"btn btn-success btn-block\">Generar Reunión</button>\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n<div (click)=\"abrirModal(generarNuevaReunion)\" class=\"card card-body text-white text-center bg-primary\"\n  style=\"cursor: pointer\">\n  <h3><i class=\"far fa-calendar-plus\"></i> Programar Nueva Reunión</h3>\n  <p>Aquí se pueden generar nuevas reuniones para informar a los socios</p>\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/secretaria.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/secretaria.component.html ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <br><br>\n  <div class=\"col-md-12 mt-4\">\n    <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\n\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" id=\"formConsorcio-tab\" data-toggle=\"tab\" href=\"#formConsorcio\" role=\"tab\"\n          aria-controls=\"formConsorcio\" aria-selected=\"true\">Reuniones</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" id=\"TablaConsorcio-tab\" data-toggle=\"tab\" href=\"#TablaConsorcio\" role=\"tab\"\n          aria-controls=\"TablaConsorcio\" aria-selected=\"false\">Acuerdos</a>\n      </li>\n\n    </ul>\n  </div>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 mt-4\">\n        <app-nueva-reunion></app-nueva-reunion>\n      </div>\n      <div class=\"col-md-6 mt-4\">\n        <app-editar-reunion></app-editar-reunion>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-6 mt-4\">\n        <app-asistencia-reunion></app-asistencia-reunion>\n      </div>\n      <div class=\"col-md-6 mt-4\">\n        <app-historial-reunion></app-historial-reunion>\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html":
 /*!************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/navbar/navbar.component.html ***!
@@ -910,7 +965,7 @@ module.exports = "<!--Tabla Del Prestamo Socios-->\n<div class=\"modal-body\"><b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- Navigation -->\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n      </a>\n      <a>\n        <img  height=\"30\" width=\"40\"\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\n      </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n        <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" ><i class=\"fas fa-book\"></i> Secretaria</a>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\n                </div>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fab fa-suse\"></i> Cambiar a Portal Socios</a>\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                </div>\n              </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  \n  "
+module.exports = "\n<!-- Navigation -->\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n      </a>\n      <a>\n        <img  height=\"30\" width=\"40\"\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\n      </a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n        <ul class=\"navbar-nav ml-auto\">\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Cuenta Sindical <span class=\"sr-only\">(current)</span></a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\n                </div>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fab fa-suse\"></i> Cambiar a Portal Socios</a>\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                </div>\n              </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  \n  "
 
 /***/ }),
 
@@ -1334,6 +1389,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_cuentas_cuentas_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./socios-master/cuentas/cuentas.component */ "./src/app/socios-master/cuentas/cuentas.component.ts");
 /* harmony import */ var _socios_master_grafico_grafico_componente_grafico_componente_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./socios-master/grafico/grafico-componente/grafico-componente.component */ "./src/app/socios-master/grafico/grafico-componente/grafico-componente.component.ts");
 /* harmony import */ var _socios_master_reuniones_general_reunion_general_reunion_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./socios-master/reuniones/general-reunion/general-reunion.component */ "./src/app/socios-master/reuniones/general-reunion/general-reunion.component.ts");
+/* harmony import */ var _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./auth-master/secretaria/secretaria.component */ "./src/app/auth-master/secretaria/secretaria.component.ts");
+
 
 
 
@@ -1372,7 +1429,8 @@ const routes = [
             { path: 'RegistroSocios', component: _auth_master_cuenta_socios_formulario_socios_formulario_socios_component__WEBPACK_IMPORTED_MODULE_14__["FormularioSociosComponent"] },
             { path: 'ListarSocios', component: _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_13__["ListarSociosComponent"] },
             { path: 'TablaPrestamoSocios', component: _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_15__["TablaPrestamosSociosComponent"] },
-            { path: 'BeneficiosSocios', component: _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_16__["BeneficiosSociosComponent"] }
+            { path: 'BeneficiosSocios', component: _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_16__["BeneficiosSociosComponent"] },
+            { path: 'Secretaria', component: _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_25__["SecretariaComponent"] }
         ] },
     { path: 'SociosMaster', component: _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__["SociosMasterComponent"], canActivate: [_guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_19__["AuthGuardSocioService"]], children: [
             { path: 'Perfil', component: _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__["PerfilSocioComponent"] },
@@ -1563,6 +1621,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_reuniones_historial_detalle_reunion_historial_detalle_reunion_component__WEBPACK_IMPORTED_MODULE_108__ = __webpack_require__(/*! ./socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component */ "./src/app/socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component.ts");
 /* harmony import */ var _servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_109__ = __webpack_require__(/*! ./servicios/reuniones.service */ "./src/app/servicios/reuniones.service.ts");
 /* harmony import */ var _servicios_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_110__ = __webpack_require__(/*! ./servicios/auth-interceptor.service */ "./src/app/servicios/auth-interceptor.service.ts");
+/* harmony import */ var _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_111__ = __webpack_require__(/*! ./auth-master/secretaria/secretaria.component */ "./src/app/auth-master/secretaria/secretaria.component.ts");
+/* harmony import */ var _auth_master_secretaria_nueva_reunion_nueva_reunion_component__WEBPACK_IMPORTED_MODULE_112__ = __webpack_require__(/*! ./auth-master/secretaria/nueva-reunion/nueva-reunion.component */ "./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.ts");
+/* harmony import */ var _auth_master_secretaria_editar_reunion_editar_reunion_component__WEBPACK_IMPORTED_MODULE_113__ = __webpack_require__(/*! ./auth-master/secretaria/editar-reunion/editar-reunion.component */ "./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.ts");
+/* harmony import */ var _auth_master_secretaria_asistencia_reunion_asistencia_reunion_component__WEBPACK_IMPORTED_MODULE_114__ = __webpack_require__(/*! ./auth-master/secretaria/asistencia-reunion/asistencia-reunion.component */ "./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.ts");
+/* harmony import */ var _auth_master_secretaria_historial_reunion_historial_reunion_component__WEBPACK_IMPORTED_MODULE_115__ = __webpack_require__(/*! ./auth-master/secretaria/historial-reunion/historial-reunion.component */ "./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.ts");
+/* harmony import */ var _servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_116__ = __webpack_require__(/*! ./servicios/secretaria.service */ "./src/app/servicios/secretaria.service.ts");
+
+
+
+
+
+
 
 
 
@@ -1769,7 +1839,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _socios_master_grafico_grafico_componente_grafico_componente_component__WEBPACK_IMPORTED_MODULE_105__["GraficoComponenteComponent"],
             _socios_master_reuniones_general_reunion_general_reunion_component__WEBPACK_IMPORTED_MODULE_106__["GeneralReunionComponent"],
             _socios_master_reuniones_detalle_reunion_detalle_reunion_component__WEBPACK_IMPORTED_MODULE_107__["DetalleReunionComponent"],
-            _socios_master_reuniones_historial_detalle_reunion_historial_detalle_reunion_component__WEBPACK_IMPORTED_MODULE_108__["HistorialDetalleReunionComponent"]
+            _socios_master_reuniones_historial_detalle_reunion_historial_detalle_reunion_component__WEBPACK_IMPORTED_MODULE_108__["HistorialDetalleReunionComponent"],
+            _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_111__["SecretariaComponent"],
+            _auth_master_secretaria_nueva_reunion_nueva_reunion_component__WEBPACK_IMPORTED_MODULE_112__["NuevaReunionComponent"],
+            _auth_master_secretaria_editar_reunion_editar_reunion_component__WEBPACK_IMPORTED_MODULE_113__["EditarReunionComponent"],
+            _auth_master_secretaria_asistencia_reunion_asistencia_reunion_component__WEBPACK_IMPORTED_MODULE_114__["AsistenciaReunionComponent"],
+            _auth_master_secretaria_historial_reunion_historial_reunion_component__WEBPACK_IMPORTED_MODULE_115__["HistorialReunionComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1792,6 +1867,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_99__["BryanBienestarService"],
             _servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_104__["BryanConsorcioService"],
             _servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_109__["ReunionesService"],
+            _servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_116__["SecretariaService"],
             {
                 provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HTTP_INTERCEPTORS"],
                 useClass: _servicios_auth_interceptor_service__WEBPACK_IMPORTED_MODULE_110__["AuthInterceptorService"],
@@ -1910,9 +1986,7 @@ let AuthMasterComponent = class AuthMasterComponent {
                 let estadoToken = this._usuariosService.isAuthenticated();
                 console.log(estadoToken);
                 if (estadoToken == false) {
-                    alert('Ha caducado la sesión con el servidor. El sistema se reiniciara para evitar la perdida de información');
-                    clearInterval();
-                    this.router.navigate(['']);
+                    window.location.reload();
                 }
                 else {
                     this.tiempoEsperaToken = 5;
@@ -9469,6 +9543,322 @@ TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 
 /***/ }),
 
+/***/ "./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.css":
+/*!********************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvYXNpc3RlbmNpYS1yZXVuaW9uL2FzaXN0ZW5jaWEtcmV1bmlvbi5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.ts":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.ts ***!
+  \*******************************************************************************************/
+/*! exports provided: AsistenciaReunionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsistenciaReunionComponent", function() { return AsistenciaReunionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
+
+
+let AsistenciaReunionComponent = class AsistenciaReunionComponent {
+    constructor(config, modalService) {
+        this.modalService = modalService;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    abrirModal(modalHistorial) {
+        this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl' });
+    }
+    abrirConfirmacion(modalHistorial) {
+        this.modalVariable = this.modalService.open(modalHistorial, { size: 'lg', centered: true });
+    }
+};
+AsistenciaReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-asistencia-reunion',
+        template: __webpack_require__(/*! raw-loader!./asistencia-reunion.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.html"),
+        styles: [__webpack_require__(/*! ./asistencia-reunion.component.css */ "./src/app/auth-master/secretaria/asistencia-reunion/asistencia-reunion.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+], AsistenciaReunionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.css":
+/*!************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.css ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvZWRpdGFyLXJldW5pb24vZWRpdGFyLXJldW5pb24uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: EditarReunionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarReunionComponent", function() { return EditarReunionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/secretaria.service */ "./src/app/servicios/secretaria.service.ts");
+
+
+
+
+let EditarReunionComponent = class EditarReunionComponent {
+    constructor(config, modalService, _secretariaService) {
+        this.modalService = modalService;
+        this._secretariaService = _secretariaService;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    abrirModal(modalHistorial) {
+        this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl' });
+    }
+    modalConfirmacion(confirmacion) {
+        this.modalVariable = this.modalService.open(confirmacion, { size: 'lg', centered: true });
+    }
+    getDatosReunion() {
+        this._secretariaService.getReunionActiva().subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert('Ha ocurrido un error al traer la reunióna activa');
+            }
+            else {
+                this.datosReunion = response;
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    editarReunion(formulario) {
+        if (!formulario) {
+            alert('Ha ocurrido un error en el formulario, revisar que todos los datos sean correctos');
+        }
+        else {
+            this._secretariaService.updateNuevaReunion(this.datosReunion).subscribe(response => {
+                if (response.estado == 'failed' || response.estado == 'failed_v') {
+                    alert('Ha ocurrido un error, revisar nuevamente el formualario');
+                }
+                else {
+                    alert(response.mensaje);
+                }
+            }, error => {
+                console.log(error);
+            });
+        }
+    }
+};
+EditarReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-editar-reunion',
+        template: __webpack_require__(/*! raw-loader!./editar-reunion.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.html"),
+        styles: [__webpack_require__(/*! ./editar-reunion.component.css */ "./src/app/auth-master/secretaria/editar-reunion/editar-reunion.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__["SecretariaService"]])
+], EditarReunionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvaGlzdG9yaWFsLXJldW5pb24vaGlzdG9yaWFsLXJldW5pb24uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: HistorialReunionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistorialReunionComponent", function() { return HistorialReunionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
+
+
+let HistorialReunionComponent = class HistorialReunionComponent {
+    constructor(config, modalService) {
+        this.modalService = modalService;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    abrirModal(modalHistorial) {
+        this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl' });
+    }
+};
+HistorialReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-historial-reunion',
+        template: __webpack_require__(/*! raw-loader!./historial-reunion.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.html"),
+        styles: [__webpack_require__(/*! ./historial-reunion.component.css */ "./src/app/auth-master/secretaria/historial-reunion/historial-reunion.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+], HistorialReunionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.css":
+/*!**********************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvbnVldmEtcmV1bmlvbi9udWV2YS1yZXVuaW9uLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: NuevaReunionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NuevaReunionComponent", function() { return NuevaReunionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/secretaria.service */ "./src/app/servicios/secretaria.service.ts");
+
+
+
+
+let NuevaReunionComponent = class NuevaReunionComponent {
+    constructor(config, modalService, _secretaruaService) {
+        this.modalService = modalService;
+        this._secretaruaService = _secretaruaService;
+        //variable para alojar los datos del mensaje
+        this.datosReunion = {
+            fecha: '',
+            tipoReunion: '1',
+            titulo: '',
+            descripcion: ''
+        };
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    ingresarReunion(form) {
+        if (!form) {
+            alert('Ha ocurrido un error con el formulario, comprobar que no tenga errores');
+        }
+        else {
+            this._secretaruaService.setNuevaReunion(this.datosReunion).subscribe(response => {
+                if (response.estado == 'failed' || response.estado == 'failed_v') {
+                    alert('Ha ocurrido un error al generar la reunión, revise los datos e intente nuevamente');
+                }
+                else {
+                    alert(response.mensaje);
+                }
+            }, error => {
+                console.log((error));
+            });
+        }
+    }
+    abrirModal(modalHistorial) {
+        this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl' });
+    }
+};
+NuevaReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-nueva-reunion',
+        template: __webpack_require__(/*! raw-loader!./nueva-reunion.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.html"),
+        styles: [__webpack_require__(/*! ./nueva-reunion.component.css */ "./src/app/auth-master/secretaria/nueva-reunion/nueva-reunion.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__["SecretariaService"]])
+], NuevaReunionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/secretaria.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/secretaria.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 12px;\n      }\n      tr,th{\n        font-size: 12px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        color: #fff;\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n        }\n      #demoFont2 {\n        color: #fff;\n        background: #52c234;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n        background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n        }\n      .nav-item a{\n          color: #fff;\n          background: #093028;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n          background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n          \n        }\n      .margen{\n          display: flex;\n          justify-content: center;\n          width: 100%;\n        }\n      #myTab{\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n        }\n      hr{\n        border-top: 1px solid #000000 !important;\n        margin-bottom:5px !important; \n        margin-top:5px !important;\n        height: 10px;\n        }\n  \n  \n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvc2VjcmV0YXJpYS9zZWNyZXRhcmlhLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLFdBQVc7UUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7UUFDakcsdURBQXVELEVBQUUscUVBQXFFO1FBQzlIO01BQ0Y7UUFDRSxXQUFXO1FBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2EsK0JBQStCO1FBQ2hHLHNEQUFzRCxFQUFFLHFFQUFxRTtRQUM3SDtNQUVBO1VBQ0UsV0FBVztVQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNZLCtCQUErQjtVQUMvRixxREFBcUQsRUFBRSxxRUFBcUU7O1FBRTlIO01BRUE7VUFDRSxhQUFhO1VBQ2IsdUJBQXVCO1VBQ3ZCLFdBQVc7UUFDYjtNQUdBO1VBQ0UsMEVBQTBFO1FBQzVFO01BQ0E7UUFDQSx3Q0FBd0M7UUFDeEMsNEJBQTRCO1FBQzVCLHlCQUF5QjtRQUN6QixZQUFZO1FBQ1oiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9zZWNyZXRhcmlhL3NlY3JldGFyaWEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgfVxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgfVxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xuICAgICAgfVxuICBcbiAgICAgIGxhYmVsLGlucHV0LCBidXR0b257XG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIH1cbiAgXG4gICAgICB0cix0aHtcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgICAgfVxuICAgICAgdGh7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbiAgICAgIH1cbiAgXG4gICAgICAjZGVtb0ZvbnQge1xuICAgICAgICBjb2xvcjogI2ZmZjtcbiAgICAgICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICAgICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgICAgICB9XG4gICAgICAjZGVtb0ZvbnQyIHtcbiAgICAgICAgY29sb3I6ICNmZmY7XG4gICAgICAgIGJhY2tncm91bmQ6ICM1MmMyMzQ7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMwNjE3MDAsICM1MmMyMzQpOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMwNjE3MDAsICM1MmMyMzQpOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgICAgIH1cbiAgICBcbiAgICAgICAgLm5hdi1pdGVtIGF7XG4gICAgICAgICAgY29sb3I6ICNmZmY7XG4gICAgICAgICAgYmFja2dyb3VuZDogIzA5MzAyODsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICAgICAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byB0b3AsICMyMzdBNTcsICMwOTMwMjgpOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICAgICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCAjMjM3QTU3LCAjMDkzMDI4KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xuICAgICAgICAgIFxuICAgICAgICB9XG4gICAgICAgIFxuICAgICAgICAubWFyZ2Vue1xuICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIH1cbiAgXG4gICAgICAgIFxuICAgICAgICAjbXlUYWJ7XG4gICAgICAgICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XG4gICAgICAgIH1cbiAgICAgICAgaHJ7XG4gICAgICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjMDAwMDAwICFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1ib3R0b206NXB4ICFpbXBvcnRhbnQ7IFxuICAgICAgICBtYXJnaW4tdG9wOjVweCAhaW1wb3J0YW50O1xuICAgICAgICBoZWlnaHQ6IDEwcHg7XG4gICAgICAgIH1cbiAgXG4gIFxuICAiXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/secretaria.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/secretaria.component.ts ***!
+  \****************************************************************/
+/*! exports provided: SecretariaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SecretariaComponent", function() { return SecretariaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let SecretariaComponent = class SecretariaComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+SecretariaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-secretaria',
+        template: __webpack_require__(/*! raw-loader!./secretaria.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/secretaria.component.html"),
+        styles: [__webpack_require__(/*! ./secretaria.component.css */ "./src/app/auth-master/secretaria/secretaria.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], SecretariaComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/guardianes/auth.guard.service.ts":
 /*!**************************************************!*\
   !*** ./src/app/guardianes/auth.guard.service.ts ***!
@@ -10876,6 +11266,80 @@ ReunionesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], ReunionesService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/secretaria.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/servicios/secretaria.service.ts ***!
+  \*************************************************/
+/*! exports provided: SecretariaService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SecretariaService", function() { return SecretariaService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let SecretariaService = class SecretariaService {
+    constructor(_http) {
+        this._http = _http;
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    //*********************GENERAR NUEVA REUNION************************/
+    setNuevaReunion(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('fecha', form.fecha);
+        body.append('tipo', form.tipoReunion);
+        body.append('titulo', form.titulo);
+        body.append('descripcion', form.descripcion);
+        return this._http.post(this.url + "ingresar_nueva_reunion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    /**************************TRAER REUNION ACTIVA*****************************/
+    getReunionActiva() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_reunion_activa", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    //*********************Actualizar REUNION************************/
+    updateNuevaReunion(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('fecha', form.fecha);
+        body.append('tipo', form.tipoReunion);
+        body.append('titulo', form.titulo);
+        body.append('descripcion', form.descripcion);
+        return this._http.post(this.url + "actualizar_reunion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    //*********************ACTUALIZAR REUNION************************/
+    cancelarReunion(form) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', form.id);
+        return this._http.post(this.url + "cancelar_reunion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+};
+SecretariaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], SecretariaService);
 
 
 

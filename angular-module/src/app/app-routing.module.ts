@@ -23,6 +23,7 @@ import { CuentasComponent } from './socios-master/cuentas/cuentas.component';
 import { GraficoComponenteComponent } from './socios-master/grafico/grafico-componente/grafico-componente.component';
 import { GeneralReunionComponent } from './socios-master/reuniones/general-reunion/general-reunion.component';
 import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reunion/detalle-reunion.component';
+import { SecretariaComponent } from './auth-master/secretaria/secretaria.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -38,7 +39,8 @@ const routes: Routes = [
     { path: 'RegistroSocios', component: FormularioSociosComponent },
     { path: 'ListarSocios', component: ListarSociosComponent },
     { path: 'TablaPrestamoSocios', component: TablaPrestamosSociosComponent },
-    { path: 'BeneficiosSocios', component: BeneficiosSociosComponent }
+    { path: 'BeneficiosSocios', component: BeneficiosSociosComponent },
+    { path: 'Secretaria', component: SecretariaComponent }
 
   ]},
 

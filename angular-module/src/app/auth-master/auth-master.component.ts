@@ -86,9 +86,7 @@ export class AuthMasterComponent implements OnInit {
         let estadoToken = this._usuariosService.isAuthenticated();
         console.log(estadoToken);
         if(estadoToken == false){
-          alert('Ha caducado la sesión con el servidor. El sistema se reiniciara para evitar la perdida de información');
-          clearInterval();
-          this.router.navigate(['']);
+          window.location.reload();
         }else{
           this.tiempoEsperaToken = 5;
         }

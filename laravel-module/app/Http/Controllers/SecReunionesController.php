@@ -26,4 +26,9 @@ class SecReunionesController extends Controller
     {
         return SecReuniones::modificarReunionActiva($request);
     }
+
+    public function CancelarReunionActiva(Request $request)
+    {
+        return SecReuniones::cancelarReunionActiva($request);
+    }
 }

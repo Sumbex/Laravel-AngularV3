@@ -249,7 +249,7 @@ class CajaChicaBienestar extends Model
                     'tipo_cuenta_bienestar_id' => 6
                 ])
                 ->get();
-
+dd($IM);
             if (!$existe->isEmpty()) {
                 $montoAnterior = $this->calcularValorCajaChicaMesAnterior($anio, $mes);
                 $monto = $montoAnterior['monto'] + $existe[0]->monto_egreso;

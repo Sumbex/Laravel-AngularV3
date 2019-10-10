@@ -26,7 +26,7 @@ class SecReuniones extends Model
     {
         $RA = $this->traerReunionActiva();
         if ($RA['estado'] == 'failed') {
-            /* DB::beginTransaction(); */
+            DB::beginTransaction();
             $reunion = new SecReuniones;
             $reunion->fecha_inicio = $request->fecha_inicio;
             $reunion->estado_reunion_id = 1;
@@ -38,10 +38,10 @@ class SecReuniones extends Model
             if ($reunion->save()) {
                 $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
                 if ($asistencia['estado'] == 'success') {
-                    /* DB::commit(); */
+                    DB::commit();
                     return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.'];
                 } else {
-                    /* DB::rollBack(); */
+                    DB::rollBack();
                 }
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];

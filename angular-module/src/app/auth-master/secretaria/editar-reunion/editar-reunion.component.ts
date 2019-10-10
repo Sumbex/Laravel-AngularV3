@@ -10,7 +10,16 @@ import { SecretariaService } from 'src/app/servicios/secretaria.service';
 export class EditarReunionComponent implements OnInit {
 
   //variable para alojar los datos del mensaje
-  datosReunion;
+  datosReunion = {
+    id: '',
+    creadaPor: '',
+    fecha: '',
+    tipoReunion: '1',
+    titulo: '',
+    descripcion: ''
+  };
+
+  datosActivaReunion;
 
   //variable para asociar al modal
   modalVariable;
@@ -21,10 +30,12 @@ export class EditarReunionComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   abrirModal(modalHistorial){
     this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
+    this.getDatosReunion();
   }
   modalConfirmacion(confirmacion){
     this.modalVariable = this.modalService.open(confirmacion, {size: 'lg', centered: true});
@@ -33,9 +44,18 @@ export class EditarReunionComponent implements OnInit {
   getDatosReunion(){
     this._secretariaService.getReunionActiva().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert('Ha ocurrido un error al traer la reunióna activa');
+        alert(response.mensaje);
       }else{
-        this.datosReunion = response;
+        this.datosActivaReunion = response.reunion[0];
+        this.datosReunion.id = this.datosActivaReunion.id;
+        this.datosReunion.creadaPor = this.datosActivaReunion.creada_por;
+        this.datosReunion.fecha = this.datosActivaReunion.fecha_inicio;
+        this.datosReunion.tipoReunion = this.datosActivaReunion.tipo;
+        this.datosReunion.titulo = this.datosActivaReunion.titulo;
+        this.datosReunion.descripcion = this.datosActivaReunion.descripcion;
+        console.log(this.datosActivaReunion);
+        console.log('br');
+        console.log(this.datosReunion);
       }
     },error=>{
       console.log(error);

@@ -34,7 +34,7 @@ export class NuevaReunionComponent implements OnInit {
     }else{
       this._secretaruaService.setNuevaReunion(this.datosReunion).subscribe(response => {
         if(response.estado == 'failed' || response.estado == 'failed_v'){
-          alert('Ha ocurrido un error al generar la reunión, revise los datos e intente nuevamente');
+          alert(response.mensaje);
         }else{
           alert(response.mensaje);
         }

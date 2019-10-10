@@ -12,7 +12,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3>Se encuentra editando la reunión TITULO del día 10.10.10</h3>
+            <h3>Se encuentra editando la reunión {{datosReunion.titulo}} con fecha {{datosReunion.fecha}}</h3>
             <p class="text-muted">Reunión creada por usuario de pruebas</p>
           </div>
         </div>
@@ -37,8 +37,9 @@
               <div class="form-group">
                 <label for="tipo"><b>Seleccione el Tipo de Reunión</b></label>
                 <select class="form-control" name="tipoReunion" #tipoReunion="ngModel" [(ngModel)]="datosReunion.tipoReunion" required>
-                  <option value="0">Test</option>
-                  <option value="1">Test 2</option>
+                    <option value="1">General</option>
+                    <option value="2">Eleccion</option>
+                    <option value="3">Votación</option>
                 </select>
               </div>
             </div>

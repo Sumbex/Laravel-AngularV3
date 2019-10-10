@@ -15,12 +15,12 @@ export class SecretariaService{
     setNuevaReunion(form) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('fecha', form.fecha);
+        body.append('fecha_inicio', form.fecha);
         body.append('tipo', form.tipoReunion);
-        body.append('titulo', form.titulo);
-        body.append('descripcion', form.descripcion);
+        body.append('cabeza', form.titulo);
+        body.append('cuerpo', form.descripcion);
         
-        return this._http.post(this.url + "ingresar_nueva_reunion",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "crear_reunion_sec",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
             }
@@ -31,7 +31,7 @@ export class SecretariaService{
 
     getReunionActiva(): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_reunion_activa", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_reunion_activa_sec", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -55,7 +55,7 @@ export class SecretariaService{
         )});
     }
 
-    //*********************ACTUALIZAR REUNION************************/
+    //*********************CANCELAR REUNION************************/
     cancelarReunion(form) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();

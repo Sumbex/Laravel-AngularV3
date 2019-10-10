@@ -111,7 +111,20 @@ class CuentaConsorcioController extends Controller
 
     public function tabla_desvinculados($anio_id)
     {
-         return CuentaConsorcio::tabla_desvinculados($anio_id);
+         $listar = CuentaConsorcio::tabla_desvinculados($anio_id);
+
+         if ($listar != '') {
+            foreach ($listar as $key) {
+                if ($key->vinculado == 'N') {
+                    $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
+                    //$key->monto_total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
+                    $key->monto_total_menos_ds = (int)$key->monto_total_ds_socio - (int)$ultimo_ds['dia_sueldo'];
+                }
+            }
+
+            return $listar;
+        }
+
     }
 
     public function calcular_dia_sueldo($socio_id, $porc, $desc, $mes)

@@ -43,12 +43,13 @@ export class SecretariaService{
     updateNuevaReunion(form) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('fecha', form.fecha);
+        body.append('id', form.id);
+        body.append('fecha_inicio', form.fecha);
         body.append('tipo', form.tipoReunion);
-        body.append('titulo', form.titulo);
-        body.append('descripcion', form.descripcion);
+        body.append('cabeza', form.titulo);
+        body.append('cuerpo', form.descripcion);
         
-        return this._http.post(this.url + "actualizar_reunion",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "modificar_reunion_activa_sec",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
             }
@@ -61,7 +62,7 @@ export class SecretariaService{
         const body = new FormData();
         body.append('id', form.id);
         
-        return this._http.post(this.url + "cancelar_reunion",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "cancelar_reunion_activa_sec",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
             }

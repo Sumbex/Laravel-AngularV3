@@ -62,13 +62,13 @@ export class EditarReunionComponent implements OnInit {
     });
   }
 
-  editarReunion(formulario){
+  editarReunionForm(formulario){
     if(!formulario){
       alert('Ha ocurrido un error en el formulario, revisar que todos los datos sean correctos');
     }else{
       this._secretariaService.updateNuevaReunion(this.datosReunion).subscribe(response => {
         if(response.estado == 'failed' || response.estado == 'failed_v'){
-          alert('Ha ocurrido un error, revisar nuevamente el formualario');
+          alert(response.mensaje);
         }else{
           alert(response.mensaje);
         }
@@ -76,6 +76,19 @@ export class EditarReunionComponent implements OnInit {
         console.log(error);
       });
     }
+  }
+
+  cancelarReunion(){
+    this._secretariaService.cancelarReunion(this.datosReunion).subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        alert(response.mensaje);
+        document.getElementById('cerrarConfirmacion').click();
+      }
+    },error=>{
+      console.log(error);
+    });
   }
 
 }

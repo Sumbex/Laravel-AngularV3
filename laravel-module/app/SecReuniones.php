@@ -53,6 +53,7 @@ class SecReuniones extends Model
                 'sr.cuerpo as descripcion',
                 'sr.tipo_reunion_id as tipo',
                 DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
+                'sr.mod_user_id'
             ])
             ->join('users as u', 'u.id', 'sr.user_id')
             ->join('sec_estado_reunion as ser', 'ser.id', 'sr.tipo_reunion_id')
@@ -63,9 +64,57 @@ class SecReuniones extends Model
             ->get();
 
         if (!$reunion->isEmpty()) {
+            if (!is_null($reunion[0]->mod_user_id)) {
+                $mod = DB::table('users')
+                    ->select([
+                        DB::raw("concat(nombres,' ',a_paterno,' ',a_materno) as modificada_por")
+                    ])
+                    ->where([
+                        'id' => $reunion[0]->mod_user_id
+                    ])
+                    ->get();
+                $reunion[0]->modificada_por = $mod[0]->modificada_por;
+            }
             return ['estado' => 'success', 'reunion' => $reunion];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no existe una reunion activa.'];
+        }
+    }
+
+    protected function verificarReunionActiva($id)
+    {
+        $reunion = DB::table('sec_reuniones')
+            ->where([
+                'activo' => 'S',
+                'id' => $id
+            ])
+            ->get();
+
+        if (!$reunion->isEmpty()) {
+            return ['estado' => 'success'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'La reunion que intentas modificar no existe o ya no esta activa.'];
+        }
+    }
+
+    protected function modificarReunionActiva($request)
+    {
+        $existe = $this->verificarReunionActiva($request->id);
+        if ($existe['estado'] == 'success') {
+            $reunion = SecReuniones::find($request->id)->first();
+            //dd($reunion);
+            $reunion->fecha_inicio = $request->fecha_inicio;
+            $reunion->cabeza = $request->cabeza;
+            $reunion->cuerpo = $request->cuerpo;
+            $reunion->tipo_reunion_id = $request->tipo;
+            $reunion->mod_user_id = Auth::user()->id;
+            if ($reunion->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Reunion actualizada con exito.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            }
+        } else {
+            return $existe;
         }
     }
 }

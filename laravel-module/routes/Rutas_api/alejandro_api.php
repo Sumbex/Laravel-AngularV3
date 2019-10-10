@@ -132,3 +132,4 @@ Route::get('socios_sin_pb','CuentaConsorcioController@socios_sin_pb');
 Route::get('descontar_dia_sueldo/{porc}/{mes}/{anio}','CuentaConsorcioController@descontar_dia_sueldo');
 Route::get('aplicar_descuento_dia_sueldo/{socio_id}/{porc}/{desc}/{mes}/{anio}/{monto?}','CuentaConsorcioController@aplicar_descuento_dia_sueldo');
 Route::get('descripcion_descuento/{anio}/{mes}','CuentaConsorcioController@descripcion_descuento');
+Route::get('listar_pago_beneficios/{anio}','CuentaConsorcioController@listar_pago_beneficios');

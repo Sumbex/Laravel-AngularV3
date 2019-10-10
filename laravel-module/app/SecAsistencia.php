@@ -35,7 +35,7 @@ class SecAsistencia extends Model
         if ($socios['estado'] == 'success') {
             $con = 0;
             /* dd( $socios['socios']); */
-            /* DB::beginTransaction(); */
+            DB::beginTransaction();
             foreach ($socios['socios'] as $key) {
                 $asistencia = new SecAsistencia;
                 $asistencia->reunion_id = $reunion_id;
@@ -49,11 +49,13 @@ class SecAsistencia extends Model
                 }
             }
             /* dd($con); */
-            if ($con == count($socios)) {
-                /* DB::commit(); */
+            /* dd($con.' / '.count($socios)); */
+            /* dd(count($test['socios'])); */
+            if ($con == count($socios['socios'])) {
+                DB::commit();
                 return ['estado' => 'success', 'ingresos' => $con];
             } else {
-                /* DB::rollBack(); */
+                DB::rollBack();
                 return ['estado' => 'failed'];
             }
         } else {

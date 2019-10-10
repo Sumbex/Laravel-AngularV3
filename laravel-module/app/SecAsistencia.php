@@ -43,12 +43,8 @@ class SecAsistencia extends Model
                 $asistencia->socio_id = $socios['socios'][$i]->id;
                 $asistencia->estado_asistencia_id = 2;
                 $asistencia->activo = 'S';
-                if ($asistencia->save()) {
-                    $con = $con + 1;
-                } else {
-                    DB::rollBack();
-                    return ['estado' => 'failed'];
-                }
+                $asistencia->save();
+                $con = $con + 1;
             }
             if ($con == count($socios)) {
                 return ['estado' => 'success'];

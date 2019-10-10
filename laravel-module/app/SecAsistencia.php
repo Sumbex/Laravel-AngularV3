@@ -65,7 +65,7 @@ class SecAsistencia extends Model
         ]);
 
         if($borrar->delete()){
-            return ['estado' => 'success', 'ingresos' => count($borrar)];
+            return ['estado' => 'success'];
         }else{
             return ['estado' => 'failed'];
         }

@@ -312,4 +312,9 @@ class CuentaConsorcioController extends Controller
             'mensaje' => 'No hay Descuentos en este mes'
         ];
     }
+
+    public function listar_pago_beneficios($anio)
+    {
+        return CuentaConsorcio::listar_pago_beneficios($anio)
+    }
 }

@@ -816,4 +816,25 @@ class CuentaConsorcio extends Model
         }
 
     }
+
+    protected function listar_pago_beneficios($anio)
+    {
+      $listar = DB::select("SELECT 
+                    CONCAT(m.descripcion,' ',a.descripcion) as fecha,
+                    CONCAT(nombres,' ',a_paterno,' ',a_materno) nombre,
+                    pb.descripcion,
+                    CONCAT(CAST (porcentaje AS float) *100,'%') porcentaje,
+                    monto_dia_sueldo
+                from cc_pago_beneficios pb
+                inner join socios s on s.id = pb.socio_id
+                inner join mes m on m.id = pb.mes_id
+                inner join anio a on a.id = pb.anio_id
+                where pb.anio_id = $anio and s.retiro_pago_beneficio = 'S'");
+
+      if (count($listar) > 0) {
+    		    return $listar;
+        }else{
+            return '';
+        }
+    }
 }

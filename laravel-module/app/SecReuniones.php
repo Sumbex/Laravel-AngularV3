@@ -85,33 +85,58 @@ class SecReuniones extends Model
                     ->get();
                 $reunion[0]->modificada_por = $mod[0]->modificada_por;
             }
+            $reunion[0]->fecha_inicio = preg_replace('/\s+/', 'T', $reunion[0]->fecha_inicio);
             return ['estado' => 'success', 'reunion' => $reunion];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no existe una reunion activa.'];
         }
     }
 
-    protected function verificarReunionActiva($id)
+    protected function verificarReunionActiva($id, $tipo)
     {
-        $reunion = DB::table('sec_reuniones')
-            ->where([
-                'activo' => 'S',
-                'id' => $id
-            ])
-            ->get();
+        switch ($tipo) {
+            case 1:
+                $reunion = DB::table('sec_reuniones')
+                    ->where([
+                        'activo' => 'S',
+                        'id' => $id
+                    ])
+                    ->get();
 
-        if (!$reunion->isEmpty()) {
-            return ['estado' => 'success'];
-        } else {
-            return ['estado' => 'failed', 'mensaje' => 'La reunion que intentas modificar no existe o ya no esta activa.'];
+                if (!$reunion->isEmpty()) {
+                    return ['estado' => 'success'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'La reunion que intentas modificar no existe o ya no esta activa.'];
+                }
+                break;
+
+            case 2:
+                $reunion = DB::table('sec_reuniones')
+                    ->where([
+                        'activo' => 'S',
+                        'estado_reunion_id' => 1,
+                        'id' => $id
+                    ])
+                    ->get();
+
+                if (!$reunion->isEmpty()) {
+                    return ['estado' => 'success'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'La reunion que intentas cancelar ya se encuentra iniciada.'];
+                }
+                break;
+
+            default:
+                # code...
+                break;
         }
     }
 
     protected function modificarReunionActiva($request)
     {
-        $existe = $this->verificarReunionActiva($request->id);
+        $existe = $this->verificarReunionActiva($request->id, 1);
         if ($existe['estado'] == 'success') {
-            $reunion = SecReuniones::find($request->id)->first();
+            $reunion = SecReuniones::find($request->id);
             $reunion->fecha_inicio = $request->fecha_inicio;
             $reunion->cabeza = $request->cabeza;
             $reunion->cuerpo = $request->cuerpo;
@@ -130,13 +155,18 @@ class SecReuniones extends Model
     protected function cancelarReunionActiva($request)
     {
         //dd($request->all());
-        $existe = $this->verificarReunionActiva($request->id);
+        $existe = $this->verificarReunionActiva($request->id, 2);
         if ($existe['estado'] == 'success') {
-            $reunion = SecReuniones::find($request->id)->first();
+            $reunion = SecReuniones::find($request->id);
             $reunion->estado_reunion_id = 6;
             $reunion->mod_user_id = Auth::user()->id;
             if ($reunion->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Reunion cancelada con exito.'];
+                $borrar = SecAsistencia::borrarInasistentesReunionActiva($reunion->id);
+                if ($borrar['estado'] == 'success') {
+                    return ['estado' => 'success', 'mensaje' => 'Reunion cancelada con exito.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
             }

@@ -315,6 +315,6 @@ class CuentaConsorcioController extends Controller
 
     public function listar_pago_beneficios($anio)
     {
-        return CuentaConsorcio::listar_pago_beneficios($anio)
+        return CuentaConsorcio::listar_pago_beneficios($anio);
     }
 }

@@ -28,14 +28,27 @@
           </ngb-alert>
         </label>
       </div>
+    </div>
 
-    </div><br>
+    <div class="row" [hidden]="ocultarDescripcion">
+      <div class="col-12 col-md-12 col-lg-12"><br><label><strong>INFORMATIVO</strong></label> <br>
+        <label>
+          <ngb-alert [dismissible]="false">
+            {{descripcionDesc | uppercase}}
+          </ngb-alert>
+        </label>
+      </div>
+    </div>
+    <div class="row" [hidden]="blockLoad3">
+      <div class="col-12 col-md-6 col-lg-6 mx-auto">
+        <img height="40" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </div>
+    </div> <br>
 
     <div class="table-responsive tableFixHead">
       <table class="table table-striped table-bordered table-sm">
 
         <thead text-sm>
-
           <tr>
             <th style="background: #138D75">
               <label class="float-right"> BUSCAR SOCIO:</label>
@@ -56,53 +69,53 @@
           <tr class="text-center">
             <!-- <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th> -->
             <th colspan="4" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
-            <th colspan="2" style="background: #138D75"> ENERO
-              <i on-mouseover="mesBeneficio = 1; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 1; descripcionDescuento();"> ENERO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> FEBRERO
-              <i on-mouseover="mesBeneficio = 2; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 2; descripcionDescuento();"> FEBRERO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> MARZO
-              <i on-mouseover="mesBeneficio = 3; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 3; descripcionDescuento();"> MARZO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> ABRIL
-              <i on-mouseover="mesBeneficio = 4; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 4; descripcionDescuento();"> ABRIL
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> MAYO
-              <i on-mouseover="mesBeneficio = 5; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 5; descripcionDescuento();"> MAYO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> JUNIO
-              <i on-mouseover="mesBeneficio = 6; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 6; descripcionDescuento();"> JUNIO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> JULIO
-              <i on-mouseover="mesBeneficio = 7; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 7; descripcionDescuento();"> JULIO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> AGOSTO
-              <i on-mouseover="mesBeneficio = 8; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 8; descripcionDescuento();"> AGOSTO
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> SEPT
-              <i on-mouseover="mesBeneficio = 9; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 9; descripcionDescuento();"> SEPT
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> OCTUBRE
-              <i on-mouseover="mesBeneficio = 10; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 10; descripcionDescuento();"> OCTUBRE
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> NOV
-              <i on-mouseover="mesBeneficio = 11; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 11; descripcionDescuento();"> NOV
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75"> DIC
-              <i on-mouseover="mesBeneficio = 12; descripcionDescuento()" class="fas fa-info-circle"
-                style="color: rgb(255, 238, 7); cursor: pointer" placement="top" ngbTooltip="{{descripcionDesc}}"></i>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 12; descripcionDescuento();"> DIC
+              <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
+                ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
             <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL D.S.</th>
             <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL D.S.D.</th>
@@ -232,7 +245,7 @@
             </th>
           </tr>
 
-
+          <!-- pago de socio beneficio -->
           <ng-template #modalPagoBeneficio let-c="close" let-d="dismiss">
             <div class="modal-header" id="demoFont">
               <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio en el Mes {{this.mesBeneficio}}</h4>
@@ -304,15 +317,37 @@
                 <button type="button" class="btn btn-outline-danger" (click)="cerrarPagoBeneficio()">Salir </button>
                 <button type="button" class="btn btn-outline-success" (click)="limpiarPagoBeneficio()">Limpiar </button>
                 <button type="button" class="btn btn-info" [disabled]="blockLoad"
-                  (click)="calcularPagoBeneficio()">Generar
+                  (click)="calcularPagoBeneficio(modalUsuario)">Generar
                   <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
-                <button type="button" class="btn btn-success" (click)="guardarSocioDesv()">Guardar
+                <button type="button" class="btn btn-success" (click)="guardarSocioDesv(modalUsuario)">Guardar
                   <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
               </div>
+            </div>
+          </ng-template>
+
+          <!-- modal para validar privilegios de usuario -->
+          <ng-template #modalUsuario let-modal>
+            <div class="modal-header" id="demoFont">
+              <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+              <br>
+              <input #password [(ngModel)]="pass" class="form-control form-control-sm" type="password"
+                placeholder="Ingrese su contraseña" name="">
+              <br>
+              <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+                (click)="modal.close('Save click')">
+                Validar <img *ngIf="load" padding-left="20px" height="12"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button>
             </div>
           </ng-template>
 
@@ -428,6 +463,7 @@
             </td>
             <td colspan="1" class="sociosNombre">
               <b>{{item?.monto_total_menos_ds  | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+              <b *ngIf="item?.monto_total_menos_ds == null">─</b>
             </td>
             <td colspan="1" class="sociosNombre">
               <b>{{item?.monto_total_cex_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b>

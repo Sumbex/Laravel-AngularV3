@@ -180,25 +180,33 @@ class CuentaConsorcioController extends Controller
         $monto_beneficio =0;
 
         foreach ($cc as $key) {
-          
+
+            $sin_benef = Socios::where('retiro_pago_beneficio','N')
+                            ->orWhere('retiro_pago_beneficio', null)
+                            ->where('id',$key->socio_id)
+                            ->first();
+                            
+            if ($sin_benef) {
                 if ($key['monto_mes_ds_'.$mes] != 0 || $key['monto_mes_ds_'.$mes] != null ) {
-                    
-                    $update = CuentaConsorcio::where([
-                        'socio_id' => $key->socio_id,
-                        'anio_id' => $anio
-                    ])->first();
+                        
+                        $update = CuentaConsorcio::where([
+                            'socio_id' => $key->socio_id,
+                            'anio_id' => $anio
+                        ])->first();
 
 
-                    $ds = (int) $key['monto_mes_ds_'.$mes];
-                    $mult = $ds * $porc;
-                    $result = $mult; //$ds - $mult;
+                        $ds = (int) $key['monto_mes_ds_'.$mes];
+                        $mult = $ds * $porc;
+                        $result = $mult; //$ds - $mult;
 
-                    $update['monto_mes_cex_'.$mes] = round($result);
-                    $monto_beneficio = $monto_beneficio + round($result);
-                    if ($update->save()) {
-                        $sum++;
-                    }
+                        $update['monto_mes_cex_'.$mes] = round($result);
+                        $monto_beneficio = $monto_beneficio + round($result);
+                        if ($update->save()) {
+                            $sum++;
+                        }
                 }
+            }
+
             
         }
 

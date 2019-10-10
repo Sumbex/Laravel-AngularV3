@@ -31,12 +31,11 @@ class SecAsistencia extends Model
 
     protected function ingresarInasistentesReunionActiva($reunion_id)
     {
-        dd($reunion_id);
         $socios = $this->traerSociosActivos();
         if ($socios['estado'] == 'success') {
             $con = 0;
             /* dd( $socios['socios']); */
-            DB::beginTransaction();
+            /* DB::beginTransaction(); */
             foreach ($socios['socios'] as $key) {
                 $asistencia = new SecAsistencia;
                 $asistencia->reunion_id = $reunion_id;
@@ -49,12 +48,12 @@ class SecAsistencia extends Model
                     $con = $con + 1;
                 }
             }
-
+            /* dd($con); */
             if ($con == count($socios)) {
-                DB::commit();
-                return ['estado' => 'success'];
+                /* DB::commit(); */
+                return ['estado' => 'success', 'ingresos' => $con];
             } else {
-                DB::rollBack();
+                /* DB::rollBack(); */
                 return ['estado' => 'failed'];
             }
         } else {

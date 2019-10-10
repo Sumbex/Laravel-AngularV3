@@ -34,24 +34,28 @@ class SecAsistencia extends Model
         $socios = $this->traerSociosActivos();
         if ($socios['estado'] == 'success') {
             $con = 0;
-            /* dd( $socios['socios'][5]); */
-            DB::beginTransaction();
-            for ($i = 0; $i < count($socios['socios']); $i++) {
-                /* dd($socios[$i]); */
-                $asistencia = new SecAsistencia;
-                $asistencia->reunion_id = $reunion_id;
-                $asistencia->socio_id = $socios['socios'][$i]->id;
-                $asistencia->estado_asistencia_id = 2;
-                $asistencia->activo = 'S';
-                $asistencia->save();
-                $con = $con + 1;
-            }
-            if ($con == count($socios)) {
-                return ['estado' => 'success'];
-                DB::commit();
-            } else {
-                DB::rollBack();
-                return ['estado' => 'failed'];
+            /* dd( $socios['socios']); */
+            try{
+                DB::beginTransaction();
+                foreach ($socios['socios'] as $key) {
+                    $asistencia = new SecAsistencia;
+                    $asistencia->reunion_id = $reunion_id;
+                    $asistencia->socio_id = $key->id;
+                    $asistencia->estado_asistencia_id = 2;
+                    $asistencia->activo = 'S';
+                    $asistencia->save();
+                    $con = $con + 1;
+                }
+    
+                if ($con == count($socios)) {
+                    return ['estado' => 'success'];
+                    DB::commit();
+                } else {
+                    DB::rollBack();
+                    return ['estado' => 'failed'];
+                }
+            }catch(){
+
             }
         } else {
             return ['estado' => 'failed'];

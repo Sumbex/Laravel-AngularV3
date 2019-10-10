@@ -174,4 +174,28 @@ class SecReuniones extends Model
             return $existe;
         }
     }
+
+    protected function cerrarReunionActiva($request)
+    {
+        $reunion = DB::table('sec_reuniones')
+            ->where([
+                'activo' => 'S',
+                /* 'estado_reunion_id' => 2, */
+                'id' => $request->id
+            ])
+            ->get();
+
+        if (!$reunion->isEmpty()) {
+            $modReunion = SecReuniones::find($request->id);
+            $modReunion->estado_reunion_id = 3;
+            $modReunion->mod_user_id = Auth::user()->id;
+            if ($modReunion->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Reunion terminada con exito.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'La reunion.'];
+        }
+    }
 }

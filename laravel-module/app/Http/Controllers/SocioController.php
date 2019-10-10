@@ -277,7 +277,7 @@ class SocioController extends Controller
         }
         $socio = Socios::where([
                     'rut' => $rut_limpio,
-                    'activo' => 'S',    
+                   // 'activo' => 'S',    
                   ])->first();
         if ($socio) {
             return $socio;

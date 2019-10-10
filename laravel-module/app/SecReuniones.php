@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +26,7 @@ class SecReuniones extends Model
     {
         $RA = $this->traerReunionActiva();
         if ($RA['estado'] == 'failed') {
+            DB::beginTransaction();
             $reunion = new SecReuniones;
             $reunion->fecha_inicio = $request->fecha_inicio;
             $reunion->estado_reunion_id = 1;
@@ -34,7 +36,13 @@ class SecReuniones extends Model
             $reunion->user_id = Auth::user()->id;
             $reunion->activo = 'S';
             if ($reunion->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.'];
+                $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
+                if ($asistencia['estado'] == 'success') {
+                    DB::commit();
+                    return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.'];
+                } else {
+                    DB::rollBack();
+                }
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
             }
@@ -119,12 +127,13 @@ class SecReuniones extends Model
 
     protected function cancelarReunionActiva($request)
     {
+        //dd($request->all());
         $existe = $this->verificarReunionActiva($request->id);
         if ($existe['estado'] == 'success') {
             $reunion = SecReuniones::find($request->id)->first();
+            dd($reunion);
             $reunion->estado_reunion_id = 6;
             $reunion->mod_user_id = Auth::user()->id;
-            //dd($reunion);
             if ($reunion->save()) {
                 return ['estado' => 'success', 'mensaje' => 'Reunion cancelada con exito.'];
             } else {

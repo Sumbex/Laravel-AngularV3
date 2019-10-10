@@ -34,7 +34,6 @@ class SecAsistencia extends Model
         $socios = $this->traerSociosActivos();
         if ($socios['estado'] == 'success') {
             $con = 0;
-            /* dd( $socios['socios']); */
             DB::beginTransaction();
             foreach ($socios['socios'] as $key) {
                 $asistencia = new SecAsistencia;
@@ -42,15 +41,10 @@ class SecAsistencia extends Model
                 $asistencia->socio_id = $key->id;
                 $asistencia->estado_asistencia_id = 2;
                 $asistencia->activo = 'S';
-                /* $asistencia->save();
-                $con = $con + 1; */
-                if($asistencia->save()){
+                if ($asistencia->save()) {
                     $con = $con + 1;
                 }
             }
-            /* dd($con); */
-            /* dd($con.' / '.count($socios)); */
-            /* dd(count($test['socios'])); */
             if ($con == count($socios['socios'])) {
                 DB::commit();
                 return ['estado' => 'success', 'ingresos' => $con];
@@ -59,6 +53,20 @@ class SecAsistencia extends Model
                 return ['estado' => 'failed'];
             }
         } else {
+            return ['estado' => 'failed'];
+        }
+    }
+
+    protected function borrarInasistentesReunionActiva($reunion_id)
+    {
+        $borrar = SecAsistencia::where([
+            'activo' => 'S',
+            'reunion_id' => $reunion_id
+        ]);
+
+        if($borrar->delete()){
+            return ['estado' => 'success', 'ingresos' => count($borrar)];
+        }else{
             return ['estado' => 'failed'];
         }
     }

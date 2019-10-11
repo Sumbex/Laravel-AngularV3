@@ -90,6 +90,39 @@
           font-weight: bold;
 
         }
+        .blue{
+          color: blue;
+          font-weight: bold;
+
+        }
+        .blue2{
+          color: blue;
+          font-weight: bold;
+        }
+        .yellow{
+          -webkit-text-fill-color: rgb(255, 238, 7);
+          -webkit-text-stroke: 0.4px black;
+        }
+        .black{
+          -webkit-text-fill-color: black;
+        }
+
+        .totalVertical{
+          font-weight: bold;
+        }
+
+        .menos{
+          -webkit-text-fill-color: red;
+          -webkit-text-stroke: 0.5px black;
+        }
+        .mas{
+          -webkit-text-fill-color: #08F16B;
+          -webkit-text-stroke: 0.5px black;
+        }
+        .titulos{
+          -webkit-text-fill-color: white;
+          -webkit-text-stroke: 0.5px black;
+        }
 
         .tableFixHead       { overflow-y: auto; height: 500px; }
         .tableFixHead thead { position: sticky; top: 0; }

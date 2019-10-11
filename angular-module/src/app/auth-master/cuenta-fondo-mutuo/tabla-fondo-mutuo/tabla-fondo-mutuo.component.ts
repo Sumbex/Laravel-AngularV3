@@ -356,7 +356,7 @@ export class TablaFondoMutuoComponent implements OnInit {
             }
             if (response.estado == 'success') {
               this.socio = '';
-              this.tipoPorc = '0';
+              this.tipoPorc = '1';
               this.tipoRetiro = '0';
               this.mesBeneficio = '';
               this.montoBeneficio = '';

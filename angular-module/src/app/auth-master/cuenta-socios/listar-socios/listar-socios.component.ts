@@ -28,6 +28,8 @@ export class ListarSociosComponent implements OnInit {
   fecha_nacimiento;
   fecha_ingreso;
   fecha_egreso;
+  count_activos:string = '';
+  count_inactivos:string = '';
 
   //para validar usuario
    user:object=[];
@@ -65,6 +67,7 @@ export class ListarSociosComponent implements OnInit {
       location.reload();
     }
 
+    this.contar_socios_ai();
   	this.listar();
     this.usuario_logeado();
 
@@ -265,6 +268,15 @@ export class ListarSociosComponent implements OnInit {
             this.ver_estado_soc = true;
           }
         )
+  }
+
+  contar_socios_ai(){
+    this._socios.contar_socios().subscribe(
+      (response) => {
+        this.count_activos = response.activos;
+        this.count_inactivos = response.inactivos;
+      }
+    ) 
   }
 
 

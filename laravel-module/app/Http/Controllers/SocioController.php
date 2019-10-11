@@ -1761,5 +1761,17 @@ class SocioController extends Controller
     		
     }
 
+    public function contar_socios()
+    {
+            $s_a = Socios::where('activo','S')->count();
+
+            $s_i = Socios::where('activo','N')->count();
+
+            return [
+                'activos' => $s_a,
+                'inactivos' => $s_i
+            ];
+    }
+
 
 }

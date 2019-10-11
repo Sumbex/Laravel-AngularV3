@@ -64,10 +64,37 @@ class SecAsistencia extends Model
             'reunion_id' => $reunion_id
         ]);
 
-        if($borrar->delete()){
+        if ($borrar->delete()) {
             return ['estado' => 'success'];
-        }else{
+        } else {
             return ['estado' => 'failed'];
+        }
+    }
+
+    protected function marcarAsitenciaSocio($request)
+    {
+        $verificarJus = DB::table('sec_justificacion')
+            ->where([
+                'reunion_id' => $request->reunion_id,
+                'socio_id' => $request->socio_id
+            ])
+            ->get();
+
+        if ($verificarJus->isEmpty()) {
+            $socio = DB::table('sec_asistencia')
+                ->where([
+                    'reunion_id' => $request->reunion_id,
+                    'socio_id' => $request->socio_id
+                ])
+                ->first();
+            $socio->estado_asistencia = 1;
+            if ($socio->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Socio marcado como presente correctamente.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El socio al que intentas marcar como asistido ya se encuentra justificado.'];
         }
     }
 }

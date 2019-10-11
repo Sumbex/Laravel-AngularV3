@@ -43,6 +43,7 @@ Route::post('/cancelar_reunion_activa_sec', 'SecReunionesController@CancelarReun
 Route::post('/terminar_reunion_activa_sec', 'SecReunionesController@CerrarReunionActiva');
 Route::get('/traer_reunion_cf_sec', 'SecReunionesController@TraerReunionCerradaFinalizada');
 Route::get('/traer_socio_por_rut_sec/{rut}', 'SecReunionesController@TraerSocioPorRut');
+Route::post('/marcar_asistencia_socio_sec', 'SecReunionesController@MarcarAsitenciaSocioReunion');
 //------------------------------------------->secretaria
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

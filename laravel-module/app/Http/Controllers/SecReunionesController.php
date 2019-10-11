@@ -46,4 +46,9 @@ class SecReunionesController extends Controller
     {
         return SecReuniones::traerSocioPorRut($rut);
     }
+
+    public function MarcarAsitenciaSocioReunion(Request $request)
+    {
+        return SecReuniones::marcarAsitenciaSocioReunion($request);
+    }
 }

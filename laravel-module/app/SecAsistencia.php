@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -99,6 +98,32 @@ class SecAsistencia extends Model
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El socio al que intentas marcar como asistido ya se encuentra justificado.'];
+        }
+    }
+
+    protected function traerSociosPresentes($reunion_id)
+    {
+        $presentes = DB::table('socios as s')
+            ->select([
+                's.id',
+                's.rut',
+                DB::raw("concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) as nombre"),
+                'sea.descripcion as estado'
+            ])
+            ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
+            ->join('sec_estado_asistencia as sea', 'sea.id', 'sa.estado_asistencia_id')
+            ->where([
+                's.activo' => 'S',
+                's.fecha_egreso' => null,
+                'sa.reunion_id' => $reunion_id,
+                'sa.estado_asistencia_id' => 1
+            ])
+            ->get();
+
+        if (!$presentes->isEmpty()) {
+            return ['estado' => 'success', 'presentes' => $presentes];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No se encuentras socios presentes actualmente.'];
         }
     }
 }

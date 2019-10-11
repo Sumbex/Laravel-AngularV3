@@ -319,4 +319,21 @@ class SecReuniones extends Model
         $rut = str_replace('-', '', $rut);
         return $rut;
     }
+
+    protected function marcarAsitenciaSocioReunion($request)
+    {
+        $verificar = DB::table('sec_reuniones')
+            ->where([
+                'activo' => 'S',
+                'id' => $request->reunion_id
+            ])
+            ->whereIn('estado_reunion_id', [3, 4])
+            ->get();
+
+        if (!$verificar->isEmpty()) {
+            return SecAsistencia::marcarAsitenciaSocio($request);
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'La reunion actual no existe o su estado no se encuentra Cerrado o Finalizado.'];
+        }
+    }
 }

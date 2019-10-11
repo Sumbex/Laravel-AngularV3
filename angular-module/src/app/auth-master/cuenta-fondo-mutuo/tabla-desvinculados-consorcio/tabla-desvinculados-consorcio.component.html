@@ -35,10 +35,10 @@
           <tr class="text-center">
             <!-- <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th> -->
             <th colspan="4" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
-            <th colspan="4" style="background: #138D75"> DESCRIPCION DE LA DESVINCULACION</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL DIA DE SUELDO</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL AHORRO DIA DE SUELDO</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> TOTAL</th>
+            <th colspan="4" style="background: #138D75"><i class="fas fa-align-justify"></i> DESCRIPCION DE LA DESVINCULACION</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-dollar-sign mas"></i> TOTAL DIA DE SUELDO</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-dollar-sign mas"></i> TOTAL AHORRO DIA DE SUELDO</th>
+            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-dollar-sign mas"></i> TOTAL</th>
           </tr>
         </thead>
 
@@ -46,19 +46,21 @@
 
           <tr *ngFor="let item of socios" class="text-center">
             <!-- <td colspan="1">{{ item?.rut }}</td> -->
-            <td colspan="4" [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' }"
+            <td colspan="4"
               class="text-left sociosNombre2" style="background: #F9E79F">
-              {{ item?.nombre | uppercase}}
+              <b>{{ item?.nombre | uppercase}}</b>
             </td>
             <td colspan="4">
-              <b>CAUSA DE LA DESVINCULACION  DEL SOCIO</b>
+              <b>SOCIO DESVINCULADO POR</b> <b class="red"> {{ item?.descripcion | uppercase}} </b>
+              <b>EN EL MES</b ><b class="blue"> {{ item?.fecha | uppercase}} </b>
+              <b>PAGANDOSE EL </b> <b class="red"> {{ item?.porcentaje | uppercase}}.</b>
             </td>
             <td colspan="1" class="sociosNombre">
-              <b>TOTAL VERTICAL</b></td>
+              <b>{{ item?.monto_v | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
-              <b>TOTAL HORIZONTAL</b></td>
+              <b>{{ item?.monto_h | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="1" class="sociosNombre">
-              <b>TOTAL FINAL</b></td>
+              <b>{{ item?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
         </tbody>
 

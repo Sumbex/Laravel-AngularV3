@@ -92,14 +92,19 @@
         }
         .blue{
           color: blue;
-          background: #82E0AA;
           font-weight: bold;
 
         }
         .blue2{
           color: blue;
           font-weight: bold;
-
+        }
+        .yellow{
+          -webkit-text-fill-color: rgb(255, 238, 7);
+          -webkit-text-stroke: 0.4px black;
+        }
+        .black{
+          -webkit-text-fill-color: black;
         }
 
         .totalVertical{

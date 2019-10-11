@@ -4,7 +4,7 @@
 
     <div class="row">
 
-      <div class="col-12 col-md-3 col-lg-3"><br><label><strong>AÑO</strong></label>
+      <div class="col-12 col-md-2 col-lg-2"><br><label><strong>AÑO</strong></label>
         <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
           <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
         </select>
@@ -18,14 +18,17 @@
         </button>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-6"><br><label><strong>DEFINICIONES</strong></label> <br>
+      <div class="col-12 col-md-7 col-lg-7"><br><label><strong>DEFINICIONES</strong></label> <br>
         <label>
           <ngb-alert [dismissible]="false">
-            ■ DIA DE SUELDO = <b>D.S.</b> <br>
-            ■ PAGO DE BENEFICIOS = <b>P.B.</b> <br>
-            ■ PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO <b>P.B.</b> DE SU RESPECTIVO MES.<br>
-            ■ LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b>DESVINCULADOS</b> DEL AÑO SELECCIONADO. <br>
-            ■ LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b>PAGO DE BENEFICIO</b> AL DIA, DEL AÑO
+            <b class="black">■</b> DIA DE SUELDO = <b class="black">D.S.</b> <br>
+            <b class="black">■</b> PAGO DE BENEFICIOS = <b class="black">P.B.</b> <br>
+            <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO 
+            <b class="black">P.B. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
+            <b class="black">■</b> PARA VER UN RESUMEN DEL PAGO DE BENEFICIO OTORGADO DEBE SELECCIONAR EL 
+            <b class="black">MES <i class="fas fa-info-circle yellow"></i></b> PARA VERIFICAR SI ESTA TODO CORRECTO.<br>
+            <b class="black">■</b> LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b class="black">DESVINCULADOS</b> DEL AÑO SELECCIONADO, PERO NO PAGADOS DE SU BENEFICIO. <br>
+            <b class="black">■</b> LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b class="black">PAGO DE BENEFICIO</b> AL DIA, DEL AÑO
             SELECCIONADO.
           </ngb-alert>
         </label>

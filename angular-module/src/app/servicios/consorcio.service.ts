@@ -99,7 +99,7 @@ export class ConsorcioService {
 
   getTablaConsorciosDesvinculados(anio): Observable<any> {
 
-    return this._http.get(this.url + "tabla_desvinculados/" + anio, {
+    return this._http.get(this.url + "listar_pago_beneficios/" + anio, {
         headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,

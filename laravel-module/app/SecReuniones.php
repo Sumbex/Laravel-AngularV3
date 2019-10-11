@@ -341,4 +341,9 @@ class SecReuniones extends Model
     {
         return SecAsistencia::traerSociosPresentes($reunion_id);
     }
+
+    protected function traerListaReunion($reunion_id)
+    {
+        return SecAsistencia::traerListaReunion($reunion_id);
+    }
 }

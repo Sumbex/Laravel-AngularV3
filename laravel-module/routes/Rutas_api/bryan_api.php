@@ -41,6 +41,8 @@ Route::get('/traer_reunion_activa_sec', 'SecReunionesController@TraerReunionActi
 Route::post('/modificar_reunion_activa_sec', 'SecReunionesController@ModificarReunionActiva');
 Route::post('/cancelar_reunion_activa_sec', 'SecReunionesController@CancelarReunionActiva');
 Route::post('/terminar_reunion_activa_sec', 'SecReunionesController@CerrarReunionActiva');
+Route::get('/traer_reunion_cf_sec', 'SecReunionesController@TraerReunionCerradaFinalizada');
+Route::get('/traer_socio_por_rut_sec/{rut}', 'SecReunionesController@TraerSocioPorRut');
 //------------------------------------------->secretaria
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

@@ -70,7 +70,7 @@ class SecReuniones extends Model
             ->where([
                 'sr.activo' => 'S'
             ])
-            ->whereIn('sr.estado_reunion_id', [1, 2, 3])
+            ->whereIn('sr.estado_reunion_id', [1, 2])
             ->get();
 
         if (!$reunion->isEmpty()) {
@@ -197,5 +197,126 @@ class SecReuniones extends Model
         } else {
             return ['estado' => 'failed', 'mensaje' => 'La reunion.'];
         }
+    }
+
+    protected function traerReunionCerradaFinalizada()
+    {
+        $reunion = DB::table('sec_reuniones as sr')
+            ->select([
+                'sr.id',
+                'sr.fecha_inicio',
+                'sr.cabeza as titulo',
+                'sr.cuerpo as descripcion',
+                'sr.tipo_reunion_id as tipo',
+                DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
+                'sr.mod_user_id'
+            ])
+            ->join('users as u', 'u.id', 'sr.user_id')
+            ->join('sec_estado_reunion as ser', 'ser.id', 'sr.tipo_reunion_id')
+            ->where([
+                'sr.activo' => 'S'
+            ])
+            ->whereIn('sr.estado_reunion_id', [3, 4])
+            ->get();
+
+        if (!$reunion->isEmpty()) {
+            if (!is_null($reunion[0]->mod_user_id)) {
+                $mod = DB::table('users')
+                    ->select([
+                        DB::raw("concat(nombres,' ',a_paterno,' ',a_materno) as modificada_por")
+                    ])
+                    ->where([
+                        'id' => $reunion[0]->mod_user_id
+                    ])
+                    ->get();
+                $reunion[0]->modificada_por = $mod[0]->modificada_por;
+            }
+            $reunion[0]->fecha_inicio = preg_replace('/\s+/', 'T', $reunion[0]->fecha_inicio);
+            return ['estado' => 'success', 'reunion' => $reunion];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no existe una reunion finalizada.'];
+        }
+    }
+
+    protected function traerSocioPorRut($rut)
+    {
+        $limpiar = $this->limpiarRut($rut);
+        $validarRut = $this->validarRut($limpiar);
+        if ($validarRut == true) {
+            $socio = DB::table('socios as s')
+                ->select([
+                    's.id',
+                    DB::raw("concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) as nombre"),
+                    'sea.descripcion as estado'
+                ])
+                ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
+                ->join('sec_estado_asistencia as sea', 'sea.id', 'sa.estado_asistencia_id')
+                ->where([
+                    's.activo' => 'S',
+                    's.rut' => $limpiar,
+                    's.fecha_egreso' => null
+                ])
+                ->get();
+
+            if (!$socio->isEmpty()) {
+                return ['estado' => 'success', 'socio' => $socio[0]];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El socio ya no se encuenta activo en el sindicato o no existe.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
+        }
+    }
+
+    protected function validarRut($rut)
+    {
+        try {
+            $rut = preg_replace('/[^k0-9]/i', '', $rut);
+            $dv  = substr($rut, -1);
+            $numero = substr($rut, 0, strlen($rut) - 1);
+            $i = 2;
+            $suma = 0;
+            foreach (array_reverse(str_split($numero)) as $v) {
+                if ($i == 8)
+                    $i = 2;
+                $suma += $v * $i;
+                ++$i;
+            }
+            $dvr = 11 - ($suma % 11);
+
+            if ($dvr == 11)
+                $dvr = 0;
+            if ($dvr == 10)
+                $dvr = 'K';
+            if ($dvr == strtoupper($dv))
+                return true;
+            else
+                return false;
+        } catch (\Exception $e) {
+            return ['status' => 'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
+        }
+    }
+
+    protected function limpiarRut($rut)
+    {
+        $rut = str_replace('á', 'a', $rut);
+        $rut = str_replace('Á', 'A', $rut);
+        $rut = str_replace('é', 'e', $rut);
+        $rut = str_replace('É', 'E', $rut);
+        $rut = str_replace('í', 'i', $rut);
+        $rut = str_replace('Í', 'I', $rut);
+        $rut = str_replace('ó', 'o', $rut);
+        $rut = str_replace('Ó', 'O', $rut);
+        $rut = str_replace('Ú', 'U', $rut);
+        $rut = str_replace('ú', 'u', $rut);
+
+        //Quitando Caracteres Especiales 
+        $rut = str_replace('"', '', $rut);
+        $rut = str_replace(':', '', $rut);
+        $rut = str_replace('.', '', $rut);
+        $rut = str_replace(',', '', $rut);
+        $rut = str_replace(';', '', $rut);
+        $rut = str_replace('-', '', $rut);
+        return $rut;
     }
 }

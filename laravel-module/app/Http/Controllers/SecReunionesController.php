@@ -36,4 +36,14 @@ class SecReunionesController extends Controller
     {
         return SecReuniones::cerrarReunionActiva($request);
     }
+
+    public function TraerReunionCerradaFinalizada()
+    {
+        return SecReuniones::traerReunionCerradaFinalizada();
+    }
+
+    public function TraerSocioPorRut($rut)
+    {
+        return SecReuniones::traerSocioPorRut($rut);
+    }
 }

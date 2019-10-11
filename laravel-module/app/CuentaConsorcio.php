@@ -427,7 +427,8 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_11,0) +
                                   COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
-                                ) monto_total_socio
+                                ) monto_total_socio,
+                                s.retiro_pago_beneficio pb
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
@@ -529,7 +530,8 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_11,0) +
                                   COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
-                                ) monto_total_socio
+                                ) monto_total_socio,
+                                s.retiro_pago_beneficio pb
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 

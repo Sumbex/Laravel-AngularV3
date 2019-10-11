@@ -82,11 +82,11 @@ export class SecretariaService{
         )});
     }
 
-    /**************************TRAER REUNION ACTIVA*****************************/
+    /**************************TRAER USUARIO*****************************/
 
     getUsuario(rut): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_reunion_activa_sec/" + rut, {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_socio_por_rut_sec/" + rut, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -94,7 +94,7 @@ export class SecretariaService{
         )});
     }
 
-    //*********************TERMINAR REUNION************************/
+    //*********************MARCAR ASISTENCIA************************/
     marcarAsistenciaUsuario(id) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
@@ -103,6 +103,18 @@ export class SecretariaService{
         return this._http.post(this.url + "marcar_asistencia_usuario",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    /**************************TRAER REUNION CERRADA FINALIZADA*****************************/
+
+    getReunionCerradaFinalizada(): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_reunion_cf_sec", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
             }
         )});
     }

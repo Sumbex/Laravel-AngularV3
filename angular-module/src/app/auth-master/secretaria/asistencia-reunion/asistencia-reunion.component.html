@@ -82,11 +82,10 @@
             <input type="text" class="form-control" placeholder="Rut del Socio" aria-label="Recipient's username"
               aria-describedby="basic-addon2" [(ngModel)]="rutSocio">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">Buscar</button>
+              <button [disabled]=cargandoSocio (click)="getUsuario()" class="btn btn-outline-secondary" type="button">Buscar <img *ngIf="cargandoSocio" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
             </div>
           </div>
         </div>
-        {{rutSocio}}
       </div>
       <div class="row">
         <div class="col-md-6 mt-4">

@@ -24,7 +24,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 mt-4">
-          <button class="btn btn-success btn-lg btn-block" (click)="abrirModal(listaAsistencia)">Lista de Asistentes</button>
+          <button class="btn btn-success btn-lg btn-block" (click)="abrirModalAsistencia(listaAsistencia)">Lista de Asistentes</button>
         </div>
       </div>
       <div class="row">
@@ -123,9 +123,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center">
-                  <th>Bryan Montecinos Jara</th>
-                  <th>Sí</th>
+                <tr *ngFor="let itemAsistencia of listaDeAsistentes" class="text-center">
+                  <th>{{itemAsistencia?.nombre}}</th>
+                  <th>{{itemAsistencia?.estado}}</th>
                 </tr>
               </tbody>
             </table>
@@ -200,17 +200,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center table-success">
-                  <th>Bryan Vidal Díaz</th>
-                  <th>Asistente</th>
-                </tr>
-                <tr class="text-center table-secondary">
-                  <th>Bryan Montecinos Jara</th>
-                  <th>Justificado</th>
-                </tr>
-                <tr class="text-center table-danger">
-                  <th>David Luna Cuevas</th>
-                  <th>Inasistente</th>
+                <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center table-success">
+                  <th>{{itemAsistenciaCompleta?.nombre}}</th>
+                  <th>{{itemAsistenciaCompleta?.estado}}</th>
                 </tr>
               </tbody>
             </table>
@@ -249,7 +241,7 @@
                 <button class="btn btn-danger btn-lg btn-block">Sí</button>
               </div>
               <div class="col-md-6">
-                  <button class="btn btn-success btn-lg btn-block">No</button>
+                  <button (click)="modal.dismiss('Cross click')" class="btn btn-success btn-lg btn-block">No</button>
                 </div>
             </div>
       </div>

@@ -19,6 +19,12 @@ export class AsistenciaReunionComponent implements OnInit {
   //Variable para rescatar la reunión
   datosReunion;
 
+  //Lista de Asistentes
+  listaDeAsistentes;
+
+  //Lista de Asistencia Completa
+  listaAsistenciaCompleta;
+
   //Variable de carga
   cargandoSocio = false;
 
@@ -36,6 +42,11 @@ export class AsistenciaReunionComponent implements OnInit {
   abrirModal(modalHistorial){
     this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
     this.getReunionCerradaFinalizada();
+  }
+
+  abrirModalAsistencia(modalHistorial){
+    this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
+    this.getListaAsistentesCompleta();
   }
 
   abrirConfirmacion(modalHistorial){
@@ -85,13 +96,40 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //MARCAR COMO ASISTENTE AL USUARIO ENCONTRADO
   marcarAsistenciaUsuario(){
-    this._secretariaService.marcarAsistenciaUsuario(this.datosSocio.id).subscribe(response => {
+    this._secretariaService.marcarAsistenciaUsuario(this.datosSocio.id, this.datosReunion.id).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
         alert(response.mensaje);
+        this.getUsuario();
       }
     }, error=>{
+      console.log(error);
+    });
+  }
+
+  //TRAER LISTA DE ASISTENTES A LA REUNIÓN
+  getListaAsistentes(){
+    this._secretariaService.getListaAsistentes().subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        this.listaDeAsistentes = response;
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  //TRAER LISTA DE ASISTENCIA COMPLETA
+  getListaAsistentesCompleta(){
+    this._secretariaService.getListaAsistentes().subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        this.listaAsistenciaCompleta = response;
+      }
+    }, error => {
       console.log(error);
     });
   }

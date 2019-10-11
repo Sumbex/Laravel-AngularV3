@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -81,17 +82,20 @@ class SecAsistencia extends Model
             ->get();
 
         if ($verificarJus->isEmpty()) {
-            $socio = DB::table('sec_asistencia')
-                ->where([
-                    'reunion_id' => $request->reunion_id,
-                    'socio_id' => $request->socio_id
-                ])
+            $socio = SecAsistencia::where([
+                'reunion_id' => $request->reunion_id,
+                'socio_id' => $request->socio_id
+            ])
                 ->first();
-            $socio->estado_asistencia = 1;
-            if ($socio->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Socio marcado como presente correctamente.'];
+            if ($socio->estado_asistencia_id == 1) {
+                return ['estado' => 'failed', 'mensaje' => 'El socio ya se encuentra marcado como asistido.'];
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                $socio->estado_asistencia_id = 1;
+                if ($socio->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Socio marcado como presente correctamente.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El socio al que intentas marcar como asistido ya se encuentra justificado.'];

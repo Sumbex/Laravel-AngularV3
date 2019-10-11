@@ -238,7 +238,7 @@ class SecReuniones extends Model
         }
     }
 
-    protected function traerSocioPorRut($rut)
+    protected function traerSocioPorRut($rut, $reunion_id)
     {
         $limpiar = $this->limpiarRut($rut);
         $validarRut = $this->validarRut($limpiar);
@@ -254,10 +254,10 @@ class SecReuniones extends Model
                 ->where([
                     's.activo' => 'S',
                     's.rut' => $limpiar,
-                    's.fecha_egreso' => null
+                    's.fecha_egreso' => null,
+                    'sa.reunion_id' => $reunion_id
                 ])
                 ->get();
-
             if (!$socio->isEmpty()) {
                 return ['estado' => 'success', 'socio' => $socio[0]];
             } else {

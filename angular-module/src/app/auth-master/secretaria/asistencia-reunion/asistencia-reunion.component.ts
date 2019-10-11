@@ -27,6 +27,7 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //Variable de carga
   cargandoSocio = false;
+  cargandoCambioEstadoSocio = false;
 
   //variable para asociar al modal
   modalVariable;
@@ -60,7 +61,6 @@ export class AsistenciaReunionComponent implements OnInit {
         alert(response.mensaje);
       }else{
         this.datosReunion = response.reunion[0];
-        console.log(this.datosReunion);
       }
     }, error=>{
       console.log(error);
@@ -71,7 +71,7 @@ export class AsistenciaReunionComponent implements OnInit {
   getUsuario(){
     this.cargandoSocio = true;
     this.limpiarCampos();
-    this._secretariaService.getUsuario(this.rutSocio).subscribe(response =>{
+    this._secretariaService.getUsuario(this.rutSocio, this.datosReunion.id).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoSocio = false;
@@ -96,15 +96,19 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //MARCAR COMO ASISTENTE AL USUARIO ENCONTRADO
   marcarAsistenciaUsuario(){
+    this.cargandoCambioEstadoSocio = true;
     this._secretariaService.marcarAsistenciaUsuario(this.datosSocio.id, this.datosReunion.id).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoCambioEstadoSocio = false;
       }else{
         alert(response.mensaje);
+        this.cargandoCambioEstadoSocio = false;
         this.getUsuario();
       }
     }, error=>{
       console.log(error);
+      this.cargandoCambioEstadoSocio = false;
     });
   }
 

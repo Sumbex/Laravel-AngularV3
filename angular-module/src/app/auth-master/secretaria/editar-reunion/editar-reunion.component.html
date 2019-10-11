@@ -10,77 +10,80 @@
   <!-- Cuerpo del modal -->
   <div class="modal-body">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h3>Se encuentra editando la reunión {{datosReunion.titulo}} con fecha {{datosReunion.fecha}}</h3>
-          <p class="text-muted">Reunión creada por {{creadaPor}}</p>
+        <div *ngIf="this.datosReunion.id == ''" class="loader"></div>
+      <div *ngIf="this.datosReunion.id != ''">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3>Se encuentra editando la reunión {{datosReunion.titulo}} con fecha {{datosReunion.fecha}}</h3>
+            <p class="text-muted">Reunión creada por {{creadaPor}}</p>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <p class="mt-2">
+              <ngb-alert [dismissible]="false">
+                <strong>¡Advertencia!</strong> Esta tabla cuenta con los datos de la reunión actualmente activa, solo
+                cambie los valores que desea editar y guartdelos con el boton verde, si esea cancelar la reunión presione
+                el botón de color rojo.
+              </ngb-alert>
+            </p>
+          </div>
+        </div>
+        <form #formulario="ngForm" (ngSubmit)="editarReunionForm(formulario)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fecha"><b>Ingrese una fecha para la reunión</b></label>
+                <input class="form-control" type="datetime-local" name="fecha" #fecha="ngModel"
+                  [(ngModel)]="datosReunion.fecha" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="tipo"><b>Seleccione el Tipo de Reunión</b></label>
+                <select class="form-control" name="tipoReunion" #tipoReunion="ngModel"
+                  [(ngModel)]="datosReunion.tipoReunion" required>
+                  <option value="1">General</option>
+                  <option value="2">Eleccion</option>
+                  <option value="3">Votación</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="titulo"><b>Titulo de la reunión</b></label>
+                <input class="form-control" type="text"
+                  placeholder="Ingrese un Nombre para la reunión (Máximo 90 caracteres)" maxlength="90" name="titulo"
+                  #titulo="ngModel" [(ngModel)]="datosReunion.titulo" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión a realizar</b></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
+                  placeholder="(Minimo 4 caracteres, máximo 500 cacacteres)" minlength="4" maxlength="500"
+                  name="descripcion" #descripcion="ngModel" [(ngModel)]="datosReunion.descripcion" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 mt-2">
+              <button type="submit" [disabled]="!formulario.valid || ingresandoDatos" class="btn btn-success btn-block"><b [hidden]="ingresandoDatos">Actualizar</b> <b [hidden]="!ingresandoDatos">Modificando Datos </b> <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+            </div>
+            <div class="col-md-4 mt-2">
+              <button type="button" (click)="modalConfirmacion(confirmacionTerminar)" class="btn btn-secondary btn-block"><b>Terminar Reunión</b></button>
+            </div>
+            <div class="col-md-4 mt-2">
+              <button type="button" (click)="modalConfirmacion(confirmacion)" class="btn btn-danger btn-block"><b>Cancelar
+                Reunión</b></button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="row">
-        <div class="col-md-12 mt-2">
-          <p class="mt-2">
-            <ngb-alert [dismissible]="false">
-              <strong>¡Advertencia!</strong> Esta tabla cuenta con los datos de la reunión actualmente activa, solo
-              cambie los valores que desea editar y guartdelos con el boton verde, si esea cancelar la reunión presione
-              el botón de color rojo.
-            </ngb-alert>
-          </p>
-        </div>
-      </div>
-      <form #formulario="ngForm" (ngSubmit)="editarReunionForm(formulario)">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="fecha"><b>Ingrese una fecha para la reunión</b></label>
-              <input class="form-control" type="datetime-local" name="fecha" #fecha="ngModel"
-                [(ngModel)]="datosReunion.fecha" required>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="tipo"><b>Seleccione el Tipo de Reunión</b></label>
-              <select class="form-control" name="tipoReunion" #tipoReunion="ngModel"
-                [(ngModel)]="datosReunion.tipoReunion" required>
-                <option value="1">General</option>
-                <option value="2">Eleccion</option>
-                <option value="3">Votación</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="titulo"><b>Titulo de la reunión</b></label>
-              <input class="form-control" type="text"
-                placeholder="Ingrese un Nombre para la reunión (Máximo 90 caracteres)" maxlength="90" name="titulo"
-                #titulo="ngModel" [(ngModel)]="datosReunion.titulo" required>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión a realizar</b></label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
-                placeholder="(Minimo 4 caracteres, máximo 500 cacacteres)" minlength="4" maxlength="500"
-                name="descripcion" #descripcion="ngModel" [(ngModel)]="datosReunion.descripcion" required></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-2">
-            <button type="submit" [disabled]="!formulario.valid || ingresandoDatos" class="btn btn-success btn-block"><b [hidden]="ingresandoDatos">Actualizar</b> <b [hidden]="!ingresandoDatos">Modificando Datos </b> <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
-          </div>
-          <div class="col-md-4 mt-2">
-            <button type="button" (click)="modalConfirmacion(confirmacionTerminar)" class="btn btn-secondary btn-block"><b>Terminar Reunión</b></button>
-          </div>
-          <div class="col-md-4 mt-2">
-            <button type="button" (click)="modalConfirmacion(confirmacion)" class="btn btn-danger btn-block"><b>Cancelar
-              Reunión</b></button>
-          </div>
-        </div>
-      </form>
     </div>
   </div>
   <!-- Patitas del Modal -->

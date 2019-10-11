@@ -84,9 +84,9 @@ export class SecretariaService{
 
     /**************************TRAER USUARIO*****************************/
 
-    getUsuario(rut): Observable<any>{
+    getUsuario(rut, reunion): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_socio_por_rut_sec/" + rut, {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_socio_por_rut_sec/" + rut + "/" + reunion, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -98,8 +98,8 @@ export class SecretariaService{
     marcarAsistenciaUsuario(socio_id, reunion_id) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('id', socio_id);
-        body.append('id', reunion_id);
+        body.append('socio_id', socio_id);
+        body.append('reunion_id', reunion_id);
         
         return this._http.post(this.url + "marcar_asistencia_socio_sec",body, {headers: new HttpHeaders(
             {

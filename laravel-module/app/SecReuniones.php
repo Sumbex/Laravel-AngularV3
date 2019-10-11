@@ -238,11 +238,11 @@ class SecReuniones extends Model
         }
     }
 
-    protected function traerSocioPorRut($request)
+    protected function traerSocioPorRut($rut)
     {
-        $limpiar = $this->limpiarRut($request->rut);
+        $limpiar = $this->limpiarRut($rut);
         $validarRut = $this->validarRut($limpiar);
-        if ($validarRut['estado'] == 'success') {
+        if ($validarRut == true) {
             $socio = DB::table('socios as s')
                 ->select([
                     's.id',
@@ -252,19 +252,19 @@ class SecReuniones extends Model
                 ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
                 ->join('sec_estado_asistencia as sea', 'sea.id', 'sa.estado_asistencia_id')
                 ->where([
-                    'activo' => 'S',
-                    'rut' => $limpiar,
-                    'fecha_egreso' => null
+                    's.activo' => 'S',
+                    's.rut' => $limpiar,
+                    's.fecha_egreso' => null
                 ])
                 ->get();
-                
+
             if (!$socio->isEmpty()) {
                 return ['estado' => 'success', 'socio' => $socio[0]];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'El socio ya no se encuenta activo en el sindicato o no existe.'];
             }
         } else {
-            return $validarRut;
+            return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
         }
     }
 
@@ -289,9 +289,9 @@ class SecReuniones extends Model
             if ($dvr == 10)
                 $dvr = 'K';
             if ($dvr == strtoupper($dv))
-                return ['estado' => 'success'];
+                return true;
             else
-                return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido'];
+                return false;
         } catch (\Exception $e) {
             return ['status' => 'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
         }

@@ -21,10 +21,11 @@
       <div class="col-12 col-md-6 col-lg-6"><br><label><strong>DEFINICIONES</strong></label> <br>
         <label>
           <ngb-alert [dismissible]="false">
-            DIA DE SUELDO = <b>D.S.</b> <br>
-            PAGO DE BENEFICIOS = <b>P.B.</b> <br>
-            LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b>DESVINCULADOS</b> DEL AÑO SELECCIONADO. <br>
-            LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b>PAGO DE BENEFICIO</b> AL DIA, DEL AÑO
+            ■ DIA DE SUELDO = <b>D.S.</b> <br>
+            ■ PAGO DE BENEFICIOS = <b>P.B.</b> <br>
+            ■ PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO <b>P.B.</b> DE SU RESPECTIVO MES.<br>
+            ■ LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b>DESVINCULADOS</b> DEL AÑO SELECCIONADO. <br>
+            ■ LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b>PAGO DE BENEFICIO</b> AL DIA, DEL AÑO
             SELECCIONADO.
           </ngb-alert>
         </label>
@@ -35,7 +36,7 @@
       <div class="col-12 col-md-12 col-lg-12"><br><label><strong>INFORMATIVO</strong></label> <br>
         <label>
           <ngb-alert [dismissible]="false">
-            {{descripcionDesc | uppercase}}
+            ■ {{descripcionDesc | uppercase}}
           </ngb-alert>
         </label>
       </div>
@@ -70,179 +71,187 @@
 
           <tr class="text-center">
             <!-- <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-id-card"></i> RUT</th> -->
-            <th colspan="4" rowspan="2" style="background: #138D75"><i class="fas fa-user"></i> NOMBRE</th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 1; descripcionDescuento();"> ENERO
+            <th colspan="4" rowspan="2" style="background: #138D75"><h6><i class="fas fa-user"></i></h6><br> NOMBRE</th>
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 1; descripcionDescuento();"> ENERO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 2; descripcionDescuento();"> FEBRERO
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 2; descripcionDescuento();"> FEBRERO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 3; descripcionDescuento();"> MARZO
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 3; descripcionDescuento();"> MARZO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 4; descripcionDescuento();"> ABRIL
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 4; descripcionDescuento();"> ABRIL <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 5; descripcionDescuento();"> MAYO
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 5; descripcionDescuento();"> MAYO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 6; descripcionDescuento();"> JUNIO
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 6; descripcionDescuento();"> JUNIO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 7; descripcionDescuento();"> JULIO
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 7; descripcionDescuento();"> JULIO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 8; descripcionDescuento();"> AGOSTO
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 8; descripcionDescuento();"> AGOSTO <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 9; descripcionDescuento();"> SEPT
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 9; descripcionDescuento();"> SEPTIEMBRE <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 10; descripcionDescuento();"> OCTUBRE
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 10; descripcionDescuento();"> OCTUBRE <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 11; descripcionDescuento();"> NOV
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 11; descripcionDescuento();"> NOVIEMBRE <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 12; descripcionDescuento();"> DIC
+            <th colspan="2" style="background: #138D75" (click)="mesBeneficio = 12; descripcionDescuento();"> DICIEMBRE <br>
               <i class="fas fa-info-circle" style="color: rgb(255, 238, 7); cursor: pointer" placement="top"
                 ngbTooltip="Presione este icono para ver el detalle del pago de beneficio."></i>
             </th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-plus mas"></i> TOTAL D.S.</th>
+            <th colspan="1" rowspan="2" style="background: #138D75">
+              <h6><i class="fas fa-plus mas"></i></h6>
+              <br> TOTAL D.S.
+            </th>
             <!-- <th colspan="1" rowspan="2" style="background: #138D75"> TOTAL D.S.D.</th> -->
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-minus menos"></i> TOTAL P.B.</th>
-            <th colspan="1" rowspan="2" style="background: #138D75"><i class="fas fa-dollar-sign mas"></i> TOTAL ANUAL
+            <th colspan="1" rowspan="2" style="background: #138D75">
+              <h6><i class="fas fa-minus menos"></i></h6>
+              <br> TOTAL P.B.
+            </th>
+            <th colspan="1" rowspan="2" style="background: #138D75">
+              <h6><i class="fas fa-dollar-sign mas"></i></h6>
+              <br> TOTAL ANUAL
             </th>
           </tr>
 
           <tr class="text-center">
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 1"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 2"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 3"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 4"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 5"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 6"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 7"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 8"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 9"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 10"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 11"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 12"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
@@ -359,104 +368,105 @@
 
           <tr *ngFor="let item of socios" class="text-center">
             <!-- <td colspan="1">{{ item?.rut }}</td> -->
-            <td colspan="4" [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' }"
+            <td colspan="4"
+              [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' , 'blue': item?.pb == 'S' }"
               class="text-left sociosNombre2" style="background: #F9E79F">
               {{ item?.nombre | uppercase}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_1 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_1 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_1  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_1 != '0' }">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_1 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_1  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_2 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_2 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_2  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_2 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_2 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_2  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_3 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_3 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_3  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_3 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_3 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_3  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_4 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_4 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_4  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_4 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_4 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_4  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_5 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_5 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_5  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_5 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_5 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_5  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_6 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_6 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_6  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_6 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_6 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_6  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_7 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_7 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_7  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_7 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_7 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_7  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_8 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_8 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_8  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_8 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_8 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_8  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_9 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_9 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_9  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_9 != '0'}">
+            <td colspan="1" [ngClass]="{'red': item?.monto_mes_ds_9 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_9  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_10 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_10 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_10  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red' : item?.monto_mes_ds_10 != '0'}">
+            <td colspan="1" [ngClass]="{'red' : item?.monto_mes_ds_10 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_10  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_11 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_11 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_11  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red' : item?.monto_mes_ds_11 != '0'}">
+            <td colspan="1" [ngClass]="{'red' : item?.monto_mes_ds_11 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_11  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_12 != '0'}">
+            <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_12 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_ds_12  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
-            <td colspan="1" [ngClass]="{'red' : item?.monto_mes_ds_12 != '0'}">
+            <td colspan="1" [ngClass]="{'red' : item?.monto_mes_ds_12 != '0' , 'blue': item?.pb == 'S'}">
               {{item?.monto_mes_cex_12  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
 
@@ -522,122 +532,122 @@
           </tr>
 
           <tr class="text-center">
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 1"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 2"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 3"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 4"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 5"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 6"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 7"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 8"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 9"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 10"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 11"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S.
+            <th colspan="1" style="background: #138D75"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 12"
-              style="background: #138D75; cursor: pointer"> P.B.
+              style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>

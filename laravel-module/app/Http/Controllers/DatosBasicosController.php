@@ -170,8 +170,8 @@ class DatosBasicosController extends Controller
                 'modificar_cch' => 'S',
                 'ingresar_cb' => 'S',
                 'modificar_cb' => 'S',
-                'calcular_descuento_cc' => 'N',
-                'aplicar_descuento_cc' => 'N'
+                'calcular_descuento_cc' => 'S',
+                'aplicar_descuento_cc' => 'S'
             ], 
             [ // david pass 1028
                 'rut' => '190523047',

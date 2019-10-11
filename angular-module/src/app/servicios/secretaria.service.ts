@@ -39,7 +39,7 @@ export class SecretariaService{
         )});
     }
 
-    //*********************Actualizar REUNION************************/
+    //*********************ACTUALIZAR REUNION************************/
     updateNuevaReunion(form) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
@@ -63,6 +63,44 @@ export class SecretariaService{
         body.append('id', form.id);
         
         return this._http.post(this.url + "cancelar_reunion_activa_sec",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    //*********************TERMINAR REUNION************************/
+    terminarReunion(form) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', form.id);
+        
+        return this._http.post(this.url + "terminar_reunion_activa_sec",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    /**************************TRAER REUNION ACTIVA*****************************/
+
+    getUsuario(rut): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_reunion_activa_sec/" + rut, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    //*********************TERMINAR REUNION************************/
+    marcarAsistenciaUsuario(id) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', id);
+        
+        return this._http.post(this.url + "marcar_asistencia_usuario",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
             }

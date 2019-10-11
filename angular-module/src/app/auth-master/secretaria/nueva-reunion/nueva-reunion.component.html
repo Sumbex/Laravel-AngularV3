@@ -58,7 +58,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <button type="submit" [disabled]="!formulario.valid" class="btn btn-success btn-block">Generar Reunión</button>
+            <button type="submit" [disabled]="!formulario.valid || ingresandoDatos" class="btn btn-success btn-block"> <b [hidden]="ingresandoDatos">Generar Reunión</b> <b [hidden]="!ingresandoDatos">Creando Nueva Reunión </b> <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
           </div>
         </div>
       </form>
@@ -66,7 +66,7 @@
   </div>
   <!-- Patitas del Modal -->
   <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+    <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
         class="far fa-arrow-alt-circle-left"></i> Volver</button>
   </div>
 </ng-template>

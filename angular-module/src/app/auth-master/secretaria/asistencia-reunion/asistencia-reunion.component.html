@@ -80,24 +80,25 @@
           <label for="rut"><b>Ingrese el rut del socio que asistio a la reunión</b></label>
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Rut del Socio" aria-label="Recipient's username"
-              aria-describedby="basic-addon2">
+              aria-describedby="basic-addon2" [(ngModel)]="rutSocio">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button">Buscar</button>
             </div>
           </div>
         </div>
+        {{rutSocio}}
       </div>
       <div class="row">
         <div class="col-md-6 mt-4">
           <div class="form-group">
             <label for="nombre"><b>Nombre del Socio</b></label>
-            <input class="form-control" type="text" name="nombre" disabled>
+            <input class="form-control" type="text" name="nombre" [(ngModel)]="datosSocio.nombre" disabled>
           </div>
         </div>
         <div class="col-md-3 mt-4">
           <div class="form-group">
             <label for="estado"><b>Estado Actual</b></label>
-            <input class="form-control" type="text" name="estado" disabled>
+            <input class="form-control" type="text" name="estado" [(ngModel)]="datosSocio.estado" disabled>
           </div>
         </div>
         <div class="col-md-3 mt-4">

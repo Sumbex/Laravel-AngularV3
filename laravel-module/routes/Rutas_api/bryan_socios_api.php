@@ -49,6 +49,10 @@ Route::get('/traer_gastos_medicos_socio', 'PortalSocioController@TraerGastosMedi
 Route::get('/traer_mis_ahorros_socio/{anio}', 'PortalSocioController@TraerMisAhorros');
 //------------------------------------------>rutas portal socio mis beneficios
 
+//------reunion 
+Route::post('/ingresar_justificacion_socio_sec', 'PortalSocioController@JustificarSocio');
+//------reunion 
+
 //------------------------------------------------FUNCION TEST------------------------------------------------//
 Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');
 Route::get('/funcion_test2', 'PortalSocioController@FuncionTest2');

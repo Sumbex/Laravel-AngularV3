@@ -29,6 +29,8 @@ export class AsistenciaReunionComponent implements OnInit {
   cargandoSocio = false;
   cargandoCambioEstadoSocio = false;
 
+  cargandoReunion = false;
+
   //variable para asociar al modal
   modalVariable;
 
@@ -45,6 +47,10 @@ export class AsistenciaReunionComponent implements OnInit {
     this.getReunionCerradaFinalizada();
   }
 
+  abrirModalMenu(modalMenu){
+    this.modalVariable = this.modalService.open(modalMenu, {size: 'xl'});
+  }
+
   abrirModalAsistencia(modalHistorial){
     this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
     this.getListaAsistentesCompleta();
@@ -56,14 +62,18 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //TRAER REUNION FINALIZADA O CERRADA
   getReunionCerradaFinalizada(){
+    this.cargandoReunion = true;
     this._secretariaService.getReunionCerradaFinalizada().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoReunion = false;
       }else{
         this.datosReunion = response.reunion[0];
+        this.cargandoReunion = false;
       }
     }, error=>{
       console.log(error);
+      this.cargandoReunion = false;
     });
   }
 

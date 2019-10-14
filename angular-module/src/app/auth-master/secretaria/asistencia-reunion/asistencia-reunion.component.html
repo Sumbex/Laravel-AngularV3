@@ -18,7 +18,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 mt-4">
-          <button class="btn btn-primary btn-lg btn-block" (click)="abrirModal(formularioAsistencia)">Formulario de
+          <button class="btn btn-primary btn-lg btn-block" (click)="abrirModalMenu(formularioAsistencia)">Formulario de
             Asistencia</button>
         </div>
       </div>
@@ -60,8 +60,8 @@
   <!-- Cuerpo del modal -->
   <div class="modal-body">
     <div class="container">
-      <div class="loader"></div>
-      <div>
+      <div *ngIf="cargandoReunion" class="loader"></div>
+      <div *ngIf="!cargandoReunion">
         <div class="row">
           <div class="col-md-12">
             <h3 class="text-center">Reunión del día 10.10.10</h3>

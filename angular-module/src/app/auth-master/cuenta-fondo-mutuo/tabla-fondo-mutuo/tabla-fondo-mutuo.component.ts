@@ -70,7 +70,7 @@ export class TablaFondoMutuoComponent implements OnInit {
   socioPB;
   actualizarLoad = false;
   actualizarLoad2 = false;
-  socio = '';
+  socio = '0';
   descripcionDesc = '';
   ocultarDescripcion = true;
   blockLoad3 = true;
@@ -112,7 +112,8 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.tipoPorc = '1';
     this.tipoRetiro = '0';
     this.montoBeneficio = '';
-    this.socio = '';
+    this.montoFinal = '';
+    this.socio = '0';
   }
 
   listar() {

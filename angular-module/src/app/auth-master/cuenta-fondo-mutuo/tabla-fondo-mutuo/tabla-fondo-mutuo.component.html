@@ -274,10 +274,20 @@
                 <div class="col-12 col-md-12 col-lg-12">
                   <div class="row">
 
+                      <div class="col-12 col-md-12 col-lg-12"><br><label><strong>DEFINICIONES</strong></label> <br>
+                        <label>
+                          <ngb-alert [dismissible]="false">
+                            <b class="black">■</b> PARA RESTAURAR LOS CAMPOS PRESIONE EL BOTON <b class="green2">LIMPIAR</b><br>
+                            <b class="black">■</b> PARA GENERAR EL PAGO DE BENEFICIO PRESIONE EL BOTON <b class="blue">GENERAR</b> <br>
+                            <b class="black">■</b> PARA GUARDAR EL EL PAGO DE BENEFICIO AL SOCIO PRESIONE <b class="green2">GUARDAR</b>
+                          </ngb-alert>
+                        </label>
+                      </div>
+
                     <div class="col-12 col-md-12 col-lg-12">
                       <label><strong>SELECCIONE EL SOCIO A PAGAR EL BENEFICIO</strong></label>
                       <select [(ngModel)]="socio" class="form-control form-control-sm">
-                        <option value="">--Seleccione--</option>
+                        <option value="0">--Seleccione--</option>
                         <option *ngFor="let socio of socioPB" [value]="socio.id">{{socio.sin_pb}}</option>
                       </select>
                     </div>
@@ -335,7 +345,8 @@
                   <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
-                <button type="button" class="btn btn-success" (click)="guardarSocioDesv(modalUsuario)">Guardar
+                <button type="button" class="btn btn-success" (click)="guardarSocioDesv(modalUsuario)"
+                [disabled]="socio == '0' || tipoRetiro == '0' || montoFinal == null">Guardar
                   <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
@@ -662,51 +673,51 @@
             <th colspan="4" rowspan="3" style="background: #138D75"><br> TOTAL MENSUAL</th>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_1 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_1 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_2 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_2 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_3 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_3 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_4 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_4 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_5 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_5 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_6 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_6 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_7 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_7 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_8 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_8 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_9 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_9 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_10 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_10 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_11 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_11 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <td colspan="1" class="totalVertical">
               {{sociosMensual?.monto_mes_ds_12 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="1" class="totalVertical">
+            <td colspan="1" class="totalVertical red2">
               {{sociosMensual?.monto_mes_cex_12 | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
             <th colspan="1" rowspan="2">TOTAL ANUAL</th>
           </tr>
@@ -726,7 +737,7 @@
             <th colspan="2"> D.S. <i class="fas fa-minus menos"></i> P.B.</th>
           </tr>
 
-          <tr class="text-center totalVertical">
+          <tr class="text-center totalVertical black">
             <td colspan="2">
               {{ConvertToInt(sociosMensual?.monto_mes_ds_1) - 
                 ConvertToInt(sociosMensual?.monto_mes_cex_1)  | currency:"CLP" : "symbol-narrow":'1.0'}}

@@ -82,6 +82,19 @@ export class SecretariaService{
         )});
     }
 
+    //*********************ARCHIVAR REUNIÓN************************/
+    archivarReunion(form) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', form.id);
+        
+        return this._http.post(this.url + "archivar_reunion_sec",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
     /**************************TRAER USUARIO*****************************/
 
     getUsuario(rut, reunion): Observable<any>{

@@ -11,32 +11,38 @@
   <!-- Cuerpo del modal -->
   <div class="modal-body">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12 mt-2">
-          <h3 class="text-center">Administrador de Reunión Activa</h3>
+      <div *ngIf="cargandoReunion" class="loader"></div>
+      <div *ngIf="!cargandoReunion">
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <h3 class="text-center">Administrador de Reunión Activa</h3>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mt-4">
-          <button class="btn btn-primary btn-lg btn-block" (click)="abrirModalMenu(formularioAsistencia)">Formulario de
-            Asistencia</button>
+        <div class="row">
+          <div class="col-md-12 mt-4">
+            <button class="btn btn-primary btn-lg btn-block" (click)="abrirModalMenu(formularioAsistencia)">Formulario
+              de
+              Asistencia</button>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mt-4">
-          <button class="btn btn-success btn-lg btn-block" (click)="abrirModalAsistencia(listaAsistencia)">Lista de Asistentes</button>
+        <div class="row">
+          <div class="col-md-12 mt-4">
+            <button class="btn btn-success btn-lg btn-block" (click)="abrirModalAsistencia(listaAsistencia)">Lista de
+              Asistentes</button>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mt-4">
-          <button class="btn btn-danger btn-lg btn-block" (click)="abrirConfirmacion(confirmacionArchivar)">Archivar Reunión</button>
+        <div class="row">
+          <div class="col-md-12 mt-4">
+            <button class="btn btn-danger btn-lg btn-block" (click)="abrirConfirmacion(confirmacionArchivar)">Archivar
+              Reunión</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Patitas del Modal -->
   <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+    <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
         class="far fa-arrow-alt-circle-left"></i> Volver</button>
   </div>
 </ng-template>
@@ -84,7 +90,9 @@
               <input type="text" class="form-control" placeholder="Rut del Socio" aria-label="Recipient's username"
                 aria-describedby="basic-addon2" [(ngModel)]="rutSocio">
               <div class="input-group-append">
-                <button [disabled]=cargandoSocio (click)="getUsuario()" class="btn btn-outline-secondary" type="button">Buscar <img *ngIf="cargandoSocio" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
+                <button [disabled]=cargandoSocio (click)="getUsuario()" class="btn btn-outline-secondary"
+                  type="button">Buscar <img *ngIf="cargandoSocio" height="20"
+                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
               </div>
             </div>
           </div>
@@ -105,7 +113,9 @@
           <div class="col-md-3 mt-4">
             <div class="form-group">
               <label for="boton"><b>Cambiar Estado</b></label>
-              <button [disabled]="cargandoCambioEstadoSocio" (click)="marcarAsistenciaUsuario()" class="btn btn-primary" name="boton">Marcar como asistido <img *ngIf="cargandoCambioEstadoSocio" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
+              <button [disabled]="cargandoCambioEstadoSocio" (click)="marcarAsistenciaUsuario()" class="btn btn-primary"
+                name="boton">Marcar como asistido <img *ngIf="cargandoCambioEstadoSocio" height="20"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
             </div>
           </div>
         </div>
@@ -184,15 +194,27 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="monto"><b>Monto a cobrar por inasistencia</b></label>
-            <input class="form-control" type="text" placeholder="Ingrese monto a cobrar" (input)="calcularInasistencias($event)" autofocus>
+            <input class="form-control" type="text" placeholder="Ingrese monto a cobrar"
+              (input)="calcularInasistencias($event)" autofocus>
           </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group text-center">
-              <label for="monto"><b>Total generado en inasistencias</b></label>
-              <p>{{totalGanancias | currency:"CLP" : "symbol-narrow":'1.0'}}</p>
-            </div>
+          <div class="form-group text-center">
+            <label for="monto"><b>Total generado en inasistencias</b></label>
+            <p>{{totalGanancias | currency:"CLP" : "symbol-narrow":'1.0'}}</p>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mt-2">
+          <p><b>Total Asistentes:</b> {{cantidadAsistentes}}</p>
+        </div>
+        <div class="col-md-4">
+          <p><b>Total Justificados:</b> {{cantidadJustificados}}</p>
+        </div>
+        <div class="col-md-4">
+          <p><b>Total Inasistentes:</b> {{cantidadInasistentes}}</p>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -206,11 +228,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center table-success" [ngClass]="{'table-warning': itemAsistenciaCompleta?.estado == 'Justificado', 'table-danger': itemAsistenciaCompleta?.estado == 'Ausente'}">
+                <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center table-success"
+                  [ngClass]="{'table-warning': itemAsistenciaCompleta?.estado == 'Justificado', 'table-danger': itemAsistenciaCompleta?.estado == 'Ausente'}">
                   <td>{{itemAsistenciaCompleta?.nombre}}</td>
                   <td>{{itemAsistenciaCompleta?.rut}}</td>
                   <td>
-                    <button *ngIf="itemAsistenciaCompleta?.estado == 'Justificado'" class="btn btn-outline-primary">{{itemAsistenciaCompleta?.estado}}</button>
+                    <button *ngIf="itemAsistenciaCompleta?.estado == 'Justificado'"
+                      class="btn btn-outline-primary">{{itemAsistenciaCompleta?.estado}}</button>
                     <p *ngIf="itemAsistenciaCompleta?.estado != 'Justificado'">{{itemAsistenciaCompleta?.estado}}</p>
                   </td>
                 </tr>
@@ -230,35 +254,38 @@
 
 <!-- CONFIRMACIÓN ARCHIVAR -->
 <ng-template #confirmacionArchivar let-modal>
-    <!-- Header Del Modal -->
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Archivar Reunión</strong>
-      </h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <!-- Cuerpo del modal -->
-    <div class="modal-body">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12 text-center">
-                <p><b>¿Esta seguro que desea archivar la reunión <span class="text-danger">Votaciones de Sindicato</span> con fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span class="text-danger">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-md-6">
-                <button class="btn btn-danger btn-lg btn-block">Sí</button>
-              </div>
-              <div class="col-md-6">
-                  <button (click)="modal.dismiss('Cross click')" class="btn btn-success btn-lg btn-block">No</button>
-                </div>
-            </div>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Archivar Reunión</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p><b>¿Esta seguro que desea archivar la reunión <span class="text-danger">Votaciones de Sindicato</span> con
+              fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span
+                class="text-danger">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-6">
+          <button (click)="archivarReunion()" class="btn btn-danger btn-lg btn-block">Sí</button>
+        </div>
+        <div class="col-md-6">
+          <button (click)="modal.dismiss('Cross click')" id="cerrarArchivar"
+            class="btn btn-success btn-lg btn-block">No</button>
+        </div>
       </div>
     </div>
-    <!-- Patitas del Modal -->
-    <div class="modal-footer">
-      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
-          class="far fa-arrow-alt-circle-left"></i> Volver</button>
-    </div>
-  </ng-template>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>

@@ -24,7 +24,9 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //Lista de Asistencia Completa con contador
   listaAsistenciaCompleta;
-  cantidadInasistentes  = 0;
+  cantidadInasistentes ;
+  cantidadAsistentes;
+  cantidadJustificados;
 
   //Total de Ganancias por ianssitencvias
   totalGanancias = 0;
@@ -70,6 +72,7 @@ export class AsistenciaReunionComponent implements OnInit {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoReunion = false;
+        document.getElementById('cerrarMenu').click();
       }else{
         this.datosReunion = response.reunion[0];
         this.getListaAsistentes();
@@ -151,6 +154,8 @@ export class AsistenciaReunionComponent implements OnInit {
       }else{
         this.listaAsistenciaCompleta = response.lista;
         this.cantidadInasistentes = response.inasistentes;
+        this.cantidadAsistentes = response.presentes;
+        this.cantidadJustificados = response.justificados;
         console.log(this.cantidadInasistentes);
       }
     }, error => {
@@ -163,6 +168,21 @@ export class AsistenciaReunionComponent implements OnInit {
     let valor = Math.ceil(event.target.value * this.cantidadInasistentes);
     this.totalGanancias = valor;
     console.log(this.totalGanancias);
+  }
+
+  //ARCHIVAR REUNION
+  archivarReunion(){
+    this._secretariaService.archivarReunion(this.datosReunion).subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        alert(response.mensaje);
+        document.getElementById('cerrarArchivar').click();
+        document.getElementById('cerrarMenu').click();
+      } 
+    },error=>{
+      console.log(error);
+    });
   }
 
 }

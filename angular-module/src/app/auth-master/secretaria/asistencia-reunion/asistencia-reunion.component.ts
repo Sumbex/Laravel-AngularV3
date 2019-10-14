@@ -22,8 +22,12 @@ export class AsistenciaReunionComponent implements OnInit {
   //Lista de Asistentes
   listaDeAsistentes;
 
-  //Lista de Asistencia Completa
+  //Lista de Asistencia Completa con contador
   listaAsistenciaCompleta;
+  cantidadInasistentes  = 0;
+
+  //Total de Ganancias por ianssitencvias
+  totalGanancias = 0;
 
   //Variable de carga
   cargandoSocio = false;
@@ -53,7 +57,6 @@ export class AsistenciaReunionComponent implements OnInit {
 
   abrirModalAsistencia(modalHistorial){
     this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
-    this.getListaAsistentesCompleta();
   }
 
   abrirConfirmacion(modalHistorial){
@@ -69,6 +72,8 @@ export class AsistenciaReunionComponent implements OnInit {
         this.cargandoReunion = false;
       }else{
         this.datosReunion = response.reunion[0];
+        this.getListaAsistentes();
+        this.getListaAsistentesCompleta();
         this.cargandoReunion = false;
       }
     }, error=>{
@@ -114,6 +119,8 @@ export class AsistenciaReunionComponent implements OnInit {
       }else{
         alert(response.mensaje);
         this.cargandoCambioEstadoSocio = false;
+        this.getListaAsistentes();
+        this.getListaAsistentesCompleta();
         this.getUsuario();
       }
     }, error=>{
@@ -124,11 +131,12 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //TRAER LISTA DE ASISTENTES A LA REUNIÓN
   getListaAsistentes(){
-    this._secretariaService.getListaAsistentes().subscribe(response =>{
+    this._secretariaService.getListaAsistentes(this.datosReunion.id).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        this.listaDeAsistentes = response;
+        this.listaDeAsistentes = response.presentes;
+        console.log(this.listaDeAsistentes);
       }
     }, error => {
       console.log(error);
@@ -137,15 +145,24 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //TRAER LISTA DE ASISTENCIA COMPLETA
   getListaAsistentesCompleta(){
-    this._secretariaService.getListaAsistentes().subscribe(response =>{
+    this._secretariaService.getListaAsistenciaCompleta(this.datosReunion.id).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        this.listaAsistenciaCompleta = response;
+        this.listaAsistenciaCompleta = response.lista;
+        this.cantidadInasistentes = response.inasistentes;
+        console.log(this.cantidadInasistentes);
       }
     }, error => {
       console.log(error);
     });
+  }
+
+  //CALCULAR GANACIAS POR INASISTENCIAS
+  calcularInasistencias(event){
+    let valor = Math.ceil(event.target.value * this.cantidadInasistentes);
+    this.totalGanancias = valor;
+    console.log(this.totalGanancias);
   }
 
 }

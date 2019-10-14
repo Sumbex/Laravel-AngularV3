@@ -122,9 +122,9 @@ export class SecretariaService{
 
     /**************************TRAER SOLO LISTA DE ASISTENTES*****************************/
 
-    getListaAsistentes(): Observable<any>{
+    getListaAsistentes(id): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_lista_asistentes_cf_sec", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_socios_presentes_sec/" + id, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -134,9 +134,9 @@ export class SecretariaService{
 
     /**************************TRAER SOLO LISTA DE ASISTENCIA COMPLETA*****************************/
 
-    getListaAsistenciaCompleta(): Observable<any>{
+    getListaAsistenciaCompleta(id): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_lista_asistencia_completa_cf_sec", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_lista_reunion_sec/" + id, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'

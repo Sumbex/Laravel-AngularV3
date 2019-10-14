@@ -141,7 +141,7 @@
   </div>
   <!-- Patitas del Modal -->
   <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click'); limpiarCampos()"><i
         class="far fa-arrow-alt-circle-left"></i> Volver</button>
   </div>
 </ng-template>
@@ -184,13 +184,13 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="monto"><b>Monto a cobrar por inasistencia</b></label>
-            <input class="form-control" type="text" placeholder="Ingrese monto a cobrar" autofocus>
+            <input class="form-control" type="text" placeholder="Ingrese monto a cobrar" (input)="calcularInasistencias($event)" autofocus>
           </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group text-center">
               <label for="monto"><b>Total generado en inasistencias</b></label>
-              <input class="form-control" type="text" value="$50.000" disabled>
+              <p>{{totalGanancias | currency:"CLP" : "symbol-narrow":'1.0'}}</p>
             </div>
           </div>
       </div>
@@ -206,10 +206,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center table-success">
+                <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center table-success" [ngClass]="{'table-warning': itemAsistenciaCompleta?.estado == 'Justificado', 'table-danger': itemAsistenciaCompleta?.estado == 'Ausente'}">
                   <td>{{itemAsistenciaCompleta?.nombre}}</td>
                   <td>{{itemAsistenciaCompleta?.rut}}</td>
-                  <td>{{itemAsistenciaCompleta?.estado}}</td>
+                  <td>
+                    <button *ngIf="itemAsistenciaCompleta?.estado == 'Justificado'" class="btn btn-outline-primary">{{itemAsistenciaCompleta?.estado}}</button>
+                    <p *ngIf="itemAsistenciaCompleta?.estado != 'Justificado'">{{itemAsistenciaCompleta?.estado}}</p>
+                  </td>
                 </tr>
               </tbody>
             </table>

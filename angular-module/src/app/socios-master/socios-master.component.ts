@@ -39,7 +39,7 @@ export class SociosMasterComponent implements OnInit {
         let estadoToken = this._usuariosService.isAuthenticated();
         console.log(estadoToken);
         if (estadoToken == false) {
-          this.router.navigate(['']);
+          window.location.reload();
         } else {
           this.tiempoEsperaToken = 5;
         }

@@ -56,19 +56,15 @@ class PortalSocioCuentaConsorcio extends Model
 
             if (!$consorcio->isEmpty()) {
                 $ttrue = false;
-                $tfalse = true;
-                $sum = 0;
+
                 foreach ($consorcio[0] as $key) {
-                    $sum = $sum + $key;
-                    if (is_null($key)) {
-                        $tfalse = false;
-                    } else {
+                    if (!is_null($key)) {
                         $ttrue = true;
                     }
                 }
                 if ($ttrue) {
                     $DSCE = $this->restaDSCEMensual($anio);
-                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $sum, 'DSCE' => $DSCE['DSCE']];
+                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $DSCE['anual'], 'DSCE' => $DSCE['DSCE']];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
                 }
@@ -103,7 +99,19 @@ class PortalSocioCuentaConsorcio extends Model
             ->get();
 
         if (!$DS->isEmpty()) {
-            return ['estado' => 'success', 'DSCE' => $DS];
+            $ttrue = false;
+            $sum = 0;
+            foreach ($DS[0] as $key) {
+                $sum = $sum + $key;
+                if (!is_null($key)) {
+                    $ttrue = true;
+                }
+            }
+            if ($ttrue) {
+                return ['estado' => 'success', 'DSCE' => $DS, 'anual' => $sum];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
+            }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
         }

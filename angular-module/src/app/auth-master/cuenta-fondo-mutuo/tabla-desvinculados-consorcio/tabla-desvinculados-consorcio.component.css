@@ -15,13 +15,13 @@
       }
   
       tr,th{
-        font-size: 8.5px;
+        font-size: 11px;
       }
       .sociosNombre{
-        font-size: 8.5px;
+        font-size: 11px;
       }
       .sociosNombre2{
-        font-size: 8px;
+        font-size: 11px;
       }
 
       th{
@@ -73,12 +73,17 @@
 
         .red{
           color: #ED213A;
-          font-weight: bold;
         }
         .black{
           color: black;
+        }
+
+        .blue{
+          color: blue;
           font-weight: bold;
         }
-        .green{
-          background: #82E0AA;
+
+        .mas{
+          -webkit-text-fill-color: #08F16B;
+          -webkit-text-stroke: 0.5px black;
         }

@@ -1,0 +1,70 @@
+<ng-template #historialReunion let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Asistencia</strong>
+      </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="mt-2">
+              <ngb-alert [dismissible]="false">
+                <strong>¡Advertencia!</strong> La siguiente lista son las reuniones anteriormente realizadas, se componen meramente de datos visuales, por lo tanto no se pueden editar ninguno de sus valores.
+              </ngb-alert>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr class="text-center">
+                    <th>Reunion</th>
+                    <th>Fecha</th>
+                    <th>Detalle</th>
+                    <th>Asistencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <th>Votaciones</th>
+                    <th>10.10.10</th>
+                    <th><button class="btn btn-primary">Ver Detalle Reunión</button></th>
+                    <th><button class="btn btn-secondary">Ver Asistencia</button></th>
+                  </tr>
+                  <tr class="text-center">
+                      <th>Reunión General</th>
+                      <th>11.11.11</th>
+                      <th><button class="btn btn-primary">Ver Detalle Reunión</button></th>
+                      <th><button class="btn btn-secondary">Ver Asistencia</button></th>
+                    </tr>
+                    <tr class="text-center">
+                        <th>Elecciones</th>
+                        <th>12.12.12</th>
+                        <th><button class="btn btn-primary">Ver Detalle Reunión</button></th>
+                        <th><button class="btn btn-secondary">Ver Asistencia</button></th>
+                      </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </ng-template>
+
+<div (click)="abrirModal(historialReunion)" class="card card-body text-white text-center bg-secondary" style="cursor: pointer">
+  <h3><i class="fas fa-list"></i> Historial de Reuniones</h3>
+  <p>Ver las reuniones anteriormente realizadas</p>
+</div>

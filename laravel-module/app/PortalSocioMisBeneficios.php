@@ -528,15 +528,11 @@ class PortalSocioMisBeneficios extends Model
                 ->get();
 
             if (!$ahorro->isEmpty()) {
-                $sum = 0;
-
-                foreach ($ahorro[0] as $key) {
-                    $sum = $sum + $key;
-                }
                 $DS = $this->sumaDSMisAhorros($anio);
                 $CE = $this->sumaCEMisAhorros($anio);
                 $DSCE = $this->restaDSCEMensual($anio);
-                $total = $sum - $ahorro[0]->id;
+
+                $total = $DS['DS'] - $CE['CE'];
 
                 return ['estado' => 'success', 'ahorro' => $ahorro, 'total' => $total, 'DS' => $DS['DS'], 'CE' => $CE['CE'], 'mensual' => $DSCE['DSCE']];
             } else {

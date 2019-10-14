@@ -34,6 +34,18 @@ Route::get('/traer_caja_chica_bienestar/{anio}/{mes}', 'CajaChicaBienestarContro
 Route::post('/modificar_caja_chica_bienestar', 'CajaChicaBienestarController@ModificarCajaChica');
 //------------------------------------------->cuenta bienestar
 
+//------------------------------------------->secretaria
+Route::get('/traer_tipo_reunion_sec', 'SecReunionesController@TraerTipoReunion');
+Route::post('/crear_reunion_sec', 'SecReunionesController@CrearReunion');
+Route::get('/traer_reunion_activa_sec', 'SecReunionesController@TraerReunionActiva');
+Route::post('/modificar_reunion_activa_sec', 'SecReunionesController@ModificarReunionActiva');
+Route::post('/cancelar_reunion_activa_sec', 'SecReunionesController@CancelarReunionActiva');
+Route::post('/terminar_reunion_activa_sec', 'SecReunionesController@CerrarReunionActiva');
+Route::get('/traer_reunion_cf_sec', 'SecReunionesController@TraerReunionCerradaFinalizada');
+Route::get('/traer_socio_por_rut_sec/{rut}/{reunion}', 'SecReunionesController@TraerSocioPorRut');
+Route::post('/marcar_asistencia_socio_sec', 'SecReunionesController@MarcarAsitenciaSocioReunion');
+//------------------------------------------->secretaria
+
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 
 

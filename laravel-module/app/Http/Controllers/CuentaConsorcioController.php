@@ -84,7 +84,9 @@ class CuentaConsorcioController extends Controller
                 if ($key->vinculado == 'N') {
                     $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
                     //$key->monto_total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
-                    $key->monto_total_menos_ds = (int)$key->monto_total_ds_socio - (int)$ultimo_ds['dia_sueldo'];
+                    //$key->monto_total_menos_ds = (int)$key->monto_total_ds_socio - (int)$ultimo_ds['dia_sueldo'];
+                    $key->monto_total_menos_ds = (int)$key->monto_total_ds_socio - (int)$ultimo_ds['pago_beneficio'];
+
                 }
             }
 
@@ -181,12 +183,15 @@ class CuentaConsorcioController extends Controller
 
         foreach ($cc as $key) {
 
-            $sin_benef = Socios::where('retiro_pago_beneficio','N')
-                            ->orWhere('retiro_pago_beneficio', null)
-                            ->where('id',$key->socio_id)
-                            ->first();
+            $sin_benef = DB::select("SELECT * from socios 
+                                where (retiro_pago_beneficio ='N'
+                                or retiro_pago_beneficio is null)   
+                                and id = $key->socio_id");
+
+
+                        
                             
-            if ($sin_benef) {
+            if (count($sin_benef) > 0) {
                 if ($key['monto_mes_ds_'.$mes] != 0 || $key['monto_mes_ds_'.$mes] != null ) {
                         
                         $update = CuentaConsorcio::where([
@@ -321,8 +326,20 @@ class CuentaConsorcioController extends Controller
         ];
     }
 
-    public function listar_pago_beneficios($anio)
+    public function listar_pago_beneficios($anio)// tabla desvinculados
     {
-        return CuentaConsorcio::listar_pago_beneficios($anio);
+        $t_pb = CuentaConsorcio::listar_pago_beneficios($anio); // tabla desvinculados
+
+        if ($t_pb != '') {
+            foreach ($t_pb as $key) {
+                $ds = CuentaConsorcio::desvincular_sumar_totales($anio, $key->socio_id);
+    
+                 $key->monto_h = $ds->monto_h;
+                 $key->total = $key->monto_v + $ds->monto_h;
+            }
+
+            return $t_pb;
+        }
+
     }
 }

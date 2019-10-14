@@ -16,5 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(MesTableSeeder::class);
         $this->call(TipoCuentaSindicatoTableSeeder::class);
         $this->call(PermisosTableSeeder::class);
+        $this->call(EstadoAsistenciaTableSeeder::class);
+        $this->call(EstadoReunionTableSeeder::class);
+        $this->call(TipoJustificacionTableSeeder::class);
+        $this->call(TipoReunionTableSeeder::class);
     }
 }

@@ -112,6 +112,12 @@ import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reuni
 import { HistorialDetalleReunionComponent } from './socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component';
 import { ReunionesService } from './servicios/reuniones.service';
 import { AuthInterceptorService } from './servicios/auth-interceptor.service';
+import { SecretariaComponent } from './auth-master/secretaria/secretaria.component';
+import { NuevaReunionComponent } from './auth-master/secretaria/nueva-reunion/nueva-reunion.component';
+import { EditarReunionComponent } from './auth-master/secretaria/editar-reunion/editar-reunion.component';
+import { AsistenciaReunionComponent } from './auth-master/secretaria/asistencia-reunion/asistencia-reunion.component';
+import { HistorialReunionComponent } from './auth-master/secretaria/historial-reunion/historial-reunion.component';
+import { SecretariaService } from './servicios/secretaria.service';
 
 
 @NgModule({
@@ -274,7 +280,17 @@ import { AuthInterceptorService } from './servicios/auth-interceptor.service';
 
     DetalleReunionComponent,
 
-    HistorialDetalleReunionComponent
+    HistorialDetalleReunionComponent,
+
+    SecretariaComponent,
+
+    NuevaReunionComponent,
+
+    EditarReunionComponent,
+
+    AsistenciaReunionComponent,
+
+    HistorialReunionComponent
 
   ],
   imports: [
@@ -298,6 +314,7 @@ import { AuthInterceptorService } from './servicios/auth-interceptor.service';
     BryanBienestarService,
     BryanConsorcioService,
     ReunionesService,
+    SecretariaService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

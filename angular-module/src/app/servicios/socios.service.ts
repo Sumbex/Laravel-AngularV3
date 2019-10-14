@@ -294,6 +294,18 @@ export class SociosService {
         });
     }
 
+    contar_socios() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "contar_socios", {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )
+        });
+    }
+
 
 
 }

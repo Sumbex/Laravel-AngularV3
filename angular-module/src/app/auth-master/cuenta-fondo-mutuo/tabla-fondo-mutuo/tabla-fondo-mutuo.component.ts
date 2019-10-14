@@ -120,7 +120,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.blockLoad2 = true;
     this._consorcioService.getTablaConsorcios(this.anio).subscribe(
       response => {
-        console.log(response);
         this.socios = response;
         this.contador--;
         if (this.contador == 0) {
@@ -135,7 +134,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(
       response => {
-        console.log(response);
         this.sociosMensual = response;
         this.contador--;
         if (this.contador == 0) {
@@ -150,7 +148,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
       response => {
-        console.log(response);
         this.sociosAnual = response;
         this.contador--;
         if (this.contador == 0) {
@@ -171,7 +168,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     } else {
       this._consorcioService.getTablaConsorcio(this.anio, this.search).subscribe(
         response => {
-          console.log(response);
           this.socios = response;
           this.blockLoad = false;
 
@@ -323,6 +319,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       }else{
         this.load = false;
         this.buttonStatus = false;
+        this.m_val.close();
       }
 
 
@@ -332,7 +329,7 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   }
 
-    confirmar() {
+  confirmar() {
     var r = confirm("¿ESTA SEGURO QUE DESEA GENERAR EL CALCULO MASIVO?");
     if (r == true) {
      return true;
@@ -371,15 +368,12 @@ export class TablaFondoMutuoComponent implements OnInit {
               this.actualizarLoad2 = false;
             }
             if (response.estado == 'success') {
-              this.socio = '';
-              this.tipoPorc = '1';
-              this.tipoRetiro = '0';
-              this.mesBeneficio = '';
-              this.montoBeneficio = '';
-              this.montoFinal = '';
               alert(response.mensaje);
+              this.limpiarPagoBeneficio();
+              this.mesBeneficio = '';
               this.actualizarLoad2 = false;
               this.modalPagoBeneficio.close();
+              document.getElementById('refrescarTabla2').click();
             }
           },
             error => {

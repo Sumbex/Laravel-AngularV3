@@ -11,7 +11,7 @@
       </div>
 
       <div class="col-12 col-md-3 col-lg-3"><br><label><strong>REFRESCAR TABLA</strong></label> <br>
-        <button id="refrescarTabla" (click)="btn_reload(); search=''; blockLoad2=true; "
+        <button id="refrescarTabla2" (click)="btn_reload(); search=''; blockLoad2=true; "
           class="btn btn-secondary btn-sm">
           Actualizar &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
           <img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -346,7 +346,7 @@
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
                 <button type="button" class="btn btn-success" (click)="guardarSocioDesv(modalUsuario)"
-                [disabled]="socio == '0' || tipoRetiro == '0' || montoFinal == null">Guardar
+                [disabled]="socio == '0' || tipoRetiro == '0' || montoFinal == null || montoFinal == '0'">Guardar
                   <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
@@ -501,13 +501,13 @@
 
           <tr class="text-center">
             <th colspan="28" class="text-right">TOTAL ANUAL</th>
-            <td colspan="1" class="sociosNombre">
+            <td colspan="1" class="sociosNombre black">
               <b>{{sociosAnual?.monto_total_ds_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
-            <td colspan="1" class="sociosNombre">
+            <td colspan="1" class="sociosNombre black">
               <b>{{sociosAnual?.monto_total_cex_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
-            <td colspan="1" class="sociosNombre">
+            <td colspan="1" class="sociosNombre black">
               <b>{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
           </tr>

@@ -370,4 +370,9 @@ class SecReuniones extends Model
     {
         return SecAsistencia::traerListaReunion($reunion_id);
     }
+
+    protected function traerJustificacionSocio($reunion_id, $socio_id)
+    {
+        return SecJustificacion::traerJustificacionSocio($reunion_id, $socio_id);
+    }
 }

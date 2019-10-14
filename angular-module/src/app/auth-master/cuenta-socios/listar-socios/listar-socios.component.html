@@ -57,7 +57,7 @@
 								<img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
 	                		</button>
 						</td>
-	                	<td style="background: #138D75" colspan="2"> 
+	                	<td style="background: #138D75" colspan="5"> 
 						<button (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
 								REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
 								<img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -72,7 +72,8 @@
 	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> FECHA DE INGRESO</th>
 	                  	<th style="background: #138D75"><i class="fas fa-user-minus"></i> FECHA DE EGRESO</th>    
 	                  	<th style="background: #138D75"><i class="fas fa-edit"></i> EDITAR</th>
-	                  	<th style="background: #138D75"><i class="fas fa-edit"></i> OPCION</th>         
+						<th style="background: #138D75"><i class="fas fa-edit"></i> OPCION</th> 
+						<th style="background: #138D75"><i class="fas fa-unlock"></i></th>          
 	                </tr>
               </thead>
               <tbody>
@@ -237,7 +238,8 @@
 								
 						      </div>
 						  </ng-template>
-              		</td>
+					  </td>
+					  <td>{{ item.permiso }}</td>
               	</tr>
               </tbody>
           </table>

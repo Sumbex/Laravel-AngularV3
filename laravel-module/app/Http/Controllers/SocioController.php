@@ -110,25 +110,26 @@ class SocioController extends Controller
 
     public function listar()
     {
-        return Socios::select([
-            DB::raw("to_char(fecha_nacimiento, 'dd-mm-yyyy') as fecha_nacimiento_view"),
-            DB::raw("to_char(fecha_ingreso, 'dd-mm-yyyy') as fecha_ingreso_view"),
-            DB::raw("to_char(fecha_egreso, 'dd-mm-yyyy') as fecha_egreso_view"),
-            'fecha_nacimiento',
-            'fecha_ingreso',
-            'fecha_egreso',
+        return DB::select("SELECT
+                            to_char(fecha_nacimiento, 'dd-mm-yyyy') as fecha_nacimiento_view,
+                            to_char(fecha_ingreso, 'dd-mm-yyyy') as fecha_ingreso_view,
+                            to_char(fecha_egreso, 'dd-mm-yyyy') as fecha_egreso_view,
+                            fecha_nacimiento,
+                            fecha_ingreso,
+                            fecha_egreso,
+                            s.id,
+                            s.rut,
+                            s.nombres,
+                            s.a_paterno,
+                            s.a_materno,
+                            case when u.rol = 10 then 'Portal Socio Asignado'
+                                when u.rol = 5 then 'Portal Administrativo y Socio Asignados'
+                                when u.rol = 1 then 'Portal Administrativo Asignado'
+                                else 'Nigun permiso asignado'
+                            end as permiso
 
-            'id',
-            'rut',
-            'nombres',
-            'a_paterno',
-            'a_materno'
-
-        ])
-        ->orderBy('a_paterno','ASC')
-        ->orderBy('a_materno','ASC')
-
-        ->get();
+                            from socios s
+                            left join users u on u.rut = s.rut");
     }
 
     public function filtrar($search='')

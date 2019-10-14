@@ -4581,52 +4581,67 @@ let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
             formData.append('rut', this.user['rut']);
             formData.append('password', this.pass);
             formData.append('estado', 'calcular_descuento_cc');
-            this._validarusuario.validar_usuario(formData).subscribe((val) => {
-                //si tiene acceso
-                if (val > 0) {
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    this.actualizarLoad = true;
-                    this.blockLoad = true;
-                    this._consorcioService.calcularPagoBeneficio(this.tipoPorc, this.mesBeneficio, this.anio).subscribe((response) => {
-                        if (response.estado == 'failed') {
-                            alert(response.mensaje);
+            var confirmar = this.confirmar();
+            if (confirmar == true) {
+                this._validarusuario.validar_usuario(formData).subscribe((val) => {
+                    //si tiene acceso
+                    if (val > 0) {
+                        this.load = false;
+                        this.buttonStatus = false;
+                        this.pass = "";
+                        this.m_val.close();
+                        this.actualizarLoad = true;
+                        this.blockLoad = true;
+                        this._consorcioService.calcularPagoBeneficio(this.tipoPorc, this.mesBeneficio, this.anio).subscribe((response) => {
+                            if (response.estado == 'failed') {
+                                alert(response.mensaje);
+                                this.actualizarLoad = false;
+                                this.blockLoad = false;
+                            }
+                            if (response.estado == 'success') {
+                                alert(response.mensaje);
+                                this.actualizarLoad = false;
+                                this.blockLoad = false;
+                                this.montoBeneficio = response.monto_beneficio;
+                                this.btn_reload();
+                            }
+                        }, error => {
+                            console.log(error);
+                            alert("Supero el limite de 60 segundos al generar la insercion masiva");
                             this.actualizarLoad = false;
                             this.blockLoad = false;
-                        }
-                        if (response.estado == 'success') {
-                            alert(response.mensaje);
-                            this.actualizarLoad = false;
-                            this.blockLoad = false;
-                            this.montoBeneficio = response.monto_beneficio;
-                            this.btn_reload();
-                            // document.getElementById('refrescarTabla').click();
-                        }
-                    }, error => {
-                        console.log(error);
-                        alert("Supero el limite de 60 segundos al generar la insercion masiva");
-                        this.actualizarLoad = false;
-                        this.blockLoad = false;
+                            return false;
+                        });
+                    }
+                    else {
+                        alert("Acceso denegado");
+                        this.load = false;
+                        this.buttonStatus = false;
+                        this.pass = "";
+                        this.m_val.close();
                         return false;
-                    });
-                }
-                else {
-                    alert("Acceso denegado");
-                    this.load = false;
-                    this.buttonStatus = false;
-                    this.pass = "";
-                    this.m_val.close();
-                    return false;
-                }
-            }, response => { console.log("POST call in error", response); }, () => {
-                console.log("The POST success.");
-            });
-            return false;
+                    }
+                }, response => { console.log("POST call in error", response); }, () => {
+                    console.log("The POST success.");
+                });
+                return false;
+            }
+            else {
+                this.load = false;
+                this.buttonStatus = false;
+            }
         }, (reason) => {
             console.log(`${reason}`);
         });
+    }
+    confirmar() {
+        var r = confirm("¿ESTA SEGURO QUE DESEA GENERAR EL CALCULO MASIVO?");
+        if (r == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     guardarSocioDesv(validar) {
         this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

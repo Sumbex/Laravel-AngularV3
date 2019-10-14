@@ -229,6 +229,11 @@ class CuentaConsorcioController extends Controller
     public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio, $monto=0)
     {
         try{
+            if ($monto == 0) {
+                return [ 'estado'=>'failed', 'mensaje'=>'Ingrese un monto para guardar' ];
+            }
+
+
             DB::beginTransaction();
             
             $sum =0;

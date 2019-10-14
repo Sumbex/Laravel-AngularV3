@@ -38,6 +38,11 @@ class SecReunionesController extends Controller
         return SecReuniones::cerrarReunionActiva($request);
     }
 
+    public function ArchivarReunion(Request $request)
+    {
+        return SecReuniones::archivarReunion($request);
+    }
+
     public function TraerReunionCerradaFinalizada()
     {
         return SecReuniones::traerReunionCerradaFinalizada();

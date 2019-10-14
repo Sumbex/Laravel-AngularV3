@@ -336,4 +336,14 @@ class SecReuniones extends Model
             return ['estado' => 'failed', 'mensaje' => 'La reunion actual no existe o su estado no se encuentra Cerrado o Finalizado.'];
         }
     }
+
+    protected function traerSociosPresentes($reunion_id)
+    {
+        return SecAsistencia::traerSociosPresentes($reunion_id);
+    }
+
+    protected function traerListaReunion($reunion_id)
+    {
+        return SecAsistencia::traerListaReunion($reunion_id);
+    }
 }

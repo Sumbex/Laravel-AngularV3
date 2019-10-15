@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -198,6 +199,8 @@ class SecReuniones extends Model
 
         if (!$reunion->isEmpty()) {
             $modReunion = SecReuniones::find($request->id);
+            $termino = Carbon::now();
+            $modReunion->fecha_termino = $termino->toDateTimeString();
             $modReunion->estado_reunion_id = 3;
             $modReunion->mod_user_id = Auth::user()->id;
             if ($modReunion->save()) {

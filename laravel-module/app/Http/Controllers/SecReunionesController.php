@@ -72,4 +72,9 @@ class SecReunionesController extends Controller
     {
         return SecReuniones::traerJustificacionSocio($reunion_id, $socio_id);
     }
+
+    public function TraerHistorialReuniones()
+    {
+        return SecReuniones::traerHistorialReuniones();
+    }
 }

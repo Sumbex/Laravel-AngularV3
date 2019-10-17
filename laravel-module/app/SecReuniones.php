@@ -320,12 +320,13 @@ class SecReuniones extends Model
                     's.rut',
                     DB::raw("upper(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) as nombre"),
                     'sea.descripcion as estado',
+                    'sa.estado_asistencia_id as estado_id'
                 ])
                 ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
                 ->join('sec_estado_asistencia as sea', 'sea.id', 'sa.estado_asistencia_id')
                 ->where([
                     's.activo' => 'S',
-                    's.fecha_egreso' => null,
+                    /* 's.fecha_egreso' => null, */
                     'sa.reunion_id' => $reunion_id,
                 ])
                 ->whereRaw("lower(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like '%$buscar%'")

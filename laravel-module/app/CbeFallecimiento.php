@@ -14,7 +14,7 @@ class CbeFallecimiento extends Model
         $this->socio_id = $socio_id;
         $this->cuenta_bienestar_id = $cbe_id;
         $this->activo = 'S';
-        $this->rut_fallecido = $rut;
+        $this->rut_fallecido = strtolower($rut);
         if ($this->save()) {
             return [ 'estado'=>'success', 'mensaje'=> 'Item ingresado correctamente' ];
         }

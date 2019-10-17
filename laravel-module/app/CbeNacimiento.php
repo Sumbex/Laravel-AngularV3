@@ -22,7 +22,7 @@ class CbeNacimiento extends Model
             $this->socio_id = $socio_id;
             $this->cuenta_bienestar_id = $cbe_id;
             $this->activo = 'S';
-            $this->rut_nacimiento = $rut;
+            $this->rut_nacimiento = strtolower($rut);
             if ($this->save()) {
                 return ['estado'=>'success', 'mensaje'=> 'Item de nacimiento ingresado con exito' ];
             }
@@ -40,9 +40,10 @@ class CbeNacimiento extends Model
         
         $benef = SocioBeneficiario::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
                     'activo' => 'S'
-        ])->first();
+        ])
+         ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
         if (!empty($benef)) {
              $exist_beneficiario = true;
@@ -50,10 +51,11 @@ class CbeNacimiento extends Model
 
         $carga = SocioCarga::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
                     'activo' => 'S'
 
-        ])->first();
+        ])
+        ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
         if (!empty($carga)) {
              $existe_carga = true;
@@ -62,8 +64,11 @@ class CbeNacimiento extends Model
         if ($exist_beneficiario || $existe_carga) {
 
             $very = $this->where([
-                'activo'=>'S','socio_id'=>$socio_id, 'rut_nacimiento'=>$rut
-            ])->first();
+                'activo'=>'S','socio_id'=>$socio_id, 
+                //'rut_nacimiento'=>$rut
+            ])
+            ->whereRaw("LOWER(regexp_replace(rut_nacimiento, '[^\w]+','','g')) = LOWER('".$rut."')")
+            ->first();
 
             if (empty($very)) {
                 return true;

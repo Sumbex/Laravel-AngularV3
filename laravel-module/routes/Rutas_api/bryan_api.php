@@ -48,7 +48,9 @@ Route::post('/marcar_asistencia_socio_sec', 'SecReunionesController@MarcarAsiten
 Route::get('/traer_socios_presentes_sec/{reunion}', 'SecReunionesController@TraerSociosPresentes');
 Route::get('/traer_lista_reunion_sec/{reunion}', 'SecReunionesController@TraerListaReunion');
 Route::get('/traer_justificacion_socio_sec/{reunion}/{socio}', 'SecReunionesController@TraerJustificacionSocio');
-Route::get('/traer_historial_reuniones_sec','SecReunionesController@TraerHistorialReuniones');
+Route::get('/traer_historial_reuniones_sec', 'SecReunionesController@TraerHistorialReuniones');
+Route::get('/filtrar_socios_lista_reuniones_sec/{reunion}/{socio?}', 'SecReunionesController@FiltrarSocio');
+
 //------------------------------------------->secretaria
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

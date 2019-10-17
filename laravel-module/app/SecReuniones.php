@@ -285,7 +285,7 @@ class SecReuniones extends Model
             $socio = DB::table('socios as s')
                 ->select([
                     's.id',
-                    DB::raw("concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) as nombre"),
+                    DB::raw("upper(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) as nombre"),
                     'sea.descripcion as estado'
                 ])
                 ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
@@ -314,7 +314,7 @@ class SecReuniones extends Model
         $datos = DB::table('socios as s')
             ->select([
                 's.id',
-                DB::raw("concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) as nombre"),
+                DB::raw("upper(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) as nombre"),
                 'sea.descripcion as estado'
             ])
             ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
@@ -322,13 +322,10 @@ class SecReuniones extends Model
             ->where([
                 's.activo' => 'S',
                 's.fecha_egreso' => null,
-                'sa.reunion_id' => $reunion_id
+                'sa.reunion_id' => $reunion_id,
             ])
-            ->whereRaw("lower(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno))', 'like', '%' . $buscar . '%")
-            /* ->where('lower(CONCAT(s.nombres,' ',s.a_paterno,' ',s.a_materno))', 'like', $buscar); */
-            /* ->whereRaw('lower(CONCAT(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like'. . '%$busca%') */
+            ->whereRaw("lower(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like '%$buscar%'")
             ->get();
-        dd($datos);
         if (!$datos->isEmpty()) {
             return ['estado' => 'success', 'socio' => $datos];
         } else {

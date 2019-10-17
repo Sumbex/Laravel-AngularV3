@@ -40,7 +40,7 @@ export class GeneralReunionComponent implements OnInit {
   getUltimaReunion(){
     this._reunionesService.getReunionInactiva().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert('Ha ocurrido un error al traer la ultima reunión realizada');
+        alert(response.mensaje);
       }else{
         this.datosReunionPasada = response;
       }

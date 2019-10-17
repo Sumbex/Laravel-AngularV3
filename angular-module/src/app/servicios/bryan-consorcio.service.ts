@@ -26,4 +26,15 @@ export class BryanConsorcioService{
       });
   }
 
+  getDesvinculados(anio): Observable<any>{
+    return this._http.get(this.url + "traer_socios_desvinculados_socio/" + anio, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'applcation/json'
+        }
+      )
+    });
+  }
+
 }

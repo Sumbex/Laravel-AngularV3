@@ -1,0 +1,74 @@
+<ng-template #desvinculados let-modal>
+
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Consorcio General</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del Modal Caja Chica -->
+  <div class="modal-body">
+    <div class="card">
+      <div class="container">
+        <div class="col-12">
+          <div class="row text-center">
+            <div class="col-sm-12 col-md-6 col-lg-6"><br><label><strong>Filtro por Año <i
+                    class="fas fa-calendar-check"></i></strong></label>
+              <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+                class="form-control form-control-sm">
+                <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+              </select>
+            </div>
+    
+            <div class="col-md-6"><br><label>
+                <strong>Recargar tabla </strong>
+    
+              </label><br>
+              <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
+              <div *ngIf="cargandoTabla">
+                <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                <label>Actualizando</label>
+              </div>
+            </div>
+          </div><br>
+          <div class="table-responsive">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="text-center"><i class="fas fa-user"></i> Nombre</th>
+                <th class="text-center" scope="col"><i class="fas fa-bars"></i> Descripción de la desvinculación</th>
+                <th class="text-center" scope="col"><i class="fas fa-dollar-sign"></i> Total Día de Sueldo</th>
+                <th class="text-center" scope="col"><i class="fas fa-dollar-sign"></i> Total Ahorro Día de Sueldo</th>
+                <th class="text-center" scope="col"><i class="fas fa-dollar-sign"></i> Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center table-warning"><b>Bryan Vidal Díaz</b></td>
+                <td class="text-center"><b>Desvinculado por Uvubue onytienenene uvububue osas</b></td>
+                <td class="text-center"><b>{{ 200000 | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                <td class="text-center"><b>{{ 200000 | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                <td class="text-center"><b>{{ 200000 | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+
+    <!--Boton para salir del modal caja chica-->
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver a Cuentas</button>
+  </div>
+
+</ng-template>
+
+<!--Boton Para llamar al Modal inicio y cierre mensual-->
+<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModal(desvinculados)"><b>Lista Desvinculados</b>
+</button>

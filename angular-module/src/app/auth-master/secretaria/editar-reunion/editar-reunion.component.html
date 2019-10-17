@@ -14,8 +14,8 @@
       <div *ngIf="this.datosReunion.id != ''">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3>Se encuentra editando la reunión {{datosReunion.titulo}} con fecha {{datosReunion.fecha}}</h3>
-            <p class="text-muted">Reunión creada por {{creadaPor}}</p>
+            <h3>Se encuentra editando la reunión "{{datosReunion.titulo}}" <br> con fecha {{datosReunion.fecha}}</h3>
+            <p class="text-muted">Reunión creada por {{datosReunion?.creadaPor}}</p>
           </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="fecha"><b>Ingrese una fecha para la reunión</b></label>
+                <label for="fecha"><b>Ingrese una fecha para la reunión (Formato 12 horas)</b></label>
                 <input class="form-control" type="datetime-local" name="fecha" #fecha="ngModel"
                   [(ngModel)]="datosReunion.fecha" required>
               </div>
@@ -120,10 +120,10 @@
       </div>
       <div class="row text-center">
         <div class="col-md-6">
-          <button (click)="cancelarReunion()" class="btn btn-danger btn-lg">Sí</button>
+          <button [disabled]="cargandoConfirmacion" (click)="cancelarReunion()" class="btn btn-danger btn-lg btn-block">Sí <img *ngIf="cargandoConfirmacion" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
         </div>
         <div class="col-md-6">
-          <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionCancelar" class="btn btn-success btn-lg">No</button>
+          <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionCancelar" class="btn btn-success btn-lg btn-block">No</button>
         </div>
       </div>
     </div>
@@ -156,10 +156,10 @@
         </div>
         <div class="row text-center">
           <div class="col-md-6">
-            <button (click)="terminarReunion()" class="btn btn-danger btn-lg">Sí</button>
+            <button [disabled]="cargandoConfirmacion" (click)="terminarReunion()" class="btn btn-danger btn-lg btn-block">Sí <img *ngIf="cargandoConfirmacion" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
           </div>
           <div class="col-md-6">
-            <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionTerminar" class="btn btn-success btn-lg">No</button>
+            <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionTerminar" class="btn btn-success btn-lg btn-block">No</button>
           </div>
         </div>
       </div>

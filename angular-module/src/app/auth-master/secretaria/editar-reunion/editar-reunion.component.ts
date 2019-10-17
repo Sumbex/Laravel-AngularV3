@@ -27,6 +27,9 @@ export class EditarReunionComponent implements OnInit {
   //Variable para las cargas
   ingresandoDatos = false;
 
+  //variable para las confirmaciones
+  cargandoConfirmacion = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _secretariaService: SecretariaService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -54,6 +57,8 @@ export class EditarReunionComponent implements OnInit {
         this.datosReunion.id = this.datosActivaReunion.id;
         this.datosReunion.creadaPor = this.datosActivaReunion.creada_por;
         this.datosReunion.fecha = this.datosActivaReunion.fecha_inicio;
+        this.datosReunion.fecha = this.datosReunion.fecha.replace(/T/gi, " a las ");
+        console.log(this.datosReunion.fecha);
         this.datosReunion.tipoReunion = this.datosActivaReunion.tipo;
         this.datosReunion.titulo = this.datosActivaReunion.titulo;
         this.datosReunion.descripcion = this.datosActivaReunion.descripcion;
@@ -87,30 +92,38 @@ export class EditarReunionComponent implements OnInit {
   }
 
   cancelarReunion(){
+    this.cargandoConfirmacion = true;
     this._secretariaService.cancelarReunion(this.datosReunion).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoConfirmacion = false;
       }else{
         alert(response.mensaje);
+        this.cargandoConfirmacion = false;
         document.getElementById('cerrarEditar').click();
         document.getElementById('cerrarConfirmacionCancelar').click();
       }
     },error=>{
       console.log(error);
+      this.cargandoConfirmacion = false;
     });
   }
 
   terminarReunion(){
+    this.cargandoConfirmacion = true;
     this._secretariaService.terminarReunion(this.datosReunion).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoConfirmacion = false;
       }else{
         alert(response.mensaje);
+        this.cargandoConfirmacion = false;
         document.getElementById('cerrarEditar').click();
         document.getElementById('cerrarConfirmacionTerminar').click();
       }
     },error=>{
       console.log(error);
+      this.cargandoConfirmacion = false;
     });
   }
 

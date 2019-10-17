@@ -37,6 +37,12 @@ export class AsistenciaReunionComponent implements OnInit {
 
   cargandoReunion = false;
 
+  //variable para las confirmaciones
+  cargandoConfirmacion = false;
+
+  //Vareiable donde guardar la justififcacion del usuario
+  justificacionUsuario;
+
   //variable para asociar al modal
   modalVariable;
 
@@ -132,6 +138,19 @@ export class AsistenciaReunionComponent implements OnInit {
     });
   }
 
+  //TRAER JUSTIFICACION DEL SOCIO
+  getJustificacionSocios(idReunion, idSocio){
+    this._secretariaService.getJustificacionUsuario(idReunion, idSocio).subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        this.justificacionUsuario = response.justificacion;
+      }
+    }, error =>{
+      console.log(error);
+    });
+  }
+
   //TRAER LISTA DE ASISTENTES A LA REUNIÓN
   getListaAsistentes(){
     this._secretariaService.getListaAsistentes(this.datosReunion.id).subscribe(response =>{
@@ -172,16 +191,20 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //ARCHIVAR REUNION
   archivarReunion(){
+    this.cargandoConfirmacion = true;
     this._secretariaService.archivarReunion(this.datosReunion).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoConfirmacion = false;
       }else{
         alert(response.mensaje);
+        this.cargandoConfirmacion = false;
         document.getElementById('cerrarArchivar').click();
         document.getElementById('cerrarMenu').click();
       } 
     },error=>{
       console.log(error);
+      this.cargandoConfirmacion = true;
     });
   }
 

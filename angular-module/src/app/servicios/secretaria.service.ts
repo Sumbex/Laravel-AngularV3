@@ -180,4 +180,16 @@ export class SecretariaService{
             }
         )});
     }
+
+    /* ************************FILTRADOR DE SOCIOS*********************** */
+
+    searchSociosAsistencia(idReunion, texto): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "filtrar_socios_lista_reuniones_sec/" + idReunion + '/' + texto, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
 }

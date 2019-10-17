@@ -46,6 +46,9 @@ export class AsistenciaReunionComponent implements OnInit {
   //variable para asociar al modal
   modalVariable;
 
+  //Variable para alamacenar el texto de la busqueda
+  textoBuscador;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _secretariaService: SecretariaService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -69,6 +72,23 @@ export class AsistenciaReunionComponent implements OnInit {
 
   abrirConfirmacion(modalHistorial){
     this.modalVariable = this.modalService.open(modalHistorial, {size: 'lg', centered: true});
+  }
+
+  //BUSCAR SOCIOS
+  searchSocios(){
+    this.cargandoSocio = true;
+    this._secretariaService.searchSociosAsistencia(this.datosReunion.id, this.textoBuscador).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+        this.cargandoSocio = false;
+      }else{
+        this.listaAsistenciaCompleta = response.socio;
+        this.cargandoSocio = false;
+      }
+    }, error=>{
+      console.log(error);
+      this.cargandoSocio = false;
+    });
   }
 
   //TRAER REUNION FINALIZADA O CERRADA
@@ -167,18 +187,21 @@ export class AsistenciaReunionComponent implements OnInit {
 
   //TRAER LISTA DE ASISTENCIA COMPLETA
   getListaAsistentesCompleta(){
+    this.cargandoSocio = true;
     this._secretariaService.getListaAsistenciaCompleta(this.datosReunion.id).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
+        this.cargandoSocio = false;
       }else{
         this.listaAsistenciaCompleta = response.lista;
         this.cantidadInasistentes = response.inasistentes;
         this.cantidadAsistentes = response.presentes;
         this.cantidadJustificados = response.justificados;
-        console.log(this.cantidadInasistentes);
+        this.cargandoSocio = false;
       }
     }, error => {
       console.log(error);
+      this.cargandoSocio = false;
     });
   }
 

@@ -243,6 +243,7 @@ class SecReuniones extends Model
             ->select([
                 'sr.id',
                 'sr.fecha_inicio',
+                'sr.fecha_termino',
                 'sr.cabeza as titulo',
                 'sr.cuerpo as descripcion',
                 'sr.tipo_reunion_id as tipo',
@@ -396,18 +397,21 @@ class SecReuniones extends Model
             ->select([
                 'sr.id',
                 'sr.fecha_inicio',
+                'sr.fecha_termino',
                 'sr.cabeza as titulo',
                 'sr.cuerpo as descripcion',
-                'sr.tipo_reunion_id as tipo',
                 DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
-                'sr.mod_user_id'
+                'sr.mod_user_id',
+                'sr.tipo_reunion_id as tipo_id',
+                'str.descripcion as tipo'
             ])
             ->join('users as u', 'u.id', 'sr.user_id')
-            ->join('sec_estado_reunion as ser', 'ser.id', 'sr.tipo_reunion_id')
+            ->join('sec_tipo_reunion as str', 'str.id', 'sr.tipo_reunion_id')
             ->where([
                 'sr.activo' => 'S',
                 'sr.estado_reunion_id' => 5
             ])
+            ->orderBy('sr.tipo_reunion_id', 'asc')
             ->get();
 
         if (!$reunion->isEmpty()) {

@@ -9,6 +9,7 @@ use App\PortalSocioCuentaConsorcio;
 use Illuminate\Http\Request;
 use App\PortalSocioMisBeneficios;
 use App\PortalSocioCuentaSindical;
+use App\PortalSocioJustificar;
 
 class PortalSocioController extends Controller
 {
@@ -186,7 +187,19 @@ class PortalSocioController extends Controller
     {
         return PortalSocioMisBeneficios::traerMisAhorros($anio);
     }
+
+    public function SociosDesvinculados($anio)
+    {
+        return PortalSocioMisBeneficios::sociosDesvinculados($anio);
+    }
     //------------------------------------------>rutas portal socio mb
+
+    //------reunion 
+    public function JustificarSocio(Request $request)
+    {
+        return PortalSocioJustificar::justificarSocio($request);
+    }
+    //------reunion 
 
     //--------------------------------------------------------------------------------
     public function CrearUsuarioSocio(Request $request)

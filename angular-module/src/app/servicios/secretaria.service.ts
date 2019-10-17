@@ -82,11 +82,36 @@ export class SecretariaService{
         )});
     }
 
+    //*********************ARCHIVAR REUNIÓN************************/
+    archivarReunion(form) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', form.id);
+        
+        return this._http.post(this.url + "archivar_reunion_sec",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
     /**************************TRAER USUARIO*****************************/
 
     getUsuario(rut, reunion): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_socio_por_rut_sec/" + rut + "/" + reunion, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    /**************************TRAER JUSTIFICACION DEL USUARIO*****************************/
+
+    getJustificacionUsuario(idReunion, idSocio): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_justificacion_socio_sec/" + idReunion + "/" + idSocio, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -122,9 +147,9 @@ export class SecretariaService{
 
     /**************************TRAER SOLO LISTA DE ASISTENTES*****************************/
 
-    getListaAsistentes(): Observable<any>{
+    getListaAsistentes(id): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_lista_asistentes_cf_sec", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_socios_presentes_sec/" + id, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -134,9 +159,33 @@ export class SecretariaService{
 
     /**************************TRAER SOLO LISTA DE ASISTENCIA COMPLETA*****************************/
 
-    getListaAsistenciaCompleta(): Observable<any>{
+    getListaAsistenciaCompleta(id): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_lista_asistencia_completa_cf_sec", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_lista_reunion_sec/" + id, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    /* **************************TRAER HISTORIAL DE REUNIONES*********************** */
+
+    getListaReuniones(): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_historial_reuniones_sec", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    /* ************************FILTRADOR DE SOCIOS*********************** */
+
+    searchSociosAsistencia(idReunion, texto): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "filtrar_socios_lista_reuniones_sec/" + idReunion + '/' + texto, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'

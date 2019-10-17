@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SecAsistencia;
 use App\SecReuniones;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,11 @@ class SecReunionesController extends Controller
         return SecReuniones::cerrarReunionActiva($request);
     }
 
+    public function ArchivarReunion(Request $request)
+    {
+        return SecReuniones::archivarReunion($request);
+    }
+
     public function TraerReunionCerradaFinalizada()
     {
         return SecReuniones::traerReunionCerradaFinalizada();
@@ -50,5 +56,30 @@ class SecReunionesController extends Controller
     public function MarcarAsitenciaSocioReunion(Request $request)
     {
         return SecReuniones::marcarAsitenciaSocioReunion($request);
+    }
+
+    public function TraerSociosPresentes($reunion_id)
+    {
+        return SecReuniones::traerSociosPresentes($reunion_id);
+    }
+
+    public function TraerListaReunion($reunion_id)
+    {
+        return SecReuniones::traerListaReunion($reunion_id);
+    }
+
+    public function TraerJustificacionSocio($reunion_id, $socio_id)
+    {
+        return SecReuniones::traerJustificacionSocio($reunion_id, $socio_id);
+    }
+
+    public function TraerHistorialReuniones()
+    {
+        return SecReuniones::traerHistorialReuniones();
+    }
+
+    public function FiltrarSocio($reunion_id, $socio = '')
+    {
+        return  SecReuniones::filtrarSocio($reunion_id, $socio);
     }
 }

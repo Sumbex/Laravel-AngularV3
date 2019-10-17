@@ -118,6 +118,7 @@ import { EditarReunionComponent } from './auth-master/secretaria/editar-reunion/
 import { AsistenciaReunionComponent } from './auth-master/secretaria/asistencia-reunion/asistencia-reunion.component';
 import { HistorialReunionComponent } from './auth-master/secretaria/historial-reunion/historial-reunion.component';
 import { SecretariaService } from './servicios/secretaria.service';
+import { DesvinculadosComponent } from './socios-master/cuentas/consorcio/desvinculados/desvinculados.component';
 
 
 @NgModule({
@@ -290,7 +291,9 @@ import { SecretariaService } from './servicios/secretaria.service';
 
     AsistenciaReunionComponent,
 
-    HistorialReunionComponent
+    HistorialReunionComponent,
+
+    DesvinculadosComponent
 
   ],
   imports: [

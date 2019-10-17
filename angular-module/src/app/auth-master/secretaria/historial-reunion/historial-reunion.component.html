@@ -32,24 +32,168 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="text-center">
-                    <th>Votaciones</th>
-                    <th>10.10.10</th>
-                    <th><button class="btn btn-primary">Ver Detalle Reunión</button></th>
-                    <th><button class="btn btn-secondary">Ver Asistencia</button></th>
+                  <tr *ngFor="let itemReuniones of listaReuniones" class="text-center" >
+                    <th>{{itemReuniones?.titulo}}</th>
+                    <th>{{itemReuniones?.fecha_inicio}}</th>
+
+                    <th><button (click)="abrirDetalleReunion(descripcionReunion)" class="btn btn-primary">Ver Detalle Reunión</button></th>
+                    
+                    <!-- MODAL PARA LA DESCRIPCIÓN DE LA REUNION -->
+                    <ng-template #descripcionReunion let-modal>
+                      <!-- Header Del Modal -->
+                      <div class="modal-header" id="demoFont">
+                        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle Reunión</strong>
+                        </h6>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <!-- Cuerpo del modal -->
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12 mt-2">
+                              <div class="card card-body">
+                                <legend>Reunión realizada el {{itemReuniones?.fecha_inicio}}</legend>
+                                <h6 class="text-muted">Tema a Tratar:</h6>
+                                <p>{{itemReuniones?.descripcion}}</p>
+                                <h6 class="text-muted">Reunión organizada por: {{itemReuniones?.creada_por}}</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Patitas del Modal -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                            class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                      </div>
+                    </ng-template>
+
+                    <th><button (click)="abrirAsistenciaReunion(asistenciaReunion); getListaAsistentesCompleta(itemReuniones?.id)" class="btn btn-secondary">Ver Asistencia</button></th>
+
+                    <!-- MODAL PARA LA ASISTENCIA DE LA REUNION -->
+                    <ng-template #asistenciaReunion let-modal>
+                      <!-- Header Del Modal -->
+                      <div class="modal-header" id="demoFont">
+                        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Asistencia</strong>
+                        </h6>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <!-- Cuerpo del modal -->
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <h3 class="text-center">{{itemAsistenciaCompleta?.fecha_inicio}}</h3>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <p class="mt-2">
+                                <ngb-alert [dismissible]="false">
+                                  <strong>¡Advertencia!</strong> En la siguiente lista se mostraran tanto a los socios que asistieron como
+                                  los justificados y los inasistentes, basado en estos datos se le otorgara un monto recomendado de ganacias
+                                  por inasistencias de reunión.
+                                </ngb-alert>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 mt-3">
+                              <h3>Lista de Asistencia</h3>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="monto"><b>Monto a cobrar por inasistencia</b></label>
+                                <input class="form-control" type="text" placeholder="Ingrese monto a cobrar"
+                                  (input)="calcularInasistencias($event)" autofocus>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group text-center">
+                                <label for="monto"><b>Total generado en inasistencias</b></label>
+                                <p>{{totalGanancias | currency:"CLP" : "symbol-narrow":'1.0'}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4 mt-2">
+                              <p><b>Total Asistentes:</b> {{cantidadAsistentes}}</p>
+                            </div>
+                            <div class="col-md-4">
+                              <p><b>Total Justificados:</b> {{cantidadJustificados}}</p>
+                            </div>
+                            <div class="col-md-4">
+                              <p><b>Total Inasistentes:</b> {{cantidadInasistentes}}</p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                  <thead class="thead-dark">
+                                    <tr class="text-center">
+                                      <th>Nombre Socio</th>
+                                      <th>Rut</th>
+                                      <th>Estado</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center table-success"
+                                      [ngClass]="{'table-warning': itemAsistenciaCompleta?.estado == 'Justificado', 'table-danger': itemAsistenciaCompleta?.estado == 'Ausente'}">
+                                      <td>{{itemAsistenciaCompleta?.nombre}}</td>
+                                      <td>{{itemAsistenciaCompleta?.rut}}</td>
+                                      <td>
+                                        <button *ngIf="itemAsistenciaCompleta?.estado == 'Justificado'"
+                                          (click)="getJustificacionSocios(itemReuniones?.id, itemAsistenciaCompleta?.id); abrirAsistenciaReunion(detalleJustificacion)" class="btn btn-outline-primary">{{itemAsistenciaCompleta?.estado}}</button>
+                                        <p *ngIf="itemAsistenciaCompleta?.estado != 'Justificado'">{{itemAsistenciaCompleta?.estado}}</p>
+                                      </td>
+                                      <!-- DETALLE DE LA JUSTIFICACION -->
+                                      <ng-template #detalleJustificacion let-modal>
+                                          <!-- Header Del Modal -->
+                                          <div class="modal-header" id="demoFont">
+                                            <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle Justificación</strong>
+                                            </h6>
+                                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <!-- Cuerpo del modal -->
+                                          <div class="modal-body">
+                                            <div class="container">
+                                              <h4 class="text-muted">Motivo de Inasistencia: </h4>
+                                              <p>{{justificacionUsuario?.tipo}}</p>
+                                              <br>
+                                              <h4 class="text-muted">Mensaje enviado por el socio: </h4>
+                                              <p>{{justificacionUsuario?.descripcion}}</p>
+                                            </div>
+                                          </div>
+                                          <!-- Patitas del Modal -->
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                                                class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                                          </div>
+                                        </ng-template>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Patitas del Modal -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                            class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                      </div>
+                    </ng-template>
                   </tr>
-                  <tr class="text-center">
-                      <th>Reunión General</th>
-                      <th>11.11.11</th>
-                      <th><button class="btn btn-primary">Ver Detalle Reunión</button></th>
-                      <th><button class="btn btn-secondary">Ver Asistencia</button></th>
-                    </tr>
-                    <tr class="text-center">
-                        <th>Elecciones</th>
-                        <th>12.12.12</th>
-                        <th><button class="btn btn-primary">Ver Detalle Reunión</button></th>
-                        <th><button class="btn btn-secondary">Ver Asistencia</button></th>
-                      </tr>
                 </tbody>
               </table>
             </div>

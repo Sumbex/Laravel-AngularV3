@@ -307,6 +307,35 @@ class SecReuniones extends Model
         }
     }
 
+    protected function filtrarSocio($reunion_id, $socio)
+    {
+        $buscar = mb_strtolower($socio);
+
+        $datos = DB::table('socios as s')
+            ->select([
+                's.id',
+                DB::raw("concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) as nombre"),
+                'sea.descripcion as estado'
+            ])
+            ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
+            ->join('sec_estado_asistencia as sea', 'sea.id', 'sa.estado_asistencia_id')
+            ->where([
+                's.activo' => 'S',
+                's.fecha_egreso' => null,
+                'sa.reunion_id' => $reunion_id
+            ])
+            ->whereRaw("lower(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno))', 'like', '%' . $buscar . '%")
+            /* ->where('lower(CONCAT(s.nombres,' ',s.a_paterno,' ',s.a_materno))', 'like', $buscar); */
+            /* ->whereRaw('lower(CONCAT(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like'. . '%$busca%') */
+            ->get();
+        dd($datos);
+        if (!$datos->isEmpty()) {
+            return ['estado' => 'success', 'socio' => $datos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El socio ya no se encuenta activo en el sindicato o no existe.'];
+        }
+    }
+
     protected function validarRut($rut)
     {
         try {

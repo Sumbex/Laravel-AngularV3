@@ -32,9 +32,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="text-center" >
-                    <th>{{itemReuniones?.nombre}}</th>
-                    <th>{{itemReuniones?.fecha}}</th>
+                  <tr *ngFor="let itemReuniones of listaReuniones" class="text-center" >
+                    <th>{{itemReuniones?.titulo}}</th>
+                    <th>{{itemReuniones?.fecha_inicio}}</th>
 
                     <th><button (click)="abrirDetalleReunion(descripcionReunion)" class="btn btn-primary">Ver Detalle Reunión</button></th>
                     
@@ -54,10 +54,10 @@
                           <div class="row">
                             <div class="col-md-12 mt-2">
                               <div class="card card-body">
-                                <legend>Reunión preparada para el 20.20.20</legend>
+                                <legend>Reunión realizada el {{itemReuniones?.fecha_inicio}}</legend>
                                 <h6 class="text-muted">Tema a Tratar:</h6>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit? Rem consequatur, omnis similique, recusandae earum officia quae quia nobis iure unde assumenda maxime, sequi placeat ea voluptates ipsam ratione!Quas vel non explicabo. Velit, a. Quasi fuga facere corporis sed corrupti dolor distinctio ipsa voluptates, nisi ducimus voluptatibus, maxime ut, ullam laborum. Delectus eum pariatur ea harum et labore.</p>
-                                <h6 class="text-muted">Reunión organizada por: Bryan Vidal Díaz</h6>
+                                <p>{{itemReuniones?.descripcion}}</p>
+                                <h6 class="text-muted">Reunión organizada por: {{itemReuniones?.creada_por}}</h6>
                               </div>
                             </div>
                           </div>
@@ -87,14 +87,14 @@
                         <div class="container">
                           <div class="row">
                             <div class="col-md-12">
-                              <h3 class="text-center">Reunión del día 10.10.10</h3>
+                              <h3 class="text-center">{{itemAsistenciaCompleta?.fecha_inicio}}</h3>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <p class="mt-2">
                                 <ngb-alert [dismissible]="false">
-                                  <strong>¡Advertencia!</strong> En la siguiente lista se mosytraran tanto a los socios que asistieron como
+                                  <strong>¡Advertencia!</strong> En la siguiente lista se mostraran tanto a los socios que asistieron como
                                   los justificados y los inasistentes, basado en estos datos se le otorgara un monto recomendado de ganacias
                                   por inasistencias de reunión.
                                 </ngb-alert>
@@ -150,7 +150,7 @@
                                       <td>{{itemAsistenciaCompleta?.rut}}</td>
                                       <td>
                                         <button *ngIf="itemAsistenciaCompleta?.estado == 'Justificado'"
-                                          (click)="getJustificacionSocios(datosReunion.id, itemAsistenciaCompleta?.id); abrirModalAsistencia(detalleJustificacion)" class="btn btn-outline-primary">{{itemAsistenciaCompleta?.estado}}</button>
+                                          (click)="getJustificacionSocios(itemReuniones?.id, itemAsistenciaCompleta?.id); abrirAsistenciaReunion(detalleJustificacion)" class="btn btn-outline-primary">{{itemAsistenciaCompleta?.estado}}</button>
                                         <p *ngIf="itemAsistenciaCompleta?.estado != 'Justificado'">{{itemAsistenciaCompleta?.estado}}</p>
                                       </td>
                                       <!-- DETALLE DE LA JUSTIFICACION -->

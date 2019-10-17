@@ -16,9 +16,15 @@ export class HistorialReunionComponent implements OnInit {
 
   //Variable para guardar la lista de asistencia
   listaAsistenciaCompleta;
-  cantidadInasistentes ;
+  cantidadInasistentes;
   cantidadAsistentes;
   cantidadJustificados;
+
+  //Total de Ganancias por ianssitencvias
+  totalGanancias = 0;
+
+  //Vareiable donde guardar la justififcacion del usuario
+  justificacionUsuario;
 
   //variable para asociar al modal
   modalVariable;
@@ -31,43 +37,71 @@ export class HistorialReunionComponent implements OnInit {
   ngOnInit() {
   }
 
-  abrirModal(modalHistorial){
-    this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
+  abrirModal(modalHistorial) {
+    this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl' });
     this.getListaReuniones();
   }
 
-  abrirDetalleReunion(modalHistorial){
-    this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl', centered: true});
+  abrirDetalleReunion(modalHistorial) {
+    this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl', centered: true });
   }
 
-  abrirAsistenciaReunion(modalHistorial){
-    this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl', centered: true});
+  abrirAsistenciaReunion(modalHistorial) {
+    this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl', centered: true });
   }
 
-  getListaReuniones(){
-    this._secretariaService.getListaReuniones().subscribe(response =>{
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
+  getListaReuniones() {
+    this._secretariaService.getListaReuniones().subscribe(response => {
+      if (response.estado == 'failed' || response.estado == 'failed_v') {
         alert(response.mensaje);
-      }else{
-        this.listaReuniones = response;
+      } else {
+        this.listaReuniones = response.reuniones;
       }
-    },error=>{
+    }, error => {
       console.log(error);
     });
   }
 
   //TRAER LISTA DE ASISTENCIA COMPLETA
-  getListaAsistentesCompleta(id){
-    this._secretariaService.getListaAsistenciaCompleta(id).subscribe(response =>{
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
+  getListaAsistentesCompleta(id) {
+    this.limpiarLista();
+    this._secretariaService.getListaAsistenciaCompleta(id).subscribe(response => {
+      if (response.estado == 'failed' || response.estado == 'failed_v') {
         alert(response.mensaje);
-      }else{
+      } else {
         this.listaAsistenciaCompleta = response.lista;
         this.cantidadInasistentes = response.inasistentes;
         this.cantidadAsistentes = response.presentes;
         this.cantidadJustificados = response.justificados;
       }
     }, error => {
+      console.log(error);
+    });
+  }
+
+  limpiarLista() {
+    this.listaAsistenciaCompleta = '';
+    this.cantidadAsistentes = '';
+    this.cantidadInasistentes = '';
+    this.cantidadJustificados = '';
+  }
+
+  //CALCULAR GANACIAS POR INASISTENCIAS
+  calcularInasistencias(event){
+    let valor = Math.ceil(event.target.value * this.cantidadInasistentes);
+    this.totalGanancias = valor;
+    console.log(this.totalGanancias);
+  }
+
+   //TRAER JUSTIFICACION DEL SOCIO
+   getJustificacionSocios(idReunion, idSocio){
+    this._secretariaService.getJustificacionUsuario(idReunion, idSocio).subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        this.justificacionUsuario = response.justificacion;
+      }
+    }, error =>{
       console.log(error);
     });
   }

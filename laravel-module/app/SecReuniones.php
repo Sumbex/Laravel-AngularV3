@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,32 +25,43 @@ class SecReuniones extends Model
 
     protected function crearReunion($request)
     {
-        /* $test = SecAsistencia::traerSociosActivos();
-        dd(count($test['socios'])); */
-        $RA = $this->traerReunionActiva();
-        if ($RA['estado'] == 'failed') {
-            DB::beginTransaction();
-            $reunion = new SecReuniones;
-            $reunion->fecha_inicio = $request->fecha_inicio;
-            $reunion->estado_reunion_id = 1;
-            $reunion->cabeza = $request->cabeza;
-            $reunion->cuerpo = $request->cuerpo;
-            $reunion->tipo_reunion_id = $request->tipo;
-            $reunion->user_id = Auth::user()->id;
-            $reunion->activo = 'S';
-            if ($reunion->save()) {
-                $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
-                if ($asistencia['estado'] == 'success') {
-                    DB::commit();
-                    return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.', 'ingresos' => $asistencia['ingresos']];
-                } else {
-                    DB::rollBack();
-                }
+        $reunion = SecReuniones::where([
+            'activo' => 'S'
+        ])
+            ->get()->last();
+        /* dd($reunion); */
+        if (!is_null($reunion)) {
+            if ($reunion->estado_reunion_id == 5 || $reunion->estado_reunion_id == 6) {
+                return $this->ingresoReunion($request);
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                return ['estado' => 'success', 'mensaje' => 'Existe una reunion activa, recuerda archivarla o cancelarla antes de intentar crear una nueva.'];
             }
         } else {
-            return ['estado' => 'success', 'mensaje' => 'Existe una reunion activa, recuerda finalizarla o cancelarla antes de intentar crear una nueva.'];
+            return $this->ingresoReunion($request);
+        }
+    }
+
+    protected function ingresoReunion($request)
+    {
+        DB::beginTransaction();
+        $reunion = new SecReuniones;
+        $reunion->fecha_inicio = $request->fecha_inicio;
+        $reunion->estado_reunion_id = 1;
+        $reunion->cabeza = $request->cabeza;
+        $reunion->cuerpo = $request->cuerpo;
+        $reunion->tipo_reunion_id = $request->tipo;
+        $reunion->user_id = Auth::user()->id;
+        $reunion->activo = 'S';
+        if ($reunion->save()) {
+            $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
+            if ($asistencia['estado'] == 'success') {
+                DB::commit();
+                return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.', 'ingresos' => $asistencia['ingresos']];
+            } else {
+                DB::rollBack();
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
         }
     }
 
@@ -187,6 +199,8 @@ class SecReuniones extends Model
 
         if (!$reunion->isEmpty()) {
             $modReunion = SecReuniones::find($request->id);
+            $termino = DB::select('select NOW() as fecha');
+            $modReunion->fecha_termino = $termino[0]->fecha;
             $modReunion->estado_reunion_id = 3;
             $modReunion->mod_user_id = Auth::user()->id;
             if ($modReunion->save()) {
@@ -229,6 +243,7 @@ class SecReuniones extends Model
             ->select([
                 'sr.id',
                 'sr.fecha_inicio',
+                'sr.fecha_termino',
                 'sr.cabeza as titulo',
                 'sr.cuerpo as descripcion',
                 'sr.tipo_reunion_id as tipo',
@@ -289,6 +304,35 @@ class SecReuniones extends Model
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
+        }
+    }
+
+    protected function filtrarSocio($reunion_id, $socio)
+    {
+        $buscar = mb_strtolower($socio);
+
+        $datos = DB::table('socios as s')
+            ->select([
+                's.id',
+                DB::raw("concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) as nombre"),
+                'sea.descripcion as estado'
+            ])
+            ->join('sec_asistencia as sa', 'sa.socio_id', 's.id')
+            ->join('sec_estado_asistencia as sea', 'sea.id', 'sa.estado_asistencia_id')
+            ->where([
+                's.activo' => 'S',
+                's.fecha_egreso' => null,
+                'sa.reunion_id' => $reunion_id
+            ])
+            ->whereRaw("lower(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno))', 'like', '%' . $buscar . '%")
+            /* ->where('lower(CONCAT(s.nombres,' ',s.a_paterno,' ',s.a_materno))', 'like', $buscar); */
+            /* ->whereRaw('lower(CONCAT(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like'. . '%$busca%') */
+            ->get();
+        dd($datos);
+        if (!$datos->isEmpty()) {
+            return ['estado' => 'success', 'socio' => $datos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El socio ya no se encuenta activo en el sindicato o no existe.'];
         }
     }
 
@@ -374,5 +418,49 @@ class SecReuniones extends Model
     protected function traerJustificacionSocio($reunion_id, $socio_id)
     {
         return SecJustificacion::traerJustificacionSocio($reunion_id, $socio_id);
+    }
+
+    protected function traerHistorialReuniones()
+    {
+        $reunion = DB::table('sec_reuniones as sr')
+            ->select([
+                'sr.id',
+                'sr.fecha_inicio',
+                'sr.fecha_termino',
+                'sr.cabeza as titulo',
+                'sr.cuerpo as descripcion',
+                DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
+                'sr.mod_user_id',
+                'sr.tipo_reunion_id as tipo_id',
+                'str.descripcion as tipo'
+            ])
+            ->join('users as u', 'u.id', 'sr.user_id')
+            ->join('sec_tipo_reunion as str', 'str.id', 'sr.tipo_reunion_id')
+            ->where([
+                'sr.activo' => 'S',
+                'sr.estado_reunion_id' => 5
+            ])
+            ->orderBy('sr.tipo_reunion_id', 'asc')
+            ->get();
+
+        if (!$reunion->isEmpty()) {
+            foreach ($reunion as $key) {
+                if (!is_null($key->mod_user_id)) {
+                    $mod = DB::table('users')
+                        ->select([
+                            DB::raw("concat(nombres,' ',a_paterno,' ',a_materno) as modificada_por")
+                        ])
+                        ->where([
+                            'id' => $key->mod_user_id
+                        ])
+                        ->get();
+                    $key->modificada_por = $mod[0]->modificada_por;
+                }
+            }
+
+            return ['estado' => 'success', 'reuniones' => $reunion];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no existen reuniones archivadas.'];
+        }
     }
 }

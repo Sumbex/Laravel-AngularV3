@@ -187,6 +187,11 @@ class PortalSocioController extends Controller
     {
         return PortalSocioMisBeneficios::traerMisAhorros($anio);
     }
+
+    public function SociosDesvinculados($anio)
+    {
+        return PortalSocioMisBeneficios::sociosDesvinculados($anio);
+    }
     //------------------------------------------>rutas portal socio mb
 
     //------reunion 

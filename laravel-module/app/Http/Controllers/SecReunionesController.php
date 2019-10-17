@@ -78,7 +78,7 @@ class SecReunionesController extends Controller
         return SecReuniones::traerHistorialReuniones();
     }
 
-    public function FiltrarSocio($reunion_id, $socio)
+    public function FiltrarSocio($reunion_id, $socio = '')
     {
         return  SecReuniones::filtrarSocio($reunion_id, $socio);
     }

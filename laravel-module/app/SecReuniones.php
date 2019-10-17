@@ -199,7 +199,7 @@ class SecReuniones extends Model
 
         if (!$reunion->isEmpty()) {
             $modReunion = SecReuniones::find($request->id);
-            $termino = DB::select( 'select NOW() as fecha' );
+            $termino = DB::select('select NOW() as fecha');
             $modReunion->fecha_termino = $termino[0]->fecha;
             $modReunion->estado_reunion_id = 3;
             $modReunion->mod_user_id = Auth::user()->id;

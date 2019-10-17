@@ -65,8 +65,8 @@ export class DesvinculadosComponent implements OnInit {
         alert(response.mensaje);
         this.cargandoTabla = false;
       }else{
-        console.log(response);
-        this.datosDesvinculados = response;
+        this.datosDesvinculados = response.socios;
+        console.log(this.datosDesvinculados);
         this.cargandoTabla = false;
       }
     },

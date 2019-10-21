@@ -28,7 +28,8 @@ class CuentaConsorcio extends Model
                                 case when descripcion_ecx is null then 'Sin Registro'
                                 else descripcion_ecx
                                 end AS pago_actual_cex,
-                                concat(m_cex.descripcion,' ',a_cex.descripcion) as fecha_cex
+                                concat(m_cex.descripcion,' ',a_cex.descripcion) as fecha_cex,
+                                activo_socio
 
                               from 
                               (select    
@@ -42,7 +43,8 @@ class CuentaConsorcio extends Model
                                     ecx.descripcion as descripcion_ecx,
                                     ecx.mes_id as mes_ecx_id,
                                     ecx.anio_id as anio_ecx_id,
-                                    s.fecha_egreso
+                                    s.fecha_egreso,
+                                    s.activo activo_socio
                                     
                                   from socios s
                                   left join estado_consorcio_dia_sueldo ec on ec.socio_id = s.id
@@ -50,15 +52,14 @@ class CuentaConsorcio extends Model
 
 
                               order by 
-                                (case when fecha_egreso is null then 'vigente'
-                                else concat('egresado (',to_char(fecha_egreso,'dd-mm-yyyy'),')')
-                                end) desc, s.a_paterno, s.a_materno
+                                 s.a_paterno, s.a_materno
                               
                               ) AS x
                               left join mes m_ds on m_ds.id = x.mes_ds_id
                               left join anio a_ds on a_ds.id = x.anio_ds_id
                               left join mes m_cex on m_cex.id = x.mes_ecx_id
-                              left join anio a_cex on a_cex.id = x.anio_ecx_id");
+                              left join anio a_cex on a_cex.id = x.anio_ecx_id
+                              order by activo_socio DESC");
 
         if (count($listar) > 0) {
     		return $listar;
@@ -266,6 +267,80 @@ class CuentaConsorcio extends Model
           return ['estado'=>'failed', 'mensaje'=>'Error al ingresar cuota extraordinaria'];
       }
     }
+    protected function insertar_cex_desde_table($r)
+    {
+        $cc_id ='';
+        $mes ='';
+        $tipo_pago = '2';
+        $tipo_retiro ='';
+        $porcentaje='';
+        $monto='';
+
+       $verif = $this->find($r->cc_id);
+
+      if ($verif) {
+
+        switch ((string)$r->mes_id) {
+            case '1':  $verif->monto_mes_cex_1 = $r->monto;  break;
+            case '2':  $verif->monto_mes_cex_2 = $r->monto;  break;
+            case '3':  $verif->monto_mes_cex_3 = $r->monto;  break;
+            case '4':  $verif->monto_mes_cex_4 = $r->monto;  break;
+            case '5':  $verif->monto_mes_cex_5 = $r->monto;  break;
+            case '6':  $verif->monto_mes_cex_6 = $r->monto;  break;
+            case '7':  $verif->monto_mes_cex_7 = $r->monto;  break;
+            case '8':  $verif->monto_mes_cex_8 = $r->monto;  break;
+            case '9':  $verif->monto_mes_cex_9 = $r->monto;  break;
+            case '10': $verif->monto_mes_cex_10 = $r->monto;  break;
+            case '11': $verif->monto_mes_cex_11 = $r->monto;  break;
+            case '12': $verif->monto_mes_cex_12 = $r->monto;  break;
+            default: break;
+          }
+
+          if ($verif->save()) {
+              $estado = EstadoConsorcioCex::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+              
+          }
+          return ['estado'=>'failed', 'mensaje'=>'Error al actualizar cuota extraordinaria'];
+            
+
+      }else{
+          $ds = $this;
+          $ds->socio_id = $r->socio_id;
+          $ds->vinculado = 'S';
+          $ds->anio_id = $r->anio_id;
+        
+          switch ((string)$r->mes_id) {
+            case '1':  $ds->monto_mes_cex_1 = $r->monto;  break;
+            case '2':  $ds->monto_mes_cex_2 = $r->monto;  break;
+            case '3':  $ds->monto_mes_cex_3 = $r->monto;  break;
+            case '4':  $ds->monto_mes_cex_4 = $r->monto;  break;
+            case '5':  $ds->monto_mes_cex_5 = $r->monto;  break;
+            case '6':  $ds->monto_mes_cex_6 = $r->monto;  break;
+            case '7':  $ds->monto_mes_cex_7 = $r->monto;  break;
+            case '8':  $ds->monto_mes_cex_8 = $r->monto;  break;
+            case '9':  $ds->monto_mes_cex_9 = $r->monto;  break;
+            case '10': $ds->monto_mes_cex_10 = $r->monto;  break;
+            case '11': $ds->monto_mes_cex_11 = $r->monto;  break;
+            case '12': $ds->monto_mes_cex_12 = $r->monto;  break;
+            default: break;
+          }
+
+          if ($ds->save()) {
+              $estado = EstadoConsorcioCex::insertar($r->socio_id, $r->mes_id, $r->anio_id);
+              if ($estado) {
+                return ['estado'=>'success', 'mensaje'=>'Cuota extraordinaria actualizada'];
+              }
+              return ['estado'=>'failed', 'mensaje'=>'Se ha guardado cuota extraordinaria pero no se ha reecalculado el estado'];
+
+          }
+          return ['estado'=>'failed', 'mensaje'=>'Error al ingresar cuota extraordinaria'];
+      }
+    }
+    
 
     protected function tabla_consorcio($anio_id)//CUENTA CONSORCIO
     {
@@ -353,11 +428,14 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_11,0) +
                                   COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
-                                ) monto_total_socio
+                                ) monto_total_socio,
+                                s.retiro_pago_beneficio pb
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
-                            where cc.anio_id = $anio_id");
+                            where cc.anio_id = $anio_id
+                            order by a_paterno, a_materno asc
+                            ");
 
         if (count($listar) > 0) {
     		return $listar;
@@ -453,7 +531,8 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_11,0) +
                                   COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
-                                ) monto_total_socio
+                                ) monto_total_socio,
+                                s.retiro_pago_beneficio pb
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
@@ -705,7 +784,22 @@ class CuentaConsorcio extends Model
                                       x.monto_mes_ds_3,
                                       x.monto_mes_ds_2,
                                       x.monto_mes_ds_1    
-                                  ) dia_sueldo
+                                  ) dia_sueldo,
+
+                                  COALESCE(
+                                      x.monto_mes_cex_12,
+                                      x.monto_mes_cex_11,
+                                      x.monto_mes_cex_10,
+                                      x.monto_mes_cex_9,
+                                      x.monto_mes_cex_8,
+                                      x.monto_mes_cex_7,
+                                      x.monto_mes_cex_6,
+                                      x.monto_mes_cex_5,
+                                      x.monto_mes_cex_4,
+                                      x.monto_mes_cex_3,
+                                      x.monto_mes_cex_2,
+                                      x.monto_mes_cex_1    
+                                  ) pago_beneficio
                               from
 
                               (select 
@@ -721,20 +815,139 @@ class CuentaConsorcio extends Model
                                 case when  (COALESCE(monto_mes_ds_4,0) ) = 0 then null else monto_mes_ds_4 end monto_mes_ds_4,
                                 case when  (COALESCE(monto_mes_ds_3,0) ) = 0 then null else monto_mes_ds_3 end monto_mes_ds_3,
                                 case when  (COALESCE(monto_mes_ds_2,0) ) = 0 then null else monto_mes_ds_2 end monto_mes_ds_2,
-                                case when  (COALESCE(monto_mes_ds_1,0) ) = 0 then null else monto_mes_ds_1 end monto_mes_ds_1
+                                case when  (COALESCE(monto_mes_ds_1,0) ) = 0 then null else monto_mes_ds_1 end monto_mes_ds_1,
+
+                                case when  (COALESCE(monto_mes_cex_12, 0)) = 0 then null else monto_mes_cex_12 end monto_mes_cex_12,
+                                case when  (COALESCE(monto_mes_cex_11,0) ) = 0 then null else monto_mes_cex_11 end monto_mes_cex_11,
+                                case when  (COALESCE(monto_mes_cex_10,0) ) = 0 then null else monto_mes_cex_10 end monto_mes_cex_10,
+                                case when  (COALESCE(monto_mes_cex_9,0) )  = 0 then null else monto_mes_cex_9 end monto_mes_cex_9,
+                                case when  (COALESCE(monto_mes_cex_8,0) )  = 0 then null else monto_mes_cex_8 end monto_mes_cex_8,
+                                case when  (COALESCE(monto_mes_cex_7,0) ) = 0 then null else monto_mes_cex_7 end monto_mes_cex_7,
+                                case when  (COALESCE(monto_mes_cex_6,0) ) = 0 then null else monto_mes_cex_6 end monto_mes_cex_6,
+                                case when  (COALESCE(monto_mes_cex_5,0) ) = 0 then null else monto_mes_cex_5 end monto_mes_cex_5,
+                                case when  (COALESCE(monto_mes_cex_4,0) ) = 0 then null else monto_mes_cex_4 end monto_mes_cex_4,
+                                case when  (COALESCE(monto_mes_cex_3,0) ) = 0 then null else monto_mes_cex_3 end monto_mes_cex_3,
+                                case when  (COALESCE(monto_mes_cex_2,0) ) = 0 then null else monto_mes_cex_2 end monto_mes_cex_2,
+                                case when  (COALESCE(monto_mes_cex_1,0) ) = 0 then null else monto_mes_cex_1 end monto_mes_cex_1
                               
                               from cuenta_consorcio where id = $ultimo
                               and socio_id = $socio_id 
                               ) x");
               if (count($ds) > 0) {
-                  return $ds[0]->dia_sueldo;
+                  return [
+                          'cuenta-consorcio_id' => $ultimo,
+                          'dia_sueldo' => $ds[0]->dia_sueldo,
+                          'pago_beneficio' => $ds[0]->pago_beneficio
+                  ];
               }
               return '';
 
 
+        }else{
+            return '';
+        }
+
+    }
+
+    protected function listar_pago_beneficios($anio)
+    {
+      $listar = DB::select("SELECT 
+                    socio_id,
+                    CONCAT(m.descripcion,' ',a.descripcion) as fecha,
+                    CONCAT(nombres,' ',a_paterno,' ',a_materno) nombre,
+                    pb.descripcion,
+                    CONCAT(CAST (porcentaje AS float) *100,'%') porcentaje,
+                    monto_dia_sueldo as monto_v
+                from cc_pago_beneficios pb
+                inner join socios s on s.id = pb.socio_id
+                inner join mes m on m.id = pb.mes_id
+                inner join anio a on a.id = pb.anio_id
+                where pb.anio_id = $anio and s.retiro_pago_beneficio = 'S'");
+
+      if (count($listar) > 0) {
+    		    return $listar;
+        }else{
+            return '';
+        }
+    }
+
+    protected function desvincular_sumar_totales($anio, $socio)
+    {
+        $listar = DB::select("SELECT 
+                                    socio_id,
+                                    monto_total_ds_socio, 
+                                    monto_total_cex_socio,
+                                    (monto_total_ds_socio - monto_total_cex_socio) monto_h
+                            from (SELECT 
+                                s.id socio_id,
+                                cc.id cuenta_consorcio_id,
+                                cc.vinculado,
+                                concat(nombres,' ',a_paterno,' ',a_materno) nombre,
+                                COALESCE(monto_mes_ds_1,0) monto_mes_ds_1,
+                                COALESCE(monto_mes_cex_1,0) monto_mes_cex_1,
+                                COALESCE(monto_mes_ds_2,0) monto_mes_ds_2,
+                                COALESCE(monto_mes_cex_2,0) monto_mes_cex_2,
+                                COALESCE(monto_mes_ds_3,0) monto_mes_ds_3,
+                                COALESCE(monto_mes_cex_3,0) monto_mes_cex_3,
+                                COALESCE(monto_mes_ds_4,0) monto_mes_ds_4,
+                                COALESCE(monto_mes_cex_4,0) monto_mes_cex_4,
+                                COALESCE(monto_mes_ds_5,0) monto_mes_ds_5,
+                                COALESCE(monto_mes_cex_5,0) monto_mes_cex_5,
+                                COALESCE(monto_mes_ds_6,0) monto_mes_ds_6,
+                                COALESCE(monto_mes_cex_6,0) monto_mes_cex_6,
+                                COALESCE(monto_mes_ds_7,0) monto_mes_ds_7,
+                                COALESCE(monto_mes_cex_7,0) monto_mes_cex_7,
+                                COALESCE(monto_mes_ds_8,0) monto_mes_ds_8,
+                                COALESCE(monto_mes_cex_8,0) monto_mes_cex_8,
+                                COALESCE(monto_mes_ds_9,0) monto_mes_ds_9,
+                                COALESCE(monto_mes_cex_9,0) monto_mes_cex_9,
+                                COALESCE(monto_mes_ds_10,0) monto_mes_ds_10,
+                                COALESCE(monto_mes_cex_10,0) monto_mes_cex_10,
+                                COALESCE(monto_mes_ds_11,0) monto_mes_ds_11,
+                                COALESCE(monto_mes_cex_11,0) monto_mes_cex_11,
+                                COALESCE(monto_mes_ds_12,0) monto_mes_ds_12,
+                                COALESCE(monto_mes_cex_12,0) monto_mes_cex_12,
+                                
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) 
+                                ) monto_total_ds_socio,
+                                
+                                (
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_cex_socio
+                               
+                                                        
+                            from cuenta_consorcio cc
+                            inner join socios s on s.id = cc.socio_id 
+                            where cc.anio_id = $anio and socio_id = $socio and cc.vinculado = 'N') x
+        ");
+
+         if (count($listar) > 0) {
+    		    return $listar[0];
           }else{
             return '';
           }
-
     }
 }

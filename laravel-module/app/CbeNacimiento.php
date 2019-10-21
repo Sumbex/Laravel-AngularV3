@@ -22,7 +22,7 @@ class CbeNacimiento extends Model
             $this->socio_id = $socio_id;
             $this->cuenta_bienestar_id = $cbe_id;
             $this->activo = 'S';
-            $this->rut_nacimiento = $rut;
+            $this->rut_nacimiento = strtolower($rut);
             if ($this->save()) {
                 return ['estado'=>'success', 'mensaje'=> 'Item de nacimiento ingresado con exito' ];
             }
@@ -40,9 +40,10 @@ class CbeNacimiento extends Model
         
         $benef = SocioBeneficiario::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
                     'activo' => 'S'
-        ])->first();
+        ])
+         ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
         if (!empty($benef)) {
              $exist_beneficiario = true;
@@ -50,10 +51,11 @@ class CbeNacimiento extends Model
 
         $carga = SocioCarga::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
                     'activo' => 'S'
 
-        ])->first();
+        ])
+        ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
         if (!empty($carga)) {
              $existe_carga = true;
@@ -62,8 +64,11 @@ class CbeNacimiento extends Model
         if ($exist_beneficiario || $existe_carga) {
 
             $very = $this->where([
-                'activo'=>'S','socio_id'=>$socio_id, 'rut_nacimiento'=>$rut
-            ])->first();
+                'activo'=>'S','socio_id'=>$socio_id, 
+                //'rut_nacimiento'=>$rut
+            ])
+            ->whereRaw("LOWER(regexp_replace(rut_nacimiento, '[^\w]+','','g')) = LOWER('".$rut."')")
+            ->first();
 
             if (empty($very)) {
                 return true;
@@ -80,13 +85,13 @@ class CbeNacimiento extends Model
 
         $listar = DB::select("SELECT 
                                 concat(cbe.dia,' de ',m.descripcion,',',a.descripcion) as fecha,
-                                c.rut,
-                                concat(c.nombres,' ',c.apellido_paterno,' ',c.apellido_materno) nombre,
+                                n.rut_nacimiento rut,
+                               -- concat(c.nombres,' ',c.apellido_paterno,' ',c.apellido_materno) nombre,
                                 cbe.descripcion,
                                 cbe.monto_egreso     
                             from cbe_nacimiento n
                             inner join cuenta_bienestar cbe on cbe.id = n.cuenta_bienestar_id
-                            inner join cargas_legales_socio c on c.rut = n.rut_nacimiento
+                           -- inner join cargas_legales_socio c on c.rut = n.rut_nacimiento
                             inner join anio a on a.id = cbe.anio_id
                             inner join mes m on m.id = cbe.mes_id
                             where n.socio_id = $socio_id  and cbe.activo = 'S'");

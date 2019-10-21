@@ -21,12 +21,18 @@
           <table *ngIf="!cargandoTabla" class="table table-striped table-bordered table-sm">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
               <br>
+                <p>
+                    <ngb-alert [dismissible]="false">
+                      <strong>¡Advertencia!</strong> Solo se puede actualizar un campo a la vez.
+                    </ngb-alert>
+                  </p>
+              <br>
               <div class="row justify-content-center">
   
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                   <tr>
                     <th class="text-right" style="background: #195fcf">Nombres:</th>
-                    <td><input #nombresSocio type="text" class="sinbordefondo centrado" value="{{infoPersonal?.nombres}}"></td>
+                    <td><input #nombresSocio type="text" class="sinbordefondo centrado" value="{{infoPersonal?.nombres}}" minlength="2" maxlength="60"></td>
                     <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(nombresSocio,'nombres')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -35,7 +41,7 @@
                   </tr>
                   <tr>
                     <th class="text-right" style="background: #195fcf">Apellido Paterno:</th>
-                    <td><input #apellidoP type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.a_paterno}}"></td>
+                    <td><input #apellidoP type="text" class="sinbordefondo centrado" value="{{ infoPersonal?.a_paterno}}" minlength="2" maxlength="60"></td>
                     <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(apellidoP,'a_paterno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>
                       <img *ngIf="blockUpdate" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -45,7 +51,7 @@
                   <tr>
                     <th class="text-right" style="background: #195fcf;">Apellido Materno:</th>
                     <td><input #apellidoM type="text" class="sinbordefondo centrado"
-                        value="{{infoPersonal?.a_materno}}">
+                        value="{{infoPersonal?.a_materno}}" minlength="2" maxlength="60">
                     </td>
                     <td><button [disabled]="blockUpdate" class="btn btn-outline-success btn-sm"
                       (click)="setNuevosDatos(apellidoM,'a_materno')"><i *ngIf="!blockUpdate" class="far fa-edit"></i>

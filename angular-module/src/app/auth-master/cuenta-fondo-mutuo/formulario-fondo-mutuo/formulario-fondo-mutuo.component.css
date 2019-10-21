@@ -11,11 +11,11 @@
     }
 
     label,input, button{
-      font-size: 12px;
+      font-size: 14px;
     }
 
     tr,th{
-      font-size: 12px;
+      font-size: 14px;
     }
     th{
       color: white;
@@ -71,3 +71,7 @@
         color: #1E8449;
         font-weight: bold;
       }
+
+      
+      .tableFixHead       { overflow-y: auto; height: 500px; }
+      .tableFixHead thead { position: sticky; top: 0; }

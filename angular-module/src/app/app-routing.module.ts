@@ -21,6 +21,9 @@ import { BeneficiosSocioComponent } from './socios-master/beneficios-socio/benef
 import { ConfiguracionSocioComponent } from './socios-master/configuracion-socio/configuracion-socio.component';
 import { CuentasComponent } from './socios-master/cuentas/cuentas.component';
 import { GraficoComponenteComponent } from './socios-master/grafico/grafico-componente/grafico-componente.component';
+import { GeneralReunionComponent } from './socios-master/reuniones/general-reunion/general-reunion.component';
+import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reunion/detalle-reunion.component';
+import { SecretariaComponent } from './auth-master/secretaria/secretaria.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -36,7 +39,8 @@ const routes: Routes = [
     { path: 'RegistroSocios', component: FormularioSociosComponent },
     { path: 'ListarSocios', component: ListarSociosComponent },
     { path: 'TablaPrestamoSocios', component: TablaPrestamosSociosComponent },
-    { path: 'BeneficiosSocios', component: BeneficiosSociosComponent }
+    { path: 'BeneficiosSocios', component: BeneficiosSociosComponent },
+    { path: 'Secretaria', component: SecretariaComponent }
 
   ]},
 
@@ -45,7 +49,8 @@ const routes: Routes = [
     { path: 'Beneficios', component: BeneficiosSocioComponent },
     { path: 'Configuracion', component: ConfiguracionSocioComponent },
     { path: 'Cuentas', component: CuentasComponent },
-    { path: 'Grafico', component: GraficoComponenteComponent }
+    { path: 'Grafico', component: GraficoComponenteComponent },
+    { path: 'Reuniones', component: GeneralReunionComponent }
   ]},
 
   { path: '**', component: NoEncontradoComponent }

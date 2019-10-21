@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { ConsorcioService } from 'src/app/servicios/consorcio.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
 
 @Component({
   selector: 'app-tabla-fondo-mutuo',
@@ -61,20 +62,28 @@ export class TablaFondoMutuoComponent implements OnInit {
   //pago beneficio
   modalPagoBeneficio;
   tipoPago = 2;
-  tipoRetiro = 0;
-  tipoDescuento = 0;
-  calcularBeneficio;
-  valorBeneficio;
+  tipoRetiro = '0';
+  tipoPorc = '1';
   mesBeneficio;
-  
+  montoBeneficio;
+  montoFinal;
+  socioPB;
+  actualizarLoad = false;
+  actualizarLoad2 = false;
+  socio = '0';
+  descripcionDesc = '';
+  ocultarDescripcion = true;
+  blockLoad3 = true;
+
 
   constructor(
     private _time: AniosService,
     private _consorcioService: ConsorcioService,
     config: NgbModalConfig,
-    private modalService: NgbModal) {
-      config.backdrop = 'static';
-      config.keyboard = false;
+    private modalService: NgbModal,
+    private _validarusuario: ValidarUsuarioService) {
+    config.backdrop = 'static';
+    config.keyboard = false;
 
   }
 
@@ -88,12 +97,23 @@ export class TablaFondoMutuoComponent implements OnInit {
 
     this.llenar_select();
   }
+
   openPagoBeneficio(PagoBeneficio) {
-    this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'sm' });
+    this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'lg' });
+    this.socioDesvinculado();
+    this.usuario_logeado();
   }
 
   cerrarPagoBeneficio() {
     this.modalPagoBeneficio.close();
+  }
+
+  limpiarPagoBeneficio() {
+    this.tipoPorc = '1';
+    this.tipoRetiro = '0';
+    this.montoBeneficio = '';
+    this.montoFinal = '';
+    this.socio = '0';
   }
 
   listar() {
@@ -125,6 +145,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       }
     )
   }
+
   listarAnual() {
     // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
@@ -214,55 +235,215 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   btn_reload() {
 
-    this.contador=3;
+    this.contador = 3;
     this.listo_para_listar(this.suc_res1, this.suc_res2);
+    this.ocultarDescripcion = true;
 
   }
 
-  ConvertToInt(val){
+  ConvertToInt(val) {
     return parseInt(val);
   }
 
-  rescatarDiaSueldo(id){
-    this.valorBeneficio = id;
+  usuario_logeado() {
+
+    this._validarusuario.usuario_logeado().subscribe((val: object) => {
+
+      this.user = val;
+
+    }, response => { console.log("POST call in error", response); }, () => {
+      console.log("The POST success.");
+    });
   }
 
-  calcularPorcentaje(){
-    if(this.tipoDescuento == 1){
-      // console.log("estoy aqui 1");
-      this.calcularBeneficio = this.valorBeneficio;
-    }else if(this.tipoDescuento == 2){
-      // console.log("estoy aqui 2");
-      this.calcularBeneficio = (this.valorBeneficio * 0.90); 
-    
-    }else if(this.tipoDescuento == 3){
-      // console.log("estoy aqui 3");
-      this.calcularBeneficio = (this.valorBeneficio * 0.75); 
-    
-    }else if(this.tipoDescuento == 4){
-      // console.log("estoy aqui 4");
-      this.calcularBeneficio = (this.valorBeneficio * 0.60); 
-    
-    }else if(this.tipoDescuento == 5){
-      // console.log("estoy aqui 5");
-      this.calcularBeneficio = (this.valorBeneficio * 0.50); 
-    
-    }else if(this.tipoDescuento == 6){
-      // console.log("estoy aqui 6");
-      this.calcularBeneficio = (this.valorBeneficio * 0.40); 
-    
-    }else if(this.tipoDescuento == 7){
-      // console.log("estoy aqui 7");
-      this.calcularBeneficio = (this.valorBeneficio * 0.30); 
-    
-    }else if(this.tipoDescuento == 8){
-      // console.log("estoy aqui 8");
-      this.calcularBeneficio = (this.valorBeneficio * 0.25); 
-    
-    }else if(this.tipoDescuento == 9){
-      // console.log("estoy aqui 9");
-      this.calcularBeneficio = (this.valorBeneficio * 0.20); 
+  calcularPagoBeneficio(validar) {
+    this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
+
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
+      formData.append('estado', 'calcular_descuento_cc');
+      var confirmar = this.confirmar();
+
+      if(confirmar == true){
+
+        this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+          //si tiene acceso
+          if (val > 0) {
+
+            this.load = false;
+            this.buttonStatus = false;
+            this.pass = "";
+            this.m_val.close();
+
+            this.actualizarLoad = true;
+            this.blockLoad = true;
+            this._consorcioService.calcularPagoBeneficio(this.tipoPorc, this.mesBeneficio, this.anio).subscribe((response) => {
+              if (response.estado == 'failed') {
+                alert(response.mensaje);
+                this.actualizarLoad = false;
+                this.blockLoad = false;
+              }
+              if (response.estado == 'success') {
+                alert(response.mensaje);
+                this.actualizarLoad = false;
+                this.blockLoad = false;
+                this.montoBeneficio = response.monto_beneficio;
+                this.btn_reload();
+              }
+            },
+              error => {
+                console.log(error);
+                alert("Supero el limite de 60 segundos al generar la insercion masiva");
+                this.actualizarLoad = false;
+                this.blockLoad = false;
+                return false;
+              }
+            );
+
+          } else {
+            alert("Acceso denegado");
+            this.load = false;
+            this.buttonStatus = false;
+            this.pass = "";
+            this.m_val.close();
+            return false;
+          }
+
+        },
+        response => { console.log("POST call in error", response); }, () => {
+          console.log("The POST success.");
+        });
+        return false;
+      }else{
+        this.load = false;
+        this.buttonStatus = false;
+      }
+
+
+    }, (reason) => {
+      console.log(`${reason}`);
+    });
+
+  }
+
+    confirmar() {
+    var r = confirm("¿ESTA SEGURO QUE DESEA GENERAR EL CALCULO MASIVO?");
+    if (r == true) {
+     return true;
+    } else {
+      return false;
     }
+  }
+
+  guardarSocioDesv(validar) {
+
+    this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
+
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
+      formData.append('estado', 'aplicar_descuento_cc');
+
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+        //si tiene acceso
+        if (val > 0) {
+
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+
+          this.actualizarLoad2 = true;
+          this._consorcioService.guardarPagoBeneficio(this.socio, this.tipoPorc, this.tipoRetiro, this.mesBeneficio, this.anio, this.montoFinal).subscribe((response) => {
+            if (response.estado == 'failed') {
+              alert(response.mensaje);
+              this.actualizarLoad2 = false;
+            }
+            if (response.estado == 'success') {
+              this.socio = '';
+              this.tipoPorc = '1';
+              this.tipoRetiro = '0';
+              this.mesBeneficio = '';
+              this.montoBeneficio = '';
+              this.montoFinal = '';
+              alert(response.mensaje);
+              this.actualizarLoad2 = false;
+              this.modalPagoBeneficio.close();
+            }
+          },
+            error => {
+              console.log(error);
+              this.blockIngreso = false;
+              return false;
+            }
+          );
+
+        } else {
+          alert("Acceso denegado");
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+          return false;
+        }
+
+      }, response => { console.log("POST call in error", response); }, () => {
+        console.log("The POST success.");
+      });
+      return false;
+
+
+    }, (reason) => {
+      console.log(`${reason}`);
+    });
+
+  }
+
+  socioDesvinculado() {
+    this._consorcioService.socios_sin_pb().subscribe((response) => {
+      this.socioPB = response;
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
+  }
+
+  descripcionDescuento() {
+    this.blockLoad3 = false;
+    this.ocultarDescripcion = true;
+    this._consorcioService.descripcion_descuento(this.anio, this.mesBeneficio).subscribe((response) => {
+      this.descripcionDesc = '';
+      if (response.estado == "success") {
+        this.blockLoad3 = true;
+        this.ocultarDescripcion = false;
+        this.descripcionDesc = response.mensaje;
+      } else {
+        this.blockLoad3 = true;
+        this.ocultarDescripcion = false;
+        this.descripcionDesc = "No Existe un pago de beneficio aun en el mes " + this.mesBeneficio;
+
+      }
+
+    },
+      error => {
+        console.log(error);
+        return false;
+      }
+    );
   }
 
 }

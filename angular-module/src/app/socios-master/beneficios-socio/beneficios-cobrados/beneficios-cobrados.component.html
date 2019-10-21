@@ -2,9 +2,9 @@
   <div class="container">
   <div class="col-12 col-md-12 col-lg-12 col-xl-12">
     <div class="row justify-content-center">
+        <div class="table-responsive">
       <h3 *ngIf="contadorBeneficios == 0">No tiene Ningún tipo de Beneficios Cobrados hasta el momento</h3>
       <div *ngIf="datosNacidos?.nacimientos.length > 0">
-      <div class="table-responsive">
         <br>
         <h3 class="text-center">Cobros por Nacimiento</h3>
         <table class="table table-hover table-bordered">
@@ -84,10 +84,11 @@
       </div>
     </div>
 
+    <div class="table-responsive">
       <div *ngIf="datosFallecidos?.fallecimientos.length > 0">
-      <div class="table-responsive">
         <br>
         <h3 class="text-center">Cobros por Fallecimiento</h3>
+        <div class="table-responsive">
         <table class="table table-hover table-bordered">
           <thead class="thead-dark">
             <tr class="text-center">
@@ -163,13 +164,15 @@
           </tbody>
         </table>
       </div>
+      </div>
     </div>
 
 
+    <div class="table-responsive">
     <div *ngIf="datosMedicos?.GM.length > 0">
-        <div class="table-responsive">
           <br>
           <h3 class="text-center">Cobros por Gastos Medicos</h3>
+          <div class="table-responsive">
           <table class="table table-hover table-bordered">
             <thead class="thead-dark">
               <tr class="text-center">
@@ -243,6 +246,7 @@
               </tr>
             </tbody>
           </table>
+        </div>
         </div>
       </div>
 

@@ -110,25 +110,26 @@ class SocioController extends Controller
 
     public function listar()
     {
-        return Socios::select([
-            DB::raw("to_char(fecha_nacimiento, 'dd-mm-yyyy') as fecha_nacimiento_view"),
-            DB::raw("to_char(fecha_ingreso, 'dd-mm-yyyy') as fecha_ingreso_view"),
-            DB::raw("to_char(fecha_egreso, 'dd-mm-yyyy') as fecha_egreso_view"),
-            'fecha_nacimiento',
-            'fecha_ingreso',
-            'fecha_egreso',
+        return DB::select("SELECT
+                            to_char(fecha_nacimiento, 'dd-mm-yyyy') as fecha_nacimiento_view,
+                            to_char(fecha_ingreso, 'dd-mm-yyyy') as fecha_ingreso_view,
+                            to_char(fecha_egreso, 'dd-mm-yyyy') as fecha_egreso_view,
+                            fecha_nacimiento,
+                            fecha_ingreso,
+                            fecha_egreso,
+                            s.id,
+                            s.rut,
+                            s.nombres,
+                            s.a_paterno,
+                            s.a_materno,
+                            case when u.rol = 10 then 'Portal Socio Asignado'
+                                when u.rol = 5 then 'Portal Administrativo y Socio Asignados'
+                                when u.rol = 1 then 'Portal Administrativo Asignado'
+                                else 'Nigun permiso asignado'
+                            end as permiso
 
-            'id',
-            'rut',
-            'nombres',
-            'a_paterno',
-            'a_materno'
-
-        ])
-        ->orderBy('a_paterno','ASC')
-        ->orderBy('a_materno','ASC')
-
-        ->get();
+                            from socios s
+                            left join users u on u.rut = s.rut");
     }
 
     public function filtrar($search='')
@@ -224,6 +225,7 @@ class SocioController extends Controller
 
             case 'fecha_egreso':
                 $s->fecha_egreso = $r->valor;
+                $s->activo = 'N';
                 if($s->save()){
 
                     $desvincular = $this->desvincular_socio_consorcio($s);
@@ -231,7 +233,7 @@ class SocioController extends Controller
                     if ($desvincular) {
                         return ['estado'=>'success','mensaje' => 'Fecha de egreso actualizada, socio desvinculado!' ];
                     }
-                    return ['estado'=>'failed','mensaje' => 'Fecha de egreso actualizada' ];
+                    return ['estado'=>'failed','mensaje' => 'Se actualizó la fecha, pero no se ha desvinculado porque no existe como tal en la cuenta consorcio' ];
 
                 }else{
                     return ['estado'=>'failed','mensaje' => 'Error al actualizar!' ];
@@ -250,6 +252,9 @@ class SocioController extends Controller
         $anio = $this->anio_tipo_id($f['anio']);
 
         $cc = CuentaConsorcio::where(['anio_id' => $anio->id,'socio_id' => $s->id])->first();
+        $socio = Socios::find($s->id);
+        $socio->retiro_pago_beneficio = 'N';
+        $socio->save();
 
         if ($cc) {
 
@@ -273,7 +278,7 @@ class SocioController extends Controller
         }
         $socio = Socios::where([
                     'rut' => $rut_limpio,
-                    'activo' => 'S',    
+                   // 'activo' => 'S',    
                   ])->first();
         if ($socio) {
             return $socio;
@@ -1035,6 +1040,33 @@ class SocioController extends Controller
         try{
             $validar = $this->validar_datos_carga($r);
 
+            if ($r->tipo_carga_id == '5') { // si es conyuge el tipo
+                
+                $ca = SocioConyuge::where([
+                                'socio_id' => $r->socio_id,
+                ])->first();
+                
+                if ($ca) {
+                    $rut_limpio = $this->limpiar($r->rut);
+                        
+                    if (strtolower($ca->rut) != strtolower($rut_limpio)) {
+                        return ['estado' => 'failed', 'mensaje'=> 'El rut de la conyugue no coincide con el socio'];
+                    }
+                }
+
+                $con = SocioCarga::where([
+                                'socio_id' => $r->socio_id,
+                                'tipo_carga_id' =>'5'
+                ])->first();
+
+                if ($con) {
+                    return ['estado' => 'failed', 'mensaje'=> 'Este socio ya tiene una conyuge como carga'];
+                }
+            
+        
+            }
+            // SI NO SIGUE SU PROCESO NORMAL
+
 
             if ($validar['estado'] == 'success') {
                         
@@ -1687,16 +1719,35 @@ class SocioController extends Controller
     }
 
     public function listar_beneficios_cobrados($socio_id)
-    {
-            $nac = CbeNacimiento::mis_beneficios($socio_id);
-            $fall = CbeFallecimiento::mis_beneficios($socio_id);
-            $gm = CbeGastosMedicos::mis_beneficios($socio_id);
+    {   
+        
+                $nac = CbeNacimiento::mis_beneficios($socio_id);
+                $fall = CbeFallecimiento::mis_beneficios($socio_id);
+                $gm = CbeGastosMedicos::mis_beneficios($socio_id);
 
-            return [
-                'nacimiento' => $nac,
-                'fallecimiento' => $fall,
-                'gastos_medicos' => $gm
-            ];
+                //excepcion con fallecimientos; dibujar un arreglo
+                
+                if ($nac !='') {
+                    foreach ($nac as $n) {
+                        $persona = Socios::nombre_por_rut($n->rut, $socio_id);
+                        $n->nombre = $persona;
+                     }
+                }
+
+                if ($fall != '') {
+                    foreach ($fall as $f) {
+                        $persona = Socios::nombre_por_rut($f->rut_fallecido, $socio_id);
+                        $f->nombre = $persona;
+                    }
+                }
+                
+
+                return [
+                    'nacimiento' => $nac,
+                    'fallecimiento' => $fall,
+                    'gastos_medicos' => $gm
+                ];
+        
     }
 
     public function anio_tipo_id($value)
@@ -1709,6 +1760,18 @@ class SocioController extends Controller
     	 	return $data;
     	} 
     		
+    }
+
+    public function contar_socios()
+    {
+            $s_a = Socios::where('activo','S')->count();
+
+            $s_i = Socios::where('activo','N')->count();
+
+            return [
+                'activos' => $s_a,
+                'inactivos' => $s_i
+            ];
     }
 
 

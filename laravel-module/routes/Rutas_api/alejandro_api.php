@@ -96,6 +96,7 @@ Route::post('actualizar_datos_padres_suegros','SocioController@actualizar_datos_
 Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general_socio');
 
 Route::get('listar_beneficios_cobrados/{socio_id}','SocioController@listar_beneficios_cobrados');
+Route::get('contar_socios','SocioController@contar_socios');
 
 //---------------------------------------------------------------------------------------------------
 
@@ -127,5 +128,11 @@ Route::get('tabla_desvinculados/{anio_id}','CuentaConsorcioController@tabla_desv
 Route::get('filtrar_tabla_consorcio/{anio_id}/{search?}','CuentaConsorcioController@filtrar_tabla_consorcio');
 
 Route::get('calcular_dia_sueldo/{socio_id}/{porc}', 'CuentaConsorcioController@calcular_dia_sueldo');
-Route::get('calcular_dia_sueldo_manual/{dia_sueldo}/{porc}', 'CuentaConsorcioController@calcular_dia_sueldo_manual');
-
+Route::get('calcular_dia_sueldo_manual/{dia_sueldo}/{porc}/{desc}/{mes}', 'CuentaConsorcioController@calcular_dia_sueldo_manual');
+Route::get('socios_sin_pb','CuentaConsorcioController@socios_sin_pb');
+Route::get('descontar_dia_sueldo/{porc}/{mes}/{anio}','CuentaConsorcioController@descontar_dia_sueldo');
+Route::get('aplicar_descuento_dia_sueldo/{socio_id}/{porc}/{desc}/{mes}/{anio}/{monto?}','CuentaConsorcioController@aplicar_descuento_dia_sueldo');
+Route::get('descripcion_descuento/{anio}/{mes}','CuentaConsorcioController@descripcion_descuento');
+//Route::get('listar_pago_beneficios/{anio}','CuentaConsorcioController@listar_pago_beneficios');
+Route::get('listar_pago_beneficios/{anio}','CuentaConsorcioController@listar_pago_beneficios');
+Route::get('proximo_periodo/{anio_actual}/{anio_sig}','CuentaConsorcioController@proximo_periodo');

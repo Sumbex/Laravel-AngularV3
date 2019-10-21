@@ -1,0 +1,175 @@
+<ng-template #detalleReunion let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la proxima reunión</strong>
+      </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <div class="card card-body">
+              <legend>Reunión preparada para el 20.20.20</legend>
+              <h6 class="text-muted">Tema a Tratar:</h6>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit? Rem consequatur, omnis similique, recusandae earum officia quae quia nobis iure unde assumenda maxime, sequi placeat ea voluptates ipsam ratione!Quas vel non explicabo. Velit, a. Quasi fuga facere corporis sed corrupti dolor distinctio ipsa voluptates, nisi ducimus voluptatibus, maxime ut, ullam laborum. Delectus eum pariatur ea harum et labore.</p>
+              <h6 class="text-muted">Reunión organizada por: Bryan Vidal Díaz</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <button class="btn btn-block btn-primary" (click)="abrirModalDetalleMensaje(justificacionReunion)">
+              Justificarse
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </ng-template>
+
+  <button class="btn btn-primary btn-block" type="button"
+  (click)="abrirModalDetalleMensaje(detalleReunion)">Ver Detalle</button>
+
+<ng-template #justificacionReunion let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la reunion</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- Cuerpo del Modal -->
+  <div class="modal-body">
+    <div class="container">
+      <h3 class="text-center">Justifiación para la reunión del 10-10-19</h3>
+      <p class="mt-2">
+        <ngb-alert [dismissible]="false">
+          <strong>¡Advertencia!</strong> Escriba un mensaje detallando el motivo de su inasistencia y seleccione el
+          motivo (En reuniones relacionadas con votaciones solo podra justificarse seleecionando "Vacaciones" o
+          "Licencia"). <br> <br> Si desea puede consultar la lista de inasistentes para verificar su justificación.
+        </ngb-alert>
+      </p>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-6 mt-2">
+          <div>
+              <label for="exampleFormControlTextarea1"><b>Motivo de la falta (Opcional):</b></label>
+              <textarea name="mensaje" #mensaje="ngModel"
+              [(ngModel)]="motivoInasistencia.mensaje" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="(Máximo 500 cacacteres)"
+                minlength="4" maxlength="500"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6 mt-2">
+          <div>
+              <fieldset class="form-group">
+                  <div class="row">
+                    <label class="col-form-label col-sm-12 pt-0"><b>Motivo Inasistencia (Solo puede seleccionar uno):</b></label>
+                  </div>
+                    <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-check">
+                        <input name="motivo" #motivo="ngModel"
+                        [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                          Turno
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input name="motivo" #motivo="ngModel"
+                        [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
+                        <label class="form-check-label" for="gridRadios2">
+                          Vacaciones
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input name="motivo" #motivo="ngModel"
+                        [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
+                        <label class="form-check-label" for="gridRadios3">
+                          Licencia
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input name="motivo" #motivo="ngModel"
+                        [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="4">
+                        <label class="form-check-label" for="gridRadios4">
+                          Estudio
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input name="motivo" #motivo="ngModel"
+                        [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="5">
+                        <label class="form-check-label" for="gridRadios5">
+                          Fuera de la Ciudad
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-2">
+            <div class="mx-auto">
+                <button [disabled]="loadingEnvio" type="submit" class="btn btn-primary btn-block" (click)="enviarJustificacion()">Enviar <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif" [hidden]="!loadingEnvio"></button>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button (click)="abrirModalDetalleMensaje(inasistencias)" type="button" class="btn btn-danger">
+      Inasistencias Justificadas
+    </button>
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>
+
+<ng-template #inasistencias let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Inasistentes de la reunión</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <h3 class="text-center">Inasistencias justificadas el día 10.10.10</h3>
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th>Nombre</th>
+        </tr>
+        <tr>
+          <td>Bryan Montecino Jara</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>

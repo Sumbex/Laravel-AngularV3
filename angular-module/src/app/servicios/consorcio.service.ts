@@ -99,7 +99,7 @@ export class ConsorcioService {
 
   getTablaConsorciosDesvinculados(anio): Observable<any> {
 
-    return this._http.get(this.url + "tabla_desvinculados/" + anio, {
+    return this._http.get(this.url + "listar_pago_beneficios/" + anio, {
         headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
@@ -107,9 +107,9 @@ export class ConsorcioService {
         )
     });
   }
-  calcularPagoBeneficio(idSocio,tipo,porcentaje): Observable<any> {
+  calcularPagoBeneficio(porc,mes,anio): Observable<any> {
 
-    return this._http.get(this.url + "calcular_dia_sueldo/" + idSocio +"/"+ tipo +"/"+ porcentaje, {
+    return this._http.get(this.url + "descontar_dia_sueldo/" + porc +"/"+ mes +"/"+ anio, {
         headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
@@ -117,5 +117,36 @@ export class ConsorcioService {
         )
     });
   }
+  guardarPagoBeneficio(socioId,porc,desc,mes,anio,monto): Observable<any> {
+
+    return this._http.get(this.url + "aplicar_descuento_dia_sueldo/" + socioId +"/"+ porc +"/"+ desc +"/"+ mes +"/"+ anio +"/"+ monto, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+  socios_sin_pb(): Observable<any> {
+
+    return this._http.get(this.url + "socios_sin_pb", {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+  descripcion_descuento(anio,mes): Observable<any> {
+
+    return this._http.get(this.url + "descripcion_descuento/" + anio +"/"+ mes, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
 
 }

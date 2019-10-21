@@ -5,10 +5,10 @@
       <a class="navbar-brand" [routerLink]="['/AuthMaster']">
              <img src="/assets/logo-sindicato-transparente.png"  width="80px" height="50px">
       </a>
-      <a>
+      <!-- <a>
         <img  height="30" width="40"
         src="https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc">
-      </a>
+      </a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -24,7 +24,7 @@
                 <a class="nav-link" [routerLink]="['/AuthMaster/CuentaConsorcio']"><i class="fas fa-piggy-bank"></i> Cuenta Consorcio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" ><i class="fas fa-chart-pie"></i> Grafico</a>
+                <a class="nav-link" [routerLink]="['/AuthMaster/Secretaria']"><i class="fas fa-book"></i> Secretaria</a>
               </li>
               <li *ngIf="isLogged" ngbDropdown class="d-inline-block">
                 <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-friends"></i> Socios</button>
@@ -38,6 +38,7 @@
                 <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-user-tie"></i> {{nombreUsuario}}</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/Configuracion']"><i class="fas fa-user-cog"></i> Configuracion Cuenta</a>
+                  <a *ngIf="rol == 5" class="selectColor" ngbDropdownItem [routerLink]="['/SociosMaster']"><i class="fab fa-suse"></i> Cambiar a Portal Socios</a>
                   <button class="selectColor" ngbDropdownItem (click)="logOut()"><i class="fas fa-sign-out-alt"></i> &nbsp;Cerrar Sesion</button>
                 </div>
               </li>

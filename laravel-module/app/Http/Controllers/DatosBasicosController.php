@@ -168,7 +168,10 @@ class DatosBasicosController extends Controller
                 'modificar_socio_beneficios' => 'S', //socio beneficios
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'S',
-                'ingresar_cb' => 'S'
+                'ingresar_cb' => 'S',
+                'modificar_cb' => 'S',
+                'calcular_descuento_cc' => 'S',
+                'aplicar_descuento_cc' => 'S'
             ], 
             [ // david pass 1028
                 'rut' => '190523047',
@@ -183,7 +186,10 @@ class DatosBasicosController extends Controller
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'S',
-                'ingresar_cb' => 'S'
+                'ingresar_cb' => 'S',
+                'modificar_cb' => 'S',
+                'calcular_descuento_cc' => 'S',
+                'aplicar_descuento_cc' => 'S'
             ], 
             [ //bryan vidal
                 'rut' => '185227839',
@@ -198,7 +204,10 @@ class DatosBasicosController extends Controller
                 'modificar_socio_beneficios' => 'S', //socio beneficios
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'S',
-                'ingresar_cb' => 'S'
+                'ingresar_cb' => 'S',
+                'modificar_cb' => 'S',
+                'calcular_descuento_cc' => 'S',
+                'aplicar_descuento_cc' => 'S'
             ],
             [ //bryan montecino
                 'rut' => '191107861',
@@ -213,7 +222,10 @@ class DatosBasicosController extends Controller
                 'modificar_socio_beneficios' => 'S', //socio beneficios
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'S',
-                'ingresar_cb' => 'S'
+                'ingresar_cb' => 'S',
+                'modificar_cb' => 'S',
+                'calcular_descuento_cc' => 'S',
+                'aplicar_descuento_cc' => 'S'
             ], 
             [ // don emilio 
                 'rut' => '9508866k',
@@ -228,7 +240,10 @@ class DatosBasicosController extends Controller
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'S',
-                'ingresar_cb' => 'S'
+                'ingresar_cb' => 'S',
+                'modificar_cb' => 'S',
+                'calcular_descuento_cc' => 'S',
+                'aplicar_descuento_cc' => 'S'
             ], 
             [ // dña Oriana
                 'rut' => '81951845',
@@ -243,7 +258,10 @@ class DatosBasicosController extends Controller
                 'modificar_socio_beneficios' => 'S',
                 'ingresar_cch' => 'S',
                 'modificar_cch' => 'N',
-                'ingresar_cb' => 'S'
+                'ingresar_cb' => 'S',
+                'modificar_cb' => 'N',
+                'calcular_descuento_cc' => 'N',
+                'aplicar_descuento_cc' => 'N'
             ]
              
         ];
@@ -300,6 +318,19 @@ class DatosBasicosController extends Controller
                     case 'ingresar_cb':
                     
                         return ($u['ingresar_cb']=='S')? true:false;
+                    break;
+                    case 'modificar_cb':
+                    
+                        return ($u['modificar_cb']=='S')? true:false;
+                    break;
+
+                    case 'calcular_descuento_cc':
+                    
+                        return ($u['calcular_descuento_cc']=='S')? true:false;
+                    break;
+                    case 'aplicar_descuento_cc':
+                    
+                        return ($u['aplicar_descuento_cc']=='S')? true:false;
                     break;
                     
                     default:

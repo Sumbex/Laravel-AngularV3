@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -107,6 +107,18 @@ import { TablaDesvinculadosConsorcioComponent } from './auth-master/cuenta-fondo
 import { ConsorcioComponent } from './socios-master/cuentas/consorcio/consorcio.component';
 import { BryanConsorcioService } from './servicios/bryan-consorcio.service';
 import { GraficoComponenteComponent } from './socios-master/grafico/grafico-componente/grafico-componente.component';
+import { GeneralReunionComponent } from './socios-master/reuniones/general-reunion/general-reunion.component';
+import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reunion/detalle-reunion.component';
+import { HistorialDetalleReunionComponent } from './socios-master/reuniones/historial-detalle-reunion/historial-detalle-reunion.component';
+import { ReunionesService } from './servicios/reuniones.service';
+import { AuthInterceptorService } from './servicios/auth-interceptor.service';
+import { SecretariaComponent } from './auth-master/secretaria/secretaria.component';
+import { NuevaReunionComponent } from './auth-master/secretaria/nueva-reunion/nueva-reunion.component';
+import { EditarReunionComponent } from './auth-master/secretaria/editar-reunion/editar-reunion.component';
+import { AsistenciaReunionComponent } from './auth-master/secretaria/asistencia-reunion/asistencia-reunion.component';
+import { HistorialReunionComponent } from './auth-master/secretaria/historial-reunion/historial-reunion.component';
+import { SecretariaService } from './servicios/secretaria.service';
+import { DesvinculadosComponent } from './socios-master/cuentas/consorcio/desvinculados/desvinculados.component';
 
 
 @NgModule({
@@ -263,7 +275,25 @@ import { GraficoComponenteComponent } from './socios-master/grafico/grafico-comp
 
     ConsorcioComponent,
 
-    GraficoComponenteComponent
+    GraficoComponenteComponent,
+
+    GeneralReunionComponent,
+
+    DetalleReunionComponent,
+
+    HistorialDetalleReunionComponent,
+
+    SecretariaComponent,
+
+    NuevaReunionComponent,
+
+    EditarReunionComponent,
+
+    AsistenciaReunionComponent,
+
+    HistorialReunionComponent,
+
+    DesvinculadosComponent
 
   ],
   imports: [
@@ -285,7 +315,14 @@ import { GraficoComponenteComponent } from './socios-master/grafico/grafico-comp
     CajaChicaService,
     PortalSociosService,
     BryanBienestarService,
-    BryanConsorcioService
+    BryanConsorcioService,
+    ReunionesService,
+    SecretariaService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

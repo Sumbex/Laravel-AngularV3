@@ -49,7 +49,7 @@ export class FormularioCajaChicaBienestarComponent implements OnInit {
     this.datosCajaChica.archivo_documento = null;
     this.datosCajaChica.definicion = '';
     this.datosCajaChica.descripcion = '';
-    this.datosCajaChica.fecha = '';
+    // this.datosCajaChica.fecha = '';
     this.datosCajaChica.monto_egreso = '';
     this.datosCajaChica.monto_ingreso = '';
     this.datosCajaChica.numero_documento = '';

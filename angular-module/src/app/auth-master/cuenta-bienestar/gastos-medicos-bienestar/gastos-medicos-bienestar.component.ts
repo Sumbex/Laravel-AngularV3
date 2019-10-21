@@ -84,7 +84,7 @@ export class GastosMedicosBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'success') {
-        this.InsertarMedico.fecha = '';
+        // this.InsertarMedico.fecha = '';
         this.InsertarMedico.numero_documento_1 = '';
         this.InsertarMedico.archivo_documento_1 = null;
         this.InsertarMedico.monto = '';

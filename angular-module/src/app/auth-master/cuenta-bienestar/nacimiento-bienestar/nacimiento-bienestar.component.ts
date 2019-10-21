@@ -81,7 +81,7 @@ export class NacimientoBienestarComponent implements OnInit {
       }
       if (response.estado == 'success') {
         // console.log("AQUI ESTOY");
-        this.InsertarNacimiento.fecha = '';
+        // this.InsertarNacimiento.fecha = '';
         this.InsertarNacimiento.numero_documento_1 = '';
         this.InsertarNacimiento.archivo_documento_1 = null;
         this.InsertarNacimiento.monto = '';

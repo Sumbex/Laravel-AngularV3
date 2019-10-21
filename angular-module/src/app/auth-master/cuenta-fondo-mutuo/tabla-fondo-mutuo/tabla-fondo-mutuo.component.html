@@ -538,7 +538,7 @@
               <b>{{sociosAnual?.monto_total_cex_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <td colspan="1" class="sociosNombre black">
-              <b>-</b>
+              <b>{{sociosAnual?.acumulado_anterior_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <td colspan="1" class="sociosNombre black">
               <b>{{sociosAnual?.monto_total_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
@@ -820,7 +820,7 @@
               {{ConvertToInt(sociosMensual?.monto_mes_ds_12) - 
                 ConvertToInt(sociosMensual?.monto_mes_cex_12)  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
-            <td colspan="2"><b>-</b></td>
+            <td colspan="2"><b>{{sociosMensual?.acumulado_anterior_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="2"><b>{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
         </tbody>

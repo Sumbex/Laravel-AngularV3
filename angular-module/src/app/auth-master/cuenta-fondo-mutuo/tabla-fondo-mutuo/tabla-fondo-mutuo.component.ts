@@ -75,6 +75,12 @@ export class TablaFondoMutuoComponent implements OnInit {
   ocultarDescripcion = true;
   blockLoad3 = true;
 
+  //calcular acumulado
+  habilitar = false;
+  generar = false;
+  anioActual;
+  anioSig;
+
 
   constructor(
     private _time: AniosService,
@@ -265,7 +271,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       formData.append('estado', 'calcular_descuento_cc');
       var confirmar = this.confirmar();
 
-      if(confirmar == true){
+      if (confirmar == true) {
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
 
@@ -312,11 +318,11 @@ export class TablaFondoMutuoComponent implements OnInit {
           }
 
         },
-        response => { console.log("POST call in error", response); }, () => {
-          console.log("The POST success.");
-        });
+          response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+          });
         return false;
-      }else{
+      } else {
         this.load = false;
         this.buttonStatus = false;
         this.m_val.close();
@@ -332,7 +338,7 @@ export class TablaFondoMutuoComponent implements OnInit {
   confirmar() {
     var r = confirm("¿ESTA SEGURO QUE DESEA GENERAR EL CALCULO MASIVO?");
     if (r == true) {
-     return true;
+      return true;
     } else {
       return false;
     }
@@ -436,6 +442,16 @@ export class TablaFondoMutuoComponent implements OnInit {
       error => {
         console.log(error);
         return false;
+      }
+    );
+  }
+
+  acumuladoSiguienteAnio() {
+    this._consorcioService.acumulado_siguiente_anio(this.anioActual, this.anioSig).subscribe((response) => {
+
+    },
+      error => {
+        console.log(error);
       }
     );
   }

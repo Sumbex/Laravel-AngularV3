@@ -42,10 +42,6 @@ export class FormularioSindicalComponent implements OnInit {
   //limitar acciones
   estado;
 
-  //calcular acumulado
-  habilitar=false;
-  generar=false;
-
   constructor(private _sindicalService: SindicalService,
     private _validarusuario:ValidarUsuarioService,
     config: NgbModalConfig, 

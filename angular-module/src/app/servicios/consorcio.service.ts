@@ -147,6 +147,16 @@ export class ConsorcioService {
         )
     });
   }
+  acumulado_siguiente_anio(anio_actual,anio_sig): Observable<any> {
+
+    return this._http.get(this.url + "proximo_periodo/" + anio_actual +"/"+ anio_sig, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
 
 
 }

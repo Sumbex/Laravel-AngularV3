@@ -345,6 +345,41 @@ class CuentaConsorcio extends Model
     protected function tabla_consorcio($anio_id)//CUENTA CONSORCIO
     {
         $listar = DB::select("SELECT 
+            socio_id,
+            cuenta_consorcio_id,
+            vinculado,
+            nombre,
+            monto_mes_ds_1,
+            monto_mes_cex_1,
+            monto_mes_ds_2,
+            monto_mes_cex_2,
+            monto_mes_ds_3,
+            monto_mes_cex_3,
+            monto_mes_ds_4,
+            monto_mes_cex_4,
+            monto_mes_ds_5, 
+            monto_mes_cex_5,
+            monto_mes_ds_6,
+            monto_mes_cex_6,
+            monto_mes_ds_7,
+            monto_mes_cex_7,
+            monto_mes_ds_8,
+            monto_mes_cex_8,
+            monto_mes_ds_9,
+            monto_mes_cex_9,
+            monto_mes_ds_10,
+            monto_mes_cex_10,
+            monto_mes_ds_11,
+            monto_mes_cex_11,
+            monto_mes_ds_12,
+            monto_mes_cex_12,
+            monto_total_ds_socio,
+            monto_total_cex_socio,
+            (monto_total_socio + acumulado_anterior_socio) monto_total_socio,
+            pb
+            
+            from
+                            (SELECT 
                                 s.id socio_id,
                                 cc.id cuenta_consorcio_id,
                                 cc.vinculado,
@@ -429,12 +464,13 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_socio,
+                                COALESCE(acumulado_anterior_socio,0) acumulado_anterior_socio,
                                 s.retiro_pago_beneficio pb
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
-                            where cc.anio_id = $anio_id
-                            order by a_paterno, a_materno asc
+                            where cc.anio_id in ($anio_id)
+                            order by a_paterno, a_materno asc) x
                             ");
 
         if (count($listar) > 0) {
@@ -448,6 +484,41 @@ class CuentaConsorcio extends Model
        $busca = mb_strtolower($search);
        
        $listar = DB::select("SELECT 
+            socio_id,
+            cuenta_consorcio_id,
+            vinculado,
+            nombre,
+            monto_mes_ds_1,
+            monto_mes_cex_1,
+            monto_mes_ds_2,
+            monto_mes_cex_2,
+            monto_mes_ds_3,
+            monto_mes_cex_3,
+            monto_mes_ds_4,
+            monto_mes_cex_4,
+            monto_mes_ds_5, 
+            monto_mes_cex_5,
+            monto_mes_ds_6,
+            monto_mes_cex_6,
+            monto_mes_ds_7,
+            monto_mes_cex_7,
+            monto_mes_ds_8,
+            monto_mes_cex_8,
+            monto_mes_ds_9,
+            monto_mes_cex_9,
+            monto_mes_ds_10,
+            monto_mes_cex_10,
+            monto_mes_ds_11,
+            monto_mes_cex_11,
+            monto_mes_ds_12,
+            monto_mes_cex_12,
+            monto_total_ds_socio,
+            monto_total_cex_socio,
+            (monto_total_socio + acumulado_anterior_socio) monto_total_socio,
+            pb
+            
+            from
+                            (SELECT 
                                 s.id socio_id,
                                 cc.id cuenta_consorcio_id,
                                 cc.vinculado,
@@ -532,13 +603,14 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_ds_12,0) -
                                   COALESCE(monto_mes_cex_12,0) 
                                 ) monto_total_socio,
+                                COALESCE(acumulado_anterior_socio,0) acumulado_anterior_socio,
                                 s.retiro_pago_beneficio pb
                                                         
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
-                            where cc.anio_id = $anio_id
+                            where cc.anio_id in ($anio_id)
                             and lower(CONCAT(nombres,' ',a_paterno,' ',a_materno)) like  '%$busca%'
-                            ");
+                            order by a_paterno, a_materno asc) x");
 
         if (count($listar) > 0) {
     		return $listar;
@@ -549,6 +621,34 @@ class CuentaConsorcio extends Model
     protected function totales_mensuales_anual($anio_id)//ESTA QUERY TIENE LOS TOTALES MENSUALES(12M) DE LOS SOCIOS (SEGUN AÑO)
     {
         $listar = DB::select("SELECT
+                        monto_mes_ds_1,
+                        monto_mes_cex_1,
+                        monto_mes_ds_2,
+                        monto_mes_cex_2,
+                        monto_mes_ds_3,
+                        monto_mes_cex_3,
+                        monto_mes_ds_4,
+                        monto_mes_cex_4,
+                        monto_mes_ds_5,
+                        monto_mes_cex_5,
+                        monto_mes_ds_6,
+                        monto_mes_cex_6,
+                        monto_mes_ds_7,
+                        monto_mes_cex_7,
+                        monto_mes_ds_8,
+                        monto_mes_cex_8,
+                        monto_mes_ds_9,
+                        monto_mes_cex_9,
+                        monto_mes_ds_10,
+                        monto_mes_cex_10,
+                        monto_mes_ds_11,
+                        monto_mes_cex_11,
+                        monto_mes_ds_12,
+                        monto_mes_cex_12,
+                        (suma_anual + acumulado_anterior_socio) suma_anual,
+                        acumulado_anterior_socio
+                     FROM
+                            (SELECT
                                 SUM(COALESCE(monto_mes_ds_1,0)) monto_mes_ds_1,
                                 SUM(COALESCE(monto_mes_cex_1,0)) monto_mes_cex_1,
                                 SUM(COALESCE(monto_mes_ds_2,0)) monto_mes_ds_2,
@@ -599,9 +699,12 @@ class CuentaConsorcio extends Model
                                 SUM(COALESCE(monto_mes_cex_11,0)) +
                                 SUM(COALESCE(monto_mes_ds_12,0)) -
                                 SUM(COALESCE(monto_mes_cex_12,0)) 
-                                ) SUMA_ANUAL
+                                ) suma_anual
+                                ,
+                                SUM(COALESCE(acumulado_anterior_socio,0)) acumulado_anterior_socio
                                 
-                            from cuenta_consorcio where anio_id = $anio_id");
+                            from cuenta_consorcio where anio_id = $anio_id
+                            ) X");
 
         if (count($listar) > 0) {
     		return response()->json($listar[0]);
@@ -615,7 +718,9 @@ class CuentaConsorcio extends Model
         $listar = DB::select("SELECT
                               sum(X.monto_total_ds_socio) monto_total_ds_socio,
                               sum(X.monto_total_cex_socio) monto_total_cex_socio,
-                              (sum(X.monto_total_ds_socio) - sum(X.monto_total_cex_socio)) monto_total_socio
+                              (sum(X.monto_total_ds_socio) - sum(X.monto_total_cex_socio)) 
+                              + (sum(X.acumulado_anterior_socio)) 
+                              monto_total_socio
                               from
                               ( select 
                                   s.id socio_id,
@@ -648,7 +753,8 @@ class CuentaConsorcio extends Model
                                       COALESCE(monto_mes_cex_10,0) +
                                       COALESCE(monto_mes_cex_11,0) +
                                       COALESCE(monto_mes_cex_12,0) 
-                                  ) monto_total_cex_socio
+                                  ) monto_total_cex_socio,
+                                  COALESCE(acumulado_anterior_socio,0) acumulado_anterior_socio
                                   
                                   from cuenta_consorcio cc
                                   inner join socios s on s.id = cc.socio_id 
@@ -877,7 +983,7 @@ class CuentaConsorcio extends Model
                                     socio_id,
                                     monto_total_ds_socio, 
                                     monto_total_cex_socio,
-                                    (monto_total_ds_socio - monto_total_cex_socio) monto_h
+                                    acumulado_anterior_socio + (monto_total_ds_socio - monto_total_cex_socio) monto_h
                             from (SELECT 
                                 s.id socio_id,
                                 cc.id cuenta_consorcio_id,
@@ -936,7 +1042,8 @@ class CuentaConsorcio extends Model
                                   COALESCE(monto_mes_cex_10,0) +
                                   COALESCE(monto_mes_cex_11,0) +
                                   COALESCE(monto_mes_cex_12,0) 
-                                ) monto_total_cex_socio
+                                ) monto_total_cex_socio,
+                                COALESCE(acumulado_anterior_socio,0) acumulado_anterior_socio
                                
                                                         
                             from cuenta_consorcio cc

@@ -722,7 +722,8 @@ class CuentaConsorcio extends Model
                               sum(X.monto_total_cex_socio) monto_total_cex_socio,
                               (sum(X.monto_total_ds_socio) - sum(X.monto_total_cex_socio)) 
                               + (sum(X.acumulado_anterior_socio)) 
-                              monto_total_socio
+                              monto_total_socio,
+                              sum(X.acumulado_anterior_socio) acumulado_anterior_socio
                               from
                               ( select 
                                   s.id socio_id,

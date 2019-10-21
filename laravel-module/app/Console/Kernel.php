@@ -47,6 +47,30 @@ class Kernel extends ConsoleKernel
                 return false;
             }
         });
+
+        $schedule->command('command:finalizar_reunion')->when(function () {
+            $reunion = SecReuniones::select([
+                'fecha_termino',
+                DB::raw("now() as fecha"),
+                'estado_reunion_id as estado'
+            ])
+                ->get()->last();
+            if ($reunion->estado == 3) {
+                $fechaTermino = Carbon::parse($reunion->fecha_termino);
+                $fechaTermino->addHours(1);
+
+                $fechaReunion = Carbon::parse($fechaTermino)->format('Y-m-d H:i');
+                $fechaActual = Carbon::parse($reunion->fecha)->format('Y-m-d H:i');
+
+                if ($fechaReunion == $fechaActual) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        });
     }
 
     /**

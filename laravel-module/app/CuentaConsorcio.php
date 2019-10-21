@@ -963,6 +963,7 @@ class CuentaConsorcio extends Model
       $listar = DB::select("SELECT 
                     socio_id,
                     CONCAT(m.descripcion,' ',a.descripcion) as fecha,
+                    TO_CHAR(s.fecha_egreso,'DD/MM/YYYY') fecha_egreso,
                     CONCAT(nombres,' ',a_paterno,' ',a_materno) nombre,
                     pb.descripcion,
                     CONCAT(CAST (porcentaje AS float) *100,'%') porcentaje,

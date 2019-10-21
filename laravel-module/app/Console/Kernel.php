@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use Carbon\Carbon;
+use App\SecReuniones;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +27,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('command:iniciar_reunion')->when(function () {
+            $reunion = SecReuniones::select([
+                'fecha_inicio',
+                DB::raw("now() as fecha"),
+                'estado_reunion_id as estado'
+            ])
+                ->get()->last();
+
+            if ($reunion->estado == 1) {
+                $fechaReunion = Carbon::parse($reunion->fecha_inicio)->format('Y-m-d H:i');
+                $fechaActual = Carbon::parse($reunion->fecha)->format('Y-m-d H:i');
+                if ($fechaReunion == $fechaActual) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        });
     }
 
     /**
@@ -35,7 +56,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

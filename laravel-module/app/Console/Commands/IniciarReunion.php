@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use App\SecReuniones;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -42,15 +43,11 @@ class IniciarReunion extends Command
         $reunion = SecReuniones::select([
             'id',
             'fecha_inicio',
-            DB::raw("now() as fecha")
+            DB::raw("now() as fecha"),
+            'estado_reunion_id as estado'
         ])
-            /* $reunion = SecReuniones::where([
-                'activo' => 'S'
-            ])
-                ->get()->last(); */
             ->get()->last();
-
-        $test = 'fecha_inicio: ' . $reunion->fecha_inicio . ' / fecha_actual: ' . $reunion->fecha;
-        echo "$test \n";
+        $reunion->estado_reunion_id = 2;
+        $reunion->save();
     }
 }

@@ -443,7 +443,7 @@ class SecReuniones extends Model
                 'sr.activo' => 'S',
                 'sr.estado_reunion_id' => 5
             ])
-            ->orderBy('sr.tipo_reunion_id', 'asc')
+            ->orderBy('sr.fecha_inicio','asc')
             ->get();
 
         if (!$reunion->isEmpty()) {

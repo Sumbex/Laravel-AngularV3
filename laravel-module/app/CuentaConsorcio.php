@@ -376,6 +376,7 @@ class CuentaConsorcio extends Model
             monto_total_ds_socio,
             monto_total_cex_socio,
             (monto_total_socio + acumulado_anterior_socio) monto_total_socio,
+            acumulado_anterior_socio,
             pb
             
             from
@@ -515,6 +516,7 @@ class CuentaConsorcio extends Model
             monto_total_ds_socio,
             monto_total_cex_socio,
             (monto_total_socio + acumulado_anterior_socio) monto_total_socio,
+            acumulado_anterior_socio,
             pb
             
             from
@@ -983,7 +985,8 @@ class CuentaConsorcio extends Model
                                     socio_id,
                                     monto_total_ds_socio, 
                                     monto_total_cex_socio,
-                                    acumulado_anterior_socio + (monto_total_ds_socio - monto_total_cex_socio) monto_h
+                                    acumulado_anterior_socio + (monto_total_ds_socio - monto_total_cex_socio) monto_h,
+                                    acumulado_anterior_socio
                             from (SELECT 
                                 s.id socio_id,
                                 cc.id cuenta_consorcio_id,

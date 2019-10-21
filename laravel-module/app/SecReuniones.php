@@ -332,7 +332,7 @@ class SecReuniones extends Model
                 ->whereRaw("lower(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like '%$buscar%'")
                 ->get();
             if (!$datos->isEmpty()) {
-                return ['estado' => 'success', 'socio' => $datos];
+                return ['estado' => 'success', 'lista' => $datos];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'La busqueda no coincide con ningun socio.'];
             }
@@ -443,7 +443,7 @@ class SecReuniones extends Model
                 'sr.activo' => 'S',
                 'sr.estado_reunion_id' => 5
             ])
-            ->orderBy('sr.tipo_reunion_id', 'asc')
+            ->orderBy('sr.fecha_inicio','asc')
             ->get();
 
         if (!$reunion->isEmpty()) {

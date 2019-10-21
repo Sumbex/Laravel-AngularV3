@@ -517,20 +517,29 @@ class Cuentabienestar extends Model
         
         $benef = SocioBeneficiario::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
+                    //'rut' => $rut,
                     'activo' => 'S'
-        ])->first();
+        ])
+        ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
         if (!empty($benef)) {
              $exist_beneficiario = true;
         }
 
+        // $carga = SocioCarga::where([
+        //             'socio_id' => $socio_id,
+        //             'rut' => $rut,
+        //             'activo' => 'S'
+
+        // ])->first();
+
         $carga = SocioCarga::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
                     'activo' => 'S'
-
-        ])->first();
+                ])
+                ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+                ->first();
 
         if (!empty($carga)) {
              $existe_carga = true;
@@ -539,8 +548,11 @@ class Cuentabienestar extends Model
         if ($exist_beneficiario || $existe_carga) {
 
             $very = CbeNacimiento::where([
-                'activo'=>'S','socio_id'=>$socio_id, 'rut_nacimiento'=>$rut
-            ])->first();
+                'activo'=>'S','socio_id'=>$socio_id, 
+                //'rut_nacimiento'=>$rut
+            ])
+            ->whereRaw("LOWER(regexp_replace(rut_nacimiento, '[^\w]+','','g')) = LOWER('".$rut."')")
+            ->first();
 
             if (empty($very)) {
                 return true;
@@ -563,9 +575,11 @@ class Cuentabienestar extends Model
         
         $benef = SocioBeneficiario::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
+                    //'rut' => $rut,
                     'activo' => 'S'
-        ])->first();
+        ])
+        ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
             if (!empty($benef)) {
              $exist_beneficiario = true;
@@ -573,10 +587,12 @@ class Cuentabienestar extends Model
 
         $carga = SocioCarga::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
+                   // 'rut' => $rut,
                     'activo' => 'S'
 
-        ])->first();
+        ])
+         ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
             if (!empty($carga)) {
              $exist_carga = true;
@@ -584,18 +600,22 @@ class Cuentabienestar extends Model
 
         $cony = SocioConyuge::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
+                    //'rut' => $rut,
                     'activo' => 'S'
-        ])->first();
+        ])
+        ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
 
             if (!empty($cony)) {
                 $exist_cony = true;
             }
         $p_s = SocioPadresSuegros::where([
                     'socio_id' => $socio_id,
-                    'rut' => $rut,
+                    //'rut' => $rut,
                     'activo' => 'S'
-        ])->first();
+        ])
+        ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+        ->first();
             
          if (!empty($p_s)) {
                 $exist_p_s = true;
@@ -605,8 +625,11 @@ class Cuentabienestar extends Model
         if ($exist_beneficiario || $exist_carga || $exist_cony || $exist_p_s) {
 
             $very = CbeFallecimiento::where([
-                'activo'=>'S','socio_id'=>$socio_id, 'rut_fallecido'=>$rut
-            ])->first();
+                'activo'=>'S','socio_id'=>$socio_id, 
+                //'rut_fallecido'=>$rut
+            ])
+             ->whereRaw("LOWER(regexp_replace(rut_fallecido, '[^\w]+','','g')) = LOWER('".$rut."')")
+            ->first();
 
             if (empty($very)) {
                 return true;

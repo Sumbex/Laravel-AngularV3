@@ -43,6 +43,7 @@ class CreateCuentaConsorcioTable extends Migration
             $table->bigInteger('monto_mes_cex_11')->nullable();
             $table->bigInteger('monto_mes_ds_12')->nullable();
             $table->bigInteger('monto_mes_cex_12')->nullable();
+            $table->bigInteger('acumulado_anterior_socio')->nullable();//item nuevo
             $table->timestamps();
         });
     }

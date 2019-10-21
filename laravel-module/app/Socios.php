@@ -41,16 +41,27 @@ class Socios extends Model
 	{
 		$cl =  DB::table('cargas_legales_socio')
 		->select(['nombres','apellido_paterno','apellido_materno'])
-		->where(['rut'=>$rut, 'socio_id'=>$socio])->first();
+		->where(['socio_id'=>$socio])
+		->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+		->first();
+
 		$ben = DB::table('socio_beneficiario')
 		->select(['nombres','apellido_paterno','apellido_materno'])
-		->where(['rut'=>$rut, 'socio_id'=>$socio])->first();
+		->where(['socio_id'=>$socio])
+		->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+		->first();
+
 		$con =  DB::table('socio_conyuge')
 		->select(['nombres','apellido_paterno','apellido_materno'])
-		->where(['rut'=>$rut, 'socio_id'=>$socio])->first();
+		->where(['socio_id'=>$socio])
+		->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+		->first();
+
 		$ps =  DB::table('padres_suegros_socio')
 		->select(['nombres','apellido_paterno','apellido_materno'])
-		->where(['rut'=>$rut, 'socio_id'=>$socio])->first();
+		->where(['socio_id'=>$socio])
+		->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
+		->first();
 
 
 		if ($cl) { return $cl->nombres.' '.$cl->apellido_paterno.' '.$cl->apellido_materno;  }

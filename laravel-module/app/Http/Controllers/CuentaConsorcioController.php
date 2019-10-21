@@ -81,6 +81,7 @@ class CuentaConsorcioController extends Controller
         $listar = CuentaConsorcio::tabla_consorcio($anio_id);
         if ($listar != '') {
             foreach ($listar as $key) {
+                
                 if ($key->vinculado == 'N') {
                     $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
                     //$key->monto_total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
@@ -229,6 +230,11 @@ class CuentaConsorcioController extends Controller
     public function aplicar_descuento_dia_sueldo($socio_id, $porc, $desc, $mes, $anio, $monto=0)
     {
         try{
+            if ($monto == 0) {
+                return [ 'estado'=>'failed', 'mensaje'=>'Ingrese un monto para guardar' ];
+            }
+
+
             DB::beginTransaction();
             
             $sum =0;
@@ -342,4 +348,41 @@ class CuentaConsorcioController extends Controller
         }
 
     }
+
+    public function proximo_periodo($anio_actual, $anio_sig)
+    {
+        $listar = CuentaConsorcio::tabla_consorcio($anio_actual);
+
+        $sum = 0;
+
+        if ($listar != '') {
+            foreach ($listar as $key) {
+                if ($key->vinculado == 'S' || $key->vinculado == 'N') {
+                    
+                  $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $anio_sig])->first();
+                  
+                  if ($cc) {
+                      
+                  }else{
+
+                     $ncc = new CuentaConsorcio;
+                     $ncc->socio_id = $key->socio_id;
+                     $ncc->vinculado = $key->vinculado;
+                     $ncc->total_anterior_socio = $key->acumulado_anterior_socio;
+                     $ncc->anio_id = $anio_sig;
+                     $ncc->save();
+                     $sum++;
+
+                  }
+                  //$monto_individual = $key["total_anterior_socio"];
+
+
+                }
+            }
+
+          
+        }
+    }
+
+   
 }

@@ -28,7 +28,8 @@ class CuentaConsorcio extends Model
                                 case when descripcion_ecx is null then 'Sin Registro'
                                 else descripcion_ecx
                                 end AS pago_actual_cex,
-                                concat(m_cex.descripcion,' ',a_cex.descripcion) as fecha_cex
+                                concat(m_cex.descripcion,' ',a_cex.descripcion) as fecha_cex,
+                                activo_socio
 
                               from 
                               (select    
@@ -42,7 +43,8 @@ class CuentaConsorcio extends Model
                                     ecx.descripcion as descripcion_ecx,
                                     ecx.mes_id as mes_ecx_id,
                                     ecx.anio_id as anio_ecx_id,
-                                    s.fecha_egreso
+                                    s.fecha_egreso,
+                                    s.activo activo_socio
                                     
                                   from socios s
                                   left join estado_consorcio_dia_sueldo ec on ec.socio_id = s.id
@@ -50,15 +52,14 @@ class CuentaConsorcio extends Model
 
 
                               order by 
-                                (case when fecha_egreso is null then 'vigente'
-                                else concat('egresado (',to_char(fecha_egreso,'dd-mm-yyyy'),')')
-                                end) asc, s.a_paterno, s.a_materno
+                                 s.a_paterno, s.a_materno
                               
                               ) AS x
                               left join mes m_ds on m_ds.id = x.mes_ds_id
                               left join anio a_ds on a_ds.id = x.anio_ds_id
                               left join mes m_cex on m_cex.id = x.mes_ecx_id
-                              left join anio a_cex on a_cex.id = x.anio_ecx_id");
+                              left join anio a_cex on a_cex.id = x.anio_ecx_id
+                              order by activo_socio DESC");
 
         if (count($listar) > 0) {
     		return $listar;

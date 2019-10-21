@@ -47,7 +47,12 @@ Route::get('/traer_nacimientos_socio', 'PortalSocioController@TraerNacimientos')
 Route::get('/traer_fallecimientos_socio', 'PortalSocioController@TraerFallecimientos');
 Route::get('/traer_gastos_medicos_socio', 'PortalSocioController@TraerGastosMedicos');
 Route::get('/traer_mis_ahorros_socio/{anio}', 'PortalSocioController@TraerMisAhorros');
+Route::get('/traer_socios_desvinculados_socio/{anio}', 'PortalSocioController@SociosDesvinculados');
 //------------------------------------------>rutas portal socio mis beneficios
+
+//------reunion 
+Route::post('/ingresar_justificacion_socio_sec', 'PortalSocioController@JustificarSocio');
+//------reunion 
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//
 Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');

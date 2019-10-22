@@ -57,7 +57,8 @@ class Kernel extends ConsoleKernel
                 ->get()->last();
             if ($reunion->estado == 3) {
                 $fechaTermino = Carbon::parse($reunion->fecha_termino);
-                $fechaTermino->addHours(1);
+                //$fechaTermino->addHours(1);
+                $fechaTermino->addMinutes(5);
 
                 $fechaReunion = Carbon::parse($fechaTermino)->format('Y-m-d H:i');
                 $fechaActual = Carbon::parse($reunion->fecha)->format('Y-m-d H:i');

@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use App\SecReuniones;
 use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -202,7 +203,7 @@ class SecReuniones extends Model
             $termino = DB::select('select NOW() as fecha');
             $modReunion->fecha_termino = $termino[0]->fecha;
             $modReunion->estado_reunion_id = 3;
-            $modReunion->mod_user_id = Auth::user()->id;
+            /* $modReunion->mod_user_id = Auth::user()->id; */
             if ($modReunion->save()) {
                 return ['estado' => 'success', 'mensaje' => 'Reunion terminada con exito.'];
             } else {
@@ -228,7 +229,7 @@ class SecReuniones extends Model
             if ($reunion[0]->estado_reunion_id == 4) {
                 $modReunion = SecReuniones::find($request->id);
                 $modReunion->estado_reunion_id = 5;
-                $modReunion->mod_user_id = Auth::user()->id;
+                /* $modReunion->mod_user_id = Auth::user()->id; */
                 if ($modReunion->save()) {
                     return ['estado' => 'success', 'mensaje' => 'Reunion archivada con exito.'];
                 } else {

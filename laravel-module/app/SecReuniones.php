@@ -442,7 +442,8 @@ class SecReuniones extends Model
                 DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
                 'sr.mod_user_id',
                 'sr.tipo_reunion_id as tipo_id',
-                'str.descripcion as tipo'
+                'str.descripcion as tipo',
+                'sr.estado_reunion_id as estado'
             ])
             ->join('users as u', 'u.id', 'sr.user_id')
             ->join('sec_tipo_reunion as str', 'str.id', 'sr.tipo_reunion_id')

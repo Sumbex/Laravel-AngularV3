@@ -63,10 +63,10 @@ export class TablaFondoMutuoComponent implements OnInit {
   modalPagoBeneficio;
   tipoPago = 2;
   tipoRetiro = '0';
-  tipoPorc = '1';
+  tipoPorc = '';
   mesBeneficio;
   montoBeneficio;
-  montoFinal;
+  montoFinal = '0';
   socioPB;
   actualizarLoad = false;
   actualizarLoad2 = false;
@@ -128,10 +128,10 @@ export class TablaFondoMutuoComponent implements OnInit {
 
 
   limpiarPagoBeneficio() {
-    this.tipoPorc = '1';
+    this.tipoPorc = '';
     this.tipoRetiro = '0';
     this.montoBeneficio = '';
-    this.montoFinal = '';
+    this.montoFinal = '0';
     this.socio = '0';
   }
 

@@ -26,13 +26,16 @@
             <b class="black">■</b> ACUMULADO DE SOCIO = <b class="black">A.S.</b> <br>
             <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO
             <b class="black">P.B. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
+            <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO POR RENUNCIA DEBE SELECIONAR EL CAMPO
+            <b class="black">D.S. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
             <b class="black">■</b> PARA VER UN RESUMEN DEL PAGO DE BENEFICIO OTORGADO DEBE SELECCIONAR EL
             <b class="black">MES <i class="fas fa-info-circle yellow"></i></b> PARA VERIFICAR SI ESTA TODO CORRECTO.<br>
             <b class="black">■</b> LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b class="black">DESVINCULADOS</b>
             DEL AÑO SELECCIONADO, PERO NO PAGADOS DE SU BENEFICIO. <br>
             <b class="black">■</b> LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b class="black">PAGO DE
               BENEFICIO</b> AL DIA, DEL AÑO
-            SELECCIONADO.
+            SELECCIONADO. <br>
+            <b class="black">■</b> RECUERDE TENER LOS DIAS DE SUELDO AL DIA PARA PODER GENERAR EL COBRO DE BENEFICIO.
           </ngb-alert>
         </label>
       </div>
@@ -57,47 +60,46 @@
         <button class="btn btn-success white" (click)="openAcumulado(modalAcumulado)">GENERAR</button>
       </div>
 
-        <!-- pago de socio beneficio -->
-        <ng-template #modalAcumulado let-c="close" let-d="dismiss">
-          <div class="modal-header" id="demoFont">
-            <h4 class="modal-title" id="modal-basic-title">Traspaso de dia de sueldo acumulado</h4>
-            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
+      <!-- pago de socio beneficio -->
+      <ng-template #modalAcumulado let-c="close" let-d="dismiss">
+        <div class="modal-header" id="demoFont">
+          <h4 class="modal-title" id="modal-basic-title">Continuar con el Siguiente Periodo</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
 
-              <div class="col-12 col-md-12 col-lg-12">
-                <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+              <div class="row">
 
-                  <div class="col-12 col-md-12 col-lg-12"><br><label><strong>AÑO ACTUAL</strong></label>
-                    <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm" disabled>
-                      <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
-                    </select>
-                  </div>
-
-                  <div class="col-12 col-md-12 col-lg-12"><br><label><strong>AÑO SIGUIENTE</strong></label>
-                    <select [(ngModel)]="anioSig" class="form-control form-control-sm">
-                      <option value="">--SELECCIONE--</option>
-                      <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
-                    </select>
-                  </div>
-
+                <div class="col-12 col-md-12 col-lg-12"><br><label><strong>AÑO ACTUAL</strong></label>
+                  <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm" disabled>
+                    <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+                  </select>
                 </div>
+
+                <div class="col-12 col-md-12 col-lg-12"><br><label><strong>AÑO SIGUIENTE</strong></label>
+                  <select [(ngModel)]="anio" class="form-control form-control-sm" disabled>
+                    <option *ngFor="let anio of anios" [value]="anio.id">{{ConvertToInt(anio.descripcion)+1}}</option>
+                  </select>
+                </div>
+
               </div>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-danger" (click)="cerrarAcumulado()">Salir </button>
-              <button type="button" class="btn btn-info" [disabled]="blockLoad"
-                (click)="acumuladoSiguienteAnio(modalUsuario)">Generar
-                <img *ngIf="actualizarLoad3" padding-left="20px" height="12"
-                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-              </button>
-            </div>
           </div>
-        </ng-template>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" (click)="cerrarAcumulado()">Salir </button>
+            <button type="button" class="btn btn-info" [disabled]="blockLoad"
+              (click)="acumuladoSiguienteAnio(modalUsuario)">Generar
+              <img *ngIf="actualizarLoad3" padding-left="20px" height="12"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            </button>
+          </div>
+        </div>
+      </ng-template>
 
 
     </div>
@@ -201,18 +203,20 @@
           </tr>
 
           <tr class="text-center">
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 1"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 1"
               style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 2"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 2"
@@ -220,9 +224,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 3"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 3"
@@ -230,9 +235,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 4"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 4"
@@ -240,9 +246,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 5"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 5"
@@ -250,9 +257,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 6"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 6"
@@ -260,9 +268,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 7"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 7"
@@ -270,9 +279,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 8"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 8"
@@ -280,9 +290,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 9"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 9"
@@ -290,9 +301,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 10"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 10"
@@ -300,9 +312,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 11"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 11"
@@ -310,9 +323,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 12"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 12"
@@ -378,6 +392,7 @@
                     <div class="col-12 col-md-4 col-lg-4">
                       <br><label><strong>SELECCIONE DESCUENTO A APLICAR</strong></label>
                       <select [(ngModel)]="tipoPorc" class="form-control form-control-sm">
+                        <option value="">--Seleccione--</option>
                         <option value="1">100%</option>
                         <option value="0.90">90%</option>
                         <option value="0.75">75%</option>
@@ -411,7 +426,85 @@
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
                 <button type="button" class="btn btn-success" (click)="guardarSocioDesv(modalUsuario)"
-                  [disabled]="socio == '0' || tipoRetiro == '0' || montoFinal == null || montoFinal == '0'">Guardar
+                  [disabled]="socio == '0' || tipoRetiro == '0' || montoFinal == null">Guardar
+                  <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
+                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                </button>
+              </div>
+            </div>
+          </ng-template>
+
+          <!-- pago de socio beneficio renunciado -->
+          <ng-template #modalPagoBeneficioRenuncia let-c="close" let-d="dismiss">
+            <div class="modal-header" id="demoFont">
+              <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio por Renuncia en el Mes {{this.mesBeneficio}}</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+
+                <div class="col-12 col-md-12 col-lg-12">
+                  <div class="row">
+
+                    <div class="col-12 col-md-12 col-lg-12"><br><label><strong>DEFINICIONES</strong></label> <br>
+                      <label>
+                        <ngb-alert [dismissible]="false">
+                          <b class="black">■</b> PARA RESTAURAR LOS CAMPOS PRESIONE EL BOTON <b
+                            class="green2">LIMPIAR</b><br>
+                          <b class="black">■</b> PARA GUARDAR EL EL PAGO DE BENEFICIO AL SOCIO PRESIONE <b
+                            class="green2">GUARDAR</b>
+                        </ngb-alert>
+                      </label>
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <label><strong>SELECCIONE EL SOCIO A PAGAR EL BENEFICIO</strong></label>
+                      <select [(ngModel)]="socio" class="form-control form-control-sm">
+                        <option value="0">--Seleccione--</option>
+                        <option *ngFor="let socio of socioPB" [value]="socio.id">{{socio.sin_pb}}</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <br><label><strong>SELECCIONE EL TIPO DE PAGO</strong></label>
+                      <select [(ngModel)]="tipoPago" class="form-control form-control-sm">
+                        <option value="2">Pago Beneficio</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <br><label><strong>SELECCIONE EL TIPO DE RETIRO DEL SOCIO</strong></label>
+                      <select [(ngModel)]="tipoRetiro" class="form-control form-control-sm">
+                        <option value="0">--Seleccione--</option>
+                        <option value="Renuncia">Renuncia</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-4">
+                      <br><label><strong>SELECCIONE DESCUENTO A APLICAR</strong></label>
+                      <select [(ngModel)]="tipoPorc" class="form-control form-control-sm">
+                        <option value="">--Seleccione--</option>
+                        <option value="0">0%</option>
+                      </select>
+                    </div>
+
+                    <div class="col-6 col-md-6 col-lg-6">
+                      <br><label><strong><i class="fas fa-arrow-left"></i> MONTO DEL BENEFICIO</strong></label>
+                      <input #monto [(ngModel)]="montoFinal" type="number" class="form-control form-control-sm"
+                        disabled>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" (click)="cerrarPagoBeneficio()">Salir </button>
+                <button type="button" class="btn btn-outline-success" (click)="limpiarPagoBeneficio()">Limpiar </button>
+                <button type="button" class="btn btn-success" (click)="guardarSocioDesv(modalUsuario)"
+                  [disabled]="socio == '0' || tipoRetiro == '0' || tipoPorc == '' || montoFinal == null">Guardar
                   <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>
@@ -617,18 +710,20 @@
           </tr>
 
           <tr class="text-center">
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 1"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 1"
               style="background: #138D75; cursor: pointer"> P.B. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 2"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 2"
@@ -636,9 +731,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 3"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 3"
@@ -646,9 +742,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 4"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 4"
@@ -656,9 +753,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 5"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 5"
@@ -666,9 +764,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 6"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 6"
@@ -676,9 +775,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 7"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 7"
@@ -686,9 +786,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 8"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 8"
@@ -696,9 +797,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 9"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 9"
@@ -706,9 +808,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 10"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 10"
@@ -716,9 +819,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 11"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 11"
@@ -726,9 +830,10 @@
               <i class="fas fa-info-circle" style="color: black" placement="top"
                 ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado."></i>
             </th>
-            <th colspan="1" style="background: #138D75"> D.S. <br>
+            <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficioRenuncia); mesBeneficio = 12"
+              style="background: #138D75; cursor: pointer"> D.S. <br>
               <i class="fas fa-info-circle" style="color: black" placement="top"
-                ngbTooltip="Recuerde tener los dias de sueldo al dia para poder generar el cobro de beneficio."></i>
+                ngbTooltip="Seleccione aqui para realizar el pago de beneficio a un socio desvinculado por renuncia."></i>
             </th>
 
             <th colspan="1" (click)="openPagoBeneficio(modalPagoBeneficio); mesBeneficio = 12"
@@ -858,7 +963,8 @@
               {{ConvertToInt(sociosMensual?.monto_mes_ds_12) - 
                 ConvertToInt(sociosMensual?.monto_mes_cex_12)  | currency:"CLP" : "symbol-narrow":'1.0'}}
             </td>
-            <td colspan="2"><b>{{sociosMensual?.acumulado_anterior_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2"><b>{{sociosMensual?.acumulado_anterior_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+            </td>
             <td colspan="2"><b>{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
         </tbody>

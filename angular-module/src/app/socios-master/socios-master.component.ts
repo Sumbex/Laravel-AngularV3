@@ -28,7 +28,7 @@ export class SociosMasterComponent implements OnInit {
       let filtroMeses = res.map(({id,descripcion}) => ({id,descripcion}));
       localStorage.setItem('meses', JSON.stringify(filtroMeses));
     });
-    this.startTimerToken();
+    //this.startTimerToken();
   }
 
   startTimerToken() {

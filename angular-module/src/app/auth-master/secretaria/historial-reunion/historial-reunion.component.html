@@ -58,6 +58,7 @@
                                 <h6 class="text-muted">Tema a Tratar:</h6>
                                 <p>{{itemReuniones?.descripcion}}</p>
                                 <h6 class="text-muted">Reunión organizada por: {{itemReuniones?.creada_por}}</h6>
+                                <h6 class="text-muted" *ngIf="itemReuniones?.mod_user_id != null">Ultima Modificación realizada por: {{itemReuniones?.modificada_por}}</h6>
                               </div>
                             </div>
                           </div>

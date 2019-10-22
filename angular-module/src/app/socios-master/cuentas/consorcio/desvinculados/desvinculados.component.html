@@ -47,7 +47,7 @@
             <tbody>
               <tr *ngFor="let itemDesvinculados of datosDesvinculados">
                 <td class="text-center table-warning"><b>{{itemDesvinculados?.nombre}}</b></td>
-                <td class="text-center"><b>SOCIO DESVINCULADO POR <b class="text-danger">{{itemDesvinculados?.descripcion}}</b> EN EL MES <b class="text-primary">{{itemDesvinculados?.fecha}}</b> PAGANDOSE EL <b class="text-danger">{{itemDesvinculados?.porcentaje}}</b></b></td>
+                <td class="text-center"><b>SOCIO DESVINCULADO EN LA FECHA <b class="text-primary">{{itemDesvinculados?.fecha_egreso}}</b> POR <b class="text-danger">{{itemDesvinculados?.descripcion}}</b> PAGANDOSE EL <b class="text-danger">{{itemDesvinculados?.porcentaje}}</b> EN EL MES <b class="text-primary">{{itemDesvinculados?.fecha}}</b></b></td>
                 <td class="text-center"><b>{{ itemDesvinculados?.total_DS | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 <td class="text-center"><b>{{ itemDesvinculados?.total_ADS | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
                 <td class="text-center"><b>{{ itemDesvinculados?.total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>

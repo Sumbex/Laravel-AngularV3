@@ -58,7 +58,7 @@ export class AuthMasterComponent implements OnInit {
 
     document.getElementById("openModalButton").click();
     this.startTimer();
-    this.startTimerToken();
+    //this.startTimerToken();
   }
   }
 

@@ -642,7 +642,7 @@ class PortalSocioMisBeneficios extends Model
             return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
         }
     }
-
+//->pasar a consorcio
     protected function sociosDesvinculados($anio)
     {
         $socios = DB::table('cc_pago_beneficios as cpb')
@@ -652,7 +652,8 @@ class PortalSocioMisBeneficios extends Model
                 DB::raw("upper(cpb.descripcion) as descripcion"),
                 DB::raw("upper(concat(m.descripcion,' del ',a.descripcion)) as fecha"),
                 DB::raw("concat(cast(cpb.porcentaje as float) * 100, '%') as porcentaje"),
-                'cpb.monto_dia_sueldo as total_DS'
+                'cpb.monto_dia_sueldo as total_DS',
+                's.fecha_egreso'
             ])
             ->join('socios as s', 's.id', 'cpb.socio_id')
             ->join('mes as m', 'm.id', 'cpb.mes_id')

@@ -337,7 +337,9 @@ class CuentaConsorcioController extends Controller
         $t_pb = CuentaConsorcio::listar_pago_beneficios($anio); // tabla desvinculados
 
         if ($t_pb != '') {
+           
             foreach ($t_pb as $key) {
+                
                 $ds = CuentaConsorcio::desvincular_sumar_totales($anio, $key->socio_id);
     
                  $key->monto_h = $ds->monto_h;
@@ -349,10 +351,19 @@ class CuentaConsorcioController extends Controller
 
     }
 
-    public function proximo_periodo($anio_actual, $anio_sig)
+
+
+    public function proximo_periodo($anio_actual /*, $anio_sig*/)
     {
             try{
                 DB::beginTransaction();
+
+                $ano = DB::table("anio")->select([
+                    DB::raw("(CAST(coalesce(descripcion, '0') AS integer) + 1) anio_sig")
+                ])->where("id",$anio_actual)->first();
+                $a = DB::table("anio")->select("id")->where("descripcion",$ano->anio_sig)->first();
+
+
                 $listar = CuentaConsorcio::tabla_consorcio($anio_actual);
 
                 $sum = 0;
@@ -362,7 +373,8 @@ class CuentaConsorcioController extends Controller
                     foreach ($listar as $key) {
                         if ($key->vinculado == 'S' || $key->vinculado == 'N') {
                             
-                        $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $anio_sig])->first();
+                        //valido si exite ya el proximo periodo
+                        $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $a->id])->first();
                         
                         if ($cc) {
                             $cc->vinculado = $key->vinculado;
@@ -377,7 +389,7 @@ class CuentaConsorcioController extends Controller
                             $ncc->socio_id = $key->socio_id;
                             $ncc->vinculado = $key->vinculado;
                             $ncc->acumulado_anterior_socio = $key->monto_total_socio;
-                            $ncc->anio_id = $anio_sig;
+                            $ncc->anio_id = $a->id;
                             $ncc->save();
                             $sum++;
                             DB::commit();

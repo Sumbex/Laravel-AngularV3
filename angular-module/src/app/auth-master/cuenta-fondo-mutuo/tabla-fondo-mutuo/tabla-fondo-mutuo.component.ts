@@ -76,10 +76,11 @@ export class TablaFondoMutuoComponent implements OnInit {
   blockLoad3 = true;
 
   //calcular acumulado
-  habilitar = false;
-  generar = false;
-  anioActual;
-  anioSig;
+  modalAcumulado;
+  generar;
+  anioSig = '';
+  generarAcumulado;
+  actualizarLoad3 = false;
 
 
   constructor(
@@ -113,6 +114,18 @@ export class TablaFondoMutuoComponent implements OnInit {
   cerrarPagoBeneficio() {
     this.modalPagoBeneficio.close();
   }
+
+  openAcumulado(Acumulado) {
+    this.modalAcumulado = this.modalService.open(Acumulado, { size: 'sm' });
+    // this.socioDesvinculado();
+    this.usuario_logeado();
+  }
+
+  cerrarAcumulado() {
+    this.modalAcumulado.close();
+    this.anioSig='';
+  }
+
 
   limpiarPagoBeneficio() {
     this.tipoPorc = '1';
@@ -446,14 +459,64 @@ export class TablaFondoMutuoComponent implements OnInit {
     );
   }
 
-  acumuladoSiguienteAnio() {
-    this._consorcioService.acumulado_siguiente_anio(this.anioActual, this.anioSig).subscribe((response) => {
+  acumuladoSiguienteAnio(validar) {
+    this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
 
-    },
-      error => {
-        console.log(error);
-      }
-    );
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
+
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
+      formData.append('estado', 'aplicar_descuento_cc');
+
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+        //si tiene acceso
+        if (val > 0) {
+
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+
+          this.actualizarLoad3 = true;
+          this._consorcioService.acumulado_siguiente_anio(this.anio).subscribe((response) => {
+            if (response.estado == 'failed') {
+              alert(response.mensaje);
+              this.actualizarLoad3 = false;
+            }
+            if (response.estado == 'success') {
+              alert(response.mensaje);
+              this.actualizarLoad3 = false;
+              this.modalAcumulado.close();
+              // document.getElementById('refrescarTabla2').click();
+            }
+          },
+            error => {
+              console.log(error);
+            }
+          );
+
+        } else {
+          alert("Acceso denegado");
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+          return false;
+        }
+
+      }, response => { console.log("POST call in error", response); }, () => {
+        console.log("The POST success.");
+      });
+      return false;
+
+
+    }, (reason) => {
+      console.log(`${reason}`);
+    });
   }
 
 }

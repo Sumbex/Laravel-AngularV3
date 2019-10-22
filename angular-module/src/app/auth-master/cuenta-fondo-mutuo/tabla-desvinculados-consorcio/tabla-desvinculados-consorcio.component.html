@@ -53,8 +53,8 @@
             <td colspan="4">
               <b>SOCIO DESVINCULADO EN LA FECHA</b> <b class="blue"> {{ item?.fecha_egreso | uppercase}} </b>
               <b>POR</b ><b class="red"> {{ item?.descripcion | uppercase}} </b>
-              <b>PAGANDOSE EL </b> <b class="red"> {{ item?.porcentaje | uppercase}}</b>
-              <b>EN EL MES</b ><b class="blue"> {{ item?.fecha | uppercase}}.</b>
+              <b>PAGANDOSE EL </b> <b class="red"> {{ item?.porcentaje | uppercase}} </b>
+              <b>EN EL MES DE </b ><b class="blue"> {{ item?.fecha | uppercase}}.</b>
             </td>
             <td colspan="1" class="sociosNombre">
               <b>{{ item?.monto_v | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>

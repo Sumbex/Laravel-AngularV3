@@ -13,11 +13,14 @@ export class EditarReunionComponent implements OnInit {
   datosReunion = {
     id: '',
     creadaPor: '',
+    modificadaPor: '',
     fecha: '',
     tipoReunion: '1',
     titulo: '',
     descripcion: ''
   };
+
+  fechaVisual;
 
   datosActivaReunion;
 
@@ -56,8 +59,9 @@ export class EditarReunionComponent implements OnInit {
         this.datosActivaReunion = response.reunion[0];
         this.datosReunion.id = this.datosActivaReunion.id;
         this.datosReunion.creadaPor = this.datosActivaReunion.creada_por;
+        this.datosReunion.modificadaPor = this.datosActivaReunion.modificada_por;
         this.datosReunion.fecha = this.datosActivaReunion.fecha_inicio;
-        this.datosReunion.fecha = this.datosReunion.fecha.replace(/T/gi, " a las ");
+        this.fechaVisual = this.datosReunion.fecha.replace(/T/gi, " a las ");
         console.log(this.datosReunion.fecha);
         this.datosReunion.tipoReunion = this.datosActivaReunion.tipo;
         this.datosReunion.titulo = this.datosActivaReunion.titulo;

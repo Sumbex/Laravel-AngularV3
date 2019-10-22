@@ -15,7 +15,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
               <h4 class="text-center">{{datosReunion?.titulo}}</h4>
-              <p class="text-muted text-center">{{datosReunion?.fecha}}<br>Organizada por {{datosReunion?.creadaPor}}</p>
+              <p class="text-muted text-center">{{fechaVisual}}<br>Organizada por {{datosReunion?.creadaPor}}<br><p *ngIf="datosActivaReunion?.mod_user_id != null">
+                Última modificación realizada por {{datosReunion?.modificadaPor}}
+              </p></p>
           </div>
         </div>
         <div class="row">

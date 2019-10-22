@@ -46,7 +46,10 @@ class IniciarReunion extends Command
             DB::raw("now() as fecha"),
             'estado_reunion_id as estado'
         ])
-            ->get()->last();
+            ->latest('id')->first();
+        /* ->get()->last('id'); */
+
+        /* dd($reunion); */
         $reunion->estado_reunion_id = 2;
         $reunion->save();
     }

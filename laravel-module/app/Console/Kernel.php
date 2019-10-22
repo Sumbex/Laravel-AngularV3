@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
                 DB::raw("now() as fecha"),
                 'estado_reunion_id as estado'
             ])
-                ->get()->last();
+                ->latest('id')->first();
 
             if ($reunion->estado == 1) {
                 $fechaReunion = Carbon::parse($reunion->fecha_inicio)->format('Y-m-d H:i');
@@ -54,7 +54,7 @@ class Kernel extends ConsoleKernel
                 DB::raw("now() as fecha"),
                 'estado_reunion_id as estado'
             ])
-                ->get()->last();
+                ->latest('id')->first();
             if ($reunion->estado == 3) {
                 $fechaTermino = Carbon::parse($reunion->fecha_termino);
                 //$fechaTermino->addHours(1);

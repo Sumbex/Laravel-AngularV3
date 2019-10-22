@@ -3,7 +3,6 @@
 namespace App;
 
 use Carbon\Carbon;
-use App\SecReuniones;
 use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +28,7 @@ class SecReuniones extends Model
         $reunion = SecReuniones::where([
             'activo' => 'S'
         ])
-            ->get()->last();
+            ->latest('id')->first();
         /* dd($reunion); */
         if (!is_null($reunion)) {
             if ($reunion->estado_reunion_id == 5 || $reunion->estado_reunion_id == 6) {
@@ -442,7 +441,8 @@ class SecReuniones extends Model
                 DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
                 'sr.mod_user_id',
                 'sr.tipo_reunion_id as tipo_id',
-                'str.descripcion as tipo'
+                'str.descripcion as tipo',
+                'sr.estado_reunion_id as estado'
             ])
             ->join('users as u', 'u.id', 'sr.user_id')
             ->join('sec_tipo_reunion as str', 'str.id', 'sr.tipo_reunion_id')
@@ -450,7 +450,7 @@ class SecReuniones extends Model
                 'sr.activo' => 'S'
             ])
             ->whereIn('sr.estado_reunion_id', [5, 6])
-            ->orderBy('sr.fecha_inicio', 'asc')
+            ->orderBy('sr.fecha_inicio', 'desc')
             ->get();
 
         if (!$reunion->isEmpty()) {

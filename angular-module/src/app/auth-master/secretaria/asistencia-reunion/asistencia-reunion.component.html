@@ -33,7 +33,8 @@
         </div>
         <div class="row">
           <div class="col-md-12 mt-4">
-            <button class="btn btn-danger btn-lg btn-block" (click)="abrirConfirmacion(confirmacionArchivar)">Archivar
+            <p *ngIf="datosReunion?.estado != 4" class="text-center text-muted">Solo podra archivar la reunión cuando termine el periodo de justificación para los socios</p>
+            <button [disabled]="datosReunion?.estado != 4" class="btn btn-danger btn-lg btn-block" (click)="abrirConfirmacion(confirmacionArchivar)">Archivar
               Reunión</button>
           </div>
         </div>
@@ -182,9 +183,9 @@
         <div class="col-md-12">
           <p class="mt-2">
             <ngb-alert [dismissible]="false">
-              <strong>¡Advertencia!</strong> En la siguiente lista se mosytraran tanto a los socios que asistieron como
+              <strong>¡Advertencia!</strong> En la siguiente lista se mostraran tanto a los socios que asistieron como
               los justificados y los inasistentes, basado en estos datos se le otorgara un monto recomendado de ganacias
-              por inasistencias de reunión.
+              por inasistencias de reunión. (El simulador de cobro solo se habilitara si el periodo de justificación de socios se encuentre finalizado)
             </ngb-alert>
           </p>
         </div>
@@ -198,7 +199,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="monto"><b>Monto a cobrar por inasistencia</b></label>
-            <input class="form-control" type="text" placeholder="Ingrese monto a cobrar"
+            <input [disabled]="datosReunion?.estado != 4" class="form-control" type="text" placeholder="Ingrese monto a cobrar"
               (input)="calcularInasistencias($event)" autofocus>
           </div>
         </div>
@@ -317,9 +318,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <p><b>¿Esta seguro que desea archivar la reunión <span class="text-danger">Votaciones de Sindicato</span> con
-              fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span
-                class="text-danger">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>
+          <p><b>¿Esta seguro que desea archivar la reunión <span class="text-danger">{{datosReunion?.titulo}}</span> con
+              fecha <span class="text-danger">{{datosReunion?.fecha_inicio}}</span>? Esta reunión fue creada por <span
+                class="text-danger">{{datosReunion?.creada_por}}</span>. <br> Esta operación no puede ser revertida</b></p>
         </div>
       </div>
       <div class="row text-center">

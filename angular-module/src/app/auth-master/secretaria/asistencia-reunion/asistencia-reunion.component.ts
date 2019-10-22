@@ -101,6 +101,7 @@ export class AsistenciaReunionComponent implements OnInit {
         document.getElementById('cerrarMenu').click();
       }else{
         this.datosReunion = response.reunion[0];
+        console.log(this.datosReunion);
         this.getListaAsistentes();
         this.getListaAsistentesCompleta();
         this.cargandoReunion = false;

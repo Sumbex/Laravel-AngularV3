@@ -14,8 +14,8 @@
       <div *ngIf="this.datosReunion.id != ''">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3>Se encuentra editando la reunión "{{datosReunion.titulo}}" <br> con fecha {{datosReunion.fecha}}</h3>
-            <p class="text-muted">Reunión creada por {{datosReunion?.creadaPor}}</p>
+              <h4 class="text-center">{{datosReunion?.titulo}}</h4>
+              <p class="text-muted text-center">{{datosReunion?.fecha}}<br>Organizada por {{datosReunion?.creadaPor}}</p>
           </div>
         </div>
         <div class="row">
@@ -113,9 +113,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <p><b>¿Esta seguro que desea cancelar la reunión <span class="text-danger">Votaciones de Sindicato</span> con
-              fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span
-                class="text-danger">Usuario de Pruebas</span>. <br> Esta operación no puede ser revertida</b></p>
+          <p><b>¿Esta seguro que desea cancelar la reunión <span class="text-danger">{{datosReunion?.titulo}}</span> con
+              fecha <span class="text-danger">{{datosReunion?.fecha}}</span>? Esta reunión fue creada por <span
+                class="text-danger">{{datosReunion?.creadaPor}}</span>. <br> Esta operación no puede ser revertida</b></p>
         </div>
       </div>
       <div class="row text-center">
@@ -149,9 +149,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <p><b>¿Esta seguro que desea terminar la reunión <span class="text-danger">Votaciones de Sindicato</span> con
-                fecha <span class="text-danger">10-10-10</span>? Esta reunión fue creada por <span
-                  class="text-danger">Usuario de Pruebas</span>. <br> Esto quiere decir que los socios no podran seguir justificandose, si esta seguro presione sí</b></p>
+            <p><b>¿Esta seguro que desea terminar la reunión <span class="text-danger">{{datosReunion?.titulo}}</span> con
+                fecha <span class="text-danger">{{datosReunion?.fecha}}</span>? Esta reunión fue creada por <span
+                  class="text-danger">{{datosReunion?.creadaPor}}</span>. <br> Si esta seguro presione sí</b></p>
           </div>
         </div>
         <div class="row text-center">

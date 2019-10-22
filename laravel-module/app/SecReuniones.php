@@ -28,7 +28,7 @@ class SecReuniones extends Model
         $reunion = SecReuniones::where([
             'activo' => 'S'
         ])
-            ->get()->last();
+            ->latest('id')->first();
         /* dd($reunion); */
         if (!is_null($reunion)) {
             if ($reunion->estado_reunion_id == 5 || $reunion->estado_reunion_id == 6) {

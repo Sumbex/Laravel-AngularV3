@@ -225,13 +225,17 @@ class SecReuniones extends Model
             ->get();
 
         if (!$reunion->isEmpty()) {
-            $modReunion = SecReuniones::find($request->id);
-            $modReunion->estado_reunion_id = 5;
-            $modReunion->mod_user_id = Auth::user()->id;
-            if ($modReunion->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Reunion archivada con exito.'];
+            if ($reunion[0]->estado_reunion_id == 4) {
+                $modReunion = SecReuniones::find($request->id);
+                $modReunion->estado_reunion_id = 5;
+                $modReunion->mod_user_id = Auth::user()->id;
+                if ($modReunion->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Reunion archivada con exito.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                return ['estado' => 'failed', 'mensaje' => 'Aun no se ha terminado el tiempo de justificacion del socio, intentalo una vez este finalice.'];
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'La reunion.'];
@@ -445,7 +449,7 @@ class SecReuniones extends Model
                 'sr.activo' => 'S'
             ])
             ->whereIn('sr.estado_reunion_id', [5, 6])
-            ->orderBy('sr.fecha_inicio','asc')
+            ->orderBy('sr.fecha_inicio', 'asc')
             ->get();
 
         if (!$reunion->isEmpty()) {

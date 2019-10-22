@@ -215,6 +215,7 @@ class SecReuniones extends Model
 
     protected function archivarReunion($request)
     {
+        //validar solo cuando esta en estado 4
         $reunion = DB::table('sec_reuniones')
             ->where([
                 'activo' => 'S',
@@ -224,13 +225,17 @@ class SecReuniones extends Model
             ->get();
 
         if (!$reunion->isEmpty()) {
-            $modReunion = SecReuniones::find($request->id);
-            $modReunion->estado_reunion_id = 5;
-            $modReunion->mod_user_id = Auth::user()->id;
-            if ($modReunion->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Reunion archivada con exito.'];
+            if ($reunion[0]->estado_reunion_id == 4) {
+                $modReunion = SecReuniones::find($request->id);
+                $modReunion->estado_reunion_id = 5;
+                $modReunion->mod_user_id = Auth::user()->id;
+                if ($modReunion->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Reunion archivada con exito.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                return ['estado' => 'failed', 'mensaje' => 'Aun no se ha terminado el tiempo de justificacion del socio, intentalo una vez este finalice.'];
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'La reunion.'];
@@ -248,7 +253,8 @@ class SecReuniones extends Model
                 'sr.cuerpo as descripcion',
                 'sr.tipo_reunion_id as tipo',
                 DB::raw("concat(u.nombres,' ',u.a_paterno,' ',u.a_materno) as creada_por"),
-                'sr.mod_user_id'
+                'sr.mod_user_id',
+                'sr.estado_reunion_id as estado'
             ])
             ->join('users as u', 'u.id', 'sr.user_id')
             ->join('sec_estado_reunion as ser', 'ser.id', 'sr.tipo_reunion_id')
@@ -270,7 +276,7 @@ class SecReuniones extends Model
                     ->get();
                 $reunion[0]->modificada_por = $mod[0]->modificada_por;
             }
-            $reunion[0]->fecha_inicio = preg_replace('/\s+/', 'T', $reunion[0]->fecha_inicio);
+            //$reunion[0]->fecha_inicio = preg_replace('/\s+/', 'T', $reunion[0]->fecha_inicio);
             return ['estado' => 'success', 'reunion' => $reunion];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no existe una reunion finalizada.'];
@@ -440,10 +446,10 @@ class SecReuniones extends Model
             ->join('users as u', 'u.id', 'sr.user_id')
             ->join('sec_tipo_reunion as str', 'str.id', 'sr.tipo_reunion_id')
             ->where([
-                'sr.activo' => 'S',
-                'sr.estado_reunion_id' => 5
+                'sr.activo' => 'S'
             ])
-            ->orderBy('sr.fecha_inicio','asc')
+            ->whereIn('sr.estado_reunion_id', [5, 6])
+            ->orderBy('sr.fecha_inicio', 'asc')
             ->get();
 
         if (!$reunion->isEmpty()) {

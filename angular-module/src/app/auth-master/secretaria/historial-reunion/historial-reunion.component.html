@@ -23,7 +23,7 @@
           <div class="col-md-12">
             <div class="table-responsive">
               <table class="table table-bordered table-hover">
-                <thead>
+                <thead class="thead-dark">
                   <tr class="text-center">
                     <th>Reunion</th>
                     <th>Fecha</th>
@@ -32,7 +32,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let itemReuniones of listaReuniones" class="text-center" >
+                  <tr *ngFor="let itemReuniones of listaReuniones" class="text-center" [ngClass]="{'table-danger': itemReuniones?.estado == 6}">
                     <th>{{itemReuniones?.titulo}}</th>
                     <th>{{itemReuniones?.fecha_inicio}}</th>
 
@@ -54,11 +54,16 @@
                           <div class="row">
                             <div class="col-md-12 mt-2">
                               <div class="card card-body">
-                                <legend>Reunión realizada el {{itemReuniones?.fecha_inicio}}</legend>
+                                <h6 class="text-muted">Fecha Reunión:</h6>
+                                <p>{{itemReuniones?.fecha_inicio}}</p>
+                                <h6 class="text-muted">Tipo de Reunión:</h6>
+                                <p>{{itemReuniones?.tipo}}</p>
                                 <h6 class="text-muted">Tema a Tratar:</h6>
                                 <p>{{itemReuniones?.descripcion}}</p>
-                                <h6 class="text-muted">Reunión organizada por: {{itemReuniones?.creada_por}}</h6>
-                                <h6 class="text-muted" *ngIf="itemReuniones?.mod_user_id != null">Ultima Modificación realizada por: {{itemReuniones?.modificada_por}}</h6>
+                                <h6 class="text-muted">Reunión organizada por:</h6>
+                                <p> {{itemReuniones?.creada_por}}</p>
+                                <h6 class="text-muted" *ngIf="itemReuniones?.mod_user_id != null">Ultima Modificación realizada por:</h6>
+                                <p *ngIf="itemReuniones?.mod_user_id != null">{{itemReuniones?.modificada_por}}</p>
                               </div>
                             </div>
                           </div>
@@ -71,7 +76,7 @@
                       </div>
                     </ng-template>
 
-                    <th><button (click)="abrirAsistenciaReunion(asistenciaReunion); getListaAsistentesCompleta(itemReuniones?.id)" class="btn btn-secondary">Ver Asistencia</button></th>
+                    <th><button [disabled]="itemReuniones?.estado == 6" (click)="abrirAsistenciaReunion(asistenciaReunion); getListaAsistentesCompleta(itemReuniones?.id)" class="btn btn-secondary">Ver Asistencia</button></th>
 
                     <!-- MODAL PARA LA ASISTENCIA DE LA REUNION -->
                     <ng-template #asistenciaReunion let-modal>

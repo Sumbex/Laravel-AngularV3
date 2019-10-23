@@ -538,12 +538,17 @@
 
         <tbody>
 
-          <tr *ngFor="let item of socios" class="text-center">
+          <tr *ngFor="let item of socios; let i = index" class="text-center">
             <!-- <td colspan="1">{{ item?.rut }}</td> -->
-            <td colspan="4"
+            <td colspan="1"
               [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' , 'blue': item?.pb == 'S' }"
               class="text-left sociosNombre2" style="background: #F9E79F">
-              {{ item?.nombre | uppercase}}
+              {{i+1}} 
+            </td>
+            <td colspan="3"
+              [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' , 'blue': item?.pb == 'S' }"
+              class="text-left sociosNombre2" style="background: #F9E79F">
+            {{ item?.nombre | uppercase}}
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_1 != '0' , 'blue': item?.pb == 'S'}">

@@ -51,6 +51,9 @@ Route::get('/traer_socios_desvinculados_socio/{anio}', 'PortalSocioController@So
 //------------------------------------------>rutas portal socio mis beneficios
 
 //------reunion 
+Route::get('/traer_reunion_socio_sec', 'PortalSocioController@TraerReunion');
+Route::get('/traer_lista_reunion_socio_sec/{reunion}', 'PortalSocioController@TraerListaReunion');
+Route::get('/traer_historial_reuniones_socio_sec', 'PortalSocioController@TraerHistorialReuniones');
 Route::post('/ingresar_justificacion_socio_sec', 'PortalSocioController@JustificarSocio');
 //------reunion 
 

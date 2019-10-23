@@ -23,6 +23,37 @@ class SecReuniones extends Model
             ->get();
     }
 
+    public function validarDatos($request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'fecha_inicio' => 'required',
+                'cabeza' => 'required',
+                'cuerpo' => 'required',
+                'tipo' => 'required'
+                /* 'password' => 'required',
+                'new_password' => 'required|required_with:conf_new_password|same:conf_new_password',
+                'conf_new_password' => 'required' */
+            ],
+            [
+                'fecha_inicio.required' => 'Debe ingresar la fecha y hora de la reunion.',
+                'tipo.required' => 'Debe seleccionar el tipo de reunion.',
+                'cabeza.required' => 'Debe ingresar el titulo de la reunion.',
+                'cuerpo.required' => 'Debe ingresar la descripcion de la reunion.'
+                /* 'password.required' => 'Debe ingresar su contrasena actual.',
+                'new_password.required' => 'Debe ingresar su contrasena nueva.',
+                'conf_new_password.required' => 'Confirme su nueva contraseña.',
+                'new_password.same' => 'Las contrasenas ingresadas no son iguales.' */
+            ]
+        );
+
+        if ($validator->fails()) {
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
+        }
+        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
     protected function crearReunion($request)
     {
         $reunion = SecReuniones::where([
@@ -43,25 +74,30 @@ class SecReuniones extends Model
 
     protected function ingresoReunion($request)
     {
-        DB::beginTransaction();
-        $reunion = new SecReuniones;
-        $reunion->fecha_inicio = $request->fecha_inicio;
-        $reunion->estado_reunion_id = 1;
-        $reunion->cabeza = $request->cabeza;
-        $reunion->cuerpo = $request->cuerpo;
-        $reunion->tipo_reunion_id = $request->tipo;
-        $reunion->user_id = Auth::user()->id;
-        $reunion->activo = 'S';
-        if ($reunion->save()) {
-            $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
-            if ($asistencia['estado'] == 'success') {
-                DB::commit();
-                return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.', 'ingresos' => $asistencia['ingresos']];
+        $validarDatos = $this->validarDatos($request);
+        if ($validarDatos['estado'] == 'success') {
+            DB::beginTransaction();
+            $reunion = new SecReuniones;
+            $reunion->fecha_inicio = $request->fecha_inicio;
+            $reunion->estado_reunion_id = 1;
+            $reunion->cabeza = $request->cabeza;
+            $reunion->cuerpo = $request->cuerpo;
+            $reunion->tipo_reunion_id = $request->tipo;
+            $reunion->user_id = Auth::user()->id;
+            $reunion->activo = 'S';
+            if ($reunion->save()) {
+                $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
+                if ($asistencia['estado'] == 'success') {
+                    DB::commit();
+                    return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.', 'ingresos' => $asistencia['ingresos']];
+                } else {
+                    DB::rollBack();
+                }
             } else {
-                DB::rollBack();
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
             }
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            return $validarDatos;
         }
     }
 
@@ -148,16 +184,21 @@ class SecReuniones extends Model
     {
         $existe = $this->verificarReunionActiva($request->id, 1);
         if ($existe['estado'] == 'success') {
-            $reunion = SecReuniones::find($request->id);
-            $reunion->fecha_inicio = $request->fecha_inicio;
-            $reunion->cabeza = $request->cabeza;
-            $reunion->cuerpo = $request->cuerpo;
-            $reunion->tipo_reunion_id = $request->tipo;
-            $reunion->mod_user_id = Auth::user()->id;
-            if ($reunion->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Reunion actualizada con exito.'];
+            $validarDatos = $this->validarDatos($request);
+            if ($validarDatos['estado'] == 'success') {
+                $reunion = SecReuniones::find($request->id);
+                $reunion->fecha_inicio = $request->fecha_inicio;
+                $reunion->cabeza = $request->cabeza;
+                $reunion->cuerpo = $request->cuerpo;
+                $reunion->tipo_reunion_id = $request->tipo;
+                $reunion->mod_user_id = Auth::user()->id;
+                if ($reunion->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Reunion actualizada con exito.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                return $validarDatos;
             }
         } else {
             return $existe;
@@ -451,6 +492,8 @@ class SecReuniones extends Model
             ])
             ->whereIn('sr.estado_reunion_id', [5, 6])
             ->orderBy('sr.fecha_inicio', 'desc')
+            /* ->paginate(5); */
+            /*             dd($reunion); */
             ->get();
 
         if (!$reunion->isEmpty()) {

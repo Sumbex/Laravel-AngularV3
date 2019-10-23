@@ -361,14 +361,17 @@ class CuentaConsorcioController extends Controller
                 $ano = DB::table("anio")->select([
                     DB::raw("(CAST(coalesce(descripcion, '0') AS integer) + 1) anio_sig")
                 ])->where("id",$anio_actual)->first();
+              
                 $a = DB::table("anio")->select("id")->where("descripcion",$ano->anio_sig)->first();
-
+                if(!$a){
+                    return ['estado'=>'failed','mensaje'=>'El año siguiente no existe en la base de datos'];
+                }
 
                 $listar = CuentaConsorcio::tabla_consorcio($anio_actual);
 
                 $sum = 0;
                 $act_sum = 0;
-
+                
                 if ($listar != '') {
                     foreach ($listar as $key) {
                         if ($key->vinculado == 'S' || $key->vinculado == 'N') {
@@ -377,7 +380,7 @@ class CuentaConsorcioController extends Controller
                         $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $a->id])->first();
                         
                         if ($cc) {
-                            $cc->vinculado = $key->vinculado;
+                            // $cc->vinculado = $key->vinculado;
                             $cc->acumulado_anterior_socio = $key->monto_total_socio;
                             $cc->save();
                             $act_sum++;
@@ -408,6 +411,11 @@ class CuentaConsorcioController extends Controller
                     }
                     return ['estado'=>'failed', 'mensaje'=>'Error en pasar totales al proximo periodo'];
                 }
+                return ['estado'=>'failed', 'mensaje'=>'No se han encontrado datos en cuenta consorcio'];
+
+
+
+
             
             }catch(QueryException $e){
                 DB::rollBack();

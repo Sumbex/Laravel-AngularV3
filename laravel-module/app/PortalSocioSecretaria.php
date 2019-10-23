@@ -75,6 +75,7 @@ class PortalSocioSecretaria extends Model
             ->where([
                 'sr.activo' => 'S'
             ])
+            ->whereIn('sr.estado_reunion_id', [5, 6])
             ->orderBy('sr.fecha_inicio', 'desc')
             ->take(5)->get();
 

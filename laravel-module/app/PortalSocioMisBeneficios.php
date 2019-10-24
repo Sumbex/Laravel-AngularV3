@@ -495,7 +495,7 @@ class PortalSocioMisBeneficios extends Model
         if ($verificarSocio['estado'] == 'success') {
             $ahorro = DB::table('cuenta_consorcio as cc')
                 ->select([
-                    'id',
+                    'cc.id',
                     DB::raw("coalesce(cc.monto_mes_ds_1, 0) as mes_ds_1"),
                     DB::raw("coalesce(cc.monto_mes_cex_1, 0) as mes_cex_1"),
                     DB::raw("coalesce(cc.monto_mes_ds_2, 0) as mes_ds_2"),
@@ -519,7 +519,8 @@ class PortalSocioMisBeneficios extends Model
                     DB::raw("coalesce(cc.monto_mes_ds_11, 0) as mes_ds_11"),
                     DB::raw("coalesce(cc.monto_mes_cex_11, 0) as mes_cex_11"),
                     DB::raw("coalesce(cc.monto_mes_ds_12, 0) as mes_ds_12"),
-                    DB::raw("coalesce(cc.monto_mes_cex_12, 0) as mes_cex_12")
+                    DB::raw("coalesce(cc.monto_mes_cex_12, 0) as mes_cex_12"),
+                    DB::raw("coalesce(cc.acumulado_anterior_socio, 0) as acumulado")
                 ])
                 ->where([
                     'cc.anio_id' => $anio,
@@ -532,7 +533,7 @@ class PortalSocioMisBeneficios extends Model
                 $CE = $this->sumaCEMisAhorros($anio);
                 $DSCE = $this->restaDSCEMensual($anio);
 
-                $total = $DS['DS'] - $CE['CE'];
+                $total = $DS['DS'] - $CE['CE'] + $ahorro[0]->acumulado;
 
                 return ['estado' => 'success', 'ahorro' => $ahorro, 'total' => $total, 'DS' => $DS['DS'], 'CE' => $CE['CE'], 'mensual' => $DSCE['DSCE']];
             } else {

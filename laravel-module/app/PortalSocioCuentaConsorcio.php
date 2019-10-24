@@ -47,7 +47,8 @@ class PortalSocioCuentaConsorcio extends Model
                     DB::raw("sum(coalesce(monto_mes_ds_11, 0)) as mes_ds_11"),
                     DB::raw("sum(coalesce(monto_mes_cex_11, 0)) as mes_cex_11"),
                     DB::raw("sum(coalesce(monto_mes_ds_12, 0)) as mes_ds_12"),
-                    DB::raw("sum(coalesce(monto_mes_cex_12, 0)) as mes_cex_12")
+                    DB::raw("sum(coalesce(monto_mes_cex_12, 0)) as mes_cex_12"),
+                    DB::raw("sum(coalesce(acumulado_anterior_socio, 0)) as acumulado")
                 ])
                 ->where([
                     'anio_id' => $anio
@@ -64,7 +65,8 @@ class PortalSocioCuentaConsorcio extends Model
                 }
                 if ($ttrue) {
                     $DSCE = $this->restaDSCEMensual($anio);
-                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $DSCE['anual'], 'DSCE' => $DSCE['DSCE']];
+                    $total = $DSCE['anual'] + $consorcio[0]->acumulado;
+                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $total, 'DSCE' => $DSCE['DSCE']];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
                 }

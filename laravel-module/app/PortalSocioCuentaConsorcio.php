@@ -180,7 +180,8 @@ class PortalSocioCuentaConsorcio extends Model
             COALESCE(monto_mes_cex_9,0)+ 
             COALESCE(monto_mes_cex_10,0) +
             COALESCE(monto_mes_cex_11,0) +
-            COALESCE(monto_mes_cex_12,0)) as total_cex_socio")
+            COALESCE(monto_mes_cex_12,0)) as total_cex_socio, 
+            COALESCE(acumulado_anterior_socio,0) acumulado")
             ])
             ->where([
                 'cc.anio_id' => $anio,
@@ -190,7 +191,7 @@ class PortalSocioCuentaConsorcio extends Model
             ->get();
 
         if (!$DSCE->isEmpty()) {
-            $total = $DSCE[0]->total_ds_socio - $DSCE[0]->total_cex_socio;
+            $total = $DSCE[0]->acumulado + ($DSCE[0]->total_ds_socio - $DSCE[0]->total_cex_socio);
             return ['estado' => 'success', 'total' => $total];
         } else {
             return ['estado' => 'failed'];

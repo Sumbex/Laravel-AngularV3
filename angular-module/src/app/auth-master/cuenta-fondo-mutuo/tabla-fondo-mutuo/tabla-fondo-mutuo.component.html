@@ -3,61 +3,63 @@
   <div class="card-body">
 
     <div class="row">
-
-      <div class="col-12 col-md-2 col-lg-2"><br><label><strong>AÑO</strong></label>
-        <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
-          <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
-        </select>
-      </div>
-
-      <div class="col-12 col-md-3 col-lg-3"><br><label><strong>REFRESCAR TABLA</strong></label> <br>
-        <button id="refrescarTabla2" (click)="btn_reload(); search=''; blockLoad2=true; "
-          class="btn btn-secondary btn-sm">
-          Actualizar &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
-          <img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-        </button>
-      </div>
-
-      <div class="col-12 col-md-7 col-lg-7"><br><label><strong>DEFINICIONES</strong></label> <br>
+      <div class="col-12 col-md-12 col-lg-12">
+        <br><label><strong>DEFINICIONES</strong></label> <br>
         <label>
-          <ngb-alert [dismissible]="false">
-            <b class="black">■</b> DIA DE SUELDO = <b class="black">D.S.</b> <br>
-            <b class="black">■</b> PAGO DE BENEFICIOS = <b class="black">P.B.</b> <br>
-            <b class="black">■</b> ACUMULADO DE SOCIO = <b class="black">A.S.</b> <br>
-            <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO
-            <b class="black">P.B. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
-            <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO POR RENUNCIA DEBE SELECIONAR EL CAMPO
-            <b class="black">D.S. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
-            <b class="black">■</b> PARA VER UN RESUMEN DEL PAGO DE BENEFICIO OTORGADO DEBE SELECCIONAR EL
-            <b class="black">MES <i class="fas fa-info-circle yellow"></i></b> PARA VERIFICAR SI ESTA TODO CORRECTO.<br>
-            <b class="black">■</b> LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b class="black">DESVINCULADOS</b>
-            DEL AÑO SELECCIONADO, PERO NO PAGADOS DE SU BENEFICIO. <br>
-            <b class="black">■</b> LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b class="black">PAGO DE
-              BENEFICIO</b> AL DIA, DEL AÑO
-            SELECCIONADO. <br>
-            <b class="black">■</b> RECUERDE TENER LOS DIAS DE SUELDO AL DIA PARA PODER GENERAR EL COBRO DE BENEFICIO.
-          </ngb-alert>
+          <b>
+          	<ngb-alert style="background: #ffffff;" [dismissible]="false">
+          	  <b class="black">■</b> DIA DE SUELDO = <b class="black">D.S.</b> <br>
+          	  <b class="black">■</b> PAGO DE BENEFICIOS = <b class="black">P.B.</b> <br>
+          	  <b class="black">■</b> ACUMULADO DE SOCIO = <b class="black">A.S.</b> <br>
+          	  <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO
+          	  <b class="black">P.B. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
+          	  <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO POR RENUNCIA DEBE SELECIONAR EL CAMPO
+          	  <b class="black">D.S. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
+          	  <b class="black">■</b> PARA VER UN RESUMEN DEL PAGO DE BENEFICIO OTORGADO DEBE SELECCIONAR EL
+          	  <b class="black">MES <i class="fas fa-info-circle yellow"></i></b> PARA VERIFICAR SI ESTA TODO CORRECTO.<br>
+          	  <b class="black">■</b> LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b class="black">DESVINCULADOS</b>
+          	  DEL AÑO SELECCIONADO, PERO NO PAGADOS DE SU BENEFICIO. <br>
+          	  <b class="black">■</b> LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b class="black">PAGO DE
+          	    BENEFICIO</b> AL DIA, DEL AÑO
+          	  SELECCIONADO. <br>
+          	  <b class="black">■</b> RECUERDE TENER LOS DIAS DE SUELDO AL DIA PARA PODER GENERAR EL COBRO DE BENEFICIO.
+          	</ngb-alert>
+          </b>
         </label>
       </div>
     </div>
 
-    <div class="row justify-content-end">
+    <!-- <div class="col-12 col-md-2 col-lg-2 form-group"><br><label><strong>AÑO</strong></label>
+      <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
+        <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+      </select>
+    </div>
 
-      <div class="col-12 col-md-9 col-lg-9" [hidden]="ocultarDescripcion">
+    <div class="col-12 col-md-3 col-lg-3 form-group"><br><label><strong>REFRESCAR TABLA</strong></label> <br>
+      <button id="refrescarTabla2" (click)="btn_reload(); search=''; blockLoad2=true; "
+        class="btn btn-secondary btn-sm">
+        Actualizar &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
+        <img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      </button>
+    </div>
+
+    <div class="col-12 col-md-3 col-lg-3 form-group">
+      <br><label><strong>GENERAR ACUMULADO </strong></label><br>
+      <button class="btn btn-success white" (click)="openAcumulado(modalAcumulado)">GENERAR</button>
+    </div> -->
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-md-12 col-lg-12 text-center" [hidden]="ocultarDescripcion">
         <label>
-          <ngb-alert class="black" [dismissible]="false">
+          <ngb-alert class="black" style="background: #FFD700;" [dismissible]="false">
             ■ {{descripcionDesc | uppercase}}
           </ngb-alert>
         </label>
       </div>
 
-      <div class="col-12 col-md-9 col-lg-9" [hidden]="blockLoad3">
+      <div class="col-12 col-md-12 col-lg-12 text-center mb-4" [hidden]="blockLoad3">
         <img height="40" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-      </div>
-
-      <div class="col-12 col-md-3 col-lg-3">
-        <label><strong>GENERAR ACUMULADO &nbsp;</strong></label>
-        <button class="btn btn-success white" (click)="openAcumulado(modalAcumulado)">GENERAR</button>
       </div>
 
       <!-- pago de socio beneficio -->
@@ -113,7 +115,7 @@
               <label class="float-right"> BUSCAR SOCIO:</label>
             </th>
 
-            <th style="background: #138D75" colspan="24">
+            <th style="background: #138D75" colspan="14">
               <input class="form-control form-control-sm" placeholder="Buscar por nombre......" [(ngModel)]="search">
             </th>
 
@@ -122,6 +124,25 @@
                 BUSCAR <i [hidden]="blockLoad" class="fas fa-search"></i>
                 <img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
               </button>
+            </th>
+
+            <th class="text-center" style="background: #138D75" colspan="4">
+              <button id="refrescarTabla2" (click)="btn_reload(); search=''; blockLoad2=true; "
+                class="btn btn-secondary btn-sm">
+                ACTUALIZAR &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
+                <img [hidden]="!blockLoad2" height="15"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+              </button>
+            </th>
+
+            <th style="background: #138D75" colspan="4">
+              <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
+                <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
+              </select>
+            </th>
+
+            <th style="background: #138D75" colspan="4">
+              <button class="btn btn-success btn-sm" (click)="openAcumulado(modalAcumulado)">ACUMULADO</button>
             </th>
           </tr>
 
@@ -437,7 +458,8 @@
           <!-- pago de socio beneficio renunciado -->
           <ng-template #modalPagoBeneficioRenuncia let-c="close" let-d="dismiss">
             <div class="modal-header" id="demoFont">
-              <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio por Renuncia en el Mes {{this.mesBeneficio}}</h4>
+              <h4 class="modal-title" id="modal-basic-title">Pago de Beneficio por Renuncia en el Mes
+                {{this.mesBeneficio}}</h4>
               <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -543,12 +565,12 @@
             <td colspan="1"
               [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' , 'blue': item?.pb == 'S' }"
               class="text-left sociosNombre2" style="background: #F9E79F">
-              {{i+1}} 
+              {{i+1}}
             </td>
             <td colspan="3"
               [ngClass]="{'red': item?.vinculado == 'N' , 'black': item?.vinculado != 'N' , 'blue': item?.pb == 'S' }"
               class="text-left sociosNombre2" style="background: #F9E79F">
-            {{ item?.nombre | uppercase}}
+              {{ item?.nombre | uppercase}}
             </td>
 
             <td colspan="1" [ngClass]="{'green': item?.monto_mes_ds_1 != '0' , 'blue': item?.pb == 'S'}">

@@ -13,38 +13,59 @@ export class GeneralReunionComponent implements OnInit {
   datosReunion;
   datosReunionPasada;
 
+  //Variable para alojar la lista de asistencia
+  datosAsistencias;
+
   //variable para asociar al modal
   modalVariable;
 
   constructor(private _reunionesService: ReunionesService, config: NgbModalConfig, private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.getDetalleReunion();
+    this.getHistorialReuniones();
   }
 
   abrirModal(modalHistorial){
     this.modalVariable = this.modalService.open(modalHistorial, {size: 'xl'});
   }
 
+  //OBTENER LA REUNIÓN ACTIVA
   getDetalleReunion(){
     this._reunionesService.getReunionActiva().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        console.log("Reunión inactiva");
       }else{
-        this.datosReunion = response;
+        this.datosReunion = response.reunion;
+        console.log(this.datosReunion);
       }
     }, error => {
       console.log(error);
     });
   }
 
-  getUltimaReunion(){
-    this._reunionesService.getReunionInactiva().subscribe(response => {
+  getHistorialReuniones(){
+    this._reunionesService.getHistorialReunion().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        this.datosReunionPasada = response;
+        this.datosReunionPasada = response.reuniones;
+        console.log(this.datosReunionPasada);
       }
     }, error => {
+      console.log(error);
+    });
+  }
+
+  getListaReunion(id){
+    this._reunionesService.getListaAsistencia(id).subscribe(response =>{
+      if(response.estado == 'failed' || response.estado == "failed_v"){
+        alert(response.mensaje);
+      }else{
+       this.datosAsistencias = response.lista;
+       console.log(this.datosAsistencias);
+      }
+    },error=>{
       console.log(error);
     });
   }

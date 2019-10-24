@@ -9,8 +9,8 @@
   <div class="row">
     <div class="col-md-6 mt-5">
       <div class="card card-body border border-dark h-100">
-        <h3 class="text-center"><i class="fas fa-bell"></i> Próxima Reunión</h3>
-        <h6 class="card-subtitle mb-2 text-muted text-center">Reunión para el dia 10.10.19</h6>
+        <h3 class="text-center"><i class="fas fa-bell"></i> Reunión Vigente</h3>
+        <h6 class="card-subtitle mb-2 text-muted text-center">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>
         <div>
           <app-detalle-reunion></app-detalle-reunion>
         </div>
@@ -35,36 +35,51 @@
           <table class="table table-bordered">
               <thead>
             <tr>
-              <th class="text-center">Fecha de la Reunión</th>
+              <th class="text-center">Titulo</th>
+              <th class="text-center">Fecha</th>
               <th class="text-center">Tema Tratado</th>
               <th class="text-center">Inasistencias Justificadas</th>
             </tr>
           </thead>
-            <tr>
-              <td class="text-center"><b>10-06-19</b></td>
+            <tr *ngFor="let itemHistorial of datosReunionPasada">
+              <td class="text-center"><b>{{datosReunion?.titulo}}</b></td>
+              <td class="text-center"><b>{{datosReunion?.fecha_inicio}}</b></td>
               <td class="text-center"><button (click)="abrirModal(detalle)" class="btn btn-dark">Detalle de la Reunión</button></td>
-              <td class="text-center"><button (click)="abrirModal(inasistencias)" class="btn btn-dark">Inasistencias</button></td>
+              <!-- ******************DETALLE DE LA REUNIÓN******************* -->
+              <ng-template #detalle let-modal>
+                  <!-- Header Del Modal -->
+                  <div class="modal-header" id="demoFont">
+                    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la proxima reunión</strong>
+                    </h6>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                
+                  <!-- Cuerpo del modal -->
+                  <div class="modal-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12 mt-2">
+                          <div class="card card-body">
+                            <legend>Reunión realizada el {{datosReunion?.fecha_inicio}}</legend>
+                            <h6 class="text-muted">Tema a Tratar:</h6>
+                            <p>{{datosReunion?.descripcion}}</p>
+                            <h6 class="text-muted">Reunión organizada por: {{datosReunion?.creada_por}}</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- Patitas del Modal -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                  </div>
+                </ng-template>
+              <td class="text-center"><button (click)="getListaReunion(datosReunion?.id); abrirModal(inasistencias)" class="btn btn-dark">Inasistencias</button></td>
             </tr>
-            <tr>
-              <td class="text-center"><b>10-07-19</b></td>
-              <td class="text-center"><button class="btn btn-dark">Detalle de la Reunión</button></td>
-              <td class="text-center"><button class="btn btn-dark">Inasistencias</button></td>
-            </tr>
-            <tr>
-              <td class="text-center"><b>10-08-19</b></td>
-              <td class="text-center"><button class="btn btn-dark">Detalle de la Reunión</button></td>
-              <td class="text-center"><button class="btn btn-dark">Inasistencias</button></td>
-            </tr>
-            <tr>
-              <td class="text-center"><b>10-09-19</b></td>
-              <td class="text-center"><button class="btn btn-dark">Detalle de la Reunión</button></td>
-              <td class="text-center"><button class="btn btn-dark">Inasistencias</button></td>
-            </tr>
-            <tr>
-                <td class="text-center"><b>10-09-19</b></td>
-                <td class="text-center"><button class="btn btn-dark">Detalle de la Reunión</button></td>
-                <td class="text-center"><button class="btn btn-dark">Inasistencias</button></td>
-              </tr>
           </table>
         </div>
       </div>
@@ -90,9 +105,11 @@
         <table class="table table-bordered">
           <tr>
             <th>Nombre</th>
+            <th>Estado</th>
           </tr>
-          <tr>
-            <td>Bryan Montecino Jara</td>
+          <tr *ngFor="let itemAsistencia of datosAsistencias">
+            <td>{{itemAsistencia?.nombre}}</td>
+            <td>{{itemAsistencia?.estado}}</td>
           </tr>
         </table>
       </div>
@@ -103,36 +120,3 @@
           class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
   </ng-template>
-
-  <ng-template #detalle let-modal>
-      <!-- Header Del Modal -->
-      <div class="modal-header" id="demoFont">
-        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la proxima reunión</strong>
-        </h6>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    
-      <!-- Cuerpo del modal -->
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 mt-2">
-              <div class="card card-body">
-                <legend>Reunión preparada para el 20.20.20</legend>
-                <h6 class="text-muted">Tema a Tratar:</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit? Rem consequatur, omnis similique, recusandae earum officia quae quia nobis iure unde assumenda maxime, sequi placeat ea voluptates ipsam ratione!Quas vel non explicabo. Velit, a. Quasi fuga facere corporis sed corrupti dolor distinctio ipsa voluptates, nisi ducimus voluptatibus, maxime ut, ullam laborum. Delectus eum pariatur ea harum et labore.</p>
-                <h6 class="text-muted">Reunión organizada por: Bryan Vidal Díaz</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      <!-- Patitas del Modal -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
-            class="far fa-arrow-alt-circle-left"></i> Volver</button>
-      </div>
-    </ng-template>

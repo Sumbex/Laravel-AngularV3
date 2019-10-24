@@ -21,16 +21,25 @@ class PortalSocioJustificar extends Model
         return PortalSocio::verificarSocio($id);
     }
 
-    protected function verificarTipoReunion($reunion_id)
+    protected function verificarEstadoReunion($reunion_id)
     {
         $reunion = DB::table('sec_reuniones')
+            ->select([
+                'id',
+                'estado_reunion_id as estado'
+            ])
             ->where([
                 'activo' => 'S',
+                'id' => $reunion_id
             ])
-            ->whereIn('estado_reunion_id', [1, 2, 3])
             ->get();
+
         if (!$reunion->isEmpty()) {
-            return ['estado' => 'success'];
+            if ($reunion[0]->estado == 1 || $reunion[0]->estado == 2 || $reunion[0]->estado == 3) {
+                return ['estado' => 'success'];
+            } else {
+                return ['estado' => 'failed'];
+            }
         } else {
             return ['estado' => 'failed'];
         }
@@ -40,7 +49,7 @@ class PortalSocioJustificar extends Model
     {
         $verificarSocio = $this->verificarSocio($this->socioID());
         if ($verificarSocio['estado'] == 'success') {
-            $estadoReunion = $this->verificarTipoReunion($request->reunion_id);
+            $estadoReunion = $this->verificarEstadoReunion($request->reunion_id);
             if ($estadoReunion['estado'] == 'success') {
                 DB::beginTransaction();
                 $justificar = new SecJustificacion;

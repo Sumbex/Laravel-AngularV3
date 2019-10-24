@@ -29,7 +29,7 @@ export class ReunionesService{
     /*********************************OBTENER LA REUNION ACTIVA***************************************/
     getReunionActiva(): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_reunion_bienestar/", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_reunion_socio_sec", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
@@ -38,9 +38,20 @@ export class ReunionesService{
     }
 
     /*********************************OBTENER LA REUNION INACTIVA***************************************/
-    getReunionInactiva(): Observable<any>{
+    getHistorialReunion(): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_reunion_inactiva/", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_historial_reuniones_socio_sec", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    /*********************************OBTENER LA LISTA DE ASISTENCIA***************************************/
+    getListaAsistencia(id): Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_lista_reunion_socio_sec/" + id, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'

@@ -30,7 +30,6 @@ export class DetalleReunionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDetalleReunion();
   }
 
   getDetalleReunion(){

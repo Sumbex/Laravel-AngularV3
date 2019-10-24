@@ -1339,7 +1339,7 @@ module.exports = "<ng-template #detalleReunion let-modal>\n    <!-- Header Del M
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <p class=\"mt-5\">\n    <ngb-alert [dismissible]=\"false\">\n      <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con\n      una campana <i class=\"fas fa-bell\"></i>.\n    </ngb-alert>\n  </p>\n\n  <div class=\"row\">\n    <div class=\"col-md-6 mt-5\">\n      <div class=\"card card-body border border-dark h-100\">\n        <h3 class=\"text-center\"><i class=\"fas fa-bell\"></i> Próxima Reunión</h3>\n        <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión para el dia 10.10.19</h6>\n        <div>\n          <app-detalle-reunion></app-detalle-reunion>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-6 mt-5\">\n      <div class=\"card card-body border border-dark h-100\">\n        <h3 class=\"mx-auto\"><i class=\"fas fa-check-double\"></i> Reunión Anterior</h3>\n        <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión Finalizada 10.08.19</h6>\n        <div>\n          <app-historial-detalle-reunion></app-historial-detalle-reunion>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-12 mt-5\">\n      <div class=\"card card-body border border-dark\">\n        <h3 class=\"mx-auto\"><i class=\"fas fa-bullhorn\"></i> Ultimas 5 Reuniones</h3>\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered\">\n              <thead>\n            <tr>\n              <th class=\"text-center\">Fecha de la Reunión</th>\n              <th class=\"text-center\">Tema Tratado</th>\n              <th class=\"text-center\">Inasistencias Justificadas</th>\n            </tr>\n          </thead>\n            <tr>\n              <td class=\"text-center\"><b>10-06-19</b></td>\n              <td class=\"text-center\"><button (click)=\"abrirModal(detalle)\" class=\"btn btn-dark\">Detalle de la Reunión</button></td>\n              <td class=\"text-center\"><button (click)=\"abrirModal(inasistencias)\" class=\"btn btn-dark\">Inasistencias</button></td>\n            </tr>\n            <tr>\n              <td class=\"text-center\"><b>10-07-19</b></td>\n              <td class=\"text-center\"><button class=\"btn btn-dark\">Detalle de la Reunión</button></td>\n              <td class=\"text-center\"><button class=\"btn btn-dark\">Inasistencias</button></td>\n            </tr>\n            <tr>\n              <td class=\"text-center\"><b>10-08-19</b></td>\n              <td class=\"text-center\"><button class=\"btn btn-dark\">Detalle de la Reunión</button></td>\n              <td class=\"text-center\"><button class=\"btn btn-dark\">Inasistencias</button></td>\n            </tr>\n            <tr>\n              <td class=\"text-center\"><b>10-09-19</b></td>\n              <td class=\"text-center\"><button class=\"btn btn-dark\">Detalle de la Reunión</button></td>\n              <td class=\"text-center\"><button class=\"btn btn-dark\">Inasistencias</button></td>\n            </tr>\n            <tr>\n                <td class=\"text-center\"><b>10-09-19</b></td>\n                <td class=\"text-center\"><button class=\"btn btn-dark\">Detalle de la Reunión</button></td>\n                <td class=\"text-center\"><button class=\"btn btn-dark\">Inasistencias</button></td>\n              </tr>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<ng-template #inasistencias let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n        <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\n        <br>\n        <table class=\"table table-bordered\">\n          <tr>\n            <th>Nombre</th>\n          </tr>\n          <tr>\n            <td>Bryan Montecino Jara</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>\n\n  <ng-template #detalle let-modal>\n      <!-- Header Del Modal -->\n      <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la proxima reunión</strong>\n        </h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n    \n      <!-- Cuerpo del modal -->\n      <div class=\"modal-body\">\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"col-md-12 mt-2\">\n              <div class=\"card card-body\">\n                <legend>Reunión preparada para el 20.20.20</legend>\n                <h6 class=\"text-muted\">Tema a Tratar:</h6>\n                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit? Rem consequatur, omnis similique, recusandae earum officia quae quia nobis iure unde assumenda maxime, sequi placeat ea voluptates ipsam ratione!Quas vel non explicabo. Velit, a. Quasi fuga facere corporis sed corrupti dolor distinctio ipsa voluptates, nisi ducimus voluptatibus, maxime ut, ullam laborum. Delectus eum pariatur ea harum et labore.</p>\n                <h6 class=\"text-muted\">Reunión organizada por: Bryan Vidal Díaz</h6>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    \n      <!-- Patitas del Modal -->\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n            class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n      </div>\n    </ng-template>"
+module.exports = "<div class=\"container\">\n  <p class=\"mt-5\">\n    <ngb-alert [dismissible]=\"false\">\n      <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con\n      una campana <i class=\"fas fa-bell\"></i>.\n    </ngb-alert>\n  </p>\n\n  <div class=\"row\">\n    <div class=\"col-md-6 mt-5\">\n      <div class=\"card card-body border border-dark h-100\">\n        <h3 class=\"text-center\"><i class=\"fas fa-bell\"></i> Reunión Vigente</h3>\n        <h6 class=\"card-subtitle mb-2 text-muted text-center\">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>\n        <div>\n          <app-detalle-reunion></app-detalle-reunion>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-6 mt-5\">\n      <div class=\"card card-body border border-dark h-100\">\n        <h3 class=\"mx-auto\"><i class=\"fas fa-check-double\"></i> Reunión Anterior</h3>\n        <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión Finalizada 10.08.19</h6>\n        <div>\n          <app-historial-detalle-reunion></app-historial-detalle-reunion>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-12 mt-5\">\n      <div class=\"card card-body border border-dark\">\n        <h3 class=\"mx-auto\"><i class=\"fas fa-bullhorn\"></i> Ultimas 5 Reuniones</h3>\n        <div class=\"table-responsive\">\n          <table class=\"table table-bordered\">\n              <thead>\n            <tr>\n              <th class=\"text-center\">Titulo</th>\n              <th class=\"text-center\">Fecha</th>\n              <th class=\"text-center\">Tema Tratado</th>\n              <th class=\"text-center\">Inasistencias Justificadas</th>\n            </tr>\n          </thead>\n            <tr *ngFor=\"let itemHistorial of datosReunionPasada\">\n              <td class=\"text-center\"><b>{{datosReunion?.titulo}}</b></td>\n              <td class=\"text-center\"><b>{{datosReunion?.fecha_inicio}}</b></td>\n              <td class=\"text-center\"><button (click)=\"abrirModal(detalle)\" class=\"btn btn-dark\">Detalle de la Reunión</button></td>\n              <!-- ******************DETALLE DE LA REUNIÓN******************* -->\n              <ng-template #detalle let-modal>\n                  <!-- Header Del Modal -->\n                  <div class=\"modal-header\" id=\"demoFont\">\n                    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la proxima reunión</strong>\n                    </h6>\n                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n                      <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                  </div>\n                \n                  <!-- Cuerpo del modal -->\n                  <div class=\"modal-body\">\n                    <div class=\"container\">\n                      <div class=\"row\">\n                        <div class=\"col-md-12 mt-2\">\n                          <div class=\"card card-body\">\n                            <legend>Reunión realizada el {{datosReunion?.fecha_inicio}}</legend>\n                            <h6 class=\"text-muted\">Tema a Tratar:</h6>\n                            <p>{{datosReunion?.descripcion}}</p>\n                            <h6 class=\"text-muted\">Reunión organizada por: {{datosReunion?.creada_por}}</h6>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                  </div>\n                \n                  <!-- Patitas del Modal -->\n                  <div class=\"modal-footer\">\n                    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n                        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n                  </div>\n                </ng-template>\n              <td class=\"text-center\"><button (click)=\"getListaReunion(datosReunion?.id); abrirModal(inasistencias)\" class=\"btn btn-dark\">Inasistencias</button></td>\n            </tr>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<ng-template #inasistencias let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n      <div class=\"container\">\n        <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\n        <br>\n        <table class=\"table table-bordered\">\n          <tr>\n            <th>Nombre</th>\n            <th>Estado</th>\n          </tr>\n          <tr *ngFor=\"let itemAsistencia of datosAsistencias\">\n            <td>{{itemAsistencia?.nombre}}</td>\n            <td>{{itemAsistencia?.estado}}</td>\n          </tr>\n        </table>\n      </div>\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>"
 
 /***/ }),
 
@@ -11764,15 +11764,23 @@ let ReunionesService = class ReunionesService {
     /*********************************OBTENER LA REUNION ACTIVA***************************************/
     getReunionActiva() {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_reunion_bienestar/", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        return this._http.get(this.url + "traer_reunion_socio_sec", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
     }
     /*********************************OBTENER LA REUNION INACTIVA***************************************/
-    getReunionInactiva() {
+    getHistorialReunion() {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_reunion_inactiva/", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        return this._http.get(this.url + "traer_historial_reuniones_socio_sec", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    /*********************************OBTENER LA LISTA DE ASISTENCIA***************************************/
+    getListaAsistencia(id) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_lista_reunion_socio_sec/" + id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'
             }) });
@@ -15309,7 +15317,6 @@ let DetalleReunionComponent = class DetalleReunionComponent {
         config.keyboard = false;
     }
     ngOnInit() {
-        this.getDetalleReunion();
     }
     getDetalleReunion() {
         this._reunionesService.getReunionActiva().subscribe(response => {
@@ -15392,29 +15399,47 @@ let GeneralReunionComponent = class GeneralReunionComponent {
         this.modalService = modalService;
     }
     ngOnInit() {
+        this.getDetalleReunion();
+        this.getHistorialReuniones();
     }
     abrirModal(modalHistorial) {
         this.modalVariable = this.modalService.open(modalHistorial, { size: 'xl' });
     }
+    //OBTENER LA REUNIÓN ACTIVA
     getDetalleReunion() {
         this._reunionesService.getReunionActiva().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
-                alert(response.mensaje);
+                console.log("Reunión inactiva");
             }
             else {
-                this.datosReunion = response;
+                this.datosReunion = response.reunion;
+                console.log(this.datosReunion);
             }
         }, error => {
             console.log(error);
         });
     }
-    getUltimaReunion() {
-        this._reunionesService.getReunionInactiva().subscribe(response => {
+    getHistorialReuniones() {
+        this._reunionesService.getHistorialReunion().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
             }
             else {
-                this.datosReunionPasada = response;
+                this.datosReunionPasada = response.reuniones;
+                console.log(this.datosReunionPasada);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    getListaReunion(id) {
+        this._reunionesService.getListaAsistencia(id).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == "failed_v") {
+                alert(response.mensaje);
+            }
+            else {
+                this.datosAsistencias = response.lista;
+                console.log(this.datosAsistencias);
             }
         }, error => {
             console.log(error);
@@ -15471,10 +15496,9 @@ let HistorialDetalleReunionComponent = class HistorialDetalleReunionComponent {
         config.keyboard = false;
     }
     ngOnInit() {
-        this.getUltimaReunion();
     }
     getUltimaReunion() {
-        this._reunionesService.getReunionInactiva().subscribe(response => {
+        this._reunionesService.getHistorialReunion().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert('Ha ocurrido un error al traer la ultima reunión realizada');
             }

@@ -21,11 +21,10 @@ export class HistorialDetalleReunionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUltimaReunion();
   }
 
   getUltimaReunion(){
-    this._reunionesService.getReunionInactiva().subscribe(response => {
+    this._reunionesService.getHistorialReunion().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert('Ha ocurrido un error al traer la ultima reunión realizada');
       }else{

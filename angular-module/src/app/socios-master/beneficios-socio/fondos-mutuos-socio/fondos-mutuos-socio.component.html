@@ -141,6 +141,12 @@
                     {{ totalMesSolo?.mes_12 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
             </tr>
             <tr class="bg-primary text-white">
+              <th scope="row" class="text-center">Total acumulado año anterior</th>
+              <td class="text-center"></td>
+              <td class="text-center" class="text-center"></td>
+                <td class="text-center"><b>{{ datosAhorros?.acumulado | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+            </tr>
+            <tr class="bg-primary text-white">
               <th scope="row" class="text-center">Totales</th>
               <td class="text-center">
                 {{ totalesMensuales?.DS | currency:"CLP" : "symbol-narrow":'1.0' }}</td>

@@ -117,7 +117,11 @@
                 <td class="text-center" [ngClass]="{'text-primary': datosConsorcio?.mes_ds_12 > 0}">{{ totalMensual?.mes_12 | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
               </tr>
               <tr class="bg-primary text-white">
-                <th scope="row" class="text-center">Total Acumulado en el año: </th>
+                <th scope="row" class="text-center">Total Acumulado del año Anterior: </th>
+                <td colspan="3" class="text-center"><b>{{ datosConsorcio?.acumulado | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+              </tr>
+              <tr class="bg-primary text-white">
+                <th scope="row" class="text-center">Total Acumulado: </th>
                 <td colspan="3" class="text-center"><b>{{ totalConsorcio | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
               </tr>
             </tbody>

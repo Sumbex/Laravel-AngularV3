@@ -28,13 +28,13 @@ class CuentaConsorcioController extends Controller
     public function insertar(Request $r)
     {
       ///VALIDAR SI ESTA DESVINCULADO EL SOCIO/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-      /**/  $desv = DB::select("SELECT                                                                /**/
-      /**/                          concat(nombres,' ',a_paterno,' ',a_materno) nombre                /**/
-      /**/                      FROM socios where id = $r->socio_id and fecha_egreso is not null");   /**/
-      /**/  if (count($desv)>0) {                                                                     /**/
-      /**/      $nombre = $desv[0]->nombre;                                                           /**/
-      /**/      return ['estado' => 'failed', 'mensaje'=> $nombre.' se ha desvinculado'];             /**/
-      /**/  }                                                                                         /**/
+      /**/  //$desv = DB::select("SELECT                                                                /**/
+      /**/    //                      concat(nombres,' ',a_paterno,' ',a_materno) nombre                /**/
+      /**/     //                 FROM socios where id = $r->socio_id and fecha_egreso is not null");   /**/
+      /**/  //if (count($desv)>0) {                                                                     /**/
+      /**/    //  $nombre = $desv[0]->nombre;                                                           /**/
+      /**/    //  return ['estado' => 'failed', 'mensaje'=> $nombre.' se ha desvinculado'];             /**/
+      /**/  //}                                                                                         /**/
       /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
       // si no pues sigue su camino ->
@@ -337,7 +337,9 @@ class CuentaConsorcioController extends Controller
         $t_pb = CuentaConsorcio::listar_pago_beneficios($anio); // tabla desvinculados
 
         if ($t_pb != '') {
+           
             foreach ($t_pb as $key) {
+                
                 $ds = CuentaConsorcio::desvincular_sumar_totales($anio, $key->socio_id);
     
                  $key->monto_h = $ds->monto_h;
@@ -349,39 +351,88 @@ class CuentaConsorcioController extends Controller
 
     }
 
-    public function proximo_periodo($anio_actual, $anio_sig)
+
+
+    public function proximo_periodo($anio_actual /*, $anio_sig*/)
     {
-        $listar = CuentaConsorcio::tabla_consorcio($anio_actual);
+            try{
+                DB::beginTransaction();
 
-        $sum = 0;
-
-        if ($listar != '') {
-            foreach ($listar as $key) {
-                if ($key->vinculado == 'S' || $key->vinculado == 'N') {
-                    
-                  $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $anio_sig])->first();
-                  
-                  if ($cc) {
-                      
-                  }else{
-
-                     $ncc = new CuentaConsorcio;
-                     $ncc->socio_id = $key->socio_id;
-                     $ncc->vinculado = $key->vinculado;
-                     $ncc->total_anterior_socio = $key->acumulado_anterior_socio;
-                     $ncc->anio_id = $anio_sig;
-                     $ncc->save();
-                     $sum++;
-
-                  }
-                  //$monto_individual = $key["total_anterior_socio"];
-
-
+                $ano = DB::table("anio")->select([
+                    DB::raw("(CAST(coalesce(descripcion, '0') AS integer) + 1) anio_sig")
+                ])->where("id",$anio_actual)->first();
+              
+                $a = DB::table("anio")->select("id")->where("descripcion",$ano->anio_sig)->first();
+                if(!$a){
+                    return ['estado'=>'failed','mensaje'=>'El año siguiente no existe en la base de datos'];
                 }
-            }
 
+                $listar = CuentaConsorcio::tabla_consorcio($anio_actual);
+
+                $sum = 0;
+                $act_sum = 0;
+                
+                if ($listar != '') {
+                    foreach ($listar as $key) {
+                        if ($key->vinculado == 'S' || $key->vinculado == 'N') {
+                            
+                        //valido si exite ya el proximo periodo
+                        $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $a->id])->first();
+                        
+                        if ($cc) {
+                            // $cc->vinculado = $key->vinculado;
+                            $cc->acumulado_anterior_socio = $key->monto_total_socio;
+                            $cc->save();
+                            $act_sum++;
+                            DB::commit();
+                            
+                        }else{
+
+                            $ncc = new CuentaConsorcio;
+                            $ncc->socio_id = $key->socio_id;
+                            $ncc->vinculado = $key->vinculado;
+                            $ncc->acumulado_anterior_socio = $key->monto_total_socio;
+                            $ncc->anio_id = $a->id;
+                            $ncc->save();
+                            $sum++;
+                            DB::commit();
+
+                        }
+
+
+                        }
+                    }
+
+                    if ($sum > 0) {
+                        return ['estado'=>'success', 'mensaje'=>'Se calcularon '.$sum.' registro(s), calculos actualizados '.$act_sum];
+                    }
+                    if ($act_sum > 0) {
+                        return ['estado'=>'success', 'mensaje'=>'Se actualizaron '.$act_sum.' registro(s)'];
+                    }
+                    return ['estado'=>'failed', 'mensaje'=>'Error en pasar totales al proximo periodo'];
+                }
+                return ['estado'=>'failed', 'mensaje'=>'No se han encontrado datos en cuenta consorcio'];
+
+
+
+
+            
+            }catch(QueryException $e){
+                DB::rollBack();
+                return[
+                    'estado'  => 'failed', 
+                    'mensaje' => 'QEx: No se ha podido seguir con el proceso, intente nuevamente o verifique sus datos'
+                ];
+            }
+		catch(\Exception $e){
+                DB::rollBack();
+                return[
+                    'estado'  => 'failed', 
+                    'mensaje' => 'Ex: No se ha podido seguir con el proceso, intente nuevamente o verifique sus datos'
+                ];
+		}
           
-        }
+        
     }
 
    

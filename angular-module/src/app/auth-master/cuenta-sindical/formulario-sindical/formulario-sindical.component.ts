@@ -72,7 +72,7 @@ export class FormularioSindicalComponent implements OnInit {
       this._sindicalService.ingresarValor(this.datosSindicales).subscribe(
         response => {
           if(response.estado == "success"){
-            this.datosSindicales.fecha = '';
+            // this.datosSindicales.fecha = '';
             this.datosSindicales.nDocumento = '';
             this.datosSindicales.descripcion = '';
             this.datosSindicales.monto = null;

@@ -125,7 +125,7 @@ class SocioController extends Controller
                             case when u.rol = 10 then 'Portal Socio Asignado'
                                 when u.rol = 5 then 'Portal Administrativo y Socio Asignados'
                                 when u.rol = 1 then 'Portal Administrativo Asignado'
-                                else 'Nigun permiso asignado'
+                                else 'Ningun permiso asignado'
                             end as permiso
 
                             from socios s

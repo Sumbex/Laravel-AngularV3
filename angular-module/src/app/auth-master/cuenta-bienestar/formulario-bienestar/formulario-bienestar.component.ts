@@ -135,7 +135,7 @@ export class FormularioBienestarComponent implements OnInit {
       }
       if (response.estado == 'success') {
         this.InsertarCuentaBienestar.socioId = '0';
-        this.InsertarCuentaBienestar.fecha = '';
+        // this.InsertarCuentaBienestar.fecha = '';
         this.InsertarCuentaBienestar.tipo_cuenta_bienestar_id = '';
         this.InsertarCuentaBienestar.numero_documento_1 = '';
         this.InsertarCuentaBienestar.archivo_documento_1 = null;

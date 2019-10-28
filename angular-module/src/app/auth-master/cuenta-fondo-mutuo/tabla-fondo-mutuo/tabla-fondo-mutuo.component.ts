@@ -63,10 +63,10 @@ export class TablaFondoMutuoComponent implements OnInit {
   modalPagoBeneficio;
   tipoPago = 2;
   tipoRetiro = '0';
-  tipoPorc = '1';
+  tipoPorc = '';
   mesBeneficio;
   montoBeneficio;
-  montoFinal;
+  montoFinal = '0';
   socioPB;
   actualizarLoad = false;
   actualizarLoad2 = false;
@@ -74,6 +74,13 @@ export class TablaFondoMutuoComponent implements OnInit {
   descripcionDesc = '';
   ocultarDescripcion = true;
   blockLoad3 = true;
+
+  //calcular acumulado
+  modalAcumulado;
+  generar;
+  anioSig = '';
+  generarAcumulado;
+  actualizarLoad3 = false;
 
 
   constructor(
@@ -108,11 +115,23 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.modalPagoBeneficio.close();
   }
 
+  openAcumulado(Acumulado) {
+    this.modalAcumulado = this.modalService.open(Acumulado, { size: 'sm' });
+    // this.socioDesvinculado();
+    this.usuario_logeado();
+  }
+
+  cerrarAcumulado() {
+    this.modalAcumulado.close();
+    this.anioSig='';
+  }
+
+
   limpiarPagoBeneficio() {
-    this.tipoPorc = '1';
+    this.tipoPorc = '';
     this.tipoRetiro = '0';
     this.montoBeneficio = '';
-    this.montoFinal = '';
+    this.montoFinal = '0';
     this.socio = '0';
   }
 
@@ -120,7 +139,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.blockLoad2 = true;
     this._consorcioService.getTablaConsorcios(this.anio).subscribe(
       response => {
-        console.log(response);
         this.socios = response;
         this.contador--;
         if (this.contador == 0) {
@@ -135,7 +153,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalesMensuales(this.anio).subscribe(
       response => {
-        console.log(response);
         this.sociosMensual = response;
         this.contador--;
         if (this.contador == 0) {
@@ -150,7 +167,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     // this.blockLoad2 = true;
     this._consorcioService.getTablaConsorciosTotalAnual(this.anio).subscribe(
       response => {
-        console.log(response);
         this.sociosAnual = response;
         this.contador--;
         if (this.contador == 0) {
@@ -171,7 +187,6 @@ export class TablaFondoMutuoComponent implements OnInit {
     } else {
       this._consorcioService.getTablaConsorcio(this.anio, this.search).subscribe(
         response => {
-          console.log(response);
           this.socios = response;
           this.blockLoad = false;
 
@@ -269,7 +284,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       formData.append('estado', 'calcular_descuento_cc');
       var confirmar = this.confirmar();
 
-      if(confirmar == true){
+      if (confirmar == true) {
 
         this._validarusuario.validar_usuario(formData).subscribe((val) => {
 
@@ -316,13 +331,14 @@ export class TablaFondoMutuoComponent implements OnInit {
           }
 
         },
-        response => { console.log("POST call in error", response); }, () => {
-          console.log("The POST success.");
-        });
+          response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+          });
         return false;
-      }else{
+      } else {
         this.load = false;
         this.buttonStatus = false;
+        this.m_val.close();
       }
 
 
@@ -332,10 +348,10 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   }
 
-    confirmar() {
+  confirmar() {
     var r = confirm("¿ESTA SEGURO QUE DESEA GENERAR EL CALCULO MASIVO?");
     if (r == true) {
-     return true;
+      return true;
     } else {
       return false;
     }
@@ -371,15 +387,12 @@ export class TablaFondoMutuoComponent implements OnInit {
               this.actualizarLoad2 = false;
             }
             if (response.estado == 'success') {
-              this.socio = '';
-              this.tipoPorc = '1';
-              this.tipoRetiro = '0';
-              this.mesBeneficio = '';
-              this.montoBeneficio = '';
-              this.montoFinal = '';
               alert(response.mensaje);
+              this.limpiarPagoBeneficio();
+              this.mesBeneficio = '';
               this.actualizarLoad2 = false;
               this.modalPagoBeneficio.close();
+              document.getElementById('refrescarTabla2').click();
             }
           },
             error => {
@@ -444,6 +457,66 @@ export class TablaFondoMutuoComponent implements OnInit {
         return false;
       }
     );
+  }
+
+  acumuladoSiguienteAnio(validar) {
+    this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
+
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
+      formData.append('estado', 'aplicar_descuento_cc');
+
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+        //si tiene acceso
+        if (val > 0) {
+
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+
+          this.actualizarLoad3 = true;
+          this._consorcioService.acumulado_siguiente_anio(this.anio).subscribe((response) => {
+            if (response.estado == 'failed') {
+              alert(response.mensaje);
+              this.actualizarLoad3 = false;
+            }
+            if (response.estado == 'success') {
+              alert(response.mensaje);
+              this.actualizarLoad3 = false;
+              this.modalAcumulado.close();
+              // document.getElementById('refrescarTabla2').click();
+            }
+          },
+            error => {
+              console.log(error);
+            }
+          );
+
+        } else {
+          alert("Acceso denegado");
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+          return false;
+        }
+
+      }, response => { console.log("POST call in error", response); }, () => {
+        console.log("The POST success.");
+      });
+      return false;
+
+
+    }, (reason) => {
+      console.log(`${reason}`);
+    });
   }
 
 }

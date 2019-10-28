@@ -85,7 +85,7 @@ export class FallecimientoBienestarComponent implements OnInit {
         return false;
       }
       if (response.estado == 'success') {
-        this.InsertarFallecimiento.fecha = '';
+        // this.InsertarFallecimiento.fecha = '';
         this.InsertarFallecimiento.numero_documento_1 = '';
         this.InsertarFallecimiento.archivo_documento_1 = null;
         this.InsertarFallecimiento.archivo_documento_2 = null;

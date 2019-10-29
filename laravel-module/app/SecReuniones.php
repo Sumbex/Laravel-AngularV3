@@ -7,6 +7,7 @@ use App\SecAsistencia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 class SecReuniones extends Model
 {

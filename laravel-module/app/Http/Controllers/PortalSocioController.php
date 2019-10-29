@@ -215,6 +215,11 @@ class PortalSocioController extends Controller
     {
         return PortalSocioJustificar::justificarSocio($request);
     }
+
+    public function TraerJustificacionSocio($reunion_id)
+    {
+        return PortalSocioJustificar::traerJustificacionSocio($reunion_id);
+    }
     //------reunion 
 
     //--------------------------------------------------------------------------------

@@ -107,4 +107,26 @@ class PortalSocioJustificar extends Model
             return $verificarSocio;
         }
     }
+
+    protected function traerJustificacionSocio($reunion_id)
+    {
+        $justificacion = DB::table('sec_justificacion')
+            ->select([
+                'id',
+                'descripcion',
+                'tipo_justificacion_id as tipo'
+            ])
+            ->where([
+                'activo' => 'S',
+                'reunion_id' => $reunion_id,
+                'socio_id' => $this->socioID()
+            ])
+            ->get();
+
+        if (!$justificacion->isEmpty()) {
+            return ['estado' => 'success', 'justificacion' => $justificacion[0]];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existe una justificacion ingresada.'];
+        }
+    }
 }

@@ -13,15 +13,26 @@ export class ReunionesService{
     }
 
     //*********************INSERTAR DATOS DE JUSTIFICACION*************************/
-    setDatosJustificacion(form) : Observable<any>{
+    setDatosJustificacion(idReunion, mensaje, idMotivo) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('input', form.mensaje);
-        body.append('nombre_campo', form.motivo);
+        body.append('reunion_id', idReunion)
+        body.append('descripcion', mensaje);
+        body.append('tipo', idMotivo);
 
-        return this._http.post(this.url + "ingresar_justificacion",body, {headers: new HttpHeaders(
+        return this._http.post(this.url + "ingresar_justificacion_socio_sec",body, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    getDatosJustificacion(idReunion) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_justificacion_socio_act_sec/" + idReunion, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
             }
         )});
     }

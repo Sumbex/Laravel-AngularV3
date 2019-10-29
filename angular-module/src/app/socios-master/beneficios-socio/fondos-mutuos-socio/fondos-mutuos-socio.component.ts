@@ -66,7 +66,7 @@ export class FondosMutuosSocioComponent implements OnInit {
     this.cargandoTabla = true;
     this._bienestarService.getAhorrosSocio(this.idAnioActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        /* alert(response.mensaje); */
         this.cargandoTabla = false;
       }else{
         this.datosAhorros = response.ahorro[0];

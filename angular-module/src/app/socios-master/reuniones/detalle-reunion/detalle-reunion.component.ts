@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReunionesService } from 'src/app/servicios/reuniones.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-detalle-reunion',
@@ -19,7 +20,7 @@ export class DetalleReunionComponent implements OnInit {
   loadingEnvio = false;
 
   //variable para alojar los datos del mensaje
-  datosReunion;
+   @Input() datoReunion;
 
   //variable para asociar al modal
   modalDetalleMensaje;
@@ -32,23 +33,11 @@ export class DetalleReunionComponent implements OnInit {
   ngOnInit() {
   }
 
-  getDetalleReunion(){
-    this._reunionesService.getReunionActiva().subscribe(response => {
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
-      }else{
-        this.datosReunion = response;
-      }
-    }, error => {
-      console.log(error);
-    });
-  }
-
   enviarJustificacion(){
-    console.log("los datos a enviar son los siguientes: " +  this.motivoInasistencia.mensaje + this.motivoInasistencia.motivo);
     this.loadingEnvio = true;
-    this._reunionesService.setDatosJustificacion(this.motivoInasistencia).subscribe(response =>{
+    this._reunionesService.setDatosJustificacion(this.datoReunion.id, this.motivoInasistencia.mensaje, this.motivoInasistencia.motivo).subscribe(response =>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
+        this.loadingEnvio = false;
         alert(response.mensaje);
       }else{
         this.loadingEnvio = false;
@@ -60,9 +49,22 @@ export class DetalleReunionComponent implements OnInit {
     });
   }
 
+  getDatosJustificacion(){
+    this._reunionesService.getDatosJustificacion(this.datoReunion.id).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        //alert(response.mensaje);
+      }else{
+        this.motivoInasistencia.mensaje = response.justificacion.descripcion;
+        this.motivoInasistencia.motivo = response.justificacion.tipo;
+      }
+    },error=>{
+      console.log(error);
+    });
+  }
+
   abrirModalDetalleMensaje(cajaChicaModal) {
     this.modalDetalleMensaje = this.modalService.open(cajaChicaModal, { size: 'xl' });
-    this.getDetalleReunion();
+    this.getDatosJustificacion();
   }
 
 }

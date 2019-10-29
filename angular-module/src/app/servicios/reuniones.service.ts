@@ -27,9 +27,9 @@ export class ReunionesService{
         )});
     }
 
-    getDatosJustificacion() : Observable<any>{
+    getDatosJustificacion(idReunion) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_justificacion_socio_sec", {headers: new HttpHeaders(
+        return this._http.get(this.url + "traer_justificacion_socio_act_sec/" + idReunion, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'applcation/json'

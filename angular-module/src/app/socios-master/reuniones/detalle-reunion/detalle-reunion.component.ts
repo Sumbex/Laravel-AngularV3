@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReunionesService } from 'src/app/servicios/reuniones.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-detalle-reunion',
@@ -49,12 +50,12 @@ export class DetalleReunionComponent implements OnInit {
   }
 
   getDatosJustificacion(){
-    this._reunionesService.getDatosJustificacion().subscribe(response => {
+    this._reunionesService.getDatosJustificacion(this.datoReunion.id).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        //alert(response.mensaje);
       }else{
-        this.motivoInasistencia.mensaje = response;
-        this.motivoInasistencia.motivo = response;
+        this.motivoInasistencia.mensaje = response.justificacion.descripcion;
+        this.motivoInasistencia.motivo = response.justificacion.tipo;
       }
     },error=>{
       console.log(error);
@@ -63,6 +64,7 @@ export class DetalleReunionComponent implements OnInit {
 
   abrirModalDetalleMensaje(cajaChicaModal) {
     this.modalDetalleMensaje = this.modalService.open(cajaChicaModal, { size: 'xl' });
+    this.getDatosJustificacion();
   }
 
 }

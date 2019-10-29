@@ -151,186 +151,187 @@ class DatosBasicosController extends Controller
 
     public function usuarios_con_permisos($rut, $estado)
     {
+        $usuarios = DB::table('permisos')->get();
 
       
         //este objeto tiene los permisos en todos los modulos administrativos (S/N)
-        $usuarios = [
-            [ //alejandro
-                'rut' => '188056520',
-                'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
-                'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
-                'modificar_cs' => 'S', // actualizar en cuenta sindical
-                'ingresar_total_camping' =>'S', //modal detalle camping input total camping
-                'modificar_detalle_camping' => 'S', // detalles de la tabla camping
-                'ingresar_socio' => 'S',
-                'modificar_socio' => 'S',
-                'ingresar_socio_beneficios' =>'S', // socio beneficios
-                'modificar_socio_beneficios' => 'S', //socio beneficios
-                'ingresar_cch' => 'S',
-                'modificar_cch' => 'S',
-                'ingresar_cb' => 'S',
-                'modificar_cb' => 'S',
-                'calcular_descuento_cc' => 'S',
-                'aplicar_descuento_cc' => 'S'
-            ], 
-            [ // david pass 1028
-                'rut' => '190523047',
-                'ingresar_cierre_inicio_mes' => 'S',
-                'ingresar_cs' => 'S',
-                'modificar_cs' => 'S',
-                'ingresar_total_camping' =>'S',
-                'modificar_detalle_camping' => 'S',
-                'ingresar_socio' => 'S',
-                'modificar_socio' => 'S',
-                'ingresar_socio_beneficios' =>'S', 
-                'modificar_socio_beneficios' => 'S',
-                'ingresar_cch' => 'S',
-                'modificar_cch' => 'S',
-                'ingresar_cb' => 'S',
-                'modificar_cb' => 'S',
-                'calcular_descuento_cc' => 'S',
-                'aplicar_descuento_cc' => 'S'
-            ], 
-            [ //bryan vidal
-                'rut' => '185227839',
-                'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
-                'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
-                'modificar_cs' => 'S', // actualizar en cuenta sindical
-                'ingresar_total_camping' =>'S', //modal detalle camping input total camping
-                'modificar_detalle_camping' => 'S', // detalles de la tabla camping
-                'ingresar_socio' => 'S',
-                'modificar_socio' => 'S',
-                'ingresar_socio_beneficios' =>'S', // socio beneficios
-                'modificar_socio_beneficios' => 'S', //socio beneficios
-                'ingresar_cch' => 'S',
-                'modificar_cch' => 'S',
-                'ingresar_cb' => 'S',
-                'modificar_cb' => 'S',
-                'calcular_descuento_cc' => 'S',
-                'aplicar_descuento_cc' => 'S'
-            ],
-            [ //bryan montecino
-                'rut' => '191107861',
-                'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
-                'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
-                'modificar_cs' => 'S', // actualizar en cuenta sindical
-                'ingresar_total_camping' =>'S', //modal detalle camping input total camping
-                'modificar_detalle_camping' => 'S', // detalles de la tabla camping
-                'ingresar_socio' => 'S',
-                'modificar_socio' => 'S',
-                'ingresar_socio_beneficios' =>'S', // socio beneficios
-                'modificar_socio_beneficios' => 'S', //socio beneficios
-                'ingresar_cch' => 'S',
-                'modificar_cch' => 'S',
-                'ingresar_cb' => 'S',
-                'modificar_cb' => 'S',
-                'calcular_descuento_cc' => 'S',
-                'aplicar_descuento_cc' => 'S'
-            ], 
-            [ // don emilio 
-                'rut' => '9508866k',
-                'ingresar_cierre_inicio_mes' => 'S',
-                'ingresar_cs' => 'S',
-                'modificar_cs' => 'S',
-                'ingresar_total_camping' =>'S',
-                'modificar_detalle_camping' => 'S',
-                'ingresar_socio' => 'S',
-                'modificar_socio' => 'S',
-                'ingresar_socio_beneficios' =>'S', 
-                'modificar_socio_beneficios' => 'S',
-                'ingresar_cch' => 'S',
-                'modificar_cch' => 'S',
-                'ingresar_cb' => 'S',
-                'modificar_cb' => 'S',
-                'calcular_descuento_cc' => 'S',
-                'aplicar_descuento_cc' => 'S'
-            ], 
-            [ // dña Oriana
-                'rut' => '81951845',
-                'ingresar_cierre_inicio_mes' => 'N',
-                'ingresar_cs' => 'S',
-                'modificar_cs' => 'N',
-                'ingresar_total_camping' =>'S',
-                'modificar_detalle_camping' => 'N',
-                'ingresar_socio' => 'S',
-                'modificar_socio' => 'S',
-                'ingresar_socio_beneficios' =>'S', 
-                'modificar_socio_beneficios' => 'S',
-                'ingresar_cch' => 'S',
-                'modificar_cch' => 'N',
-                'ingresar_cb' => 'S',
-                'modificar_cb' => 'N',
-                'calcular_descuento_cc' => 'N',
-                'aplicar_descuento_cc' => 'N'
-            ]
+        // $usuarios = [
+        //     [ //alejandro
+        //         'rut' => '188056520',
+        //         'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
+        //         'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
+        //         'modificar_cs' => 'S', // actualizar en cuenta sindical
+        //         'ingresar_total_camping' =>'S', //modal detalle camping input total camping
+        //         'modificar_detalle_camping' => 'S', // detalles de la tabla camping
+        //         'ingresar_socio' => 'S',
+        //         'modificar_socio' => 'S',
+        //         'ingresar_socio_beneficios' =>'S', // socio beneficios
+        //         'modificar_socio_beneficios' => 'S', //socio beneficios
+        //         'ingresar_cch' => 'S',
+        //         'modificar_cch' => 'S',
+        //         'ingresar_cb' => 'S',
+        //         'modificar_cb' => 'S',
+        //         'calcular_descuento_cc' => 'S',
+        //         'aplicar_descuento_cc' => 'S'
+        //     ], 
+        //     [ // david pass 1028
+        //         'rut' => '190523047',
+        //         'ingresar_cierre_inicio_mes' => 'S',
+        //         'ingresar_cs' => 'S',
+        //         'modificar_cs' => 'S',
+        //         'ingresar_total_camping' =>'S',
+        //         'modificar_detalle_camping' => 'S',
+        //         'ingresar_socio' => 'S',
+        //         'modificar_socio' => 'S',
+        //         'ingresar_socio_beneficios' =>'S', 
+        //         'modificar_socio_beneficios' => 'S',
+        //         'ingresar_cch' => 'S',
+        //         'modificar_cch' => 'S',
+        //         'ingresar_cb' => 'S',
+        //         'modificar_cb' => 'S',
+        //         'calcular_descuento_cc' => 'S',
+        //         'aplicar_descuento_cc' => 'S'
+        //     ], 
+        //     [ //bryan vidal
+        //         'rut' => '185227839',
+        //         'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
+        //         'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
+        //         'modificar_cs' => 'S', // actualizar en cuenta sindical
+        //         'ingresar_total_camping' =>'S', //modal detalle camping input total camping
+        //         'modificar_detalle_camping' => 'S', // detalles de la tabla camping
+        //         'ingresar_socio' => 'S',
+        //         'modificar_socio' => 'S',
+        //         'ingresar_socio_beneficios' =>'S', // socio beneficios
+        //         'modificar_socio_beneficios' => 'S', //socio beneficios
+        //         'ingresar_cch' => 'S',
+        //         'modificar_cch' => 'S',
+        //         'ingresar_cb' => 'S',
+        //         'modificar_cb' => 'S',
+        //         'calcular_descuento_cc' => 'S',
+        //         'aplicar_descuento_cc' => 'S'
+        //     ],
+        //     [ //bryan montecino
+        //         'rut' => '191107861',
+        //         'ingresar_cierre_inicio_mes' => 'S', // el inicio y cierre del mes
+        //         'ingresar_cs' => 'S', // ingre4sar item en cuenta sindical
+        //         'modificar_cs' => 'S', // actualizar en cuenta sindical
+        //         'ingresar_total_camping' =>'S', //modal detalle camping input total camping
+        //         'modificar_detalle_camping' => 'S', // detalles de la tabla camping
+        //         'ingresar_socio' => 'S',
+        //         'modificar_socio' => 'S',
+        //         'ingresar_socio_beneficios' =>'S', // socio beneficios
+        //         'modificar_socio_beneficios' => 'S', //socio beneficios
+        //         'ingresar_cch' => 'S',
+        //         'modificar_cch' => 'S',
+        //         'ingresar_cb' => 'S',
+        //         'modificar_cb' => 'S',
+        //         'calcular_descuento_cc' => 'S',
+        //         'aplicar_descuento_cc' => 'S'
+        //     ], 
+        //     [ // don emilio 
+        //         'rut' => '9508866k',
+        //         'ingresar_cierre_inicio_mes' => 'S',
+        //         'ingresar_cs' => 'S',
+        //         'modificar_cs' => 'S',
+        //         'ingresar_total_camping' =>'S',
+        //         'modificar_detalle_camping' => 'S',
+        //         'ingresar_socio' => 'S',
+        //         'modificar_socio' => 'S',
+        //         'ingresar_socio_beneficios' =>'S', 
+        //         'modificar_socio_beneficios' => 'S',
+        //         'ingresar_cch' => 'S',
+        //         'modificar_cch' => 'S',
+        //         'ingresar_cb' => 'S',
+        //         'modificar_cb' => 'S',
+        //         'calcular_descuento_cc' => 'S',
+        //         'aplicar_descuento_cc' => 'S'
+        //     ], 
+        //     [ // dña Oriana
+        //         'rut' => '81951845',
+        //         'ingresar_cierre_inicio_mes' => 'N',
+        //         'ingresar_cs' => 'S',
+        //         'modificar_cs' => 'N',
+        //         'ingresar_total_camping' =>'S',
+        //         'modificar_detalle_camping' => 'N',
+        //         'ingresar_socio' => 'S',
+        //         'modificar_socio' => 'S',
+        //         'ingresar_socio_beneficios' =>'S', 
+        //         'modificar_socio_beneficios' => 'S',
+        //         'ingresar_cch' => 'S',
+        //         'modificar_cch' => 'N',
+        //         'ingresar_cb' => 'S',
+        //         'modificar_cb' => 'N',
+        //         'calcular_descuento_cc' => 'N',
+        //         'aplicar_descuento_cc' => 'N'
+        //     ]
              
-        ];
+        // ];
 
 
 
         foreach ($usuarios as $u) {
             
-            if ($u['rut'] == $rut) {
+            if ($u->rut == $rut) {
 
                 switch ($estado) {
                     case 'ingresar_cs':
-                        return ($u['ingresar_cs']=='S')? true:false;
+                        return ($u->ingresar_cs =='S')? true:false;
                     break;
                     case 'modificar_cs':
-                        return ($u['modificar_cs']=='S')? true:false;
+                        return ($u->modificar_cs =='S')? true:false;
                     break;
                     case 'ingresar_cierre_inicio_mes':
                     
-                        return ($u['ingresar_cierre_inicio_mes']=='S')? true:false;
+                        return ($u->ingresar_cierre_inicio_mes =='S')? true:false;
                     break;
                     case 'ingresar_total_camping':
                     
-                        return ($u['ingresar_total_camping']=='S')? true:false;
+                        return ($u->ingresar_total_camping =='S')? true:false;
                     break;
                     case 'modificar_detalle_camping':
                     
-                        return ($u['modificar_detalle_camping']=='S')? true:false;
+                        return ($u->modificar_detalle_camping =='S')? true:false;
                     break;
                     case 'ingresar_socio':
                     
-                        return ($u['ingresar_socio']=='S')? true:false;
+                        return ($u->ingresar_socio =='S')? true:false;
                     break;
                     case 'modificar_socio':
                     
-                        return ($u['modificar_socio']=='S')? true:false;
+                        return ($u->modificar_socio =='S')? true:false;
                     break;
                     case 'ingresar_socio_beneficios':
                     
-                        return ($u['ingresar_socio_beneficios']=='S')? true:false;
+                        return ($u->ingresar_socio_beneficios =='S')? true:false;
                     break;
                     case 'modificar_socio_beneficios':
                     
-                        return ($u['modificar_socio_beneficios']=='S')? true:false;
+                        return ($u->modificar_socio_beneficios =='S')? true:false;
                     break;
                     case 'ingresar_cch':
                     
-                        return ($u['ingresar_cch']=='S')? true:false;
+                        return ($u->ingresar_cch =='S')? true:false;
                     break;
                     case 'modificar_cch':
                     
-                        return ($u['modificar_cch']=='S')? true:false;
+                        return ($u->modificar_cch =='S')? true:false;
                     break;
                     case 'ingresar_cb':
                     
-                        return ($u['ingresar_cb']=='S')? true:false;
+                        return ($u->ingresar_cb =='S')? true:false;
                     break;
                     case 'modificar_cb':
                     
-                        return ($u['modificar_cb']=='S')? true:false;
+                        return ($u->modificar_cb =='S')? true:false;
                     break;
 
                     case 'calcular_descuento_cc':
                     
-                        return ($u['calcular_descuento_cc']=='S')? true:false;
+                        return ($u->calcular_descuento_cc =='S')? true:false;
                     break;
                     case 'aplicar_descuento_cc':
                     
-                        return ($u['aplicar_descuento_cc']=='S')? true:false;
+                        return ($u->aplicar_descuento_cc =='S')? true:false;
                     break;
                     
                     default:

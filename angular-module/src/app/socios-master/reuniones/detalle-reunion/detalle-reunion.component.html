@@ -14,10 +14,10 @@
         <div class="row">
           <div class="col-md-12 mt-2">
             <div class="card card-body">
-              <legend>Reunión preparada para el 20.20.20</legend>
+              <legend>Reunión para el {{datoReunion?.fecha_inicio}}</legend>
               <h6 class="text-muted">Tema a Tratar:</h6>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit? Rem consequatur, omnis similique, recusandae earum officia quae quia nobis iure unde assumenda maxime, sequi placeat ea voluptates ipsam ratione!Quas vel non explicabo. Velit, a. Quasi fuga facere corporis sed corrupti dolor distinctio ipsa voluptates, nisi ducimus voluptatibus, maxime ut, ullam laborum. Delectus eum pariatur ea harum et labore.</p>
-              <h6 class="text-muted">Reunión organizada por: Bryan Vidal Díaz</h6>
+              <p>{{datoReunion?.descripcion}}</p>
+              <h6 class="text-muted">Reunión organizada por: {{datoReunion?.creada_por}}</h6>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
   <!-- Cuerpo del Modal -->
   <div class="modal-body">
     <div class="container">
-      <h3 class="text-center">Justifiación para la reunión del 10-10-19</h3>
+      <h3 class="text-center">Justificación para la reunión del 10-10-19</h3>
       <p class="mt-2">
         <ngb-alert [dismissible]="false">
           <strong>¡Advertencia!</strong> Escriba un mensaje detallando el motivo de su inasistencia y seleccione el
@@ -82,7 +82,7 @@
                   </div>
                     <div class="row">
                     <div class="col-sm-12">
-                      <div class="form-check">
+                      <div *ngIf="datoReunion?.tipo_id == 1" class="form-check">
                         <input name="motivo" #motivo="ngModel"
                         [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked>
                         <label class="form-check-label" for="gridRadios1">
@@ -103,14 +103,14 @@
                           Licencia
                         </label>
                       </div>
-                      <div class="form-check">
+                      <div *ngIf="datoReunion?.tipo_id == 1" class="form-check">
                         <input name="motivo" #motivo="ngModel"
                         [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="4">
                         <label class="form-check-label" for="gridRadios4">
                           Estudio
                         </label>
                       </div>
-                      <div class="form-check">
+                      <div *ngIf="datoReunion?.tipo_id == 1" class="form-check">
                         <input name="motivo" #motivo="ngModel"
                         [(ngModel)]="motivoInasistencia.motivo" class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="5">
                         <label class="form-check-label" for="gridRadios5">

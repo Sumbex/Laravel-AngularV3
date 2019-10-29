@@ -12,7 +12,7 @@
         <h3 class="text-center"><i class="fas fa-bell"></i> Reunión Vigente</h3>
         <h6 class="card-subtitle mb-2 text-muted text-center">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>
         <div>
-          <app-detalle-reunion></app-detalle-reunion>
+          <app-detalle-reunion [datoReunion]="datosReunion"></app-detalle-reunion>
         </div>
       </div>
     </div>
@@ -42,8 +42,8 @@
             </tr>
           </thead>
             <tr *ngFor="let itemHistorial of datosReunionPasada">
-              <td class="text-center"><b>{{datosReunion?.titulo}}</b></td>
-              <td class="text-center"><b>{{datosReunion?.fecha_inicio}}</b></td>
+              <td class="text-center"><b>{{itemHistorial?.titulo}}</b></td>
+              <td class="text-center"><b>{{itemHistorial?.fecha_inicio}}</b></td>
               <td class="text-center"><button (click)="abrirModal(detalle)" class="btn btn-dark">Detalle de la Reunión</button></td>
               <!-- ******************DETALLE DE LA REUNIÓN******************* -->
               <ng-template #detalle let-modal>
@@ -62,10 +62,10 @@
                       <div class="row">
                         <div class="col-md-12 mt-2">
                           <div class="card card-body">
-                            <legend>Reunión realizada el {{datosReunion?.fecha_inicio}}</legend>
+                            <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>
                             <h6 class="text-muted">Tema a Tratar:</h6>
-                            <p>{{datosReunion?.descripcion}}</p>
-                            <h6 class="text-muted">Reunión organizada por: {{datosReunion?.creada_por}}</h6>
+                            <p>{{itemHistorial?.descripcion}}</p>
+                            <h6 class="text-muted">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>
                           </div>
                         </div>
                       </div>
@@ -78,7 +78,7 @@
                         class="far fa-arrow-alt-circle-left"></i> Volver</button>
                   </div>
                 </ng-template>
-              <td class="text-center"><button (click)="getListaReunion(datosReunion?.id); abrirModal(inasistencias)" class="btn btn-dark">Inasistencias</button></td>
+              <td class="text-center"><button (click)="getListaReunion(itemHistorial?.id); abrirModal(inasistencias)" class="btn btn-dark">Inasistencias</button></td>
             </tr>
           </table>
         </div>

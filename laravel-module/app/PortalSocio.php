@@ -392,6 +392,29 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
 
+    protected function limpiarRut($rut)
+    {
+        $rut = str_replace('á', 'a', $rut);
+        $rut = str_replace('Á', 'A', $rut);
+        $rut = str_replace('é', 'e', $rut);
+        $rut = str_replace('É', 'E', $rut);
+        $rut = str_replace('í', 'i', $rut);
+        $rut = str_replace('Í', 'I', $rut);
+        $rut = str_replace('ó', 'o', $rut);
+        $rut = str_replace('Ó', 'O', $rut);
+        $rut = str_replace('Ú', 'U', $rut);
+        $rut = str_replace('ú', 'u', $rut);
+
+        //Quitando Caracteres Especiales 
+        $rut = str_replace('"', '', $rut);
+        $rut = str_replace(':', '', $rut);
+        $rut = str_replace('.', '', $rut);
+        $rut = str_replace(',', '', $rut);
+        $rut = str_replace(';', '', $rut);
+        $rut = str_replace('-', '', $rut);
+        return $rut;
+    }
+
     protected function socioLogeado()
     {
         /* dd(Auth::guard()->user()); */
@@ -846,11 +869,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
             if ($verificar['estado'] == 'success') {
                 $validarDatos = $this->validarDatos($request, 4);
                 if ($validarDatos['estado'] == 'success') {
-                    $validarRut = $this->validarRut($request->rut);
+                    $limpiar = $this->limpiarRut($request->rut);
+                    $validarRut = $this->validarRut($limpiar);
                     if ($validarRut == true) {
                         $conyuge = new SocioConyuge;
                         $conyuge->socio_id = $this->socioLogeado()->id;
-                        $conyuge->rut = $request->rut;
+                        $conyuge->rut = $limpiar;
                         $conyuge->fecha_nacimiento = $request->fecha_nacimiento;
                         $conyuge->nombres = $request->nombres;
                         $conyuge->apellido_paterno = $request->apellido_paterno;
@@ -973,16 +997,17 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 5);
             if ($validarDatos['estado'] == 'success') {
-                $validarRut = $this->validarRut($request->rut);
+                $limpiar = $this->limpiarRut($request->rut);
+                $validarRut = $this->validarRut($limpiar);
                 if ($validarRut == true) {
-                    $tienesDatos = $this->verificarBeneficiarioIngresado($request->rut);
+                    $tienesDatos = $this->verificarBeneficiarioIngresado($limpiar);
                     if ($tienesDatos['estado'] == 'failed') {
                         $prioridad = $this->verificarPrioridadBeneficiario($request->prioritario);
                         if ($prioridad['estado'] == 'failed') {
                             $beneficiario = new SocioBeneficiario;
                             $beneficiario->socio_id = $this->socioLogeado()->id;
                             $beneficiario->relacion = $request->relacion;
-                            $beneficiario->rut = $request->rut;
+                            $beneficiario->rut = $limpiar;
                             $beneficiario->fecha_nacimiento = $request->fecha_nacimiento;
                             $beneficiario->nombres = $request->nombres;
                             $beneficiario->apellido_paterno = $request->apellido_paterno;
@@ -1089,17 +1114,18 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 8);
             if ($validarDatos['estado'] == 'success') {
-                $validarRut = $this->validarRut($request->rut);
+                $limpiar = $this->limpiarRut($request->rut);
+                $validarRut = $this->validarRut($limpiar);
                 if ($validarRut == true) {
-                    $existe = $this->verificarCargaIngresada($request->rut);
+                    $existe = $this->verificarCargaIngresada($limpiar);
                     if ($existe['estado'] == 'success') {
                         if ($request->tipo_carga_id == 5) {
-                            $conyuge = $this->verificarConyuge($request->rut);
+                            $conyuge = $this->verificarConyuge($limpiar);
                             if ($conyuge['estado'] == 'success') {
                                 $carga = new SocioCarga;
                                 $carga->socio_id = $this->socioLogeado()->id;
                                 $carga->tipo_carga_id = $request->tipo_carga_id;
-                                $carga->rut = $request->rut;
+                                $carga->rut = $limpiar;
                                 $carga->fecha_nacimiento = $request->fecha_nacimiento;
                                 $carga->nombres = $request->nombres;
                                 $carga->apellido_paterno = $request->apellido_paterno;
@@ -1129,7 +1155,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                 $carga = new SocioCarga;
                                 $carga->socio_id = $this->socioLogeado()->id;
                                 $carga->tipo_carga_id = $request->tipo_carga_id;
-                                $carga->rut = $request->rut;
+                                $carga->rut = $limpiar;
                                 $carga->fecha_nacimiento = $request->fecha_nacimiento;
                                 $carga->nombres = $request->nombres;
                                 $carga->apellido_paterno = $request->apellido_paterno;
@@ -1241,16 +1267,17 @@ class PortalSocio extends Authenticatable implements JWTSubject
         if ($verificar['estado'] == 'success') {
             $validarDatos = $this->validarDatos($request, 7);
             if ($validarDatos['estado'] == 'success') {
-                $validarRut = $this->validarRut($request->rut);
+                $limpiar = $this->limpiarRut($request->rut);
+                $validarRut = $this->validarRut($limpiar);
                 if ($validarRut == true) {
                     $tienesDatos = $this->verificarRelacionIngresada($request->relacion_socio_id);
                     if ($tienesDatos['estado'] == 'failed') {
-                        $existe = $this->verificarPadreSuegroIngresado($request->rut);
+                        $existe = $this->verificarPadreSuegroIngresado($limpiar);
                         if ($existe['estado'] == 'success') {
                             $PS = new SocioPadresSuegros;
                             $PS->socio_id = $this->socioLogeado()->id;
                             $PS->relacion_socio_id = $request->relacion_socio_id;
-                            $PS->rut = $request->rut;
+                            $PS->rut = $limpiar;
                             $PS->fecha_nacimiento = $request->fecha_nacimiento;
                             $PS->nombres = $request->nombres;
                             $PS->apellido_paterno = $request->apellido_paterno;

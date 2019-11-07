@@ -64,6 +64,8 @@ export class FormularioFondoMutuoComponent implements OnInit {
   verDescDespido = false;
   verDescFallecimiento = false;
 
+  buscarActivo = false;
+
   constructor(
     private _time: AniosService,
     public _validarusuario: ValidarUsuarioService,
@@ -96,6 +98,7 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   filtrar() {
 
+    this.buscarActivo = true;
     this.blockLoad = true;
     if (this.search == '') {
       alert("Ingrese un nombre para filtrar");
@@ -170,42 +173,50 @@ export class FormularioFondoMutuoComponent implements OnInit {
 
   }
 
-  insertar_consorcio(id, anio, mes, tipo_consorcio, monto) {
-    if (id == '') {
-      alert('ingrese los datos obligatorios (*)');
-      return false;
-    }
-    this.blockIngreso = true;
-    const data = new FormData();
-    data.append('socio_id', id);
-    data.append('anio_id', anio);
-    data.append('mes_id', mes);
-    data.append('tipo_consorcio', tipo_consorcio.value);
-    data.append('monto', monto.value);
+  insertar_consorcio(id, anio, mes, tipo_consorcio, monto) 
+  {
+      if (id == '') {
+        alert('ingrese los datos obligatorios (*)');
+        return false;
+      }
+      this.blockIngreso = true;
+      const data = new FormData();
+      data.append('socio_id', id);
+      data.append('anio_id', anio);
+      data.append('mes_id', mes);
+      data.append('tipo_consorcio', tipo_consorcio.value);
+      data.append('monto', monto.value);
 
-    this._consorcioService.insertar_consorcio(data).subscribe((response) => {
-      if (response.estado == 'failed') {
-        alert(response.mensaje);
-        this.blockIngreso = false;
-        return false;
-      }
-      if (response.estado == 'success') {
-        id = '';
-        anio = '';
-        mes = '';
-        monto.value = '';
-        alert(response.mensaje);
-        this.blockIngreso = false;
-        document.getElementById('refrescarTabla').click();
-        return false;
-      }
-    },
-      error => {
-        console.log(error);
-        this.blockIngreso = false;
-        return false;
-      }
-    );
+      this._consorcioService.insertar_consorcio(data).subscribe((response) => {
+        if (response.estado == 'failed') {
+          alert(response.mensaje);
+          this.blockIngreso = false;
+          return false;
+        }
+        if (response.estado == 'success') {
+          id = '';
+          anio = '';
+          mes = '';
+          monto.value = '';
+          alert(response.mensaje);
+          this.blockIngreso = false;
+          if(this.buscarActivo == false){
+          document.getElementById('refrescarTabla').click();
+          }else{
+            this.filtrar();
+          }
+          return false;
+        }
+      },
+        error => {
+          console.log(error);
+          this.blockIngreso = false;
+          return false;
+        }
+      );
+
+
+
   }
 
 }

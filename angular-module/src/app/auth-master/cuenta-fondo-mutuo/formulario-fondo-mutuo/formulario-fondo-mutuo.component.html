@@ -164,13 +164,13 @@
             </td>
 
             <td colspan="2">
-              <select (change)="btn_reload()" [(ngModel)]="anio" class="form-control form-control-sm">
+              <select [(ngModel)]="anio" class="form-control form-control-sm">
                   &nbsp;<option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>&nbsp;
               </select>
             </td>
 
             <td colspan="1">
-              <select (change)="btn_reload()" [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
+              <select [(ngModel)]="mes" class="form-control form-control-sm" #selectOptionMes>
                 <option *ngFor="let mes of meses" [value]="mes.id">{{mes.descripcion}}</option>
               </select>
             </td>
@@ -182,7 +182,7 @@
             </td>
 
             <td colspan="2">
-              <button id="refrescarTabla" (click)="listar(); search=''; blockLoad2=true; "
+              <button id="refrescarTabla" (click)="listar(); search=''; blockLoad2=true; buscarActivo=false;"
                 class="btn btn-secondary btn-sm">
                 REFRESCAR &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
                 <img [hidden]="!blockLoad2" height="15"

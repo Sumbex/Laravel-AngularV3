@@ -33,6 +33,8 @@ Route::get('traer_cierre_monto_detalle_camping_cs/{anio}/{mes}','CsDetalleCampin
 
 Route::get('listar_interes_prestamo/{anio}/{mes}','CuentaSindicatoController@listar_interes_prestamo');
 
+Route::post('guardar_detalle_gasto_operacional','GastoOperacionalController@guardar');
+Route::post('listar_detalle_gasto_operacional','GastoOperacionalController@listar');
 //-------------------------------------------------------------------------------------------------
 
 //PRESTAMO-----------------------------------------------------

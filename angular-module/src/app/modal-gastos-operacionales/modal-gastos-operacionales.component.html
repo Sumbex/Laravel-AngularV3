@@ -1,0 +1,203 @@
+<ng-template #gastosOperacionales let-modal>
+
+  <!--Cabezal del modal caja chica-->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Gastos Operacionales</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!--Cuerpo del body caja chica-->
+  <div class="modal-body">
+    <div class="modal-header" id="demoFont2">
+      <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
+    </div>
+
+    <div class="card">
+      <form #loginForm="ngForm" (ngSubmit)="ingresarValor(loginForm)" enctype="multipart/form-data">
+        <div class="row centrarCajaChica">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">Fecha</label>
+              <input class="form-control" type="date" name="fecha" #fecha="ngModel" [(ngModel)]="datosFormulario.fecha">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">Detalle</label>
+              <input class="form-control" type="text" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="datosFormulario.descripcion">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">Monto</label>
+              <input class="form-control" type="number" name="monto" #monto="ngModel"
+                [(ngModel)]="datosFormulario.monto">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">Numero Documento</label>
+              <input class="form-control" type="text" name="numero_documento" #numero_documento="ngModel"
+                [(ngModel)]="datosFormulario.numero_documento">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">Comprobante</label>
+              <input class="form-control-file" type="file" (change)="onSelectImage($event)">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">Seleccione Tipo</label>
+              <select class="form-control" name="definicion" #definicion="ngModel"
+                [(ngModel)]="datosFormulario.definicion">
+                <option value="1">Egreso</option>
+                <option value="2">Ingreso</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Ingresar</button>
+      </form>
+    </div>
+
+    <div class="row mt-4">
+      <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> Informativo!</strong> Si desea edita un valor de
+          la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe
+          de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>
+      </ngb-alert>
+
+      <div class="col-md-3">
+        <label for="">Filtro por Año</label>
+        <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+          class="form-control form-control-sm">
+          <option *ngFor="let anio of selectMes" [value]="anio.id">{{anio.descripcion}}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="">Filtro por Mes</label>
+        <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
+          class="form-control form-control-sm">
+          <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="">Recargar Tabla</label><br>
+        <button class="btn btn-success">Actualizar</button>
+      </div>
+
+    </div>
+
+    <br>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
+        <thead text-sm class="text-center">
+          <tr>
+            <th colspan="11" class="ColorThCS">Tabla caja chica</th>
+            <th colspan="2" class="ColorThCS">Monto Inicial</th>
+            <td colspan="2"><strong>{{ datosCajaChica?.monto_inicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th colspan="2">N° de Doc</th>
+            <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="3"><i class="fas fa-file-signature"></i> Detalle</th>
+            <th colspan="2"><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th colspan="2"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <th colspan="2"><i class="fas fa-dollar-sign"></i> Actual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datosCajaChica?.caja" class="text-center">
+            <td colspan="2"><b>{{item?.fecha}}</b></td>
+            <td colspan="2"><b>{{item?.numero_documento}}</b></td>
+
+
+            <!--MODAL VISOR PDF-->
+            <ng-template #visor let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
+                  <div class="modal-header text-center" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="100%" height="500px" [src]="  '../' + item.archivo_documento | safeUrl"
+                      frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <!--MODAL VISOR PDF-->
+
+            <td colspan="2">
+              <a (click)="openPDF(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
+                  ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
+            </td>
+
+
+
+            <td colspan="3"><b>{{item.descripcion}}</b>
+            </td>
+            <td colspan="2"><b>{{item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2">
+              <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          </tr>
+          <tr>
+            <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i> Total Cierre del Mes</th>
+            <td scope="col" class="text-center">
+              <b>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+          </tr>
+          <br>
+          <!--Tabla del total Modal Caja Chica-->
+          <tr>
+            <th colspan="9" class="text-right"><i class="fas fa-plus-circle"></i>
+              INGRESOS</th>
+            <td colspan="3" class="text-center">
+              <strong>{{ totalesCajaChica?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+          </tr>
+
+          <tr>
+            <th colspan="9" class="text-right"><i class="fas fa-minus-circle"></i>
+              EGRESOS</th>
+            <td colspan="3" class="text-center">
+              <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+          </tr>
+          <tr>
+            <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
+              CIERRE DEL MES</th>
+            <td colspan="3" class="text-center">
+              <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <!--Boton para salir del modal caja chica-->
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver a Cuentas</button>
+  </div>
+
+</ng-template>
+
+
+<button class="btn btn btn-success btn-block btn-sm mt-4" (click)="openModal(gastosOperacionales)">Gastos
+  Operacionales</button>

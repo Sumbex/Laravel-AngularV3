@@ -56,8 +56,8 @@
               <label for="">Seleccione Tipo</label>
               <select class="form-control" name="definicion" #definicion="ngModel"
                 [(ngModel)]="datosFormulario.definicion">
-                <option value="1">Egreso</option>
-                <option value="2">Ingreso</option>
+                <option value="2">Egreso</option>
+                <option value="1">Ingreso</option>
               </select>
             </div>
           </div>
@@ -89,7 +89,7 @@
       </div>
       <div class="col-md-3">
         <label for="">Recargar Tabla</label><br>
-        <button class="btn btn-success">Actualizar</button>
+        <button class="btn btn-success" (click)="recargarTabla()">Actualizar</button>
       </div>
 
     </div>
@@ -116,7 +116,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of datosCajaChica?.caja" class="text-center">
+          <tr *ngFor="let item of datosGastosOperacionales" class="text-center">
             <td colspan="2"><b>{{item?.fecha}}</b></td>
             <td colspan="2"><b>{{item?.numero_documento}}</b></td>
 

@@ -31,6 +31,9 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     monto: null
   }
 
+  //Datos para la tabla
+  datosGastosOperacionales;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _service: SindicalService, private _fechasService: AniosService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -44,6 +47,11 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
+  //Abrir visor de PDF
+  openPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   cargarFechasActuales() {
     this.cargarDatos = 0;
     //Cargar id del Año actual
@@ -53,7 +61,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.cargarDatos++;
         console.log(this.cargarDatos);
         if(this.cargarDatos == 2){
-          //this.cargarTablaCajaChica();
+          this.recargarTabla();
         }
       },
       error => {
@@ -67,7 +75,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.cargarDatos++;
         console.log(this.cargarDatos);
         if(this.cargarDatos == 2){
-          //this.cargarTablaCajaChica();
+          this.recargarTabla();
         }
       },
       error => {
@@ -85,14 +93,35 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     this.datosFormulario.archivo_documento = event.srcElement.files[0];
   }
 
+  changeAnio(valorSelect){
+    this.limpiarTabla();
+    this.idAnioActual = valorSelect.target.value;
+    this.recargarTabla();
+  }
+ 
+  changeMes(valorSelect){
+   this.limpiarTabla();
+   this.idMesActual = valorSelect.target.value;
+   this.recargarTabla();
+  }
+
+  limpiarTabla(){
+    this.datosGastosOperacionales = '';
+  }
+
+  recargarTabla(){
+    this.cargarTablaCajaChica();
+    this.limpiarTabla();
+  }
+
   cargarTablaCajaChica(){
     this.cargandoTabla = true;
-    this._service.getTablaSindical(this.idAnioActual, this.idMesActual).subscribe(response => {
+    this._service.getGastosOperacionales(this.idAnioActual, this.idMesActual).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoTabla = false;
       }else{
-        console.log(response);
+        this.datosGastosOperacionales = response.gastosOperacionales;
         this.cargandoTabla = false;
       }
     },
@@ -104,13 +133,15 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
   ingresarValor(){
     console.log(this.datosFormulario);
-    /* this._service.calcular_cuota('test').subscribe(response=>{
+    this._service.setGastoSindical(this.datosFormulario).subscribe(response=>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
         alert(response.mensaje);
       }
     }, error=>{
       console.log(error);
-    }); */
+    });
   }
 
 }

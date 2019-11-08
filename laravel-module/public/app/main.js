@@ -965,7 +965,7 @@ module.exports = "<div class=\"row\">\n  <br><br>\n  <div class=\"col-md-12 mt-4
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-template #gastosOperacionales let-modal>\n\n  <!--Cabezal del modal caja chica-->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Gastos Operacionales</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n\n  <!--Cuerpo del body caja chica-->\n  <div class=\"modal-body\">\n    <div class=\"modal-header\" id=\"demoFont2\">\n      <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\n    </div>\n\n    <div class=\"card\">\n      <form #loginForm=\"ngForm\" (ngSubmit)=\"ingresarValor(loginForm)\" enctype=\"multipart/form-data\">\n        <div class=\"row centrarCajaChica\">\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Fecha</label>\n              <input class=\"form-control\" type=\"date\" name=\"fecha\" #fecha=\"ngModel\" [(ngModel)]=\"datosFormulario.fecha\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Detalle</label>\n              <input class=\"form-control\" type=\"text\" name=\"descripcion\" #descripcion=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.descripcion\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Monto</label>\n              <input class=\"form-control\" type=\"number\" name=\"monto\" #monto=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.monto\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Numero Documento</label>\n              <input class=\"form-control\" type=\"text\" name=\"numero_documento\" #numero_documento=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.numero_documento\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Comprobante</label>\n              <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Seleccione Tipo</label>\n              <select class=\"form-control\" name=\"definicion\" #definicion=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.definicion\">\n                <option value=\"1\">Egreso</option>\n                <option value=\"2\">Ingreso</option>\n              </select>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"btn btn-block btn-success\" [disabled]=\"loginForm.invalid\">Ingresar</button>\n      </form>\n    </div>\n\n    <div class=\"row mt-4\">\n      <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n        <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> Si desea edita un valor de\n          la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe\n          de hacer <b>click</b> el icono <i class=\"far fa-copy\" placement=\"top\"></i></small>\n      </ngb-alert>\n\n      <div class=\"col-md-3\">\n        <label for=\"\">Filtro por Año</label>\n        <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\"\n          class=\"form-control form-control-sm\">\n          <option *ngFor=\"let anio of selectMes\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n        </select>\n      </div>\n      <div class=\"col-md-3\">\n        <label for=\"\">Filtro por Mes</label>\n        <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\"\n          class=\"form-control form-control-sm\">\n          <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\n        </select>\n      </div>\n      <div class=\"col-md-3\">\n        <label for=\"\">Recargar Tabla</label><br>\n        <button class=\"btn btn-success\">Actualizar</button>\n      </div>\n\n    </div>\n\n    <br>\n\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\n        <thead text-sm class=\"text-center\">\n          <tr>\n            <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\n            <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\n            <td colspan=\"2\"><strong>{{ datosCajaChica?.monto_inicio | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong>\n            </td>\n          </tr>\n          <tr>\n            <th colspan=\"2\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\n            <th colspan=\"2\">N° de Doc</th>\n            <th colspan=\"2\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n            <th colspan=\"3\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\n            <th colspan=\"2\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\n            <th colspan=\"2\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\n            <th colspan=\"2\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let item of datosCajaChica?.caja\" class=\"text-center\">\n            <td colspan=\"2\"><b>{{item?.fecha}}</b></td>\n            <td colspan=\"2\"><b>{{item?.numero_documento}}</b></td>\n\n\n            <!--MODAL VISOR PDF-->\n            <ng-template #visor let-c=\"close\" let-d=\"dismiss\">\n              <div class=\"row\">\n                <div class=\"col\">\n                  <div class=\"modal-header text-center\" id=\"demoFont\">\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                    <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                      (click)=\"d('Cross click')\">\n                      <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                  </div>\n                  <div class=\"modal-body\">\n                    <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\"\n                      frameborder=\"0\" allowfullscreen></iframe>\n                  </div>\n                  <div class=\"modal-footer\" [hidden]=\"true\">\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\n                  </div>\n                </div>\n              </div>\n            </ng-template>\n            <!--MODAL VISOR PDF-->\n\n            <td colspan=\"2\">\n              <a (click)=\"openPDF(visor)\" style=\"cursor: pointer\"><i class=\"far fa-file-alt\" placement=\"top\"\n                  ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\n            </td>\n\n\n\n            <td colspan=\"3\"><b>{{item.descripcion}}</b>\n            </td>\n            <td colspan=\"2\"><b>{{item?.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\n            <td colspan=\"2\">\n              <b>{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\n            <td colspan=\"2\"><b>{{item?.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\n          </tr>\n          <tr>\n            <th colspan=\"13\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i> Total Cierre del Mes</th>\n            <td scope=\"col\" class=\"text-center\">\n              <b>{{ totalesCajaChica?.cierre_mes | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</b></td>\n          </tr>\n          <br>\n          <!--Tabla del total Modal Caja Chica-->\n          <tr>\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\n              INGRESOS</th>\n            <td colspan=\"3\" class=\"text-center\">\n              <strong>{{ totalesCajaChica?.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          </tr>\n\n          <tr>\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\n              EGRESOS</th>\n            <td colspan=\"3\" class=\"text-center\">\n              <strong>{{ totalesCajaChica?.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          </tr>\n          <tr>\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\n              CIERRE DEL MES</th>\n            <td colspan=\"3\" class=\"text-center\">\n              <strong>{{ totalesCajaChica?.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n\n  </div>\n\n  <div class=\"modal-footer\">\n    <!--Boton para salir del modal caja chica-->\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuentas</button>\n  </div>\n\n</ng-template>\n\n\n<button class=\"btn btn btn-success btn-block btn-sm mt-4\" (click)=\"openModal(gastosOperacionales)\">Gastos\n  Operacionales</button>"
+module.exports = "<ng-template #gastosOperacionales let-modal>\n\n  <!--Cabezal del modal caja chica-->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Gastos Operacionales</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n\n  <!--Cuerpo del body caja chica-->\n  <div class=\"modal-body\">\n    <div class=\"modal-header\" id=\"demoFont2\">\n      <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\n    </div>\n\n    <div class=\"card\">\n      <form #loginForm=\"ngForm\" (ngSubmit)=\"ingresarValor(loginForm)\" enctype=\"multipart/form-data\">\n        <div class=\"row centrarCajaChica\">\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Fecha</label>\n              <input class=\"form-control\" type=\"date\" name=\"fecha\" #fecha=\"ngModel\" [(ngModel)]=\"datosFormulario.fecha\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Detalle</label>\n              <input class=\"form-control\" type=\"text\" name=\"descripcion\" #descripcion=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.descripcion\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Monto</label>\n              <input class=\"form-control\" type=\"number\" name=\"monto\" #monto=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.monto\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Numero Documento</label>\n              <input class=\"form-control\" type=\"text\" name=\"numero_documento\" #numero_documento=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.numero_documento\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Comprobante</label>\n              <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\">\n            </div>\n          </div>\n          <div class=\"col-md-4\">\n            <div class=\"form-group\">\n              <label for=\"\">Seleccione Tipo</label>\n              <select class=\"form-control\" name=\"definicion\" #definicion=\"ngModel\"\n                [(ngModel)]=\"datosFormulario.definicion\">\n                <option value=\"2\">Egreso</option>\n                <option value=\"1\">Ingreso</option>\n              </select>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"btn btn-block btn-success\" [disabled]=\"loginForm.invalid\">Ingresar</button>\n      </form>\n    </div>\n\n    <div class=\"row mt-4\">\n      <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n        <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> Informativo!</strong> Si desea edita un valor de\n          la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el comprobante de pago, debe\n          de hacer <b>click</b> el icono <i class=\"far fa-copy\" placement=\"top\"></i></small>\n      </ngb-alert>\n\n      <div class=\"col-md-3\">\n        <label for=\"\">Filtro por Año</label>\n        <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\"\n          class=\"form-control form-control-sm\">\n          <option *ngFor=\"let anio of selectMes\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n        </select>\n      </div>\n      <div class=\"col-md-3\">\n        <label for=\"\">Filtro por Mes</label>\n        <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\"\n          class=\"form-control form-control-sm\">\n          <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\n        </select>\n      </div>\n      <div class=\"col-md-3\">\n        <label for=\"\">Recargar Tabla</label><br>\n        <button class=\"btn btn-success\" (click)=\"recargarTabla()\">Actualizar</button>\n      </div>\n\n    </div>\n\n    <br>\n\n    <div class=\"table-responsive\">\n      <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\n        <thead text-sm class=\"text-center\">\n          <tr>\n            <th colspan=\"11\" class=\"ColorThCS\">Tabla caja chica</th>\n            <th colspan=\"2\" class=\"ColorThCS\">Monto Inicial</th>\n            <td colspan=\"2\"><strong>{{ datosCajaChica?.monto_inicio | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong>\n            </td>\n          </tr>\n          <tr>\n            <th colspan=\"2\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\n            <th colspan=\"2\">N° de Doc</th>\n            <th colspan=\"2\"><i class=\"far fa-file-pdf\"></i> PDF</th>\n            <th colspan=\"3\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\n            <th colspan=\"2\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\n            <th colspan=\"2\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\n            <th colspan=\"2\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let item of datosGastosOperacionales\" class=\"text-center\">\n            <td colspan=\"2\"><b>{{item?.fecha}}</b></td>\n            <td colspan=\"2\"><b>{{item?.numero_documento}}</b></td>\n\n\n            <!--MODAL VISOR PDF-->\n            <ng-template #visor let-c=\"close\" let-d=\"dismiss\">\n              <div class=\"row\">\n                <div class=\"col\">\n                  <div class=\"modal-header text-center\" id=\"demoFont\">\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                    <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                      (click)=\"d('Cross click')\">\n                      <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                  </div>\n                  <div class=\"modal-body\">\n                    <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\"\n                      frameborder=\"0\" allowfullscreen></iframe>\n                  </div>\n                  <div class=\"modal-footer\" [hidden]=\"true\">\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\n                  </div>\n                </div>\n              </div>\n            </ng-template>\n            <!--MODAL VISOR PDF-->\n\n            <td colspan=\"2\">\n              <a (click)=\"openPDF(visor)\" style=\"cursor: pointer\"><i class=\"far fa-file-alt\" placement=\"top\"\n                  ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\n            </td>\n\n\n\n            <td colspan=\"3\"><b>{{item.descripcion}}</b>\n            </td>\n            <td colspan=\"2\"><b>{{item?.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\n            <td colspan=\"2\">\n              <b>{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\n            <td colspan=\"2\"><b>{{item?.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\n          </tr>\n          <tr>\n            <th colspan=\"13\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i> Total Cierre del Mes</th>\n            <td scope=\"col\" class=\"text-center\">\n              <b>{{ totalesCajaChica?.cierre_mes | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</b></td>\n          </tr>\n          <br>\n          <!--Tabla del total Modal Caja Chica-->\n          <tr>\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\n              INGRESOS</th>\n            <td colspan=\"3\" class=\"text-center\">\n              <strong>{{ totalesCajaChica?.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          </tr>\n\n          <tr>\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\n              EGRESOS</th>\n            <td colspan=\"3\" class=\"text-center\">\n              <strong>{{ totalesCajaChica?.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          </tr>\n          <tr>\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\n              CIERRE DEL MES</th>\n            <td colspan=\"3\" class=\"text-center\">\n              <strong>{{ totalesCajaChica?.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n\n  </div>\n\n  <div class=\"modal-footer\">\n    <!--Boton para salir del modal caja chica-->\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuentas</button>\n  </div>\n\n</ng-template>\n\n\n<button class=\"btn btn btn-success btn-block btn-sm mt-4\" (click)=\"openModal(gastosOperacionales)\">Gastos\n  Operacionales</button>"
 
 /***/ }),
 
@@ -10571,6 +10571,10 @@ let ModalGastosOperacionalesComponent = class ModalGastosOperacionalesComponent 
         //Cargar Meses
         this.selectMes = JSON.parse(localStorage.getItem('meses'));
     }
+    //Abrir visor de PDF
+    openPDF(content) {
+        this.modalService.open(content, { size: 'lg' });
+    }
     cargarFechasActuales() {
         this.cargarDatos = 0;
         //Cargar id del Año actual
@@ -10579,7 +10583,7 @@ let ModalGastosOperacionalesComponent = class ModalGastosOperacionalesComponent 
             this.cargarDatos++;
             console.log(this.cargarDatos);
             if (this.cargarDatos == 2) {
-                //this.cargarTablaCajaChica();
+                this.recargarTabla();
             }
         }, error => {
             console.log(error);
@@ -10590,7 +10594,7 @@ let ModalGastosOperacionalesComponent = class ModalGastosOperacionalesComponent 
             this.cargarDatos++;
             console.log(this.cargarDatos);
             if (this.cargarDatos == 2) {
-                //this.cargarTablaCajaChica();
+                this.recargarTabla();
             }
         }, error => {
             console.log(error);
@@ -10603,15 +10607,32 @@ let ModalGastosOperacionalesComponent = class ModalGastosOperacionalesComponent 
     onSelectImage(event) {
         this.datosFormulario.archivo_documento = event.srcElement.files[0];
     }
+    changeAnio(valorSelect) {
+        this.limpiarTabla();
+        this.idAnioActual = valorSelect.target.value;
+        this.recargarTabla();
+    }
+    changeMes(valorSelect) {
+        this.limpiarTabla();
+        this.idMesActual = valorSelect.target.value;
+        this.recargarTabla();
+    }
+    limpiarTabla() {
+        this.datosGastosOperacionales = '';
+    }
+    recargarTabla() {
+        this.cargarTablaCajaChica();
+        this.limpiarTabla();
+    }
     cargarTablaCajaChica() {
         this.cargandoTabla = true;
-        this._service.getTablaSindical(this.idAnioActual, this.idMesActual).subscribe(response => {
+        this._service.getGastosOperacionales(this.idAnioActual, this.idMesActual).subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
                 this.cargandoTabla = false;
             }
             else {
-                console.log(response);
+                this.datosGastosOperacionales = response.gastosOperacionales;
                 this.cargandoTabla = false;
             }
         }, error => {
@@ -10621,13 +10642,16 @@ let ModalGastosOperacionalesComponent = class ModalGastosOperacionalesComponent 
     }
     ingresarValor() {
         console.log(this.datosFormulario);
-        /* this._service.calcular_cuota('test').subscribe(response=>{
-          if(response.estado == 'failed' || response.estado == 'failed_v'){
-            alert(response.mensaje);
-          }
-        }, error=>{
-          console.log(error);
-        }); */
+        this._service.setGastoSindical(this.datosFormulario).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 ModalGastosOperacionalesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -12372,6 +12396,26 @@ let SindicalService = class SindicalService {
     }
     calcular_abono(id, abono_id) {
         return this._http.get(this.url + "calcular_abono/" + id + "/" + abono_id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    //servicio para guardar gastos sindicales
+    setGastoSindical(data) {
+        const body = new FormData();
+        body.append('fecha', data.fecha);
+        body.append('archivo_documento', data.archivo_documento);
+        body.append('numero_documento', data.numero_documento);
+        body.append('descripcion', data.descripcion);
+        body.append('definicion', data.definicion);
+        body.append('monto', data.monto);
+        return this._http.post(this.url + "guardar_detalle_gasto_operacional", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token
+            }) });
+    }
+    //servicio para treaer los datos de gastos operacionales
+    getGastosOperacionales(anio, mes) {
+        return this._http.get(this.url + "listar_detalle_gasto_operacional/" + anio + "/" + mes, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });

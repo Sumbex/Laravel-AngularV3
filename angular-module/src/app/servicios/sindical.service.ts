@@ -266,6 +266,34 @@ export class SindicalService{
     }
 
 
+    //servicio para guardar gastos sindicales
+    setGastoSindical(data): Observable<any>{
 
+        const body = new FormData();
+        body.append('fecha', data.fecha);
+        body.append('archivo_documento', data.archivo_documento);
+        body.append('numero_documento', data.numero_documento);
+        body.append('descripcion', data.descripcion);
+        body.append('definicion', data.definicion);
+        body.append('monto', data.monto);
+
+        return this._http.post(this.url + "guardar_detalle_gasto_operacional",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token
+            }
+        )});
+
+    }
+
+    //servicio para treaer los datos de gastos operacionales
+    getGastosOperacionales(anio, mes): Observable<any>{
+        
+        return this._http.get(this.url + "listar_detalle_gasto_operacional/"+anio+"/"+mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
     
 }

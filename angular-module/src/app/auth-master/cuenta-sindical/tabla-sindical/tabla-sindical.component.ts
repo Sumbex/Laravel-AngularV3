@@ -26,6 +26,7 @@ export class TablaSindicalComponent implements OnInit {
   cajaChica;
   prestamo;
   camping;
+  gastosOp;
   resultado:any=["total_final"];
 
   verify:boolean = false;
@@ -169,6 +170,7 @@ export class TablaSindicalComponent implements OnInit {
           this.camping = [];
           this.resultado = [];
           this.actualizarMontoCajaChica = '';
+          this.gastosOp = [];
     this._sindicalService.getTablaSindical(this.valorAnio.descripcion, this.valorMes.descripcion).subscribe(
       response => {
         if (response == null) {
@@ -180,6 +182,7 @@ export class TablaSindicalComponent implements OnInit {
           this.camping = [];
           this.resultado = [];
           this.actualizarMontoCajaChica = '';
+          this.gastosOp = [];
         }else{
           this.tablaSindical = response;
           this.fijos = this.tablaSindical.fijo;
@@ -188,6 +191,7 @@ export class TablaSindicalComponent implements OnInit {
           this.prestamo = this.tablaSindical.prestamo;
           this.camping = this.tablaSindical.camping;
           this.resultado = this.tablaSindical.resultado;
+          this.gastosOp = this.tablaSindical.gastosOp;
         }
         this.loading = false;
       },

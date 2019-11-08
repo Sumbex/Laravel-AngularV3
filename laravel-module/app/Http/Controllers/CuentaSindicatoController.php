@@ -462,6 +462,7 @@ class CuentaSindicatoController extends Controller
 			$return['caja_chica']=[];
 			$return['prestamo']=[];
 			$return['camping']=[];
+			$return['gasto_operacional']=[];
 
 			foreach ($listar as $key) {
 				switch ($key->tipo_cuenta_sindicato) {
@@ -470,6 +471,7 @@ class CuentaSindicatoController extends Controller
 					case '3': $return['caja_chica'][] = $key; break;
 					case '4': $return['prestamo'][] = $key; break;
 					case '5': $return['camping'][] = $key; break;
+					case '6': $return['gasto_operacional'][] = $key; break;
 					
 					default:
 						# code...
@@ -865,14 +867,61 @@ class CuentaSindicatoController extends Controller
                 	return ['estado' => 'failed', 'mensaje' => 'El archivo no es un PDF o no existe un formato'];
                 }
 
-    		break;
+			break;
+			//actualizar monto de gasto operacional
+			case 'monto_go':
 
+				$cs->monto_egreso = $r->monto_go;
+				
+
+			break;
     		
     		default:
     			# code...
     			break;
     	}
-    }
+	}
+	
+	// public function actualizar_dato_cs(Request $r)
+    // {
+    
+
+    // 	$cs = Cuentasindicato::where('id',$r->id)->first();
+    // 	//dd($cs);
+
+    // 	if ($r->input == '') {
+    // 		return ['estado'=>'failed','mensaje'=>'Ingrese un valor'];
+    // 	}
+
+    // 	switch ($r->campo) {
+    		
+    		
+    // 		case 'monto':
+    			
+    // 			if ($cs->definicion == 1) {
+    // 				$cs->monto_ingreso = $r->input;
+    // 				if ($cs->save()) {
+    // 					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    // 				}
+    // 				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    // 			}
+    // 			if ($cs->definicion == 2) {
+    // 				$cs->monto_egreso = $r->input;
+    // 				if ($cs->save()) {
+    // 					return ['estado'=>'success','mensaje'=>'Monto actualizado'];
+    // 				}
+    // 				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
+    // 			}
+
+    // 		break;
+
+    		
+    		
+    // 		default:
+    // 			# code...
+    // 			break;
+    // 	}
+    // }
 
 
 

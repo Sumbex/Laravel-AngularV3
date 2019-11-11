@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Cuentasindicato;
-use App\Detalleinteresprestamo;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Detalleinteresprestamo;
+use App\Cs_gastos_operacionales;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
+use App\Cs_gastos_operacionales_detalle;
 use Illuminate\Support\Facades\Validator;
 
 class CuentaSindicatoController extends Controller
@@ -105,7 +107,10 @@ class CuentaSindicatoController extends Controller
 				$borrar = Storage::delete('/'.$archivo);
 			return [ 'estado' =>'failed', 'mensaje'=>'Ya existe item caja chica en este mes' ];
 
-			}else{
+			}
+			
+			
+			else{
 
 				//$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
 
@@ -154,6 +159,16 @@ class CuentaSindicatoController extends Controller
 								
 								//valido si no hay registros en este mes (items)
 						$s_a = (empty($saldo_actual[0]['saldo_actual'])? $c_m->inicio_mensual : $saldo_actual[0]['saldo_actual']);
+						
+
+						if ($r->tipo_cuenta_sindicato == '6') {// si el item entrante es gasto operacional
+							if ($this->existe_item_go($anio->id, $f['mes'])) {
+							   return [
+								   'estado' => 'failed',
+								   'mensaje'=>'ya existe item de gasto operacional para este mes'
+								];
+							}
+						}
 
 								
 						$cs = new Cuentasindicato;
@@ -352,6 +367,19 @@ class CuentaSindicatoController extends Controller
 								}
 							}
 
+							if ($cs->tipo_cuenta_sindicato == "6") {
+								if($this->guardar_monto_detalle_go($anio->id, $f['mes'], $r->monto, $cs->id)){
+									return [
+										'estado'  => 'success', 
+										'mensaje' => "Item de cuenta sindical añadido"
+									];
+								}
+								return [
+										'estado'  => 'success', 
+										'mensaje' => "Item de cuenta sindical añadido, pero el detalle de los gastos operacionales so se ha ingresado"
+									];
+							}
+
 							return [
 								'estado'  => 'success', 
 								'mensaje' => "Item de cuenta sindical añadido"
@@ -376,13 +404,15 @@ class CuentaSindicatoController extends Controller
 		}catch(QueryException $e){
 			return[
 				'estado'  => 'failed', 
-				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+				'error' => $e
 			];
 		}
 		catch(\Exception $e){
 			return[
 				'estado'  => 'failed', 
-				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
+				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+				'error' => $e
 			];
 		}
 		
@@ -1143,6 +1173,37 @@ class CuentaSindicatoController extends Controller
 								    break;
 								}
 						}
+	}
+
+
+	function existe_item_go($anio, $mes)
+	{
+		$go = Cuentasindicato::where([
+			'mes_id' => $mes,
+			'anio_id' => $anio,
+			'tipo_cuenta_sindicato' => '6'
+		])->first();
+
+		if ($go) {
+			return true;
+		}
+		return false;
+	}
+
+	public function guardar_monto_detalle_go($anio, $mes, $monto, $cs_id)
+	{
+		$go = new Cs_gastos_operacionales_detalle;
+		$go->cs_cuenta_sindicato_id = $cs_id;
+		$go->mes_id = $mes;
+		$go->anio_id = $anio;
+		$go->descripcion = 'Monto inicial para gastos '.number_format($monto,0,'.',',').' pesos';
+		$go->monto = $monto;
+		$go->activo = 'S';
+		if ($go->save()) {
+			return true;
+		}
+		return false;
+
 	}
 	
 

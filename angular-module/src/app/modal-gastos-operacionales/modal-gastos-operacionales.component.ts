@@ -21,6 +21,21 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   cargandoTabla = false;
   cargarDatos = 0;
 
+  //Variables para la modificación de documentos/////////
+  /*Variables que rescatan la fila seleccionada*/
+  idEdicion;
+  campoEdicion;
+  parametroEdicion;
+  /*Variables que determinan el valor del input*/
+  edicionDocumento = false;
+  edicionTexto = false;
+  varType;
+  /*Variables que rescatan el nuevo valor a ingresar*/
+  loadingModificacion = false;
+  blockCajaChica = false;
+  valorInput='';
+  edicionArchivo;
+
   //Datos del Formulario
   datosFormulario={
     numero_documento: '',
@@ -30,6 +45,9 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     definicion: '2',
     monto: null
   }
+
+  //Rut del usuario
+  rutUsuario;
 
   //Datos para la tabla
   datosGastosOperacionales;
@@ -45,11 +63,20 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
     //Cargar Meses
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
+
+    //Obtener Rut
+    this.rutUsuario = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.rutUsuario);
   }
 
   //Abrir visor de PDF
   openPDF(content) {
     this.modalService.open(content, {size: 'lg'});
+  }
+
+  //Abrir confirmacion contraseña
+  openEdicionModal(edicion) {
+    this.modalService.open(edicion, { size: 'sm' });
   }
 
   cargarFechasActuales() {
@@ -121,7 +148,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         alert(response.mensaje);
         this.cargandoTabla = false;
       }else{
-        this.datosGastosOperacionales = response.gastosOperacionales;
+        this.datosGastosOperacionales = response;
         this.cargandoTabla = false;
       }
     },
@@ -135,7 +162,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     console.log(this.datosFormulario);
     this._service.setGastoSindical(this.datosFormulario).subscribe(response=>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        alert(JSON.stringify(response.mensaje));
       }else{
         alert(response.mensaje);
       }
@@ -143,5 +170,43 @@ export class ModalGastosOperacionalesComponent implements OnInit {
       console.log(error);
     });
   }
+
+  //almacenar datos al querer editar un valor
+  editarParametro(id, campo, valor){
+    this.idEdicion = id;
+    this.campoEdicion = campo;
+    this.parametroEdicion = valor;
+    if(this.campoEdicion == 'fecha'){
+      console.log('Estoy pasando por fecha');
+      this.varType = 'date';
+      this.edicionDocumento = false;
+      this.edicionTexto = true;
+    }else if (this.campoEdicion == 'archivo_documento'){
+      console.log('Estoy pasando por archivo');
+      this.edicionDocumento = true;
+      this.edicionTexto = false;
+    }else{
+      console.log('Estoy pasando por text');
+      this.varType = 'text';
+      this.edicionDocumento = false;
+      this.edicionTexto = true;
+    }
+
+    document.getElementById("openModalButtonEdicionOperacional").click();
+  }
+
+  ingresarModificacionTexto(input){
+    this.blockCajaChica = true;
+    this.loadingModificacion = true;
+    this.valorInput = input;
+    document.getElementById("openModalButtonPassOperacionales").click();
+  }
+
+  ingresarModificacionDocumento(){
+    this.blockCajaChica = true;
+    this.loadingModificacion = true;
+    document.getElementById("openModalButtonPassOperacionales").click();
+  }
+
 
 }

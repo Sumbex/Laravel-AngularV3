@@ -285,6 +285,21 @@ export class SindicalService{
 
     }
 
+    //Servicio para Actualizar los gastos operacionales
+    updateCampoOperacional(valor, campo, input) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('input', valor);
+        body.append('nombreCampo', campo);
+        body.append('valor', input);
+
+        return this._http.post(this.url + "modificar_detalle_gasto_operacional",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
     //servicio para treaer los datos de gastos operacionales
     getGastosOperacionales(anio, mes): Observable<any>{
         

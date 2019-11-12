@@ -40,10 +40,12 @@ class AuthController extends Controller
 				// \Config::set('jwt.user', App\User::class);
 				// \Config::set('auth.providers.users.model', \App\User::class);
 
-				$user = User::where('rut', $request->email)->first();
+				// $user = User::where('rut', $request->email)->first();
 				$user = User::whereRaw(
-					"LOWER(regexp_replace(rut_nacimiento, '[^\w]+','','g')) = LOWER('".$request->email."')
+					"LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$request->email."')
 				")->first();
+
+			
 
 				if ($user->rol == 1 || $user->rol == 5) {
 					if (Hash::check($request->password, $user->password)) {
@@ -68,7 +70,10 @@ class AuthController extends Controller
 				}
 			}
 		} catch (\ErrorException $e) {
-			return ['status' => 'failed', 'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
+			return [
+				'status' => 'failed', 
+				'error' =>$e,
+				'Se ha producido un error, verifique si el rut es correcto o existe en la base de datos'];
 		}
 	}
 

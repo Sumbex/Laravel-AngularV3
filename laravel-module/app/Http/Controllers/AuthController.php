@@ -41,6 +41,9 @@ class AuthController extends Controller
 				// \Config::set('auth.providers.users.model', \App\User::class);
 
 				$user = User::where('rut', $request->email)->first();
+				$user = User::whereRaw(
+					"LOWER(regexp_replace(rut_nacimiento, '[^\w]+','','g')) = LOWER('".$request->email."')
+				")->first();
 
 				if ($user->rol == 1 || $user->rol == 5) {
 					if (Hash::check($request->password, $user->password)) {

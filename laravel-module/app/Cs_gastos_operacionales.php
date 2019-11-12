@@ -228,7 +228,7 @@ class Cs_gastos_operacionales extends Model
     }
 
     //Funcion para obtener los totales
-    protected function totalesGO($anio, $mes)
+    protected function totalesGO($anio, $mes, $mi)
     {
         $totales = DB::table('cs_gastos_operacionales')
             ->select([
@@ -244,6 +244,7 @@ class Cs_gastos_operacionales extends Model
             ->get();
 
         if (!$totales->isEmpty()) {
+            $totales[0]->cierre_mes = $totales[0]->total + $mi;
             return ['estado' => 'success', 'totales' => $totales];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
@@ -285,7 +286,7 @@ class Cs_gastos_operacionales extends Model
                 ])
                 ->get();
 
-            $totales = $this->totalesGO($anio, $mes);
+            $totales = $this->totalesGO($anio, $mes, $gomi[0]->monto_egreso);
 
             for ($i = 0; $i < count($cs); $i++) {
                 switch ($cs[$i]->definicion) {

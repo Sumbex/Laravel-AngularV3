@@ -43,6 +43,83 @@ class Cs_gastos_operacionales extends Model
         return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
+    public function validarGoModificacion($request){
+        switch ($request->nombreCampo) {
+            case 'fecha':
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'valor' => 'required'
+                    ],
+                    [
+                        'valor.required' => 'Debes ingresar la fecha.'
+                    ]
+                );
+                break;
+            case 'numero_documento':
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'valor' => 'required|unique:cb_caja_chica,numero_documento'
+                    ],
+                    [
+                        'valor.required' => 'Debes ingresar un n° de documento.',
+                        'valor.unique' => 'El numero de documento ya existe en tus registros.'
+                    ]
+                );
+                break;
+
+            case 'archivo_documento':
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'valor' => 'required|file|mimes:pdf'
+                    ],
+                    [
+                        'valor.required' => 'Debes seleccionar un archivo.',
+                        'valor.file' => 'Lo seleccionado debe ser un archivo.',
+                        'valor.mimes' => 'El archivo debe ser extension PDF.'
+                    ]
+                );
+                break;
+
+            case 'descripcion':
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'valor' => 'required'
+                    ],
+                    [
+                        'valor.required' => 'Debes ingresar una descripcion.'
+                    ]
+                );
+                break;
+
+            case 'monto':
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'valor' => 'required|integer|min:1'
+                    ],
+                    [
+                        'valor.required' => 'Debes ingresar un monto.',
+                        'valor.min' => 'El monto ingresado debe ser mayor a 0.',
+                        'valor.integer' => 'Debes ingresar solo numeros.'
+                    ]
+                );
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        if ($validator->fails()) {
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
+        }
+        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
     protected function guardar($value)
     {
         $validador = $this->validarDatosGo($value);
@@ -151,7 +228,7 @@ class Cs_gastos_operacionales extends Model
     }
 
     //Funcion para obtener los totales
-    protected function totalesGO($anio, $mes)
+    protected function totalesGO($anio, $mes, $mi)
     {
         $totales = DB::table('cs_gastos_operacionales')
             ->select([
@@ -167,6 +244,7 @@ class Cs_gastos_operacionales extends Model
             ->get();
 
         if (!$totales->isEmpty()) {
+            $totales[0]->cierre_mes = $totales[0]->total + $mi;
             return ['estado' => 'success', 'totales' => $totales];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
@@ -208,7 +286,7 @@ class Cs_gastos_operacionales extends Model
                 ])
                 ->get();
 
-            $totales = $this->totalesGO($anio, $mes);
+            $totales = $this->totalesGO($anio, $mes, $gomi[0]->monto_egreso);
 
             for ($i = 0; $i < count($cs); $i++) {
                 switch ($cs[$i]->definicion) {
@@ -237,5 +315,88 @@ class Cs_gastos_operacionales extends Model
             return ['estado' => 'success', 'gastosOperacionales' => $cs, 'montoInicial' => $gomi[0]->monto_egreso, 'totales' => $totales['totales'][0]];
         }
         return ['estado' => 'failed', 'mensaje' => 'No hay gastos operacionales en el mes o año seleccionado'];
+    }
+
+    protected function modificarGastoOperacional($request)
+    {
+        /* dd($request->all()); */
+        $validarDatos = $this->validarGoModificacion($request);
+        if ($validarDatos['estado'] == 'success') { 
+            $modificar = Cs_gastos_operacionales::find($request->input);
+
+            if (!is_null($modificar)) {
+                switch ($request->nombreCampo) {
+                    case 'fecha':
+                        $f = $this->div_fecha($request->valor);
+                        $a = $this->anio_tipo_id($f['anio']);
+
+                        $modificar->dia = $f['dia'];
+                        $modificar->mes_id = $f['mes'];
+                        $modificar->anio_id = $a->id;
+                        //dd($modificar);
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Fecha actualizada correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'numero_documento':
+                        $modificar->numero_documento = $request->valor;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'N° de documento actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'archivo_documento':
+                        $ruta = substr($modificar->archivo_documento, 8);
+                        $borrar = Storage::delete($ruta);
+                        if ($borrar) {
+                            $guardarArchivo = $this->guardarArchivo($request->valor, 'ArchivosGastosOperacionales/');
+                            if ($guardarArchivo['estado'] == 'success') {
+                                $modificar->archivo_documento = $guardarArchivo['archivo'];
+                                if ($modificar->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Archivo actualizado correctamente.'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                                }
+                            } else {
+                                return $guardarArchivo;
+                            }
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'descripcion':
+                        $modificar->descripcion = $request->valor;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Descripcion actualizada correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    case 'monto':
+                        $modificar->monto_egreso = $request->valor;
+                        if ($modificar->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Monto actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'El Item que intentas modificar no existe.'];
+            }
+         } else {
+            return $validarDatos;
+        }
     }
 }

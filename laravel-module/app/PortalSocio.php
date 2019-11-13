@@ -323,7 +323,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
                     return ['status' => 'failed', 'mensaje' => 'El rut ingresado no es valido.'];
                 } else {
 
-                    $socio = PortalSocio::where('rut', $request->rut)->first();
+                    //$socio = PortalSocio::where('rut', $request->rut)->first();
+                    $socio = PortalSocio::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $request->rut . "')")->first();
 
                     /* dd(is_null($socio->fecha_egreso)); */
                     if (is_null($socio->fecha_egreso)) {

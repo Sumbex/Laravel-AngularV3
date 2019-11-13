@@ -101,6 +101,7 @@ Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general
 
 Route::get('listar_beneficios_cobrados/{socio_id}','SocioController@listar_beneficios_cobrados');
 Route::get('contar_socios','SocioController@contar_socios');
+Route::get('reestablecer_pass/{socio_id}','SocioController@reestablecer_pass');
 
 //---------------------------------------------------------------------------------------------------
 

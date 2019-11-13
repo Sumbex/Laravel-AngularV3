@@ -306,6 +306,18 @@ export class SociosService {
         });
     }
 
+    cambiar_pass(socio_id) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get<any>(this.url + "reestablecer_pass/"+socio_id, {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'application/json'
+                }
+            )
+        });
+    }
+
 
 
 }

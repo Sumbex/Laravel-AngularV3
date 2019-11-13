@@ -1774,5 +1774,28 @@ class SocioController extends Controller
             ];
     }
 
+    public function reestablecer_pass($socio_id)
+    {
+        $socio = Socios::find($socio_id);
+
+        if($socio){
+        $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $socio->rut . "')
+                    ")->first();
+            if ($user) {
+
+                $user->password = bcrypt('123456');
+                if ($user->save()) {
+                    return [
+                'estado'=>'success',
+                'mensaje'=>'Contraseña actualizada a: 123456'];
+                }
+
+            }
+            return [
+                'estado'=>'failed',
+                'mensaje'=>'Sin permisos o credenciales, primero debe tener acceso a portal de socio o administrativo'];
+        }
+    }
+
 
 }

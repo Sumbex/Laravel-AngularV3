@@ -207,7 +207,7 @@
 
               			<ng-template #opcion let-modal>
 						     <div class="modal-header" id="demoFont">
-						        <h6 class="modal-title"><i class="fas fa-wrench"></i> <strong> Opciones para el socio</strong></h6>
+						        <h6 class="modal-title"><i class="fas fa-wrench"></i> <strong> Opciones para el socio: {{item.nombres+' '+item.a_paterno+''+item.a_materno}}</strong></h6>
 						        <button type="button" class="close" aria-label="Close" (click)="cerrar_opcion()">
 						          <span aria-hidden="true">&times;</span>
 						        </button>
@@ -233,7 +233,25 @@
 												</div>
 	                  							<label *ngIf="ver_estado_soc">{{estado_socio}}</label>
 	                  						</td>
-	                					</tr>
+										</tr>
+										
+										<tr class="text-center">
+											<th style="background: #138D75">
+												Reestablecer contraseña
+											</th>
+											<td>
+												<button (click)="reestablecer_pass(item.id)" class="btn btn-success">
+													<i class="far fa-save fa-1x"></i>
+												</button>
+											</td>
+											<th style="background: #138D75">
+												Descripcion
+											</th>
+											<td>
+												
+												<p>Cuando reestablece una contraseña, esta será por defecto: <strong>123456</strong></p>
+											</td>
+										</tr>
 									 </table>
 								
 						      </div>

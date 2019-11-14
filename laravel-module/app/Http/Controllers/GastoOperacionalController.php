@@ -21,4 +21,9 @@ class GastoOperacionalController extends Controller
         return $go;
     }
 
+    public function actualizarSaldoDisponible(Request $value){
+        $go = Cs_gastos_operacionales::actualizarSaldoDisponible($value);
+        return $go;
+    }
+
 }

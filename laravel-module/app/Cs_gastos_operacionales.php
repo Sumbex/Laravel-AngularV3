@@ -20,7 +20,7 @@ class Cs_gastos_operacionales extends Model
             $request->all(),
             [
                 'fecha' => 'required',
-                'numero_documento' => 'required|unique:cuenta_sindicato,numero_documento',
+                'numero_documento' => 'required|unique:cs_gastos_operacionales,numero_documento',
                 'descripcion' => 'required|min:0',
                 'definicion' => 'required|min:0',
                 'monto' => 'required',
@@ -28,11 +28,14 @@ class Cs_gastos_operacionales extends Model
             ],
             [
                 'fecha.required' => 'La fecha es necesaria',
-                'n_documento.required' => 'El numero de documento es necesario',
-                'n_documento.unique' => 'El numero de documento ya existe en tus registros',
+                'numero_documento.required' => 'El numero de documento es necesario',
+                'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
                 'descripcion.required' => 'La descripcion es necesaria',
                 'definicion.required' => 'Especifique si su detalle es ingreso o egreso',
-                'monto.required' => 'El monto es necesario'
+                'monto.required' => 'El monto es necesario',
+                'archivo_documento.required' => 'El archivo comprobante es necesario',
+                'archivo_documento.file' => 'El comprobante debe de ser un archivo',
+                'archivo_documento.mimes' => 'El comprobante debe de estar en formato PDF'
             ]
         );
 
@@ -60,7 +63,7 @@ class Cs_gastos_operacionales extends Model
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'valor' => 'required|unique:cb_caja_chica,numero_documento'
+                        'valor' => 'required|unique:cs_gastos_operacionales,numero_documento'
                     ],
                     [
                         'valor.required' => 'Debes ingresar un n° de documento.',
@@ -128,7 +131,18 @@ class Cs_gastos_operacionales extends Model
             $f = $this->div_fecha($value->fecha);
             $a = $this->anio_tipo_id($f['anio']);
             $consulta = $this->validar_monto_inicio($f['mes'], $a->id);
-            if ($consulta) {
+            $consultaDetalles = $this->totalesGO($a->id, $f['mes'], $consulta['totales']->monto_egreso);
+            /* dd($consultaDetalles); */
+            if ($consulta['estado'] == 'success') {
+                if($consultaDetalles['estado'] == 'success'){
+                    if($value->monto > $consultaDetalles['totales'][0]->cierre_mes){
+                       return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible'];
+                    }
+                }else{
+                    if($value->monto > $consulta['totales']->monto_egreso){
+                        return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible'];
+                    }
+                }
                 $go = $this;
                 $go->dia = $f['dia'];
                 $go->mes_id = $f['mes'];
@@ -205,7 +219,7 @@ class Cs_gastos_operacionales extends Model
         ])->first();
 
         if ($cs) {
-            return true;
+            return ['estado' => 'success', 'totales' => $cs];;
         }
         return false;
     }
@@ -397,6 +411,38 @@ class Cs_gastos_operacionales extends Model
             }
          } else {
             return $validarDatos;
+        }
+    }
+
+    protected function actualizarSaldoDisponible($request)
+    {
+        //OBTENER EL SALDO DISPONIBLE DE GASTO OPERACIONAL
+        $consultaMontoInicio = $this->validar_monto_inicio($request->idMes, $request->idAnio);
+        $consultaDetalles = $this->totalesGO($request->idAnio, $request->idMes, $consultaMontoInicio['totales']->monto_egreso);
+        $saldoDisponible = $consultaDetalles['totales'][0]->cierre_mes;
+        /* dd($request->valor + $saldoDisponible); */
+
+        //OBTENER GASTO OPERACIONAL DE CUENTA SINDICAL Y ACTUALIZAR
+        $consulta = Cuentasindicato::where(
+            [
+             'anio_id'=> $request->idAnio,
+             'mes_id'=> $request->idMes,
+             'tipo_cuenta_sindicato' => 6
+            ])->first();
+        $consulta->monto_egreso = ($request->valor + $saldoDisponible);
+        if($consulta->save()){
+            //OBTENER GASTO OPERACIONAL DETALLE Y GUARDAR
+            $god = new Cs_gastos_operacionales_detalle;
+            $god->cs_cuenta_sindicato_id = $consulta->id;
+            $god->mes_id = $request->idMes;
+            $god->anio_id = $request->idAnio;
+            $god->descripcion = $request->descripcion;
+            $god->activo = 'S';
+            $god->monto = $request->valor;
+            $god->save();
+            return ['estado' => 'success', 'mensaje' => 'Monto actualizado correctamente.'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
         }
     }
 }

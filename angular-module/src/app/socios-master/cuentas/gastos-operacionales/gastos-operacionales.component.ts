@@ -88,6 +88,10 @@ export class GastosOperacionalesComponent implements OnInit {
     this.cargarFechasActuales();
   }
 
+  openPDF(content) {
+    this.modalService.open(content, {size: 'lg'});
+  }
+
   traerGastosOperacionales() {
     this._gastosService.traer_gastos(this.idAnioActual, this.idMesActual).subscribe(response => {
       if (response.estado == 'failed') {

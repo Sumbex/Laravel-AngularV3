@@ -310,5 +310,21 @@ export class SindicalService{
             }
         )});
     }
+
+    //Servicio para Actualizar los gastos operacionales
+    updateSaldoDisponible(anio, mes, descripcion, valor) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('idAnio', anio);
+        body.append('idMes', mes);
+        body.append('descripcion', descripcion);
+        body.append('valor', valor);
+
+        return this._http.post(this.url + "actualizarSaldoDisponible",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
     
 }

@@ -21,6 +21,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   //Variable para las cargas
   cargandoTabla = false;
   cargarDatos = 0;
+  ingresandoDatos = false;
 
   //Variables para la modificación de documentos/////////
   /*Variables que rescatan la fila seleccionada*/
@@ -127,6 +128,10 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     this.cargarFechasActuales();
   }
 
+  openModalAgregar(modalRecargas) {
+    this.modalService.open(modalRecargas, { size: 'lg' });
+  }
+
   onSelectImage(event) {
     this.datosFormulario.archivo_documento = event.srcElement.files[0];
   }
@@ -149,6 +154,14 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
   limpiarTabla() {
     this.datosGastosOperacionales = '';
+  }
+
+  limpiarFormulario(){
+    this.datosFormulario.archivo_documento = null;
+    this.datosFormulario.descripcion = '';
+    this.datosFormulario.fecha = '';
+    this.datosFormulario.monto = '';
+    this.datosFormulario.numero_documento = '';
   }
 
   recargarTabla() {
@@ -174,16 +187,20 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   ingresarValor() {
-    console.log(this.datosFormulario);
+    this.ingresandoDatos = true;
     this._service.setGastoSindical(this.datosFormulario).subscribe(response => {
       if (response.estado == 'failed' || response.estado == 'failed_v') {
         alert(JSON.stringify(response.mensaje));
+        this.ingresandoDatos = false;
       } else {
         alert(response.mensaje);
+        this.limpiarFormulario();
         this.recargarTabla();
+        this.ingresandoDatos = false;
       }
     }, error => {
       console.log(error);
+      this.ingresandoDatos = false;
     });
   }
 
@@ -294,5 +311,17 @@ export class ModalGastosOperacionalesComponent implements OnInit {
       }
     )
   }
+
+  solicitarMonto(descripcionRecarga, montoSolicitado){
+    this._service.updateSaldoDisponible(this.idAnioActual, this.idMesActual, descripcionRecarga, montoSolicitado).subscribe(response=>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        alert(response.mensaje);
+      }
+    },error=>{
+      console.log(error);
+    });
+  } 
 
 }

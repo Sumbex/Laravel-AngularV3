@@ -261,7 +261,7 @@ export class ListarSociosComponent implements OnInit {
   }
 
   estado_socio_portal(socio_id){
-    this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
+        this._sindical.estado_de_socio_en_portal_beneficio(socio_id).subscribe(
           (response:{'estado'}) => {
             this.estado_socio = response.estado;
             this.ver_load = false;
@@ -277,6 +277,21 @@ export class ListarSociosComponent implements OnInit {
         this.count_inactivos = response.inactivos;
       }
     ) 
+  }
+
+  reestablecer_pass(socio_id){
+    this._socios.cambiar_pass(socio_id).subscribe(
+      (r) => {
+          if(r.mensaje=='success'){
+              alert(r.mensaje);
+          }
+          else{
+            alert(r.mensaje);
+          }
+
+      }
+
+    )
   }
 
 

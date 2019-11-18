@@ -33,9 +33,11 @@ Route::get('traer_cierre_monto_detalle_camping_cs/{anio}/{mes}','CsDetalleCampin
 
 Route::get('listar_interes_prestamo/{anio}/{mes}','CuentaSindicatoController@listar_interes_prestamo');
 
+
 Route::post('guardar_detalle_gasto_operacional','GastoOperacionalController@guardar');
 Route::get('listar_detalle_gasto_operacional/{anio}/{mes}','GastoOperacionalController@listar');
 Route::post('modificar_detalle_gasto_operacional','GastoOperacionalController@actualizar');
+Route::post('actualizarSaldoDisponible','GastoOperacionalController@actualizarSaldoDisponible');
 
 //-------------------------------------------------------------------------------------------------
 
@@ -101,6 +103,7 @@ Route::post('subir_archivo_general_socio','SocioController@subir_archivo_general
 
 Route::get('listar_beneficios_cobrados/{socio_id}','SocioController@listar_beneficios_cobrados');
 Route::get('contar_socios','SocioController@contar_socios');
+Route::get('reestablecer_pass/{socio_id}','SocioController@reestablecer_pass');
 
 //---------------------------------------------------------------------------------------------------
 

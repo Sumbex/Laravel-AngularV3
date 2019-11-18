@@ -86,6 +86,7 @@ class CuentaSindicatoController extends Controller
     public function guardar_item_cuenta_sindicato(Request $r)
 	{
 
+
 		try{
 
 			$file = $this->guardarArchivo($r->archivo,'archivos_sindical/');
@@ -1192,6 +1193,9 @@ class CuentaSindicatoController extends Controller
 
 	public function guardar_monto_detalle_go($anio, $mes, $monto, $cs_id)
 	{
+		//directiva responsable
+		$directiva = $this->directiva();
+
 		$go = new Cs_gastos_operacionales_detalle;
 		$go->cs_cuenta_sindicato_id = $cs_id;
 		$go->mes_id = $mes;
@@ -1199,6 +1203,7 @@ class CuentaSindicatoController extends Controller
 		$go->descripcion = 'Monto inicial para gastos '.number_format($monto,0,'.',',').' pesos';
 		$go->monto = $monto;
 		$go->activo = 'S';
+		$go->directiva = $directiva;
 		if ($go->save()) {
 			return true;
 		}
@@ -1206,6 +1211,12 @@ class CuentaSindicatoController extends Controller
 
 	}
 	
+
+	public function directiva()
+	{
+		$data = DB::table('directiva')->select('id')->where('activo','S')->first();
+		return $data->id;
+	}
 
 
 }

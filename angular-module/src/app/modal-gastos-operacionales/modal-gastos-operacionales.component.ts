@@ -341,6 +341,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.cargarTablaCajaChica();
       }else{
         alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
+        document.getElementById('cerrarGastosOperacionalModal').click();
       }
     }, error=>{
       console.log(error);

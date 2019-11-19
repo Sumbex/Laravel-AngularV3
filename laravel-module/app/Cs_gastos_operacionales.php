@@ -248,7 +248,7 @@ class Cs_gastos_operacionales extends Model
         if ($sumaDetalle) {
             return ['estado' => 'success', 'totales' => $sumaDetalle];
         }
-        return false; 
+        return ['estado' => 'failed', 'mensaje' => 'No hay monto Inicial']; 
     }
 
     //proceso para guadar el archivo

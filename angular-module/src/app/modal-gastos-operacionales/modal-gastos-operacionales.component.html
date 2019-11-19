@@ -217,9 +217,8 @@
 
 </ng-template>
 
-
-<button class="btn btn btn-success btn-block btn-sm mt-4" (click)="openModal(gastosOperacionales)">Gastos
-  Operacionales</button>
+<label><strong>Gastos Operacionales</strong></label><br>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(gastosOperacionales)">Ingresar</button>
 
   <!--MODAL PARA EDICION*********************************************************-->
 <ng-template #edicion let-modal>
@@ -338,7 +337,8 @@
         </div>
         <div class="row mt-4">
           <div class="col-md-12">
-            <label>Monto a agregar (Saldo Disponible Actualmente: {{datosGastosOperacionales?.totales?.cierre_mes}} )</label>
+            <label *ngIf="datosGastosOperacionales != '' ">Monto a agregar (Saldo Disponible Actualmente: {{datosGastosOperacionales?.totales?.cierre_mes}} )</label>
+            <label *ngIf="datosGastosOperacionales == '' ">Monto a agregar (Saldo Disponible Actualmente: {{montoBase}} )</label>
         <div class="input-group">
           <input type="number" #montoSolicitado class="form-control" name="montoSumar">
         </div>

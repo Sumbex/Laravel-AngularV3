@@ -452,9 +452,16 @@ class PortalSocioCuentaSindical extends Model
         }
     }
 
+    public function directiva()
+    {
+        $data = DB::table('directiva')->select('id', 'directiva')->where('activo', 'S')->first();
+        return $data;
+    }
+
     protected function traerGastosOperacionales($anio, $mes)
     {
         /* dd($this->totalesGO($anio, $mes)); */
+        $directiva = $this->directiva();
         $gastos = DB::table('cs_gastos_operacionales as go')
             ->select([
                 'go.id',
@@ -470,10 +477,12 @@ class PortalSocioCuentaSindical extends Model
             ->join('mes as m', 'm.id', 'mes_id')
             ->where([
                 'go.activo' => 'S',
-                'go.anio_id' => $anio,
-                'go.mes_id' => $mes,
+                /* 'go.anio_id' => $anio,
+                'go.mes_id' => $mes, */
             ])
-            ->orderby('go.dia', 'ASC')
+            ->orderby('a.descripcion', 'asc')
+            ->orderby('go.mes_id', 'asc')
+            ->orderby('go.dia', 'asc')
             ->get();
 
         if (!$gastos->isEmpty()) {

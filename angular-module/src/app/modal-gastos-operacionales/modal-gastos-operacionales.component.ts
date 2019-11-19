@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SindicalService } from '../servicios/sindical.service';
 import { AniosService } from '../servicios/anios.service';
+import { UsuarioService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-modal-gastos-operacionales',
@@ -20,6 +21,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   //Variable para las cargas
   cargandoTabla = false;
   cargarDatos = 0;
+  ingresandoDatos = false;
 
   //Variables para la modificación de documentos/////////
   /*Variables que rescatan la fila seleccionada*/
@@ -33,11 +35,11 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   /*Variables que rescatan el nuevo valor a ingresar*/
   loadingModificacion = false;
   blockCajaChica = false;
-  valorInput='';
+  valorInput = '';
   edicionArchivo;
 
   //Datos del Formulario
-  datosFormulario={
+  datosFormulario = {
     numero_documento: '',
     archivo_documento: null,
     fecha: '',
@@ -49,10 +51,21 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   //Rut del usuario
   rutUsuario;
 
+  //Variables para el modal de validar usuario
+  usuario;
+  rut;
+  pass;
+  estado;
+
+  //variabes para determinar si se guarda archivo o texto 
+  edText;
+  edFile;
+
   //Datos para la tabla
   datosGastosOperacionales;
+  montoBase;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _service: SindicalService, private _fechasService: AniosService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _usuariosSevice: UsuarioService, private _service: SindicalService, private _fechasService: AniosService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -66,12 +79,11 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
     //Obtener Rut
     this.rutUsuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.rutUsuario);
   }
 
   //Abrir visor de PDF
   openPDF(content) {
-    this.modalService.open(content, {size: 'lg'});
+    this.modalService.open(content, { size: 'lg' });
   }
 
   //Abrir confirmacion contraseña
@@ -87,8 +99,8 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.idAnioActual = response.id;
         this.cargarDatos++;
         console.log(this.cargarDatos);
-        if(this.cargarDatos == 2){
-          this.recargarTabla();
+        if (this.cargarDatos == 2) {
+          /* this.recargarTabla(); */
         }
       },
       error => {
@@ -101,8 +113,8 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.idMesActual = response.id;
         this.cargarDatos++;
         console.log(this.cargarDatos);
-        if(this.cargarDatos == 2){
-          this.recargarTabla();
+        if (this.cargarDatos == 2) {
+          /* this.recargarTabla(); */
         }
       },
       error => {
@@ -114,78 +126,102 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   openModal(CajaChica) {
     this.modalService.open(CajaChica, { size: 'xl' });
     this.cargarFechasActuales();
+    this.getMontoBaseCuentaOperacional();
+  }
+
+  openModalAgregar(modalRecargas) {
+    this.modalService.open(modalRecargas, { size: 'lg' });
   }
 
   onSelectImage(event) {
     this.datosFormulario.archivo_documento = event.srcElement.files[0];
   }
 
-  changeAnio(valorSelect){
-    this.limpiarTabla();
+  onSelectImageEdicion(event) {
+    this.edicionArchivo = event.srcElement.files[0];
+  }
+
+  changeAnio(valorSelect) {
+    /* this.limpiarTabla(); */
     this.idAnioActual = valorSelect.target.value;
-    this.recargarTabla();
-  }
- 
-  changeMes(valorSelect){
-   this.limpiarTabla();
-   this.idMesActual = valorSelect.target.value;
-   this.recargarTabla();
+    /* this.recargarTabla(); */
   }
 
-  limpiarTabla(){
+  changeMes(valorSelect) {
+    /* this.limpiarTabla(); */
+    this.idMesActual = valorSelect.target.value;
+    /* this.recargarTabla(); */
+  }
+
+  limpiarTabla() {
     this.datosGastosOperacionales = '';
+    this.montoBase = '';
   }
 
-  recargarTabla(){
+  limpiarFormulario(){
+    this.datosFormulario.archivo_documento = null;
+    this.datosFormulario.descripcion = '';
+    this.datosFormulario.fecha = '';
+    this.datosFormulario.monto = '';
+    this.datosFormulario.numero_documento = '';
+  }
+
+  recargarTabla() {
     this.cargarTablaCajaChica();
     this.limpiarTabla();
   }
 
-  cargarTablaCajaChica(){
+  cargarTablaCajaChica() {
     this.cargandoTabla = true;
     this._service.getGastosOperacionales(this.idAnioActual, this.idMesActual).subscribe(response => {
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
+      if (response.estado == 'failed' || response.estado == 'failed_v') {
         alert(response.mensaje);
         this.cargandoTabla = false;
-      }else{
+      } else {
         this.datosGastosOperacionales = response;
+        this.montoBase = response.montoInicial;
         this.cargandoTabla = false;
       }
     },
-    error => {
-      console.log(error);
-      this.cargandoTabla = false;
-    });
+      error => {
+        console.log(error);
+        this.cargandoTabla = false;
+      });
   }
 
-  ingresarValor(){
-    console.log(this.datosFormulario);
-    this._service.setGastoSindical(this.datosFormulario).subscribe(response=>{
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
+  ingresarValor() {
+    this.ingresandoDatos = true;
+    this._service.setGastoSindical(this.datosFormulario).subscribe(response => {
+      if (response.estado == 'failed' || response.estado == 'failed_v') {
         alert(JSON.stringify(response.mensaje));
-      }else{
+        this.ingresandoDatos = false;
+      } else {
         alert(response.mensaje);
+        this.limpiarFormulario();
+        this.recargarTabla();
+        this.ingresandoDatos = false;
       }
-    }, error=>{
+    }, error => {
       console.log(error);
+      this.ingresandoDatos = false;
     });
   }
 
   //almacenar datos al querer editar un valor
-  editarParametro(id, campo, valor){
+  editarParametro(id, campo, valor) {
     this.idEdicion = id;
     this.campoEdicion = campo;
     this.parametroEdicion = valor;
-    if(this.campoEdicion == 'fecha'){
+    if (this.campoEdicion == 'fecha') {
       console.log('Estoy pasando por fecha');
       this.varType = 'date';
       this.edicionDocumento = false;
       this.edicionTexto = true;
-    }else if (this.campoEdicion == 'archivo_documento'){
+    } else if (this.campoEdicion == 'archivo_documento') {
       console.log('Estoy pasando por archivo');
       this.edicionDocumento = true;
       this.edicionTexto = false;
-    }else{
+    } else {
       console.log('Estoy pasando por text');
       this.varType = 'text';
       this.edicionDocumento = false;
@@ -195,18 +231,121 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     document.getElementById("openModalButtonEdicionOperacional").click();
   }
 
-  ingresarModificacionTexto(input){
+  ingresarModificacionTexto(input) {
+    this.edText = true;
+    this.edFile = false;
     this.blockCajaChica = true;
     this.loadingModificacion = true;
     this.valorInput = input;
     document.getElementById("openModalButtonPassOperacionales").click();
   }
 
-  ingresarModificacionDocumento(){
+  ingresarModificacionDocumento() {
+    this.edText = false;
+    this.edFile = true;
     this.blockCajaChica = true;
     this.loadingModificacion = true;
     document.getElementById("openModalButtonPassOperacionales").click();
   }
 
+  validarUsuario(pass) {
+    /* this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(
+      response => {
+        if(response > 0){
+          document.getElementById("closeModalButtonValidacion").click();
+          //llamar a la función para ingresar la kkck de modificación
+          this.modificacionAprobada();
+        }else{
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert("Acceso denegado");
+          document.getElementById("closeModalButtonEdicion").click();
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    ) */
+    if (this.edicionTexto) {
+      this.modificacionAprobada();
+    } else if (this.edicionArchivo) {
+      this.modificacionAprobadaArchivo();
+    }
+  }
+
+  modificacionAprobada() {
+    this._service.updateCampoOperacional(this.idEdicion, this.campoEdicion, this.valorInput).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(JSON.stringify(response.mensaje));
+        } else {
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(response.mensaje);
+          this.cargarTablaCajaChica();
+          document.getElementById("closeModalButtonEdicion").click();
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  modificacionAprobadaArchivo() {
+    this._service.updateCampoOperacional(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
+      response => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(JSON.stringify(response.mensaje));
+        } else {
+          this.blockCajaChica = false;
+          this.loadingModificacion = false;
+          alert(response.mensaje);
+          this.cargarTablaCajaChica();
+          document.getElementById("closeModalButtonEdicion").click();
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  solicitarMonto(descripcionRecarga, montoSolicitado){
+    this.ingresandoDatos = true;
+    this._service.updateSaldoDisponible(this.idAnioActual, this.idMesActual, descripcionRecarga, montoSolicitado).subscribe(response=>{
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(JSON.stringify(response.mensaje));
+        this.ingresandoDatos = false;
+      }else{
+        alert(response.mensaje);
+        document.getElementById('closeModalButtonRecarga').click();
+        this.recargarTabla();
+        this.ingresandoDatos = false;
+      }
+    },error=>{
+      console.log(error);
+      this.ingresandoDatos = false;
+    });
+  }
+
+  getMontoBaseCuentaOperacional(){
+    this._service.getMontoBase().subscribe(response => {
+      if(response.estado == 'success'){
+        console.log(response);
+        this.montoBase = response.totales;
+        this.cargarTablaCajaChica();
+      }else{
+        alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
+        document.getElementById('cerrarGastosOperacionalModal').click();
+      }
+    }, error=>{
+      console.log(error);
+    })
+  }
 
 }

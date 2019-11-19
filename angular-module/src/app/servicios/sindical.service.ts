@@ -285,10 +285,51 @@ export class SindicalService{
 
     }
 
+    //Servicio para Actualizar los gastos operacionales
+    updateCampoOperacional(valor, campo, input) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('input', valor);
+        body.append('nombreCampo', campo);
+        body.append('valor', input);
+
+        return this._http.post(this.url + "modificar_detalle_gasto_operacional",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
     //servicio para treaer los datos de gastos operacionales
     getGastosOperacionales(anio, mes): Observable<any>{
         
         return this._http.get(this.url + "listar_detalle_gasto_operacional/"+anio+"/"+mes, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
+
+    //Servicio para Actualizar los gastos operacionales
+    updateSaldoDisponible(anio, mes, descripcion, valor) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('idAnio', anio);
+        body.append('idMes', mes);
+        body.append('descripcion', descripcion);
+        body.append('valor', valor);
+
+        return this._http.post(this.url + "actualizarSaldoDisponible",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
+    //Servicio para verificar si existe el monto base de gasto operacional
+    getMontoBase() : Observable<any>{
+        return this._http.get(this.url + "getMontoBase", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'

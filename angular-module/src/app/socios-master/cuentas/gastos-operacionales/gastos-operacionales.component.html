@@ -2,7 +2,7 @@
 
   <!-- Header Del Modal -->
   <div class="modal-header" id="demoFont">
-    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Detalle Caja Chica</strong>
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Gastos Operacionales</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -11,7 +11,7 @@
   <!-- Cuerpo del Modal Caja Chica -->
   <div class="modal-body">
     <div class="row centrarCajaChica">
-      <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
+      <!-- <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
               class="fas fa-calendar-check"></i></strong></label>
         <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
           class="form-control form-control-sm">
@@ -25,9 +25,15 @@
           class="form-control form-control-sm">
           <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
         </select>
-      </div>
+      </div> -->
   
-      <div class="col-md-4"><br><label>
+      <div class="col-md-8 mt-4 text-center">
+        <h2>
+          <b>{{datosGastos?.directiva}}</b>
+        </h2>
+      </div>
+
+      <div class="col-md-3"><br><label>
         <strong>Recargar tabla </strong>
   
       </label><br>
@@ -43,8 +49,8 @@
       <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
         <thead text-sm class="text-center">
           <tr>
-            <th colspan="11" class="ColorThCS">Tabla caja chica</th>
-            <th colspan="2" class="ColorThCS">Saldo Disponible</th>
+            <th colspan="11" class="ColorThCS">Tabla Gastos Operacionales</th>
+            <th colspan="2" class="ColorThCS">Monto Base</th>
             <td colspan="2"><strong>{{ datosGastos?.monto_inicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
             </td>
           </tr>
@@ -102,7 +108,7 @@
             <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
           <tr>
-            <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i>  Total Cierre del  Mes</th>
+            <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i> Saldo Disponible</th>
             <td scope="col" class="text-center"><b>{{ datosGastos?.totales?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
           </tr>
           <br>
@@ -122,7 +128,7 @@
           </tr>
           <tr>
             <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
-              CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
+              CIERRE DEL MES</th>
             <td colspan="3" class="text-center">
               <strong>{{ datosGastos?.totales?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>

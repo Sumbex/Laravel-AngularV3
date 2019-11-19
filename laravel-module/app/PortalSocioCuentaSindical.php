@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\PortalSocio;
+use App\Cs_gastos_operacionales_detalle;
 
 class PortalSocioCuentaSindical extends Model
 {
@@ -431,24 +432,14 @@ class PortalSocioCuentaSindical extends Model
         }
     }
 
-    protected function traerMontoInicialGO($anio, $mes)
+    protected function traerMontoInicialGO()
     {
-        $existe = DB::table('cuenta_sindicato')
-            ->select([
-                'monto_egreso'
-            ])
-            ->where([
-                'activo' => 'S',
-                'anio_id' => $anio,
-                'mes_id' => $mes,
-                'tipo_cuenta_sindicato' => 6
-            ])
-            ->get();
-
-        if (!$existe->isEmpty()) {
-            return ['estado' => 'success', 'monto' => $existe[0]->monto_egreso];
+        $existe = Cs_gastos_operacionales_detalle::where('directiva',$this->directiva()->id)->sum('monto');
+        /* dd($existe); */
+        if ($existe) {
+            return ['estado' => 'success', 'monto' => $existe];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'No existe un monto en este mes.'];
+            return ['estado' => 'failed', 'mensaje' => 'No hay monto Inicial.'];
         }
     }
 
@@ -458,14 +449,14 @@ class PortalSocioCuentaSindical extends Model
         return $data;
     }
 
-    protected function traerGastosOperacionales($anio, $mes)
+    protected function traerGastosOperacionales()
     {
         /* dd($this->totalesGO($anio, $mes)); */
-        $directiva = $this->directiva();
+        $directiva = $this->directiva()->directiva;
         $gastos = DB::table('cs_gastos_operacionales as go')
             ->select([
                 'go.id',
-                DB::raw("concat(go.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+                DB::raw("concat(go.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha"),
                 'go.numero_documento',
                 'go.archivo_documento',
                 DB::raw("upper(go.descripcion) as descripcion"),
@@ -486,7 +477,7 @@ class PortalSocioCuentaSindical extends Model
             ->get();
 
         if (!$gastos->isEmpty()) {
-            $MC = $this->traerMontoInicialGO($anio, $mes);
+            $MC = $this->traerMontoInicialGO();
             $tomar = true;
 
             for ($i = 0; $i < count($gastos); $i++) {
@@ -512,16 +503,16 @@ class PortalSocioCuentaSindical extends Model
                         break;
                 }
             }
-            $totales = $this->totalesGO($anio, $mes, $MC['monto']);
+            $totales = $this->totalesGO($MC['monto']);
             /* $total->cierre_mes = $total->total + $MC;
         return ['estado' => 'success', 'monto_inicio' => $MC, 'caja' => $caja, 'total' => $total]; */
-            return ['estado' => 'success', 'monto_inicio' => $MC['monto'], 'gastos' => $gastos, 'totales' => $totales['totales']];
+            return ['estado' => 'success', 'monto_inicio' => $MC['monto'], 'gastos' => $gastos, 'totales' => $totales['totales'], 'directiva' => $directiva];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }
     }
 
-    protected function totalesGO($anio, $mes, $MC)
+    protected function totalesGO($MC)
     {
         $totales = DB::table('cs_gastos_operacionales')
             ->select([
@@ -530,8 +521,9 @@ class PortalSocioCuentaSindical extends Model
                 DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(coalesce(monto_egreso, 0)) as total')
             ])
             ->where([
-                'anio_id' => $anio,
-                'mes_id' => $mes,
+                /* 'anio_id' => $anio,
+                'mes_id' => $mes, */
+                'directiva_id' => $this->directiva()->id,
                 'activo' => 'S'
             ])
             ->get();

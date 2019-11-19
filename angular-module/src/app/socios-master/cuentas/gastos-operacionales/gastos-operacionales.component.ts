@@ -23,11 +23,11 @@ export class GastosOperacionalesComponent implements OnInit {
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _gastosService: SociosService,  private _portalSociosService: PortalSociosService) { }
 
   ngOnInit() {
-    //Cargar Años
+  /*   //Cargar Años
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
 
     //Cargar Meses
-    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+    this.selectMes = JSON.parse(localStorage.getItem('meses')); */
   }
 
   changeAnio(valorSelect){
@@ -85,7 +85,8 @@ export class GastosOperacionalesComponent implements OnInit {
   openModalGastosOperacionales(gastosModal) {
     this.modalCajaChica = this.modalService.open(gastosModal, { size: 'xl' });
     this.limpiarTabla();
-    this.cargarFechasActuales();
+    this.traerGastosOperacionales();
+/*     this.cargarFechasActuales(); */
   }
 
   openPDF(content) {
@@ -93,7 +94,7 @@ export class GastosOperacionalesComponent implements OnInit {
   }
 
   traerGastosOperacionales() {
-    this._gastosService.traer_gastos(this.idAnioActual, this.idMesActual).subscribe(response => {
+    this._gastosService.traer_gastos().subscribe(response => {
       if (response.estado == 'failed') {
         alert(response.mensaje);
       } else {

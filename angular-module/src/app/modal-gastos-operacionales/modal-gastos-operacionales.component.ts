@@ -63,6 +63,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
   //Datos para la tabla
   datosGastosOperacionales;
+  montoBase;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _usuariosSevice: UsuarioService, private _service: SindicalService, private _fechasService: AniosService) {
     config.backdrop = 'static';
@@ -78,7 +79,6 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
     //Obtener Rut
     this.rutUsuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.rutUsuario);
   }
 
   //Abrir visor de PDF
@@ -100,7 +100,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.cargarDatos++;
         console.log(this.cargarDatos);
         if (this.cargarDatos == 2) {
-          this.recargarTabla();
+          /* this.recargarTabla(); */
         }
       },
       error => {
@@ -114,7 +114,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.cargarDatos++;
         console.log(this.cargarDatos);
         if (this.cargarDatos == 2) {
-          this.recargarTabla();
+          /* this.recargarTabla(); */
         }
       },
       error => {
@@ -126,6 +126,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   openModal(CajaChica) {
     this.modalService.open(CajaChica, { size: 'xl' });
     this.cargarFechasActuales();
+    this.getMontoBaseCuentaOperacional();
   }
 
   openModalAgregar(modalRecargas) {
@@ -141,19 +142,20 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   changeAnio(valorSelect) {
-    this.limpiarTabla();
+    /* this.limpiarTabla(); */
     this.idAnioActual = valorSelect.target.value;
-    this.recargarTabla();
+    /* this.recargarTabla(); */
   }
 
   changeMes(valorSelect) {
-    this.limpiarTabla();
+    /* this.limpiarTabla(); */
     this.idMesActual = valorSelect.target.value;
-    this.recargarTabla();
+    /* this.recargarTabla(); */
   }
 
   limpiarTabla() {
     this.datosGastosOperacionales = '';
+    this.montoBase = '';
   }
 
   limpiarFormulario(){
@@ -177,6 +179,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         this.cargandoTabla = false;
       } else {
         this.datosGastosOperacionales = response;
+        this.montoBase = response.montoInicial;
         this.cargandoTabla = false;
       }
     },
@@ -313,15 +316,35 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   solicitarMonto(descripcionRecarga, montoSolicitado){
+    this.ingresandoDatos = true;
     this._service.updateSaldoDisponible(this.idAnioActual, this.idMesActual, descripcionRecarga, montoSolicitado).subscribe(response=>{
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        alert(JSON.stringify(response.mensaje));
+        this.ingresandoDatos = false;
       }else{
         alert(response.mensaje);
+        document.getElementById('closeModalButtonRecarga').click();
+        this.recargarTabla();
+        this.ingresandoDatos = false;
       }
     },error=>{
       console.log(error);
+      this.ingresandoDatos = false;
     });
-  } 
+  }
+
+  getMontoBaseCuentaOperacional(){
+    this._service.getMontoBase().subscribe(response => {
+      if(response.estado == 'success'){
+        console.log(response);
+        this.montoBase = response.totales;
+        this.cargarTablaCajaChica();
+      }else{
+        alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
+      }
+    }, error=>{
+      console.log(error);
+    })
+  }
 
 }

@@ -326,5 +326,15 @@ export class SindicalService{
             }
         )});
     }
+
+    //Servicio para verificar si existe el monto base de gasto operacional
+    getMontoBase() : Observable<any>{
+        return this._http.get(this.url + "getMontoBase", {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )});
+    }
     
 }

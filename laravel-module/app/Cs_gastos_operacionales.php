@@ -48,6 +48,28 @@ class Cs_gastos_operacionales extends Model
         return ['estado' => 'success', 'mensaje' => 'success'];
     }
 
+    //VALIDADOR
+    public function validarSolicitarMonto($request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'descripcion' => 'required',
+                'valor' => 'required'
+            ],
+            [
+                'descripcion.required' => 'La descripcion es necesaria',
+                'valor.required' => 'Debe de ingresar un valor'
+            ]
+        );
+
+
+        if ($validator->fails()) {
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
+        }
+        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
     public function validarGoModificacion($request){
         switch ($request->nombreCampo) {
             case 'fecha':
@@ -173,6 +195,7 @@ class Cs_gastos_operacionales extends Model
 
 
                     $go->user_crea = Auth::user()->id;
+                    $go->directiva_id = $this->directiva()->id;
                     $go->activo = 'S';
 
                     if ($go->save()) {
@@ -218,7 +241,7 @@ class Cs_gastos_operacionales extends Model
 		return $data;
 	}
 
-    public function validar_monto_inicio()
+    protected function validar_monto_inicio()
     {
         $sumaDetalle = Cs_gastos_operacionales_detalle::where('directiva',$this->directiva()->id)->sum('monto');
         /* dd($sumaDetalle); */
@@ -425,6 +448,8 @@ class Cs_gastos_operacionales extends Model
 
     protected function actualizarSaldoDisponible($request)
     {
+        $validador = $this->validarSolicitarMonto($request);
+        if ($validador['estado'] == 'success') {
         //OBTENER EL SALDO DISPONIBLE DE GASTO OPERACIONAL
         $montoBaseDetalle = $this->validar_monto_inicio();
         $consultaDetalles = $this->totalesGO($request->idAnio, $request->idMes, $montoBaseDetalle['totales']);
@@ -488,6 +513,8 @@ class Cs_gastos_operacionales extends Model
                       }
                 }
             }
-            
+        }else{
+            return $validador;
+        }
     }
 }

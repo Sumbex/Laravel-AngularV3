@@ -26,4 +26,9 @@ class GastoOperacionalController extends Controller
         return $go;
     }
 
+    public function validarMontoInicio(){
+        $go = Cs_gastos_operacionales::validar_monto_inicio();
+        return $go;
+    }
+
 }

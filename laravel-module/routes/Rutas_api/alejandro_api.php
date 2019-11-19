@@ -38,6 +38,7 @@ Route::post('guardar_detalle_gasto_operacional','GastoOperacionalController@guar
 Route::get('listar_detalle_gasto_operacional/{anio}/{mes}','GastoOperacionalController@listar');
 Route::post('modificar_detalle_gasto_operacional','GastoOperacionalController@actualizar');
 Route::post('actualizarSaldoDisponible','GastoOperacionalController@actualizarSaldoDisponible');
+Route::get('getMontoBase','GastoOperacionalController@validarMontoInicio');
 
 //-------------------------------------------------------------------------------------------------
 

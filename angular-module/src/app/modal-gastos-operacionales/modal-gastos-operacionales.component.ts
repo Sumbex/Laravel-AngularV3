@@ -62,7 +62,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   edFile;
 
   //Datos para la tabla
-  datosGastosOperacionales;
+  datosGastosOperacionales = '';
   montoBase;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _usuariosSevice: UsuarioService, private _service: SindicalService, private _fechasService: AniosService) {
@@ -167,6 +167,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   recargarTabla() {
+    this.getMontoBaseCuentaOperacional2();
     this.cargarTablaCajaChica();
     this.limpiarTabla();
   }
@@ -175,7 +176,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     this.cargandoTabla = true;
     this._service.getGastosOperacionales(this.idAnioActual, this.idMesActual).subscribe(response => {
       if (response.estado == 'failed' || response.estado == 'failed_v') {
-        alert(response.mensaje);
+        //alert(response.mensaje);
         this.cargandoTabla = false;
       } else {
         this.datosGastosOperacionales = response;
@@ -339,6 +340,20 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         console.log(response);
         this.montoBase = response.totales;
         this.cargarTablaCajaChica();
+      }else{
+        alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
+        document.getElementById('cerrarGastosOperacionalModal').click();
+      }
+    }, error=>{
+      console.log(error);
+    })
+  }
+
+  getMontoBaseCuentaOperacional2(){
+    this._service.getMontoBase().subscribe(response => {
+      if(response.estado == 'success'){
+        console.log(response);
+        this.montoBase = response.totales;
       }else{
         alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
         document.getElementById('cerrarGastosOperacionalModal').click();

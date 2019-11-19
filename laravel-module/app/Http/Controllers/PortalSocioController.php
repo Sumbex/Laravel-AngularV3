@@ -133,6 +133,11 @@ class PortalSocioController extends Controller
     {
         return PortalSocioCuentaSindical::traerCampingTotal($anio, $mes);
     }
+
+    public function TraerGastosOperacionales($anio, $mes)
+    {
+        return PortalSocioCuentaSindical::traerGastosOperacionales($anio, $mes);
+    }
     //------------------------------------------>rutas portal socio cs
 
     //------------------------------------------>rutas portal socio cb

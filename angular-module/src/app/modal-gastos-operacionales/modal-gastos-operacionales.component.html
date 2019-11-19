@@ -4,7 +4,7 @@
   <div class="modal-header" id="demoFont">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Cuenta Sindical / Gastos Operacionales</strong>
     </h6>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button id="cerrarGastosOperacionalModal" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -55,14 +55,14 @@
             <div class="form-group">
               <label for="">Seleccione Tipo</label>
               <select class="form-control" name="definicion" #definicion="ngModel"
-                [(ngModel)]="datosFormulario.definicion">
+                [(ngModel)]="datosFormulario.definicion" disabled>
                 <option value="2">Egreso</option>
                 <option value="1">Ingreso</option>
               </select>
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Ingresar</button>
+        <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Ingresar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
       </form>
     </div>
 
@@ -73,11 +73,17 @@
           de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>
       </ngb-alert>
 
-      <div class="col-md-3">
+      <div class="col-md-6 mt-4 text-center">
+        <h2>
+          <b>{{datosGastosOperacionales?.directiva?.directiva}}</b>
+        </h2>
+      </div>
+
+      <!-- <div class="col-md-3">
         <label for="">Filtro por Año</label>
         <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
           class="form-control form-control-sm">
-          <option *ngFor="let anio of selectMes" [value]="anio.id">{{anio.descripcion}}</option>
+          <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
         </select>
       </div>
       <div class="col-md-3">
@@ -86,10 +92,19 @@
           class="form-control form-control-sm">
           <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
         </select>
-      </div>
+      </div> -->
       <div class="col-md-3">
         <label for="">Recargar Tabla</label><br>
-        <button class="btn btn-success" (click)="recargarTabla()">Actualizar</button>
+        <button class="btn btn-success" [disabled]="cargandoTabla" (click)="recargarTabla()">Actualizar</button>
+        <div *ngIf="cargandoTabla">
+          <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+          <label>Actualizando</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="">Agregar Dinero a Saldo Disponible</label><br>
+        <button class="btn btn-primary btn-block" [disabled]="cargandoTabla" (click)="openModalAgregar(modalRecargas)">Agregar</button>
       </div>
 
     </div>
@@ -100,9 +115,9 @@
       <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
         <thead text-sm class="text-center">
           <tr>
-            <th colspan="11" class="ColorThCS">Tabla caja chica</th>
-            <th colspan="2" class="ColorThCS">Monto Inicial</th>
-            <td colspan="2"><strong>{{ datosCajaChica?.monto_inicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
+            <th colspan="11" class="ColorThCS">Tabla Gastos Operacionales</th>
+            <th colspan="2" class="ColorThCS">Monto Base</th>
+            <td colspan="2"><strong>{{ montoBase | currency:"CLP" : "symbol-narrow":'1.0'}}</strong>
             </td>
           </tr>
           <tr>
@@ -116,9 +131,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of datosGastosOperacionales" class="text-center">
-            <td colspan="2"><b>{{item?.fecha}}</b></td>
-            <td colspan="2"><b>{{item?.numero_documento}}</b></td>
+          <tr *ngFor="let item of datosGastosOperacionales?.gastosOperacionales" class="text-center">
+            <td colspan="2" (click)="editarParametro(item.id, 'fecha', item.fecha)"><b>{{item?.fecha}}</b></td>
+            <td colspan="2" (click)="editarParametro(item.id, 'numero_documento', item.numero_documento)"><b>{{item?.numero_documento}}</b></td>
 
 
             <!--MODAL VISOR PDF-->
@@ -147,21 +162,25 @@
             <td colspan="2">
               <a (click)="openPDF(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
                   ngbTooltip="Presione aqui visualizar documento PDF"></i></a>&nbsp;
+                  <a class="btn-primary-outline" style="cursor: pointer"
+              (click)="editarParametro(item.id, 'archivo_documento', 'Archivo Antiguo')">
+              <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+            </a>
             </td>
 
 
 
-            <td colspan="3"><b>{{item.descripcion}}</b>
+            <td colspan="3" (click)="editarParametro(item.id, 'descripcion', item.descripcion)"><b>{{item.descripcion}}</b>
             </td>
             <td colspan="2"><b>{{item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
-            <td colspan="2">
+            <td colspan="2" (click)="editarParametro(item.id, 'monto', item.monto_egreso)">
               <b>{{item.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
             <td colspan="2"><b>{{item?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
           </tr>
           <tr>
-            <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i> Total Cierre del Mes</th>
+            <th colspan="13" class="text-right"><i class="fas fa-plus-circle"></i> Saldo Disponible</th>
             <td scope="col" class="text-center">
-              <b>{{ totalesCajaChica?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+              <b>{{ datosGastosOperacionales?.totales?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
           </tr>
           <br>
           <!--Tabla del total Modal Caja Chica-->
@@ -169,20 +188,20 @@
             <th colspan="9" class="text-right"><i class="fas fa-plus-circle"></i>
               INGRESOS</th>
             <td colspan="3" class="text-center">
-              <strong>{{ totalesCajaChica?.total_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <strong>{{ datosGastosOperacionales?.totales?.totalingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
 
           <tr>
             <th colspan="9" class="text-right"><i class="fas fa-minus-circle"></i>
               EGRESOS</th>
             <td colspan="3" class="text-center">
-              <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <strong>{{ datosGastosOperacionales?.totales?.totalegreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
           <tr>
             <th colspan="9" class="text-right"><i class="fas fa-dollar-sign"></i>
               CIERRE DEL MES</th>
             <td colspan="3" class="text-center">
-              <strong>{{ totalesCajaChica?.total_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+              <strong>{{ datosGastosOperacionales?.totales?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
           </tr>
         </tbody>
       </table>
@@ -201,3 +220,135 @@
 
 <button class="btn btn btn-success btn-block btn-sm mt-4" (click)="openModal(gastosOperacionales)">Gastos
   Operacionales</button>
+
+  <!--MODAL PARA EDICION*********************************************************-->
+<ng-template #edicion let-modal>
+  <div class="modal-header" id="demoFont">
+    <h4 class="modal-title" id="modal-basic-title">Modificar Campo</h4>
+  </div>
+  <div class="modal-body">
+    <form enctype="multipart/form-data">
+      <div class="form-group">
+        <label><strong>Valor Anterior</strong></label>
+        <div class="input-group">
+          <input type="text" class="form-control" value="{{parametroEdicion}}" disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <label><strong>Nuevo Valor</strong></label>
+        <div class="input-group">
+          <input [hidden]="edicionDocumento" #nuevoValor id="nuevoValor" type="{{varType}}" class="form-control"
+            name="nuevoValor">
+          <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file"
+            (change)="onSelectImageEdicion($event)" required>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="closeModalButtonEdicion" type="button" class="btn btn-info"
+      (click)="modal.close('Save click')">Salir</button>
+    <button [hidden]="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
+      (click)="ingresarModificacionTexto(nuevoValor.value); estado='modificar_cch'">Guardar
+      <img *ngIf="loadingModificacion" padding-left="20px" height="12"
+        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    </button>
+    <button *ngIf="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
+      (click)="ingresarModificacionDocumento(); estado='modificar_cch'">Guardar Documento
+      <img *ngIf="loadingModificacion" padding-left="20px" height="12"
+        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+    </button>
+  </div>
+</ng-template>
+
+<button id="openModalButtonEdicionOperacional" class="btn btn-lg btn-outline-primary" [hidden]=true
+  (click)="openEdicionModal(edicion)">Launch demo modal</button>
+
+<!--MODAL PARA EDICION-->
+
+    <!--MODAL VALIDACION CON CONTRASEÑA-->
+<ng-template #validar let-modal>
+  <div class="modal-header" id="demoFont">
+    <h4 class="modal-title" id="modal-basic-title">Verificación de usuario</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>rut</label>
+        <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="rutUsuario" name="rutusuario" disabled>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>contraseña</label>
+        <div class="input-group">
+          <input #pass type="password" class="form-control" name="pass">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="closeModalButtonValidacion2" type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click'); blockCajaChica = false">Salir</button>
+    <button hidden id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark"
+      (click)="modal.close('Save click');">Salir</button>
+    <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Verificar</button>
+  </div>
+</ng-template>
+
+<button id="openModalButtonPassOperacionales" class="btn btn-lg btn-outline-primary" [hidden]=true
+  (click)="openEdicionModal(validar)">Launch demo modal</button>
+<!--MODAL VALIDACION CON CONTRASEÑA-->
+
+<!--MODAL para las recargas-->
+<ng-template #modalRecargas let-c="close" let-d="dismiss">
+  <div class="row">
+    <div class="col">
+      <div class="modal-header text-center" id="demoFont">
+        <h4 class="modal-title" id="modal-basic-title">Recargar Saldo Disponible</h4>
+        <button id="closeModalButtonRecarga" type="button" class="close" aria-label="Close"
+          (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="">Filtro por Año</label>
+            <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+              class="form-control form-control-sm">
+              <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="">Filtro por Mes</label>
+            <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
+              class="form-control form-control-sm">
+              <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <label>Descripción</label>
+        <div class="input-group">
+          <input type="text" #descripcionRecarga class="form-control" name="descripcionRecarga">
+        </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <label>Monto a agregar (Saldo Disponible Actualmente: {{datosGastosOperacionales?.totales?.cierre_mes}} )</label>
+        <div class="input-group">
+          <input type="number" #montoSolicitado class="form-control" name="montoSumar">
+        </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" [disabled]="ingresandoDatos" class="btn btn-outline-dark btn-block" (click)="solicitarMonto(descripcionRecarga.value, montoSolicitado.value)">Solicitar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--MODAL para las recargas-->

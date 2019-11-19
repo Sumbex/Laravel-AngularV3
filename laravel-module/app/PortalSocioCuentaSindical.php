@@ -430,4 +430,108 @@ class PortalSocioCuentaSindical extends Model
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }
     }
+
+    protected function traerMontoInicialGO($anio, $mes)
+    {
+        $existe = DB::table('cuenta_sindicato')
+            ->select([
+                'monto_egreso'
+            ])
+            ->where([
+                'activo' => 'S',
+                'anio_id' => $anio,
+                'mes_id' => $mes,
+                'tipo_cuenta_sindicato' => 6
+            ])
+            ->get();
+
+        if (!$existe->isEmpty()) {
+            return ['estado' => 'success', 'monto' => $existe[0]->monto_egreso];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existe un monto en este mes.'];
+        }
+    }
+
+    protected function traerGastosOperacionales($anio, $mes)
+    {
+        /* dd($this->totalesGO($anio, $mes)); */
+        $gastos = DB::table('cs_gastos_operacionales as go')
+            ->select([
+                'go.id',
+                DB::raw("concat(go.dia,' de ',m.descripcion,',',a.descripcion) as fecha"),
+                'go.numero_documento',
+                'go.archivo_documento',
+                DB::raw("upper(go.descripcion) as descripcion"),
+                DB::raw('coalesce(go.monto_ingreso, 0) as monto_ingreso'),
+                DB::raw('coalesce(go.monto_egreso, 0) as monto_egreso'),
+                'go.definicion'
+            ])
+            ->join('anio as a', 'a.id', 'anio_id')
+            ->join('mes as m', 'm.id', 'mes_id')
+            ->where([
+                'go.activo' => 'S',
+                'go.anio_id' => $anio,
+                'go.mes_id' => $mes,
+            ])
+            ->orderby('go.dia', 'ASC')
+            ->get();
+
+        if (!$gastos->isEmpty()) {
+            $MC = $this->traerMontoInicialGO($anio, $mes);
+            $tomar = true;
+
+            for ($i = 0; $i < count($gastos); $i++) {
+                switch ($gastos[$i]->definicion) {
+                    case 1:
+                        if ($tomar == true) {
+                            $gastos[$i]->saldo_actual = $MC['monto'] + $gastos[$i]->monto_ingreso;
+                            $tomar = false;
+                        } else {
+                            $gastos[$i]->saldo_actual = $gastos[$i - 1]->saldo_actual + $gastos[$i]->monto_ingreso;
+                        }
+                        break;
+                    case 2:
+                        if ($tomar == true) {
+                            $gastos[$i]->saldo_actual = $MC['monto'] - $gastos[$i]->monto_egreso;
+                            $tomar = false;
+                        } else {
+                            $gastos[$i]->saldo_actual = $gastos[$i - 1]->saldo_actual - $gastos[$i]->monto_egreso;
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            $totales = $this->totalesGO($anio, $mes, $MC['monto']);
+            /* $total->cierre_mes = $total->total + $MC;
+        return ['estado' => 'success', 'monto_inicio' => $MC, 'caja' => $caja, 'total' => $total]; */
+            return ['estado' => 'success', 'monto_inicio' => $MC['monto'], 'gastos' => $gastos, 'totales' => $totales['totales']];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+        }
+    }
+
+    protected function totalesGO($anio, $mes, $MC)
+    {
+        $totales = DB::table('cs_gastos_operacionales')
+            ->select([
+                DB::raw('sum(coalesce(monto_ingreso, 0)) as total_ingreso'),
+                DB::raw('sum(coalesce(monto_egreso, 0)) as total_egreso'),
+                DB::raw('sum(coalesce(monto_ingreso, 0)) - sum(coalesce(monto_egreso, 0)) as total')
+            ])
+            ->where([
+                'anio_id' => $anio,
+                'mes_id' => $mes,
+                'activo' => 'S'
+            ])
+            ->get();
+
+        if (!$totales->isEmpty()) {
+            $totales[0]->cierre_mes = $totales[0]->total + $MC;
+            return ['estado' => 'success', 'totales' => $totales[0]];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+        }
+    }
 }

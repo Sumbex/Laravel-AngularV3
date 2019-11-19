@@ -16,4 +16,19 @@ class GastoOperacionalController extends Controller
         return Cs_gastos_operacionales::listar($anio, $mes);
     }
 
+    public function actualizar(Request $value){
+        $go = Cs_gastos_operacionales::modificarGastoOperacional($value);
+        return $go;
+    }
+
+    public function actualizarSaldoDisponible(Request $value){
+        $go = Cs_gastos_operacionales::actualizarSaldoDisponible($value);
+        return $go;
+    }
+
+    public function validarMontoInicio(){
+        $go = Cs_gastos_operacionales::validar_monto_inicio();
+        return $go;
+    }
+
 }

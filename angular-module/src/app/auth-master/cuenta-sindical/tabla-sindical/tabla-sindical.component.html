@@ -791,6 +791,48 @@
               {{ itemCamping.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           </tr>
 
+            <!--gastos operacionales-->
+            <tr class="text-center">
+              <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
+              <th style="background: #138D75">N° Doc</th>
+              <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+              <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Gastos Operacionales</th>
+              <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
+              <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+              <td></td>
+            </tr>
+  
+            <tr *ngFor="let itemGastosOp of gastosOp">
+              <td colspan="3" class="text-center">
+                {{itemGastosOp.fecha}}
+              </td>
+  
+              <td scope="col" class="text-center">
+                {{itemGastosOp.numero_documento}}
+              </td>
+  
+              <td class="text-center">
+                <a class="btn-primary-outline">
+                  <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                </a>
+              </td>
+  
+              <td scope="col" colspan="4">
+                {{itemGastosOp.descripcion}}
+              </td>
+  
+              <td scope="col" class="text-center">
+                {{ itemGastosOp.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              </td>
+  
+              <td scope="col" class="text-center">
+                {{ itemGastosOp.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+              </td>
+              <!--acumulado cierre del mes actual-->
+              <td scope="col" class="text-center">
+                {{ itemGastosOp.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+            </tr>
+
           <!--Cierre del mes-->
           <tr>
             <th colspan="11" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i> Total

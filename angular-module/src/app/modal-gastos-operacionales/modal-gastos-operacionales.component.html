@@ -313,14 +313,14 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-6">
-            <label for="">Filtro por Año</label>
+            <label for="">Seleccione el Año</label>
             <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
               class="form-control form-control-sm">
               <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
             </select>
           </div>
           <div class="col-md-6">
-            <label for="">Filtro por Mes</label>
+            <label for="">Seleccione el Mes</label>
             <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
               class="form-control form-control-sm">
               <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>

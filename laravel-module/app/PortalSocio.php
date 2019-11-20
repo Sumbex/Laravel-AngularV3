@@ -324,9 +324,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                 } else {
 
                     //$socio = PortalSocio::where('rut', $request->rut)->first();
-                    $socio = PortalSocio::whereRaw(
-					"LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$request->rut."')
-				")->first();
+                    $socio = PortalSocio::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $request->rut . "')")->first();
 
                     /* dd(is_null($socio->fecha_egreso)); */
                     if (is_null($socio->fecha_egreso)) {

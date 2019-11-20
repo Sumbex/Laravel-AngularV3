@@ -120,6 +120,7 @@ import { HistorialReunionComponent } from './auth-master/secretaria/historial-re
 import { SecretariaService } from './servicios/secretaria.service';
 import { DesvinculadosComponent } from './socios-master/cuentas/consorcio/desvinculados/desvinculados.component';
 import { ModalGastosOperacionalesComponent } from './modal-gastos-operacionales/modal-gastos-operacionales.component';
+import { GastosOperacionalesComponent } from './socios-master/cuentas/gastos-operacionales/gastos-operacionales.component';
 
 
 @NgModule({
@@ -296,7 +297,9 @@ import { ModalGastosOperacionalesComponent } from './modal-gastos-operacionales/
 
     DesvinculadosComponent,
 
-    ModalGastosOperacionalesComponent
+    ModalGastosOperacionalesComponent,
+
+    GastosOperacionalesComponent
 
   ],
   imports: [

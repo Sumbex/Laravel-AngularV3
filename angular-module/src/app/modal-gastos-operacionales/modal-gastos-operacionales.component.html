@@ -16,7 +16,7 @@
     </div>
 
     <div class="card">
-      <form #loginForm="ngForm" (ngSubmit)="ingresarValor(loginForm)" enctype="multipart/form-data">
+      <form #loginForm="ngForm" (ngSubmit)="solicitarIngreso(); estado='modificar_go'" enctype="multipart/form-data">
         <div class="row centrarCajaChica">
           <div class="col-md-4">
             <div class="form-group">
@@ -62,7 +62,7 @@
             </div>
           </div>
         </div>
-        <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Ingresar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+        <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Guardar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
       </form>
     </div>
 
@@ -248,12 +248,12 @@
     <button id="closeModalButtonEdicion" type="button" class="btn btn-info"
       (click)="modal.close('Save click')">Salir</button>
     <button [hidden]="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
-      (click)="ingresarModificacionTexto(nuevoValor.value); estado='modificar_cch'">Guardar
+      (click)="ingresarModificacionTexto(nuevoValor.value); estado='modificar_go'">Guardar
       <img *ngIf="loadingModificacion" padding-left="20px" height="12"
         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </button>
     <button *ngIf="edicionDocumento" [disabled]="blockCajaChica" type="button" class="btn btn-outline-success"
-      (click)="ingresarModificacionDocumento(); estado='modificar_cch'">Guardar Documento
+      (click)="ingresarModificacionDocumento(); estado='modificar_go'">Guardar Documento
       <img *ngIf="loadingModificacion" padding-left="20px" height="12"
         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </button>

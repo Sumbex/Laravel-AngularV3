@@ -333,6 +333,14 @@ class DatosBasicosController extends Controller
                     
                         return ($u->aplicar_descuento_cc =='S')? true:false;
                     break;
+                    case 'ingresar_go'://gastos operacionales
+                    
+                        return ($u->ingresar_go =='S')? true:false;
+                    break;
+                    case 'modificar_go'://gastos operacionales
+                    
+                        return ($u->modificar_go =='S')? true:false;
+                    break;
                     
                     default:
                         return true; // dejar hacer accion en caso que el usuario no este asociado a un permiso en especial

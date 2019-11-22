@@ -1185,7 +1185,7 @@ module.exports = "<!--Datos del socio-->\r\n\r\n<br>\r\n\r\n<ul class=\"nav nav-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-template #gastos let-modal>\r\n\r\n  <!-- Header Del Modal -->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Gastos Operacionales</strong>\r\n    </h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <!-- Cuerpo del Modal Caja Chica -->\r\n  <div class=\"modal-body\">\r\n    <div class=\"row centrarCajaChica\">\r\n      <!-- <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n              class=\"fas fa-calendar-check\"></i></strong></label>\r\n        <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\"\r\n          class=\"form-control form-control-sm\">\r\n          <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n        </select>\r\n      </div>\r\n  \r\n      <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n              class=\"fas fa-calendar-check\"></i></strong></label>\r\n        <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\"\r\n          class=\"form-control form-control-sm\">\r\n          <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n        </select>\r\n      </div> -->\r\n  \r\n      <div class=\"col-md-8 mt-4 text-center\">\r\n        <h2>\r\n          <b>{{datosGastos?.directiva}}</b>\r\n        </h2>\r\n      </div>\r\n\r\n      <div class=\"col-md-3\"><br><label>\r\n        <strong>Recargar tabla </strong>\r\n  \r\n      </label><br>\r\n      <button [disabled]=\"cargandoTabla\" class=\"btn btn-info\" (click)=\"recargarTabla()\">Actualizar</button>\r\n      <div *ngIf=\"cargandoTabla\">\r\n        <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n        <label>Actualizando</label>\r\n      </div>\r\n    </div>\r\n    </div><br>\r\n  \r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\r\n        <thead text-sm class=\"text-center\">\r\n          <tr>\r\n            <th colspan=\"11\" class=\"ColorThCS\">Tabla Gastos Operacionales</th>\r\n            <th colspan=\"2\" class=\"ColorThCS\">Monto Base</th>\r\n            <td colspan=\"2\"><strong>{{ datosGastos?.monto_inicio | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong>\r\n            </td>\r\n          </tr>\r\n          <tr>\r\n            <th colspan=\"2\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\r\n            <th colspan=\"2\">N° de Doc</th>\r\n            <th colspan=\"2\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n            <th colspan=\"3\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\r\n            <th colspan=\"2\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n            <th colspan=\"2\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n            <th colspan=\"2\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of datosGastos?.gastos\" class=\"text-center\">\r\n            <td colspan=\"2\"><b>{{item?.fecha}}</b></td>\r\n            <td colspan=\"2\"><b>{{item?.numero_documento}}</b></td>\r\n  \r\n  \r\n            <!--MODAL VISOR PDF-->\r\n            <ng-template #visor let-c=\"close\" let-d=\"dismiss\">\r\n              <div class=\"row\">\r\n                <div class=\"col\">\r\n                  <div class=\"modal-header text-center\" id=\"demoFont\">\r\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\r\n                    <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\r\n                      (click)=\"d('Cross click')\">\r\n                      <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                  </div>\r\n                  <div class=\"modal-body\">\r\n                    <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\" frameborder=\"0\"\r\n                      allowfullscreen></iframe>\r\n                  </div>\r\n                  <div class=\"modal-footer\" [hidden]=\"true\">\r\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ng-template>\r\n            <!--MODAL VISOR PDF-->\r\n  \r\n            <td colspan=\"2\">\r\n              <a (click)=\"openPDF(visor)\" style=\"cursor: pointer\"><i class=\"far fa-file-alt\" placement=\"top\"\r\n                  ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\r\n            </td>\r\n  \r\n  \r\n  \r\n            <td colspan=\"3\"><b>{{item.descripcion}}</b>\r\n            </td>\r\n            <td colspan=\"2\"><b>{{item?.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\r\n            <td colspan=\"2\">\r\n              <b>{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\r\n            <td colspan=\"2\"><b>{{item?.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\r\n          </tr>\r\n          <tr>\r\n            <th colspan=\"13\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i> Saldo Disponible</th>\r\n            <td scope=\"col\" class=\"text-center\"><b>{{ datosGastos?.totales?.cierre_mes | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</b></td>\r\n          </tr>\r\n          <br>\r\n          <!--Tabla del total Modal Caja Chica-->\r\n          <tr>\r\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\r\n              INGRESOS</th>\r\n            <td colspan=\"3\" class=\"text-center\">\r\n              <strong>{{ datosGastos?.totales?.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          </tr>\r\n  \r\n          <tr>\r\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\r\n              EGRESOS</th>\r\n            <td colspan=\"3\" class=\"text-center\">\r\n              <strong>{{ datosGastos?.totales?.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          </tr>\r\n          <tr>\r\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\r\n              CIERRE DEL MES</th>\r\n            <td colspan=\"3\" class=\"text-center\">\r\n              <strong>{{ datosGastos?.totales?.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"modal-footer\">\r\n  \r\n    <!--Boton para imprimir tabla caja chica-->\r\n    <!-- <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\r\n        printable: 'printJS-table',\r\n        type:'html',\r\n        style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\r\n      })\">\r\n    <i class=\"fas fa-print\"></i> Imprimir Datos\r\n  </button> -->\r\n  \r\n    <!--Boton para salir del modal caja chica-->\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuentas</button>\r\n  </div>\r\n  \r\n  </ng-template>\r\n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  <button class=\"btn btn-primary btn-block btn-lg\" type=\"button\" (click)=\"openModalGastosOperacionales(gastos)\"><b>Gastos Operacionales</b>\r\n  </button>"
+module.exports = "<ng-template #gastos let-modal>\r\n\r\n  <!-- Header Del Modal -->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Cuenta Sindical / Gastos Operacionales</strong>\r\n    </h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <!-- Cuerpo del Modal Caja Chica -->\r\n  <div class=\"modal-body\">\r\n    <div class=\"row centrarCajaChica\">\r\n      <!-- <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n              class=\"fas fa-calendar-check\"></i></strong></label>\r\n        <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\"\r\n          class=\"form-control form-control-sm\">\r\n          <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n        </select>\r\n      </div>\r\n  \r\n      <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n              class=\"fas fa-calendar-check\"></i></strong></label>\r\n        <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\"\r\n          class=\"form-control form-control-sm\">\r\n          <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n        </select>\r\n      </div> -->\r\n  \r\n      <div class=\"col-md-8 mt-4 text-center\">\r\n        <h2>\r\n          <b>{{datosGastos?.directiva}}</b>\r\n        </h2>\r\n      </div>\r\n\r\n      <div class=\"col-md-3\"><br><label>\r\n        <strong>Recargar tabla </strong>\r\n  \r\n      </label><br>\r\n      <button [disabled]=\"cargandoTabla\" class=\"btn btn-info\" (click)=\"recargarTabla()\">Actualizar</button>\r\n      <div *ngIf=\"cargandoTabla\">\r\n        <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n        <label>Actualizando</label>\r\n      </div>\r\n    </div>\r\n    </div><br>\r\n  \r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\r\n        <thead text-sm class=\"text-center\">\r\n          <tr>\r\n            <th colspan=\"11\" class=\"ColorThCS\">Tabla Gastos Operacionales</th>\r\n            <th colspan=\"2\" class=\"ColorThCS\">Monto Base</th>\r\n            <td colspan=\"2\"><strong>{{ datosGastos?.monto_inicio | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong>\r\n            </td>\r\n          </tr>\r\n          <tr>\r\n            <th colspan=\"2\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\r\n            <th colspan=\"2\">N° de Doc</th>\r\n            <th colspan=\"2\"><i class=\"far fa-file-pdf\"></i> PDF</th>\r\n            <th colspan=\"3\"><i class=\"fas fa-file-signature\"></i> Detalle</th>\r\n            <th colspan=\"2\"><i class=\"fas fa-plus-circle\"></i> Ingresos</th>\r\n            <th colspan=\"2\"><i class=\"fas fa-minus-circle\"></i> Egresos</th>\r\n            <th colspan=\"2\"><i class=\"fas fa-dollar-sign\"></i> Actual</th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let item of datosGastos?.gastos\" class=\"text-center\">\r\n            <td colspan=\"2\"><b>{{item?.fecha}}</b></td>\r\n            <td colspan=\"2\"><b>{{item?.numero_documento}}</b></td>\r\n  \r\n  \r\n            <!--MODAL VISOR PDF-->\r\n            <ng-template #visor let-c=\"close\" let-d=\"dismiss\">\r\n              <div class=\"row\">\r\n                <div class=\"col\">\r\n                  <div class=\"modal-header text-center\" id=\"demoFont\">\r\n                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\r\n                    <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\r\n                      (click)=\"d('Cross click')\">\r\n                      <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                  </div>\r\n                  <div class=\"modal-body\">\r\n                    <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.archivo_documento | safeUrl\" frameborder=\"0\"\r\n                      allowfullscreen></iframe>\r\n                  </div>\r\n                  <div class=\"modal-footer\" [hidden]=\"true\">\r\n                    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </ng-template>\r\n            <!--MODAL VISOR PDF-->\r\n  \r\n            <td colspan=\"2\">\r\n              <a (click)=\"openPDF(visor)\" style=\"cursor: pointer\"><i class=\"far fa-file-alt\" placement=\"top\"\r\n                  ngbTooltip=\"Presione aqui visualizar documento PDF\"></i></a>&nbsp;\r\n            </td>\r\n  \r\n  \r\n  \r\n            <td colspan=\"3\"><b>{{item.descripcion}}</b>\r\n            </td>\r\n            <td colspan=\"2\"><b>{{item?.monto_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\r\n            <td colspan=\"2\">\r\n              <b>{{item.monto_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\r\n            <td colspan=\"2\"><b>{{item?.saldo_actual | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</b></td>\r\n          </tr>\r\n          <tr>\r\n            <th colspan=\"13\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i> Saldo Disponible</th>\r\n            <td scope=\"col\" class=\"text-center\"><b>{{ datosGastos?.totales?.cierre_mes | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</b></td>\r\n          </tr>\r\n          <br>\r\n          <!--Tabla del total Modal Caja Chica-->\r\n         <!--  <tr>\r\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i>\r\n              INGRESOS</th>\r\n            <td colspan=\"3\" class=\"text-center\">\r\n              <strong>{{ datosGastos?.totales?.total_ingreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          </tr>\r\n  \r\n          <tr>\r\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i>\r\n              EGRESOS</th>\r\n            <td colspan=\"3\" class=\"text-center\">\r\n              <strong>{{ datosGastos?.totales?.total_egreso | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          </tr>\r\n          <tr>\r\n            <th colspan=\"9\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\r\n              CIERRE DEL MES</th>\r\n            <td colspan=\"3\" class=\"text-center\">\r\n              <strong>{{ datosGastos?.totales?.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</strong></td>\r\n          </tr> -->\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"modal-footer\">\r\n  \r\n    <!--Boton para imprimir tabla caja chica-->\r\n    <!-- <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\r\n        printable: 'printJS-table',\r\n        type:'html',\r\n        style: '.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}'\r\n      })\">\r\n    <i class=\"fas fa-print\"></i> Imprimir Datos\r\n  </button> -->\r\n  \r\n    <!--Boton para salir del modal caja chica-->\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuentas</button>\r\n  </div>\r\n  \r\n  </ng-template>\r\n  <!--Boton Para llamar al Modal inicio y cierre mensual-->\r\n  <button class=\"btn btn-primary btn-block btn-lg\" type=\"button\" (click)=\"openModalGastosOperacionales(gastos)\"><b>Gastos Operacionales</b>\r\n  </button>"
 
 /***/ }),
 
@@ -2037,14 +2037,6 @@ let AuthMasterComponent = class AuthMasterComponent {
         }, 1000);
     }
 };
-AuthMasterComponent.ctorParameters = () => [
-    { type: _servicios_tipo_cuentas_service__WEBPACK_IMPORTED_MODULE_2__["TipoCuentasService"] },
-    { type: _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] },
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
-];
 AuthMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-auth-master',
@@ -2154,11 +2146,6 @@ class CambioContraseniaComponent {
         this.fail_visible = false;
     }
 };
-CambioContraseniaComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
-];
 CambioContraseniaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-cambio-contrasenia',
@@ -2261,10 +2248,6 @@ let CajaChicaBienestarComponent = class CajaChicaBienestarComponent {
         this.modalPrincipal = this.modalService.open(Modal, { size: 'xl' });
     }
 };
-CajaChicaBienestarComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
-];
 CajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-caja-chica-bienestar',
@@ -2352,9 +2335,6 @@ let FormularioCajaChicaBienestarComponent = class FormularioCajaChicaBienestarCo
         this.datosCajaChica.numero_documento = '';
     }
 };
-FormularioCajaChicaBienestarComponent.ctorParameters = () => [
-    { type: src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_2__["BryanBienestarService"] }
-];
 FormularioCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-caja-chica-bienestar',
@@ -2586,14 +2566,6 @@ let TablaCajaChicaBienestarComponent = class TablaCajaChicaBienestarComponent {
         });
     }
 };
-TablaCajaChicaBienestarComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"] },
-    { type: src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BryanBienestarService"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_7__["AniosService"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
-];
 TablaCajaChicaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-caja-chica-bienestar',
@@ -2794,12 +2766,6 @@ let FallecimientoBienestarComponent = class FallecimientoBienestarComponent {
         this.validarFormFallecimiento = this.modalService.open(modalUsuario, { size: 'sm' });
     }
 };
-FallecimientoBienestarComponent.ctorParameters = () => [
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"] },
-    { type: src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -3127,13 +3093,6 @@ let FormularioBienestarComponent = class FormularioBienestarComponent {
         }
     }
 };
-FormularioBienestarComponent.ctorParameters = () => [
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"] },
-    { type: src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"] }
-];
 FormularioBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-bienestar',
@@ -3335,12 +3294,6 @@ let GastosMedicosBienestarComponent = class GastosMedicosBienestarComponent {
         this.validarFormMedico = this.modalService.open(modalUsuario, { size: 'sm' });
     }
 };
-GastosMedicosBienestarComponent.ctorParameters = () => [
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"] },
-    { type: src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -3557,13 +3510,6 @@ let InicioCierreMensualComponent = class InicioCierreMensualComponent {
         });
     }
 };
-InicioCierreMensualComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: _servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"] },
-    { type: _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
-];
 InicioCierreMensualComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-inicio-cierre-mensual',
@@ -3763,12 +3709,6 @@ let NacimientoBienestarComponent = class NacimientoBienestarComponent {
         this.validarFormNacimiento = this.modalService.open(modalUsuario, { size: 'sm' });
     }
 };
-NacimientoBienestarComponent.ctorParameters = () => [
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"] },
-    { type: src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_3__["BienestarService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -4117,13 +4057,6 @@ let TablaBienestarComponent = class TablaBienestarComponent {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
     }
 };
-TablaBienestarComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] },
-    { type: src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_5__["BienestarService"] }
-];
 TablaBienestarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-bienestar',
@@ -4357,11 +4290,6 @@ let FormularioFondoMutuoComponent = class FormularioFondoMutuoComponent {
         });
     }
 };
-FormularioFondoMutuoComponent.ctorParameters = () => [
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_2__["ValidarUsuarioService"] },
-    { type: src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["ConsorcioService"] }
-];
 FormularioFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-fondo-mutuo',
@@ -4487,10 +4415,6 @@ let TablaDesvinculadosConsorcioComponent = class TablaDesvinculadosConsorcioComp
         return parseInt(val);
     }
 };
-TablaDesvinculadosConsorcioComponent.ctorParameters = () => [
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"] },
-    { type: src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"] }
-];
 TablaDesvinculadosConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-desvinculados-consorcio',
@@ -4907,13 +4831,6 @@ let TablaFondoMutuoComponent = class TablaFondoMutuoComponent {
         });
     }
 };
-TablaFondoMutuoComponent.ctorParameters = () => [
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"] },
-    { type: src_app_servicios_consorcio_service__WEBPACK_IMPORTED_MODULE_3__["ConsorcioService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] }
-];
 TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-fondo-mutuo',
@@ -5132,12 +5049,6 @@ let FormularioSindicalComponent = class FormularioSindicalComponent {
         this.validarFormSindical = this.modalService2.open(modalUsuario, { size: 'sm' });
     }
 };
-FormularioSindicalComponent.ctorParameters = () => [
-    { type: src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_3__["ValidarUsuarioService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] }
-];
 FormularioSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-sindical',
@@ -5442,14 +5353,6 @@ let TablaSindicalComponent = class TablaSindicalComponent {
         this.listo_para_listar(this.suc_res1, this.suc_res2);
     }
 };
-TablaSindicalComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_6__["SociosService"] }
-];
 TablaSindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-sindical',
@@ -5629,12 +5532,6 @@ let BeneficiosSociosComponent = class BeneficiosSociosComponent {
         });
     }
 };
-BeneficiosSociosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] }
-];
 BeneficiosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-beneficios-socios',
@@ -5747,11 +5644,6 @@ let FormularioBeneficiosBeneficiarioComponent = class FormularioBeneficiosBenefi
         });
     }
 };
-FormularioBeneficiosBeneficiarioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -5877,11 +5769,6 @@ let FormularioBeneficiosCargasComponent = class FormularioBeneficiosCargasCompon
         });
     }
 };
-FormularioBeneficiosCargasComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -6001,11 +5888,6 @@ let FormularioBeneficiosConyugeComponent = class FormularioBeneficiosConyugeComp
         });
     }
 };
-FormularioBeneficiosConyugeComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -6122,11 +6004,6 @@ let FormularioBeneficiosPadresSuegrosComponent = class FormularioBeneficiosPadre
         });
     }
 };
-FormularioBeneficiosPadresSuegrosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -6272,11 +6149,6 @@ let FormularioBeneficiosSocioComponent = class FormularioBeneficiosSocioComponen
         });
     }
 };
-FormularioBeneficiosSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -6502,11 +6374,6 @@ let FormularioSociosComponent = class FormularioSociosComponent {
         return true;
     }
 };
-FormularioSociosComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
-    { type: _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
-];
 FormularioSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-socios',
@@ -6758,12 +6625,6 @@ let ListarSociosComponent = class ListarSociosComponent {
         }
     }
 };
-ListarSociosComponent.ctorParameters = () => [
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"] },
-    { type: _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_5__["SindicalService"] }
-];
 ListarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-listar-socios',
@@ -6936,12 +6797,6 @@ let TablaBeneficiosBeneficiarioComponent = class TablaBeneficiosBeneficiarioComp
         });
     }
 };
-TablaBeneficiosBeneficiarioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -7167,12 +7022,6 @@ let TablaBeneficiosCargasComponent = class TablaBeneficiosCargasComponent {
         });
     }
 };
-TablaBeneficiosCargasComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -7396,12 +7245,6 @@ let TablaBeneficiosConyugeComponent = class TablaBeneficiosConyugeComponent {
         });
     }
 };
-TablaBeneficiosConyugeComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -7581,12 +7424,6 @@ let TablaBeneficiosPadresSuegrosComponent = class TablaBeneficiosPadresSuegrosCo
         });
     }
 };
-TablaBeneficiosPadresSuegrosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -7775,12 +7612,6 @@ let TablaBeneficiosSocioComponent = class TablaBeneficiosSocioComponent {
         });
     }
 };
-TablaBeneficiosSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_4__["ValidarUsuarioService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -8076,12 +7907,6 @@ let TablaResumenSocioComponent = class TablaResumenSocioComponent {
         });
     }
 };
-TablaResumenSocioComponent.ctorParameters = () => [
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_2__["SociosService"] },
-    { type: src_app_servicios_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BienestarService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -8499,15 +8324,6 @@ let ModalCajaChicaComponent = class ModalCajaChicaComponent {
         });
     }
 };
-ModalCajaChicaComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_3__["CajaChicaService"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_5__["AniosService"] },
-    { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClient"] },
-    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__["DomSanitizer"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"], { static: false }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _tabla_caja_chica_tabla_caja_chica_component__WEBPACK_IMPORTED_MODULE_4__["TablaCajaChicaComponent"])
@@ -8559,9 +8375,6 @@ let TablaCajaChicaComponent = class TablaCajaChicaComponent {
     ngOnInit() {
     }
 };
-TablaCajaChicaComponent.ctorParameters = () => [
-    { type: src_app_servicios_caja_chica_service__WEBPACK_IMPORTED_MODULE_2__["CajaChicaService"] }
-];
 TablaCajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-caja-chica',
@@ -8876,14 +8689,6 @@ let ModalCampingComponent = class ModalCampingComponent {
         });
     }
 };
-ModalCampingComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: _servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] },
-    { type: _servicios_cs_detalle_camping_service__WEBPACK_IMPORTED_MODULE_4__["CsDetalleCampingService"] },
-    { type: _servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] },
-    { type: src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_6__["SindicalService"] }
-];
 ModalCampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-modal-camping',
@@ -9114,12 +8919,6 @@ let ModalInicioMesComponent = class ModalInicioMesComponent {
         }
     }
 };
-ModalInicioMesComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] }
-];
 ModalInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-modal-inicio-mes',
@@ -9183,9 +8982,6 @@ let TablaInicioMesComponent = class TablaInicioMesComponent {
         //this.selectAnio = JSON.parse(localStorage.getItem('anios'));
     }
 };
-TablaInicioMesComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 TablaInicioMesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-inicio-mes',
@@ -9287,10 +9083,6 @@ let InteresPrestamoApuroEconomicoComponent = class InteresPrestamoApuroEconomico
         this.listo_para_listar(this.suc_res1, this.suc_res2);
     }
 };
-InteresPrestamoApuroEconomicoComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
-    { type: _servicios_anios_service__WEBPACK_IMPORTED_MODULE_2__["AniosService"] }
-];
 InteresPrestamoApuroEconomicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-interes-prestamo-apuro-economico',
@@ -9525,12 +9317,6 @@ let ModalPrestamosSociosComponent = class ModalPrestamosSociosComponent {
         }
     }
 };
-ModalPrestamosSociosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_4__["SociosService"] }
-];
 ModalPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-modal-prestamos-socios',
@@ -9827,12 +9613,6 @@ let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSoci
         this.calcular_el_abono(id);
     }
 };
-TablaPrestamosHistoricosSociosComponent.ctorParameters = () => [
-    { type: src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] }
-];
 TablaPrestamosHistoricosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-prestamos-historicos-socios',
@@ -10008,12 +9788,6 @@ let TablaPrestamosSociosComponent = class TablaPrestamosSociosComponent {
         });
     }
 };
-TablaPrestamosSociosComponent.ctorParameters = () => [
-    { type: src_app_servicios_sindical_service__WEBPACK_IMPORTED_MODULE_2__["SindicalService"] },
-    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_3__["AniosService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] }
-];
 TablaPrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-prestamos-socios',
@@ -10251,11 +10025,6 @@ let AsistenciaReunionComponent = class AsistenciaReunionComponent {
         });
     }
 };
-AsistenciaReunionComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__["SecretariaService"] }
-];
 AsistenciaReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-asistencia-reunion',
@@ -10420,11 +10189,6 @@ let EditarReunionComponent = class EditarReunionComponent {
         this.datosReunion.titulo = '';
     }
 };
-EditarReunionComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__["SecretariaService"] }
-];
 EditarReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-editar-reunion',
@@ -10543,11 +10307,6 @@ let HistorialReunionComponent = class HistorialReunionComponent {
         });
     }
 };
-HistorialReunionComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__["SecretariaService"] }
-];
 HistorialReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-historial-reunion',
@@ -10641,11 +10400,6 @@ let NuevaReunionComponent = class NuevaReunionComponent {
         this.datosReunion.titulo = '';
     }
 };
-NuevaReunionComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_secretaria_service__WEBPACK_IMPORTED_MODULE_3__["SecretariaService"] }
-];
 NuevaReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-nueva-reunion',
@@ -10734,10 +10488,6 @@ let AuthGuardService = class AuthGuardService {
         return true;
     }
 };
-AuthGuardService.ctorParameters = () => [
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
-];
 AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
@@ -10782,11 +10532,6 @@ let AuthGuardSocioService = class AuthGuardSocioService {
         return true;
     }
 };
-AuthGuardSocioService.ctorParameters = () => [
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"] },
-    { type: _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_4__["PortalSociosService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
-];
 AuthGuardSocioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_4__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
@@ -11124,13 +10869,6 @@ let ModalGastosOperacionalesComponent = class ModalGastosOperacionalesComponent 
         });
     }
 };
-ModalGastosOperacionalesComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"] },
-    { type: _servicios_sindical_service__WEBPACK_IMPORTED_MODULE_3__["SindicalService"] },
-    { type: _servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"] }
-];
 ModalGastosOperacionalesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-modal-gastos-operacionales',
@@ -11214,9 +10952,6 @@ let NavbarComponent = class NavbarComponent {
         });
     }
 };
-NavbarComponent.ctorParameters = () => [
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] }
-];
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-navbar',
@@ -11432,13 +11167,6 @@ let LoginComponent = class LoginComponent {
         }
     }
 };
-LoginComponent.ctorParameters = () => [
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_6__["PortalSociosService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"] }
-];
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-login',
@@ -11519,9 +11247,6 @@ let SafePipe = class SafePipe {
         return this._domSanitizer.bypassSecurityTrustResourceUrl(url + value);
     }
 };
-SafePipe.ctorParameters = () => [
-    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"] }
-];
 SafePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
         name: 'safeUrl'
@@ -11586,9 +11311,6 @@ let AniosService = class AniosService {
             }) });
     }
 };
-AniosService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
-];
 AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
@@ -11640,9 +11362,6 @@ let AuthInterceptorService = class AuthInterceptorService {
         }));
     }
 };
-AuthInterceptorService.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
-];
 AuthInterceptorService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -11754,9 +11473,6 @@ let BienestarService = class BienestarService {
             }) });
     }
 };
-BienestarService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 BienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -11809,9 +11525,6 @@ let BryanConsorcioService = class BryanConsorcioService {
         });
     }
 };
-BryanConsorcioService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 BryanConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -11904,9 +11617,6 @@ let BryanBienestarService = class BryanBienestarService {
             }) });
     }
 };
-BryanBienestarService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 BryanBienestarService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -11974,9 +11684,6 @@ let CajaChicaService = class CajaChicaService {
             }) });
     }
 };
-CajaChicaService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 CajaChicaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -12103,9 +11810,6 @@ let ConsorcioService = class ConsorcioService {
         });
     }
 };
-ConsorcioService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 ConsorcioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -12163,9 +11867,6 @@ let CsDetalleCampingService = class CsDetalleCampingService {
             }) });
     }
 };
-CsDetalleCampingService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -12468,9 +12169,6 @@ let PortalSociosService = class PortalSociosService {
             }) });
     }
 };
-PortalSociosService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 PortalSociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -12554,9 +12252,6 @@ let ReunionesService = class ReunionesService {
             }) });
     }
 };
-ReunionesService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 ReunionesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -12716,9 +12411,6 @@ let SecretariaService = class SecretariaService {
             }) });
     }
 };
-SecretariaService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 SecretariaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -12974,9 +12666,6 @@ let SindicalService = class SindicalService {
             }) });
     }
 };
-SindicalService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 SindicalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
@@ -13228,9 +12917,6 @@ let SociosService = class SociosService {
         });
     }
 };
-SociosService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 SociosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -13282,9 +12968,6 @@ let TipoCuentasService = class TipoCuentasService {
             }) });
     }
 };
-TipoCuentasService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
-];
 TipoCuentasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
@@ -13392,11 +13075,6 @@ let UsuarioService = class UsuarioService {
         return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
     }
 };
-UsuarioService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
-    { type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
-];
 UsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
@@ -13437,9 +13115,6 @@ let ValidarUsuarioService = class ValidarUsuarioService {
         return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token }) });
     }
 };
-ValidarUsuarioService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
 ValidarUsuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
@@ -13547,11 +13222,6 @@ let BeneficiosCobradosComponent = class BeneficiosCobradosComponent {
         this.datosMedicos = '';
     }
 };
-BeneficiosCobradosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 BeneficiosCobradosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-beneficios-cobrados',
@@ -13702,12 +13372,6 @@ let FondosMutuosSocioComponent = class FondosMutuosSocioComponent {
         this.getFondosMutuos();
     }
 };
-FondosMutuosSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"] }
-];
 FondosMutuosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-fondos-mutuos-socio',
@@ -13859,11 +13523,6 @@ let PrestamosSociosComponent = class PrestamosSociosComponent {
         this.historialCuotas = '';
     }
 };
-PrestamosSociosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"] }
-];
 PrestamosSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-prestamos-socios',
@@ -13937,12 +13596,6 @@ let CambioContraseniaSocioComponent = class CambioContraseniaSocioComponent {
         });
     }
 };
-CambioContraseniaSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
-];
 CambioContraseniaSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-cambio-contrasenia-socio',
@@ -14032,11 +13685,6 @@ let CambioInformacionPersonalSocioComponent = class CambioInformacionPersonalSoc
         });
     }
 };
-CambioInformacionPersonalSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 CambioInformacionPersonalSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-cambio-informacion-personal-socio',
@@ -14214,13 +13862,6 @@ let CajaBienestarSociosComponent = class CajaBienestarSociosComponent {
         this.cargarTablaCajaChica();
     }
 };
-CajaBienestarSociosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"] },
-    { type: src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_5__["BryanBienestarService"] }
-];
 CajaBienestarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-caja-bienestar-socios',
@@ -14377,12 +14018,6 @@ let CuentaBienestarSociosComponent = class CuentaBienestarSociosComponent {
         this.cargarCuentaBienestar();
     }
 };
-CuentaBienestarSociosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: src_app_servicios_bryans_bienestar_service__WEBPACK_IMPORTED_MODULE_4__["BryanBienestarService"] }
-];
 CuentaBienestarSociosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-cuenta-bienestar-socios',
@@ -14511,11 +14146,6 @@ let CajaChicaComponent = class CajaChicaComponent {
         this.cargarTablaCajaChica();
     }
 };
-CajaChicaComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 CajaChicaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-caja-chica',
@@ -14646,11 +14276,6 @@ let CampingComponent = class CampingComponent {
         this.cargarCamping();
     }
 };
-CampingComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 CampingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-camping',
@@ -14757,12 +14382,6 @@ let ConsorcioComponent = class ConsorcioComponent {
         this.cargarConsorcio();
     }
 };
-ConsorcioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: src_app_servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["BryanConsorcioService"] }
-];
 ConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-consorcio',
@@ -14865,12 +14484,6 @@ let DesvinculadosComponent = class DesvinculadosComponent {
         this.cargarDesvinculados();
     }
 };
-DesvinculadosComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: src_app_servicios_bryan_consorcio_service__WEBPACK_IMPORTED_MODULE_4__["BryanConsorcioService"] }
-];
 DesvinculadosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-desvinculados',
@@ -15034,12 +14647,6 @@ let GastosOperacionalesComponent = class GastosOperacionalesComponent {
         });
     }
 };
-GastosOperacionalesComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_socios_service__WEBPACK_IMPORTED_MODULE_3__["SociosService"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_4__["PortalSociosService"] }
-];
 GastosOperacionalesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-gastos-operacionales',
@@ -15178,11 +14785,6 @@ let SindicalComponent = class SindicalComponent {
         this.resultado = null;
     }
 };
-SindicalComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 SindicalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-sindical',
@@ -15334,10 +14936,6 @@ let NavbarSocioComponent = class NavbarSocioComponent {
         this._userService.logOut();
     }
 };
-NavbarSocioComponent.ctorParameters = () => [
-    { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-navbar-socio',
@@ -15453,11 +15051,6 @@ let FormularioBeneficiosAuthSocioComponent = class FormularioBeneficiosAuthSocio
         this.InsertarBeneficiosSocio.telefono = '';
     }
 };
-FormularioBeneficiosAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 FormularioBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-beneficios-auth-socio',
@@ -15561,11 +15154,6 @@ let FormularioBeneficiosBeneficiarioAuthSocioComponent = class FormularioBenefic
         this.datosBeneficiario.celular = '';
     }
 };
-FormularioBeneficiosBeneficiarioAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"] }
-];
 FormularioBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-beneficios-beneficiario-auth-socio',
@@ -15669,11 +15257,6 @@ let FormularioBeneficiosCargasAuthSocioComponent = class FormularioBeneficiosCar
         this.datosCargas.archivoDocumento = '';
     }
 };
-FormularioBeneficiosCargasAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 FormularioBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-beneficios-cargas-auth-socio',
@@ -15774,11 +15357,6 @@ let FormularioBeneficiosConyugeAuthSocioComponent = class FormularioBeneficiosCo
         this.datosConyuge.archivoDocumento = '';
     }
 };
-FormularioBeneficiosConyugeAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"] }
-];
 FormularioBeneficiosConyugeAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-beneficios-conyuge-auth-socio',
@@ -15875,11 +15453,6 @@ let FormularioBeneficiosPadresSuegrosAuthSocioComponent = class FormularioBenefi
         this.datosPadresSuegros.celular = '';
     }
 };
-FormularioBeneficiosPadresSuegrosAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 FormularioBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-formulario-beneficios-padres-suegros-auth-socio',
@@ -15950,11 +15523,6 @@ let PerfilSocioComponent = class PerfilSocioComponent {
         });
     }
 };
-PerfilSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"] }
-];
 PerfilSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-perfil-socio',
@@ -16031,11 +15599,6 @@ let TablaBeneficiosAuthConyugeComponent = class TablaBeneficiosAuthConyugeCompon
         });
     }
 };
-TablaBeneficiosAuthConyugeComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 TablaBeneficiosAuthConyugeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-beneficios-auth-conyuge',
@@ -16108,11 +15671,6 @@ let TablaBeneficiosAuthSocioComponent = class TablaBeneficiosAuthSocioComponent 
         });
     }
 };
-TablaBeneficiosAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 TablaBeneficiosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-beneficios-auth-socio',
@@ -16192,11 +15750,6 @@ let TablaBeneficiosBeneficiarioAuthSocioComponent = class TablaBeneficiosBenefic
         });
     }
 };
-TablaBeneficiosBeneficiarioAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 TablaBeneficiosBeneficiarioAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-beneficios-beneficiario-auth-socio',
@@ -16276,11 +15829,6 @@ let TablaBeneficiosCargasAuthSocioComponent = class TablaBeneficiosCargasAuthSoc
         });
     }
 };
-TablaBeneficiosCargasAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
-];
 TablaBeneficiosCargasAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-beneficios-cargas-auth-socio',
@@ -16358,11 +15906,6 @@ let TablaBeneficiosPadresSuegrosAuthSocioComponent = class TablaBeneficiosPadres
         });
     }
 };
-TablaBeneficiosPadresSuegrosAuthSocioComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_2__["PortalSociosService"] }
-];
 TablaBeneficiosPadresSuegrosAuthSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-tabla-beneficios-padres-suegros-auth-socio',
@@ -16455,11 +15998,6 @@ let DetalleReunionComponent = class DetalleReunionComponent {
         this.getDatosJustificacion();
     }
 };
-DetalleReunionComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_3__["ReunionesService"] }
-];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -16559,11 +16097,6 @@ let GeneralReunionComponent = class GeneralReunionComponent {
         });
     }
 };
-GeneralReunionComponent.ctorParameters = () => [
-    { type: src_app_servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_2__["ReunionesService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] }
-];
 GeneralReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-general-reunion',
@@ -16631,11 +16164,6 @@ let HistorialDetalleReunionComponent = class HistorialDetalleReunionComponent {
         this.modalHistorialMensaje = this.modalService.open(modalHistorial, { size: 'xl' });
     }
 };
-HistorialDetalleReunionComponent.ctorParameters = () => [
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
-    { type: src_app_servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_3__["ReunionesService"] }
-];
 HistorialDetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-historial-detalle-reunion',
@@ -16719,12 +16247,6 @@ let SociosMasterComponent = class SociosMasterComponent {
         }, 1000);
     }
 };
-SociosMasterComponent.ctorParameters = () => [
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] },
-    { type: _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
-];
 SociosMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-socios-master',
@@ -16799,7 +16321,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -22,6 +22,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   cargandoTabla = false;
   cargarDatos = 0;
   ingresandoDatos = false;
+  loadingValidacion = false;
 
   //Variables para la modificación de documentos/////////
   /*Variables que rescatan la fila seleccionada*/
@@ -263,9 +264,11 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   validarUsuario(pass) {
-    this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(
+    this.loadingValidacion = true;
+    this._usuariosSevice.validarUsuario(this.rutUsuario, pass.value, this.estado).subscribe(
       response => {
         if(response > 0){
+          this.loadingValidacion = false;
           document.getElementById("closeModalButtonValidacion").click();
           //llamar a la función para ingresar la kkck de modificación
           if (this.edicionTexto) {
@@ -276,6 +279,8 @@ export class ModalGastosOperacionalesComponent implements OnInit {
             this.ingresarValor();
           }
         }else{
+          this.loadingValidacion = false;
+          document.getElementById("closeModalButtonValidacion").click();
           this.blockCajaChica = false;
           this.loadingModificacion = false;
           alert("Acceso denegado");
@@ -283,6 +288,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         }
       },
       error => {
+        this.loadingValidacion = false;
         console.log(error);
       }
     )

@@ -16,7 +16,7 @@
     </div>
 
     <div class="card">
-      <form #loginForm="ngForm" (ngSubmit)="solicitarIngreso(); estado='modificar_go'" enctype="multipart/form-data">
+      <form #loginForm="ngForm" (ngSubmit)="solicitarIngreso(); estado='ingresar_go'" enctype="multipart/form-data">
         <div class="row centrarCajaChica">
           <div class="col-md-4">
             <div class="form-group">
@@ -291,7 +291,8 @@
       (click)="modal.close('Save click'); blockCajaChica = false">Salir</button>
     <button hidden id="closeModalButtonValidacion" type="button" class="btn btn-outline-dark"
       (click)="modal.close('Save click');">Salir</button>
-    <button type="button" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Verificar</button>
+    <button type="button" [disabled]="loadingValidacion" class="btn btn-outline-dark" (click)="validarUsuario(pass)">Verificar <img *ngIf="loadingValidacion" padding-left="20px" height="12"
+      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
   </div>
 </ng-template>
 

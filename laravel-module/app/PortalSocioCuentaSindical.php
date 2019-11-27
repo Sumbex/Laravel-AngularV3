@@ -508,7 +508,7 @@ class PortalSocioCuentaSindical extends Model
         return ['estado' => 'success', 'monto_inicio' => $MC, 'caja' => $caja, 'total' => $total]; */
             return ['estado' => 'success', 'monto_inicio' => $MC['monto'], 'gastos' => $gastos, 'totales' => $totales['totales'], 'directiva' => $directiva];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en esta cuenta.'];
         }
     }
 

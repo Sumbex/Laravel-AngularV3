@@ -811,14 +811,96 @@
                 {{itemGastosOp.numero_documento}}
               </td>
   
-              <td class="text-center">
-                <a class="btn-primary-outline">
-                  <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
-                </a>
-              </td>
-  
-              <td scope="col" colspan="4">
+               <!--MODAL VISOR PDF-->
+            <ng-template #visorSindicalOperacional let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
+                  <div class="modal-header text-center" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="100%" height="500px" [src]="  '../' + itemGastosOp.archivo_documento | safeUrl"
+                      frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <!--MODAL VISOR PDF-->
+
+            <td class="text-center">
+              <a (click)="open(visorSindicalOperacional)" style="cursor: pointer" class="btn-primary-outline">
+                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              </a>&nbsp;
+              <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocOperacionalModal)">
+                <ng-template #DocOperacionalModal let-c="close" let-d="dismiss">
+                  <div class="modal-header" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="form-group">
+                      <label> <strong>Reemplazar Documento Actual </strong></label><i class="far fa-file-pdf"></i>
+                      <input class="form-control-file form-control-file-sm" #DocOperacional type="file"
+                        (change)="onSelectImage($event)">
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="actualizar(itemGastosOp.id,'archivo',DocOperacional,modalUsuario)">Guardar
+                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </div>
+                </ng-template>
+                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+              </a>
+            </td>
+
+              <td scope="col" colspan="4" (click)="openActualizar(descripcionOperacionalModal)">
                 {{itemGastosOp.descripcion}}
+                <ng-template #descripcionOperacionalModal let-c="close" let-d="dismiss">
+                  <div class="modal-header" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+  
+                  <div class="modal-body">
+  
+                    <div class="form-group">
+                      <label><strong>Descripcion Actual</strong></label>
+                      <input type="text" class="form-control form-control-sm" value="{{itemGastosOp.descripcion}}"
+                        disabled>
+                    </div>
+                    <div class="form-group">
+                      <label> <strong>Nueva Descripcion</strong></label>
+                      <input class="form-control form-control-sm" #descripcionOperacional type="text">
+                    </div>
+  
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="actualizar(itemGastosOp.id,'descripcion',descripcionOperacional,modalUsuario)">Guardar
+                      <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
+                  </div>
+  
+                </ng-template>
               </td>
   
               <td scope="col" class="text-center">
@@ -901,8 +983,9 @@
     <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
       (click)="modal.close('Save click')">
       Validar
+      <img *ngIf="load" padding-left="20px" height="12" 
+      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </button>
-    <img *ngIf="load" height="30" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
   </div>
 </ng-template>
 

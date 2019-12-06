@@ -158,5 +158,16 @@ export class ConsorcioService {
     });
   }
 
+  ahorro_dia_sueldo(anio): Observable<any> {
+
+    return this._http.get(this.url + "total_desvinculados/" + anio, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+            }
+        )
+    });
+  }
+
 
 }

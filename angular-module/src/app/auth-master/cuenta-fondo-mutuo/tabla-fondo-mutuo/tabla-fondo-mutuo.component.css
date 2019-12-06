@@ -111,6 +111,10 @@
         .black{
           -webkit-text-fill-color: black;
         }
+        .colorTotal{
+          color: #1E8449;
+          font-weight: bold;
+        }
         .white{
           -webkit-text-fill-color: white;
         }

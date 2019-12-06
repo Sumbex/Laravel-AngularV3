@@ -513,13 +513,16 @@ class CuentaConsorcioController extends Controller
 
                     return ['index'=>$print,'total'=>(int)$total];
                 }
+                else{
+                    return ['index'=>$print,'total'=>0];
+                }
 
 
 
             break;
             
             default:
-                # code...
+                return ['total'=>0];
                 break;
         }
 

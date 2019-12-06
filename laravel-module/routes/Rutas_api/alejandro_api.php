@@ -143,4 +143,6 @@ Route::get('aplicar_descuento_dia_sueldo/{socio_id}/{porc}/{desc}/{mes}/{anio}/{
 Route::get('descripcion_descuento/{anio}/{mes}','CuentaConsorcioController@descripcion_descuento');
 //Route::get('listar_pago_beneficios/{anio}','CuentaConsorcioController@listar_pago_beneficios');
 Route::get('listar_pago_beneficios/{anio}','CuentaConsorcioController@listar_pago_beneficios');
+Route::get('total_desvinculados/{anio}','CuentaConsorcioController@total_desvinculados');
+
 Route::get('proximo_periodo/{anio_actual}','CuentaConsorcioController@proximo_periodo');

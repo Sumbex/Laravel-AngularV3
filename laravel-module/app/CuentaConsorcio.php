@@ -981,6 +981,29 @@ class CuentaConsorcio extends Model
         }
     }
 
+    protected function listar_pago_beneficios_2($anio_in, $anio_fn)
+    {
+      $listar = DB::select("SELECT 
+                    socio_id,
+                    CONCAT(m.descripcion,' ',a.descripcion) as fecha,
+                    TO_CHAR(s.fecha_egreso,'DD/MM/YYYY') fecha_egreso,
+                    CONCAT(nombres,' ',a_paterno,' ',a_materno) nombre,
+                    pb.descripcion,
+                    CONCAT(CAST (porcentaje AS float) *100,'%') porcentaje,
+                    monto_dia_sueldo as monto_v
+                from cc_pago_beneficios pb
+                inner join socios s on s.id = pb.socio_id
+                inner join mes m on m.id = pb.mes_id
+                inner join anio a on a.id = pb.anio_id
+                where pb.anio_id in ($anio_in, $anio_fn) and s.retiro_pago_beneficio = 'S'");
+
+      if (count($listar) > 0) {
+    		    return $listar;
+        }else{
+            return '';
+        }
+    }
+
     protected function desvincular_sumar_totales($anio, $socio)
     {
         $listar = DB::select("SELECT 
@@ -1054,6 +1077,88 @@ class CuentaConsorcio extends Model
                             from cuenta_consorcio cc
                             inner join socios s on s.id = cc.socio_id 
                             where cc.anio_id = $anio and socio_id = $socio and cc.vinculado = 'N') x
+        ");
+
+         if (count($listar) > 0) {
+    		    return $listar[0];
+          }else{
+            return '';
+          }
+    }
+
+    protected function desvincular_sumar_totales_2($anio_in, $anio_fn, $socio)
+    {
+        $listar = DB::select("SELECT 
+                                    socio_id,
+                                    monto_total_ds_socio, 
+                                    monto_total_cex_socio,
+                                    acumulado_anterior_socio + (monto_total_ds_socio - monto_total_cex_socio) monto_h,
+                                    acumulado_anterior_socio
+                            from (SELECT 
+                                s.id socio_id,
+                                cc.id cuenta_consorcio_id,
+                                cc.vinculado,
+                                concat(nombres,' ',a_paterno,' ',a_materno) nombre,
+                                COALESCE(monto_mes_ds_1,0) monto_mes_ds_1,
+                                COALESCE(monto_mes_cex_1,0) monto_mes_cex_1,
+                                COALESCE(monto_mes_ds_2,0) monto_mes_ds_2,
+                                COALESCE(monto_mes_cex_2,0) monto_mes_cex_2,
+                                COALESCE(monto_mes_ds_3,0) monto_mes_ds_3,
+                                COALESCE(monto_mes_cex_3,0) monto_mes_cex_3,
+                                COALESCE(monto_mes_ds_4,0) monto_mes_ds_4,
+                                COALESCE(monto_mes_cex_4,0) monto_mes_cex_4,
+                                COALESCE(monto_mes_ds_5,0) monto_mes_ds_5,
+                                COALESCE(monto_mes_cex_5,0) monto_mes_cex_5,
+                                COALESCE(monto_mes_ds_6,0) monto_mes_ds_6,
+                                COALESCE(monto_mes_cex_6,0) monto_mes_cex_6,
+                                COALESCE(monto_mes_ds_7,0) monto_mes_ds_7,
+                                COALESCE(monto_mes_cex_7,0) monto_mes_cex_7,
+                                COALESCE(monto_mes_ds_8,0) monto_mes_ds_8,
+                                COALESCE(monto_mes_cex_8,0) monto_mes_cex_8,
+                                COALESCE(monto_mes_ds_9,0) monto_mes_ds_9,
+                                COALESCE(monto_mes_cex_9,0) monto_mes_cex_9,
+                                COALESCE(monto_mes_ds_10,0) monto_mes_ds_10,
+                                COALESCE(monto_mes_cex_10,0) monto_mes_cex_10,
+                                COALESCE(monto_mes_ds_11,0) monto_mes_ds_11,
+                                COALESCE(monto_mes_cex_11,0) monto_mes_cex_11,
+                                COALESCE(monto_mes_ds_12,0) monto_mes_ds_12,
+                                COALESCE(monto_mes_cex_12,0) monto_mes_cex_12,
+                                
+                                (
+                                  COALESCE(monto_mes_ds_1,0) +
+                                  COALESCE(monto_mes_ds_2,0) +
+                                  COALESCE(monto_mes_ds_3,0) +
+                                  COALESCE(monto_mes_ds_4,0) +
+                                  COALESCE(monto_mes_ds_5,0) +
+                                  COALESCE(monto_mes_ds_6,0) +
+                                  COALESCE(monto_mes_ds_7,0) +
+                                  COALESCE(monto_mes_ds_8,0) +
+                                  COALESCE(monto_mes_ds_9,0)+
+                                  COALESCE(monto_mes_ds_10,0) +
+                                  COALESCE(monto_mes_ds_11,0) +
+                                  COALESCE(monto_mes_ds_12,0) 
+                                ) monto_total_ds_socio,
+                                
+                                (
+                                  COALESCE(monto_mes_cex_1,0) +
+                                  COALESCE(monto_mes_cex_2,0) +
+                                  COALESCE(monto_mes_cex_3,0) +
+                                  COALESCE(monto_mes_cex_4,0) +
+                                  COALESCE(monto_mes_cex_5,0) +
+                                  COALESCE(monto_mes_cex_6,0) +
+                                  COALESCE(monto_mes_cex_7,0) +
+                                  COALESCE(monto_mes_cex_8,0) +
+                                  COALESCE(monto_mes_cex_9,0)+ 
+                                  COALESCE(monto_mes_cex_10,0) +
+                                  COALESCE(monto_mes_cex_11,0) +
+                                  COALESCE(monto_mes_cex_12,0) 
+                                ) monto_total_cex_socio,
+                                COALESCE(acumulado_anterior_socio,0) acumulado_anterior_socio
+                               
+                                                        
+                            from cuenta_consorcio cc
+                            inner join socios s on s.id = cc.socio_id 
+                            where cc.anio_id in ($anio_in, $anio_fn) and socio_id = $socio and cc.vinculado = 'N') x
         ");
 
          if (count($listar) > 0) {

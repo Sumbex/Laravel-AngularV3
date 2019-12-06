@@ -1016,12 +1016,14 @@
               <th colspan="2"> TOTAL ANUAL <i class="fas fa-minus menos"></i> TOTAL AHORRO</th>
           </tr>
         <tbody>
-          <tr class="text-center">
+          <tr class="text-center black">
 
-            <td colspan="2">{{total | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="2">{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            <td colspan="2">{{ConvertToInt(sociosMensual?.suma_anual) - 
-                ConvertToInt(total) | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+            <td colspan="2"><b>{{totalAhorro?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2"><b>{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2"><b>
+              {{ConvertToInt(sociosMensual?.suma_anual) - 
+                  ConvertToInt(totalAhorro?.total) | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </b></td>
 
           </tr>
         </tbody>

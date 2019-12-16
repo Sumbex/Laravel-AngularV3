@@ -121,6 +121,10 @@ import { SecretariaService } from './servicios/secretaria.service';
 import { DesvinculadosComponent } from './socios-master/cuentas/consorcio/desvinculados/desvinculados.component';
 import { ModalGastosOperacionalesComponent } from './modal-gastos-operacionales/modal-gastos-operacionales.component';
 import { GastosOperacionalesComponent } from './socios-master/cuentas/gastos-operacionales/gastos-operacionales.component';
+import { AcuerdoAsambleaComponent } from './auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component';
+import { ActasComponent } from './auth-master/secretaria/actas/actas.component';
+import { LeyesLaboralesComponent } from './auth-master/secretaria/leyes-laborales/leyes-laborales.component';
+import { DirectorioComponent } from './auth-master/secretaria/directorio/directorio.component';
 
 
 @NgModule({
@@ -147,159 +151,87 @@ import { GastosOperacionalesComponent } from './socios-master/cuentas/gastos-ope
     ModalInicioMesComponent,
     TablaInicioMesComponent,
     ConfiguracionesComponent,
-
     CambioContraseniaComponent,
-
     TotalCuentaSindicalComponent,
-
     CuentaSociosComponent,
-
     FormularioSociosComponent,
-
     ListarSociosComponent,
-
     ModalPrestamosSociosComponent,
-
     ModalCampingComponent,
-
     TablaPrestamosSociosComponent,
-
     InteresPrestamoApuroEconomicoComponent,
-
     BeneficiosSociosComponent,
-
     TablaPrestamosHistoricosSociosComponent,
-
     TablasBeneficiosComponent,
-
     FormularioBeneficiosSocioComponent,
-
     FormularioBeneficiosBeneficiarioComponent,
-
     FormularioBeneficiosCargasComponent,
-
     FormularioBeneficiosConyugeComponent,
-
     FormularioBeneficiosPadresSuegrosComponent,
-
     TablaBeneficiosCargasComponent,
-
     TablaBeneficiosConyugeComponent,
-
     TablaBeneficiosPadresSuegrosComponent,
-
     TablaBeneficiosSocioComponent,
     TablaBeneficiosBeneficiarioComponent,
-
     SociosMasterComponent,
-
     PerfilSocioComponent,
-
     NavbarSocioComponent,
-
     FormularioBeneficiosAuthSocioComponent,
-
     TablaBeneficiosAuthSocioComponent,
-
     FormularioBeneficiosConyugeAuthSocioComponent,
-
     FormularioBeneficiosBeneficiarioAuthSocioComponent,
-
     FormularioBeneficiosCargasAuthSocioComponent,
-
     FormularioBeneficiosPadresSuegrosAuthSocioComponent,
-
     SafePipe,
-
     TablaResumenSocioComponent,
-
     TablaBeneficiosAuthConyugeComponent,
-
     TablaBeneficiosBeneficiarioAuthSocioComponent,
-
     TablaBeneficiosCargasAuthSocioComponent,
-
     TablaBeneficiosPadresSuegrosAuthSocioComponent,
-
     BeneficiosSocioComponent,
-
     PrestamosSociosComponent,
-
     ConfiguracionSocioComponent,
-
     CambioContraseniaSocioComponent,
-
     CambioInformacionPersonalSocioComponent,
-
     CuentasComponent,
-
     SindicalComponent,
-
     CajaChicaComponent,
-
     CampingComponent,
-
     InicioCierreMensualComponent,
-
     CajaChicaBienestarComponent,
-
     FallecimientoBienestarComponent,
-
     NacimientoBienestarComponent,
-
     GastosMedicosBienestarComponent,
-
     FormularioCajaChicaBienestarComponent,
-
     TablaCajaChicaBienestarComponent,
-
     FormularioFallecimientoBienestarComponent,
-
     TablaFallecimientoBienestarComponent,
-
     FormularioNacimientoBienestarComponent,
-
     TablaNacimientoBienestarComponent,
-
     FormularioGastosMedicosBienestarComponent,
-
     TablaGastosMedicosBienestarComponent,
-
     BeneficiosCobradosComponent,
-
     FondosMutuosSocioComponent,
-
     CuentaBienestarSociosComponent,
-
     CajaBienestarSociosComponent,
-
     TablaDesvinculadosConsorcioComponent,
-
     ConsorcioComponent,
-
     GraficoComponenteComponent,
-
     GeneralReunionComponent,
-
     DetalleReunionComponent,
-
     HistorialDetalleReunionComponent,
-
     SecretariaComponent,
-
     NuevaReunionComponent,
-
     EditarReunionComponent,
-
     AsistenciaReunionComponent,
-
     HistorialReunionComponent,
-
     DesvinculadosComponent,
-
     ModalGastosOperacionalesComponent,
-
-    GastosOperacionalesComponent
+    GastosOperacionalesComponent,
+    AcuerdoAsambleaComponent,
+    ActasComponent,
+    LeyesLaboralesComponent,
+    DirectorioComponent
 
   ],
   imports: [

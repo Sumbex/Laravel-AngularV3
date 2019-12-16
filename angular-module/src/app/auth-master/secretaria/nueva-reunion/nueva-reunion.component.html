@@ -1,7 +1,7 @@
 <ng-template #generarNuevaReunion let-modal>
   <!-- Header Del Modal -->
   <div class="modal-header" id="demoFont">
-    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Crear una nueva Reunión</strong>
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Crear una nueva Reunión/Elección</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -14,7 +14,7 @@
         <div class="col-md-12">
           <p class="mt-2">
             <ngb-alert [dismissible]="false">
-              <strong>¡Advertencia!</strong> Todos los campos son obligatorios, una vez generada la reunión sera
+              <strong>¡Advertencia!</strong> Todos los campos son obligatorios, una vez generada la reunión/elección sera
               publicada en el portal de socios para informarles con todos los datos solicitados en este formulario.
             </ngb-alert>
           </p>
@@ -24,17 +24,17 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="fecha"><b>Ingrese una fecha para la reunión (Formato 12 horas)</b></label>
+              <label for="fecha"><b>Ingrese una fecha para la reunión/elección (Formato 12 horas)</b></label>
               <input class="form-control" type="datetime-local" name="fecha" #fecha="ngModel" [(ngModel)]="datosReunion.fecha" required>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="tipo"><b>Seleccione el Tipo de Reunión</b></label>
+              <label for="tipo"><b>Seleccione el Tipo de Reunión o Elección</b></label>
               <select class="form-control" name="tipoReunion" #tipoReunion="ngModel" [(ngModel)]="datosReunion.tipoReunion" required>
-                <option value="1">General</option>
-                <option value="2">Eleccion</option>
-                <option value="3">Votación</option>
+                <option value="1">Ordinaria</option>
+                <option value="2">Extraordinaria</option>
+                <option value="3">Eleccion</option>
               </select>
             </div>
           </div>
@@ -42,7 +42,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label for="titulo"><b>Titulo de la reunión</b></label>
+              <label for="titulo"><b>Titulo de la Reunión/Elección</b></label>
               <input class="form-control" type="text" placeholder="Ingrese un Nombre para la reunión (Máximo 90 caracteres)" maxlength="90" name="titulo" #titulo="ngModel" [(ngModel)]="datosReunion.titulo" required>
             </div>
           </div>
@@ -50,7 +50,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión a realizar</b></label>
+              <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión/elección a realizar</b></label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
                 placeholder="(Minimo 4 caracteres, máximo 500 cacacteres)" minlength="4" maxlength="500" name="descripcion" #descripcion="ngModel" [(ngModel)]="datosReunion.descripcion" required></textarea>
             </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <button type="submit" [disabled]="!formulario.valid || ingresandoDatos" class="btn btn-success btn-block"> <b [hidden]="ingresandoDatos">Generar Reunión</b> <b [hidden]="!ingresandoDatos">Creando Nueva Reunión </b> <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
+            <button type="submit" [disabled]="!formulario.valid || ingresandoDatos" class="btn btn-success btn-block"> <b [hidden]="ingresandoDatos">Generar Reunión/Elección</b> <b [hidden]="!ingresandoDatos">Creando Nueva Reunión/Elección </b> <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
           </div>
         </div>
       </form>
@@ -73,6 +73,6 @@
 
 <div (click)="abrirModal(generarNuevaReunion)" class="card card-body text-white text-center bg-primary"
   style="cursor: pointer">
-  <h3><i class="far fa-calendar-plus"></i> Programar Nueva Reunión</h3>
-  <p>Aquí se pueden generar nuevas reuniones para informar a los socios</p>
+  <h3><i class="far fa-calendar-plus"></i> Programar Nueva Reunión/Elección</h3>
+  <p>Aquí se pueden generar nuevas reuniones o elecciones para informar a los socios</p>
 </div>

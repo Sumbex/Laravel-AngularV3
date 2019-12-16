@@ -41,6 +41,7 @@ class SecAsistencia extends Model
                 $asistencia->socio_id = $key->id;
                 $asistencia->estado_asistencia_id = 2;
                 $asistencia->activo = 'S';
+                $asistencia->aprobado = 'N';
                 if ($asistencia->save()) {
                     $con = $con + 1;
                 }

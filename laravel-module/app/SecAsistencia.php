@@ -192,7 +192,7 @@ class SecAsistencia extends Model
             }
             return ['estado' => 'success', 'lista' => $lista, 'inasistentes' => $aus, 'presentes' => $pre, 'justificados' => $jus];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'No existe la lista para esta reunion.'];
+            return ['estado' => 'failed', 'mensaje' => 'No existe la lista para esta Reunión/Elección.'];
         }
     }
 }

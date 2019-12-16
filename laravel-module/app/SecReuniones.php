@@ -66,7 +66,7 @@ class SecReuniones extends Model
             if ($reunion->estado_reunion_id == 5 || $reunion->estado_reunion_id == 6) {
                 return $this->ingresoReunion($request);
             } else {
-                return ['estado' => 'success', 'mensaje' => 'Existe una reunion activa, recuerda archivarla o cancelarla antes de intentar crear una nueva.'];
+                return ['estado' => 'success', 'mensaje' => 'Existe una Reunión/Elección activa, recuerda archivarla o cancelarla antes de intentar crear una nueva.'];
             }
         } else {
             return $this->ingresoReunion($request);
@@ -90,7 +90,7 @@ class SecReuniones extends Model
                 $asistencia = SecAsistencia::ingresarInasistentesReunionActiva($reunion->id);
                 if ($asistencia['estado'] == 'success') {
                     DB::commit();
-                    return ['estado' => 'success', 'mensaje' => 'Reunion creada con exito.', 'ingresos' => $asistencia['ingresos']];
+                    return ['estado' => 'success', 'mensaje' => 'Reunión/Elección creada con exito.', 'ingresos' => $asistencia['ingresos']];
                 } else {
                     DB::rollBack();
                 }
@@ -137,7 +137,7 @@ class SecReuniones extends Model
             $reunion[0]->fecha_inicio = preg_replace('/\s+/', 'T', $reunion[0]->fecha_inicio);
             return ['estado' => 'success', 'reunion' => $reunion];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no existe una reunion activa.'];
+            return ['estado' => 'failed', 'mensaje' => 'Aun no existe una Reunión/Elección activa.'];
         }
     }
 
@@ -155,7 +155,7 @@ class SecReuniones extends Model
                 if (!$reunion->isEmpty()) {
                     return ['estado' => 'success'];
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'La reunion que intentas modificar no existe o ya no esta activa.'];
+                    return ['estado' => 'failed', 'mensaje' => 'La Reunión/Elección que intentas modificar no existe o ya no esta activa.'];
                 }
                 break;
 
@@ -171,7 +171,7 @@ class SecReuniones extends Model
                 if (!$reunion->isEmpty()) {
                     return ['estado' => 'success'];
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'La reunion que intentas cancelar ya se encuentra iniciada.'];
+                    return ['estado' => 'failed', 'mensaje' => 'La Reunión/Elección que intentas cancelar ya se encuentra iniciada.'];
                 }
                 break;
 
@@ -194,7 +194,7 @@ class SecReuniones extends Model
                 $reunion->tipo_reunion_id = $request->tipo;
                 $reunion->mod_user_id = Auth::user()->id;
                 if ($reunion->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Reunion actualizada con exito.'];
+                    return ['estado' => 'success', 'mensaje' => 'Reunión/Elección actualizada con exito.'];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                 }
@@ -217,7 +217,7 @@ class SecReuniones extends Model
             if ($reunion->save()) {
                 $borrar = SecAsistencia::borrarInasistentesReunionActiva($reunion->id);
                 if ($borrar['estado'] == 'success') {
-                    return ['estado' => 'success', 'mensaje' => 'Reunion cancelada con exito.'];
+                    return ['estado' => 'success', 'mensaje' => 'Reunión/Elección cancelada con exito.'];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                 }
@@ -246,7 +246,7 @@ class SecReuniones extends Model
             $modReunion->estado_reunion_id = 3;
             /* $modReunion->mod_user_id = Auth::user()->id; */
             if ($modReunion->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Reunion terminada con exito.'];
+                return ['estado' => 'success', 'mensaje' => 'Reunión/Elección terminada con exito.'];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
             }
@@ -272,7 +272,7 @@ class SecReuniones extends Model
                 $modReunion->estado_reunion_id = 5;
                 /* $modReunion->mod_user_id = Auth::user()->id; */
                 if ($modReunion->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Reunion archivada con exito.'];
+                    return ['estado' => 'success', 'mensaje' => 'Reunión/Elección archivada con exito.'];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
                 }
@@ -321,7 +321,7 @@ class SecReuniones extends Model
             //$reunion[0]->fecha_inicio = preg_replace('/\s+/', 'T', $reunion[0]->fecha_inicio);
             return ['estado' => 'success', 'reunion' => $reunion];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no existe una reunion finalizada.'];
+            return ['estado' => 'failed', 'mensaje' => 'Aun no existe una Reunión/Elección finalizada.'];
         }
     }
 
@@ -452,7 +452,7 @@ class SecReuniones extends Model
         if (!$verificar->isEmpty()) {
             return SecAsistencia::marcarAsitenciaSocio($request);
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'La reunion actual no existe o su estado no se encuentra Cerrado o Finalizado.'];
+            return ['estado' => 'failed', 'mensaje' => 'La Reunión/Elección actual no existe o su estado no se encuentra Cerrado o Finalizado.'];
         }
     }
 
@@ -514,7 +514,7 @@ class SecReuniones extends Model
 
             return ['estado' => 'success', 'reuniones' => $reunion];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no existen reuniones archivadas.'];
+            return ['estado' => 'failed', 'mensaje' => 'Aun no existen Reunión/Elección archivadas.'];
         }
     }
 }

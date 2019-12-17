@@ -236,7 +236,7 @@ export class AsistenciaReunionComponent implements OnInit {
 
   guardarArchivo(){
     let texto = '<p>Hola amigos del youtubi</p>';
-    let htmlDocument = '<!DOCTYPE html><html><head><meta charset="utf-8><title></title>';
+    let htmlDocument = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>EmpaErectus</title>';
     htmlDocument = htmlDocument + '</head><body>' + texto + '</body></html>';
     const converted = htmlDocx.asBlob(htmlDocument);
     saveAs(converted, 'HolaMundo' + '.docx');

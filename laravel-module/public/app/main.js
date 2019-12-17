@@ -10408,7 +10408,7 @@ let AsistenciaReunionComponent = class AsistenciaReunionComponent {
     }
     guardarArchivo() {
         let texto = '<p>Hola amigos del youtubi</p>';
-        let htmlDocument = '<!DOCTYPE html><html><head><meta charset="utf-8><title></title>';
+        let htmlDocument = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>EmpaErectus</title>';
         htmlDocument = htmlDocument + '</head><body>' + texto + '</body></html>';
         const converted = html_docx_js_dist_html_docx__WEBPACK_IMPORTED_MODULE_4__["asBlob"](htmlDocument);
         Object(file_saver__WEBPACK_IMPORTED_MODULE_5__["saveAs"])(converted, 'HolaMundo' + '.docx');

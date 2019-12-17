@@ -23,6 +23,8 @@
     "@ng-bootstrap/ng-bootstrap": "^4.2.2",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
+    "file-saver": "^2.0.2",
+    "html-docx-js": "^0.3.1",
     "jquery": "^3.4.1",
     "ng-calendar": "^1.2.5",
     "popper.js": "^1.16.0",

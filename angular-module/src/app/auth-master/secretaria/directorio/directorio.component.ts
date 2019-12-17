@@ -19,7 +19,8 @@ export class DirectorioComponent implements OnInit {
   temas = '';
 
   //variable para asociar al modal
-  modalVariable;
+  modalHistorial;
+  modalDetalle;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
@@ -29,7 +30,10 @@ export class DirectorioComponent implements OnInit {
   }
 
   abrirModal(modalDirectiva){
-    this.modalVariable = this.modalService.open(modalDirectiva, {size: 'xl'});
+    this.modalHistorial = this.modalService.open(modalDirectiva, {size: 'xl'});
+  }
+  abrirModalDetalle(modalDetalle){
+    this.modalDetalle = this.modalService.open(modalDetalle, {size: 'xl'});
   }
 
   ingresarDirectorio(directorio)

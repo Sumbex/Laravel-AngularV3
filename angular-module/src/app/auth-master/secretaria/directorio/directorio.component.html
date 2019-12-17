@@ -1,22 +1,162 @@
-
-    <div class="row">
-      <div class="col-6 col-md-12 mt-4">
-        <label>
-          <b>Ingrese una fecha para la agendar reunion de direcotrio (Formato 24 horas) </b>
-          <i class="fas fa-info-circle" placement="right" ngbTooltip="El formato de hora es 24 horas"></i>
-        </label>
-        <div class="input-group">
-          <input type="datetime-local" name="fecha" required>
-        </div>
+<form #directorio="ngForm" (ngSubmit)="ingresarDirectorio(directorio)">
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <b>Agendar reunion de direcotrio </b>
+        <i class="fas fa-info-circle" placement="right" ngbTooltip="Formato 24 horas."></i>
+      </label>
+      <div class="form-group">
+        <input class="form-control" type="datetime-local" name="fecha" [(ngModel)]="fecha" required>
       </div>
+    </div>
   
-      <div class="col-6 col-md-12 mt-4">
-        <label>
-          <b>Temas a tratar en la Reunion </b>
-        </label>
-        <div class="input-group">
-          <input type="text" name="temas" required>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="tipo"><b>Tipo de Reunión</b></label>
+        <select class="form-control" name="tipoReunion" [(ngModel)]="tipoReunion" required>
+          <option value="">--Seleccione--</option>
+          <option value="1">Directorio</option>
+          <option value="2">Sub-Gerencia</option>
+          <option value="3">Gerencia</option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="col-md-6">
+      <label>
+        <b>Titulo de la reunion </b>
+      </label>
+      <div class="form-group">
+        <input class="form-control" type="text" name="titulo" [(ngModel)]="titulo" required>
+      </div>
+    </div>
+  
+  </div>
+  
+  <div class="row">
+  
+    <div class="col-md-3">
+      <label>
+        <b>Directiva Asistida </b>
+      </label>
+      <div class="form-group">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox1" name="presidente" [(ngModel)]="presidente">
+          <label class="form-check-label" for="inlineCheckbox1">Presidente/a</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox2" name="tesorero" [(ngModel)]="tesorero">
+          <label class="form-check-label" for="inlineCheckbox2">Tesorero/a</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox3" name="secretario" [(ngModel)]="secretario">
+          <label class="form-check-label" for="inlineCheckbox3">Secretario/a</label>
+        </div>
+  
+      </div>
+    </div>
+  
+    <div *ngIf="tipoReunion == 2" class="col-md-4">
+      <label>
+        <b>Sub-Gerentes Asistidos </b>
+      </label>
+      <div class="form-group">
+        <div class="form-group">
+          <textarea class="form-control blockArea" type="text" name="subGerente" placeholder="Nombre y cargo del Sub-Gerente" [(ngModel)]="subGerente" required></textarea>
         </div>
       </div>
     </div>
+  
+    <div *ngIf="tipoReunion == 3" class="col-md-4">
+      <label>
+        <b>Gerentes Asistidos </b>
+      </label>
+      <div class="form-group">
+        <div class="form-group">
+          <textarea class="form-control blockArea" type="text" name="gerente" placeholder="Nombre y cargo del Gerente" [(ngModel)]="gerente" required></textarea>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-5">
+      <label>
+        <b>Temas a Tratar </b>
+      </label>
+      <div class="form-group">
+        <textarea class="form-control blockArea" type="text" name="temas" [(ngModel)]="temas" required></textarea>
+      </div>
+    </div>
+  
+  </div>
+  
+  <div class="row justify-content-end">
+    <div class="col-md-2">
+      <label>
+        <b>Agendar Reunion</b>
+      </label>
+      <button class="btn btn-success btn-block btn-sm" type="submit" 
+      [disabled]="!directorio.valid ||
+       (directorio.value.presidente == false && 
+       directorio.value.tesorero == false &&
+       directorio.value.secretario == false)">Agendar</button>
+    </div>
+  
+    <div class="col-md-2">
+      <label>
+        <b>Historial de Reuniones</b>
+      </label>
+      <button class="btn btn-success btn-block btn-sm" type="button" (click)="abrirModal(modalDirectorio)">Historial</button>
+    </div>
+  </div>
+</form>
 
+<ng-template #modalDirectorio let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Historial de Reuniones</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="table-responsive-sm">
+
+      <table class="table text-center">
+        <thead>
+          <tr class="bg-info" style="color: #ffff;">
+            <th scope="col">ID</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Tipo de Reunion</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Detalles</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>12-12-2019</td>
+            <td>Directorio</td>
+            <td>Reunion de pruebas</td>
+            <td><button class="btn btn-success">Ver</button></td>
+          </tr> 
+          <tr>
+            <th scope="row">2</th>
+            <td>14-12-2019</td>
+            <td>Sub-Gerencia</td>
+            <td>Reunion de pruebas 2</td>
+            <td><button class="btn btn-success">Ver</button></td>
+          </tr> 
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>

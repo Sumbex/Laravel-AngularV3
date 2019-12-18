@@ -81,6 +81,7 @@ export class TablaFondoMutuoComponent implements OnInit {
   anioSig = '';
   generarAcumulado;
   actualizarLoad3 = false;
+  totalAhorro;
 
 
   constructor(
@@ -245,6 +246,7 @@ export class TablaFondoMutuoComponent implements OnInit {
       this.listar();
       this.listarMensual();
       this.listarAnual();
+      this.ahorroDiaSueldo();
     }
   }
 
@@ -517,6 +519,16 @@ export class TablaFondoMutuoComponent implements OnInit {
     }, (reason) => {
       console.log(`${reason}`);
     });
+  }
+
+  ahorroDiaSueldo(){
+    this._consorcioService.ahorro_dia_sueldo(this.anio).subscribe((response) => {
+        this.totalAhorro = response;
+    },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

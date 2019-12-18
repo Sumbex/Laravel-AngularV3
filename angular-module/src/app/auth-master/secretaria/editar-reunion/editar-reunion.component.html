@@ -1,7 +1,7 @@
 <ng-template #editarReunion let-modal>
   <!-- Header Del Modal -->
   <div class="modal-header" id="demoFont">
-    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Editando Reunión</strong>
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Editando Reunión/Elección</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -10,22 +10,25 @@
   <!-- Cuerpo del modal -->
   <div class="modal-body">
     <div class="container">
-        <div *ngIf="this.datosReunion.id == ''" class="loader"></div>
+      <div *ngIf="this.datosReunion.id == ''" class="loader"></div>
       <div *ngIf="this.datosReunion.id != ''">
         <div class="row">
           <div class="col-md-12 text-center">
-              <h4 class="text-center">{{datosReunion?.titulo}}</h4>
-              <p class="text-muted text-center">{{fechaVisual}}<br>Organizada por {{datosReunion?.creadaPor}}<br><p *ngIf="datosActivaReunion?.mod_user_id != null">
+            <h4 class="text-center">{{datosReunion?.titulo}}</h4>
+            <p class="text-muted text-center">{{fechaVisual}}<br>Organizada por {{datosReunion?.creadaPor}}<br></p>
+              <p *ngIf="datosActivaReunion?.mod_user_id != null">
                 Última modificación realizada por {{datosReunion?.modificadaPor}}
-              </p></p>
+              </p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 mt-2">
             <p class="mt-2">
               <ngb-alert [dismissible]="false">
-                <strong>¡Advertencia!</strong> Esta tabla cuenta con los datos de la reunión actualmente activa, solo
-                cambie los valores que desea editar y guartdelos con el boton verde, si esea cancelar la reunión presione
+                <strong>¡Advertencia!</strong> Esta tabla cuenta con los datos de la reunión/elección actualmente
+                activa, solo
+                cambie los valores que desea editar y guardelos con el boton verde, si desea cancelar la
+                reunión/elección presione
                 el botón de color rojo.
               </ngb-alert>
             </p>
@@ -35,19 +38,19 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="fecha"><b>Ingrese una fecha para la reunión (Formato 12 horas)</b></label>
+                <label for="fecha"><b>Ingrese una fecha para la reunión/elección (Formato 12 horas)</b></label>
                 <input class="form-control" type="datetime-local" name="fecha" #fecha="ngModel"
                   [(ngModel)]="datosReunion.fecha" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="tipo"><b>Seleccione el Tipo de Reunión</b></label>
+                <label for="tipo"><b>Seleccione el Tipo de Reunión o Elección</b></label>
                 <select class="form-control" name="tipoReunion" #tipoReunion="ngModel"
                   [(ngModel)]="datosReunion.tipoReunion" required>
-                  <option value="1">General</option>
-                  <option value="2">Eleccion</option>
-                  <option value="3">Votación</option>
+                  <option value="1">Ordinaria</option>
+                  <option value="2">Extraordinaria</option>
+                  <option value="3">Eleccion</option>
                 </select>
               </div>
             </div>
@@ -55,9 +58,9 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="titulo"><b>Titulo de la reunión</b></label>
+                <label for="titulo"><b>Titulo de la Reunión/Elección</b></label>
                 <input class="form-control" type="text"
-                  placeholder="Ingrese un Nombre para la reunión (Máximo 90 caracteres)" maxlength="90" name="titulo"
+                  placeholder="Ingrese un Nombre para la reunión/elección (Máximo 90 caracteres)" maxlength="90" name="titulo"
                   #titulo="ngModel" [(ngModel)]="datosReunion.titulo" required>
               </div>
             </div>
@@ -65,7 +68,8 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión a realizar</b></label>
+                <label for="exampleFormControlTextarea1"><b>Ingrese una descripción para la reunión/elección a
+                    realizar</b></label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
                   placeholder="(Minimo 4 caracteres, máximo 500 cacacteres)" minlength="4" maxlength="500"
                   name="descripcion" #descripcion="ngModel" [(ngModel)]="datosReunion.descripcion" required></textarea>
@@ -74,14 +78,19 @@
           </div>
           <div class="row">
             <div class="col-md-4 mt-2">
-              <button type="submit" [disabled]="!formulario.valid || ingresandoDatos" class="btn btn-success btn-block"><b [hidden]="ingresandoDatos">Actualizar</b> <b [hidden]="!ingresandoDatos">Modificando Datos </b> <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+              <button type="submit" [disabled]="!formulario.valid || ingresandoDatos"
+                class="btn btn-success btn-block"><b [hidden]="ingresandoDatos">Actualizar</b> <b
+                  [hidden]="!ingresandoDatos">Modificando Datos </b> <img *ngIf="ingresandoDatos" height="20"
+                  src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
             </div>
             <div class="col-md-4 mt-2">
-              <button type="button" (click)="modalConfirmacion(confirmacionTerminar)" class="btn btn-secondary btn-block"><b>Terminar Reunión</b></button>
+              <button type="button" (click)="modalConfirmacion(confirmacionTerminar)"
+                class="btn btn-secondary btn-block"><b>Terminar Reunión/Elección</b></button>
             </div>
             <div class="col-md-4 mt-2">
-              <button type="button" (click)="modalConfirmacion(confirmacion)" class="btn btn-danger btn-block"><b>Cancelar
-                Reunión</b></button>
+              <button type="button" (click)="modalConfirmacion(confirmacion)"
+                class="btn btn-danger btn-block"><b>Cancelar
+                  Reunión/Elección</b></button>
             </div>
           </div>
         </form>
@@ -97,8 +106,8 @@
 
 <div (click)="abrirModal(editarReunion)" class="card card-body text-white text-center bg-success"
   style="cursor: pointer">
-  <h3><i class="fas fa-hourglass-end"></i> Reunión Activa</h3>
-  <p>Realizar cambios de fecha o cancelar la reunión a realizar</p>
+  <h3><i class="fas fa-hourglass-end"></i> Reunión/Elección Activa</h3>
+  <p>Realizar cambios de fecha o cancelar la reunión/elección a realizar</p>
 </div>
 
 <ng-template #confirmacion let-modal>
@@ -115,17 +124,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <p><b>¿Esta seguro que desea cancelar la reunión <span class="text-danger">{{datosReunion?.titulo}}</span> con
+          <p><b>¿Esta seguro que desea cancelar la reunión/elección <span class="text-danger">{{datosReunion?.titulo}}</span> con
               fecha <span class="text-danger">{{datosReunion?.fecha}}</span>? Esta reunión fue creada por <span
-                class="text-danger">{{datosReunion?.creadaPor}}</span>. <br> Esta operación no puede ser revertida</b></p>
+                class="text-danger">{{datosReunion?.creadaPor}}</span>. <br> Esta operación no puede ser revertida</b>
+          </p>
         </div>
       </div>
       <div class="row text-center">
         <div class="col-md-6">
-          <button [disabled]="cargandoConfirmacion" (click)="cancelarReunion()" class="btn btn-danger btn-lg btn-block">Sí <img *ngIf="cargandoConfirmacion" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+          <button [disabled]="cargandoConfirmacion" (click)="cancelarReunion()"
+            class="btn btn-success btn-lg btn-block">Sí <img *ngIf="cargandoConfirmacion" height="20"
+              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
         </div>
         <div class="col-md-6">
-          <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionCancelar" class="btn btn-success btn-lg btn-block">No</button>
+          <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionCancelar"
+            class="btn btn-danger btn-lg btn-block">No</button>
         </div>
       </div>
     </div>
@@ -138,37 +151,40 @@
 </ng-template>
 
 <ng-template #confirmacionTerminar let-modal>
-    <!-- Header Del Modal -->
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title text-center"><strong><i class="fas fa-cash-register"></i> ¿Esta Seguro?</strong>
-      </h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <!-- Cuerpo del modal -->
-    <div class="modal-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p><b>¿Esta seguro que desea terminar la reunión <span class="text-danger">{{datosReunion?.titulo}}</span> con
-                fecha <span class="text-danger">{{datosReunion?.fecha}}</span>? Esta reunión fue creada por <span
-                  class="text-danger">{{datosReunion?.creadaPor}}</span>. <br> Si esta seguro presione sí</b></p>
-          </div>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title text-center"><strong><i class="fas fa-cash-register"></i> ¿Esta Seguro?</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p><b>¿Esta seguro que desea terminar la reunión/elección <span class="text-danger">{{datosReunion?.titulo}}</span> con
+              fecha <span class="text-danger">{{datosReunion?.fecha}}</span>? Esta reunión fue creada por <span
+                class="text-danger">{{datosReunion?.creadaPor}}</span>. <br> Si esta seguro presione sí</b></p>
         </div>
-        <div class="row text-center">
-          <div class="col-md-6">
-            <button [disabled]="cargandoConfirmacion" (click)="terminarReunion()" class="btn btn-danger btn-lg btn-block">Sí <img *ngIf="cargandoConfirmacion" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
-          </div>
-          <div class="col-md-6">
-            <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionTerminar" class="btn btn-success btn-lg btn-block">No</button>
-          </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-6">
+          <button [disabled]="cargandoConfirmacion" (click)="terminarReunion()"
+            class="btn btn-success btn-lg btn-block">Sí <img *ngIf="cargandoConfirmacion" height="20"
+              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+        </div>
+        <div class="col-md-6">
+          <button (click)="modal.dismiss('Cross click')" id="cerrarConfirmacionTerminar"
+            class="btn btn-danger btn-lg btn-block">No</button>
         </div>
       </div>
     </div>
-    <!-- Patitas del Modal -->
-    <div class="modal-footer">
-      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
-          class="far fa-arrow-alt-circle-left"></i> Volver</button>
-    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
 </ng-template>

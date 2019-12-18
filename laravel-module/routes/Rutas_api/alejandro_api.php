@@ -146,3 +146,10 @@ Route::get('listar_pago_beneficios/{anio}','CuentaConsorcioController@listar_pag
 Route::get('total_desvinculados/{anio}','CuentaConsorcioController@total_desvinculados');
 
 Route::get('proximo_periodo/{anio_actual}','CuentaConsorcioController@proximo_periodo');
+
+
+
+//SECRETARIA - ACTAS
+
+Route::post('registrar_acta','ActasController@crear');
+Route::get('listar_acta','ActasController@listar');

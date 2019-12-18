@@ -11,4 +11,8 @@ class SecLeyesController extends Controller
     {
         return SecLeyes::ingresarNoticia($request);
     }
+
+    public function TraerNoticias(){
+        return SecLeyes::traerNoticias();
+    }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class SecLeyes extends Model
 {
@@ -12,7 +13,6 @@ class SecLeyes extends Model
 
     protected function ingresarNoticia($request)
     {
-        /* dd($request->all()); */
         $noticia = new SecLeyes;
         $noticia->titulo = $request->titulo;
         $noticia->slug =  Str::slug($request->titulo, '-');
@@ -46,6 +46,28 @@ class SecLeyes extends Model
             return ['estado' =>  'success', 'archivo' => $rutaDB];
         } else {
             return ['estado' =>  'failed', 'mensaje' => 'Error al guardar el archivo.'];
+        }
+    }
+
+    protected function traerNoticias(){
+        $noticias = DB::table('sec_leyes')
+        ->select([
+            'id',
+            'titulo',
+            'slug',
+            'cuerpo',
+            'archivo'
+        ])
+        ->where([
+            'sec_leyes_estado' => 1,
+            'activo' => 'S'
+        ])
+        ->get();
+    
+        if(!$noticias->isEmpty()){
+            return ['estado' => 'success', 'noticias' => $noticias];
+        }else{
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay noticias para mostrar.'];
         }
     }
 }

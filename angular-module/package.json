@@ -22,7 +22,11 @@
     "@auth0/angular-jwt": "^2.1.2",
     "@ng-bootstrap/ng-bootstrap": "^4.2.2",
     "bootstrap": "^4.4.1",
+<<<<<<< HEAD
     "chart.js": "^2.8.0",
+=======
+    "chart.js": "^2.9.3",
+>>>>>>> david
     "file-saver": "^2.0.2",
     "html-docx-js": "^0.3.1",
     "jquery": "^3.4.1",

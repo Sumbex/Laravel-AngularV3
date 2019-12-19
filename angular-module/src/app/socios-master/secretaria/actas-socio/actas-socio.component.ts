@@ -32,7 +32,7 @@ export class ActasSocioComponent implements OnInit {
 
   listar() {
 
-    this._http.get(this.url + "listar_acta", {
+    this._http.get(this.url + "socio_listar_acta", {
       headers: new HttpHeaders(
         {
           'Authorization': 'Bearer' + this.token,

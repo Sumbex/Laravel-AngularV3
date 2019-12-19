@@ -17535,7 +17535,7 @@ let ActasSocioComponent = class ActasSocioComponent {
         this.modal_tabla = this.modalService2.open(modal, { size: 'xl' });
     }
     listar() {
-        this._http.get(this.url + "listar_acta", {
+        this._http.get(this.url + "socio_listar_acta", {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })

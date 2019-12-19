@@ -102,7 +102,9 @@ export class ActasComponent implements OnInit {
     }).subscribe((val: { 'estado', 'data' }) => {
       //console.log(val.estado);
       if (val.estado == 'success') {
-        this.actas = val.data
+        this.actas = val.data;
+        alert("Acta ingresada con exito");
+       this.limpiar();
       }
     }, response => {
       console.log("POST call in error", response);
@@ -142,6 +144,16 @@ export class ActasComponent implements OnInit {
       () => {
         console.log("The POST observable is now completed.");
       });
+  }
+
+  limpiar(){
+    this.miembros = '';
+    this.orden_dia = '';
+    this.detalle_orden_dia = '';
+    this.dirigente = '';
+    this.fecha = '';
+    this.hora = '';
+    this.ubicacion = '';
   }
 
 }

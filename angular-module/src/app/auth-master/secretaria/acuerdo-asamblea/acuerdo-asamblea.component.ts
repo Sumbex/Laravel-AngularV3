@@ -19,6 +19,9 @@ export class AcuerdoAsambleaComponent implements OnInit {
     estadoActa: '1'
   }
 
+  //Tabla de Acuerdos
+  tablaAcuerdos;
+
   //Variables para los select de año y mes
   selectAnio;
   idAnioActual;
@@ -38,6 +41,7 @@ export class AcuerdoAsambleaComponent implements OnInit {
 
   abrirModalAcuerdos(modalMenu){
     this.modalVariable = this.modalService.open(modalMenu, {size: 'xl'});
+    this.getListaAcuerdosAsamblea();
     this.cargarFechasActuales();
   }
 
@@ -81,24 +85,25 @@ export class AcuerdoAsambleaComponent implements OnInit {
     });
   }
 
-  getAcuerdoAsamblea(){
-    this._acuerdoService.getAcuerdoAsamblea('id').subscribe(response => {
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
-      }else{
-        console.log("Hola amigos del yutu");
-      }
-    }, error => {
-      console.log(error);
-    });
-  }
+  // getAcuerdoAsamblea(){
+  //   this._acuerdoService.getAcuerdoAsamblea('id').subscribe(response => {
+  //     if(response.estado == 'failed' || response.estado == 'failed_v'){
+  //       alert(response.mensaje);
+  //     }else{
+  //       console.log("Hola amigos del yutu");
+  //     }
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 
-  getListaAcuerdoAsamblea(){
-    this._acuerdoService.getAcuerdosAsambleaMesAnio(this.idAnioActual).subscribe(response => {
+  getListaAcuerdosAsamblea(){
+    this._acuerdoService.getAcuerdosAsamblea().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        console.log("Hola amigos del yutu");
+        this.tablaAcuerdos = response;
+        console.log(this.tablaAcuerdos);
       }
     }, error => {
       console.log(error);

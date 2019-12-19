@@ -45,7 +45,7 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <button class="btn btn-primary btn-block" (click)="limpiarFormulario()">Ingresar</button>
+      <button class="btn btn-primary btn-block" (click)="setAcuerdoAsamblea()">Ingresar</button>
     </div>
     <div class="col-md-6">
       <button class="btn btn-secondary btn-block" (click)="abrirModalAcuerdos(menuAdministrarReunion)">Ver Acuerdos de
@@ -54,7 +54,7 @@
   </div>
 </form>
 
-<!-- MENU DE REUNION FINALIZADA -->
+<!-- LISTA ACUERDOS ASAMBKLEA -->
 <ng-template #menuAdministrarReunion let-modal>
   <!-- Header Del Modal -->
   <div class="modal-header" id="demoFont">
@@ -88,10 +88,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Acuerdo de pruebas</td>
-              <td>20-20-20</td>
+            <tr *ngFor="let itemAcuerdos of tablaAcuerdos">
+              <th>{{itemAcuerdos.id}}</th>
+              <td>{{itemAcuerdos.titulo}}</td>
+              <td>{{itemAcuerdos.fecha}}</td>
               <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(visualizarAcuerdo)">Visualizar</button>
               </td>
             </tr>

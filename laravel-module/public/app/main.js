@@ -943,7 +943,7 @@ module.exports = "<!-- MENU DE REUNION FINALIZADA -->\n<ng-template #menuAdminis
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form #directorio=\"ngForm\" (ngSubmit)=\"ingresarDirectorio(directorio)\">\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <label>\n        <b>Agendar reunion de direcotrio </b>\n        <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Formato 24 horas.\"></i>\n      </label>\n      <div class=\"form-group\">\n        <input class=\"form-control\" type=\"datetime-local\" name=\"fecha\" [(ngModel)]=\"fecha\" required>\n      </div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <div class=\"form-group\">\n        <label for=\"tipo\"><b>Tipo de Reunión</b></label>\n        <select class=\"form-control\" name=\"tipoReunion\" [(ngModel)]=\"tipoReunion\" required>\n          <option value=\"\">--Seleccione--</option>\n          <option value=\"1\">Directorio</option>\n          <option value=\"2\">Sub-Gerencia</option>\n          <option value=\"3\">Gerencia</option>\n        </select>\n      </div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <label>\n        <b>Titulo de la reunion </b>\n      </label>\n      <div class=\"form-group\">\n        <input class=\"form-control\" type=\"text\" name=\"titulo\" [(ngModel)]=\"titulo\" required>\n      </div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <label>\n        <b>Directiva Asistida </b>\n      </label>\n      <div class=\"form-group\">\n        <div class=\"form-check form-check-inline\">\n          <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox1\" name=\"presidente\" [(ngModel)]=\"presidente\">\n          <label class=\"form-check-label\" for=\"inlineCheckbox1\">Presidente/a</label>\n        </div>\n        <div class=\"form-check form-check-inline\">\n          <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox2\" name=\"tesorero\" [(ngModel)]=\"tesorero\">\n          <label class=\"form-check-label\" for=\"inlineCheckbox2\">Tesorero/a</label>\n        </div>\n        <div class=\"form-check form-check-inline\">\n          <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox3\" name=\"secretario\" [(ngModel)]=\"secretario\">\n          <label class=\"form-check-label\" for=\"inlineCheckbox3\">Secretario/a</label>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"row\">\n\n    <div *ngIf=\"tipoReunion == 2\" class=\"col-md-12\">\n      <label>\n        <b>Sub-Gerentes Asistidos </b>\n      </label>\n      <div class=\"form-group\">\n        <div class=\"form-group\">\n          <textarea class=\"form-control blockArea\" type=\"text\" name=\"subGerente\"\n            placeholder=\"Nombre y cargo del Sub-Gerente\" [(ngModel)]=\"subGerente\" required></textarea>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf=\"tipoReunion == 3\" class=\"col-md-12\">\n      <label>\n        <b>Gerentes Asistidos </b>\n      </label>\n      <div class=\"form-group\">\n        <div class=\"form-group\">\n          <textarea class=\"form-control blockArea\" type=\"text\" name=\"gerente\" placeholder=\"Nombre y cargo del Gerente\"\n            [(ngModel)]=\"gerente\" required></textarea>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-md-12\">\n      <label>\n        <b>Temas a Tratar </b>\n      </label>\n      <div class=\"form-group\">\n        <textarea class=\"form-control blockArea\" type=\"text\" name=\"temas\" [(ngModel)]=\"temas\" required></textarea>\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"row justify-content-end\">\n    <div class=\"col-md-2\">\n      <label>\n        <b>Agendar Reunion</b>\n      </label>\n      <button class=\"btn btn-success btn-block btn-sm\" type=\"submit\" [disabled]=\"!directorio.valid ||\n       (directorio.value.presidente == false && \n       directorio.value.tesorero == false &&\n       directorio.value.secretario == false)\">Agendar</button>\n    </div>\n\n    <div class=\"col-md-2\">\n      <label>\n        <b>Historial de Reuniones</b>\n      </label>\n      <button class=\"btn btn-primary btn-block btn-sm\" type=\"button\"\n        (click)=\"abrirModal(modalDirectorio)\">Historial</button>\n    </div>\n  </div>\n</form>\n\n<ng-template #modalDirectorio let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-briefcase\"></i> Historial de Reuniones</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"table-responsive-sm\">\n\n      <table class=\"table text-center\">\n        <thead>\n          <tr class=\"bg-info\" style=\"color: #ffff;\">\n            <th scope=\"col\">N° Reunion</th>\n            <th scope=\"col\">Fecha</th>\n            <th scope=\"col\">Tipo de Reunion</th>\n            <th scope=\"col\">Titulo</th>\n            <th scope=\"col\">Detalles</th>\n          </tr>\n        </thead>\n\n        <tbody>\n          <tr>\n            <th scope=\"row\">1</th>\n            <td>12-12-2019</td>\n            <td>Directorio</td>\n            <td>Reunion de pruebas</td>\n            <td><button class=\"btn btn-success\" (click)=\"abrirModalDetalle(modalDetalle)\">Ver</button></td>\n          </tr>\n          <tr>\n            <th scope=\"row\">2</th>\n            <td>14-12-2019</td>\n            <td>Sub-Gerencia</td>\n            <td>Reunion de pruebas 2</td>\n            <td><button class=\"btn btn-success\" (click)=\"abrirModalDetalle(modalDetalle)\">Ver</button></td>\n          </tr>\n        </tbody>\n      </table>\n\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" id=\"botonCerrarModal\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n<ng-template #modalDetalle let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-briefcase\"></i> Detalle de la Reunion N°1</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\" id=\"printJS-table\">\n    <h3 style=\"text-align: center;\">\n      <b>Titulo de la Reunion</b>\n    </h3>\n\n    <p><b>Directiva asistida:</b></p>\n    <pre>\n      Presidente\n      Tesorero\n    </pre>\n\n    <p><b>Sub-Gerencia asistida:</b></p>\n    <pre>\n      Sub-Gerente 1\n      Sub-Gerente 2\n    </pre>\n\n    <p><b>Temas a tratar:</b></p>\n    <pre>\n      1- Suaaaaveeeeee\n      2- Suaaaveeeeee 2.0\n      3- Bailando el Dembow (Letra/Lyrics)\n      uYeeeah!\n      Dembow,.... Dembow\n      ...Me vuelve locoooooo bailando el dembow\n      \n      Dembow\n      Ella se menea bailando el dembow\n      Cuando tu lo bailas me vuelves loco\n      Oye mami ven gozar el dembow\n      Demboooooow\n      Ella se menea bailando el dembow\n      Cuando tu lo bailas me vuelves locoooooo..\n      Bailando el dembow\n      \n      Okey, Aqui te traje el dembow, dime si lo sientes\n      Quiero ver las manos arriba para toda mi gente\n      Mami, se que te gusta quien lo va pegando\n      Cuando sientes este ritmo tu lo sigues bailando ooh\n      Tu cuerpo sexy muevelo pegao'\n      En la disco tu te entregas ma' de lao' a lao'\n      De-de de-de Dembow, sien-sien siente mi flow\n      De este ritmo reggaeton, aqui lo mando yo\n    </pre>\n\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n\n    <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\n      printable: 'printJS-table',\n      type:'html',\n      style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'\n    })\">\n      <i class=\"fas fa-print\"></i> Imprimir Datos\n    </button>\n\n    <button type=\"button\" id=\"botonCerrarModal\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>"
+module.exports = "<form #directorio=\"ngForm\" (ngSubmit)=\"ingresarDirectorio(directorio)\">\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <label>\n        <b>Agendar reunion de direcotrio </b>\n        <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"Formato 24 horas.\"></i>\n      </label>\n      <div class=\"form-group\">\n        <input class=\"form-control\" type=\"datetime-local\" name=\"fecha\" [(ngModel)]=\"datosDirectorio.fecha\" required>\n      </div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <div class=\"form-group\">\n        <label for=\"tipo\"><b>Tipo de Reunión</b></label>\n        <select class=\"form-control\" name=\"tipoReunion\" [(ngModel)]=\"datosDirectorio.sec_tipo_reunion_id\" required>\n          <option value=\"\">--Seleccione--</option>\n          <option value=\"4\">Directorio</option>\n          <option value=\"5\">Sub-Gerencia</option>\n          <option value=\"6\">Gerencia</option>\n        </select>\n      </div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <label>\n        <b>Titulo de la reunion </b>\n      </label>\n      <div class=\"form-group\">\n        <input class=\"form-control\" type=\"text\" name=\"titulo\" [(ngModel)]=\"datosDirectorio.titulo\" required>\n      </div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <label>\n        <b>Directiva Asistida </b>\n      </label>\n      <div class=\"form-group\">\n        <div class=\"form-check form-check-inline\">\n          <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox1\" name=\"presidente\"\n            [(ngModel)]=\"datosDirectorio.presidente\">\n          <label class=\"form-check-label\" for=\"inlineCheckbox1\">Presidente/a</label>\n        </div>\n        <div class=\"form-check form-check-inline\">\n          <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox2\" name=\"tesorero\"\n            [(ngModel)]=\"datosDirectorio.tesorero\">\n          <label class=\"form-check-label\" for=\"inlineCheckbox2\">Tesorero/a</label>\n        </div>\n        <div class=\"form-check form-check-inline\">\n          <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox3\" name=\"secretario\"\n            [(ngModel)]=\"datosDirectorio.secretario\">\n          <label class=\"form-check-label\" for=\"inlineCheckbox3\">Secretario/a</label>\n        </div>\n\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"row\">\n\n    <div *ngIf=\"datosDirectorio.sec_tipo_reunion_id == 5\" class=\"col-md-12\">\n      <label>\n        <b>Sub-Gerentes Asistidos </b>\n      </label>\n      <div class=\"form-group\">\n        <div class=\"form-group\">\n          <textarea class=\"form-control blockArea\" type=\"text\" name=\"subGerente\"\n            placeholder=\"Nombre y cargo del Sub-Gerente\" [(ngModel)]=\"datosDirectorio.asistencia\" required></textarea>\n        </div>\n      </div>\n    </div>\n\n    <div *ngIf=\"datosDirectorio.sec_tipo_reunion_id == 6\" class=\"col-md-12\">\n      <label>\n        <b>Gerentes Asistidos </b>\n      </label>\n      <div class=\"form-group\">\n        <div class=\"form-group\">\n          <textarea class=\"form-control blockArea\" type=\"text\" name=\"gerente\" placeholder=\"Nombre y cargo del Gerente\"\n            [(ngModel)]=\"datosDirectorio.asistencia\" required></textarea>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"col-md-12\">\n      <label>\n        <b>Temas a Tratar </b>\n      </label>\n      <div class=\"form-group\">\n        <textarea class=\"form-control blockArea\" type=\"text\" name=\"temas\" [(ngModel)]=\"datosDirectorio.temas\"\n          required></textarea>\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"row justify-content-end\">\n    <div class=\"col-md-2\">\n      <label>\n        <b>Agendar Reunion</b>\n      </label>\n      <button class=\"btn btn-success btn-block btn-sm\" type=\"submit\" [disabled]=\"!directorio.valid ||\n                    ingresandoDatos ||\n                    (directorio.value.presidente == false && \n                    directorio.value.tesorero == false &&\n                    directorio.value.secretario == false)\">\n        <b [hidden]=\"ingresandoDatos\">Agendar</b>\n        <b [hidden]=\"!ingresandoDatos\">Agendando </b>\n        <img *ngIf=\"ingresandoDatos\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\n      </button>\n    </div>\n\n    <div class=\"col-md-2\">\n      <label>\n        <b>Historial de Reuniones</b>\n      </label>\n      <button class=\"btn btn-primary btn-block btn-sm\" type=\"button\"\n        (click)=\"abrirModal(modalDirectorio); visualizarDirectorio()\">Historial</button>\n    </div>\n  </div>\n</form>\n\n<ng-template #modalDirectorio let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-briefcase\"></i> Historial de Reuniones</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"table-responsive-sm\">\n\n      <table class=\"table text-center\">\n        <thead>\n          <tr class=\"bg-info\" style=\"color: #ffff;\">\n            <th scope=\"col\">N° Reunion</th>\n            <th scope=\"col\">Fecha</th>\n            <th scope=\"col\">Tipo de Reunion</th>\n            <th scope=\"col\">Titulo</th>\n            <th scope=\"col\">Detalles</th>\n          </tr>\n        </thead>\n\n        <tbody>\n          <tr *ngFor=\"let listar of listarDirectorio\">\n            <th scope=\"row\">{{listar.id}}</th>\n            <td>{{listar.fecha}}</td>\n            <td>{{listar.tipo}}</td>\n            <td>{{listar.titulo || titlecase}}</td>\n            <td><button class=\"btn btn-success\" (click)=\"abrirModalDetalle(modalDetalle,listar.id)\">Ver</button>\n              <!-- detalle del modal -->\n              <ng-template #modalDetalle let-modal>\n                <!-- Header Del Modal -->\n                <div class=\"modal-header\" id=\"demoFont\">\n                  <h6 class=\"modal-title\"><strong><i class=\"fas fa-briefcase\"></i> Detalle de la Reunion {{listar.id}}</strong>\n                  </h6>\n                  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                </div>\n                <!-- Cuerpo del modal -->\n                <div class=\"modal-body\" id=\"printJS-table\">\n                  <h3 style=\"text-align: center;\">\n                    <b>{{listar.titulo | titlecase}}</b>\n                  </h3>\n\n                  <p><b>Directiva asistida:</b></p>\n                  <pre *ngFor=\"let listar2 of listarDirectorioDetalle\">{{listar2.descripcion}}</pre>\n\n                  <div *ngIf=\"listar.asistencia != null\">\n                    <p><b>Sub-Gerencia asistida:</b></p>\n                    <pre>{{listar.asistencia}}</pre>\n                  </div>\n\n                  <p><b>Temas a tratar:</b></p>\n                  <pre>{{listar.temas}}</pre>\n\n                </div>\n                <!-- Patitas del Modal -->\n                <div class=\"modal-footer\">\n\n                  <button type=\"button\" class=\"btn btn-success\" onclick=\"printJS({\n                    printable: 'printJS-table',\n                    type:'html',\n                    style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'\n                  })\">\n                    <i class=\"fas fa-print\"></i> Imprimir Datos\n                  </button>\n\n                  <button type=\"button\" id=\"botonCerrarModal\" class=\"btn btn-info\"\n                    (click)=\"modal.close('Close click')\"><i class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n                </div>\n              </ng-template>\n\n            </td>\n          </tr>\n        </tbody>\n      </table>\n\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" id=\"botonCerrarModal\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -10680,7 +10680,7 @@ AsistenciaReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".blockArea{\n    resize: none;\n    height: 100px;\n}\n.card{\n    border-top-left-radius: 20px;\n    border-top-right-radius: 20px;\n    background: #000000;;\n  }\n#demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\npre {\n        font-family: \"arial\";\n        font-size: 15px;\n        width: 100%;\n         white-space: pre-wrap;       /* Since CSS 2.1 */\n        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */\n        white-space: -pre-wrap;      /* Opera 4-6 */\n        white-space: -o-pre-wrap;    /* Opera 7 */\n        word-wrap: break-word;       /* Internet Explorer 5.5+ */\n      }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvc2VjcmV0YXJpYS9kaXJlY3RvcmlvL2RpcmVjdG9yaW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixhQUFhO0FBQ2pCO0FBQ0E7SUFDSSw0QkFBNEI7SUFDNUIsNkJBQTZCO0lBQzdCLG1CQUFtQjtFQUNyQjtBQUdBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtJQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7SUFDOUg7QUFFQTtRQUNJLG9CQUFvQjtRQUNwQixlQUFlO1FBQ2YsV0FBVztTQUNWLHFCQUFxQixRQUFRLGtCQUFrQjtRQUNoRCwwQkFBMEIsR0FBRyx3QkFBd0I7UUFDckQsc0JBQXNCLE9BQU8sY0FBYztRQUMzQyx3QkFBd0IsS0FBSyxZQUFZO1FBQ3pDLHFCQUFxQixRQUFRLDJCQUEyQjtNQUMxRCIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvZGlyZWN0b3Jpby9kaXJlY3RvcmlvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmxvY2tBcmVhe1xuICAgIHJlc2l6ZTogbm9uZTtcbiAgICBoZWlnaHQ6IDEwMHB4O1xufVxuLmNhcmR7XG4gICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcbiAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMjBweDtcbiAgICBiYWNrZ3JvdW5kOiAjMDAwMDAwOztcbiAgfVxuXG4gIFxuICAjZGVtb0ZvbnQge1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgfVxuXG4gICAgcHJlIHtcbiAgICAgICAgZm9udC1mYW1pbHk6IFwiYXJpYWxcIjtcbiAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsgICAgICAgLyogU2luY2UgQ1NTIDIuMSAqL1xuICAgICAgICB3aGl0ZS1zcGFjZTogLW1vei1wcmUtd3JhcDsgIC8qIE1vemlsbGEsIHNpbmNlIDE5OTkgKi9cbiAgICAgICAgd2hpdGUtc3BhY2U6IC1wcmUtd3JhcDsgICAgICAvKiBPcGVyYSA0LTYgKi9cbiAgICAgICAgd2hpdGUtc3BhY2U6IC1vLXByZS13cmFwOyAgICAvKiBPcGVyYSA3ICovXG4gICAgICAgIHdvcmQtd3JhcDogYnJlYWstd29yZDsgICAgICAgLyogSW50ZXJuZXQgRXhwbG9yZXIgNS41KyAqL1xuICAgICAgfVxuIl19 */"
+module.exports = ".blockArea{\n    resize: none;\n    height: 100px;\n}\n.card{\n    border-top-left-radius: 20px;\n    border-top-right-radius: 20px;\n    background: #000000;;\n  }\n#demoFont {\n    color: #fff;\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n    }\npre {\n        font-family: \"arial\";\n        font-size: 15px;\n        width: 100%;\n         white-space: pre-wrap;       /* Since CSS 2.1 */\n        white-space: -moz-pre-wrap;   /* Mozilla, since 1999 */\n        white-space: -pre-wrap;       /* Opera 4-6 */\n        white-space: -o-pre-wrap;     /* Opera 7 */\n        word-wrap: break-word;        /* Internet Explorer 5.5+ */\n      }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvc2VjcmV0YXJpYS9kaXJlY3RvcmlvL2RpcmVjdG9yaW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixhQUFhO0FBQ2pCO0FBQ0E7SUFDSSw0QkFBNEI7SUFDNUIsNkJBQTZCO0lBQzdCLG1CQUFtQjtFQUNyQjtBQUdBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtJQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7SUFDOUg7QUFFQTtRQUNJLG9CQUFvQjtRQUNwQixlQUFlO1FBQ2YsV0FBVztTQUNWLHFCQUFxQixRQUFRLGtCQUFrQjtRQUNoRCwwQkFBMEIsSUFBSSx3QkFBd0I7UUFDdEQsc0JBQXNCLFFBQVEsY0FBYztRQUM1Qyx3QkFBd0IsTUFBTSxZQUFZO1FBQzFDLHFCQUFxQixTQUFTLDJCQUEyQjtNQUMzRCIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvZGlyZWN0b3Jpby9kaXJlY3RvcmlvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmxvY2tBcmVhe1xuICAgIHJlc2l6ZTogbm9uZTtcbiAgICBoZWlnaHQ6IDEwMHB4O1xufVxuLmNhcmR7XG4gICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcbiAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMjBweDtcbiAgICBiYWNrZ3JvdW5kOiAjMDAwMDAwOztcbiAgfVxuXG4gIFxuICAjZGVtb0ZvbnQge1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgfVxuXG4gICAgcHJlIHtcbiAgICAgICAgZm9udC1mYW1pbHk6IFwiYXJpYWxcIjtcbiAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsgICAgICAgLyogU2luY2UgQ1NTIDIuMSAqL1xuICAgICAgICB3aGl0ZS1zcGFjZTogLW1vei1wcmUtd3JhcDsgICAvKiBNb3ppbGxhLCBzaW5jZSAxOTk5ICovXG4gICAgICAgIHdoaXRlLXNwYWNlOiAtcHJlLXdyYXA7ICAgICAgIC8qIE9wZXJhIDQtNiAqL1xuICAgICAgICB3aGl0ZS1zcGFjZTogLW8tcHJlLXdyYXA7ICAgICAvKiBPcGVyYSA3ICovXG4gICAgICAgIHdvcmQtd3JhcDogYnJlYWstd29yZDsgICAgICAgIC8qIEludGVybmV0IEV4cGxvcmVyIDUuNSsgKi9cbiAgICAgIH1cbiJdfQ== */"
 
 /***/ }),
 
@@ -10697,21 +10697,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_directorio_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/directorio.service */ "./src/app/servicios/directorio.service.ts");
+
 
 
 
 let DirectorioComponent = class DirectorioComponent {
-    constructor(config, modalService) {
+    constructor(config, modalService, _directorio) {
         this.modalService = modalService;
-        this.fecha = '';
-        this.tipoReunion = '';
-        this.titulo = '';
-        this.presidente = false;
-        this.tesorero = false;
-        this.secretario = false;
-        this.subGerente = '';
-        this.gerente = '';
-        this.temas = '';
+        this._directorio = _directorio;
+        this.datosDirectorio = {
+            fecha: '',
+            sec_tipo_reunion_id: '',
+            titulo: '',
+            presidente: false,
+            tesorero: false,
+            secretario: false,
+            asistencia: '',
+            temas: '',
+        };
+        //loading
+        this.ingresandoDatos = false;
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -10720,16 +10726,74 @@ let DirectorioComponent = class DirectorioComponent {
     abrirModal(modalDirectiva) {
         this.modalHistorial = this.modalService.open(modalDirectiva, { size: 'xl' });
     }
-    abrirModalDetalle(modalDetalle) {
+    abrirModalDetalle(modalDetalle, id) {
+        this.traerDetalle(id);
         this.modalDetalle = this.modalService.open(modalDetalle, { size: 'xl' });
     }
-    ingresarDirectorio(directorio) {
-        console.log(directorio.value);
+    ingresarDirectorio(form) {
+        if (!form) {
+            alert('Ha ocurrido un error con el formulario, comprobar que no tenga errores');
+        }
+        else {
+            this.ingresandoDatos = true;
+            this._directorio.registroDirectorio(this.datosDirectorio).subscribe(response => {
+                if (response.estado == 'failed' || response.estado == 'failed_v') {
+                    alert(response.mensaje);
+                    this.ingresandoDatos = false;
+                }
+                else {
+                    alert(response.mensaje);
+                    this.limpiarCampos();
+                    this.ingresandoDatos = false;
+                }
+            }, error => {
+                console.log((error));
+                this.ingresandoDatos = false;
+            });
+        }
+    }
+    limpiarCampos() {
+        this.datosDirectorio.fecha = '';
+        this.datosDirectorio.sec_tipo_reunion_id = '';
+        this.datosDirectorio.titulo = '';
+        this.datosDirectorio.presidente = false;
+        this.datosDirectorio.tesorero = false;
+        this.datosDirectorio.secretario = false;
+        this.datosDirectorio.asistencia = '';
+        this.datosDirectorio.temas = '';
+    }
+    visualizarDirectorio() {
+        this._directorio.visualizarDirectorio().subscribe(response => {
+            if (response.estado == 'failed') {
+                alert(response.mensaje);
+                this.modalHistorial.close();
+            }
+            else {
+                this.listarDirectorio = response.listar;
+                console.log(this.listarDirectorio);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    traerDetalle(id) {
+        this._directorio.visualizarDirectorioDetalle(id).subscribe(response => {
+            if (response.estado == 'failed') {
+                alert(response.mensaje);
+            }
+            else {
+                this.listarDirectorioDetalle = response.listar;
+                console.log(this.listarDirectorioDetalle);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 DirectorioComponent.ctorParameters = () => [
     { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: src_app_servicios_directorio_service__WEBPACK_IMPORTED_MODULE_3__["DirectorioService"] }
 ];
 DirectorioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -10737,7 +10801,9 @@ DirectorioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./directorio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/directorio/directorio.component.html"),
         styles: [__webpack_require__(/*! ./directorio.component.css */ "./src/app/auth-master/secretaria/directorio/directorio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+        src_app_servicios_directorio_service__WEBPACK_IMPORTED_MODULE_3__["DirectorioService"]])
 ], DirectorioComponent);
 
 
@@ -12827,6 +12893,73 @@ CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], CsDetalleCampingService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/directorio.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/servicios/directorio.service.ts ***!
+  \*************************************************/
+/*! exports provided: DirectorioService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DirectorioService", function() { return DirectorioService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let DirectorioService = class DirectorioService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    registroDirectorio(datos) {
+        const form = new FormData();
+        form.append('fecha', datos.fecha);
+        form.append('sec_tipo_reunion_id', datos.sec_tipo_reunion_id);
+        form.append('titulo', datos.titulo);
+        form.append('asistencia', datos.asistencia);
+        form.append('temas', datos.temas);
+        form.append('presidente', datos.presidente);
+        form.append('secretario', datos.secretario);
+        form.append('tesorero', datos.tesorero);
+        return this._http.post(this.url + "registro_directorio", form, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            }) });
+    }
+    visualizarDirectorio() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "visualizar_directorio", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    visualizarDirectorioDetalle(id) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "visualizar_directorio_detalle" + '/' + id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+};
+DirectorioService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+DirectorioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], DirectorioService);
 
 
 

@@ -14,18 +14,16 @@ export class AcuerdoAsambleaService {
       this.url = global.url;
   }
 
-  ingresarValor(form): Observable<any>{
+  setAcuerdoAsamblea(form): Observable<any>{
     
     const body = new FormData();
-    body.append('fecha', form.fecha);
-    body.append('n_documento', form.nDocumento);
-    body.append('archivo', form.archivoDocumento);
-    body.append('tipo_cuenta_sindicato', form.tipoCuentaSindicato);
-    body.append('descripcion', form.descripcion);
-    body.append('definicion', form.definicion);
-    body.append('monto', form.monto);
+    body.append('titulo', form.tituloActa);
+    body.append('fecha', form.fechaActa);
+    body.append('contenido', form.contenidoActa);
+    body.append('idTipoAcuerdo', form.tipoActa);
+    body.append('idEstadoAcuerdo', form.estadoActa);
 
-    return this._http.post(this.url + "guardar_item_c_s", body, {headers: new HttpHeaders(
+    return this._http.post(this.url + "set_acuerdo", body, {headers: new HttpHeaders(
         {
             'Authorization': 'Bearer' + this.token
         }
@@ -41,8 +39,8 @@ getAcuerdosAsambleaMesAnio(anio): Observable<any>{
     )});
 }
 
-getAcuerdoAsamblea(id): Observable<any>{
-  return this._http.get(this.url + "listarAcuerdosAsamblea/" + id, {headers: new HttpHeaders(
+getAcuerdosAsamblea(): Observable<any>{
+  return this._http.get(this.url + "get_acuerdos", {headers: new HttpHeaders(
       {
           'Authorization': 'Bearer' + this.token,
           'Content-Type': 'applcation/json'

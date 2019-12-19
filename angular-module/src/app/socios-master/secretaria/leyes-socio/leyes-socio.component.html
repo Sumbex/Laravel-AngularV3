@@ -15,7 +15,11 @@
                         <a href="{{ultimaNoticia?.slug}}">
                             <h5 class="card-title">{{ultimaNoticia?.titulo}}</h5>
                         </a>
-                        <p class="card-text">{{ultimaNoticia?.cuerpo}}</p>
+                        <div id="summary">
+                            <p class="card-text collapse" id="collapseSummary">{{ultimaNoticia?.cuerpo}}</p>
+                            <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false"
+                                aria-controls="collapseSummary"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,8 +31,8 @@
     </div>
     <br>
     <div class="row">
-        <div class="card-group">
-            <div *ngFor="let noticia of noticias" class="card col-md-3 h-100" style="width: 18rem;">
+        <div class="card-group ">
+            <div *ngFor="let noticia of noticias" class="card col-md-4" style="width: 18rem;">
                 <img src="../{{noticia?.archivo}}" class="card-img-top">
                 <div class="card-body">
                     <a href="{{noticia?.slug}}">

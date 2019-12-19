@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeyesService } from 'src/app/servicios/leyes.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-leyes-laborales',
@@ -14,6 +15,7 @@ export class LeyesLaboralesComponent implements OnInit {
     foto: null,
     estado: 1
   }
+  modalVariable;
 
   limpiarDatos() {
     this.datosNoticia.titulo = '';
@@ -24,7 +26,10 @@ export class LeyesLaboralesComponent implements OnInit {
 
   ingresandoDatos = false;
 
-  constructor(private _leyesService: LeyesService) { }
+  constructor(private _leyesService: LeyesService, config: NgbModalConfig, private modalService: NgbModal, ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
   }
@@ -53,6 +58,10 @@ export class LeyesLaboralesComponent implements OnInit {
         this.ingresandoDatos = false;
       });
     }
+  }
+
+  abrirModalNoticias(modalMenu) {
+    this.modalVariable = this.modalService.open(modalMenu, { size: 'xl' });
   }
 
 }

@@ -921,7 +921,7 @@ module.exports = "<div>\n    <div class=\"row justify-content-center\">\n    <di
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "  <form>\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <div class=\"form-group\">\n        <input class=\"form-control\" type=\"text\">\n      </div>\n      </div>\n      <div class=\"col-md-6\">\n        <div class=\"form-group\">  \n        <input class=\"form-control\" type=\"text\">\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-4\">\n        <div class=\"form-group\">\n        <input class=\"form-control\" type=\"text\">\n        </div>\n      </div>\n      <div class=\"col-md-4\">\n        <div class=\"form-group\">\n        <input class=\"form-control\" type=\"text\">\n        </div>\n      </div>\n      <div class=\"col-md-4\">\n        <div class=\"form-group\">\n        <input class=\"form-control\" type=\"text\">\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <button class=\"btn btn-primary btn-block\">Ingresar</button>\n      </div>\n      <div class=\"col-md-6\">\n        <button class=\"btn btn-secondary btn-block\" (click)=\"abrirModalAcuerdos(menuAdministrarReunion)\">Ver Acuerdos de Asamblea</button>\n      </div>\n    </div>\n  </form>\n\n  <!-- MENU DE REUNION FINALIZADA -->\n<ng-template #menuAdministrarReunion let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Acuerdos de Asamblea</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"form-group\">\n          <label for=\"anio\">Seleccione Año</label>\n          <select name=\"anio\" class=\"form-control\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\">\n            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n          </select>\n        </div>\n        </div>\n      </div>\n      <div class=\"table-responsive\">\n        <table class=\"table table-hover table-bordered table-dark text-center\">\n          <thead>\n            <tr>\n              <th scope=\"col\">ID</th>\n              <th scope=\"col\">Titulo</th>\n              <th scope=\"col\">Fecha</th>\n              <th scope=\"col\">Acciones</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <th>1</th>\n              <td>Acuerdo de pruebas</td>\n              <td>20-20-20</td>\n              <td><button class=\"btn btn-primary\" (click)=\"abrirModalAcuerdos(visualizarAcuerdo)\">Visualizar</button></td>\n            </tr>\n          </tbody>\n        </table>\n        \n      </div>\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" id=\"cerrarMenu\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n  <!-- VISUALIZAR ACUERDO -->\n  <ng-template #visualizarAcuerdo let-modal>\n    <!-- Header Del Modal -->\n    <div class=\"modal-header\" id=\"demoFont\">\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Acuerdos de Asamblea</strong>\n      </h6>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <!-- Cuerpo del modal -->\n    <div class=\"modal-body\">\n    </div>\n    <!-- Patitas del Modal -->\n    <div class=\"modal-footer\">\n      <button type=\"button\" id=\"cerrarMenu\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n    </div>\n  </ng-template>"
+module.exports = "<form>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"form-group text-center\">\n        <label for=\"titulo\"><b>Ingrese titulo de la acta</b></label>\n        <input type=\"text\" name=\"titulo\" class=\"form-control\" [(ngModel)]=\"datosActa.tituloActa\">\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <div class=\"form-group\">\n        <label for=\"fecha\"><b>Seleccione Fecha</b></label>\n        <input type=\"datetime-local\" name=\"fecha\" class=\"form-control\" [(ngModel)]=\"datosActa.fechaActa\">\n      </div>\n    </div>\n    <div class=\"col-md-6\">\n      <div class=\"form-group\">\n        <label for=\"tipo\"><b>Seleccione el tipo de Acta</b></label>\n        <select class=\"form-control\" name=\"tipo\" [(ngModel)]=\"datosActa.tipoActa\">\n          <option value=\"1\">Ordinaria</option>\n          <option value=\"2\">Extraordinaria</option>\n        </select>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"form-group\">\n        <label for=\"estado\"><b>Seleccione el estado del Acta</b></label>\n        <select class=\"form-control\" name=\"tipo\" [(ngModel)]=\"datosActa.estadoActa\">\n          <option value=\"1\">Aprobada</option>\n          <option value=\"2\">Pendiente</option>\n        </select>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"form-group text-center\">\n        <label for=\"cuerpo\"><b>Contenido del Acta</b></label>\n      <textarea class=\"form-control\" name=\"cuerpo\" id=\"\" rows=\"10\" [(ngModel)]=\"datosActa.contenidoActa\"></textarea>\n    </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <button class=\"btn btn-primary btn-block\" (click)=\"setAcuerdoAsamblea()\">Ingresar</button>\n    </div>\n    <div class=\"col-md-6\">\n      <button class=\"btn btn-secondary btn-block\" (click)=\"abrirModalAcuerdos(menuAdministrarReunion)\">Ver Acuerdos de\n        Asamblea</button>\n    </div>\n  </div>\n</form>\n\n<!-- LISTA ACUERDOS ASAMBKLEA -->\n<ng-template #menuAdministrarReunion let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Acuerdos de Asamblea</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"form-group\">\n            <label for=\"anio\">Seleccione Año</label>\n            <select name=\"anio\" class=\"form-control\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\">\n              <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n      <div class=\"table-responsive\">\n        <table class=\"table table-hover table-bordered table-dark text-center\">\n          <thead>\n            <tr>\n              <th scope=\"col\">ID</th>\n              <th scope=\"col\">Titulo</th>\n              <th scope=\"col\">Fecha</th>\n              <th scope=\"col\">Acciones</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let itemAcuerdos of tablaAcuerdos\">\n              <th>{{itemAcuerdos.id}}</th>\n              <td>{{itemAcuerdos.titulo}}</td>\n              <td>{{itemAcuerdos.fecha}}</td>\n              <td><button class=\"btn btn-primary\" (click)=\"abrirModalAcuerdos(visualizarAcuerdo)\">Visualizar</button>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n\n      </div>\n    </div>\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" id=\"cerrarMenu\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>\n\n<!-- VISUALIZAR ACUERDO -->\n<ng-template #visualizarAcuerdo let-modal>\n  <!-- Header Del Modal -->\n  <div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Acuerdos de Asamblea</strong>\n    </h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <!-- Cuerpo del modal -->\n  <div class=\"modal-body\">\n  </div>\n  <!-- Patitas del Modal -->\n  <div class=\"modal-footer\">\n    <button type=\"button\" id=\"cerrarMenu\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -10323,6 +10323,14 @@ let AcuerdoAsambleaComponent = class AcuerdoAsambleaComponent {
         this.modalService = modalService;
         this._acuerdoService = _acuerdoService;
         this._fechasService = _fechasService;
+        //Variable del formulario
+        this.datosActa = {
+            tituloActa: '',
+            fechaActa: '',
+            tipoActa: '1',
+            contenidoActa: '',
+            estadoActa: '1'
+        };
         config.backdrop = 'static';
         config.keyboard = false;
     }
@@ -10332,6 +10340,7 @@ let AcuerdoAsambleaComponent = class AcuerdoAsambleaComponent {
     }
     abrirModalAcuerdos(modalMenu) {
         this.modalVariable = this.modalService.open(modalMenu, { size: 'xl' });
+        this.getListaAcuerdosAsamblea();
         this.cargarFechasActuales();
     }
     cargarFechasActuales() {
@@ -10345,25 +10354,47 @@ let AcuerdoAsambleaComponent = class AcuerdoAsambleaComponent {
     changeAnio(valorSelect) {
         this.idAnioActual = valorSelect.target.value;
     }
-    getAcuerdoAsamblea() {
-        this._acuerdoService.getAcuerdoAsamblea('id').subscribe(response => {
+    limpiarFormulario() {
+        console.log(this.datosActa);
+        this.datosActa.tituloActa = '';
+        this.datosActa.fechaActa = '';
+        this.datosActa.tipoActa = '1';
+        this.datosActa.contenidoActa = '';
+        this.datosActa.estadoActa = '1';
+        console.log(this.datosActa);
+    }
+    setAcuerdoAsamblea() {
+        this._acuerdoService.setAcuerdoAsamblea(this.datosActa).subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
             }
             else {
-                console.log("Hola amigos del yutu");
+                this.limpiarFormulario();
+                alert(response.mensaje);
             }
         }, error => {
             console.log(error);
         });
     }
-    getListaAcuerdoAsamblea() {
-        this._acuerdoService.getAcuerdosAsambleaMesAnio(this.idAnioActual).subscribe(response => {
+    // getAcuerdoAsamblea(){
+    //   this._acuerdoService.getAcuerdoAsamblea('id').subscribe(response => {
+    //     if(response.estado == 'failed' || response.estado == 'failed_v'){
+    //       alert(response.mensaje);
+    //     }else{
+    //       console.log("Hola amigos del yutu");
+    //     }
+    //   }, error => {
+    //     console.log(error);
+    //   });
+    // }
+    getListaAcuerdosAsamblea() {
+        this._acuerdoService.getAcuerdosAsamblea().subscribe(response => {
             if (response.estado == 'failed' || response.estado == 'failed_v') {
                 alert(response.mensaje);
             }
             else {
-                console.log("Hola amigos del yutu");
+                this.tablaAcuerdos = response;
+                console.log(this.tablaAcuerdos);
             }
         }, error => {
             console.log(error);
@@ -12112,16 +12143,14 @@ let AcuerdoAsambleaService = class AcuerdoAsambleaService {
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
-    ingresarValor(form) {
+    setAcuerdoAsamblea(form) {
         const body = new FormData();
-        body.append('fecha', form.fecha);
-        body.append('n_documento', form.nDocumento);
-        body.append('archivo', form.archivoDocumento);
-        body.append('tipo_cuenta_sindicato', form.tipoCuentaSindicato);
-        body.append('descripcion', form.descripcion);
-        body.append('definicion', form.definicion);
-        body.append('monto', form.monto);
-        return this._http.post(this.url + "guardar_item_c_s", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        body.append('titulo', form.tituloActa);
+        body.append('fecha', form.fechaActa);
+        body.append('contenido', form.contenidoActa);
+        body.append('idTipoAcuerdo', form.tipoActa);
+        body.append('idEstadoAcuerdo', form.estadoActa);
+        return this._http.post(this.url + "set_acuerdo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token
             }) });
     }
@@ -12131,8 +12160,8 @@ let AcuerdoAsambleaService = class AcuerdoAsambleaService {
                 'Content-Type': 'applcation/json'
             }) });
     }
-    getAcuerdoAsamblea(id) {
-        return this._http.get(this.url + "listarAcuerdosAsamblea/" + id, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+    getAcuerdosAsamblea() {
+        return this._http.get(this.url + "get_acuerdos", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }) });

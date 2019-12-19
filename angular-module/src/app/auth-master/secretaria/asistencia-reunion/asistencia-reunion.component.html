@@ -38,11 +38,6 @@
         </div>
         <div class="row">
           <div class="col-md-12 mt-4">
-            <button class="btn btn-success btn-lg btn-block" (click)="guardarArchivo()">TEST EXPORTAR</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 mt-4">
             <p *ngIf="datosReunion?.estado != 4" class="text-center text-muted">Solo podra archivar la reunión cuando termine el periodo de justificación para los socios</p>
             <button [disabled]="datosReunion?.estado != 4" class="btn btn-danger btn-lg btn-block" (click)="abrirConfirmacion(confirmacionArchivar)">Archivar
               Reunión/Elección</button>

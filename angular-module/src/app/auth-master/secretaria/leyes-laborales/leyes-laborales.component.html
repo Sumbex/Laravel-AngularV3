@@ -1,3 +1,43 @@
-<p>
-  leyes-laborales works!
-</p>
+<div class="container">
+  <form #leyes="ngForm" (ngSubmit)="ingresarLeyes(leyes)" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-8 text-center">
+        <label>
+          <b>Ingrese el Titulo</b>
+        </label>
+        <div class="form-group">
+          <input class="form-control" type="text" name="titulo" [(ngModel)]="datosNoticia.titulo" required>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <label>
+          <b>Seleccione una Foto</b>
+        </label>
+        <div class="form-group">
+          <input class="form-control-file" type="file" (change)="onSelectImage($event)">
+        </div>
+      </div>
+      <div class="col-md-12 text-center">
+        <label>
+          <b>Ingrese el Cuerpo</b>
+        </label>
+        <div class="form-group">
+          <textarea class="form-control blockArea" type="text" name="cuerpo" [(ngModel)]="datosNoticia.cuerpo"
+            required></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <button type="submit" [disabled]="!leyes.valid || ingresandoDatos" class="btn btn-success btn-block"> <b
+            [hidden]="ingresandoDatos">Crear Noticia</b> <b [hidden]="!ingresandoDatos">Creando Nueva Noticia </b>
+          <img *ngIf="ingresandoDatos" height="20"
+            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-secondary btn-block" (click)="abrirModalNoticias(menuAdminNoticias)">Ver
+          Noticias</button>
+      </div>
+    </div>
+  </form>
+</div>

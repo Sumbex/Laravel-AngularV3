@@ -59,6 +59,10 @@ Route::post('/ingresar_justificacion_socio_sec', 'PortalSocioController@Justific
 Route::get('/traer_justificacion_socio_act_sec/{reunion}', 'PortalSocioController@TraerJustificacionSocio');
 //------reunion 
 
+//------secretaria
+Route::get('/traer_noticias_sec_socios', 'SecLeyesController@TraerNoticias');
+//------secretaria
+
 //------------------------------------------------FUNCION TEST------------------------------------------------//
 Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');
 Route::get('/funcion_test2', 'PortalSocioController@FuncionTest2');

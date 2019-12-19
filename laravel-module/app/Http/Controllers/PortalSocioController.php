@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\PortalSocioMisBeneficios;
 use App\PortalSocioCuentaSindical;
 use App\PortalSocioJustificar;
+use App\PortalSocioLeyes;
 use App\PortalSocioSecretaria;
 
 class PortalSocioController extends Controller
@@ -226,6 +227,15 @@ class PortalSocioController extends Controller
         return PortalSocioJustificar::traerJustificacionSocio($reunion_id);
     }
     //------reunion 
+
+    //------noticias
+
+    public function TraerNoticias()
+    {
+        return PortalSocioLeyes::traerNoticias();
+    }
+
+    //------noticias
 
     //--------------------------------------------------------------------------------
     public function CrearUsuarioSocio(Request $request)

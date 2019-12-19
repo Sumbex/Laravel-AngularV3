@@ -15,4 +15,5 @@ class SecLeyesController extends Controller
     public function TraerNoticias(){
         return SecLeyes::traerNoticias();
     }
+    
 }

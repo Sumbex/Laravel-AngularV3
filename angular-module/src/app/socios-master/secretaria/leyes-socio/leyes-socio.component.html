@@ -1,32 +1,41 @@
 <div class="container">
+    <br>
+    <div class="row justify-content-center">
+
+        <div *ngIf="!mostrar" class="loader">Loading...</div>
+
+        <div *ngIf="mostrar" class="card text-center">
+            <div class="card-header">
+                <h4 class="card-title">Ultima Noticia</h4>
+            </div>
+            <div class="row no-gutters">
+                <img src="../{{ultimaNoticia?.archivo}}" class="card-img blockArea">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <a href="{{ultimaNoticia?.slug}}">
+                            <h5 class="card-title">{{ultimaNoticia?.titulo}}</h5>
+                        </a>
+                        <p class="card-text">{{ultimaNoticia?.cuerpo}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+
+    </div>
+    <br>
     <div class="row">
-        <div class="card col-md-3" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-md-3" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-md-3" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card col-md-3" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card-group">
+            <div *ngFor="let noticia of noticias" class="card col-md-3 h-100" style="width: 18rem;">
+                <img src="../{{noticia?.archivo}}" class="card-img-top">
+                <div class="card-body">
+                    <a href="{{noticia?.slug}}">
+                        <h5 class="card-title">{{noticia?.titulo}}</h5>
+                    </a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
             </div>
         </div>
     </div>
-</div>

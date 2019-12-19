@@ -14,6 +14,7 @@ export class LeyesService {
     this.url = global.url;
   }
 
+  // administracion
   ingresarNoticia(form): Observable<any> {
     console.log(form);
     let token = localStorage.getItem('token').replace(/['"]+/g, '');
@@ -21,6 +22,7 @@ export class LeyesService {
     body.append('titulo', form.titulo);
     body.append('cuerpo', form.cuerpo);
     body.append('archivo', form.foto);
+    body.append('estado', form.estado);
 
     return this._http.post(this.url + "crear_noticia_sec", body, {
       headers: new HttpHeaders(
@@ -30,4 +32,31 @@ export class LeyesService {
       )
     });
   }
+
+  //portal socios
+
+  traerNoticiasSocio(): Observable<any> {
+    let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    return this._http.get(this.url + "traer_noticias_sec_socios", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + token,
+          'Content-Type': 'applcation/json'
+        }
+      )
+    });
+  }
+
+  traerUltimaNoticiaSocio(): Observable<any> {
+    let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    return this._http.get(this.url + "traer_ultima_noticia_sec_socios", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + token,
+          'Content-Type': 'applcation/json'
+        }
+      )
+    });
+  }
+
 }

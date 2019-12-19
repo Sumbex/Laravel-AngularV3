@@ -11,14 +11,16 @@ export class LeyesLaboralesComponent implements OnInit {
   datosNoticia = {
     titulo: '',
     cuerpo: '',
-    foto: null
-  };
+    foto: null,
+    estado: 1
+  }
 
   limpiarDatos() {
     this.datosNoticia.titulo = '';
     this.datosNoticia.cuerpo = '';
     this.datosNoticia.foto = null;
-  };
+    this.datosNoticia.estado = 1;
+  }
 
   ingresandoDatos = false;
 
@@ -32,18 +34,18 @@ export class LeyesLaboralesComponent implements OnInit {
   }
 
   ingresarLeyes(ley) {
-    console.log(this.datosNoticia);
     if (!ley) {
-      alert('error');
+      alert('Error de formulario.');
     } else {
+      console.log(this.datosNoticia.foto);
       this.ingresandoDatos = true;
       this._leyesService.ingresarNoticia(this.datosNoticia).subscribe(res => {
-        if (res.estado = 'failed') {
+        if (res.estado == 'success') {
           alert(res.mensaje);
+          this.limpiarDatos();
           this.ingresandoDatos = false;
         } else {
           alert(res.mensaje);
-          this.limpiarDatos();
           this.ingresandoDatos = false;
         }
       }, error => {

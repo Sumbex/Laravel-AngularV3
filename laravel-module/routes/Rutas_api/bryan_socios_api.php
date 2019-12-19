@@ -60,8 +60,11 @@ Route::get('/traer_justificacion_socio_act_sec/{reunion}', 'PortalSocioControlle
 //------reunion 
 
 //------secretaria
-Route::get('/traer_noticias_sec_socios', 'SecLeyesController@TraerNoticias');
+Route::get('/traer_noticias_sec_socios', 'PortalSocioController@TraerNoticias');
+/* Route::get('/traer_ultima_noticia_sec_socios', 'PortalSocioController@TraerUltimaReunion'); */
 //------secretaria
+
+
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//
 Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');

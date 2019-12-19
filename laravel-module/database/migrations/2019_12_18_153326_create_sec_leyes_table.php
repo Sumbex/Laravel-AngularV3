@@ -18,7 +18,7 @@ class CreateSecLeyesTable extends Migration
             $table->string('titulo');
             $table->string('slug')->unique();
             $table->text('cuerpo');
-            $table->text('archivo');
+            $table->text('archivo')->nullable();
             $table->integer('sec_leyes_estado');
             $table->char('activo', 1);
             $table->timestamps();

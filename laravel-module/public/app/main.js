@@ -976,7 +976,7 @@ module.exports = "<ng-template #historialReunion let-modal>\n    <!-- Header Del
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <form #leyes=\"ngForm\" (ngSubmit)=\"ingresarLeyes(leyes)\" enctype=\"multipart/form-data\">\n    <div class=\"row\">\n      <div class=\"col-md-8 text-center\">\n        <label>\n          <b>Ingrese el Titulo</b>\n        </label>\n        <div class=\"form-group\">\n          <input class=\"form-control\" type=\"text\" name=\"titulo\" [(ngModel)]=\"datosNoticia.titulo\" required>\n        </div>\n      </div>\n      <div class=\"col-md-4 text-center\">\n        <label>\n          <b>Seleccione una Foto</b>\n        </label>\n        <div class=\"form-group\">\n          <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\">\n        </div>\n      </div>\n      <div class=\"col-md-12 text-center\">\n        <label>\n          <b>Ingrese el Cuerpo</b>\n        </label>\n        <div class=\"form-group\">\n          <textarea class=\"form-control blockArea\" type=\"text\" name=\"cuerpo\" [(ngModel)]=\"datosNoticia.cuerpo\"\n            required></textarea>\n        </div>\n      </div>\n    </div>\n    <div class=\"row justify-content-center\">\n      <div class=\"col-md-6\">\n        <button type=\"submit\" [disabled]=\"!leyes.valid || ingresandoDatos\" class=\"btn btn-success btn-block\"> <b\n            [hidden]=\"ingresandoDatos\">Crear Noticia</b> <b [hidden]=\"!ingresandoDatos\">Creando Nueva Noticia </b>\n          <img *ngIf=\"ingresandoDatos\" height=\"20\"\n            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;</button>\n      </div>\n      <div class=\"col-md-6\">\n        <button class=\"btn btn-secondary btn-block\" (click)=\"abrirModalNoticias(menuAdminNoticias)\">Ver\n          Noticias</button>\n      </div>\n    </div>\n  </form>\n</div>"
+module.exports = "<div class=\"container\">\n  <form #leyes=\"ngForm\" (ngSubmit)=\"ingresarLeyes(leyes)\" enctype=\"multipart/form-data\">\n    <div class=\"row\">\n      <div class=\"col-md-12 text-center\">\n        <label>\n          <b>Ingrese el Titulo</b>\n        </label>\n        <div class=\"form-group\">\n          <input class=\"form-control\" type=\"text\" name=\"titulo\" [(ngModel)]=\"datosNoticia.titulo\" required>\n        </div>\n      </div>\n      <div class=\"col-md-12 text-center\">\n        <label>\n          <b>Ingrese el Cuerpo</b>\n        </label>\n        <div class=\"form-group\">\n          <textarea class=\"form-control blockArea\" type=\"text\" name=\"cuerpo\" [(ngModel)]=\"datosNoticia.cuerpo\"\n            required></textarea>\n        </div>\n      </div>\n      <div class=\"col-md-6 text-center\">\n        <label>\n          <b>Seleccione una Foto </b>\n          <i class=\"fas fa-info-circle\" placement=\"right\" ngbTooltip=\"La foto es opcional.\"></i>\n        </label>\n        <div class=\"form-group\">\n          <input class=\"form-control-file\" type=\"file\" (change)=\"onSelectImage($event)\">\n        </div>\n      </div>\n      <div class=\"col-md-6 text-center\">\n        <label>\n          <b>Seleccione la privacidad</b>\n        </label>\n        <div class=\"form-group\">\n          <select class=\"form-control\" name=\"estado\" #tipoReunion=\"ngModel\" [(ngModel)]=\"datosNoticia.estado\" required>\n            <option value=\"1\">Publica</option>\n            <option value=\"2\">Privada</option>\n          </select>\n        </div>\n      </div>\n    </div>\n    <div class=\"row justify-content-center\">\n      <div class=\"col-md-6\">\n        <button type=\"submit\" [disabled]=\"!leyes.valid || ingresandoDatos\" class=\"btn btn-success btn-block\"> <b\n            [hidden]=\"ingresandoDatos\">Crear Noticia</b> <b [hidden]=\"!ingresandoDatos\">Creando Nueva Noticia </b>\n          <img *ngIf=\"ingresandoDatos\" height=\"20\"\n            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;</button>\n      </div>\n      <div class=\"col-md-6\">\n        <button type=\"button\" class=\"btn btn-secondary btn-block\" (click)=\"abrirModalNoticias(menuAdminNoticias)\">Ver\n          Noticias</button>\n      </div>\n    </div>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -1460,7 +1460,7 @@ module.exports = "<p>directorio-socio works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"card col-md-3\" style=\"width: 18rem;\">\n            <img src=\"...\" class=\"card-img-top\" alt=\"...\">\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Card title</h5>\n                <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\n            </div>\n        </div>\n        <div class=\"card col-md-3\" style=\"width: 18rem;\">\n            <img src=\"...\" class=\"card-img-top\" alt=\"...\">\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Card title</h5>\n                <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\n            </div>\n        </div>\n        <div class=\"card col-md-3\" style=\"width: 18rem;\">\n            <img src=\"...\" class=\"card-img-top\" alt=\"...\">\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Card title</h5>\n                <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\n            </div>\n        </div>\n        <div class=\"card col-md-3\" style=\"width: 18rem;\">\n            <img src=\"...\" class=\"card-img-top\" alt=\"...\">\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">Card title</h5>\n                <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <br>\n    <div class=\"row justify-content-center\">\n\n        <div *ngIf=\"!mostrar\" class=\"loader\">Loading...</div>\n\n        <div *ngIf=\"mostrar\" class=\"card text-center\">\n            <div class=\"card-header\">\n                <h4 class=\"card-title\">Ultima Noticia</h4>\n            </div>\n            <div class=\"row no-gutters\">\n                <img src=\"../{{ultimaNoticia?.archivo}}\" class=\"card-img blockArea\">\n                <div class=\"col-md-12\">\n                    <div class=\"card-body\">\n                        <a href=\"{{ultimaNoticia?.slug}}\">\n                            <h5 class=\"card-title\">{{ultimaNoticia?.titulo}}</h5>\n                        </a>\n                        <p class=\"card-text\">{{ultimaNoticia?.cuerpo}}</p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"card-footer text-muted\">\n                2 days ago\n            </div>\n        </div>\n\n    </div>\n    <br>\n    <div class=\"row\">\n        <div class=\"card-group\">\n            <div *ngFor=\"let noticia of noticias\" class=\"card col-md-3 h-100\" style=\"width: 18rem;\">\n                <img src=\"../{{noticia?.archivo}}\" class=\"card-img-top\">\n                <div class=\"card-body\">\n                    <a href=\"{{noticia?.slug}}\">\n                        <h5 class=\"card-title\">{{noticia?.titulo}}</h5>\n                    </a>\n                    <p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p>\n                </div>\n            </div>\n        </div>\n    </div>"
 
 /***/ }),
 
@@ -11135,7 +11135,8 @@ let LeyesLaboralesComponent = class LeyesLaboralesComponent {
         this.datosNoticia = {
             titulo: '',
             cuerpo: '',
-            foto: null
+            foto: null,
+            estado: 1
         };
         this.ingresandoDatos = false;
     }
@@ -11143,28 +11144,28 @@ let LeyesLaboralesComponent = class LeyesLaboralesComponent {
         this.datosNoticia.titulo = '';
         this.datosNoticia.cuerpo = '';
         this.datosNoticia.foto = null;
+        this.datosNoticia.estado = 1;
     }
-    ;
     ngOnInit() {
     }
     onSelectImage(event) {
         this.datosNoticia.foto = event.srcElement.files[0];
     }
     ingresarLeyes(ley) {
-        console.log(this.datosNoticia);
         if (!ley) {
-            alert('error');
+            alert('Error de formulario.');
         }
         else {
+            console.log(this.datosNoticia.foto);
             this.ingresandoDatos = true;
             this._leyesService.ingresarNoticia(this.datosNoticia).subscribe(res => {
-                if (res.estado = 'failed') {
+                if (res.estado == 'success') {
                     alert(res.mensaje);
+                    this.limpiarDatos();
                     this.ingresandoDatos = false;
                 }
                 else {
                     alert(res.mensaje);
-                    this.limpiarDatos();
                     this.ingresandoDatos = false;
                 }
             }, error => {
@@ -13007,6 +13008,7 @@ let LeyesService = class LeyesService {
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
+    // administracion
     ingresarNoticia(form) {
         console.log(form);
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
@@ -13014,9 +13016,29 @@ let LeyesService = class LeyesService {
         body.append('titulo', form.titulo);
         body.append('cuerpo', form.cuerpo);
         body.append('archivo', form.foto);
+        body.append('estado', form.estado);
         return this._http.post(this.url + "crear_noticia_sec", body, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
+            })
+        });
+    }
+    //portal socios
+    traerNoticiasSocio() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_noticias_sec_socios", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+    traerUltimaNoticiaSocio() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_ultima_noticia_sec_socios", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
             })
         });
     }
@@ -17663,7 +17685,7 @@ DirectorioSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc2VjcmV0YXJpYS9sZXllcy1zb2Npby9sZXllcy1zb2Npby5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "/*CLASES DEL LOADER*/\n.loader {\n    margin: 100px auto;\n    font-size: 25px;\n    width: 1em;\n    height: 1em;\n    border-radius: 50%;\n    position: relative;\n    text-indent: -9999em;\n    -webkit-animation: load5 1.1s infinite ease;\n    animation: load5 1.1s infinite ease;\n    -webkit-transform: translateZ(0);\n    transform: translateZ(0);\n  }\n@-webkit-keyframes load5 {\n    0%,\n    100% {\n      box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);\n    }\n    12.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);\n    }\n    25% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    37.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    50% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    62.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    75% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    87.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;\n    }\n  }\n@keyframes load5 {\n    0%,\n    100% {\n      box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);\n    }\n    12.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);\n    }\n    25% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    37.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    50% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    62.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    75% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);\n    }\n    87.5% {\n      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;\n    }\n  }\n/*CLASES DEL LOADER*/\n.blockArea{\n    height: 200px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9zZWNyZXRhcmlhL2xleWVzLXNvY2lvL2xleWVzLXNvY2lvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsb0JBQW9CO0FBQ3BCO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixVQUFVO0lBQ1YsV0FBVztJQUNYLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsb0JBQW9CO0lBQ3BCLDJDQUEyQztJQUMzQyxtQ0FBbUM7SUFDbkMsZ0NBQWdDO0lBRWhDLHdCQUF3QjtFQUMxQjtBQUNBO0lBQ0U7O01BRUUsK1RBQStUO0lBQ2pVO0lBQ0E7TUFDRSwrVEFBK1Q7SUFDalU7SUFDQTtNQUNFLCtUQUErVDtJQUNqVTtJQUNBO01BQ0UsK1RBQStUO0lBQ2pVO0lBQ0E7TUFDRSwrVEFBK1Q7SUFDalU7SUFDQTtNQUNFLCtUQUErVDtJQUNqVTtJQUNBO01BQ0UsK1RBQStUO0lBQ2pVO0lBQ0E7TUFDRSwrVEFBK1Q7SUFDalU7RUFDRjtBQUNBO0lBQ0U7O01BRUUsK1RBQStUO0lBQ2pVO0lBQ0E7TUFDRSwrVEFBK1Q7SUFDalU7SUFDQTtNQUNFLCtUQUErVDtJQUNqVTtJQUNBO01BQ0UsK1RBQStUO0lBQ2pVO0lBQ0E7TUFDRSwrVEFBK1Q7SUFDalU7SUFDQTtNQUNFLCtUQUErVDtJQUNqVTtJQUNBO01BQ0UsK1RBQStUO0lBQ2pVO0lBQ0E7TUFDRSwrVEFBK1Q7SUFDalU7RUFDRjtBQUNGLG9CQUFvQjtBQUVwQjtJQUNJLGFBQWE7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9zb2Npb3MtbWFzdGVyL3NlY3JldGFyaWEvbGV5ZXMtc29jaW8vbGV5ZXMtc29jaW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qQ0xBU0VTIERFTCBMT0FERVIqL1xuLmxvYWRlciB7XG4gICAgbWFyZ2luOiAxMDBweCBhdXRvO1xuICAgIGZvbnQtc2l6ZTogMjVweDtcbiAgICB3aWR0aDogMWVtO1xuICAgIGhlaWdodDogMWVtO1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgdGV4dC1pbmRlbnQ6IC05OTk5ZW07XG4gICAgLXdlYmtpdC1hbmltYXRpb246IGxvYWQ1IDEuMXMgaW5maW5pdGUgZWFzZTtcbiAgICBhbmltYXRpb246IGxvYWQ1IDEuMXMgaW5maW5pdGUgZWFzZTtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcbiAgICAtbXMtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcbiAgfVxuICBALXdlYmtpdC1rZXlmcmFtZXMgbG9hZDUge1xuICAgIDAlLFxuICAgIDEwMCUge1xuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtICMzMjRjYjMsIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KTtcbiAgICB9XG4gICAgMTIuNSUge1xuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAxLjhlbSAtMS44ZW0gMCAwZW0gIzMyNGNiMywgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KTtcbiAgICB9XG4gICAgMjUlIHtcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAyLjVlbSAwZW0gMCAwZW0gIzMyNGNiMywgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgfVxuICAgIDM3LjUlIHtcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gIzMyNGNiMywgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgfVxuICAgIDUwJSB7XG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpLCAwZW0gMi41ZW0gMCAwZW0gIzMyNGNiMywgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xuICAgIH1cbiAgICA2Mi41JSB7XG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0xLjhlbSAxLjhlbSAwIDBlbSAjMzI0Y2IzLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xuICAgIH1cbiAgICA3NSUge1xuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0yLjZlbSAwZW0gMCAwZW0gIzMyNGNiMywgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcbiAgICB9XG4gICAgODcuNSUge1xuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIC0xLjhlbSAtMS44ZW0gMCAwZW0gIzMyNGNiMztcbiAgICB9XG4gIH1cbiAgQGtleWZyYW1lcyBsb2FkNSB7XG4gICAgMCUsXG4gICAgMTAwJSB7XG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gIzMyNGNiMywgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjcpO1xuICAgIH1cbiAgICAxMi41JSB7XG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDEuOGVtIC0xLjhlbSAwIDBlbSAjMzI0Y2IzLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpO1xuICAgIH1cbiAgICAyNSUge1xuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjUpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDIuNWVtIDBlbSAwIDBlbSAjMzI0Y2IzLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcbiAgICB9XG4gICAgMzcuNSUge1xuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgMS43NWVtIDEuNzVlbSAwIDBlbSAjMzI0Y2IzLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKTtcbiAgICB9XG4gICAgNTAlIHtcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNyksIDBlbSAyLjVlbSAwIDBlbSAjMzI0Y2IzLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgfVxuICAgIDYyLjUlIHtcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgLTEuOGVtIDEuOGVtIDAgMGVtICMzMjRjYjMsIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMik7XG4gICAgfVxuICAgIDc1JSB7XG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuNSksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgLTIuNmVtIDBlbSAwIDBlbSAjMzI0Y2IzLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpO1xuICAgIH1cbiAgICA4Ny41JSB7XG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsNzYsMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCw3NiwxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC41KSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLDc2LDE3OSwgMC43KSwgLTEuOGVtIC0xLjhlbSAwIDBlbSAjMzI0Y2IzO1xuICAgIH1cbiAgfSAgIFxuLypDTEFTRVMgREVMIExPQURFUiovXG5cbi5ibG9ja0FyZWF7XG4gICAgaGVpZ2h0OiAyMDBweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -17679,20 +17701,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LeyesSocioComponent", function() { return LeyesSocioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_servicios_leyes_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/leyes.service */ "./src/app/servicios/leyes.service.ts");
+
 
 
 let LeyesSocioComponent = class LeyesSocioComponent {
-    constructor() { }
+    constructor(_leyesService) {
+        this._leyesService = _leyesService;
+        this.mostrar = false;
+    }
     ngOnInit() {
+        this.traerNoticias();
+    }
+    traerNoticias() {
+        this._leyesService.traerNoticiasSocio().subscribe(res => {
+            if (res.estado == 'success') {
+                this.noticias = res.noticias;
+                this.ultimaNoticia = res.ultima_noticia;
+                this.mostrar = true;
+                console.log(this.ultimaNoticia);
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log((error));
+        });
     }
 };
+LeyesSocioComponent.ctorParameters = () => [
+    { type: src_app_servicios_leyes_service__WEBPACK_IMPORTED_MODULE_2__["LeyesService"] }
+];
 LeyesSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-leyes-socio',
         template: __webpack_require__(/*! raw-loader!./leyes-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.html"),
         styles: [__webpack_require__(/*! ./leyes-socio.component.css */ "./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_leyes_service__WEBPACK_IMPORTED_MODULE_2__["LeyesService"]])
 ], LeyesSocioComponent);
 
 

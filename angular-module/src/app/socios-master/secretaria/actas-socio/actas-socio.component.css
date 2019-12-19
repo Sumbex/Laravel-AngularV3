@@ -1,0 +1,114 @@
+.my-class { 
+  color: red;
+  font-size: 15px;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+/* label,input, button{
+    font-size: 13px;
+  }
+  tr,th{
+      font-size: 13px;
+  }
+  th{
+    color: white;
+    background: #138D75;
+  } */
+
+#demoFont {
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 2px 2px rgba(206,89,55,0);
+    color: #d9d9d9;
+    background: #2C3E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+  .tablaDerecha{
+    float: right;
+  }
+
+  /*CLASES DEL LOADER*/
+  .loader {
+    margin: 100px auto;
+    font-size: 25px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-animation: load5 1.1s infinite ease;
+    animation: load5 1.1s infinite ease;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  @-webkit-keyframes load5 {
+    0%,
+    100% {
+      box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);
+    }
+    12.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);
+    }
+    25% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    37.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    50% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    62.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    75% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    87.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;
+    }
+  }
+  @keyframes load5 {
+    0%,
+    100% {
+      box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.5), -1.8em -1.8em 0 0em rgba(50,76,179, 0.7);
+    }
+    12.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.5);
+    }
+    25% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.5), 1.8em -1.8em 0 0em rgba(50,76,179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    37.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.5), 2.5em 0em 0 0em rgba(50,76,179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    50% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.5), 1.75em 1.75em 0 0em rgba(50,76,179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50,76,179, 0.2), -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    62.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.5), 0em 2.5em 0 0em rgba(50,76,179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50,76,179, 0.2), -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    75% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.5), -1.8em 1.8em 0 0em rgba(50,76,179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50,76,179, 0.2);
+    }
+    87.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(50,76,179, 0.2), 1.8em -1.8em 0 0em rgba(50,76,179, 0.2), 2.5em 0em 0 0em rgba(50,76,179, 0.2), 1.75em 1.75em 0 0em rgba(50,76,179, 0.2), 0em 2.5em 0 0em rgba(50,76,179, 0.2), -1.8em 1.8em 0 0em rgba(50,76,179, 0.5), -2.6em 0em 0 0em rgba(50,76,179, 0.7), -1.8em -1.8em 0 0em #324cb3;
+    }
+  }   
+/*CLASES DEL LOADER*/
+
+
+
+
+
+
+
+/* Curso CSS estilos aprenderaprogramar.com*/
+
+/* .datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #36752D; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid table td, .datagrid table th { padding: 3px 10px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );background:-moz-linear-gradient( center top, #36752D 5%, #275420 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');background-color:#36752D; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 1px solid #36752D; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #275420; border-left: 1px solid #C6FFC2;font-size: 12px;font-weight: normal; }.datagrid table tbody .alt td { background: #DFFFDE; color: #275420; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }.datagrid table tfoot td div { border-top: 1px solid #36752D;background: #DFFFDE;} .datagrid table tfoot td { padding: 0; font-size: 12px } .datagrid table tfoot td div{ padding: 2px; }.datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.datagrid table tfoot  li { display: inline; }.datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #36752D;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );background:-moz-linear-gradient( center top, #36752D 5%, #275420 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');background-color:#36752D; }.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #275420; color: #FFFFFF; background: none; background-color:#36752D;}div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; } */
+
+
+
+

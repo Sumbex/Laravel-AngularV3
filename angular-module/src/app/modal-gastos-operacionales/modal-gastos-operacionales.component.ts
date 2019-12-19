@@ -22,6 +22,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   cargandoTabla = false;
   cargarDatos = 0;
   ingresandoDatos = false;
+  loadingValidacion = false;
 
   //Variables para la modificación de documentos/////////
   /*Variables que rescatan la fila seleccionada*/
@@ -31,6 +32,7 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   /*Variables que determinan el valor del input*/
   edicionDocumento = false;
   edicionTexto = false;
+  nuevoIngreso = false;
   varType;
   /*Variables que rescatan el nuevo valor a ingresar*/
   loadingModificacion = false;
@@ -190,6 +192,15 @@ export class ModalGastosOperacionalesComponent implements OnInit {
       });
   }
 
+  //INGRESO DE DATOS
+  solicitarIngreso(){
+    this.edicionTexto = false;
+    this.edicionArchivo = false;
+    this.edicionDocumento = false;
+    this.nuevoIngreso = true;
+    document.getElementById("openModalButtonPassOperacionales").click();
+  }
+
   ingresarValor() {
     this.ingresandoDatos = true;
     this._service.setGastoSindical(this.datosFormulario).subscribe(response => {
@@ -218,15 +229,18 @@ export class ModalGastosOperacionalesComponent implements OnInit {
       this.varType = 'date';
       this.edicionDocumento = false;
       this.edicionTexto = true;
+      this.nuevoIngreso = false;
     } else if (this.campoEdicion == 'archivo_documento') {
       console.log('Estoy pasando por archivo');
       this.edicionDocumento = true;
       this.edicionTexto = false;
+      this.nuevoIngreso = false;
     } else {
       console.log('Estoy pasando por text');
       this.varType = 'text';
       this.edicionDocumento = false;
       this.edicionTexto = true;
+      this.nuevoIngreso = false;
     }
 
     document.getElementById("openModalButtonEdicionOperacional").click();
@@ -250,13 +264,23 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   validarUsuario(pass) {
-    /* this._usuariosSevice.validarUsuario(this.rut, pass.value, this.estado).subscribe(
+    this.loadingValidacion = true;
+    this._usuariosSevice.validarUsuario(this.rutUsuario, pass.value, this.estado).subscribe(
       response => {
         if(response > 0){
+          this.loadingValidacion = false;
           document.getElementById("closeModalButtonValidacion").click();
           //llamar a la función para ingresar la kkck de modificación
-          this.modificacionAprobada();
+          if (this.edicionTexto) {
+            this.modificacionAprobada();
+          } else if (this.edicionArchivo) {
+            this.modificacionAprobadaArchivo();
+          } else if(this.nuevoIngreso){
+            this.ingresarValor();
+          }
         }else{
+          this.loadingValidacion = false;
+          document.getElementById("closeModalButtonValidacion").click();
           this.blockCajaChica = false;
           this.loadingModificacion = false;
           alert("Acceso denegado");
@@ -264,14 +288,15 @@ export class ModalGastosOperacionalesComponent implements OnInit {
         }
       },
       error => {
+        this.loadingValidacion = false;
         console.log(error);
       }
-    ) */
-    if (this.edicionTexto) {
+    )
+    /* if (this.edicionTexto) {
       this.modificacionAprobada();
     } else if (this.edicionArchivo) {
       this.modificacionAprobadaArchivo();
-    }
+    } */
   }
 
   modificacionAprobada() {

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SecretariaService } from 'src/app/servicios/secretaria.service';
+import * as htmlDocx from 'html-docx-js/dist/html-docx';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-asistencia-reunion',
@@ -230,6 +232,15 @@ export class AsistenciaReunionComponent implements OnInit {
       console.log(error);
       this.cargandoConfirmacion = true;
     });
+  }
+
+  guardarArchivo(){
+    let texto = document.getElementById('testDocx').innerHTML;
+    console.log(texto);
+    let htmlDocument = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>EmpaErectus</title>';
+    htmlDocument = htmlDocument + '</head><body>' + texto + '</body></html>';
+    const converted = htmlDocx.asBlob(htmlDocument);
+    saveAs(converted, 'HolaMundo' + '.docx');
   }
 
 }

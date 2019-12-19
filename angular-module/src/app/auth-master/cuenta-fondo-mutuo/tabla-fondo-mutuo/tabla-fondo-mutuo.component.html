@@ -7,23 +7,25 @@
         <br><label><strong>DEFINICIONES</strong></label> <br>
         <label>
           <b>
-          	<ngb-alert style="background: #ffffff;" [dismissible]="false">
-          	  <b class="black">■</b> DIA DE SUELDO = <b class="black">D.S.</b> <br>
-          	  <b class="black">■</b> PAGO DE BENEFICIOS = <b class="black">P.B.</b> <br>
-          	  <b class="black">■</b> ACUMULADO DE SOCIO = <b class="black">A.S.</b> <br>
-          	  <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO
-          	  <b class="black">P.B. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
-          	  <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO POR RENUNCIA DEBE SELECIONAR EL CAMPO
-          	  <b class="black">D.S. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
-          	  <b class="black">■</b> PARA VER UN RESUMEN DEL PAGO DE BENEFICIO OTORGADO DEBE SELECCIONAR EL
-          	  <b class="black">MES <i class="fas fa-info-circle yellow"></i></b> PARA VERIFICAR SI ESTA TODO CORRECTO.<br>
-          	  <b class="black">■</b> LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b class="black">DESVINCULADOS</b>
-          	  DEL AÑO SELECCIONADO, PERO NO PAGADOS DE SU BENEFICIO. <br>
-          	  <b class="black">■</b> LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b class="black">PAGO DE
-          	    BENEFICIO</b> AL DIA, DEL AÑO
-          	  SELECCIONADO. <br>
-          	  <b class="black">■</b> RECUERDE TENER LOS DIAS DE SUELDO AL DIA PARA PODER GENERAR EL COBRO DE BENEFICIO.
-          	</ngb-alert>
+            <ngb-alert style="background: #ffffff;" [dismissible]="false">
+              <b class="black">■</b> DIA DE SUELDO = <b class="black">D.S.</b> <br>
+              <b class="black">■</b> PAGO DE BENEFICIOS = <b class="black">P.B.</b> <br>
+              <b class="black">■</b> ACUMULADO DE SOCIO = <b class="black">A.S.</b> <br>
+              <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO DEBE SELECIONAR EL CAMPO
+              <b class="black">P.B. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
+              <b class="black">■</b> PARA REALIZAR EL PAGO DE BENEFICIO POR RENUNCIA DEBE SELECIONAR EL CAMPO
+              <b class="black">D.S. <i class="fas fa-info-circle"></i></b> DE SU RESPECTIVO MES.<br>
+              <b class="black">■</b> PARA VER UN RESUMEN DEL PAGO DE BENEFICIO OTORGADO DEBE SELECCIONAR EL
+              <b class="black">MES <i class="fas fa-info-circle yellow"></i></b> PARA VERIFICAR SI ESTA TODO
+              CORRECTO.<br>
+              <b class="black">■</b> LOS SOCIOS DE COLOR <b class="red2">ROJO</b> ESTAN <b
+                class="black">DESVINCULADOS</b>
+              DEL AÑO SELECCIONADO, PERO NO PAGADOS DE SU BENEFICIO. <br>
+              <b class="black">■</b> LOS SOCIOS DE COLOR <b class="blue2">AZUL</b> ESTAN CON SU <b class="black">PAGO DE
+                BENEFICIO</b> AL DIA, DEL AÑO
+              SELECCIONADO. <br>
+              <b class="black">■</b> RECUERDE TENER LOS DIAS DE SUELDO AL DIA PARA PODER GENERAR EL COBRO DE BENEFICIO.
+            </ngb-alert>
           </b>
         </label>
       </div>
@@ -105,7 +107,7 @@
 
 
     </div>
-
+    <!-- acumulado individual -->
     <div class="table-responsive tableFixHead">
       <table class="table table-striped table-bordered table-sm">
 
@@ -706,8 +708,9 @@
         </tbody>
 
       </table>
-    </div>
+    </div> <br>
 
+    <!-- acumulado mensual -->
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-sm">
         <thead>
@@ -993,6 +996,35 @@
             <td colspan="2"><b>{{sociosMensual?.acumulado_anterior_socio | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
             <td colspan="2"><b>{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ahorro dia de sueldo -->
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr class="text-center" style="background: #138D75">
+            <th colspan="60" rowspan="2"> AHORRO DIA DE SUELDO DE LOS SOCIOS DESVINCULADOS</th>
+          </tr>
+        </thead>
+
+          <tr class="text-center" style="background: #138D75">
+              <th colspan="2"> TOTAL DESCUENTOS DIA DE AHORRO </th>
+              <th colspan="2"> TOTAL ANUAL </th>
+              <th colspan="2"> TOTAL ANUAL <i class="fas fa-minus menos"></i> TOTAL AHORRO</th>
+          </tr>
+        <tbody>
+          <tr class="text-center">
+
+            <td colspan="2" class="black"><b>{{totalAhorro?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2" class="black"><b>{{sociosMensual?.suma_anual | currency:"CLP" : "symbol-narrow":'1.0'}}</b></td>
+            <td colspan="2" class="black"><h6>
+              {{ConvertToInt(sociosMensual?.suma_anual) - 
+                  ConvertToInt(totalAhorro?.total) | currency:"CLP" : "symbol-narrow":'1.0'}}
+              </h6></td>
+
           </tr>
         </tbody>
       </table>

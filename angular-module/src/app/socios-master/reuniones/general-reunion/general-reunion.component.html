@@ -1,122 +1,185 @@
 <div class="container">
-  <p class="mt-5">
-    <ngb-alert [dismissible]="false">
-      <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con
-      una campana <i class="fas fa-bell"></i>.
-    </ngb-alert>
-  </p>
 
   <div class="row">
-    <div class="col-md-6 mt-5">
-      <div class="card card-body border border-dark h-100">
-        <h3 class="text-center"><i class="fas fa-bell"></i> Reunión Vigente</h3>
-        <h6 class="card-subtitle mb-2 text-muted text-center">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>
-        <div>
-          <app-detalle-reunion [datoReunion]="datosReunion"></app-detalle-reunion>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 mt-5">
-      <div class="card card-body border border-dark h-100">
-        <h3 class="mx-auto"><i class="fas fa-check-double"></i> Reunión Anterior</h3>
-        <h6 class="card-subtitle mb-2 text-muted text-center">Reunión Finalizada 10.08.19</h6>
-        <div>
-          <app-historial-detalle-reunion></app-historial-detalle-reunion>
-        </div>
-      </div>
+    <br><br>
+    <div class="col-md-12 mt-4">
+      <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+
+        <li class="nav-item active">
+          <a class="nav-link" id="formReuniones-tab" data-toggle="tab" href="#formReuniones" role="tab"
+            aria-controls="formReuniones" aria-selected="true">Reuniones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="acuerdos-tab" data-toggle="tab" href="#acuerdos" role="tab" aria-controls="acuerdos"
+            aria-selected="false">Acuerdos de Asamblea</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="actas-tab" data-toggle="tab" href="#actas" role="tab" aria-controls="actas"
+            aria-selected="false">Actas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab"
+            aria-controls="directorio" aria-selected="false">Directorio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="leyes-tab" data-toggle="tab" href="#leyes" role="tab" aria-controls="leyes"
+            aria-selected="false">Leyes Laborales</a>
+        </li>
+
+      </ul>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12 mt-5">
-      <div class="card card-body border border-dark">
-        <h3 class="mx-auto"><i class="fas fa-bullhorn"></i> Ultimas 5 Reuniones</h3>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-              <thead>
-            <tr>
-              <th class="text-center">Titulo</th>
-              <th class="text-center">Fecha</th>
-              <th class="text-center">Tema Tratado</th>
-              <th class="text-center">Inasistencias Justificadas</th>
-            </tr>
-          </thead>
-            <tr *ngFor="let itemHistorial of datosReunionPasada">
-              <td class="text-center"><b>{{itemHistorial?.titulo}}</b></td>
-              <td class="text-center"><b>{{itemHistorial?.fecha_inicio}}</b></td>
-              <td class="text-center"><button (click)="abrirModal(detalle)" class="btn btn-dark">Detalle de la Reunión</button></td>
-              <!-- ******************DETALLE DE LA REUNIÓN******************* -->
-              <ng-template #detalle let-modal>
-                  <!-- Header Del Modal -->
-                  <div class="modal-header" id="demoFont">
-                    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la proxima reunión</strong>
-                    </h6>
-                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                
-                  <!-- Cuerpo del modal -->
-                  <div class="modal-body">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-12 mt-2">
-                          <div class="card card-body">
-                            <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>
-                            <h6 class="text-muted">Tema a Tratar:</h6>
-                            <p>{{itemHistorial?.descripcion}}</p>
-                            <h6 class="text-muted">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>
+  <div class="tab-content" id="myTabContent">
+    <!-- Reuniones -->
+    <div class="tab-pane fade show active" id="formReuniones" role="tabpanel" aria-labelledby="formReuniones-tab">
+      <p class="mt-5">
+        <ngb-alert [dismissible]="false">
+          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten
+          con
+          una campana <i class="fas fa-bell"></i>.
+        </ngb-alert>
+      </p>
+
+      <div class="row">
+        <div class="col-md-6 mt-5">
+          <div class="card card-body border border-dark h-100">
+            <h3 class="text-center"><i class="fas fa-bell"></i> Reunión Vigente</h3>
+            <h6 class="card-subtitle mb-2 text-muted text-center">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>
+            <div>
+              <app-detalle-reunion [datoReunion]="datosReunion"></app-detalle-reunion>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5">
+          <div class="card card-body border border-dark h-100">
+            <h3 class="mx-auto"><i class="fas fa-check-double"></i> Reunión Anterior</h3>
+            <h6 class="card-subtitle mb-2 text-muted text-center">Reunión Finalizada 10.08.19</h6>
+            <div>
+              <app-historial-detalle-reunion></app-historial-detalle-reunion>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mt-5">
+          <div class="card card-body border border-dark">
+            <h3 class="mx-auto"><i class="fas fa-bullhorn"></i> Ultimas 5 Reuniones</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="text-center">Titulo</th>
+                    <th class="text-center">Fecha</th>
+                    <th class="text-center">Tema Tratado</th>
+                    <th class="text-center">Inasistencias Justificadas</th>
+                  </tr>
+                </thead>
+                <tr *ngFor="let itemHistorial of datosReunionPasada">
+                  <td class="text-center"><b>{{itemHistorial?.titulo}}</b></td>
+                  <td class="text-center"><b>{{itemHistorial?.fecha_inicio}}</b></td>
+                  <td class="text-center"><button (click)="abrirModal(detalle)" class="btn btn-dark">Detalle de la
+                      Reunión</button></td>
+                  <!-- ******************DETALLE DE LA REUNIÓN******************* -->
+                  <ng-template #detalle let-modal>
+                    <!-- Header Del Modal -->
+                    <div class="modal-header" id="demoFont">
+                      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Detalle de la proxima
+                          reunión</strong>
+                      </h6>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <!-- Cuerpo del modal -->
+                    <div class="modal-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-12 mt-2">
+                            <div class="card card-body">
+                              <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>
+                              <h6 class="text-muted">Tema a Tratar:</h6>
+                              <p>{{itemHistorial?.descripcion}}</p>
+                              <h6 class="text-muted">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                
-                  <!-- Patitas del Modal -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
-                        class="far fa-arrow-alt-circle-left"></i> Volver</button>
-                  </div>
-                </ng-template>
-              <td class="text-center"><button (click)="getListaReunion(itemHistorial?.id); abrirModal(inasistencias)" class="btn btn-dark">Inasistencias</button></td>
-            </tr>
-          </table>
+
+                    <!-- Patitas del Modal -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+                          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                    </div>
+                  </ng-template>
+                  <td class="text-center"><button
+                      (click)="getListaReunion(itemHistorial?.id); abrirModal(inasistencias)"
+                      class="btn btn-dark">Inasistencias</button></td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
+
+
+
+      <ng-template #inasistencias let-modal>
+        <!-- Header Del Modal -->
+        <div class="modal-header" id="demoFont">
+          <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Inasistentes de la reunión</strong>
+          </h6>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Cuerpo del modal -->
+        <div class="modal-body">
+          <div class="container">
+            <h3 class="text-center">Inasistencias justificadas el día 10.10.10</h3>
+            <br>
+            <table class="table table-bordered">
+              <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+              </tr>
+              <tr *ngFor="let itemAsistencia of datosAsistencias">
+                <td>{{itemAsistencia?.nombre}}</td>
+                <td>{{itemAsistencia?.estado}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- Patitas del Modal -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
+              class="far fa-arrow-alt-circle-left"></i> Volver</button>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Acuerdos -->
+    <div class="tab-pane fade show" id="acuerdos" role="tabpanel" aria-labelledby="acuerdos-tab">
+      <app-acuerdos-socio></app-acuerdos-socio>
+    </div>
+
+    <!-- Actas -->
+    <div class="tab-pane fade show" id="actas" role="tabpanel" aria-labelledby="actas-tab">
+      <app-actas-socio></app-actas-socio>
+    </div>
+
+    <!-- Directorio -->
+    <div class="tab-pane fade show" id="directorio" role="tabpanel" aria-labelledby="directorio-tab">
+      <app-directorio-socio></app-directorio-socio>
+    </div>
+
+    <!-- Leyes -->
+    <div class="tab-pane fade show" id="leyes" role="tabpanel" aria-labelledby="leyes-tab">
+      <app-leyes-socio></app-leyes-socio>
     </div>
   </div>
 
 </div>
-
-<ng-template #inasistencias let-modal>
-    <!-- Header Del Modal -->
-    <div class="modal-header" id="demoFont">
-      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Inasistentes de la reunión</strong>
-      </h6>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <!-- Cuerpo del modal -->
-    <div class="modal-body">
-      <div class="container">
-        <h3 class="text-center">Inasistencias justificadas el día 10.10.10</h3>
-        <br>
-        <table class="table table-bordered">
-          <tr>
-            <th>Nombre</th>
-            <th>Estado</th>
-          </tr>
-          <tr *ngFor="let itemAsistencia of datosAsistencias">
-            <td>{{itemAsistencia?.nombre}}</td>
-            <td>{{itemAsistencia?.estado}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <!-- Patitas del Modal -->
-    <div class="modal-footer">
-      <button type="button" class="btn btn-info" (click)="modal.close('Close click')"><i
-          class="far fa-arrow-alt-circle-left"></i> Volver</button>
-    </div>
-  </ng-template>

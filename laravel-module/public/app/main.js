@@ -921,7 +921,7 @@ module.exports = "<p>\r\n  hola actas xD\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  acuerdo-asamblea hola mundo Xd\r\n</p>\r\n"
+module.exports = "<form>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"form-group text-center\">\r\n        <label for=\"titulo\"><b>Ingrese titulo de la acta</b></label>\r\n        <input type=\"text\" name=\"titulo\" class=\"form-control\" [(ngModel)]=\"datosActa.tituloActa\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group\">\r\n        <label for=\"fecha\"><b>Seleccione Fecha</b></label>\r\n        <input type=\"datetime-local\" name=\"fecha\" class=\"form-control\" [(ngModel)]=\"datosActa.fechaActa\">\r\n      </div>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group\">\r\n        <label for=\"tipo\"><b>Seleccione el tipo de Acta</b></label>\r\n        <select class=\"form-control\" name=\"tipo\" [(ngModel)]=\"datosActa.tipoActa\">\r\n          <option value=\"1\">Ordinaria</option>\r\n          <option value=\"2\">Extraordinaria</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"form-group\">\r\n        <label for=\"estado\"><b>Seleccione el estado del Acta</b></label>\r\n        <select class=\"form-control\" name=\"tipo\" [(ngModel)]=\"datosActa.estadoActa\">\r\n          <option value=\"1\">Aprobada</option>\r\n          <option value=\"2\">Pendiente</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"form-group text-center\">\r\n        <label for=\"cuerpo\"><b>Contenido del Acta</b></label>\r\n      <textarea class=\"form-control\" name=\"cuerpo\" id=\"\" rows=\"10\" [(ngModel)]=\"datosActa.contenidoActa\"></textarea>\r\n    </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <button class=\"btn btn-primary btn-block\" (click)=\"setAcuerdoAsamblea()\">Ingresar</button>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <button class=\"btn btn-secondary btn-block\" (click)=\"abrirModalAcuerdos(menuAdministrarReunion)\">Ver Acuerdos de\r\n        Asamblea</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n<!-- LISTA ACUERDOS ASAMBKLEA -->\r\n<ng-template #menuAdministrarReunion let-modal>\r\n  <!-- Header Del Modal -->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Acuerdos de Asamblea</strong>\r\n    </h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <!-- Cuerpo del modal -->\r\n  <div class=\"modal-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"form-group\">\r\n            <label for=\"anio\">Seleccione Año</label>\r\n            <select name=\"anio\" class=\"form-control\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\">\r\n              <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"table-responsive\">\r\n        <table class=\"table table-hover table-bordered table-dark text-center\">\r\n          <thead>\r\n            <tr>\r\n              <th scope=\"col\">ID</th>\r\n              <th scope=\"col\">Titulo</th>\r\n              <th scope=\"col\">Fecha</th>\r\n              <th scope=\"col\">Acciones</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr *ngFor=\"let itemAcuerdos of tablaAcuerdos\">\r\n              <th>{{itemAcuerdos.id}}</th>\r\n              <td>{{itemAcuerdos.titulo}}</td>\r\n              <td>{{itemAcuerdos.fecha}}</td>\r\n              <td><button class=\"btn btn-primary\" (click)=\"abrirModalAcuerdos(visualizarAcuerdo)\">Visualizar</button>\r\n              </td>\r\n            </tr>\r\n          </tbody>\r\n        </table>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <!-- Patitas del Modal -->\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" id=\"cerrarMenu\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n  </div>\r\n</ng-template>\r\n\r\n<!-- VISUALIZAR ACUERDO -->\r\n<ng-template #visualizarAcuerdo let-modal>\r\n  <!-- Header Del Modal -->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Lista de Acuerdos de Asamblea</strong>\r\n    </h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <!-- Cuerpo del modal -->\r\n  <div class=\"modal-body\">\r\n  </div>\r\n  <!-- Patitas del Modal -->\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" id=\"cerrarMenu\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n  </div>\r\n</ng-template>"
 
 /***/ }),
 
@@ -1405,7 +1405,7 @@ module.exports = "<ng-template #detalleReunion let-modal>\r\n    <!-- Header Del
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <p class=\"mt-5\">\r\n    <ngb-alert [dismissible]=\"false\">\r\n      <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten con\r\n      una campana <i class=\"fas fa-bell\"></i>.\r\n    </ngb-alert>\r\n  </p>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6 mt-5\">\r\n      <div class=\"card card-body border border-dark h-100\">\r\n        <h3 class=\"text-center\"><i class=\"fas fa-bell\"></i> Reunión Vigente</h3>\r\n        <h6 class=\"card-subtitle mb-2 text-muted text-center\">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>\r\n        <div>\r\n          <app-detalle-reunion [datoReunion]=\"datosReunion\"></app-detalle-reunion>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-md-6 mt-5\">\r\n      <div class=\"card card-body border border-dark h-100\">\r\n        <h3 class=\"mx-auto\"><i class=\"fas fa-check-double\"></i> Reunión Anterior</h3>\r\n        <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión Finalizada 10.08.19</h6>\r\n        <div>\r\n          <app-historial-detalle-reunion></app-historial-detalle-reunion>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12 mt-5\">\r\n      <div class=\"card card-body border border-dark\">\r\n        <h3 class=\"mx-auto\"><i class=\"fas fa-bullhorn\"></i> Ultimas 5 Reuniones</h3>\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table table-bordered\">\r\n              <thead>\r\n            <tr>\r\n              <th class=\"text-center\">Titulo</th>\r\n              <th class=\"text-center\">Fecha</th>\r\n              <th class=\"text-center\">Tema Tratado</th>\r\n              <th class=\"text-center\">Inasistencias Justificadas</th>\r\n            </tr>\r\n          </thead>\r\n            <tr *ngFor=\"let itemHistorial of datosReunionPasada\">\r\n              <td class=\"text-center\"><b>{{itemHistorial?.titulo}}</b></td>\r\n              <td class=\"text-center\"><b>{{itemHistorial?.fecha_inicio}}</b></td>\r\n              <td class=\"text-center\"><button (click)=\"abrirModal(detalle)\" class=\"btn btn-dark\">Detalle de la Reunión</button></td>\r\n              <!-- ******************DETALLE DE LA REUNIÓN******************* -->\r\n              <ng-template #detalle let-modal>\r\n                  <!-- Header Del Modal -->\r\n                  <div class=\"modal-header\" id=\"demoFont\">\r\n                    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la proxima reunión</strong>\r\n                    </h6>\r\n                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n                      <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                  </div>\r\n                \r\n                  <!-- Cuerpo del modal -->\r\n                  <div class=\"modal-body\">\r\n                    <div class=\"container\">\r\n                      <div class=\"row\">\r\n                        <div class=\"col-md-12 mt-2\">\r\n                          <div class=\"card card-body\">\r\n                            <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>\r\n                            <h6 class=\"text-muted\">Tema a Tratar:</h6>\r\n                            <p>{{itemHistorial?.descripcion}}</p>\r\n                            <h6 class=\"text-muted\">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                \r\n                  <!-- Patitas del Modal -->\r\n                  <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n                        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n                  </div>\r\n                </ng-template>\r\n              <td class=\"text-center\"><button (click)=\"getListaReunion(itemHistorial?.id); abrirModal(inasistencias)\" class=\"btn btn-dark\">Inasistencias</button></td>\r\n            </tr>\r\n          </table>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<ng-template #inasistencias let-modal>\r\n    <!-- Header Del Modal -->\r\n    <div class=\"modal-header\" id=\"demoFont\">\r\n      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\r\n      </h6>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <!-- Cuerpo del modal -->\r\n    <div class=\"modal-body\">\r\n      <div class=\"container\">\r\n        <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\r\n        <br>\r\n        <table class=\"table table-bordered\">\r\n          <tr>\r\n            <th>Nombre</th>\r\n            <th>Estado</th>\r\n          </tr>\r\n          <tr *ngFor=\"let itemAsistencia of datosAsistencias\">\r\n            <td>{{itemAsistencia?.nombre}}</td>\r\n            <td>{{itemAsistencia?.estado}}</td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n    <!-- Patitas del Modal -->\r\n    <div class=\"modal-footer\">\r\n      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n    </div>\r\n  </ng-template>"
+module.exports = "<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <br><br>\r\n    <div class=\"col-md-12 mt-4\">\r\n      <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\"\r\n            aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"acuerdos-tab\" data-toggle=\"tab\" href=\"#acuerdos\" role=\"tab\" aria-controls=\"acuerdos\"\r\n            aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"actas-tab\" data-toggle=\"tab\" href=\"#actas\" role=\"tab\" aria-controls=\"actas\"\r\n            aria-selected=\"false\">Actas</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"directorio-tab\" data-toggle=\"tab\" href=\"#directorio\" role=\"tab\"\r\n            aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"leyes-tab\" data-toggle=\"tab\" href=\"#leyes\" role=\"tab\" aria-controls=\"leyes\"\r\n            aria-selected=\"false\">Leyes Laborales</a>\r\n        </li>\r\n\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-content\" id=\"myTabContent\">\r\n    <!-- Reuniones -->\r\n    <div class=\"tab-pane fade show active\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n      <p class=\"mt-5\">\r\n        <ngb-alert [dismissible]=\"false\">\r\n          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten\r\n          con\r\n          una campana <i class=\"fas fa-bell\"></i>.\r\n        </ngb-alert>\r\n      </p>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-6 mt-5\">\r\n          <div class=\"card card-body border border-dark h-100\">\r\n            <h3 class=\"text-center\"><i class=\"fas fa-bell\"></i> Reunión Vigente</h3>\r\n            <h6 class=\"card-subtitle mb-2 text-muted text-center\">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>\r\n            <div>\r\n              <app-detalle-reunion [datoReunion]=\"datosReunion\"></app-detalle-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-md-6 mt-5\">\r\n          <div class=\"card card-body border border-dark h-100\">\r\n            <h3 class=\"mx-auto\"><i class=\"fas fa-check-double\"></i> Reunión Anterior</h3>\r\n            <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión Finalizada 10.08.19</h6>\r\n            <div>\r\n              <app-historial-detalle-reunion></app-historial-detalle-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 mt-5\">\r\n          <div class=\"card card-body border border-dark\">\r\n            <h3 class=\"mx-auto\"><i class=\"fas fa-bullhorn\"></i> Ultimas 5 Reuniones</h3>\r\n            <div class=\"table-responsive\">\r\n              <table class=\"table table-bordered\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"text-center\">Titulo</th>\r\n                    <th class=\"text-center\">Fecha</th>\r\n                    <th class=\"text-center\">Tema Tratado</th>\r\n                    <th class=\"text-center\">Inasistencias Justificadas</th>\r\n                  </tr>\r\n                </thead>\r\n                <tr *ngFor=\"let itemHistorial of datosReunionPasada\">\r\n                  <td class=\"text-center\"><b>{{itemHistorial?.titulo}}</b></td>\r\n                  <td class=\"text-center\"><b>{{itemHistorial?.fecha_inicio}}</b></td>\r\n                  <td class=\"text-center\"><button (click)=\"abrirModal(detalle)\" class=\"btn btn-dark\">Detalle de la\r\n                      Reunión</button></td>\r\n                  <!-- ******************DETALLE DE LA REUNIÓN******************* -->\r\n                  <ng-template #detalle let-modal>\r\n                    <!-- Header Del Modal -->\r\n                    <div class=\"modal-header\" id=\"demoFont\">\r\n                      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la proxima\r\n                          reunión</strong>\r\n                      </h6>\r\n                      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                      </button>\r\n                    </div>\r\n\r\n                    <!-- Cuerpo del modal -->\r\n                    <div class=\"modal-body\">\r\n                      <div class=\"container\">\r\n                        <div class=\"row\">\r\n                          <div class=\"col-md-12 mt-2\">\r\n                            <div class=\"card card-body\">\r\n                              <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>\r\n                              <h6 class=\"text-muted\">Tema a Tratar:</h6>\r\n                              <p>{{itemHistorial?.descripcion}}</p>\r\n                              <h6 class=\"text-muted\">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!-- Patitas del Modal -->\r\n                    <div class=\"modal-footer\">\r\n                      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n                          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n                    </div>\r\n                  </ng-template>\r\n                  <td class=\"text-center\"><button\r\n                      (click)=\"getListaReunion(itemHistorial?.id); abrirModal(inasistencias)\"\r\n                      class=\"btn btn-dark\">Inasistencias</button></td>\r\n                </tr>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n\r\n      <ng-template #inasistencias let-modal>\r\n        <!-- Header Del Modal -->\r\n        <div class=\"modal-header\" id=\"demoFont\">\r\n          <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\r\n          </h6>\r\n          <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <!-- Cuerpo del modal -->\r\n        <div class=\"modal-body\">\r\n          <div class=\"container\">\r\n            <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\r\n            <br>\r\n            <table class=\"table table-bordered\">\r\n              <tr>\r\n                <th>Nombre</th>\r\n                <th>Estado</th>\r\n              </tr>\r\n              <tr *ngFor=\"let itemAsistencia of datosAsistencias\">\r\n                <td>{{itemAsistencia?.nombre}}</td>\r\n                <td>{{itemAsistencia?.estado}}</td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n        <!-- Patitas del Modal -->\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n              class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n        </div>\r\n      </ng-template>\r\n    </div>\r\n\r\n    <!-- Acuerdos -->\r\n    <div class=\"tab-pane fade show\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n      <app-acuerdos-socio></app-acuerdos-socio>\r\n    </div>\r\n\r\n    <!-- Actas -->\r\n    <div class=\"tab-pane fade show\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n      <app-actas-socio></app-actas-socio>\r\n    </div>\r\n\r\n    <!-- Directorio -->\r\n    <div class=\"tab-pane fade show\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n      <app-directorio-socio></app-directorio-socio>\r\n    </div>\r\n\r\n    <!-- Leyes -->\r\n    <div class=\"tab-pane fade show\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n      <app-leyes-socio></app-leyes-socio>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1417,6 +1417,50 @@ module.exports = "<div class=\"container\">\r\n  <p class=\"mt-5\">\r\n    <ngb-
 /***/ (function(module, exports) {
 
 module.exports = "<ng-template #detalleHistorial let-modal>\r\n  <!-- Header Del Modal -->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la reunion anterior</strong>\r\n    </h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n\r\n  <!-- Cuerpo del modal -->\r\n  <div class=\"modal-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 mt-2\">\r\n          <div class=\"card card-body\">\r\n            <legend>Reunión realizada el 20.20.20</legend>\r\n            <h6 class=\"text-muted\">Tema Tratado:</h6>\r\n            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit? Rem consequatur, omnis similique, recusandae earum officia quae quia nobis iure unde assumenda maxime, sequi placeat ea voluptates ipsam ratione!Quas vel non explicabo. Velit, a. Quasi fuga facere corporis sed corrupti dolor distinctio ipsa voluptates, nisi ducimus voluptatibus, maxime ut, ullam laborum. Delectus eum pariatur ea harum et labore.</p>\r\n            <h6 class=\"text-muted\">Reunión organizada por: Bryan Vidal Díaz</h6>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Patitas del Modal -->\r\n  <div class=\"modal-footer\">\r\n    <button (click)=\"abrirModalHistorial(inasistencias)\" type=\"button\" class=\"btn btn-danger\">\r\n      Inasistencias\r\n    </button>\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n  </div>\r\n</ng-template>\r\n\r\n<button class=\"btn btn-danger btn-block\" type=\"button\" (click)=\"abrirModalHistorial(detalleHistorial)\">Ver Detalle</button>\r\n\r\n<ng-template #inasistencias let-modal>\r\n  <!-- Header Del Modal -->\r\n  <div class=\"modal-header\" id=\"demoFont\">\r\n    <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\r\n    </h6>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <!-- Cuerpo del modal -->\r\n  <div class=\"modal-body\">\r\n    <div class=\"container\">\r\n      <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\r\n      <br>\r\n      <table class=\"table table-bordered\">\r\n        <tr>\r\n          <th>Nombre</th>\r\n        </tr>\r\n        <tr>\r\n          <td>Bryan Montecino Jara</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n  </div>\r\n  <!-- Patitas del Modal -->\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n        class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n  </div>\r\n</ng-template>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/actas-socio/actas-socio.component.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/socios-master/secretaria/actas-socio/actas-socio.component.html ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>actas-socio works!</p>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.html":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.html ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>acuerdos-socio works!</p>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.html":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.html ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>directorio-socio works!</p>\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.html":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.html ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>leyes-socio works!</p>\r\n"
 
 /***/ }),
 
@@ -1711,6 +1755,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_secretaria_actas_actas_component__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./auth-master/secretaria/actas/actas.component */ "./src/app/auth-master/secretaria/actas/actas.component.ts");
 /* harmony import */ var _auth_master_secretaria_leyes_laborales_leyes_laborales_component__WEBPACK_IMPORTED_MODULE_122__ = __webpack_require__(/*! ./auth-master/secretaria/leyes-laborales/leyes-laborales.component */ "./src/app/auth-master/secretaria/leyes-laborales/leyes-laborales.component.ts");
 /* harmony import */ var _auth_master_secretaria_directorio_directorio_component__WEBPACK_IMPORTED_MODULE_123__ = __webpack_require__(/*! ./auth-master/secretaria/directorio/directorio.component */ "./src/app/auth-master/secretaria/directorio/directorio.component.ts");
+/* harmony import */ var _socios_master_secretaria_acuerdos_socio_acuerdos_socio_component__WEBPACK_IMPORTED_MODULE_124__ = __webpack_require__(/*! ./socios-master/secretaria/acuerdos-socio/acuerdos-socio.component */ "./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.ts");
+/* harmony import */ var _socios_master_secretaria_actas_socio_actas_socio_component__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./socios-master/secretaria/actas-socio/actas-socio.component */ "./src/app/socios-master/secretaria/actas-socio/actas-socio.component.ts");
+/* harmony import */ var _socios_master_secretaria_directorio_socio_directorio_socio_component__WEBPACK_IMPORTED_MODULE_126__ = __webpack_require__(/*! ./socios-master/secretaria/directorio-socio/directorio-socio.component */ "./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.ts");
+/* harmony import */ var _socios_master_secretaria_leyes_socio_leyes_socio_component__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./socios-master/secretaria/leyes-socio/leyes-socio.component */ "./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.ts");
+
+
+
+
 
 
 
@@ -1942,7 +1994,11 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_secretaria_acuerdo_asamblea_acuerdo_asamblea_component__WEBPACK_IMPORTED_MODULE_120__["AcuerdoAsambleaComponent"],
             _auth_master_secretaria_actas_actas_component__WEBPACK_IMPORTED_MODULE_121__["ActasComponent"],
             _auth_master_secretaria_leyes_laborales_leyes_laborales_component__WEBPACK_IMPORTED_MODULE_122__["LeyesLaboralesComponent"],
-            _auth_master_secretaria_directorio_directorio_component__WEBPACK_IMPORTED_MODULE_123__["DirectorioComponent"]
+            _auth_master_secretaria_directorio_directorio_component__WEBPACK_IMPORTED_MODULE_123__["DirectorioComponent"],
+            _socios_master_secretaria_acuerdos_socio_acuerdos_socio_component__WEBPACK_IMPORTED_MODULE_124__["AcuerdosSocioComponent"],
+            _socios_master_secretaria_actas_socio_actas_socio_component__WEBPACK_IMPORTED_MODULE_125__["ActasSocioComponent"],
+            _socios_master_secretaria_directorio_socio_directorio_socio_component__WEBPACK_IMPORTED_MODULE_126__["DirectorioSocioComponent"],
+            _socios_master_secretaria_leyes_socio_leyes_socio_component__WEBPACK_IMPORTED_MODULE_127__["LeyesSocioComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -10160,20 +10216,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcuerdoAsambleaComponent", function() { return AcuerdoAsambleaComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_acuerdo_asamblea_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/acuerdo-asamblea.service */ "./src/app/servicios/acuerdo-asamblea.service.ts");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+
+
+
 
 
 let AcuerdoAsambleaComponent = class AcuerdoAsambleaComponent {
-    constructor() { }
+    constructor(config, modalService, _acuerdoService, _fechasService) {
+        this.modalService = modalService;
+        this._acuerdoService = _acuerdoService;
+        this._fechasService = _fechasService;
+        //Variable del formulario
+        this.datosActa = {
+            tituloActa: '',
+            fechaActa: '',
+            tipoActa: '1',
+            contenidoActa: '',
+            estadoActa: '1'
+        };
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
     ngOnInit() {
+        //Cargar Años
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    }
+    abrirModalAcuerdos(modalMenu) {
+        this.modalVariable = this.modalService.open(modalMenu, { size: 'xl' });
+        this.getListaAcuerdosAsamblea();
+        this.cargarFechasActuales();
+    }
+    cargarFechasActuales() {
+        //Cargar id del Año actual
+        this._fechasService.getAnioActual().subscribe(response => {
+            this.idAnioActual = response.id;
+        }, error => {
+            console.log(error);
+        });
+    }
+    changeAnio(valorSelect) {
+        this.idAnioActual = valorSelect.target.value;
+    }
+    limpiarFormulario() {
+        console.log(this.datosActa);
+        this.datosActa.tituloActa = '';
+        this.datosActa.fechaActa = '';
+        this.datosActa.tipoActa = '1';
+        this.datosActa.contenidoActa = '';
+        this.datosActa.estadoActa = '1';
+        console.log(this.datosActa);
+    }
+    setAcuerdoAsamblea() {
+        this._acuerdoService.setAcuerdoAsamblea(this.datosActa).subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                this.limpiarFormulario();
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    // getAcuerdoAsamblea(){
+    //   this._acuerdoService.getAcuerdoAsamblea('id').subscribe(response => {
+    //     if(response.estado == 'failed' || response.estado == 'failed_v'){
+    //       alert(response.mensaje);
+    //     }else{
+    //       console.log("Hola amigos del yutu");
+    //     }
+    //   }, error => {
+    //     console.log(error);
+    //   });
+    // }
+    getListaAcuerdosAsamblea() {
+        this._acuerdoService.getAcuerdosAsamblea().subscribe(response => {
+            if (response.estado == 'failed' || response.estado == 'failed_v') {
+                alert(response.mensaje);
+            }
+            else {
+                this.tablaAcuerdos = response;
+                console.log(this.tablaAcuerdos);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
+AcuerdoAsambleaComponent.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: src_app_servicios_acuerdo_asamblea_service__WEBPACK_IMPORTED_MODULE_3__["AcuerdoAsambleaService"] },
+    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"] }
+];
 AcuerdoAsambleaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-acuerdo-asamblea',
         template: __webpack_require__(/*! raw-loader!./acuerdo-asamblea.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component.html"),
         styles: [__webpack_require__(/*! ./acuerdo-asamblea.component.css */ "./src/app/auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_acuerdo_asamblea_service__WEBPACK_IMPORTED_MODULE_3__["AcuerdoAsambleaService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"]])
 ], AcuerdoAsambleaComponent);
 
 
@@ -11895,6 +12041,68 @@ SafePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
 ], SafePipe);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/acuerdo-asamblea.service.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/servicios/acuerdo-asamblea.service.ts ***!
+  \*******************************************************/
+/*! exports provided: AcuerdoAsambleaService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcuerdoAsambleaService", function() { return AcuerdoAsambleaService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let AcuerdoAsambleaService = class AcuerdoAsambleaService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    setAcuerdoAsamblea(form) {
+        const body = new FormData();
+        body.append('titulo', form.tituloActa);
+        body.append('fecha', form.fechaActa);
+        body.append('contenido', form.contenidoActa);
+        body.append('idTipoAcuerdo', form.tipoActa);
+        body.append('idEstadoAcuerdo', form.estadoActa);
+        return this._http.post(this.url + "set_acuerdo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token
+            }) });
+    }
+    getAcuerdosAsambleaMesAnio(anio) {
+        return this._http.get(this.url + "listarAcuerdosAsamblea/" + anio, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+    getAcuerdosAsamblea() {
+        return this._http.get(this.url + "get_acuerdos", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+};
+AcuerdoAsambleaService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+AcuerdoAsambleaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], AcuerdoAsambleaService);
 
 
 
@@ -16925,7 +17133,7 @@ DetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvcmV1bmlvbmVzL2dlbmVyYWwtcmV1bmlvbi9nZW5lcmFsLXJldW5pb24uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "label,input, button, strong{\r\n    font-size: 12px;\r\n  }\r\n\r\n  #myTab{\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n  }\r\n\r\n  .card{\r\n    background: rgba(255, 255, 255, 0.5);\r\n  }\r\n\r\n  #demoFont {\r\n    color: #fff;\r\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    }\r\n\r\n  #demoFont2 {\r\n    color: #fff;\r\n    \r\n    background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n  \r\n    }\r\n\r\n  .nav-item a{\r\n      color: #fff;\r\n      background: #373b44; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\r\n  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n      \r\n    }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29jaW9zLW1hc3Rlci9yZXVuaW9uZXMvZ2VuZXJhbC1yZXVuaW9uL2dlbmVyYWwtcmV1bmlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQjs7RUFFQTtJQUNFLDBFQUEwRTtFQUM1RTs7RUFFQTtJQUNFLG9DQUFvQztFQUN0Qzs7RUFHQTtJQUNFLFdBQVc7SUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7SUFDakcsdURBQXVELEVBQUUscUVBQXFFO0lBQzlIOztFQUNGO0lBQ0UsV0FBVzs7SUFFWCxtQkFBbUIsRUFBRSw4QkFBOEIsRUFDYSwrQkFBK0I7SUFDL0Ysc0RBQXNELEVBQUUscUVBQXFFOztJQUU3SDs7RUFFQTtNQUNFLFdBQVc7TUFDWCxtQkFBbUIsRUFBRSw4QkFBOEIsRUFDVywrQkFBK0I7RUFDakcsd0RBQXdELEVBQUUscUVBQXFFOztJQUU3SCIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvcmV1bmlvbmVzL2dlbmVyYWwtcmV1bmlvbi9nZW5lcmFsLXJldW5pb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImxhYmVsLGlucHV0LCBidXR0b24sIHN0cm9uZ3tcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICB9XHJcblxyXG4gICNteVRhYntcclxuICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gIH1cclxuXHJcbiAgLmNhcmR7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNSk7XHJcbiAgfVxyXG5cclxuICBcclxuICAjZGVtb0ZvbnQge1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgIH1cclxuICAjZGVtb0ZvbnQyIHtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgXHJcbiAgICBiYWNrZ3JvdW5kOiAjMzczYjQ0OyAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMzczYjQ0LCAjNDI4NmY0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gIFxyXG4gICAgfVxyXG5cclxuICAgIC5uYXYtaXRlbSBhe1xyXG4gICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgYmFja2dyb3VuZDogIzM3M2I0NDsgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgIzM3M2I0NCwgIzQyODZmNCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgICAgXHJcbiAgICB9Il19 */"
 
 /***/ }),
 
@@ -17085,6 +17293,178 @@ HistorialDetalleReunionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_reuniones_service__WEBPACK_IMPORTED_MODULE_3__["ReunionesService"]])
 ], HistorialDetalleReunionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/actas-socio/actas-socio.component.css":
+/*!********************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/actas-socio/actas-socio.component.css ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc2VjcmV0YXJpYS9hY3Rhcy1zb2Npby9hY3Rhcy1zb2Npby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/actas-socio/actas-socio.component.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/actas-socio/actas-socio.component.ts ***!
+  \*******************************************************************************/
+/*! exports provided: ActasSocioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActasSocioComponent", function() { return ActasSocioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let ActasSocioComponent = class ActasSocioComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+ActasSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-actas-socio',
+        template: __webpack_require__(/*! raw-loader!./actas-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/actas-socio/actas-socio.component.html"),
+        styles: [__webpack_require__(/*! ./actas-socio.component.css */ "./src/app/socios-master/secretaria/actas-socio/actas-socio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], ActasSocioComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.css":
+/*!**************************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc2VjcmV0YXJpYS9hY3VlcmRvcy1zb2Npby9hY3VlcmRvcy1zb2Npby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.ts ***!
+  \*************************************************************************************/
+/*! exports provided: AcuerdosSocioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcuerdosSocioComponent", function() { return AcuerdosSocioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let AcuerdosSocioComponent = class AcuerdosSocioComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+AcuerdosSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-acuerdos-socio',
+        template: __webpack_require__(/*! raw-loader!./acuerdos-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.html"),
+        styles: [__webpack_require__(/*! ./acuerdos-socio.component.css */ "./src/app/socios-master/secretaria/acuerdos-socio/acuerdos-socio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], AcuerdosSocioComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc2VjcmV0YXJpYS9kaXJlY3RvcmlvLXNvY2lvL2RpcmVjdG9yaW8tc29jaW8uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: DirectorioSocioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DirectorioSocioComponent", function() { return DirectorioSocioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let DirectorioSocioComponent = class DirectorioSocioComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+DirectorioSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-directorio-socio',
+        template: __webpack_require__(/*! raw-loader!./directorio-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.html"),
+        styles: [__webpack_require__(/*! ./directorio-socio.component.css */ "./src/app/socios-master/secretaria/directorio-socio/directorio-socio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], DirectorioSocioComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.css":
+/*!********************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.css ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc2VjcmV0YXJpYS9sZXllcy1zb2Npby9sZXllcy1zb2Npby5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.ts ***!
+  \*******************************************************************************/
+/*! exports provided: LeyesSocioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LeyesSocioComponent", function() { return LeyesSocioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let LeyesSocioComponent = class LeyesSocioComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+LeyesSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-leyes-socio',
+        template: __webpack_require__(/*! raw-loader!./leyes-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.html"),
+        styles: [__webpack_require__(/*! ./leyes-socio.component.css */ "./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], LeyesSocioComponent);
 
 
 

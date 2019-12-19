@@ -1,3 +1,129 @@
-<p>
-  acuerdo-asamblea hola mundo Xd
-</p>
+<form>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group text-center">
+        <label for="titulo"><b>Ingrese titulo de la acta</b></label>
+        <input type="text" name="titulo" class="form-control" [(ngModel)]="datosActa.tituloActa">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="fecha"><b>Seleccione Fecha</b></label>
+        <input type="datetime-local" name="fecha" class="form-control" [(ngModel)]="datosActa.fechaActa">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="tipo"><b>Seleccione el tipo de Acta</b></label>
+        <select class="form-control" name="tipo" [(ngModel)]="datosActa.tipoActa">
+          <option value="1">Ordinaria</option>
+          <option value="2">Extraordinaria</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="estado"><b>Seleccione el estado del Acta</b></label>
+        <select class="form-control" name="tipo" [(ngModel)]="datosActa.estadoActa">
+          <option value="1">Aprobada</option>
+          <option value="2">Pendiente</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group text-center">
+        <label for="cuerpo"><b>Contenido del Acta</b></label>
+      <textarea class="form-control" name="cuerpo" id="" rows="10" [(ngModel)]="datosActa.contenidoActa"></textarea>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-primary btn-block" (click)="setAcuerdoAsamblea()">Ingresar</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-secondary btn-block" (click)="abrirModalAcuerdos(menuAdministrarReunion)">Ver Acuerdos de
+        Asamblea</button>
+    </div>
+  </div>
+</form>
+
+<!-- LISTA ACUERDOS ASAMBKLEA -->
+<ng-template #menuAdministrarReunion let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="anio">Seleccione Año</label>
+            <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual">
+              <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered table-dark text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let itemAcuerdos of tablaAcuerdos">
+              <th>{{itemAcuerdos.id}}</th>
+              <td>{{itemAcuerdos.titulo}}</td>
+              <td>{{itemAcuerdos.fecha}}</td>
+              <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(visualizarAcuerdo)">Visualizar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>
+
+<!-- VISUALIZAR ACUERDO -->
+<ng-template #visualizarAcuerdo let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>

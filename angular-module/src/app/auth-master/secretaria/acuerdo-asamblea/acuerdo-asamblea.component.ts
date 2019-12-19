@@ -10,6 +10,15 @@ import { AniosService } from 'src/app/servicios/anios.service';
 })
 export class AcuerdoAsambleaComponent implements OnInit {
 
+  //Variable del formulario
+  datosActa = {
+    tituloActa: '',
+    fechaActa: '',
+    tipoActa: '1',
+    contenidoActa: '',
+    estadoActa: '1'
+  }
+
   //Variables para los select de año y mes
   selectAnio;
   idAnioActual;
@@ -46,6 +55,30 @@ export class AcuerdoAsambleaComponent implements OnInit {
 
   changeAnio(valorSelect){
     this.idAnioActual = valorSelect.target.value;
+  }
+
+  limpiarFormulario(){
+    console.log(this.datosActa);
+    this.datosActa.tituloActa = '';
+    this.datosActa.fechaActa = '';
+    this.datosActa.tipoActa = '1';
+    this.datosActa.contenidoActa = '';
+    this.datosActa.estadoActa = '1';
+
+    console.log(this.datosActa);
+  }
+
+  setAcuerdoAsamblea(){
+    this._acuerdoService.setAcuerdoAsamblea(this.datosActa).subscribe(response => {
+      if(response.estado == 'failed' || response.estado == 'failed_v'){
+        alert(response.mensaje);
+      }else{
+        this.limpiarFormulario();
+        alert(response.mensaje);
+      }
+    }, error=>{
+      console.log(error);
+    });
   }
 
   getAcuerdoAsamblea(){

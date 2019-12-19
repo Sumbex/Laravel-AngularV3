@@ -14,7 +14,7 @@ export class AcuerdoAsambleaService {
       this.url = global.url;
   }
 
-  ingresarValor(form): Observable<any>{
+  setAcuerdoAsamblea(form): Observable<any>{
     
     const body = new FormData();
     body.append('fecha', form.fecha);

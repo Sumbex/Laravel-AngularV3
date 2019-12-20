@@ -1460,7 +1460,7 @@ module.exports = "<p>directorio-socio works!</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <br>\r\n    <div class=\"row justify-content-center\">\r\n\r\n        <div *ngIf=\"!mostrar\" class=\"loader\">Loading...</div>\r\n\r\n        <div *ngIf=\"mostrar\" class=\"card text-center\">\r\n            <div class=\"card-header\">\r\n                <h4 class=\"card-title\">Ultima Noticia</h4>\r\n            </div>\r\n            <div class=\"row no-gutters justify-content-center\">\r\n                <img src=\"../{{ultimaNoticia?.archivo}}\" class=\"card-img arregloImagen\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card-body\">\r\n                        <a href=\"{{ultimaNoticia?.slug}}\">\r\n                            <h5 class=\"card-title\">{{ultimaNoticia?.titulo}}</h5>\r\n                        </a>\r\n                        <div id=\"summary\">\r\n                            <p class=\"card-text collapse\" id=\"collapseSummary\">{{ultimaNoticia?.cuerpo}}</p>\r\n                            <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseSummary\" aria-expanded=\"false\"\r\n                                aria-controls=\"collapseSummary\"></a>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"card-footer text-muted\">\r\n                2 days ago\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row justify-content-center\">\r\n        <div class=\"card-deck\">\r\n            <div class=\"row row-cols-1 row-cols-md-4\">\r\n                <div *ngFor=\"let noticia of noticias\" class=\"col mb-4\">\r\n                    <a href=\"{{noticia?.slug}}\">\r\n                        <div class=\"card h-100\">\r\n                            <img src=\"../{{noticia?.archivo}}\" class=\"card-img-top\">\r\n                            <div class=\"card-body\">\r\n                                <a href=\"{{noticia?.slug}}\">\r\n                                    <h5 class=\"card-title\">{{noticia?.titulo}}</h5>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"card-footer\">\r\n                                <p class=\"card-text\"><small class=\"text-muted\">Publicada hace x minutos.</small></p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <br>\r\n        <div *ngIf=\"mostrar\" class=\"row justify-content-center\">\r\n            <nav aria-label=\"Page navigation example\">\r\n                <ul class=\"pagination justify-content-center\">\r\n                    <li class=\"page-item disabled\">\r\n                        <a class=\"page-link\" href=\"\" tabindex=\"-1\" aria-disabled=\"true\">Previous</a>\r\n                    </li>\r\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"\">1</a></li>\r\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"\">2</a></li>\r\n                    <li class=\"page-item\"><a class=\"page-link\" href=\"\">3</a></li>\r\n                    <li class=\"page-item\">\r\n                        <a class=\"page-link\" href=\"\">Next</a>\r\n                    </li>\r\n                </ul>\r\n            </nav>\r\n        </div>"
+module.exports = "<div class=\"container\">\r\n    <br>\r\n    <div class=\"row justify-content-center\">\r\n\r\n        <div *ngIf=\"!mostrar\" class=\"loader\">Loading...</div>\r\n\r\n        <div *ngIf=\"mostrar\" class=\"card text-center\">\r\n            <div class=\"card-header\">\r\n                <h4 class=\"card-title\">Ultima Noticia</h4>\r\n            </div>\r\n            <div class=\"row no-gutters justify-content-center\">\r\n                <img src=\"../{{ultimaNoticia?.archivo}}\" class=\"card-img arregloImagen\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card-body\">\r\n                        <a href=\"{{ultimaNoticia?.slug}}\">\r\n                            <h5 class=\"card-title\">{{ultimaNoticia?.titulo}}</h5>\r\n                        </a>\r\n                        <div id=\"summary\">\r\n                            <p class=\"card-text collapse\" id=\"collapseSummary\">{{ultimaNoticia?.cuerpo}}</p>\r\n                            <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseSummary\" aria-expanded=\"false\"\r\n                                aria-controls=\"collapseSummary\"></a>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"card-footer text-muted\">\r\n                2 days ago\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row justify-content-center\">\r\n        <!-- <div *ngIf=\"cargarPaginator\" class=\"loader\">Loading...</div> -->\r\n        <div class=\"card-deck\">\r\n            <div class=\"row row-cols-1 row-cols-md-4\">\r\n                <div *ngFor=\"let noticia of noticias\" class=\"col mb-4\">\r\n                    <a href=\"{{noticia?.slug}}\">\r\n                        <div class=\"card h-100\">\r\n                            <img src=\"../{{noticia?.archivo}}\" class=\"card-img-top\">\r\n                            <div class=\"card-body\">\r\n                                <a href=\"{{noticia?.slug}}\">\r\n                                    <h5 class=\"card-title\">{{noticia?.titulo}}</h5>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"card-footer\">\r\n                                <p class=\"card-text\"><small class=\"text-muted\">Publicada hace x minutos.</small></p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <br>\r\n        <div *ngIf=\"mostrar\" class=\"row justify-content-center\">\r\n            <nav aria-label=\"Page navigation example\">\r\n                <ul class=\"pagination justify-content-center\">\r\n                    <!--<li [hidden]=\"currentPage != 1\" class=\"page-item disabled\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\" tabindex=\"-1\" aria-disabled=\"true\">Previous</a>\r\n                    </li> -->\r\n                    <li [hidden]=\"currentPage != totalPages\" class=\"page-item\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\"\r\n                            (click)=\"traerNoticias(currentPage-1)\">Anterior</a>\r\n                    </li>\r\n                    <li *ngFor=\"let i of range\" [ngClass]=\"{'active ': currentPage == i}\" class=\"page-item\"><a\r\n                            class=\"page-link\" href=\"javascript:void(0)\" (click)=\"traerNoticias(i)\">{{i}}</a></li>\r\n                    <li [hidden]=\"currentPage != 1\" class=\"page-item\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\"\r\n                            (click)=\"traerNoticias(currentPage+1)\">Siguiente</a>\r\n                    </li>\r\n                </ul>\r\n            </nav>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 
@@ -13034,23 +13034,24 @@ let LeyesService = class LeyesService {
         });
     }
     //portal socios
-    traerNoticiasSocio() {
+    traerNoticiasSocio(pagina) {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_noticias_sec_socios", {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Authorization': 'Bearer' + token,
-                'Content-Type': 'applcation/json'
-            })
-        });
-    }
-    traerUltimaNoticiaSocio() {
-        let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "traer_ultima_noticia_sec_socios", {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Authorization': 'Bearer' + token,
-                'Content-Type': 'applcation/json'
-            })
-        });
+        if (pagina == null) {
+            return this._http.get(this.url + "traer_noticias_sec_socios", {
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'applcation/json'
+                })
+            });
+        }
+        else {
+            return this._http.get(this.url + "traer_noticias_sec_socios?page=" + pagina, {
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                    'Authorization': 'Bearer' + token,
+                    'Content-Type': 'applcation/json'
+                })
+            });
+        }
     }
 };
 LeyesService.ctorParameters = () => [
@@ -17719,17 +17720,27 @@ let LeyesSocioComponent = class LeyesSocioComponent {
     constructor(_leyesService) {
         this._leyesService = _leyesService;
         this.mostrar = false;
+        this.cargarPaginator = false;
+        this.totalPages = 0;
+        this.currentPage = 1;
+        this.range = [];
     }
     ngOnInit() {
-        this.traerNoticias();
+        this.traerNoticias(null);
     }
-    traerNoticias() {
-        this._leyesService.traerNoticiasSocio().subscribe(res => {
+    traerNoticias(pagina) {
+        this._leyesService.traerNoticiasSocio(pagina).subscribe(res => {
             if (res.estado == 'success') {
-                this.noticias = res.noticias;
+                this.noticias = res.noticias.data;
+                this.totalPages = res.noticias.last_page;
+                this.currentPage = res.noticias.current_page;
+                var pages = [];
+                for (let i = 1; i <= this.totalPages; i++) {
+                    pages.push(i);
+                }
+                this.range = pages;
                 this.ultimaNoticia = res.ultima_noticia;
                 this.mostrar = true;
-                console.log(this.ultimaNoticia);
             }
             else {
                 alert(res.mensaje);
@@ -17905,7 +17916,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

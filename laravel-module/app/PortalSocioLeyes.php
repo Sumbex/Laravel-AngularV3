@@ -24,7 +24,7 @@ class PortalSocioLeyes extends Model
                 'activo' => 'S',
                 'sec_leyes_estado' => 1
             ])
-            ->get();
+            ->paginate(8);
         if (!$noticias->isEmpty()) {
             $ultima = $this->traerUltimaReunion();
             return ['estado' => 'success', 'noticias' => $noticias, 'ultima_noticia' => $ultima['noticia']];

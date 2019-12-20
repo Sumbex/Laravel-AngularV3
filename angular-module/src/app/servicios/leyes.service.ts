@@ -35,28 +35,26 @@ export class LeyesService {
 
   //portal socios
 
-  traerNoticiasSocio(): Observable<any> {
+  traerNoticiasSocio(pagina): Observable<any> {
     let token = localStorage.getItem('token').replace(/['"]+/g, '');
-    return this._http.get(this.url + "traer_noticias_sec_socios", {
-      headers: new HttpHeaders(
-        {
-          'Authorization': 'Bearer' + token,
-          'Content-Type': 'applcation/json'
-        }
-      )
-    });
+    if (pagina == null) {
+      return this._http.get(this.url + "traer_noticias_sec_socios", {
+        headers: new HttpHeaders(
+          {
+            'Authorization': 'Bearer' + token,
+            'Content-Type': 'applcation/json'
+          }
+        )
+      });
+    } else {
+      return this._http.get(this.url + "traer_noticias_sec_socios?page="+ pagina, {
+        headers: new HttpHeaders(
+          {
+            'Authorization': 'Bearer' + token,
+            'Content-Type': 'applcation/json'
+          }
+        )
+      });
+    }
   }
-
-  traerUltimaNoticiaSocio(): Observable<any> {
-    let token = localStorage.getItem('token').replace(/['"]+/g, '');
-    return this._http.get(this.url + "traer_ultima_noticia_sec_socios", {
-      headers: new HttpHeaders(
-        {
-          'Authorization': 'Bearer' + token,
-          'Content-Type': 'applcation/json'
-        }
-      )
-    });
-  }
-
 }

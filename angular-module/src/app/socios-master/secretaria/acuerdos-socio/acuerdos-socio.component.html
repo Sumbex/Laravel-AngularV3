@@ -1,1 +1,43 @@
-<p>acuerdos-socio works!</p>
+<br>
+
+    
+    <div class="card-header" id="demoFont2">
+        <h6 class="card-title">Detalles Cuentas Sindical</h6>
+    </div>
+    
+    <div class="card">
+        <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="anio">Seleccione Año</label>
+          <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual">
+            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered table-dark text-center">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let itemAcuerdos of tablaAcuerdos">
+            <th>{{itemAcuerdos.id}}</th>
+            <td>{{itemAcuerdos.titulo}}</td>
+            <td>{{itemAcuerdos.fecha}}</td>
+            <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(visualizarAcuerdo)">Visualizar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+</div>
+</div>

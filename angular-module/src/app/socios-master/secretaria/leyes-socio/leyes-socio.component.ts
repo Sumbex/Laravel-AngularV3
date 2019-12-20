@@ -40,9 +40,11 @@ export class LeyesSocioComponent implements OnInit {
         this.ultimaNoticia = res.ultima_noticia;
         this.mostrar = true;
       } else {
+
         alert(res.mensaje);
       }
     }, error => {
+
       console.log((error));
     });
   }

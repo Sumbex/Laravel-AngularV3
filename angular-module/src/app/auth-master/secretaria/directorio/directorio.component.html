@@ -1,22 +1,211 @@
-
-    <div class="row">
-      <div class="col-6 col-md-12 mt-4">
-        <label>
-          <b>Ingrese una fecha para la agendar reunion de direcotrio (Formato 24 horas) </b>
-          <i class="fas fa-info-circle" placement="right" ngbTooltip="El formato de hora es 24 horas"></i>
-        </label>
-        <div class="input-group">
-          <input type="datetime-local" name="fecha" required>
-        </div>
+<form #directorio="ngForm" (ngSubmit)="ingresarDirectorio(directorio)">
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <b>Agendar reunion de direcotrio </b>
+        <i class="fas fa-info-circle" placement="right" ngbTooltip="Formato 24 horas."></i>
+      </label>
+      <div class="form-group">
+        <input class="form-control" type="datetime-local" name="fecha" [(ngModel)]="datosDirectorio.fecha" required>
       </div>
-  
-      <div class="col-6 col-md-12 mt-4">
-        <label>
-          <b>Temas a tratar en la Reunion </b>
-        </label>
-        <div class="input-group">
-          <input type="text" name="temas" required>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="tipo"><b>Tipo de Reunión</b></label>
+        <select class="form-control" name="tipoReunion" [(ngModel)]="datosDirectorio.sec_tipo_reunion_id" required>
+          <option value="">--Seleccione--</option>
+          <option value="4">Directorio</option>
+          <option value="5">Sub-Gerencia</option>
+          <option value="6">Gerencia</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label>
+        <b>Titulo de la reunion </b>
+      </label>
+      <div class="form-group">
+        <input class="form-control" type="text" name="titulo" [(ngModel)]="datosDirectorio.titulo" required>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label>
+        <b>Directiva Asistida </b>
+      </label>
+      <div class="form-group">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox1" name="presidente"
+            [(ngModel)]="datosDirectorio.presidente">
+          <label class="form-check-label" for="inlineCheckbox1">Presidente/a</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox2" name="tesorero"
+            [(ngModel)]="datosDirectorio.tesorero">
+          <label class="form-check-label" for="inlineCheckbox2">Tesorero/a</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="checkbox3" name="secretario"
+            [(ngModel)]="datosDirectorio.secretario">
+          <label class="form-check-label" for="inlineCheckbox3">Secretario/a</label>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div *ngIf="datosDirectorio.sec_tipo_reunion_id == 5" class="col-md-12">
+      <label>
+        <b>Sub-Gerentes Asistidos </b>
+      </label>
+      <div class="form-group">
+        <div class="form-group">
+          <textarea class="form-control blockArea" type="text" name="subGerente"
+            placeholder="Nombre y cargo del Sub-Gerente" [(ngModel)]="datosDirectorio.asistencia" required></textarea>
         </div>
       </div>
     </div>
 
+    <div *ngIf="datosDirectorio.sec_tipo_reunion_id == 6" class="col-md-12">
+      <label>
+        <b>Gerentes Asistidos </b>
+      </label>
+      <div class="form-group">
+        <div class="form-group">
+          <textarea class="form-control blockArea" type="text" name="gerente" placeholder="Nombre y cargo del Gerente"
+            [(ngModel)]="datosDirectorio.asistencia" required></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label>
+        <b>Temas a Tratar </b>
+      </label>
+      <div class="form-group">
+        <textarea class="form-control blockArea" type="text" name="temas" [(ngModel)]="datosDirectorio.temas"
+          required></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row justify-content-end">
+    <div class="col-md-2">
+      <label>
+        <b>Agendar Reunion</b>
+      </label>
+      <button class="btn btn-success btn-block btn-sm" type="submit" [disabled]="!directorio.valid ||
+                    ingresandoDatos ||
+                    (directorio.value.presidente == false && 
+                    directorio.value.tesorero == false &&
+                    directorio.value.secretario == false)">
+        <b [hidden]="ingresandoDatos">Agendar</b>
+        <b [hidden]="!ingresandoDatos">Agendando </b>
+        <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+      </button>
+    </div>
+
+    <div class="col-md-2">
+      <label>
+        <b>Historial de Reuniones</b>
+      </label>
+      <button class="btn btn-primary btn-block btn-sm" type="button"
+        (click)="abrirModal(modalDirectorio); visualizarDirectorio()">Historial</button>
+    </div>
+  </div>
+</form>
+
+<ng-template #modalDirectorio let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Historial de Reuniones</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+    <div class="table-responsive-sm">
+
+      <table class="table text-center">
+        <thead>
+          <tr class="bg-info" style="color: #ffff;">
+            <th scope="col">N° Reunion</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Tipo de Reunion</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Detalles</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let listar of listarDirectorio">
+            <th scope="row">{{listar.id}}</th>
+            <td>{{listar.fecha}}</td>
+            <td>{{listar.tipo}}</td>
+            <td>{{listar.titulo || titlecase}}</td>
+            <td><button class="btn btn-success" (click)="abrirModalDetalle(modalDetalle,listar.id)">Ver</button>
+              <!-- detalle del modal -->
+              <ng-template #modalDetalle let-modal>
+                <!-- Header Del Modal -->
+                <div class="modal-header" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle de la Reunion {{listar.id}}</strong>
+                  </h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Cuerpo del modal -->
+                <div class="modal-body" id="printJS-table">
+                  <h3 style="text-align: center;">
+                    <b>{{listar.titulo | titlecase}}</b>
+                  </h3>
+
+                  <p><b>Directiva asistida:</b></p>
+                  <pre *ngFor="let listar2 of listarDirectorioDetalle">{{listar2.descripcion}}</pre>
+
+                  <div *ngIf="listar.asistencia != null">
+                    <p><b>Sub-Gerencia asistida:</b></p>
+                    <pre>{{listar.asistencia}}</pre>
+                  </div>
+
+                  <p><b>Temas a tratar:</b></p>
+                  <pre>{{listar.temas}}</pre>
+
+                </div>
+                <!-- Patitas del Modal -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-success" onclick="printJS({
+                    printable: 'printJS-table',
+                    type:'html',
+                    style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'
+                  })">
+                    <i class="fas fa-print"></i> Imprimir Datos
+                  </button>
+
+                  <button type="button" id="botonCerrarModal" class="btn btn-info"
+                    (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                </div>
+              </ng-template>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>

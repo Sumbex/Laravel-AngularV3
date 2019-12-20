@@ -1,0 +1,28 @@
+.blockArea{
+    resize: none;
+    height: 100px;
+}
+.card{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: #000000;;
+  }
+
+  
+  #demoFont {
+    color: #fff;
+    background: #2C3E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    pre {
+        font-family: "arial";
+        font-size: 15px;
+        width: 100%;
+         white-space: pre-wrap;       /* Since CSS 2.1 */
+        white-space: -moz-pre-wrap;   /* Mozilla, since 1999 */
+        white-space: -pre-wrap;       /* Opera 4-6 */
+        white-space: -o-pre-wrap;     /* Opera 7 */
+        word-wrap: break-word;        /* Internet Explorer 5.5+ */
+      }

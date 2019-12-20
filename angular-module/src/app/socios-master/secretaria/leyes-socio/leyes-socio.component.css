@@ -94,3 +94,8 @@
 #summary a:not(.collapsed):after {
     content: '- Ver Menos';
 }
+
+.arregloImagen{
+  width: 50%;
+ height: 200px;
+}

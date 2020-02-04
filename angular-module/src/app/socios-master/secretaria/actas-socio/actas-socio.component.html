@@ -1,1 +1,139 @@
-<p>actas-socio works!</p>
+<div class="">
+    <br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="th_sec" scope="col">Fecha</th>
+            <th class="th_sec" scope="col">Hora</th>
+            <th class="th_sec" scope="col">Nª Acta</th>
+            <th class="th_sec" scope="col">Encabezado</th>
+            <th class="th_sec" scope="col">Opción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let acta of actas; let i = index" [attr.data-index]="i">
+            <th class="color-right" scope="row">{{ acta.fecha }}</th>
+            <td class="tab_td">{{ acta.hora }}</td>
+            <td class="tab_td">Nº{{i + 1 }}</td>
+            <td class="tab_td">{{ acta.encabezado }}</td>
+            <td class="tab_td"> <button (click)="modal_detalle(detallem)" class="btn btn-primary btn-sm">Ver</button> </td>
+            <!-- <td>{{ acta.dirigente }}</td> -->
+            <!--Modal validar user-->
+            <ng-template #detallem let-modal>
+                <div class="modal-header sticky-top" id="demoFont">
+                    <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle Acta Nº{{i+1}}</strong></h6>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--Cuerpo del body inicio y cierre mensual-->
+                <div class="modal-body" id="printJS-table">
+                    <div class="container" id="printJS-form">
+                        <div class="d-flex justify-content-start">
+                            <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                        </div>
+
+
+                        <h4 align="center">Acta de reunión Nº{{ i+1 }}</h4>
+
+                        <br>
+                        <div class="">
+                            <pre>{{acta.encabezado}}</pre>
+                        </div>
+                        <br>
+                        <div class="">
+                            <pre>Miembros:<br>{{acta.miembros}}</pre>
+                        </div>
+                        <br>
+                        <div class="">
+                            <pre>Orden del día:<br>{{acta.orden_dia}}</pre>
+                        </div>
+                        <br>
+                        <div class="">
+                            <pre>Detalle Orden del día:<br>{{acta.detalle_orden_dia}}</pre>
+                        </div>
+                        <br>
+                        <div class="">
+                            <pre>Redactor:<br>{{acta.dirigente}}</pre>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <button type="button" onclick="printJS('printJS-form', 'html')">
+                 Imprimir PDF
+              </button> -->
+
+                <button type="button" class="btn btn-success"
+                    onclick="printJS({
+                printable: 'printJS-form',
+                type:'html',
+                style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'})">
+                    <i class="fas fa-print"></i> Imprimir Datos
+                </button>
+            </ng-template>
+        </tr>
+
+    </tbody>
+</table>
+</div>
+
+<style>
+    .innputt {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid black;
+        width: 200px;
+    }
+
+    .ta {
+        background: white;
+        border: 0;
+        outline: 0;
+        width: 100%;
+        height: 250px;
+        margin: 5px 0;
+        padding: 3px;
+    }
+
+    .ta2 {
+        border: 0;
+        outline: 0;
+        width: 100%;
+        height: 150px;
+        margin: 5px 0;
+        padding: 3px;
+    }
+
+    .th_sec {
+        background: #4286f4;
+        color: white;
+    }
+
+    .color-right {
+        font-size: 14px;
+        color:  #4286f4;;
+        border-right: 1px solid  #4286f4;;
+        background: white;
+    }
+    .tab_td{
+        background: white;
+    }
+
+    pre {
+        font-family: "arial";
+        font-size: 15px;
+
+        width: 100%;
+        white-space: pre-wrap;
+        /* Since CSS 2.1 */
+        white-space: -moz-pre-wrap;
+        /* Mozilla, since 1999 */
+        white-space: -pre-wrap;
+        /* Opera 4-6 */
+        white-space: -o-pre-wrap;
+        /* Opera 7 */
+        word-wrap: break-word;
+        /* Internet Explorer 5.5+ */
+    }
+</style>

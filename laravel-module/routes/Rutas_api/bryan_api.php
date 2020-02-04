@@ -51,6 +51,8 @@ Route::get('/traer_justificacion_socio_sec/{reunion}/{socio}', 'SecReunionesCont
 Route::get('/traer_historial_reuniones_sec', 'SecReunionesController@TraerHistorialReuniones');
 Route::get('/filtrar_socios_lista_reuniones_sec/{reunion}/{socio?}', 'SecReunionesController@FiltrarSocio');
 
+Route::post('/crear_noticia_sec', 'SecLeyesController@IngresarNoticia');
+
 //------------------------------------------->secretaria
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

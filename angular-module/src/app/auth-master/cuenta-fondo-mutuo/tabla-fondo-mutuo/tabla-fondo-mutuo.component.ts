@@ -83,6 +83,10 @@ export class TablaFondoMutuoComponent implements OnInit {
   actualizarLoad3 = false;
   totalAhorro;
 
+  // PAGAR DIA SUELDO EN C.S.
+  modalPago;
+
+
 
   constructor(
     private _time: AniosService,
@@ -121,6 +125,15 @@ export class TablaFondoMutuoComponent implements OnInit {
     // this.socioDesvinculado();
     this.usuario_logeado();
   }
+  openPago(Pago) {
+    this.modalPago = this.modalService.open(Pago, { size: 'sm' });
+    // this.socioDesvinculado();
+    this.usuario_logeado();
+  }
+
+  cerrarPago(){
+    this.modalPago.close();
+  }
 
   cerrarAcumulado() {
     this.modalAcumulado.close();
@@ -141,6 +154,7 @@ export class TablaFondoMutuoComponent implements OnInit {
     this._consorcioService.getTablaConsorcios(this.anio).subscribe(
       response => {
         this.socios = response;
+        console.log(this.socios);
         this.contador--;
         if (this.contador == 0) {
           this.blockLoad2 = false;
@@ -529,6 +543,10 @@ export class TablaFondoMutuoComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  test(id){
+    console.log(id);
   }
 
 }

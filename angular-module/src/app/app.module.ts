@@ -129,6 +129,7 @@ import { AcuerdosSocioComponent } from './socios-master/secretaria/acuerdos-soci
 import { ActasSocioComponent } from './socios-master/secretaria/actas-socio/actas-socio.component';
 import { DirectorioSocioComponent } from './socios-master/secretaria/directorio-socio/directorio-socio.component';
 import { LeyesSocioComponent } from './socios-master/secretaria/leyes-socio/leyes-socio.component';
+import { ModalDetallePagoConsorcioComponent } from './auth-master/modal-detalle-pago-consorcio/modal-detalle-pago-consorcio.component';
 
 @NgModule({
   declarations: [
@@ -238,7 +239,8 @@ import { LeyesSocioComponent } from './socios-master/secretaria/leyes-socio/leye
     AcuerdosSocioComponent,
     ActasSocioComponent,
     DirectorioSocioComponent,
-    LeyesSocioComponent
+    LeyesSocioComponent,
+    ModalDetallePagoConsorcioComponent
   ],
   imports: [
     BrowserModule,

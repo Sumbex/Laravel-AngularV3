@@ -19,7 +19,18 @@ export class FormularioSindicalComponent implements OnInit {
   selectAnio: Anios[] = [];
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
-  selectDetalle: Detalle[] = [];
+
+ 
+  selectDetalle = [
+    {id: 1,descripcion: 'Fijo'},
+    {id: 2,descripcion: 'Variable'},
+    { id: 3, descripcion: 'Caja Chica' },
+    // { id: 4, descripcion: 'Prestamos' },
+    { id: 5, descripcion: 'Compité Camping' },
+    { id: 6, descripcion: 'Gastos Operacionales' },
+    { id: 8, descripcion: 'Consorcio' },
+ 
+  ];
   selectedImage:File;
 
   datosSindicales: Sindical ={
@@ -62,7 +73,8 @@ export class FormularioSindicalComponent implements OnInit {
     this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
 
     //Cargar detalles
-    this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
+    //this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));
+   
 
     this.usuario_logeado();
   }

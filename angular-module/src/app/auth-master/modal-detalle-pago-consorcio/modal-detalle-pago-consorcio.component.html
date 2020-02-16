@@ -23,7 +23,7 @@
             <table class="table table-bordered table-sm">
                 <thead text-sm class="text-center">
                     <tr>
-                        <th colspan="6" style="background: #138D75;" class="ColorThCS">Tabla de pagos</th>
+                        <th colspan="8" style="background: #138D75;" class="ColorThCS">Tabla de pagos</th>
                         <th colspan="1" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
                         <td colspan="1">{{ monto_inicio }}</td>
                     </tr>
@@ -31,7 +31,7 @@
                         <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th colspan="2" style="background: #138D75;">Socio</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Descripcion</th>
-
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Estado</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto devolucion (egreso)</th>
 
                         <!-- <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto actual (egreso)</th> -->
@@ -49,7 +49,7 @@
                         <td colspan="2">{{ item.fecha }}</td>
                         <td colspan="2">{{ item.socio }}</td>
                         <td colspan="2">{{ item.descripcion }}</td>
-                
+                        <td colspan="2" style="color:green">{{ item.estado }} <i class="fas fa-check"></i></td>
                         <td colspan="2">{{item.monto}}</td>
 
                         

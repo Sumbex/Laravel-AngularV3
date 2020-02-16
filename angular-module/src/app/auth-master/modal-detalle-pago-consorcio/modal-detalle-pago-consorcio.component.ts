@@ -15,16 +15,27 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
     {
       fecha:'10/02/2020',
       socio:'Alejandro Godoy',
-      descripcion: 'Texto de prueba',
-      monto:56000,
+      descripcion: 'Se le cancela a alejandro por limite de periodo',
+      estado:'pagado',
+      monto:'130.000',
       
     },
     {
       fecha: '10/02/2020',
-      socio: 'Alejandro Godoy',
-      descripcion: 'Texto de prueba',
-      monto: 56000
+      socio: 'Esteban Troncozo',
+      descripcion: 'Se le cancela a esteban por limite de periodo',
+      estado: 'pagado',
+      monto: '230.000'
    
+    },
+
+    {
+      fecha: '10/02/2020',
+      socio: 'Andres Riffo',
+      descripcion: 'Se le cancela a andres por limite de periodo',
+      estado: 'pagado',
+      monto: '10.000'
+
     },
   ];
   ngOnInit() {

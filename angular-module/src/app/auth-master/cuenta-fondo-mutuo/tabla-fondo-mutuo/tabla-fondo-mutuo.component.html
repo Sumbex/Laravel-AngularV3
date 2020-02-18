@@ -699,7 +699,7 @@
                       <!-- pago de socio beneficio renunciado -->
           <ng-template #modalPago let-c="close" let-d="dismiss">
             <div class="modal-header" id="demoFont">
-              <h4 class="modal-title" id="modal-basic-title">PAGO AHORRO SOCIO</h4>
+              <h4 class="modal-title" id="modal-basic-title">PAGO DIA DE SUELDO</h4>
               <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -709,26 +709,59 @@
 
                 <div class="col-12 col-md-12 col-lg-12">
                   <div class="row">
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <br><label><strong>FECHA</strong></label>
-                      <input #fecha [(ngModel)]="fechaSocio" type="date" class="form-control form-control-sm">
-                    </div>
-
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <br><label><strong>SOCIO</strong></label>
-                      <input #socio [value]="item?.nombre" type="text" class="form-control form-control-sm"
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label><strong>SOCIO</strong>
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="El nombre se generar automaticamente al seleccionar un socio."></i>
+                    </label>
+                      <input [value]="(item?.nombre | uppercase)" #nombreSocio type="text" class="form-control form-control-sm"
                         disabled>
                     </div>
 
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <br><label><strong>DESCRIPCION</strong></label>
-                      <input #descripcion [value]="'Pago de ahorro al socio ' + item?.nombre" type="text" class="form-control form-control-sm">
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label><strong>FECHA</strong></label>
+                      <input [(ngModel)]="fechaSocio" type="date" class="form-control form-control-sm">
                     </div>
 
-                    <div class="col-12 col-md-12 col-lg-12">
-                      <br><label><strong>MONTO</strong></label>
-                      <input #monto [value]="item?.monto_total_socio" type="number" class="form-control form-control-sm">
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label>
+                        <strong>N° DOCUMENTO  </strong>
+                        <i class="fas fa-info-circle" placement="right" ngbTooltip="El numero de documento puede ser alfa numerico."></i>
+                      </label>
+                      <input 
+                      type="text" 
+                      class="form-control form-control-sm"
+                      name="nDocumento" 
+                      [(ngModel)]="nDocumento"
+                      required>
+                    </div>
+        
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label>
+                        <strong>SUBIR DOCUMENTO  </strong>
+                        <i class="fas fa-info-circle" placement="right" ngbTooltip="Los documentos solo deben ser en formato PDF."></i>
+                      </label>
+                      <input class="form-control-file" type="file" (change)="onSelectImage($event)" required>
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label><strong>DESCRIPCION  </strong>
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="La descripcion se generar automaticamente al seleccionar un socio."></i>
+                    </label>
+                      <input [value]="'PAGO DIA DE SUELDO AL SOCIO ' + (item?.nombre | uppercase)" #descripcionSocio type="text" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label><strong>MONTO DIA SUELDO  </strong>
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="El dia de sueldo se generar automaticamente al seleccionar un socio."></i>
+                    </label>
+                      <input [value]="(item?.monto_total_socio - montoPrestamoSocio)" #montoDiaSueldo type="number" class="form-control form-control-sm" disabled>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6">
+                      <br><label><strong>MONTO PRESTAMO  </strong>
+                      <i class="fas fa-info-circle" placement="right" ngbTooltip="El prestamo viene por defecto con 0 si tuviese prestamo puede reemplazarlo por el monto que desee."></i>
+                    </label>
+                      <input [(ngModel)]="montoPrestamoSocio" type="number" class="form-control form-control-sm">
                     </div>
 
                   
@@ -739,7 +772,7 @@
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" (click)="cerrarPago()">Salir </button>
-                <button type="button" class="btn btn-success" (click)="test(item?.socio_id)">Guardar
+                <button type="button" class="btn btn-success" (click)="pagoDiaSueldoCuentaSindical(item?.socio_id,nombreSocio,descripcionSocio,montoDiaSueldo)">Guardar
                   <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                 </button>

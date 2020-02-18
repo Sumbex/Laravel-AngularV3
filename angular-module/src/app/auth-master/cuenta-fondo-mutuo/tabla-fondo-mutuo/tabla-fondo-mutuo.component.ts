@@ -85,6 +85,12 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   // PAGAR DIA SUELDO EN C.S.
   modalPago;
+  fechaSocio;
+  nDocumento;
+  archivoDocumento;
+  montoDiaSueldoSocio;
+  montoPrestamoSocio = '0';
+
 
 
 
@@ -110,6 +116,10 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.llenar_select();
   }
 
+  onSelectImage(event) {
+    this.archivoDocumento = event.srcElement.files[0];
+  }
+
   openPagoBeneficio(PagoBeneficio) {
     this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'lg' });
     this.socioDesvinculado();
@@ -126,7 +136,7 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.usuario_logeado();
   }
   openPago(Pago) {
-    this.modalPago = this.modalService.open(Pago, { size: 'sm' });
+    this.modalPago = this.modalService.open(Pago, { size: 'lg' });
     // this.socioDesvinculado();
     this.usuario_logeado();
   }
@@ -545,8 +555,8 @@ export class TablaFondoMutuoComponent implements OnInit {
     );
   }
 
-  test(id){
-    console.log(id);
+  pagoDiaSueldoCuentaSindical(id,nombreSocio,descripcionSocio,montoDiaSueldo){
+    console.log(id,nombreSocio.value,this.fechaSocio,this.nDocumento,this.archivoDocumento,descripcionSocio.value,montoDiaSueldo.value,this.montoPrestamoSocio);
   }
 
 }

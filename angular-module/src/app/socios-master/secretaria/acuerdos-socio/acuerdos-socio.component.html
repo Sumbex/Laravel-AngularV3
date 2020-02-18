@@ -32,7 +32,49 @@
             <th>{{itemAcuerdos.id}}</th>
             <td>{{itemAcuerdos.titulo}}</td>
             <td>{{itemAcuerdos.fecha}}</td>
-            <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(visualizarAcuerdo)">Visualizar</button>
+            <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(hojaAcuerdo)">Visualizar</button>
+              <ng-template #hojaAcuerdo let-modal>
+                <!-- Header Del Modal -->
+                <div class="modal-header" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle de la Reunion {{listar.id}}</strong>
+                  </h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Cuerpo del modal -->
+                <div class="modal-body" id="printJS-table">
+                  <h3 style="text-align: center;">
+                    <b>{{listar.titulo | titlecase}}</b>
+                  </h3>
+
+                  <p><b>Directiva asistida:</b></p>
+                  <pre *ngFor="let listar2 of listarDirectorioDetalle">{{listar2.descripcion}}</pre>
+
+                  <div *ngIf="listar.asistencia != null">
+                    <p><b>Sub-Gerencia asistida:</b></p>
+                    <pre>{{listar.asistencia}}</pre>
+                  </div>
+
+                  <p><b>Temas a tratar:</b></p>
+                  <pre>{{listar.temas}}</pre>
+
+                </div>
+                <!-- Patitas del Modal -->
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-success" onclick="printJS({
+                    printable: 'printJS-table',
+                    type:'html',
+                    style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'
+                  })">
+                    <i class="fas fa-print"></i> Imprimir Datos
+                  </button>
+
+                  <button type="button" id="botonCerrarModal" class="btn btn-info"
+                    (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                </div>
+              </ng-template>
             </td>
           </tr>
         </tbody>

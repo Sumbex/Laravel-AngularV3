@@ -92,7 +92,7 @@
               <th>{{itemAcuerdos.id}}</th>
               <td>{{itemAcuerdos.titulo}}</td>
               <td>{{itemAcuerdos.fecha}}</td>
-              <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(visualizarAcuerdo)">Visualizar</button>
+              <td><button class="btn btn-primary" (click)="abrirModalTest(visualizarAcuerdo)">Visualizar</button>
               </td>
             </tr>
           </tbody>
@@ -119,11 +119,39 @@
     </button>
   </div>
   <!-- Cuerpo del modal -->
-  <div class="modal-body">
+  <div class="modal-body" id="printJS-table">
+    <h3 style="text-align: center;">
+      <b>Acuerdo de Asamblea de Pruebas</b>
+    </h3>
+
+    <p><b>Fecha:</b></p>
+    <pre>20 de Diciembre del 2019</pre>
+
+    <div>
+      <p><b>Tipo de Acta:</b></p>
+      <pre>Extraordinaria</pre>
+    </div>
+
+    <p><b>Temas a tratar:</b></p>
+    <pre>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, asperiores earum molestiae fugiat blanditiis voluptatibus ullam, dolor incidunt tenetur quam excepturi labore reprehenderit perferendis aliquam autem quis illo molestias rerum?
+    Accusamus rem corporis, inventore perferendis id quidem sapiente, quos obcaecati ratione, cumque natus esse quas eos ipsa omnis voluptas eius nemo earum consequatur vero corrupti perspiciatis dignissimos vitae! Reiciendis, suscipit.
+    Explicabo consequatur, iure aperiam debitis aspernatur nihil, exercitationem sit accusamus sed mollitia perspiciatis! Nostrum, soluta non. Labore sed corporis blanditiis! Voluptas quasi labore excepturi laborum vel officia, ullam porro corporis.
+    Non, suscipit? Eveniet quae beatae harum rem qui sequi expedita ea consequatur animi nemo voluptatum, perspiciatis sapiente minus optio fugiat error ipsum blanditiis dolores aliquam quos perferendis magni architecto. Quis.</pre>
+
   </div>
   <!-- Patitas del Modal -->
+  <!-- Patitas del Modal -->
   <div class="modal-footer">
-    <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
-        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+
+    <button type="button" class="btn btn-success" onclick="printJS({
+      printable: 'printJS-table',
+      type:'html',
+      style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'
+    })">
+      <i class="fas fa-print"></i> Imprimir Datos
+    </button>
+
+    <button type="button" id="botonCerrarModal" class="btn btn-info"
+      (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i> Volver</button>
   </div>
 </ng-template>

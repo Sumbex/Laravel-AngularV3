@@ -169,5 +169,23 @@ export class ConsorcioService {
     });
   }
 
+  insertar_dia_sueldo_socio(socio_id,fechaSocio,descripcionSocio,montoDiaSueldo,montoPrestamoSocio,nDocumento,archivoDocumento): Observable<any> {
+    let data = new FormData();
+    data.append('socio_id',socio_id);
+    data.append('fecha',fechaSocio);
+    data.append('descripcion',descripcionSocio);
+    data.append('monto',montoDiaSueldo);
+    data.append('prestamo',montoPrestamoSocio);
+    data.append('documento',archivoDocumento);
+    data.append('numero_documento',nDocumento);
+
+    return this._http.post(this.url + "insertar_dia_sueldo_socio",data, {headers: new HttpHeaders(
+          {
+              'Authorization': 'Bearer' + this.token,
+              //'Content-Type': 'applcation/json'
+          }
+      )});
+  }
+
 
 }

@@ -555,8 +555,35 @@ export class TablaFondoMutuoComponent implements OnInit {
     );
   }
 
-  pagoDiaSueldoCuentaSindical(id,nombreSocio,descripcionSocio,montoDiaSueldo){
-    console.log(id,nombreSocio.value,this.fechaSocio,this.nDocumento,this.archivoDocumento,descripcionSocio.value,montoDiaSueldo.value,this.montoPrestamoSocio);
+  limpiarPagoDiaSueldo() {
+    this.fechaSocio = '';
+    this.montoPrestamoSocio = '0';
+    this.nDocumento = '';
+    this.archivoDocumento = null;
+  }
+
+  pagoDiaSueldoCuentaSindical(id,descripcionSocio,montoDiaSueldo){
+    this.actualizarLoad2 = true;
+    this._consorcioService.insertar_dia_sueldo_socio(id,this.fechaSocio,descripcionSocio.value,montoDiaSueldo.value,this.montoPrestamoSocio,this.nDocumento,this.archivoDocumento).subscribe((response) => {
+      console.log(response);
+      if (response.estado == 'failed') {
+        alert(response.mensaje);
+        this.actualizarLoad2 = false;
+      }
+      if (response.estado == 'success') {
+        alert(response.mensaje);
+        this.limpiarPagoDiaSueldo();
+        this.actualizarLoad2 = false;
+        this.modalPago.close();
+        // document.getElementById('refrescarTabla2').click();
+      }
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
   }
 
 }

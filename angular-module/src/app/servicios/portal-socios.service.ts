@@ -202,12 +202,12 @@ export class PortalSociosService{
         )});
     }
 
-    updateDatosBasicosSocio(tipo, valor, campo) : Observable<any>{
+    updateDatosBasicosSocio(tipo, nombreCampo, valorCampo) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
         body.append('tipo', tipo);
-        body.append('input', valor);
-        body.append('nombre_campo', campo);
+        body.append('input', valorCampo);
+        body.append('nombre_campo', nombreCampo);
 
         return this._http.post(this.url + "modificar_datos_basicos_socio",body, {headers: new HttpHeaders(
             {

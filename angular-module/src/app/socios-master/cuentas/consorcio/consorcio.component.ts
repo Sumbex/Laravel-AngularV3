@@ -18,6 +18,7 @@ export class ConsorcioComponent implements OnInit {
   datosConsorcio;
   totalMensual;
   totalConsorcio;
+  totalAhorro;
   
   //variable para laws carags
   cargandoTabla = false;
@@ -70,7 +71,8 @@ export class ConsorcioComponent implements OnInit {
         console.log(response);
         this.datosConsorcio = response.mensual[0];
         this.totalMensual = response.DSCE[0];
-        this.totalConsorcio= response.anual;
+        this.totalConsorcio = response.anual;
+        this.totalAhorro = response.total_ahorro;
         this.cargandoTabla = false;
       }
     },

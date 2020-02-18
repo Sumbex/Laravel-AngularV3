@@ -223,6 +223,10 @@
               <h6><i class="fas fa-dollar-sign mas"></i></h6>
               <br> TOTAL ANUAL
             </th>
+            <th colspan="1" rowspan="2" style="background: #138D75">
+              <h6><i class="fas fa-dollar-sign mas"></i></h6>
+              PAGAR
+            </th>
           </tr>
 
           <tr class="text-center">
@@ -687,7 +691,63 @@
             <td colspan="1" class="sociosNombre">
               <b>{{item?.monto_total_socio  | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
             </td>
-          </tr>
+            <!-- NUEVO MODULO DE PAGO -->
+            <td colspan="1" class="sociosNombre">
+              <b><button class="btn btn-success btn-sm" (click)="openPago(modalPago)">P</button></b>
+            </td>
+
+                      <!-- pago de socio beneficio renunciado -->
+          <ng-template #modalPago let-c="close" let-d="dismiss">
+            <div class="modal-header" id="demoFont">
+              <h4 class="modal-title" id="modal-basic-title">PAGO AHORRO SOCIO</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+
+                <div class="col-12 col-md-12 col-lg-12">
+                  <div class="row">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <br><label><strong>FECHA</strong></label>
+                      <input #fecha [(ngModel)]="fechaSocio" type="date" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <br><label><strong>SOCIO</strong></label>
+                      <input #socio [value]="item?.nombre" type="text" class="form-control form-control-sm"
+                        disabled>
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <br><label><strong>DESCRIPCION</strong></label>
+                      <input #descripcion [value]="'Pago de ahorro al socio ' + item?.nombre" type="text" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                      <br><label><strong>MONTO</strong></label>
+                      <input #monto [value]="item?.monto_total_socio" type="number" class="form-control form-control-sm">
+                    </div>
+
+                  
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" (click)="cerrarPago()">Salir </button>
+                <button type="button" class="btn btn-success" (click)="test(item?.socio_id)">Guardar
+                  <img *ngIf="actualizarLoad2" padding-left="20px" height="12"
+                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                </button>
+              </div>
+            </div>
+          </ng-template> 
+
+          </tr>         
 
           <tr class="text-center">
             <th colspan="28" class="text-right">TOTAL ANUAL</th>

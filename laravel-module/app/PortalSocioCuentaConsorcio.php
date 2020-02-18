@@ -66,7 +66,14 @@ class PortalSocioCuentaConsorcio extends Model
                 if ($ttrue) {
                     $DSCE = $this->restaDSCEMensual($anio);
                     $total = $DSCE['anual'] + $consorcio[0]->acumulado;
-                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $total, 'DSCE' => $DSCE['DSCE']];
+                    $sociosDesvinculados = $this->sociosDesvinculados($anio);
+                    $totalAhorro = 0;
+                    if ($sociosDesvinculados['estado'] == 'success') {
+                        foreach ($sociosDesvinculados['socios'] as $key) {
+                            $totalAhorro = $totalAhorro + $key->total_ADS;
+                        }
+                    }
+                    return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $total, 'DSCE' => $DSCE['DSCE'], 'total_ahorro' => $totalAhorro];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
                 }

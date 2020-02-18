@@ -1,0 +1,65 @@
+<label><strong>Lista pago consorcio</strong></label><br>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(md_tabla)">Ingresar</button>
+
+
+<ng-template #md_tabla let-modal>
+<div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Lista</strong></h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+<div class="modal-header" id="demoFont2">
+    <h6 class="modal-title"><strong>Tabla del detalle de pagos - consorcio</strong></h6>
+</div>
+<div class="card">
+    <div class="row centrarCajaChica">
+        <!-- <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+            <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> el empamnada</small>
+        </ngb-alert> -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-sm">
+                <thead text-sm class="text-center">
+                    <tr>
+                        <th colspan="8" style="background: #138D75;" class="ColorThCS">Tabla de pagos</th>
+                        <th colspan="1" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
+                        <td colspan="1">{{ monto_inicio }}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
+                        <th colspan="2" style="background: #138D75;">Socio</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Descripcion</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Estado</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto devolucion (egreso)</th>
+
+                        <!-- <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto actual (egreso)</th> -->
+                        
+                    </tr>
+                </thead>
+                
+
+
+
+
+
+                <tbody>
+                    <tr *ngFor="let item of tabla; let i = index" class="text-center">
+                        <td colspan="2">{{ item.fecha }}</td>
+                        <td colspan="2">{{ item.socio }}</td>
+                        <td colspan="2">{{ item.descripcion }}</td>
+                        <td colspan="2" style="color:green">{{ item.estado }} <i class="fas fa-check"></i></td>
+                        <td colspan="2">{{item.monto}}</td>
+
+                        
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+</div>
+</div>
+</ng-template>

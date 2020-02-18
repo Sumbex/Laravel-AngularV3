@@ -205,9 +205,3 @@ left: 3.5em;
 }
 /*CLASES DEL LOADER2*/
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-}

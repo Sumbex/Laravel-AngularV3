@@ -133,7 +133,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                         'tipo_cuenta_banco_id' => 'required',
                         'banco' => 'required',
                         'isapre_fonasa' => 'required',
-                        'grupo_sangre' => 'required',
+                        /* 'grupo_sangre' => 'required', */
 
                     ],
                     [

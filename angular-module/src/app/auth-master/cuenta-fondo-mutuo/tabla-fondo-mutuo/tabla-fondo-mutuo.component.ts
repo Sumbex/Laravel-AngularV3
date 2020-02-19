@@ -85,6 +85,12 @@ export class TablaFondoMutuoComponent implements OnInit {
 
   // PAGAR DIA SUELDO EN C.S.
   modalPago;
+  fechaSocio;
+  nDocumento;
+  archivoDocumento;
+  montoDiaSueldoSocio;
+  montoPrestamoSocio = '0';
+
 
 
 
@@ -110,6 +116,10 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.llenar_select();
   }
 
+  onSelectImage(event) {
+    this.archivoDocumento = event.srcElement.files[0];
+  }
+
   openPagoBeneficio(PagoBeneficio) {
     this.modalPagoBeneficio = this.modalService.open(PagoBeneficio, { size: 'lg' });
     this.socioDesvinculado();
@@ -126,7 +136,7 @@ export class TablaFondoMutuoComponent implements OnInit {
     this.usuario_logeado();
   }
   openPago(Pago) {
-    this.modalPago = this.modalService.open(Pago, { size: 'sm' });
+    this.modalPago = this.modalService.open(Pago, { size: 'lg' });
     // this.socioDesvinculado();
     this.usuario_logeado();
   }
@@ -545,8 +555,35 @@ export class TablaFondoMutuoComponent implements OnInit {
     );
   }
 
-  test(id){
-    console.log(id);
+  limpiarPagoDiaSueldo() {
+    this.fechaSocio = '';
+    this.montoPrestamoSocio = '0';
+    this.nDocumento = '';
+    this.archivoDocumento = null;
+  }
+
+  pagoDiaSueldoCuentaSindical(id,descripcionSocio,montoDiaSueldo){
+    this.actualizarLoad2 = true;
+    this._consorcioService.insertar_dia_sueldo_socio(id,this.fechaSocio,descripcionSocio.value,montoDiaSueldo.value,this.montoPrestamoSocio,this.nDocumento,this.archivoDocumento).subscribe((response) => {
+      console.log(response);
+      if (response.estado == 'failed') {
+        alert(response.mensaje);
+        this.actualizarLoad2 = false;
+      }
+      if (response.estado == 'success') {
+        alert(response.mensaje);
+        this.limpiarPagoDiaSueldo();
+        this.actualizarLoad2 = false;
+        this.modalPago.close();
+        // document.getElementById('refrescarTabla2').click();
+      }
+    },
+      error => {
+        console.log(error);
+        this.blockIngreso = false;
+        return false;
+      }
+    );
   }
 
 }

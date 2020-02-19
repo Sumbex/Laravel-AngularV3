@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cuentasindicato;
+use App\Estadodiasueldo;
 use Illuminate\Http\Request;
 use App\Detalleinteresprestamo;
 use App\Cs_gastos_operacionales;
@@ -87,7 +88,8 @@ class CuentaSindicatoController extends Controller
 	{
 
 
-		try{
+		// try{
+			DB::beginTransaction();
 			//si el ingreso es de tipo consorcio y es un egreso, rechazar el ingreso
 			if ($r->tipo_cuenta_sindicato == "8" && $r->definicion == "2") {
 				return [
@@ -174,6 +176,19 @@ class CuentaSindicatoController extends Controller
 							   return [
 								   'estado' => 'failed',
 								   'mensaje'=>'ya existe item de gasto operacional para este mes'
+								];
+							}
+						}
+
+						if ($r->tipo_cuenta_sindicato == '8') {
+							
+							$eds = $this->estado_dia_sueldo();
+
+							 //dd($eds);
+							if ($eds['estado'] == 'failed') {
+								return [
+									'estado' => 'failed',
+									'mensaje' => 'Ya existe un monto en el item consorcio de tipo ingreso'
 								];
 							}
 						}
@@ -377,6 +392,7 @@ class CuentaSindicatoController extends Controller
 
 							if ($cs->tipo_cuenta_sindicato == "6") {
 								if($this->guardar_monto_detalle_go($anio->id, $f['mes'], $r->monto, $cs->id)){
+									DB::commit();
 									return [
 										'estado'  => 'success', 
 										'mensaje' => "Item de cuenta sindical añadido"
@@ -390,15 +406,28 @@ class CuentaSindicatoController extends Controller
 							
 							
 							if ($cs->tipo_cuenta_sindicato == "8") {//tipo consorcio
-								# code...
+								
+								$eds = $this->estado_dia_sueldo();
+
+									 //dd($eds);
+								if ($eds['estado'] == 'success') {
+									$e = new Estadodiasueldo;
+									$e->cuenta_sindicato_id = $cs->id;
+									$e->egreso_total = 'N'; // aun no llega a monto cero el item consorcio
+									$e->directiva_id = $eds['directiva'];
+									$e->save();
+								}
+
+
 							}
 
+							DB::commit();
 							return [
 								'estado'  => 'success', 
 								'mensaje' => "Item de cuenta sindical añadido"
 							];
 						}
-
+						DB::rollBack();
 						$borrar = Storage::delete('/'.$archivo);
 						return [
 							'estado'  => 'failed', 
@@ -407,27 +436,29 @@ class CuentaSindicatoController extends Controller
 
 				}
 				else {
-
+					DB::rollBack();
 					return $this->validar_datos_cs($r);
 				}
 		
 
 					
 			}
-		}catch(QueryException $e){
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
-				'error' => $e
-			];
-		}
-		catch(\Exception $e){
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
-				'error' => $e
-			];
-		}
+		// }catch(QueryException $e){
+		// 	DB::rollBack();
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+		// 		'error' => $e
+		// 	];
+		// }
+		// catch(\Exception $e){
+		// 	DB::rollBack();
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+		// 		'error' => $e
+		// 	];
+		// }
 		
 	}
 
@@ -1236,20 +1267,26 @@ class CuentaSindicatoController extends Controller
 	{
 		$directiva = DB::table('directiva')->where('activo','S')->first();
 
-		$eds = DB::table('estado_dia_sueldo')->where([
+		$eds = DB::table('estado_dia_sueldos')->where([
 				'directiva_id' => $directiva->id,
-				'egreso_total' => 'S' 
-			])->first();
 
-		if ($eds) {
-			return [
-				'estado' => 'success',
-				'directiva' => $directiva->id
-			];
-		}
-		return [
-			'estado' => 'failed'
-		];
+			])->get()->last();
+		
+			if (empty($eds)) {
+				return [ 'estado' => 'success', 'directiva' => $directiva->id ];
+			}else{
+
+				if ($eds->egreso_total == 'S') {
+					return [ 'estado' => 'success', 'directiva' => $directiva->id ];
+				}
+
+				if ($eds->egreso_total == 'N') {
+					return [ 'estado' => 'failed', 'directiva' => $directiva->id ];
+				}
+
+			}
+	
+		
 	}
 
 

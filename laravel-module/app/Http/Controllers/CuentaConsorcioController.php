@@ -6,8 +6,11 @@ use App\Socios;
 use App\CcPagoBeneficio;
 use App\CuentaConsorcio;
 use Illuminate\Http\Request;
+use App\Consorciopagodiasueldo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class CuentaConsorcioController extends Controller
 {
@@ -434,12 +437,6 @@ class CuentaConsorcioController extends Controller
           
         
     }
-
-
-
-
-
-
     //monto total de los desvinculados segun periodo
 
     public function total_desvinculados($anio)// tabla desvinculados
@@ -526,10 +523,146 @@ class CuentaConsorcioController extends Controller
                 break;
         }
 
-
-    
-
     }
 
+    public function insertar_dia_sueldo_socio(Request $r)
+    {
+        $directiva = DB::table('directiva')->where('activo', 'S')->first();
+        $validacion = $this->validar_datos_cs($r);
+        $valida_pdf = $this->validar_pdf($r);
+				
+		if($validacion['estado'] == 'failed_v'){
+
+            return [
+                'estado' => 'failed',
+                'mensaje' => 'No es posible hacer el ingreso, revise que no falten campos por llenar'
+            ];
+
+        }
+
+        if($valida_pdf['estado'] == 'failed_v'){
+            return [
+                'estado' => 'failed',
+                'mensaje' => 'El documento no existe o no es un PDF'
+            ];
+        }
+
+        $verify = Consorciopagodiasueldo::where([
+            'directiva_id' => $directiva->id,
+            'socio_id' => $r->socio_id
+        ])->first();
+
+        //si existe socio en ese mismo periodo denegar
+        if ($verify) {
+            return [
+                'estado'=>'failed',
+                'mensaje' => 'Socio con su dia de sueldo pagado para esta directiva'
+            ];
+
+        }else{
+        
+            //insercion//////////////////////////////////////////////////////////////
+            //
+            $file = $this->guardarArchivo($r->archivo,'consorcio_dia_sueldos/');
+
+            if($file['estado'] == "success"){
+                $archivo = $file['archivo'];
+            }else{
+                return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
+            }
+            
+
+            $cpds = new Consorciopagodiasueldo;
+            $cpds->socio_id = $r->socio_id;
+            $cpds->fecha = $r->fecha;
+            $cpds->descripcion = $r->descripcion;
+            $cpds->monto = $r->monto;
+            $cpds->prestamo = $r->prestamo;
+            $cpds->documento = 'storage/'.$archivo;
+            $cpds->numero_documento = $r->numero_documento;
+            $cpds->activo = 'S';
+
+            if ($cpds->save()) {
+            return [
+                    'estado' => 'success',
+                    'mensaje' => 'Socio con pago de dia de sueldo exitoso'
+            ];
+            }else{
+                $borrar = Storage::delete('/'.$archivo);
+
+                return [
+                    'estado' => 'failed',
+                    'mensaje' => 'Error en el proceso de guardado'
+            ];
+            }
+
+            //insercion//////////////////////////////////////////////////////////////
+        }
+        
+    }
+
+
+    public function validar_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'archivo_documento' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'archivo_documento.required' => 'El PDF es necesario',
+	        	'archivo_documento.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+	}
+	public function validar_datos_cs($request)
+	{
+		 $validator = Validator::make($request->all(), 
+		 	[
+	            'fecha' => 'required',
+	            'numero_documento' => 'required|unique:consorcio_pago_dia_sueldo,numero_documento',
+	            'descripcion' => 'required|min:0',
+	            'prestamo' => 'required',
+	            'monto' => 'required',
+	            'documento' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'fecha.required' => 'La fecha es necesaria',
+	        	'numero_documento.required' => 'El numero de documento es necesario',
+	        	'numero_documento.unique' => 'El numero de documento ya existe en tus registros',
+                'descripcion.required' => 'La descripcion es necesaria',
+                'prestamo.required' => 'El monto del prestamo es necesario',
+                'monto.required' => 'El monto es necesario',
+                'documento.required' => 'El documento es necesario',
+	        ]);
+
+ 
+	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    
+     protected function guardarArchivo($archivo, $ruta)
+    {
+    	try{
+	        $filenameext = $archivo->getClientOriginalName();
+	        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
+	        $extension = $archivo->getClientOriginalExtension();
+	        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
+	        $rutaDB = $ruta . $nombreArchivo;
+
+	        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
+
+	        if ($guardar) {
+	            return ['estado' =>  'success', 'archivo' => $rutaDB];
+	        } else {
+	            return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo.'];
+	        }
+	    }catch (\Throwable $t) {
+    			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
+		}
+    }
    
 }

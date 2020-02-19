@@ -147,6 +147,8 @@ Route::get('total_desvinculados/{anio}','CuentaConsorcioController@total_desvinc
 
 Route::get('proximo_periodo/{anio_actual}','CuentaConsorcioController@proximo_periodo');
 
+Route::post('insertar_dia_sueldo_socio','CuentaConsorcioController@insertar_dia_sueldo_socio');
+
 
 
 //SECRETARIA - ACTAS

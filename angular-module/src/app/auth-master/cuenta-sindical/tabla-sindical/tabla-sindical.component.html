@@ -355,25 +355,27 @@
             </td>
 
             <!--MODAL VISOR PDF-->
-        <ng-template #visorSindicalVariable let-c="close" let-d="dismiss">    
-          <div class="row">
-              <div class="col">
+            <ng-template #visorSindicalVariable let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
                   <div class="modal-header text-center" id="demoFont">
-                      <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                          <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
                   <div class="modal-body">
-                    <iframe width="100%" height="500px" [src]="  '../' + itemVariable.archivo_documento | safeUrl" frameborder="0" allowfullscreen></iframe>
-                  </div> 
-                  <div class="modal-footer" [hidden]="true">
-                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                    <iframe width="100%" height="500px" [src]="  '../' + itemVariable.archivo_documento | safeUrl"
+                      frameborder="0" allowfullscreen></iframe>
                   </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
               </div>
-          </div>
-        </ng-template>
-        <!--MODAL VISOR PDF-->
+            </ng-template>
+            <!--MODAL VISOR PDF-->
 
             <td class="text-center">
               <a (click)="open(visorSindicalVariable)" style="cursor: pointer" class="btn-primary-outline">
@@ -791,27 +793,28 @@
               {{ itemCamping.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
           </tr>
 
-            <!--gastos operacionales-->
-            <tr class="text-center">
-              <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
-              <th style="background: #138D75">N° Doc</th>
-              <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
-              <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Gastos Operacionales</th>
-              <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
-              <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
-              <td></td>
-            </tr>
-  
-            <tr *ngFor="let itemGastosOp of gastosOp">
-              <td colspan="3" class="text-center">
-                {{itemGastosOp.fecha}}
-              </td>
-  
-              <td scope="col" class="text-center">
-                {{itemGastosOp.numero_documento}}
-              </td>
-  
-               <!--MODAL VISOR PDF-->
+          <!--gastos operacionales-->
+
+          <tr class="text-center">
+            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th style="background: #138D75">N° Doc</th>
+            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Gastos Operacionales</th>
+            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <td></td>
+          </tr>
+
+          <tr *ngFor="let itemGastosOp of gastosOp">
+            <td colspan="3" class="text-center">
+              {{itemGastosOp.fecha}}
+            </td>
+
+            <td scope="col" class="text-center">
+              {{itemGastosOp.numero_documento}}
+            </td>
+
+            <!--MODAL VISOR PDF-->
             <ng-template #visorSindicalOperacional let-c="close" let-d="dismiss">
               <div class="row">
                 <div class="col">
@@ -868,52 +871,176 @@
               </a>
             </td>
 
-              <td scope="col" colspan="4" (click)="openActualizar(descripcionOperacionalModal)">
-                {{itemGastosOp.descripcion}}
-                <ng-template #descripcionOperacionalModal let-c="close" let-d="dismiss">
+            <td scope="col" colspan="4" (click)="openActualizar(descripcionOperacionalModal)">
+              {{itemGastosOp.descripcion}}
+              <ng-template #descripcionOperacionalModal let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+
+                  <div class="form-group">
+                    <label><strong>Descripcion Actual</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="{{itemGastosOp.descripcion}}"
+                      disabled>
+                  </div>
+                  <div class="form-group">
+                    <label> <strong>Nueva Descripcion</strong></label>
+                    <input class="form-control form-control-sm" #descripcionOperacional type="text">
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                  <button type="button" class="btn btn-outline-success"
+                    (click)="actualizar(itemGastosOp.id,'descripcion',descripcionOperacional,modalUsuario)">Guardar
+                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                  </button>
+                </div>
+
+              </ng-template>
+            </td>
+
+            <td scope="col" class="text-center">
+              {{ itemGastosOp.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+
+            <td scope="col" class="text-center">
+              {{ itemGastosOp.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <!--acumulado cierre del mes actual-->
+            <td scope="col" class="text-center">
+              {{ itemGastosOp.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          </tr>
+
+          <!--cuenta consorcio-->
+          <tr class="text-center">
+            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th style="background: #138D75">N° Doc</th>
+            <th style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Cuenta Consorcio</th>
+            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <td></td>
+          </tr>
+
+          <tr *ngFor="let itemConsorcio of consorcio">
+            <td colspan="3" class="text-center">
+              {{itemConsorcio.fecha}}
+            </td>
+
+            <td scope="col" class="text-center">
+              {{itemConsorcio.numero_documento}}
+            </td>
+
+            <!--MODAL VISOR PDF-->
+            <ng-template #visorSindicalConsorcio let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
+                  <div class="modal-header text-center" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="100%" height="500px" [src]="  '../' + itemConsorcio.archivo_documento | safeUrl"
+                      frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <!--MODAL VISOR PDF-->
+
+            <td class="text-center">
+              <a (click)="open(visorSindicalConsorcio)" style="cursor: pointer" class="btn-primary-outline">
+                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              </a>&nbsp;
+              <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocConsorcioModal)">
+                <ng-template #DocConsorcioModal let-c="close" let-d="dismiss">
                   <div class="modal-header" id="demoFont">
-                    <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                    <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
                     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-  
                   <div class="modal-body">
-  
+
                     <div class="form-group">
-                      <label><strong>Descripcion Actual</strong></label>
-                      <input type="text" class="form-control form-control-sm" value="{{itemGastosOp.descripcion}}"
-                        disabled>
+                      <label> <strong>Reemplazar Documento Actual </strong></label><i class="far fa-file-pdf"></i>
+                      <input class="form-control-file form-control-file-sm" #DocConsorcio type="file"
+                        (change)="onSelectImage($event)">
                     </div>
-                    <div class="form-group">
-                      <label> <strong>Nueva Descripcion</strong></label>
-                      <input class="form-control form-control-sm" #descripcionOperacional type="text">
-                    </div>
-  
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                     <button type="button" class="btn btn-outline-success"
-                      (click)="actualizar(itemGastosOp.id,'descripcion',descripcionOperacional,modalUsuario)">Guardar
+                      (click)="actualizar(itemConsorcio.id,'archivo',DocConsorcio,modalUsuario)">Guardar
                       <img *ngIf="actualizarLoad" padding-left="20px" height="12"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
                     </button>
                   </div>
-  
                 </ng-template>
-              </td>
-  
-              <td scope="col" class="text-center">
-                {{ itemGastosOp.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
-              </td>
-  
-              <td scope="col" class="text-center">
-                {{ itemGastosOp.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
-              </td>
-              <!--acumulado cierre del mes actual-->
-              <td scope="col" class="text-center">
-                {{ itemGastosOp.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-            </tr>
+                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+              </a>
+            </td>
+
+            <td scope="col" colspan="4" (click)="openActualizar(descripcionConsorcioModal)">
+              {{itemConsorcio.descripcion}}
+              <ng-template #descripcionConsorcioModal let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Descripcion</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+
+                  <div class="form-group">
+                    <label><strong>Descripcion Actual</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="{{itemConsorcio.descripcion}}"
+                      disabled>
+                  </div>
+                  <div class="form-group">
+                    <label> <strong>Nueva Descripcion</strong></label>
+                    <input class="form-control form-control-sm" #descripcionConsorcio type="text">
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                  <button type="button" class="btn btn-outline-success"
+                    (click)="actualizar(itemConsorcio.id,'descripcion',descripcionConsorcio,modalUsuario)">Guardar
+                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                  </button>
+                </div>
+
+              </ng-template>
+            </td>
+
+            <td scope="col" class="text-center">
+              {{ itemConsorcio.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+
+            <td scope="col" class="text-center">
+              {{ itemConsorcio.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <!--acumulado cierre del mes actual-->
+            <td scope="col" class="text-center">
+              {{ itemConsorcio.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+          </tr>
 
           <!--Cierre del mes-->
           <tr>
@@ -983,8 +1110,8 @@
     <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
       (click)="modal.close('Save click')">
       Validar
-      <img *ngIf="load" padding-left="20px" height="12" 
-      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+      <img *ngIf="load" padding-left="20px" height="12"
+        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
     </button>
   </div>
 </ng-template>

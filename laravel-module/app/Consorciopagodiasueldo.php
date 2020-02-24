@@ -13,6 +13,7 @@ class Consorciopagodiasueldo extends Model
     protected function tabla($directiva)
     {
         $listar = DB::select("SELECT
+                                c.id,
                                 to_char(fecha,'dd/MM/yyyy') fecha,
                                 concat(s.nombres,' ',s.a_paterno,' ',s.a_materno) socio,
                                 descripcion,
@@ -23,7 +24,7 @@ class Consorciopagodiasueldo extends Model
                                 (monto + prestamo) total
                             from consorcio_pago_dia_sueldo  c
                             inner join socios s on s.id = c.socio_id
-                            where directiva_id =$directiva
+                            where directiva_id =$directiva order by c.fecha desc
         ");
 
         if (count($listar) > 0) {

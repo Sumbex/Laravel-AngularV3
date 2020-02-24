@@ -67,9 +67,9 @@
                         <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th colspan="2" style="background: #138D75;">Socio</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Descripcion</th>
-                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Estado</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Nº Documento</th>
-                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Docuemnto</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Documento</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Estado</th>
                         <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Monto</th>
                         <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Prestamo</th>
                         <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Monto devolucion (egreso)</th>
@@ -86,10 +86,63 @@
 
                 <tbody>
                     <tr *ngFor="let item of tabla; let i = index" class="text-center">
-                        <td colspan="2">{{ item.fecha }}</td>
+                        <td colspan="2" (click)="openActualizar(fechaFijoModal)">{{ item.fecha }}
+                            <ng-template #fechaFijoModal let-c="closeFecha" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                            
+                                    <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
+                                            value="{{item.fecha}}" disabled></label>
+                                    <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaFijo type="date"></label>
+                            
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <button type="button" class="btn btn-outline-success"
+                                        (click)="actualizar(item.id,'fecha',fechaFijo,modalUsuario)">Guardar
+                                        <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>
+                                </div>
+                            </ng-template>
+                        </td>
                         <td colspan="2">{{ item.socio }}</td>
                         <td colspan="2">{{ item.descripcion }}</td>
-                        <td colspan="2">{{ item.numero_documento }}</td>
+                        <td colspan="2" (click)="openActualizar(numeroDocFijoModal)">{{ item.numero_documento }}
+                            <ng-template #numeroDocFijoModal let-c="close" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label><strong>N° Documento Actual</strong></label>
+                                        <input type="text" class="form-control form-control-sm" value="{{item.numero_documento}}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> <strong>Nuevo N° Documento</strong></label>
+                                        <input class="form-control form-control-sm" #numeroDocFijo type="text">
+                                    </div>
+                                </div>
+                            
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <button type="button" class="btn btn-outline-success"
+                                        (click)="actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)">Guardar
+                                        <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>
+                                </div>
+                            </ng-template>
+                            
+                        </td>
                         <td colspan="2">
                             <a (click)="open(visorSindicalFijo)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>

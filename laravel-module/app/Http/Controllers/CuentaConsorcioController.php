@@ -610,7 +610,74 @@ class CuentaConsorcioController extends Controller
 
     public function actualizar_cpds(Request $r)
     {
-        dd($r->all());
+        $c = Consorciopagodiasueldo::find($r->id);
+        if ($c) {
+            switch ($r->campo) {
+                case 'archivo':
+                    $valida_pdf = $this->validar_update_pdf($r);
+                    if($valida_pdf['estado'] == 'failed_v'){
+                        return [
+                            'estado' => 'failed',
+                            'mensaje' => 'El documento no existe o no es un PDF'
+                        ];
+                    }else{
+                        $ruta = substr($c->documento,8);
+                            
+                        $borrar = Storage::delete('/'.$ruta);
+                        if ($borrar) {
+                            $guardarArchivo = $this->guardarArchivo($r->valor, 'consorcio_dia_sueldos/');
+
+                            if ($guardarArchivo['estado'] == "success") {
+                                $c->documento = 'storage/' . $guardarArchivo['archivo'];
+                                if ($c->save()) {
+                                    return ['estado' => 'success', 'mensaje' => 'Archivo Modificado'];
+                                } else {
+                                    return ['estado' => 'failed', 'mensaje' => 'Error al actualizar'];
+                                }
+                            } else {
+                                return $guardarArchivo;
+                            }
+                        } else {
+                                return ['estado' => 'failed', 'mensaje' => 'No se pudo actualizar el archivo'];
+                        }
+                    }
+                break;
+
+                case 'fecha':
+                    if ($r->valor == '') {
+                        return [
+                            'estado' => 'failed',
+                            'mensaje' => 'No fue posible actualizar la fecha'
+                        ];
+                    }else{
+                        $c->fecha = $r->valor;
+                        if($c->save()){
+                            return ['estado' => 'success', 'mensaje' => 'Fecha Modificada'];
+                        }
+                        return ['estado' => 'failed', 'mensaje' => 'No fue posible actualizar la fecha'];
+                    }
+                break;
+
+                case 'numero_documento':
+                    if ($r->valor == '') {
+                        return [
+                            'estado' => 'failed',
+                            'mensaje' => 'No fue posible actualizar el número de documento'
+                        ];
+                    }else{
+                        $c->numero_documento = $r->valor;
+                        if($c->save()){
+                            return ['estado' => 'success', 'mensaje' => 'Numero de documento Modificado'];
+                        }
+                        return ['estado' => 'failed', 'mensaje' => 'No fue posible actualizar el número de documento'];
+                    }
+                default:
+                    
+                break;
+            }
+        }
+
+        
     }
 
 
@@ -624,6 +691,22 @@ class CuentaConsorcioController extends Controller
 	        [
 	        	'documento.required' => 'El PDF es necesario',
 	        	'documento.mimes' => 'El archivo no es PDF',
+	        ]);
+
+ 
+	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
+	        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+    public function validar_update_pdf($request)
+	{
+		$val = Validator::make($request->all(), 
+		 	[
+
+	            'valor' => 'required|mimes:pdf',
+	        ],
+	        [
+	        	'valor.required' => 'El PDF es necesario',
+	        	'valor.mimes' => 'El archivo no es PDF',
 	        ]);
 
  

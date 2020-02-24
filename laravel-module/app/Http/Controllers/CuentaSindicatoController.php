@@ -538,6 +538,7 @@ class CuentaSindicatoController extends Controller
 			$return['camping']=[];
 			// $return['gasto_operacional']=[];
 			$return['gastosOp']=[];
+			$return['consorcio']=[];
 
 			foreach ($listar as $key) {
 				switch ($key->tipo_cuenta_sindicato) {
@@ -548,6 +549,7 @@ class CuentaSindicatoController extends Controller
 					case '5': $return['camping'][] = $key; break;
 					// case '6': $return['gasto_operacional'][] = $key; break;
 					case '6': $return['gastosOp'][] = $key; break;
+					case '8': $return['consorcio'][] = $key; break;
 					
 					default:
 						# code...

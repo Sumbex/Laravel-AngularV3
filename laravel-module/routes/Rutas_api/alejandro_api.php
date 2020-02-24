@@ -40,7 +40,11 @@ Route::post('modificar_detalle_gasto_operacional','GastoOperacionalController@ac
 Route::post('actualizarSaldoDisponible','GastoOperacionalController@actualizarSaldoDisponible');
 Route::get('getMontoBase','GastoOperacionalController@validarMontoInicio');
 
+Route::get('traer_total_ahorro_dia_sueldo/{directiva}','CuentaConsorcioController@traer_total_ahorro_dia_sueldo');
 //-------------------------------------------------------------------------------------------------
+
+Route::get('traer_directivas', 'CuentaConsorcioController@traer_directivas');
+
 
 //PRESTAMO-----------------------------------------------------
 
@@ -148,8 +152,8 @@ Route::get('total_desvinculados/{anio}','CuentaConsorcioController@total_desvinc
 Route::get('proximo_periodo/{anio_actual}','CuentaConsorcioController@proximo_periodo');
 
 Route::post('insertar_dia_sueldo_socio','CuentaConsorcioController@insertar_dia_sueldo_socio');
-
-
+Route::get('listar_consorcio_pago_dia_sueldo/{directiva}','CuentaConsorcioController@listar_consorcio_pago_dia_sueldo');
+Route::post('actualizar_cpds','CuentaConsorcioController@actualizar_cpds');
 
 //SECRETARIA - ACTAS
 

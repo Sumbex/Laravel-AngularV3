@@ -532,7 +532,7 @@ class CuentaConsorcioController extends Controller
         $valida_pdf = $this->validar_pdf($r);
 				
 		if($validacion['estado'] == 'failed_v'){
-
+            //return $validacion;
             return [
                 'estado' => 'failed',
                 'mensaje' => 'No es posible hacer el ingreso, revise que no falten campos por llenar'
@@ -556,14 +556,14 @@ class CuentaConsorcioController extends Controller
         if ($verify) {
             return [
                 'estado'=>'failed',
-                'mensaje' => 'Socio con su dia de sueldo pagado para esta directiva'
+                'mensaje' => 'Denegado, Socio con su dia de sueldo pagado para esta directiva'
             ];
 
         }else{
         
             //insercion//////////////////////////////////////////////////////////////
             //
-            $file = $this->guardarArchivo($r->archivo,'consorcio_dia_sueldos/');
+            $file = $this->guardarArchivo($r->documento,'consorcio_dia_sueldos/');
 
             if($file['estado'] == "success"){
                 $archivo = $file['archivo'];
@@ -581,6 +581,7 @@ class CuentaConsorcioController extends Controller
             $cpds->documento = 'storage/'.$archivo;
             $cpds->numero_documento = $r->numero_documento;
             $cpds->activo = 'S';
+            $cpds->directiva_id = $directiva->id;
 
             if ($cpds->save()) {
             return [
@@ -600,6 +601,17 @@ class CuentaConsorcioController extends Controller
         }
         
     }
+    public function listar_consorcio_pago_dia_sueldo($directiva){
+
+        $listar = Consorciopagodiasueldo::tabla($directiva);
+
+        return $listar;
+    }
+
+    public function actualizar_cpds(Request $r)
+    {
+        dd($r->all());
+    }
 
 
     public function validar_pdf($request)
@@ -607,11 +619,11 @@ class CuentaConsorcioController extends Controller
 		$val = Validator::make($request->all(), 
 		 	[
 
-	            'archivo_documento' => 'required|mimes:pdf',
+	            'documento' => 'required|mimes:pdf',
 	        ],
 	        [
-	        	'archivo_documento.required' => 'El PDF es necesario',
-	        	'archivo_documento.mimes' => 'El archivo no es PDF',
+	        	'documento.required' => 'El PDF es necesario',
+	        	'documento.mimes' => 'El archivo no es PDF',
 	        ]);
 
  
@@ -663,6 +675,47 @@ class CuentaConsorcioController extends Controller
 	    }catch (\Throwable $t) {
     			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
 		}
+    }
+
+    public function traer_total_ahorro_dia_sueldo($directiva)
+    {
+        $ahorro = DB::select("SELECT 
+                                    cs.id,
+                                    cs.monto_ingreso as total_ahorro_dia_sueldo,
+                                    descripcion 
+                            from cuenta_sindicato cs 
+                            inner join estado_dia_sueldos eds on eds.cuenta_sindicato_id = cs.id
+                            where tipo_cuenta_sindicato = 8 and directiva_id = $directiva limit 1");
+        
+        $cpds = DB::select("SELECT sum(suma) total from (select 
+                                monto, 
+                                prestamo, 
+                                (monto + prestamo) suma 
+                                from consorcio_pago_dia_sueldo where directiva_id = $directiva) x");
+
+        if (count($ahorro)>0 && count($cpds)>0) {
+            return [
+                'estado' =>'success',
+                'ahorro' => $ahorro[0],
+                'cpds' => $cpds[0],
+                'total' => (int)$ahorro[0]->total_ahorro_dia_sueldo - (int)$cpds[0]->total
+            ];
+        }
+        return ['estado' =>'failed'];
+    }
+
+    public function traer_directivas()
+    {
+        $d = DB::table('directiva')->get();
+        $actual = DB::table('directiva')->where('activo','S')->first();
+        if ($d) {
+            return[
+                'estado' => 'success',
+                'data' => $d,
+                'actual' => $actual
+            ];
+        }
+        return ['estado' => 'failed'];
     }
    
 }

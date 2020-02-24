@@ -1,5 +1,29 @@
 <label><strong>Lista pago consorcio</strong></label><br>
-<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(md_tabla)">Ingresar</button>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(md_tabla);get_directivas();tablita()">Ingresar</button>
+
+
+<ng-template #modalUsuario let-modal>
+    <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+        <br>
+        <input #password [(ngModel)]="pass" class="form-control form-control-sm" type="password"
+            placeholder="Ingrese su contraseña" name="">
+        <br>
+        <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+            (click)="modal.close('Save click')">
+            Validar
+            <img *ngIf="load" padding-left="20px" height="12"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+        </button>
+    </div>
+</ng-template>
+
 
 
 <ng-template #md_tabla let-modal>
@@ -15,7 +39,19 @@
     <h6 class="modal-title"><strong>Tabla del detalle de pagos - consorcio</strong></h6>
 </div>
 <div class="card">
-    <div class="row centrarCajaChica">
+    <div class="">
+        <div class="row">
+            <div class="col-md-4">
+                <select [(ngModel)]="directiva"  class="form-control" (change)="tablita()">
+                    <option *ngFor="let item of directivas" [ngValue]="item.id">{{ item.directiva}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-5">
+                
+            </div>
+        </div>
+        <br>
         <!-- <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
             <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> el empamnada</small>
         </ngb-alert> -->
@@ -23,16 +59,20 @@
             <table class="table table-bordered table-sm">
                 <thead text-sm class="text-center">
                     <tr>
-                        <th colspan="8" style="background: #138D75;" class="ColorThCS">Tabla de pagos</th>
-                        <th colspan="1" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
-                        <td colspan="1">{{ monto_inicio }}</td>
+                        <th colspan="8" style="background: #138D75;" class="ColorThCS">TABLA DE PAGOS</th>
+                        <th colspan="4" style="background: #138D75;" class="ColorThCS">TOTAL AHORRO DIA DE SUELDO</th>
+                        <td colspan="5">{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
                     </tr>
                     <tr>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th colspan="2" style="background: #138D75;">Socio</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Descripcion</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Estado</th>
-                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto devolucion (egreso)</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Nº Documento</th>
+                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Docuemnto</th>
+                        <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Monto</th>
+                        <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Prestamo</th>
+                        <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Monto devolucion (egreso)</th>
 
                         <!-- <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto actual (egreso)</th> -->
                         
@@ -49,14 +89,98 @@
                         <td colspan="2">{{ item.fecha }}</td>
                         <td colspan="2">{{ item.socio }}</td>
                         <td colspan="2">{{ item.descripcion }}</td>
-                        <td colspan="2" style="color:green">{{ item.estado }} <i class="fas fa-check"></i></td>
-                        <td colspan="2">{{item.monto}}</td>
+                        <td colspan="2">{{ item.numero_documento }}</td>
+                        <td colspan="2">
+                            <a (click)="open(visorSindicalFijo)" style="cursor: pointer" class="btn-primary-outline">
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                            </a>&nbsp;
+                            <a class="btn-primary-outline" style="cursor: pointer" (click)="openActualizar(DocFijoModal)">
+                                <ng-template #DocFijoModal let-c="close" let-d="dismiss">
+                                    <div class="modal-header" id="demoFont">
+                                        <h4 class="modal-title" id="modal-basic-title">Documento PDF</h4>
+                                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                            
+                                        <div class="form-group">
+                                            <label> <strong>Reemplazar Documento Actual </strong></label><i class="far fa-file-pdf"></i>
+                                            <input class="form-control-file form-control-file-sm" #DocFijo type="file"
+                                                (change)="onSelectImage($event)">
+                                        </div>
+                            
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                        <button type="button" class="btn btn-outline-success"
+                                            (click)="actualizar(item.id,'archivo',DocFijo,modalUsuario)">Guardar
+                                            <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                        </button>
+                                    </div>
+                                </ng-template>
+                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+                            </a>
+
+
+                            <!--MODAL VISOR PDF-->
+                            <ng-template #visorSindicalFijo let-c="close" let-d="dismiss">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="modal-header text-center" id="demoFont">
+                                            <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                            <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe width="100%" height="500px" [src]="  '../' + item.documento | safeUrl"
+                                                frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                        <div class="modal-footer" [hidden]="true">
+                                            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <!--MODAL VISOR PDF-->
+                        </td>
+                        <td colspan="2" style="color:green"> Pagado <i class="fas fa-check"></i></td>
+                        <td colspan="2">{{item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td colspan="2">{{item.prestamo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td colspan="2">{{item.total | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
 
                         
                     </tr>
                 
                 </tbody>
             </table>
+
+            <table class="table table-bordered table-sm">
+                <!--total del cierre de mes-->
+                <tbody>
+                <tr>
+                    <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i> TOTAL AHORRO DIA DE SUELDO
+                    </th>
+                    <td colspan="3" class="text-center">
+                        <strong>{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
+                </tr>
+                
+                <tr>
+                    <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i> TOTAL MONTO DEVOLUCION
+                    </th>
+                    <td colspan="3" class="text-center">
+                        <strong>{{ cpds.total | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
+                </tr>
+                <tr>
+                    <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>
+                        MONTO RESTANTE (T.A.D.S - T.M.D)</th>
+                    <td colspan="3" class="text-center">
+                        <strong>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
+                </tr>
+                </tbody>
+                </table>
         </div>
        
     </div>

@@ -443,6 +443,7 @@ class CuentaConsorcioController extends Controller
     {   
         $tipo='sin_tipo';
 
+        //responsables de mostrar el TOTAL DESCUENTOS DIA DE AHORRO seguhn rango de fecha
         $periodo_init = DB::table('consorcio_directiva')->where('anio_id_inicio',$anio)->first();
         $periodo_fin = DB::table('consorcio_directiva')->where('anio_id_fin',$anio)->first();
 
@@ -524,10 +525,38 @@ class CuentaConsorcioController extends Controller
         }
 
     }
+    public function div_fecha($value)//funciona con input type date 
+    {
+    	$fecha = $value;
+		$ano = substr($fecha, -10, 4);
+		$mes = substr($fecha, -5, 2);
+		$dia = substr($fecha, -2, 2);
+		return [
+			'anio' => $ano, 
+			'mes'  => $mes, 
+			'dia'  => $dia
+		];
+    }
+    public function anio_tipo_id($value)
+    {
+
+    	$data = DB::table('anio')->where('descripcion', $value)->first();
+
+    	if(!empty($data)){
+
+    	 	return $data;
+    	} 
+    		
+    }
 
     public function insertar_dia_sueldo_socio(Request $r)
     {
         $directiva = DB::table('directiva')->where('activo', 'S')->first();
+
+        $f = $this->div_fecha($r->fecha);
+        $anio_ = $f['anio'];
+        $anio = $this->anio_tipo_id($f['anio']);
+
         $validacion = $this->validar_datos_cs($r);
         $valida_pdf = $this->validar_pdf($r);
 				
@@ -548,15 +577,17 @@ class CuentaConsorcioController extends Controller
         }
 
         $verify = Consorciopagodiasueldo::where([
-            'directiva_id' => $directiva->id,
-            'socio_id' => $r->socio_id
-        ])->first();
+            //'directiva_id' => $directiva->id,
+             'socio_id' => $r->socio_id
+        ])->whereRaw("EXTRACT(YEAR FROM fecha) = '$anio_'")
+        ->first();
+        // return response()->json($verify);
 
         //si existe socio en ese mismo periodo denegar
         if ($verify) {
             return [
                 'estado'=>'failed',
-                'mensaje' => 'Denegado, Socio con su dia de sueldo pagado para esta directiva'
+                'mensaje' => 'Denegado, Socio con su dia de sueldo pagado en este periodo'
             ];
 
         }else{
@@ -601,9 +632,9 @@ class CuentaConsorcioController extends Controller
         }
         
     }
-    public function listar_consorcio_pago_dia_sueldo($directiva){
+    public function listar_consorcio_pago_dia_sueldo($anio/*$directiva*/){
 
-        $listar = Consorciopagodiasueldo::tabla($directiva);
+    $listar = Consorciopagodiasueldo::tabla($anio/*$directiva*/);
 
         return $listar;
     }
@@ -671,6 +702,38 @@ class CuentaConsorcioController extends Controller
                         }
                         return ['estado' => 'failed', 'mensaje' => 'No fue posible actualizar el número de documento'];
                     }
+                break;
+                
+                case 'monto':
+                     if ($r->valor == '') {
+                        return [
+                            'estado' => 'failed',
+                            'mensaje' => 'No fue posible actualizar el monto'
+                        ];
+                    }else{
+                        $c->monto = $r->valor;
+                        if($c->save()){
+                            return ['estado' => 'success', 'mensaje' => 'Monto Modificado'];
+                        }
+                        return ['estado' => 'failed', 'mensaje' => 'No fue posible actualizar el monto'];
+                    }
+                break;
+
+                case 'prestamo':
+                     if ($r->valor == '') {
+                        return [
+                            'estado' => 'failed',
+                            'mensaje' => 'No fue posible actualizar el prestamo'
+                        ];
+                    }else{
+                        $c->prestamo = $r->valor;
+                        if($c->save()){
+                            return ['estado' => 'success', 'mensaje' => 'Prestamo Modificado'];
+                        }
+                        return ['estado' => 'failed', 'mensaje' => 'No fue posible actualizar el prestamo'];
+                    }
+                break;
+
                 default:
                     
                 break;
@@ -760,21 +823,25 @@ class CuentaConsorcioController extends Controller
 		}
     }
 
-    public function traer_total_ahorro_dia_sueldo($directiva)
+    public function traer_total_ahorro_dia_sueldo($anio/*$directiva*/)
     {
+       
+        $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
+        $anio_ = $g_anio->descripcion; 
+
         $ahorro = DB::select("SELECT 
                                     cs.id,
                                     cs.monto_ingreso as total_ahorro_dia_sueldo,
                                     descripcion 
                             from cuenta_sindicato cs 
                             inner join estado_dia_sueldos eds on eds.cuenta_sindicato_id = cs.id
-                            where tipo_cuenta_sindicato = 8 and directiva_id = $directiva limit 1");
+                            where tipo_cuenta_sindicato = 8 and anio_id = $anio order by eds.id desc limit 1");
         
         $cpds = DB::select("SELECT sum(suma) total from (select 
                                 monto, 
                                 prestamo, 
                                 (monto + prestamo) suma 
-                                from consorcio_pago_dia_sueldo where directiva_id = $directiva) x");
+                                from consorcio_pago_dia_sueldo where EXTRACT(YEAR FROM fecha) = '$anio_') x");
 
         if (count($ahorro)>0 && count($cpds)>0) {
             return [
@@ -799,6 +866,13 @@ class CuentaConsorcioController extends Controller
             ];
         }
         return ['estado' => 'failed'];
+    }
+
+    public function listar_socio_consorcio_pago_dia_sueldo($nombre, $anio)
+    {
+        $listar = Consorciopagodiasueldo::tabla_filtro_socio($nombre, $anio/*$directiva*/);
+
+        return $listar;
     }
    
 }

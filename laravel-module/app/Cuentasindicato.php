@@ -3,10 +3,11 @@
 namespace App;
 
 use App\Cuentasindicato;
+use App\Consorciopagodiasueldo;
 use App\Detalleinteresprestamo;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 
 class Cuentasindicato extends Model
 {
@@ -18,7 +19,10 @@ class Cuentasindicato extends Model
     	$get_anio = DB::table('mes as m')->select('m.descripcion')->where('id',$mes)->first();
 
     	$interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
-    	$prestamo_egreso = $this->item_prestamo_e_cs($anio, $mes);
+		$prestamo_egreso = $this->item_prestamo_e_cs($anio, $mes);
+		$consorcio_egreso = Consorciopagodiasueldo::item_cpds($anio, $mes);
+
+		
     	//$prestamo_ingreso = $this->item_prestamo_i_cs($anio, $mes); este se comenta por peticion del tio emilio
 
     	//dd($prestamo_ingreso);

@@ -1,5 +1,5 @@
 <label><strong>Lista pago consorcio</strong></label><br>
-<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(md_tabla);get_directivas();tablita()">Ingresar</button>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(md_tabla);">Ingresar</button>
 
 
 <ng-template #modalUsuario let-modal>
@@ -16,7 +16,7 @@
             placeholder="Ingrese su contraseña" name="">
         <br>
         <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
-            (click)="modal.close('Save click')">
+            (click)="load=true;modal.close('Save click')">
             Validar
             <img *ngIf="load" padding-left="20px" height="12"
                 src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -42,31 +42,48 @@
     <div class="">
         <div class="row">
             <div class="col-md-4">
-                <select [(ngModel)]="directiva"  class="form-control" (change)="tablita()">
+                <label for="">Filtrar año del pago</label>
+                <!-- <select [(ngModel)]="directiva"  class="form-control" (change)="tablita()">
                     <option *ngFor="let item of directivas" [ngValue]="item.id">{{ item.directiva}}</option>
+                </select> -->
+               
+                <select [(ngModel)]="anio" class="form-control" (change)="tablita()">
+                    <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
                 </select>
             </div>
 
-            <div class="col-md-5">
-                
+            <div class="col-md-4">
+                <label for="">Filtrar socio</label>
+                <input type="text" placeholder="Buscar socio por nombre o apellidos..." class="form-control"[(ngModel)]="nombre" >
             </div>
+            <div class="col-md-1">
+                <label for="">&nbsp;</label>
+                <button class="btn btn-success" (click)="tabla_filtro()">Buscar</button>
+            </div>
+            <div class="col-md-1">
+                <label for="">&nbsp;</label>
+                <button class="btn btn-success" (click)="tablita()">Refrescar</button>
+            </div>
+
+
         </div>
         <br>
         <!-- <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
             <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> el empamnada</small>
         </ngb-alert> -->
-        <div class="table-responsive">
+        <div class="table-responsive" style="height: 370px; overflow: scroll;">
             <table class="table table-bordered table-sm">
                 <thead text-sm class="text-center">
                     <tr>
                         <th colspan="8" style="background: #138D75;" class="ColorThCS">TABLA DE PAGOS</th>
                         <th colspan="4" style="background: #138D75;" class="ColorThCS">TOTAL AHORRO DIA DE SUELDO</th>
-                        <td colspan="5">{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+                        <td colspan="5">{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}
+                        </td>
                     </tr>
                     <tr>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>
-                        <th colspan="2" style="background: #138D75;">Socio</th>
-                        <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Descripcion</th>
+                        <th colspan="2" style="background: #138D75;"><i class="fas fa-user"></i> Socio</th>
+                        <th colspan="2" style="background: #138D75;"><i class="fas fa-text-width"></i> Descripcion</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Nº Documento</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Documento</th>
                         <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Estado</th>
@@ -200,8 +217,65 @@
                             <!--MODAL VISOR PDF-->
                         </td>
                         <td colspan="2" style="color:green"> Pagado <i class="fas fa-check"></i></td>
-                        <td colspan="2">{{item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
-                        <td colspan="2">{{item.prestamo | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                        <td colspan="2" (click)="openActualizar(montoModal)">{{item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <ng-template #montoModal let-c="close" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">Monto</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label><strong>Monto actual</strong></label>
+                                        <input type="text" class="form-control form-control-sm" value="{{item.monto}}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> <strong>Nuevo monto</strong></label>
+                                        <input class="form-control form-control-sm" #monto type="text">
+                                    </div>
+                                </div>
+                            
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <button type="button" class="btn btn-outline-success"
+                                        (click)="actualizar(item.id,'monto',monto,modalUsuario)">Guardar
+                                        <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>
+                                </div>
+                            </ng-template>
+                        </td>
+                        <td colspan="2" (click)="openActualizar(prestamoModal)">{{item.prestamo | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <ng-template #prestamoModal let-c="close" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">Prestamo</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label><strong>Prestamo Actul</strong></label>
+                                        <input type="text" class="form-control form-control-sm" value="{{item.prestamo}}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> <strong>Nuevo prestamo</strong></label>
+                                        <input class="form-control form-control-sm" #prestamo type="text">
+                                    </div>
+                                </div>
+                            
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <button type="button" class="btn btn-outline-success"
+                                        (click)="actualizar(item.id,'prestamo',prestamo,modalUsuario)">Guardar
+                                        <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>
+                                </div>
+                            </ng-template>
+
+                        </td>
                         <td colspan="2">{{item.total | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
 
                         
@@ -209,31 +283,74 @@
                 
                 </tbody>
             </table>
+        </div>
 
+        <div class="table-responsive">
             <table class="table table-bordered table-sm">
                 <!--total del cierre de mes-->
                 <tbody>
-                <tr>
-                    <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i> TOTAL AHORRO DIA DE SUELDO
-                    </th>
-                    <td colspan="3" class="text-center">
-                        <strong>{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
-                </tr>
-                
-                <tr>
-                    <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i> TOTAL MONTO DEVOLUCION
-                    </th>
-                    <td colspan="3" class="text-center">
-                        <strong>{{ cpds.total | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
-                </tr>
-                <tr>
-                    <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>
-                        MONTO RESTANTE (T.A.D.S - T.M.D)</th>
-                    <td colspan="3" class="text-center">
-                        <strong>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
-                </tr>
+                    <tr>
+                        <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-plus-circle"></i> TOTAL
+                            AHORRO DIA DE SUELDO
+                        </th>
+                        <td colspan="3" class="text-center">
+                            <strong>{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
+                    </tr>
+            
+                    <tr>
+                        <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i> TOTAL
+                            MONTO DEVOLUCION
+                        </th>
+                        <td colspan="3" class="text-center">
+                            <strong>{{ cpds.total | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
+                    </tr>
+                    <tr>
+                        <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>
+                            MONTO RESTANTE (T.A.D.S - T.M.D)</th>
+                        <td colspan="3" class="text-center">
+                            <strong>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }} <i
+                                    (click)="openMontoRestante(monto_restante)" class="fas fa-pen-square"></i></strong>
+            
+                            <ng-template #monto_restante let-c="closeFecha" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">MONTO RESTANTE (T.A.D.S - T.M.D)</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+            
+                                    <label style="text-align:center">TOTAL AHORRO DIA DE SUELDO:
+                                        <b>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></label>
+            
+            
+                                    <div class="alert alert-warning" role="alert">
+                                        Alerta, cuando el <b>TOTAL AHORRO DIA DE SUELDO</b> de arriba <i
+                                            class="fas fa-arrow-up"></i> llegue a "0", cerrar su estado de devolucion de dias de
+                                        sueldos para que las proximas directivas puedan hacer nuevamente la devolucion de los saldos
+                                        a los socios, una vez cerrado este saldo no es posible volver abrir.
+                                    </div>
+                                    <br>
+                                    <!-- <button class="btn btn-success text-center">kkck</button> -->
+                                    <div style="text-align:center">
+                                        <button type="button" class="btn btn-danger" (click)="cerrar_estado(ahorro)">
+                                            <i class="fas fa-window-close"></i> Cerrar estado
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <!-- <button type="button" class="btn btn-outline-success"
+                                                (click)="actualizar(item.id,'fecha',fechaFijo,modalUsuario)">Guardar
+                                                <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                            </button> -->
+                                </div>
+                            </ng-template>
+                        </td>
+                    </tr>
                 </tbody>
-                </table>
+            </table>
         </div>
        
     </div>

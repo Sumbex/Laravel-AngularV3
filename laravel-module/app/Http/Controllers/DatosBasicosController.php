@@ -325,11 +325,11 @@ class DatosBasicosController extends Controller
                         return ($u->modificar_cb =='S')? true:false;
                     break;
 
-                    case 'calcular_descuento_cc':
+                    case 'calcular_descuento_cc':// calcular descuentos en consorcio
                     
                         return ($u->calcular_descuento_cc =='S')? true:false;
                     break;
-                    case 'aplicar_descuento_cc':
+                    case 'aplicar_descuento_cc': //aplicar el calculo del descuento
                     
                         return ($u->aplicar_descuento_cc =='S')? true:false;
                     break;
@@ -340,6 +340,16 @@ class DatosBasicosController extends Controller
                     case 'modificar_go'://gastos operacionales
                     
                         return ($u->modificar_go =='S')? true:false;
+                    break;
+
+                    case 'pagar_ds'://pagar dias de sueldos
+                    
+                        return ($u->pagar_ds =='S')? true:false;
+                    break;
+
+                    case 'actualizar_ds'://actualizar dias de sueldos de un socio
+                    
+                        return ($u->actualizar_ds =='S')? true:false;
                     break;
                     
                     default:

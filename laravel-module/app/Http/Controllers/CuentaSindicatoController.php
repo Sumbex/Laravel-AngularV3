@@ -1269,10 +1269,7 @@ class CuentaSindicatoController extends Controller
 	{
 		$directiva = DB::table('directiva')->where('activo','S')->first();
 
-		$eds = DB::table('estado_dia_sueldos')->where([
-				'directiva_id' => $directiva->id,
-
-			])->get()->last();
+		$eds = DB::table('estado_dia_sueldos')->get()->last();
 		
 			if (empty($eds)) {
 				return [ 'estado' => 'success', 'directiva' => $directiva->id ];
@@ -1290,6 +1287,33 @@ class CuentaSindicatoController extends Controller
 	
 		
 	}
+
+	public function cerrar_estado_dia_sueldo($cs_id)
+	{
+		$e = Estadodiasueldo::where([
+			'cuenta_sindicato_id' => $cs_id,
+			'egreso_total' => 'N'
+		])->first();
+
+		if ($e) {
+			$e->egreso_total = 'S'; // aqui se concidera el cierre del total de ahorro de dia de sueldo;
+			//tambien el admin puede cerrar el proceso cuando este esté en onto 0, pero igual puede cerrar antes
+			if ($e->save()) {
+				return [
+					'estado' => 'success',
+					'mensaje' => 'Estado del total de ahorro de día de sueldo se ha cerrado con exito, ahora puede ingresar nuevamente el total de ahorro de dia de sueldos en la cuenta sindical'
+				];
+			}
+		}
+		else{
+			return [
+					'estado' => 'failed',
+					'mensaje' => 'Estado del total de ahorro de día de sueldo no existe o ya está cerrado'
+				];
+		}
+	}
+
+	
 
 
 }

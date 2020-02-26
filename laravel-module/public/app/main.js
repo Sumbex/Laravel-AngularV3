@@ -844,7 +844,7 @@ module.exports = "<!--Modal camping-->\n<ng-template #validar let-modal>\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<label><strong>Lista pago consorcio</strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openModal(md_tabla);get_directivas();tablita()\">Ingresar</button>\n\n\n<ng-template #modalUsuario let-modal>\n    <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password [(ngModel)]=\"pass\" class=\"form-control form-control-sm\" type=\"password\"\n            placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n        <button [disabled]=\"buttonStatus\" class=\"btn btn-success btn-block btn-sm\" #btn_click_validar\n            (click)=\"modal.close('Save click')\">\n            Validar\n            <img *ngIf=\"load\" padding-left=\"20px\" height=\"12\"\n                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n        </button>\n    </div>\n</ng-template>\n\n\n\n<ng-template #md_tabla let-modal>\n<div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Lista</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n    </button>\n</div>\n\n<div class=\"modal-body\">\n<div class=\"modal-header\" id=\"demoFont2\">\n    <h6 class=\"modal-title\"><strong>Tabla del detalle de pagos - consorcio</strong></h6>\n</div>\n<div class=\"card\">\n    <div class=\"\">\n        <div class=\"row\">\n            <div class=\"col-md-4\">\n                <select [(ngModel)]=\"directiva\"  class=\"form-control\" (change)=\"tablita()\">\n                    <option *ngFor=\"let item of directivas\" [ngValue]=\"item.id\">{{ item.directiva}}</option>\n                </select>\n            </div>\n\n            <div class=\"col-md-5\">\n                \n            </div>\n        </div>\n        <br>\n        <!-- <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n            <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> el empamnada</small>\n        </ngb-alert> -->\n        <div class=\"table-responsive\">\n            <table class=\"table table-bordered table-sm\">\n                <thead text-sm class=\"text-center\">\n                    <tr>\n                        <th colspan=\"8\" style=\"background: #138D75;\" class=\"ColorThCS\">TABLA DE PAGOS</th>\n                        <th colspan=\"4\" style=\"background: #138D75;\" class=\"ColorThCS\">TOTAL AHORRO DIA DE SUELDO</th>\n                        <td colspan=\"5\">{{ ahorro.total_ahorro_dia_sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</td>\n                    </tr>\n                    <tr>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Socio</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Descripcion</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Nº Documento</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Documento</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Estado</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-money-bill-wave\"></i> Monto</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-money-bill-wave\"></i> Prestamo</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-money-bill-wave\"></i> Monto devolucion (egreso)</th>\n\n                        <!-- <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Monto actual (egreso)</th> -->\n                        \n                    </tr>\n                </thead>\n                \n\n\n\n\n\n                <tbody>\n                    <tr *ngFor=\"let item of tabla; let i = index\" class=\"text-center\">\n                        <td colspan=\"2\" (click)=\"openActualizar(fechaFijoModal)\">{{ item.fecha }}\n                            <ng-template #fechaFijoModal let-c=\"closeFecha\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Fecha</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                            \n                                    <label><strong>Fecha Actual</strong> <input type=\"text\" class=\"form-control form-control-sm\"\n                                            value=\"{{item.fecha}}\" disabled></label>\n                                    <label> <strong>Nueva Fecha</strong> <input class=\"form-control form-control-sm\" #fechaFijo type=\"date\"></label>\n                            \n                                </div>\n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'fecha',fechaFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n                        </td>\n                        <td colspan=\"2\">{{ item.socio }}</td>\n                        <td colspan=\"2\">{{ item.descripcion }}</td>\n                        <td colspan=\"2\" (click)=\"openActualizar(numeroDocFijoModal)\">{{ item.numero_documento }}\n                            <ng-template #numeroDocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Numero Documento</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>N° Documento Actual</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.numero_documento}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo N° Documento</strong></label>\n                                        <input class=\"form-control form-control-sm\" #numeroDocFijo type=\"text\">\n                                    </div>\n                                </div>\n                            \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n                            \n                        </td>\n                        <td colspan=\"2\">\n                            <a (click)=\"open(visorSindicalFijo)\" style=\"cursor: pointer\" class=\"btn-primary-outline\">\n                                <i class=\"far fa-file-alt\" placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n                            </a>&nbsp;\n                            <a class=\"btn-primary-outline\" style=\"cursor: pointer\" (click)=\"openActualizar(DocFijoModal)\">\n                                <ng-template #DocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                    <div class=\"modal-header\" id=\"demoFont\">\n                                        <h4 class=\"modal-title\" id=\"modal-basic-title\">Documento PDF</h4>\n                                        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                            <span aria-hidden=\"true\">&times;</span>\n                                        </button>\n                                    </div>\n                                    <div class=\"modal-body\">\n                            \n                                        <div class=\"form-group\">\n                                            <label> <strong>Reemplazar Documento Actual </strong></label><i class=\"far fa-file-pdf\"></i>\n                                            <input class=\"form-control-file form-control-file-sm\" #DocFijo type=\"file\"\n                                                (change)=\"onSelectImage($event)\">\n                                        </div>\n                            \n                                    </div>\n                                    <div class=\"modal-footer\">\n                                        <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                        <button type=\"button\" class=\"btn btn-outline-success\"\n                                            (click)=\"actualizar(item.id,'archivo',DocFijo,modalUsuario)\">Guardar\n                                            <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                        </button>\n                                    </div>\n                                </ng-template>\n                                <i class=\"far fa-copy\" placement=\"top\" ngbTooltip=\"Presione aqui para modificar documento PDF\"></i>\n                            </a>\n\n\n                            <!--MODAL VISOR PDF-->\n                            <ng-template #visorSindicalFijo let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"row\">\n                                    <div class=\"col\">\n                                        <div class=\"modal-header text-center\" id=\"demoFont\">\n                                            <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                                            <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                                <span aria-hidden=\"true\">&times;</span>\n                                            </button>\n                                        </div>\n                                        <div class=\"modal-body\">\n                                            <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.documento | safeUrl\"\n                                                frameborder=\"0\" allowfullscreen></iframe>\n                                        </div>\n                                        <div class=\"modal-footer\" [hidden]=\"true\">\n                                            <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </ng-template>\n                            <!--MODAL VISOR PDF-->\n                        </td>\n                        <td colspan=\"2\" style=\"color:green\"> Pagado <i class=\"fas fa-check\"></i></td>\n                        <td colspan=\"2\">{{item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                        <td colspan=\"2\">{{item.prestamo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n                        <td colspan=\"2\">{{item.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n\n                        \n                    </tr>\n                \n                </tbody>\n            </table>\n\n            <table class=\"table table-bordered table-sm\">\n                <!--total del cierre de mes-->\n                <tbody>\n                <tr>\n                    <th colspan=\"12\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i> TOTAL AHORRO DIA DE SUELDO\n                    </th>\n                    <td colspan=\"3\" class=\"text-center\">\n                        <strong>{{ ahorro.total_ahorro_dia_sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</strong></td>\n                </tr>\n                \n                <tr>\n                    <th colspan=\"12\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i> TOTAL MONTO DEVOLUCION\n                    </th>\n                    <td colspan=\"3\" class=\"text-center\">\n                        <strong>{{ cpds.total | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</strong></td>\n                </tr>\n                <tr>\n                    <th colspan=\"12\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\n                        MONTO RESTANTE (T.A.D.S - T.M.D)</th>\n                    <td colspan=\"3\" class=\"text-center\">\n                        <strong>{{ total | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</strong></td>\n                </tr>\n                </tbody>\n                </table>\n        </div>\n       \n    </div>\n</div>\n</div>\n</ng-template>"
+module.exports = "<label><strong>Lista pago consorcio</strong></label><br>\n<button class=\"btn btn btn-success btn-block btn-sm\" (click)=\"openModal(md_tabla);\">Ingresar</button>\n\n\n<ng-template #modalUsuario let-modal>\n    <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password [(ngModel)]=\"pass\" class=\"form-control form-control-sm\" type=\"password\"\n            placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n        <button [disabled]=\"buttonStatus\" class=\"btn btn-success btn-block btn-sm\" #btn_click_validar\n            (click)=\"load=true;modal.close('Save click')\">\n            Validar\n            <img *ngIf=\"load\" padding-left=\"20px\" height=\"12\"\n                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n        </button>\n    </div>\n</ng-template>\n\n\n\n<ng-template #md_tabla let-modal>\n<div class=\"modal-header\" id=\"demoFont\">\n    <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Lista</strong></h6>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n    </button>\n</div>\n\n<div class=\"modal-body\">\n<div class=\"modal-header\" id=\"demoFont2\">\n    <h6 class=\"modal-title\"><strong>Tabla del detalle de pagos - consorcio</strong></h6>\n</div>\n<div class=\"card\">\n    <div class=\"\">\n        <div class=\"row\">\n            <div class=\"col-md-4\">\n                <label for=\"\">Filtrar año del pago</label>\n                <!-- <select [(ngModel)]=\"directiva\"  class=\"form-control\" (change)=\"tablita()\">\n                    <option *ngFor=\"let item of directivas\" [ngValue]=\"item.id\">{{ item.directiva}}</option>\n                </select> -->\n               \n                <select [(ngModel)]=\"anio\" class=\"form-control\" (change)=\"tablita()\">\n                    <option *ngFor=\"let anio of anios\" [value]=\"anio.id\">{{anio.descripcion}}</option>\n                </select>\n            </div>\n\n            <div class=\"col-md-4\">\n                <label for=\"\">Filtrar socio</label>\n                <input type=\"text\" placeholder=\"Buscar socio por nombre o apellidos...\" class=\"form-control\"[(ngModel)]=\"nombre\" >\n            </div>\n            <div class=\"col-md-1\">\n                <label for=\"\">&nbsp;</label>\n                <button class=\"btn btn-success\" (click)=\"tabla_filtro()\">Buscar</button>\n            </div>\n            <div class=\"col-md-1\">\n                <label for=\"\">&nbsp;</label>\n                <button class=\"btn btn-success\" (click)=\"tablita()\">Refrescar</button>\n            </div>\n\n\n        </div>\n        <br>\n        <!-- <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\n            <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> el empamnada</small>\n        </ngb-alert> -->\n        <div class=\"table-responsive\" style=\"height: 370px; overflow: scroll;\">\n            <table class=\"table table-bordered table-sm\">\n                <thead text-sm class=\"text-center\">\n                    <tr>\n                        <th colspan=\"8\" style=\"background: #138D75;\" class=\"ColorThCS\">TABLA DE PAGOS</th>\n                        <th colspan=\"4\" style=\"background: #138D75;\" class=\"ColorThCS\">TOTAL AHORRO DIA DE SUELDO</th>\n                        <td colspan=\"5\">{{ ahorro.total_ahorro_dia_sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}\n                        </td>\n                    </tr>\n                    <tr>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-user\"></i> Socio</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-text-width\"></i> Descripcion</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Nº Documento</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Documento</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Estado</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-money-bill-wave\"></i> Monto</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-money-bill-wave\"></i> Prestamo</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"fas fa-money-bill-wave\"></i> Monto devolucion (egreso)</th>\n\n                        <!-- <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Monto actual (egreso)</th> -->\n                        \n                    </tr>\n                </thead>\n                \n\n\n\n\n\n                <tbody>\n                    <tr *ngFor=\"let item of tabla; let i = index\" class=\"text-center\">\n                        <td colspan=\"2\" (click)=\"openActualizar(fechaFijoModal)\">{{ item.fecha }}\n                            <ng-template #fechaFijoModal let-c=\"closeFecha\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Fecha</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                            \n                                    <label><strong>Fecha Actual</strong> <input type=\"text\" class=\"form-control form-control-sm\"\n                                            value=\"{{item.fecha}}\" disabled></label>\n                                    <label> <strong>Nueva Fecha</strong> <input class=\"form-control form-control-sm\" #fechaFijo type=\"date\"></label>\n                            \n                                </div>\n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'fecha',fechaFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n                        </td>\n                        <td colspan=\"2\">{{ item.socio }}</td>\n                        <td colspan=\"2\">{{ item.descripcion }}</td>\n                        <td colspan=\"2\" (click)=\"openActualizar(numeroDocFijoModal)\">{{ item.numero_documento }}\n                            <ng-template #numeroDocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Numero Documento</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>N° Documento Actual</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.numero_documento}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo N° Documento</strong></label>\n                                        <input class=\"form-control form-control-sm\" #numeroDocFijo type=\"text\">\n                                    </div>\n                                </div>\n                            \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n                            \n                        </td>\n                        <td colspan=\"2\">\n                            <a (click)=\"open(visorSindicalFijo)\" style=\"cursor: pointer\" class=\"btn-primary-outline\">\n                                <i class=\"far fa-file-alt\" placement=\"top\" ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n                            </a>&nbsp;\n                            <a class=\"btn-primary-outline\" style=\"cursor: pointer\" (click)=\"openActualizar(DocFijoModal)\">\n                                <ng-template #DocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                    <div class=\"modal-header\" id=\"demoFont\">\n                                        <h4 class=\"modal-title\" id=\"modal-basic-title\">Documento PDF</h4>\n                                        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                            <span aria-hidden=\"true\">&times;</span>\n                                        </button>\n                                    </div>\n                                    <div class=\"modal-body\">\n                            \n                                        <div class=\"form-group\">\n                                            <label> <strong>Reemplazar Documento Actual </strong></label><i class=\"far fa-file-pdf\"></i>\n                                            <input class=\"form-control-file form-control-file-sm\" #DocFijo type=\"file\"\n                                                (change)=\"onSelectImage($event)\">\n                                        </div>\n                            \n                                    </div>\n                                    <div class=\"modal-footer\">\n                                        <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                        <button type=\"button\" class=\"btn btn-outline-success\"\n                                            (click)=\"actualizar(item.id,'archivo',DocFijo,modalUsuario)\">Guardar\n                                            <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                        </button>\n                                    </div>\n                                </ng-template>\n                                <i class=\"far fa-copy\" placement=\"top\" ngbTooltip=\"Presione aqui para modificar documento PDF\"></i>\n                            </a>\n\n\n                            <!--MODAL VISOR PDF-->\n                            <ng-template #visorSindicalFijo let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"row\">\n                                    <div class=\"col\">\n                                        <div class=\"modal-header text-center\" id=\"demoFont\">\n                                            <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                                            <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                                <span aria-hidden=\"true\">&times;</span>\n                                            </button>\n                                        </div>\n                                        <div class=\"modal-body\">\n                                            <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + item.documento | safeUrl\"\n                                                frameborder=\"0\" allowfullscreen></iframe>\n                                        </div>\n                                        <div class=\"modal-footer\" [hidden]=\"true\">\n                                            <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">OK</button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </ng-template>\n                            <!--MODAL VISOR PDF-->\n                        </td>\n                        <td colspan=\"2\" style=\"color:green\"> Pagado <i class=\"fas fa-check\"></i></td>\n                        <td colspan=\"2\" (click)=\"openActualizar(montoModal)\">{{item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}\n                            <ng-template #montoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Monto</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>Monto actual</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.monto}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo monto</strong></label>\n                                        <input class=\"form-control form-control-sm\" #monto type=\"text\">\n                                    </div>\n                                </div>\n                            \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'monto',monto,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n                        </td>\n                        <td colspan=\"2\" (click)=\"openActualizar(prestamoModal)\">{{item.prestamo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}\n                            <ng-template #prestamoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Prestamo</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>Prestamo Actul</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.prestamo}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo prestamo</strong></label>\n                                        <input class=\"form-control form-control-sm\" #prestamo type=\"text\">\n                                    </div>\n                                </div>\n                            \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'prestamo',prestamo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n\n                        </td>\n                        <td colspan=\"2\">{{item.total | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\n\n                        \n                    </tr>\n                \n                </tbody>\n            </table>\n        </div>\n\n        <div class=\"table-responsive\">\n            <table class=\"table table-bordered table-sm\">\n                <!--total del cierre de mes-->\n                <tbody>\n                    <tr>\n                        <th colspan=\"12\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-plus-circle\"></i> TOTAL\n                            AHORRO DIA DE SUELDO\n                        </th>\n                        <td colspan=\"3\" class=\"text-center\">\n                            <strong>{{ ahorro.total_ahorro_dia_sueldo | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</strong></td>\n                    </tr>\n            \n                    <tr>\n                        <th colspan=\"12\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-minus-circle\"></i> TOTAL\n                            MONTO DEVOLUCION\n                        </th>\n                        <td colspan=\"3\" class=\"text-center\">\n                            <strong>{{ cpds.total | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</strong></td>\n                    </tr>\n                    <tr>\n                        <th colspan=\"12\" style=\"background: #138D75;\" class=\"text-right\"><i class=\"fas fa-dollar-sign\"></i>\n                            MONTO RESTANTE (T.A.D.S - T.M.D)</th>\n                        <td colspan=\"3\" class=\"text-center\">\n                            <strong>{{ total | currency:\"CLP\" : \"symbol-narrow\":'1.0' }} <i\n                                    (click)=\"openMontoRestante(monto_restante)\" class=\"fas fa-pen-square\"></i></strong>\n            \n                            <ng-template #monto_restante let-c=\"closeFecha\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">MONTO RESTANTE (T.A.D.S - T.M.D)</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n            \n                                    <label style=\"text-align:center\">TOTAL AHORRO DIA DE SUELDO:\n                                        <b>{{ total | currency:\"CLP\" : \"symbol-narrow\":'1.0' }}</b></label>\n            \n            \n                                    <div class=\"alert alert-warning\" role=\"alert\">\n                                        Alerta, cuando el <b>TOTAL AHORRO DIA DE SUELDO</b> de arriba <i\n                                            class=\"fas fa-arrow-up\"></i> llegue a \"0\", cerrar su estado de devolucion de dias de\n                                        sueldos para que las proximas directivas puedan hacer nuevamente la devolucion de los saldos\n                                        a los socios, una vez cerrado este saldo no es posible volver abrir.\n                                    </div>\n                                    <br>\n                                    <!-- <button class=\"btn btn-success text-center\">kkck</button> -->\n                                    <div style=\"text-align:center\">\n                                        <button type=\"button\" class=\"btn btn-danger\" (click)=\"cerrar_estado(ahorro)\">\n                                            <i class=\"fas fa-window-close\"></i> Cerrar estado\n                                        </button>\n                                    </div>\n                                </div>\n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <!-- <button type=\"button\" class=\"btn btn-outline-success\"\n                                                (click)=\"actualizar(item.id,'fecha',fechaFijo,modalUsuario)\">Guardar\n                                                <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                                    src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                            </button> -->\n                                </div>\n                            </ng-template>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n       \n    </div>\n</div>\n</div>\n</ng-template>"
 
 /***/ }),
 
@@ -9114,6 +9114,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _servicios_global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../servicios/global */ "./src/app/servicios/global.ts");
 /* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+
 
 
 
@@ -9121,10 +9123,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponent {
-    constructor(config, modalService, _http, _validarusuario) {
+    constructor(config, modalService, _http, _validarusuario, _fechasService) {
         this.modalService = modalService;
         this._http = _http;
         this._validarusuario = _validarusuario;
+        this._fechasService = _fechasService;
         this.directiva = '';
         this.directivas = [];
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
@@ -9138,20 +9141,23 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
         }; //consorcio_pago_dia_sueldo
         this.total = 0;
         this.cargar = false;
-        this.load = true;
+        this.load = false;
         this.user = [];
         // selectDefinicion: Definicion[] = [];
         this.modalActualizar = null;
         this.m_val = null;
         this.pass = '';
+        this.nombre = '';
         this.url = _servicios_global__WEBPACK_IMPORTED_MODULE_4__["global"].url;
     }
     ngOnInit() {
         console.log('el kkck', this.tabla);
         this.usuario_logeado();
+        this.anios = JSON.parse(localStorage.getItem('anios'));
     }
     openModal(modal) {
         this.modal = this.modalService.open(modal, { size: 'xl' });
+        this.cargar_select();
     }
     open(content) {
         this.modalService.open(content, { size: 'lg' });
@@ -9160,9 +9166,27 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
         this.usuario_logeado();
     }
+    openMontoRestante(Actualizar) {
+        this.modalActualizar = this.modalService.open(Actualizar, { size: 'lg' });
+        this.usuario_logeado();
+    }
     cerrarActualizar() {
         this.modalActualizar.close();
         // this.actualizarMontoCajaChica = '';
+    }
+    cargar_select() {
+        //Cargar id del Año actual
+        this._fechasService.getAnioActual().subscribe(response => {
+            this.anio = response.id;
+            this.cargar = true;
+            this.tablita();
+            // this.idAnioActual = response;
+            // this.valorAnio.descripcion = this.idAnioActual.id;
+            // this.suc_res1 = true;
+            // this.listo_para_listar(this.suc_res1, this.suc_res2);
+        }, error => {
+            console.log(error);
+        });
     }
     usuario_logeado() {
         this._validarusuario.usuario_logeado().subscribe((val) => {
@@ -9171,28 +9195,30 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
             console.log("The POST success.");
         });
     }
-    get_directivas() {
-        this._http.get(this.url + "traer_directivas", {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token, })
-        }).subscribe((val) => {
-            if (val.estado == "success") {
-                this.directivas = val.data;
-                this.directiva = val.actual.id;
-                this.cargar = true;
-                this.tablita();
-            }
-            if (val.estado == "failed") {
-            }
-        }, response => {
-            console.log("POST call in error", response);
-        }, () => {
-            console.log("The POST observable is now completed.");
-        });
-    }
+    // get_directivas(){
+    //   this._http.get(this.url + "traer_directivas", {
+    //     headers: new HttpHeaders(
+    //       { 'Authorization': 'Bearer' + this.token, } )}).subscribe(
+    //         (val: { 'estado', 'data','actual' }) => {
+    //     if (val.estado == "success") {
+    //       this.directivas = val.data;
+    //       this.directiva = val.actual.id
+    //       this.cargar = true;
+    //       // this.tablita();
+    //     }
+    //     if (val.estado == "failed") {
+    //     }
+    //   }, response => {
+    //     console.log("POST call in error", response);
+    //   },
+    //     () => {
+    //       console.log("The POST observable is now completed.");
+    //     });
+    // }
     tablita() {
         console.log(this.directiva);
         if (this.cargar == true) {
-            this._http.get(this.url + "listar_consorcio_pago_dia_sueldo/" + this.directiva, {
+            this._http.get(this.url + "listar_consorcio_pago_dia_sueldo/" + this.anio, {
                 headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                     'Authorization': 'Bearer' + this.token,
                 })
@@ -9215,8 +9241,35 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
             });
         }
     }
+    tabla_filtro() {
+        if (this.nombre == '') {
+            alert('No hay nombre para buscar');
+            return false;
+        }
+        this._http.get(this.url + "listar_socio_consorcio_pago_dia_sueldo/" + this.nombre + '/' + this.anio, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            })
+        }).subscribe((val) => {
+            //console.log(val.estado);
+            if (val.estado == "success") {
+                this.tabla = val.data;
+                this.resultados();
+            }
+            if (val.estado == "failed") {
+                this.tabla = [];
+                this.ahorro = { total_ahorro_dia_sueldo: 0 };
+                this.cpds = { total: 0 };
+                this.total = 0;
+            }
+        }, response => {
+            console.log("POST call in error", response);
+        }, () => {
+            console.log("The POST observable is now completed.");
+        });
+    }
     resultados() {
-        this._http.get(this.url + "traer_total_ahorro_dia_sueldo/" + this.directiva, {
+        this._http.get(this.url + "traer_total_ahorro_dia_sueldo/" + this.anio, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 'Authorization': 'Bearer' + this.token,
             })
@@ -9228,6 +9281,9 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
                 this.total = val.total;
             }
             if (val.estado == "failed") {
+                this.ahorro = { total_ahorro_dia_sueldo: 0 };
+                this.cpds = { total: 0 };
+                this.total = 0;
             }
         }, response => {
             console.log("POST call in error", response);
@@ -9252,16 +9308,16 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
         }
         this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
             this.m_val = this.modalService.open(validar, { size: 'sm' });
-            this.load = true;
+            // this.load = true;
             this.buttonStatus = true;
             const formData = new FormData();
             formData.append('rut', this.user['rut']);
             formData.append('password', this.pass);
-            formData.append('estado', 'modificar_cs');
+            formData.append('estado', 'actualizar_ds');
             this._validarusuario.validar_usuario(formData).subscribe((val) => {
                 //si tiene acceso
                 if (val > 0) {
-                    this.load = false;
+                    this.load = true;
                     this.buttonStatus = false;
                     this.pass = "";
                     this.m_val.close();
@@ -9275,12 +9331,21 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
                         headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token, })
                     }).subscribe((val) => {
                         if (val.estado == "success") {
+                            this.cerrarActualizar();
+                            alert(val.mensaje);
                             // this.directivas = val.data;
                             // this.directiva = val.actual.id
-                            // this.cargar = true;
-                            // this.tablita();
+                            this.actualizarLoad = false;
+                            this.load = false;
+                            this.cargar = true;
+                            this.tablita();
+                            this.resultados();
                         }
                         if (val.estado == "failed") {
+                            this.cerrarActualizar();
+                            alert(val.mensaje);
+                            this.actualizarLoad = false;
+                            this.load = false;
                         }
                     }, response => {
                         console.log("POST call in error", response);
@@ -9308,12 +9373,38 @@ let ModalDetallePagoConsorcioComponent = class ModalDetallePagoConsorcioComponen
     onSelectImage(event) {
         this.archivoDocumento = event.srcElement.files[0];
     }
+    cerrar_estado(ahorro) {
+        // console.log(ahorro);
+        var opcion = confirm("¿Seguro quiere cerrar el estado del total de ahorro de día de sueldo?");
+        if (opcion == true) {
+            this._http.get(this.url + "cerrar_estado_dia_sueldo/" + ahorro.id, {
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
+                    'Authorization': 'Bearer' + this.token,
+                })
+            }).subscribe((val) => {
+                //console.log(val.estado);
+                if (val.estado == "success") {
+                    alert("" + val.mensaje + "");
+                }
+                if (val.estado == "failed") {
+                    alert("" + val.mensaje + "");
+                }
+            }, response => {
+                console.log("POST call in error", response);
+            }, () => {
+                console.log("The POST observable is now completed.");
+            });
+        }
+        else {
+        }
+    }
 };
 ModalDetallePagoConsorcioComponent.ctorParameters = () => [
     { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
     { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
-    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] }
+    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] },
+    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_6__["AniosService"] }
 ];
 ModalDetallePagoConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -9324,7 +9415,8 @@ ModalDetallePagoConsorcioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decor
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
         _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
-        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"]])
+        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"],
+        src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_6__["AniosService"]])
 ], ModalDetallePagoConsorcioComponent);
 
 

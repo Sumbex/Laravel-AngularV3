@@ -54,4 +54,16 @@ export class TablaBeneficiosAuthSocioComponent implements OnInit {
     );
   }
 
+  updateDatosSocios(tipo, nombreCampo, valorCampo){
+    this._portalSociosService.updateDatosBasicosSocio(tipo,nombreCampo,valorCampo).subscribe(response=>{
+      if(response.estado == 'success'){
+        alert(response.mensaje);
+      }else{
+        alert(response.mensaje);
+      }
+    }, error=>{
+      console.log(error);
+    });
+  }
+
 }

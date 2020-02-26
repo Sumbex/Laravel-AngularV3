@@ -27,87 +27,79 @@
               <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <tr>
                   <th class="text-right" style="background: #195fcf">N° CTA:</th>
-                  <td><input type="text" class="sinbordefondo centrado" value="{{traerDatosSocio.numero_cuenta}}"
-                      disabled></td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_numero_cuenta',ctaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.numero_cuenta"></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(2,'numero_cuenta',traerDatosSocio.numero_cuenta)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf">BANCO:</th>
-                  <td><input type="text" class="sinbordefondo centrado" value="{{ traerDatosSocio.banco | uppercase}}"
-                    disabled></td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_banco',bancoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.banco"></td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(2,'banco',traerDatosSocio.banco)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">CUENTA:</th>
                   <td>
                     <select name="Cta" id="cta" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="traerDatosSocio.tipo_cuenta_banco_id" disabled>
+                      [(ngModel)]="traerDatosSocio.tipo_cuenta_banco_id">
                       <option value="1">CUENTA RUT</option>
                       <option value="2">CUENTA VISTA</option>
                       <option value="3">CUENTA CORRIENTE</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_tipo_cuenta_banco_id',tipoCtaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(2,'tipo_cuenta_banco_id',traerDatosSocio.tipo_cuenta_banco_id)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">ISAPRE O FONASA:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                      value="{{traerDatosSocio.isapre_fonasa | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.isapre_fonasa">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_isapre_fonasa',isapreFonasaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(2,'isapre_fonasa',traerDatosSocio.isapre_fonasa)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">GRUPO DE SANGRE:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                      value="{{traerDatosSocio.grupo_sangre | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.grupo_sangre">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_grupo_sangre',grupoSangreUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(2,'grupo_sangre',traerDatosSocio.grupo_sangre)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf">DIRECCION:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                      value="{{traerDatosSocio.direccion | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.direccion">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_direccion',direccionUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'direccion',traerDatosSocio.direccion)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">TELEFONO:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.telefono}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.telefono">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_telefono',telefonoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'telefono',traerDatosSocio.telefono)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">CELULAR:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.celular}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.celular">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_celular',celularUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'celular',traerDatosSocio.celular)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">ANEXO:</th>
-                  <td><input type="text" class="sinbordefondo centrado" 
-                    value="{{traerDatosSocio.anexo | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.anexo">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_anexo',anexoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'anexo',traerDatosSocio.anexo)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr><br>
               </div>
 
@@ -115,76 +107,75 @@
 
                 <tr>
                   <th class="text-right" style="background: #195fcf;">EMAIL PERSONAL:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.email_personal | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.email_personal">                  </td>
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'email_1',traerDatosSocio.email_personal)"><i class="far fa-edit"></i></button>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_email_1',email1Update,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">EMAIL CORPORATIVO:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                     value="{{traerDatosSocio.email_corporativo | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.email_corporativo">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_email_2',email2Update,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'email_2',traerDatosSocio.email_corporativo)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">CARGO PLANTA:</th>
-                  <td><input type="text" class="sinbordefondo centrado"
-                      value="{{traerDatosSocio.cargo_planta | uppercase}}" disabled>
+                  <td><input type="text" class="sinbordefondo centrado" [(ngModel)]="traerDatosSocio.cargo_planta">
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_cargo_planta',cargoPlantaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'cargo_planta',traerDatosSocio.cargo_planta)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">CARGO O COMISION:</th>
                   <td>
                     <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="traerDatosSocio.cargo_comision_sindicato" disabled>
+                      [(ngModel)]="traerDatosSocio.cargo_comision_sindicato">
                       <option value="1">SOCIO</option>
                       <option value="2">DIRECTIVA</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_cargo_comision_sindicato',cargoComisionUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'cargo_comision_sindicato',traerDatosSocio.cargo_comision_sindicato)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">CASA PROPIA:</th>
                   <td>
                     <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="traerDatosSocio.casa_propia" disabled>
+                      [(ngModel)]="traerDatosSocio.casa_propia">
                       <option value="S">SI</option>
                       <option value="N">NO</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_casa_propia',casaPropiaUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'casa_propia',traerDatosSocio.casa_propia)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">ROL TURNO:</th>
                   <td>
                     <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="traerDatosSocio.rol_turno" disabled>
-                      <option value="S">SI</option>
-                      <option value="N">NO</option>
+                      [(ngModel)]="traerDatosSocio.rol_turno">
+                      <option value="1">A</option>
+                      <option value="2">B</option>
+                      <option value="3">C</option>
+                      <option value="4">D</option>
+                      <option value="5">ADMINISTRACION</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_rol_turno',rolTurnoUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'rol_turno',traerDatosSocio.rol_turno)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">ESTADO CIVIL:</th>
                   <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
                   <td>
                     <select name="Civil" id="civil" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="traerDatosSocio.estado_civil_id" disabled>
+                      [(ngModel)]="traerDatosSocio.estado_civil_id">
                       <option value="1">SOLTERO/A</option>
                       <option value="2">CASADO/A</option>
                       <option value="3">VIUDO/A</option>
@@ -192,23 +183,23 @@
                       <option value="5">CONVIVIENTE CIVIL</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_estado_civil_id',estadoCivilUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'estado_civil_id',traerDatosSocio.estado_civil_id)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-right" style="background: #195fcf;">CONYUGE:</th>
                   <!-- <td><input type="text" class="sinbordefondo" value="Dato de Prueba"></td> -->
                   <td>
                     <select name="Rol" id="rol" class="form-control form-control-sm sinbordefondo centrado"
-                      [(ngModel)]="traerDatosSocio.conyuge" disabled>
+                      [(ngModel)]="traerDatosSocio.conyuge">
                       <option value="S">SI</option>
                       <option value="N">NO</option>
                     </select>
                   </td>
-                  <!-- <td><button class="btn btn-outline-success btn-sm"
-                    (click)="actualizar('socio_conyuge',conyugeUpdate,modalUsuario)"><i class="far fa-edit"></i></button>
-                  </td> -->
+                  <td><button class="btn btn-outline-success btn-sm"
+                    (click)="updateDatosSocios(1,'conyuge',traerDatosSocio.conyuge)"><i class="far fa-edit"></i></button>
+                  </td>
                 </tr> <br>
               </div>
 

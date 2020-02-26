@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcuerdosSocioComponent implements OnInit {
 
+  //Tabla de Acuerdos
+  tablaAcuerdos;
+  
   constructor() { }
 
   ngOnInit() {

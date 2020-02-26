@@ -47,9 +47,34 @@
             src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-secondary btn-block" (click)="abrirModalNoticias(menuAdminNoticias)">Ver
+        <button type="button" class="btn btn-secondary btn-block"
+          (click)="abrirModalNoticias(menuAdministrarNoticias)">Ver
           Noticias</button>
       </div>
     </div>
   </form>
+
+  <ng-template #menuAdministrarNoticias let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+      <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Adminsitracion de Noticias</strong>
+      </h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+      <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </ng-template>
 </div>

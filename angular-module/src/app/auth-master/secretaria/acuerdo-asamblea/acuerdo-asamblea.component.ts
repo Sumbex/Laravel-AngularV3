@@ -28,6 +28,7 @@ export class AcuerdoAsambleaComponent implements OnInit {
 
   //variable para asociar al modal
   modalVariable;
+  modalVariabletest;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _acuerdoService: AcuerdoAsambleaService, private _fechasService: AniosService) {
     config.backdrop = 'static';
@@ -43,6 +44,10 @@ export class AcuerdoAsambleaComponent implements OnInit {
     this.modalVariable = this.modalService.open(modalMenu, {size: 'xl'});
     this.getListaAcuerdosAsamblea();
     this.cargarFechasActuales();
+  }
+
+  abrirModalTest(modalMenutest){
+    this.modalVariabletest = this.modalService.open(modalMenutest, {size: 'xl'});
   }
 
   cargarFechasActuales() {

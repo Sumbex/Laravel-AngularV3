@@ -8,14 +8,18 @@
             <div class="card-header">
                 <h4 class="card-title">Ultima Noticia</h4>
             </div>
-            <div class="row no-gutters">
-                <img src="../{{ultimaNoticia?.archivo}}" class="card-img blockArea">
+            <div class="row no-gutters justify-content-center">
+                <img src="../{{ultimaNoticia?.archivo}}" class="card-img arregloImagen">
                 <div class="col-md-12">
                     <div class="card-body">
                         <a href="{{ultimaNoticia?.slug}}">
                             <h5 class="card-title">{{ultimaNoticia?.titulo}}</h5>
                         </a>
-                        <p class="card-text">{{ultimaNoticia?.cuerpo}}</p>
+                        <div id="summary">
+                            <p class="card-text collapse" id="collapseSummary">{{ultimaNoticia?.cuerpo}}</p>
+                            <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false"
+                                aria-controls="collapseSummary"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,16 +30,46 @@
 
     </div>
     <br>
-    <div class="row">
-        <div class="card-group">
-            <div *ngFor="let noticia of noticias" class="card col-md-3 h-100" style="width: 18rem;">
-                <img src="../{{noticia?.archivo}}" class="card-img-top">
-                <div class="card-body">
+    <div class="row justify-content-center">
+        <!-- <div *ngIf="cargarPaginator" class="loader">Loading...</div> -->
+        <div class="card-deck">
+            <div class="row row-cols-1 row-cols-md-4">
+                <div *ngFor="let noticia of noticias" class="col mb-4">
                     <a href="{{noticia?.slug}}">
-                        <h5 class="card-title">{{noticia?.titulo}}</h5>
+                        <div class="card h-100">
+                            <img src="../{{noticia?.archivo}}" class="card-img-top">
+                            <div class="card-body">
+                                <a href="{{noticia?.slug}}">
+                                    <h5 class="card-title">{{noticia?.titulo}}</h5>
+                                </a>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text"><small class="text-muted">Publicada hace x minutos.</small></p>
+                            </div>
+                        </div>
                     </a>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
+        </div>
+        <br>
+        <div [hidden]="range.length <= 1" class="row justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <!--<li [hidden]="currentPage != 1" class="page-item disabled">
+                        <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li> -->
+                    <li [hidden]="currentPage != totalPages" class="page-item">
+                        <a class="page-link" href="javascript:void(0)"
+                            (click)="traerNoticias(currentPage-1)">Anterior</a>
+                    </li>
+                    <li *ngFor="let i of range" [ngClass]="{'active ': currentPage == i}" class="page-item">
+                        <a class="page-link" href="javascript:void(0)" (click)="traerNoticias(i)">{{i}}</a>
+                    </li>
+                    <li [hidden]="currentPage != 1" class="page-item">
+                        <a class="page-link" href="javascript:void(0)"
+                            (click)="traerNoticias(currentPage+1)">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>

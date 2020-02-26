@@ -1,0 +1,30 @@
+  .card{
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  #myTab{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  #demoFont {
+    color: #fff;
+    background: #2C3E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  #demoFont2 {
+    color: #fff;
+    
+    background: #373b44; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+    }
+
+    .nav-item a{
+      color: #fff;
+      background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      
+    }

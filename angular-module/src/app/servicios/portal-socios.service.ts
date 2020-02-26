@@ -202,6 +202,20 @@ export class PortalSociosService{
         )});
     }
 
+    updateDatosBasicosSocio(tipo, nombreCampo, valorCampo) : Observable<any>{
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('tipo', tipo);
+        body.append('input', valorCampo);
+        body.append('nombre_campo', nombreCampo);
+
+        return this._http.post(this.url + "modificar_datos_basicos_socio",body, {headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + token
+            }
+        )});
+    }
+
     getResumenSocio(): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "traer_archivo_resumen_socio", {headers: new HttpHeaders(

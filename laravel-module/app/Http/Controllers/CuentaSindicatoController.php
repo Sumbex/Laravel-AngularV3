@@ -88,6 +88,13 @@ class CuentaSindicatoController extends Controller
 
 
 		try{
+			//si el ingreso es de tipo consorcio y es un egreso, rechazar el ingreso
+			if ($r->tipo_cuenta_sindicato == "8" && $r->definicion == "2") {
+				return [
+					'estado'=>'failed',
+					'mensaje'=>'El ingreso consorcio no puede ser egreso, solamente ingreso'
+				];
+			}
 
 			$file = $this->guardarArchivo($r->archivo,'archivos_sindical/');
 
@@ -379,6 +386,11 @@ class CuentaSindicatoController extends Controller
 										'estado'  => 'success', 
 										'mensaje' => "Item de cuenta sindical añadido, pero el detalle de los gastos operacionales so se ha ingresado"
 									];
+							}
+							
+							
+							if ($cs->tipo_cuenta_sindicato == "8") {//tipo consorcio
+								# code...
 							}
 
 							return [
@@ -1218,6 +1230,26 @@ class CuentaSindicatoController extends Controller
 	{
 		$data = DB::table('directiva')->select('id')->where('activo','S')->first();
 		return $data->id;
+	}
+
+	public function estado_dia_sueldo()
+	{
+		$directiva = DB::table('directiva')->where('activo','S')->first();
+
+		$eds = DB::table('estado_dia_sueldo')->where([
+				'directiva_id' => $directiva->id,
+				'egreso_total' => 'S' 
+			])->first();
+
+		if ($eds) {
+			return [
+				'estado' => 'success',
+				'directiva' => $directiva->id
+			];
+		}
+		return [
+			'estado' => 'failed'
+		];
 	}
 
 

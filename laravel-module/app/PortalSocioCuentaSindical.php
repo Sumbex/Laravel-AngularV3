@@ -124,6 +124,8 @@ class PortalSocioCuentaSindical extends Model
             $return['caja_chica'] = [];
             $return['prestamos'] = [];
             $return['camping'] = [];
+            $return['gastos_operacionales'] = [];
+            $return['consorcio'] = [];
 
             foreach ($CS as $key) {
                 switch ($key->tipo_cuenta_sindicato) {
@@ -145,6 +147,14 @@ class PortalSocioCuentaSindical extends Model
 
                     case 5:
                         $return['camping'][] = $key;
+                        break;
+
+                    case 6:
+                        $return['gastos_operacionales'][] = $key;
+                        break;
+
+                    case 8:
+                        $return['consorcio'][] = $key;
                         break;
 
                     default:
@@ -434,7 +444,7 @@ class PortalSocioCuentaSindical extends Model
 
     protected function traerMontoInicialGO()
     {
-        $existe = Cs_gastos_operacionales_detalle::where('directiva',$this->directiva()->id)->sum('monto');
+        $existe = Cs_gastos_operacionales_detalle::where('directiva', $this->directiva()->id)->sum('monto');
         /* dd($existe); */
         if ($existe) {
             return ['estado' => 'success', 'monto' => $existe];

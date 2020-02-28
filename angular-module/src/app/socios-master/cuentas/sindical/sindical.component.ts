@@ -28,6 +28,8 @@ export class SindicalComponent implements OnInit {
   cajaChica;
   prestamo;
   camping;
+  gastosOperacionales;
+  consorcio;
   resultado;
 
   //variable asociada al modalSindical
@@ -103,6 +105,8 @@ export class SindicalComponent implements OnInit {
         this.fijos = response.CS.fijos;
         this.prestamo = response.CS.prestamos;
         this.variable = response.CS.variables;
+        this.gastosOperacionales = response.CS.gastos_operacionales;
+        this.consorcio = response.CS.consorcio;
         this.resultado = response.totales;
       }
    },
@@ -136,6 +140,8 @@ export class SindicalComponent implements OnInit {
   this.fijos = null;
   this.prestamo = null;
   this.variable = null;
+  this.gastosOperacionales = null;
+  this.consorcio = null;
   this.resultado = null;
  }
 

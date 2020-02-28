@@ -55,6 +55,12 @@ Route::post('/crear_noticia_sec', 'SecLeyesController@IngresarNoticia');
 
 //------------------------------------------->secretaria
 
+//------------------------------------------->notas
+Route::post('/ingresar_notas', 'NotasCuentasController@IngresarNota');
+Route::get('/traer_notas/{anio}/{mes}/{cuenta}', 'NotasCuentasController@TraerNotas');
+Route::get('/traer_cuentas_notas', 'NotasCuentasController@TraerCuentas');
+//------------------------------------------->notas
+
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 
 

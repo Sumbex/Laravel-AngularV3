@@ -66,13 +66,8 @@ class PortalSocioCuentaConsorcio extends Model
                 if ($ttrue) {
                     $DSCE = $this->restaDSCEMensual($anio);
                     $total = $DSCE['anual'] + $consorcio[0]->acumulado;
-                    $sociosDesvinculados = $this->sociosDesvinculados($anio);
-                    $totalAhorro = 0;
-                    if ($sociosDesvinculados['estado'] == 'success') {
-                        foreach ($sociosDesvinculados['socios'] as $key) {
-                            $totalAhorro = $totalAhorro + $key->total_ADS;
-                        }
-                    }
+                    $total_desv = $this->total_desvinculados($anio);
+                    $totalAhorro = $total_desv['total'];
                     return ['estado' => 'success', 'mensual' => $consorcio, 'anual' => $total, 'DSCE' => $DSCE['DSCE'], 'total_ahorro' => $totalAhorro];
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'No existen registros en el año ingresado.'];
@@ -202,6 +197,63 @@ class PortalSocioCuentaConsorcio extends Model
             return ['estado' => 'success', 'total' => $total];
         } else {
             return ['estado' => 'failed'];
+        }
+    }
+
+    public function total_desvinculados($anio) // tabla desvinculados
+    {
+        $tipo = 'sin_tipo';
+
+        $periodo_init = DB::table('consorcio_directiva')->where('anio_id_inicio', $anio)->first();
+        $periodo_fin = DB::table('consorcio_directiva')->where('anio_id_fin', $anio)->first();
+
+        if ($periodo_init) {
+            $tipo = 'inicio_periodo';
+        }
+        if ($periodo_fin) {
+            $tipo = 'fin_periodo';
+        }
+
+        switch ($tipo) {
+            case 'inicio_periodo':
+                $i = 0;
+                $print = [];
+                $total = 0;
+                $t_pb = CuentaConsorcio::listar_pago_beneficios($periodo_init->anio_id_inicio); // tabla desvinculados
+                if ($t_pb != '') {
+                    foreach ($t_pb as $key) {
+                        $ds = CuentaConsorcio::desvincular_sumar_totales($periodo_init->anio_id_inicio, $key->socio_id);
+                        $key->monto_h = $ds->monto_h;
+                        $key->total = $key->monto_v + $ds->monto_h;
+                        $print[$i]['monto_h'] = $key->monto_h;
+                        $total += $key->monto_h;
+                        $i++;
+                    }
+                    return ['index' => $print, 'total' => $total];
+                }
+                break;
+            case 'fin_periodo':
+                $i = 0;
+                $print = [];
+                $total = 0;
+                $t_pb = CuentaConsorcio::listar_pago_beneficios_2($periodo_fin->anio_id_inicio, $periodo_fin->anio_id_fin); // tabla desvinculados
+                if ($t_pb != '') {
+                    foreach ($t_pb as $key) {
+                        $ds = CuentaConsorcio::desvincular_sumar_totales_2($periodo_fin->anio_id_inicio, $periodo_fin->anio_id_fin, $key->socio_id);
+                        $key->monto_h = $ds->monto_h;
+                        $key->total = $key->monto_v + $ds->monto_h;
+                        $print[$i]['monto_h'] = $key->monto_h;
+                        $total += $key->monto_h;
+                        $i++;
+                    }
+                    return ['index' => $print, 'total' => (int) $total];
+                } else {
+                    return ['index' => $print, 'total' => 0];
+                }
+                break;
+            default:
+                return ['total' => 0];
+                break;
         }
     }
 }

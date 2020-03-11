@@ -1,4 +1,4 @@
-<label><strong>Lista pago consorcio</strong></label><br>
+<label><strong>Pago de día de sueldos</strong></label><br>
 <button class="btn btn btn-success btn-block btn-sm" (click)="openModal(md_tabla);">Ingresar</button>
 
 
@@ -308,8 +308,8 @@
                         <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i>
                             MONTO RESTANTE (T.A.D.S - T.M.D)</th>
                         <td colspan="3" class="text-center">
-                            <strong>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }} <i
-                                    (click)="openMontoRestante(monto_restante)" class="fas fa-pen-square"></i></strong>
+                            <strong>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }}<!-- <i
+                                    (click)="openMontoRestante(monto_restante)" class="fas fa-pen-square"></i>--></strong>
             
                             <ng-template #monto_restante let-c="closeFecha" let-d="dismiss">
                                 <div class="modal-header" id="demoFont">

@@ -180,18 +180,19 @@ class CuentaSindicatoController extends Controller
 							}
 						}
 
-						if ($r->tipo_cuenta_sindicato == '8') {
+						//COMENTAMOS AQUI PARA EVITAR VALIDAR SI EXISTE YA UN MONTO PARA LOS MILLONES EN CONSORCIO
+						// if ($r->tipo_cuenta_sindicato == '8') {
 							
-							$eds = $this->estado_dia_sueldo();
+						// 	$eds = $this->estado_dia_sueldo();
 
-							 //dd($eds);
-							if ($eds['estado'] == 'failed') {
-								return [
-									'estado' => 'failed',
-									'mensaje' => 'Ya existe un monto en el item consorcio de tipo ingreso'
-								];
-							}
-						}
+							
+						// 	if ($eds['estado'] == 'failed') {
+						// 		return [
+						// 			'estado' => 'failed',
+						// 			'mensaje' => 'Ya existe un monto en el item consorcio de tipo ingreso'
+						// 		];
+						// 	}
+						// }
 
 								
 						$cs = new Cuentasindicato;
@@ -407,16 +408,16 @@ class CuentaSindicatoController extends Controller
 							
 							if ($cs->tipo_cuenta_sindicato == "8") {//tipo consorcio
 								
-								$eds = $this->estado_dia_sueldo();
+								 $eds = $this->estado_dia_sueldo();
 
-									 //dd($eds);
-								if ($eds['estado'] == 'success') {
+								// 	 //dd($eds);
+								// if ($eds['estado'] == 'success') {
 									$e = new Estadodiasueldo;
 									$e->cuenta_sindicato_id = $cs->id;
 									$e->egreso_total = 'N'; // aun no llega a monto cero el item consorcio
 									$e->directiva_id = $eds['directiva'];
 									$e->save();
-								}
+								// }
 
 
 							}
@@ -1288,8 +1289,12 @@ class CuentaSindicatoController extends Controller
 		
 	}
 
+
+	//ALERTAAAAAA...
+	//ESTE METODO YA ESTA OBSOLETO, EN LA TABLA ESTADO_DIA_SUELDO LA COLUMNA EGRESO_TOTAL NO ES UTILIZADA
 	public function cerrar_estado_dia_sueldo($cs_id)
 	{
+
 		$e = Estadodiasueldo::where([
 			'cuenta_sindicato_id' => $cs_id,
 			'egreso_total' => 'N'

@@ -351,7 +351,7 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
       // console.log(ahorro);
     var opcion = confirm("¿Seguro quiere cerrar el estado del total de ahorro de día de sueldo?");
     if (opcion == true) {
-      this._http.get(this.url + "cerrar_estado_dia_sueldo/" + ahorro.id, {
+      this._http.get(this.url + "cerrar_estado_dia_sueldo/" + this.anio/*ahorro.id*/, {
         headers: new HttpHeaders(
           {
             'Authorization': 'Bearer' + this.token,

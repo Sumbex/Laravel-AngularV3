@@ -829,13 +829,21 @@ class CuentaConsorcioController extends Controller
         $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
         $anio_ = $g_anio->descripcion; 
 
-        $ahorro = DB::select("SELECT 
-                                    cs.id,
-                                    cs.monto_ingreso as total_ahorro_dia_sueldo,
-                                    descripcion 
+        // $ahorro = DB::select("SELECT 
+        //                             cs.id,
+        //                             cs.monto_ingreso as total_ahorro_dia_sueldo,
+        //                             descripcion 
+        //                     from cuenta_sindicato cs 
+        //                     inner join estado_dia_sueldos eds on eds.cuenta_sindicato_id = cs.id
+        //                     where tipo_cuenta_sindicato = 8 and anio_id = $anio order by eds.id desc limit 1");
+        $ahorro = DB::select("SELECT sum(total_ahorro_dia_sueldo) total_ahorro_dia_sueldo 
+                            from(SELECT 
+                                cs.id,
+                                cs.monto_ingreso as total_ahorro_dia_sueldo,
+                                descripcion 
                             from cuenta_sindicato cs 
                             inner join estado_dia_sueldos eds on eds.cuenta_sindicato_id = cs.id
-                            where tipo_cuenta_sindicato = 8 and anio_id = $anio order by eds.id desc limit 1");
+                            where tipo_cuenta_sindicato = 8 and anio_id = 2 order by eds.id desc )x");
         
         $cpds = DB::select("SELECT sum(suma) total from (select 
                                 monto, 

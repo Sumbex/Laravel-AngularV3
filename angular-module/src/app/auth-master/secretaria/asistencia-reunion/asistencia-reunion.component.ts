@@ -86,7 +86,7 @@ export class AsistenciaReunionComponent implements OnInit {
         this.cargandoSocio = false;
       }else{
         if(estado == 1){
-        this.listaAsistenciaCompleta = response.lista.filter( x => x.estado_id == 3);;
+        this.listaJustificados = response.lista.filter( x => x.estado_id == 3);;
       }else{
         this.listaAsistenciaCompleta = response.lista;
       }

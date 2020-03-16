@@ -10,20 +10,24 @@
             aria-controls="formReuniones" aria-selected="true">Reuniones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="acuerdos-tab" data-toggle="tab" href="#acuerdos" role="tab" aria-controls="acuerdos"
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="acuerdos"
             aria-selected="false">Acuerdos de Asamblea</a>
+            <!-- href="#acuerdos" id="acuerdos-tab" -->
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="actas-tab" data-toggle="tab" href="#actas" role="tab" aria-controls="actas"
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="actas"
             aria-selected="false">Actas</a>
+            <!-- href="#actas" id="actas-tab" -->
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab"
+          <a class="nav-link" data-toggle="tab" role="tab"
             aria-controls="directorio" aria-selected="false">Directorio</a>
+            <!-- href="#directorio" id="directorio-tab" -->
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="leyes-tab" data-toggle="tab" href="#leyes" role="tab" aria-controls="leyes"
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="leyes"
             aria-selected="false">Leyes Laborales</a>
+            <!-- href="#leyes" id="leyes-tab" -->
         </li>
 
       </ul>
@@ -42,7 +46,7 @@
       </p>
 
       <div class="row">
-        <div class="col-md-6 mt-5">
+        <div class="col-md-12 mt-5">
           <div class="card card-body border border-dark h-100">
             <h3 class="text-center"><i class="fas fa-bell"></i> Reunión Vigente</h3>
             <h6 class="card-subtitle mb-2 text-muted text-center">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>
@@ -51,7 +55,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 mt-5">
+        <!-- <div class="col-md-6 mt-5">
           <div class="card card-body border border-dark h-100">
             <h3 class="mx-auto"><i class="fas fa-check-double"></i> Reunión Anterior</h3>
             <h6 class="card-subtitle mb-2 text-muted text-center">Reunión Finalizada 10.08.19</h6>
@@ -59,7 +63,7 @@
               <app-historial-detalle-reunion></app-historial-detalle-reunion>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="row">

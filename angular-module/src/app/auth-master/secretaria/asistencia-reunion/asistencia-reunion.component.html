@@ -27,7 +27,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 mt-4">
-            <button class="btn btn-secondary btn-lg btn-block" (click)="abrirModalAsistencia(aprobarAsistencia)">Revisar/Aprobar Justificaciones</button>
+            <button class="btn btn-secondary btn-lg btn-block" (click)="abrirModalAsistencia(aprobarAsistencia)">Revisar Justificaciones</button>
           </div>
         </div>
         <div class="row">
@@ -122,20 +122,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="form-group">
               <button [disabled]="cargandoCambioEstadoSocio" (click)="marcarAsistenciaUsuario()" class="btn btn-primary btn-block"
                 name="boton">Marcar como asistido <img *ngIf="cargandoCambioEstadoSocio" height="20"
                   src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
             </div>
           </div>
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="form-group">
               <button [disabled]="cargandoCambioEstadoSocio" (click)="abrirModalAsistencia(justificacionReunionAdministracion)" class="btn btn-warning btn-block"
                 name="boton">Justificar Socio <img *ngIf="cargandoCambioEstadoSocio" height="20"
                   src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- MODAL DE JUSTIFICACIONES -->
@@ -361,14 +361,14 @@
                         <br>
                         <h4 class="text-muted">Mensaje enviado por el socio: </h4>
                         <p>{{justificacionUsuario?.descripcion}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem unde aperiam pariatur ullam. Laboriosam eum accusamus quae necessitatibus quasi distinctio dolor veritatis quis quaerat corporis, ipsam exercitationem totam tempora hic.</p>
-                        <div class="row text-center mt-8">
+                        <!-- <div class="row text-center mt-8">
                           <div class="col-md-6">
                               <button class="btn btn-success btn-block btn-lg" (click)="abrirModalAsistencia(detalleAprobacion)">Aprobar Justificación</button>
                           </div>
                           <div class="col-md-6">
                               <button class="btn btn-danger btn-block btn-lg" (click)="abrirModalAsistencia(detalleAprobacion)">Rechazar Justificación</button>
                             </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                     <!-- Patitas del Modal -->

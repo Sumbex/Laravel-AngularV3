@@ -315,7 +315,7 @@
               <input type="text" class="form-control" placeholder="Nombre del Socio" aria-label="Recipient's username"
                 aria-describedby="basic-addon2" [(ngModel)]="textoBuscador">
               <div class="input-group-append">
-                <button [disabled]=cargandoSocio (click)="searchSocios()" class="btn btn-outline-secondary"
+                <button [disabled]=cargandoSocio (click)="searchSocios(1)" class="btn btn-outline-secondary"
                   type="button">Buscar <img *ngIf="cargandoSocio" height="20"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
                     <button [disabled]=cargandoSocio (click)="getListaAsistentesCompleta()" class="btn btn-outline-secondary"
@@ -337,7 +337,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemAsistenciaCompleta of listaAsistenciaCompleta" class="text-center">
+                <tr *ngFor="let itemAsistenciaCompleta of listaJustificados" class="text-center">
                   <td>{{itemAsistenciaCompleta?.nombre}}</td>
                   <td>
                     <button class="btn btn-primary" (click)="abrirModalAsistencia(detalleAprobacion)">Ver Detalle</button>
@@ -357,10 +357,10 @@
                     <div class="modal-body">
                       <div class="container">
                         <h4 class="text-muted">Motivo de Inasistencia: </h4>
-                        <p>{{justificacionUsuario?.tipo}} Fuera de la ciudad.</p>
+                        <p>{{itemAsistenciaCompleta?.tipo}}</p>
                         <br>
                         <h4 class="text-muted">Mensaje enviado por el socio: </h4>
-                        <p>{{justificacionUsuario?.descripcion}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem unde aperiam pariatur ullam. Laboriosam eum accusamus quae necessitatibus quasi distinctio dolor veritatis quis quaerat corporis, ipsam exercitationem totam tempora hic.</p>
+                        <p>{{itemAsistenciaCompleta?.descripcion}}</p>
                         <!-- <div class="row text-center mt-8">
                           <div class="col-md-6">
                               <button class="btn btn-success btn-block btn-lg" (click)="abrirModalAsistencia(detalleAprobacion)">Aprobar Justificación</button>
@@ -463,7 +463,7 @@
               <input type="text" class="form-control" placeholder="Nombre del Socio" aria-label="Recipient's username"
                 aria-describedby="basic-addon2" [(ngModel)]="textoBuscador">
               <div class="input-group-append">
-                <button [disabled]=cargandoSocio (click)="searchSocios()" class="btn btn-outline-secondary"
+                <button [disabled]=cargandoSocio (click)="searchSocios(2)" class="btn btn-outline-secondary"
                   type="button">Buscar <img *ngIf="cargandoSocio" height="20"
                     src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;</button>
                     <button [disabled]=cargandoSocio (click)="getListaAsistentesCompleta()" class="btn btn-outline-secondary"

@@ -38,7 +38,10 @@
     <!-- Reuniones -->
     <div class="tab-pane fade show active" id="formReuniones" role="tabpanel" aria-labelledby="formReuniones-tab">
       <p class="mt-5">
-        <ngb-alert [dismissible]="false">
+        <ngb-alert [dismissible]="false" [hidden]="datosReunion">
+          No hay una reunión activa de momento.
+        </ngb-alert>
+        <ngb-alert [dismissible]="false" [hidden]="!datosReunion">
           <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten
           con
           una campana <i class="fas fa-bell"></i>.
@@ -46,7 +49,7 @@
       </p>
 
       <div class="row">
-        <div class="col-md-12 mt-5">
+        <div class="col-md-12 mt-5" [hidden]="!datosReunion">
           <div class="card card-body border border-dark h-100">
             <h3 class="text-center"><i class="fas fa-bell"></i> Reunión Vigente</h3>
             <h6 class="card-subtitle mb-2 text-muted text-center">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>

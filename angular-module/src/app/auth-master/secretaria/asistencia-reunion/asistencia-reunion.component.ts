@@ -25,6 +25,7 @@ export class AsistenciaReunionComponent implements OnInit {
   listaDeAsistentes;
 
   //Lista de Asistencia Completa con contador
+  listaJustificados;
   listaAsistenciaCompleta;
   cantidadInasistentes ;
   cantidadAsistentes;
@@ -77,14 +78,18 @@ export class AsistenciaReunionComponent implements OnInit {
   }
 
   //BUSCAR SOCIOS
-  searchSocios(){
+  searchSocios(estado){
     this.cargandoSocio = true;
     this._secretariaService.searchSociosAsistencia(this.datosReunion.id, this.textoBuscador).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
         this.cargandoSocio = false;
       }else{
-        this.listaAsistenciaCompleta = response.socio;
+        if(estado == 1){
+        this.listaAsistenciaCompleta = response.lista.filter( x => x.estado_id == 3);;
+      }else{
+        this.listaAsistenciaCompleta = response.lista;
+      }
         this.cargandoSocio = false;
       }
     }, error=>{
@@ -196,6 +201,7 @@ export class AsistenciaReunionComponent implements OnInit {
         alert(response.mensaje);
         this.cargandoSocio = false;
       }else{
+        this.listaJustificados = response.lista.filter( x => x.estado_id == 3);
         this.listaAsistenciaCompleta = response.lista;
         this.cantidadInasistentes = response.inasistentes;
         this.cantidadAsistentes = response.presentes;

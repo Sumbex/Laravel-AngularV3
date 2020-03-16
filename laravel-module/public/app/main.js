@@ -10904,7 +10904,7 @@ let AsistenciaReunionComponent = class AsistenciaReunionComponent {
             }
             else {
                 if (estado == 1) {
-                    this.listaAsistenciaCompleta = response.lista.filter(x => x.estado_id == 3);
+                    this.listaJustificados = response.lista.filter(x => x.estado_id == 3);
                     ;
                 }
                 else {

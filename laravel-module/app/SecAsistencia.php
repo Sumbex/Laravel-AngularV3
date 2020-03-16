@@ -41,7 +41,7 @@ class SecAsistencia extends Model
                 $asistencia->socio_id = $key->id;
                 $asistencia->estado_asistencia_id = 2;
                 $asistencia->activo = 'S';
-                $asistencia->aprobado = 'N';
+                /* $asistencia->aprobado = 'N'; */
                 if ($asistencia->save()) {
                     $con = $con + 1;
                 }
@@ -183,6 +183,11 @@ class SecAsistencia extends Model
 
                     case 3:
                         $jus = $jus + 1;
+                        $justificacion = SecJustificacion::traerJustificacionSocio($reunion_id, $key->id);
+                        if ($justificacion['estado'] == 'success') {
+                            $key->descripcion = $justificacion['justificacion']->descripcion;
+                            $key->tipo = $justificacion['justificacion']->tipo;
+                        }
                         break;
 
                     default:

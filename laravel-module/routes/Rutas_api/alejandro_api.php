@@ -42,7 +42,7 @@ Route::get('getMontoBase','GastoOperacionalController@validarMontoInicio');
 
 Route::get('traer_total_ahorro_dia_sueldo/{anio}','CuentaConsorcioController@traer_total_ahorro_dia_sueldo');
 
-Route::get('cerrar_estado_dia_sueldo/{cs_id}','CuentaSindicatoController@cerrar_estado_dia_sueldo');
+Route::get('cerrar_estado_dia_sueldo/{anio}','CuentaSindicatoController@cerrar_estado_dia_sueldo');
 //-------------------------------------------------------------------------------------------------
 
 Route::get('traer_directivas', 'CuentaConsorcioController@traer_directivas');

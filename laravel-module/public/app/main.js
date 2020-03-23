@@ -804,6 +804,61 @@ module.exports = "<p>\r\n  tablas-beneficios works!\r\n</p>\r\n"
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.html":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.html ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>crear-empleado works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/descuentos/descuentos.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/descuentos/descuentos.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>descuentos works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/haberes/haberes.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/haberes/haberes.component.html ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>haberes works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.html":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.html ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>liquidacion works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/menu/menu.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/menu/menu.component.html ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\n<li class=\"nav-item active\">\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\n        aria-selected=\"true\">haberes</a>\n</li>\n<li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\n        aria-selected=\"false\">Descuentos</a>\n</li>\n<li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\n        aria-selected=\"false\">Liquidacion</a>\n</li>\n</ul>\n\n\n<div class=\"tab-content\" id=\"myTabContent\">\n\n\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\n        <app-haberes></app-haberes>\n    </div>\n\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\n        <app-descuentos></app-descuentos>\n      </div>\n\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\n        <app-liquidacion></app-liquidacion>\n    </div>\n\n  </div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html":
 /*!********************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/modal-caja-chica/modal-caja-chica.component.html ***!
@@ -1042,7 +1097,7 @@ module.exports = "<ng-template #gastosOperacionales let-modal>\r\n\r\n  <!--Cabe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<!-- Navigation -->\r\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\r\n    <div class=\"container\">\r\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\r\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\r\n      </a>\r\n      <!-- <a>\r\n        <img  height=\"30\" width=\"40\"\r\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\r\n      </a> -->\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n          </button>\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <!-- <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Sindical <span class=\"sr-only\">(current)</span></a>\r\n              </li> -->\r\n\r\n              <li ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-calculator\"></i> Sindical</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-user-plus\"></i> Cuenta</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem><i class=\"fas fa-user-edit\"></i> Liquidaciones</a>\r\n                </div>\r\n              </li>\r\n\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\r\n                </div>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Portal Socios</a>\r\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n                </div>\r\n              </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n\r\n  \r\n  "
+module.exports = "\r\n<!-- Navigation -->\r\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\r\n    <div class=\"container\">\r\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\r\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\r\n      </a>\r\n      <!-- <a>\r\n        <img  height=\"30\" width=\"40\"\r\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\r\n      </a> -->\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n          </button>\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <!-- <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Sindical <span class=\"sr-only\">(current)</span></a>\r\n              </li> -->\r\n\r\n              <li ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-calculator\"></i> Sindical</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-user-plus\"></i> Cuenta</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CrearEmpleado']\"><i class=\"fas fa-user-edit\"></i> Crear Empleado</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Liquidaciones']\"><i class=\"fas fa-user-edit\"></i> Liquidaciones</a>\r\n                </div>\r\n              </li>\r\n\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\r\n                </div>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Portal Socios</a>\r\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n                </div>\r\n              </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n\r\n  \r\n  "
 
 /***/ }),
 
@@ -1533,6 +1588,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_grafico_grafico_componente_grafico_componente_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./socios-master/grafico/grafico-componente/grafico-componente.component */ "./src/app/socios-master/grafico/grafico-componente/grafico-componente.component.ts");
 /* harmony import */ var _socios_master_reuniones_general_reunion_general_reunion_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./socios-master/reuniones/general-reunion/general-reunion.component */ "./src/app/socios-master/reuniones/general-reunion/general-reunion.component.ts");
 /* harmony import */ var _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./auth-master/secretaria/secretaria.component */ "./src/app/auth-master/secretaria/secretaria.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_menu_menu_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./auth-master/liquidaciones/menu/menu.component */ "./src/app/auth-master/liquidaciones/menu/menu.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_crear_empleado_crear_empleado_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./auth-master/liquidaciones/crear-empleado/crear-empleado.component */ "./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.ts");
+
+
 
 
 
@@ -1573,7 +1632,9 @@ const routes = [
             { path: 'ListarSocios', component: _auth_master_cuenta_socios_listar_socios_listar_socios_component__WEBPACK_IMPORTED_MODULE_13__["ListarSociosComponent"] },
             { path: 'TablaPrestamoSocios', component: _auth_master_modal_prestamos_socios_tabla_prestamos_socios_tabla_prestamos_socios_component__WEBPACK_IMPORTED_MODULE_15__["TablaPrestamosSociosComponent"] },
             { path: 'BeneficiosSocios', component: _auth_master_cuenta_socios_beneficios_socios_beneficios_socios_component__WEBPACK_IMPORTED_MODULE_16__["BeneficiosSociosComponent"] },
-            { path: 'Secretaria', component: _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_25__["SecretariaComponent"] }
+            { path: 'Secretaria', component: _auth_master_secretaria_secretaria_component__WEBPACK_IMPORTED_MODULE_25__["SecretariaComponent"] },
+            { path: 'Liquidaciones', component: _auth_master_liquidaciones_menu_menu_component__WEBPACK_IMPORTED_MODULE_26__["MenuComponent"] },
+            { path: 'CrearEmpleado', component: _auth_master_liquidaciones_crear_empleado_crear_empleado_component__WEBPACK_IMPORTED_MODULE_27__["CrearEmpleadoComponent"] }
         ] },
     { path: 'SociosMaster', component: _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__["SociosMasterComponent"], canActivate: [_guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_19__["AuthGuardSocioService"]], children: [
             { path: 'Perfil', component: _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__["PerfilSocioComponent"] },
@@ -1783,6 +1844,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_secretaria_leyes_socio_leyes_socio_component__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./socios-master/secretaria/leyes-socio/leyes-socio.component */ "./src/app/socios-master/secretaria/leyes-socio/leyes-socio.component.ts");
 /* harmony import */ var _auth_master_modal_detalle_pago_consorcio_modal_detalle_pago_consorcio_component__WEBPACK_IMPORTED_MODULE_128__ = __webpack_require__(/*! ./auth-master/modal-detalle-pago-consorcio/modal-detalle-pago-consorcio.component */ "./src/app/auth-master/modal-detalle-pago-consorcio/modal-detalle-pago-consorcio.component.ts");
 /* harmony import */ var _auth_master_cuenta_sindical_archivador_archivador_component__WEBPACK_IMPORTED_MODULE_129__ = __webpack_require__(/*! ./auth-master/cuenta-sindical/archivador/archivador.component */ "./src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_crear_empleado_crear_empleado_component__WEBPACK_IMPORTED_MODULE_130__ = __webpack_require__(/*! ./auth-master/liquidaciones/crear-empleado/crear-empleado.component */ "./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_menu_menu_component__WEBPACK_IMPORTED_MODULE_131__ = __webpack_require__(/*! ./auth-master/liquidaciones/menu/menu.component */ "./src/app/auth-master/liquidaciones/menu/menu.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_haberes_haberes_component__WEBPACK_IMPORTED_MODULE_132__ = __webpack_require__(/*! ./auth-master/liquidaciones/haberes/haberes.component */ "./src/app/auth-master/liquidaciones/haberes/haberes.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_descuentos_descuentos_component__WEBPACK_IMPORTED_MODULE_133__ = __webpack_require__(/*! ./auth-master/liquidaciones/descuentos/descuentos.component */ "./src/app/auth-master/liquidaciones/descuentos/descuentos.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_134__ = __webpack_require__(/*! ./auth-master/liquidaciones/liquidacion/liquidacion.component */ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.ts");
+
+
+
+
+
 
 
 
@@ -2026,7 +2097,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _socios_master_secretaria_directorio_socio_directorio_socio_component__WEBPACK_IMPORTED_MODULE_126__["DirectorioSocioComponent"],
             _socios_master_secretaria_leyes_socio_leyes_socio_component__WEBPACK_IMPORTED_MODULE_127__["LeyesSocioComponent"],
             _auth_master_modal_detalle_pago_consorcio_modal_detalle_pago_consorcio_component__WEBPACK_IMPORTED_MODULE_128__["ModalDetallePagoConsorcioComponent"],
-            _auth_master_cuenta_sindical_archivador_archivador_component__WEBPACK_IMPORTED_MODULE_129__["ArchivadorComponent"]
+            _auth_master_cuenta_sindical_archivador_archivador_component__WEBPACK_IMPORTED_MODULE_129__["ArchivadorComponent"],
+            _auth_master_liquidaciones_crear_empleado_crear_empleado_component__WEBPACK_IMPORTED_MODULE_130__["CrearEmpleadoComponent"],
+            _auth_master_liquidaciones_menu_menu_component__WEBPACK_IMPORTED_MODULE_131__["MenuComponent"],
+            _auth_master_liquidaciones_haberes_haberes_component__WEBPACK_IMPORTED_MODULE_132__["HaberesComponent"],
+            _auth_master_liquidaciones_descuentos_descuentos_component__WEBPACK_IMPORTED_MODULE_133__["DescuentosComponent"],
+            _auth_master_liquidaciones_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_134__["LiquidacionComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -8411,6 +8487,221 @@ TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], TablasBeneficiosComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.css":
+/*!***************************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.css ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvY3JlYXItZW1wbGVhZG8vY3JlYXItZW1wbGVhZG8uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.ts":
+/*!**************************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.ts ***!
+  \**************************************************************************************/
+/*! exports provided: CrearEmpleadoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrearEmpleadoComponent", function() { return CrearEmpleadoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let CrearEmpleadoComponent = class CrearEmpleadoComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+CrearEmpleadoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-crear-empleado',
+        template: __webpack_require__(/*! raw-loader!./crear-empleado.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.html"),
+        styles: [__webpack_require__(/*! ./crear-empleado.component.css */ "./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], CrearEmpleadoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/descuentos/descuentos.component.css":
+/*!*******************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/descuentos/descuentos.component.css ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvZGVzY3VlbnRvcy9kZXNjdWVudG9zLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/descuentos/descuentos.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/descuentos/descuentos.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: DescuentosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DescuentosComponent", function() { return DescuentosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let DescuentosComponent = class DescuentosComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+DescuentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-descuentos',
+        template: __webpack_require__(/*! raw-loader!./descuentos.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/descuentos/descuentos.component.html"),
+        styles: [__webpack_require__(/*! ./descuentos.component.css */ "./src/app/auth-master/liquidaciones/descuentos/descuentos.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], DescuentosComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/haberes/haberes.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/haberes/haberes.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvaGFiZXJlcy9oYWJlcmVzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/haberes/haberes.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/haberes/haberes.component.ts ***!
+  \************************************************************************/
+/*! exports provided: HaberesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HaberesComponent", function() { return HaberesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let HaberesComponent = class HaberesComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+HaberesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-haberes',
+        template: __webpack_require__(/*! raw-loader!./haberes.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/haberes/haberes.component.html"),
+        styles: [__webpack_require__(/*! ./haberes.component.css */ "./src/app/auth-master/liquidaciones/haberes/haberes.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], HaberesComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.css":
+/*!*********************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvbGlxdWlkYWNpb24vbGlxdWlkYWNpb24uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: LiquidacionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LiquidacionComponent", function() { return LiquidacionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let LiquidacionComponent = class LiquidacionComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+LiquidacionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-liquidacion',
+        template: __webpack_require__(/*! raw-loader!./liquidacion.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.html"),
+        styles: [__webpack_require__(/*! ./liquidacion.component.css */ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], LiquidacionComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/menu/menu.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/menu/menu.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 14px;\r\n      }\r\n      tr,th{\r\n        font-size: 14px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        color: #fff;\r\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      #demoFont2 {\r\n        color: #fff;\r\n        background: #52c234;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      .nav-item a{\r\n          color: #fff;\r\n          background: #093028;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n          background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n          \r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n      .card{\r\n          background: rgba(255, 255, 255, 0.8);\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      .card-header{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n        }\r\n      #myTab{\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      hr{\r\n        border-top: 1px solid #000000 !important;\r\n        margin-bottom:5px !important; \r\n        margin-top:5px !important;\r\n        height: 10px;\r\n        }\r\n  \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbGlxdWlkYWNpb25lcy9tZW51L21lbnUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7UUFDSSx5QkFBeUI7UUFDekIsWUFBWTtNQUNkO01BQ0E7UUFDRSxZQUFZO01BQ2Q7TUFDQTtRQUNFLHlCQUF5QjtNQUMzQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUVBO1FBQ0UsZUFBZTtNQUNqQjtNQUNBO1FBQ0UsWUFBWTtRQUNaLG1CQUFtQjtNQUNyQjtNQUVBO1FBQ0UsV0FBVztRQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtRQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7UUFDOUg7TUFDRjtRQUNFLFdBQVc7UUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYSwrQkFBK0I7UUFDaEcsc0RBQXNELEVBQUUscUVBQXFFO1FBQzdIO01BRUE7VUFDRSxXQUFXO1VBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ1ksK0JBQStCO1VBQy9GLHFEQUFxRCxFQUFFLHFFQUFxRTs7UUFFOUg7TUFFQTtVQUNFLGFBQWE7VUFDYix1QkFBdUI7VUFDdkIsV0FBVztRQUNiO01BRUE7VUFDRSxvQ0FBb0M7VUFDcEMsMEVBQTBFO1FBQzVFO01BRUE7VUFDRSw0QkFBNEI7VUFDNUIsNkJBQTZCO1FBQy9CO01BRUE7VUFDRSwwRUFBMEU7UUFDNUU7TUFDQTtRQUNBLHdDQUF3QztRQUN4Qyw0QkFBNEI7UUFDNUIseUJBQXlCO1FBQ3pCLFlBQVk7UUFDWiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvbWVudS9tZW51LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgfVxyXG4gICAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICBsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgICAgfVxyXG4gIFxyXG4gICAgICB0cix0aHtcclxuICAgICAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICAgIH1cclxuICAgICAgdGh7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgICAgIH1cclxuICBcclxuICAgICAgI2RlbW9Gb250IHtcclxuICAgICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgICAgIH1cclxuICAgICAgI2RlbW9Gb250MiB7XHJcbiAgICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzUyYzIzNDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cclxuICAgICAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMDYxNzAwLCAjNTJjMjM0KTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMwNjE3MDAsICM1MmMyMzQpOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbiAgICAgICAgfVxyXG4gICAgXHJcbiAgICAgICAgLm5hdi1pdGVtIGF7XHJcbiAgICAgICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgICAgIGJhY2tncm91bmQ6ICMwOTMwMjg7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byB0b3AsICMyMzdBNTcsICMwOTMwMjgpOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgICAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICMyMzdBNTcsICMwOTMwMjgpOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbiAgICAgICAgICBcclxuICAgICAgICB9XHJcbiAgICAgICAgXHJcbiAgICAgICAgLm1hcmdlbntcclxuICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgIH1cclxuICBcclxuICAgICAgICAuY2FyZHtcclxuICAgICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KTtcclxuICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gICAgICAgIH1cclxuICAgICAgXHJcbiAgICAgICAgLmNhcmQtaGVhZGVye1xyXG4gICAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICBcclxuICAgICAgICAjbXlUYWJ7XHJcbiAgICAgICAgICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDEpLCAwIDZweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE5KTtcclxuICAgICAgICB9XHJcbiAgICAgICAgaHJ7XHJcbiAgICAgICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICMwMDAwMDAgIWltcG9ydGFudDtcclxuICAgICAgICBtYXJnaW4tYm90dG9tOjVweCAhaW1wb3J0YW50OyBcclxuICAgICAgICBtYXJnaW4tdG9wOjVweCAhaW1wb3J0YW50O1xyXG4gICAgICAgIGhlaWdodDogMTBweDtcclxuICAgICAgICB9XHJcbiAgXHJcbiAgIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/menu/menu.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/menu/menu.component.ts ***!
+  \******************************************************************/
+/*! exports provided: MenuComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuComponent", function() { return MenuComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let MenuComponent = class MenuComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+MenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-menu',
+        template: __webpack_require__(/*! raw-loader!./menu.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/menu/menu.component.html"),
+        styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/auth-master/liquidaciones/menu/menu.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], MenuComponent);
 
 
 

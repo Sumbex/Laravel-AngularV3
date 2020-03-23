@@ -41,7 +41,7 @@ export class DetalleReunionComponent implements OnInit {
         alert(response.mensaje);
       }else{
         this.loadingEnvio = false;
-        alert("Justificación ingresada correctamente");
+        alert(response.mensaje);
       }
     }, error => {
       this.loadingEnvio = false;

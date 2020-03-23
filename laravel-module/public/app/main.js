@@ -10227,9 +10227,9 @@ let TablaPrestamosHistoricosSociosComponent = class TablaPrestamosHistoricosSoci
     openActualizar(Actualizar, interes, totalPrestamoNoInteres, totalPrestamo, cuotaP) {
         this.modalActualizarPagoSalud = this.modalService.open(Actualizar, { size: 'sm' });
         console.log(interes, totalPrestamoNoInteres, totalPrestamo, cuotaP);
-        this.montoDelInteresPagar = interes / cuotaP;
+        this.montoDelInteresPagar = Math.round(interes / cuotaP);
         this.montoCuotaPagar = Math.ceil(totalPrestamoNoInteres / cuotaP);
-        this.montoFinalPagar = totalPrestamo / cuotaP;
+        this.montoFinalPagar = Math.round(totalPrestamo / cuotaP);
         console.log("Monto del interes pagar: " + this.montoDelInteresPagar, "montoCuotaPagar: " + this.montoCuotaPagar, "montoFinalPagar: " + this.montoFinalPagar);
     }
     cerrarActualizar() {

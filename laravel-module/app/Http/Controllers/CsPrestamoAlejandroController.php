@@ -449,13 +449,13 @@ class CsPrestamoAlejandroController extends Controller
 
     		$paer = new p_apuro_economico_retornable;
     		$paer->prestamo_id = $ultimo_item->prestamo_id;
-    		$paer->monto_restante = $ultimo_item->monto_restante - ($monto - ($ultimo_item->interes_total / $ultimo_item->cuotas)); //menos lo que paga el socio
+    		$paer->monto_restante = $ultimo_item->monto_restante - round($monto - ($ultimo_item->interes_total / $ultimo_item->cuotas)); //menos lo que paga el socio
     		$paer->numero_cuota = $ultimo_item->numero_cuota + 1; //sumamos la cuota que corresponde
     		$paer->cuotas = $ultimo_item->cuotas;
     		$paer->interes_total = $ultimo_item->interes_total;
-    		$paer->interes_mensual = ($ultimo_item->interes_total / $ultimo_item->cuotas);
+    		$paer->interes_mensual = round($ultimo_item->interes_total / $ultimo_item->cuotas);
     		$paer->definicion = '1';
-    		$paer->ingreso = $monto - ($ultimo_item->interes_total / $ultimo_item->cuotas);
+    		$paer->ingreso = round($monto - ($ultimo_item->interes_total / $ultimo_item->cuotas));
     		$paer->egreso = 0;
     		$paer->anio_id = $anio->id;
     		$paer->mes_id = $f['mes'];

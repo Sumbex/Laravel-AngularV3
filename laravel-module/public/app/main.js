@@ -580,7 +580,7 @@ module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <di
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n      <h4 class=\"modal-title\" id=\"modal-basic-title\">Hi there!</h4>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <div class=\"modal-body\">\n      <p>Hello, World!</p>\n    </div>\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">Save</button>\n    </div>\n  </ng-template>\n  \n  <button class=\"btn btn-primary\" (click)=\"open(content)\">Archivador</button>"
+module.exports = "<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header\">\r\n      <h4 class=\"modal-title\" id=\"modal-basic-title\">Hi there!</h4>\r\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n      <p>Hello, World!</p>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n      <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">Save</button>\r\n    </div>\r\n  </ng-template>\r\n  \r\n  <button class=\"btn btn-primary\" (click)=\"open(content)\">Archivador</button>"
 
 /***/ }),
 
@@ -811,7 +811,7 @@ module.exports = "<p>\r\n  tablas-beneficios works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>crear-empleado works!</p>\n"
+module.exports = "<!--Formulario para ingresar una cuenta sindical-->\r\n<div class=\"container-fluid\">\r\n    <div class=\"card mt-4\">\r\n        <div class=\"card-header\" id=\"demoFont\">\r\n            <strong>\r\n                <h5><i class=\"fas fa-user-plus\"></i> REGISTRO DE EMPLEADOS</h5>\r\n            </strong>\r\n        </div>\r\n        <form #crearEmpleadoForm=\"ngForm\" (ngSubmit)=\"crearEmpleado(crearEmpleadoForm)\" autocomplete=\"off\">\r\n            <div class=\"card-body\">\r\n\r\n                <div class=\"col-12 col-md-12 col-lg-12 col-xl-12\">\r\n                    <div class=\"row justify-content-between\">\r\n\r\n\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Rut Trabajador</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"rut_trabajador\"\r\n                                placeholder=\"123456789\" [(ngModel)]=\"empleadoForm.rut_trabajador\" required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Nombre Trabajador</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"nombre_trabajador\"\r\n                                placeholder=\"Nombre Completo\" [(ngModel)]=\"empleadoForm.nombre_trabajador\" required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Cargo</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"cargo\"\r\n                                placeholder=\"Ingrese un cargo\" [(ngModel)]=\"empleadoForm.cargo\" required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>AFP Trabajador</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"nombre_afp\"\r\n                                placeholder=\"ingrese su AFP\" [(ngModel)]=\"empleadoForm.nombre_afp\" required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Isapre Trabajador</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"nombre_isapre\"\r\n                                placeholder=\"Ingrese su isapre\" [(ngModel)]=\"empleadoForm.nombre_isapre\" required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Rut Empresa</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"rut_empresa\"\r\n                                placeholder=\"123456789\" [(ngModel)]=\"empleadoForm.rut_empresa\" required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Nombre Empresa o Razon Social</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"nombre_empresa\"\r\n                                placeholder=\"ingrese nombre de empresa\" [(ngModel)]=\"empleadoForm.nombre_empresa\"\r\n                                required>\r\n                        </div>\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Direccion Empresa</strong></label>\r\n                            <input type=\"text\" class=\"form-control form-control-sm\" name=\"direccion_empresa\"\r\n                                placeholder=\"ingrese direccion de empreasa\" [(ngModel)]=\"empleadoForm.direccion_empresa\"\r\n                                required>\r\n                        </div>\r\n\r\n                        <div class=\"col-12 col-md-4 col-lg-4 col-xl-4\">\r\n                            <br><label><strong>Crear Empleado</strong></label><br>\r\n                            <button type=\"submit\" class=\"btn btn-block btn-success\"\r\n                                [disabled]=\"empleadoForm.invalid\"><b>CREAR</b></button>\r\n                        </div>\r\n\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n\r\n    <div class=\"card mt-4\">\r\n        <div class=\"card-header\" id=\"demoFont\">\r\n            <p><strong>\r\n                    <h5><i class=\"fas fa-list-ol\"></i> LISTADO DE EMPLEADOS</h5>\r\n                </strong>\r\n            </p>\r\n\r\n        </div>\r\n        <div class=\"card-body\">\r\n            <div class=\"table-responsive\">\r\n                <button class=\"btn btn-block btn-success \" (click)=\"traerEmpleados()\">\r\n                    <i class=\"fas fa-sync\"></i><b> REFRESCAR TABLA</b>\r\n                </button>\r\n                <div *ngIf=\"cargandoTabla\" class=\"loader\"></div>\r\n                <table *ngIf=\"!cargandoTabla\" class=\"table table-striped table-bordered table-sm\">\r\n                    <thead text-sm>\r\n                        <tr class=\"text-center\">\r\n                            <th style=\"background: #138D75\"><i class=\"fas fa-id-card\"></i> RUT TRABAJADOR</th>\r\n                            <th style=\"background: #138D75\"><i class=\"fas fa-user\"></i> NOMBRE TRABAJADOR</th>\r\n                            <th style=\"background: #138D75\"><i class=\"fas fa-user-tie\"></i> CARGO</th>\r\n                            <th style=\"background: #138D75\"><i class=\"fas fa-piggy-bank\"></i> AFP</th>\r\n                            <th style=\"background: #138D75\"><i class=\"fas fa-notes-medical\"></i> SALUD</th>\r\n                            <th style=\"background: #138D75\"><i class=\"far fa-building\"></i> RUT EMPRESA</th>\r\n                            <th style=\"background: #138D75\"><i class=\"far fa-building\"></i> NOMBRE EMPRESA</th>\r\n                            <th style=\"background: #138D75\"><i class=\"far fa-building\"></i> DIRECCION EMPRESA</th>\r\n                            <th style=\"background: #138D75\"><i class=\"fas fa-edit\"></i> EDITAR</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let item of empleadoTraer; let indice=index\" class=\"text-center\">\r\n                            <td>{{ item.rut_trabajador }}</td>\r\n                            <td>{{ item.nombre_trabajador | uppercase }}</td>\r\n                            <td>{{ item.cargo | uppercase}}</td>\r\n                            <td>{{ item.nombre_afp | uppercase }}</td>\r\n                            <td>{{ item.nombre_isapre | uppercase }}</td>\r\n                            <td>{{ item.rut_empresa | uppercase }}</td>\r\n                            <td>{{ item.nombre_empresa | uppercase }}</td>\r\n                            <td>{{ item.direccion_empresa | uppercase }}</td>\r\n                            <td>\r\n\r\n                                <button class=\"btn btn-success btn-sm\" (click)=\"modal_editar(editar);\">\r\n                                    <i class=\"fas fa-pencil-alt\"></i>\r\n                                </button>\r\n                                <ng-template #editar let-modal>\r\n                                    <div class=\"modal-header\" id=\"demoFont\">\r\n                                        <h6 class=\"modal-title\"><i class=\"fas fa-user-edit\"></i> <strong> Editar\r\n                                                Empleado</strong></h6>\r\n                                        <button type=\"button\" class=\"close\" aria-label=\"Close\"\r\n                                            (click)=\"cerrar_editar()\">\r\n                                            <span aria-hidden=\"true\">&times;</span>\r\n                                        </button>\r\n                                    </div>\r\n                                    <div class=\"modal-body\">\r\n                                        <div class=\"row justify-content-between\">\r\n\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Rut Trabajador</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"rut_trabajador\" placeholder=\"123456789\"\r\n                                                    [(ngModel)]=\"item.rut_trabajador\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Nombre Trabajador</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"nombre_trabajador\" placeholder=\"Nombre Completo\"\r\n                                                    [(ngModel)]=\"item.nombre_trabajador\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Cargo</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\" name=\"cargo\"\r\n                                                    placeholder=\"Ingrese un cargo\" [(ngModel)]=\"item.cargo\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>AFP Trabajador</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"nombre_afp\" placeholder=\"ingrese su AFP\"\r\n                                                    [(ngModel)]=\"item.nombre_afp\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Isapre Trabajador</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"nombre_isapre\" placeholder=\"Ingrese su isapre\"\r\n                                                    [(ngModel)]=\"item.nombre_isapre\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Rut Empresa</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"rut_empresa\" placeholder=\"123456789\"\r\n                                                    [(ngModel)]=\"item.rut_empresa\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Nombre Empresa o Razon Social</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"nombre_empresa\" placeholder=\"ingrese nombre de empresa\"\r\n                                                    [(ngModel)]=\"item.nombre_empresa\" required>\r\n                                            </div>\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Direccion Empresa</strong></label>\r\n                                                <input type=\"text\" class=\"form-control form-control-sm\"\r\n                                                    name=\"direccion_empresa\" placeholder=\"ingrese direccion de empreasa\"\r\n                                                    [(ngModel)]=\"item.direccion_empresa\" required>\r\n                                            </div>\r\n\r\n                                            <div class=\"col-12\">\r\n                                                <br><label><strong>Actualizar Empleado</strong></label><br>\r\n                                                <button type=\"button\" class=\"btn btn-block btn-success\"\r\n                                                    (click)=\"actualizarEmpleado(item.id,empleadoTraer[indice])\">Actualizar</button>\r\n                                            </div>\r\n\r\n                                        </div>\r\n                                    </div>\r\n                                </ng-template>\r\n                            </td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> <br>"
 
 /***/ }),
 
@@ -822,7 +822,7 @@ module.exports = "<p>crear-empleado works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>descuentos works!</p>\n"
+module.exports = "<p>descuentos works!</p>\r\n"
 
 /***/ }),
 
@@ -833,7 +833,7 @@ module.exports = "<p>descuentos works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>haberes works!</p>\n"
+module.exports = "<p>haberes works!</p>\r\n"
 
 /***/ }),
 
@@ -844,7 +844,7 @@ module.exports = "<p>haberes works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>liquidacion works!</p>\n"
+module.exports = "<p>liquidacion works!</p>\r\n"
 
 /***/ }),
 
@@ -855,7 +855,7 @@ module.exports = "<p>liquidacion works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\n<li class=\"nav-item active\">\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\n        aria-selected=\"true\">haberes</a>\n</li>\n<li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\n        aria-selected=\"false\">Descuentos</a>\n</li>\n<li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\n        aria-selected=\"false\">Liquidacion</a>\n</li>\n</ul>\n\n\n<div class=\"tab-content\" id=\"myTabContent\">\n\n\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\n        <app-haberes></app-haberes>\n    </div>\n\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\n        <app-descuentos></app-descuentos>\n      </div>\n\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\n        <app-liquidacion></app-liquidacion>\n    </div>\n\n  </div>"
+module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\r\n<li class=\"nav-item active\">\r\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\r\n        aria-selected=\"true\">haberes</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\r\n        aria-selected=\"false\">Descuentos</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\r\n        aria-selected=\"false\">Liquidacion</a>\r\n</li>\r\n</ul>\r\n\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n\r\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\r\n        <app-haberes></app-haberes>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\r\n        <app-descuentos></app-descuentos>\r\n      </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\r\n        <app-liquidacion></app-liquidacion>\r\n    </div>\r\n\r\n  </div>"
 
 /***/ }),
 
@@ -8499,7 +8499,7 @@ TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvY3JlYXItZW1wbGVhZG8vY3JlYXItZW1wbGVhZG8uY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "label,input, button{\r\n    font-size: 14px;\r\n  }\r\n  \r\n  tr,th{\r\n    font-size: 14px;\r\n  }\r\n  \r\n  th{\r\n    color: white;\r\n    background: #138D75;\r\n  }\r\n  \r\n  td{\r\n    font-weight: bold;\r\n  }\r\n  \r\n  #demoFont {\r\n    color: #fff;\r\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    }\r\n  \r\n  #demoFont2 {\r\n    color: #fff;\r\n    background: #52c234;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to left, #061700, #52c234); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    }\r\n  \r\n  .nav-item a{\r\n      color: #fff;\r\n      background: #093028;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n      background: linear-gradient(to top, #237A57, #093028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n      \r\n    }\r\n  \r\n  .card{\r\n      background: rgba(255, 255, 255, 0.8);\r\n      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n      border-top-left-radius: 20px;\r\n      border-top-right-radius: 20px;\r\n    }\r\n  \r\n  .card-header{\r\n      border-top-left-radius: 20px;\r\n      border-top-right-radius: 20px;\r\n    }\r\n  \r\n  /*CLASES DEL LOADER*/\r\n  \r\n  .loader {\r\n  margin: 100px auto;\r\n  font-size: 25px;\r\n  width: 1em;\r\n  height: 1em;\r\n  border-radius: 50%;\r\n  position: relative;\r\n  text-indent: -9999em;\r\n  -webkit-animation: load5 1.1s infinite ease;\r\n  animation: load5 1.1s infinite ease;\r\n  -webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n}\r\n  \r\n  @-webkit-keyframes load5 {\r\n  0%,\r\n  100% {\r\n      box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.5), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7);\r\n  }\r\n  12.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5);\r\n  }\r\n  25% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.5), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  37.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5), 2.5em 0em 0 0em rgba(50, 76, 179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  50% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.5), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  62.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.5), 0em 2.5em 0 0em rgba(50, 76, 179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  75% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.5), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  87.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.5), -2.6em 0em 0 0em rgba(50, 76, 179, 0.7), -1.8em -1.8em 0 0em #324cb3;\r\n  }\r\n}\r\n  \r\n  @keyframes load5 {\r\n  0%,\r\n  100% {\r\n      box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.5), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7);\r\n  }\r\n  12.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5);\r\n  }\r\n  25% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.5), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  37.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5), 2.5em 0em 0 0em rgba(50, 76, 179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  50% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.5), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  62.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.5), 0em 2.5em 0 0em rgba(50, 76, 179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  75% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.5), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);\r\n  }\r\n  87.5% {\r\n      box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.5), -2.6em 0em 0 0em rgba(50, 76, 179, 0.7), -1.8em -1.8em 0 0em #324cb3;\r\n  }\r\n}\r\n  \r\n  /*CLASES DEL LOADER*/\r\n    \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbGlxdWlkYWNpb25lcy9jcmVhci1lbXBsZWFkby9jcmVhci1lbXBsZWFkby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtFQUNqQjs7RUFFQTtJQUNFLGVBQWU7RUFDakI7O0VBQ0E7SUFDRSxZQUFZO0lBQ1osbUJBQW1CO0VBQ3JCOztFQUNBO0lBQ0UsaUJBQWlCO0VBQ25COztFQUVBO0lBQ0UsV0FBVztJQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtJQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7SUFDOUg7O0VBQ0Y7SUFDRSxXQUFXO0lBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2EsK0JBQStCO0lBQ2hHLHNEQUFzRCxFQUFFLHFFQUFxRTtJQUM3SDs7RUFFQTtNQUNFLFdBQVc7TUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDWSwrQkFBK0I7TUFDL0YscURBQXFELEVBQUUscUVBQXFFOztJQUU5SDs7RUFFQTtNQUNFLG9DQUFvQztNQUNwQywwRUFBMEU7TUFDMUUsNEJBQTRCO01BQzVCLDZCQUE2QjtJQUMvQjs7RUFFQTtNQUNFLDRCQUE0QjtNQUM1Qiw2QkFBNkI7SUFDL0I7O0VBRUEsb0JBQW9COztFQUV4QjtFQUNFLGtCQUFrQjtFQUNsQixlQUFlO0VBQ2YsVUFBVTtFQUNWLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsa0JBQWtCO0VBQ2xCLG9CQUFvQjtFQUNwQiwyQ0FBMkM7RUFDM0MsbUNBQW1DO0VBQ25DLGdDQUFnQztFQUVoQyx3QkFBd0I7QUFDMUI7O0VBRUE7RUFDRTs7TUFFSSw2VUFBNlU7RUFDalY7RUFDQTtNQUNJLDZVQUE2VTtFQUNqVjtFQUNBO01BQ0ksNlVBQTZVO0VBQ2pWO0VBQ0E7TUFDSSw2VUFBNlU7RUFDalY7RUFDQTtNQUNJLDZVQUE2VTtFQUNqVjtFQUNBO01BQ0ksNlVBQTZVO0VBQ2pWO0VBQ0E7TUFDSSw2VUFBNlU7RUFDalY7RUFDQTtNQUNJLDZVQUE2VTtFQUNqVjtBQUNGOztFQUVBO0VBQ0U7O01BRUksNlVBQTZVO0VBQ2pWO0VBQ0E7TUFDSSw2VUFBNlU7RUFDalY7RUFDQTtNQUNJLDZVQUE2VTtFQUNqVjtFQUNBO01BQ0ksNlVBQTZVO0VBQ2pWO0VBQ0E7TUFDSSw2VUFBNlU7RUFDalY7RUFDQTtNQUNJLDZVQUE2VTtFQUNqVjtFQUNBO01BQ0ksNlVBQTZVO0VBQ2pWO0VBQ0E7TUFDSSw2VUFBNlU7RUFDalY7QUFDRjs7RUFHQSxvQkFBb0IiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9saXF1aWRhY2lvbmVzL2NyZWFyLWVtcGxlYWRvL2NyZWFyLWVtcGxlYWRvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsYWJlbCxpbnB1dCwgYnV0dG9ue1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gIH1cclxuICBcclxuICB0cix0aHtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICB9XHJcbiAgdGh7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMTM4RDc1O1xyXG4gIH1cclxuICB0ZHtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gIH1cclxuICBcclxuICAjZGVtb0ZvbnQge1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgIH1cclxuICAjZGVtb0ZvbnQyIHtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgYmFja2dyb3VuZDogIzUyYzIzNDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cclxuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIGxlZnQsICMwNjE3MDAsICM1MmMyMzQpOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMDYxNzAwLCAjNTJjMjM0KTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgfVxyXG4gIFxyXG4gICAgLm5hdi1pdGVtIGF7XHJcbiAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICBiYWNrZ3JvdW5kOiAjMDkzMDI4OyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byB0b3AsICMyMzdBNTcsICMwOTMwMjgpOyAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cclxuICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxuICAgICAgXHJcbiAgICB9XHJcbiAgICBcclxuICAgIC5jYXJke1xyXG4gICAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOCk7XHJcbiAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMjBweDtcclxuICAgIH1cclxuICBcclxuICAgIC5jYXJkLWhlYWRlcntcclxuICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XHJcbiAgICB9XHJcblxyXG4gICAgLypDTEFTRVMgREVMIExPQURFUiovXHJcblxyXG4ubG9hZGVyIHtcclxuICBtYXJnaW46IDEwMHB4IGF1dG87XHJcbiAgZm9udC1zaXplOiAyNXB4O1xyXG4gIHdpZHRoOiAxZW07XHJcbiAgaGVpZ2h0OiAxZW07XHJcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB0ZXh0LWluZGVudDogLTk5OTllbTtcclxuICAtd2Via2l0LWFuaW1hdGlvbjogbG9hZDUgMS4xcyBpbmZpbml0ZSBlYXNlO1xyXG4gIGFuaW1hdGlvbjogbG9hZDUgMS4xcyBpbmZpbml0ZSBlYXNlO1xyXG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xyXG4gIC1tcy10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XHJcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xyXG59XHJcblxyXG5ALXdlYmtpdC1rZXlmcmFtZXMgbG9hZDUge1xyXG4gIDAlLFxyXG4gIDEwMCUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gIzMyNGNiMywgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNyk7XHJcbiAgfVxyXG4gIDEyLjUlIHtcclxuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNyksIDEuOGVtIC0xLjhlbSAwIDBlbSAjMzI0Y2IzLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpO1xyXG4gIH1cclxuICAyNSUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC41KSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNyksIDIuNWVtIDBlbSAwIDBlbSAjMzI0Y2IzLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMik7XHJcbiAgfVxyXG4gIDM3LjUlIHtcclxuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgMS43NWVtIDEuNzVlbSAwIDBlbSAjMzI0Y2IzLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpO1xyXG4gIH1cclxuICA1MCUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNyksIDBlbSAyLjVlbSAwIDBlbSAjMzI0Y2IzLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMik7XHJcbiAgfVxyXG4gIDYyLjUlIHtcclxuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgLTEuOGVtIDEuOGVtIDAgMGVtICMzMjRjYjMsIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpO1xyXG4gIH1cclxuICA3NSUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgLTIuNmVtIDBlbSAwIDBlbSAjMzI0Y2IzLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMik7XHJcbiAgfVxyXG4gIDg3LjUlIHtcclxuICAgICAgYm94LXNoYWRvdzogMGVtIC0yLjZlbSAwZW0gMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDEuOGVtIC0xLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAyLjVlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS43NWVtIDEuNzVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAwZW0gMi41ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTEuOGVtIDEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSksIC0yLjZlbSAwZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgLTEuOGVtIC0xLjhlbSAwIDBlbSAjMzI0Y2IzO1xyXG4gIH1cclxufVxyXG5cclxuQGtleWZyYW1lcyBsb2FkNSB7XHJcbiAgMCUsXHJcbiAgMTAwJSB7XHJcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSAjMzI0Y2IzLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KTtcclxuICB9XHJcbiAgMTIuNSUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgMS44ZW0gLTEuOGVtIDAgMGVtICMzMjRjYjMsIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSk7XHJcbiAgfVxyXG4gIDI1JSB7XHJcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjUpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgMi41ZW0gMGVtIDAgMGVtICMzMjRjYjMsIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKTtcclxuICB9XHJcbiAgMzcuNSUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjcpLCAxLjc1ZW0gMS43NWVtIDAgMGVtICMzMjRjYjMsIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMik7XHJcbiAgfVxyXG4gIDUwJSB7XHJcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC43KSwgMGVtIDIuNWVtIDAgMGVtICMzMjRjYjMsIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMi42ZW0gMGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKTtcclxuICB9XHJcbiAgNjIuNSUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjcpLCAtMS44ZW0gMS44ZW0gMCAwZW0gIzMyNGNiMywgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMik7XHJcbiAgfVxyXG4gIDc1JSB7XHJcbiAgICAgIGJveC1zaGFkb3c6IDBlbSAtMi42ZW0gMGVtIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMi41ZW0gMGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDEuNzVlbSAxLjc1ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMGVtIDIuNWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuNSksIC0xLjhlbSAxLjhlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjcpLCAtMi42ZW0gMGVtIDAgMGVtICMzMjRjYjMsIC0xLjhlbSAtMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKTtcclxuICB9XHJcbiAgODcuNSUge1xyXG4gICAgICBib3gtc2hhZG93OiAwZW0gLTIuNmVtIDBlbSAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC4yKSwgMS44ZW0gLTEuOGVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDIuNWVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAxLjc1ZW0gMS43NWVtIDAgMGVtIHJnYmEoNTAsIDc2LCAxNzksIDAuMiksIDBlbSAyLjVlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjIpLCAtMS44ZW0gMS44ZW0gMCAwZW0gcmdiYSg1MCwgNzYsIDE3OSwgMC41KSwgLTIuNmVtIDBlbSAwIDBlbSByZ2JhKDUwLCA3NiwgMTc5LCAwLjcpLCAtMS44ZW0gLTEuOGVtIDAgMGVtICMzMjRjYjM7XHJcbiAgfVxyXG59XHJcblxyXG5cclxuLypDTEFTRVMgREVMIExPQURFUiovXHJcbiAgICAiXX0= */"
 
 /***/ }),
 
@@ -8515,20 +8515,103 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrearEmpleadoComponent", function() { return CrearEmpleadoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+/* harmony import */ var src_app_servicios_liquidacion_empanada_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/liquidacion-empanada.service */ "./src/app/servicios/liquidacion-empanada.service.ts");
+
+
+
 
 
 let CrearEmpleadoComponent = class CrearEmpleadoComponent {
-    constructor() { }
+    constructor(config, modalService, _usuariosSevice, _liquidacionEmpanadaService) {
+        this.modalService = modalService;
+        this._usuariosSevice = _usuariosSevice;
+        this._liquidacionEmpanadaService = _liquidacionEmpanadaService;
+        this.empleadoForm = {
+            rut_trabajador: '',
+            nombre_trabajador: '',
+            cargo: '',
+            nombre_afp: '',
+            nombre_isapre: '',
+            rut_empresa: '',
+            nombre_empresa: '',
+            direccion_empresa: '',
+        };
+        this.mod_editar = null;
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
     ngOnInit() {
+        this.traerEmpleados();
+    }
+    modal_editar(modal) {
+        this.mod_editar = this.modalService.open(modal, { size: 'lg' });
+    }
+    cerrar_editar() {
+        this.mod_editar.close();
+        // this.traerEmpleados();
+    }
+    crearEmpleado(form) {
+        this._liquidacionEmpanadaService.crearEmpleado(this.empleadoForm).subscribe(response => {
+            if (response.estado == 'success') {
+                form.reset();
+                this.empleadoCorrecto = response.mensaje;
+                alert(this.empleadoCorrecto);
+                this.traerEmpleados();
+            }
+            if (response.estado == 'failed') {
+                this.empleadoError = response.mensaje;
+                alert(this.empleadoError);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    traerEmpleados() {
+        this.cargandoTabla = true;
+        this._liquidacionEmpanadaService.traerEmpleados().subscribe(response => {
+            if (response.estado == 'success') {
+                this.empleadoTraer = response.empleado;
+                this.cargandoTabla = false;
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    actualizarEmpleado(idEmpleado, actualizarEmpleado) {
+        this._liquidacionEmpanadaService.actualizarEmpleado(idEmpleado, actualizarEmpleado).subscribe(response => {
+            if (response.estado == 'success') {
+                this.actualizarEmpleadoCorrecto = response.mensaje;
+                alert(this.actualizarEmpleadoCorrecto);
+                this.mod_editar.close();
+                this.traerEmpleados();
+            }
+            else {
+                this.actualizarEmpleadoError = response.mensaje;
+                alert(this.actualizarEmpleadoError);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
+CrearEmpleadoComponent.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"] },
+    { type: src_app_servicios_liquidacion_empanada_service__WEBPACK_IMPORTED_MODULE_4__["LiquidacionEmpanadaService"] }
+];
 CrearEmpleadoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-crear-empleado',
         template: __webpack_require__(/*! raw-loader!./crear-empleado.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.html"),
         styles: [__webpack_require__(/*! ./crear-empleado.component.css */ "./src/app/auth-master/liquidaciones/crear-empleado/crear-empleado.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+        src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"],
+        src_app_servicios_liquidacion_empanada_service__WEBPACK_IMPORTED_MODULE_4__["LiquidacionEmpanadaService"]])
 ], CrearEmpleadoComponent);
 
 
@@ -13857,6 +13940,85 @@ LeyesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/servicios/liquidacion-empanada.service.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/servicios/liquidacion-empanada.service.ts ***!
+  \***********************************************************/
+/*! exports provided: LiquidacionEmpanadaService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LiquidacionEmpanadaService", function() { return LiquidacionEmpanadaService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let LiquidacionEmpanadaService = class LiquidacionEmpanadaService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    crearEmpleado(empleadoForm) {
+        const form = new FormData();
+        form.append('rut_trabajador', empleadoForm.rut_trabajador);
+        form.append('nombre_trabajador', empleadoForm.nombre_trabajador);
+        form.append('cargo', empleadoForm.cargo);
+        form.append('nombre_afp', empleadoForm.nombre_afp);
+        form.append('nombre_isapre', empleadoForm.nombre_isapre);
+        form.append('rut_empresa', empleadoForm.rut_empresa);
+        form.append('nombre_empresa', empleadoForm.nombre_empresa);
+        form.append('direccion_empresa', empleadoForm.direccion_empresa);
+        return this._http.post(this.url + "crear_empleado", form, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            })
+        });
+    }
+    actualizarEmpleado(idEmpleado, actualizarEmpleado) {
+        const form = new FormData();
+        form.append('id', idEmpleado);
+        form.append('rut_trabajador', actualizarEmpleado.rut_trabajador);
+        form.append('nombre_trabajador', actualizarEmpleado.nombre_trabajador);
+        form.append('cargo', actualizarEmpleado.cargo);
+        form.append('nombre_afp', actualizarEmpleado.nombre_afp);
+        form.append('nombre_isapre', actualizarEmpleado.nombre_isapre);
+        form.append('rut_empresa', actualizarEmpleado.rut_empresa);
+        form.append('nombre_empresa', actualizarEmpleado.nombre_empresa);
+        form.append('direccion_empresa', actualizarEmpleado.direccion_empresa);
+        return this._http.post(this.url + "actualizar_empleado", actualizarEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+            })
+        });
+    }
+    traerEmpleados() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "traer_empleados", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+};
+LiquidacionEmpanadaService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+LiquidacionEmpanadaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], LiquidacionEmpanadaService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/servicios/portal-socios.service.ts":
 /*!****************************************************!*\
   !*** ./src/app/servicios/portal-socios.service.ts ***!
@@ -18732,7 +18894,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\v_and\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\david\Desktop\SindicatoCMPC\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

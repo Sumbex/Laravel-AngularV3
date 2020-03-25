@@ -57,9 +57,17 @@ Route::post('/crear_noticia_sec', 'SecLeyesController@IngresarNoticia');
 
 //------------------------------------------->notas
 Route::post('/ingresar_notas', 'NotasCuentasController@IngresarNota');
-Route::get('/traer_notas/{anio}/{mes}/{cuenta}', 'NotasCuentasController@TraerNotas');
-Route::get('/traer_cuentas_notas', 'NotasCuentasController@TraerCuentas');
+Route::post('/actualizar_nota', 'NotasCuentasController@ActualizarNota');
+Route::get('/traer_notas/{anio}/{mes}', 'NotasCuentasController@TraerNotas');
+Route::get('/traer_datos_archivador', 'NotasCuentasController@DatosBasicos');
+
 //------------------------------------------->notas
+
+//------------------------------------------->archivador
+Route::post('/ingresar_archivos', 'ArchivadorController@IngresarArchivo');
+Route::post('/actualizar_archivo', 'ArchivadorController@ActualizarArchivo');
+Route::get('/traer_archivos/{anio}/{mes}', 'ArchivadorController@TraerArchivos');
+//------------------------------------------->archivador
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 

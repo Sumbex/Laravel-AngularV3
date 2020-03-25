@@ -580,7 +580,7 @@ module.exports = "<!-- HTML NORMAL EN VISTA -->\r\n<div class=\"card\">\r\n  <di
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-template #content let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header\">\n      <h4 class=\"modal-title\" id=\"modal-basic-title\">Hi there!</h4>\n      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n        <span aria-hidden=\"true\">&times;</span>\n      </button>\n    </div>\n    <div class=\"modal-body\">\n      <p>Hello, World!</p>\n    </div>\n    <div class=\"modal-footer\">\n      <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"c('Save click')\">Save</button>\n    </div>\n  </ng-template>\n  \n  <button class=\"btn btn-primary\" (click)=\"open(content)\">Archivador</button>"
+module.exports = "<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong><i class=\"fas fa-archive\"></i> Cuenta Sindical / Archivador</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"notas-tab\" data-toggle=\"tab\" href=\"#notas\" role=\"tab\" aria-controls=\"notas\" aria-selected=\"true\">Notas</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"archivos-tab\" data-toggle=\"tab\" href=\"#archivos\" role=\"tab\" aria-controls=\"archivos\" aria-selected=\"false\">Archivador</a>\r\n            </li>\r\n        </ul>\r\n        <div class=\"tab-content\" id=\"myTabContent\">\r\n            <div class=\"tab-pane fade show active\" id=\"notas\" role=\"tabpanel\" aria-labelledby=\"notas-tab\">\r\n\r\n                <div class=\"modal-header mt-4\" id=\"demoFont2\">\r\n                    <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\r\n                </div>\r\n\r\n                <div class=\"card\">\r\n                    <form #notasForm (ngSubmit)=\"ingresarNota()\">\r\n                        <div class=\"row centrar\">\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\">Fecha</label>\r\n                                    <input class=\"form-control\" disabled type=\"date\" name=\"fecha\" [(ngModel)]=\"datosNotas.fecha\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\">Remitente</label>\r\n                                    <input class=\"form-control\" disabled type=\"text\" name=\"remitente\" [(ngModel)]=\"remitente\">\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"col-md-12\">\r\n                                <div class=\"form-group\">\r\n                                    <label for=\"\">Nota</label>\r\n                                    <textarea class=\"form-control resize-none\" name=\"nota\" [(ngModel)]=\"datosNotas.nota\"></textarea>\r\n                                </div>\r\n                            </div>\r\n                            <button type=\"submit\" class=\"btn btn-block btn-success\">Ingresar Nota</button>\r\n                            <!-- <button [disabled]=\"ingresandoDatos\" type=\"submit\" class=\"btn btn-block btn-success\" [disabled]=\"loginForm.invalid\">Guardar <img *ngIf=\"ingresandoDatos\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\"></button> -->\r\n                        </div>\r\n                    </form>\r\n                </div>\r\n\r\n                <div class=\"row mt-4\">\r\n                    <ngb-alert type=\"warning\" [dismissible]=\"false\" class=\"col-12 align-self-center\">\r\n                        <small><i class=\"fas fa-exclamation-circle fa-2x\"></i> <strong> !IMPORTANTE!</strong> \r\n                            Si desea editar una nota, debe de hacer <b>click</b> en la nota a cambiar.</small>\r\n                    </ngb-alert>\r\n                </div>\r\n\r\n                <div class=\"card\">\r\n                    <div class=\"row centrar text-center\">\r\n                        <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n                                class=\"fas fa-calendar-check\"></i></strong></label>\r\n                            <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\" class=\"form-control form-control-sm\">\r\n                            <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n                          </select>\r\n                        </div>\r\n\r\n                        <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n                                class=\"fas fa-calendar-check\"></i></strong></label>\r\n                            <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\" class=\"form-control form-control-sm\">\r\n                            <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n                          </select>\r\n                        </div>\r\n\r\n                        <div class=\"col-md-4\"><br><label>\r\n                          <strong>Recargar tabla </strong>\r\n                    \r\n                        </label><br>\r\n                            <button [disabled]=\"cargandoTabla\" class=\"btn btn-info\" (click)=\"traerNotas()\">Actualizar</button>\r\n                            <div *ngIf=\"cargandoTabla\">\r\n                                <img height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">&nbsp;\r\n                                <label>Cargando tabla de Prestamos</label>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"row centrar\">\r\n                        <div class=\"table-responsive\">\r\n                            <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\r\n                                <thead text-sm class=\"text-center\">\r\n                                    <tr>\r\n                                        <th colspan=\"11\" class=\"ColorThCS\">Notas</th>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <th colspan=\"2\"><i class=\"far fa-calendar-alt\"></i> Fecha</th>\r\n                                        <th colspan=\"2\"><i class=\"fas fa-user-circle\"></i> Remitente</th>\r\n                                        <th colspan=\"2\"><i class=\"fas fa-sticky-note\"></i> Nota</th>\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody>\r\n                                    <tr *ngFor=\"let item of notas\" class=\"text-center\">\r\n                                        <td colspan=\"2\">{{item?.fecha}}</td>\r\n                                        <td colspan=\"2\">{{item?.nombre}}</td>\r\n                                        <td colspan=\"2\">{{item?.descripcion}}</td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"archivos\" role=\"tabpanel\" aria-labelledby=\"archivos-tab\">\r\n                <div class=\"modal-header mt-4\" id=\"demoFont2\">\r\n                    <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\r\n                </div>\r\n                <div class=\"card\">\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <!--Boton para salir del modal caja chica-->\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\r\n            class=\"far fa-arrow-alt-circle-left\"></i> Volver a Cuentas</button>\r\n    </div>\r\n</ng-template>\r\n\r\n<button class=\"btn btn-primary\" (click)=\"open(content)\">Archivador</button>"
 
 /***/ }),
 
@@ -811,7 +811,7 @@ module.exports = "<p>\r\n  tablas-beneficios works!\r\n</p>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>crear-empleado works!</p>\n"
+module.exports = "<p>crear-empleado works!</p>\r\n"
 
 /***/ }),
 
@@ -822,7 +822,7 @@ module.exports = "<p>crear-empleado works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>descuentos works!</p>\n"
+module.exports = "<p>descuentos works!</p>\r\n"
 
 /***/ }),
 
@@ -833,7 +833,7 @@ module.exports = "<p>descuentos works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>haberes works!</p>\n"
+module.exports = "<p>haberes works!</p>\r\n"
 
 /***/ }),
 
@@ -844,7 +844,7 @@ module.exports = "<p>haberes works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>liquidacion works!</p>\n"
+module.exports = "<p>liquidacion works!</p>\r\n"
 
 /***/ }),
 
@@ -855,7 +855,7 @@ module.exports = "<p>liquidacion works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\n<li class=\"nav-item active\">\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\n        aria-selected=\"true\">haberes</a>\n</li>\n<li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\n        aria-selected=\"false\">Descuentos</a>\n</li>\n<li class=\"nav-item\">\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\n        aria-selected=\"false\">Liquidacion</a>\n</li>\n</ul>\n\n\n<div class=\"tab-content\" id=\"myTabContent\">\n\n\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\n        <app-haberes></app-haberes>\n    </div>\n\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\n        <app-descuentos></app-descuentos>\n      </div>\n\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\n        <app-liquidacion></app-liquidacion>\n    </div>\n\n  </div>"
+module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\r\n<li class=\"nav-item active\">\r\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\r\n        aria-selected=\"true\">haberes</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\r\n        aria-selected=\"false\">Descuentos</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\r\n        aria-selected=\"false\">Liquidacion</a>\r\n</li>\r\n</ul>\r\n\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n\r\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\r\n        <app-haberes></app-haberes>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\r\n        <app-descuentos></app-descuentos>\r\n      </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\r\n        <app-liquidacion></app-liquidacion>\r\n    </div>\r\n\r\n  </div>"
 
 /***/ }),
 
@@ -5202,7 +5202,7 @@ TablaFondoMutuoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2N1ZW50YS1zaW5kaWNhbC9hcmNoaXZhZG9yL2FyY2hpdmFkb3IuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = ".centrar {\r\n    padding: 2em;\r\n}\r\n\r\n.resize-none {\r\n    resize: none;\r\n    height: 100px;\r\n}\r\n\r\n.dark-modal .modal-content {\r\n    background-color: #292b2c;\r\n    color: white;\r\n}\r\n\r\n.dark-modal .close {\r\n    color: white;\r\n}\r\n\r\n.light-blue-backdrop {\r\n    background-color: #5cb3fd;\r\n}\r\n\r\nlabel,\r\ninput,\r\nbutton {\r\n    font-size: 14px;\r\n}\r\n\r\ntr,\r\nth {\r\n    font-size: 14px;\r\n}\r\n\r\nth {\r\n    color: white;\r\n    background: #138D75;\r\n}\r\n\r\n#demoFont {\r\n    color: #fff;\r\n    background: #2C3E50;\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #4CA1AF, #2C3E50);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n#demoFont2 {\r\n    color: #fff;\r\n    background: #52c234;\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to left, #061700, #52c234);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n.nav-item a {\r\n    color: #fff;\r\n    background: #093028;\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to top, #237A57, #093028);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n.margen {\r\n    display: flex;\r\n    justify-content: center;\r\n    width: 100%;\r\n}\r\n\r\n.card {\r\n    background: rgba(255, 255, 255, 0.8);\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n}\r\n\r\n.card-header {\r\n    border-top-left-radius: 20px;\r\n    border-top-right-radius: 20px;\r\n}\r\n\r\n#myTab {\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n}\r\n\r\nhr {\r\n    border-top: 1px solid #000000 !important;\r\n    margin-bottom: 5px !important;\r\n    margin-top: 5px !important;\r\n    height: 10px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvY3VlbnRhLXNpbmRpY2FsL2FyY2hpdmFkb3IvYXJjaGl2YWRvci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0FBQ2pCOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0kseUJBQXlCO0FBQzdCOztBQUVBOzs7SUFHSSxlQUFlO0FBQ25COztBQUVBOztJQUVJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksV0FBVztJQUNYLG1CQUFtQjtJQUNuQiw4QkFBOEI7SUFFOUIsK0JBQStCO0lBQy9CLHVEQUF1RDtJQUN2RCxxRUFBcUU7QUFDekU7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsbUJBQW1CO0lBQ25CLDhCQUE4QjtJQUU5QiwrQkFBK0I7SUFDL0Isc0RBQXNEO0lBQ3RELHFFQUFxRTtBQUN6RTs7QUFFQTtJQUNJLFdBQVc7SUFDWCxtQkFBbUI7SUFDbkIsOEJBQThCO0lBRTlCLCtCQUErQjtJQUMvQixxREFBcUQ7SUFDckQscUVBQXFFO0FBQ3pFOztBQUVBO0lBQ0ksYUFBYTtJQUNiLHVCQUF1QjtJQUN2QixXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxvQ0FBb0M7SUFDcEMsMEVBQTBFO0FBQzlFOztBQUVBO0lBQ0ksNEJBQTRCO0lBQzVCLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLDBFQUEwRTtBQUM5RTs7QUFFQTtJQUNJLHdDQUF3QztJQUN4Qyw2QkFBNkI7SUFDN0IsMEJBQTBCO0lBQzFCLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9jdWVudGEtc2luZGljYWwvYXJjaGl2YWRvci9hcmNoaXZhZG9yLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudHJhciB7XHJcbiAgICBwYWRkaW5nOiAyZW07XHJcbn1cclxuXHJcbi5yZXNpemUtbm9uZSB7XHJcbiAgICByZXNpemU6IG5vbmU7XHJcbiAgICBoZWlnaHQ6IDEwMHB4O1xyXG59XHJcblxyXG4uZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4ubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG59XHJcblxyXG5sYWJlbCxcclxuaW5wdXQsXHJcbmJ1dHRvbiB7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbn1cclxuXHJcbnRyLFxyXG50aCB7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbn1cclxuXHJcbnRoIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbn1cclxuXHJcbiNkZW1vRm9udCB7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7XHJcbiAgICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7XHJcbiAgICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTtcclxuICAgIC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxufVxyXG5cclxuI2RlbW9Gb250MiB7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQ6ICM1MmMyMzQ7XHJcbiAgICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMDYxNzAwLCAjNTJjMjM0KTtcclxuICAgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7XHJcbiAgICAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbn1cclxuXHJcbi5uYXYtaXRlbSBhIHtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgYmFja2dyb3VuZDogIzA5MzAyODtcclxuICAgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cclxuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7XHJcbiAgICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7XHJcbiAgICAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbn1cclxuXHJcbi5tYXJnZW4ge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KTtcclxuICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG59XHJcblxyXG4uY2FyZC1oZWFkZXIge1xyXG4gICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAyMHB4O1xyXG59XHJcblxyXG4jbXlUYWIge1xyXG4gICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XHJcbn1cclxuXHJcbmhyIHtcclxuICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjMDAwMDAwICFpbXBvcnRhbnQ7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA1cHggIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6IDVweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAxMHB4O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -5219,25 +5219,128 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_archivador_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/archivador.service */ "./src/app/servicios/archivador.service.ts");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+
+
 
 
 
 let ArchivadorComponent = class ArchivadorComponent {
-    constructor(config, modalService) {
+    constructor(config, modalService, _archivadorService, _fechasService) {
         this.modalService = modalService;
+        this._archivadorService = _archivadorService;
+        this._fechasService = _fechasService;
+        this.remitente = '';
+        this.cargarDatos = 0;
+        this.notas = [];
+        this.datosNotas = {
+            fecha: '',
+            nota: ''
+        };
+        this.datosArchivos = {
+            fecha: '',
+            tipo: 0,
+            titulo: '',
+            archivo: ''
+        };
         // customize default values of modals used by this component tree
         config.backdrop = 'static';
         config.keyboard = false;
     }
     open(content) {
-        this.modalService.open(content);
+        this.modalService.open(content, { size: 'xl' });
+        this.cargarFecha();
+        this.cargarFechasActuales();
     }
     ngOnInit() {
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
+    }
+    changeAnio(valorSelect) {
+        this.idAnioActual = valorSelect.target.value;
+        this.notas = [];
+        this.traerNotas();
+    }
+    changeMes(valorSelect) {
+        this.idMesActual = valorSelect.target.value;
+        this.notas = [];
+        this.traerNotas();
+    }
+    cargarFecha() {
+        this._archivadorService.traerDatos().subscribe(res => {
+            if (res.estado == 'success') {
+                this.remitente = res.datos.nombre;
+                this.datosNotas.fecha = res.datos.fecha;
+                this.datosArchivos.fecha = res.datos.fecha;
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    cargarFechasActuales() {
+        this.cargarDatos = 0;
+        //Cargar id del Año actual
+        this._fechasService.getAnioActual().subscribe(response => {
+            this.idAnioActual = response.id;
+            this.cargarDatos++;
+            console.log(this.cargarDatos);
+            if (this.cargarDatos == 2) {
+                this.traerNotas();
+            }
+        }, error => {
+            console.log(error);
+        });
+        //Cargar id del Mes actual
+        this._fechasService.getMesActual().subscribe(response => {
+            this.idMesActual = response.id;
+            this.cargarDatos++;
+            console.log(this.cargarDatos);
+            if (this.cargarDatos == 2) {
+                this.traerNotas();
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    ingresarNota() {
+        this._archivadorService.ingresarNota(this.datosNotas).subscribe(res => {
+            if (res.estado = 'success') {
+                this.limpiarNotas();
+                alert(res.mensaje);
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    limpiarNotas() {
+        this.datosNotas.nota = '';
+    }
+    traerNotas() {
+        this.notas = [];
+        this._archivadorService.traerNotas(this.idAnioActual, this.idMesActual).subscribe(res => {
+            if (res.estado == 'success') {
+                this.notas = res.notas;
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 ArchivadorComponent.ctorParameters = () => [
     { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: src_app_servicios_archivador_service__WEBPACK_IMPORTED_MODULE_3__["ArchivadorService"] },
+    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"] }
 ];
 ArchivadorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -5245,7 +5348,7 @@ ArchivadorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./archivador.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/cuenta-sindical/archivador/archivador.component.html"),
         styles: [__webpack_require__(/*! ./archivador.component.css */ "./src/app/auth-master/cuenta-sindical/archivador/archivador.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_archivador_service__WEBPACK_IMPORTED_MODULE_3__["ArchivadorService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"]])
 ], ArchivadorComponent);
 
 
@@ -13099,6 +13202,71 @@ AniosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/servicios/archivador.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/servicios/archivador.service.ts ***!
+  \*************************************************/
+/*! exports provided: ArchivadorService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArchivadorService", function() { return ArchivadorService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let ArchivadorService = class ArchivadorService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    traerDatos() {
+        return this._http.get(this.url + "traer_datos_archivador", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+    ingresarNota(data) {
+        const datos = new FormData();
+        datos.append('fecha', data.fecha);
+        datos.append('descripcion', data.nota);
+        return this._http.post(this.url + "ingresar_notas", datos, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token
+            })
+        });
+    }
+    traerNotas(anio, mes) {
+        return this._http.get(this.url + "traer_notas/" + anio + "/" + mes, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+};
+ArchivadorService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+ArchivadorService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], ArchivadorService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/servicios/auth-interceptor.service.ts":
 /*!*******************************************************!*\
   !*** ./src/app/servicios/auth-interceptor.service.ts ***!
@@ -18732,7 +18900,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\v_and\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

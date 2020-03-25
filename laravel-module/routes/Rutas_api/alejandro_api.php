@@ -164,3 +164,14 @@ Route::post('actualizar_cpds','CuentaConsorcioController@actualizar_cpds');
 
 Route::post('registrar_acta','ActasController@crear');
 Route::get('listar_acta','ActasController@listar');
+
+//liquidacion
+
+Route::get('lista_haberes','HaberesController@lista_haberes');
+Route::post('guardar_config_haber','HaberesController@guardar_config_haber');
+
+
+Route::get('lista_conf_haberes/{empleado}','HaberesController@lista_conf_haberes');
+Route::get('eliminar_item_conf_hab/{conf_hab_id}','HaberesController@eliminar_item_conf_hab');
+
+Route::post('actualizar_conf_haber','HaberesController@actualizar_conf_haber');

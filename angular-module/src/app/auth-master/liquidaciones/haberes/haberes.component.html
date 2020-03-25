@@ -1,1 +1,208 @@
-<p>haberes works!</p>
+<br>
+<ng-template #modalUsuario let-modal>
+    <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><i class="fas fa-calendar-alt"></i> <strong> Validar accion</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input #rut class="form-control form-control-sm" type="" name="" [value]="user.rut">
+        <br>
+        <input #password [(ngModel)]="pass" class="form-control form-control-sm" type="password"
+            placeholder="Ingrese su contraseña" name="">
+        <br>
+        <button [disabled]="buttonStatus" class="btn btn-success btn-block btn-sm" #btn_click_validar
+            (click)="modal.close('Save click')">
+            Validar
+            <img *ngIf="load" padding-left="20px" height="12"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+        </button>
+    </div>
+</ng-template>
+
+
+<div class="card">
+    <div class="card-header" id="demoFont">
+        <strong class="text-center">
+            <h6><i class="fas fa-file-invoice"></i> Configuración - Haberes</h6>
+        </strong>
+    </div>
+
+    <div class="card-body">
+        <label for="">Empleado: </label><br>
+        <select [(ngModel)]="empleado" (change)="listar_h()" class="form-control">
+            <option value="">Seleccione..</option>
+            <option *ngFor="let e of empleados"  value="{{e.id}}">{{ e.nombre }}</option>
+        </select><br>
+
+        <div class="row">
+            <div class="col-md-5">
+                <label for="">Haber: </label><br>
+                <select [(ngModel)]="haber"  class="form-control" (change)="seleccionar_h()">
+                    <option  value="">Seleccione...</option>
+                    <option *ngFor="let i of haberes" value="{{ i.tipo+'|'+i.id }}">{{i.descripcion}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-5">
+                <label for="">{{(tipo == 'P')?'Porcentaje (%)' : 'Monto ($)'}}</label><br>
+                <input [(ngModel)]="valor" type="text" placeholder="{{(tipo == 'P')?'Ingrese porcentaje (%)' : 'Ingrese monto ($)'}}" class="form-control">
+            </div>
+
+            <div class="col-md-2">
+                <label for=""> &nbsp;</label><br>
+                <button (click)="registrar()" class="btn btn-success">
+                    <img *ngIf="load" padding="30px" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    Registrar
+                </button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="table-responsive" style="height: 370px; overflow: scroll;">
+            <table class="table table-bordered table-sm">
+                <thead text-sm class="text-center">
+                    <tr>
+                        <th colspan="10" style="background: #138D75;" class="ColorThCS">
+                            
+                            <img *ngIf="load_table" padding="30px" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                            TABLA DE HABERES</th>
+                        
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="background: #138D75;">Id</th>
+                        <th colspan="2" style="background: #138D75;">Haberes</th>
+                        <th colspan="2" style="background: #138D75;">Tipo</th>
+                        <th colspan="2" style="background: #138D75;">Monto o Porcentahe</th>
+
+                        <th colspan="2" style="background: #138D75;">Opción</th>
+                        
+        
+                        <!-- <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto actual (egreso)</th> -->
+        
+                    </tr>
+                </thead>
+        
+        
+        
+        
+        
+        
+                <tbody>
+                    <tr *ngFor="let item of tabla; let i = index" class="text-center">
+                        <td colspan="2">{{ item.id }}
+                            
+                        </td>
+                        <td colspan="2">{{ item.descripcion }}</td>
+                        <td colspan="2">{{ (item.tipo == 'P')? '%' : '$' }}</td>
+                        <!-- <td colspan="2" (click)="openActualizar(numeroDocFijoModal)">{{ item.numero_documento }}
+                            <ng-template #numeroDocFijoModal let-c="close" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label><strong>N° Documento Actual</strong></label>
+                                        <input type="text" class="form-control form-control-sm"
+                                            value="{{item.numero_documento}}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> <strong>Nuevo N° Documento</strong></label>
+                                        <input class="form-control form-control-sm" #numeroDocFijo type="text">
+                                    </div>
+                                </div>
+        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <button type="button" class="btn btn-outline-success"
+                                        (click)="actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)">Guardar
+                                        <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>
+                                </div>
+                            </ng-template>
+        
+                        </td> -->
+                     
+                        <td colspan="2" (click)="openActualizar(fechaFijoModal)"> 
+                        {{ (item.tipo == 'P')? item.porcentaje+'%' : item.monto | currency:"CLP" : "symbol-narrow":'1.0'}} 
+
+                        <ng-template #fechaFijoModal let-c="closeFecha" let-d="dismiss">
+                            <div class="modal-header" id="demoFont">
+                                <h4 class="modal-title" id="modal-basic-title">Cambiar {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label *ngIf="item.tipo == 'P'" for=""><b>{{ 'Valor actual '+item.porcentaje+'%' }}</b></label>
+                                <label *ngIf="item.tipo == 'M'" for=""><b>{{ 'Valor actual '+(item.monto | currency:"CLP" : "symbol-narrow":'1.0') }}</b></label>
+                                <br>
+                                <label for="">Nuevo {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</label><br>
+                                <input type="text" [(ngModel)]="valor_update" class="form-control" placeholder="">
+                        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                <button type="button" class="btn btn-outline-success"
+                                    (click)="actualizar(item.id,'valor',valor_update,modalUsuario)">Guardar
+                                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                </button>
+                            </div>
+                        </ng-template>
+                    </td>
+                       
+                    <td colspan="2">
+                        <button (click)="eliminar_conf_hab(item.id)" class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                        <!-- <td colspan="2" (click)="openActualizar(prestamoModal)">
+                            {{item.prestamo | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            <ng-template #prestamoModal let-c="close" let-d="dismiss">
+                                <div class="modal-header" id="demoFont">
+                                    <h4 class="modal-title" id="modal-basic-title">Prestamo</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label><strong>Prestamo Actul</strong></label>
+                                        <input type="text" class="form-control form-control-sm" value="{{item.prestamo}}"
+                                            disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> <strong>Nuevo prestamo</strong></label>
+                                        <input class="form-control form-control-sm" #prestamo type="text">
+                                    </div>
+                                </div>
+        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                                    <button type="button" class="btn btn-outline-success"
+                                        (click)="actualizar(item.id,'prestamo',prestamo,modalUsuario)">Guardar
+                                        <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                    </button>
+                                </div>
+                            </ng-template>
+        
+                        </td> -->
+                      
+        
+        
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

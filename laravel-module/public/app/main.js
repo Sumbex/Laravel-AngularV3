@@ -822,7 +822,7 @@ module.exports = "<!--Formulario para ingresar una cuenta sindical-->\n<div clas
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>descuentos works!</p>\n"
+module.exports = "<br>\n<ng-template #modalUsuario let-modal>\n    <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password [(ngModel)]=\"pass\" class=\"form-control form-control-sm\" type=\"password\"\n            placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n        <button [disabled]=\"buttonStatus\" class=\"btn btn-success btn-block btn-sm\" #btn_click_validar\n            (click)=\"modal.close('Save click')\">\n            Validar\n            <img *ngIf=\"load\" padding-left=\"20px\" height=\"12\"\n                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n        </button>\n    </div>\n</ng-template>\n\n\n<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i> Configuración - Descuentos</h6>\n        </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <label for=\"\">Empleado: </label><br>\n        <select [(ngModel)]=\"empleado\" (change)=\"listar_d()\" class=\"form-control\">\n            <option value=\"\">Seleccione..</option>\n            <option *ngFor=\"let e of empleados\" value=\"{{e.id}}\">{{ e.nombre_trabajador }}</option>\n        </select><br>\n\n        <div class=\"row\">\n            <div class=\"col-md-5\">\n                <label for=\"\">Descuento: </label><br>\n                <select [(ngModel)]=\"haber\" class=\"form-control\" (change)=\"seleccionar_d()\">\n                    <option value=\"\">Seleccione...</option>\n                    <option *ngFor=\"let i of haberes\" value=\"{{ i.tipo+'|'+i.id }}\">{{i.descripcion}}</option>\n                </select>\n            </div>\n\n            <div class=\"col-md-5\">\n                <label for=\"\">{{(tipo == 'P')?'Porcentaje (%)' : 'Monto ($)'}}</label><br>\n                <input [(ngModel)]=\"valor\" type=\"text\"\n                    placeholder=\"{{(tipo == 'P')?'Ingrese porcentaje (%)' : 'Ingrese monto ($)'}}\" class=\"form-control\">\n            </div>\n\n            <div class=\"col-md-2\">\n                <label for=\"\"> &nbsp;</label><br>\n                <button (click)=\"registrar()\" class=\"btn btn-success\">\n                    <img *ngIf=\"load\" padding=\"30px\" height=\"20\"\n                        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                    Registrar\n                </button>\n            </div>\n        </div>\n\n        <hr>\n\n        <div class=\"table-responsive\" style=\"height: 370px; overflow: scroll;\">\n            <table class=\"table table-bordered table-sm\">\n                <thead text-sm class=\"text-center\">\n                    <tr>\n                        <th colspan=\"10\" style=\"background: #138D75;\" class=\"ColorThCS\">\n\n                            <img *ngIf=\"load_table\" padding=\"30px\" height=\"20\"\n                                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                            TABLA DE DESCUENTOS</th>\n\n                    </tr>\n                    <tr>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Id</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Descuentos</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Tipo</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Monto o Porcentahe</th>\n\n                        <th colspan=\"2\" style=\"background: #138D75;\">Opción</th>\n\n\n                        <!-- <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Monto actual (egreso)</th> -->\n\n                    </tr>\n                </thead>\n\n\n\n\n\n\n                <tbody>\n                    <tr *ngFor=\"let item of tabla; let i = index\" class=\"text-center\">\n                        <td colspan=\"2\">{{ item.id }}\n\n                        </td>\n                        <td colspan=\"2\">{{ item.descripcion }}</td>\n                        <td colspan=\"2\">{{ (item.tipo == 'P')? '%' : '$' }}</td>\n                        <!-- <td colspan=\"2\" (click)=\"openActualizar(numeroDocFijoModal)\">{{ item.numero_documento }}\n                            <ng-template #numeroDocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Numero Documento</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>N° Documento Actual</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\"\n                                            value=\"{{item.numero_documento}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo N° Documento</strong></label>\n                                        <input class=\"form-control form-control-sm\" #numeroDocFijo type=\"text\">\n                                    </div>\n                                </div>\n        \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n        \n                        </td> -->\n\n                        <td colspan=\"2\" (click)=\"openActualizar(fechaFijoModal)\">\n                            {{ (item.tipo == 'P')? item.porcentaje+'%' : item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}\n\n                            <ng-template #fechaFijoModal let-c=\"closeFecha\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Cambiar\n                                        {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <label *ngIf=\"item.tipo == 'P'\"\n                                        for=\"\"><b>{{ 'Valor actual '+item.porcentaje+'%' }}</b></label>\n                                    <label *ngIf=\"item.tipo == 'M'\"\n                                        for=\"\"><b>{{ 'Valor actual '+(item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0') }}</b></label>\n                                    <br>\n                                    <label for=\"\">Nuevo {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</label><br>\n                                    <input type=\"text\" [(ngModel)]=\"valor_update\" class=\"form-control\" placeholder=\"\">\n\n                                </div>\n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir\n                                    </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'valor',valor_update,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n                        </td>\n\n                        <td colspan=\"2\">\n                            <button (click)=\"eliminar_validar(item.id, modalUsuario)\" class=\"btn btn-danger btn-sm\">Eliminar</button>\n                        </td>\n                        <!-- <td colspan=\"2\" (click)=\"openActualizar(prestamoModal)\">\n                            {{item.prestamo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}\n                            <ng-template #prestamoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Prestamo</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>Prestamo Actul</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.prestamo}}\"\n                                            disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo prestamo</strong></label>\n                                        <input class=\"form-control form-control-sm\" #prestamo type=\"text\">\n                                    </div>\n                                </div>\n        \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'prestamo',prestamo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n        \n                        </td> -->\n\n\n\n                    </tr>\n\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -833,7 +833,7 @@ module.exports = "<p>descuentos works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\n<ng-template #modalUsuario let-modal>\n    <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password [(ngModel)]=\"pass\" class=\"form-control form-control-sm\" type=\"password\"\n            placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n        <button [disabled]=\"buttonStatus\" class=\"btn btn-success btn-block btn-sm\" #btn_click_validar\n            (click)=\"modal.close('Save click')\">\n            Validar\n            <img *ngIf=\"load\" padding-left=\"20px\" height=\"12\"\n                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n        </button>\n    </div>\n</ng-template>\n\n\n<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i> Configuración - Haberes</h6>\n        </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <label for=\"\">Empleado: </label><br>\n        <select [(ngModel)]=\"empleado\" (change)=\"listar_h()\" class=\"form-control\">\n            <option value=\"\">Seleccione..</option>\n            <option *ngFor=\"let e of empleados\"  value=\"{{e.id}}\">{{ e.nombre_trabajador }}</option>\n        </select><br>\n\n        <div class=\"row\">\n            <div class=\"col-md-5\">\n                <label for=\"\">Haber: </label><br>\n                <select [(ngModel)]=\"haber\"  class=\"form-control\" (change)=\"seleccionar_h()\">\n                    <option  value=\"\">Seleccione...</option>\n                    <option *ngFor=\"let i of haberes\" value=\"{{ i.tipo+'|'+i.id }}\">{{i.descripcion}}</option>\n                </select>\n            </div>\n\n            <div class=\"col-md-5\">\n                <label for=\"\">{{(tipo == 'P')?'Porcentaje (%)' : 'Monto ($)'}}</label><br>\n                <input [(ngModel)]=\"valor\" type=\"text\" placeholder=\"{{(tipo == 'P')?'Ingrese porcentaje (%)' : 'Ingrese monto ($)'}}\" class=\"form-control\">\n            </div>\n\n            <div class=\"col-md-2\">\n                <label for=\"\"> &nbsp;</label><br>\n                <button (click)=\"registrar()\" class=\"btn btn-success\">\n                    <img *ngIf=\"load\" padding=\"30px\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                    Registrar\n                </button>\n            </div>\n        </div>\n\n        <hr>\n\n        <div class=\"table-responsive\" style=\"height: 370px; overflow: scroll;\">\n            <table class=\"table table-bordered table-sm\">\n                <thead text-sm class=\"text-center\">\n                    <tr>\n                        <th colspan=\"10\" style=\"background: #138D75;\" class=\"ColorThCS\">\n                            \n                            <img *ngIf=\"load_table\" padding=\"30px\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                            TABLA DE HABERES</th>\n                        \n                    </tr>\n                    <tr>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Id</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Haberes</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Tipo</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Monto o Porcentahe</th>\n\n                        <th colspan=\"2\" style=\"background: #138D75;\">Opción</th>\n                        \n        \n                        <!-- <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Monto actual (egreso)</th> -->\n        \n                    </tr>\n                </thead>\n        \n        \n        \n        \n        \n        \n                <tbody>\n                    <tr *ngFor=\"let item of tabla; let i = index\" class=\"text-center\">\n                        <td colspan=\"2\">{{ item.id }}\n                            \n                        </td>\n                        <td colspan=\"2\">{{ item.descripcion }}</td>\n                        <td colspan=\"2\">{{ (item.tipo == 'P')? '%' : '$' }}</td>\n                        <!-- <td colspan=\"2\" (click)=\"openActualizar(numeroDocFijoModal)\">{{ item.numero_documento }}\n                            <ng-template #numeroDocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Numero Documento</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>N° Documento Actual</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\"\n                                            value=\"{{item.numero_documento}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo N° Documento</strong></label>\n                                        <input class=\"form-control form-control-sm\" #numeroDocFijo type=\"text\">\n                                    </div>\n                                </div>\n        \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n        \n                        </td> -->\n                     \n                        <td colspan=\"2\" (click)=\"openActualizar(fechaFijoModal)\"> \n                        {{ (item.tipo == 'P')? item.porcentaje+'%' : item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}} \n\n                        <ng-template #fechaFijoModal let-c=\"closeFecha\" let-d=\"dismiss\">\n                            <div class=\"modal-header\" id=\"demoFont\">\n                                <h4 class=\"modal-title\" id=\"modal-basic-title\">Cambiar {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</h4>\n                                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                    <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                            </div>\n                            <div class=\"modal-body\">\n                                <label *ngIf=\"item.tipo == 'P'\" for=\"\"><b>{{ 'Valor actual '+item.porcentaje+'%' }}</b></label>\n                                <label *ngIf=\"item.tipo == 'M'\" for=\"\"><b>{{ 'Valor actual '+(item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0') }}</b></label>\n                                <br>\n                                <label for=\"\">Nuevo {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</label><br>\n                                <input type=\"text\" [(ngModel)]=\"valor_update\" class=\"form-control\" placeholder=\"\">\n                        \n                            </div>\n                            <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                <button type=\"button\" class=\"btn btn-outline-success\"\n                                    (click)=\"actualizar(item.id,'valor',valor_update,modalUsuario)\">Guardar\n                                    <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                </button>\n                            </div>\n                        </ng-template>\n                    </td>\n                       \n                    <td colspan=\"2\">\n                        <button (click)=\"eliminar_conf_hab(item.id)\" class=\"btn btn-danger btn-sm\">Eliminar</button>\n                    </td>\n                        <!-- <td colspan=\"2\" (click)=\"openActualizar(prestamoModal)\">\n                            {{item.prestamo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}\n                            <ng-template #prestamoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Prestamo</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>Prestamo Actul</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.prestamo}}\"\n                                            disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo prestamo</strong></label>\n                                        <input class=\"form-control form-control-sm\" #prestamo type=\"text\">\n                                    </div>\n                                </div>\n        \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'prestamo',prestamo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n        \n                        </td> -->\n                      \n        \n        \n                    </tr>\n        \n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n\n\n\n"
+module.exports = "<br>\n<ng-template #modalUsuario let-modal>\n    <div class=\"modal-header\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><i class=\"fas fa-calendar-alt\"></i> <strong> Validar accion</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <input #rut class=\"form-control form-control-sm\" type=\"\" name=\"\" [value]=\"user.rut\">\n        <br>\n        <input #password [(ngModel)]=\"pass\" class=\"form-control form-control-sm\" type=\"password\"\n            placeholder=\"Ingrese su contraseña\" name=\"\">\n        <br>\n        <button [disabled]=\"buttonStatus\" class=\"btn btn-success btn-block btn-sm\" #btn_click_validar\n            (click)=\"modal.close('Save click')\">\n            Validar\n            <img *ngIf=\"load\" padding-left=\"20px\" height=\"12\"\n                src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n        </button>\n    </div>\n</ng-template>\n\n\n<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i> Configuración - Haberes</h6>\n        </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <label for=\"\">Empleado: </label><br>\n        <select [(ngModel)]=\"empleado\" (change)=\"listar_h()\" class=\"form-control\">\n            <option value=\"\">Seleccione..</option>\n            <option *ngFor=\"let e of empleados\"  value=\"{{e.id}}\">{{ e.nombre_trabajador }}</option>\n        </select><br>\n\n        <div class=\"row\">\n            <div class=\"col-md-5\">\n                <label for=\"\">Haber: </label><br>\n                <select [(ngModel)]=\"haber\"  class=\"form-control\" (change)=\"seleccionar_h()\">\n                    <option  value=\"\">Seleccione...</option>\n                    <option *ngFor=\"let i of haberes\" value=\"{{ i.tipo+'|'+i.id }}\">{{i.descripcion}}</option>\n                </select>\n            </div>\n\n            <div class=\"col-md-5\">\n                <label for=\"\">{{(tipo == 'P')?'Porcentaje (%)' : 'Monto ($)'}}</label><br>\n                <input [(ngModel)]=\"valor\" type=\"text\" placeholder=\"{{(tipo == 'P')?'Ingrese porcentaje (%)' : 'Ingrese monto ($)'}}\" class=\"form-control\">\n            </div>\n\n            <div class=\"col-md-2\">\n                <label for=\"\"> &nbsp;</label><br>\n                <button (click)=\"registrar()\" class=\"btn btn-success\">\n                    <img *ngIf=\"load\" padding=\"30px\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                    Registrar\n                </button>\n            </div>\n        </div>\n\n        <hr>\n\n        <div class=\"table-responsive\" style=\"height: 370px; overflow: scroll;\">\n            <table class=\"table table-bordered table-sm\">\n                <thead text-sm class=\"text-center\">\n                    <tr>\n                        <th colspan=\"10\" style=\"background: #138D75;\" class=\"ColorThCS\">\n                            \n                            <img *ngIf=\"load_table\" padding=\"30px\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                            TABLA DE HABERES</th>\n                        \n                    </tr>\n                    <tr>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Id</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Haberes</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Tipo</th>\n                        <th colspan=\"2\" style=\"background: #138D75;\">Monto o Porcentahe</th>\n\n                        <th colspan=\"2\" style=\"background: #138D75;\">Opción</th>\n                        \n        \n                        <!-- <th colspan=\"2\" style=\"background: #138D75;\"><i class=\"far fa-file-pdf\"></i> Monto actual (egreso)</th> -->\n        \n                    </tr>\n                </thead>\n        \n        \n        \n        \n        \n        \n                <tbody>\n                    <tr *ngFor=\"let item of tabla; let i = index\" class=\"text-center\">\n                        <td colspan=\"2\">{{ item.id }}\n                            \n                        </td>\n                        <td colspan=\"2\">{{ item.descripcion }}</td>\n                        <td colspan=\"2\">{{ (item.tipo == 'P')? '%' : '$' }}</td>\n                        <!-- <td colspan=\"2\" (click)=\"openActualizar(numeroDocFijoModal)\">{{ item.numero_documento }}\n                            <ng-template #numeroDocFijoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Numero Documento</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>N° Documento Actual</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\"\n                                            value=\"{{item.numero_documento}}\" disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo N° Documento</strong></label>\n                                        <input class=\"form-control form-control-sm\" #numeroDocFijo type=\"text\">\n                                    </div>\n                                </div>\n        \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'numero_documento',numeroDocFijo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n        \n                        </td> -->\n                     \n                        <td colspan=\"2\" (click)=\"openActualizar(fechaFijoModal)\"> \n                        {{ (item.tipo == 'P')? item.porcentaje+'%' : item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}} \n\n                        <ng-template #fechaFijoModal let-c=\"closeFecha\" let-d=\"dismiss\">\n                            <div class=\"modal-header\" id=\"demoFont\">\n                                <h4 class=\"modal-title\" id=\"modal-basic-title\">Cambiar {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</h4>\n                                <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                    <span aria-hidden=\"true\">&times;</span>\n                                </button>\n                            </div>\n                            <div class=\"modal-body\">\n                                <label *ngIf=\"item.tipo == 'P'\" for=\"\"><b>{{ 'Valor actual '+item.porcentaje+'%' }}</b></label>\n                                <label *ngIf=\"item.tipo == 'M'\" for=\"\"><b>{{ 'Valor actual '+(item.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0') }}</b></label>\n                                <br>\n                                <label for=\"\">Nuevo {{ (item.tipo == 'P')? 'porcentaje %' : 'monto $' }}</label><br>\n                                <input type=\"text\" [(ngModel)]=\"valor_update\" class=\"form-control\" placeholder=\"\">\n                        \n                            </div>\n                            <div class=\"modal-footer\">\n                                <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                <button type=\"button\" class=\"btn btn-outline-success\"\n                                    (click)=\"actualizar(item.id,'valor',valor_update,modalUsuario)\">Guardar\n                                    <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                </button>\n                            </div>\n                        </ng-template>\n                    </td>\n                       \n                    <td colspan=\"2\">\n                        <button (click)=\"eliminar_validar(item.id, modalUsuario)\" class=\"btn btn-danger btn-sm\">Eliminar</button>\n                    </td>\n                        <!-- <td colspan=\"2\" (click)=\"openActualizar(prestamoModal)\">\n                            {{item.prestamo | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}\n                            <ng-template #prestamoModal let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"modal-header\" id=\"demoFont\">\n                                    <h4 class=\"modal-title\" id=\"modal-basic-title\">Prestamo</h4>\n                                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n                                        <span aria-hidden=\"true\">&times;</span>\n                                    </button>\n                                </div>\n                                <div class=\"modal-body\">\n                                    <div class=\"form-group\">\n                                        <label><strong>Prestamo Actul</strong></label>\n                                        <input type=\"text\" class=\"form-control form-control-sm\" value=\"{{item.prestamo}}\"\n                                            disabled>\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label> <strong>Nuevo prestamo</strong></label>\n                                        <input class=\"form-control form-control-sm\" #prestamo type=\"text\">\n                                    </div>\n                                </div>\n        \n                                <div class=\"modal-footer\">\n                                    <button type=\"button\" class=\"btn btn-info\" (click)=\"cerrarActualizar()\">Salir </button>\n                                    <button type=\"button\" class=\"btn btn-outline-success\"\n                                        (click)=\"actualizar(item.id,'prestamo',prestamo,modalUsuario)\">Guardar\n                                        <img *ngIf=\"actualizarLoad\" padding-left=\"20px\" height=\"12\"\n                                            src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                                    </button>\n                                </div>\n                            </ng-template>\n        \n                        </td> -->\n                      \n        \n        \n                    </tr>\n        \n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -8625,7 +8625,7 @@ CrearEmpleadoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvZGVzY3VlbnRvcy9kZXNjdWVudG9zLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n    .dark-modal .modal-content {\n      background-color: #292b2c;\n      color: white;\n    }\n    .dark-modal .close {\n      color: white;\n    }\n    .light-blue-backdrop {\n      background-color: #5cb3fd;\n    }\n    label,input, button{\n      font-size: 14px;\n    }\n    tr,th{\n      font-size: 14px;\n    }\n    th{\n      color: white;\n      background: #138D75;\n    }\n    #demoFont {\n      color: #fff;\n      background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n      background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n      }\n    .margen{\n        display: flex;\n        justify-content: center;\n        width: 100%;\n      }\n    .card{\n        border-top-left-radius: 20px;\n        border-top-right-radius: 20px;\n        background: rgba(255, 255, 255, 0.8);\n        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n      }\n    .card-header{\n        border-top-left-radius: 20px;\n        border-top-right-radius: 20px;\n      }\n    #myTab{\n        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n      }\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbGlxdWlkYWNpb25lcy9kZXNjdWVudG9zL2Rlc2N1ZW50b3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0lBQ0k7TUFDRSx5QkFBeUI7TUFDekIsWUFBWTtJQUNkO0lBQ0E7TUFDRSxZQUFZO0lBQ2Q7SUFDQTtNQUNFLHlCQUF5QjtJQUMzQjtJQUVBO01BQ0UsZUFBZTtJQUNqQjtJQUVBO01BQ0UsZUFBZTtJQUNqQjtJQUNBO01BQ0UsWUFBWTtNQUNaLG1CQUFtQjtJQUNyQjtJQUVBO01BQ0UsV0FBVztNQUNYLG1CQUFtQixHQUFHLDhCQUE4QixHQUNjLCtCQUErQjtNQUNqRyx1REFBdUQsRUFBRSxxRUFBcUU7TUFDOUg7SUFDQTtRQUNFLGFBQWE7UUFDYix1QkFBdUI7UUFDdkIsV0FBVztNQUNiO0lBRUE7UUFDRSw0QkFBNEI7UUFDNUIsNkJBQTZCO1FBQzdCLG9DQUFvQztRQUNwQywwRUFBMEU7TUFDNUU7SUFFQTtRQUNFLDRCQUE0QjtRQUM1Qiw2QkFBNkI7TUFDL0I7SUFDQTtRQUNFLDBFQUEwRTtNQUM1RSIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvZGVzY3VlbnRvcy9kZXNjdWVudG9zLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgIH1cbiAgICAuZGFyay1tb2RhbCAuY2xvc2Uge1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgIH1cbiAgICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xuICAgIH1cblxuICAgIGxhYmVsLGlucHV0LCBidXR0b257XG4gICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgfVxuXG4gICAgdHIsdGh7XG4gICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgfVxuICAgIHRoe1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbiAgICB9XG4gICAgXG4gICAgI2RlbW9Gb250IHtcbiAgICAgIGNvbG9yOiAjZmZmO1xuICAgICAgYmFja2dyb3VuZDogIzJDM0U1MDsgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gICAgICB9XG4gICAgICAubWFyZ2Vue1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG5cbiAgICAgIC5jYXJke1xuICAgICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xuICAgICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMjBweDtcbiAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xuICAgICAgICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDEpLCAwIDZweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE5KTtcbiAgICAgIH1cbiAgICBcbiAgICAgIC5jYXJkLWhlYWRlcntcbiAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcbiAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XG4gICAgICB9XG4gICAgICAjbXlUYWJ7XG4gICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xuICAgICAgfVxuXG4iXX0= */"
 
 /***/ }),
 
@@ -8641,20 +8641,293 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DescuentosComponent", function() { return DescuentosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../servicios/liquidacion-juanito.service */ "./src/app/servicios/liquidacion-juanito.service.ts");
+/* harmony import */ var src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicios/validar-usuario.service */ "./src/app/servicios/validar-usuario.service.ts");
+
+
+
+
 
 
 let DescuentosComponent = class DescuentosComponent {
-    constructor() { }
+    constructor(config, modalService, _http, _liq, _validarusuario) {
+        this.modalService = modalService;
+        this._http = _http;
+        this._liq = _liq;
+        this._validarusuario = _validarusuario;
+        this.modalActualizar = null;
+        this.load = false;
+        this.load_table = false;
+        this.user = [];
+        this.empleado = '';
+        // empleados:object=[
+        //   {'id':1, 'nombre':'Alejandro Godoy'},
+        //   {'id':2, 'nombre': 'Manuel Garcia' },
+        // ];
+        this.haber = "";
+        this.tipo = '';
+        this.id_desc = '';
+        this.valor = '';
+        this.valor_update = '';
+        this.m_val = null;
+        this.buttonStatus = false;
+        this.pass = '';
+        this.actualizarLoad = false;
+    }
     ngOnInit() {
+        this.traer_empleados();
+        this.listar_desc();
+    }
+    openActualizar(Actualizar) {
+        this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
+        // this.usuario_logeado();
+    }
+    cerrarActualizar() {
+        this.modalActualizar.close();
+        // this.actualizarMontoCajaChica = '';
+    }
+    //metodos para validar usuario-------------------------------
+    usuario_logeado() {
+        this._validarusuario.usuario_logeado().subscribe((val) => {
+            this.user = val;
+        }, response => { console.log("POST call in error", response); }, () => {
+            console.log("The POST success.");
+        });
+    }
+    traer_empleados() {
+        this._liq.traer_empleados().subscribe(response => {
+            if (response.estado == "success") {
+                this.empleados = response.empleado;
+                console.log(this.empleados);
+            }
+            error => {
+                console.log(error);
+            };
+        });
+    }
+    listar_desc() {
+        this._liq.lista_descuentos().subscribe(response => {
+            if (response.status == "success") {
+                this.haberes = response.lista;
+            }
+            error => {
+                console.log(error);
+            };
+        });
+    }
+    seleccionar_d() {
+        this.valor = '';
+        var tipo = this.haber.substr(0, 1);
+        var cadena = this.haber.split(/\s*|\s*/);
+        var id = '';
+        for (let index = 0; index < cadena.length; index++) {
+            if (index >= 2) {
+                id += cadena[index];
+            }
+        }
+        this.tipo = tipo;
+        this.id_desc = id;
+    }
+    registrar() {
+        this.load = true;
+        this._liq.save_descuentos({
+            'id_empleado': this.empleado,
+            'id_desc': this.id_desc,
+            'tipo': this.tipo,
+            'valor': this.valor
+        }).subscribe(response => {
+            if (response.estado == 'failed') {
+                alert("" + response.mensaje + "");
+                this.load = false;
+            }
+            else {
+                this.listar_d();
+                this.haber = "";
+                this.valor = "";
+                this.load = false;
+            }
+            // if (response.status == "success") {
+            //   this.haberes = response.lista;
+            // }
+            error => {
+                console.log(error);
+                alert("Algo salió mal, ingrese los datos nuevamente");
+                this.load = false;
+            };
+        });
+    }
+    listar_d() {
+        this.load_table = true;
+        this._liq.listar_descuentos(this.empleado).subscribe(response => {
+            if (response.estado == "success") {
+                this.tabla = response.lista;
+                this.load_table = false;
+            }
+            if (response.estado == 'failed') {
+                this.tabla = [];
+                this.load_table = false;
+            }
+            error => {
+                console.log(error);
+            };
+        });
+    }
+    eliminar_conf_desc(id) {
+        var r = confirm("¿Quiere eliminar este item?");
+        //cancel clicked : stop button default action 
+        if (r === true) {
+            this._liq.eliminar_conf_descuento(id).subscribe(response => {
+                if (response.estado == "success") {
+                    this.listar_d();
+                    alert("" + response.mensaje + "");
+                    this.modalActualizar.close();
+                    this.actualizarLoad = false;
+                    this.pass = "";
+                    this.valor_update = "";
+                }
+                if (response.estado == "failed") {
+                    alert("" + response.mensaje + "");
+                    this.modalActualizar.close();
+                    this.actualizarLoad = false;
+                    this.pass = "";
+                    this.valor_update = "";
+                }
+                error => {
+                    console.log(error);
+                };
+            });
+        }
+        else {
+            alert("Proceso frenado");
+            this.modalActualizar.close();
+            this.actualizarLoad = false;
+            this.pass = "";
+            this.valor_update = "";
+        }
+    }
+    //actualizar items
+    actualizar(id, campo, input, validar) {
+        if (this.valor_update.trim() == '') {
+            alert("ingrese datos porfavor!");
+            return false;
+        }
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.m_val = this.modalService.open(validar, { size: 'sm' });
+            this.load = true;
+            this.buttonStatus = true;
+            const formData = new FormData();
+            formData.append('rut', this.user['rut']);
+            formData.append('password', this.pass);
+            formData.append('estado', 'modificar_descuento');
+            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+                //si tiene acceso
+                if (val > 0) {
+                    this.load = false;
+                    this.buttonStatus = false;
+                    this.pass = "";
+                    this.m_val.close();
+                    const form = new FormData();
+                    form.append('id', id);
+                    form.append('campo', campo);
+                    form.append('valor', this.valor_update.trim());
+                    this.actualizarLoad = true;
+                    //aqui metodo para actualizar
+                    this._liq.actualizar_conf_descuento(form).subscribe(response => {
+                        if (response.estado == "success") {
+                            this.listar_d();
+                            alert("" + response.mensaje + "");
+                            this.modalActualizar.close();
+                            this.actualizarLoad = false;
+                            this.pass = "";
+                            this.valor_update = "";
+                        }
+                        if (response.estado == "failed") {
+                            alert("" + response.mensaje + "");
+                            this.actualizarLoad = false;
+                            this.pass = "";
+                            this.valor_update = "";
+                            return false;
+                        }
+                        error => {
+                            console.log(error);
+                        };
+                    });
+                }
+                else {
+                    alert("Acceso denegado");
+                    this.load = false;
+                    this.buttonStatus = false;
+                    this.pass = "";
+                    this.m_val.close();
+                    return false;
+                }
+            }, response => { console.log("POST call in error", response); }, () => {
+                console.log("The POST success.");
+            });
+            return false;
+        }, (reason) => {
+            console.log(`${reason}`);
+            //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+    eliminar_validar(id, validar) {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.m_val = this.modalService.open(validar, { size: 'sm' });
+            this.load = true;
+            this.buttonStatus = true;
+            const formData = new FormData();
+            formData.append('rut', this.user['rut']);
+            formData.append('password', this.pass);
+            formData.append('estado', 'eliminar_descuento');
+            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+                //si tiene acceso
+                if (val > 0) {
+                    this.load = false;
+                    this.buttonStatus = false;
+                    this.pass = "";
+                    this.m_val.close();
+                    this.actualizarLoad = true;
+                    //aqui metodo para actualizar
+                    this.eliminar_conf_desc(id);
+                }
+                else {
+                    alert("Acceso denegado");
+                    this.load = false;
+                    this.buttonStatus = false;
+                    this.pass = "";
+                    this.m_val.close();
+                    return false;
+                }
+            }, response => { console.log("POST call in error", response); }, () => {
+                console.log("The POST success.");
+            });
+            return false;
+        }, (reason) => {
+            console.log(`${reason}`);
+            //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
     }
 };
+DescuentosComponent.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+    { type: _servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_4__["LiquidacionJuanitoService"] },
+    { type: src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"] }
+];
 DescuentosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-descuentos',
         template: __webpack_require__(/*! raw-loader!./descuentos.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/descuentos/descuentos.component.html"),
         styles: [__webpack_require__(/*! ./descuentos.component.css */ "./src/app/auth-master/liquidaciones/descuentos/descuentos.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+        _servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_4__["LiquidacionJuanitoService"],
+        src_app_servicios_validar_usuario_service__WEBPACK_IMPORTED_MODULE_5__["ValidarUsuarioService"]])
 ], DescuentosComponent);
 
 
@@ -8720,12 +8993,13 @@ let HaberesComponent = class HaberesComponent {
         this.actualizarLoad = false;
     }
     ngOnInit() {
+        this.usuario_logeado();
         this.traer_empleados();
         this.listar_hab();
     }
     openActualizar(Actualizar) {
         this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
-        this.usuario_logeado();
+        // this.usuario_logeado();
     }
     cerrarActualizar() {
         this.modalActualizar.close();
@@ -8808,6 +9082,10 @@ let HaberesComponent = class HaberesComponent {
                 this.tabla = response.lista;
                 this.load_table = false;
             }
+            if (response.estado == "failed") {
+                this.tabla = [];
+                this.load_table = false;
+            }
             error => {
                 console.log(error);
             };
@@ -8821,9 +9099,17 @@ let HaberesComponent = class HaberesComponent {
                 if (response.estado == "success") {
                     this.listar_h();
                     alert("" + response.mensaje + "");
+                    this.modalActualizar.close();
+                    this.actualizarLoad = false;
+                    this.pass = "";
+                    this.valor_update = "";
                 }
                 if (response.estado == "failed") {
                     alert("" + response.mensaje + "");
+                    this.modalActualizar.close();
+                    this.actualizarLoad = false;
+                    this.pass = "";
+                    this.valor_update = "";
                 }
                 error => {
                     console.log(error);
@@ -8832,6 +9118,10 @@ let HaberesComponent = class HaberesComponent {
         }
         else {
             alert("Proceso frenado");
+            this.modalActualizar.close();
+            this.actualizarLoad = false;
+            this.pass = "";
+            this.valor_update = "";
         }
     }
     //actualizar items
@@ -8847,7 +9137,7 @@ let HaberesComponent = class HaberesComponent {
             const formData = new FormData();
             formData.append('rut', this.user['rut']);
             formData.append('password', this.pass);
-            formData.append('estado', 'modificar_cs');
+            formData.append('estado', 'modificar_haberes');
             this._validarusuario.validar_usuario(formData).subscribe((val) => {
                 //si tiene acceso
                 if (val > 0) {
@@ -8881,6 +9171,43 @@ let HaberesComponent = class HaberesComponent {
                             console.log(error);
                         };
                     });
+                }
+                else {
+                    alert("Acceso denegado");
+                    this.load = false;
+                    this.buttonStatus = false;
+                    this.pass = "";
+                    this.m_val.close();
+                    return false;
+                }
+            }, response => { console.log("POST call in error", response); }, () => {
+                console.log("The POST success.");
+            });
+            return false;
+        }, (reason) => {
+            console.log(`${reason}`);
+            //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+    eliminar_validar(id, validar) {
+        this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.m_val = this.modalService.open(validar, { size: 'sm' });
+            this.load = true;
+            this.buttonStatus = true;
+            const formData = new FormData();
+            formData.append('rut', this.user['rut']);
+            formData.append('password', this.pass);
+            formData.append('estado', 'eliminar_haberes');
+            this._validarusuario.validar_usuario(formData).subscribe((val) => {
+                //si tiene acceso
+                if (val > 0) {
+                    this.load = false;
+                    this.buttonStatus = false;
+                    this.pass = "";
+                    this.m_val.close();
+                    this.actualizarLoad = true;
+                    //aqui metodo para actualizar
+                    this.eliminar_conf_hab(id);
                 }
                 else {
                     alert("Acceso denegado");
@@ -14290,6 +14617,38 @@ let LiquidacionJuanitoService = class LiquidacionJuanitoService {
     }
     actualizar_conf_haber(form) {
         return this._http.post(this.url + "actualizar_conf_haber", form, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        });
+    }
+    //descuentos
+    // -----------------------
+    lista_descuentos() {
+        return this._http.get(this.url + "lista_descuentos", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        });
+    }
+    save_descuentos(objeto) {
+        return this._http.post(this.url + "guardar_config_descuento", objeto, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        });
+    }
+    traer_descuento() {
+        return this._http.get(this.url + "traer_empleados", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        });
+    }
+    listar_descuentos(empleado) {
+        return this._http.get(this.url + "lista_conf_descuentos/" + empleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        });
+    }
+    eliminar_conf_descuento(conf_desc_id) {
+        return this._http.get(this.url + "eliminar_item_conf_desc/" + conf_desc_id, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
+        });
+    }
+    actualizar_conf_descuento(form) {
+        return this._http.post(this.url + "actualizar_conf_descuento", form, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + this.token })
         });
     }

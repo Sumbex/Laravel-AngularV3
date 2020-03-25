@@ -49,6 +49,7 @@ export class DescuentosComponent implements OnInit {
 
 
   ngOnInit() {
+    this.usuario_logeado();
     this.traer_empleados();
     this.listar_desc();
 

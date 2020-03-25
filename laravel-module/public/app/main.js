@@ -8677,6 +8677,7 @@ let DescuentosComponent = class DescuentosComponent {
         this.actualizarLoad = false;
     }
     ngOnInit() {
+        this.usuario_logeado();
         this.traer_empleados();
         this.listar_desc();
     }

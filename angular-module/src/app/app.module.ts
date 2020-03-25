@@ -130,6 +130,12 @@ import { ActasSocioComponent } from './socios-master/secretaria/actas-socio/acta
 import { DirectorioSocioComponent } from './socios-master/secretaria/directorio-socio/directorio-socio.component';
 import { LeyesSocioComponent } from './socios-master/secretaria/leyes-socio/leyes-socio.component';
 import { ModalDetallePagoConsorcioComponent } from './auth-master/modal-detalle-pago-consorcio/modal-detalle-pago-consorcio.component';
+import { ArchivadorComponent } from './auth-master/cuenta-sindical/archivador/archivador.component';
+import { CrearEmpleadoComponent } from './auth-master/liquidaciones/crear-empleado/crear-empleado.component';
+import { MenuComponent } from './auth-master/liquidaciones/menu/menu.component';
+import { HaberesComponent } from './auth-master/liquidaciones/haberes/haberes.component';
+import { DescuentosComponent } from './auth-master/liquidaciones/descuentos/descuentos.component';
+import { LiquidacionComponent } from './auth-master/liquidaciones/liquidacion/liquidacion.component';
 
 @NgModule({
   declarations: [
@@ -240,7 +246,13 @@ import { ModalDetallePagoConsorcioComponent } from './auth-master/modal-detalle-
     ActasSocioComponent,
     DirectorioSocioComponent,
     LeyesSocioComponent,
-    ModalDetallePagoConsorcioComponent
+    ModalDetallePagoConsorcioComponent,
+    ArchivadorComponent,
+    CrearEmpleadoComponent,
+    MenuComponent,
+    HaberesComponent,
+    DescuentosComponent,
+    LiquidacionComponent
   ],
   imports: [
     BrowserModule,

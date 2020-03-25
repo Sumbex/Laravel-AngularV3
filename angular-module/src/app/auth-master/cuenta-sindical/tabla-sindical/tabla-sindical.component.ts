@@ -162,6 +162,10 @@ export class TablaSindicalComponent implements OnInit {
     this.cargar_select();
   }
 
+  modalSumbexArchivos(nombreModal) {
+    this.abrirTablaSindical = this.modalService.open(nombreModal, {size: 'xl'});
+  }
+
   refrescarSindical() {
     this.tablaSindical = [];
           this.fijos = [];

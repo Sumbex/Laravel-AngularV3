@@ -14,9 +14,19 @@
           </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/AuthMaster/CuentaSindical']"><i class="fas fa-calculator"></i> Cuenta Sindical <span class="sr-only">(current)</span></a>
+            <!-- <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/AuthMaster/CuentaSindical']"><i class="fas fa-calculator"></i> Sindical <span class="sr-only">(current)</span></a>
+              </li> -->
+
+              <li ngbDropdown class="d-inline-block">
+                <button class="btn nav-link" ngbDropdownToggle><i class="fas fa-calculator"></i> Sindical</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/CuentaSindical']"><i class="fas fa-user-plus"></i> Cuenta</a>
+                  <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/CrearEmpleado']"><i class="fas fa-user-edit"></i> Crear Empleado</a>
+                  <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/Liquidaciones']"><i class="fas fa-user-edit"></i> Liquidaciones</a>
+                </div>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/AuthMaster/CuentaBienestar']"> <i class="fas fa-money-check-alt"></i> Cuenta Bienestar</a>
               </li>

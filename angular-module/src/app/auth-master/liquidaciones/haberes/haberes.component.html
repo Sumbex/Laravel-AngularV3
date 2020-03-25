@@ -33,7 +33,7 @@
         <label for="">Empleado: </label><br>
         <select [(ngModel)]="empleado" (change)="listar_h()" class="form-control">
             <option value="">Seleccione..</option>
-            <option *ngFor="let e of empleados"  value="{{e.id}}">{{ e.nombre }}</option>
+            <option *ngFor="let e of empleados"  value="{{e.id}}">{{ e.nombre_trabajador }}</option>
         </select><br>
 
         <div class="row">

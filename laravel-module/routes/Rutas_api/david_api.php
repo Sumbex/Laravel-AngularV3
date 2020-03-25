@@ -8,3 +8,9 @@ Route::get("documento_certificado_nacimiento/{idCarga}","ArchivosSocioController
 Route::Post("registro_directorio","SecDirectorioController@registroDirectorio");
 Route::get("visualizar_directorio","SecDirectorioController@visualizarDirectorio");
 Route::get("visualizar_directorio_detalle/{id}","SecDirectorioController@visualizarDirectorioDetalle");
+
+// LIQUIDACION EMPLEADO
+Route::post("crear_empleado", "LiquidacionEmpleadoController@crear_empleado");
+Route::get("traer_empleados", "LiquidacionEmpleadoController@traer_empleados");
+Route::post("actualizar_empleado", "LiquidacionEmpleadoController@actualizar_empleado");
+    

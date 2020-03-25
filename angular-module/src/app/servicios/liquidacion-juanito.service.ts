@@ -36,6 +36,16 @@ export class LiquidacionJuanitoService {
       )
 
     }
+  
+  traer_empleados(): Observable<any> {
+
+    return this._http.get(this.url + "traer_empleados", {
+        headers: new HttpHeaders(
+          { 'Authorization': 'Bearer' + this.token })
+      }
+      )
+
+    }
 
     listar_haber(empleado): Observable<any> {
 

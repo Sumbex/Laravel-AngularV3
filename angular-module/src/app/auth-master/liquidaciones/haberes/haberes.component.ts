@@ -24,10 +24,11 @@ export class HaberesComponent implements OnInit {
   user: object = [];
 
   empleado='';
-  empleados:object=[
-    {'id':1, 'nombre':'Alejandro Godoy'},
-    {'id':2, 'nombre': 'Manuel Garcia' },
-  ];
+  empleados:object;
+  // empleados:object=[
+  //   {'id':1, 'nombre':'Alejandro Godoy'},
+  //   {'id':2, 'nombre': 'Manuel Garcia' },
+  // ];
 
   haber="";
   haberes:object;
@@ -46,7 +47,9 @@ export class HaberesComponent implements OnInit {
   
 
     ngOnInit() {
+      this.traer_empleados();
       this.listar_hab();
+
     }
 
     openActualizar(Actualizar) {
@@ -72,6 +75,21 @@ export class HaberesComponent implements OnInit {
       }, response => { console.log("POST call in error", response); }, () => {
         console.log("The POST success.");
       });
+    }
+
+    traer_empleados(){
+      
+      this._liq.traer_empleados().subscribe(
+        response => {
+          if (response.estado == "success") {
+            this.empleados = response.empleado;
+            console.log(this.empleados);
+          }
+          error => {
+            console.log(<any>error);
+          }
+        }
+      );
     }
 
     listar_hab(){

@@ -47,6 +47,7 @@ export class HaberesComponent implements OnInit {
   
 
     ngOnInit() {
+      this.usuario_logeado();
       this.traer_empleados();
       this.listar_hab();
 
@@ -54,7 +55,7 @@ export class HaberesComponent implements OnInit {
 
     openActualizar(Actualizar) {
       this.modalActualizar = this.modalService.open(Actualizar, { size: 'sm' });
-      this.usuario_logeado();
+      // this.usuario_logeado();
 
     }
 
@@ -167,6 +168,11 @@ export class HaberesComponent implements OnInit {
           this.load_table = false;
 
         }
+        if (response.estado == "failed") {
+          this.tabla = [];
+          this.load_table = false;
+
+        }
         error => {
           console.log(<any>error);
         }
@@ -185,10 +191,18 @@ export class HaberesComponent implements OnInit {
           if (response.estado == "success") {
             this.listar_h();
             alert("" + response.mensaje + "");
+            this.modalActualizar.close();
+            this.actualizarLoad = false;
+            this.pass = "";
+            this.valor_update = "";
 
           }
           if (response.estado == "failed") {
             alert("" + response.mensaje + "");
+            this.modalActualizar.close();
+            this.actualizarLoad = false;
+            this.pass = "";
+            this.valor_update = "";
 
           }
           error => {
@@ -198,6 +212,10 @@ export class HaberesComponent implements OnInit {
       );
     }else{
       alert("Proceso frenado");
+      this.modalActualizar.close();
+      this.actualizarLoad = false;
+      this.pass = "";
+      this.valor_update = "";
     }
 
 
@@ -225,7 +243,7 @@ export class HaberesComponent implements OnInit {
       const formData = new FormData();
       formData.append('rut', this.user['rut']);
       formData.append('password', this.pass);
-      formData.append('estado', 'modificar_cs');
+      formData.append('estado', 'modificar_haberes');
 
       this._validarusuario.validar_usuario(formData).subscribe((val) => {
 
@@ -295,5 +313,63 @@ export class HaberesComponent implements OnInit {
 
   }
 
+
+
+
+
+
+  eliminar_validar(id, validar) {
+
+    
+    this.m_val = this.modalService.open(validar, { size: 'sm', ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+
+      this.m_val = this.modalService.open(validar, { size: 'sm' });
+      this.load = true;
+      this.buttonStatus = true;
+
+      const formData = new FormData();
+      formData.append('rut', this.user['rut']);
+      formData.append('password', this.pass);
+      formData.append('estado', 'eliminar_haberes');
+
+      this._validarusuario.validar_usuario(formData).subscribe((val) => {
+
+        //si tiene acceso
+        if (val > 0) {
+
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+
+          this.m_val.close();
+
+          this.actualizarLoad = true;
+          //aqui metodo para actualizar
+          this.eliminar_conf_hab(id);
+
+
+
+        } else {
+          alert("Acceso denegado");
+          this.load = false;
+          this.buttonStatus = false;
+          this.pass = "";
+          this.m_val.close();
+          return false;
+        }
+
+      }, response => { console.log("POST call in error", response); }, () => {
+        console.log("The POST success.");
+      });
+      return false;
+
+
+    }, (reason) => {
+      console.log(`${reason}`);
+      //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+
+
+  }
 
 }

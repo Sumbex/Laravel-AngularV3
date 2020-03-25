@@ -78,5 +78,71 @@ export class LiquidacionJuanitoService {
 
   }
 
+
+  //descuentos
+  // -----------------------
+
+  lista_descuentos(): Observable<any> {
+
+    return this._http.get(this.url + "lista_descuentos", {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
+
+  save_descuentos(objeto): Observable<any> {
+
+    return this._http.post(this.url + "guardar_config_descuento", objeto, {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
+  traer_descuento(): Observable<any> {
+
+    return this._http.get(this.url + "traer_empleados", {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
+  listar_descuentos(empleado): Observable<any> {
+
+    return this._http.get(this.url + "lista_conf_descuentos/" + empleado, {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
+  eliminar_conf_descuento(conf_desc_id): Observable<any> {
+
+    return this._http.get(this.url + "eliminar_item_conf_desc/" + conf_desc_id, {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
+
+  actualizar_conf_descuento(form): Observable<any> {
+
+    return this._http.post(this.url + "actualizar_conf_descuento", form, {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
   
 }

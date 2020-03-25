@@ -12,12 +12,15 @@ class ListaHaberesSeeder extends Seeder
     public function run()
     {
         DB::table('cs_lista_haberes')->insert([
-            [ 'id' => '1', 'descripcion' => 'Cotización AFP' ,'tipo'=>'P', 'activo'=>'S' ],
-            [ 'id' => '2', 'descripcion' => 'Cotización salud' ,'tipo'=>'M', 'activo'=>'S' ],
-            [ 'id' => '3', 'descripcion' => 'Plan de salud','tipo'=>'M', 'activo'=>'S' ],
-            [ 'id' => '4', 'descripcion' => 'Seguro de cesantia','tipo'=>'P', 'activo'=>'S' ],
-            [ 'id' => '5', 'descripcion' => 'Anticipo','tipo'=>'M', 'activo'=>'S' ],
-            [ 'id' => '6', 'descripcion' => 'Prestamo','tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '1', 'descripcion' => 'Día trabajado' ,'tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '2', 'descripcion' => 'Hora extra' ,'tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '3', 'descripcion' => 'Gratificación legal','tipo'=>'P', 'activo'=>'S' ],
+            [ 'id' => '4', 'descripcion' => 'Bono locomoción (x día)','tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '5', 'descripcion' => 'Bono colación (x día)','tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '6', 'descripcion' => 'Asignación familiar','tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '7', 'descripcion' => 'Viatico','tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '8', 'descripcion' => 'Bano extra','tipo'=>'M', 'activo'=>'S' ],
+            [ 'id' => '9', 'descripcion' => 'Vacaciones','tipo'=>'M', 'activo'=>'S' ],
         	
         ]);
     }

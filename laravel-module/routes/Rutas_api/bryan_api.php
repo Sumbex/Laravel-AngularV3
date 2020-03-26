@@ -67,6 +67,7 @@ Route::get('/traer_datos_archivador', 'NotasCuentasController@DatosBasicos');
 Route::post('/ingresar_archivos', 'ArchivadorController@IngresarArchivo');
 Route::post('/actualizar_archivo', 'ArchivadorController@ActualizarArchivo');
 Route::get('/traer_archivos/{anio}/{mes}', 'ArchivadorController@TraerArchivos');
+Route::get('/traer_tipos_archivador', 'ArchivadorController@TraerTipos');
 //------------------------------------------->archivador
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

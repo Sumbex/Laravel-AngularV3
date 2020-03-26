@@ -201,10 +201,12 @@ class Archivador extends Model
                 DB::raw("upper(ca.titulo) as titulo"),
                 'ca.tipo_archivo_id as tipo_id',
                 'cta.tipo',
-                'ca.archivo'
+                'ca.archivo',
+                DB::raw("upper(concat(u.nombres,' ',u.a_paterno,' ',u.a_materno)) as nombre")
             ])
             ->join('anio as a', 'a.id', 'ca.anio_id')
             ->join('mes as m', 'm.id', 'ca.mes_id')
+            ->join('users as u', 'u.id', 'ca.user_crea')
             ->join('cs_tipo_archivo as cta', 'cta.id', 'ca.tipo_archivo_id')
             ->where([
                 'ca.anio_id' => $anio,
@@ -240,6 +242,24 @@ class Archivador extends Model
             return ['estado' => 'success', 'archivos' => $return];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay archivos en la fecha seleccionada.'];
+        }
+    }
+
+    protected function traerTipos()
+    {
+        $tipos = DB::table('cs_tipo_archivo')
+            ->select([
+                'id',
+                'tipo'
+            ])
+            ->where([
+                'activo' => 'S'
+            ])
+            ->get();
+        if (!$tipos->isEmpty()) {
+            return ['estado' => 'success', 'tipos' => $tipos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No hay tipos creados.'];
         }
     }
 }

@@ -10,6 +10,8 @@ import { AniosService } from 'src/app/servicios/anios.service';
 })
 export class ArchivadorComponent implements OnInit {
 
+  url
+
   remitente = ''
   selectAnio
   selectMes
@@ -17,7 +19,10 @@ export class ArchivadorComponent implements OnInit {
   idMesActual
   cargarDatos = 0
 
+  selectTipo
+
   notas = []
+  archivos = []
 
   datosNotas = {
     fecha: '',
@@ -33,6 +38,7 @@ export class ArchivadorComponent implements OnInit {
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _archivadorService: ArchivadorService, private _fechasService: AniosService) {
     // customize default values of modals used by this component tree
+    /* console.log(document.location.origin); */
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -41,23 +47,41 @@ export class ArchivadorComponent implements OnInit {
     this.modalService.open(content, { size: 'xl' });
     this.cargarFecha();
     this.cargarFechasActuales();
+    this.traerTipos();
+  }
+
+  openExcel(content) {
+    this.modalService.open(content, { size: 'lg' });
   }
 
   ngOnInit() {
+    this.url = document.location.origin + '/';
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
   }
 
-  changeAnio(valorSelect) {
-    this.idAnioActual = valorSelect.target.value;
-    this.notas = [];
-    this.traerNotas();
+  archivo(event) {
+    this.datosArchivos.archivo = event.srcElement.files[0];
   }
 
-  changeMes(valorSelect) {
+  changeAnio(valorSelect, tipo) {
+    this.idAnioActual = valorSelect.target.value;
+    if (tipo == 1) {
+      this.notas = [];
+      this.traerNotas();
+    } else {
+      this.traerArchivos();
+    }
+  }
+
+  changeMes(valorSelect, tipo) {
     this.idMesActual = valorSelect.target.value;
-    this.notas = [];
-    this.traerNotas();
+    if (tipo == 1) {
+      this.notas = [];
+      this.traerNotas();
+    } else {
+      this.traerArchivos();
+    }
   }
 
   cargarFecha() {
@@ -87,6 +111,7 @@ export class ArchivadorComponent implements OnInit {
         console.log(this.cargarDatos);
         if (this.cargarDatos == 2) {
           this.traerNotas();
+          this.traerArchivos();
         }
       },
       error => {
@@ -101,6 +126,7 @@ export class ArchivadorComponent implements OnInit {
         console.log(this.cargarDatos);
         if (this.cargarDatos == 2) {
           this.traerNotas();
+          this.traerArchivos();
         }
       },
       error => {
@@ -114,6 +140,7 @@ export class ArchivadorComponent implements OnInit {
       res => {
         if (res.estado = 'success') {
           this.limpiarNotas();
+          this.traerNotas();
           alert(res.mensaje);
         } else {
           alert(res.mensaje);
@@ -134,6 +161,65 @@ export class ArchivadorComponent implements OnInit {
       res => {
         if (res.estado == 'success') {
           this.notas = res.notas;
+        } else {
+          alert(res.mensaje);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  traerTipos() {
+    this._archivadorService.traerTipos().subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.selectTipo = res.tipos;
+        } else {
+          alert(res.mensaje);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+  /* datosArchivos = {
+    fecha: '',
+    tipo: 0,
+    titulo: '',
+    archivo: ''
+  } */
+
+  limpiarArchivos() {
+    this.datosArchivos.tipo = 0;
+    this.datosArchivos.titulo = '';
+    this.datosArchivos.archivo = null;
+  }
+
+  ingresarArchivo() {
+    this._archivadorService.ingresarArchivo(this.datosArchivos).subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.limpiarArchivos();
+          this.traerArchivos();
+          alert(res.mensaje);
+        } else {
+          alert(res.mensaje);
+        }
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
+
+  traerArchivos() {
+    this.archivos = [];
+    this._archivadorService.traerArchivos(this.idAnioActual, this.idMesActual).subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.archivos = res.archivos;
         } else {
           alert(res.mensaje);
         }

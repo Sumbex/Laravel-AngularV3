@@ -48,4 +48,42 @@ export class ArchivadorService {
       )
     })
   }
+
+  ingresarArchivo(data): Observable<any> {
+    const datos = new FormData();
+    datos.append('fecha', data.fecha);
+    datos.append('titulo', data.titulo);
+    datos.append('tipo', data.tipo);
+    datos.append('archivo', data.archivo);
+    return this._http.post(this.url + "ingresar_archivos", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
+  traerArchivos(anio, mes): Observable<any> {
+    return this._http.get(this.url + "traer_archivos/" + anio + "/" + mes, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
+  traerTipos(): Observable<any> {
+    return this._http.get(this.url + "traer_tipos_archivador", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
 }

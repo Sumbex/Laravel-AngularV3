@@ -21,4 +21,9 @@ class ArchivadorController extends Controller
     {
         return Archivador::traerArchivos($anio, $mes);
     }
+
+    public function TraerTipos()
+    {
+        return Archivador::traerTipos();
+    }
 }

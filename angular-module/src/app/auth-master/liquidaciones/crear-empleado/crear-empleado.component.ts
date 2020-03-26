@@ -27,9 +27,11 @@ export class CrearEmpleadoComponent implements OnInit {
   actualizarEmpleadoCorrecto: '';
   actualizarEmpleadoError: '';
   erroresAct = [];
+  erroresForm = [];
 
   // OCULTAR VARIABLES
   alertError;
+  alertErrorForm;
   cargandoTabla;
   mod_editar = null;
 
@@ -61,10 +63,19 @@ export class CrearEmpleadoComponent implements OnInit {
         form.reset();
         this.empleadoCorrecto = response.mensaje;
         alert(this.empleadoCorrecto);
+        this.alertErrorForm = false;
         this.traerEmpleados();
+
       } if (response.estado == 'failed') {
         this.empleadoError = response.mensaje;
         alert(this.empleadoError);
+      }
+
+      if (response.estado == 'failed_v') {
+        for (let index = 0; index < Object.keys(response.mensaje).length; index++) {
+          this.alertErrorForm = true;
+          this.erroresForm = (response.mensaje[Object.keys(response.mensaje)[index]]);
+        }
       }
     }, error => {
       console.log(error);

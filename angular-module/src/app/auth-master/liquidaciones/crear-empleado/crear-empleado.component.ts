@@ -20,14 +20,18 @@ export class CrearEmpleadoComponent implements OnInit {
     nombre_empresa: '',
     direccion_empresa: '',
   }
-
+  // MENSAJES DE ALERTAS
   empleadoCorrecto: '';
   empleadoError: '';
   empleadoTraer: '';
   actualizarEmpleadoCorrecto: '';
   actualizarEmpleadoError: '';
+  erroresAct = [];
+
+  // OCULTAR VARIABLES
+  alertError;
   cargandoTabla;
-  mod_editar= null;
+  mod_editar = null;
 
   constructor(
     config: NgbModalConfig,
@@ -42,15 +46,15 @@ export class CrearEmpleadoComponent implements OnInit {
     this.traerEmpleados();
   }
 
-  modal_editar(modal){
-  	this.mod_editar = this.modalService.open(modal, { size: 'lg' });
+  modal_editar(modal) {
+    this.mod_editar = this.modalService.open(modal, { size: 'lg' });
   }
 
-  cerrar_editar(){
+  cerrar_editar() {
     this.mod_editar.close();
     // this.traerEmpleados();
   }
-  
+
   crearEmpleado(form) {
     this._liquidacionEmpanadaService.crearEmpleado(this.empleadoForm).subscribe(response => {
       if (response.estado == 'success') {
@@ -67,31 +71,40 @@ export class CrearEmpleadoComponent implements OnInit {
     });
   }
 
-  traerEmpleados(){
+  traerEmpleados() {
     this.cargandoTabla = true;
-    this._liquidacionEmpanadaService.traerEmpleados().subscribe(response=>{
-      if(response.estado == 'success'){
+    this._liquidacionEmpanadaService.traerEmpleados().subscribe(response => {
+      if (response.estado == 'success') {
         this.empleadoTraer = response.empleado;
         this.cargandoTabla = false;
       }
-    }, error=>{
+    }, error => {
       console.log(error);
     });
   }
 
-  actualizarEmpleado(idEmpleado,actualizarEmpleado){
-    this._liquidacionEmpanadaService.actualizarEmpleado(idEmpleado,actualizarEmpleado).subscribe(response=>{
+  actualizarEmpleado(idEmpleado, actualizarEmpleado) {
+    this._liquidacionEmpanadaService.actualizarEmpleado(idEmpleado, actualizarEmpleado).subscribe(response => {
 
-      if(response.estado == 'success'){
+      if (response.estado == 'success') {
         this.actualizarEmpleadoCorrecto = response.mensaje;
         alert(this.actualizarEmpleadoCorrecto);
+        this.alertError = false;
         this.mod_editar.close();
         this.traerEmpleados();
-      }else{
+      }
+      if (response.estado == 'failed') {
         this.actualizarEmpleadoError = response.mensaje;
         alert(this.actualizarEmpleadoError);
       }
-    }, error=>{
+      if (response.estado == 'failed_v') {
+        for (let index = 0; index < Object.keys(response.mensaje).length; index++) {
+          this.alertError = true;
+          this.erroresAct = (response.mensaje[Object.keys(response.mensaje)[index]]);
+        }
+      }
+
+    }, error => {
       console.log(error);
     });
   }

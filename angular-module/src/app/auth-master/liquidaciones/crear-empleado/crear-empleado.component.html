@@ -127,7 +127,7 @@
                                                 <br><label><strong>Rut Trabajador</strong></label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     name="rut_trabajador" placeholder="123456789"
-                                                    [(ngModel)]="item.rut_trabajador" required>
+                                                    [(ngModel)]="item.rut_trabajador" disabled>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Nombre Trabajador</strong></label>
@@ -175,6 +175,13 @@
                                                 <br><label><strong>Actualizar Empleado</strong></label><br>
                                                 <button type="button" class="btn btn-block btn-success"
                                                     (click)="actualizarEmpleado(item.id,empleadoTraer[indice])">Actualizar</button>
+                                            </div>
+
+                                            <!-- alertas -->
+                                            <div *ngIf="alertError" class="col-12 my-4">
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{erroresAct}}
+                                                </div>
                                             </div>
 
                                         </div>

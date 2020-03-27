@@ -30,7 +30,7 @@ class LiquidacionEmpleadoController extends Controller
                 'nombre_trabajador.required' => 'Debe ingresar',
                 'cargo.required' => 'Debe ingresar un cargo',
                 'nombre_afp.required' => 'Debe ingresar una AFP',
-                'nombre_isapre.required' => 'Debe ingresar una Isapre',
+                'nombre_isapre.required' => 'Debe ingresar una SALUD',
                 'rut_empresa.required' => 'Debe ingresar el rut de Empresa',
                 'nombre_empresa.required' => 'Debe ingresar el Nombre de Empresa',
                 'direccion_empresa.required' => 'Debe ingresar la direccion de Empresa',
@@ -58,7 +58,6 @@ class LiquidacionEmpleadoController extends Controller
         }
 
         if ($validador['estado'] == 'success') {
-            
             if (!$this->valida_rut($rut_limpio)) {
                 return ['estado'=>'failed','mensaje'=>'Rut no valido'];
             }
@@ -82,41 +81,60 @@ class LiquidacionEmpleadoController extends Controller
         }
     }
 
+    public function validarDatosActualizar($request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nombre_trabajador' => 'required',
+                'cargo' => 'required',
+                'nombre_afp' => 'required',
+                'nombre_isapre' => 'required',
+                'rut_empresa' => 'required',
+                'nombre_empresa' => 'required',
+                'direccion_empresa' => 'required',
+            ],
+            [
+                'nombre_trabajador.required' => 'Debe ingresar',
+                'cargo.required' => 'Debe ingresar un cargo',
+                'nombre_afp.required' => 'Debe ingresar una AFP',
+                'nombre_isapre.required' => 'Debe ingresar una SALUD',
+                'rut_empresa.required' => 'Debe ingresar el rut de Empresa',
+                'nombre_empresa.required' => 'Debe ingresar el Nombre de Empresa',
+                'direccion_empresa.required' => 'Debe ingresar la direccion de Empresa',
+            ]
+        );
+
+
+        if ($validator->fails()) {
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
+        }
+        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
     public function actualizar_empleado(Request $request)
     {
-
-                
-        $rut_limpio = $this->limpiar($request->rut_trabajador);
-
-        $exist = LiquidacionEmpleado::where([ 'activo'=>'S','rut_trabajador'=> $rut_limpio ])->get();
-
-        if (count($exist)>0) {
-            return ['estado'=>'failed','mensaje'=>'Este rut ya existe en la base de datos'];
-        }
-
-        if (!$this->valida_rut($rut_limpio)) {
-            return ['estado'=>'failed','mensaje'=>'Rut no valido'];
-        }
-
         $empleado = LiquidacionEmpleado::find($request->id);
-        if (!is_null($empleado)) {
-            $empleado->rut_trabajador = strtolower($rut_limpio);
-            $empleado->nombre_trabajador = strtolower($request->nombre_trabajador);
-            $empleado->cargo = strtolower($request->cargo);
-            $empleado->nombre_afp = strtolower($request->nombre_afp);
-            $empleado->nombre_isapre = strtolower($request->nombre_isapre);
-            $empleado->rut_empresa = strtolower($request->rut_empresa);
-            $empleado->nombre_empresa = strtolower($request->nombre_empresa);
-            $empleado->direccion_empresa = strtolower($request->direccion_empresa);
-            $empleado->activo = 'S';
+        $validador = $this->validarDatosActualizar($request);
+        if ($validador['estado'] == 'success') {
+            if (!is_null($empleado)) {
+                $empleado->nombre_trabajador = strtolower($request->nombre_trabajador);
+                $empleado->cargo = strtolower($request->cargo);
+                $empleado->nombre_afp = strtolower($request->nombre_afp);
+                $empleado->nombre_isapre = strtolower($request->nombre_isapre);
+                $empleado->rut_empresa = strtolower($request->rut_empresa);
+                $empleado->nombre_empresa = strtolower($request->nombre_empresa);
+                $empleado->direccion_empresa = strtolower($request->direccion_empresa);
+                $empleado->activo = 'S';
 
-            // dd($empleado);
-
-            if ($empleado->save()) {
-                return ['estado' => 'success', 'mensaje' => 'Empleado actualizado correctamente.'];
-            } else {
-                return ['estado' => 'failed', 'mensaje' => 'Se ha producido un error al actualizar el empleado.'];
+                if ($empleado->save()) {
+                    return ['estado' => 'success', 'mensaje' => 'Empleado actualizado correctamente.'];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'Se ha producido un error al actualizar el empleado.'];
+                }
             }
+        } else {
+            return $validador;
         }
     }
 
@@ -133,7 +151,7 @@ class LiquidacionEmpleadoController extends Controller
                 'nombre_empresa',
                 'direccion_empresa',
             ])
-                ->where('activo','S')
+                ->where('activo', 'S')
                 ->get();
         if (count($busqueda) > 0) {
             return ['estado' => 'success', 'empleado' => $busqueda];

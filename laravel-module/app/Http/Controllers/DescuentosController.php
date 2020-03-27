@@ -14,7 +14,7 @@ class DescuentosController extends Controller
     {
         return [
             'status' => 'success',
-            'lista' => DB::table('cs_lista_descuentos')->get()
+            'lista' => DB::table('cs_lista_descuentos')->orderBy('orden','asc')->get()
         ];
     }
 
@@ -22,10 +22,23 @@ class DescuentosController extends Controller
     {
         try{
             if($r->id_empleado =='' || $r->id_desc == '' || $r->valor == ''){
-                return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+                        return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
             }
+            switch ($r->tipo) {
+                case 'P':
+                    
+                    return LiqConfigDescuentos::registrar($r);
+                break;
 
-            return LiqConfigDescuentos::registrar($r);
+                case 'M':
+
+                    return LiqConfigDescuentos::registrar($r);
+                break;
+                
+                default:
+                    # code...
+                    break;
+            }
         
 
         }catch(QueryException $e){
@@ -111,5 +124,13 @@ class DescuentosController extends Controller
 				'error' => $e
 			];
 		}
+    }
+
+    public function traer_total_h_i($empleado)
+    {
+        if ($empleado != '') {
+            
+            return LiqConfigDescuentos::tabla_i_h($empleado);
+        }
     }
 }

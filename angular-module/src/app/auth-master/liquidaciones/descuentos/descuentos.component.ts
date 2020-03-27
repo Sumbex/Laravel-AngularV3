@@ -46,10 +46,18 @@ export class DescuentosComponent implements OnInit {
   pass = '';
   actualizarLoad: boolean = false;
 
+  resumen:object={
+    'sueldo_base': {monto:0},
+    'suma_i':0,
+    'suma_h':0
+  };
+
 
 
   ngOnInit() {
+    this.usuario_logeado();
     this.traer_empleados();
+    
     this.listar_desc();
 
   }
@@ -162,6 +170,8 @@ export class DescuentosComponent implements OnInit {
 
   listar_d() {
     this.load_table = true;
+
+    this.tabla_total_h_i();
     this._liq.listar_descuentos(this.empleado).subscribe(
       response => {
         if (response.estado == "success") {
@@ -367,4 +377,18 @@ export class DescuentosComponent implements OnInit {
 
 
   }
+
+   tabla_total_h_i(){
+     this._liq.traer_total_h_i(this.empleado).subscribe(
+       response => {
+         if (response.estado == "success") {
+           this.resumen = response;
+           
+         }
+         error => {
+           console.log(<any>error);
+         }
+       }
+     );
+   }
 }

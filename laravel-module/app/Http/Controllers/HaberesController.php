@@ -13,36 +13,81 @@ class HaberesController extends Controller
     {
         return [
             'status' => 'success',
-            'lista' => DB::table('cs_lista_haberes')->get()
+            'lista' => DB::table('cs_lista_haberes')->orderBy('orden','asc')->get()
         ];
     }
 
     public function guardar_config_haber(Request $r)
     {
-        try{
-            if($r->id_empleado =='' || $r->id_hab == '' || $r->valor == ''){
-                return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+        // dd($r->all());
+        // try{
+            // if($r->id_empleado =='' || $r->id_hab == '' || $r->valor == ''){
+            //     return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+            // }
+            switch ($r->tipo) {
+                case 'DM': // dia * monto
+
+                    if( $r->id_empleado =='' || 
+                        $r->id_hab == '' || 
+                        $r->dias == '' || 
+                        $r->valor == ''){
+                            return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+                        }
+                    return LiqConfigHaberes::registrar($r);
+                break;
+
+                case 'DPM': //horas * porcentaje * monto
+                        
+                      if( $r->id_empleado =='' || 
+                        $r->id_hab == '' || 
+                        $r->horas == '' || 
+                        $r->porcentaje == ''){
+                            return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+                        }
+                     return LiqConfigHaberes::registrar($r);
+                break;
+                case 'CM': //cargas * monto
+                     if( $r->id_empleado =='' || 
+                        $r->id_hab == '' || 
+                        $r->cargas == '' || 
+                        $r->valor == ''){
+                            return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+                        }
+                     return LiqConfigHaberes::registrar($r);
+                break;
+                
+
+                case 'M': //monto
+                    if($r->id_empleado =='' || $r->id_hab == '' || $r->valor == ''){
+                        return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
+                    }
+                     return LiqConfigHaberes::registrar($r);
+                break;
+                
+                default:
+                    # code...
+                    break;
             }
 
-            return LiqConfigHaberes::registrar($r);
+            
         
 
-        }catch(QueryException $e){
-			DB::rollBack();
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
-				'error' => $e
-			];
-		}
-		catch(\Exception $e){
-			DB::rollBack();
-			return[
-				'estado'  => 'failed', 
-				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
-				'error' => $e
-			];
-		}
+        // }catch(QueryException $e){
+		// 	DB::rollBack();
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+		// 		'error' => $e
+		// 	];
+		// }
+		// catch(\Exception $e){
+		// 	DB::rollBack();
+		// 	return[
+		// 		'estado'  => 'failed', 
+		// 		'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+		// 		'error' => $e
+		// 	];
+		// }
     }
 
     public function lista_conf_haberes($empleado)
@@ -73,11 +118,16 @@ class HaberesController extends Controller
             switch ($r->campo) {
                 case 'valor':
                   
-                    if ($haber->tipo == 'P') {
+                    if (trim($haber->tipo) == 'DM') {
+                       
+                        $update->monto = $r->valor;
+                    }
+                    if (trim($haber->tipo) == 'P') {
                        
                         $update->porcentaje = $r->valor;
                     }
-                    if ($haber->tipo == 'M') {
+
+                    if (trim($haber->tipo) == 'M') {
                         
                         $update->monto = $r->valor;
                     }

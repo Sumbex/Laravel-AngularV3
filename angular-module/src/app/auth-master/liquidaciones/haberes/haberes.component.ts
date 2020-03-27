@@ -36,13 +36,22 @@ export class HaberesComponent implements OnInit {
 
   id_hab='';
   valor='';
+  dias='';
+  horas='';
+  porcentaje='';
+  cargas='';
 
-  tabla:object;
+  tabla_i:object;
+  tabla_h: object;
   valor_update='';
   m_val = null;
   buttonStatus = false;
   pass='';
   actualizarLoad: boolean = false;
+  sueldo_base:object;
+  valor2='';
+  suma_i=0;
+  suma_h = 0;
 
   
 
@@ -51,6 +60,9 @@ export class HaberesComponent implements OnInit {
       this.traer_empleados();
       this.listar_hab();
 
+    }
+    redondear(valor){
+      return Math.ceil(valor);
     }
 
     openActualizar(Actualizar) {
@@ -110,28 +122,40 @@ export class HaberesComponent implements OnInit {
 
   seleccionar_h(){
     this.valor = '';
-    var tipo = this.haber.substr(0, 1); 
+    var tipo = this.haber.substr(0, 3); 
     var cadena = this.haber.split(/\s*|\s*/); 
 
-   
+    var pipe = false;
     var id = '';
     for (let index = 0; index < cadena.length; index++) {
-      if (index >= 2){
+      if (cadena[index] == '|'){
+        pipe = true;
+      }
+
+      if(pipe == true){
         id += cadena[index];
       }
+
+    
     }
   
-    this.tipo = tipo;
-    this.id_hab = id;
+    this.tipo = tipo.trim();
+    this.id_hab = id.replace('|','');
   }
 
   registrar(){
+   
     this.load = true;
     this._liq.save_haber({ 
         'id_empleado': this.empleado,
         'id_hab': this.id_hab, 
         'tipo': this.tipo, 
-        'valor': this.valor 
+        'valor': this.valor,
+        'dias': this.dias,
+        'horas': this.horas,
+        'porcentaje': this.porcentaje,
+        'cargas': this.cargas 
+        
       }).subscribe(
       response => {
 
@@ -164,12 +188,17 @@ export class HaberesComponent implements OnInit {
     this._liq.listar_haber(this.empleado).subscribe(
       response => {
         if (response.estado == "success") {
-          this.tabla = response.lista;
+          this.tabla_i = response.lista_i;
+          this.tabla_h = response.lista_h;
+          this.suma_i = response.suma_i;
+          this.suma_h = response.suma_h;
+          this.sueldo_base = response.sueldo_base;
           this.load_table = false;
 
         }
         if (response.estado == "failed") {
-          this.tabla = [];
+          this.tabla_i = [];
+          this.tabla_h = [];
           this.load_table = false;
 
         }

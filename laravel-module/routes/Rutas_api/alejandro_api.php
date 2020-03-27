@@ -187,3 +187,5 @@ Route::get('lista_conf_descuentos/{empleado}','DescuentosController@lista_conf_d
 Route::get('eliminar_item_conf_desc/{conf_desc_id}','DescuentosController@eliminar_item_conf_desc');
 
 Route::post('actualizar_conf_descuento','DescuentosController@actualizar_conf_descuento');
+
+Route::get('traer_total_h_i/{empleado}','DescuentosController@traer_total_h_i');

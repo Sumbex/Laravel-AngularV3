@@ -144,5 +144,15 @@ export class LiquidacionJuanitoService {
 
   }
 
+  traer_total_h_i(empelado): Observable<any> {
+
+    return this._http.get(this.url + "traer_total_h_i/" + empelado, {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
   
 }

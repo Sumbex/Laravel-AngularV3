@@ -41,7 +41,7 @@
                 <label for="">Descuento: </label><br>
                 <select [(ngModel)]="haber" class="form-control" (change)="seleccionar_d()">
                     <option value="">Seleccione...</option>
-                    <option *ngFor="let i of haberes" value="{{ i.tipo+'|'+i.id }}">{{i.descripcion}}</option>
+                    <option *ngFor="let i of haberes" value="{{ i.tipo+'|'+i.id }}">{{i.descripcion+' ('+i.tipo+')'}}</option>
                 </select>
             </div>
 
@@ -63,6 +63,39 @@
 
         <hr>
 
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-5">
+               
+           
+                <table  class="table table-bordered table-sm">
+                    <thead text-sm class="text-center">
+                        <tr>
+                            <th colspan="10" style="background: #138D75;" class="ColorThCS">
+                
+                                <img *ngIf="load_table" padding="30px" height="20"
+                                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                                RESUMEN DE HABERES E IMPONIBLES</th>
+                
+                        </tr> 
+                        <tr>
+                            <th colspan="2" style="background: #138D75;">SUELDO BASE</th>
+                            <th colspan="2" style="background: #138D75;">IMPONIBLES</th>
+                            <th colspan="2" style="background: #138D75;">HABERES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td colspan="2">{{ resumen.sueldo_base.monto | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+                            <td colspan="2">{{ resumen.suma_i | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+                            <td colspan="2">{{ resumen.suma_h | currency:"CLP" : "symbol-narrow":'1.0' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <hr>
+
         <div class="table-responsive" style="height: 370px; overflow: scroll;">
             <table class="table table-bordered table-sm">
                 <thead text-sm class="text-center">
@@ -77,8 +110,9 @@
                     <tr>
                         <th colspan="2" style="background: #138D75;">Id</th>
                         <th colspan="2" style="background: #138D75;">Descuentos</th>
-                        <th colspan="2" style="background: #138D75;">Tipo</th>
-                        <th colspan="2" style="background: #138D75;">Monto o Porcentahe</th>
+                        <!-- <th colspan="2" style="background: #138D75;">Tipo</th> -->
+                        <th colspan="2" style="background: #138D75;">Porcentaje</th>
+                        <th colspan="2" style="background: #138D75;">Monto</th>
 
                         <th colspan="2" style="background: #138D75;">Opción</th>
 
@@ -99,7 +133,7 @@
 
                         </td>
                         <td colspan="2">{{ item.descripcion }}</td>
-                        <td colspan="2">{{ (item.tipo == 'P')? '%' : '$' }}</td>
+                        <td colspan="2">{{ (item.porcentaje)?item.porcentaje +'%' : '' }}</td>
                         <!-- <td colspan="2" (click)="openActualizar(numeroDocFijoModal)">{{ item.numero_documento }}
                             <ng-template #numeroDocFijoModal let-c="close" let-d="dismiss">
                                 <div class="modal-header" id="demoFont">
@@ -133,7 +167,7 @@
                         </td> -->
 
                         <td colspan="2" (click)="openActualizar(fechaFijoModal)">
-                            {{ (item.tipo == 'P')? item.porcentaje+'%' : item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}
+                            {{ item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}
 
                             <ng-template #fechaFijoModal let-c="closeFecha" let-d="dismiss">
                                 <div class="modal-header" id="demoFont">

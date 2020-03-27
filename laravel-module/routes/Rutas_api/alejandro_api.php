@@ -42,7 +42,7 @@ Route::get('getMontoBase','GastoOperacionalController@validarMontoInicio');
 
 Route::get('traer_total_ahorro_dia_sueldo/{anio}','CuentaConsorcioController@traer_total_ahorro_dia_sueldo');
 
-Route::get('cerrar_estado_dia_sueldo/{cs_id}','CuentaSindicatoController@cerrar_estado_dia_sueldo');
+Route::get('cerrar_estado_dia_sueldo/{anio}','CuentaSindicatoController@cerrar_estado_dia_sueldo');
 //-------------------------------------------------------------------------------------------------
 
 Route::get('traer_directivas', 'CuentaConsorcioController@traer_directivas');
@@ -164,3 +164,26 @@ Route::post('actualizar_cpds','CuentaConsorcioController@actualizar_cpds');
 
 Route::post('registrar_acta','ActasController@crear');
 Route::get('listar_acta','ActasController@listar');
+
+//liquidacion - haberes
+
+Route::get('lista_haberes','HaberesController@lista_haberes');
+Route::post('guardar_config_haber','HaberesController@guardar_config_haber');
+
+
+Route::get('lista_conf_haberes/{empleado}','HaberesController@lista_conf_haberes');
+Route::get('eliminar_item_conf_hab/{conf_hab_id}','HaberesController@eliminar_item_conf_hab');
+
+Route::post('actualizar_conf_haber','HaberesController@actualizar_conf_haber');
+
+
+//liquidacion - descuentos
+
+Route::get('lista_descuentos','DescuentosController@lista_descuentos');
+Route::post('guardar_config_descuento','DescuentosController@guardar_config_descuento');
+
+
+Route::get('lista_conf_descuentos/{empleado}','DescuentosController@lista_conf_descuentos');
+Route::get('eliminar_item_conf_desc/{conf_desc_id}','DescuentosController@eliminar_item_conf_desc');
+
+Route::post('actualizar_conf_descuento','DescuentosController@actualizar_conf_descuento');

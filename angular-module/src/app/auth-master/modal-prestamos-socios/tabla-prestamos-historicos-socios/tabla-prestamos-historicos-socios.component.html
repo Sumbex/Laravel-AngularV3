@@ -430,7 +430,7 @@
           
         </td>
 
-          <td colspan="2" class="text-center">
+        <td colspan="2" class="text-center">
             <button [disabled]="itemPrestamo.sueldo == 0 && itemPrestamo.conflicto == 0 && itemPrestamo.trimestral == 0" class="btn btn-outline-success" style="cursor: pointer" (click)="calcular_el_abono(itemPrestamo.prestamo_id);openActualizar(pagoPrestamoSaludAbono, itemPrestamo.interes, itemPrestamo.total_prestamo_no_interes, itemPrestamo.total_prestamo, itemPrestamo.cuotap)"> <!-------------------------------------->
             <ng-template #pagoPrestamoSaludAbono let-c="close" let-d="dismiss">
                 <div class="modal-header" id="demoFont">
@@ -475,7 +475,13 @@
             <i class="fas fa-cash-register" placement="top" ngbTooltip="Presione aqui para realizar el pago Abono"></i>
             </button>
           
-          </td>
+        </td>
+
+        <td colspan="2" class="text-center">
+           <button>LOL</button>
+        </td>
+
+
       </tr>
     </tbody> <br>
 

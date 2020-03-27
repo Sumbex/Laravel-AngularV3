@@ -24,9 +24,9 @@ export class AniosService{
         )});
     }
 
-    getMeses(){
+    getMeses(): Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get<any>(this.url + "listar_meses", {headers: new HttpHeaders(
+        return this._http.get(this.url + "listar_meses", {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + token,
                 'Content-Type': 'application/json'

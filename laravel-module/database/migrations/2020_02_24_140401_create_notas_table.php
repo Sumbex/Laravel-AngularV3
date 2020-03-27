@@ -19,8 +19,8 @@ class CreateNotasTable extends Migration
             $table->integer('anio_id');
             $table->integer('mes_id');
             $table->integer('dia');
-            $table->text('numero_documento');
-            $table->text('archivo');
+            /* $table->text('numero_documento');
+            $table->text('archivo'); */
             $table->text('descripcion');
             $table->integer('user_crea');
             $table->char('activo', 1);

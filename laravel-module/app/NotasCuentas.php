@@ -17,20 +17,11 @@ class NotasCuentas extends Model
         $validator = Validator::make(
             $request->all(),
             [
-                'cuenta_id' => 'required',
                 'fecha' => 'required',
-                'numero_documento' => 'required|unique:notas,numero_documento',
-                'archivo' => 'required|file|mimes:pdf',
                 'descripcion' => 'required',
             ],
             [
-                'cuenta_id.required' => 'Debes seleccionar una cuenta.',
                 'fecha.required' => 'Debes ingresar la fecha.',
-                'numero_documento.required' => 'Debes ingresar un n° de documento.',
-                'numero_documento.unique' => 'El numero de documento ya existe en tus registros.',
-                'archivo.required' => 'Debes seleccionar un archivo.',
-                'archivo.file' => 'Lo seleccionado debe ser un archivo.',
-                'archivo.mimes' => 'El archivo debe ser extension PDF.',
                 'descripcion.required' => 'Debes ingresar una descripcion.',
             ]
         );
@@ -61,24 +52,6 @@ class NotasCuentas extends Model
         return DB::table('mes')->where('id', $value)->first()->id;
     }
 
-    protected function guardarArchivo($archivo, $ruta)
-    {
-        $filenameext = $archivo->getClientOriginalName();
-        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
-        $extension = $archivo->getClientOriginalExtension();
-        $nombreArchivo = $filename . '_' . time() . '.' . $extension;
-        $rutaDB = 'storage/' . $ruta . $nombreArchivo;
-
-        $guardar = Storage::put($ruta . $nombreArchivo, (string) file_get_contents($archivo), 'public');
-
-        if ($guardar) {
-            return ['estado' =>  'success', 'archivo' => $rutaDB];
-        } else {
-            return ['estado' =>  'failed', 'mensaje' => 'Error al intentar guardar el archivo.'];
-        }
-    }
-
-
     protected function ingresarNota($request)
     {
         /* dd($request->all()); */
@@ -88,17 +61,10 @@ class NotasCuentas extends Model
             $anio = $this->anioID($fecha['anio']);
             $mes = $this->mesID($fecha['mes']);
             $nota = new NotasCuentas;
-            $nota->cuenta_id = $request->cuenta_id;
+            $nota->cuenta_id = 1;
             $nota->anio_id = $anio;
             $nota->mes_id = $mes;
             $nota->dia = $fecha['dia'];
-            $nota->numero_documento = $request->numero_documento;
-            $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosNotasCuentas/');
-            if ($guardarArchivo['estado'] == "success") {
-                $nota->archivo = $guardarArchivo['archivo'];
-            } else {
-                return $guardarArchivo;
-            }
             $nota->descripcion = $request->descripcion;
             $nota->user_crea = Auth::user()->id;
             $nota->activo = "S";
@@ -112,41 +78,65 @@ class NotasCuentas extends Model
         }
     }
 
-    protected function traerNotas($anio, $mes, $cuenta)
+    protected function traerNotas($anio, $mes)
     {
         $notas = DB::table('notas as n')
             ->select([
                 'n.id',
-                'n.cuenta_id',
-                DB::raw("
-                CASE
-                    WHEN (cuenta_id  = 1) THEN 'Cuenta Sindical'
-                    WHEN (cuenta_id  = 2) THEN 'Cuenta Bienestar'
-                    WHEN (cuenta_id  = 3) THEN 'Cuenta Consorcio'
-                END AS cuenta"),
                 DB::raw("concat(n.dia,' de ',m.descripcion,' del ',a.descripcion) as fecha"),
-                'n.numero_documento',
-                'n.archivo',
                 DB::raw("upper(n.descripcion) as descripcion"),
+                DB::raw("upper(concat(u.nombres,' ',u.a_paterno,' ',u.a_materno)) as nombre")
             ])
             ->join('anio as a', 'a.id', 'n.anio_id')
             ->join('mes as m', 'm.id', 'n.mes_id')
+            ->join('users as u', 'u.id', 'n.user_crea')
             ->where([
-                'n.cuenta_id' => $cuenta,
+                'n.cuenta_id' => 1,
                 'n.anio_id' => $anio,
                 'n.mes_id' => $mes,
                 'n.activo' => 'S'
             ])
+            ->orderby('n.dia', 'ASC')
             ->get();
         if (!$notas->isEmpty()) {
             return ['estado' => 'success', 'notas' => $notas];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Aun no hay notas en la cuenta o fecha seleccionada.'];
+            return ['estado' => 'failed', 'mensaje' => 'Aun no hay notas en la fecha seleccionada.'];
         }
     }
 
-    protected function traerCuentas()
+    protected function actualizarNota($request)
     {
-        return $cuentas[] = [['id' => 1, 'descripcion' => 'Cuenta Sindical'], ['id' => 2, 'descripcion' => 'Cuenta Bienestar'], ['id' => 3, 'descripcion' => 'Cuenta Consorcio']];
+        /* dd($request->all()); */
+        $nota = NotasCuentas::find($request->id);
+        if (!is_null($nota)) {
+            $nota->descripcion = $request->descripcion;
+            if ($nota->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Nota actualizada correctamente.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Nota no encontrada.'];
+        }
+    }
+
+    protected function datosBasicos()
+    {
+        $datos = DB::table('users')
+            ->select([
+                DB::raw("current_date as fecha"),
+                DB::raw("upper(concat(nombres,' ',a_paterno,' ',a_materno)) as nombre")
+            ])
+            ->where([
+                'id' => Auth::user()->id
+            ])
+            ->first();
+
+        if (!is_null($datos)) {
+            return ['estado' => 'success', 'datos' => $datos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'Usuario no encontrado.'];
+        }
     }
 }

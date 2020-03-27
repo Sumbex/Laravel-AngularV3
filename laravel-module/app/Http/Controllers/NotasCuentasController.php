@@ -12,13 +12,23 @@ class NotasCuentasController extends Controller
         return NotasCuentas::ingresarNota($request);
     }
 
-    public function TraerNotas($anio, $mes, $cuenta)
+    public function ActualizarNota(Request $request)
     {
-        return NotasCuentas::traerNotas($anio, $mes, $cuenta);
+        return NotasCuentas::actualizarNota($request);
+    }
+
+    public function TraerNotas($anio, $mes)
+    {
+        return NotasCuentas::traerNotas($anio, $mes);
     }
 
     public function TraerCuentas()
     {
         return NotasCuentas::traerCuentas();
+    }
+
+    public function DatosBasicos()
+    {
+        return NotasCuentas::datosBasicos();
     }
 }

@@ -34,9 +34,9 @@
                                 placeholder="ingrese su AFP" [(ngModel)]="empleadoForm.nombre_afp" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-                            <br><label><strong>Isapre Trabajador</strong></label>
+                            <br><label><strong>Salud Trabajador</strong></label>
                             <input type="text" class="form-control form-control-sm" name="nombre_isapre"
-                                placeholder="Ingrese su isapre" [(ngModel)]="empleadoForm.nombre_isapre" required>
+                                placeholder="Ingrese su salud" [(ngModel)]="empleadoForm.nombre_isapre" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Rut Empresa</strong></label>
@@ -61,6 +61,13 @@
                             <button type="submit" class="btn btn-block btn-success"
                                 [disabled]="empleadoForm.invalid"><b>CREAR</b></button>
                         </div>
+
+                             <!-- alertas -->
+                             <div *ngIf="alertErrorForm" class="col-12 my-4">
+                                <div class="alert alert-danger" role="alert">
+                                    {{erroresForm}}
+                                </div>
+                            </div>
 
                     </div>
                 </div>
@@ -127,7 +134,7 @@
                                                 <br><label><strong>Rut Trabajador</strong></label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     name="rut_trabajador" placeholder="123456789"
-                                                    [(ngModel)]="item.rut_trabajador" required>
+                                                    [(ngModel)]="item.rut_trabajador" disabled>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Nombre Trabajador</strong></label>
@@ -147,9 +154,9 @@
                                                     [(ngModel)]="item.nombre_afp" required>
                                             </div>
                                             <div class="col-12">
-                                                <br><label><strong>Isapre Trabajador</strong></label>
+                                                <br><label><strong>Salud Trabajador</strong></label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    name="nombre_isapre" placeholder="Ingrese su isapre"
+                                                    name="nombre_isapre" placeholder="Ingrese su salud"
                                                     [(ngModel)]="item.nombre_isapre" required>
                                             </div>
                                             <div class="col-12">
@@ -174,7 +181,14 @@
                                             <div class="col-12">
                                                 <br><label><strong>Actualizar Empleado</strong></label><br>
                                                 <button type="button" class="btn btn-block btn-success"
-                                                    (click)="actualizarEmpleado(item.id,empleadoTraer[indice])">Actualizar</button>
+                                                    (click)="actualizarEmpleado(item.id,empleadoTraer[indice])">Actualizar Empleado</button>
+                                            </div>
+
+                                            <!-- alertas -->
+                                            <div *ngIf="alertError" class="col-12 my-4">
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{erroresAct}}
+                                                </div>
                                             </div>
 
                                         </div>

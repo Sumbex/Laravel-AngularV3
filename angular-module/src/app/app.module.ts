@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgxDocViewerModule} from 'ngx-doc-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -136,6 +137,7 @@ import { MenuComponent } from './auth-master/liquidaciones/menu/menu.component';
 import { HaberesComponent } from './auth-master/liquidaciones/haberes/haberes.component';
 import { DescuentosComponent } from './auth-master/liquidaciones/descuentos/descuentos.component';
 import { LiquidacionComponent } from './auth-master/liquidaciones/liquidacion/liquidacion.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -260,6 +262,7 @@ import { LiquidacionComponent } from './auth-master/liquidaciones/liquidacion/li
     HttpClientModule,
     FormsModule,
     NgbModule,
+    NgxDocViewerModule
   ],
   providers: [
     UsuarioService,

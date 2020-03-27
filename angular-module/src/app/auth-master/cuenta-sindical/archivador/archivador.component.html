@@ -1,16 +1,377 @@
 <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-archive"></i> Cuenta Sindical / Archivador</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>Hello, World!</p>
+        <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+            <li class="nav-item active">
+                <a class="nav-link" id="notas-tab" data-toggle="tab" href="#notas" role="tab" aria-controls="notas" aria-selected="true">Notas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="archivos-tab" data-toggle="tab" href="#archivos" role="tab" aria-controls="archivos" aria-selected="false">Archivador</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="notas" role="tabpanel" aria-labelledby="notas-tab">
+
+                <div class="modal-header mt-4" id="demoFont2">
+                    <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
+                </div>
+
+                <div class="card">
+                    <form #notasForm (ngSubmit)="ingresarNota()">
+                        <div class="row centrar">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Fecha</label>
+                                    <input class="form-control" disabled type="date" name="fecha" [(ngModel)]="datosNotas.fecha">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Remitente</label>
+                                    <input class="form-control" disabled type="text" name="remitente" [(ngModel)]="remitente">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Nota</label>
+                                    <textarea class="form-control resize-none" name="nota" [(ngModel)]="datosNotas.nota"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success">Ingresar Nota</button>
+                            <!-- <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Guardar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button> -->
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row mt-4">
+                    <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+                        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> !IMPORTANTE!</strong> 
+                            Si desea editar una nota, debe de hacer <b>click</b> en la nota a cambiar.</small>
+                    </ngb-alert>
+                </div>
+
+                <div class="card">
+                    <div class="row centrar text-center">
+                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
+                                class="fas fa-calendar-check"></i></strong></label>
+                            <select (change)="changeAnio($event,1)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual" class="form-control form-control-sm">
+                            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
+                                class="fas fa-calendar-check"></i></strong></label>
+                            <select (change)="changeMes($event,1)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual" class="form-control form-control-sm">
+                            <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-4"><br><label>
+                          <strong>Recargar tabla </strong>
+                    
+                        </label><br>
+                            <button [disabled]="cargandoTabla" class="btn btn-info" (click)="traerNotas()">Actualizar</button>
+                            <div *ngIf="cargandoTabla">
+                                <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                                <label>Cargando tabla de Prestamos</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row centrar">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
+                                <thead text-sm class="text-center">
+                                    <tr>
+                                        <th colspan="11" class="ColorThCS">Notas</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Nota</th>
+                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of notas" class="text-center">
+                                        <td colspan="2">{{item?.fecha}}</td>
+                                        <td colspan="2">{{item?.descripcion}}</td>
+                                        <td colspan="2">{{item?.nombre}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="archivos" role="tabpanel" aria-labelledby="archivos-tab">
+                <div class="modal-header mt-4" id="demoFont2">
+                    <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
+                </div>
+
+                <div class="card">
+                    <form #archivoForm (ngSubmit)="ingresarArchivo()" enctype="multipart/form-data">
+                        <div class="row centrar">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Fecha</label>
+                                    <input class="form-control" disabled type="date" name="fecha" [(ngModel)]="datosArchivos.fecha">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Remitente</label>
+                                    <input class="form-control" disabled type="text" name="remitente" [(ngModel)]="remitente">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Tipo</label>
+                                    <select name="tipo" [(ngModel)]="datosArchivos.tipo" class="form-control form-control-sm">
+                                        <option value="0">Seleccione un tipo</option>
+                                        <option *ngFor="let item of selectTipo" [value]="item.id">{{item.tipo}}</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Titulo</label>
+                                    <input class="form-control" type="text" name="titulo" [(ngModel)]="datosArchivos.titulo">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Archivo</label>
+                                    <input class="form-control-file" type="file" (change)="archivo($event)">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success">Ingresar Archivo</button>
+                            <!-- <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Guardar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button> -->
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row mt-4">
+                    <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+                        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> !IMPORTANTE!</strong> Si desea edita un valor de
+                                la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el archivo, debe
+                                de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>
+                    </ngb-alert>
+                </div>
+
+                <div class="card">
+                    <div class="row centrar text-center">
+                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
+                                class="fas fa-calendar-check"></i></strong></label>
+                            <select (change)="changeAnio($event,2)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual" class="form-control form-control-sm">
+                            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
+                                class="fas fa-calendar-check"></i></strong></label>
+                            <select (change)="changeMes($event,2)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual" class="form-control form-control-sm">
+                            <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-4"><br><label>
+                          <strong>Recargar tabla </strong>
+                    
+                        </label><br>
+                            <button [disabled]="cargandoTabla" class="btn btn-info" (click)="traerArchivos()">Actualizar</button>
+                            <div *ngIf="cargandoTabla">
+                                <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
+                                <label>Cargando tabla de Prestamos</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row centrar">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
+                                <thead text-sm class="text-center">
+                                    <tr>
+                                        <th colspan="11" class="ColorThCS">Archivador</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>
+                                        <th colspan="2"> Tipo</th>
+                                        <th colspan="2"><i class="fas fa-file-archive"></i> Archivo Reporte</th>
+                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of archivos?.reporte" class="text-center">
+                                        <td colspan="2">
+                                            {{item?.fecha}}
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.titulo}}
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.tipo}}
+                                        </td>
+                                        <!--MODAL VISOR PDF-->
+                                        <ng-template #visor let-c="close" let-d="dismiss">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="modal-header text-center" id="demoFont">
+                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>
+                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- item?.archivo -->
+                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
+                                                    </div>
+                                                    <div class="modal-footer" [hidden]="true">
+                                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <!--MODAL VISOR PDF-->
+                                        <td colspan="2">
+                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
+                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;
+                                            <a class="btn-primary-outline" style="cursor: pointer">
+                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento"></i>
+                                            </a>
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.nombre}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <thead text-sm class="text-center">
+                                    <tr>
+                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>
+                                        <th colspan="2"> Tipo</th>
+                                        <th colspan="2"><i class="fas fa-file-archive"></i> Archivo Descuento</th>
+                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of archivos?.descuento" class="text-center">
+                                        <td colspan="2">
+                                            {{item?.fecha}}
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.titulo}}
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.tipo}}
+                                        </td>
+                                        <!--MODAL VISOR PDF-->
+                                        <ng-template #visor let-c="close" let-d="dismiss">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="modal-header text-center" id="demoFont">
+                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>
+                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- item?.archivo -->
+                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
+                                                    </div>
+                                                    <div class="modal-footer" [hidden]="true">
+                                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <!--MODAL VISOR PDF-->
+                                        <td colspan="2">
+                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
+                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;
+                                            <a class="btn-primary-outline" style="cursor: pointer">
+                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento"></i>
+                                            </a>
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.nombre}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <thead text-sm class="text-center">
+                                    <tr>
+                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>
+                                        <th colspan="2"> Tipo</th>
+                                        <th colspan="2"><i class="fas fa-file-archive"></i> Archivo Conciliación</th>
+                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of archivos?.conciliacion" class="text-center">
+                                        <td colspan="2">
+                                            {{item?.fecha}}
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.titulo}}
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.tipo}}
+                                        </td>
+                                        <!--MODAL VISOR PDF-->
+                                        <ng-template #visor let-c="close" let-d="dismiss">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="modal-header text-center" id="demoFont">
+                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>
+                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- item?.archivo -->
+                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
+                                                    </div>
+                                                    <div class="modal-footer" [hidden]="true">
+                                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <!--MODAL VISOR PDF-->
+                                        <td colspan="2">
+                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
+                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;
+                                            <a class="btn-primary-outline" style="cursor: pointer">
+                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento"></i>
+                                            </a>
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.nombre}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+        <!--Boton para salir del modal caja chica-->
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+            class="far fa-arrow-alt-circle-left"></i> Volver a Cuentas</button>
     </div>
-  </ng-template>
-  
-  <button class="btn btn-primary" (click)="open(content)">Archivador</button>
+</ng-template>
+
+<button class="btn btn-primary" (click)="open(content)">Archivador</button>

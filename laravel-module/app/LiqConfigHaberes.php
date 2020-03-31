@@ -32,7 +32,7 @@ class LiqConfigHaberes extends Model
                 case 'DM':
 
                     $ch->dias = $r->dias;
-                    $ch->monto = ($r->dias * $r->valor); 
+                    $ch->monto = ceil($r->dias * $r->valor); 
 
                 break;
 
@@ -50,10 +50,10 @@ class LiqConfigHaberes extends Model
 
                 case 'CM':
                     $ch->cargas = $r->cargas;
-                    $ch->monto = $r->cargas * $r->valor;
+                    $ch->monto = ceil($r->cargas * $r->valor);
                 break;
                 case 'P': $ch->porcentaje = $r->valor; break;
-                case 'M': $ch->monto = $r->valor; break; 
+                case 'M': $ch->monto = ceil($r->valor); break; 
                 default: break;
             }   
             $ch->activo = 'S';

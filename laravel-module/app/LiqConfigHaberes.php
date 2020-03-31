@@ -42,7 +42,7 @@ class LiqConfigHaberes extends Model
                         'cs_lista_haberes_id' => 1,
                         'empleado_id' => $r->id_empleado
 
-                ])->first();
+                    ])->first();
                     $ch->horas = $r->horas;
                     $ch->porcentaje = $r->porcentaje;
                     $ch->monto = ceil($r->horas * $r->porcentaje * $sueldo_base->monto); 
@@ -52,7 +52,17 @@ class LiqConfigHaberes extends Model
                     $ch->cargas = $r->cargas;
                     $ch->monto = ceil($r->cargas * $r->valor);
                 break;
-                case 'P': $ch->porcentaje = $r->valor; break;
+                case 'P': //cambiar a futuro a PSB de porcentaje * sueldo base 
+                    $sueldo_base = DB::table('liq_config_haberes')->where([
+                        'activo'=>'S',
+                        'cs_lista_haberes_id' => 1,
+                        'empleado_id' => $r->id_empleado
+
+                    ])->first();
+                    $ch->porcentaje = $r->valor;
+                    $ch->monto = ceil($sueldo_base->monto * ($r->valor / 100));
+                
+                break;
                 case 'M': $ch->monto = ceil($r->valor); break; 
                 default: break;
             }   

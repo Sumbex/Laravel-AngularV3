@@ -64,7 +64,7 @@ class HaberesController extends Controller
                      return LiqConfigHaberes::registrar($r);
                 break;
 
-                case 'M': //porcentaje
+                case 'P': //porcentaje
                     if($r->id_empleado =='' || $r->id_hab == '' || $r->valor == ''){
                         return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
                     }

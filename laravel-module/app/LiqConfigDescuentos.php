@@ -19,10 +19,27 @@ class LiqConfigDescuentos extends Model
         ])->first();
 
         if ($verify) {
-            return [
-                'estado' => 'failed',
-                'mensaje' => 'El empleado ya tiene este descuento en la lista'
-            ];
+                switch ($r->tipo) {
+                case 'P': 
+                    $verify->porcentaje = $r->valor; 
+                    $verify->monto = round(($r->valor / 100) * $total_imp); 
+                
+                break;
+                case 'M': $verify->monto = $r->valor; break; 
+                default: break;
+            }   
+            $verify->activo = 'S';
+
+            if ($verify->save()) {
+                return [
+                    'estado' => 'success',
+                    'mensaje' => 'Descuento actualizado con exito!'
+                ];
+            }
+            // return [
+            //     'estado' => 'failed',
+            //     'mensaje' => 'El empleado ya tiene este descuento en la lista'
+            // ];
         }else{
             $total_imp = $this->total_imponible($r->id_empleado);
             $ch = $this;

@@ -29,6 +29,7 @@ class LiqConfigHaberes extends Model
 
                         if ($r->id_hab == "11") { // si el id del haber es 11 o sea feriado proporcional
                             //calcular descuento de salud-afp y cesantia
+                            print_r("si 1");
                             $fer_prop=DB::select("SELECT
                                     coalesce(round($verify->monto + sum(valor)) , 0) valor
                                 from(SELECT 
@@ -39,9 +40,10 @@ class LiqConfigHaberes extends Model
                                                     
                                 FROM liq_config_descuentos des
                                 inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
-                                where empleado_id = 6 and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
+                                where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
 
                             if(count($fer_prop) > 0){
+                                print_r("si 2");
                                 $des_very = LiqConfigDescuentos::where([
                                     'activo'=>'S',
                                     'empleado_id'=> $r->id_empleado,
@@ -49,9 +51,11 @@ class LiqConfigHaberes extends Model
                                 ])->first();
 
                                 if ($des_very) {
+                                    print_r("si 3");
                                     $des_very->monto = ceil($fer_prop[0]->valor);
                                     $des_very->save();
                                 }else{
+                                    print_r("si 4");
                                     $des = new LiqConfigDescuentos;
                                     $des->empleado_id = $r->id_empleado;
                                     $des->cs_lista_descuentos_id = 6;

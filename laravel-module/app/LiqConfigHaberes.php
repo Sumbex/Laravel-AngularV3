@@ -29,7 +29,7 @@ class LiqConfigHaberes extends Model
 
                         if ($r->id_hab == "11") { // si el id del haber es 11 o sea feriado proporcional
                             //calcular descuento de salud-afp y cesantia
-                            print_r("si 1");
+                            // print_r("si 1");
                             $fer_prop=DB::select("SELECT
                                     coalesce(round($verify->monto + sum(valor)) , 0) valor
                                 from(SELECT 
@@ -43,22 +43,22 @@ class LiqConfigHaberes extends Model
                                 where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
 
                             if(count($fer_prop) > 0){
-                                print_r("si 2");
+                                // print_r("si 2");
                                 $des_very = LiqConfigDescuentos::where([
                                     'activo'=>'S',
                                     'empleado_id'=> $r->id_empleado,
-                                    'cs_lista_descuentos_id' => 6 //feriado prop desde descuentos
+                                    'cs_lista_descuentos_id' => 8 //feriado prop desde descuentos
                                 ])->first();
 
                                 if ($des_very) {
-                                    print_r("si 3");
+                                    // print_r("si 3");
                                     $des_very->monto = ceil($fer_prop[0]->valor);
                                     $des_very->save();
                                 }else{
-                                    print_r("si 4");
+                                    // print_r("si 4");
                                     $des = new LiqConfigDescuentos;
                                     $des->empleado_id = $r->id_empleado;
-                                    $des->cs_lista_descuentos_id = 6;
+                                    $des->cs_lista_descuentos_id = 8; //feriado prop desde descuentos
                                     $des->monto = ceil($fer_prop[0]->valor);
                                     $des->activo = 'S';
                                     $des->save();

@@ -31,12 +31,12 @@ class LiqConfigHaberes extends Model
                             //calcular descuento de salud-afp y cesantia
                             // print_r("si 1");
                             $fer_prop=DB::select("SELECT
-                                    coalesce(round($verify->monto + sum(valor)) , 0) valor
+                                   coalesce(round($verify->monto - sum(valor)) , 0) valor
                                 from(SELECT 
                                     cs_lista_descuentos_id,
                                     porcentaje,
                                     monto,
-                                    round($verify->monto - monto) valor
+                                    ($verify->monto * (porcentaje / 100)) valor
                                                     
                                 FROM liq_config_descuentos des
                                 inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
@@ -124,12 +124,12 @@ class LiqConfigHaberes extends Model
                             //calcular descuento de salud-afp y cesantia
                             // print_r("si 1");
                             $fer_prop=DB::select("SELECT
-                                    coalesce(round($ch->monto + sum(valor)) , 0) valor
+                                    coalesce(round($ch->monto - sum(valor)) , 0) valor
                                 from(SELECT 
                                     cs_lista_descuentos_id,
                                     porcentaje,
                                     monto,
-                                    round($ch->monto - monto) valor
+                                    ($ch->monto * (porcentaje / 100)) valor
                                                     
                                 FROM liq_config_descuentos des
                                 inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id

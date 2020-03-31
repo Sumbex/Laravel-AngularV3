@@ -19,10 +19,55 @@ class LiqConfigHaberes extends Model
         ])->first();
 
         if ($verify) {
-            return [
-                'estado' => 'failed',
-                'mensaje' => 'El empleado ya tiene este haber en la lista'
-            ];
+
+                switch ($r->tipo) {
+                    case 'DM':
+
+                        $verify->dias = $r->dias;
+                        $verify->monto = ceil($r->dias * $r->valor); 
+
+                    break;
+
+                    case 'DPM':
+                        $sueldo_base = DB::table('liq_config_haberes')->where([
+                            'activo'=>'S',
+                            'cs_lista_haberes_id' => 1,
+                            'empleado_id' => $r->id_empleado
+
+                        ])->first();
+                        $verify->horas = $r->horas;
+                        $verify->porcentaje = $r->porcentaje;
+                        $verify->monto = ceil($r->horas * $r->porcentaje * $sueldo_base->monto); 
+                    break;
+
+                    case 'CM':
+                        $verify->cargas = $r->cargas;
+                        $verify->monto = ceil($r->cargas * $r->valor);
+                    break;
+                    case 'P': //cambiar a futuro a PSB de porcentaje * sueldo base 
+                        $sueldo_base = DB::table('liq_config_haberes')->where([
+                            'activo'=>'S',
+                            'cs_lista_haberes_id' => 1,
+                            'empleado_id' => $r->id_empleado
+
+                        ])->first();
+                        $verify->porcentaje = $r->valor;
+                        $verify->monto = ceil($sueldo_base->monto * ($r->valor / 100));
+                    
+                    break;
+                    case 'M': $verify->monto = ceil($r->valor); break; 
+                    default: break;
+                }  
+                if ($verify->save()) {
+                                return [
+                                    'estado' => 'success',
+                                    'mensaje' => 'Haber actualizado con exito!'
+                                ];
+                            }
+            // return [
+            //     'estado' => 'failed',
+            //     'mensaje' => 'El empleado ya tiene este haber en la lista'
+            // ];
         }else{
             $ch = $this;
             $ch->empleado_id = $r->id_empleado;

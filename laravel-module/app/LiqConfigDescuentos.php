@@ -25,7 +25,7 @@ class LiqConfigDescuentos extends Model
                     $total_imp = $this->total_imponible($r->id_empleado);
                     $verify->porcentaje = $r->valor; 
                     $verify->monto = round(($r->valor / 100) * $total_imp); 
-                    dd($verify->cs_lista_descuentos_id == "8");
+                    dd($verify);
                     // si el item es feriado prop desde descuentos
                     if($verify->cs_lista_descuentos_id == "8"){
                         print_r("v1 ; ");

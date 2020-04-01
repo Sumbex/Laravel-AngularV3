@@ -103,7 +103,7 @@ class DescuentosController extends Controller
                                 ($fp * (porcentaje / 100)) valor                                        
                             FROM liq_config_descuentos des
                             inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
-                            where empleado_id = $delete->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
+                            where empleado_id = $delete->empleado_id and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
 
                         if(count($fer_prop) > 0){
                             

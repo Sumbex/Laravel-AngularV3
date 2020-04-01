@@ -64,6 +64,21 @@ class DescuentosController extends Controller
         return LiqConfigDescuentos::listar($empleado);
     }
 
+    public function monto_feriado_proporcional($empleado_id){
+
+        $get = LiqConfigHaberes::where([
+            'activo'=>'S',
+            'empleado_id' => $empleado_id,
+            'cs_lista_haberes_id' => 11// feriado proporcional
+        ])->first();
+        if ($get) {
+            return (int)$get->monto;
+        }else{
+            return 0;
+        }
+
+    }
+
     public function eliminar_item_conf_desc($conf_desc_id)
     {
         $delete = LiqConfigDescuentos::where(['id'=>$conf_desc_id,'activo'=>'S'])->first();
@@ -77,6 +92,7 @@ class DescuentosController extends Controller
                     ){
                        
                         //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
+                        $fp = $this->monto_feriado_proporcional($delete->empleado_id);
                         $fer_prop=DB::select("SELECT
                             coalesce(round($delete->monto - sum(valor)) , 0) valor
                             from(SELECT 

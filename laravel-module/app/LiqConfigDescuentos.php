@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\LiqConfigHaberes;
 use App\LiqConfigDescuentos;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,21 @@ class LiqConfigDescuentos extends Model
 {
     protected $table = 'liq_config_descuentos';
 
+
+    public function monto_feriado_proporcional($empleado_id){
+
+        $get = LiqConfigHaberes::where([
+            'activo'=>'S',
+            'empleado_id' => $empleado_id,
+            'cs_lista_haberes_id' => 11// feriado proporcional
+        ])->first();
+        if ($get) {
+            return (int)$get->monto;
+        }else{
+            return 0;
+        }
+
+    }
 
     protected function registrar($r)
     {
@@ -33,13 +49,14 @@ class LiqConfigDescuentos extends Model
                     ){
                         
                         //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
+                         $fp = $this->monto_feriado_proporcional($r->id_empleado);
                         $fer_prop=DB::select("SELECT
-                            coalesce(round($verify->monto - sum(valor)) , 0) valor
+                            coalesce(round($fp - sum(valor)) , 0) valor
                             from(SELECT 
                                 cs_lista_descuentos_id,
                                 porcentaje,
                                 monto,
-                                ($verify->monto * (porcentaje / 100)) valor                                        
+                                ($fp * (porcentaje / 100)) valor                                        
                             FROM liq_config_descuentos des
                             inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
                             where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
@@ -104,13 +121,14 @@ class LiqConfigDescuentos extends Model
                     ){
                        
                         //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
+                        $fp = $this->monto_feriado_proporcional($r->id_empleado);
                         $fer_prop=DB::select("SELECT
-                            coalesce(round($ch->monto - sum(valor)) , 0) valor
+                            coalesce(round($fp - sum(valor)) , 0) valor
                             from(SELECT 
                                 cs_lista_descuentos_id,
                                 porcentaje,
                                 monto,
-                                ($ch->monto * (porcentaje / 100)) valor                                        
+                                ($fp * (porcentaje / 100)) valor                                        
                             FROM liq_config_descuentos des
                             inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
                             where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");

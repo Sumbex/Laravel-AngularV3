@@ -110,7 +110,7 @@ class DescuentosController extends Controller
                                 //en esta consulta verificamos si existe el ite feriados prop desde descuentos
                                 $des_very = LiqConfigDescuentos::where([
                                     'activo'=>'S',
-                                    'empleado_id'=> $delete->id_empleado,
+                                    'empleado_id'=> $delete->empleado_id,
                                     'cs_lista_descuentos_id' => 8 //feriado prop desde descuentos
                                 ])->first();
 
@@ -122,7 +122,7 @@ class DescuentosController extends Controller
                                     
                                     //si no existe, creamos el item
                                     $des = new LiqConfigDescuentos;
-                                    $des->empleado_id = $delete->id_empleado;
+                                    $des->empleado_id = $delete->empleado_id;
                                     $des->cs_lista_descuentos_id = 8; //feriado prop desde descuentos
                                     $des->monto = ceil($fer_prop[0]->valor);
                                     $des->activo = 'S';

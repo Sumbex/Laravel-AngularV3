@@ -128,6 +128,25 @@ class Archivador extends Model
     {
         /* dd($request->all()); */
         switch ($request->campo) {
+            case 'fecha':
+                $archivo = Archivador::find($request->id);
+                if (!is_null($archivo)) {
+                    $fecha = $this->fecha($request->input);
+                    $anio = $this->anioID($fecha['anio']);
+                    $mes = $this->mesID($fecha['mes']);
+                    $archivo->anio_id = $anio;
+                    $archivo->mes_id = $mes;
+                    $archivo->dia = $fecha['dia'];
+                    if ($archivo->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Fecha actualizada correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'Archivo no encontrado.'];
+                }
+                break;
+
             case 'titulo':
                 $archivo = Archivador::find($request->id);
                 if (!is_null($archivo)) {

@@ -28,7 +28,7 @@ class LiqConfigDescuentos extends Model
 
                     // si el item es feriado prop desde descuentos
                     if($verify->cs_lista_descuentos_id == 8 ){
-                        print_r("1 ; ");
+                        print_r("v1 ; ");
                         //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
                         $fer_prop=DB::select("SELECT
                             coalesce(round($verify->monto - sum(valor)) , 0) valor
@@ -42,7 +42,7 @@ class LiqConfigDescuentos extends Model
                             where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
 
                         if(count($fer_prop) > 0){
-                            print_r("2 ; ");
+                            print_r("v2 ; ");
                                 //en esta consulta verificamos si existe el ite feriados prop desde descuentos
                                 $des_very = LiqConfigDescuentos::where([
                                     'activo'=>'S',
@@ -51,11 +51,11 @@ class LiqConfigDescuentos extends Model
                                 ])->first();
 
                                 if ($des_very) {
-                                    print_r("3 ; ");
+                                    print_r("v3 ; ");
                                     $des_very->monto = ceil($fer_prop[0]->valor);
                                     $des_very->save();
                                 }else{
-                                    print_r("4 ; ");
+                                    print_r("v4 ; ");
                                     //si no existe, creamos el item
                                     $des = new LiqConfigDescuentos;
                                     $des->empleado_id = $r->id_empleado;

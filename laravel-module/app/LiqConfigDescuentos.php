@@ -41,8 +41,17 @@ class LiqConfigDescuentos extends Model
                     $total_imp = $this->total_imponible($r->id_empleado);
                     $verify->porcentaje = $r->valor; 
                     $verify->monto = round(($r->valor / 100) * $total_imp); 
-                   
-                    // si el item es feriado prop desde descuentos
+                
+                
+                break;
+                case 'M': $verify->monto = $r->valor; break; 
+                default: break;
+            }   
+            $verify->activo = 'S';
+
+            if ($verify->save()) {
+
+                 // si el item es feriado prop desde descuentos
                     if($verify->cs_lista_descuentos_id == "1"||
                        $verify->cs_lista_descuentos_id == "2"||
                        $verify->cs_lista_descuentos_id == "4"
@@ -86,14 +95,6 @@ class LiqConfigDescuentos extends Model
                                 }
                             }
                     }
-                
-                break;
-                case 'M': $verify->monto = $r->valor; break; 
-                default: break;
-            }   
-            $verify->activo = 'S';
-
-            if ($verify->save()) {
                 return [
                     'estado' => 'success',
                     'mensaje' => 'Descuento actualizado con exito!'
@@ -113,8 +114,17 @@ class LiqConfigDescuentos extends Model
                 case 'P': 
                     $ch->porcentaje = $r->valor; 
                     $ch->monto = round(($r->valor / 100) * $total_imp); 
+            
+                
+                break;
+                case 'M': $ch->monto = $r->valor; break; 
+                default: break;
+            }   
+            $ch->activo = 'S';
 
-                    // si el item es % prop desde descuentos
+            if ($ch->save()) {
+
+                 // si el item es % prop desde descuentos
                     if($ch->cs_lista_descuentos_id == "1"||
                        $ch->cs_lista_descuentos_id == "2"||
                        $ch->cs_lista_descuentos_id == "4"
@@ -158,15 +168,6 @@ class LiqConfigDescuentos extends Model
                                 }
                             }
                     }
-                
-                
-                break;
-                case 'M': $ch->monto = $r->valor; break; 
-                default: break;
-            }   
-            $ch->activo = 'S';
-
-            if ($ch->save()) {
                 return [
                     'estado' => 'success',
                     'mensaje' => 'Descuento registrado con exito!'

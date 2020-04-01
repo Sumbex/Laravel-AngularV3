@@ -5510,6 +5510,7 @@ let ArchivadorComponent = class ArchivadorComponent {
                 this.varType = 'date';
                 this.edicionDocumento = false;
                 this.edicionTexto = true;
+                this.edicionSelect = false;
                 this.nuevoIngreso = false;
                 break;
             case 'titulo':
@@ -5517,12 +5518,14 @@ let ArchivadorComponent = class ArchivadorComponent {
                 this.edicionDocumento = false;
                 this.edicionTexto = true;
                 this.nuevoIngreso = false;
+                this.edicionSelect = false;
                 break;
             case 'descripcion':
                 this.varType = 'text';
                 this.edicionDocumento = false;
                 this.edicionTexto = true;
                 this.nuevoIngreso = false;
+                this.edicionSelect = false;
                 break;
             case 'tipo':
                 this.edicionSelect = true;
@@ -5532,6 +5535,7 @@ let ArchivadorComponent = class ArchivadorComponent {
                 break;
             case 'archivo':
                 this.edicionDocumento = true;
+                this.edicionSelect = false;
                 this.edicionTexto = false;
                 this.nuevoIngreso = false;
                 break;

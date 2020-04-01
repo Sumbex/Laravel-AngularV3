@@ -345,6 +345,7 @@ export class ArchivadorComponent implements OnInit {
         this.varType = 'date';
         this.edicionDocumento = false;
         this.edicionTexto = true;
+        this.edicionSelect = false;
         this.nuevoIngreso = false;
         break;
 
@@ -353,6 +354,7 @@ export class ArchivadorComponent implements OnInit {
         this.edicionDocumento = false;
         this.edicionTexto = true;
         this.nuevoIngreso = false;
+        this.edicionSelect = false;
         break;
 
       case 'descripcion':
@@ -360,6 +362,7 @@ export class ArchivadorComponent implements OnInit {
         this.edicionDocumento = false;
         this.edicionTexto = true;
         this.nuevoIngreso = false;
+        this.edicionSelect = false;
         break;
 
       case 'tipo':
@@ -371,6 +374,7 @@ export class ArchivadorComponent implements OnInit {
 
       case 'archivo':
         this.edicionDocumento = true;
+        this.edicionSelect = false;
         this.edicionTexto = false;
         this.nuevoIngreso = false;
         break;

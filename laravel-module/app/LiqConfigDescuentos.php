@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\LiqConfigDescuentos;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,11 +19,50 @@ class LiqConfigDescuentos extends Model
             'activo' => 'S'
         ])->first();
 
-        if ($verify) {
+        if ($verify) { // si existe registro, entonces actualizar montos
                 switch ($r->tipo) {
                 case 'P': 
+                    $total_imp = $this->total_imponible($r->id_empleado);
                     $verify->porcentaje = $r->valor; 
                     $verify->monto = round(($r->valor / 100) * $total_imp); 
+
+                    // si el item es feriado prop desde descuentos
+                    if($verify->cs_lista_descuentos_id == 8 ){
+
+                        //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
+                        $fer_prop=DB::select("SELECT
+                            coalesce(round($verify->monto - sum(valor)) , 0) valor
+                            from(SELECT 
+                                cs_lista_descuentos_id,
+                                porcentaje,
+                                monto,
+                                ($verify->monto * (porcentaje / 100)) valor                                        
+                            FROM liq_config_descuentos des
+                            inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
+                            where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
+
+                        if(count($fer_prop) > 0){
+                                //en esta consulta verificamos si existe el ite feriados prop desde descuentos
+                                $des_very = LiqConfigDescuentos::where([
+                                    'activo'=>'S',
+                                    'empleado_id'=> $r->id_empleado,
+                                    'cs_lista_descuentos_id' => 8 //feriado prop desde descuentos
+                                ])->first();
+
+                                if ($des_very) {
+                                    $des_very->monto = ceil($fer_prop[0]->valor);
+                                    $des_very->save();
+                                }else{
+                                    //si no existe, creamos el item
+                                    $des = new LiqConfigDescuentos;
+                                    $des->empleado_id = $r->id_empleado;
+                                    $des->cs_lista_descuentos_id = 8; //feriado prop desde descuentos
+                                    $des->monto = ceil($fer_prop[0]->valor);
+                                    $des->activo = 'S';
+                                    $des->save();
+                                }
+                            }
+                    }
                 
                 break;
                 case 'M': $verify->monto = $r->valor; break; 
@@ -50,6 +90,45 @@ class LiqConfigDescuentos extends Model
                 case 'P': 
                     $ch->porcentaje = $r->valor; 
                     $ch->monto = round(($r->valor / 100) * $total_imp); 
+
+                    // si el item es feriado prop desde descuentos
+                    if($ch->cs_lista_descuentos_id == 8 ){
+
+                        //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
+                        $fer_prop=DB::select("SELECT
+                            coalesce(round($ch->monto - sum(valor)) , 0) valor
+                            from(SELECT 
+                                cs_lista_descuentos_id,
+                                porcentaje,
+                                monto,
+                                ($ch->monto * (porcentaje / 100)) valor                                        
+                            FROM liq_config_descuentos des
+                            inner join cs_lista_descuentos lh on lh.id = des.cs_lista_descuentos_id
+                            where empleado_id = $r->id_empleado and des.activo = 'S' and cs_lista_descuentos_id in (1,2,4)) x");
+
+                        if(count($fer_prop) > 0){
+                                //en esta consulta verificamos si existe el ite feriados prop desde descuentos
+                                $des_very = LiqConfigDescuentos::where([
+                                    'activo'=>'S',
+                                    'empleado_id'=> $r->id_empleado,
+                                    'cs_lista_descuentos_id' => 8 //feriado prop desde descuentos
+                                ])->first();
+
+                                if ($des_very) {
+                                    $des_very->monto = ceil($fer_prop[0]->valor);
+                                    $des_very->save();
+                                }else{
+                                    //si no existe, creamos el item
+                                    $des = new LiqConfigDescuentos;
+                                    $des->empleado_id = $r->id_empleado;
+                                    $des->cs_lista_descuentos_id = 8; //feriado prop desde descuentos
+                                    $des->monto = ceil($fer_prop[0]->valor);
+                                    $des->activo = 'S';
+                                    $des->save();
+                                }
+                            }
+                    }
+                
                 
                 break;
                 case 'M': $ch->monto = $r->valor; break; 

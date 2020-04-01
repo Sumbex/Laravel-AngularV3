@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LiqConfigHaberes;
 use App\LiqConfigDescuentos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

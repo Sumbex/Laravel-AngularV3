@@ -49,7 +49,7 @@ class LiqConfigDescuentos extends Model
                     ){
                         
                         //en esta consulta hacemos el calculo con los 3 items (afp, salud, cesantia)
-                         $fp = $this->monto_feriado_proporcional($r->id_empleado);
+                        $fp = $this->monto_feriado_proporcional($r->id_empleado);
                         $fer_prop=DB::select("SELECT
                             coalesce(round($fp - sum(valor)) , 0) valor
                             from(SELECT 

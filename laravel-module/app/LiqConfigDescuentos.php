@@ -97,7 +97,7 @@ class LiqConfigDescuentos extends Model
                     $ch->porcentaje = $r->valor; 
                     $ch->monto = round(($r->valor / 100) * $total_imp); 
 
-                    // si el item es feriado prop desde descuentos
+                    // si el item es % prop desde descuentos
                     if($ch->cs_lista_descuentos_id == "1"||
                        $ch->cs_lista_descuentos_id == "2"||
                        $ch->cs_lista_descuentos_id == "4"

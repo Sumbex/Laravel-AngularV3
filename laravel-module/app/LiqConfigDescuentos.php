@@ -97,7 +97,7 @@ class LiqConfigDescuentos extends Model
                     }
                 return [
                     'estado' => 'success',
-                    'mensaje' => 'Descuento actualizado con exito!'
+                    'mensaje' => 'Item actualizado con exito!'
                 ];
             }
             // return [
@@ -170,7 +170,7 @@ class LiqConfigDescuentos extends Model
                     }
                 return [
                     'estado' => 'success',
-                    'mensaje' => 'Descuento registrado con exito!'
+                    'mensaje' => 'Item registrado con exito!'
                 ];
             }
         }
@@ -186,18 +186,27 @@ class LiqConfigDescuentos extends Model
                                 ch.porcentaje
                             FROM liq_config_descuentos ch
                             inner join cs_lista_descuentos lh on lh.id = ch.cs_lista_descuentos_id
+                            where empleado_id = $empleado and ch.activo = 'S' order by lh.orden asc
+        ");
+
+        $sum_desc = DB::select("SELECT 
+                                sum(ch.monto) suma  
+                            FROM liq_config_descuentos ch
+                            inner join cs_lista_descuentos lh on lh.id = ch.cs_lista_descuentos_id
                             where empleado_id = $empleado and ch.activo = 'S'
         ");
 
-        if (count($listar) > 0) {
+        if (count($listar) > 0 || count($sum_desc) > 0) {
             return [
                 'estado' => 'success',
-                'lista' => $listar
+                'lista' => $listar,
+                'suma' => $sum_desc[0]->suma
             ];
         }
         return [
             'estado' => 'failed',
-            'lista' => null
+            'lista' => null,
+            'suma' => null
         ];
     }
 

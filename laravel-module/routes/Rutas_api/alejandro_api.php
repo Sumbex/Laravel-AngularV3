@@ -171,7 +171,7 @@ Route::get('lista_haberes','HaberesController@lista_haberes');
 Route::post('guardar_config_haber','HaberesController@guardar_config_haber');
 
 
-Route::get('lista_conf_haberes/{empleado}','HaberesController@lista_conf_haberes');
+Route::get('lista_conf_haberes/{empleado?}','HaberesController@lista_conf_haberes');
 Route::get('eliminar_item_conf_hab/{conf_hab_id}','HaberesController@eliminar_item_conf_hab');
 
 Route::post('actualizar_conf_haber','HaberesController@actualizar_conf_haber');
@@ -183,9 +183,11 @@ Route::get('lista_descuentos','DescuentosController@lista_descuentos');
 Route::post('guardar_config_descuento','DescuentosController@guardar_config_descuento');
 
 
-Route::get('lista_conf_descuentos/{empleado}','DescuentosController@lista_conf_descuentos');
+Route::get('lista_conf_descuentos/{empleado?}','DescuentosController@lista_conf_descuentos');
 Route::get('eliminar_item_conf_desc/{conf_desc_id}','DescuentosController@eliminar_item_conf_desc');
 
 Route::post('actualizar_conf_descuento','DescuentosController@actualizar_conf_descuento');
 
-Route::get('traer_total_h_i/{empleado}','DescuentosController@traer_total_h_i');
+Route::get('traer_total_h_i/{empleado?}','DescuentosController@traer_total_h_i');
+
+Route::get('formula_desc/{id_desc}','DescuentosController@formula_desc');

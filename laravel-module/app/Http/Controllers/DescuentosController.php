@@ -37,7 +37,7 @@ class DescuentosController extends Controller
                 break;
                 
                 default:
-                    # code...
+                    return['estado'=>'failed', 'mensaje'=>'El item no esta disponible'];
                     break;
             }
         
@@ -60,8 +60,11 @@ class DescuentosController extends Controller
 		}
     }
 
-    public function lista_conf_descuentos($empleado)
+    public function lista_conf_descuentos($empleado='')
     {
+        if ($empleado == '') {
+            return ['estado'=>'failed'];
+        }
         return LiqConfigDescuentos::listar($empleado);
     }
 
@@ -186,11 +189,29 @@ class DescuentosController extends Controller
 		}
     }
 
-    public function traer_total_h_i($empleado)
+    public function traer_total_h_i($empleado='')
     {
         if ($empleado != '') {
             
             return LiqConfigDescuentos::tabla_i_h($empleado);
         }
+        else{
+            return [
+                'estado' => 'failed'
+            ];
+        }
+    }
+
+    public function formula_desc($id)
+    {
+        $get = DB::table('cs_lista_descuentos')
+        ->select('formula')
+        ->where('id',$id)->first();
+
+        if($get->formula){
+            return response()->json($get->formula);
+        }
+        return "";
+        
     }
 }

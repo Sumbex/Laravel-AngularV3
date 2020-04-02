@@ -64,7 +64,7 @@ class HaberesController extends Controller
                      return LiqConfigHaberes::registrar($r);
                 break;
 
-                case 'P': //porcentaje
+                case 'SBP': //sueldo base * porcentaje
                     if($r->id_empleado =='' || $r->id_hab == '' || $r->valor == ''){
                         return ['estado'=>'failed', 'mensaje'=>'Faltan campos por llenar'];
                     }
@@ -72,7 +72,10 @@ class HaberesController extends Controller
                 break;
                 
                 default:
-                    # code...
+                    return [
+                        'estado' => 'failed',
+                        'mensaje' => 'No hay un haber seleccionado'
+                    ];
                     break;
             }
 
@@ -97,8 +100,14 @@ class HaberesController extends Controller
 		// }
     }
 
-    public function lista_conf_haberes($empleado)
+    public function lista_conf_haberes($empleado='')
     {
+     
+        if($empleado == ''){
+           return [
+            'estado' => 'failed'
+           ];
+        }
         return LiqConfigHaberes::listar($empleado);
     }
 

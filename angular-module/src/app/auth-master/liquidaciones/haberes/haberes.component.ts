@@ -161,12 +161,11 @@ export class HaberesComponent implements OnInit {
 
         if (response.estado=='failed'){
           alert(""+response.mensaje+"");
-          this.load = false;
+          this.limpiar();
         }else{
+          alert("" + response.mensaje + "");
           this.listar_h();
-          this.haber = "";
-          this.valor = "";
-          this.load = false;
+          this.limpiar();
         }
 
           
@@ -341,7 +340,17 @@ export class HaberesComponent implements OnInit {
 
 
   }
-
+  limpiar(){
+    this.haber = "";
+    this.id_hab = "";
+    this.valor = "";
+    this.tipo = "";
+    this.dias = "";
+    this.horas = "";
+    this.porcentaje = "";
+    this.cargas = "";
+    this.load = false;
+  }
 
 
 

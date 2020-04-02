@@ -155,4 +155,15 @@ export class LiquidacionJuanitoService {
   }
 
   
+  formula_desc(id_desc): Observable<any> {
+
+    return this._http.get(this.url + "formula_desc/" + id_desc, {
+      headers: new HttpHeaders(
+        { 'Authorization': 'Bearer' + this.token })
+    }
+    )
+
+  }
+
+  
 }

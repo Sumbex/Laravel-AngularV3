@@ -4,6 +4,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LiquidacionJuanitoService } from '../../../servicios/liquidacion-juanito.service';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-descuentos',
@@ -27,6 +28,7 @@ export class DescuentosComponent implements OnInit {
 
   empleado = '';
   empleados: object;
+  suma=0;
   // empleados:object=[
   //   {'id':1, 'nombre':'Alejandro Godoy'},
   //   {'id':2, 'nombre': 'Manuel Garcia' },
@@ -45,6 +47,7 @@ export class DescuentosComponent implements OnInit {
   buttonStatus = false;
   pass = '';
   actualizarLoad: boolean = false;
+  formula='';
 
   resumen:object={
     'sueldo_base': {monto:0},
@@ -108,6 +111,7 @@ export class DescuentosComponent implements OnInit {
       response => {
         if (response.status == "success") {
           this.haberes = response.lista;
+          
 
         }
         error => {
@@ -132,6 +136,11 @@ export class DescuentosComponent implements OnInit {
 
     this.tipo = tipo;
     this.id_desc = id;
+    this._liq.formula_desc(this.id_desc).subscribe(
+      response => {
+        this.formula = response;
+        console.log(this.formula)
+      });
   }
 
   registrar() {
@@ -140,17 +149,22 @@ export class DescuentosComponent implements OnInit {
       'id_empleado': this.empleado,
       'id_desc': this.id_desc,
       'tipo': this.tipo,
-      'valor': this.valor
+      'valor': this.valor.replace(',','.')
     }).subscribe(
       response => {
 
         if (response.estado == 'failed') {
           alert("" + response.mensaje + "");
+          this.id_desc = "";
+          this.haber = "";
+          this.valor = "";
+          this.formula ="";
           this.load = false;
         } else {
           this.listar_d();
           this.haber = "";
           this.valor = "";
+          this.formula ="";
           this.load = false;
         }
 
@@ -176,6 +190,7 @@ export class DescuentosComponent implements OnInit {
       response => {
         if (response.estado == "success") {
           this.tabla = response.lista;
+          this.suma = response.suma;
           this.load_table = false;
 
         }

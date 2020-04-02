@@ -30,6 +30,14 @@
     </div>
 
     <div class="card-body">
+
+        <div class="alert alert-warning" role="alert">
+            *<strong>Importante!!</strong>, Sí tiene valores actualizados en haberes/imponibles, corroborar la información también en los <strong>descuentos (este formulario)</strong>
+            <br>
+            *<strong>Importante!!</strong>, Cuando actualice desde este formulario los items <strong>Salud INP, Cotización AFP o Seguro de cesantia</strong> el item <strong>Feriado Proporcional</strong> se actualizará automaticamente
+        </div>
+
+
         <label for="">Empleado: </label><br>
         <select [(ngModel)]="empleado" (change)="listar_d()" class="form-control">
             <option value="">Seleccione..</option>
@@ -43,9 +51,10 @@
                     <option value="">Seleccione...</option>
                     <option *ngFor="let i of haberes" value="{{ i.tipo+'|'+i.id }}">{{i.descripcion+' ('+i.tipo+')'}}</option>
                 </select>
+                <label >{{ formula }}</label>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <label for="">{{(tipo == 'P')?'Porcentaje (%)' : 'Monto ($)'}}</label><br>
                 <input [(ngModel)]="valor" type="text"
                     placeholder="{{(tipo == 'P')?'Ingrese porcentaje (%)' : 'Ingrese monto ($)'}}" class="form-control">
@@ -56,7 +65,14 @@
                 <button (click)="registrar()" class="btn btn-success">
                     <img *ngIf="load" padding="30px" height="20"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    Registrar
+                    Registrar / Actualizar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <label for=""> &nbsp;</label><br>
+                <button (click)="listar_d()" class="btn btn-primary">
+                    <!-- <img *ngIf="loadref" padding="30px" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"> -->
+                    Refrezcar tabla
                 </button>
             </div>
         </div>
@@ -166,7 +182,8 @@
         
                         </td> -->
 
-                        <td colspan="2" (click)="openActualizar(fechaFijoModal)">
+                        <td colspan="2" >
+                            <!-- (click)="openActualizar(fechaFijoModal)" -->
                             {{ item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}
 
                             <ng-template #fechaFijoModal let-c="closeFecha" let-d="dismiss">
@@ -237,6 +254,16 @@
 
 
 
+                    </tr>
+
+                    <tr class="text-center">
+                        <th colspan="6" style="background: #138D75;" class="text-right">
+                            TOTAL DE DESCUENTOS
+                        </th>
+                        <td colspan="2" class="text-center"><b>{{ suma | currency:"CLP" : "symbol-narrow":'1.0' }}</b></td>
+                        <th colspan="2" style="background: #138D75;" class="ColorThCS">
+                            &nbsp;
+                        </th>
                     </tr>
 
                 </tbody>

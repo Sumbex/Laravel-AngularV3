@@ -23,6 +23,7 @@
 
 
 <div class="card">
+    
     <div class="card-header" id="demoFont">
         <strong class="text-center">
             <h6><i class="fas fa-file-invoice"></i> Configuración - Haberes</h6>
@@ -30,6 +31,11 @@
     </div>
 
     <div class="card-body">
+        <div class="alert alert-warning" role="alert">
+            <strong>Importante!!</strong>, Sí tiene valores en haberes/imponibles y en descuentos, al actualizar un valor,
+            corroborar la información también en los <strong>descuentos</strong>
+        </div>
+
         <label for="">Empleado: </label><br>
         <select [(ngModel)]="empleado" (change)="listar_h()" class="form-control">
             <option value="">Seleccione..</option>
@@ -47,10 +53,13 @@
         
 
             <div class="col-md-5">
-                <div *ngIf="tipo == 'P'">
+                <div *ngIf="tipo == 'SBP'">
                     <label for="">Porcentaje (%)</label><br>
                     <input [(ngModel)]="valor" type="text" placeholder="Ingrese procentaje"
                         class="form-control">
+
+                        <label for="">Monto ($)</label><br>
+                        <label for="">{{ redondear((valor/100) * sueldo_base.monto) | currency:"CLP" : "symbol-narrow":'1.0' }}</label>
                 </div>
 
              <div *ngIf="tipo == 'M'">
@@ -99,7 +108,7 @@
                 <label for=""> &nbsp;</label><br>
                 <button (click)="registrar()" class="btn btn-success">
                     <img *ngIf="load" padding="30px" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-                    Registrar
+                    Registrar / Actualizar
                 </button>
             </div>
         </div> 
@@ -123,7 +132,7 @@
                         <th colspan="2" style="background: #138D75;">Horas</th>
                         <th colspan="2" style="background: #138D75;">Cargas</th>
                         <!-- <th colspan="2" style="background: #138D75;">Tipo</th> -->
-                        <th colspan="2" style="background: #138D75;">Porcentahe</th>
+                        <th colspan="2" style="background: #138D75;">Porcentaje</th>
                         <th colspan="2" style="background: #138D75;">Monto</th>
 
                         <th colspan="2" style="background: #138D75;">Opción</th>
@@ -178,7 +187,8 @@
                         <td colspan="2">
                             {{item.porcentaje}}
                         </td>
-                        <td colspan="2" (click)="openActualizar(fechaFijoModal)"> 
+                        <td colspan="2" >
+                             <!--(click)="openActualizar(fechaFijoModal)"  -->
                         {{ item.monto | currency:"CLP" : "symbol-narrow":'1.0'}} 
 
                         <ng-template #fechaFijoModal let-c="closeFecha" let-d="dismiss">
@@ -277,7 +287,7 @@
                         <th colspan="2" style="background: #138D75;">Horas</th>
                         <th colspan="2" style="background: #138D75;">Cargas</th>
                         <!-- <th colspan="2" style="background: #138D75;">Tipo</th> -->
-                        <th colspan="2" style="background: #138D75;">Porcentahe</th>
+                        <th colspan="2" style="background: #138D75;">Porcentaje</th>
                         <th colspan="2" style="background: #138D75;">Monto</th>
             
                         <th colspan="2" style="background: #138D75;">Opción</th>
@@ -337,7 +347,8 @@
                         <td colspan="2">
                             {{item.porcentaje}}
                         </td>
-                        <td colspan="2" (click)="openActualizar(fechaFijoModal)">
+                        <td colspan="2" >
+                            <!-- (click)="openActualizar(fechaFijoModal)" -->
                             {{ item.monto | currency:"CLP" : "symbol-narrow":'1.0'}}
             
                             <ng-template #fechaFijoModal let-c="closeFecha" let-d="dismiss">

@@ -9,7 +9,11 @@
 </li>
 <li class="nav-item">
     <a class="nav-link" id="liquidaciones-tab" data-toggle="tab" href="#liquidaciones" role="tab" aria-controls="liquidaciones"
-        aria-selected="false">Liquidacion</a>
+        aria-selected="false">Generar Liquidaciones</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" id="liquidacionesHisto-tab" data-toggle="tab" href="#liquidacionesHisto" role="tab" aria-controls="liquidacionesHisto"
+        aria-selected="false">Historial Liquidaciones</a>
 </li>
 </ul>
 
@@ -27,6 +31,10 @@
 
     <div class="tab-pane fade" id="liquidaciones" role="tabpanel" aria-labelledby="liquidaciones-tab">
         <app-liquidacion></app-liquidacion>
+    </div>
+
+    <div class="tab-pane fade" id="liquidacionesHisto" role="tabpanel" aria-labelledby="liquidacionesHisto-tab">
+        <app-historial-liquidaciones></app-historial-liquidaciones>
     </div>
 
   </div>

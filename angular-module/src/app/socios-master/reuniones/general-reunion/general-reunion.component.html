@@ -10,6 +10,10 @@
             aria-controls="formReuniones" aria-selected="true">Reuniones</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" id="formVotaciones-tab" data-toggle="tab" href="#formVotaciones" role="tab"
+            aria-controls="formVotaciones" aria-selected="true">Votaciones</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" data-toggle="tab" role="tab" aria-controls="acuerdos"
             aria-selected="false">Acuerdos de Asamblea</a>
             <!-- href="#acuerdos" id="acuerdos-tab" -->
@@ -166,6 +170,11 @@
               class="far fa-arrow-alt-circle-left"></i> Volver</button>
         </div>
       </ng-template>
+    </div>
+
+    <!-- Votaciones -->
+    <div class="tab-pane fade show" id="formVotaciones" role="tabpanel" aria-labelledby="formVotaciones-tab">
+      <app-votaciones></app-votaciones>
     </div>
 
     <!-- Acuerdos -->

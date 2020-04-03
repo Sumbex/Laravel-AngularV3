@@ -1,0 +1,164 @@
+<div class="card mt-4">
+    <div class="card-header" id="demoFont">
+        <strong class="text-center">
+            <h6><i class="fas fa-file-invoice"></i> Generar Liquidaciones</h6>
+        </strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            <ngb-alert [dismissible]="false">
+                <strong>Advertencia!</strong> Recuerde que este formulario es para subir unicamente liquidaciones de
+                sueldo firmadas tanto por el empleado como el empleador.
+            </ngb-alert>
+        </p>
+
+        <label for="">Empleado: </label><br>
+        <select [(ngModel)]="empleado" (change)="traerDatosLiquidacion()" class="form-control">
+            <option value="">Seleccione..</option>
+            <option *ngFor="let e of empleados" value="{{e.id}}">{{ e.nombre_trabajador }}</option>
+        </select>
+
+        <form #liquidacionForm (ngSubmit)="setDatosLiquidacion()" enctype="multipart/form-data">
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <label>Fecha</label>
+                    <input type="date" name="fecha" [(ngModel)]="datosFormulario.fecha" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label>Liquidación en PDF</label>
+                    <input class="form-control-file" (change)="archivo($event)" type="file">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-block mt-4">Ingresar al Sistema</button>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header" id="demoFont">
+        <strong class="text-center">
+            <h6><i class="fas fa-file-invoice"></i>Liquidaciones de Sueldo Emitidas</h6>
+        </strong>
+    </div>
+
+    <div class="card-body">
+        <p>
+            <ngb-alert [dismissible]="false">
+                <strong>Advertencia!</strong> Si desea editar la fecha haga click en la fecha correspondiente, si desea reemplazar el archivo presione el simbolo  <i class="far fa-copy fa-lg"></i>
+            </ngb-alert>
+        </p>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="text-center">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Trabajador</th>
+                        <th>Archivo</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let itemLiquidaciones of liquidaciones">
+                        <td (click)="open(editorFecha)">{{itemLiquidaciones?.fecha}}</td>
+                        <!-- MODAL EDITOR DE FECHA -->
+                        <ng-template #editorFecha let-c="close" let-d="dismiss">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="modal-header text-center" id="demoFont">
+                                        <h4 class="modal-title" id="modal-basic-title">Editar Fecha</h4>
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                                            (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Fecha Actual</label><br>
+                                                <input class="form-control" type="date" name="fecha" value="{{itemLiquidaciones?.fecha}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Seleccione Nueva Fecha</label>
+                                                <input #fechaNueva class="form-control" type="date" name="fecha">
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-block mt-2" (click)="actualizarLiquidacion(itemLiquidaciones?.id, 'fecha', fechaNueva.value)">Actualizar</button>
+                                    </div>
+                                    <div class="modal-footer" [hidden]="true">
+                                        <button type="button" class="btn btn-outline-dark"
+                                            (click)="c('Save click')">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <td>{{itemLiquidaciones?.nombre}}</td>
+                        <td>
+                            <a (click)="open(visorMaximo)" style="cursor: pointer" class="btn-primary-outline">
+                                <i class="far fa-file-alt fa-lg" placement="top"
+                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                            </a>
+                            <a (click)="open(editorArchivo)" style="cursor: pointer" class="btn-primary-outline ml-4">
+                                <i class="far fa-copy fa-lg" placement="top"
+                                    ngbTooltip="Presione aqui para cambiar el documento"></i>
+                            </a>
+                        </td>
+                        <!--MODAL VISOR PDF-->
+                        <ng-template #visorMaximo let-c="close" let-d="dismiss">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="modal-header text-center" id="demoFont">
+                                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                                            (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe width="100%" height="500px"
+                                            [src]="  '../' + itemLiquidaciones.ruta_archivo | safeUrl" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="modal-footer" [hidden]="true">
+                                        <button type="button" class="btn btn-outline-dark"
+                                            (click)="c('Save click')">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <!--MODAL VISOR PDF-->
+                        <!-- MODAL EDITOR DE ARCHIVO -->
+                        <ng-template #editorArchivo let-c="close" let-d="dismiss">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="modal-header text-center" id="demoFont">
+                                        <h4 class="modal-title" id="modal-basic-title">Editar Fecha</h4>
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                                            (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Seleccione Nuevo Archivo</label>
+                                                <input class="form-control-file" (change)="archivo($event)" type="file" name="archivo">
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-block mt-2" (click)="actualizarLiquidacion(itemLiquidaciones?.id, 'archivo', 'placeholder')">Actualizar</button>
+                                    </div>
+                                    <div class="modal-footer" [hidden]="true">
+                                        <button type="button" class="btn btn-outline-dark"
+                                            (click)="c('Save click')">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

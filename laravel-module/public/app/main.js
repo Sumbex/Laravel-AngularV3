@@ -837,6 +837,17 @@ module.exports = "<br>\r\n<ng-template #modalUsuario let-modal>\r\n    <div clas
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.html":
+/*!************************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.html ***!
+  \************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card mt-4\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i> Generar Liquidaciones</h6>\n        </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <p>\n            <ngb-alert [dismissible]=\"false\">\n                <strong>Advertencia!</strong> Recuerde que este formulario es para subir unicamente liquidaciones de\n                sueldo firmadas tanto por el empleado como el empleador.\n            </ngb-alert>\n        </p>\n\n        <label for=\"\">Empleado: </label><br>\n        <select [(ngModel)]=\"empleado\" (change)=\"traerDatosLiquidacion()\" class=\"form-control\">\n            <option value=\"\">Seleccione..</option>\n            <option *ngFor=\"let e of empleados\" value=\"{{e.id}}\">{{ e.nombre_trabajador }}</option>\n        </select>\n\n        <form #liquidacionForm (ngSubmit)=\"setDatosLiquidacion()\" enctype=\"multipart/form-data\">\n            <div class=\"row mt-4\">\n                <div class=\"col-md-6\">\n                    <label>Fecha</label>\n                    <input type=\"date\" name=\"fecha\" [(ngModel)]=\"datosFormulario.fecha\" class=\"form-control\">\n                </div>\n                <div class=\"col-md-6\">\n                    <label>Liquidación en PDF</label>\n                    <input class=\"form-control-file\" (change)=\"archivo($event)\" type=\"file\">\n                </div>\n            </div>\n            <button type=\"submit\" class=\"btn btn-success btn-block mt-4\">Ingresar al Sistema</button>\n        </form>\n    </div>\n</div>\n\n<div class=\"card mt-4\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i>Liquidaciones de Sueldo Emitidas</h6>\n        </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <p>\n            <ngb-alert [dismissible]=\"false\">\n                <strong>Advertencia!</strong> Si desea editar la fecha haga click en la fecha correspondiente, si desea reemplazar el archivo presione el simbolo  <i class=\"far fa-copy fa-lg\"></i>\n            </ngb-alert>\n        </p>\n        <div class=\"table-responsive\">\n            <table class=\"table table-bordered\">\n                <thead class=\"text-center\">\n                    <tr>\n                        <th>Fecha</th>\n                        <th>Trabajador</th>\n                        <th>Archivo</th>\n                    </tr>\n                </thead>\n                <tbody class=\"text-center\">\n                    <tr *ngFor=\"let itemLiquidaciones of liquidaciones\">\n                        <td (click)=\"open(editorFecha)\">{{itemLiquidaciones?.fecha}}</td>\n                        <!-- MODAL EDITOR DE FECHA -->\n                        <ng-template #editorFecha let-c=\"close\" let-d=\"dismiss\">\n                            <div class=\"row\">\n                                <div class=\"col\">\n                                    <div class=\"modal-header text-center\" id=\"demoFont\">\n                                        <h4 class=\"modal-title\" id=\"modal-basic-title\">Editar Fecha</h4>\n                                        <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                                            (click)=\"d('Cross click')\">\n                                            <span aria-hidden=\"true\">&times;</span>\n                                        </button>\n                                    </div>\n                                    <div class=\"modal-body\">\n                                        <div class=\"row\">\n                                            <div class=\"col-md-12\">\n                                                <label>Fecha Actual</label><br>\n                                                <input class=\"form-control\" type=\"date\" name=\"fecha\" value=\"{{itemLiquidaciones?.fecha}}\" disabled>\n                                            </div>\n                                        </div>\n                                        <div class=\"row\">\n                                            <div class=\"col-md-12\">\n                                                <label>Seleccione Nueva Fecha</label>\n                                                <input #fechaNueva class=\"form-control\" type=\"date\" name=\"fecha\">\n                                            </div>\n                                        </div>\n                                        <button class=\"btn btn-primary btn-block mt-2\" (click)=\"actualizarLiquidacion(itemLiquidaciones?.id, 'fecha', fechaNueva.value)\">Actualizar</button>\n                                    </div>\n                                    <div class=\"modal-footer\" [hidden]=\"true\">\n                                        <button type=\"button\" class=\"btn btn-outline-dark\"\n                                            (click)=\"c('Save click')\">OK</button>\n                                    </div>\n                                </div>\n                            </div>\n                        </ng-template>\n                        <td>{{itemLiquidaciones?.nombre}}</td>\n                        <td>\n                            <a (click)=\"open(visorMaximo)\" style=\"cursor: pointer\" class=\"btn-primary-outline\">\n                                <i class=\"far fa-file-alt fa-lg\" placement=\"top\"\n                                    ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n                            </a>\n                            <a (click)=\"open(editorArchivo)\" style=\"cursor: pointer\" class=\"btn-primary-outline ml-4\">\n                                <i class=\"far fa-copy fa-lg\" placement=\"top\"\n                                    ngbTooltip=\"Presione aqui para cambiar el documento\"></i>\n                            </a>\n                        </td>\n                        <!--MODAL VISOR PDF-->\n                        <ng-template #visorMaximo let-c=\"close\" let-d=\"dismiss\">\n                            <div class=\"row\">\n                                <div class=\"col\">\n                                    <div class=\"modal-header text-center\" id=\"demoFont\">\n                                        <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                                        <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                                            (click)=\"d('Cross click')\">\n                                            <span aria-hidden=\"true\">&times;</span>\n                                        </button>\n                                    </div>\n                                    <div class=\"modal-body\">\n                                        <iframe width=\"100%\" height=\"500px\"\n                                            [src]=\"  '../' + itemLiquidaciones.ruta_archivo | safeUrl\" frameborder=\"0\"\n                                            allowfullscreen></iframe>\n                                    </div>\n                                    <div class=\"modal-footer\" [hidden]=\"true\">\n                                        <button type=\"button\" class=\"btn btn-outline-dark\"\n                                            (click)=\"c('Save click')\">OK</button>\n                                    </div>\n                                </div>\n                            </div>\n                        </ng-template>\n                        <!--MODAL VISOR PDF-->\n                        <!-- MODAL EDITOR DE ARCHIVO -->\n                        <ng-template #editorArchivo let-c=\"close\" let-d=\"dismiss\">\n                            <div class=\"row\">\n                                <div class=\"col\">\n                                    <div class=\"modal-header text-center\" id=\"demoFont\">\n                                        <h4 class=\"modal-title\" id=\"modal-basic-title\">Editar Fecha</h4>\n                                        <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                                            (click)=\"d('Cross click')\">\n                                            <span aria-hidden=\"true\">&times;</span>\n                                        </button>\n                                    </div>\n                                    <div class=\"modal-body\">\n                                        <div class=\"row\">\n                                            <div class=\"col-md-12\">\n                                                <label>Seleccione Nuevo Archivo</label>\n                                                <input class=\"form-control-file\" (change)=\"archivo($event)\" type=\"file\" name=\"archivo\">\n                                            </div>\n                                        </div>\n                                        <button class=\"btn btn-primary btn-block mt-2\" (click)=\"actualizarLiquidacion(itemLiquidaciones?.id, 'archivo', 'placeholder')\">Actualizar</button>\n                                    </div>\n                                    <div class=\"modal-footer\" [hidden]=\"true\">\n                                        <button type=\"button\" class=\"btn btn-outline-dark\"\n                                            (click)=\"c('Save click')\">OK</button>\n                                    </div>\n                                </div>\n                            </div>\n                        </ng-template>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n\n</div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.html":
 /*!************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.html ***!
@@ -855,7 +866,7 @@ module.exports = "<div class=\"card mt-4\">\r\n    <div class=\"card-header\" id
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\r\n<li class=\"nav-item active\">\r\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\r\n        aria-selected=\"true\">haberes</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\r\n        aria-selected=\"false\">Descuentos</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\r\n        aria-selected=\"false\">Liquidacion</a>\r\n</li>\r\n</ul>\r\n\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n\r\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\r\n        <app-haberes></app-haberes>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\r\n        <app-descuentos></app-descuentos>\r\n      </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\r\n        <app-liquidacion></app-liquidacion>\r\n    </div>\r\n\r\n  </div>"
+module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\r\n<li class=\"nav-item active\">\r\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\r\n        aria-selected=\"true\">haberes</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\r\n        aria-selected=\"false\">Descuentos</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\r\n        aria-selected=\"false\">Generar Liquidaciones</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidacionesHisto-tab\" data-toggle=\"tab\" href=\"#liquidacionesHisto\" role=\"tab\" aria-controls=\"liquidacionesHisto\"\r\n        aria-selected=\"false\">Historial Liquidaciones</a>\r\n</li>\r\n</ul>\r\n\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n\r\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\r\n        <app-haberes></app-haberes>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\r\n        <app-descuentos></app-descuentos>\r\n      </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\r\n        <app-liquidacion></app-liquidacion>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidacionesHisto\" role=\"tabpanel\" aria-labelledby=\"liquidacionesHisto-tab\">\r\n        <app-historial-liquidaciones></app-historial-liquidaciones>\r\n    </div>\r\n\r\n  </div>"
 
 /***/ }),
 
@@ -1075,7 +1086,18 @@ module.exports = "<ng-template #generarNuevaReunion let-modal>\r\n  <!-- Header 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <br><br>\r\n  <div class=\"col-md-12 mt-4\">\r\n    <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\"\r\n          aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"acuerdos-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"acuerdos\"\r\n          aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n          <!-- href=\"#acuerdos\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"actas-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"actas\"\r\n          aria-selected=\"false\">Actas</a>\r\n          <!-- href=\"#actas\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"directorio-tab\" data-toggle=\"tab\" role=\"tab\"\r\n          aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n        <!-- href=\"#directorio\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"leyes-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"leyes\"\r\n          aria-selected=\"false\">Leyes Laborales</a>\r\n          <!-- href=\"#leyes\"href=\"#leyes\" -->\r\n      </li>\r\n\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n  <div class=\"tab-pane fade\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Modulo Secretaria</h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-nueva-reunion></app-nueva-reunion>\r\n            </div>\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-editar-reunion></app-editar-reunion>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-asistencia-reunion></app-asistencia-reunion>\r\n            </div>\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-historial-reunion></app-historial-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Aquí Empanades -->\r\n  <div class=\"tab-pane fade\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Acuerdos de Asamblea </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-acuerdo-asamblea></app-acuerdo-asamblea>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Actas </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-actas></app-actas>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Directorio </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body fondo\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-directorio></app-directorio>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Leyes Laborales </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-leyes-laborales></app-leyes-laborales>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <br><br>\r\n  <div class=\"col-md-12 mt-4\">\r\n    <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\"\r\n          aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n      </li>\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" id=\"formTemas-tab\" data-toggle=\"tab\" href=\"#formTemas\" role=\"tab\"\r\n          aria-controls=\"formTemas\" aria-selected=\"true\">Temas</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"acuerdos-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"acuerdos\"\r\n          aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n          <!-- href=\"#acuerdos\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"actas-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"actas\"\r\n          aria-selected=\"false\">Actas</a>\r\n          <!-- href=\"#actas\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"directorio-tab\" data-toggle=\"tab\" role=\"tab\"\r\n          aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n        <!-- href=\"#directorio\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"leyes-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"leyes\"\r\n          aria-selected=\"false\">Leyes Laborales</a>\r\n          <!-- href=\"#leyes\"href=\"#leyes\" -->\r\n      </li>\r\n\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n  <div class=\"tab-pane fade\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Modulo Secretaria</h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-nueva-reunion></app-nueva-reunion>\r\n            </div>\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-editar-reunion></app-editar-reunion>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-asistencia-reunion></app-asistencia-reunion>\r\n            </div>\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-historial-reunion></app-historial-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Aquí Sumbitox -->\r\n  <div class=\"tab-pane fade\" id=\"formTemas\" role=\"tabpanel\" aria-labelledby=\"temas-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Temas </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-temas></app-temas>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Aquí Empanades -->\r\n  <div class=\"tab-pane fade\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Acuerdos de Asamblea </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-acuerdo-asamblea></app-acuerdo-asamblea>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Actas </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-actas></app-actas>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Directorio </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body fondo\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-directorio></app-directorio>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Leyes Laborales </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-leyes-laborales></app-leyes-laborales>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/temas/temas.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/temas/temas.component.html ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>temas works!</p>\n"
 
 /***/ }),
 
@@ -1482,7 +1504,7 @@ module.exports = "<ng-template #detalleReunion let-modal>\r\n    <!-- Header Del
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <br><br>\r\n    <div class=\"col-md-12 mt-4\">\r\n      <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\"\r\n            aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"acuerdos\"\r\n            aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n            <!-- href=\"#acuerdos\" id=\"acuerdos-tab\" -->\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"actas\"\r\n            aria-selected=\"false\">Actas</a>\r\n            <!-- href=\"#actas\" id=\"actas-tab\" -->\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\"\r\n            aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n            <!-- href=\"#directorio\" id=\"directorio-tab\" -->\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"leyes\"\r\n            aria-selected=\"false\">Leyes Laborales</a>\r\n            <!-- href=\"#leyes\" id=\"leyes-tab\" -->\r\n        </li>\r\n\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-content\" id=\"myTabContent\">\r\n    <!-- Reuniones -->\r\n    <div class=\"tab-pane fade show active\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n      <p class=\"mt-5\">\r\n        <ngb-alert [dismissible]=\"false\" [hidden]=\"datosReunion\">\r\n          No hay una reunión activa de momento.\r\n        </ngb-alert>\r\n        <ngb-alert [dismissible]=\"false\" [hidden]=\"!datosReunion\">\r\n          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten\r\n          con\r\n          una campana <i class=\"fas fa-bell\"></i>.\r\n        </ngb-alert>\r\n      </p>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 mt-5\" [hidden]=\"!datosReunion\">\r\n          <div class=\"card card-body border border-dark h-100\">\r\n            <h3 class=\"text-center\"><i class=\"fas fa-bell\"></i> Reunión Vigente</h3>\r\n            <h6 class=\"card-subtitle mb-2 text-muted text-center\">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>\r\n            <div>\r\n              <app-detalle-reunion [datoReunion]=\"datosReunion\"></app-detalle-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <!-- <div class=\"col-md-6 mt-5\">\r\n          <div class=\"card card-body border border-dark h-100\">\r\n            <h3 class=\"mx-auto\"><i class=\"fas fa-check-double\"></i> Reunión Anterior</h3>\r\n            <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión Finalizada 10.08.19</h6>\r\n            <div>\r\n              <app-historial-detalle-reunion></app-historial-detalle-reunion>\r\n            </div>\r\n          </div>\r\n        </div> -->\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 mt-5\">\r\n          <div class=\"card card-body border border-dark\">\r\n            <h3 class=\"mx-auto\"><i class=\"fas fa-bullhorn\"></i> Ultimas 5 Reuniones</h3>\r\n            <div class=\"table-responsive\">\r\n              <table class=\"table table-bordered\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"text-center\">Titulo</th>\r\n                    <th class=\"text-center\">Fecha</th>\r\n                    <th class=\"text-center\">Tema Tratado</th>\r\n                    <th class=\"text-center\">Inasistencias Justificadas</th>\r\n                  </tr>\r\n                </thead>\r\n                <tr *ngFor=\"let itemHistorial of datosReunionPasada\">\r\n                  <td class=\"text-center\"><b>{{itemHistorial?.titulo}}</b></td>\r\n                  <td class=\"text-center\"><b>{{itemHistorial?.fecha_inicio}}</b></td>\r\n                  <td class=\"text-center\"><button (click)=\"abrirModal(detalle)\" class=\"btn btn-dark\">Detalle de la\r\n                      Reunión</button></td>\r\n                  <!-- ******************DETALLE DE LA REUNIÓN******************* -->\r\n                  <ng-template #detalle let-modal>\r\n                    <!-- Header Del Modal -->\r\n                    <div class=\"modal-header\" id=\"demoFont\">\r\n                      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la proxima\r\n                          reunión</strong>\r\n                      </h6>\r\n                      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                      </button>\r\n                    </div>\r\n\r\n                    <!-- Cuerpo del modal -->\r\n                    <div class=\"modal-body\">\r\n                      <div class=\"container\">\r\n                        <div class=\"row\">\r\n                          <div class=\"col-md-12 mt-2\">\r\n                            <div class=\"card card-body\">\r\n                              <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>\r\n                              <h6 class=\"text-muted\">Tema a Tratar:</h6>\r\n                              <p>{{itemHistorial?.descripcion}}</p>\r\n                              <h6 class=\"text-muted\">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!-- Patitas del Modal -->\r\n                    <div class=\"modal-footer\">\r\n                      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n                          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n                    </div>\r\n                  </ng-template>\r\n                  <td class=\"text-center\"><button\r\n                      (click)=\"getListaReunion(itemHistorial?.id); abrirModal(inasistencias)\"\r\n                      class=\"btn btn-dark\">Inasistencias</button></td>\r\n                </tr>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n\r\n      <ng-template #inasistencias let-modal>\r\n        <!-- Header Del Modal -->\r\n        <div class=\"modal-header\" id=\"demoFont\">\r\n          <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\r\n          </h6>\r\n          <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <!-- Cuerpo del modal -->\r\n        <div class=\"modal-body\">\r\n          <div class=\"container\">\r\n            <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\r\n            <br>\r\n            <table class=\"table table-bordered\">\r\n              <tr>\r\n                <th>Nombre</th>\r\n                <th>Estado</th>\r\n              </tr>\r\n              <tr *ngFor=\"let itemAsistencia of datosAsistencias\">\r\n                <td>{{itemAsistencia?.nombre}}</td>\r\n                <td>{{itemAsistencia?.estado}}</td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n        <!-- Patitas del Modal -->\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n              class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n        </div>\r\n      </ng-template>\r\n    </div>\r\n\r\n    <!-- Acuerdos -->\r\n    <div class=\"tab-pane fade show\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n      <app-acuerdos-socio></app-acuerdos-socio>\r\n    </div>\r\n\r\n    <!-- Actas -->\r\n    <div class=\"tab-pane fade show\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n      <app-actas-socio></app-actas-socio>\r\n    </div>\r\n\r\n    <!-- Directorio -->\r\n    <div class=\"tab-pane fade show\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n      <app-directorio-socio></app-directorio-socio>\r\n    </div>\r\n\r\n    <!-- Leyes -->\r\n    <div class=\"tab-pane fade show\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n      <app-leyes-socio></app-leyes-socio>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"container\">\r\n\r\n  <div class=\"row\">\r\n    <br><br>\r\n    <div class=\"col-md-12 mt-4\">\r\n      <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\"\r\n            aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" id=\"formVotaciones-tab\" data-toggle=\"tab\" href=\"#formVotaciones\" role=\"tab\"\r\n            aria-controls=\"formVotaciones\" aria-selected=\"true\">Votaciones</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"acuerdos\"\r\n            aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n            <!-- href=\"#acuerdos\" id=\"acuerdos-tab\" -->\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"actas\"\r\n            aria-selected=\"false\">Actas</a>\r\n            <!-- href=\"#actas\" id=\"actas-tab\" -->\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\"\r\n            aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n            <!-- href=\"#directorio\" id=\"directorio-tab\" -->\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"leyes\"\r\n            aria-selected=\"false\">Leyes Laborales</a>\r\n            <!-- href=\"#leyes\" id=\"leyes-tab\" -->\r\n        </li>\r\n\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-content\" id=\"myTabContent\">\r\n    <!-- Reuniones -->\r\n    <div class=\"tab-pane fade show active\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n      <p class=\"mt-5\">\r\n        <ngb-alert [dismissible]=\"false\" [hidden]=\"datosReunion\">\r\n          No hay una reunión activa de momento.\r\n        </ngb-alert>\r\n        <ngb-alert [dismissible]=\"false\" [hidden]=\"!datosReunion\">\r\n          <strong>¡Advertencia!</strong> Solo es posible justificarse unicamente de las reuniones activas que cuenten\r\n          con\r\n          una campana <i class=\"fas fa-bell\"></i>.\r\n        </ngb-alert>\r\n      </p>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 mt-5\" [hidden]=\"!datosReunion\">\r\n          <div class=\"card card-body border border-dark h-100\">\r\n            <h3 class=\"text-center\"><i class=\"fas fa-bell\"></i> Reunión Vigente</h3>\r\n            <h6 class=\"card-subtitle mb-2 text-muted text-center\">Fecha Reunión {{datosReunion?.fecha_inicio}}</h6>\r\n            <div>\r\n              <app-detalle-reunion [datoReunion]=\"datosReunion\"></app-detalle-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <!-- <div class=\"col-md-6 mt-5\">\r\n          <div class=\"card card-body border border-dark h-100\">\r\n            <h3 class=\"mx-auto\"><i class=\"fas fa-check-double\"></i> Reunión Anterior</h3>\r\n            <h6 class=\"card-subtitle mb-2 text-muted text-center\">Reunión Finalizada 10.08.19</h6>\r\n            <div>\r\n              <app-historial-detalle-reunion></app-historial-detalle-reunion>\r\n            </div>\r\n          </div>\r\n        </div> -->\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 mt-5\">\r\n          <div class=\"card card-body border border-dark\">\r\n            <h3 class=\"mx-auto\"><i class=\"fas fa-bullhorn\"></i> Ultimas 5 Reuniones</h3>\r\n            <div class=\"table-responsive\">\r\n              <table class=\"table table-bordered\">\r\n                <thead>\r\n                  <tr>\r\n                    <th class=\"text-center\">Titulo</th>\r\n                    <th class=\"text-center\">Fecha</th>\r\n                    <th class=\"text-center\">Tema Tratado</th>\r\n                    <th class=\"text-center\">Inasistencias Justificadas</th>\r\n                  </tr>\r\n                </thead>\r\n                <tr *ngFor=\"let itemHistorial of datosReunionPasada\">\r\n                  <td class=\"text-center\"><b>{{itemHistorial?.titulo}}</b></td>\r\n                  <td class=\"text-center\"><b>{{itemHistorial?.fecha_inicio}}</b></td>\r\n                  <td class=\"text-center\"><button (click)=\"abrirModal(detalle)\" class=\"btn btn-dark\">Detalle de la\r\n                      Reunión</button></td>\r\n                  <!-- ******************DETALLE DE LA REUNIÓN******************* -->\r\n                  <ng-template #detalle let-modal>\r\n                    <!-- Header Del Modal -->\r\n                    <div class=\"modal-header\" id=\"demoFont\">\r\n                      <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Detalle de la proxima\r\n                          reunión</strong>\r\n                      </h6>\r\n                      <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                      </button>\r\n                    </div>\r\n\r\n                    <!-- Cuerpo del modal -->\r\n                    <div class=\"modal-body\">\r\n                      <div class=\"container\">\r\n                        <div class=\"row\">\r\n                          <div class=\"col-md-12 mt-2\">\r\n                            <div class=\"card card-body\">\r\n                              <legend>Reunión realizada el {{itemHistorial?.fecha_inicio}}</legend>\r\n                              <h6 class=\"text-muted\">Tema a Tratar:</h6>\r\n                              <p>{{itemHistorial?.descripcion}}</p>\r\n                              <h6 class=\"text-muted\">Reunión organizada por: {{itemHistorial?.creada_por}}</h6>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <!-- Patitas del Modal -->\r\n                    <div class=\"modal-footer\">\r\n                      <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n                          class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n                    </div>\r\n                  </ng-template>\r\n                  <td class=\"text-center\"><button\r\n                      (click)=\"getListaReunion(itemHistorial?.id); abrirModal(inasistencias)\"\r\n                      class=\"btn btn-dark\">Inasistencias</button></td>\r\n                </tr>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n\r\n      <ng-template #inasistencias let-modal>\r\n        <!-- Header Del Modal -->\r\n        <div class=\"modal-header\" id=\"demoFont\">\r\n          <h6 class=\"modal-title\"><strong><i class=\"fas fa-cash-register\"></i> Inasistentes de la reunión</strong>\r\n          </h6>\r\n          <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('Cross click')\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <!-- Cuerpo del modal -->\r\n        <div class=\"modal-body\">\r\n          <div class=\"container\">\r\n            <h3 class=\"text-center\">Inasistencias justificadas el día 10.10.10</h3>\r\n            <br>\r\n            <table class=\"table table-bordered\">\r\n              <tr>\r\n                <th>Nombre</th>\r\n                <th>Estado</th>\r\n              </tr>\r\n              <tr *ngFor=\"let itemAsistencia of datosAsistencias\">\r\n                <td>{{itemAsistencia?.nombre}}</td>\r\n                <td>{{itemAsistencia?.estado}}</td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n        <!-- Patitas del Modal -->\r\n        <div class=\"modal-footer\">\r\n          <button type=\"button\" class=\"btn btn-info\" (click)=\"modal.close('Close click')\"><i\r\n              class=\"far fa-arrow-alt-circle-left\"></i> Volver</button>\r\n        </div>\r\n      </ng-template>\r\n    </div>\r\n\r\n    <!-- Votaciones -->\r\n    <div class=\"tab-pane fade show\" id=\"formVotaciones\" role=\"tabpanel\" aria-labelledby=\"formVotaciones-tab\">\r\n      <app-votaciones></app-votaciones>\r\n    </div>\r\n\r\n    <!-- Acuerdos -->\r\n    <div class=\"tab-pane fade show\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n      <app-acuerdos-socio></app-acuerdos-socio>\r\n    </div>\r\n\r\n    <!-- Actas -->\r\n    <div class=\"tab-pane fade show\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n      <app-actas-socio></app-actas-socio>\r\n    </div>\r\n\r\n    <!-- Directorio -->\r\n    <div class=\"tab-pane fade show\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n      <app-directorio-socio></app-directorio-socio>\r\n    </div>\r\n\r\n    <!-- Leyes -->\r\n    <div class=\"tab-pane fade show\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n      <app-leyes-socio></app-leyes-socio>\r\n    </div>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1538,6 +1560,17 @@ module.exports = "<p>directorio-socio works!</p>\r\n"
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n    <br>\r\n    <div class=\"row justify-content-center\">\r\n\r\n        <div *ngIf=\"!mostrar\" class=\"loader\">Loading...</div>\r\n\r\n        <div *ngIf=\"mostrar\" class=\"card text-center\">\r\n            <div class=\"card-header\">\r\n                <h4 class=\"card-title\">Ultima Noticia</h4>\r\n            </div>\r\n            <div class=\"row no-gutters justify-content-center\">\r\n                <img src=\"../{{ultimaNoticia?.archivo}}\" class=\"card-img arregloImagen\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card-body\">\r\n                        <a href=\"{{ultimaNoticia?.slug}}\">\r\n                            <h5 class=\"card-title\">{{ultimaNoticia?.titulo}}</h5>\r\n                        </a>\r\n                        <div id=\"summary\">\r\n                            <p class=\"card-text collapse\" id=\"collapseSummary\">{{ultimaNoticia?.cuerpo}}</p>\r\n                            <a class=\"collapsed\" data-toggle=\"collapse\" href=\"#collapseSummary\" aria-expanded=\"false\"\r\n                                aria-controls=\"collapseSummary\"></a>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"card-footer text-muted\">\r\n                2 days ago\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row justify-content-center\">\r\n        <!-- <div *ngIf=\"cargarPaginator\" class=\"loader\">Loading...</div> -->\r\n        <div class=\"card-deck\">\r\n            <div class=\"row row-cols-1 row-cols-md-4\">\r\n                <div *ngFor=\"let noticia of noticias\" class=\"col mb-4\">\r\n                    <a href=\"{{noticia?.slug}}\">\r\n                        <div class=\"card h-100\">\r\n                            <img src=\"../{{noticia?.archivo}}\" class=\"card-img-top\">\r\n                            <div class=\"card-body\">\r\n                                <a href=\"{{noticia?.slug}}\">\r\n                                    <h5 class=\"card-title\">{{noticia?.titulo}}</h5>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"card-footer\">\r\n                                <p class=\"card-text\"><small class=\"text-muted\">Publicada hace x minutos.</small></p>\r\n                            </div>\r\n                        </div>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <br>\r\n        <div [hidden]=\"range.length <= 1\" class=\"row justify-content-center\">\r\n            <nav aria-label=\"Page navigation example\">\r\n                <ul class=\"pagination justify-content-center\">\r\n                    <!--<li [hidden]=\"currentPage != 1\" class=\"page-item disabled\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\" tabindex=\"-1\" aria-disabled=\"true\">Previous</a>\r\n                    </li> -->\r\n                    <li [hidden]=\"currentPage != totalPages\" class=\"page-item\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\"\r\n                            (click)=\"traerNoticias(currentPage-1)\">Anterior</a>\r\n                    </li>\r\n                    <li *ngFor=\"let i of range\" [ngClass]=\"{'active ': currentPage == i}\" class=\"page-item\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\" (click)=\"traerNoticias(i)\">{{i}}</a>\r\n                    </li>\r\n                    <li [hidden]=\"currentPage != 1\" class=\"page-item\">\r\n                        <a class=\"page-link\" href=\"javascript:void(0)\"\r\n                            (click)=\"traerNoticias(currentPage+1)\">Siguiente</a>\r\n                    </li>\r\n                </ul>\r\n            </nav>\r\n        </div>\r\n    </div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/votaciones/votaciones.component.html":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/socios-master/secretaria/votaciones/votaciones.component.html ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>votaciones works!</p>\n"
 
 /***/ }),
 
@@ -1850,6 +1883,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_liquidaciones_haberes_haberes_component__WEBPACK_IMPORTED_MODULE_133__ = __webpack_require__(/*! ./auth-master/liquidaciones/haberes/haberes.component */ "./src/app/auth-master/liquidaciones/haberes/haberes.component.ts");
 /* harmony import */ var _auth_master_liquidaciones_descuentos_descuentos_component__WEBPACK_IMPORTED_MODULE_134__ = __webpack_require__(/*! ./auth-master/liquidaciones/descuentos/descuentos.component */ "./src/app/auth-master/liquidaciones/descuentos/descuentos.component.ts");
 /* harmony import */ var _auth_master_liquidaciones_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_135__ = __webpack_require__(/*! ./auth-master/liquidaciones/liquidacion/liquidacion.component */ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.ts");
+/* harmony import */ var _auth_master_liquidaciones_historial_liquidaciones_historial_liquidaciones_component__WEBPACK_IMPORTED_MODULE_136__ = __webpack_require__(/*! ./auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component */ "./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.ts");
+/* harmony import */ var _auth_master_secretaria_temas_temas_component__WEBPACK_IMPORTED_MODULE_137__ = __webpack_require__(/*! ./auth-master/secretaria/temas/temas.component */ "./src/app/auth-master/secretaria/temas/temas.component.ts");
+/* harmony import */ var _socios_master_secretaria_votaciones_votaciones_component__WEBPACK_IMPORTED_MODULE_138__ = __webpack_require__(/*! ./socios-master/secretaria/votaciones/votaciones.component */ "./src/app/socios-master/secretaria/votaciones/votaciones.component.ts");
+
+
+
 
 
 
@@ -2104,7 +2143,10 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_liquidaciones_menu_menu_component__WEBPACK_IMPORTED_MODULE_132__["MenuComponent"],
             _auth_master_liquidaciones_haberes_haberes_component__WEBPACK_IMPORTED_MODULE_133__["HaberesComponent"],
             _auth_master_liquidaciones_descuentos_descuentos_component__WEBPACK_IMPORTED_MODULE_134__["DescuentosComponent"],
-            _auth_master_liquidaciones_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_135__["LiquidacionComponent"]
+            _auth_master_liquidaciones_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_135__["LiquidacionComponent"],
+            _auth_master_liquidaciones_historial_liquidaciones_historial_liquidaciones_component__WEBPACK_IMPORTED_MODULE_136__["HistorialLiquidacionesComponent"],
+            _auth_master_secretaria_temas_temas_component__WEBPACK_IMPORTED_MODULE_137__["TemasComponent"],
+            _socios_master_secretaria_votaciones_votaciones_component__WEBPACK_IMPORTED_MODULE_138__["VotacionesComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -9447,6 +9489,134 @@ HaberesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.css":
+/*!*********************************************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.css ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".dark-modal .modal-content {\r\n    background-color: #292b2c;\r\n    color: white;\r\n  }\r\n  .dark-modal .close {\r\n    color: white;\r\n  }\r\n  .light-blue-backdrop {\r\n    background-color: #5cb3fd;\r\n  }\r\n  label,input, button{\r\n    font-size: 14px;\r\n  }\r\n  tr,th{\r\n    font-size: 14px;\r\n  }\r\n  th{\r\n    color: white;\r\n    background: #138D75;\r\n  }\r\n  #demoFont {\r\n    color: #fff;\r\n    background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n    }\r\n  .margen{\r\n      display: flex;\r\n      justify-content: center;\r\n      width: 100%;\r\n    }\r\n  .card{\r\n      border-top-left-radius: 20px;\r\n      border-top-right-radius: 20px;\r\n      background: rgba(255, 255, 255, 0.8);\r\n      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n    }\r\n  .card-header{\r\n      border-top-left-radius: 20px;\r\n      border-top-right-radius: 20px;\r\n    }\r\n  #myTab{\r\n      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n    }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbGlxdWlkYWNpb25lcy9oaXN0b3JpYWwtbGlxdWlkYWNpb25lcy9oaXN0b3JpYWwtbGlxdWlkYWNpb25lcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7RUFDZDtFQUNBO0lBQ0UsWUFBWTtFQUNkO0VBQ0E7SUFDRSx5QkFBeUI7RUFDM0I7RUFFQTtJQUNFLGVBQWU7RUFDakI7RUFFQTtJQUNFLGVBQWU7RUFDakI7RUFDQTtJQUNFLFlBQVk7SUFDWixtQkFBbUI7RUFDckI7RUFFQTtJQUNFLFdBQVc7SUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7SUFDakcsdURBQXVELEVBQUUscUVBQXFFO0lBQzlIO0VBQ0E7TUFDRSxhQUFhO01BQ2IsdUJBQXVCO01BQ3ZCLFdBQVc7SUFDYjtFQUVBO01BQ0UsNEJBQTRCO01BQzVCLDZCQUE2QjtNQUM3QixvQ0FBb0M7TUFDcEMsMEVBQTBFO0lBQzVFO0VBRUE7TUFDRSw0QkFBNEI7TUFDNUIsNkJBQTZCO0lBQy9CO0VBQ0E7TUFDRSwwRUFBMEU7SUFDNUUiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9saXF1aWRhY2lvbmVzL2hpc3RvcmlhbC1saXF1aWRhY2lvbmVzL2hpc3RvcmlhbC1saXF1aWRhY2lvbmVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gIH1cclxuICAuZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gIH1cclxuICAubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG4gIH1cclxuXHJcbiAgbGFiZWwsaW5wdXQsIGJ1dHRvbntcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICB9XHJcblxyXG4gIHRyLHRoe1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gIH1cclxuICB0aHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbiAgfVxyXG4gIFxyXG4gICNkZW1vRm9udCB7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgfVxyXG4gICAgLm1hcmdlbntcclxuICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgfVxyXG5cclxuICAgIC5jYXJke1xyXG4gICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMjBweDtcclxuICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xyXG4gICAgICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDEpLCAwIDZweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE5KTtcclxuICAgIH1cclxuICBcclxuICAgIC5jYXJkLWhlYWRlcntcclxuICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XHJcbiAgICB9XHJcbiAgICAjbXlUYWJ7XHJcbiAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gICAgfSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.ts":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.ts ***!
+  \********************************************************************************************************/
+/*! exports provided: HistorialLiquidacionesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistorialLiquidacionesComponent", function() { return HistorialLiquidacionesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/liquidacion-juanito.service */ "./src/app/servicios/liquidacion-juanito.service.ts");
+/* harmony import */ var src_app_servicios_liquidacion_marro_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/liquidacion-marro.service */ "./src/app/servicios/liquidacion-marro.service.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+
+
+
+
+
+let HistorialLiquidacionesComponent = class HistorialLiquidacionesComponent {
+    constructor(config, modalService, _liq, _liquidacionesHistorial) {
+        this.modalService = modalService;
+        this._liq = _liq;
+        this._liquidacionesHistorial = _liquidacionesHistorial;
+        //recatador de id select
+        this.empleado = '';
+        this.empleados = [];
+        this.datosFormulario = {
+            fecha: '',
+            archivo: ''
+        };
+        //VARIABLE PARA GUARDAR LAS LIQUIDACIONES
+        this.liquidaciones = [];
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+        this.traerEmpleados();
+    }
+    open(content) {
+        this.modalService.open(content, { size: 'lg' });
+    }
+    archivo(event) {
+        this.datosFormulario.archivo = event.srcElement.files[0];
+    }
+    traerEmpleados() {
+        this._liq.traer_empleados().subscribe(response => {
+            if (response.estado == "success") {
+                this.empleados = response.empleado;
+            }
+            error => {
+                console.log(error);
+            };
+        });
+    }
+    setDatosLiquidacion() {
+        this._liquidacionesHistorial.setDatosliquidacion(this.empleado, this.datosFormulario).subscribe(response => {
+            if (response.estado == 'success') {
+                alert(response.mensaje);
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    actualizarLiquidacion(id, campo, input) {
+        if (campo == 'archivo') {
+            input = this.datosFormulario.archivo;
+        }
+        this._liquidacionesHistorial.actualizarLiquidacion(id, campo, input).subscribe(response => {
+            if (response.estado == 'success') {
+                alert(response.mensaje);
+                this.traerDatosLiquidacion();
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    traerDatosLiquidacion() {
+        this.liquidaciones = [];
+        this._liquidacionesHistorial.getLiquidacionesEmpleado(this.empleado).subscribe(response => {
+            if (response.estado == 'success') {
+                this.liquidaciones = response.liquidaciones;
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+};
+HistorialLiquidacionesComponent.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] },
+    { type: src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__["LiquidacionJuanitoService"] },
+    { type: src_app_servicios_liquidacion_marro_service__WEBPACK_IMPORTED_MODULE_3__["LiquidacionMarroService"] }
+];
+HistorialLiquidacionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-historial-liquidaciones',
+        template: __webpack_require__(/*! raw-loader!./historial-liquidaciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.html"),
+        styles: [__webpack_require__(/*! ./historial-liquidaciones.component.css */ "./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"], src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__["LiquidacionJuanitoService"], src_app_servicios_liquidacion_marro_service__WEBPACK_IMPORTED_MODULE_3__["LiquidacionMarroService"]])
+], HistorialLiquidacionesComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.css":
 /*!*********************************************************************************!*\
   !*** ./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.css ***!
@@ -12968,6 +13138,49 @@ SecretariaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth-master/secretaria/temas/temas.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/temas/temas.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvdGVtYXMvdGVtYXMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/temas/temas.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/temas/temas.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: TemasComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemasComponent", function() { return TemasComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let TemasComponent = class TemasComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+TemasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-temas',
+        template: __webpack_require__(/*! raw-loader!./temas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/temas/temas.component.html"),
+        styles: [__webpack_require__(/*! ./temas.component.css */ "./src/app/auth-master/secretaria/temas/temas.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], TemasComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/guardianes/auth.guard.service.ts":
 /*!**************************************************!*\
   !*** ./src/app/guardianes/auth.guard.service.ts ***!
@@ -14975,6 +15188,73 @@ LiquidacionJuanitoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], LiquidacionJuanitoService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/liquidacion-marro.service.ts":
+/*!********************************************************!*\
+  !*** ./src/app/servicios/liquidacion-marro.service.ts ***!
+  \********************************************************/
+/*! exports provided: LiquidacionMarroService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LiquidacionMarroService", function() { return LiquidacionMarroService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let LiquidacionMarroService = class LiquidacionMarroService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    getLiquidacionesEmpleado(idEmpleado) {
+        return this._http.get(this.url + "getLiquidacionesPorId/" + idEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+    setDatosliquidacion(id, formulario) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', id);
+        body.append('fecha', formulario.fecha);
+        body.append('archivo', formulario.archivo);
+        return this._http.post(this.url + "setDatosLiquidacion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    actualizarLiquidacion(id, campo, input) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        const body = new FormData();
+        body.append('id', id);
+        body.append('campo', campo);
+        body.append('input', input);
+        return this._http.post(this.url + "actualizarLiquidacion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+};
+LiquidacionMarroService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+LiquidacionMarroService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], LiquidacionMarroService);
 
 
 
@@ -19705,6 +19985,49 @@ LeyesSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/socios-master/secretaria/votaciones/votaciones.component.css":
+/*!******************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/votaciones/votaciones.component.css ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NvY2lvcy1tYXN0ZXIvc2VjcmV0YXJpYS92b3RhY2lvbmVzL3ZvdGFjaW9uZXMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/socios-master/secretaria/votaciones/votaciones.component.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/app/socios-master/secretaria/votaciones/votaciones.component.ts ***!
+  \*****************************************************************************/
+/*! exports provided: VotacionesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VotacionesComponent", function() { return VotacionesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let VotacionesComponent = class VotacionesComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+VotacionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-votaciones',
+        template: __webpack_require__(/*! raw-loader!./votaciones.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/secretaria/votaciones/votaciones.component.html"),
+        styles: [__webpack_require__(/*! ./votaciones.component.css */ "./src/app/socios-master/secretaria/votaciones/votaciones.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], VotacionesComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/socios-master/socios-master.component.css":
 /*!***********************************************************!*\
   !*** ./src/app/socios-master/socios-master.component.css ***!
@@ -19855,7 +20178,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\v_and\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

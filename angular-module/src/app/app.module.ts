@@ -138,6 +138,9 @@ import { HaberesComponent } from './auth-master/liquidaciones/haberes/haberes.co
 import { DescuentosComponent } from './auth-master/liquidaciones/descuentos/descuentos.component';
 import { LiquidacionComponent } from './auth-master/liquidaciones/liquidacion/liquidacion.component';
 import { from } from 'rxjs';
+import { HistorialLiquidacionesComponent } from './auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component';
+import { TemasComponent } from './auth-master/secretaria/temas/temas.component';
+import { VotacionesComponent } from './socios-master/secretaria/votaciones/votaciones.component';
 
 @NgModule({
   declarations: [
@@ -254,7 +257,10 @@ import { from } from 'rxjs';
     MenuComponent,
     HaberesComponent,
     DescuentosComponent,
-    LiquidacionComponent
+    LiquidacionComponent,
+    HistorialLiquidacionesComponent,
+    TemasComponent,
+    VotacionesComponent
   ],
   imports: [
     BrowserModule,

@@ -183,6 +183,7 @@ export class DescuentosComponent implements OnInit {
   }
 
   listar_d() {
+    this.suma=0;
     this.load_table = true;
 
     this.tabla_total_h_i();

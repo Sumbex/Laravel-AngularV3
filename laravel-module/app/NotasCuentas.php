@@ -105,10 +105,10 @@ class NotasCuentas extends Model
         }
     }
 
-    protected function actualizarNota($request)
-    {
-        /* dd($request->all()); */
-        $nota = NotasCuentas::find($request->id);
+    /* protected function actualizarNota($request)
+    { */
+    /* dd($request->all()); */
+    /*  $nota = NotasCuentas::find($request->id);
         if (!is_null($nota)) {
             $nota->descripcion = $request->descripcion;
             if ($nota->save()) {
@@ -118,6 +118,49 @@ class NotasCuentas extends Model
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Nota no encontrada.'];
+        }
+    } */
+
+    protected function actualizarNota($request)
+    {
+        /* dd($request->all()); */
+        switch ($request->campo) {
+            case 'fecha':
+                $nota = NotasCuentas::find($request->id);
+                if (!is_null($nota)) {
+                    $fecha = $this->fecha($request->input);
+                    $anio = $this->anioID($fecha['anio']);
+                    $mes = $this->mesID($fecha['mes']);
+                    $nota->anio_id = $anio;
+                    $nota->mes_id = $mes;
+                    $nota->dia = $fecha['dia'];
+                    if ($nota->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Fecha actualizada correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'Nota no encontrado.'];
+                }
+                break;
+
+            case 'descripcion':
+                $nota = NotasCuentas::find($request->id);
+                if (!is_null($nota)) {
+                    $nota->descripcion = $request->input;
+                    if ($nota->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Descripcion actualizado correctamente.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'Nota no encontrado.'];
+                }
+                break;
+
+            default:
+                # code...
+                break;
         }
     }
 

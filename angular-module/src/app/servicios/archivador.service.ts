@@ -38,6 +38,20 @@ export class ArchivadorService {
     });
   }
 
+  actualizarNota(data, valor): Observable<any> {
+    const datos = new FormData();
+    datos.append('id', data.id);
+    datos.append('campo', data.campo);
+    datos.append('input', valor);
+    return this._http.post(this.url + "actualizar_nota", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
   traerNotas(anio, mes): Observable<any> {
     return this._http.get(this.url + "traer_notas/" + anio + "/" + mes, {
       headers: new HttpHeaders(
@@ -56,6 +70,20 @@ export class ArchivadorService {
     datos.append('tipo', data.tipo);
     datos.append('archivo', data.archivo);
     return this._http.post(this.url + "ingresar_archivos", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
+  actualizarArchivo(data, valor): Observable<any> {
+    const datos = new FormData();
+    datos.append('id', data.id);
+    datos.append('campo', data.campo);
+    datos.append('input', valor);
+    return this._http.post(this.url + "actualizar_archivo", datos, {
       headers: new HttpHeaders(
         {
           'Authorization': 'Bearer' + this.token

@@ -12,7 +12,7 @@ export class LiquidacionComponent implements OnInit {
   empleado = '';
   empleados = [];
 
-  constructor(private _liq: LiquidacionJuanitoService,) { }
+  constructor(private _liq: LiquidacionJuanitoService) { }
 
   ngOnInit() {
     this.traerEmpleados();

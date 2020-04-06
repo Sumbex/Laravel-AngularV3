@@ -11,15 +11,21 @@ import { AniosService } from 'src/app/servicios/anios.service';
 export class ArchivadorComponent implements OnInit {
 
   url
+  botonIngresar = false;
 
   remitente = ''
   selectAnio
   selectMes
-  idAnioActual
-  idMesActual
+  idAnioActualN
+  idMesActualN
+  idAnioActualA
+  idMesActualA
   cargarDatos = 0
 
   selectTipo
+
+  ingresandoNota = false;
+  ingresandoArchivo = false;
 
   notas = []
   archivos = []
@@ -35,6 +41,22 @@ export class ArchivadorComponent implements OnInit {
     titulo: '',
     archivo: ''
   }
+
+  edicionDocumento = false;
+  edicionSelect = false;
+  edicionTexto = false;
+  nuevoIngreso = false;
+  varType;
+
+  datosEdicion = {
+    id: '',
+    campo: '',
+    input: ''
+  }
+
+  valorInput = '';
+  edicionArchivo;
+  selectEdicionTipo = 0;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _archivadorService: ArchivadorService, private _fechasService: AniosService) {
     // customize default values of modals used by this component tree
@@ -54,6 +76,11 @@ export class ArchivadorComponent implements OnInit {
     this.modalService.open(content, { size: 'lg' });
   }
 
+  openEdicionModal(edicion) {
+    this.modalService.open(edicion, { size: 'sm' });
+  }
+
+
   ngOnInit() {
     this.url = document.location.origin + '/';
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
@@ -64,22 +91,30 @@ export class ArchivadorComponent implements OnInit {
     this.datosArchivos.archivo = event.srcElement.files[0];
   }
 
+  archivoEdicion(event) {
+    this.edicionArchivo = event.srcElement.files[0];
+  }
+
   changeAnio(valorSelect, tipo) {
-    this.idAnioActual = valorSelect.target.value;
     if (tipo == 1) {
+      this.idAnioActualN = valorSelect.target.value;
       this.notas = [];
       this.traerNotas();
     } else {
+      this.idAnioActualA = valorSelect.target.value;
+      this.archivos = [];
       this.traerArchivos();
     }
   }
 
   changeMes(valorSelect, tipo) {
-    this.idMesActual = valorSelect.target.value;
     if (tipo == 1) {
+      this.idMesActualN = valorSelect.target.value;
       this.notas = [];
       this.traerNotas();
     } else {
+      this.idMesActualA = valorSelect.target.value;
+      this.archivos = [];
       this.traerArchivos();
     }
   }
@@ -106,7 +141,8 @@ export class ArchivadorComponent implements OnInit {
     //Cargar id del Año actual
     this._fechasService.getAnioActual().subscribe(
       response => {
-        this.idAnioActual = response.id;
+        this.idAnioActualN = response.id;
+        this.idAnioActualA = response.id;
         this.cargarDatos++;
         console.log(this.cargarDatos);
         if (this.cargarDatos == 2) {
@@ -121,7 +157,8 @@ export class ArchivadorComponent implements OnInit {
     //Cargar id del Mes actual
     this._fechasService.getMesActual().subscribe(
       response => {
-        this.idMesActual = response.id;
+        this.idMesActualN = response.id;
+        this.idMesActualA = response.id;
         this.cargarDatos++;
         console.log(this.cargarDatos);
         if (this.cargarDatos == 2) {
@@ -136,11 +173,31 @@ export class ArchivadorComponent implements OnInit {
   }
 
   ingresarNota() {
+    this.ingresandoNota = true;
     this._archivadorService.ingresarNota(this.datosNotas).subscribe(
       res => {
         if (res.estado = 'success') {
+          this.ingresandoNota = false;
           this.limpiarNotas();
           this.traerNotas();
+          alert(res.mensaje);
+        } else {
+          this.ingresandoNota = false;
+          alert(res.mensaje);
+        }
+      }, error => {
+        this.ingresandoNota = false;
+        console.log(error);
+      }
+    )
+  }
+
+  actualizarNota() {
+    this._archivadorService.actualizarNota(this.datosEdicion, this.valorInput).subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.traerNotas();
+          document.getElementById("closeModalButtonEdicion").click();
           alert(res.mensaje);
         } else {
           alert(res.mensaje);
@@ -157,7 +214,7 @@ export class ArchivadorComponent implements OnInit {
 
   traerNotas() {
     this.notas = [];
-    this._archivadorService.traerNotas(this.idAnioActual, this.idMesActual).subscribe(
+    this._archivadorService.traerNotas(this.idAnioActualN, this.idMesActualN).subscribe(
       res => {
         if (res.estado == 'success') {
           this.notas = res.notas;
@@ -185,12 +242,6 @@ export class ArchivadorComponent implements OnInit {
       }
     )
   }
-  /* datosArchivos = {
-    fecha: '',
-    tipo: 0,
-    titulo: '',
-    archivo: ''
-  } */
 
   limpiarArchivos() {
     this.datosArchivos.tipo = 0;
@@ -199,11 +250,59 @@ export class ArchivadorComponent implements OnInit {
   }
 
   ingresarArchivo() {
-    this._archivadorService.ingresarArchivo(this.datosArchivos).subscribe(
+    this.ingresandoArchivo = true;
+    if (this.datosArchivos.tipo == 0) {
+      this.ingresandoArchivo = false;
+      alert("Debe seleccionar un tipo.");
+    } else {
+      this._archivadorService.ingresarArchivo(this.datosArchivos).subscribe(
+        res => {
+          if (res.estado == 'success') {
+            this.ingresandoArchivo = false;
+            this.limpiarArchivos();
+            this.traerArchivos();
+            alert(res.mensaje);
+          } else {
+            this.ingresandoArchivo = false;
+            alert(res.mensaje);
+          }
+        }, error => {
+          this.ingresandoArchivo = false;
+          console.log(error);
+        }
+      )
+    }
+  }
+
+  actualizarArchivo() {
+    let valor;
+    switch (this.datosEdicion.campo) {
+      case 'fecha':
+        valor = this.valorInput;
+        break;
+      case 'titulo':
+        valor = this.valorInput;
+        break;
+      case 'tipo':
+        if (valor == 0) {
+          alert("Debe seleccionar un tipo.");
+        } else {
+          valor = this.selectEdicionTipo;
+        }
+        break;
+      case 'archivo':
+        valor = this.edicionArchivo;
+        break;
+
+      default:
+        break;
+    }
+
+    this._archivadorService.actualizarArchivo(this.datosEdicion, valor).subscribe(
       res => {
         if (res.estado == 'success') {
-          this.limpiarArchivos();
           this.traerArchivos();
+          document.getElementById("closeModalButtonEdicion").click();
           alert(res.mensaje);
         } else {
           alert(res.mensaje);
@@ -216,7 +315,7 @@ export class ArchivadorComponent implements OnInit {
 
   traerArchivos() {
     this.archivos = [];
-    this._archivadorService.traerArchivos(this.idAnioActual, this.idMesActual).subscribe(
+    this._archivadorService.traerArchivos(this.idAnioActualA, this.idMesActualA).subscribe(
       res => {
         if (res.estado == 'success') {
           this.archivos = res.archivos;
@@ -229,4 +328,62 @@ export class ArchivadorComponent implements OnInit {
       }
     )
   }
+
+  editarParametro(id, campo, valor, estado) {
+
+    if (estado == true) {
+      this.botonIngresar = true;
+    } else {
+      this.botonIngresar = false;
+    }
+    this.datosEdicion.id = id;
+    this.datosEdicion.campo = campo;
+    this.datosEdicion.input = valor;
+
+    switch (campo) {
+      case 'fecha':
+        this.varType = 'date';
+        this.edicionDocumento = false;
+        this.edicionTexto = true;
+        this.edicionSelect = false;
+        this.nuevoIngreso = false;
+        break;
+
+      case 'titulo':
+        this.varType = 'text';
+        this.edicionDocumento = false;
+        this.edicionTexto = true;
+        this.nuevoIngreso = false;
+        this.edicionSelect = false;
+        break;
+
+      case 'descripcion':
+        this.varType = 'text';
+        this.edicionDocumento = false;
+        this.edicionTexto = true;
+        this.nuevoIngreso = false;
+        this.edicionSelect = false;
+        break;
+
+      case 'tipo':
+        this.edicionSelect = true;
+        this.edicionDocumento = false;
+        this.edicionTexto = false;
+        this.nuevoIngreso = false;
+        break;
+
+      case 'archivo':
+        this.edicionDocumento = true;
+        this.edicionSelect = false;
+        this.edicionTexto = false;
+        this.nuevoIngreso = false;
+        break;
+
+      default:
+        break;
+    }
+    document.getElementById("openEdicionArchivo").click();
+  }
+
+
 }

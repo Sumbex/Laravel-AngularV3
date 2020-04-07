@@ -64,6 +64,11 @@ Route::get('/traer_noticias_sec_socios', 'PortalSocioController@TraerNoticias');
 /* Route::get('/traer_ultima_noticia_sec_socios', 'PortalSocioController@TraerUltimaReunion'); */
 //------secretaria
 
+//------------------------------------------>temas
+Route::get('/traer_temas_activos', 'PortalSocioSecTemasController@TemasActivos');
+Route::post('/ingresar_voto', 'PortalSocioSecTemasController@IngresarVoto');
+Route::get('/traer_conteo_votos/{tema}', 'PortalSocioSecTemasController@TraerConteoVotos');
+//------------------------------------------>temas
 
 
 //------------------------------------------------FUNCION TEST------------------------------------------------//

@@ -70,6 +70,12 @@ Route::get('/traer_archivos/{anio}/{mes}', 'ArchivadorController@TraerArchivos')
 Route::get('/traer_tipos_archivador', 'ArchivadorController@TraerTipos');
 //------------------------------------------->archivador
 
+//------------------------------------------->Temas/Votos
+Route::post('/ingresar_tema', 'SecTemasController@IngresarTema');
+Route::get('/traer_temas/{anio}/{mes}/{tipo}', 'SecTemasController@TraerTemas');
+
+//------------------------------------------->Temas/Votos
+
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 
 

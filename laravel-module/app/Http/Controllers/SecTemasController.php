@@ -12,8 +12,23 @@ class SecTemasController extends Controller
         return SecTemas::ingresarTema($request);
     }
 
+    public function CerrarTema(Request $request)
+    {
+        return SecTemas::cerrarTema($request);
+    }
+
     public function TraerTemas($anio, $mes, $tipo)
     {
         return SecTemas::traerTemas($anio, $mes, $tipo);
+    }
+
+    public function TraerTemasActivos()
+    {
+        return SecTemas::traerTemasActivos();
+    }
+
+    public function TraerTiposTemas()
+    {
+        return SecTemas::traerTiposTemas();
     }
 }

@@ -1086,7 +1086,7 @@ module.exports = "<ng-template #generarNuevaReunion let-modal>\r\n  <!-- Header 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <br><br>\r\n  <div class=\"col-md-12 mt-4\">\r\n    <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\"\r\n          aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n      </li>\r\n      <li class=\"nav-item active\">\r\n        <a class=\"nav-link\" id=\"formTemas-tab\" data-toggle=\"tab\" href=\"#formTemas\" role=\"tab\"\r\n          aria-controls=\"formTemas\" aria-selected=\"true\">Temas</a>\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"acuerdos-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"acuerdos\"\r\n          aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n          <!-- href=\"#acuerdos\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"actas-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"actas\"\r\n          aria-selected=\"false\">Actas</a>\r\n          <!-- href=\"#actas\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"directorio-tab\" data-toggle=\"tab\" role=\"tab\"\r\n          aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n        <!-- href=\"#directorio\" -->\r\n      </li>\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" id=\"leyes-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"leyes\"\r\n          aria-selected=\"false\">Leyes Laborales</a>\r\n          <!-- href=\"#leyes\"href=\"#leyes\" -->\r\n      </li>\r\n\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n  <div class=\"tab-pane fade\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Modulo Secretaria</h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-nueva-reunion></app-nueva-reunion>\r\n            </div>\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-editar-reunion></app-editar-reunion>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-asistencia-reunion></app-asistencia-reunion>\r\n            </div>\r\n            <div class=\"col-md-6 mt-4\">\r\n              <app-historial-reunion></app-historial-reunion>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Aquí Sumbitox -->\r\n  <div class=\"tab-pane fade\" id=\"formTemas\" role=\"tabpanel\" aria-labelledby=\"temas-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Temas </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-temas></app-temas>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Aquí Empanades -->\r\n  <div class=\"tab-pane fade\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Acuerdos de Asamblea </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-acuerdo-asamblea></app-acuerdo-asamblea>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Actas </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-actas></app-actas>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Directorio </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body fondo\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-directorio></app-directorio>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"tab-pane fade\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n    <div class=\"card mt-4\">\r\n      <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Leyes Laborales </h6>\r\n        </strong>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"col-12 col-md-12\">\r\n          <div class=\"row\">\r\n            <div class=\"col-12 col-md-12 mt-4\">\r\n              <app-leyes-laborales></app-leyes-laborales>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <br><br>\r\n    <div class=\"col-md-12 mt-4\">\r\n        <ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row\" id=\"myTab\" role=\"tablist\">\r\n\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"formReuniones-tab\" data-toggle=\"tab\" href=\"#formReuniones\" role=\"tab\" aria-controls=\"formReuniones\" aria-selected=\"true\">Reuniones</a>\r\n            </li>\r\n            <li class=\"nav-item active\">\r\n                <a class=\"nav-link\" id=\"formTemas-tab\" data-toggle=\"tab\" href=\"#formTemas\" role=\"tab\" aria-controls=\"formTemas\" aria-selected=\"true\">Asamblea Online</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"acuerdos-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"acuerdos\" aria-selected=\"false\">Acuerdos de Asamblea</a>\r\n                <!-- href=\"#acuerdos\" -->\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"actas-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"actas\" aria-selected=\"false\">Actas</a>\r\n                <!-- href=\"#actas\" -->\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"directorio-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"directorio\" aria-selected=\"false\">Directorio</a>\r\n                <!-- href=\"#directorio\" -->\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id=\"leyes-tab\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"leyes\" aria-selected=\"false\">Leyes Laborales</a>\r\n                <!-- href=\"#leyes\"href=\"#leyes\" -->\r\n            </li>\r\n\r\n        </ul>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n    <div class=\"tab-pane fade\" id=\"formReuniones\" role=\"tabpanel\" aria-labelledby=\"formReuniones-tab\">\r\n        <div class=\"card mt-4\">\r\n            <div class=\"card-header\" id=\"demoFont\">\r\n                <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Modulo Secretaria</h6>\r\n        </strong>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6 mt-4\">\r\n                            <app-nueva-reunion></app-nueva-reunion>\r\n                        </div>\r\n                        <div class=\"col-md-6 mt-4\">\r\n                            <app-editar-reunion></app-editar-reunion>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6 mt-4\">\r\n                            <app-asistencia-reunion></app-asistencia-reunion>\r\n                        </div>\r\n                        <div class=\"col-md-6 mt-4\">\r\n                            <app-historial-reunion></app-historial-reunion>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <!-- Aquí Sumbitox -->\r\n    <div class=\"tab-pane fade\" id=\"formTemas\" role=\"tabpanel\" aria-labelledby=\"temas-tab\">\r\n        <div class=\"card mt-4\">\r\n            <div class=\"card-header\" id=\"demoFont\">\r\n                <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-handshake\"></i> Asamblea Online </h6>\r\n        </strong>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <div class=\"col-12 col-md-12\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-12 col-md-12\">\r\n                            <app-temas></app-temas>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <!-- Aquí Empanades -->\r\n    <div class=\"tab-pane fade\" id=\"acuerdos\" role=\"tabpanel\" aria-labelledby=\"acuerdos-tab\">\r\n        <div class=\"card mt-4\">\r\n            <div class=\"card-header\" id=\"demoFont\">\r\n                <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Acuerdos de Asamblea </h6>\r\n        </strong>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <div class=\"col-12 col-md-12\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-12 col-md-12 mt-4\">\r\n                            <app-acuerdo-asamblea></app-acuerdo-asamblea>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"actas\" role=\"tabpanel\" aria-labelledby=\"actas-tab\">\r\n        <div class=\"card mt-4\">\r\n            <div class=\"card-header\" id=\"demoFont\">\r\n                <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Actas </h6>\r\n        </strong>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <div class=\"col-12 col-md-12\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-12 col-md-12 mt-4\">\r\n                            <app-actas></app-actas>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"directorio\" role=\"tabpanel\" aria-labelledby=\"directorio-tab\">\r\n        <div class=\"card mt-4\">\r\n            <div class=\"card-header\" id=\"demoFont\">\r\n                <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Directorio </h6>\r\n        </strong>\r\n            </div>\r\n            <div class=\"card-body fondo\">\r\n                <div class=\"col-12 col-md-12\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-12 col-md-12 mt-4\">\r\n                            <app-directorio></app-directorio>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"leyes\" role=\"tabpanel\" aria-labelledby=\"leyes-tab\">\r\n        <div class=\"card mt-4\">\r\n            <div class=\"card-header\" id=\"demoFont\">\r\n                <strong class=\"text-center\">\r\n          <h6><i class=\"fas fa-file-invoice-dollar\"></i> Leyes Laborales </h6>\r\n        </strong>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                <div class=\"col-12 col-md-12\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-12 col-md-12 mt-4\">\r\n                            <app-leyes-laborales></app-leyes-laborales>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1097,7 +1097,7 @@ module.exports = "<div class=\"row\">\r\n  <br><br>\r\n  <div class=\"col-md-12 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>temas works!</p>\r\n"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-6 mt-4\">\r\n        <div (click)=\"abrirModalIngreso(ingreso)\" class=\"card card-body text-white text-center bg-primary\" style=\"cursor: pointer\">\r\n            <h3><i class=\"fas fa-vote-yea\"></i> Crear Nuevo Tema</h3>\r\n            <p>Aqui se crearan nuevos temas a votar.</p>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"col-md-6 mt-4\">\r\n        <div (click)=\"abrirModalActivos(activos)\" class=\"card card-body text-white text-center bg-success\" style=\"cursor: pointer\">\r\n            <h3><i class=\"fas fa-hourglass-end\"></i> Temas Activos</h3>\r\n            <p>Modificar, dar por cerrado o cancelar temas activos.</p>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-md-12 mt-4 mb-4\">\r\n        <div (click)=\"abrirModalHistorial(historial)\" class=\"card card-body text-white text-center bg-danger\" style=\"cursor: pointer\">\r\n            <h3><i class=\"fas fa-list\"></i> Historial de Temas Tratados</h3>\r\n            <p>Ver los temas tratados anteriormente.</p>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<ng-template #ingreso let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong><!-- <i class=\"fas fa-archive\"></i> --> Asamblea Online / Crear Tema</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"modal-header\" id=\"demoFont2\">\r\n            <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\r\n        </div>\r\n        <div class=\"card\">\r\n            <form #temasForm=\"ngForm\" (ngSubmit)=\"ingresarTema()\">\r\n                <div class=\"row centrar\">\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Fecha</label>\r\n                            <input class=\"form-control\" type=\"date\" name=\"fecha\" [(ngModel)]=\"datosTema.fecha\" required>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Remitente</label>\r\n                            <input class=\"form-control\" disabled type=\"text\" name=\"remitente\" [(ngModel)]=\"remitente\">\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-12\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Titulo</label>\r\n                            <input class=\"form-control\" type=\"text\" name=\"titulo\" [(ngModel)]=\"datosTema.titulo\" required>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-12\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Descripcion</label>\r\n                            <textarea class=\"form-control resize-none\" name=\"descripcion\" [(ngModel)]=\"datosTema.descripcion\" required></textarea>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <button type=\"submit\" [disabled]=\"temasForm.invalid || ingresandoTema\" class=\"btn btn-block btn-success\">Ingresar Tema <img *ngIf=\"ingresandoTema\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\"></button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\r\n            class=\"far fa-arrow-alt-circle-left\"></i> Volver a Asamblea Online</button>\r\n    </div>\r\n</ng-template>\r\n\r\n<ng-template #activos let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong><!-- <i class=\"fas fa-archive\"></i> --> Asamblea Online / Temas Activos</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"card\">\r\n            <div class=\"row centrar\">\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\r\n                        <thead text-sm class=\"text-center\">\r\n                            <tr>\r\n                                <th colspan=\"10\" class=\"ColorThCS\">Temas Activos</th>\r\n                            </tr>\r\n                            <tr>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"far fa-calendar-alt\"></i> -->Fech Inicio</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Titulo</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Estado</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Remitente</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Ver</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr *ngFor=\"let item of temasActivos\" class=\"text-center\">\r\n                                <td colspan=\"2\">{{item?.fecha_inicio}}</td>\r\n                                <td colspan=\"2\">{{item?.titulo}}</td>\r\n                                <td colspan=\"2\">{{item?.estado}}</td>\r\n                                <td colspan=\"2\">{{item?.nombre}}</td>\r\n                                <td colspan=\"2\"><button type=\"button\" class=\"btn btn-info\">Ver</button>\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" id=\"cerrarActivos\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\r\n            class=\"far fa-arrow-alt-circle-left\"></i> Volver a Asamblea Online</button>\r\n    </div>\r\n</ng-template>\r\n\r\n<ng-template #editar let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong><!-- <i class=\"fas fa-archive\"></i> --> Asamblea Online / Editar Tema</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"modal-header\" id=\"demoFont2\">\r\n            <h6 class=\"modal-title\"><strong>Formulario de Edicion</strong></h6>\r\n        </div>\r\n        <div class=\"card\">\r\n            <!-- <form #temasForm=\"ngForm\" (ngSubmit)=\"ingresarTema()\">\r\n                <div class=\"row centrar\">\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Fecha</label>\r\n                            <input class=\"form-control\" type=\"date\" name=\"fecha\" [(ngModel)]=\"datosTema.fecha\" required>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Remitente</label>\r\n                            <input class=\"form-control\" disabled type=\"text\" name=\"remitente\" [(ngModel)]=\"remitente\">\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-12\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Titulo</label>\r\n                            <input class=\"form-control\" type=\"text\" name=\"titulo\" [(ngModel)]=\"datosTema.titulo\" required>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-12\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"\">Descripcion</label>\r\n                            <textarea class=\"form-control resize-none\" name=\"descripcion\" [(ngModel)]=\"datosTema.descripcion\" required></textarea>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <button type=\"submit\" [disabled]=\"temasForm.invalid || ingresandoTema\" class=\"btn btn-block btn-success\">Ingresar Tema <img *ngIf=\"ingresandoTema\" height=\"20\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\"></button>\r\n                </div>\r\n            </form> -->\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\r\n            class=\"far fa-arrow-alt-circle-left\"></i> Volver a Asamblea Online</button>\r\n    </div>\r\n</ng-template>\r\n\r\n<ng-template #historial let-c=\"close\" let-d=\"dismiss\">\r\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\r\n        <h6 class=\"modal-title\"><strong><!-- <i class=\"fas fa-archive\"></i> --> Asamblea Online / Historial</strong></h6>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"card\">\r\n            <div class=\"row centrar text-center\">\r\n                <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Año <i\r\n                        class=\"fas fa-calendar-check\"></i></strong></label>\r\n                    <select (change)=\"changeAnio($event)\" name=\"anio\" #anio=\"ngModel\" [(ngModel)]=\"idAnioActual\" class=\"form-control form-control-sm\">\r\n                    <option *ngFor=\"let anio of selectAnio\" [value]=\"anio.id\">{{anio.descripcion}}</option>\r\n                  </select>\r\n                </div>\r\n                <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Mes <i\r\n                        class=\"fas fa-calendar-check\"></i></strong></label>\r\n                    <select (change)=\"changeMes($event)\" name=\"mes\" #mes=\"ngModel\" [(ngModel)]=\"idMesActual\" class=\"form-control form-control-sm\">\r\n                    <option *ngFor=\"let mes of selectMes\" [value]=\"mes.id\">{{mes.descripcion}}</option>\r\n                  </select>\r\n                </div>\r\n                <div class=\"col-sm-6 col-md-3 col-lg-3\"><br><label><strong>Filtro por Tipo <i\r\n                    class=\"fas fa-calendar-check\"></i></strong></label>\r\n                    <select (change)=\"changeTipo($event)\" name=\"tipo\" #tipo=\"ngModel\" [(ngModel)]=\"idTipoActual\" class=\"form-control form-control-sm\">\r\n                        <option value=\"0\">Todos</option>\r\n                        <option *ngFor=\"let tipo of selectTipo\" [value]=\"tipo.id\">{{tipo.tipo}}</option>\r\n                    </select>\r\n                </div>\r\n                <div class=\"col-md-3\"><br><label>\r\n                  <strong>Recargar tabla </strong>\r\n                </label><br>\r\n                    <button class=\"btn btn-info\" (click)=\"traerHistorial()\">Actualizar</button>\r\n                </div>\r\n            </div>\r\n            <div class=\"row centrar\">\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\r\n                        <thead text-sm class=\"text-center\">\r\n                            <tr>\r\n                                <th colspan=\"14\" class=\"ColorThCS\">Historial</th>\r\n                            </tr>\r\n                            <tr>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"far fa-calendar-alt\"></i> -->Fech Inicio</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-sticky-note\"></i> -->Fecha Termino</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Titulo</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Estado</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Aprobado</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Remitente</th>\r\n                                <th colspan=\"2\">\r\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Ver</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr *ngFor=\"let item of temasHistorial\" class=\"text-center\">\r\n                                <td colspan=\"2\">{{item?.fecha_inicio}}</td>\r\n                                <td colspan=\"2\">{{item?.fecha_termino}}</td>\r\n                                <td colspan=\"2\">{{item?.titulo}}</td>\r\n                                <td colspan=\"2\">{{item?.estado}}</td>\r\n                                <td colspan=\"2\">{{item?.aprobado}}</td>\r\n                                <td colspan=\"2\">{{item?.nombre}}</td>\r\n                                <td colspan=\"2\"><button type=\"button\" class=\"btn btn-info\">Ver</button>\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\r\n            class=\"far fa-arrow-alt-circle-left\"></i> Volver a Asamblea Online</button>\r\n    </div>\r\n</ng-template>"
 
 /***/ }),
 
@@ -13339,7 +13339,7 @@ SecretariaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvdGVtYXMvdGVtYXMuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = ".centrar {\r\n    padding: 2em;\r\n}\r\n\r\n.resize-none {\r\n    resize: none;\r\n    height: 100px;\r\n}\r\n\r\n.dark-modal .modal-content {\r\n    background-color: #292b2c;\r\n    color: white;\r\n}\r\n\r\n.dark-modal .close {\r\n    color: white;\r\n}\r\n\r\n.light-blue-backdrop {\r\n    background-color: #5cb3fd;\r\n}\r\n\r\nlabel,\r\ninput,\r\nbutton {\r\n    font-size: 14px;\r\n}\r\n\r\ntr,\r\nth {\r\n    font-size: 14px;\r\n}\r\n\r\nth {\r\n    color: white;\r\n    background: #138D75;\r\n}\r\n\r\n#demoFont {\r\n    color: #fff;\r\n    background: #2C3E50;\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to right, #4CA1AF, #2C3E50);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n#demoFont2 {\r\n    color: #fff;\r\n    background: #52c234;\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to left, #061700, #52c234);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n.nav-item a {\r\n    color: #fff;\r\n    background: #093028;\r\n    /* fallback for old browsers */\r\n    /* Chrome 10-25, Safari 5.1-6 */\r\n    background: linear-gradient(to top, #237A57, #093028);\r\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n}\r\n\r\n.margen {\r\n    display: flex;\r\n    justify-content: center;\r\n    width: 100%;\r\n}\r\n\r\n.card {\r\n    background: rgba(255, 255, 255, 0.8);\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n}\r\n\r\n.card-header {\r\n    border-top-left-radius: 20px;\r\n    border-top-right-radius: 20px;\r\n}\r\n\r\n#myTab {\r\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n}\r\n\r\nhr {\r\n    border-top: 1px solid #000000 !important;\r\n    margin-bottom: 5px !important;\r\n    margin-top: 5px !important;\r\n    height: 10px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvc2VjcmV0YXJpYS90ZW1hcy90ZW1hcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0FBQ2pCOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCOztBQUVBO0lBQ0kseUJBQXlCO0FBQzdCOztBQUVBOzs7SUFHSSxlQUFlO0FBQ25COztBQUVBOztJQUVJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksV0FBVztJQUNYLG1CQUFtQjtJQUNuQiw4QkFBOEI7SUFFOUIsK0JBQStCO0lBQy9CLHVEQUF1RDtJQUN2RCxxRUFBcUU7QUFDekU7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsbUJBQW1CO0lBQ25CLDhCQUE4QjtJQUU5QiwrQkFBK0I7SUFDL0Isc0RBQXNEO0lBQ3RELHFFQUFxRTtBQUN6RTs7QUFFQTtJQUNJLFdBQVc7SUFDWCxtQkFBbUI7SUFDbkIsOEJBQThCO0lBRTlCLCtCQUErQjtJQUMvQixxREFBcUQ7SUFDckQscUVBQXFFO0FBQ3pFOztBQUVBO0lBQ0ksYUFBYTtJQUNiLHVCQUF1QjtJQUN2QixXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxvQ0FBb0M7SUFDcEMsMEVBQTBFO0FBQzlFOztBQUVBO0lBQ0ksNEJBQTRCO0lBQzVCLDZCQUE2QjtBQUNqQzs7QUFFQTtJQUNJLDBFQUEwRTtBQUM5RTs7QUFFQTtJQUNJLHdDQUF3QztJQUN4Qyw2QkFBNkI7SUFDN0IsMEJBQTBCO0lBQzFCLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9zZWNyZXRhcmlhL3RlbWFzL3RlbWFzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudHJhciB7XHJcbiAgICBwYWRkaW5nOiAyZW07XHJcbn1cclxuXHJcbi5yZXNpemUtbm9uZSB7XHJcbiAgICByZXNpemU6IG5vbmU7XHJcbiAgICBoZWlnaHQ6IDEwMHB4O1xyXG59XHJcblxyXG4uZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjkyYjJjO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uZGFyay1tb2RhbCAuY2xvc2Uge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4ubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG59XHJcblxyXG5sYWJlbCxcclxuaW5wdXQsXHJcbmJ1dHRvbiB7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbn1cclxuXHJcbnRyLFxyXG50aCB7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbn1cclxuXHJcbnRoIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQ6ICMxMzhENzU7XHJcbn1cclxuXHJcbiNkZW1vRm9udCB7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7XHJcbiAgICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7XHJcbiAgICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTtcclxuICAgIC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cclxufVxyXG5cclxuI2RlbW9Gb250MiB7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQ6ICM1MmMyMzQ7XHJcbiAgICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXHJcbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byBsZWZ0LCAjMDYxNzAwLCAjNTJjMjM0KTtcclxuICAgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7XHJcbiAgICAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbn1cclxuXHJcbi5uYXYtaXRlbSBhIHtcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgYmFja2dyb3VuZDogIzA5MzAyODtcclxuICAgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cclxuICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7XHJcbiAgICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzIzN0E1NywgIzA5MzAyOCk7XHJcbiAgICAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXHJcbn1cclxuXHJcbi5tYXJnZW4ge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KTtcclxuICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG59XHJcblxyXG4uY2FyZC1oZWFkZXIge1xyXG4gICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAyMHB4O1xyXG59XHJcblxyXG4jbXlUYWIge1xyXG4gICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XHJcbn1cclxuXHJcbmhyIHtcclxuICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjMDAwMDAwICFpbXBvcnRhbnQ7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA1cHggIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6IDVweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAxMHB4O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -13355,20 +13355,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemasComponent", function() { return TemasComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_votaciones_bryanm_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/votaciones-bryanm.service */ "./src/app/votaciones-bryanm.service.ts");
+/* harmony import */ var src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/anios.service */ "./src/app/servicios/anios.service.ts");
+
+
+
 
 
 let TemasComponent = class TemasComponent {
-    constructor() { }
+    constructor(config, modalService, _votaciones, _fechasService) {
+        this.modalService = modalService;
+        this._votaciones = _votaciones;
+        this._fechasService = _fechasService;
+        this.ingresandoTema = false;
+        this.cargarSelect = 0;
+        this.datosTema = {
+            fecha: '',
+            titulo: '',
+            descripcion: ''
+        };
+        this.temasActivos = [];
+        this.temasHistorial = [];
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
     ngOnInit() {
     }
+    abrirModalIngreso(modal) {
+        this.modalService.open(modal, { size: 'xl' });
+        this.cargarDatos();
+    }
+    abrirModalActivos(modal) {
+        this.modalService.open(modal, { size: 'xl' });
+        this.traerTemasActivos();
+    }
+    abrirModalHistorial(modal) {
+        this.modalService.open(modal, { size: 'xl' });
+        this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+        this.selectMes = JSON.parse(localStorage.getItem('meses'));
+        this.cargarSelectHistorial();
+    }
+    changeAnio(valorSelect) {
+        this.idAnioActual = valorSelect.target.value;
+        this.traerHistorial();
+    }
+    changeMes(valorSelect) {
+        this.idMesActual = valorSelect.target.value;
+        this.traerHistorial();
+    }
+    changeTipo(valorSelect) {
+        this.idTipoActual = valorSelect.target.value;
+        this.traerHistorial();
+    }
+    cargarSelectHistorial() {
+        this.cargarSelect = 0;
+        //Cargar id del Año actual
+        this._fechasService.getAnioActual().subscribe(response => {
+            this.idAnioActual = response.id;
+            this.cargarSelect++;
+            if (this.cargarSelect == 3) {
+                this.traerHistorial();
+            }
+        }, error => {
+            console.log(error);
+        });
+        //Cargar id del Mes actual
+        this._fechasService.getMesActual().subscribe(response => {
+            this.idMesActual = response.id;
+            this.cargarSelect++;
+            if (this.cargarSelect == 3) {
+                this.traerHistorial();
+            }
+        }, error => {
+            console.log(error);
+        });
+        //Cargar Tipos
+        this._votaciones.traerTipos().subscribe(res => {
+            this.selectTipo = res.tipos;
+            this.cargarSelect++;
+            if (this.cargarSelect == 3) {
+                this.idTipoActual = 0;
+                this.traerHistorial();
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    cargarDatos() {
+        this._votaciones.traerDatos().subscribe(res => {
+            if (res.estado == 'success') {
+                this.remitente = res.datos.nombre;
+                this.datosTema.fecha = res.datos.fecha;
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    limpiarTema() {
+        this.datosTema.titulo = '';
+        this.datosTema.descripcion = '';
+    }
+    ingresarTema() {
+        this.ingresandoTema = true;
+        this._votaciones.ingresarTema(this.datosTema).subscribe(res => {
+            if (res.estado == 'success') {
+                this.limpiarTema();
+                this.ingresandoTema = false;
+                alert(res.mensaje);
+            }
+            else {
+                this.ingresandoTema = false;
+                alert(res.mensaje);
+            }
+        }, error => {
+            this.ingresandoTema = false;
+            console.log(error);
+        });
+    }
+    traerTemasActivos() {
+        this._votaciones.traerTemasActivos().subscribe(res => {
+            if (res.estado == 'success') {
+                this.temasActivos = res.temas;
+            }
+            else {
+                alert(res.mensaje);
+                document.getElementById("cerrarActivos").click();
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    traerHistorial() {
+        this.temasHistorial = [];
+        this._votaciones.traerHistorialTemas(this.idAnioActual, this.idMesActual, this.idTipoActual).subscribe(res => {
+            if (res.estado == 'success') {
+                this.temasHistorial = res.temas;
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
 };
+TemasComponent.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: src_app_votaciones_bryanm_service__WEBPACK_IMPORTED_MODULE_3__["VotacionesBryanmService"] },
+    { type: src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"] }
+];
 TemasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-temas',
         template: __webpack_require__(/*! raw-loader!./temas.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/temas/temas.component.html"),
         styles: [__webpack_require__(/*! ./temas.component.css */ "./src/app/auth-master/secretaria/temas/temas.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_votaciones_bryanm_service__WEBPACK_IMPORTED_MODULE_3__["VotacionesBryanmService"], src_app_servicios_anios_service__WEBPACK_IMPORTED_MODULE_4__["AniosService"]])
 ], TemasComponent);
 
 
@@ -20338,6 +20485,89 @@ SociosMasterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
 ], SociosMasterComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/votaciones-bryanm.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/votaciones-bryanm.service.ts ***!
+  \**********************************************/
+/*! exports provided: VotacionesBryanmService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VotacionesBryanmService", function() { return VotacionesBryanmService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _app_servicios_global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../app/servicios/global */ "./src/app/servicios/global.ts");
+
+
+
+
+let VotacionesBryanmService = class VotacionesBryanmService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _app_servicios_global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    //----------------------------->Funciones Admin
+    traerDatos() {
+        return this._http.get(this.url + "traer_datos_archivador", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+    ingresarTema(data) {
+        const datos = new FormData();
+        datos.append('fecha', data.fecha);
+        datos.append('titulo', data.titulo);
+        datos.append('descripcion', data.descripcion);
+        return this._http.post(this.url + "ingresar_tema", datos, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token
+            })
+        });
+    }
+    traerTemasActivos() {
+        return this._http.get(this.url + "traer_temas_activos", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+    traerTipos() {
+        return this._http.get(this.url + "traer_tipos_temas", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+    traerHistorialTemas(anio, mes, tipo) {
+        return this._http.get(this.url + "traer_temas/" + anio + "/" + mes + "/" + tipo, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+};
+VotacionesBryanmService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+VotacionesBryanmService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], VotacionesBryanmService);
 
 
 

@@ -16,6 +16,11 @@ class SecTemas extends Model
         return DB::table('anio')->where('id', $value)->first()->descripcion;
     }
 
+    protected function fechaActual()
+    {
+        return NotasCuentas::datosBasicos()['datos']->fecha;
+    }
+
     protected function ingresarTema($request)
     {
         DB::beginTransaction();
@@ -47,19 +52,21 @@ class SecTemas extends Model
         $tema = SecTemas::find($request->tema);
         if (!is_null($tema)) {
             $votos = PortalSocioSecTemas::traerConteoVotos($request->tema);
-            $apr = bcdiv(($votos['votos']->apruebo * 100) / $votos['total'], '1', 2);
-            $rec = bcdiv(($votos['votos']->rechazo * 100) / $votos['total'], '1', 2);
-            $abs = bcdiv(($votos['votos']->abstengo * 100) / $votos['total'], '1', 2);
-            $nul = bcdiv(($votos['votos']->nulo * 100) / $votos['total'], '1', 2);
+
+            $apr = bcdiv(($votos['votos']['apruebo'] * 100) / $votos['total'], '1', 2);
+            $rec = bcdiv(($votos['votos']['rechazo'] * 100) / $votos['total'], '1', 2);
+            $abs = bcdiv(($votos['votos']['abstengo'] * 100) / $votos['total'], '1', 2);
+            $nul = bcdiv(($votos['votos']['nulo'] * 100) / $votos['total'], '1', 2);
             $tema->estado_tema_id = 2;
-            if ($votos['votos']->apruebo > $votos['votos']->rechazo) {
+            $tema->fecha_termino = $this->fechaActual();
+            if ($votos['votos']['apruebo'] > $votos['votos']['rechazo']) {
                 $tema->estado_aprobacion_id = 2;
                 $total = $apr + $abs;
-                $tema->motivo = "Se ha aprovado con un " . $total . "%, de un total de: " . $votos['total'] . "votos de los cuales: " . $apr . "% fueron aprobado y " . $abs . "% fueron me abstengo, teniendo asi una cantidad de: " . $votos['votos']->nulo . " votos nulos, siendo asi un:" . $nul . "%.";
+                $tema->motivo = "Se ha aprovado con un " . $total . "%, de un total de: " . $votos['total'] . " votos. de los cuales: " . $apr . "% fueron aprobado y " . $abs . "% fueron me abstengo, teniendo asi una cantidad de: " . $votos['votos']['nulo'] . " votos nulos, siendo asi un: " . $nul . "% del total de votos.";
             } else {
                 $tema->estado_aprobacion_id = 3;
                 $total = $rec + $abs;
-                $tema->motivo = "Se ha rechazado con un " . $total . "%, de un total de: " . $votos['total'] . "votos de los cuales: " . $rec . "% fueron rechazado y " . $abs . "% fueron me abstengo, teniendo asi una cantidad de: " . $votos['votos']->nulo . " votos nulos, siendo asi un:" . $nul . "%.";
+                $tema->motivo = "Se ha rechazado con un " . $total . "%, de un total de: " . $votos['total'] . " votos. de los cuales: " . $rec . "% fueron rechazado y " . $abs . "% fueron me abstengo, teniendo asi una cantidad de: " . $votos['votos']['nulo'] . " votos nulos, siendo asi un: " . $nul . "% del total de votos.";
             }
             if ($tema->save()) {
                 return ['estado' => 'failed', 'mensaje' => 'La votacion ha sido cerrada correctamente.'];
@@ -71,11 +78,34 @@ class SecTemas extends Model
         }
     }
 
+    protected function traerTemasActivos()
+    {
+        $temas = DB::table('sec_temas as st')
+            ->select([
+                'st.id',
+                'st.fecha_inicio',
+                DB::raw("upper(st.titulo) as titulo"),
+                DB::raw("upper(st.descripcion) as descripcion"),
+                'set.descripcion as estado',
+                DB::raw("upper(concat(u.nombres,' ',u.a_paterno,' ',u.a_materno)) as nombre")
+            ])
+            ->join('users as u', 'u.id', 'st.user_id')
+            ->join('sec_estado_tema as set', 'set.id', 'st.estado_tema_id')
+            ->join('sec_estado_aprobacion as sea', 'sea.id', 'st.estado_aprobacion_id')
+            ->where([
+                'st.activo' => 'S',
+                'st.estado_tema_id' => 1
+            ])
+            ->get();
+        if (!$temas->isEmpty()) {
+            return ['estado' => 'success', 'temas' => $temas];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No hay Temas Activos.'];
+        }
+    }
+
     protected function traerTemas($anio, $mes, $tipo)
     {
-        $votos = PortalSocioSecTemas::traerConteoVotos(1);
-        $porc = $this->converPorc($votos['votos'], $votos['total']);
-        dd($porc);
         $anioD = $this->anio($anio);
         $temas = DB::table('sec_temas as st')
             ->select([
@@ -84,15 +114,19 @@ class SecTemas extends Model
                 'st.fecha_termino',
                 DB::raw("upper(st.titulo) as titulo"),
                 DB::raw("upper(st.descripcion) as descripcion"),
+                DB::raw("upper(st.motivo) as motivo"),
                 'st.estado_tema_id',
                 'set.descripcion as estado',
-                'sea.descripcion as aprobado'
+                'sea.descripcion as aprobado',
+                DB::raw("upper(concat(u.nombres,' ',u.a_paterno,' ',u.a_materno)) as nombre")
             ])
+            ->join('users as u', 'u.id', 'st.user_id')
             ->join('sec_estado_tema as set', 'set.id', 'st.estado_tema_id')
             ->join('sec_estado_aprobacion as sea', 'sea.id', 'st.estado_aprobacion_id')
             ->where([
                 'st.activo' => 'S'
             ])
+            ->whereIn('st.estado_tema_id', [2, 3])
             ->whereRaw("extract(year from st.fecha_inicio) ='" . $anioD . "'and extract(month from st.fecha_inicio) ='" . $mes . "'")
             ->get();
         if (!$temas->isEmpty()) {
@@ -105,10 +139,30 @@ class SecTemas extends Model
                         $return[] = $key;
                     }
                 }
-                return ['estado' => 'success', 'temas' => $return];
+                if (!empty($return)) {
+                    return ['estado' => 'success', 'temas' => $return];
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'No hay Temas creados en la fecha ingresada.'];
+                }
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No hay Temas creados en la fecha ingresada.'];
+        }
+    }
+
+    protected function traerTiposTemas()
+    {
+        $tipos = DB::table('sec_estado_tema')
+            ->select([
+                'id',
+                'descripcion as tipo'
+            ])
+            ->whereIn('id', [2, 3])
+            ->get();
+        if (!$tipos->isEmpty()) {
+            return ['estado' => 'success', 'tipos' => $tipos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No hay Tipos creados.'];
         }
     }
 }

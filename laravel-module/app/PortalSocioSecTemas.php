@@ -43,7 +43,7 @@ class PortalSocioSecTemas extends Model
             if (!$temas->isEmpty()) {
                 return ['estado' => 'success', 'temas' => $temas];
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'No hay Temas creados en la fecha ingresada.'];
+                return ['estado' => 'failed', 'mensaje' => 'No hay Temas disponibles para votar.'];
             }
         } else {
             return  $verificarSocio;

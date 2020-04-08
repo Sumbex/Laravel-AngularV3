@@ -72,8 +72,10 @@ Route::get('/traer_tipos_archivador', 'ArchivadorController@TraerTipos');
 
 //------------------------------------------->Temas/Votos
 Route::post('/ingresar_tema', 'SecTemasController@IngresarTema');
+Route::post('/cerrar_tema', 'SecTemasController@CerrarTema');
 Route::get('/traer_temas/{anio}/{mes}/{tipo}', 'SecTemasController@TraerTemas');
-
+Route::get('/traer_temas_activos', 'SecTemasController@TraerTemasActivos');
+Route::get('/traer_tipos_temas', 'SecTemasController@TraerTiposTemas');
 //------------------------------------------->Temas/Votos
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

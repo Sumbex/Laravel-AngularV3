@@ -133,6 +133,7 @@ export class DescuentosComponent implements OnInit {
         id += cadena[index];
       }
     }
+    
 
     this.tipo = tipo;
     this.id_desc = id;
@@ -141,6 +142,13 @@ export class DescuentosComponent implements OnInit {
         this.formula = response;
         console.log(this.formula)
       });
+  }
+  limpiar_tabla_header(){
+    this.resumen = {
+      'sueldo_base': { monto: 0 },
+      'suma_i': 0,
+      'suma_h': 0
+    };
   }
 
   registrar() {
@@ -183,6 +191,7 @@ export class DescuentosComponent implements OnInit {
   }
 
   listar_d() {
+    this.suma=0;
     this.load_table = true;
 
     this.tabla_total_h_i();
@@ -197,6 +206,7 @@ export class DescuentosComponent implements OnInit {
         if(response.estado=='failed'){
            
           this.tabla = [];
+          this.limpiar_tabla_header();
           this.load_table = false;
         }
         error => {

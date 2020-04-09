@@ -280,8 +280,8 @@ class LiqConfigHaberes extends Model
                 'estado' => 'success',
                 'lista_i' => $listar_imp,
                 'lista_h' => $listar_hab,
-                'suma_i' => $sum_i[0]->suma,
-                'suma_h' => $sum_h[0]->suma,
+                'suma_i' => empty($sum_i[0]->suma)?0:$sum_i[0]->suma,
+                'suma_h' => empty($sum_h[0]->suma)?0:$sum_h[0]->suma,
                 'sueldo_base'=> ($sueldo_base)?$sueldo_base : 0,
             ];
         }

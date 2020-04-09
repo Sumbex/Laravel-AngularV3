@@ -37,9 +37,9 @@ export class FormularioSindicalComponent implements OnInit {
     fecha: '',
     nDocumento: '',
     archivoDocumento: null,
-    tipoCuentaSindicato: '2',
+    tipoCuentaSindicato: ''/*'2'*/,
     descripcion: '',
-    definicion: '2',
+    definicion: ''/*'2'*/,
     monto: null
   }
   guardarLoad:boolean=false;

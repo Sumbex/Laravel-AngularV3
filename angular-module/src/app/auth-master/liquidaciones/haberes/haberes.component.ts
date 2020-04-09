@@ -106,7 +106,7 @@ export class HaberesComponent implements OnInit {
     }
 
     listar_hab(){
-     
+      
       this._liq.lista_haberes().subscribe(
         response => {
           if (response.status == "success") {
@@ -184,6 +184,8 @@ export class HaberesComponent implements OnInit {
 
   listar_h(){
     this.load_table = true;
+    this.suma_i = 0;
+    this.suma_h = 0;
     this._liq.listar_haber(this.empleado).subscribe(
       response => {
         if (response.estado == "success") {

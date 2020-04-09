@@ -88,7 +88,7 @@ class CuentaSindicatoController extends Controller
 	{
 
 
-		// try{
+		try{
 			DB::beginTransaction();
 			//si el ingreso es de tipo consorcio y es un egreso, rechazar el ingreso
 			if ($r->tipo_cuenta_sindicato == "8" && $r->definicion == "2") {
@@ -444,22 +444,22 @@ class CuentaSindicatoController extends Controller
 
 					
 			}
-		// }catch(QueryException $e){
-		// 	DB::rollBack();
-		// 	return[
-		// 		'estado'  => 'failed', 
-		// 		'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
-		// 		'error' => $e
-		// 	];
-		// }
-		// catch(\Exception $e){
-		// 	DB::rollBack();
-		// 	return[
-		// 		'estado'  => 'failed', 
-		// 		'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
-		// 		'error' => $e
-		// 	];
-		// }
+		}catch(QueryException $e){
+			DB::rollBack();
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+				'error' => $e
+			];
+		}
+		catch(\Exception $e){
+			DB::rollBack();
+			return[
+				'estado'  => 'failed', 
+				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
+				'error' => $e
+			];
+		}
 		
 	}
 

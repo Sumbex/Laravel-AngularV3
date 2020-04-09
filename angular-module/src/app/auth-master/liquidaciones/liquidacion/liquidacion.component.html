@@ -14,27 +14,45 @@
         </p>
 
         <label for="">Empleado: </label><br>
-        <select [(ngModel)]="empleado" (change)="traerDatosLiquidacion()" class="form-control">
+        <select [(ngModel)]="empleado" class="form-control" (change)=traerDatosLiquidacion()>
             <option value="">Seleccione..</option>
             <option *ngFor="let e of empleados" value="{{e.id}}">{{ e.nombre_trabajador }}</option>
         </select>
-
-        <!-- <div class="row mt-2">
-            <div class="col-md-6">
-                <label>Ingrese Dias Trabajados</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-md-6">
-                <label>Ingrese Horas Extras</label>
-                <input type="text" class="form-control">
-            </div>
-        </div> -->
-
-        <button class="btn btn-success btn-block mt-4">Generar Liquidacion</button>
+        <label for="" class="mt-2">Seleccione fecha emisión de la liquidación</label>
+        <input type="date" class="form-control" [(ngModel)]="fechaEmision">
+        <button [disabled]="!empleado || blockIngreso || !fechaEmision" class="btn btn-success btn-block mt-4" (click)="setLiquidacionHistorial()">Generar Liquidacion</button>
     </div>
 </div>
 
 <div class="card mt-4">
+    <div class="card-header" id="demoFont">
+        <strong class="text-center">
+            <h6><i class="fas fa-file-invoice"></i> Liquidaciones Generadas</h6>
+        </strong>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>Fecha Emisión</th>
+                        <th>Empleado</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let itemLiquidaciones of liquidacionesGeneradas">
+                        <td>{{itemLiquidaciones?.fecha}}</td>
+                        <td>{{itemLiquidaciones?.nombre_trabajador}}</td>
+                        <td><button class="btn btn-primary" (click)="test(itemLiquidaciones.id)">Visualizar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showTable" class="card mt-4">
     <div class="card-header" id="demoFont">
         <strong class="text-center">
             <h6><i class="fas fa-file-invoice"></i> Liquidación de Sueldo</h6>
@@ -47,122 +65,127 @@
             <div class="col-md-12">
                 <div id="printJS-table">
                     <div class="table-responsive">
-                        <table class="tg">
+                        <table class="tg table-test" style="width: 100%;">
                             <tr>
                                 <th class="tg-vm9s" colspan="3">Liquidación de Sueldo</th>
                             </tr>
                             <tr>
-                                <td class="tg-73oq"><span style="font-weight:bold">Trabajador: Bryan Vidal Diaz</span>
+                                <td class="tg-73oq"><span style="font-weight:bold">Trabajador: </span>Bryan Vidal Diaz
                                 </td>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut:
-                                        18.522.783-9</span></td>
+                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>18.522.783-9</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq"><span style="font-weight:bold">Empleador: Sindicado de empresas CMPC
-                                        celulosa S.A.F</span></td>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut:
-                                        75.315.800-6</span></td>
+                                <td class="tg-73oq"><span style="font-weight:bold">Empleador: </span>Sindicado de empresas CMPC
+                                    celulosa S.A.F</td>
+                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>
+                                    75.315.800-6</td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <td class="tg-73oq" colspan="2">Sueldo Base:</td>
+                                <td class="tg-73oq">{{haberesLista?.sueldoBase?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq">N° Dias Trabajados: 31</td>
-                                <td class="tg-73oq">Sueldo base del mes marzo del 2020</td>
-                                <td class="tg-73oq">$330.037</td>
+                                <td class="tg-73oq" colspan="2">Horas Extras: </td>
+                                <td class="tg-73oq">{{haberesLista?.horasExtras?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq">N° Horas 50%: </td>
-                                <td class="tg-73oq">Horas extraordinarias: 0.007778</td>
-                                <td class="tg-73oq">$0</td>
+                                <td class="tg-73oq" colspan="2">Gratificación Legal:</td>
+                                <td class="tg-73oq">{{haberesLista?.gratificacionLegal?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq">N° Horas 100%: 16</td>
-                                <td class="tg-73oq">Dia domingo: 0.008333</td>
-                                <td class="tg-73oq">$44.005</td>
+                                <td class="tg-73oq" colspan="2">Bono Locomoción:</td>
+                                <td class="tg-73oq">{{haberesLista?.bonoLocomocion?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2">Bono Trimestral:</td>
-                                <td class="tg-73oq">$342.000</td>
+                                <td class="tg-73oq" colspan="2">Bono Colación:</td>
+                                <td class="tg-73oq">{{haberesLista?.bonoColacion?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold">Total Remuneración
-                                        Imponible</span></td>
-                                <td class="tg-73oq"><span style="font-weight:bold">$716.042</span></td>
+                                <td class="tg-73oq" colspan="2">Asignación Familiar:</td>
+                                <td class="tg-73oq">{{haberesLista?.asignacionFamiliar?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq">N° de Cargas: 1</td>
-                                <td class="tg-73oq">Cargas asignación familiar</td>
-                                <td class="tg-73oq">$2.551</td>
+                                <td class="tg-73oq" colspan="2">Viatico:</td>
+                                <td class="tg-73oq">{{haberesLista?.viatico?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2">Tarjeta Celular:</td>
-                                <td class="tg-73oq">$10.000</td>
+                                <td class="tg-73oq" colspan="2">Bono Extra:</td>
+                                <td class="tg-73oq">{{haberesLista?.bonoExtra?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2">Movilización Camping:</td>
-                                <td class="tg-73oq">$0</td>
+                                <td class="tg-73oq" colspan="2">Vacaciones:</td>
+                                <td class="tg-73oq">{{haberesLista?.vacaciones?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2">Colación:</td>
-                                <td class="tg-73oq">$25.000</td>
+                                <td class="tg-73oq" colspan="2">Viatico por Gestion:</td>
+                                <td class="tg-73oq">{{haberesLista?.viaticoGestion?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2">Movilización:</td>
-                                <td class="tg-73oq">$25.000</td>
+                                <td class="tg-73oq" colspan="2">Feriado Proporcional</td>
+                                <td class="tg-73oq">{{haberesLista?.feriadoProporcional?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold">Total Haber:</span></td>
-                                <td class="tg-mcqj">$778.593</td>
-                            </tr>
-                            <!-- <tr>
-                                <td class="tg-73oq">Descuento Salud INP:</td>
-                                <td class="tg-73oq">7.00%</td>
-                                <td class="tg-73oq">$50.123</td>
+                                <td class="tg-0lax" colspan="2">Tarjeta Celular:</td>
+                                <td class="tg-0lax">{{haberesLista?.tarjetaCelular?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax">Descuento AFP Provida:</td>
-                                <td class="tg-0lax">11,45%</td>
-                                <td class="tg-0lax">$81.987</td>
+                                <td class="tg-0lax" colspan="2">Dia Domingo:</td>
+                                <td class="tg-0lax">{{haberesLista?.diaDomingo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax">Seguro de Cesantia:</td>
-                                <td class="tg-0lax">0.6%</td>
-                                <td class="tg-0lax">$4.296</td>
+                                <td class="tg-0lax" colspan="2"><span style="font-weight: bold;">Total Haberes:</span></td>
+                                <td class="tg-0lax"><span style="font-weight: bold;">{{haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
+                            </tr>
+                            <!-- DESCUENTOS -->
+                            <tr>
+                                <td class="tg-0lax" colspan="2">Cotización AFP:</td>
+                                <td class="tg-0lax">{{descuentosLista?.cotizacionAfp?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-1wig" colspan="2">Total Descuentos Previsionales:</td>
-                                <td class="tg-0lax">$136.406</td>
-                            </tr> -->
+                                <td class="tg-0lax" colspan="2">Salud INP:</td>
+                                <td class="tg-0lax">{{descuentosLista?.saludInp?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0lax" colspan="2">Plan de Salud:</td>
+                                <td class="tg-0lax">{{descuentosLista?.planSalud?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0lax" colspan="2">Seguro de Cesantia:</td>
+                                <td class="tg-0lax">{{descuentosLista?.seguroCesantia?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                            </tr>
                             <tr>
                                 <td class="tg-0lax" colspan="2">Anticipo:</td>
-                                <td class="tg-0lax">$0</td>
+                                <td class="tg-0lax">{{descuentosLista?.anticipo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax" colspan="2">Descuentos Previsionales:</td>
-                                <td class="tg-0lax">$136.406</td>
+                                <td class="tg-0lax" colspan="2">Prestamo:</td>
+                                <td class="tg-0lax">{{descuentosLista?.prestamo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax" colspan="2">Descuento Trimestral:</td>
-                                <td class="tg-0lax">$276.849</td>
+                                <td class="tg-0lax" colspan="2">Bono trimestral:</td>
+                                <td class="tg-0lax">{{descuentosLista?.bonoTrimestral?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax" colspan="2">Descuento: </td>
-                                <td class="tg-0lax">$0</td>
+                                <td class="tg-0lax" colspan="2">Feriado Proporcional:</td>
+                                <td class="tg-0lax">{{descuentosLista?.feriadoProporcional?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax" colspan="2">Total Descuentos: </td>
-                                <td class="tg-0lax">$413.255</td>
+                                <td class="tg-0lax" colspan="2"><span style="font-weight: bold;">Total Descuentos:</span></td>
+                                <td class="tg-0lax"><span style="font-weight: bold;">{{descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
                             </tr>
+                            <!-- SALDO LIQUIDO -->
                             <tr>
-                                <td class="tg-1wig" colspan="2">Saldo Liquido:</td>
-                                <td class="tg-1wig">$365.338</td>
+                                <td class="tg-0lax" colspan="2"><span style="font-weight: bold;">Sueldo Liquido:</span></td>
+                                <td class="tg-0lax"><span style="font-weight: bold;">{{(haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto) - (descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto) | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
                             </tr>
                         </table>
                     </div>
                     <br>
                     <p><b>Saldo Liquido en letras: </b> <input type="text" class="form-control"></p>
-                    <p><b>CERTIFICO QUE HE RECIBIDO DE:</b> DON JAIME FLORES CASTILLO REPRESENTANTE LEGAL DEL SINDICATO
-                        DE EMPRESAS CMPC CELULOSA S.A. PLANTA SANTA FE.</p>
-                    <p>A MI ENTERA SATISFACCION EL SALDO LIQUIDO EN LA PRESENTE LIQUIDACION Y NO TENGO CARGO NI COBRO
-                        ALGUNO POSTERIOR QUE HACER, POR NINGUNO DE LOS CONCEPTOS COMPRENDIDOS EN ELLA.</p>
+                    <p><b>Certifico que he recibido de:</b> Don Jaime Flores Castillo representante legal del sindicato
+                        de empresas CMPC Celulosa S.A. Planta Santa Fe.</p>
+                    <p>A mi entera satisfacción el saldo liquido en la presente liquidación y no tengo cargo ni cobro alguno posterior que hacer, por ninguno de los conceptos comprendidos en ella.</p>
                     <br><br><br><br><br><br>
                     <div class="test">
                         <span style="margin-right: auto; border-top: 1px solid black;">FIRMA DEL EMPLEADOR</span> <span
@@ -175,7 +198,7 @@
         <button type="button" class="btn btn-success btn-block mt-4" onclick="printJS({
             printable: 'printJS-table',
             type:'html',
-            style: '.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;}'
+            style: '.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;}'
           })">
             <i class="fas fa-print"></i> Imprimir Datos
         </button>

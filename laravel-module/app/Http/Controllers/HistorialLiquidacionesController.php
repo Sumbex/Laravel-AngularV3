@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\LiqHistorialLiquidaciones;
+use App\Liquidaciones;
+use App\LiqHistorialConfigHaberes;
+use App\LiqHistorialConfigDescuentos;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -136,6 +139,153 @@ class HistorialLiquidacionesController extends Controller
             return ['estado' => 'success', 'liquidaciones' => $busqueda];
         } else {
             return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado liquidaciones con el empleado solicitado'];
+        }
+    }
+
+    // RUTAS PARA LE GENERACION DE LIQUIDACIONES DE SUELDO
+    public function getConfiguracionHaberesPorIdEmpleado($id)
+    {
+        $busqueda = DB::table('liq_config_haberes as h')
+            ->select('h.*', 'lh.descripcion')
+            ->join('cs_lista_haberes as lh', 'lh.id', '=', 'h.cs_lista_haberes_id')
+            ->where('h.empleado_id', $id)
+            ->where('h.activo', 'S')
+            ->get();
+        if (!$busqueda->isEmpty()) {
+            return ['estado' => 'success', 'haberes' => $busqueda];
+        } else {
+            return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado haberes con el empleado solicitado'];
+        }
+    }
+
+    public function getConfiguracionDescuentosPorIdEmpleado($id)
+    {
+        $busqueda = DB::table('liq_config_descuentos as d')
+            ->select('d.*', 'ld.descripcion')
+            ->join('cs_lista_descuentos as ld', 'ld.id', '=', 'd.cs_lista_descuentos_id')
+            ->where('d.empleado_id', $id)
+            ->where('d.activo', 'S')
+            ->get();
+        if (!$busqueda->isEmpty()) {
+            return ['estado' => 'success', 'descuentos' => $busqueda];
+        } else {
+            return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado descuentos con el empleado solicitado'];
+        }
+    }
+
+    // FUNCIONES PARA GUARDAR EL HISTORIAL DE LIQUIDACIONES
+    public function setHistorialLiquidacion(Request $request){
+            DB::beginTransaction();
+            $liquidacion = new Liquidaciones;
+            $liquidacion->empleado_id = $request->id;
+            $liquidacion->fecha = $request->fecha;
+            $liquidacion->activo = 'S';
+            if ($liquidacion->save()) {
+                $haberes = $this->ingresarHaberes($request->confHaberes, $liquidacion->id);
+                $descuentos = $this->ingresarDescuentos($request->confDescuentos, $liquidacion->id);
+                if ($haberes == true && $descuentos == true) {
+                    DB::commit();
+                } else {
+                    DB::rollBack();
+                }
+            }
+    }
+
+    protected function ingresarHaberes($arrayHaberes, $liq_id)
+    {
+        $count = 0;
+        DB::beginTransaction();
+        foreach ($arrayHaberes as $key) {
+            $historialHaberes = new LiqHistorialConfigHaberes;
+            $historialHaberes->liquidacion_id = $liq_id;
+            $historialHaberes->cs_lista_haberes_id = $key['cs_lista_haberes_id'];
+            $historialHaberes->porcentaje = $key['porcentaje'];
+            $historialHaberes->monto = $key['monto'];
+            $historialHaberes->dias = $key['dias'];
+            $historialHaberes->cargas = $key['cargas'];
+            $historialHaberes->horas = $key['horas'];
+            $historialHaberes->activo = 'S';
+            if ($historialHaberes->save()) {
+                $count++;
+            }
+        }
+        if (count($arrayHaberes) == $count) {
+            DB::commit();
+            return true;
+        } else {
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    protected function ingresarDescuentos($arrayDescuentos, $liq_id)
+    {
+        $count = 0;
+        DB::beginTransaction();
+        foreach ($arrayDescuentos as $key) {
+            $historialDescuentos = new LiqHistorialConfigDescuentos;
+            $historialDescuentos->liquidacion_id = $liq_id;
+            $historialDescuentos->cs_lista_descuentos_id = $key['cs_lista_descuentos_id'];
+            $historialDescuentos->porcentaje = $key['porcentaje'];
+            $historialDescuentos->monto = $key['monto'];
+            $historialDescuentos->activo = 'S';
+            if ($historialDescuentos->save()) {
+                $count++;
+            }
+        }
+        if (count($arrayDescuentos) == $count) {
+            DB::commit();
+            return true;
+        } else {
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    // Variable para traer las liquidaciones generadas
+    public function getLiquidacionesGeneradasPorIdEmpleado($id)
+    {
+        $busqueda = DB::table('liquidacion as l')
+            ->select('l.*', 'e.nombre_trabajador')
+            ->join('liq_empleado as e', 'e.id', '=', 'l.empleado_id')
+            ->where('l.empleado_id', $id)
+            ->where('l.activo', 'S')
+            ->get();
+        if (!$busqueda->isEmpty()) {
+            return ['estado' => 'success', 'liquidaciones' => $busqueda];
+        } else {
+            return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado liquidaciones con el empleado solicitado'];
+        }
+    }
+
+    // Traer la liquidación generada por od
+    public function getHaberesPorIdLiquidacion($id)
+    {
+        $busqueda = DB::table('liq_hist_haberes as h')
+            ->select('h.*', 'lh.descripcion')
+            ->join('cs_lista_haberes as lh', 'lh.id', '=', 'h.cs_lista_haberes_id')
+            ->where('h.liquidacion_id', $id)
+            ->where('h.activo', 'S')
+            ->get();
+        if (!$busqueda->isEmpty()) {
+            return ['estado' => 'success', 'haberes' => $busqueda];
+        } else {
+            return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado haberes con el empleado solicitado'];
+        }
+    }
+
+    public function getDescuentosPorIdLiquidacion($id)
+    {
+        $busqueda = DB::table('liq_hist_descuentos as d')
+            ->select('d.*', 'ld.descripcion')
+            ->join('cs_lista_descuentos as ld', 'ld.id', '=', 'd.cs_lista_descuentos_id')
+            ->where('d.liquidacion_id', $id)
+            ->where('d.activo', 'S')
+            ->get();
+        if (!$busqueda->isEmpty()) {
+            return ['estado' => 'success', 'descuentos' => $busqueda];
+        } else {
+            return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado descuentos con el empleado solicitado'];
         }
     }
 }

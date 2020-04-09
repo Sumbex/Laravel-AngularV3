@@ -855,7 +855,7 @@ module.exports = "<div class=\"card mt-4\">\n    <div class=\"card-header\" id=\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card mt-4\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n            <h6><i class=\"fas fa-file-invoice\"></i> Generar Liquidaciones</h6>\r\n        </strong>\r\n    </div>\r\n\r\n    <div class=\"card-body\">\r\n        <p>\r\n            <ngb-alert [dismissible]=\"false\">\r\n                <strong>Advertencia!</strong> Verifique que los datos de \"Haberes\" y \"Descuentos\" sean totalmente\r\n                correctos antes de generar la liquidación.\r\n            </ngb-alert>\r\n        </p>\r\n\r\n        <label for=\"\">Empleado: </label><br>\r\n        <select [(ngModel)]=\"empleado\" (change)=\"traerDatosLiquidacion()\" class=\"form-control\">\r\n            <option value=\"\">Seleccione..</option>\r\n            <option *ngFor=\"let e of empleados\" value=\"{{e.id}}\">{{ e.nombre_trabajador }}</option>\r\n        </select>\r\n\r\n        <!-- <div class=\"row mt-2\">\r\n            <div class=\"col-md-6\">\r\n                <label>Ingrese Dias Trabajados</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n            </div>\r\n            <div class=\"col-md-6\">\r\n                <label>Ingrese Horas Extras</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n            </div>\r\n        </div> -->\r\n\r\n        <button class=\"btn btn-success btn-block mt-4\">Generar Liquidacion</button>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"card mt-4\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n            <h6><i class=\"fas fa-file-invoice\"></i> Liquidación de Sueldo</h6>\r\n        </strong>\r\n    </div>\r\n\r\n    <div class=\"card-body\">\r\n        <!-- HOJA DE IMPRESIÓN -->\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div id=\"printJS-table\">\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"tg\">\r\n                            <tr>\r\n                                <th class=\"tg-vm9s\" colspan=\"3\">Liquidación de Sueldo</th>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\"><span style=\"font-weight:bold\">Trabajador: Bryan Vidal Diaz</span>\r\n                                </td>\r\n                                <td class=\"tg-73oq\" colspan=\"2\"><span style=\"font-weight:bold; text-align: center;\">Rut:\r\n                                        18.522.783-9</span></td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\"><span style=\"font-weight:bold\">Empleador: Sindicado de empresas CMPC\r\n                                        celulosa S.A.F</span></td>\r\n                                <td class=\"tg-73oq\" colspan=\"2\"><span style=\"font-weight:bold; text-align: center;\">Rut:\r\n                                        75.315.800-6</span></td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\">N° Dias Trabajados: 31</td>\r\n                                <td class=\"tg-73oq\">Sueldo base del mes marzo del 2020</td>\r\n                                <td class=\"tg-73oq\">$330.037</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\">N° Horas 50%: </td>\r\n                                <td class=\"tg-73oq\">Horas extraordinarias: 0.007778</td>\r\n                                <td class=\"tg-73oq\">$0</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\">N° Horas 100%: 16</td>\r\n                                <td class=\"tg-73oq\">Dia domingo: 0.008333</td>\r\n                                <td class=\"tg-73oq\">$44.005</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Bono Trimestral:</td>\r\n                                <td class=\"tg-73oq\">$342.000</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\"><span style=\"font-weight:bold\">Total Remuneración\r\n                                        Imponible</span></td>\r\n                                <td class=\"tg-73oq\"><span style=\"font-weight:bold\">$716.042</span></td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\">N° de Cargas: 1</td>\r\n                                <td class=\"tg-73oq\">Cargas asignación familiar</td>\r\n                                <td class=\"tg-73oq\">$2.551</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Tarjeta Celular:</td>\r\n                                <td class=\"tg-73oq\">$10.000</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Movilización Camping:</td>\r\n                                <td class=\"tg-73oq\">$0</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Colación:</td>\r\n                                <td class=\"tg-73oq\">$25.000</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Movilización:</td>\r\n                                <td class=\"tg-73oq\">$25.000</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\"><span style=\"font-weight:bold\">Total Haber:</span></td>\r\n                                <td class=\"tg-mcqj\">$778.593</td>\r\n                            </tr>\r\n                            <!-- <tr>\r\n                                <td class=\"tg-73oq\">Descuento Salud INP:</td>\r\n                                <td class=\"tg-73oq\">7.00%</td>\r\n                                <td class=\"tg-73oq\">$50.123</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\">Descuento AFP Provida:</td>\r\n                                <td class=\"tg-0lax\">11,45%</td>\r\n                                <td class=\"tg-0lax\">$81.987</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\">Seguro de Cesantia:</td>\r\n                                <td class=\"tg-0lax\">0.6%</td>\r\n                                <td class=\"tg-0lax\">$4.296</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-1wig\" colspan=\"2\">Total Descuentos Previsionales:</td>\r\n                                <td class=\"tg-0lax\">$136.406</td>\r\n                            </tr> -->\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Anticipo:</td>\r\n                                <td class=\"tg-0lax\">$0</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Descuentos Previsionales:</td>\r\n                                <td class=\"tg-0lax\">$136.406</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Descuento Trimestral:</td>\r\n                                <td class=\"tg-0lax\">$276.849</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Descuento: </td>\r\n                                <td class=\"tg-0lax\">$0</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Total Descuentos: </td>\r\n                                <td class=\"tg-0lax\">$413.255</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-1wig\" colspan=\"2\">Saldo Liquido:</td>\r\n                                <td class=\"tg-1wig\">$365.338</td>\r\n                            </tr>\r\n                        </table>\r\n                    </div>\r\n                    <br>\r\n                    <p><b>Saldo Liquido en letras: </b> <input type=\"text\" class=\"form-control\"></p>\r\n                    <p><b>CERTIFICO QUE HE RECIBIDO DE:</b> DON JAIME FLORES CASTILLO REPRESENTANTE LEGAL DEL SINDICATO\r\n                        DE EMPRESAS CMPC CELULOSA S.A. PLANTA SANTA FE.</p>\r\n                    <p>A MI ENTERA SATISFACCION EL SALDO LIQUIDO EN LA PRESENTE LIQUIDACION Y NO TENGO CARGO NI COBRO\r\n                        ALGUNO POSTERIOR QUE HACER, POR NINGUNO DE LOS CONCEPTOS COMPRENDIDOS EN ELLA.</p>\r\n                    <br><br><br><br><br><br>\r\n                    <div class=\"test\">\r\n                        <span style=\"margin-right: auto; border-top: 1px solid black;\">FIRMA DEL EMPLEADOR</span> <span\r\n                            style=\"margin-left: 20rem; border-top: 1px solid black;\">FIRMA DEL TRABAJADOR</span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <button type=\"button\" class=\"btn btn-success btn-block mt-4\" onclick=\"printJS({\r\n            printable: 'printJS-table',\r\n            type:'html',\r\n            style: '.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;}'\r\n          })\">\r\n            <i class=\"fas fa-print\"></i> Imprimir Datos\r\n        </button>\r\n    </div>\r\n\r\n</div>"
+module.exports = "<div class=\"card mt-4\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n            <h6><i class=\"fas fa-file-invoice\"></i> Generar Liquidaciones</h6>\r\n        </strong>\r\n    </div>\r\n\r\n    <div class=\"card-body\">\r\n        <p>\r\n            <ngb-alert [dismissible]=\"false\">\r\n                <strong>Advertencia!</strong> Verifique que los datos de \"Haberes\" y \"Descuentos\" sean totalmente\r\n                correctos antes de generar la liquidación.\r\n            </ngb-alert>\r\n        </p>\r\n\r\n        <label for=\"\">Empleado: </label><br>\r\n        <select [(ngModel)]=\"empleado\" class=\"form-control\" (change)=traerDatosLiquidacion()>\r\n            <option value=\"\">Seleccione..</option>\r\n            <option *ngFor=\"let e of empleados\" value=\"{{e.id}}\">{{ e.nombre_trabajador }}</option>\r\n        </select>\r\n        <label for=\"\" class=\"mt-2\">Seleccione fecha emisión de la liquidación</label>\r\n        <input type=\"date\" class=\"form-control\" [(ngModel)]=\"fechaEmision\">\r\n        <button [disabled]=\"!empleado || blockIngreso || !fechaEmision\" class=\"btn btn-success btn-block mt-4\" (click)=\"setLiquidacionHistorial()\">Generar Liquidacion</button>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"card mt-4\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n            <h6><i class=\"fas fa-file-invoice\"></i> Liquidaciones Generadas</h6>\r\n        </strong>\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table text-center\">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Fecha Emisión</th>\r\n                        <th>Empleado</th>\r\n                        <th>Accion</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr *ngFor=\"let itemLiquidaciones of liquidacionesGeneradas\">\r\n                        <td>{{itemLiquidaciones?.fecha}}</td>\r\n                        <td>{{itemLiquidaciones?.nombre_trabajador}}</td>\r\n                        <td><button class=\"btn btn-primary\" (click)=\"test(itemLiquidaciones.id)\">Visualizar</button></td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div *ngIf=\"showTable\" class=\"card mt-4\">\r\n    <div class=\"card-header\" id=\"demoFont\">\r\n        <strong class=\"text-center\">\r\n            <h6><i class=\"fas fa-file-invoice\"></i> Liquidación de Sueldo</h6>\r\n        </strong>\r\n    </div>\r\n\r\n    <div class=\"card-body\">\r\n        <!-- HOJA DE IMPRESIÓN -->\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div id=\"printJS-table\">\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"tg table-test\" style=\"width: 100%;\">\r\n                            <tr>\r\n                                <th class=\"tg-vm9s\" colspan=\"3\">Liquidación de Sueldo</th>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\"><span style=\"font-weight:bold\">Trabajador: </span>Bryan Vidal Diaz\r\n                                </td>\r\n                                <td class=\"tg-73oq\" colspan=\"2\"><span style=\"font-weight:bold; text-align: center;\">Rut: </span>18.522.783-9</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\"><span style=\"font-weight:bold\">Empleador: </span>Sindicado de empresas CMPC\r\n                                    celulosa S.A.F</td>\r\n                                <td class=\"tg-73oq\" colspan=\"2\"><span style=\"font-weight:bold; text-align: center;\">Rut: </span>\r\n                                    75.315.800-6</td>\r\n                            </tr>\r\n                            <br>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Sueldo Base:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.sueldoBase?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Horas Extras: </td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.horasExtras?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Gratificación Legal:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.gratificacionLegal?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Bono Locomoción:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.bonoLocomocion?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Bono Colación:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.bonoColacion?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Asignación Familiar:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.asignacionFamiliar?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Viatico:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.viatico?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Bono Extra:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.bonoExtra?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Vacaciones:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.vacaciones?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Viatico por Gestion:</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.viaticoGestion?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-73oq\" colspan=\"2\">Feriado Proporcional</td>\r\n                                <td class=\"tg-73oq\">{{haberesLista?.feriadoProporcional?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Tarjeta Celular:</td>\r\n                                <td class=\"tg-0lax\">{{haberesLista?.tarjetaCelular?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Dia Domingo:</td>\r\n                                <td class=\"tg-0lax\">{{haberesLista?.diaDomingo?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\"><span style=\"font-weight: bold;\">Total Haberes:</span></td>\r\n                                <td class=\"tg-0lax\"><span style=\"font-weight: bold;\">{{haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</span></td>\r\n                            </tr>\r\n                            <!-- DESCUENTOS -->\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Cotización AFP:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.cotizacionAfp?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Salud INP:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.saludInp?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Plan de Salud:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.planSalud?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Seguro de Cesantia:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.seguroCesantia?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Anticipo:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.anticipo?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Prestamo:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.prestamo?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Bono trimestral:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.bonoTrimestral?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\">Feriado Proporcional:</td>\r\n                                <td class=\"tg-0lax\">{{descuentosLista?.feriadoProporcional?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</td>\r\n                            </tr>\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\"><span style=\"font-weight: bold;\">Total Descuentos:</span></td>\r\n                                <td class=\"tg-0lax\"><span style=\"font-weight: bold;\">{{descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</span></td>\r\n                            </tr>\r\n                            <!-- SALDO LIQUIDO -->\r\n                            <tr>\r\n                                <td class=\"tg-0lax\" colspan=\"2\"><span style=\"font-weight: bold;\">Sueldo Liquido:</span></td>\r\n                                <td class=\"tg-0lax\"><span style=\"font-weight: bold;\">{{(haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto) - (descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto) | currency:\"CLP\" : \"symbol-narrow\":'1.0'}}</span></td>\r\n                            </tr>\r\n                        </table>\r\n                    </div>\r\n                    <br>\r\n                    <p><b>Saldo Liquido en letras: </b> <input type=\"text\" class=\"form-control\"></p>\r\n                    <p><b>Certifico que he recibido de:</b> Don Jaime Flores Castillo representante legal del sindicato\r\n                        de empresas CMPC Celulosa S.A. Planta Santa Fe.</p>\r\n                    <p>A mi entera satisfacción el saldo liquido en la presente liquidación y no tengo cargo ni cobro alguno posterior que hacer, por ninguno de los conceptos comprendidos en ella.</p>\r\n                    <br><br><br><br><br><br>\r\n                    <div class=\"test\">\r\n                        <span style=\"margin-right: auto; border-top: 1px solid black;\">FIRMA DEL EMPLEADOR</span> <span\r\n                            style=\"margin-left: 20rem; border-top: 1px solid black;\">FIRMA DEL TRABAJADOR</span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <button type=\"button\" class=\"btn btn-success btn-block mt-4\" onclick=\"printJS({\r\n            printable: 'printJS-table',\r\n            type:'html',\r\n            style: '.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;}'\r\n          })\">\r\n            <i class=\"fas fa-print\"></i> Imprimir Datos\r\n        </button>\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1119,7 +1119,7 @@ module.exports = "<ng-template #gastosOperacionales let-modal>\r\n\r\n    <!--Ca
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<!-- Navigation -->\r\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\r\n    <div class=\"container\">\r\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\r\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\r\n      </a>\r\n      <!-- <a>\r\n        <img  height=\"30\" width=\"40\"\r\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\r\n      </a> -->\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n          </button>\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <!-- <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Sindical <span class=\"sr-only\">(current)</span></a>\r\n              </li> -->\r\n\r\n              <li ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-calculator\"></i> Sindical</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-user-plus\"></i> Cuenta</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CrearEmpleado']\"><i class=\"fas fa-user-edit\"></i> Crear Empleado</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Liquidaciones']\"><i class=\"fas fa-user-edit\"></i> Liquidaciones</a>\r\n                </div>\r\n              </li>\r\n\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\r\n                </div>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Portal Socios</a>\r\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n                </div>\r\n              </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n\r\n  \r\n  "
+module.exports = "\r\n<!-- Navigation -->\r\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\r\n    <div class=\"container\">\r\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\r\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\r\n      </a>\r\n      <!-- <a>\r\n        <img  height=\"30\" width=\"40\"\r\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\r\n      </a> -->\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n          </button>\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <!-- <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Sindical <span class=\"sr-only\">(current)</span></a>\r\n              </li> -->\r\n\r\n              <li ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-calculator\"></i> Sindical</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-user-plus\"></i> Cuenta</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem><i class=\"fas fa-user-edit\"></i> Crear Empleado</a><!-- [routerLink]=\"['/AuthMaster/CrearEmpleado']\" -->\r\n                  <a class=\"selectColor\" ngbDropdownItem><i class=\"fas fa-user-edit\"></i> Liquidaciones</a><!-- [routerLink]=\"['/AuthMaster/Liquidaciones']\" -->\r\n                </div>\r\n              </li>\r\n\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\r\n                </div>\r\n              </li>\r\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\r\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\r\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Portal Socios</a>\r\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n                </div>\r\n              </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n\r\n  \r\n  "
 
 /***/ }),
 
@@ -9624,7 +9624,7 @@ HistorialLiquidacionesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 14px;\r\n      }\r\n      tr,th{\r\n        font-size: 14px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        color: #fff;\r\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n      .card{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n          background: rgba(255, 255, 255, 0.8);\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      .card-header{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n        }\r\n      #myTab{\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      /* CSS LIQUIDACIÓN */\r\n      .tg  {border-collapse:collapse;border-spacing:0;border: 1px solid;}\r\n      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}\r\n      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}\r\n      .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}\r\n      .tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}\r\n      .tg .tg-73oq{text-align:left;vertical-align:top}\r\n      .tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}\r\n      .tg .tg-0lax{text-align:left;vertical-align:top}\r\n      table {\r\n  margin: auto;\r\n  width: 50% !important; \r\n}\r\n      .test{\r\n  margin-left: 20rem; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbGlxdWlkYWNpb25lcy9saXF1aWRhY2lvbi9saXF1aWRhY2lvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtRQUNJLHlCQUF5QjtRQUN6QixZQUFZO01BQ2Q7TUFDQTtRQUNFLFlBQVk7TUFDZDtNQUNBO1FBQ0UseUJBQXlCO01BQzNCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BQ0E7UUFDRSxZQUFZO1FBQ1osbUJBQW1CO01BQ3JCO01BRUE7UUFDRSxXQUFXO1FBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2MsK0JBQStCO1FBQ2pHLHVEQUF1RCxFQUFFLHFFQUFxRTtRQUM5SDtNQUNBO1VBQ0UsYUFBYTtVQUNiLHVCQUF1QjtVQUN2QixXQUFXO1FBQ2I7TUFFQTtVQUNFLDRCQUE0QjtVQUM1Qiw2QkFBNkI7VUFDN0Isb0NBQW9DO1VBQ3BDLDBFQUEwRTtRQUM1RTtNQUVBO1VBQ0UsNEJBQTRCO1VBQzVCLDZCQUE2QjtRQUMvQjtNQUNBO1VBQ0UsMEVBQTBFO1FBQzVFO01BRVIsb0JBQW9CO01BQ3BCLE1BQU0sd0JBQXdCLENBQUMsZ0JBQWdCLENBQUMsaUJBQWlCLENBQUM7TUFDbEUsT0FBTyw2QkFBNkIsQ0FBQyxjQUFjLENBQUMsZUFBZSxDQUFDLGdCQUFnQixDQUFDLGVBQWUsQ0FBQyxpQkFBaUIsQ0FBQztNQUN2SCxPQUFPLDZCQUE2QixDQUFDLGNBQWMsQ0FBQyxrQkFBa0IsQ0FBQyxlQUFlLENBQUMsZ0JBQWdCLENBQUMsZUFBZSxDQUFDLGlCQUFpQixDQUFDO01BQzFJLGFBQWEsZ0JBQWdCLENBQUMsZUFBZSxDQUFDLGtCQUFrQjtNQUNoRSxhQUFhLHdCQUF3QixDQUFDLGlCQUFpQixDQUFDLGtCQUFrQjtNQUMxRSxhQUFhLGVBQWUsQ0FBQyxrQkFBa0I7TUFDL0MsYUFBYSxnQkFBZ0IsQ0FBQyxlQUFlLENBQUMsa0JBQWtCO01BQ2hFLGFBQWEsZUFBZSxDQUFDLGtCQUFrQjtNQUUvQztFQUNFLFlBQVk7RUFDWixxQkFBcUI7QUFDdkI7TUFFQTtFQUNFLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvbGlxdWlkYWNpb24vbGlxdWlkYWNpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4gICAgLmRhcmstbW9kYWwgLm1vZGFsLWNvbnRlbnQge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgIGxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgIHRyLHRoe1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgICAgfVxyXG4gICAgICB0aHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcclxuICAgICAgfVxyXG4gICAgICBcclxuICAgICAgI2RlbW9Gb250IHtcclxuICAgICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgICAgIH1cclxuICAgICAgICAubWFyZ2Vue1xyXG4gICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgfVxyXG4gIFxyXG4gICAgICAgIC5jYXJke1xyXG4gICAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xyXG4gICAgICAgICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XHJcbiAgICAgICAgfVxyXG4gICAgICBcclxuICAgICAgICAuY2FyZC1oZWFkZXJ7XHJcbiAgICAgICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgICNteVRhYntcclxuICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gICAgICAgIH1cclxuICBcclxuLyogQ1NTIExJUVVJREFDScOTTiAqL1xyXG4udGcgIHtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Ym9yZGVyLXNwYWNpbmc6MDtib3JkZXI6IDFweCBzb2xpZDt9XHJcbi50ZyB0ZHtmb250LWZhbWlseTpBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MTRweDtwYWRkaW5nOjVweCA1cHg7Ym9yZGVyLXdpZHRoOjFweDtvdmVyZmxvdzpoaWRkZW47d29yZC1icmVhazpub3JtYWw7fVxyXG4udGcgdGh7Zm9udC1mYW1pbHk6QXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjE0cHg7Zm9udC13ZWlnaHQ6bm9ybWFsO3BhZGRpbmc6NXB4IDVweDtib3JkZXItd2lkdGg6MXB4O292ZXJmbG93OmhpZGRlbjt3b3JkLWJyZWFrOm5vcm1hbDt9XHJcbi50ZyAudGctMXdpZ3tmb250LXdlaWdodDpib2xkO3RleHQtYWxpZ246bGVmdDt2ZXJ0aWNhbC1hbGlnbjp0b3B9XHJcbi50ZyAudGctdm05c3tiYWNrZ3JvdW5kLWNvbG9yOiMyNjgxMDg7dGV4dC1hbGlnbjpjZW50ZXI7dmVydGljYWwtYWxpZ246dG9wfVxyXG4udGcgLnRnLTczb3F7dGV4dC1hbGlnbjpsZWZ0O3ZlcnRpY2FsLWFsaWduOnRvcH1cclxuLnRnIC50Zy1tY3Fqe2ZvbnQtd2VpZ2h0OmJvbGQ7dGV4dC1hbGlnbjpsZWZ0O3ZlcnRpY2FsLWFsaWduOnRvcH1cclxuLnRnIC50Zy0wbGF4e3RleHQtYWxpZ246bGVmdDt2ZXJ0aWNhbC1hbGlnbjp0b3B9XHJcblxyXG50YWJsZSB7XHJcbiAgbWFyZ2luOiBhdXRvO1xyXG4gIHdpZHRoOiA1MCUgIWltcG9ydGFudDsgXHJcbn1cclxuXHJcbi50ZXN0e1xyXG4gIG1hcmdpbi1sZWZ0OiAyMHJlbTsgXHJcbn0iXX0= */"
+module.exports = "\r\n    .dark-modal .modal-content {\r\n        background-color: #292b2c;\r\n        color: white;\r\n      }\r\n      .dark-modal .close {\r\n        color: white;\r\n      }\r\n      .light-blue-backdrop {\r\n        background-color: #5cb3fd;\r\n      }\r\n      label,input, button{\r\n        font-size: 14px;\r\n      }\r\n      tr,th{\r\n        font-size: 14px;\r\n      }\r\n      th{\r\n        color: white;\r\n        background: #138D75;\r\n      }\r\n      #demoFont {\r\n        color: #fff;\r\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\r\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\r\n        }\r\n      .margen{\r\n          display: flex;\r\n          justify-content: center;\r\n          width: 100%;\r\n        }\r\n      .card{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n          background: rgba(255, 255, 255, 0.8);\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      .card-header{\r\n          border-top-left-radius: 20px;\r\n          border-top-right-radius: 20px;\r\n        }\r\n      #myTab{\r\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n      /* CSS LIQUIDACIÓN */\r\n      .tg  {border-collapse:collapse;border-spacing:0;border: 1px solid;}\r\n      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}\r\n      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;border-width:1px;overflow:hidden;word-break:normal;}\r\n      .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}\r\n      .tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}\r\n      .tg .tg-73oq{text-align:left;vertical-align:top}\r\n      .tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}\r\n      .tg .tg-0lax{text-align:left;vertical-align:top}\r\n      .table-test {\r\n  margin: auto;\r\n  width: 50% !important; \r\n}\r\n      .test{\r\n  margin-left: 20rem; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvbGlxdWlkYWNpb25lcy9saXF1aWRhY2lvbi9saXF1aWRhY2lvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7SUFDSTtRQUNJLHlCQUF5QjtRQUN6QixZQUFZO01BQ2Q7TUFDQTtRQUNFLFlBQVk7TUFDZDtNQUNBO1FBQ0UseUJBQXlCO01BQzNCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BRUE7UUFDRSxlQUFlO01BQ2pCO01BQ0E7UUFDRSxZQUFZO1FBQ1osbUJBQW1CO01BQ3JCO01BRUE7UUFDRSxXQUFXO1FBQ1gsbUJBQW1CLEdBQUcsOEJBQThCLEdBQ2MsK0JBQStCO1FBQ2pHLHVEQUF1RCxFQUFFLHFFQUFxRTtRQUM5SDtNQUNBO1VBQ0UsYUFBYTtVQUNiLHVCQUF1QjtVQUN2QixXQUFXO1FBQ2I7TUFFQTtVQUNFLDRCQUE0QjtVQUM1Qiw2QkFBNkI7VUFDN0Isb0NBQW9DO1VBQ3BDLDBFQUEwRTtRQUM1RTtNQUVBO1VBQ0UsNEJBQTRCO1VBQzVCLDZCQUE2QjtRQUMvQjtNQUNBO1VBQ0UsMEVBQTBFO1FBQzVFO01BRVIsb0JBQW9CO01BQ3BCLE1BQU0sd0JBQXdCLENBQUMsZ0JBQWdCLENBQUMsaUJBQWlCLENBQUM7TUFDbEUsT0FBTyw2QkFBNkIsQ0FBQyxjQUFjLENBQUMsZUFBZSxDQUFDLGdCQUFnQixDQUFDLGVBQWUsQ0FBQyxpQkFBaUIsQ0FBQztNQUN2SCxPQUFPLDZCQUE2QixDQUFDLGNBQWMsQ0FBQyxrQkFBa0IsQ0FBQyxlQUFlLENBQUMsZ0JBQWdCLENBQUMsZUFBZSxDQUFDLGlCQUFpQixDQUFDO01BQzFJLGFBQWEsZ0JBQWdCLENBQUMsZUFBZSxDQUFDLGtCQUFrQjtNQUNoRSxhQUFhLHdCQUF3QixDQUFDLGlCQUFpQixDQUFDLGtCQUFrQjtNQUMxRSxhQUFhLGVBQWUsQ0FBQyxrQkFBa0I7TUFDL0MsYUFBYSxnQkFBZ0IsQ0FBQyxlQUFlLENBQUMsa0JBQWtCO01BQ2hFLGFBQWEsZUFBZSxDQUFDLGtCQUFrQjtNQUUvQztFQUNFLFlBQVk7RUFDWixxQkFBcUI7QUFDdkI7TUFFQTtFQUNFLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2xpcXVpZGFjaW9uZXMvbGlxdWlkYWNpb24vbGlxdWlkYWNpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4gICAgLmRhcmstbW9kYWwgLm1vZGFsLWNvbnRlbnQge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMyOTJiMmM7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcbiAgICAgIC5kYXJrLW1vZGFsIC5jbG9zZSB7XHJcbiAgICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICB9XHJcbiAgICAgIC5saWdodC1ibHVlLWJhY2tkcm9wIHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgIGxhYmVsLGlucHV0LCBidXR0b257XHJcbiAgICAgICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgICB9XHJcbiAgXHJcbiAgICAgIHRyLHRoe1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgICAgfVxyXG4gICAgICB0aHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcclxuICAgICAgfVxyXG4gICAgICBcclxuICAgICAgI2RlbW9Gb250IHtcclxuICAgICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xyXG4gICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXHJcbiAgICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xyXG4gICAgICAgIH1cclxuICAgICAgICAubWFyZ2Vue1xyXG4gICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgfVxyXG4gIFxyXG4gICAgICAgIC5jYXJke1xyXG4gICAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcclxuICAgICAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xyXG4gICAgICAgICAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XHJcbiAgICAgICAgfVxyXG4gICAgICBcclxuICAgICAgICAuY2FyZC1oZWFkZXJ7XHJcbiAgICAgICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xyXG4gICAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgICNteVRhYntcclxuICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xyXG4gICAgICAgIH1cclxuICBcclxuLyogQ1NTIExJUVVJREFDScOTTiAqL1xyXG4udGcgIHtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7Ym9yZGVyLXNwYWNpbmc6MDtib3JkZXI6IDFweCBzb2xpZDt9XHJcbi50ZyB0ZHtmb250LWZhbWlseTpBcmlhbCwgc2Fucy1zZXJpZjtmb250LXNpemU6MTRweDtwYWRkaW5nOjVweCA1cHg7Ym9yZGVyLXdpZHRoOjFweDtvdmVyZmxvdzpoaWRkZW47d29yZC1icmVhazpub3JtYWw7fVxyXG4udGcgdGh7Zm9udC1mYW1pbHk6QXJpYWwsIHNhbnMtc2VyaWY7Zm9udC1zaXplOjE0cHg7Zm9udC13ZWlnaHQ6bm9ybWFsO3BhZGRpbmc6NXB4IDVweDtib3JkZXItd2lkdGg6MXB4O292ZXJmbG93OmhpZGRlbjt3b3JkLWJyZWFrOm5vcm1hbDt9XHJcbi50ZyAudGctMXdpZ3tmb250LXdlaWdodDpib2xkO3RleHQtYWxpZ246bGVmdDt2ZXJ0aWNhbC1hbGlnbjp0b3B9XHJcbi50ZyAudGctdm05c3tiYWNrZ3JvdW5kLWNvbG9yOiMyNjgxMDg7dGV4dC1hbGlnbjpjZW50ZXI7dmVydGljYWwtYWxpZ246dG9wfVxyXG4udGcgLnRnLTczb3F7dGV4dC1hbGlnbjpsZWZ0O3ZlcnRpY2FsLWFsaWduOnRvcH1cclxuLnRnIC50Zy1tY3Fqe2ZvbnQtd2VpZ2h0OmJvbGQ7dGV4dC1hbGlnbjpsZWZ0O3ZlcnRpY2FsLWFsaWduOnRvcH1cclxuLnRnIC50Zy0wbGF4e3RleHQtYWxpZ246bGVmdDt2ZXJ0aWNhbC1hbGlnbjp0b3B9XHJcblxyXG4udGFibGUtdGVzdCB7XHJcbiAgbWFyZ2luOiBhdXRvO1xyXG4gIHdpZHRoOiA1MCUgIWltcG9ydGFudDsgXHJcbn1cclxuXHJcbi50ZXN0e1xyXG4gIG1hcmdpbi1sZWZ0OiAyMHJlbTsgXHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -9641,15 +9641,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/liquidacion-juanito.service */ "./src/app/servicios/liquidacion-juanito.service.ts");
+/* harmony import */ var src_app_servicios_liquidacion_marro_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/liquidacion-marro.service */ "./src/app/servicios/liquidacion-marro.service.ts");
+
 
 
 
 let LiquidacionComponent = class LiquidacionComponent {
-    constructor(_liq) {
+    constructor(_liq, _confLiq) {
         this._liq = _liq;
+        this._confLiq = _confLiq;
         //Variable para los empleados del select
         this.empleado = '';
         this.empleados = [];
+        // Fecha de emisión
+        this.fechaEmision = '';
+        // Variables para guardar lso haberes y los descuentos
+        this.haberes = [];
+        this.descuentos = [];
+        // Variables desglosadas de los haberes y descuentos
+        this.haberesLista = {
+            sueldoBase: [],
+            horasExtras: [],
+            gratificacionLegal: [],
+            bonoLocomocion: [],
+            bonoColacion: [],
+            asignacionFamiliar: [],
+            viatico: [],
+            bonoExtra: [],
+            vacaciones: [],
+            viaticoGestion: [],
+            feriadoProporcional: [],
+            tarjetaCelular: [],
+            diaDomingo: []
+        };
+        this.descuentosLista = {
+            cotizacionAfp: [],
+            saludInp: [],
+            planSalud: [],
+            seguroCesantia: [],
+            anticipo: [],
+            prestamo: [],
+            bonoTrimestral: [],
+            feriadoProporcional: []
+        };
+        // Variable para ocultar la liquidacion
+        this.blockIngreso = true;
+        this.counter = 0;
+        this.showTable = false;
+        this.counterLiquidacion = 0;
+        // Variable para traer la lista de liquidaciones generadas
+        this.liquidacionesGeneradas = [];
     }
     ngOnInit() {
         this.traerEmpleados();
@@ -9665,11 +9706,184 @@ let LiquidacionComponent = class LiquidacionComponent {
         });
     }
     traerDatosLiquidacion() {
-        console.log("test maximo");
+        this.blockIngreso = true;
+        this.counter = 0;
+        this.getLiquidacionesGeneradas();
+        this.getConfiguracionHaberesPorIdEmpleado();
+        this.getConfiguracionDescuentosPorIdEmpleado();
+    }
+    getLiquidacionesGeneradas() {
+        this._confLiq.getLiquidacionesGeneradasPorIdEmpleado(this.empleado).subscribe(response => {
+            if (response.estado == 'success') {
+                this.liquidacionesGeneradas = response.liquidaciones;
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    getConfiguracionHaberesPorIdEmpleado() {
+        this._confLiq.getConfiguracionHaberesPorIdEmpleado(this.empleado).subscribe(response => {
+            if (response.estado == 'success') {
+                this.haberes = response.haberes;
+                this.separarHaberes();
+                this.counter++;
+                if (this.counter == 2) {
+                    this.blockIngreso = false;
+                }
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    getConfiguracionDescuentosPorIdEmpleado() {
+        this._confLiq.getConfiguracionDescuentosPorIdEmpleado(this.empleado).subscribe(response => {
+            if (response.estado == 'success') {
+                this.descuentos = response.descuentos;
+                this.separarDescuentos();
+                this.counter++;
+                if (this.counter == 2) {
+                    this.blockIngreso = false;
+                }
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    separarHaberes() {
+        // guardar sueldo base
+        this.haberesLista.sueldoBase = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 1);
+        this.haberesLista.sueldoBase = this.haberesLista.sueldoBase[0];
+        // guardar horas extras
+        this.haberesLista.horasExtras = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 2);
+        this.haberesLista.horasExtras = this.haberesLista.horasExtras[0];
+        // gratificacion legal
+        this.haberesLista.gratificacionLegal = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 3);
+        this.haberesLista.gratificacionLegal = this.haberesLista.gratificacionLegal[0];
+        // bono locomocion
+        this.haberesLista.bonoLocomocion = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 4);
+        this.haberesLista.bonoLocomocion = this.haberesLista.bonoLocomocion[0];
+        // bono colacion
+        this.haberesLista.bonoColacion = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 5);
+        this.haberesLista.bonoColacion = this.haberesLista.bonoColacion[0];
+        // asignacion familiar
+        this.haberesLista.asignacionFamiliar = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 6);
+        this.haberesLista.asignacionFamiliar = this.haberesLista.asignacionFamiliar[0];
+        // viatico
+        this.haberesLista.viatico = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 7);
+        this.haberesLista.viatico = this.haberesLista.viatico[0];
+        // Bono Extra
+        this.haberesLista.bonoExtra = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 8);
+        this.haberesLista.bonoExtra = this.haberesLista.bonoExtra[0];
+        // Vacaciones
+        this.haberesLista.vacaciones = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 9);
+        this.haberesLista.vacaciones = this.haberesLista.vacaciones[0];
+        // Viatico por Gestion
+        this.haberesLista.viaticoGestion = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 10);
+        this.haberesLista.viaticoGestion = this.haberesLista.viaticoGestion[0];
+        // Feriado Proporcional
+        this.haberesLista.feriadoProporcional = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 11);
+        this.haberesLista.feriadoProporcional = this.haberesLista.feriadoProporcional[0];
+        // Tarjeta Celular
+        this.haberesLista.tarjetaCelular = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 12);
+        this.haberesLista.tarjetaCelular = this.haberesLista.tarjetaCelular[0];
+        // Dia domingo
+        this.haberesLista.diaDomingo = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 13);
+        this.haberesLista.diaDomingo = this.haberesLista.diaDomingo[0];
+        console.log(this.haberesLista);
+    }
+    separarDescuentos() {
+        // cotizacionAFP
+        this.descuentosLista.cotizacionAfp = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 1);
+        this.descuentosLista.cotizacionAfp = this.descuentosLista.cotizacionAfp[0];
+        // Salud INP
+        this.descuentosLista.saludInp = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 2);
+        this.descuentosLista.saludInp = this.descuentosLista.saludInp[0];
+        // Plan de salud
+        this.descuentosLista.planSalud = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 3);
+        this.descuentosLista.planSalud = this.descuentosLista.planSalud[0];
+        // Seguro de Cesantia
+        this.descuentosLista.seguroCesantia = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 4);
+        this.descuentosLista.seguroCesantia = this.descuentosLista.seguroCesantia[0];
+        // Anticipo
+        this.descuentosLista.anticipo = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 5);
+        this.descuentosLista.anticipo = this.descuentosLista.anticipo[0];
+        // Prestamo
+        this.descuentosLista.prestamo = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 6);
+        this.descuentosLista.prestamo = this.descuentosLista.prestamo[0];
+        // Bono Trimestral
+        this.descuentosLista.bonoTrimestral = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 7);
+        this.descuentosLista.bonoTrimestral = this.descuentosLista.bonoTrimestral[0];
+        // Feriado Proporcional
+        this.descuentosLista.feriadoProporcional = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 8);
+        this.descuentosLista.feriadoProporcional = this.descuentosLista.feriadoProporcional[0];
+    }
+    // VARIABLE PARA GUARDAR LA LIQUIDACION
+    setLiquidacionHistorial() {
+        this._confLiq.setHistorialLiquidacion(this.empleado, this.fechaEmision, this.haberes, this.descuentos).subscribe(response => {
+            if (response.estado == 'success') {
+                alert(response.mensaje);
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    // Cargar la hoja con los datos seleccionados
+    test(id) {
+        this.counterLiquidacion = 0;
+        this.showTable = false;
+        this.getHaberesPorIdLiquidacion(id);
+        this.getDescuentosPorIdLiquidacion(id);
+    }
+    getHaberesPorIdLiquidacion(idLiquidacion) {
+        this._confLiq.getHaberesPorIdLiquidacion(idLiquidacion).subscribe(response => {
+            if (response.estado == 'success') {
+                this.haberes = response.haberes;
+                this.separarHaberes();
+                this.counterLiquidacion++;
+                if (this.counterLiquidacion == 2) {
+                    this.showTable = true;
+                }
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    getDescuentosPorIdLiquidacion(idLiquidacion) {
+        this._confLiq.getDescuentosPorIdLiquidacion(idLiquidacion).subscribe(response => {
+            if (response.estado == 'success') {
+                this.descuentos = response.descuentos;
+                this.separarDescuentos();
+                this.counterLiquidacion++;
+                if (this.counterLiquidacion == 2) {
+                    this.showTable = true;
+                }
+            }
+            else {
+                alert(response.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 };
 LiquidacionComponent.ctorParameters = () => [
-    { type: src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__["LiquidacionJuanitoService"] }
+    { type: src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__["LiquidacionJuanitoService"] },
+    { type: src_app_servicios_liquidacion_marro_service__WEBPACK_IMPORTED_MODULE_3__["LiquidacionMarroService"] }
 ];
 LiquidacionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -9677,7 +9891,7 @@ LiquidacionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./liquidacion.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.html"),
         styles: [__webpack_require__(/*! ./liquidacion.component.css */ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__["LiquidacionJuanitoService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_liquidacion_juanito_service__WEBPACK_IMPORTED_MODULE_2__["LiquidacionJuanitoService"], src_app_servicios_liquidacion_marro_service__WEBPACK_IMPORTED_MODULE_3__["LiquidacionMarroService"]])
 ], LiquidacionComponent);
 
 
@@ -15217,6 +15431,24 @@ let LiquidacionMarroService = class LiquidacionMarroService {
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
+    //PETICIONES PARA LA GENERACION DE LIQUIDACIONES
+    getConfiguracionHaberesPorIdEmpleado(idEmpleado) {
+        return this._http.get(this.url + "getConfiguracionHaberesPorIdEmpleado/" + idEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+    getConfiguracionDescuentosPorIdEmpleado(idEmpleado) {
+        return this._http.get(this.url + "getConfiguracionDescuentosPorIdEmpleado/" + idEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+    //PETICIONES PARA EL HISTORIAL DE LIQUIDACIONES
     getLiquidacionesEmpleado(idEmpleado) {
         return this._http.get(this.url + "getLiquidacionesPorId/" + idEmpleado, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -15244,6 +15476,38 @@ let LiquidacionMarroService = class LiquidacionMarroService {
         return this._http.post(this.url + "actualizarLiquidacion", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
             }) });
+    }
+    setHistorialLiquidacion(id, fecha, confHaberes, confDescuentos) {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.post(this.url + "setHistorialLiquidacion", { id, fecha, confHaberes, confDescuentos }, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + token
+            }) });
+    }
+    // Variable para las liquidaciones generadas
+    getLiquidacionesGeneradasPorIdEmpleado(idEmpleado) {
+        return this._http.get(this.url + "getLiquidacionesGeneradasPorIdEmpleado/" + idEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+    // Funcion para traer los detalles de las liquidaciones generadas
+    getHaberesPorIdLiquidacion(idEmpleado) {
+        return this._http.get(this.url + "getHaberesPorIdLiquidacion/" + idEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
+    }
+    getDescuentosPorIdLiquidacion(idEmpleado) {
+        return this._http.get(this.url + "getDescuentosPorIdLiquidacion/" + idEmpleado, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            })
+        });
     }
 };
 LiquidacionMarroService.ctorParameters = () => [

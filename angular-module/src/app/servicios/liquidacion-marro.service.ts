@@ -15,6 +15,31 @@ export class LiquidacionMarroService {
         this.url = global.url;
     }
 
+    //PETICIONES PARA LA GENERACION DE LIQUIDACIONES
+    getConfiguracionHaberesPorIdEmpleado(idEmpleado): Observable<any> {
+        return this._http.get(this.url + "getConfiguracionHaberesPorIdEmpleado/" + idEmpleado, {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + this.token,
+                    'Content-Type': 'applcation/json'
+                }
+            )
+        });
+    }
+
+    getConfiguracionDescuentosPorIdEmpleado(idEmpleado): Observable<any> {
+        return this._http.get(this.url + "getConfiguracionDescuentosPorIdEmpleado/" + idEmpleado, {
+            headers: new HttpHeaders(
+                {
+                    'Authorization': 'Bearer' + this.token,
+                    'Content-Type': 'applcation/json'
+                }
+            )
+        });
+    }
+
+    //PETICIONES PARA EL HISTORIAL DE LIQUIDACIONES
+
     getLiquidacionesEmpleado(idEmpleado): Observable<any> {
       return this._http.get(this.url + "getLiquidacionesPorId/" + idEmpleado, {
           headers: new HttpHeaders(
@@ -50,6 +75,50 @@ actualizarLiquidacion(id, campo, input): Observable<any>{
             'Authorization': 'Bearer' + token
         }
     )});
+}
+
+setHistorialLiquidacion(id, fecha, confHaberes, confDescuentos): Observable<any>{
+    let token = localStorage.getItem('token').replace(/['"]+/g, '');
+    return this._http.post(this.url + "setHistorialLiquidacion", {id,fecha,confHaberes,confDescuentos}, {headers: new HttpHeaders(
+        {
+            'Authorization': 'Bearer' + token
+        }
+    )});
+}
+
+// Variable para las liquidaciones generadas
+getLiquidacionesGeneradasPorIdEmpleado(idEmpleado): Observable<any> {
+    return this._http.get(this.url + "getLiquidacionesGeneradasPorIdEmpleado/" + idEmpleado, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )
+    });
+}
+
+// Funcion para traer los detalles de las liquidaciones generadas
+getHaberesPorIdLiquidacion(idEmpleado): Observable<any> {
+    return this._http.get(this.url + "getHaberesPorIdLiquidacion/" + idEmpleado, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )
+    });
+}
+
+getDescuentosPorIdLiquidacion(idEmpleado): Observable<any> {
+    return this._http.get(this.url + "getDescuentosPorIdLiquidacion/" + idEmpleado, {
+        headers: new HttpHeaders(
+            {
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }
+        )
+    });
 }
 
 }

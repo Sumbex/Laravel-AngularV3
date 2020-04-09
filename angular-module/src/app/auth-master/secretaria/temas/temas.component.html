@@ -107,7 +107,7 @@
                                 <td colspan="2">{{item?.titulo}}</td>
                                 <td colspan="2">{{item?.estado}}</td>
                                 <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button type="button" class="btn btn-info">Ver</button>
+                                <td colspan="2"><button (click)="abrirModalActualizar(editar,item)" type="button" class="btn btn-info">Ver</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -125,7 +125,7 @@
 <ng-template #editar let-c="close" let-d="dismiss">
     <div class="modal-header sticky-top" id="demoFont">
         <h6 class="modal-title"><strong><!-- <i class="fas fa-archive"></i> --> Asamblea Online / Editar Tema</strong></h6>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <button type="button" id="cerrarModalEditar" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -134,12 +134,12 @@
             <h6 class="modal-title"><strong>Formulario de Edicion</strong></h6>
         </div>
         <div class="card">
-            <!-- <form #temasForm="ngForm" (ngSubmit)="ingresarTema()">
+            <form #temasActForm="ngForm" (ngSubmit)="actualizarTema()">
                 <div class="row centrar">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Fecha</label>
-                            <input class="form-control" type="date" name="fecha" [(ngModel)]="datosTema.fecha" required>
+                            <input class="form-control" type="date" name="fecha" [(ngModel)]="datosActTemas.fecha" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -151,19 +151,26 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Titulo</label>
-                            <input class="form-control" type="text" name="titulo" [(ngModel)]="datosTema.titulo" required>
+                            <input class="form-control" type="text" name="titulo" [(ngModel)]="datosActTemas.titulo" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Descripcion</label>
-                            <textarea class="form-control resize-none" name="descripcion" [(ngModel)]="datosTema.descripcion" required></textarea>
+                            <textarea class="form-control resize-none" name="descripcion" [(ngModel)]="datosActTemas.descripcion" required></textarea>
                         </div>
                     </div>
-
-                    <button type="submit" [disabled]="temasForm.invalid || ingresandoTema" class="btn btn-block btn-success">Ingresar Tema <img *ngIf="ingresandoTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                    <div class="col-md-4 mt-2">
+                        <button type="submit" [disabled]="temasActForm.invalid || actualizandoTema || terminarTema || cancelarTema" class="btn btn-block btn-success">Actualizar Tema <img *ngIf="actualizandoTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                    </div>
+                    <div class="col-md-4 mt-2">
+                        <button type="button" [disabled]="terminarTema || actualizandoTema || cancelarTema" class="btn btn-block btn-secondary">Terminar Tema <img *ngIf="terminarTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                    </div>
+                    <div class="col-md-4 mt-2">
+                        <button (click)="cancelarTemas()" type="button" [disabled]="cancelarTema || actualizandoTema || terminarTema" class="btn btn-block btn-danger">Cancelar Tema <img *ngIf="cancelarTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                    </div>
                 </div>
-            </form> -->
+            </form>
         </div>
     </div>
     <div class="modal-footer">

@@ -41,6 +41,33 @@ export class VotacionesBryanmService {
     });
   }
 
+  actualizarTema(data): Observable<any> {
+    const datos = new FormData();
+    datos.append('id', data.id);
+    datos.append('fecha', data.fecha);
+    datos.append('titulo', data.titulo);
+    datos.append('descripcion', data.descripcion);
+    return this._http.post(this.url + "actualizar_tema", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
+  cancelarTema(data): Observable<any> {
+    const datos = new FormData();
+    datos.append('tema', data);
+    return this._http.post(this.url + "cancelar_tema", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
   traerTemasActivos(): Observable<any> {
     return this._http.get(this.url + "traer_temas_activos", {
       headers: new HttpHeaders(

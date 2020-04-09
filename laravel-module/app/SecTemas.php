@@ -47,26 +47,34 @@ class SecTemas extends Model
         }
     }
 
+    protected function actualizaTema($request)
+    {
+        $tema = SecTemas::find($request->id);
+        if (!is_null($tema)) {
+            $tema->fecha_inicio = $request->fecha;
+            $tema->titulo = $request->titulo;
+            $tema->descripcion = $request->descripcion;
+            if ($tema->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Tema actualizado con exito.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El tema a actualizar no existe.'];
+        }
+    }
+
     protected function cerrarTema($request)
     {
         $tema = SecTemas::find($request->tema);
         if (!is_null($tema)) {
             $votos = PortalSocioSecTemas::traerConteoVotos($request->tema);
-
-            $apr = bcdiv(($votos['votos']['apruebo'] * 100) / $votos['total'], '1', 2);
-            $rec = bcdiv(($votos['votos']['rechazo'] * 100) / $votos['total'], '1', 2);
-            $abs = bcdiv(($votos['votos']['abstengo'] * 100) / $votos['total'], '1', 2);
-            $nul = bcdiv(($votos['votos']['nulo'] * 100) / $votos['total'], '1', 2);
             $tema->estado_tema_id = 2;
             $tema->fecha_termino = $this->fechaActual();
             if ($votos['votos']['apruebo'] > $votos['votos']['rechazo']) {
                 $tema->estado_aprobacion_id = 2;
-                $total = $apr + $abs;
-                $tema->motivo = "Se ha aprovado con un " . $total . "%, de un total de: " . $votos['total'] . " votos. de los cuales: " . $apr . "% fueron aprobado y " . $abs . "% fueron me abstengo, teniendo asi una cantidad de: " . $votos['votos']['nulo'] . " votos nulos, siendo asi un: " . $nul . "% del total de votos.";
             } else {
                 $tema->estado_aprobacion_id = 3;
-                $total = $rec + $abs;
-                $tema->motivo = "Se ha rechazado con un " . $total . "%, de un total de: " . $votos['total'] . " votos. de los cuales: " . $rec . "% fueron rechazado y " . $abs . "% fueron me abstengo, teniendo asi una cantidad de: " . $votos['votos']['nulo'] . " votos nulos, siendo asi un: " . $nul . "% del total de votos.";
             }
             if ($tema->save()) {
                 return ['estado' => 'failed', 'mensaje' => 'La votacion ha sido cerrada correctamente.'];
@@ -75,6 +83,23 @@ class SecTemas extends Model
             }
         } else {
             return ['estado' => 'failed', 'mensaje' => 'El tema que intentas cerrar no existe.'];
+        }
+    }
+
+    protected function cancelarTema($request)
+    {
+        $tema = SecTemas::find($request->tema);
+        if (!is_null($tema)) {
+            $tema->fecha_termino = $this->fechaActual();
+            $tema->estado_tema_id = 3;
+            $tema->estado_aprobacion_id = 4;
+            if ($tema->save()) {
+                return ['estado' => 'success', 'mensaje' => 'Tema cancelado con exito.'];
+            } else {
+                return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El tema a cancelar no existe.'];
         }
     }
 

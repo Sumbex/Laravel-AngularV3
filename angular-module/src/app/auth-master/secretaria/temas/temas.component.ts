@@ -12,6 +12,9 @@ export class TemasComponent implements OnInit {
 
   remitente;
   ingresandoTema = false;
+  actualizandoTema = false;
+  terminarTema = false;
+  cancelarTema = false;
 
   idAnioActual;
   idMesActual;
@@ -24,6 +27,13 @@ export class TemasComponent implements OnInit {
   cargarSelect = 0;
 
   datosTema = {
+    fecha: '',
+    titulo: '',
+    descripcion: ''
+  };
+
+  datosActTemas = {
+    id: '',
     fecha: '',
     titulo: '',
     descripcion: ''
@@ -46,6 +56,7 @@ export class TemasComponent implements OnInit {
   }
 
   abrirModalActivos(modal) {
+    this.temasActivos = [];
     this.modalService.open(modal, { size: 'xl' });
     this.traerTemasActivos();
   }
@@ -55,6 +66,19 @@ export class TemasComponent implements OnInit {
     this.selectAnio = JSON.parse(localStorage.getItem('anios'));
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
     this.cargarSelectHistorial();
+  }
+
+  abrirModalActualizar(modal, tema) {
+    this.cargarDatosActualizar(tema);
+    this.modalService.open(modal, { size: 'xl' });
+  }
+
+  cargarDatosActualizar(tema) {
+    this.datosActTemas.id = tema.id;
+    this.remitente = tema.nombre;
+    this.datosActTemas.fecha = tema.fecha_inicio;
+    this.datosActTemas.titulo = tema.titulo;
+    this.datosActTemas.descripcion = tema.descripcion;
   }
 
   changeAnio(valorSelect) {
@@ -151,6 +175,45 @@ export class TemasComponent implements OnInit {
         }
       }, error => {
         this.ingresandoTema = false;
+        console.log(error);
+      }
+    )
+  }
+
+  actualizarTema() {
+    this.actualizandoTema = true;
+    this._votaciones.actualizarTema(this.datosActTemas).subscribe(
+      res => {
+        if (res.estado = 'success') {
+          this.traerTemasActivos();
+          this.actualizandoTema = false;
+          alert(res.mensaje);
+        } else {
+          this.actualizandoTema = false;
+          alert(res.mensaje);
+        }
+      }, error => {
+        this.actualizandoTema = false;
+        console.log(error);
+      }
+    )
+  }
+
+  cancelarTemas() {
+    this.cancelarTema = true;
+    this._votaciones.cancelarTema(this.datosActTemas.id).subscribe(
+      res => {
+        if (res.estado = 'success') {
+          this.traerTemasActivos();
+          this.cancelarTema = false;
+          alert(res.mensaje);
+          document.getElementById("cerrarModalEditar").click();
+        } else {
+          this.cancelarTema = false;
+          alert(res.mensaje);
+        }
+      }, error => {
+        this.cancelarTema = false;
         console.log(error);
       }
     )

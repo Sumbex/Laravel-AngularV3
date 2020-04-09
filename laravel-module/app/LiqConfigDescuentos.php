@@ -200,13 +200,13 @@ class LiqConfigDescuentos extends Model
             return [
                 'estado' => 'success',
                 'lista' => $listar,
-                'suma' => $sum_desc[0]->suma
+                'suma' => empty($sum_desc[0]->suma)?0:$sum_desc[0]->suma
             ];
         }
         return [
             'estado' => 'failed',
             'lista' => null,
-            'suma' => null
+            'suma' => 0
         ];
     }
 

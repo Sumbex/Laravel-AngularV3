@@ -11,6 +11,7 @@ use App\LiqHistorialConfigDescuentos;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HistorialLiquidacionesController extends Controller
 {
@@ -252,6 +253,10 @@ class HistorialLiquidacionesController extends Controller
             ->where('l.activo', 'S')
             ->get();
         if (!$busqueda->isEmpty()) {
+            foreach ($busqueda as $key) {
+                setlocale(LC_TIME, 'es');
+                $key->fecha = Carbon::parse($key->fecha)->formatLocalized('%d %B del %Y');
+            }
             return ['estado' => 'success', 'liquidaciones' => $busqueda];
         } else {
             return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado liquidaciones con el empleado solicitado'];

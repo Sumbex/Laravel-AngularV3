@@ -54,6 +54,7 @@ export class HistorialLiquidacionesComponent implements OnInit {
     this._liquidacionesHistorial.setDatosliquidacion(this.empleado, this.datosFormulario).subscribe(response=>{
       if(response.estado == 'success'){
         alert(response.mensaje);
+        this.traerDatosLiquidacion();
       }else{
         alert(response.mensaje);
       }

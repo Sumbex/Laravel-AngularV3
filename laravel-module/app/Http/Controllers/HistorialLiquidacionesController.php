@@ -135,8 +135,13 @@ class HistorialLiquidacionesController extends Controller
             ->select('l.*', 'e.nombre_trabajador as nombre')
             ->join('liq_empleado as e', 'e.id', '=', 'l.id_empleado')
             ->where('l.id_empleado', $id)
+            ->orderBy('fecha', 'desc')
             ->get();
         if (!$busqueda->isEmpty()) {
+            foreach ($busqueda as $key) {
+                setlocale(LC_TIME, 'es');
+                $key->fecha = Carbon::parse($key->fecha)->formatLocalized('%d %B del %Y');
+            }
             return ['estado' => 'success', 'liquidaciones' => $busqueda];
         } else {
             return ['estado' => 'failed_unr', 'mensaje' => 'No se han encontrado liquidaciones con el empleado solicitado'];
@@ -186,8 +191,10 @@ class HistorialLiquidacionesController extends Controller
                 $descuentos = $this->ingresarDescuentos($request->confDescuentos, $liquidacion->id);
                 if ($haberes == true && $descuentos == true) {
                     DB::commit();
+                    return ['estado' => 'success', 'mensaje' => 'Liquidación Generada Correctamente'];
                 } else {
                     DB::rollBack();
+                    return ['estado' => 'failed', 'mensaje' => 'No se ha logrado generar la liquidación, intente nuevamente'];
                 }
             }
     }
@@ -251,6 +258,7 @@ class HistorialLiquidacionesController extends Controller
             ->join('liq_empleado as e', 'e.id', '=', 'l.empleado_id')
             ->where('l.empleado_id', $id)
             ->where('l.activo', 'S')
+            ->orderBy('fecha', 'desc')
             ->get();
         if (!$busqueda->isEmpty()) {
             foreach ($busqueda as $key) {

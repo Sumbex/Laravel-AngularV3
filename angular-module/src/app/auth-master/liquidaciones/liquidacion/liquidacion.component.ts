@@ -57,6 +57,7 @@ export class LiquidacionComponent implements OnInit {
   load = false;
   loadTable = false;
   fecha = '';
+  blockIngresoGeneracion = false;
 
   // Variable para traer la lista de liquidaciones generadas
   liquidacionesGeneradas = [];
@@ -212,14 +213,19 @@ export class LiquidacionComponent implements OnInit {
 
   // VARIABLE PARA GUARDAR LA LIQUIDACION
   setLiquidacionHistorial(){
+    this.blockIngresoGeneracion = true;
     this._confLiq.setHistorialLiquidacion(this.empleado, this.fechaEmision, this.haberes, this.descuentos).subscribe(response=>{
       if(response.estado == 'success'){
         alert(response.mensaje);
+        this.blockIngresoGeneracion = false;
+        this.getLiquidacionesGeneradas();
       }else{
         alert(response.mensaje);
+        this.blockIngresoGeneracion = false;
       }
     },error=>{
       console.log(error);
+      this.blockIngresoGeneracion = false;
     });
   }
 

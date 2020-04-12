@@ -20,7 +20,7 @@
         </select>
         <label for="" class="mt-2">Seleccione fecha emisión de la liquidación</label>
         <input type="date" class="form-control" [(ngModel)]="fechaEmision">
-        <button [disabled]="!empleado || blockIngreso || !fechaEmision" class="btn btn-success btn-block mt-4" (click)="setLiquidacionHistorial()">Generar Liquidacion</button>
+        <button [disabled]="!empleado || blockIngreso || !fechaEmision || blockIngresoGeneracion" class="btn btn-success btn-block mt-4" (click)="setLiquidacionHistorial()">Generar Liquidacion</button>
     </div>
 </div>
 

@@ -78,6 +78,7 @@ Route::post('/cancelar_tema', 'SecTemasController@CancelarTema');
 Route::get('/traer_temas/{anio}/{mes}/{tipo}', 'SecTemasController@TraerTemas');
 Route::get('/traer_temas_activos', 'SecTemasController@TraerTemasActivos');
 Route::get('/traer_tipos_temas', 'SecTemasController@TraerTiposTemas');
+Route::get('/traer_votos_tema/{tema}', 'SecTemasController@TraerVotos');
 //------------------------------------------->Temas/Votos
 
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */

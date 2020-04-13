@@ -68,6 +68,18 @@ export class VotacionesBryanmService {
     });
   }
 
+  cerrarTema(data): Observable<any> {
+    const datos = new FormData();
+    datos.append('tema', data);
+    return this._http.post(this.url + "cerrar_tema", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
   traerTemasActivos(): Observable<any> {
     return this._http.get(this.url + "traer_temas_activos", {
       headers: new HttpHeaders(
@@ -92,6 +104,17 @@ export class VotacionesBryanmService {
 
   traerHistorialTemas(anio, mes, tipo): Observable<any> {
     return this._http.get(this.url + "traer_temas/" + anio + "/" + mes + "/" + tipo, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
+  traerVotosTema(tema): Observable<any> {
+    return this._http.get(this.url + "traer_votos_tema/" + tema, {
       headers: new HttpHeaders(
         {
           'Authorization': 'Bearer' + this.token,

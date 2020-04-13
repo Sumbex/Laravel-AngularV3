@@ -41,4 +41,9 @@ class SecTemasController extends Controller
     {
         return SecTemas::traerTiposTemas();
     }
+
+    public function TraerVotos($tema)
+    {
+        return SecTemas::traerVotos($tema);
+    }
 }

@@ -86,7 +86,8 @@
                     <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
                         <thead text-sm class="text-center">
                             <tr>
-                                <th colspan="10" class="ColorThCS">Temas Activos</th>
+                                <th colspan="8" class="ColorThCS">Temas Activos</th>
+                                <th colspan="2"><button class="btn btn-info" (click)="traerTemasActivos()">Actualizar</button></th>
                             </tr>
                             <tr>
                                 <th colspan="2">
@@ -161,21 +162,26 @@
                         </div>
                     </div>
                     <div class="col-md-4 mt-2">
-                        <button type="submit" [disabled]="temasActForm.invalid || actualizandoTema || terminarTema || cancelarTema" class="btn btn-block btn-success">Actualizar Tema <img *ngIf="actualizandoTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                        <button type="submit" [disabled]="temasActForm.invalid || actualizandoTema || terminarTema || cancelarTema || mostrarVotos || cerrada" class="btn btn-block btn-success">Actualizar Tema <img *ngIf="actualizandoTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                     <div class="col-md-4 mt-2">
-                        <button type="button" [disabled]="terminarTema || actualizandoTema || cancelarTema" class="btn btn-block btn-secondary">Terminar Tema <img *ngIf="terminarTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                        <button (click)="cerrarTema(grafico)" type="button" [disabled]="terminarTema || actualizandoTema || cancelarTema || mostrarVotos || cerrada" class="btn btn-block btn-primary">Terminar Tema <img *ngIf="terminarTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                     <div class="col-md-4 mt-2">
-                        <button (click)="cancelarTemas()" type="button" [disabled]="cancelarTema || actualizandoTema || terminarTema" class="btn btn-block btn-danger">Cancelar Tema <img *ngIf="cancelarTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                        <button (click)="cancelarTemas()" type="button" [disabled]="cancelarTema || actualizandoTema || terminarTema || mostrarVotos || cerrada" class="btn btn-block btn-danger">Cancelar Tema <img *ngIf="cancelarTema" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <button (click)="traerVotosTema(datosActTemas.id, grafico, false)" type="button" [disabled]="mostrarVotos || cancelarTema || actualizandoTema || terminarTema || cerrada" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
-            class="far fa-arrow-alt-circle-left"></i> Volver a Asamblea Online</button>
+        <button [hidden]="cerrada" type="button" class="btn btn-info" (click)="d('Cross click')"><i
+            class="far fa-arrow-alt-circle-left"></i> Volver</button>
+        <button [hidden]="!cerrada" type="button" class="btn btn-info" (click)="traerTemasActivos(); d('Cross click')"><i
+                class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
 </ng-template>
 
@@ -246,7 +252,7 @@
                                 <td colspan="2">{{item?.estado}}</td>
                                 <td colspan="2">{{item?.aprobado}}</td>
                                 <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button type="button" class="btn btn-info">Ver</button>
+                                <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button" class="btn btn-info">Ver</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -258,5 +264,85 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
             class="far fa-arrow-alt-circle-left"></i> Volver a Asamblea Online</button>
+    </div>
+</ng-template>
+
+
+<ng-template #grafico let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong><!-- <i class="fas fa-archive"></i> --> Asamblea Online / Votos</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="row justify-center mt-2">
+            <div class="col-md-12">
+                <h3 class="text-center">
+                    {{motivo}}
+                </h3>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <canvas id="votosTema" width="400" height="400">
+                {{chart}}
+            </canvas>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+            class="far fa-arrow-alt-circle-left"></i> Volvere</button>
+    </div>
+</ng-template>
+
+<ng-template #detalle let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong><!-- <i class="fas fa-archive"></i> --> Asamblea Online / Detalle Historial</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-header" id="demoFont2">
+            <h6 class="modal-title"><strong>Detalle del Tema Tratado</strong></h6>
+        </div>
+        <div class="card">
+            <div class="row centrar text-center">
+                <div class="col-md-12">
+                    <span>{{datosDetTemas.titulo}}</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Inicio</label>
+                    <span>{{datosDetTemas.inicio}}</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Termino</label>
+                    <span>{{datosDetTemas.termino}}</span>
+                </div>
+                <div class="col-md-12">
+                    <label for="">Tema tratado:</label>
+                    <span>{{datosDetTemas.descripcion}}</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Estado:</label>
+                    <span>{{datosDetTemas.estado}}</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Aprobada:</label>
+                    <span>{{datosDetTemas.aprobado}}</span>
+                </div>
+                <div class="col-md-12">
+                    <label for="">Creada por:</label>
+                    <span>{{datosDetTemas.nombre}}</span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button" [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+            class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
 </ng-template>

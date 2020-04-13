@@ -137,7 +137,8 @@ class PortalSocioSecTemas extends Model
                         break;
                 }
             }
-            return ['estado' => 'success', 'votos' => $return, 'total' => count($votos)];
+            list($keys, $values) = array_divide($return);
+            return ['estado' => 'success', 'votos' => $return, 'total' => count($votos), 'grafico' => $values];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No existen votos.'];
         }

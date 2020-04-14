@@ -92,3 +92,14 @@ hr {
     margin-top: 5px !important;
     height: 10px;
 }
+
+.cancelada{
+    color: red;
+}
+.abierta{
+    color: blue;
+}
+
+.aprobado{
+    color: #138D75;
+}

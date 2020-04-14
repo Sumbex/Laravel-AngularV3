@@ -3,6 +3,7 @@
 namespace App;
 
 use App\SecVotos;
+use Carbon\Carbon;
 use App\PortalSocio;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -41,6 +42,10 @@ class PortalSocioSecTemas extends Model
                 ])
                 ->get();
             if (!$temas->isEmpty()) {
+                foreach ($temas as $key) {
+                    setlocale(LC_TIME, 'es');
+                    $key->fecha_inicio = Carbon::parse($key->fecha_inicio)->formatLocalized('%d de %B del %Y');
+                }
                 return ['estado' => 'success', 'temas' => $temas];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'No hay Temas disponibles para votar.'];
@@ -55,18 +60,21 @@ class PortalSocioSecTemas extends Model
         $verificarSocio = $this->verificarSocio($this->socioID());
         if ($verificarSocio['estado'] == 'success') {
             $verificarVoto = $this->verificarVoto($request->tema);
-            if ($verificarVoto == true) {
-                $voto = new SecVotos;
-                $voto->tema_id = $request->tema;
-                $voto->socio_id = $this->socioID();
-                $voto->voto_id = $request->voto;
-                if ($voto->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Voto ingresado con exito.'];
+            if ($verificarVoto['estado'] == 'success') {
+                $voto = SecVotos::find($verificarVoto['id']);
+                if (!is_null($voto)) {
+                    $voto->voto_id = $request->voto;
+                    $voto->activo = 'S';
+                    if ($voto->save()) {
+                        return ['estado' => 'success', 'mensaje' => 'Voto ingresado con exito.'];
+                    } else {
+                        return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    }
                 } else {
-                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente 1.'];
                 }
             } else {
-                return ['estado' => 'failed', 'mensaje' => 'Ya has ingresado tu voto, no puedes cambiarlo.'];
+                return $verificarVoto;
             }
         } else {
             return  $verificarSocio;
@@ -88,9 +96,9 @@ class PortalSocioSecTemas extends Model
             ])
             ->first();
         if (!is_null($voto)) {
-            return true;
+            return ['estado' => 'success', 'id' => $voto->id];
         } else {
-            return false;
+            return ['estado' => 'failed', 'mensaje' => 'Ya has ingresado tu voto, no puedes cambiarlo.'];
         }
     }
 
@@ -152,5 +160,20 @@ class PortalSocioSecTemas extends Model
     protected function traerHistorial($anio, $mes, $tipo)
     {
         return SecTemas::traerTemas($anio, $mes, $tipo);
+    }
+
+    protected function traerTipoVotos()
+    {
+        $votos = DB::table('sec_tipo_voto')
+            ->select([
+                'id',
+                'descripcion as voto'
+            ])
+            ->get();
+        if (!$votos->isEmpty()) {
+            return ['estado' => 'success', 'votos' => $votos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No existen tipo de votos.'];
+        }
     }
 }

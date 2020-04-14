@@ -149,6 +149,17 @@ export class VotacionesBryanmService {
     })
   }
 
+  traerTiposVotos(): Observable<any> {
+    return this._http.get(this.url + "traer_tipo_votos_socios", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
   traerHistorialSocios(anio, mes, tipo): Observable<any> {
     return this._http.get(this.url + "traer_historial_temas_socios/" + anio + "/" + mes + "/" + tipo, {
       headers: new HttpHeaders(
@@ -160,8 +171,29 @@ export class VotacionesBryanmService {
     })
   }
 
+  traerVotosSocios(tema): Observable<any> {
+    return this._http.get(this.url + "traer_votos_tema_socios/" + tema, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
 
-
+  ingresarVoto(data): Observable<any> {
+    const datos = new FormData();
+    datos.append('tema', data.tema);
+    datos.append('voto', data.voto);
+    return this._http.post(this.url + "ingresar_voto_socios", datos, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
 
   //----------------------------->Funciones Socios
 

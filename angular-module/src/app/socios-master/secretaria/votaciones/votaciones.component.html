@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 mt-4 mb-4">
+    <div class="col-md-12 mt-4">
         <div class="row centrar text-center">
             <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
                         class="fas fa-calendar-check"></i></strong></label>
@@ -112,7 +112,7 @@
                                 <td colspan="2">{{item?.titulo}}</td>
                                 <td colspan="2">{{item?.estado}}</td>
                                 <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button (click)="abrirModalActualizar(editar,item)" type="button" class="btn btn-info">Ver</button>
+                                <td colspan="2"><button (click)="abrirModalTema(editar,item)" type="button" class="btn btn-info">Ver</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -151,5 +151,185 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
             class="far fa-arrow-alt-circle-left"></i> Volvere</button>
+    </div>
+</ng-template>
+
+<ng-template #editar let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong>
+                <!-- <i class="fas fa-archive"></i> --> Asamblea Online / Votar</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-header" id="demoFont2">
+            <h6 class="modal-title"><strong>Detalle del Tema Tratado</strong></h6>
+        </div>
+        <div class="card">
+            <div class="row centrar text-center">
+                <div class="col-12 col-md-12">
+                    <h3>
+                        <span><b>{{datosVotarTemas.titulo}}</b></span>
+                        <hr>
+                    </h3>
+                </div>
+                <div class="col-12 col-md-12 text-left">
+                    <hr>
+                    <label class="mt-2">
+                        <h5>
+                            <b>Tema tratado: </b>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span>{{datosVotarTemas.descripcion}}</span>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-12 text-right">
+                    <hr>
+                    <label>
+                        <h5>
+                            <h5>
+                                <b>Creada por: </b>
+                            </h5>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span>{{datosVotarTemas.nombre}}</span>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-12">
+                    <hr>
+                    <label>
+                        <h5>
+                            <b>Voto: </b>
+                        </h5>
+                    </label>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mt-3">
+                            <select (change)="changeVoto($event)" name="voto" #tipo="ngModel" [(ngModel)]="idVotoActual" class="form-control form-control-sm">
+                                <option value="0">Seleccione</option>
+                                <option *ngFor="let item of selectVoto" [value]="item.id">{{item.voto}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <button type="button" (click)="ingresarVoto()" [disabled]="ingresandoVoto || mostrarVotos" class="btn btn-block btn-success">Votar <img *ngIf="ingresandoVoto"
+                            height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <button (click)="traerVotosTema(datosVotarTemas.id, grafico, false)" type="button" [disabled]="mostrarVotos || ingresandoVoto" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
+                            height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+                class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+</ng-template>
+
+<ng-template #detalle let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong>
+                <!-- <i class="fas fa-archive"></i> --> Asamblea Online / Detalle Historial</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-header" id="demoFont2">
+            <h6 class="modal-title"><strong>Detalle del Tema Tratado</strong></h6>
+        </div>
+        <div class="card">
+            <div class="row centrar text-center">
+                <div class="col-12 col-md-12">
+                    <h3>
+                        <span><b>{{datosDetTemas.titulo}}</b></span>
+                        <hr>
+                    </h3>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label>
+                        <h5>
+                            <b>Inicio Votación: </b>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span>{{datosDetTemas.inicio}}</span>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label>
+                        <h5>
+                            <b>Termino Votación: </b>
+                        </h5>
+                    </label>
+                    <h5>
+                        <h6>
+                            <span>{{datosDetTemas.termino}}</span>
+                        </h6>
+                    </h5>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label>
+                        <h5>
+                            <b>Estado: </b>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span [ngClass]="{'cancelada' : datosDetTemas?.estado != 'Publicado' , 'cancelada' : datosDetTemas?.estado != 'Publicado' , 'aprobado' : datosDetTemas?.estado == 'Publicado'}">
+                            {{datosDetTemas.estado}}</span>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label>
+                        <h5>
+                            <b>Aprobación: </b>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span [ngClass]="{'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'aprobado' : datosDetTemas?.aprobado == 'Aprobado'}">
+                            {{datosDetTemas.aprobado}}
+                        </span>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-12 text-left">
+                    <hr>
+                    <label class="mt-2">
+                        <h5>
+                            <b>Tema tratado: </b>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span>{{datosDetTemas.descripcion}}</span>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-12 text-right">
+                    <hr>
+                    <label>
+                        <h5>
+                            <h5>
+                                <b>Creada por: </b>
+                            </h5>
+                        </h5>
+                    </label>
+                    <h6>
+                        <span>{{datosDetTemas.nombre}}</span>
+                    </h6>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button" [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
+                            height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+                class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
 </ng-template>

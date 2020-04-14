@@ -2,10 +2,12 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use App\PortalSocioSecTemas;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 class SecTemas extends Model
 {
@@ -21,29 +23,56 @@ class SecTemas extends Model
         return NotasCuentas::datosBasicos()['datos']->fecha;
     }
 
+    public function validarDatos($request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'fecha' => 'required',
+                'titulo' => 'required',
+                'descripcion' => 'required',
+            ],
+            [
+                'fecha.required' => 'Debes ingresar la fecha.',
+                'titulo.required' => 'Debes ingresar un titulo.',
+                'descripcion.required' => 'Debes ingresar una descripcion.',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];
+        }
+        return ['estado' => 'success', 'mensaje' => 'success'];
+    }
+
     protected function ingresarTema($request)
     {
-        DB::beginTransaction();
-        $tema = new SecTemas;
-        $tema->fecha_inicio = $request->fecha;
-        $tema->titulo = $request->titulo;
-        $tema->descripcion = $request->descripcion;
-        $tema->estado_tema_id = 1;
-        $tema->estado_aprobacion_id = 1;
-        $tema->user_id = Auth::user()->id;
-        $tema->activo = "S";
-        if ($tema->save()) {
-            $voto = SecVotos::ingresarVotosNulos($tema->id);
-            if ($voto['estado'] == "success") {
-                DB::commit();
-                return ['estado' => 'success', 'mensaje' => 'Tema publicado con exito.'];
+        $validarDatos = $this->validarDatos($request);
+        if ($validarDatos['estado'] == 'success') {
+            DB::beginTransaction();
+            $tema = new SecTemas;
+            $tema->fecha_inicio = $request->fecha;
+            $tema->titulo = $request->titulo;
+            $tema->descripcion = $request->descripcion;
+            $tema->estado_tema_id = 1;
+            $tema->estado_aprobacion_id = 1;
+            $tema->user_id = Auth::user()->id;
+            $tema->activo = "S";
+            if ($tema->save()) {
+                $voto = SecVotos::ingresarVotosNulos($tema->id);
+                if ($voto['estado'] == "success") {
+                    DB::commit();
+                    return ['estado' => 'success', 'mensaje' => 'Tema publicado con exito.'];
+                } else {
+                    DB::rollBack();
+                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                }
             } else {
                 DB::rollBack();
                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
             }
         } else {
-            DB::rollBack();
-            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+            return $validarDatos;
         }
     }
 
@@ -117,6 +146,7 @@ class SecTemas extends Model
             ->select([
                 'st.id',
                 'st.fecha_inicio',
+                'st.fecha_inicio as fecha',
                 DB::raw("upper(st.titulo) as titulo"),
                 DB::raw("upper(st.descripcion) as descripcion"),
                 'set.descripcion as estado',
@@ -131,6 +161,10 @@ class SecTemas extends Model
             ])
             ->get();
         if (!$temas->isEmpty()) {
+            foreach ($temas as $key) {
+                setlocale(LC_TIME, 'es');
+                $key->fecha_inicio = Carbon::parse($key->fecha_inicio)->formatLocalized('%d de %B del %Y');
+            }
             return ['estado' => 'success', 'temas' => $temas];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No hay Temas Activos.'];
@@ -163,6 +197,11 @@ class SecTemas extends Model
             ->whereRaw("extract(year from st.fecha_inicio) ='" . $anioD . "'and extract(month from st.fecha_inicio) ='" . $mes . "'")
             ->get();
         if (!$temas->isEmpty()) {
+            foreach ($temas as $key) {
+                setlocale(LC_TIME, 'es');
+                $key->fecha_inicio = Carbon::parse($key->fecha_inicio)->formatLocalized('%d de %B del %Y');
+                $key->fecha_termino = Carbon::parse($key->fecha_termino)->formatLocalized('%d de %B del %Y');
+            }
             if ($tipo == 0) {
                 return ['estado' => 'success', 'temas' => $temas];
             } else {

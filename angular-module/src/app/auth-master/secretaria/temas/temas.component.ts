@@ -102,7 +102,6 @@ export class TemasComponent implements OnInit {
   abrirModalDetalle(modal, tema) {
     this.cargarDatosDetalle(tema);
     this.modalService.open(modal, { size: 'xl' });
-    /* this.votos(); */
   }
 
   cargarDatosDetalle(tema) {
@@ -121,7 +120,7 @@ export class TemasComponent implements OnInit {
   cargarDatosActualizar(tema) {
     this.datosActTemas.id = tema.id;
     this.remitente = tema.nombre;
-    this.datosActTemas.fecha = tema.fecha_inicio;
+    this.datosActTemas.fecha = tema.fecha;
     this.datosActTemas.titulo = tema.titulo;
     this.datosActTemas.descripcion = tema.descripcion;
   }

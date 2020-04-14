@@ -15,18 +15,30 @@ export class VotacionesComponent implements OnInit {
   totalVotos = [];
   cantVotos;
 
+  ingresandoVoto = false;
+  mostrarVotos = false;
   mostrarMotivo = false;
   motivo;
 
   idAnioActual;
   idMesActual;
   idTipoActual = 0;
+  idVotoActual = 0;
 
   cargarSelect = 0;
 
   selectAnio;
   selectMes;
   selectTipo;
+  selectVoto;
+
+  datosVotarTemas = {
+    id: '',
+    fecha: '',
+    titulo: '',
+    descripcion: '',
+    nombre: ''
+  };
 
   datosDetTemas = {
     id: '',
@@ -39,6 +51,11 @@ export class VotacionesComponent implements OnInit {
     nombre: '',
     motivo: ''
   };
+
+  datosVoto = {
+    tema: '',
+    voto: null
+  }
 
   temasActivos = [];
   temasHistorial = [];
@@ -67,7 +84,21 @@ export class VotacionesComponent implements OnInit {
   abrirModalDetalle(modal, tema) {
     this.cargarDatosDetalle(tema);
     this.modalService.open(modal, { size: 'xl' });
-    /* this.votos(); */
+  }
+
+  abrirModalTema(modal, tema) {
+    this.idVotoActual = 0;
+    this.cargarDatosTema(tema);
+    this.traerTipoVotos();
+    this.modalService.open(modal, { size: 'xl' });
+  }
+
+  cargarDatosTema(tema) {
+    this.datosVotarTemas.id = tema.id;
+    this.datosVotarTemas.fecha = tema.fecha_inicio;
+    this.datosVotarTemas.titulo = tema.titulo;
+    this.datosVotarTemas.descripcion = tema.descripcion;
+    this.datosVotarTemas.nombre = tema.nombre;
   }
 
   cargarDatosDetalle(tema) {
@@ -127,6 +158,19 @@ export class VotacionesComponent implements OnInit {
     )
   }
 
+  traerTipoVotos() {
+    this._votaciones.traerTiposVotos().subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.selectVoto = res.votos;
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
   changeAnio(valorSelect) {
     this.idAnioActual = valorSelect.target.value;
     this.traerHistorial();
@@ -140,6 +184,39 @@ export class VotacionesComponent implements OnInit {
   changeTipo(valorSelect) {
     this.idTipoActual = valorSelect.target.value;
     this.traerHistorial();
+  }
+
+  changeVoto(valorSelect) {
+    this.idVotoActual = valorSelect.target.value;
+  }
+
+  cargarVoto() {
+    this.datosVoto.tema = this.datosVotarTemas.id;
+    this.datosVoto.voto = this.idVotoActual;
+  }
+
+  ingresarVoto() {
+    this.cargarVoto();
+    if (this.datosVoto.voto == 0) {
+      alert('Debes seleccionar un voto.');
+    } else {
+      this.ingresandoVoto = true;
+      this._votaciones.ingresarVoto(this.datosVoto).subscribe(
+        res => {
+          if (res.estado == 'success') {
+            this.ingresandoVoto = false;
+            this.idVotoActual = 0;
+            alert(res.mensaje);
+          } else {
+            this.ingresandoVoto = false;
+            alert(res.mensaje);
+          }
+        }, error => {
+          this.ingresandoVoto = false;
+          console.log(error);
+        }
+      )
+    }
   }
 
   traerHistorial() {
@@ -169,6 +246,34 @@ export class VotacionesComponent implements OnInit {
           document.getElementById("cerrarActivos").click();
         }
       }, error => {
+        console.log(error);
+      }
+    )
+  }
+
+  traerVotosTema(tema, grafico, estado) {
+    this.mostrarVotos = true;
+    this.mostrarMotivo = false;
+    if (estado == true) {
+      this.mostrarMotivo = true;
+    } else {
+      this.motivo = '';
+      this.mostrarMotivo = false;
+    }
+    this.totalVotos = [];
+    this.cantVotos = '';
+    this._votaciones.traerVotosSocios(tema).subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.mostrarVotos = false;
+          this.totalVotos = res.grafico;
+          this.cantVotos = res.total;
+          this.abrirModalVotos(grafico);
+        } else {
+          this.mostrarVotos = false;
+        }
+      }, error => {
+        this.mostrarVotos = false;
         console.log(error);
       }
     )

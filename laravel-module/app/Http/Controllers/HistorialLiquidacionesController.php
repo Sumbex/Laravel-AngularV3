@@ -23,12 +23,13 @@ class HistorialLiquidacionesController extends Controller
             [
                 'id' => 'required',
                 'fecha' => 'required',
-                'archivo' => 'required|file'
+                'archivo' => 'required|mimes:pdf'
             ],
             [
                 'id.required' => 'Debe de seleccionar a un usuario',
                 'fecha.required' => 'Debe de seleccionar una fecha',
-                'archivo.file' => 'Lo seleccionado debe ser un archivo.'
+                'archivo.required' => 'Debe de seleccionar un archivo.',
+                'archivo.mimes' => 'Lo seleccionado debe ser un archivo PDF.'
             ]
         );
 

@@ -21,6 +21,9 @@ export class HistorialLiquidacionesComponent implements OnInit {
   //VARIABLE PARA GUARDAR LAS LIQUIDACIONES
   liquidaciones = [];
 
+  load = false;
+  loadTable = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _liq: LiquidacionJuanitoService, private _liquidacionesHistorial: LiquidacionMarroService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -51,14 +54,18 @@ export class HistorialLiquidacionesComponent implements OnInit {
   }
 
   setDatosLiquidacion(){
+    this.load = true;
     this._liquidacionesHistorial.setDatosliquidacion(this.empleado, this.datosFormulario).subscribe(response=>{
       if(response.estado == 'success'){
         alert(response.mensaje);
+        this.load = false;
         this.traerDatosLiquidacion();
       }else{
-        alert(response.mensaje);
+        this.load = false;
+        alert("Compruebe que todos los campos del formulario han sido rellenados correctamente");
       }
     },error=>{
+      this.load = false;
       console.log(error);
     });
   }
@@ -80,15 +87,19 @@ export class HistorialLiquidacionesComponent implements OnInit {
   }
 
   traerDatosLiquidacion(){
+    this.loadTable  = true;
     this.liquidaciones = [];
     this._liquidacionesHistorial.getLiquidacionesEmpleado(this.empleado).subscribe(response=>{
       if(response.estado == 'success'){
         this.liquidaciones = response.liquidaciones;
+        this.loadTable = false;
       }else{
         alert(response.mensaje)
+        this.loadTable = false;
       }
     },error=>{
       console.log(error);
+      this.loadTable = false;
     });
   }
 

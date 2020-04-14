@@ -23,14 +23,15 @@
             <div class="row mt-4">
                 <div class="col-md-6">
                     <label>Fecha</label>
-                    <input type="date" name="fecha" [(ngModel)]="datosFormulario.fecha" class="form-control">
+                    <input type="date" name="fecha" [(ngModel)]="datosFormulario.fecha" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label>Liquidación en PDF</label>
-                    <input class="form-control-file" (change)="archivo($event)" type="file">
+                    <input class="form-control-file" (change)="archivo($event)" type="file" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success btn-block mt-4">Ingresar al Sistema</button>
+            <button type="submit" class="btn btn-success btn-block mt-4" [disabled]="load">Ingresar al Sistema <img *ngIf="load" padding-left="20px" height="20"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
         </form>
     </div>
 </div>
@@ -38,7 +39,8 @@
 <div class="card mt-4">
     <div class="card-header" id="demoFont">
         <strong class="text-center">
-            <h6><i class="fas fa-file-invoice"></i>Liquidaciones de Sueldo Emitidas</h6>
+            <h6><i class="fas fa-file-invoice"></i>Liquidaciones de Sueldo Emitidas <img *ngIf="loadTable" padding-left="20px" height="20"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></h6>
         </strong>
     </div>
 

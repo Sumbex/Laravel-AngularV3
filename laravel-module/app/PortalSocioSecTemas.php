@@ -27,12 +27,12 @@ class PortalSocioSecTemas extends Model
                 ->select([
                     'st.id',
                     'st.fecha_inicio',
-                    'st.fecha_termino',
                     DB::raw("upper(st.titulo) as titulo"),
                     DB::raw("upper(st.descripcion) as descripcion"),
                     'set.descripcion as estado',
-                    'sea.descripcion as aprobado'
+                    DB::raw("upper(concat(u.nombres,' ',u.a_paterno,' ',u.a_materno)) as nombre")
                 ])
+                ->join('users as u', 'u.id', 'st.user_id')
                 ->join('sec_estado_tema as set', 'set.id', 'st.estado_tema_id')
                 ->join('sec_estado_aprobacion as sea', 'sea.id', 'st.estado_aprobacion_id')
                 ->where([
@@ -142,5 +142,15 @@ class PortalSocioSecTemas extends Model
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No existen votos.'];
         }
+    }
+
+    protected function traerTipos()
+    {
+        return SecTemas::traerTiposTemas();
+    }
+
+    protected function traerHistorial($anio, $mes, $tipo)
+    {
+        return SecTemas::traerTemas($anio, $mes, $tipo);
     }
 }

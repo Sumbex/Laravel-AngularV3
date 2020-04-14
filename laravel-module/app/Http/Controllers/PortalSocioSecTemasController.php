@@ -21,4 +21,14 @@ class PortalSocioSecTemasController extends Controller
     {
         return PortalSocioSecTemas::traerConteoVotos($tema);
     }
+
+    public function TraerTipos()
+    {
+        return PortalSocioSecTemas::traerTipos();
+    }
+
+    public function TraerHistorial($anio, $mes, $tipo)
+    {
+        return PortalSocioSecTemas::traerHistorial($anio, $mes, $tipo);
+    }
 }

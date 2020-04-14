@@ -59,16 +59,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr *ngFor="let item of temasHistorial" class="text-center">
-                                <td colspan="2">{{item?.fecha_inicio}}</td>
-                                <td colspan="2">{{item?.fecha_termino}}</td>
-                                <td colspan="2">{{item?.titulo}}</td>
-                                <td colspan="2">{{item?.estado}}</td>
-                                <td colspan="2">{{item?.aprobado}}</td>
-                                <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button" class="btn btn-info">Ver</button>
-                                </td>
-                            </tr> -->
+                        <tr *ngFor="let item of temasHistorial" class="text-center">
+                            <td colspan="2">{{item?.fecha_inicio}}</td>
+                            <td colspan="2">{{item?.fecha_termino}}</td>
+                            <td colspan="2">{{item?.titulo}}</td>
+                            <td colspan="2">{{item?.estado}}</td>
+                            <td colspan="2">{{item?.aprobado}}</td>
+                            <td colspan="2">{{item?.nombre}}</td>
+                            <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button" class="btn btn-info">Ver</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -124,5 +124,32 @@
     <div class="modal-footer">
         <button type="button" id="cerrarActivos" class="btn btn-info" (click)="d('Cross click')"><i
             class="far fa-arrow-alt-circle-left"></i> Volver a Asamblea Online</button>
+    </div>
+</ng-template>
+
+<ng-template #grafico let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong><!-- <i class="fas fa-archive"></i> --> Asamblea Online / Votos</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="row justify-center mt-2">
+            <div class="col-md-12">
+                <h3 class="text-center">
+                    {{motivo}}
+                </h3>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <canvas id="votosTema" width="400" height="400">
+                {{chart}}
+            </canvas>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+            class="far fa-arrow-alt-circle-left"></i> Volvere</button>
     </div>
 </ng-template>

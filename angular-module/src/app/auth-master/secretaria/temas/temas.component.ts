@@ -102,7 +102,7 @@ export class TemasComponent implements OnInit {
   abrirModalDetalle(modal, tema) {
     this.cargarDatosDetalle(tema);
     this.modalService.open(modal, { size: 'xl' });
-    this.votos();
+    /* this.votos(); */
   }
 
   cargarDatosDetalle(tema) {

@@ -126,4 +126,43 @@ export class VotacionesBryanmService {
 
   //----------------------------->Funciones Admin
 
+  //----------------------------->Funciones Socios
+  traerActivosSocios(): Observable<any> {
+    return this._http.get(this.url + "traer_temas_activos_socios", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
+  traerTiposSocios(): Observable<any> {
+    return this._http.get(this.url + "traer_tipos_temas_socios", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
+  traerHistorialSocios(anio, mes, tipo): Observable<any> {
+    return this._http.get(this.url + "traer_historial_temas_socios/" + anio + "/" + mes + "/" + tipo, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
+
+
+
+  //----------------------------->Funciones Socios
+
 }

@@ -239,6 +239,7 @@ class Archivador extends Model
             $return['reporte'] = [];
             $return['descuento'] = [];
             $return['conciliacion'] = [];
+            $return['otros'] = [];
             foreach ($archivos as $key) {
                 switch ($key->tipo_id) {
                     case 1:
@@ -251,6 +252,10 @@ class Archivador extends Model
 
                     case 3:
                         $return['conciliacion'][] = $key;
+                        break;
+
+                    case 4:
+                        $return['otros'][] = $key;
                         break;
 
                     default:

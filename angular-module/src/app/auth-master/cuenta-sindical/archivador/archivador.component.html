@@ -389,6 +389,60 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                                <thead text-sm class="text-center">
+                                    <tr>
+                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>
+                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>
+                                        <th colspan="2"> Tipo</th>
+                                        <th colspan="2"><i class="fas fa-file-archive"></i> Otros Archivos </th>
+                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of archivos?.otros" class="text-center">
+                                        <td colspan="2" (click)="editarParametro(item.id, 'fecha', item.fecha, true)">
+                                            {{item?.fecha}}
+                                        </td>
+                                        <td colspan="2" (click)="editarParametro(item.id, 'titulo', item.titulo, true)">
+                                            {{item?.titulo}}
+                                        </td>
+                                        <td colspan="2" (click)="editarParametro(item.id, 'tipo', item.tipo, true)">
+                                            {{item?.tipo}}
+                                        </td>
+                                        <!--MODAL VISOR PDF-->
+                                        <ng-template #visor let-c="close" let-d="dismiss">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="modal-header text-center" id="demoFont">
+                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>
+                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- item?.archivo -->
+                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
+                                                    </div>
+                                                    <div class="modal-footer" [hidden]="true">
+                                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <!--MODAL VISOR PDF-->
+                                        <td colspan="2">
+                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"
+                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;
+                                            <a class="btn-primary-outline" style="cursor: pointer">
+                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento" (click)="editarParametro(item.id, 'archivo', 'Archivo Antiguo', true)"></i>
+                                            </a>
+                                        </td>
+                                        <td colspan="2">
+                                            {{item?.nombre}}
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>

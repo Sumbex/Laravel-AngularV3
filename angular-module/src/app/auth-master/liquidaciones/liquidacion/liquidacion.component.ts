@@ -12,6 +12,7 @@ export class LiquidacionComponent implements OnInit {
   //Variable para los empleados del select
   empleado = '';
   empleados = [];
+  nombreTrabajador = '';
 
   // Fecha de emisión
   fechaEmision = '';
@@ -53,6 +54,10 @@ export class LiquidacionComponent implements OnInit {
   counter = 0;
   showTable = false;
   counterLiquidacion = 0;
+  load = false;
+  loadTable = false;
+  fecha = '';
+  blockIngresoGeneracion = false;
 
   // Variable para traer la lista de liquidaciones generadas
   liquidacionesGeneradas = [];
@@ -75,7 +80,11 @@ export class LiquidacionComponent implements OnInit {
     );
   }
 
-  traerDatosLiquidacion(){
+  traerDatosLiquidacion(test){
+    this.showTable = false;
+    this.nombreTrabajador = test.target.options[test.target.options.selectedIndex].text;
+    this.load = true;
+    this.liquidacionesGeneradas = [];
     this.blockIngreso = true;
     this.counter = 0;
     this.getLiquidacionesGeneradas();
@@ -87,8 +96,10 @@ export class LiquidacionComponent implements OnInit {
     this._confLiq.getLiquidacionesGeneradasPorIdEmpleado(this.empleado).subscribe(response => {
       if(response.estado == 'success'){
         this.liquidacionesGeneradas = response.liquidaciones;
+        this.load = false;
       }else{
         alert(response.mensaje);
+        this.load = false;
       }
     },error=>{
       console.log(error);
@@ -202,21 +213,28 @@ export class LiquidacionComponent implements OnInit {
 
   // VARIABLE PARA GUARDAR LA LIQUIDACION
   setLiquidacionHistorial(){
+    this.blockIngresoGeneracion = true;
     this._confLiq.setHistorialLiquidacion(this.empleado, this.fechaEmision, this.haberes, this.descuentos).subscribe(response=>{
       if(response.estado == 'success'){
         alert(response.mensaje);
+        this.blockIngresoGeneracion = false;
+        this.getLiquidacionesGeneradas();
       }else{
         alert(response.mensaje);
+        this.blockIngresoGeneracion = false;
       }
     },error=>{
       console.log(error);
+      this.blockIngresoGeneracion = false;
     });
   }
 
   // Cargar la hoja con los datos seleccionados
-  test(id){
+  test(id, fecha){
+    this.fecha = fecha;
     this.counterLiquidacion = 0;
     this.showTable = false;
+    this.loadTable = true;
     this.getHaberesPorIdLiquidacion(id);
     this.getDescuentosPorIdLiquidacion(id);
   }
@@ -229,6 +247,7 @@ export class LiquidacionComponent implements OnInit {
         this.counterLiquidacion++;
         if(this.counterLiquidacion == 2){
           this.showTable = true;
+          this.loadTable = false;
         }
       }else{
         alert(response.mensaje);
@@ -246,6 +265,7 @@ export class LiquidacionComponent implements OnInit {
         this.counterLiquidacion++;
         if(this.counterLiquidacion == 2){
           this.showTable = true;
+          this.loadTable = false;
         }
       }else{
         alert(response.mensaje);

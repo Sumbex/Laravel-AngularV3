@@ -1119,7 +1119,7 @@ module.exports = "<ng-template #gastosOperacionales let-modal>\n\n    <!--Cabeza
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- Navigation -->\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\n             <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n      </a>\n      <!-- <a>\n        <img  height=\"30\" width=\"40\"\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\n      </a> -->\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n        <ul class=\"navbar-nav ml-auto\">\n            <!-- <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Sindical <span class=\"sr-only\">(current)</span></a>\n              </li> -->\n\n              <li ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-calculator\"></i> Sindical</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-user-plus\"></i> Cuenta</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CrearEmpleado']\"><i class=\"fas fa-user-edit\"></i> Crear Empleado</a><!--  -->\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Liquidaciones']\"><i class=\"fas fa-user-edit\"></i> Liquidaciones</a><!--  -->\n                </div>\n              </li>\n\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\n                </div>\n              </li>\n              <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                  <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                  <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Portal Socios</a>\n                  <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                </div>\n              </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n\n  \n  "
+module.exports = "<!-- Navigation -->\n<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n        <a class=\"navbar-brand\" [routerLink]=\"['/AuthMaster']\">\n            <img src=\"/assets/logo-sindicato-transparente.png\" width=\"80px\" height=\"50px\">\n        </a>\n        <!-- <a>\n        <img  height=\"30\" width=\"40\"\n        src=\"https://i.pinimg.com/originals/b7/60/21/b76021c8f7a0126fb513b0a3748bc48a.gif?fbclid=IwAR3Fflko2mb4l5bz8oktua_TDiXRtobnRZKMH-vjFTdZfSGqsR_6aGIylAc\">\n      </a> -->\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n            <ul class=\"navbar-nav ml-auto\">\n                <!-- <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-calculator\"></i> Sindical <span class=\"sr-only\">(current)</span></a>\n              </li> -->\n\n                <li ngbDropdown class=\"d-inline-block\">\n                    <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-calculator\"></i> Sindical</button>\n                    <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CuentaSindical']\"><i class=\"fas fa-user-plus\"></i> Cuenta</a>\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/CrearEmpleado']\"><i class=\"fas fa-user-edit\"></i> Crear Empleado</a>\n                        <!--  -->\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Liquidaciones']\"><i class=\"fas fa-user-edit\"></i> Liquidaciones</a>\n                        <!--  -->\n                    </div>\n                </li>\n\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\"> <i class=\"fas fa-money-check-alt\"></i> Cuenta Bienestar</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\"><i class=\"fas fa-piggy-bank\"></i> Cuenta Consorcio</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/AuthMaster/Secretaria']\"><i class=\"fas fa-book\"></i> Secretaria</a>\n                </li>\n                <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                    <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-friends\"></i> Socios</button>\n                    <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/RegistroSocios']\"><i class=\"fas fa-user-plus\"></i> Registro de Socio</a>\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/ListarSocios']\"><i class=\"fas fa-user-edit\"></i> Listar Socio</a>\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/BeneficiosSocios']\"><i class=\"far fa-address-card\"></i> Beneficios Socio</a>\n                    </div>\n                </li>\n                <li *ngIf=\"isLogged\" ngbDropdown class=\"d-inline-block\">\n                    <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreUsuario}}</button>\n                    <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                        <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Portal Socios</a>\n                        <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </div>\n</nav>"
 
 /***/ }),
 
@@ -1361,7 +1361,7 @@ module.exports = "  <div class=\"card\">\n<div style=\"width: 100%\">\n  <canvas
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n  <div class=\"container\">\n    <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\n        </a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n      <ul class=\"navbar-nav ml-auto\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Reuniones']\"><i class=\"fas fa-calendar\"></i> Secretaria</a>\n        </li>\n          <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-users\"></i> Mi Perfil <span class=\"sr-only\">(current)</span></a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Beneficios']\"> <i class=\"fas fa-medal\"></i> Mis Beneficios</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Cuentas']\"> <i class=\"fas fa-money-bill\"></i> Cuentas</a>\n              </li>\n            <li ngbDropdown class=\"d-inline-block\">\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Administración</a>\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n              </div>\n            </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\n    <div class=\"container\">\n        <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\n            <img src=\"/assets/logo-sindicato-transparente.png\" width=\"80px\" height=\"50px\">\n        </a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\n            <ul class=\"navbar-nav ml-auto\">\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Reuniones']\"><i class=\"fas fa-calendar\"></i> Secretaria</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-users\"></i> Mi Perfil <span class=\"sr-only\">(current)</span></a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Beneficios']\"> <i class=\"fas fa-medal\"></i> Mis Beneficios</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Cuentas']\"> <i class=\"fas fa-money-bill\"></i> Cuentas</a>\n                </li>\n                <li ngbDropdown class=\"d-inline-block\">\n                    <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\n                    <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\n                        <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Administración</a>\n                        <button class=\"selectColor\" ngbDropdownItem (click)=\"logoutSocio()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </div>\n</nav>"
 
 /***/ }),
 
@@ -14458,12 +14458,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 let NavbarComponent = class NavbarComponent {
-    constructor(_userService) {
+    constructor(_userService, router) {
         this._userService = _userService;
+        this.router = router;
     }
     ngOnInit() {
         this.usuario = this._userService.getUsuario();
@@ -14478,7 +14481,10 @@ let NavbarComponent = class NavbarComponent {
         this.rol = localStorage.getItem('rol');
     }
     logOut() {
-        this._userService.logOut();
+        this._userService.logout().subscribe(res => {
+            localStorage.clear();
+            this.router.navigate(['']);
+        });
     }
     getNombre() {
         this._userService.getUsuarioLogeado().subscribe(response => {
@@ -14489,7 +14495,8 @@ let NavbarComponent = class NavbarComponent {
     }
 };
 NavbarComponent.ctorParameters = () => [
-    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] }
+    { type: _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -14497,7 +14504,7 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
         styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
 ], NavbarComponent);
 
 
@@ -17300,11 +17307,17 @@ let UsuarioService = class UsuarioService {
             return !this.jwtHelper.isTokenExpired(token);
         }
     }
-    logOut() {
+    logoutSocio() {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        this._http.get(this.url + "auth/logout", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-        localStorage.clear();
-        this.router.navigate(['']);
+        return this._http.get(this.url + "auth/logout_socio", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+        });
+    }
+    logout() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "auth/logout", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+        });
     }
     validarUsuario(user, password, estado) {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
@@ -17312,13 +17325,17 @@ let UsuarioService = class UsuarioService {
         formData.append('rut', user);
         formData.append('password', password);
         formData.append('estado', estado);
-        return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        return this._http.post(this.url + "confirmar_usuario", formData, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
-            }) });
+            })
+        });
     }
     getUsuarioLogeado() {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
+        return this._http.get(this.url + "usuario_logeado", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+        });
     }
 };
 UsuarioService.ctorParameters = () => [
@@ -19247,14 +19264,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 
 let NavbarSocioComponent = class NavbarSocioComponent {
-    constructor(_userService, _portalSociosService) {
+    constructor(_userService, _portalSociosService, router) {
         this._userService = _userService;
         this._portalSociosService = _portalSociosService;
+        this.router = router;
     }
     ngOnInit() {
         //Guardar nombre socio
@@ -19264,13 +19284,21 @@ let NavbarSocioComponent = class NavbarSocioComponent {
         //obtener rol para habilitar boton cambio de portal
         this.rol = localStorage.getItem('rol');
     }
-    logOut() {
-        this._userService.logOut();
+    logoutSocio() {
+        console.log('test');
+        this._userService.logoutSocio().subscribe(res => {
+            localStorage.clear();
+            this.router.navigate(['']);
+        });
+        /*     localStorage.clear();
+                this.router.navigate(['']);
+            console.log('kkck'); */
     }
 };
 NavbarSocioComponent.ctorParameters = () => [
     { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
+    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
 ];
 NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -19278,7 +19306,7 @@ NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./navbar-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html"),
         styles: [__webpack_require__(/*! ./navbar-socio.component.css */ "./src/app/socios-master/navbar-socio/navbar-socio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
 ], NavbarSocioComponent);
 
 
@@ -21017,6 +21045,10 @@ let VotacionesComponent = class VotacionesComponent {
         this.datosVoto.tema = this.datosVotarTemas.id;
         this.datosVoto.voto = this.idVotoActual;
     }
+    limpiarVoto() {
+        this.datosVoto.tema = null;
+        this.datosVoto.voto = null;
+    }
     ingresarVoto() {
         this.cargarVoto();
         if (this.datosVoto.voto == 0) {
@@ -21028,6 +21060,7 @@ let VotacionesComponent = class VotacionesComponent {
                 if (res.estado == 'success') {
                     this.ingresandoVoto = false;
                     this.idVotoActual = 0;
+                    this.limpiarVoto();
                     alert(res.mensaje);
                 }
                 else {

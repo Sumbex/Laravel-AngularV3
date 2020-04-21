@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../servicios/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,13 @@ export class NavbarComponent implements OnInit {
   isLogged: boolean;
   rol;
 
-  constructor(private _userService: UsuarioService) { }
+  constructor(private _userService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
     this.usuario = this._userService.getUsuario();
-    if(this.usuario != null){
+    if (this.usuario != null) {
       this.isLogged = true
-    }else{
+    } else {
       this.isLogged = false;
     }
 
@@ -28,11 +29,17 @@ export class NavbarComponent implements OnInit {
     this.rol = localStorage.getItem('rol');
   }
 
-  logOut(){
-    this._userService.logOut();
+  logOut() {
+    this._userService.logout().subscribe(
+      res => {
+        localStorage.clear();
+        this.router.navigate(['']);
+      }
+    );
   }
 
-  getNombre(){
+
+  getNombre() {
     this._userService.getUsuarioLogeado().subscribe(
       response => {
         this.nombreUsuario = response.name + " " + response.a_paterno;

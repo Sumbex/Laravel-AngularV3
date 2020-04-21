@@ -106,7 +106,7 @@ class SecTemas extends Model
                 $tema->motivo = "Se ha aprobado con: " . $total . " votos a favor, de los cuales: " . $votos['votos']['apruebo'] . " fueron apruebo y " . $votos['votos']['abstengo'] . " fueron me abstengo.";
             } elseif ($votos['votos']['apruebo'] == $votos['votos']['rechazo']) {
                 $tema->estado_aprobacion_id = 5;
-                $tema->motivo = "Se ha rechazado con: " . $total . " votos en contra, de los cuales: " . $votos['votos']['rechazo'] . " fueron rechazo y " . $votos['votos']['abstengo'] . " fueron me abstengo.";
+                /* $tema->motivo = "Se ha rechazado con: " . $total . " votos en contra, de los cuales: " . $votos['votos']['rechazo'] . " fueron rechazo y " . $votos['votos']['abstengo'] . " fueron me abstengo."; */
                 $tema->motivo = "La votacion no se ha concretado debido a una igualdad de votos.";
             } else {
                 $tema->estado_aprobacion_id = 3;
@@ -114,7 +114,7 @@ class SecTemas extends Model
                 $tema->motivo = "Se ha rechazado con: " . $total . " votos en contra, de los cuales: " . $votos['votos']['rechazo'] . " fueron rechazo y " . $votos['votos']['abstengo'] . " fueron me abstengo.";
             }
             if ($tema->save()) {
-                return ['estado' => 'success', 'mensaje' => 'La votacion ha sido cerrada correctamente.', 'motivo' => $tema->motivo];
+                return ['estado' => 'success', 'mensaje' => 'La votacion ha sido cerrada correctamente.', 'motivo' =>  strtoupper($tema->motivo)];
             } else {
                 return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
             }

@@ -27,7 +27,7 @@ Route::post('login_socios', 'PortalSocioController@LoginSocios');
 
 //CUANDO SE AUTORIZA UN USUARIO
 Route::group(['middleware' => ['jwt.auth', 'cors']], function () {
-	
+
 	//rutas con auth (loged)
 	Route::group(['middleware' => ['administrador']], function () {
 		Route::get('loged', function () {

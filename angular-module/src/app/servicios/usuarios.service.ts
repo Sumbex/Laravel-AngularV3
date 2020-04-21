@@ -62,23 +62,31 @@ export class UsuarioService {
     }
 
     isAuthenticated(): boolean {
-        if(localStorage.getItem('token') === null){
+        if (localStorage.getItem('token') === null) {
             return false;
-        }else{
-        const token = localStorage.getItem('token').replace(/['"]+/g, '');    // Check whether the token is expired and return
-        // true or false
-        return !this.jwtHelper.isTokenExpired(token);
-    }
+        } else {
+            const token = localStorage.getItem('token').replace(/['"]+/g, '');    // Check whether the token is expired and return
+            // true or false
+            return !this.jwtHelper.isTokenExpired(token);
+        }
     }
 
-    logOut() {
+    logoutSocio(): Observable<any> {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        this._http.get(this.url + "auth/logout", {headers: new HttpHeaders(
-            {'Authorization':'Bearer' + token}
-        )});
-        localStorage.clear();
-        this.router.navigate(['']);
-        
+        return this._http.get(this.url + "auth/logout_socio", {
+            headers: new HttpHeaders(
+                { 'Authorization': 'Bearer' + token }
+            )
+        });
+    }
+
+    logout(): Observable<any> {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "auth/logout", {
+            headers: new HttpHeaders(
+                { 'Authorization': 'Bearer' + token }
+            )
+        });
     }
 
     validarUsuario(user, password, estado): Observable<any> {
@@ -89,18 +97,22 @@ export class UsuarioService {
         formData.append('password', password);
         formData.append('estado', estado);
 
-        return this._http.post(this.url + "confirmar_usuario", formData, {headers: new HttpHeaders(
+        return this._http.post(this.url + "confirmar_usuario", formData, {
+            headers: new HttpHeaders(
                 {
                     'Authorization': 'Bearer' + token
                 }
-            )});
+            )
+        });
     }
 
-    getUsuarioLogeado() : Observable<any>{
+    getUsuarioLogeado(): Observable<any> {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "usuario_logeado",{headers: new HttpHeaders(
-            {'Authorization': 'Bearer' + token})}
-    );
+        return this._http.get(this.url + "usuario_logeado", {
+            headers: new HttpHeaders(
+                { 'Authorization': 'Bearer' + token })
+        }
+        );
     }
 
 }

@@ -71,7 +71,7 @@ export class UsuarioService {
         }
     }
 
-    logOutSocio(): Observable<any> {
+    logoutSocio(): Observable<any> {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "auth/logout_socio", {
             headers: new HttpHeaders(
@@ -80,7 +80,7 @@ export class UsuarioService {
         });
     }
 
-    logOut(): Observable<any> {
+    logout(): Observable<any> {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         return this._http.get(this.url + "auth/logout", {
             headers: new HttpHeaders(

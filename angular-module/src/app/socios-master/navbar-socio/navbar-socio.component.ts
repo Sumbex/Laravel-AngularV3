@@ -24,9 +24,9 @@ export class NavbarSocioComponent implements OnInit {
     this.rol = localStorage.getItem('rol');
   }
 
-  logOut() {
+  logoutSocio() {
     console.log('test');
-    this._userService.logOut().subscribe(
+    this._userService.logoutSocio().subscribe(
       res => {
         localStorage.clear();
         this.router.navigate(['']);

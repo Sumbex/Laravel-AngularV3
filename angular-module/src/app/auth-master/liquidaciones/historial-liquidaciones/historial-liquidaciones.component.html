@@ -15,8 +15,8 @@
 
         <label for="">Empleado: </label><br>
         <select [(ngModel)]="empleado" (change)="traerDatosLiquidacion()" class="form-control">
-            <option value="">Seleccione..</option>
-            <option *ngFor="let e of empleados" value="{{e.id}}">{{ e.nombre_trabajador }}</option>
+            <option value="">SELECCIONE..</option>
+            <option *ngFor="let e of empleados" value="{{e.id}}">{{ e.nombre_trabajador | uppercase }}</option>
         </select>
 
         <form #liquidacionForm (ngSubmit)="setDatosLiquidacion()" enctype="multipart/form-data">
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                         </ng-template>
-                        <td>{{itemLiquidaciones?.nombre}}</td>
+                        <td>{{itemLiquidaciones?.nombre | uppercase}}</td>
                         <td>
                             <a (click)="open(visorMaximo)" style="cursor: pointer" class="btn-primary-outline">
                                 <i class="far fa-file-alt fa-lg" placement="top"

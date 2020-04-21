@@ -39,7 +39,7 @@
         <label for="">Empleado: </label><br>
         <select [(ngModel)]="empleado" (change)="listar_h()" class="form-control">
             <option value="">Seleccione..</option>
-            <option *ngFor="let e of empleados"  value="{{e.id}}">{{ e.nombre_trabajador }}</option>
+            <option *ngFor="let e of empleados"  value="{{e.id}}">{{ e.nombre_trabajador.toUpperCase() }}</option>
         </select><br>
 
         <div class="row">
@@ -47,7 +47,7 @@
                 <label for="">Haber: </label><br>
                 <select [(ngModel)]="haber"  class="form-control" (change)="seleccionar_h()">
                     <option  value="">Seleccione...</option>
-                    <option *ngFor="let i of haberes" value="{{ i.tipo+'|'+i.id }}">{{i.descripcion+' ('+i.tipo+')'}}</option>
+                    <option *ngFor="let i of haberes" value="{{ i.tipo+'|'+i.id }}">{{i.descripcion.toUpperCase()+' ('+i.tipo+')'}}</option>
                 </select>
             </div>
         

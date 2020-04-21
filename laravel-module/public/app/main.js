@@ -1361,7 +1361,7 @@ module.exports = "  <div class=\"card\">\r\n<div style=\"width: 100%\">\r\n  <ca
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\r\n  <div class=\"container\">\r\n    <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\r\n           <img src=\"/assets/logo-sindicato-transparente.png\"  width=\"80px\" height=\"50px\">\r\n        </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n          <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Reuniones']\"><i class=\"fas fa-calendar\"></i> Secretaria</a>\r\n        </li>\r\n          <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-users\"></i> Mi Perfil <span class=\"sr-only\">(current)</span></a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Beneficios']\"> <i class=\"fas fa-medal\"></i> Mis Beneficios</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Cuentas']\"> <i class=\"fas fa-money-bill\"></i> Cuentas</a>\r\n              </li>\r\n            <li ngbDropdown class=\"d-inline-block\">\r\n              <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\r\n              <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Administración</a>\r\n                <button class=\"selectColor\" ngbDropdownItem (click)=\"logOut()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n              </div>\r\n            </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar nav-tabs navbar-expand-lg navbar-light sticky-top\">\r\n    <div class=\"container\">\r\n        <a class=\"navbar-brand\" [routerLink]=\"['/SociosMaster']\">\r\n            <img src=\"/assets/logo-sindicato-transparente.png\" width=\"80px\" height=\"50px\">\r\n        </a>\r\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n          <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n            <ul class=\"navbar-nav ml-auto\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Reuniones']\"><i class=\"fas fa-calendar\"></i> Secretaria</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Perfil']\"><i class=\"fas fa-users\"></i> Mi Perfil <span class=\"sr-only\">(current)</span></a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Beneficios']\"> <i class=\"fas fa-medal\"></i> Mis Beneficios</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\" [routerLink]=\"['/SociosMaster/Cuentas']\"> <i class=\"fas fa-money-bill\"></i> Cuentas</a>\r\n                </li>\r\n                <li ngbDropdown class=\"d-inline-block\">\r\n                    <button class=\"btn nav-link\" ngbDropdownToggle><i class=\"fas fa-user-tie\"></i> {{nombreSocio}}</button>\r\n                    <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                        <a class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/SociosMaster/Configuracion']\"><i class=\"fas fa-user-cog\"></i> Configuracion Cuenta</a>\r\n                        <a *ngIf=\"rol == 5\" class=\"selectColor\" ngbDropdownItem [routerLink]=\"['/AuthMaster']\"><i class=\"fas fa-users-cog\"></i> Cambiar a Administración</a>\r\n                        <button class=\"selectColor\" ngbDropdownItem (click)=\"logOutSocio()\"><i class=\"fas fa-sign-out-alt\"></i> &nbsp;Cerrar Sesion</button>\r\n                    </div>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -17300,11 +17300,17 @@ let UsuarioService = class UsuarioService {
             return !this.jwtHelper.isTokenExpired(token);
         }
     }
+    logOutSocio() {
+        let token = localStorage.getItem('token').replace(/['"]+/g, '');
+        return this._http.get(this.url + "auth/logout_socio", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+        });
+    }
     logOut() {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        this._http.get(this.url + "auth/logout", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
-        localStorage.clear();
-        this.router.navigate(['']);
+        return this._http.get(this.url + "auth/logout", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+        });
     }
     validarUsuario(user, password, estado) {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
@@ -17312,13 +17318,17 @@ let UsuarioService = class UsuarioService {
         formData.append('rut', user);
         formData.append('password', password);
         formData.append('estado', estado);
-        return this._http.post(this.url + "confirmar_usuario", formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        return this._http.post(this.url + "confirmar_usuario", formData, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 'Authorization': 'Bearer' + token
-            }) });
+            })
+        });
     }
     getUsuarioLogeado() {
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
-        return this._http.get(this.url + "usuario_logeado", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token }) });
+        return this._http.get(this.url + "usuario_logeado", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Authorization': 'Bearer' + token })
+        });
     }
 };
 UsuarioService.ctorParameters = () => [
@@ -19247,14 +19257,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 /* harmony import */ var src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/portal-socios.service */ "./src/app/servicios/portal-socios.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 
 let NavbarSocioComponent = class NavbarSocioComponent {
-    constructor(_userService, _portalSociosService) {
+    constructor(_userService, _portalSociosService, router) {
         this._userService = _userService;
         this._portalSociosService = _portalSociosService;
+        this.router = router;
     }
     ngOnInit() {
         //Guardar nombre socio
@@ -19265,12 +19278,20 @@ let NavbarSocioComponent = class NavbarSocioComponent {
         this.rol = localStorage.getItem('rol');
     }
     logOut() {
-        this._userService.logOut();
+        console.log('test');
+        this._userService.logOut().subscribe(res => {
+            localStorage.clear();
+            this.router.navigate(['']);
+        });
+        /*     localStorage.clear();
+                this.router.navigate(['']);
+            console.log('kkck'); */
     }
 };
 NavbarSocioComponent.ctorParameters = () => [
     { type: src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"] },
-    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] }
+    { type: src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
 ];
 NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -19278,7 +19299,7 @@ NavbarSocioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./navbar-socio.component.html */ "./node_modules/raw-loader/index.js!./src/app/socios-master/navbar-socio/navbar-socio.component.html"),
         styles: [__webpack_require__(/*! ./navbar-socio.component.css */ "./src/app/socios-master/navbar-socio/navbar-socio.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuarioService"], src_app_servicios_portal_socios_service__WEBPACK_IMPORTED_MODULE_3__["PortalSociosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
 ], NavbarSocioComponent);
 
 
@@ -21017,6 +21038,10 @@ let VotacionesComponent = class VotacionesComponent {
         this.datosVoto.tema = this.datosVotarTemas.id;
         this.datosVoto.voto = this.idVotoActual;
     }
+    limpiarVoto() {
+        this.datosVoto.tema = null;
+        this.datosVoto.voto = null;
+    }
     ingresarVoto() {
         this.cargarVoto();
         if (this.datosVoto.voto == 0) {
@@ -21028,6 +21053,7 @@ let VotacionesComponent = class VotacionesComponent {
                 if (res.estado == 'success') {
                     this.ingresandoVoto = false;
                     this.idVotoActual = 0;
+                    this.limpiarVoto();
                     alert(res.mensaje);
                 }
                 else {

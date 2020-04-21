@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuarios.service';
 import { PortalSociosService } from 'src/app/servicios/portal-socios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-socio',
@@ -12,7 +13,7 @@ export class NavbarSocioComponent implements OnInit {
   nombreSocio;
   rol;
 
-  constructor(private _userService: UsuarioService, private _portalSociosService: PortalSociosService) { }
+  constructor(private _userService: UsuarioService, private _portalSociosService: PortalSociosService, private router: Router) { }
 
   ngOnInit() {
     //Guardar nombre socio
@@ -23,8 +24,17 @@ export class NavbarSocioComponent implements OnInit {
     this.rol = localStorage.getItem('rol');
   }
 
-  logOut(){
-    this._userService.logOut();
+  logOut() {
+    console.log('test');
+    this._userService.logOut().subscribe(
+      res => {
+        localStorage.clear();
+        this.router.navigate(['']);
+      }
+    );
+    /*     localStorage.clear();
+            this.router.navigate(['']);
+        console.log('kkck'); */
   }
 
 }

@@ -75,6 +75,8 @@ Route::get('/traer_historial_temas_socios/{anio}/{mes}/{tipo}', 'PortalSocioSecT
 //------------------------------------------>temas
 
 
+Route::get('auth/logout_socio', 'PortalSocioController@LogoutSocio');
+
 //------------------------------------------------FUNCION TEST------------------------------------------------//
 Route::get('/funcion_test/{anio}/{mes}', 'PortalSocioController@FuncionTest');
 Route::get('/funcion_test2', 'PortalSocioController@FuncionTest2');

@@ -261,6 +261,9 @@ class PortalSocioController extends Controller
     }
     //--------------------------------------------------------------------------------
 
+    public function LogoutSocio(){
+        return PortalSocio::logoutSocio();
+    }
     //------------------------------------------------FUNCION TEST------------------------------------------------//
     public function FuncionTest($anio, $mes)
     {

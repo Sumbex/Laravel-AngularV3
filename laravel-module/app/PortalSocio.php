@@ -419,12 +419,22 @@ class PortalSocio extends Authenticatable implements JWTSubject
     protected function socioLogeado()
     {
         /* dd(Auth::guard()->user()); */
+        /*  dd(Auth::guard()); */
         $socio = PortalSocio::where('rut', Auth::guard()->user()->rut)->get();
         /* dd($socio); */
         foreach ($socio as $key) {
             $key->rol = Auth::guard()->user()->rol;
         }
         return $socio[0];
+    }
+
+    protected function logoutSocio()
+    {
+        JWTAuth::invalidate();
+        return response([
+            'status' => 'success',
+            'msg' => 'Logged out Successfully.'
+        ], 200);
     }
 
     protected function verificarSocio($id)

@@ -195,6 +195,11 @@ export class VotacionesComponent implements OnInit {
     this.datosVoto.voto = this.idVotoActual;
   }
 
+  limpiarVoto() {
+    this.datosVoto.tema = null;
+    this.datosVoto.voto = null;
+  }
+
   ingresarVoto() {
     this.cargarVoto();
     if (this.datosVoto.voto == 0) {
@@ -206,6 +211,7 @@ export class VotacionesComponent implements OnInit {
           if (res.estado == 'success') {
             this.ingresandoVoto = false;
             this.idVotoActual = 0;
+            this.limpiarVoto();
             alert(res.mensaje);
           } else {
             this.ingresandoVoto = false;

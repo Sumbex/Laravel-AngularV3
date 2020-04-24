@@ -20,7 +20,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     if(token){
       request = req.clone({
         setHeaders: {
-          authorizatin: `Bearer ${ token }`
+          authorization: `Bearer ${ token.replace(/['"]+/g, '') }`
         }
       });
     }
@@ -28,7 +28,8 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401){
-          window.location.reload();
+          // window.location.reload();
+          console.log("401");
         }
         return throwError(err);
       })

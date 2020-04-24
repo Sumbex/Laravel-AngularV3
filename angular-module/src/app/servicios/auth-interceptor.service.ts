@@ -28,8 +28,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401){
-          // window.location.reload();
-          console.log("401");
+          window.location.reload();
         }
         return throwError(err);
       })

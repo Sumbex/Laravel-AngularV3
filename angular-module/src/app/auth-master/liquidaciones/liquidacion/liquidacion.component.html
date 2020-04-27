@@ -8,8 +8,7 @@
     <div class="card-body">
         <p>
             <ngb-alert [dismissible]="false">
-                <strong>Advertencia!</strong> Verifique que los datos de "Haberes" y "Descuentos" sean totalmente
-                correctos antes de generar la liquidación.
+                <strong>Advertencia!</strong> Verifique que los datos de "Haberes" y "Descuentos" sean totalmente correctos antes de generar la liquidación.
             </ngb-alert>
         </p>
 
@@ -69,18 +68,19 @@
                     <div class="table-responsive">
                         <table class="tg table-test" style="width: 100%;">
                             <tr>
-                                <th class="tg-vm9s" colspan="3"><img src="/assets/logo-sindicato-transparente.png" style="position: absolute; left: 10px;" width="50px" height="50px"><h4>Liquidación de Sueldo</h4></th>
+                                <th class="tg-vm9s" colspan="3"><img src="/assets/logo-sindicato-transparente.png" style="position: absolute; left: 10px;" width="50px" height="50px">
+                                    <h4>Liquidación de Sueldo</h4>
+                                </th>
                             </tr>
                             <tr>
                                 <td class="tg-73oq"><span style="font-weight:bold">Trabajador: </span>{{nombreTrabajador}}
                                 </td>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>18.522.783-9</td>
+                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>{{rutTrabajador}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq"><span style="font-weight:bold">Empleador: </span>Sindicado de empresas CMPC
-                                    celulosa S.A.F</td>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>
-                                    75.315.800-6</td>
+                                <td class="tg-73oq"><span style="font-weight:bold">Empleador: </span>Sindicado de empresas CMPC celulosa S.A.F</td>
+                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span> 75.315.800-6
+                                </td>
                             </tr>
                             <tr>
                                 <td class="tg-73oq" colspan="3"><span style="font-weight:bold">Fecha: </span>{{fecha}}
@@ -188,13 +188,11 @@
                     </div>
                     <br>
                     <p><b>Saldo Liquido en letras: </b> <input type="text" class="form-control"></p>
-                    <p><b>Certifico que he recibido de:</b> Don Jaime Flores Castillo representante legal del sindicato
-                        de empresas CMPC Celulosa S.A. Planta Santa Fe.</p>
+                    <p><b>Certifico que he recibido de:</b> Don Jaime Flores Castillo representante legal del sindicato de empresas CMPC Celulosa S.A. Planta Santa Fe.</p>
                     <p>A mi entera satisfacción el saldo liquido en la presente liquidación y no tengo cargo ni cobro alguno posterior que hacer, por ninguno de los conceptos comprendidos en ella.</p>
                     <br><br><br><br><br><br>
                     <div class="test">
-                        <span style="margin-right: auto; border-top: 1px solid black;">FIRMA DEL EMPLEADOR</span> <span
-                            style="margin-left: 20rem; border-top: 1px solid black;">FIRMA DEL TRABAJADOR</span>
+                        <span style="margin-right: auto; border-top: 1px solid black;">FIRMA DEL EMPLEADOR</span> <span style="margin-left: 20rem; border-top: 1px solid black;">FIRMA DEL TRABAJADOR</span>
                     </div>
                 </div>
             </div>

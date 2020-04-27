@@ -15,59 +15,48 @@
 
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Rut Trabajador</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="rut_trabajador"
-                                placeholder="123456789" [(ngModel)]="empleadoForm.rut_trabajador" required>
+                            <input type="text" class="form-control form-control-sm" name="rut_trabajador" placeholder="123456789" [(ngModel)]="empleadoForm.rut_trabajador" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Nombre Trabajador</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="nombre_trabajador"
-                                placeholder="Nombre Completo" [(ngModel)]="empleadoForm.nombre_trabajador" required>
+                            <input type="text" class="form-control form-control-sm" name="nombre_trabajador" placeholder="Nombre Completo" [(ngModel)]="empleadoForm.nombre_trabajador" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Cargo</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="cargo"
-                                placeholder="Ingrese un cargo" [(ngModel)]="empleadoForm.cargo" required>
+                            <input type="text" class="form-control form-control-sm" name="cargo" placeholder="Ingrese un cargo" [(ngModel)]="empleadoForm.cargo" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>AFP Trabajador</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="nombre_afp"
-                                placeholder="ingrese su AFP" [(ngModel)]="empleadoForm.nombre_afp" required>
+                            <input type="text" class="form-control form-control-sm" name="nombre_afp" placeholder="ingrese su AFP" [(ngModel)]="empleadoForm.nombre_afp" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-                            <br><label><strong>Salud Trabajador</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="nombre_isapre"
-                                placeholder="Ingrese su salud" [(ngModel)]="empleadoForm.nombre_isapre" required>
+                            <br><label><strong>Fonasa o Isapre</strong></label>
+                            <input type="text" class="form-control form-control-sm" name="nombre_isapre" placeholder="Ingrese su salud" [(ngModel)]="empleadoForm.nombre_isapre" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Rut Empresa</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="rut_empresa"
-                                placeholder="123456789" [(ngModel)]="empleadoForm.rut_empresa" required>
+                            <input type="text" class="form-control form-control-sm" name="rut_empresa" placeholder="123456789" [(ngModel)]="empleadoForm.rut_empresa" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Nombre Empresa o Razon Social</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="nombre_empresa"
-                                placeholder="ingrese nombre de empresa" [(ngModel)]="empleadoForm.nombre_empresa"
-                                required>
+                            <input type="text" class="form-control form-control-sm" name="nombre_empresa" placeholder="ingrese nombre de empresa" [(ngModel)]="empleadoForm.nombre_empresa" required>
                         </div>
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Direccion Empresa</strong></label>
-                            <input type="text" class="form-control form-control-sm" name="direccion_empresa"
-                                placeholder="ingrese direccion de empreasa" [(ngModel)]="empleadoForm.direccion_empresa"
-                                required>
+                            <input type="text" class="form-control form-control-sm" name="direccion_empresa" placeholder="ingrese direccion de empreasa" [(ngModel)]="empleadoForm.direccion_empresa" required>
                         </div>
 
                         <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                             <br><label><strong>Crear Empleado</strong></label><br>
-                            <button type="submit" class="btn btn-block btn-success"
-                                [disabled]="empleadoForm.invalid"><b>CREAR</b></button>
+                            <button type="submit" class="btn btn-block btn-success" [disabled]="empleadoForm.invalid"><b>CREAR</b></button>
                         </div>
 
-                             <!-- alertas -->
-                             <div *ngIf="alertErrorForm" class="col-12 my-4">
-                                <div class="alert alert-danger" role="alert">
-                                    {{erroresForm}}
-                                </div>
+                        <!-- alertas -->
+                        <div *ngIf="alertErrorForm" class="col-12 my-4">
+                            <div class="alert alert-danger" role="alert">
+                                {{erroresForm}}
                             </div>
+                        </div>
 
                     </div>
                 </div>
@@ -96,7 +85,7 @@
                             <th style="background: #138D75"><i class="fas fa-user"></i> NOMBRE TRABAJADOR</th>
                             <th style="background: #138D75"><i class="fas fa-user-tie"></i> CARGO</th>
                             <th style="background: #138D75"><i class="fas fa-piggy-bank"></i> AFP</th>
-                            <th style="background: #138D75"><i class="fas fa-notes-medical"></i> SALUD</th>
+                            <th style="background: #138D75"><i class="fas fa-notes-medical"></i> FONASA o ISAPRE</th>
                             <th style="background: #138D75"><i class="far fa-building"></i> RUT EMPRESA</th>
                             <th style="background: #138D75"><i class="far fa-building"></i> NOMBRE EMPRESA</th>
                             <th style="background: #138D75"><i class="far fa-building"></i> DIRECCION EMPRESA</th>
@@ -122,8 +111,7 @@
                                     <div class="modal-header" id="demoFont">
                                         <h6 class="modal-title"><i class="fas fa-user-edit"></i> <strong> Editar
                                                 Empleado</strong></h6>
-                                        <button type="button" class="close" aria-label="Close"
-                                            (click)="cerrar_editar()">
+                                        <button type="button" class="close" aria-label="Close" (click)="cerrar_editar()">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -132,56 +120,40 @@
 
                                             <div class="col-12">
                                                 <br><label><strong>Rut Trabajador</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="rut_trabajador" placeholder="123456789"
-                                                    [(ngModel)]="item.rut_trabajador" disabled>
+                                                <input type="text" class="form-control form-control-sm" name="rut_trabajador" placeholder="123456789" [(ngModel)]="item.rut_trabajador" disabled>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Nombre Trabajador</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="nombre_trabajador" placeholder="Nombre Completo"
-                                                    [(ngModel)]="item.nombre_trabajador" required>
+                                                <input type="text" class="form-control form-control-sm" name="nombre_trabajador" placeholder="Nombre Completo" [(ngModel)]="item.nombre_trabajador" required>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Cargo</strong></label>
-                                                <input type="text" class="form-control form-control-sm" name="cargo"
-                                                    placeholder="Ingrese un cargo" [(ngModel)]="item.cargo" required>
+                                                <input type="text" class="form-control form-control-sm" name="cargo" placeholder="Ingrese un cargo" [(ngModel)]="item.cargo" required>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>AFP Trabajador</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="nombre_afp" placeholder="ingrese su AFP"
-                                                    [(ngModel)]="item.nombre_afp" required>
+                                                <input type="text" class="form-control form-control-sm" name="nombre_afp" placeholder="ingrese su AFP" [(ngModel)]="item.nombre_afp" required>
                                             </div>
                                             <div class="col-12">
-                                                <br><label><strong>Salud Trabajador</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="nombre_isapre" placeholder="Ingrese su salud"
-                                                    [(ngModel)]="item.nombre_isapre" required>
+                                                <br><label><strong>Fonasa o Isapre</strong></label>
+                                                <input type="text" class="form-control form-control-sm" name="nombre_isapre" placeholder="Ingrese su salud" [(ngModel)]="item.nombre_isapre" required>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Rut Empresa</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="rut_empresa" placeholder="123456789"
-                                                    [(ngModel)]="item.rut_empresa" required>
+                                                <input type="text" class="form-control form-control-sm" name="rut_empresa" placeholder="123456789" [(ngModel)]="item.rut_empresa" required>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Nombre Empresa o Razon Social</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="nombre_empresa" placeholder="ingrese nombre de empresa"
-                                                    [(ngModel)]="item.nombre_empresa" required>
+                                                <input type="text" class="form-control form-control-sm" name="nombre_empresa" placeholder="ingrese nombre de empresa" [(ngModel)]="item.nombre_empresa" required>
                                             </div>
                                             <div class="col-12">
                                                 <br><label><strong>Direccion Empresa</strong></label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    name="direccion_empresa" placeholder="ingrese direccion de empreasa"
-                                                    [(ngModel)]="item.direccion_empresa" required>
+                                                <input type="text" class="form-control form-control-sm" name="direccion_empresa" placeholder="ingrese direccion de empreasa" [(ngModel)]="item.direccion_empresa" required>
                                             </div>
 
                                             <div class="col-12">
                                                 <br><label><strong>Actualizar Empleado</strong></label><br>
-                                                <button type="button" class="btn btn-block btn-success"
-                                                    (click)="actualizarEmpleado(item.id,empleadoTraer[indice])">Actualizar Empleado</button>
+                                                <button type="button" class="btn btn-block btn-success" (click)="actualizarEmpleado(item.id,empleadoTraer[indice])">Actualizar Empleado</button>
                                             </div>
 
                                             <!-- alertas -->

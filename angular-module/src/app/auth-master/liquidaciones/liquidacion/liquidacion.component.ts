@@ -13,6 +13,7 @@ export class LiquidacionComponent implements OnInit {
   empleado = '';
   empleados = [];
   nombreTrabajador = '';
+  rutTrabajador = '';
 
   // Fecha de emisión
   fechaEmision = '';
@@ -70,17 +71,22 @@ export class LiquidacionComponent implements OnInit {
 
   traerEmpleados() {
     this._liq.traer_empleados().subscribe(response => {
-        if (response.estado == "success") {
-          this.empleados = response.empleado;
-        }
-        error => {
-          console.log(error);
-        }
+      if (response.estado == "success") {
+        this.empleados = response.empleado;
       }
+      error => {
+        console.log(error);
+      }
+    }
     );
   }
 
-  traerDatosLiquidacion(test){
+  traerDatosLiquidacion(test) {
+
+    if (test.target.options.selectedIndex != 0) {
+      console.log(this.empleados[test.target.options.selectedIndex - 1].rut_trabajador);
+      this.rutTrabajador = this.empleados[test.target.options.selectedIndex - 1].rut_trabajador;
+    }
     this.showTable = false;
     this.nombreTrabajador = test.target.options[test.target.options.selectedIndex].text;
     this.load = true;
@@ -92,55 +98,55 @@ export class LiquidacionComponent implements OnInit {
     this.getConfiguracionDescuentosPorIdEmpleado();
   }
 
-  getLiquidacionesGeneradas(){
+  getLiquidacionesGeneradas() {
     this._confLiq.getLiquidacionesGeneradasPorIdEmpleado(this.empleado).subscribe(response => {
-      if(response.estado == 'success'){
+      if (response.estado == 'success') {
         this.liquidacionesGeneradas = response.liquidaciones;
         this.load = false;
-      }else{
+      } else {
         alert(response.mensaje);
         this.load = false;
       }
-    },error=>{
+    }, error => {
       console.log(error);
     });
   }
 
-  getConfiguracionHaberesPorIdEmpleado(){
-    this._confLiq.getConfiguracionHaberesPorIdEmpleado(this.empleado).subscribe(response =>{
-      if(response.estado == 'success'){
+  getConfiguracionHaberesPorIdEmpleado() {
+    this._confLiq.getConfiguracionHaberesPorIdEmpleado(this.empleado).subscribe(response => {
+      if (response.estado == 'success') {
         this.haberes = response.haberes;
         this.separarHaberes();
         this.counter++;
-        if(this.counter == 2){
+        if (this.counter == 2) {
           this.blockIngreso = false;
         }
-      }else{
+      } else {
         alert(response.mensaje);
       }
-    },error=>{
+    }, error => {
       console.log(error);
     });
   }
 
-  getConfiguracionDescuentosPorIdEmpleado(){
-    this._confLiq.getConfiguracionDescuentosPorIdEmpleado(this.empleado).subscribe(response =>{
-      if(response.estado == 'success'){
+  getConfiguracionDescuentosPorIdEmpleado() {
+    this._confLiq.getConfiguracionDescuentosPorIdEmpleado(this.empleado).subscribe(response => {
+      if (response.estado == 'success') {
         this.descuentos = response.descuentos;
         this.separarDescuentos();
         this.counter++;
-        if(this.counter == 2){
+        if (this.counter == 2) {
           this.blockIngreso = false;
         }
-      }else{
+      } else {
         alert(response.mensaje);
       }
-    },error=>{
+    }, error => {
       console.log(error);
     });
   }
 
-  separarHaberes(){
+  separarHaberes() {
     // guardar sueldo base
     this.haberesLista.sueldoBase = this.haberes.filter(filtro => filtro.cs_lista_haberes_id == 1);
     this.haberesLista.sueldoBase = this.haberesLista.sueldoBase[0];
@@ -184,7 +190,7 @@ export class LiquidacionComponent implements OnInit {
     console.log(this.haberesLista);
   }
 
-  separarDescuentos(){
+  separarDescuentos() {
     // cotizacionAFP
     this.descuentosLista.cotizacionAfp = this.descuentos.filter(filtro => filtro.cs_lista_descuentos_id == 1);
     this.descuentosLista.cotizacionAfp = this.descuentosLista.cotizacionAfp[0];
@@ -212,25 +218,25 @@ export class LiquidacionComponent implements OnInit {
   }
 
   // VARIABLE PARA GUARDAR LA LIQUIDACION
-  setLiquidacionHistorial(){
+  setLiquidacionHistorial() {
     this.blockIngresoGeneracion = true;
-    this._confLiq.setHistorialLiquidacion(this.empleado, this.fechaEmision, this.haberes, this.descuentos).subscribe(response=>{
-      if(response.estado == 'success'){
+    this._confLiq.setHistorialLiquidacion(this.empleado, this.fechaEmision, this.haberes, this.descuentos).subscribe(response => {
+      if (response.estado == 'success') {
         alert(response.mensaje);
         this.blockIngresoGeneracion = false;
         this.getLiquidacionesGeneradas();
-      }else{
+      } else {
         alert(response.mensaje);
         this.blockIngresoGeneracion = false;
       }
-    },error=>{
+    }, error => {
       console.log(error);
       this.blockIngresoGeneracion = false;
     });
   }
 
   // Cargar la hoja con los datos seleccionados
-  test(id, fecha){
+  test(id, fecha) {
     this.fecha = fecha;
     this.counterLiquidacion = 0;
     this.showTable = false;
@@ -239,38 +245,38 @@ export class LiquidacionComponent implements OnInit {
     this.getDescuentosPorIdLiquidacion(id);
   }
 
-  getHaberesPorIdLiquidacion(idLiquidacion){
-    this._confLiq.getHaberesPorIdLiquidacion(idLiquidacion).subscribe(response =>{
-      if(response.estado == 'success'){
+  getHaberesPorIdLiquidacion(idLiquidacion) {
+    this._confLiq.getHaberesPorIdLiquidacion(idLiquidacion).subscribe(response => {
+      if (response.estado == 'success') {
         this.haberes = response.haberes;
         this.separarHaberes();
         this.counterLiquidacion++;
-        if(this.counterLiquidacion == 2){
+        if (this.counterLiquidacion == 2) {
           this.showTable = true;
           this.loadTable = false;
         }
-      }else{
+      } else {
         alert(response.mensaje);
       }
-    },error=>{
+    }, error => {
       console.log(error);
     });
   }
 
-  getDescuentosPorIdLiquidacion(idLiquidacion){
-    this._confLiq.getDescuentosPorIdLiquidacion(idLiquidacion).subscribe(response =>{
-      if(response.estado == 'success'){
+  getDescuentosPorIdLiquidacion(idLiquidacion) {
+    this._confLiq.getDescuentosPorIdLiquidacion(idLiquidacion).subscribe(response => {
+      if (response.estado == 'success') {
         this.descuentos = response.descuentos;
         this.separarDescuentos();
         this.counterLiquidacion++;
-        if(this.counterLiquidacion == 2){
+        if (this.counterLiquidacion == 2) {
           this.showTable = true;
           this.loadTable = false;
         }
-      }else{
+      } else {
         alert(response.mensaje);
       }
-    },error=>{
+    }, error => {
       console.log(error);
     });
   }

@@ -162,7 +162,8 @@ class SecTemas extends Model
             ->get();
         if (!$temas->isEmpty()) {
             foreach ($temas as $key) {
-                setlocale(LC_TIME, 'es');
+                /* setlocale(LC_TIME, 'es'); */
+                setlocale(LC_TIME, 'es_CL.UTF-8');
                 $key->fecha_inicio = Carbon::parse($key->fecha_inicio)->formatLocalized('%d de %B del %Y');
             }
             return ['estado' => 'success', 'temas' => $temas];
@@ -198,7 +199,8 @@ class SecTemas extends Model
             ->get();
         if (!$temas->isEmpty()) {
             foreach ($temas as $key) {
-                setlocale(LC_TIME, 'es');
+                /* setlocale(LC_TIME, 'es'); */
+                setlocale(LC_TIME, 'es_CL.UTF-8');
                 $key->fecha_inicio = Carbon::parse($key->fecha_inicio)->formatLocalized('%d de %B del %Y');
                 $key->fecha_termino = Carbon::parse($key->fecha_termino)->formatLocalized('%d de %B del %Y');
             }

@@ -140,7 +140,8 @@ class HistorialLiquidacionesController extends Controller
             ->get();
         if (!$busqueda->isEmpty()) {
             foreach ($busqueda as $key) {
-                setlocale(LC_TIME, 'es');
+                /* setlocale(LC_TIME, 'es'); */
+                setlocale(LC_TIME, 'es_CL.UTF-8');
                 $key->fecha = Carbon::parse($key->fecha)->formatLocalized('%d %B del %Y');
             }
             return ['estado' => 'success', 'liquidaciones' => $busqueda];
@@ -263,7 +264,8 @@ class HistorialLiquidacionesController extends Controller
             ->get();
         if (!$busqueda->isEmpty()) {
             foreach ($busqueda as $key) {
-                setlocale(LC_TIME, 'es');
+                /* setlocale(LC_TIME, 'es'); */
+                setlocale(LC_TIME, 'es_CL.UTF-8');
                 $key->fecha = Carbon::parse($key->fecha)->formatLocalized('%d %B del %Y');
             }
             return ['estado' => 'success', 'liquidaciones' => $busqueda];

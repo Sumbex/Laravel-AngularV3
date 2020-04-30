@@ -67,3 +67,11 @@
 .test{
   margin-left: 20rem;
 }
+
+p {
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 0;
+    margin-right: 0;
+}

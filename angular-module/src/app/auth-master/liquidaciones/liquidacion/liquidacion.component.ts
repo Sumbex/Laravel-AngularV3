@@ -14,6 +14,8 @@ export class LiquidacionComponent implements OnInit {
   empleados = [];
   nombreTrabajador = '';
   rutTrabajador = '';
+  saludTrabajador = '';
+  previsionTrabajador = '';
 
   // Fecha de emisión
   fechaEmision = '';
@@ -82,9 +84,9 @@ export class LiquidacionComponent implements OnInit {
   }
 
   traerDatosLiquidacion(test) {
-
     if (test.target.options.selectedIndex != 0) {
-      console.log(this.empleados[test.target.options.selectedIndex - 1].rut_trabajador);
+      this.previsionTrabajador = this.empleados[test.target.options.selectedIndex - 1].nombre_afp;
+      this.saludTrabajador = this.empleados[test.target.options.selectedIndex - 1].nombre_isapre;
       this.rutTrabajador = this.empleados[test.target.options.selectedIndex - 1].rut_trabajador;
     }
     this.showTable = false;

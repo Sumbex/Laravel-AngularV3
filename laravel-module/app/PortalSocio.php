@@ -328,8 +328,14 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
                     /* dd(is_null($socio->fecha_egreso)); */
                     if (is_null($socio->fecha_egreso)) {
+<<<<<<< HEAD
                         /* $user = User::where('rut', $socio->rut)->first(); */
                         $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $socio->rut . "')")->first();
+=======
+
+                        $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $socio->rut . "')")->first();
+
+>>>>>>> alejandro
                         if ($user->rol == 5 || $user->rol == 10) {
                             if (Hash::check($request->password, $user->password)) {
                                 //$credentials = $request->only('email', 'password');

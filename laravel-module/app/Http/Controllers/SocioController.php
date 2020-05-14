@@ -76,7 +76,8 @@ class SocioController extends Controller
     	// }
 
         $validar = $this->validar_datos_socio($r);
-        $exist = Socios::where([ 'activo'=>'S','rut'=> $rut_limpio ])->get();
+        //$exist = Socios::where([ 'activo'=>'S','rut'=> $rut_limpio ])->get();
+        $exist = Socios::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $rut_limpio . "') and activo='S'")->get();
         //dd(count($exist)>0);
         if (count($exist)>0) {
             return ['estado'=>'failed','mensaje'=>'Este rut ya existe en la base de datos'];
@@ -276,10 +277,7 @@ class SocioController extends Controller
         if ($this->valida_rut($rut_limpio) == false) {
             return ['estado' => 'failed', 'mensaje' => 'El rut no es valido'];
         }
-        $socio = Socios::where([
-                    'rut' => $rut_limpio,
-                   // 'activo' => 'S',    
-                  ])->first();
+        $socio = Socios::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $rut_limpio . "')")->first();
         if ($socio) {
             return $socio;
         }
@@ -1675,7 +1673,7 @@ class SocioController extends Controller
     {
         $socio = Socios::where(['activo'=>'S','id'=>$socio_id])->first();
         if (!empty($socio)) {
-            $user = User::where(['rut'=>$socio->rut])->first();
+            $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $socio->rut . "')")->first();
             if (!empty($user)) {
                 return ['estado'=>'Portal socio asignado'];
             }

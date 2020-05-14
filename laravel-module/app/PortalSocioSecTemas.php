@@ -58,11 +58,9 @@ class PortalSocioSecTemas extends Model
 
     protected function ingresarVoto($request)
     {
-        /* dd($this->socioID()); */
         $verificarSocio = $this->verificarSocio($this->socioID());
         if ($verificarSocio['estado'] == 'success') {
             $verificarVoto = $this->verificarVoto($request->tema);
-            /*  dd($verificarVoto); */
             if ($verificarVoto['estado'] == 'success') {
                 $voto = SecVotos::find($verificarVoto['id']);
                 if (!is_null($voto)) {
@@ -77,7 +75,18 @@ class PortalSocioSecTemas extends Model
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente 1.'];
                 }
             } else {
-                return $verificarVoto;
+                $existe = DB::table('sec_votos')
+                    ->where([
+                        'activo' => 'S',
+                        'tema_id' => $request->tema,
+                        'socio_id' => $this->socioID(),
+                    ])
+                    ->first();
+                if (!is_null($existe)) {
+                    return $verificarVoto;
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'No puedes votar en este tema porque tu registro en el Sindicato/Sistema es posterior a su creación.'];
+                }
             }
         } else {
             return  $verificarSocio;
@@ -98,8 +107,6 @@ class PortalSocioSecTemas extends Model
                 'voto_id' => 4
             ])
             ->first();
-
-        /* dd($voto); */
         if (!is_null($voto)) {
             return ['estado' => 'success', 'id' => $voto->id];
         } else {

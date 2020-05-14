@@ -53,13 +53,12 @@
     </div>
 </div>
 
-<div *ngIf="showTable" class="card mt-4">
+ <div *ngIf="showTable" class="card mt-4">
     <div class="card-header" id="demoFont">
         <strong class="text-center">
             <h6><i class="fas fa-file-invoice"></i> Liquidación de Sueldo</h6>
         </strong>
     </div>
-
     <div class="card-body">
         <!-- HOJA DE IMPRESIÓN -->
         <div class="row">
@@ -68,126 +67,163 @@
                     <div class="table-responsive">
                         <table class="tg table-test" style="width: 100%;">
                             <tr>
-                                <th class="tg-vm9s" colspan="3"><img src="/assets/logo-sindicato-transparente.png" style="position: absolute; left: 10px;" width="50px" height="50px">
-                                    <h4>Liquidación de Sueldo</h4>
+                                <th class="tg-vm9s" colspan="3"><img src="/assets/logo-sindicato-transparente.png" style="position: absolute; left: 10px;" width="65px" height="65px">
+                                    <p class="titulo-hoja">Liquidación de Remuneraciones</p>
+                                    <p class="titulo-hoja">{{fecha | slice:2}}</p>
                                 </th>
                             </tr>
-                            <tr>
-                                <td class="tg-73oq"><span style="font-weight:bold">Trabajador: </span>{{nombreTrabajador}}
+                            <tr style="border-bottom: none;">
+                                <td  style="border: none;"><span style="font-weight:bold">Nombre: </span>{{nombreTrabajador}}
                                 </td>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>{{rutTrabajador}}</td>
+                                <td  style="border: none;" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span>{{rutTrabajador}}</td>
+                            </tr>
+                            <tr style="border-bottom: none; border-top: none;">
+                                <td  style="border: none;"><span style="font-weight:bold">Entidad Previsional: </span>{{previsionTrabajador | uppercase}}
+                                </td>
+                                <td  style="border: none;" colspan="2"><span style="font-weight:bold; text-align: center;">Entidad de Salud: </span>{{saludTrabajador | uppercase}}</td>
+                            </tr>
+                            <tr style="border-top: none;">
+                                <td class="tg-73oq" style="border: none;"><span style="font-weight:bold">Empleador: </span>SINDICATO DE EMPRESAS CMPC CELULOSA S.A.F</td>
+                                <td class="tg-73oq" style="border: none;" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span> 753158006
+                                </td>
                             </tr>
                             <tr>
-                                <td class="tg-73oq"><span style="font-weight:bold">Empleador: </span>Sindicado de empresas CMPC celulosa S.A.F</td>
-                                <td class="tg-73oq" colspan="2"><span style="font-weight:bold; text-align: center;">Rut: </span> 753158006
-                                </td>
+                                <th colspan="3" style="text-align: center; font-weight: bold;">
+                                    Detalles Haberes y Descuentos
+                                </th>
                             </tr>
-                            <tr>
-                                <td class="tg-73oq" colspan="3"><span style="font-weight:bold">Fecha: </span>{{fecha}}
-                                </td>
+                            <tr style="font-weight: bold;">
+                                <td>Descripción</td>
+                                <td>Haberes</td>
+                                <td>Descuentos</td>
                             </tr>
                             <tr *ngIf="haberesLista?.sueldoBase?.monto">
-                                <td class="tg-73oq" colspan="2">Sueldo Base:</td>
+                                <td class="tg-73oq">Sueldo Base:</td>
                                 <td class="tg-73oq">{{haberesLista?.sueldoBase?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.horasExtras?.monto">
-                                <td class="tg-73oq" colspan="2">Horas Extras: </td>
+                                <td class="tg-73oq">Horas Extras: </td>
                                 <td class="tg-73oq">{{haberesLista?.horasExtras?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.gratificacionLegal?.monto">
-                                <td class="tg-73oq" colspan="2">Gratificación Legal:</td>
+                                <td class="tg-73oq">Gratificación Legal:</td>
                                 <td class="tg-73oq">{{haberesLista?.gratificacionLegal?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.bonoLocomocion?.monto">
-                                <td class="tg-73oq" colspan="2">Bono Locomoción:</td>
+                                <td class="tg-73oq">Bono Locomoción:</td>
                                 <td class="tg-73oq">{{haberesLista?.bonoLocomocion?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.bonoColacion?.monto">
-                                <td class="tg-73oq" colspan="2">Bono Colación:</td>
+                                <td class="tg-73oq">Bono Colación:</td>
                                 <td class="tg-73oq">{{haberesLista?.bonoColacion?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.asignacionFamiliar?.monto">
-                                <td class="tg-73oq" colspan="2">Asignación Familiar:</td>
+                                <td class="tg-73oq">Asignación Familiar:</td>
                                 <td class="tg-73oq">{{haberesLista?.asignacionFamiliar?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.viatico?.monto">
-                                <td class="tg-73oq" colspan="2">Viatico:</td>
+                                <td class="tg-73oq">Viatico:</td>
                                 <td class="tg-73oq">{{haberesLista?.viatico?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.bonoExtra?.monto">
-                                <td class="tg-73oq" colspan="2">Bono Extra:</td>
+                                <td class="tg-73oq">Bono Extra:</td>
                                 <td class="tg-73oq">{{haberesLista?.bonoExtra?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.vacaciones?.monto">
-                                <td class="tg-73oq" colspan="2">Vacaciones:</td>
+                                <td class="tg-73oq">Vacaciones:</td>
                                 <td class="tg-73oq">{{haberesLista?.vacaciones?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.viaticoGestion?.monto">
-                                <td class="tg-73oq" colspan="2">Viatico por Gestion:</td>
+                                <td class="tg-73oq">Viatico por Gestion:</td>
                                 <td class="tg-73oq">{{haberesLista?.viaticoGestion?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.feriadoProporcional?.monto">
-                                <td class="tg-73oq" colspan="2">Feriado Proporcional</td>
+                                <td class="tg-73oq">Feriado Proporcional</td>
                                 <td class="tg-73oq">{{haberesLista?.feriadoProporcional?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.tarjetaCelular?.monto">
-                                <td class="tg-0lax" colspan="2">Tarjeta Celular:</td>
+                                <td class="tg-0lax">Tarjeta Celular:</td>
                                 <td class="tg-0lax">{{haberesLista?.tarjetaCelular?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr *ngIf="haberesLista?.diaDomingo?.monto">
-                                <td class="tg-0lax" colspan="2">Dia Domingo:</td>
+                                <td class="tg-0lax">Dia Domingo:</td>
                                 <td class="tg-0lax">{{haberesLista?.diaDomingo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax" colspan="2"><span style="font-weight: bold;">Total Haberes:</span></td>
+                                <td class="tg-0lax"><span style="font-weight: bold;">Total Haberes:</span></td>
                                 <td class="tg-0lax"><span style="font-weight: bold;">{{haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
+                                <td></td>
                             </tr>
                             <!-- DESCUENTOS -->
                             <tr *ngIf="descuentosLista?.cotizacionAfp?.monto">
-                                <td class="tg-0lax" colspan="2">Cotización AFP:</td>
+                                <td class="tg-0lax">Cotización AFP:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.cotizacionAfp?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.saludInp?.monto">
-                                <td class="tg-0lax" colspan="2">Salud INP:</td>
+                                <td class="tg-0lax">Salud INP:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.saludInp?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.planSalud?.monto">
-                                <td class="tg-0lax" colspan="2">Plan de Salud:</td>
+                                <td class="tg-0lax">Plan de Salud:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.planSalud?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.seguroCesantia?.monto">
-                                <td class="tg-0lax" colspan="2">Seguro de Cesantia:</td>
+                                <td class="tg-0lax">Seguro de Cesantia:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.seguroCesantia?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.anticipo?.monto">
-                                <td class="tg-0lax" colspan="2">Anticipo:</td>
+                                <td class="tg-0lax">Anticipo:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.anticipo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.prestamo?.monto">
-                                <td class="tg-0lax" colspan="2">Prestamo:</td>
+                                <td class="tg-0lax">Prestamo:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.prestamo?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.bonoTrimestral?.monto">
-                                <td class="tg-0lax" colspan="2">Bono trimestral:</td>
+                                <td class="tg-0lax">Bono trimestral:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.bonoTrimestral?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr *ngIf="descuentosLista?.feriadoProporcional?.monto">
-                                <td class="tg-0lax" colspan="2">Feriado Proporcional:</td>
+                                <td class="tg-0lax">Feriado Proporcional:</td>
+                                <td></td>
                                 <td class="tg-0lax">{{descuentosLista?.feriadoProporcional?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
                             </tr>
                             <tr>
-                                <td class="tg-0lax" colspan="2"><span style="font-weight: bold;">Total Descuentos:</span></td>
+                                <td class="tg-0lax"><span style="font-weight: bold;">Total Descuentos:</span></td>
+                                <td></td>
                                 <td class="tg-0lax"><span style="font-weight: bold;">{{descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
                             </tr>
                             <!-- SALDO LIQUIDO -->
                             <tr>
-                                <td class="tg-0lax" colspan="2"><span style="font-weight: bold;">Sueldo Liquido:</span></td>
-                                <td class="tg-0lax"><span style="font-weight: bold;">{{(haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto) - (descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto) | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
+                                <td class="tg-0lax" style="border: none;"><span style="font-weight: bold;">Liquido a Pagar:</span></td>
+                                <td style="border: none;"></td>
+                                <td class="tg-0lax" style="border: none;"><span style="font-weight: bold;">{{(haberesLista?.sueldoBase?.monto + haberesLista?.horasExtras?.monto + haberesLista?.gratificacionLegal?.monto + haberesLista?.bonoLocomocion?.monto + haberesLista?.bonoColacion?.monto + haberesLista?.asignacionFamiliar?.monto + haberesLista?.viatico?.monto + haberesLista?.bonoExtra?.monto + haberesLista?.vacaciones?.monto + haberesLista?.viaticoGestion?.monto + haberesLista?.feriadoProporcional?.monto + haberesLista?.tarjetaCelular?.monto + haberesLista?.diaDomingo?.monto) - (descuentosLista?.cotizacionAfp?.monto + descuentosLista?.saludInp?.monto + descuentosLista?.planSalud?.monto + descuentosLista?.seguroCesantia?.monto + descuentosLista?.anticipo?.monto + descuentosLista?.prestamo?.monto + descuentosLista?.bonoTrimestral?.monto + descuentosLista?.feriadoProporcional?.monto) | currency:"CLP" : "symbol-narrow":'1.0'}}</span></td>
                             </tr>
                         </table>
                     </div>
                     <br>
-                    <p><b>Saldo Liquido en letras: </b> <input type="text" class="form-control"></p>
+                    <p><b>Liquido a pagar </b>(en letras): <input type="text" class="form-control"></p>
+                    <br>
                     <p><b>Certifico que he recibido de:</b> Don Jaime Flores Castillo representante legal del sindicato de empresas CMPC Celulosa S.A. Planta Santa Fe.</p>
                     <p>A mi entera satisfacción el saldo liquido en la presente liquidación y no tengo cargo ni cobro alguno posterior que hacer, por ninguno de los conceptos comprendidos en ella.</p>
                     <br><br><br><br><br><br>
@@ -201,7 +237,7 @@
         <button type="button" class="btn btn-success btn-block mt-4" onclick="printJS({
             printable: 'printJS-table',
             type:'html',
-            style: '.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{background-color:#268108;text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;}'
+            style: '.tg  {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;} .titulo-hoja{font-size: 1.7rem; font-weight:bold;} tr, td, th{border: 1px solid black} p{display: block;margin-top: 0em;margin-bottom: 0em;margin-left: 0;margin-right: 0;} .test{position:fixed;bottom:20px;}'
           })">
             <i class="fas fa-print"></i> Imprimir Datos
         </button>

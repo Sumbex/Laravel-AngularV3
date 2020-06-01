@@ -159,6 +159,7 @@ class SecTemas extends Model
                 'st.activo' => 'S',
                 'st.estado_tema_id' => 1
             ])
+            ->orderBy('st.fecha_inicio', 'desc')
             ->get();
         if (!$temas->isEmpty()) {
             foreach ($temas as $key) {

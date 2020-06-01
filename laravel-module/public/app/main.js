@@ -13818,41 +13818,51 @@ let TemasComponent = class TemasComponent {
         });
     }
     cancelarTemas() {
-        this.cancelarTema = true;
-        this._votaciones.cancelarTema(this.datosActTemas.id).subscribe(res => {
-            if (res.estado = 'success') {
-                this.traerTemasActivos();
+        if (confirm('¿Estas seguro de querer cancelar el tema?')) {
+            this.cancelarTema = true;
+            this._votaciones.cancelarTema(this.datosActTemas.id).subscribe(res => {
+                if (res.estado = 'success') {
+                    this.traerTemasActivos();
+                    this.cancelarTema = false;
+                    alert(res.mensaje);
+                    document.getElementById("cerrarModalEditar").click();
+                }
+                else {
+                    this.cancelarTema = false;
+                    alert(res.mensaje);
+                }
+            }, error => {
                 this.cancelarTema = false;
-                alert(res.mensaje);
-                document.getElementById("cerrarModalEditar").click();
-            }
-            else {
-                this.cancelarTema = false;
-                alert(res.mensaje);
-            }
-        }, error => {
+                console.log(error);
+            });
+        }
+        else {
             this.cancelarTema = false;
-            console.log(error);
-        });
+        }
     }
     cerrarTema(grafico) {
-        this.terminarTema = true;
-        this._votaciones.cerrarTema(this.datosActTemas.id).subscribe(res => {
-            if (res.estado = 'success') {
+        if (confirm('¿Estas seguro de querer terminar la votacion?')) {
+            this.terminarTema = true;
+            this._votaciones.cerrarTema(this.datosActTemas.id).subscribe(res => {
+                if (res.estado = 'success') {
+                    this.terminarTema = false;
+                    this.cerrada = true;
+                    this.motivo = res.motivo;
+                    this.traerVotosTema(this.datosActTemas.id, grafico, true);
+                    alert(res.mensaje);
+                }
+                else {
+                    this.terminarTema = false;
+                    alert(res.mensaje);
+                }
+            }, error => {
                 this.terminarTema = false;
-                this.cerrada = true;
-                this.motivo = res.motivo;
-                this.traerVotosTema(this.datosActTemas.id, grafico, true);
-                alert(res.mensaje);
-            }
-            else {
-                this.terminarTema = false;
-                alert(res.mensaje);
-            }
-        }, error => {
+                console.log(error);
+            });
+        }
+        else {
             this.terminarTema = false;
-            console.log(error);
-        });
+        }
     }
     traerTemasActivos() {
         this.temasActivos = [];

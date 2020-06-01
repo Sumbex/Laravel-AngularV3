@@ -12,6 +12,11 @@ class PortalSocioSecTemasController extends Controller
         return PortalSocioSecTemas::temasActivos();
     }
 
+    public function TraerVotoSocio($tema)
+    {
+        return PortalSocioSecTemas::traerVotoSocio($tema);
+    }
+
     public function IngresarVoto(Request $request)
     {
         return PortalSocioSecTemas::ingresarVoto($request);

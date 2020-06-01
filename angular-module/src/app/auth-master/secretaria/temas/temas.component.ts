@@ -349,7 +349,7 @@ export class TemasComponent implements OnInit {
     this.chart = new Chart("votosTema", {
       type: 'pie',
       data: {
-        labels: ['Apruebo', 'Rechazo', 'Me Abstengo', 'Nulo'],
+        labels: ['Apruebo', 'Rechazo', 'Me Abstengo', 'Socios sin Votar'],
         datasets: [{
           label: '# of Votes',
           data: this.totalVotos,

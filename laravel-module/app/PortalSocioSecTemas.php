@@ -40,6 +40,7 @@ class PortalSocioSecTemas extends Model
                     'st.activo' => 'S',
                     'st.estado_tema_id' => 1
                 ])
+                ->orderBy('st.fecha_inicio', 'desc')
                 ->get();
             if (!$temas->isEmpty()) {
                 foreach ($temas as $key) {
@@ -53,6 +54,28 @@ class PortalSocioSecTemas extends Model
             }
         } else {
             return  $verificarSocio;
+        }
+    }
+
+    protected function traerVotoSocio($tema)
+    {
+        $voto = DB::table('sec_votos as sv')
+            ->select([
+                'sv.id',
+                'stv.descripcion'
+            ])
+            ->join('sec_tipo_voto as stv', 'stv.id', 'sv.voto_id')
+            ->where([
+                'sv.activo' => 'S',
+                'sv.tema_id' => $tema,
+                'sv.socio_id' => $this->socioID()
+            ])
+            ->where('sv.voto_id', '<>', 4)
+            ->first();
+        if (!is_null($voto)) {
+            return ['estado' => 'success', 'voto' => $voto];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El socio aun no ha votado.'];
         }
     }
 
@@ -181,6 +204,7 @@ class PortalSocioSecTemas extends Model
                 'id',
                 'descripcion as voto'
             ])
+            ->whereIn('id', [1, 2, 3])
             ->get();
         if (!$votos->isEmpty()) {
             return ['estado' => 'success', 'votos' => $votos];

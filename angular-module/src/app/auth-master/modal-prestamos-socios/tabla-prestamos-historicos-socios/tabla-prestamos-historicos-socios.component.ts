@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SindicalService } from 'src/app/servicios/sindical.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { global } from '../../../servicios/global';
 
 @Component({
   selector: 'app-tabla-prestamos-historicos-socios',
@@ -20,6 +22,8 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
     id: '1',
     descripcion: ''
   }
+  public url: string;
+  token = localStorage.getItem('token').replace(/['"]+/g, '');
 
   //variable que almacena todos los prestamos que tiene el servidor
   valoresPrestamosSalud;
@@ -53,10 +57,11 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
    m_pni = null;
    m_pc = null;
 
-  constructor(private _sindicalService: SindicalService, private _fechasService: AniosService, config: NgbModalConfig,
+  constructor(public _http: HttpClient, private _sindicalService: SindicalService, private _fechasService: AniosService, config: NgbModalConfig,
     private modalService: NgbModal) {
       config.backdrop = 'static';
       config.keyboard = false;
+      this.url = global.url;
     }
 
   ngOnInit() {
@@ -267,6 +272,11 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
     this.listar_prestamos_finalizados();
   }
 
+  modal_fin(modal) {
+    this.m_pc = this.modalService.open(modal, { size: 'sm' });
+    
+  }
+
   listar_prestamos_no_iniciados(){
     this._sindicalService.listar_pni().subscribe(
       response => {
@@ -343,6 +353,38 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
   changeAbono(id){
 
       this.calcular_el_abono(id);
+  }
+
+  cerrare_p_salud(prestamo_id, prestamo_detalle_id, detalle){
+
+    const formData = new FormData();
+    formData.append('prestamo_id', prestamo_id);
+    formData.append('prestamo_detalle_id', prestamo_detalle_id);
+    formData.append('detalle', detalle.value);
+
+    this._http.post(this.url + "cerrar_prestamo_salud", formData, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          //'Content-Type': 'application/form-data'
+        }
+      )
+    }).subscribe((val: { 'estado', 'mensaje' }) => {
+      //console.log(val.estado);
+      if (val.estado == "success") {
+       alert(val.mensaje);
+
+      }
+      if (val.estado == "failed") {
+        alert(val.mensaje);
+
+      }
+    }, response => {
+      console.log("POST call in error", response);
+    },
+      () => {
+        console.log("The POST observable is now completed.");
+      });
   }
 
 }

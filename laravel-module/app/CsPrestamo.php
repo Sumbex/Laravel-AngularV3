@@ -53,7 +53,8 @@ class CsPrestamo extends Model
 								    case 
 								        when tipo_prestamo = 1 then 'Prestamo salud retornable'
 								        when tipo_prestamo = 2 then 'Prestamo aporte económico retornable'
-								    end as tipo
+									end as tipo,
+									detalle_cierre
 								from cs_prestamo p 
 								inner join mes as m on m.id = p.mes_id
 								inner join anio as a on a.id = p.anio_id

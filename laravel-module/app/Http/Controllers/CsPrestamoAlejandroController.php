@@ -757,6 +757,49 @@ class CsPrestamoAlejandroController extends Controller
     }
 
 
+	public function cerrar_prestamo_salud(Request $r)
+	{
+		if (trim($r->detalle) == '') {
+			return[
+				'estado'=>'failed',
+				'mensaje' => 'No ha ingresado el detalle para finalizar'
+			];
+		}
+		$p = CsPrestamo::where([
+			'tipo_prestamo' =>'1',
+			'id' => $r->prestamo_id
+		])->first();
+		
+		if ($p) {
+
+			$psr = p_salud_retornable::where([
+				'prestamo_id'=> $r->prestamo_id
+			])->latest()->first(); // ultimo registro 
+			
+			if ($psr) {
+				$p->estado_prestamo = 'pagado';
+				$p->detalle_cierre = trim($r->detalle);
+				$psr->estado_prestamo = 'pagado';
+
+
+				if ($p->save() && $psr->save()) {
+					return[
+						'estado'=>'success',
+						'mensaje' => 'Prestamo con id '.$r->prestamo_id.' se ha dado por finalizado'
+					];
+				}else{
+					return[
+						'estado'=>'failed',
+						'mensaje' => 'No se ha podido dar por finalizado el prestamo'
+					];
+				}
+			}
+		}
+		
+
+
+	}
+
     //   public function pago_abono(Request $r)
     // {
     // 	$psr = p_salud_retornable::find($r->p_salud_retornable_id); //item prestamo salud retornable;

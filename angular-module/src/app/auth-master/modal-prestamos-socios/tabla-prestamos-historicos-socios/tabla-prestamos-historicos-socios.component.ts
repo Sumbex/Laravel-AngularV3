@@ -390,4 +390,38 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
       });
   }
 
+  cerrare_p_apuro(prestamo_id, prestamo_detalle_id, detalle) {
+
+    const formData = new FormData();
+    formData.append('prestamo_id', prestamo_id);
+    formData.append('prestamo_detalle_id', prestamo_detalle_id);
+    formData.append('detalle', detalle.value);
+
+    this._http.post(this.url + "cerrar_prestamo_apuro", formData, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          //'Content-Type': 'application/form-data'
+        }
+      )
+    }).subscribe((val: { 'estado', 'mensaje' }) => {
+      //console.log(val.estado);
+      if (val.estado == "success") {
+        detalle.value = '';
+        this.m_fin.close();
+        alert(val.mensaje);
+
+      }
+      if (val.estado == "failed") {
+        alert(val.mensaje);
+
+      }
+    }, response => {
+      console.log("POST call in error", response);
+    },
+      () => {
+        console.log("The POST observable is now completed.");
+      });
+  }
+
 }

@@ -765,6 +765,21 @@ class CsPrestamoAlejandroController extends Controller
 				'mensaje' => 'No ha ingresado el detalle para finalizar'
 			];
 		}
+
+		$verify = CsPrestamo::where([
+			'tipo_prestamo' =>'1',
+			'id' => $r->prestamo_id,
+			'estado_prestamo' => 'pagado'
+		])->first();
+
+		if ($verify) {
+			return[
+				'estado'=>'failed',
+				'mensaje'=>'Este prestamo ya esta finalizado'
+			];
+		}
+
+
 		$p = CsPrestamo::where([
 			'tipo_prestamo' =>'1',
 			'id' => $r->prestamo_id

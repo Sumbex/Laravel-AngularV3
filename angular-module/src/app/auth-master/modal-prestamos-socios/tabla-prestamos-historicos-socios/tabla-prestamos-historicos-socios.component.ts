@@ -56,6 +56,7 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
    m_bono = null;
    m_pni = null;
    m_pc = null;
+   m_fin = null;
 
   constructor(public _http: HttpClient, private _sindicalService: SindicalService, private _fechasService: AniosService, config: NgbModalConfig,
     private modalService: NgbModal) {
@@ -273,7 +274,7 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
   }
 
   modal_fin(modal) {
-    this.m_pc = this.modalService.open(modal, { size: 'sm' });
+    this.m_fin = this.modalService.open(modal, { size: 'sm' });
     
   }
 
@@ -372,6 +373,8 @@ export class TablaPrestamosHistoricosSociosComponent implements OnInit {
     }).subscribe((val: { 'estado', 'mensaje' }) => {
       //console.log(val.estado);
       if (val.estado == "success") {
+        detalle.value = '';
+        this.m_fin.close();
        alert(val.mensaje);
 
       }

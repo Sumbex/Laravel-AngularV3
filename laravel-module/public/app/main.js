@@ -866,7 +866,7 @@ module.exports = "<div class=\"card mt-4\">\r\n    <div class=\"card-header\" id
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\r\n<li class=\"nav-item active\">\r\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\r\n        aria-selected=\"true\">haberes</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\r\n        aria-selected=\"false\">Descuentos</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\r\n        aria-selected=\"false\">Generar Liquidaciones</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidacionesHisto-tab\" data-toggle=\"tab\" href=\"#liquidacionesHisto\" role=\"tab\" aria-controls=\"liquidacionesHisto\"\r\n        aria-selected=\"false\">Historial Liquidaciones</a>\r\n</li>\r\n</ul>\r\n\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n\r\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\r\n        <app-haberes></app-haberes>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\r\n        <app-descuentos></app-descuentos>\r\n      </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\r\n        <app-liquidacion></app-liquidacion>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidacionesHisto\" role=\"tabpanel\" aria-labelledby=\"liquidacionesHisto-tab\">\r\n        <app-historial-liquidaciones></app-historial-liquidaciones>\r\n    </div>\r\n\r\n  </div>"
+module.exports = "<ul class=\"nav nav-tabs nav-fill flex-column flex-sm-row mt-4\" id=\"myTab\" role=\"tablist\">\r\n<li class=\"nav-item active\">\r\n    <a class=\"nav-link\" id=\"haberes-tab\" data-toggle=\"tab\" href=\"#haberes\" role=\"tab\" aria-controls=\"haberes\"\r\n        aria-selected=\"true\">haberes</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"descuentos-tab\" data-toggle=\"tab\" href=\"#descuentos\" role=\"tab\" aria-controls=\"descuentos\"\r\n        aria-selected=\"false\">Descuentos</a>\r\n</li>\r\n<li class=\"nav-item\" (click)=\"test()\">\r\n    <a class=\"nav-link\" id=\"liquidaciones-tab\" data-toggle=\"tab\" href=\"#liquidaciones\" role=\"tab\" aria-controls=\"liquidaciones\"\r\n        aria-selected=\"false\">Generar Liquidaciones</a>\r\n</li>\r\n<li class=\"nav-item\">\r\n    <a class=\"nav-link\" id=\"liquidacionesHisto-tab\" data-toggle=\"tab\" href=\"#liquidacionesHisto\" role=\"tab\" aria-controls=\"liquidacionesHisto\"\r\n        aria-selected=\"false\">Historial Liquidaciones</a>\r\n</li>\r\n</ul>\r\n\r\n\r\n<div class=\"tab-content\" id=\"myTabContent\">\r\n\r\n\r\n    <div class=\"tab-pane fade show active\" id=\"haberes\" role=\"tabpanel\" aria-labelledby=\"haberes-tab\">\r\n        <app-haberes></app-haberes>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"descuentos\" role=\"tabpanel\" aria-labelledby=\"descuentos-tab\">\r\n        <app-descuentos></app-descuentos>\r\n      </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidaciones\" role=\"tabpanel\" aria-labelledby=\"liquidaciones-tab\">\r\n        <app-liquidacion></app-liquidacion>\r\n    </div>\r\n\r\n    <div class=\"tab-pane fade\" id=\"liquidacionesHisto\" role=\"tabpanel\" aria-labelledby=\"liquidacionesHisto-tab\">\r\n        <app-historial-liquidaciones></app-historial-liquidaciones>\r\n    </div>\r\n\r\n  </div>"
 
 /***/ }),
 
@@ -10069,13 +10069,16 @@ let LiquidacionComponent = class LiquidacionComponent {
                 alert(response.mensaje);
                 this.blockIngresoGeneracion = false;
                 this.getLiquidacionesGeneradas();
+                this.empleado = '';
             }
             else {
                 alert(response.mensaje);
+                this.empleado = '';
                 this.blockIngresoGeneracion = false;
             }
         }, error => {
             console.log(error);
+            this.empleado = '';
             this.blockIngresoGeneracion = false;
         });
     }
@@ -10165,13 +10168,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuComponent", function() { return MenuComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../liquidacion/liquidacion.component */ "./src/app/auth-master/liquidaciones/liquidacion/liquidacion.component.ts");
+
 
 
 let MenuComponent = class MenuComponent {
-    constructor() { }
+    constructor() {
+        this.testVariable = '1';
+    }
     ngOnInit() {
     }
+    test() {
+        this.hijo.empleado = '';
+        console.log('Hola mundo');
+    }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_2__["LiquidacionComponent"], { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_2__["LiquidacionComponent"])
+], MenuComponent.prototype, "hijo", void 0);
 MenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-menu',
@@ -21624,7 +21639,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\v_and\Desktop\Proyectos\Laravel-AngularV3\angular-module\src\main.ts */"./src/main.ts");
 
 
 /***/ })

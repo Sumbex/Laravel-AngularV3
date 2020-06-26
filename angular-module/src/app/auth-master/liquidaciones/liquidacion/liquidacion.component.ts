@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LiquidacionJuanitoService } from 'src/app/servicios/liquidacion-juanito.service';
 import { LiquidacionMarroService } from 'src/app/servicios/liquidacion-marro.service';
 
@@ -7,7 +7,7 @@ import { LiquidacionMarroService } from 'src/app/servicios/liquidacion-marro.ser
   templateUrl: './liquidacion.component.html',
   styleUrls: ['./liquidacion.component.css']
 })
-export class LiquidacionComponent implements OnInit {
+export class LiquidacionComponent implements OnInit{
 
   //Variable para los empleados del select
   empleado = '';
@@ -227,12 +227,15 @@ export class LiquidacionComponent implements OnInit {
         alert(response.mensaje);
         this.blockIngresoGeneracion = false;
         this.getLiquidacionesGeneradas();
+        this.empleado = '';
       } else {
         alert(response.mensaje);
+        this.empleado = '';
         this.blockIngresoGeneracion = false;
       }
     }, error => {
       console.log(error);
+      this.empleado = '';
       this.blockIngresoGeneracion = false;
     });
   }

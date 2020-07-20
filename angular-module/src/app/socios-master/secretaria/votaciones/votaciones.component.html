@@ -202,7 +202,8 @@
                     <hr>
                     <label>
                         <h5>
-                            <b>Voto: </b>
+                            <b [hidden]="datosVotarTemas.voto">Votar</b>
+                            <b [hidden]="!datosVotarTemas.voto">Voto: {{datosVotarTemas.voto}}</b>
                         </h5>
                     </label>
                     <div class="row mb-4">
@@ -320,6 +321,16 @@
                     <h6>
                         <span>{{datosDetTemas.nombre}}</span>
                     </h6>
+                </div>
+                <div class="col-12 col-md-12">
+                    <hr>
+                    <label>
+                        <h5>
+                            <b [hidden]="datosDetTemas.voto">Voto no ingresado.</b>
+                            <b [hidden]="!datosDetTemas.voto">Voto: {{datosDetTemas.voto}}</b>
+                        </h5>
+                    </label>
+                    <hr>
                 </div>
                 <div class="col-md-12 mt-2">
                     <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button" [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"

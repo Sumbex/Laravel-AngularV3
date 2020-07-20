@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LiquidacionJuanitoService } from 'src/app/servicios/liquidacion-juanito.service';
 import { LiquidacionMarroService } from 'src/app/servicios/liquidacion-marro.service';
 
@@ -7,13 +7,15 @@ import { LiquidacionMarroService } from 'src/app/servicios/liquidacion-marro.ser
   templateUrl: './liquidacion.component.html',
   styleUrls: ['./liquidacion.component.css']
 })
-export class LiquidacionComponent implements OnInit {
+export class LiquidacionComponent implements OnInit{
 
   //Variable para los empleados del select
   empleado = '';
   empleados = [];
   nombreTrabajador = '';
   rutTrabajador = '';
+  saludTrabajador = '';
+  previsionTrabajador = '';
 
   // Fecha de emisión
   fechaEmision = '';
@@ -82,9 +84,9 @@ export class LiquidacionComponent implements OnInit {
   }
 
   traerDatosLiquidacion(test) {
-
     if (test.target.options.selectedIndex != 0) {
-      console.log(this.empleados[test.target.options.selectedIndex - 1].rut_trabajador);
+      this.previsionTrabajador = this.empleados[test.target.options.selectedIndex - 1].nombre_afp;
+      this.saludTrabajador = this.empleados[test.target.options.selectedIndex - 1].nombre_isapre;
       this.rutTrabajador = this.empleados[test.target.options.selectedIndex - 1].rut_trabajador;
     }
     this.showTable = false;
@@ -225,12 +227,15 @@ export class LiquidacionComponent implements OnInit {
         alert(response.mensaje);
         this.blockIngresoGeneracion = false;
         this.getLiquidacionesGeneradas();
+        this.empleado = '';
       } else {
         alert(response.mensaje);
+        this.empleado = '';
         this.blockIngresoGeneracion = false;
       }
     }, error => {
       console.log(error);
+      this.empleado = '';
       this.blockIngresoGeneracion = false;
     });
   }

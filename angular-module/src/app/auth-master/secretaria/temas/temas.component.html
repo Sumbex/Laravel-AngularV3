@@ -1,15 +1,13 @@
 <div class="row">
     <div class="col-md-6 mt-4">
-        <div (click)="abrirModalIngreso(ingreso)" class="card card-body text-white text-center bg-primary"
-            style="cursor: pointer">
+        <div (click)="abrirModalIngreso(ingreso)" class="card card-body text-white text-center bg-primary" style="cursor: pointer">
             <h3><i class="fas fa-vote-yea"></i> Crear Nuevo Tema</h3>
             <p>Aqui se crearan nuevos temas a votar.</p>
         </div>
     </div>
 
     <div class="col-md-6 mt-4">
-        <div (click)="abrirModalActivos(activos)" class="card card-body text-white text-center bg-success"
-            style="cursor: pointer">
+        <div (click)="abrirModalActivos(activos)" class="card card-body text-white text-center bg-success" style="cursor: pointer">
             <h3><i class="fas fa-hourglass-end"></i> Temas Activos</h3>
             <p>Modificar, dar por cerrado o cancelar temas activos.</p>
         </div>
@@ -17,8 +15,7 @@
 </div>
 <div class="row">
     <div class="col-md-12 mt-4 mb-4">
-        <div (click)="abrirModalHistorial(historial)" class="card card-body text-white text-center bg-danger"
-            style="cursor: pointer">
+        <div (click)="abrirModalHistorial(historial)" class="card card-body text-white text-center bg-danger" style="cursor: pointer">
             <h3><i class="fas fa-list"></i> Historial de Temas Tratados</h3>
             <p>Ver los temas tratados anteriormente.</p>
         </div>
@@ -55,20 +52,17 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Titulo</label>
-                            <input class="form-control" type="text" name="titulo" [(ngModel)]="datosTema.titulo"
-                                required>
+                            <input class="form-control" type="text" name="titulo" [(ngModel)]="datosTema.titulo" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Descripcion</label>
-                            <textarea class="form-control resize-none" name="descripcion"
-                                [(ngModel)]="datosTema.descripcion" required></textarea>
+                            <textarea class="form-control resize-none" name="descripcion" [(ngModel)]="datosTema.descripcion" required></textarea>
                         </div>
                     </div>
 
-                    <button type="submit" [disabled]="temasForm.invalid || ingresandoTema"
-                        class="btn btn-block btn-success">Ingresar Tema <img *ngIf="ingresandoTema" height="20"
+                    <button type="submit" [disabled]="temasForm.invalid || ingresandoTema" class="btn btn-block btn-success">Ingresar Tema <img *ngIf="ingresandoTema" height="20"
                             src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                 </div>
             </form>
@@ -96,8 +90,7 @@
                         <thead text-sm class="text-center">
                             <tr>
                                 <th colspan="8" class="ColorThCS">Temas Activos</th>
-                                <th colspan="2"><button class="btn btn-info"
-                                        (click)="traerTemasActivos()">Actualizar</button></th>
+                                <th colspan="2"><button class="btn btn-info" (click)="traerTemasActivos()">Actualizar</button></th>
                             </tr>
                             <tr>
                                 <th colspan="2">
@@ -118,8 +111,7 @@
                                 <td colspan="2">{{item?.titulo}}</td>
                                 <td colspan="2">{{item?.estado}}</td>
                                 <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button (click)="abrirModalActualizar(editar,item)" type="button"
-                                        class="btn btn-info">Ver</button>
+                                <td colspan="2"><button (click)="abrirModalActualizar(editar,item)" type="button" class="btn btn-info">Ver</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -152,8 +144,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Fecha</label>
-                            <input class="form-control" type="date" name="fecha" [(ngModel)]="datosActTemas.fecha"
-                                required>
+                            <input class="form-control" type="date" name="fecha" [(ngModel)]="datosActTemas.fecha" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -165,39 +156,29 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Titulo</label>
-                            <input class="form-control" type="text" name="titulo" [(ngModel)]="datosActTemas.titulo"
-                                required>
+                            <input class="form-control" type="text" name="titulo" [(ngModel)]="datosActTemas.titulo" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="">Descripcion</label>
-                            <textarea class="form-control resize-none" name="descripcion"
-                                [(ngModel)]="datosActTemas.descripcion" required></textarea>
+                            <textarea class="form-control resize-none" name="descripcion" [(ngModel)]="datosActTemas.descripcion" required></textarea>
                         </div>
                     </div>
                     <div class="col-md-4 mt-2">
-                        <button type="submit"
-                            [disabled]="temasActForm.invalid || actualizandoTema || terminarTema || cancelarTema || mostrarVotos || cerrada"
-                            class="btn btn-block btn-success">Actualizar Tema <img *ngIf="actualizandoTema" height="20"
+                        <button type="submit" [disabled]="temasActForm.invalid || actualizandoTema || terminarTema || cancelarTema || mostrarVotos || cerrada" class="btn btn-block btn-success">Actualizar Tema <img *ngIf="actualizandoTema" height="20"
                                 src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                     <div class="col-md-4 mt-2">
-                        <button (click)="cerrarTema(grafico)" type="button"
-                            [disabled]="terminarTema || actualizandoTema || cancelarTema || mostrarVotos || cerrada"
-                            class="btn btn-block btn-primary">Terminar Tema <img *ngIf="terminarTema" height="20"
+                        <button (click)="cerrarTema(grafico)" type="button" [disabled]="terminarTema || actualizandoTema || cancelarTema || mostrarVotos || cerrada" class="btn btn-block btn-primary">Terminar Tema <img *ngIf="terminarTema" height="20"
                                 src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                     <div class="col-md-4 mt-2">
-                        <button (click)="cancelarTemas()" type="button"
-                            [disabled]="cancelarTema || actualizandoTema || terminarTema || mostrarVotos || cerrada"
-                            class="btn btn-block btn-danger">Cancelar Tema <img *ngIf="cancelarTema" height="20"
+                        <button (click)="cancelarTemas()" type="button" [disabled]="cancelarTema || actualizandoTema || terminarTema || mostrarVotos || cerrada" class="btn btn-block btn-danger">Cancelar Tema <img *ngIf="cancelarTema" height="20"
                                 src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <button (click)="traerVotosTema(datosActTemas.id, grafico, false)" type="button"
-                            [disabled]="mostrarVotos || cancelarTema || actualizandoTema || terminarTema || cerrada"
-                            class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos" height="20"
+                        <button (click)="traerVotosTema(datosActTemas.id, grafico, false)" type="button" [disabled]="mostrarVotos || cancelarTema || actualizandoTema || terminarTema || cerrada" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos" height="20"
                                 src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                     </div>
                 </div>
@@ -207,8 +188,7 @@
     <div class="modal-footer">
         <button [hidden]="cerrada" type="button" class="btn btn-info" (click)="d('Cross click')"><i
                 class="far fa-arrow-alt-circle-left"></i> Volver</button>
-        <button [hidden]="!cerrada" type="button" class="btn btn-info"
-            (click)="traerTemasActivos(); d('Cross click')"><i class="far fa-arrow-alt-circle-left"></i> Volver</button>
+        <button [hidden]="!cerrada" type="button" class="btn btn-info" (click)="traerTemasActivos(); d('Cross click')"><i class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
 </ng-template>
 
@@ -225,22 +205,19 @@
             <div class="row centrar text-center">
                 <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
                                 class="fas fa-calendar-check"></i></strong></label>
-                    <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
-                        class="form-control form-control-sm">
+                    <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual" class="form-control form-control-sm">
                         <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
                     </select>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
                                 class="fas fa-calendar-check"></i></strong></label>
-                    <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
-                        class="form-control form-control-sm">
+                    <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual" class="form-control form-control-sm">
                         <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
                     </select>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Tipo <i
                                 class="fas fa-calendar-check"></i></strong></label>
-                    <select (change)="changeTipo($event)" name="tipo" #tipo="ngModel" [(ngModel)]="idTipoActual"
-                        class="form-control form-control-sm">
+                    <select (change)="changeTipo($event)" name="tipo" #tipo="ngModel" [(ngModel)]="idTipoActual" class="form-control form-control-sm">
                         <option value="0">Todos</option>
                         <option *ngFor="let tipo of selectTipo" [value]="tipo.id">{{tipo.tipo}}</option>
                     </select>
@@ -283,8 +260,7 @@
                                 <td colspan="2">{{item?.estado}}</td>
                                 <td colspan="2">{{item?.aprobado}}</td>
                                 <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button"
-                                        class="btn btn-info">Ver</button>
+                                <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button" class="btn btn-info">Ver</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -377,8 +353,7 @@
                         </h5>
                     </label>
                     <h6>
-                        <span
-                            [ngClass]="{'cancelada' : datosDetTemas?.estado != 'Publicado' , 'cancelada' : datosDetTemas?.estado != 'Publicado' , 'aprobado' : datosDetTemas?.estado == 'Publicado'}">
+                        <span [ngClass]="{'cancelada' : datosDetTemas?.estado != 'Publicado' , 'cancelada' : datosDetTemas?.estado != 'Publicado' , 'aprobado' : datosDetTemas?.estado == 'Publicado'}">
                             {{datosDetTemas.estado}}</span>
                     </h6>
                 </div>
@@ -389,13 +364,13 @@
                         </h5>
                     </label>
                     <h6>
-                        <span
-                            [ngClass]="{'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'aprobado' : datosDetTemas?.aprobado == 'Aprobado'}">
+                        <span [ngClass]="{'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'aprobado' : datosDetTemas?.aprobado == 'Aprobado'}">
                             {{datosDetTemas.aprobado}}
                         </span>
                     </h6>
                 </div>
-                <div class="col-12 col-md-12 text-left"> <hr>
+                <div class="col-12 col-md-12 text-left">
+                    <hr>
                     <label class="mt-2">
                         <h5>
                             <b>Tema tratado: </b>
@@ -405,7 +380,8 @@
                         <span>{{datosDetTemas.descripcion}}</span>
                     </h6>
                 </div>
-                <div class="col-12 col-md-12 text-right"> <hr>
+                <div class="col-12 col-md-12 text-right">
+                    <hr>
                     <label>
                         <h5>
                             <h5>
@@ -418,8 +394,7 @@
                     </h6>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button"
-                        [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
+                    <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button" [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
                             height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                 </div>
             </div>

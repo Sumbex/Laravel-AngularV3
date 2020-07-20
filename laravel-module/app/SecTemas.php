@@ -159,6 +159,7 @@ class SecTemas extends Model
                 'st.activo' => 'S',
                 'st.estado_tema_id' => 1
             ])
+            ->orderBy('st.fecha_inicio', 'desc')
             ->get();
         if (!$temas->isEmpty()) {
             foreach ($temas as $key) {
@@ -196,6 +197,7 @@ class SecTemas extends Model
             ])
             ->whereIn('st.estado_tema_id', [2, 3])
             ->whereRaw("extract(year from st.fecha_inicio) ='" . $anioD . "'and extract(month from st.fecha_inicio) ='" . $mes . "'")
+            ->orderBy('st.fecha_inicio', 'desc')
             ->get();
         if (!$temas->isEmpty()) {
             foreach ($temas as $key) {

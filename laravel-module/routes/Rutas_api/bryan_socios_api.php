@@ -66,6 +66,7 @@ Route::get('/traer_noticias_sec_socios', 'PortalSocioController@TraerNoticias');
 
 //------------------------------------------>temas
 Route::get('/traer_temas_activos_socios', 'PortalSocioSecTemasController@TemasActivos');
+Route::get('/traer_voto_socio/{tema}', 'PortalSocioSecTemasController@TraerVotoSocio');
 Route::get('/traer_tipos_temas_socios', 'PortalSocioSecTemasController@TraerTipos');
 Route::post('/ingresar_voto_socios', 'PortalSocioSecTemasController@IngresarVoto');
 Route::get('/traer_tipo_votos_socios', 'PortalSocioSecTemasController@TraerTipoVotos');

@@ -64,8 +64,8 @@ Route::get('listar_prestamos_finalizados','CsPrestamoAlejandroController@listar_
 
 Route::get('calcular_cuota_prestamo/{prestamo_id}','CsPrestamoAlejandroController@calcular_cuota_prestamo');
 Route::get('calcular_abono/{prestamo_id}/{tipo_abono}','CsPrestamoAlejandroController@calcular_abono');
-
-
+Route::post('cerrar_prestamo_salud','CsPrestamoAlejandroController@cerrar_prestamo_salud');
+Route::post('cerrar_prestamo_apuro','CsPrestamoAlejandroController@cerrar_prestamo_apuro');
 //----selects
 Route::get('traer_regiones','geoController@traer_regiones');
 Route::get('traer_provincia/{region}','geoController@traer_provincia');

@@ -328,9 +328,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
                     /* dd(is_null($socio->fecha_egreso)); */
                     if (is_null($socio->fecha_egreso)) {
-
-                        $user = User::where('rut', $socio->rut)->first();
-
+                        /* $user = User::where('rut', $socio->rut)->first(); */
+                        $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $socio->rut . "')")->first();
                         if ($user->rol == 5 || $user->rol == 10) {
                             if (Hash::check($request->password, $user->password)) {
                                 //$credentials = $request->only('email', 'password');
@@ -418,10 +417,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
     protected function socioLogeado()
     {
-        /* dd(Auth::guard()->user()); */
-        /*  dd(Auth::guard()); */
-        $socio = PortalSocio::where('rut', Auth::guard()->user()->rut)->get();
-        /* dd($socio); */
+        /* $socio = PortalSocio::where('rut', Auth::guard()->user()->rut)->get(); */
+        $socio = PortalSocio::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . Auth::guard()->user()->rut . "')")->get();
         foreach ($socio as $key) {
             $key->rol = Auth::guard()->user()->rol;
         }
@@ -1394,7 +1391,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
 
         if (!is_null($traerSocio)) {
             if (is_null($traerSocio->fecha_egreso)) {
-                $user = User::where('rut', $traerSocio->rut)->first();
+                /* $user = User::where('rut', $traerSocio->rut)->first(); */
+                $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $traerSocio->rut . "')")->first();
                 if (is_null($user)) {
                     $crear = new User;
                     // $crear->id = User::max('id') + 1;
@@ -1442,7 +1440,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
         $traerSocio = PortalSocio::find($request->id);
 
         if (!is_null($traerSocio)) {
-            $user = User::where('rut', $traerSocio->rut)->first();
+            /* $user = User::where('rut', $traerSocio->rut)->first(); */
+            $user = User::whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $traerSocio->rut . "')")->first();
             if (!is_null($user)) {
                 if ($user->rol == 5) {
                     $user->rol = '1';

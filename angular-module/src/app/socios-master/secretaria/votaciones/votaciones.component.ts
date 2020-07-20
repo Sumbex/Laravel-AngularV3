@@ -37,7 +37,8 @@ export class VotacionesComponent implements OnInit {
     fecha: '',
     titulo: '',
     descripcion: '',
-    nombre: ''
+    nombre: '',
+    voto: null
   };
 
   datosDetTemas = {
@@ -49,7 +50,8 @@ export class VotacionesComponent implements OnInit {
     estado: '',
     aprobado: '',
     nombre: '',
-    motivo: ''
+    motivo: '',
+    voto: ''
   };
 
   datosVoto = {
@@ -82,12 +84,16 @@ export class VotacionesComponent implements OnInit {
   }
 
   abrirModalDetalle(modal, tema) {
+    this.datosDetTemas.voto = '';
+    this.traerVotoSocio(tema.id, 2);
     this.cargarDatosDetalle(tema);
     this.modalService.open(modal, { size: 'xl' });
   }
 
   abrirModalTema(modal, tema) {
     this.idVotoActual = 0;
+    this.datosVotarTemas.voto = null;
+    this.traerVotoSocio(tema.id, 1);
     this.cargarDatosTema(tema);
     this.traerTipoVotos();
     this.modalService.open(modal, { size: 'xl' });
@@ -99,6 +105,29 @@ export class VotacionesComponent implements OnInit {
     this.datosVotarTemas.titulo = tema.titulo;
     this.datosVotarTemas.descripcion = tema.descripcion;
     this.datosVotarTemas.nombre = tema.nombre;
+  }
+
+  traerVotoSocio(tema, tipo) {
+    this._votaciones.traerVotoSocio(tema).subscribe(
+      res => {
+        if (res.estado == 'success') {
+          if (tipo == 1) {
+            this.datosVotarTemas.voto = res.voto.descripcion;
+          } else {
+            this.datosDetTemas.voto = res.voto.descripcion;
+          }
+        } else {
+          if (tipo == 1) {
+            this.datosVotarTemas.voto = null;
+          } else {
+            this.datosDetTemas.voto = '';
+          }
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   cargarDatosDetalle(tema) {
@@ -205,23 +234,28 @@ export class VotacionesComponent implements OnInit {
     if (this.datosVoto.voto == 0) {
       alert('Debes seleccionar un voto.');
     } else {
-      this.ingresandoVoto = true;
-      this._votaciones.ingresarVoto(this.datosVoto).subscribe(
-        res => {
-          if (res.estado == 'success') {
+      if (confirm('¿Estas seguro de ingresar tu voto?')) {
+        this.ingresandoVoto = true;
+        this._votaciones.ingresarVoto(this.datosVoto).subscribe(
+          res => {
+            if (res.estado == 'success') {
+              this.ingresandoVoto = false;
+              this.traerVotoSocio(this.datosVoto.tema, 1);
+              this.idVotoActual = 0;
+              this.limpiarVoto();
+              alert(res.mensaje);
+            } else {
+              this.ingresandoVoto = false;
+              alert(res.mensaje);
+            }
+          }, error => {
             this.ingresandoVoto = false;
-            this.idVotoActual = 0;
-            this.limpiarVoto();
-            alert(res.mensaje);
-          } else {
-            this.ingresandoVoto = false;
-            alert(res.mensaje);
+            console.log(error);
           }
-        }, error => {
-          this.ingresandoVoto = false;
-          console.log(error);
-        }
-      )
+        )
+      } else {
+        this.ingresandoVoto = false;
+      }
     }
   }
 
@@ -289,7 +323,7 @@ export class VotacionesComponent implements OnInit {
     this.chart = new Chart("votosTema", {
       type: 'pie',
       data: {
-        labels: ['Apruebo', 'Rechazo', 'Me Abstengo', 'Nulo'],
+        labels: ['Apruebo', 'Rechazo', 'Me Abstengo', 'Socios sin Votar'],
         datasets: [{
           label: '# of Votes',
           data: this.totalVotos,

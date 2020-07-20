@@ -86,41 +86,75 @@ class Archivador extends Model
         }
     }
 
+    protected function validarPDF($archivo)
+    {
+        $extensions = array("pdf", "application/pdf");
+        $result = array($archivo->getClientOriginalExtension());
+        if (in_array($result[0], $extensions)) {
+            return ['estado' => true];
+        } else {
+            return ['estado' => false, 'mensaje' => 'El archivo seleccionado debe ser PDF.'];
+        }
+    }
+
+    protected function validarAct($archivo)
+    {
+        $extensions = array("pdf", "application/pdf", "xls", "xlsx", "xlm", "xla", "xlc", "xlt", "xlw");
+        $result = array($archivo->getClientOriginalExtension());
+        if (in_array($result[0], $extensions)) {
+            return ['estado' => true];
+        } else {
+            return ['estado' => false, 'mensaje' => 'El archivo seleccionado debe ser PDF o Excel.'];
+        }
+    }
+
     protected function ingresarArchivo($request)
     {
-        /* dd($request->all()); */
         $validarDatos = $this->validarDatos($request);
         if ($validarDatos['estado'] == 'success') {
-            $excel = $this->validarExcel($request->archivo);
-            /* dd($excel); */
-            if ($excel['estado'] == true) {
-                $fecha = $this->fecha($request->fecha);
-                $anio = $this->anioID($fecha['anio']);
-                $mes = $this->mesID($fecha['mes']);
-                $archivo = new Archivador;
-                $archivo->anio_id = $anio;
-                $archivo->mes_id = $mes;
-                $archivo->dia = $fecha['dia'];
-                $archivo->titulo = $request->titulo;
-                $archivo->tipo_archivo_id = $request->tipo;
-                $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosArchivador/');
-                if ($guardarArchivo['estado'] == "success") {
-                    $archivo->archivo = $guardarArchivo['archivo'];
+            if ($request->tipo == 4) {
+                $validarPDF = $this->validarPDF($request->archivo);
+                if ($validarPDF['estado'] == true) {
+                    return $this->setArchivo($request);
                 } else {
-                    return $guardarArchivo;
-                }
-                $archivo->user_crea = Auth::user()->id;
-                $archivo->activo = "S";
-                if ($archivo->save()) {
-                    return ['estado' => 'success', 'mensaje' => 'Archivo ingresado correctamente.'];
-                } else {
-                    return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                    return $validarPDF;
                 }
             } else {
-                return $excel;
+                $excel = $this->validarExcel($request->archivo);
+                if ($excel['estado'] == true) {
+                    return $this->setArchivo($request);
+                } else {
+                    return $excel;
+                }
             }
         } else {
             return $validarDatos;
+        }
+    }
+
+    protected function setArchivo($request)
+    {
+        $fecha = $this->fecha($request->fecha);
+        $anio = $this->anioID($fecha['anio']);
+        $mes = $this->mesID($fecha['mes']);
+        $archivo = new Archivador;
+        $archivo->anio_id = $anio;
+        $archivo->mes_id = $mes;
+        $archivo->dia = $fecha['dia'];
+        $archivo->titulo = $request->titulo;
+        $archivo->tipo_archivo_id = $request->tipo;
+        $guardarArchivo = $this->guardarArchivo($request->archivo, 'ArchivosArchivador/');
+        if ($guardarArchivo['estado'] == "success") {
+            $archivo->archivo = $guardarArchivo['archivo'];
+        } else {
+            return $guardarArchivo;
+        }
+        $archivo->user_crea = Auth::user()->id;
+        $archivo->activo = "S";
+        if ($archivo->save()) {
+            return ['estado' => 'success', 'mensaje' => 'Archivo ingresado correctamente.'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
         }
     }
 
@@ -176,8 +210,8 @@ class Archivador extends Model
                 break;
 
             case 'archivo':
-                $excel = $this->validarExcel($request->input);
-                if ($excel['estado'] == true) {
+                $validarArchivo = $this->validarAct($request->input);
+                if ($validarArchivo['estado'] == true) {
                     $archivo = Archivador::find($request->id);
                     if (!is_null($archivo)) {
                         $ruta = substr($archivo->archivo, 8);
@@ -201,7 +235,7 @@ class Archivador extends Model
                         return ['estado' => 'failed', 'mensaje' => 'Archivo no encontrado.'];
                     }
                 } else {
-                    return $excel;
+                    return $validarArchivo;
                 }
                 break;
 

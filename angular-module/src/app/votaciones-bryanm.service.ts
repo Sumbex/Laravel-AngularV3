@@ -138,6 +138,17 @@ export class VotacionesBryanmService {
     })
   }
 
+  traerVotoSocio(tema): Observable<any> {
+    return this._http.get(this.url + "traer_voto_socio/" + tema, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
   traerTiposSocios(): Observable<any> {
     return this._http.get(this.url + "traer_tipos_temas_socios", {
       headers: new HttpHeaders(

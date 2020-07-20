@@ -1105,6 +1105,7 @@ class Cs_prestamos extends Model
 
     protected function traerSocio($rut)
     {
+        $rut_limpio = $this->limpiar($rut);
         $socio = DB::table('socios')
             ->select([
                 'id',
@@ -1113,11 +1114,12 @@ class Cs_prestamos extends Model
                 'foto',
                 'fecha_egreso'
             ])
-            ->where([
-                'rut' => $rut,
-                'activo' => 'S',
-            ])
-            ->get();
+            // ->where([
+            //     'rut' => $rut,
+            //     'activo' => 'S',
+            // ])
+            // ->get();
+           ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('" . $rut_limpio . "') and activo='S'")->get();
 
         if (!$socio->isEmpty()) {
             if (is_null($socio[0]->fecha_egreso)) {
@@ -1539,5 +1541,28 @@ class Cs_prestamos extends Model
         } else {
             return $validarDatos;
         }
+    }
+
+    function limpiar($s) 
+    { 
+        $s = str_replace('á', 'a', $s); 
+        $s = str_replace('Á', 'A', $s); 
+        $s = str_replace('é', 'e', $s); 
+        $s = str_replace('É', 'E', $s); 
+        $s = str_replace('í', 'i', $s); 
+        $s = str_replace('Í', 'I', $s); 
+        $s = str_replace('ó', 'o', $s); 
+        $s = str_replace('Ó', 'O', $s); 
+        $s = str_replace('Ú', 'U', $s); 
+        $s= str_replace('ú', 'u', $s); 
+
+        //Quitando Caracteres Especiales 
+        $s= str_replace('"', '', $s); 
+        $s= str_replace(':', '', $s); 
+        $s= str_replace('.', '', $s); 
+        $s= str_replace(',', '', $s); 
+        $s= str_replace(';', '', $s); 
+        $s= str_replace('-', '', $s); 
+        return $s; 
     }
 }

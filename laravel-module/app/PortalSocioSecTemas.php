@@ -40,6 +40,7 @@ class PortalSocioSecTemas extends Model
                     'st.activo' => 'S',
                     'st.estado_tema_id' => 1
                 ])
+                ->orderBy('st.fecha_inicio', 'desc')
                 ->get();
             if (!$temas->isEmpty()) {
                 foreach ($temas as $key) {
@@ -56,13 +57,33 @@ class PortalSocioSecTemas extends Model
         }
     }
 
+    protected function traerVotoSocio($tema)
+    {
+        $voto = DB::table('sec_votos as sv')
+            ->select([
+                'sv.id',
+                'stv.descripcion'
+            ])
+            ->join('sec_tipo_voto as stv', 'stv.id', 'sv.voto_id')
+            ->where([
+                'sv.activo' => 'S',
+                'sv.tema_id' => $tema,
+                'sv.socio_id' => $this->socioID()
+            ])
+            ->where('sv.voto_id', '<>', 4)
+            ->first();
+        if (!is_null($voto)) {
+            return ['estado' => 'success', 'voto' => $voto];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'El socio aun no ha votado.'];
+        }
+    }
+
     protected function ingresarVoto($request)
     {
-        /* dd($this->socioID()); */
         $verificarSocio = $this->verificarSocio($this->socioID());
         if ($verificarSocio['estado'] == 'success') {
             $verificarVoto = $this->verificarVoto($request->tema);
-            /*  dd($verificarVoto); */
             if ($verificarVoto['estado'] == 'success') {
                 $voto = SecVotos::find($verificarVoto['id']);
                 if (!is_null($voto)) {
@@ -77,7 +98,18 @@ class PortalSocioSecTemas extends Model
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente 1.'];
                 }
             } else {
-                return $verificarVoto;
+                $existe = DB::table('sec_votos')
+                    ->where([
+                        'activo' => 'S',
+                        'tema_id' => $request->tema,
+                        'socio_id' => $this->socioID(),
+                    ])
+                    ->first();
+                if (!is_null($existe)) {
+                    return $verificarVoto;
+                } else {
+                    return ['estado' => 'failed', 'mensaje' => 'No puedes votar en este tema porque tu registro en el Sindicato/Sistema es posterior a su creación.'];
+                }
             }
         } else {
             return  $verificarSocio;
@@ -98,8 +130,6 @@ class PortalSocioSecTemas extends Model
                 'voto_id' => 4
             ])
             ->first();
-
-        /* dd($voto); */
         if (!is_null($voto)) {
             return ['estado' => 'success', 'id' => $voto->id];
         } else {
@@ -174,6 +204,7 @@ class PortalSocioSecTemas extends Model
                 'id',
                 'descripcion as voto'
             ])
+            ->whereIn('id', [1, 2, 3])
             ->get();
         if (!$votos->isEmpty()) {
             return ['estado' => 'success', 'votos' => $votos];

@@ -1,1 +1,105 @@
-<p>directorio-socio works!</p>
+<div class="col-md-2">
+    <label>
+        <b>Historial de Reuniones</b>
+    </label>
+    <button class="btn btn-primary btn-block btn-sm" type="button"
+        (click)="abrirModal(modalDirectorio); visualizarDirectorio()">Historial</button>
+</div>
+
+<ng-template #modalDirectorio let-modal>
+    <!-- Header Del Modal -->
+    <div class="modal-header theadazul">
+        <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Historial de Reuniones</strong>
+        </h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+        <div class="table-responsive-sm">
+
+            <table class="table text-center">
+                <thead>
+                    <tr class="bg-info" style="color: #ffff;">
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">N° Reunion</th>
+                        <th scope="col">Tipo de Reunion</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Detalles</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let listar of listarDirectorio">
+                        <td class="firsttd">{{listar.nuevo}}</td>
+                        <td>{{listar.fecha | date:'shortTime'}}</td>
+                        <th scope="row">{{listar.id}}</th>
+                        <td>{{listar.tipo}}</td>
+                        <td>{{listar.titulo | titlecase}}</td>
+                        <td><button class="btn btn-success"
+                                (click)="abrirModalDetalle(modalDetalle,listar.id)">Ver</button>
+                            <!-- detalle del modal -->
+                            <ng-template #modalDetalle let-modal>
+                                <!-- Header Del Modal -->
+                                <div class="modal-header" id="demoFont">
+                                    <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle de la
+                                            Reunion {{listar.id}}</strong>
+                                    </h6>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- Cuerpo del modal -->
+                                <div class="modal-body" id="printJS-table">
+                                    <h3 style="text-align: center;">
+                                        <b>{{listar.titulo | titlecase}}</b>
+                                    </h3>
+
+                                    <p><b>Directiva asistida:</b></p>
+                                    <pre *ngFor="let listar2 of listarDirectorioDetalle">{{listar2.descripcion}}</pre>
+
+                                    <div *ngIf="listar.asistencia != null">
+                                        <p><b>{{listar.tipo}} asistida:</b></p>
+                                        <pre>{{listar.asistencia}}</pre>
+                                    </div>
+
+                                    <p><b>Temas tratados:</b></p>
+                                    <pre>{{listar.temas}}</pre>
+
+                                    <p><b>Acuerdos:</b></p>
+                                    <pre>{{listar.acuerdos}}</pre>
+
+                                </div>
+                                <!-- Patitas del Modal -->
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-success" onclick="printJS({
+                      printable: 'printJS-table',
+                      type:'html',
+                      style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'
+                    })">
+                                        <i class="fas fa-print"></i> Imprimir Datos
+                                    </button>
+
+                                    <button type="button" id="botonCerrarModal" class="btn btn-info"
+                                        (click)="modal.close('Close click')"><i
+                                            class="far fa-arrow-alt-circle-left"></i> Volver</button>
+                                </div>
+                            </ng-template>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+        <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+                class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+</ng-template>

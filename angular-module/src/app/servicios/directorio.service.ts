@@ -24,6 +24,9 @@ export class DirectorioService {
     form.append('presidente', datos.presidente);
     form.append('secretario', datos.secretario);
     form.append('tesorero', datos.tesorero);
+    form.append('primerDirector', datos.primerDirector);
+    form.append('segundoDirector', datos.segundoDirector);
+    form.append('acuerdos', datos.acuerdos);
 
     return this._http.post(this.url + "registro_directorio", form, {headers: new HttpHeaders(
         {

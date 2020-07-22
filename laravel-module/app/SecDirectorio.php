@@ -51,6 +51,7 @@ class SecDirectorio extends Model
                 $r->titulo=$datos->titulo;
                 $r->asistencia=$datos->asistencia;
                 $r->temas=$datos->temas;
+                $r->acuerdos=$datos->acuerdos;
                 $r->activo='S';
                 if ($r->save()) {
                     if ($datos->presidente == 'true') {
@@ -73,6 +74,20 @@ class SecDirectorio extends Model
                         $tesorero->sec_directiva_id = '3';
                         $tesorero->activo = 'S';
                         $tesorero->save();
+                    }
+                    if ($datos->primerDirector == 'true') {
+                        $primerDirector = new SecDirectivaAsistida;
+                        $primerDirector->sec_directorio_id = $r->id;
+                        $primerDirector->sec_directiva_id = '4';
+                        $primerDirector->activo = 'S';
+                        $primerDirector->save();
+                    }
+                    if ($datos->segundoDirector == 'true') {
+                        $segundoDirector = new SecDirectivaAsistida;
+                        $segundoDirector->sec_directorio_id = $r->id;
+                        $segundoDirector->sec_directiva_id = '5';
+                        $segundoDirector->activo = 'S';
+                        $segundoDirector->save();
                     }
                    
                     return ['estado'=>'success', 'mensaje'=>'Reunion Agendada con exito!'];
@@ -110,7 +125,8 @@ class SecDirectorio extends Model
                                 'sec_directorio.fecha', 
                                 'sec_directorio.titulo', 
                                 'sec_directorio.asistencia', 
-                                'sec_directorio.temas', 
+                                'sec_directorio.temas',
+                                'sec_directorio.acuerdos', 
                                 'str.descripcion as tipo',
                                 // 'sd.descripcion as directiva'
 
@@ -118,12 +134,14 @@ class SecDirectorio extends Model
             ->join('sec_tipo_reunion as str', 'str.id', 'sec_directorio.sec_tipo_reunion_id')
             // ->join('sec_directiva_asistida as sda','sda.sec_directorio_id','sec_directorio.id')
             // ->join('sec_directiva as sd','sd.id','sda.sec_directiva_id')     
-            ->orderby('sec_directorio.id', 'asc')
+            ->orderby('sec_directorio.id', 'desc')
             ->get();
             // dd($listar);
         if (count($listar) > 0) {
             foreach ($listar as $key) {
-                $key->fecha = Carbon::parse($key->fecha)->format('d/m/Y');
+            //     $key->fecha = Carbon::parse($key->fecha)->format('d/m/Y');
+            setlocale(LC_TIME, 'es_CL.UTF-8');
+                $key->nuevo = Carbon::parse($key->fecha)->formatLocalized('%d %B del %Y');
             }
         }
 

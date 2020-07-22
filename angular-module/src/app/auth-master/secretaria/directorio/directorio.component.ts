@@ -16,8 +16,11 @@ export class DirectorioComponent implements OnInit {
   presidente : false,
   tesorero : false,
   secretario : false,
+  primerDirector : false,
+  segundoDirector : false,
   asistencia : '',
   temas : '',
+  acuerdos : ''
   };
 
   //loading
@@ -78,8 +81,11 @@ export class DirectorioComponent implements OnInit {
     this.datosDirectorio.presidente = false;
     this.datosDirectorio.tesorero= false;
     this.datosDirectorio.secretario = false;
+    this.datosDirectorio.primerDirector = false;
+    this.datosDirectorio.segundoDirector = false;
     this.datosDirectorio.asistencia = '';
     this.datosDirectorio.temas = '';
+    this.datosDirectorio.acuerdos = '';
   }
 
   visualizarDirectorio(){

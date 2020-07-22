@@ -598,8 +598,13 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD:laravel-module/public/app/styles.js
 __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/src/styles.css */"./src/styles.css");
 module.exports = __webpack_require__(/*! /Users/alejandroesteban/Desktop/cmpc_desarrollo/cmpc_dev/angular-module/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+=======
+__webpack_require__(/*! C:\Users\david\Desktop\SindicatoCMPC\angular-module\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\david\Desktop\SindicatoCMPC\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+>>>>>>> david:laravel-module/public/app/styles.js
 
 
 /***/ })

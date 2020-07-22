@@ -1,0 +1,2466 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-module documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-module documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>PortalSociosService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/servicios/portal-socios.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#_http">_http</a>
+                            </li>
+                            <li>
+                                <a href="#rol">rol</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#url">url</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cambiarPassSocio">cambiarPassSocio</a>
+                            </li>
+                            <li>
+                                <a href="#getAnioActual">getAnioActual</a>
+                            </li>
+                            <li>
+                                <a href="#getAnios">getAnios</a>
+                            </li>
+                            <li>
+                                <a href="#getBeneficiosFalleciomientosCobrados">getBeneficiosFalleciomientosCobrados</a>
+                            </li>
+                            <li>
+                                <a href="#getBeneficiosGastosMedicos">getBeneficiosGastosMedicos</a>
+                            </li>
+                            <li>
+                                <a href="#getBeneficiosNacimientosCobrados">getBeneficiosNacimientosCobrados</a>
+                            </li>
+                            <li>
+                                <a href="#getCajaChica">getCajaChica</a>
+                            </li>
+                            <li>
+                                <a href="#getCamping">getCamping</a>
+                            </li>
+                            <li>
+                                <a href="#getDatosBeneficiario">getDatosBeneficiario</a>
+                            </li>
+                            <li>
+                                <a href="#getDatosCargas">getDatosCargas</a>
+                            </li>
+                            <li>
+                                <a href="#getDatosConyuge">getDatosConyuge</a>
+                            </li>
+                            <li>
+                                <a href="#getDatosPadresSuegros">getDatosPadresSuegros</a>
+                            </li>
+                            <li>
+                                <a href="#getDatosSocios">getDatosSocios</a>
+                            </li>
+                            <li>
+                                <a href="#getFondosMutuos">getFondosMutuos</a>
+                            </li>
+                            <li>
+                                <a href="#getMesActual">getMesActual</a>
+                            </li>
+                            <li>
+                                <a href="#getMeses">getMeses</a>
+                            </li>
+                            <li>
+                                <a href="#getPagosAbonos">getPagosAbonos</a>
+                            </li>
+                            <li>
+                                <a href="#getPagosPrestamos">getPagosPrestamos</a>
+                            </li>
+                            <li>
+                                <a href="#getPrestamosSocios">getPrestamosSocios</a>
+                            </li>
+                            <li>
+                                <a href="#getResumenSocio">getResumenSocio</a>
+                            </li>
+                            <li>
+                                <a href="#getSocioLogeado">getSocioLogeado</a>
+                            </li>
+                            <li>
+                                <a href="#getTablaSindical">getTablaSindical</a>
+                            </li>
+                            <li>
+                                <a href="#loginSocios">loginSocios</a>
+                            </li>
+                            <li>
+                                <a href="#setDatosBasicosSocios">setDatosBasicosSocios</a>
+                            </li>
+                            <li>
+                                <a href="#setDatosBeneficiarios">setDatosBeneficiarios</a>
+                            </li>
+                            <li>
+                                <a href="#setDatosCargas">setDatosCargas</a>
+                            </li>
+                            <li>
+                                <a href="#setDatosConyugeSocio">setDatosConyugeSocio</a>
+                            </li>
+                            <li>
+                                <a href="#setDatosPadresSuegros">setDatosPadresSuegros</a>
+                            </li>
+                            <li>
+                                <a href="#updateDatosBasicosSocio">updateDatosBasicosSocio</a>
+                            </li>
+                            <li>
+                                <a href="#updateInfoSocio">updateInfoSocio</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/servicios/portal-socios.service.ts:9</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cambiarPassSocio"></a>
+                    <span class="name">
+                        <b>
+                            cambiarPassSocio
+                        </b>
+                        <a href="#cambiarPassSocio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cambiarPassSocio(passAct, passNue, passCon)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:178</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>passAct</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>passNue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>passCon</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAnioActual"></a>
+                    <span class="name">
+                        <b>
+                            getAnioActual
+                        </b>
+                        <a href="#getAnioActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAnioActual()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="248"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:248</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAnios"></a>
+                    <span class="name">
+                        <b>
+                            getAnios
+                        </b>
+                        <a href="#getAnios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAnios()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="228"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:228</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBeneficiosFalleciomientosCobrados"></a>
+                    <span class="name">
+                        <b>
+                            getBeneficiosFalleciomientosCobrados
+                        </b>
+                        <a href="#getBeneficiosFalleciomientosCobrados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBeneficiosFalleciomientosCobrados()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="343"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:343</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBeneficiosGastosMedicos"></a>
+                    <span class="name">
+                        <b>
+                            getBeneficiosGastosMedicos
+                        </b>
+                        <a href="#getBeneficiosGastosMedicos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBeneficiosGastosMedicos()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="353"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:353</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBeneficiosNacimientosCobrados"></a>
+                    <span class="name">
+                        <b>
+                            getBeneficiosNacimientosCobrados
+                        </b>
+                        <a href="#getBeneficiosNacimientosCobrados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBeneficiosNacimientosCobrados()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="333"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:333</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCajaChica"></a>
+                    <span class="name">
+                        <b>
+                            getCajaChica
+                        </b>
+                        <a href="#getCajaChica"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCajaChica(anio: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="280"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:280</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>anio</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>mes</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCamping"></a>
+                    <span class="name">
+                        <b>
+                            getCamping
+                        </b>
+                        <a href="#getCamping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCamping(anio: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="291"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:291</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>anio</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>mes</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatosBeneficiario"></a>
+                    <span class="name">
+                        <b>
+                            getDatosBeneficiario
+                        </b>
+                        <a href="#getDatosBeneficiario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatosBeneficiario()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatosCargas"></a>
+                    <span class="name">
+                        <b>
+                            getDatosCargas
+                        </b>
+                        <a href="#getDatosCargas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatosCargas()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatosConyuge"></a>
+                    <span class="name">
+                        <b>
+                            getDatosConyuge
+                        </b>
+                        <a href="#getDatosConyuge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatosConyuge()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatosPadresSuegros"></a>
+                    <span class="name">
+                        <b>
+                            getDatosPadresSuegros
+                        </b>
+                        <a href="#getDatosPadresSuegros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatosPadresSuegros()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatosSocios"></a>
+                    <span class="name">
+                        <b>
+                            getDatosSocios
+                        </b>
+                        <a href="#getDatosSocios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatosSocios()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFondosMutuos"></a>
+                    <span class="name">
+                        <b>
+                            getFondosMutuos
+                        </b>
+                        <a href="#getFondosMutuos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFondosMutuos()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="364"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:364</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMesActual"></a>
+                    <span class="name">
+                        <b>
+                            getMesActual
+                        </b>
+                        <a href="#getMesActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMesActual()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="258"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:258</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMeses"></a>
+                    <span class="name">
+                        <b>
+                            getMeses
+                        </b>
+                        <a href="#getMeses"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMeses()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="238"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:238</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPagosAbonos"></a>
+                    <span class="name">
+                        <b>
+                            getPagosAbonos
+                        </b>
+                        <a href="#getPagosAbonos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPagosAbonos(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="322"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:322</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tipo</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPagosPrestamos"></a>
+                    <span class="name">
+                        <b>
+                            getPagosPrestamos
+                        </b>
+                        <a href="#getPagosPrestamos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPagosPrestamos(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tipo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="312"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:312</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tipo</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPrestamosSocios"></a>
+                    <span class="name">
+                        <b>
+                            getPrestamosSocios
+                        </b>
+                        <a href="#getPrestamosSocios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPrestamosSocios()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="302"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:302</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getResumenSocio"></a>
+                    <span class="name">
+                        <b>
+                            getResumenSocio
+                        </b>
+                        <a href="#getResumenSocio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getResumenSocio()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="219"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:219</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSocioLogeado"></a>
+                    <span class="name">
+                        <b>
+                            getSocioLogeado
+                        </b>
+                        <a href="#getSocioLogeado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSocioLogeado()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTablaSindical"></a>
+                    <span class="name">
+                        <b>
+                            getTablaSindical
+                        </b>
+                        <a href="#getTablaSindical"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTablaSindical(anio: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="269"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:269</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>anio</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>mes</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loginSocios"></a>
+                    <span class="name">
+                        <b>
+                            loginSocios
+                        </b>
+                        <a href="#loginSocios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loginSocios(form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:16</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDatosBasicosSocios"></a>
+                    <span class="name">
+                        <b>
+                            setDatosBasicosSocios
+                        </b>
+                        <a href="#setDatosBasicosSocios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDatosBasicosSocios(form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDatosBeneficiarios"></a>
+                    <span class="name">
+                        <b>
+                            setDatosBeneficiarios
+                        </b>
+                        <a href="#setDatosBeneficiarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDatosBeneficiarios(form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDatosCargas"></a>
+                    <span class="name">
+                        <b>
+                            setDatosCargas
+                        </b>
+                        <a href="#setDatosCargas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDatosCargas(form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDatosConyugeSocio"></a>
+                    <span class="name">
+                        <b>
+                            setDatosConyugeSocio
+                        </b>
+                        <a href="#setDatosConyugeSocio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDatosConyugeSocio(form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDatosPadresSuegros"></a>
+                    <span class="name">
+                        <b>
+                            setDatosPadresSuegros
+                        </b>
+                        <a href="#setDatosPadresSuegros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDatosPadresSuegros(form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:152</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateDatosBasicosSocio"></a>
+                    <span class="name">
+                        <b>
+                            updateDatosBasicosSocio
+                        </b>
+                        <a href="#updateDatosBasicosSocio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateDatosBasicosSocio(tipo, nombreCampo, valorCampo)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:205</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tipo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>nombreCampo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>valorCampo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateInfoSocio"></a>
+                    <span class="name">
+                        <b>
+                            updateInfoSocio
+                        </b>
+                        <a href="#updateInfoSocio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateInfoSocio(valor, campo)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/app/servicios/portal-socios.service.ts:192</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>valor</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>campo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_http"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            _http</b>
+                            <a href="#_http"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/servicios/portal-socios.service.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rol"></a>
+                        <span class="name">
+                            <b>
+                            rol</b>
+                            <a href="#rol"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/servicios/portal-socios.service.ts:9</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="url"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            url</b>
+                            <a href="#url"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/servicios/portal-socios.service.ts:8</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &quot;@angular/core&quot;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { global } from &#x27;./global&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+@Injectable()
+export class PortalSociosService{
+    public url: string;
+    rol &#x3D; &#x27;&#x27;;
+    //token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+
+    constructor(public _http: HttpClient){
+        this.url &#x3D; global.url;
+    }
+
+    loginSocios(form) : Observable&lt;any&gt;{
+        const body &#x3D; new FormData();
+        body.append(&#x27;rut&#x27;,form.email);
+        body.append(&#x27;password&#x27;, form.password);
+
+        let headers &#x3D; new HttpHeaders().set(&#x27;Content-Type&#x27;, &#x27;application/x-www-form-urlencoded&#x27;);
+
+        return this._http.post(this.url + &quot;login_socios?&quot;, &quot;rut&#x3D;&quot; + form.email + &quot;&amp;&quot; + &quot;password&#x3D;&quot; + form.password, {headers: headers});
+
+    }
+
+    getSocioLogeado() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;socio_logeado&quot;,{headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token})}
+    );
+    }
+
+    getDatosSocios() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_datos_basicos_socio&quot;, {headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token}
+        )});
+    }
+
+    setDatosBasicosSocios(form): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;direccion&#x27;, form.direccion);
+        body.append(&#x27;telefono&#x27;, form.telefono);
+        body.append(&#x27;celular&#x27;, form.celular);
+        body.append(&#x27;anexo&#x27;, form.anexo);
+        body.append(&#x27;email_1&#x27;, form.email_1);
+        body.append(&#x27;email_2&#x27;, form.email_2);
+        body.append(&#x27;cargo_planta&#x27;, form.cargo_planta);
+        body.append(&#x27;cargo_comision_sindicato&#x27;, form.cargo_comision_sindicato);
+        body.append(&#x27;casa_propia&#x27;, form.casa_propia);
+        body.append(&#x27;rol_turno&#x27;, form.rol_turno);
+        body.append(&#x27;estado_civil_id&#x27;, form.estado_civil_id);
+        body.append(&#x27;conyuge&#x27;, form.conyuge);
+        body.append(&#x27;numero_cuenta&#x27;, form.numero_cuenta);
+        body.append(&#x27;tipo_cuenta_banco_id&#x27;, form.tipo_cuenta_banco_id);
+        body.append(&#x27;banco&#x27;, form.banco);
+        body.append(&#x27;isapre_fonasa&#x27;, form.isapre_fonasa);
+        body.append(&#x27;grupo_sangre&#x27;, form.grupo_sangre);
+
+        console.log(form);
+
+        return this._http.post(this.url + &quot;ingresar_datos_basicos_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    setDatosConyugeSocio(form): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;rut&#x27;, form.rut);
+        body.append(&#x27;fecha_nacimiento&#x27;, form.fechaNacimiento);
+        body.append(&#x27;nombres&#x27;, form.nombres);
+        body.append(&#x27;apellido_paterno&#x27;, form.apellidoPaterno);
+        body.append(&#x27;apellido_materno&#x27;, form.apellidoMaterno);
+        body.append(&#x27;direccion&#x27;, form.direccion);
+        body.append(&#x27;celular&#x27;, form.celular);
+        body.append(&#x27;archivo&#x27;, form.archivoDocumento);
+
+        return this._http.post(this.url + &quot;ingresar_datos_conyuge_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    getDatosConyuge() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_datos_conyuge_socio&quot;, {headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token}
+        )});
+    }
+
+    setDatosBeneficiarios(form): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;prioritario&#x27;, form.prioridad)
+        body.append(&#x27;relacion&#x27;, form.relacionParentesco);
+        body.append(&#x27;rut&#x27;, form.rut);
+        body.append(&#x27;fecha_nacimiento&#x27;, form.fechaNacimiento);
+        body.append(&#x27;nombres&#x27;, form.nombres);
+        body.append(&#x27;apellido_paterno&#x27;, form.apellidoPaterno);
+        body.append(&#x27;apellido_materno&#x27;, form.apellidoMaterno);
+        body.append(&#x27;direccion&#x27;, form.direccion);
+        body.append(&#x27;celular&#x27;, form.celular);
+
+        return this._http.post(this.url + &quot;ingresar_datos_beneficiarios_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    getDatosBeneficiario() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_datos_beneficiarios_socio&quot;, {headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token}
+        )});
+    }
+
+    setDatosCargas(form): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;tipo_carga_id&#x27;, form.tipoCargaId);
+        body.append(&#x27;rut&#x27;, form.rut);
+        body.append(&#x27;fecha_nacimiento&#x27;, form.fechaNacimiento);
+        body.append(&#x27;nombres&#x27;, form.nombres);
+        body.append(&#x27;apellido_paterno&#x27;, form.apellidoPaterno);
+        body.append(&#x27;apellido_materno&#x27;, form.apellidoMaterno);
+        body.append(&#x27;direccion&#x27;, form.direccion);
+        body.append(&#x27;celular&#x27;, form.celular);
+        body.append(&#x27;establecimiento&#x27;, form.establecimiento);
+        body.append(&#x27;archivo&#x27;, form.archivoDocumento);
+
+        return this._http.post(this.url + &quot;ingresar_datos_cargas_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    getDatosCargas() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_datos_cargas_socio&quot;, {headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token}
+        )});
+    }
+
+    setDatosPadresSuegros(form): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;relacion_socio_id&#x27;, form.relacionSocioId);
+        body.append(&#x27;rut&#x27;, form.rut);
+        body.append(&#x27;fecha_nacimiento&#x27;, form.fechaNacimiento);
+        body.append(&#x27;nombres&#x27;, form.nombres);
+        body.append(&#x27;apellido_paterno&#x27;, form.apellidoPaterno);
+        body.append(&#x27;apellido_materno&#x27;, form.apellidoMaterno);
+        body.append(&#x27;direccion&#x27;, form.direccion);
+        body.append(&#x27;celular&#x27;, form.celular);
+
+        return this._http.post(this.url + &quot;ingresar_datos_padres_suegros_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    getDatosPadresSuegros() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_datos_padres_suegros_socio&quot;, {headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token}
+        )});
+    }
+
+    cambiarPassSocio(passAct, passNue, passCon) : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;password&#x27;, passAct);
+        body.append(&#x27;new_password&#x27;, passNue);
+        body.append(&#x27;conf_new_password&#x27;, passCon);
+
+        return this._http.post(this.url + &quot;cambiar_contrasena_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    updateInfoSocio(valor, campo) : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;input&#x27;, valor);
+        body.append(&#x27;nombre_campo&#x27;, campo);
+
+        return this._http.post(this.url + &quot;modificar_datos_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    updateDatosBasicosSocio(tipo, nombreCampo, valorCampo) : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        const body &#x3D; new FormData();
+        body.append(&#x27;tipo&#x27;, tipo);
+        body.append(&#x27;input&#x27;, valorCampo);
+        body.append(&#x27;nombre_campo&#x27;, nombreCampo);
+
+        return this._http.post(this.url + &quot;modificar_datos_basicos_socio&quot;,body, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token
+            }
+        )});
+    }
+
+    getResumenSocio(): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_archivo_resumen_socio&quot;, {headers: new HttpHeaders(
+            {&#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token}
+        )});
+    }
+
+    //OBTENER FECHAS PARA EL PORTAL DE SOCIOS
+
+    getAnios() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get&lt;any&gt;(this.url + &quot;traer_anios&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    getMeses() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get&lt;any&gt;(this.url + &quot;traer_meses&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    getAnioActual() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_anio_actual&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+    
+    getMesActual() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_mes_actual&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    //Servicio para llamar a la cuenta sindical
+    getTablaSindical(anio: string, mes: string): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_cuenta_sindical_socio/&quot; + anio + &quot;/&quot; + mes, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;applcation/json&#x27;
+            }
+        )});
+    }
+
+    //Servicio para llamar a la caja chica
+    getCajaChica(anio: string, mes: string): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_caja_chica_socio/&quot; + anio + &quot;/&quot; + mes, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;applcation/json&#x27;
+            }
+        )});
+    }
+
+    //Servicio para llamar al detalle Camping
+    getCamping(anio: string, mes: string): Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_camping_socio/&quot; + anio + &quot;/&quot; + mes, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;applcation/json&#x27;
+            }
+        )});
+    }
+
+    //Servicio para llamar a los prestamos del socio
+    getPrestamosSocios() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_prestamos_socio&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    getPagosPrestamos(id: string, tipo: string) : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_pagos_prestamos_socio/&quot; + id + &quot;/&quot; + tipo, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    getPagosAbonos(id: string, tipo: string) : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_abonos_prestamos_socio/&quot; + id + &quot;/&quot; + tipo, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    //*******************OBTENER LOS BENEFICIOS COBRADOS POR NACIMIENTO************************/
+    getBeneficiosNacimientosCobrados() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_nacimientos_socio&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    getBeneficiosFalleciomientosCobrados() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_fallecimientos_socio&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    getBeneficiosGastosMedicos() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_gastos_medicos_socio&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+
+    //*************************OBTENER DATOS FONDOS MUTUOS*******************************/
+    getFondosMutuos() : Observable&lt;any&gt;{
+        let token &#x3D; localStorage.getItem(&#x27;token&#x27;).replace(/[&#x27;&quot;]+/g, &#x27;&#x27;);
+        return this._http.get(this.url + &quot;traer_fondos_mutuos/&quot;, {headers: new HttpHeaders(
+            {
+                &#x27;Authorization&#x27;: &#x27;Bearer&#x27; + token,
+                &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+            }
+        )});
+    }
+}</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'PortalSociosService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,887 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-module documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-module documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TablaBeneficiosPadresSuegrosAuthSocioComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-tabla-beneficios-padres-suegros-auth-socio</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./tabla-beneficios-padres-suegros-auth-socio.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./tabla-beneficios-padres-suegros-auth-socio.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirModalPadresSuegros">abrirModalPadresSuegros</a>
+                            </li>
+                            <li>
+                                <a href="#datosPadresSuegros">datosPadresSuegros</a>
+                            </li>
+                            <li>
+                                <a href="#loadingTabla">loadingTabla</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getDatosPadresSuegros">getDatosPadresSuegros</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openModalPadresSuegros">openModalPadresSuegros</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(config: NgbModalConfig, modalService: NgbModal, _portalSociosService: <a href="../injectables/PortalSociosService.html">PortalSociosService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModalConfig</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_portalSociosService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PortalSociosService.html" target="_self" >PortalSociosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDatosPadresSuegros"></a>
+                    <span class="name">
+                        <b>
+                            getDatosPadresSuegros
+                        </b>
+                        <a href="#getDatosPadresSuegros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDatosPadresSuegros()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModalPadresSuegros"></a>
+                    <span class="name">
+                        <b>
+                            openModalPadresSuegros
+                        </b>
+                        <a href="#openModalPadresSuegros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openModalPadresSuegros(modalPadresSuegros)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>modalPadresSuegros</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="abrirModalPadresSuegros"></a>
+                        <span class="name">
+                            <b>
+                            abrirModalPadresSuegros</b>
+                            <a href="#abrirModalPadresSuegros"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosPadresSuegros"></a>
+                        <span class="name">
+                            <b>
+                            datosPadresSuegros</b>
+                            <a href="#datosPadresSuegros"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loadingTabla"></a>
+                        <span class="name">
+                            <b>
+                            loadingTabla</b>
+                            <a href="#loadingTabla"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/socios-master/perfil-socio/tabla-beneficios-padres-suegros-auth-socio/tabla-beneficios-padres-suegros-auth-socio.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { PortalSociosService } from &#x27;src/app/servicios/portal-socios.service&#x27;;
+import { NgbModalConfig, NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+
+@Component({
+  selector: &#x27;app-tabla-beneficios-padres-suegros-auth-socio&#x27;,
+  templateUrl: &#x27;./tabla-beneficios-padres-suegros-auth-socio.component.html&#x27;,
+  styleUrls: [&#x27;./tabla-beneficios-padres-suegros-auth-socio.component.css&#x27;]
+})
+export class TablaBeneficiosPadresSuegrosAuthSocioComponent implements OnInit {
+
+  //Variable del modal
+  abrirModalPadresSuegros;
+
+  //Objetoq ue almacena los datos a ingresar
+  datosPadresSuegros;
+
+  //Loading tabla
+  loadingTabla &#x3D; false;
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _portalSociosService: PortalSociosService) {
+      config.backdrop &#x3D; &#x27;static&#x27;;
+      config.keyboard &#x3D; false;
+    }
+
+  ngOnInit() {
+  }
+
+  openModalPadresSuegros(modalPadresSuegros){
+    this.abrirModalPadresSuegros &#x3D; this.modalService.open(modalPadresSuegros, {size: &#x27;xl&#x27;});
+    this.getDatosPadresSuegros();
+  }
+
+  getDatosPadresSuegros(){
+    //Llamar al servicio para almacenar los datos
+    this.loadingTabla &#x3D; true;
+    this._portalSociosService.getDatosPadresSuegros().subscribe(response &#x3D;&gt; {
+      if(response.estado &#x3D;&#x3D; &#x27;failed&#x27; || response.estado &#x3D;&#x3D; &#x27;failed_v&#x27;){
+        alert(response.mensaje);
+        this.abrirModalPadresSuegros.close();
+        this.loadingTabla &#x3D; false;
+      }else{
+        this.datosPadresSuegros &#x3D; response.padres_suegros;
+        console.log(this.datosPadresSuegros);
+        this.loadingTabla &#x3D; false;
+      }
+    },
+    error &#x3D;&gt; {
+      console.log(error);
+      this.loadingTabla &#x3D; false;
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ng-template #tablaBeneficiosPS let-modal&gt;
+  &lt;div class&#x3D;&quot;modal-header sticky-top&quot; id&#x3D;&quot;demoFont&quot;&gt;
+    &lt;h6 class&#x3D;&quot;modal-title&quot;&gt;&lt;strong&gt;&lt;i class&#x3D;&quot;fas fa-table&quot;&gt;&lt;/i&gt; Datos del Socio:
+        {{getNombreSocio | uppercase}}&lt;/strong&gt;&lt;/h6&gt;
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;modal.dismiss(&#x27;Cross click&#x27;)&quot;&gt;
+      &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;!--Cuerpo del body inicio y cierre mensual--&gt;
+  &lt;div class&#x3D;&quot;modal-body&quot; id&#x3D;&quot;printJS-table&quot;&gt;
+    &lt;div class&#x3D;&quot;card-header&quot; id&#x3D;&quot;demoFont2&quot;&gt;
+      &lt;h6 class&#x3D;&quot;card-title&quot;&gt;PADRES / SUEGROS&lt;/h6&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;card&quot;&gt; &lt;br&gt;
+      &lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;loadingTabla&quot; class&#x3D;&quot;loader&quot;&gt;&lt;/div&gt;
+        &lt;table class&#x3D;&quot;table table-striped table-bordered table-sm&quot; *ngIf&#x3D;&quot;!loadingTabla&quot;&gt;
+          &lt;div class&#x3D;&quot;col-12 col-md-12 col-lg-12 col-xl-12&quot;&gt;
+            &lt;br&gt;
+            &lt;div class&#x3D;&quot;row justify-content-between ml-4&quot;&gt;
+
+              &lt;div *ngFor&#x3D;&quot;let item of datosPadresSuegros&quot; class&#x3D;&quot;col-12 col-md-6 col-lg-6 col-xl-6&quot;&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf&quot; class&#x3D;&quot;text-right&quot;&gt;RELACION:&lt;/th&gt;
+                  &lt;td&gt;
+                      &lt;select name&#x3D;&quot;Carga&quot; id&#x3D;&quot;carga&quot; class&#x3D;&quot;form-control form-control-sm sinbordefondo&quot;
+                      [(ngModel)]&#x3D;&quot;item.relacion_socio_id&quot; disabled required&gt;
+                      &lt;option value&#x3D;&quot;&quot;&gt;--SELECCIONE--&lt;/option&gt;
+                      &lt;option value&#x3D;&quot;1&quot;&gt;PADRE&lt;/option&gt;
+                      &lt;option value&#x3D;&quot;2&quot;&gt;MADRE&lt;/option&gt;
+                      &lt;option value&#x3D;&quot;3&quot;&gt;SUEGRO&lt;/option&gt;
+                      &lt;option value&#x3D;&quot;4&quot;&gt;SUEGRA&lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf&quot; class&#x3D;&quot;text-right&quot;&gt;RUT:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;sinbordefondo&quot; value&#x3D;&quot;{{item.rut}}&quot; disabled&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf&quot; class&#x3D;&quot;text-right&quot;&gt;FECHA DE NACIMIENTO:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;date&quot; class&#x3D;&quot;sinbordefondo&quot; value&#x3D;&quot;{{ item.fecha_nacimiento }}&quot; disabled&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf;&quot; class&#x3D;&quot;text-right&quot;&gt;NOMBRES:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;sinbordefondo&quot; value&#x3D;&quot;{{item.nombres | uppercase}}&quot; disabled&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf;&quot; class&#x3D;&quot;text-right&quot;&gt;APELLIDO PATERNO:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;sinbordefondo&quot;
+                      value&#x3D;&quot;{{item.apellido_paterno | uppercase}}&quot; disabled&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf&quot; class&#x3D;&quot;text-right&quot;&gt;APELLIDO MATERNO:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;sinbordefondo&quot;
+                      value&#x3D;&quot;{{item.apellido_materno | uppercase}}&quot; disabled&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf;&quot; class&#x3D;&quot;text-right&quot;&gt;DIRECCION:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;sinbordefondo&quot; value&#x3D;&quot;{{item.direccion | uppercase}}&quot; disabled&gt;
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th style&#x3D;&quot;background: #195fcf;&quot; class&#x3D;&quot;text-right&quot;&gt;CELULAR:&lt;/th&gt;
+                  &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;sinbordefondo&quot; value&#x3D;&quot;{{item.celular}}&quot; disabled&gt;&lt;/td&gt;
+                &lt;/tr&gt; &lt;br&gt;
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!--boton para volver a cuenta sindical del inicio y cierre mensual--&gt;
+  &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+    &lt;!-- &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-success&quot; 
+    onclick&#x3D;&quot;printJS({
+      printable: &#x27;printJS-table&#x27;,
+      type:&#x27;html&#x27;,
+      style: &#x27;.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}&#x27;
+    })&quot;&gt;
+    &lt;i class&#x3D;&quot;fas fa-print&quot;&gt;&lt;/i&gt;  Imprimir Datos
+    &lt;/button&gt; --&gt;
+
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info&quot; 
+      (click)&#x3D;&quot;modal.close(&#x27;Close click&#x27;)&quot;&gt;
+      &lt;i class&#x3D;&quot;far fa-arrow-alt-circle-left&quot;&gt;&lt;/i&gt; Volver Beneficios Padres / Suegros
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;!--Boton Para llamar al Modal inicio y cierre mensual--&gt;
+&lt;button class&#x3D;&quot;btn btn btn-primary btn-block btn-sm&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;openModalPadresSuegros(tablaBeneficiosPS)&quot;&gt;&lt;b&gt;Ver Datos&lt;/b&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./tabla-beneficios-padres-suegros-auth-socio.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.sinbordefondo {
+    background-color: #fff;
+    border: 0;
+    /*text-align: center;*/
+  }
+  
+  input,
+  select {
+    width: 25em;
+    font-weight: bold;
+    color: #000000;
+    padding-left: 0%;
+  }
+  
+  .my-class {
+    color: red;
+    font-size: 15px;
+    margin: 10px auto;
+    padding: 5px;
+  }
+  
+  label,
+  input,
+  button,
+  select {
+    font-size: 12px;
+  }
+  
+  tr,
+  th {
+    font-size: 12px;
+  }
+  
+  th {
+    color: white;
+    background: #138D75;
+  }
+  
+  #demoFont {
+    color: #fff;
+    background: #2C3E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  #demoFont2 {
+    color: #fff;
+    
+    background: #373b44; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+    }
+
+    .nav-item a{
+      color: #fff;
+      background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #373b44, #4286f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      
+    }
+  
+  .tablaDerecha {
+    float: right;
+  }
+  
+  
+  /*CLASES DEL LOADER*/
+  
+  .loader {
+    margin: 100px auto;
+    font-size: 25px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-animation: load5 1.1s infinite ease;
+    animation: load5 1.1s infinite ease;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  @-webkit-keyframes load5 {
+    0%,
+    100% {
+        box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.5), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7);
+    }
+    12.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5);
+    }
+    25% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.5), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    37.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5), 2.5em 0em 0 0em rgba(50, 76, 179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    50% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.5), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    62.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.5), 0em 2.5em 0 0em rgba(50, 76, 179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    75% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.5), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    87.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.5), -2.6em 0em 0 0em rgba(50, 76, 179, 0.7), -1.8em -1.8em 0 0em #324cb3;
+    }
+  }
+  
+  @keyframes load5 {
+    0%,
+    100% {
+        box-shadow: 0em -2.6em 0em 0em #324cb3, 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.5), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7);
+    }
+    12.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.7), 1.8em -1.8em 0 0em #324cb3, 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5);
+    }
+    25% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.5), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.7), 2.5em 0em 0 0em #324cb3, 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    37.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.5), 2.5em 0em 0 0em rgba(50, 76, 179, 0.7), 1.75em 1.75em 0 0em #324cb3, 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    50% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.5), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.7), 0em 2.5em 0 0em #324cb3, -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.2), -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    62.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.5), 0em 2.5em 0 0em rgba(50, 76, 179, 0.7), -1.8em 1.8em 0 0em #324cb3, -2.6em 0em 0 0em rgba(50, 76, 179, 0.2), -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    75% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.5), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.7), -2.6em 0em 0 0em #324cb3, -1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2);
+    }
+    87.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(50, 76, 179, 0.2), 1.8em -1.8em 0 0em rgba(50, 76, 179, 0.2), 2.5em 0em 0 0em rgba(50, 76, 179, 0.2), 1.75em 1.75em 0 0em rgba(50, 76, 179, 0.2), 0em 2.5em 0 0em rgba(50, 76, 179, 0.2), -1.8em 1.8em 0 0em rgba(50, 76, 179, 0.5), -2.6em 0em 0 0em rgba(50, 76, 179, 0.7), -1.8em -1.8em 0 0em #324cb3;
+    }
+  }
+  
+  
+  /*CLASES DEL LOADER*/
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: &#x27;&#x27;;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-template #tablaBeneficiosPS let-modal>  <div class="modal-header sticky-top" id="demoFont">    <h6 class="modal-title"><strong><i class="fas fa-table"></i> Datos del Socio:        {{getNombreSocio | uppercase}}</strong></h6>    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss(\'Cross click\')">      <span aria-hidden="true">&times;</span>    </button>  </div>  <!--Cuerpo del body inicio y cierre mensual-->  <div class="modal-body" id="printJS-table">    <div class="card-header" id="demoFont2">      <h6 class="card-title">PADRES / SUEGROS</h6>    </div>    <div class="card"> <br>      <div class="table-responsive">        <div *ngIf="loadingTabla" class="loader"></div>        <table class="table table-striped table-bordered table-sm" *ngIf="!loadingTabla">          <div class="col-12 col-md-12 col-lg-12 col-xl-12">            <br>            <div class="row justify-content-between ml-4">              <div *ngFor="let item of datosPadresSuegros" class="col-12 col-md-6 col-lg-6 col-xl-6">                <tr>                  <th style="background: #195fcf" class="text-right">RELACION:</th>                  <td>                      <select name="Carga" id="carga" class="form-control form-control-sm sinbordefondo"                      [(ngModel)]="item.relacion_socio_id" disabled required>                      <option value="">--SELECCIONE--</option>                      <option value="1">PADRE</option>                      <option value="2">MADRE</option>                      <option value="3">SUEGRO</option>                      <option value="4">SUEGRA</option>                    </select>                  </td>                </tr>                <tr>                  <th style="background: #195fcf" class="text-right">RUT:</th>                  <td><input type="text" class="sinbordefondo" value="{{item.rut}}" disabled></td>                </tr>                <tr>                  <th style="background: #195fcf" class="text-right">FECHA DE NACIMIENTO:</th>                  <td><input type="date" class="sinbordefondo" value="{{ item.fecha_nacimiento }}" disabled>                  </td>                </tr>                <tr>                  <th style="background: #195fcf;" class="text-right">NOMBRES:</th>                  <td><input type="text" class="sinbordefondo" value="{{item.nombres | uppercase}}" disabled>                  </td>                </tr>                <tr>                  <th style="background: #195fcf;" class="text-right">APELLIDO PATERNO:</th>                  <td><input type="text" class="sinbordefondo"                      value="{{item.apellido_paterno | uppercase}}" disabled></td>                </tr>                <tr>                  <th style="background: #195fcf" class="text-right">APELLIDO MATERNO:</th>                  <td><input type="text" class="sinbordefondo"                      value="{{item.apellido_materno | uppercase}}" disabled></td>                </tr>                <tr>                  <th style="background: #195fcf;" class="text-right">DIRECCION:</th>                  <td><input type="text" class="sinbordefondo" value="{{item.direccion | uppercase}}" disabled>                  </td>                </tr>                <tr>                  <th style="background: #195fcf;" class="text-right">CELULAR:</th>                  <td><input type="text" class="sinbordefondo" value="{{item.celular}}" disabled></td>                </tr> <br>              </div>            </div>          </div>        </table>      </div>    </div>  </div>  <!--boton para volver a cuenta sindical del inicio y cierre mensual-->  <div class="modal-footer">    <!-- <button type="button" class="btn btn-success"     onclick="printJS({      printable: \'printJS-table\',      type:\'html\',      style: \'.table {font-family: Arial, Helvetica, sans-serif; text-align: center;} .table td, .table th {border: 1px solid #020202; padding: 5px; color:black; font-size: 13px;}\'    })">    <i class="fas fa-print"></i>  Imprimir Datos    </button> -->    <button type="button" class="btn btn-info"       (click)="modal.close(\'Close click\')">      <i class="far fa-arrow-alt-circle-left"></i> Volver Beneficios Padres / Suegros    </button>  </div></ng-template><!--Boton Para llamar al Modal inicio y cierre mensual--><button class="btn btn btn-primary btn-block btn-sm" type="button" (click)="openModalPadresSuegros(tablaBeneficiosPS)"><b>Ver Datos</b></button></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'ActasComponent', 'selector': 'app-actas'},{'name': 'ActasSocioComponent', 'selector': 'app-actas-socio'},{'name': 'AcuerdoAsambleaComponent', 'selector': 'app-acuerdo-asamblea'},{'name': 'AcuerdosSocioComponent', 'selector': 'app-acuerdos-socio'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ArchivadorComponent', 'selector': 'app-archivador'},{'name': 'AsistenciaReunionComponent', 'selector': 'app-asistencia-reunion'},{'name': 'AuthMasterComponent', 'selector': 'app-auth-master'},{'name': 'BeneficiosCobradosComponent', 'selector': 'app-beneficios-cobrados'},{'name': 'BeneficiosSocioComponent', 'selector': 'app-beneficios-socio'},{'name': 'BeneficiosSociosComponent', 'selector': 'app-beneficios-socios'},{'name': 'CajaBienestarSociosComponent', 'selector': 'app-caja-bienestar-socios'},{'name': 'CajaChicaBienestarComponent', 'selector': 'app-caja-chica-bienestar'},{'name': 'CajaChicaComponent', 'selector': 'app-caja-chica'},{'name': 'CambioContraseniaComponent', 'selector': 'app-cambio-contrasenia'},{'name': 'CambioContraseniaSocioComponent', 'selector': 'app-cambio-contrasenia-socio'},{'name': 'CambioInformacionPersonalSocioComponent', 'selector': 'app-cambio-informacion-personal-socio'},{'name': 'CampingComponent', 'selector': 'app-camping'},{'name': 'ConfiguracionesComponent', 'selector': 'app-configuraciones'},{'name': 'ConfiguracionSocioComponent', 'selector': 'app-configuracion-socio'},{'name': 'ConsorcioComponent', 'selector': 'app-consorcio'},{'name': 'CrearEmpleadoComponent', 'selector': 'app-crear-empleado'},{'name': 'CuentaBienestarComponent', 'selector': 'app-cuenta-bienestar'},{'name': 'CuentaBienestarSociosComponent', 'selector': 'app-cuenta-bienestar-socios'},{'name': 'CuentaFondoMutuoComponent', 'selector': 'app-cuenta-fondo-mutuo'},{'name': 'CuentasComponent', 'selector': 'app-cuentas'},{'name': 'CuentaSindicalComponent', 'selector': 'app-cuenta-sindical'},{'name': 'CuentaSociosComponent', 'selector': 'app-cuenta-socios'},{'name': 'DescuentosComponent', 'selector': 'app-descuentos'},{'name': 'DesvinculadosComponent', 'selector': 'app-desvinculados'},{'name': 'DetalleReunionComponent', 'selector': 'app-detalle-reunion'},{'name': 'DirectorioComponent', 'selector': 'app-directorio'},{'name': 'DirectorioSocioComponent', 'selector': 'app-directorio-socio'},{'name': 'EditarReunionComponent', 'selector': 'app-editar-reunion'},{'name': 'FallecimientoBienestarComponent', 'selector': 'app-fallecimiento-bienestar'},{'name': 'FondosMutuosSocioComponent', 'selector': 'app-fondos-mutuos-socio'},{'name': 'FormularioBeneficiosAuthSocioComponent', 'selector': 'app-formulario-beneficios-auth-socio'},{'name': 'FormularioBeneficiosBeneficiarioAuthSocioComponent', 'selector': 'app-formulario-beneficios-beneficiario-auth-socio'},{'name': 'FormularioBeneficiosBeneficiarioComponent', 'selector': 'app-formulario-beneficios-beneficiario'},{'name': 'FormularioBeneficiosCargasAuthSocioComponent', 'selector': 'app-formulario-beneficios-cargas-auth-socio'},{'name': 'FormularioBeneficiosCargasComponent', 'selector': 'app-formulario-beneficios-cargas'},{'name': 'FormularioBeneficiosConyugeAuthSocioComponent', 'selector': 'app-formulario-beneficios-conyuge-auth-socio'},{'name': 'FormularioBeneficiosConyugeComponent', 'selector': 'app-formulario-beneficios-conyuge'},{'name': 'FormularioBeneficiosPadresSuegrosAuthSocioComponent', 'selector': 'app-formulario-beneficios-padres-suegros-auth-socio'},{'name': 'FormularioBeneficiosPadresSuegrosComponent', 'selector': 'app-formulario-beneficios-padres-suegros'},{'name': 'FormularioBeneficiosSocioComponent', 'selector': 'app-formulario-beneficios-socio'},{'name': 'FormularioBienestarComponent', 'selector': 'app-formulario-bienestar'},{'name': 'FormularioCajaChicaBienestarComponent', 'selector': 'app-formulario-caja-chica-bienestar'},{'name': 'FormularioFallecimientoBienestarComponent', 'selector': 'app-formulario-fallecimiento-bienestar'},{'name': 'FormularioFondoMutuoComponent', 'selector': 'app-formulario-fondo-mutuo'},{'name': 'FormularioGastosMedicosBienestarComponent', 'selector': 'app-formulario-gastos-medicos-bienestar'},{'name': 'FormularioNacimientoBienestarComponent', 'selector': 'app-formulario-nacimiento-bienestar'},{'name': 'FormularioSindicalComponent', 'selector': 'app-formulario-sindical'},{'name': 'FormularioSociosComponent', 'selector': 'app-formulario-socios'},{'name': 'GastosMedicosBienestarComponent', 'selector': 'app-gastos-medicos-bienestar'},{'name': 'GastosOperacionalesComponent', 'selector': 'app-gastos-operacionales'},{'name': 'GeneralReunionComponent', 'selector': 'app-general-reunion'},{'name': 'GraficoComponenteComponent', 'selector': 'app-grafico-componente'},{'name': 'HaberesComponent', 'selector': 'app-haberes'},{'name': 'HistorialDetalleReunionComponent', 'selector': 'app-historial-detalle-reunion'},{'name': 'HistorialLiquidacionesComponent', 'selector': 'app-historial-liquidaciones'},{'name': 'HistorialReunionComponent', 'selector': 'app-historial-reunion'},{'name': 'InicioCierreMensualComponent', 'selector': 'app-inicio-cierre-mensual'},{'name': 'InteresPrestamoApuroEconomicoComponent', 'selector': 'app-interes-prestamo-apuro-economico'},{'name': 'LeyesLaboralesComponent', 'selector': 'app-leyes-laborales'},{'name': 'LeyesSocioComponent', 'selector': 'app-leyes-socio'},{'name': 'LiquidacionComponent', 'selector': 'app-liquidacion'},{'name': 'ListarSociosComponent', 'selector': 'app-listar-socios'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MenuComponent', 'selector': 'app-menu'},{'name': 'ModalCajaChicaComponent', 'selector': 'app-modal-caja-chica'},{'name': 'ModalCampingComponent', 'selector': 'app-modal-camping'},{'name': 'ModalDetallePagoConsorcioComponent', 'selector': 'app-modal-detalle-pago-consorcio'},{'name': 'ModalGastosOperacionalesComponent', 'selector': 'app-modal-gastos-operacionales'},{'name': 'ModalInicioMesComponent', 'selector': 'app-modal-inicio-mes'},{'name': 'ModalPrestamosSociosComponent', 'selector': 'app-modal-prestamos-socios'},{'name': 'NacimientoBienestarComponent', 'selector': 'app-nacimiento-bienestar'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarSocioComponent', 'selector': 'app-navbar-socio'},{'name': 'NoEncontradoComponent', 'selector': 'app-no-encontrado'},{'name': 'NuevaReunionComponent', 'selector': 'app-nueva-reunion'},{'name': 'PerfilSocioComponent', 'selector': 'app-perfil-socio'},{'name': 'PrestamosSociosComponent', 'selector': 'app-prestamos-socios'},{'name': 'PublicMasterComponent', 'selector': 'app-public-master'},{'name': 'SecretariaComponent', 'selector': 'app-secretaria'},{'name': 'SindicalComponent', 'selector': 'app-sindical'},{'name': 'SociosMasterComponent', 'selector': 'app-socios-master'},{'name': 'TablaBeneficiosAuthConyugeComponent', 'selector': 'app-tabla-beneficios-auth-conyuge'},{'name': 'TablaBeneficiosAuthSocioComponent', 'selector': 'app-tabla-beneficios-auth-socio'},{'name': 'TablaBeneficiosBeneficiarioAuthSocioComponent', 'selector': 'app-tabla-beneficios-beneficiario-auth-socio'},{'name': 'TablaBeneficiosBeneficiarioComponent', 'selector': 'app-tabla-beneficios-beneficiario'},{'name': 'TablaBeneficiosCargasAuthSocioComponent', 'selector': 'app-tabla-beneficios-cargas-auth-socio'},{'name': 'TablaBeneficiosCargasComponent', 'selector': 'app-tabla-beneficios-cargas'},{'name': 'TablaBeneficiosConyugeComponent', 'selector': 'app-tabla-beneficios-conyuge'},{'name': 'TablaBeneficiosPadresSuegrosAuthSocioComponent', 'selector': 'app-tabla-beneficios-padres-suegros-auth-socio'},{'name': 'TablaBeneficiosPadresSuegrosComponent', 'selector': 'app-tabla-beneficios-padres-suegros'},{'name': 'TablaBeneficiosSocioComponent', 'selector': 'app-tabla-beneficios-socio'},{'name': 'TablaBienestarComponent', 'selector': 'app-tabla-bienestar'},{'name': 'TablaCajaChicaBienestarComponent', 'selector': 'app-tabla-caja-chica-bienestar'},{'name': 'TablaCajaChicaComponent', 'selector': 'app-tabla-caja-chica'},{'name': 'TablaDesvinculadosConsorcioComponent', 'selector': 'app-tabla-desvinculados-consorcio'},{'name': 'TablaFallecimientoBienestarComponent', 'selector': 'app-tabla-fallecimiento-bienestar'},{'name': 'TablaFondoMutuoComponent', 'selector': 'app-tabla-fondo-mutuo'},{'name': 'TablaGastosMedicosBienestarComponent', 'selector': 'app-tabla-gastos-medicos-bienestar'},{'name': 'TablaInicioMesComponent', 'selector': 'app-tabla-inicio-mes'},{'name': 'TablaNacimientoBienestarComponent', 'selector': 'app-tabla-nacimiento-bienestar'},{'name': 'TablaPrestamosHistoricosSociosComponent', 'selector': 'app-tabla-prestamos-historicos-socios'},{'name': 'TablaPrestamosSociosComponent', 'selector': 'app-tabla-prestamos-socios'},{'name': 'TablaResumenSocioComponent', 'selector': 'app-tabla-resumen-socio'},{'name': 'TablasBeneficiosComponent', 'selector': 'app-tablas-beneficios'},{'name': 'TablaSindicalComponent', 'selector': 'app-tabla-sindical'},{'name': 'TemasComponent', 'selector': 'app-temas'},{'name': 'TotalCajaChicaComponent', 'selector': 'app-total-caja-chica'},{'name': 'TotalCuentaSindicalComponent', 'selector': 'app-total-cuenta-sindical'},{'name': 'VotacionesComponent', 'selector': 'app-votaciones'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TablaBeneficiosPadresSuegrosAuthSocioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TablaBeneficiosPadresSuegrosAuthSocioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

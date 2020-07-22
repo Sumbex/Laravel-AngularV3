@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { global } from './global';
 import { Observable } from 'rxjs';
+import { Acuerdo } from '../modelos/acuerdo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,19 @@ getAcuerdosAsamblea(): Observable<any>{
           'Content-Type': 'applcation/json'
       }
   )});
+}
+
+getAcuerdoPorId(id: string): Observable<any>{
+    return this._http.get(this.url + "getAcuerdoId/" + id, {headers: new HttpHeaders(
+        {
+            'Authorization': 'Bearer' + this.token,
+            'Content-Type': 'applcation/json'
+        }
+    )});
+}
+
+updateAcuerdo(acuerdo: Acuerdo): Observable<any>{
+    return this._http.post(this.url + "updateAcuerdo", acuerdo);
 }
 
 }

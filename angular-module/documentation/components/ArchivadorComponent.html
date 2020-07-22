@@ -1,0 +1,3186 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-module documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-module documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ArchivadorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-archivador</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./archivador.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./archivador.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#archivos">archivos</a>
+                            </li>
+                            <li>
+                                <a href="#botonIngresar">botonIngresar</a>
+                            </li>
+                            <li>
+                                <a href="#cargarDatos">cargarDatos</a>
+                            </li>
+                            <li>
+                                <a href="#datosArchivos">datosArchivos</a>
+                            </li>
+                            <li>
+                                <a href="#datosEdicion">datosEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#datosNotas">datosNotas</a>
+                            </li>
+                            <li>
+                                <a href="#edicionArchivo">edicionArchivo</a>
+                            </li>
+                            <li>
+                                <a href="#edicionDocumento">edicionDocumento</a>
+                            </li>
+                            <li>
+                                <a href="#edicionSelect">edicionSelect</a>
+                            </li>
+                            <li>
+                                <a href="#edicionTexto">edicionTexto</a>
+                            </li>
+                            <li>
+                                <a href="#idAnioActualA">idAnioActualA</a>
+                            </li>
+                            <li>
+                                <a href="#idAnioActualN">idAnioActualN</a>
+                            </li>
+                            <li>
+                                <a href="#idMesActualA">idMesActualA</a>
+                            </li>
+                            <li>
+                                <a href="#idMesActualN">idMesActualN</a>
+                            </li>
+                            <li>
+                                <a href="#ingresandoArchivo">ingresandoArchivo</a>
+                            </li>
+                            <li>
+                                <a href="#ingresandoNota">ingresandoNota</a>
+                            </li>
+                            <li>
+                                <a href="#notas">notas</a>
+                            </li>
+                            <li>
+                                <a href="#nuevoIngreso">nuevoIngreso</a>
+                            </li>
+                            <li>
+                                <a href="#remitente">remitente</a>
+                            </li>
+                            <li>
+                                <a href="#selectAnio">selectAnio</a>
+                            </li>
+                            <li>
+                                <a href="#selectEdicionTipo">selectEdicionTipo</a>
+                            </li>
+                            <li>
+                                <a href="#selectMes">selectMes</a>
+                            </li>
+                            <li>
+                                <a href="#selectTipo">selectTipo</a>
+                            </li>
+                            <li>
+                                <a href="#url">url</a>
+                            </li>
+                            <li>
+                                <a href="#valorInput">valorInput</a>
+                            </li>
+                            <li>
+                                <a href="#varType">varType</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#actualizarArchivo">actualizarArchivo</a>
+                            </li>
+                            <li>
+                                <a href="#actualizarNota">actualizarNota</a>
+                            </li>
+                            <li>
+                                <a href="#archivo">archivo</a>
+                            </li>
+                            <li>
+                                <a href="#archivoEdicion">archivoEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#cargarFecha">cargarFecha</a>
+                            </li>
+                            <li>
+                                <a href="#cargarFechasActuales">cargarFechasActuales</a>
+                            </li>
+                            <li>
+                                <a href="#changeAnio">changeAnio</a>
+                            </li>
+                            <li>
+                                <a href="#changeMes">changeMes</a>
+                            </li>
+                            <li>
+                                <a href="#editarParametro">editarParametro</a>
+                            </li>
+                            <li>
+                                <a href="#ingresarArchivo">ingresarArchivo</a>
+                            </li>
+                            <li>
+                                <a href="#ingresarNota">ingresarNota</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarArchivos">limpiarArchivos</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarNotas">limpiarNotas</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#open">open</a>
+                            </li>
+                            <li>
+                                <a href="#openEdicionModal">openEdicionModal</a>
+                            </li>
+                            <li>
+                                <a href="#openExcel">openExcel</a>
+                            </li>
+                            <li>
+                                <a href="#traerArchivos">traerArchivos</a>
+                            </li>
+                            <li>
+                                <a href="#traerNotas">traerNotas</a>
+                            </li>
+                            <li>
+                                <a href="#traerTipos">traerTipos</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(config: NgbModalConfig, modalService: NgbModal, _archivadorService: <a href="../injectables/ArchivadorService.html">ArchivadorService</a>, _fechasService: <a href="../injectables/AniosService.html">AniosService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModalConfig</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_archivadorService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ArchivadorService.html" target="_self" >ArchivadorService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_fechasService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AniosService.html" target="_self" >AniosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarArchivo"></a>
+                    <span class="name">
+                        <b>
+                            actualizarArchivo
+                        </b>
+                        <a href="#actualizarArchivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>actualizarArchivo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="277"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:277</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarNota"></a>
+                    <span class="name">
+                        <b>
+                            actualizarNota
+                        </b>
+                        <a href="#actualizarNota"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>actualizarNota()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="archivo"></a>
+                    <span class="name">
+                        <b>
+                            archivo
+                        </b>
+                        <a href="#archivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>archivo(event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="archivoEdicion"></a>
+                    <span class="name">
+                        <b>
+                            archivoEdicion
+                        </b>
+                        <a href="#archivoEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>archivoEdicion(event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarFecha"></a>
+                    <span class="name">
+                        <b>
+                            cargarFecha
+                        </b>
+                        <a href="#cargarFecha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarFecha()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarFechasActuales"></a>
+                    <span class="name">
+                        <b>
+                            cargarFechasActuales
+                        </b>
+                        <a href="#cargarFechasActuales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarFechasActuales()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeAnio"></a>
+                    <span class="name">
+                        <b>
+                            changeAnio
+                        </b>
+                        <a href="#changeAnio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeAnio(valorSelect, tipo)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>valorSelect</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tipo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeMes"></a>
+                    <span class="name">
+                        <b>
+                            changeMes
+                        </b>
+                        <a href="#changeMes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeMes(valorSelect, tipo)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>valorSelect</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tipo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editarParametro"></a>
+                    <span class="name">
+                        <b>
+                            editarParametro
+                        </b>
+                        <a href="#editarParametro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editarParametro(id, campo, valor, estado)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="332"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:332</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>campo</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>valor</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>estado</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ingresarArchivo"></a>
+                    <span class="name">
+                        <b>
+                            ingresarArchivo
+                        </b>
+                        <a href="#ingresarArchivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ingresarArchivo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="252"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:252</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ingresarNota"></a>
+                    <span class="name">
+                        <b>
+                            ingresarNota
+                        </b>
+                        <a href="#ingresarNota"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ingresarNota()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:175</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarArchivos"></a>
+                    <span class="name">
+                        <b>
+                            limpiarArchivos
+                        </b>
+                        <a href="#limpiarArchivos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarArchivos()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="246"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:246</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarNotas"></a>
+                    <span class="name">
+                        <b>
+                            limpiarNotas
+                        </b>
+                        <a href="#limpiarNotas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarNotas()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <b>
+                            open
+                        </b>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open(content)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>content</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openEdicionModal"></a>
+                    <span class="name">
+                        <b>
+                            openEdicionModal
+                        </b>
+                        <a href="#openEdicionModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openEdicionModal(edicion)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>edicion</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openExcel"></a>
+                    <span class="name">
+                        <b>
+                            openExcel
+                        </b>
+                        <a href="#openExcel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openExcel(content)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>content</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="traerArchivos"></a>
+                    <span class="name">
+                        <b>
+                            traerArchivos
+                        </b>
+                        <a href="#traerArchivos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>traerArchivos()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="316"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:316</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="traerNotas"></a>
+                    <span class="name">
+                        <b>
+                            traerNotas
+                        </b>
+                        <a href="#traerNotas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>traerNotas()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="215"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:215</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="traerTipos"></a>
+                    <span class="name">
+                        <b>
+                            traerTipos
+                        </b>
+                        <a href="#traerTipos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>traerTipos()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="231"
+                            class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:231</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="archivos"></a>
+                        <span class="name">
+                            <b>
+                            archivos</b>
+                            <a href="#archivos"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="botonIngresar"></a>
+                        <span class="name">
+                            <b>
+                            botonIngresar</b>
+                            <a href="#botonIngresar"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cargarDatos"></a>
+                        <span class="name">
+                            <b>
+                            cargarDatos</b>
+                            <a href="#cargarDatos"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosArchivos"></a>
+                        <span class="name">
+                            <b>
+                            datosArchivos</b>
+                            <a href="#datosArchivos"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    fecha: &#x27;&#x27;,
+    tipo: 0,
+    titulo: &#x27;&#x27;,
+    archivo: &#x27;&#x27;
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosEdicion"></a>
+                        <span class="name">
+                            <b>
+                            datosEdicion</b>
+                            <a href="#datosEdicion"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    id: &#x27;&#x27;,
+    campo: &#x27;&#x27;,
+    input: &#x27;&#x27;
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datosNotas"></a>
+                        <span class="name">
+                            <b>
+                            datosNotas</b>
+                            <a href="#datosNotas"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    fecha: &#x27;&#x27;,
+    nota: &#x27;&#x27;
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edicionArchivo"></a>
+                        <span class="name">
+                            <b>
+                            edicionArchivo</b>
+                            <a href="#edicionArchivo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:58</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edicionDocumento"></a>
+                        <span class="name">
+                            <b>
+                            edicionDocumento</b>
+                            <a href="#edicionDocumento"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edicionSelect"></a>
+                        <span class="name">
+                            <b>
+                            edicionSelect</b>
+                            <a href="#edicionSelect"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edicionTexto"></a>
+                        <span class="name">
+                            <b>
+                            edicionTexto</b>
+                            <a href="#edicionTexto"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="idAnioActualA"></a>
+                        <span class="name">
+                            <b>
+                            idAnioActualA</b>
+                            <a href="#idAnioActualA"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="idAnioActualN"></a>
+                        <span class="name">
+                            <b>
+                            idAnioActualN</b>
+                            <a href="#idAnioActualN"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="idMesActualA"></a>
+                        <span class="name">
+                            <b>
+                            idMesActualA</b>
+                            <a href="#idMesActualA"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="idMesActualN"></a>
+                        <span class="name">
+                            <b>
+                            idMesActualN</b>
+                            <a href="#idMesActualN"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingresandoArchivo"></a>
+                        <span class="name">
+                            <b>
+                            ingresandoArchivo</b>
+                            <a href="#ingresandoArchivo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ingresandoNota"></a>
+                        <span class="name">
+                            <b>
+                            ingresandoNota</b>
+                            <a href="#ingresandoNota"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="notas"></a>
+                        <span class="name">
+                            <b>
+                            notas</b>
+                            <a href="#notas"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nuevoIngreso"></a>
+                        <span class="name">
+                            <b>
+                            nuevoIngreso</b>
+                            <a href="#nuevoIngreso"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="remitente"></a>
+                        <span class="name">
+                            <b>
+                            remitente</b>
+                            <a href="#remitente"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectAnio"></a>
+                        <span class="name">
+                            <b>
+                            selectAnio</b>
+                            <a href="#selectAnio"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectEdicionTipo"></a>
+                        <span class="name">
+                            <b>
+                            selectEdicionTipo</b>
+                            <a href="#selectEdicionTipo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectMes"></a>
+                        <span class="name">
+                            <b>
+                            selectMes</b>
+                            <a href="#selectMes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectTipo"></a>
+                        <span class="name">
+                            <b>
+                            selectTipo</b>
+                            <a href="#selectTipo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="url"></a>
+                        <span class="name">
+                            <b>
+                            url</b>
+                            <a href="#url"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="valorInput"></a>
+                        <span class="name">
+                            <b>
+                            valorInput</b>
+                            <a href="#valorInput"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="varType"></a>
+                        <span class="name">
+                            <b>
+                            varType</b>
+                            <a href="#varType"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/auth-master/cuenta-sindical/archivador/archivador.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { NgbModalConfig, NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { ArchivadorService } from &#x27;src/app/servicios/archivador.service&#x27;;
+import { AniosService } from &#x27;src/app/servicios/anios.service&#x27;;
+
+@Component({
+  selector: &#x27;app-archivador&#x27;,
+  templateUrl: &#x27;./archivador.component.html&#x27;,
+  styleUrls: [&#x27;./archivador.component.css&#x27;]
+})
+export class ArchivadorComponent implements OnInit {
+
+  url
+  botonIngresar &#x3D; false;
+
+  remitente &#x3D; &#x27;&#x27;
+  selectAnio
+  selectMes
+  idAnioActualN
+  idMesActualN
+  idAnioActualA
+  idMesActualA
+  cargarDatos &#x3D; 0
+
+  selectTipo
+
+  ingresandoNota &#x3D; false;
+  ingresandoArchivo &#x3D; false;
+
+  notas &#x3D; []
+  archivos &#x3D; []
+
+  datosNotas &#x3D; {
+    fecha: &#x27;&#x27;,
+    nota: &#x27;&#x27;
+  }
+
+  datosArchivos &#x3D; {
+    fecha: &#x27;&#x27;,
+    tipo: 0,
+    titulo: &#x27;&#x27;,
+    archivo: &#x27;&#x27;
+  }
+
+  edicionDocumento &#x3D; false;
+  edicionSelect &#x3D; false;
+  edicionTexto &#x3D; false;
+  nuevoIngreso &#x3D; false;
+  varType;
+
+  datosEdicion &#x3D; {
+    id: &#x27;&#x27;,
+    campo: &#x27;&#x27;,
+    input: &#x27;&#x27;
+  }
+
+  valorInput &#x3D; &#x27;&#x27;;
+  edicionArchivo;
+  selectEdicionTipo &#x3D; 0;
+
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private _archivadorService: ArchivadorService, private _fechasService: AniosService) {
+    // customize default values of modals used by this component tree
+    /* console.log(document.location.origin); */
+    config.backdrop &#x3D; &#x27;static&#x27;;
+    config.keyboard &#x3D; false;
+  }
+
+  open(content) {
+    this.modalService.open(content, { size: &#x27;xl&#x27; });
+    this.cargarFecha();
+    this.cargarFechasActuales();
+    this.traerTipos();
+  }
+
+  openExcel(content) {
+    this.modalService.open(content, { size: &#x27;lg&#x27; });
+  }
+
+  openEdicionModal(edicion) {
+    this.modalService.open(edicion, { size: &#x27;sm&#x27; });
+  }
+
+
+  ngOnInit() {
+    this.url &#x3D; document.location.origin + &#x27;/&#x27;;
+    this.selectAnio &#x3D; JSON.parse(localStorage.getItem(&#x27;anios&#x27;));
+    this.selectMes &#x3D; JSON.parse(localStorage.getItem(&#x27;meses&#x27;));
+  }
+
+  archivo(event) {
+    this.datosArchivos.archivo &#x3D; event.srcElement.files[0];
+  }
+
+  archivoEdicion(event) {
+    this.edicionArchivo &#x3D; event.srcElement.files[0];
+  }
+
+  changeAnio(valorSelect, tipo) {
+    if (tipo &#x3D;&#x3D; 1) {
+      this.idAnioActualN &#x3D; valorSelect.target.value;
+      this.notas &#x3D; [];
+      this.traerNotas();
+    } else {
+      this.idAnioActualA &#x3D; valorSelect.target.value;
+      this.archivos &#x3D; [];
+      this.traerArchivos();
+    }
+  }
+
+  changeMes(valorSelect, tipo) {
+    if (tipo &#x3D;&#x3D; 1) {
+      this.idMesActualN &#x3D; valorSelect.target.value;
+      this.notas &#x3D; [];
+      this.traerNotas();
+    } else {
+      this.idMesActualA &#x3D; valorSelect.target.value;
+      this.archivos &#x3D; [];
+      this.traerArchivos();
+    }
+  }
+
+  cargarFecha() {
+    this._archivadorService.traerDatos().subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+          this.remitente &#x3D; res.datos.nombre;
+          this.datosNotas.fecha &#x3D; res.datos.fecha;
+          this.datosArchivos.fecha &#x3D; res.datos.fecha;
+        } else {
+          alert(res.mensaje);
+        }
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  cargarFechasActuales() {
+    this.cargarDatos &#x3D; 0;
+    //Cargar id del Año actual
+    this._fechasService.getAnioActual().subscribe(
+      response &#x3D;&gt; {
+        this.idAnioActualN &#x3D; response.id;
+        this.idAnioActualA &#x3D; response.id;
+        this.cargarDatos++;
+        console.log(this.cargarDatos);
+        if (this.cargarDatos &#x3D;&#x3D; 2) {
+          this.traerNotas();
+          this.traerArchivos();
+        }
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+    //Cargar id del Mes actual
+    this._fechasService.getMesActual().subscribe(
+      response &#x3D;&gt; {
+        this.idMesActualN &#x3D; response.id;
+        this.idMesActualA &#x3D; response.id;
+        this.cargarDatos++;
+        console.log(this.cargarDatos);
+        if (this.cargarDatos &#x3D;&#x3D; 2) {
+          this.traerNotas();
+          this.traerArchivos();
+        }
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  ingresarNota() {
+    this.ingresandoNota &#x3D; true;
+    this._archivadorService.ingresarNota(this.datosNotas).subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D; &#x27;success&#x27;) {
+          this.ingresandoNota &#x3D; false;
+          this.limpiarNotas();
+          this.traerNotas();
+          alert(res.mensaje);
+        } else {
+          this.ingresandoNota &#x3D; false;
+          alert(res.mensaje);
+        }
+      }, error &#x3D;&gt; {
+        this.ingresandoNota &#x3D; false;
+        console.log(error);
+      }
+    )
+  }
+
+  actualizarNota() {
+    this._archivadorService.actualizarNota(this.datosEdicion, this.valorInput).subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+          this.traerNotas();
+          document.getElementById(&quot;closeModalButtonEdicion&quot;).click();
+          alert(res.mensaje);
+        } else {
+          alert(res.mensaje);
+        }
+      }, error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  limpiarNotas() {
+    this.datosNotas.nota &#x3D; &#x27;&#x27;;
+  }
+
+  traerNotas() {
+    this.notas &#x3D; [];
+    this._archivadorService.traerNotas(this.idAnioActualN, this.idMesActualN).subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+          this.notas &#x3D; res.notas;
+        } else {
+          alert(res.mensaje);
+        }
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  traerTipos() {
+    this._archivadorService.traerTipos().subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+          this.selectTipo &#x3D; res.tipos;
+        } else {
+          alert(res.mensaje);
+        }
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  limpiarArchivos() {
+    this.datosArchivos.tipo &#x3D; 0;
+    this.datosArchivos.titulo &#x3D; &#x27;&#x27;;
+    this.datosArchivos.archivo &#x3D; null;
+  }
+
+  ingresarArchivo() {
+    this.ingresandoArchivo &#x3D; true;
+    if (this.datosArchivos.tipo &#x3D;&#x3D; 0) {
+      this.ingresandoArchivo &#x3D; false;
+      alert(&quot;Debe seleccionar un tipo.&quot;);
+    } else {
+      this._archivadorService.ingresarArchivo(this.datosArchivos).subscribe(
+        res &#x3D;&gt; {
+          if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+            this.ingresandoArchivo &#x3D; false;
+            this.limpiarArchivos();
+            this.traerArchivos();
+            alert(res.mensaje);
+          } else {
+            this.ingresandoArchivo &#x3D; false;
+            alert(res.mensaje);
+          }
+        }, error &#x3D;&gt; {
+          this.ingresandoArchivo &#x3D; false;
+          console.log(error);
+        }
+      )
+    }
+  }
+
+  actualizarArchivo() {
+    let valor;
+    switch (this.datosEdicion.campo) {
+      case &#x27;fecha&#x27;:
+        valor &#x3D; this.valorInput;
+        break;
+      case &#x27;titulo&#x27;:
+        valor &#x3D; this.valorInput;
+        break;
+      case &#x27;tipo&#x27;:
+        if (valor &#x3D;&#x3D; 0) {
+          alert(&quot;Debe seleccionar un tipo.&quot;);
+        } else {
+          valor &#x3D; this.selectEdicionTipo;
+        }
+        break;
+      case &#x27;archivo&#x27;:
+        valor &#x3D; this.edicionArchivo;
+        break;
+
+      default:
+        break;
+    }
+
+    this._archivadorService.actualizarArchivo(this.datosEdicion, valor).subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+          this.traerArchivos();
+          document.getElementById(&quot;closeModalButtonEdicion&quot;).click();
+          alert(res.mensaje);
+        } else {
+          alert(res.mensaje);
+        }
+      }, error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  traerArchivos() {
+    this.archivos &#x3D; [];
+    this._archivadorService.traerArchivos(this.idAnioActualA, this.idMesActualA).subscribe(
+      res &#x3D;&gt; {
+        if (res.estado &#x3D;&#x3D; &#x27;success&#x27;) {
+          this.archivos &#x3D; res.archivos;
+        } else {
+          alert(res.mensaje);
+        }
+      },
+      error &#x3D;&gt; {
+        console.log(error);
+      }
+    )
+  }
+
+  editarParametro(id, campo, valor, estado) {
+
+    if (estado &#x3D;&#x3D; true) {
+      this.botonIngresar &#x3D; true;
+    } else {
+      this.botonIngresar &#x3D; false;
+    }
+    this.datosEdicion.id &#x3D; id;
+    this.datosEdicion.campo &#x3D; campo;
+    this.datosEdicion.input &#x3D; valor;
+
+    switch (campo) {
+      case &#x27;fecha&#x27;:
+        this.varType &#x3D; &#x27;date&#x27;;
+        this.edicionDocumento &#x3D; false;
+        this.edicionTexto &#x3D; true;
+        this.edicionSelect &#x3D; false;
+        this.nuevoIngreso &#x3D; false;
+        break;
+
+      case &#x27;titulo&#x27;:
+        this.varType &#x3D; &#x27;text&#x27;;
+        this.edicionDocumento &#x3D; false;
+        this.edicionTexto &#x3D; true;
+        this.nuevoIngreso &#x3D; false;
+        this.edicionSelect &#x3D; false;
+        break;
+
+      case &#x27;descripcion&#x27;:
+        this.varType &#x3D; &#x27;text&#x27;;
+        this.edicionDocumento &#x3D; false;
+        this.edicionTexto &#x3D; true;
+        this.nuevoIngreso &#x3D; false;
+        this.edicionSelect &#x3D; false;
+        break;
+
+      case &#x27;tipo&#x27;:
+        this.edicionSelect &#x3D; true;
+        this.edicionDocumento &#x3D; false;
+        this.edicionTexto &#x3D; false;
+        this.nuevoIngreso &#x3D; false;
+        break;
+
+      case &#x27;archivo&#x27;:
+        this.edicionDocumento &#x3D; true;
+        this.edicionSelect &#x3D; false;
+        this.edicionTexto &#x3D; false;
+        this.nuevoIngreso &#x3D; false;
+        break;
+
+      default:
+        break;
+    }
+    document.getElementById(&quot;openEdicionArchivo&quot;).click();
+  }
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ng-template #content let-c&#x3D;&quot;close&quot; let-d&#x3D;&quot;dismiss&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-header sticky-top&quot; id&#x3D;&quot;demoFont&quot;&gt;
+        &lt;h6 class&#x3D;&quot;modal-title&quot;&gt;&lt;strong&gt;&lt;i class&#x3D;&quot;fas fa-archive&quot;&gt;&lt;/i&gt; Cuenta Sindical / Archivador&lt;/strong&gt;&lt;/h6&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;d(&#x27;Cross click&#x27;)&quot;&gt;
+        &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        &lt;ul class&#x3D;&quot;nav nav-tabs nav-fill flex-column flex-sm-row&quot; id&#x3D;&quot;myTab&quot; role&#x3D;&quot;tablist&quot;&gt;
+            &lt;li class&#x3D;&quot;nav-item active&quot;&gt;
+                &lt;a class&#x3D;&quot;nav-link&quot; id&#x3D;&quot;notas-tab&quot; data-toggle&#x3D;&quot;tab&quot; href&#x3D;&quot;#notas&quot; role&#x3D;&quot;tab&quot; aria-controls&#x3D;&quot;notas&quot; aria-selected&#x3D;&quot;true&quot;&gt;Notas&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+                &lt;a class&#x3D;&quot;nav-link&quot; id&#x3D;&quot;archivos-tab&quot; data-toggle&#x3D;&quot;tab&quot; href&#x3D;&quot;#archivos&quot; role&#x3D;&quot;tab&quot; aria-controls&#x3D;&quot;archivos&quot; aria-selected&#x3D;&quot;false&quot;&gt;Archivador&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class&#x3D;&quot;tab-content&quot; id&#x3D;&quot;myTabContent&quot;&gt;
+
+            &lt;ng-template #edicion let-modal&gt;
+                &lt;div class&#x3D;&quot;modal-header&quot; id&#x3D;&quot;demoFont&quot;&gt;
+                    &lt;h4 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;modal-basic-title&quot;&gt;Modificar Campo&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                    &lt;form enctype&#x3D;&quot;multipart/form-data&quot;&gt;
+                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label&gt;&lt;strong&gt;Valor Anterior&lt;/strong&gt;&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; value&#x3D;&quot;{{datosEdicion.input}}&quot; disabled&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label&gt;&lt;strong&gt;Nuevo Valor&lt;/strong&gt;&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                                &lt;input [hidden]&#x3D;&quot;edicionDocumento || edicionSelect&quot; type&#x3D;&quot;{{varType}}&quot; class&#x3D;&quot;form-control&quot; name&#x3D;&quot;valorInput&quot; [(ngModel)]&#x3D;&quot;valorInput&quot;&gt;
+                                &lt;select [hidden]&#x3D;&quot;edicionDocumento || edicionTexto&quot; name&#x3D;&quot;nuevoValor&quot; [(ngModel)]&#x3D;&quot;selectEdicionTipo&quot; class&#x3D;&quot;form-control form-control-sm&quot;&gt;
+                                    &lt;option value&#x3D;&quot;0&quot;&gt;Seleccione un tipo&lt;/option&gt;
+                                    &lt;option *ngFor&#x3D;&quot;let item of selectTipo&quot; [value]&#x3D;&quot;item.id&quot;&gt;{{item.tipo}}&lt;/option&gt;
+                                  &lt;/select&gt;
+                                &lt;input #nuevoDoc *ngIf&#x3D;&quot;edicionDocumento&quot; class&#x3D;&quot;form-control-file&quot; type&#x3D;&quot;file&quot; (change)&#x3D;&quot;archivoEdicion($event)&quot; required&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+
+                    &lt;button id&#x3D;&quot;closeModalButtonEdicion&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info&quot; (click)&#x3D;&quot;modal.close(&#x27;Save click&#x27;)&quot;&gt;Salir&lt;/button&gt;
+                    &lt;button type&#x3D;&quot;button&quot; [hidden]&#x3D;&quot;!botonIngresar&quot; class&#x3D;&quot;btn btn-outline-success&quot; (click)&#x3D;&quot;actualizarArchivo()&quot;&gt;Guardar&lt;/button&gt;
+                    &lt;button type&#x3D;&quot;button&quot; [hidden]&#x3D;&quot;botonIngresar&quot; class&#x3D;&quot;btn btn-outline-success&quot; (click)&#x3D;&quot;actualizarNota()&quot;&gt;Guardar&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/ng-template&gt;
+
+            &lt;button id&#x3D;&quot;openEdicionArchivo&quot; class&#x3D;&quot;btn btn-lg btn-outline-primary&quot; [hidden]&#x3D;true (click)&#x3D;&quot;openEdicionModal(edicion)&quot;&gt;Launch demo modal&lt;/button&gt;
+
+
+            &lt;div class&#x3D;&quot;tab-pane fade show active&quot; id&#x3D;&quot;notas&quot; role&#x3D;&quot;tabpanel&quot; aria-labelledby&#x3D;&quot;notas-tab&quot;&gt;
+
+                &lt;div class&#x3D;&quot;modal-header mt-4&quot; id&#x3D;&quot;demoFont2&quot;&gt;
+                    &lt;h6 class&#x3D;&quot;modal-title&quot;&gt;&lt;strong&gt;Formulario de Ingreso&lt;/strong&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;card&quot;&gt;
+                    &lt;form #notasForm&#x3D;&quot;ngForm&quot; (ngSubmit)&#x3D;&quot;ingresarNota()&quot;&gt;
+                        &lt;div class&#x3D;&quot;row centrar&quot;&gt;
+                            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Fecha&lt;/label&gt;
+                                    &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;date&quot; name&#x3D;&quot;fecha&quot; [(ngModel)]&#x3D;&quot;datosNotas.fecha&quot; required&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Remitente&lt;/label&gt;
+                                    &lt;input class&#x3D;&quot;form-control&quot; disabled type&#x3D;&quot;text&quot; name&#x3D;&quot;remitente&quot; [(ngModel)]&#x3D;&quot;remitente&quot; required&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Nota&lt;/label&gt;
+                                    &lt;textarea class&#x3D;&quot;form-control resize-none&quot; name&#x3D;&quot;nota&quot; [(ngModel)]&#x3D;&quot;datosNotas.nota&quot; required&gt;&lt;/textarea&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;notasForm.invalid || ingresandoNota&quot; class&#x3D;&quot;btn btn-block btn-success&quot;&gt;Ingresar Nota &lt;img *ngIf&#x3D;&quot;ingresandoNota&quot; height&#x3D;&quot;20&quot; src&#x3D;&quot;https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif&quot;&gt;&lt;/button&gt;
+                            &lt;!-- &lt;button [disabled]&#x3D;&quot;ingresandoDatos&quot; type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-block btn-success&quot; [disabled]&#x3D;&quot;loginForm.invalid&quot;&gt;Guardar &lt;img *ngIf&#x3D;&quot;ingresandoDatos&quot; height&#x3D;&quot;20&quot; src&#x3D;&quot;https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif&quot;&gt;&lt;/button&gt; --&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;row mt-4&quot;&gt;
+                    &lt;ngb-alert type&#x3D;&quot;warning&quot; [dismissible]&#x3D;&quot;false&quot; class&#x3D;&quot;col-12 align-self-center&quot;&gt;
+                        &lt;small&gt;&lt;i class&#x3D;&quot;fas fa-exclamation-circle fa-2x&quot;&gt;&lt;/i&gt; &lt;strong&gt; ¡IMPORTANTE!&lt;/strong&gt; 
+                            Si desea editar una nota, debe de hacer &lt;b&gt;click&lt;/b&gt; en la nota a cambiar.&lt;/small&gt;
+                    &lt;/ngb-alert&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;card&quot;&gt;
+                    &lt;div class&#x3D;&quot;row centrar text-center&quot;&gt;
+                        &lt;div class&#x3D;&quot;col-sm-6 col-md-3 col-lg-3&quot;&gt;&lt;br&gt;&lt;label&gt;&lt;strong&gt;Filtro por Año &lt;i
+                                class&#x3D;&quot;fas fa-calendar-check&quot;&gt;&lt;/i&gt;&lt;/strong&gt;&lt;/label&gt;
+                            &lt;select (change)&#x3D;&quot;changeAnio($event,1)&quot; name&#x3D;&quot;anio&quot; #anio&#x3D;&quot;ngModel&quot; [(ngModel)]&#x3D;&quot;idAnioActualN&quot; class&#x3D;&quot;form-control form-control-sm&quot;&gt;
+                            &lt;option *ngFor&#x3D;&quot;let anio of selectAnio&quot; [value]&#x3D;&quot;anio.id&quot;&gt;{{anio.descripcion}}&lt;/option&gt;
+                          &lt;/select&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;col-sm-6 col-md-3 col-lg-3&quot;&gt;&lt;br&gt;&lt;label&gt;&lt;strong&gt;Filtro por Mes &lt;i
+                                class&#x3D;&quot;fas fa-calendar-check&quot;&gt;&lt;/i&gt;&lt;/strong&gt;&lt;/label&gt;
+                            &lt;select (change)&#x3D;&quot;changeMes($event,1)&quot; name&#x3D;&quot;mes&quot; #mes&#x3D;&quot;ngModel&quot; [(ngModel)]&#x3D;&quot;idMesActualN&quot; class&#x3D;&quot;form-control form-control-sm&quot;&gt;
+                            &lt;option *ngFor&#x3D;&quot;let mes of selectMes&quot; [value]&#x3D;&quot;mes.id&quot;&gt;{{mes.descripcion}}&lt;/option&gt;
+                          &lt;/select&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;col-md-4&quot;&gt;&lt;br&gt;&lt;label&gt;
+                          &lt;strong&gt;Recargar tabla &lt;/strong&gt;
+                    
+                        &lt;/label&gt;&lt;br&gt;
+                            &lt;button class&#x3D;&quot;btn btn-info&quot; (click)&#x3D;&quot;traerNotas()&quot;&gt;Actualizar&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;row centrar&quot;&gt;
+                        &lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+                            &lt;table class&#x3D;&quot;table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded&quot;&gt;
+                                &lt;thead text-sm class&#x3D;&quot;text-center&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;11&quot; class&#x3D;&quot;ColorThCS&quot;&gt;Notas&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;far fa-calendar-alt&quot;&gt;&lt;/i&gt; Fecha&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sticky-note&quot;&gt;&lt;/i&gt; Nota&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-user-circle&quot;&gt;&lt;/i&gt; Remitente&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr *ngFor&#x3D;&quot;let item of notas&quot; class&#x3D;&quot;text-center&quot;&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;fecha&#x27;, item.fecha, false)&quot;&gt;{{item?.fecha}}&lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;descripcion&#x27;, item.descripcion, false)&quot;&gt;{{item?.descripcion}}&lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;{{item?.nombre}}&lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;tab-pane fade&quot; id&#x3D;&quot;archivos&quot; role&#x3D;&quot;tabpanel&quot; aria-labelledby&#x3D;&quot;archivos-tab&quot;&gt;
+                &lt;div class&#x3D;&quot;modal-header mt-4&quot; id&#x3D;&quot;demoFont2&quot;&gt;
+                    &lt;h6 class&#x3D;&quot;modal-title&quot;&gt;&lt;strong&gt;Formulario de Ingreso&lt;/strong&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;card&quot;&gt;
+                    &lt;form #archivoForm&#x3D;&quot;ngForm&quot; (ngSubmit)&#x3D;&quot;ingresarArchivo()&quot; enctype&#x3D;&quot;multipart/form-data&quot;&gt;
+                        &lt;div class&#x3D;&quot;row centrar&quot;&gt;
+                            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Fecha&lt;/label&gt;
+                                    &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;date&quot; name&#x3D;&quot;fecha&quot; [(ngModel)]&#x3D;&quot;datosArchivos.fecha&quot; required&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Remitente&lt;/label&gt;
+                                    &lt;input class&#x3D;&quot;form-control&quot; disabled type&#x3D;&quot;text&quot; name&#x3D;&quot;remitente&quot; [(ngModel)]&#x3D;&quot;remitente&quot; required&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Tipo&lt;/label&gt;
+                                    &lt;select name&#x3D;&quot;tipo&quot; [(ngModel)]&#x3D;&quot;datosArchivos.tipo&quot; class&#x3D;&quot;form-control form-control-sm&quot; required&gt;
+                                        &lt;option value&#x3D;&quot;0&quot;&gt;Seleccione un tipo&lt;/option&gt;
+                                        &lt;option *ngFor&#x3D;&quot;let item of selectTipo&quot; [value]&#x3D;&quot;item.id&quot;&gt;{{item.tipo}}&lt;/option&gt;
+                                      &lt;/select&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Titulo&lt;/label&gt;
+                                    &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; name&#x3D;&quot;titulo&quot; [(ngModel)]&#x3D;&quot;datosArchivos.titulo&quot; required&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                                &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                                    &lt;label for&#x3D;&quot;&quot;&gt;Archivo&lt;/label&gt;
+                                    &lt;input class&#x3D;&quot;form-control-file&quot; type&#x3D;&quot;file&quot; (change)&#x3D;&quot;archivo($event)&quot; required&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;archivoForm.invalid || ingresandoArchivo&quot; class&#x3D;&quot;btn btn-block btn-success&quot;&gt;Ingresar Archivo &lt;img *ngIf&#x3D;&quot;ingresandoArchivo&quot; height&#x3D;&quot;20&quot; src&#x3D;&quot;https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif&quot;&gt;&lt;/button&gt;
+                            &lt;!-- &lt;button [disabled]&#x3D;&quot;ingresandoDatos&quot; type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-block btn-success&quot; [disabled]&#x3D;&quot;loginForm.invalid&quot;&gt;Guardar &lt;img *ngIf&#x3D;&quot;ingresandoDatos&quot; height&#x3D;&quot;20&quot; src&#x3D;&quot;https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif&quot;&gt;&lt;/button&gt; --&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;row mt-4&quot;&gt;
+                    &lt;ngb-alert type&#x3D;&quot;warning&quot; [dismissible]&#x3D;&quot;false&quot; class&#x3D;&quot;col-12 align-self-center&quot;&gt;
+                        &lt;small&gt;&lt;i class&#x3D;&quot;fas fa-exclamation-circle fa-2x&quot;&gt;&lt;/i&gt; &lt;strong&gt; ¡IMPORTANTE!&lt;/strong&gt; Si desea edita un valor de
+                                la tabla, debe de hacer &lt;b&gt;click&lt;/b&gt; en el campo seleccionado. Si desea cambiar el archivo, debe
+                                de hacer &lt;b&gt;click&lt;/b&gt; el icono &lt;i class&#x3D;&quot;far fa-copy&quot; placement&#x3D;&quot;top&quot;&gt;&lt;/i&gt;&lt;/small&gt;
+                        &lt;br&gt;
+                        &lt;small&gt;&lt;i class&#x3D;&quot;fas fa-exclamation-circle fa-2x&quot;&gt;&lt;/i&gt; &lt;strong&gt; ¡OBSERVACION!&lt;/strong&gt; 
+                                Si desea cambiar un archivo &lt;b&gt;PDF por uno Excel o viceversa&lt;/b&gt;, recuerde cambiarlo por el tipo que corresponda para que este pueda ser visualizado.&lt;/small&gt;
+                    &lt;/ngb-alert&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;card&quot;&gt;
+                    &lt;div class&#x3D;&quot;row centrar text-center&quot;&gt;
+                        &lt;div class&#x3D;&quot;col-sm-6 col-md-3 col-lg-3&quot;&gt;&lt;br&gt;&lt;label&gt;&lt;strong&gt;Filtro por Año &lt;i
+                                class&#x3D;&quot;fas fa-calendar-check&quot;&gt;&lt;/i&gt;&lt;/strong&gt;&lt;/label&gt;
+                            &lt;select (change)&#x3D;&quot;changeAnio($event,2)&quot; name&#x3D;&quot;anio&quot; #anio&#x3D;&quot;ngModel&quot; [(ngModel)]&#x3D;&quot;idAnioActualA&quot; class&#x3D;&quot;form-control form-control-sm&quot;&gt;
+                            &lt;option *ngFor&#x3D;&quot;let anio of selectAnio&quot; [value]&#x3D;&quot;anio.id&quot;&gt;{{anio.descripcion}}&lt;/option&gt;
+                          &lt;/select&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;col-sm-6 col-md-3 col-lg-3&quot;&gt;&lt;br&gt;&lt;label&gt;&lt;strong&gt;Filtro por Mes &lt;i
+                                class&#x3D;&quot;fas fa-calendar-check&quot;&gt;&lt;/i&gt;&lt;/strong&gt;&lt;/label&gt;
+                            &lt;select (change)&#x3D;&quot;changeMes($event,2)&quot; name&#x3D;&quot;mes&quot; #mes&#x3D;&quot;ngModel&quot; [(ngModel)]&#x3D;&quot;idMesActualA&quot; class&#x3D;&quot;form-control form-control-sm&quot;&gt;
+                            &lt;option *ngFor&#x3D;&quot;let mes of selectMes&quot; [value]&#x3D;&quot;mes.id&quot;&gt;{{mes.descripcion}}&lt;/option&gt;
+                          &lt;/select&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;col-md-4&quot;&gt;&lt;br&gt;&lt;label&gt;
+                          &lt;strong&gt;Recargar tabla &lt;/strong&gt;
+                    
+                        &lt;/label&gt;&lt;br&gt;
+                            &lt;button class&#x3D;&quot;btn btn-info&quot; (click)&#x3D;&quot;traerArchivos()&quot;&gt;Actualizar&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;row centrar&quot;&gt;
+                        &lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+                            &lt;table class&#x3D;&quot;table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded&quot;&gt;
+                                &lt;thead text-sm class&#x3D;&quot;text-center&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;11&quot; class&#x3D;&quot;ColorThCS&quot;&gt;Archivador&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;far fa-calendar-alt&quot;&gt;&lt;/i&gt; Fecha&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sticky-note&quot;&gt;&lt;/i&gt; Titulo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt; Tipo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-file-archive&quot;&gt;&lt;/i&gt; Archivo Reporte&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-user-circle&quot;&gt;&lt;/i&gt; Remitente&lt;/th&gt;
+
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr *ngFor&#x3D;&quot;let item of archivos?.reporte&quot; class&#x3D;&quot;text-center&quot;&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;fecha&#x27;, item.fecha, true)&quot;&gt;
+                                            {{item?.fecha}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;titulo&#x27;, item.titulo, true)&quot;&gt;
+                                            {{item?.titulo}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;tipo&#x27;, item.tipo, true)&quot;&gt;
+                                            {{item?.tipo}}
+                                        &lt;/td&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;ng-template #visor let-c&#x3D;&quot;close&quot; let-d&#x3D;&quot;dismiss&quot;&gt;
+                                            &lt;div class&#x3D;&quot;row&quot;&gt;
+                                                &lt;div class&#x3D;&quot;col&quot;&gt;
+                                                    &lt;div class&#x3D;&quot;modal-header text-center&quot; id&#x3D;&quot;demoFont&quot;&gt;
+                                                        &lt;h4 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;modal-basic-title&quot;&gt;Visor de Excel&lt;/h4&gt;
+                                                        &lt;button id&#x3D;&quot;closeModalButton&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;d(&#x27;Cross click&#x27;)&quot;&gt;
+                                                            &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                                                        &lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                                                        &lt;!-- item?.archivo --&gt;
+                                                        &lt;ngx-doc-viewer [url]&#x3D;&quot;url + item?.archivo&quot; viewer&#x3D;&quot;google&quot; style&#x3D;&quot;width:100%;height:50vh;&quot;&gt;&lt;/ngx-doc-viewer&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-footer&quot; [hidden]&#x3D;&quot;true&quot;&gt;
+                                                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-dark&quot; (click)&#x3D;&quot;c(&#x27;Save click&#x27;)&quot;&gt;OK&lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                        &lt;/ng-template&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            &lt;a (click)&#x3D;&quot;openExcel(visor)&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;&lt;i class&#x3D;&quot;far fa-file-alt&quot; placement&#x3D;&quot;top&quot;
+                                                ngbTooltip&#x3D;&quot;Presione aqui visualizar el documento.&quot;&gt;&lt;/i&gt;&lt;/a&gt;&amp;nbsp;
+                                            &lt;a class&#x3D;&quot;btn-primary-outline&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;
+                                                &lt;i class&#x3D;&quot;far fa-copy&quot; placement&#x3D;&quot;top&quot; ngbTooltip&#x3D;&quot;Presione aqui para cambiar el documento&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;archivo&#x27;, &#x27;Archivo Antiguo&#x27;, true)&quot;&gt;&lt;/i&gt;
+                                            &lt;/a&gt;
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            {{item?.nombre}}
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                                &lt;thead text-sm class&#x3D;&quot;text-center&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;far fa-calendar-alt&quot;&gt;&lt;/i&gt; Fecha&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sticky-note&quot;&gt;&lt;/i&gt; Titulo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt; Tipo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-file-archive&quot;&gt;&lt;/i&gt; Archivo Descuento&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-user-circle&quot;&gt;&lt;/i&gt; Remitente&lt;/th&gt;
+
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr *ngFor&#x3D;&quot;let item of archivos?.descuento&quot; class&#x3D;&quot;text-center&quot;&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;fecha&#x27;, item.fecha, true)&quot;&gt;
+                                            {{item?.fecha}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;titulo&#x27;, item.titulo, true)&quot;&gt;
+                                            {{item?.titulo}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;tipo&#x27;, item.tipo, true)&quot;&gt;
+                                            {{item?.tipo}}
+                                        &lt;/td&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;ng-template #visor let-c&#x3D;&quot;close&quot; let-d&#x3D;&quot;dismiss&quot;&gt;
+                                            &lt;div class&#x3D;&quot;row&quot;&gt;
+                                                &lt;div class&#x3D;&quot;col&quot;&gt;
+                                                    &lt;div class&#x3D;&quot;modal-header text-center&quot; id&#x3D;&quot;demoFont&quot;&gt;
+                                                        &lt;h4 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;modal-basic-title&quot;&gt;Visor de Excel&lt;/h4&gt;
+                                                        &lt;button id&#x3D;&quot;closeModalButton&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;d(&#x27;Cross click&#x27;)&quot;&gt;
+                                                            &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                                                        &lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                                                        &lt;!-- item?.archivo --&gt;
+                                                        &lt;ngx-doc-viewer [url]&#x3D;&quot;url + item?.archivo&quot; viewer&#x3D;&quot;google&quot; style&#x3D;&quot;width:100%;height:50vh;&quot;&gt;&lt;/ngx-doc-viewer&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-footer&quot; [hidden]&#x3D;&quot;true&quot;&gt;
+                                                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-dark&quot; (click)&#x3D;&quot;c(&#x27;Save click&#x27;)&quot;&gt;OK&lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                        &lt;/ng-template&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            &lt;a (click)&#x3D;&quot;openExcel(visor)&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;&lt;i class&#x3D;&quot;far fa-file-alt&quot; placement&#x3D;&quot;top&quot;
+                                                ngbTooltip&#x3D;&quot;Presione aqui visualizar el documento.&quot;&gt;&lt;/i&gt;&lt;/a&gt;&amp;nbsp;
+                                            &lt;a class&#x3D;&quot;btn-primary-outline&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;
+                                                &lt;i class&#x3D;&quot;far fa-copy&quot; placement&#x3D;&quot;top&quot; ngbTooltip&#x3D;&quot;Presione aqui para cambiar el documento&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;archivo&#x27;, &#x27;Archivo Antiguo&#x27;, true)&quot;&gt;&lt;/i&gt;
+                                            &lt;/a&gt;
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            {{item?.nombre}}
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                                &lt;thead text-sm class&#x3D;&quot;text-center&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;far fa-calendar-alt&quot;&gt;&lt;/i&gt; Fecha&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sticky-note&quot;&gt;&lt;/i&gt; Titulo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt; Tipo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-file-archive&quot;&gt;&lt;/i&gt; Archivo Conciliación&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-user-circle&quot;&gt;&lt;/i&gt; Remitente&lt;/th&gt;
+
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr *ngFor&#x3D;&quot;let item of archivos?.conciliacion&quot; class&#x3D;&quot;text-center&quot;&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;fecha&#x27;, item.fecha, true)&quot;&gt;
+                                            {{item?.fecha}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;titulo&#x27;, item.titulo, true)&quot;&gt;
+                                            {{item?.titulo}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;tipo&#x27;, item.tipo, true)&quot;&gt;
+                                            {{item?.tipo}}
+                                        &lt;/td&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;ng-template #visor let-c&#x3D;&quot;close&quot; let-d&#x3D;&quot;dismiss&quot;&gt;
+                                            &lt;div class&#x3D;&quot;row&quot;&gt;
+                                                &lt;div class&#x3D;&quot;col&quot;&gt;
+                                                    &lt;div class&#x3D;&quot;modal-header text-center&quot; id&#x3D;&quot;demoFont&quot;&gt;
+                                                        &lt;h4 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;modal-basic-title&quot;&gt;Visor de Excel&lt;/h4&gt;
+                                                        &lt;button id&#x3D;&quot;closeModalButton&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;d(&#x27;Cross click&#x27;)&quot;&gt;
+                                                            &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                                                        &lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                                                        &lt;!-- item?.archivo --&gt;
+                                                        &lt;ngx-doc-viewer [url]&#x3D;&quot;url + item?.archivo&quot; viewer&#x3D;&quot;google&quot; style&#x3D;&quot;width:100%;height:50vh;&quot;&gt;&lt;/ngx-doc-viewer&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-footer&quot; [hidden]&#x3D;&quot;true&quot;&gt;
+                                                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-dark&quot; (click)&#x3D;&quot;c(&#x27;Save click&#x27;)&quot;&gt;OK&lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                        &lt;/ng-template&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            &lt;a (click)&#x3D;&quot;openExcel(visor)&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;&lt;i class&#x3D;&quot;far fa-file-alt&quot; placement&#x3D;&quot;top&quot;
+                                                ngbTooltip&#x3D;&quot;Presione aqui visualizar el documento.&quot;&gt;&lt;/i&gt;&lt;/a&gt;&amp;nbsp;
+                                            &lt;a class&#x3D;&quot;btn-primary-outline&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;
+                                                &lt;i class&#x3D;&quot;far fa-copy&quot; placement&#x3D;&quot;top&quot; ngbTooltip&#x3D;&quot;Presione aqui para cambiar el documento&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;archivo&#x27;, &#x27;Archivo Antiguo&#x27;, true)&quot;&gt;&lt;/i&gt;
+                                            &lt;/a&gt;
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            {{item?.nombre}}
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                                &lt;thead text-sm class&#x3D;&quot;text-center&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;far fa-calendar-alt&quot;&gt;&lt;/i&gt; Fecha&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-sticky-note&quot;&gt;&lt;/i&gt; Titulo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt; Tipo&lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-file-archive&quot;&gt;&lt;/i&gt; Otros Archivos &lt;/th&gt;
+                                        &lt;th colspan&#x3D;&quot;2&quot;&gt;&lt;i class&#x3D;&quot;fas fa-user-circle&quot;&gt;&lt;/i&gt; Remitente&lt;/th&gt;
+
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr *ngFor&#x3D;&quot;let item of archivos?.otros&quot; class&#x3D;&quot;text-center&quot;&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;fecha&#x27;, item.fecha, true)&quot;&gt;
+                                            {{item?.fecha}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;titulo&#x27;, item.titulo, true)&quot;&gt;
+                                            {{item?.titulo}}
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;tipo&#x27;, item.tipo, true)&quot;&gt;
+                                            {{item?.tipo}}
+                                        &lt;/td&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;ng-template #visor let-c&#x3D;&quot;close&quot; let-d&#x3D;&quot;dismiss&quot;&gt;
+                                            &lt;div class&#x3D;&quot;row&quot;&gt;
+                                                &lt;div class&#x3D;&quot;col&quot;&gt;
+                                                    &lt;div class&#x3D;&quot;modal-header text-center&quot; id&#x3D;&quot;demoFont&quot;&gt;
+                                                        &lt;h4 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;modal-basic-title&quot;&gt;Visor de PDF&lt;/h4&gt;
+                                                        &lt;button id&#x3D;&quot;closeModalButton&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;d(&#x27;Cross click&#x27;)&quot;&gt;
+                                                            &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                                                        &lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                                                        &lt;!-- item?.archivo --&gt;
+                                                        &lt;iframe width&#x3D;&quot;100%&quot; height&#x3D;&quot;500px&quot; [src]&#x3D;&quot;  &#x27;../&#x27; + item.archivo | safeUrl&quot; frameborder&#x3D;&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class&#x3D;&quot;modal-footer&quot; [hidden]&#x3D;&quot;true&quot;&gt;
+                                                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-dark&quot; (click)&#x3D;&quot;c(&#x27;Save click&#x27;)&quot;&gt;OK&lt;/button&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                        &lt;/ng-template&gt;
+                                        &lt;!--MODAL VISOR PDF--&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            &lt;a (click)&#x3D;&quot;openExcel(visor)&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;&lt;i class&#x3D;&quot;far fa-file-alt&quot; placement&#x3D;&quot;top&quot;
+                                                ngbTooltip&#x3D;&quot;Presione aqui visualizar el documento.&quot;&gt;&lt;/i&gt;&lt;/a&gt;&amp;nbsp;
+                                            &lt;a class&#x3D;&quot;btn-primary-outline&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;
+                                                &lt;i class&#x3D;&quot;far fa-copy&quot; placement&#x3D;&quot;top&quot; ngbTooltip&#x3D;&quot;Presione aqui para cambiar el documento&quot; (click)&#x3D;&quot;editarParametro(item.id, &#x27;archivo&#x27;, &#x27;Archivo Antiguo&#x27;, true)&quot;&gt;&lt;/i&gt;
+                                            &lt;/a&gt;
+                                        &lt;/td&gt;
+                                        &lt;td colspan&#x3D;&quot;2&quot;&gt;
+                                            {{item?.nombre}}
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+        &lt;!--Boton para salir del modal caja chica--&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info&quot; (click)&#x3D;&quot;d(&#x27;Cross click&#x27;)&quot;&gt;&lt;i
+            class&#x3D;&quot;far fa-arrow-alt-circle-left&quot;&gt;&lt;/i&gt; Volver a Cuentas&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;open(content)&quot;&gt;Archivador&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./archivador.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.centrar {
+    padding: 2em;
+}
+
+.resize-none {
+    resize: none;
+    height: 100px;
+}
+
+.dark-modal .modal-content {
+    background-color: #292b2c;
+    color: white;
+}
+
+.dark-modal .close {
+    color: white;
+}
+
+.light-blue-backdrop {
+    background-color: #5cb3fd;
+}
+
+label,
+input,
+button {
+    font-size: 14px;
+}
+
+tr,
+th {
+    font-size: 14px;
+}
+
+th {
+    color: white;
+    background: #138D75;
+}
+
+#demoFont {
+    color: #fff;
+    background: #2C3E50;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#demoFont2 {
+    color: #fff;
+    background: #52c234;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #061700, #52c234);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #061700, #52c234);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.nav-item a {
+    color: #fff;
+    background: #093028;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #237A57, #093028);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #237A57, #093028);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.margen {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#myTab {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+hr {
+    border-top: 1px solid #000000 !important;
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+    height: 10px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-template #content let-c="close" let-d="dismiss">    <div class="modal-header sticky-top" id="demoFont">        <h6 class="modal-title"><strong><i class="fas fa-archive"></i> Cuenta Sindical / Archivador</strong></h6>        <button type="button" class="close" aria-label="Close" (click)="d(\'Cross click\')">        <span aria-hidden="true">&times;</span>      </button>    </div>    <div class="modal-body">        <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">            <li class="nav-item active">                <a class="nav-link" id="notas-tab" data-toggle="tab" href="#notas" role="tab" aria-controls="notas" aria-selected="true">Notas</a>            </li>            <li class="nav-item">                <a class="nav-link" id="archivos-tab" data-toggle="tab" href="#archivos" role="tab" aria-controls="archivos" aria-selected="false">Archivador</a>            </li>        </ul>        <div class="tab-content" id="myTabContent">            <ng-template #edicion let-modal>                <div class="modal-header" id="demoFont">                    <h4 class="modal-title" id="modal-basic-title">Modificar Campo</h4>                </div>                <div class="modal-body">                    <form enctype="multipart/form-data">                        <div class="form-group">                            <label><strong>Valor Anterior</strong></label>                            <div class="input-group">                                <input type="text" class="form-control" value="{{datosEdicion.input}}" disabled>                            </div>                        </div>                        <div class="form-group">                            <label><strong>Nuevo Valor</strong></label>                            <div class="input-group">                                <input [hidden]="edicionDocumento || edicionSelect" type="{{varType}}" class="form-control" name="valorInput" [(ngModel)]="valorInput">                                <select [hidden]="edicionDocumento || edicionTexto" name="nuevoValor" [(ngModel)]="selectEdicionTipo" class="form-control form-control-sm">                                    <option value="0">Seleccione un tipo</option>                                    <option *ngFor="let item of selectTipo" [value]="item.id">{{item.tipo}}</option>                                  </select>                                <input #nuevoDoc *ngIf="edicionDocumento" class="form-control-file" type="file" (change)="archivoEdicion($event)" required>                            </div>                        </div>                    </form>                </div>                <div class="modal-footer">                    <button id="closeModalButtonEdicion" type="button" class="btn btn-info" (click)="modal.close(\'Save click\')">Salir</button>                    <button type="button" [hidden]="!botonIngresar" class="btn btn-outline-success" (click)="actualizarArchivo()">Guardar</button>                    <button type="button" [hidden]="botonIngresar" class="btn btn-outline-success" (click)="actualizarNota()">Guardar</button>                </div>            </ng-template>            <button id="openEdicionArchivo" class="btn btn-lg btn-outline-primary" [hidden]=true (click)="openEdicionModal(edicion)">Launch demo modal</button>            <div class="tab-pane fade show active" id="notas" role="tabpanel" aria-labelledby="notas-tab">                <div class="modal-header mt-4" id="demoFont2">                    <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>                </div>                <div class="card">                    <form #notasForm="ngForm" (ngSubmit)="ingresarNota()">                        <div class="row centrar">                            <div class="col-md-6">                                <div class="form-group">                                    <label for="">Fecha</label>                                    <input class="form-control" type="date" name="fecha" [(ngModel)]="datosNotas.fecha" required>                                </div>                            </div>                            <div class="col-md-6">                                <div class="form-group">                                    <label for="">Remitente</label>                                    <input class="form-control" disabled type="text" name="remitente" [(ngModel)]="remitente" required>                                </div>                            </div>                            <div class="col-md-12">                                <div class="form-group">                                    <label for="">Nota</label>                                    <textarea class="form-control resize-none" name="nota" [(ngModel)]="datosNotas.nota" required></textarea>                                </div>                            </div>                            <button type="submit" [disabled]="notasForm.invalid || ingresandoNota" class="btn btn-block btn-success">Ingresar Nota <img *ngIf="ingresandoNota" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>                            <!-- <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Guardar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button> -->                        </div>                    </form>                </div>                <div class="row mt-4">                    <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">                        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡IMPORTANTE!</strong>                             Si desea editar una nota, debe de hacer <b>click</b> en la nota a cambiar.</small>                    </ngb-alert>                </div>                <div class="card">                    <div class="row centrar text-center">                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i                                class="fas fa-calendar-check"></i></strong></label>                            <select (change)="changeAnio($event,1)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActualN" class="form-control form-control-sm">                            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>                          </select>                        </div>                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i                                class="fas fa-calendar-check"></i></strong></label>                            <select (change)="changeMes($event,1)" name="mes" #mes="ngModel" [(ngModel)]="idMesActualN" class="form-control form-control-sm">                            <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>                          </select>                        </div>                        <div class="col-md-4"><br><label>                          <strong>Recargar tabla </strong>                                            </label><br>                            <button class="btn btn-info" (click)="traerNotas()">Actualizar</button>                        </div>                    </div>                    <div class="row centrar">                        <div class="table-responsive">                            <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">                                <thead text-sm class="text-center">                                    <tr>                                        <th colspan="11" class="ColorThCS">Notas</th>                                    </tr>                                    <tr>                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Nota</th>                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>                                    </tr>                                </thead>                                <tbody>                                    <tr *ngFor="let item of notas" class="text-center">                                        <td colspan="2" (click)="editarParametro(item.id, \'fecha\', item.fecha, false)">{{item?.fecha}}</td>                                        <td colspan="2" (click)="editarParametro(item.id, \'descripcion\', item.descripcion, false)">{{item?.descripcion}}</td>                                        <td colspan="2">{{item?.nombre}}</td>                                    </tr>                                </tbody>                            </table>                        </div>                    </div>                </div>            </div>            <div class="tab-pane fade" id="archivos" role="tabpanel" aria-labelledby="archivos-tab">                <div class="modal-header mt-4" id="demoFont2">                    <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>                </div>                <div class="card">                    <form #archivoForm="ngForm" (ngSubmit)="ingresarArchivo()" enctype="multipart/form-data">                        <div class="row centrar">                            <div class="col-md-6">                                <div class="form-group">                                    <label for="">Fecha</label>                                    <input class="form-control" type="date" name="fecha" [(ngModel)]="datosArchivos.fecha" required>                                </div>                            </div>                            <div class="col-md-6">                                <div class="form-group">                                    <label for="">Remitente</label>                                    <input class="form-control" disabled type="text" name="remitente" [(ngModel)]="remitente" required>                                </div>                            </div>                            <div class="col-md-4">                                <div class="form-group">                                    <label for="">Tipo</label>                                    <select name="tipo" [(ngModel)]="datosArchivos.tipo" class="form-control form-control-sm" required>                                        <option value="0">Seleccione un tipo</option>                                        <option *ngFor="let item of selectTipo" [value]="item.id">{{item.tipo}}</option>                                      </select>                                </div>                            </div>                            <div class="col-md-4">                                <div class="form-group">                                    <label for="">Titulo</label>                                    <input class="form-control" type="text" name="titulo" [(ngModel)]="datosArchivos.titulo" required>                                </div>                            </div>                            <div class="col-md-4">                                <div class="form-group">                                    <label for="">Archivo</label>                                    <input class="form-control-file" type="file" (change)="archivo($event)" required>                                </div>                            </div>                            <button type="submit" [disabled]="archivoForm.invalid || ingresandoArchivo" class="btn btn-block btn-success">Ingresar Archivo <img *ngIf="ingresandoArchivo" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>                            <!-- <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Guardar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button> -->                        </div>                    </form>                </div>                <div class="row mt-4">                    <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">                        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡IMPORTANTE!</strong> Si desea edita un valor de                                la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el archivo, debe                                de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>                        <br>                        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡OBSERVACION!</strong>                                 Si desea cambiar un archivo <b>PDF por uno Excel o viceversa</b>, recuerde cambiarlo por el tipo que corresponda para que este pueda ser visualizado.</small>                    </ngb-alert>                </div>                <div class="card">                    <div class="row centrar text-center">                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i                                class="fas fa-calendar-check"></i></strong></label>                            <select (change)="changeAnio($event,2)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActualA" class="form-control form-control-sm">                            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>                          </select>                        </div>                        <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i                                class="fas fa-calendar-check"></i></strong></label>                            <select (change)="changeMes($event,2)" name="mes" #mes="ngModel" [(ngModel)]="idMesActualA" class="form-control form-control-sm">                            <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>                          </select>                        </div>                        <div class="col-md-4"><br><label>                          <strong>Recargar tabla </strong>                                            </label><br>                            <button class="btn btn-info" (click)="traerArchivos()">Actualizar</button>                        </div>                    </div>                    <div class="row centrar">                        <div class="table-responsive">                            <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">                                <thead text-sm class="text-center">                                    <tr>                                        <th colspan="11" class="ColorThCS">Archivador</th>                                    </tr>                                    <tr>                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>                                        <th colspan="2"> Tipo</th>                                        <th colspan="2"><i class="fas fa-file-archive"></i> Archivo Reporte</th>                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>                                    </tr>                                </thead>                                <tbody>                                    <tr *ngFor="let item of archivos?.reporte" class="text-center">                                        <td colspan="2" (click)="editarParametro(item.id, \'fecha\', item.fecha, true)">                                            {{item?.fecha}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'titulo\', item.titulo, true)">                                            {{item?.titulo}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'tipo\', item.tipo, true)">                                            {{item?.tipo}}                                        </td>                                        <!--MODAL VISOR PDF-->                                        <ng-template #visor let-c="close" let-d="dismiss">                                            <div class="row">                                                <div class="col">                                                    <div class="modal-header text-center" id="demoFont">                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d(\'Cross click\')">                                                            <span aria-hidden="true">&times;</span>                                                        </button>                                                    </div>                                                    <div class="modal-body">                                                        <!-- item?.archivo -->                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>                                                    </div>                                                    <div class="modal-footer" [hidden]="true">                                                        <button type="button" class="btn btn-outline-dark" (click)="c(\'Save click\')">OK</button>                                                    </div>                                                </div>                                            </div>                                        </ng-template>                                        <!--MODAL VISOR PDF-->                                        <td colspan="2">                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;                                            <a class="btn-primary-outline" style="cursor: pointer">                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento" (click)="editarParametro(item.id, \'archivo\', \'Archivo Antiguo\', true)"></i>                                            </a>                                        </td>                                        <td colspan="2">                                            {{item?.nombre}}                                        </td>                                    </tr>                                </tbody>                                <thead text-sm class="text-center">                                    <tr>                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>                                        <th colspan="2"> Tipo</th>                                        <th colspan="2"><i class="fas fa-file-archive"></i> Archivo Descuento</th>                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>                                    </tr>                                </thead>                                <tbody>                                    <tr *ngFor="let item of archivos?.descuento" class="text-center">                                        <td colspan="2" (click)="editarParametro(item.id, \'fecha\', item.fecha, true)">                                            {{item?.fecha}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'titulo\', item.titulo, true)">                                            {{item?.titulo}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'tipo\', item.tipo, true)">                                            {{item?.tipo}}                                        </td>                                        <!--MODAL VISOR PDF-->                                        <ng-template #visor let-c="close" let-d="dismiss">                                            <div class="row">                                                <div class="col">                                                    <div class="modal-header text-center" id="demoFont">                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d(\'Cross click\')">                                                            <span aria-hidden="true">&times;</span>                                                        </button>                                                    </div>                                                    <div class="modal-body">                                                        <!-- item?.archivo -->                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>                                                    </div>                                                    <div class="modal-footer" [hidden]="true">                                                        <button type="button" class="btn btn-outline-dark" (click)="c(\'Save click\')">OK</button>                                                    </div>                                                </div>                                            </div>                                        </ng-template>                                        <!--MODAL VISOR PDF-->                                        <td colspan="2">                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;                                            <a class="btn-primary-outline" style="cursor: pointer">                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento" (click)="editarParametro(item.id, \'archivo\', \'Archivo Antiguo\', true)"></i>                                            </a>                                        </td>                                        <td colspan="2">                                            {{item?.nombre}}                                        </td>                                    </tr>                                </tbody>                                <thead text-sm class="text-center">                                    <tr>                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>                                        <th colspan="2"> Tipo</th>                                        <th colspan="2"><i class="fas fa-file-archive"></i> Archivo Conciliación</th>                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>                                    </tr>                                </thead>                                <tbody>                                    <tr *ngFor="let item of archivos?.conciliacion" class="text-center">                                        <td colspan="2" (click)="editarParametro(item.id, \'fecha\', item.fecha, true)">                                            {{item?.fecha}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'titulo\', item.titulo, true)">                                            {{item?.titulo}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'tipo\', item.tipo, true)">                                            {{item?.tipo}}                                        </td>                                        <!--MODAL VISOR PDF-->                                        <ng-template #visor let-c="close" let-d="dismiss">                                            <div class="row">                                                <div class="col">                                                    <div class="modal-header text-center" id="demoFont">                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d(\'Cross click\')">                                                            <span aria-hidden="true">&times;</span>                                                        </button>                                                    </div>                                                    <div class="modal-body">                                                        <!-- item?.archivo -->                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>                                                    </div>                                                    <div class="modal-footer" [hidden]="true">                                                        <button type="button" class="btn btn-outline-dark" (click)="c(\'Save click\')">OK</button>                                                    </div>                                                </div>                                            </div>                                        </ng-template>                                        <!--MODAL VISOR PDF-->                                        <td colspan="2">                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;                                            <a class="btn-primary-outline" style="cursor: pointer">                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento" (click)="editarParametro(item.id, \'archivo\', \'Archivo Antiguo\', true)"></i>                                            </a>                                        </td>                                        <td colspan="2">                                            {{item?.nombre}}                                        </td>                                    </tr>                                </tbody>                                <thead text-sm class="text-center">                                    <tr>                                        <th colspan="2"><i class="far fa-calendar-alt"></i> Fecha</th>                                        <th colspan="2"><i class="fas fa-sticky-note"></i> Titulo</th>                                        <th colspan="2"> Tipo</th>                                        <th colspan="2"><i class="fas fa-file-archive"></i> Otros Archivos </th>                                        <th colspan="2"><i class="fas fa-user-circle"></i> Remitente</th>                                    </tr>                                </thead>                                <tbody>                                    <tr *ngFor="let item of archivos?.otros" class="text-center">                                        <td colspan="2" (click)="editarParametro(item.id, \'fecha\', item.fecha, true)">                                            {{item?.fecha}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'titulo\', item.titulo, true)">                                            {{item?.titulo}}                                        </td>                                        <td colspan="2" (click)="editarParametro(item.id, \'tipo\', item.tipo, true)">                                            {{item?.tipo}}                                        </td>                                        <!--MODAL VISOR PDF-->                                        <ng-template #visor let-c="close" let-d="dismiss">                                            <div class="row">                                                <div class="col">                                                    <div class="modal-header text-center" id="demoFont">                                                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>                                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d(\'Cross click\')">                                                            <span aria-hidden="true">&times;</span>                                                        </button>                                                    </div>                                                    <div class="modal-body">                                                        <!-- item?.archivo -->                                                        <iframe width="100%" height="500px" [src]="  \'../\' + item.archivo | safeUrl" frameborder="0" allowfullscreen></iframe>                                                    </div>                                                    <div class="modal-footer" [hidden]="true">                                                        <button type="button" class="btn btn-outline-dark" (click)="c(\'Save click\')">OK</button>                                                    </div>                                                </div>                                            </div>                                        </ng-template>                                        <!--MODAL VISOR PDF-->                                        <td colspan="2">                                            <a (click)="openExcel(visor)" style="cursor: pointer"><i class="far fa-file-alt" placement="top"                                                ngbTooltip="Presione aqui visualizar el documento."></i></a>&nbsp;                                            <a class="btn-primary-outline" style="cursor: pointer">                                                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para cambiar el documento" (click)="editarParametro(item.id, \'archivo\', \'Archivo Antiguo\', true)"></i>                                            </a>                                        </td>                                        <td colspan="2">                                            {{item?.nombre}}                                        </td>                                    </tr>                                </tbody>                            </table>                        </div>                    </div>                </div>            </div>        </div>    </div>    <div class="modal-footer">        <!--Boton para salir del modal caja chica-->        <button type="button" class="btn btn-info" (click)="d(\'Cross click\')"><i            class="far fa-arrow-alt-circle-left"></i> Volver a Cuentas</button>    </div></ng-template><button class="btn btn-primary" (click)="open(content)">Archivador</button></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'ActasComponent', 'selector': 'app-actas'},{'name': 'ActasSocioComponent', 'selector': 'app-actas-socio'},{'name': 'AcuerdoAsambleaComponent', 'selector': 'app-acuerdo-asamblea'},{'name': 'AcuerdosSocioComponent', 'selector': 'app-acuerdos-socio'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ArchivadorComponent', 'selector': 'app-archivador'},{'name': 'AsistenciaReunionComponent', 'selector': 'app-asistencia-reunion'},{'name': 'AuthMasterComponent', 'selector': 'app-auth-master'},{'name': 'BeneficiosCobradosComponent', 'selector': 'app-beneficios-cobrados'},{'name': 'BeneficiosSocioComponent', 'selector': 'app-beneficios-socio'},{'name': 'BeneficiosSociosComponent', 'selector': 'app-beneficios-socios'},{'name': 'CajaBienestarSociosComponent', 'selector': 'app-caja-bienestar-socios'},{'name': 'CajaChicaBienestarComponent', 'selector': 'app-caja-chica-bienestar'},{'name': 'CajaChicaComponent', 'selector': 'app-caja-chica'},{'name': 'CambioContraseniaComponent', 'selector': 'app-cambio-contrasenia'},{'name': 'CambioContraseniaSocioComponent', 'selector': 'app-cambio-contrasenia-socio'},{'name': 'CambioInformacionPersonalSocioComponent', 'selector': 'app-cambio-informacion-personal-socio'},{'name': 'CampingComponent', 'selector': 'app-camping'},{'name': 'ConfiguracionesComponent', 'selector': 'app-configuraciones'},{'name': 'ConfiguracionSocioComponent', 'selector': 'app-configuracion-socio'},{'name': 'ConsorcioComponent', 'selector': 'app-consorcio'},{'name': 'CrearEmpleadoComponent', 'selector': 'app-crear-empleado'},{'name': 'CuentaBienestarComponent', 'selector': 'app-cuenta-bienestar'},{'name': 'CuentaBienestarSociosComponent', 'selector': 'app-cuenta-bienestar-socios'},{'name': 'CuentaFondoMutuoComponent', 'selector': 'app-cuenta-fondo-mutuo'},{'name': 'CuentasComponent', 'selector': 'app-cuentas'},{'name': 'CuentaSindicalComponent', 'selector': 'app-cuenta-sindical'},{'name': 'CuentaSociosComponent', 'selector': 'app-cuenta-socios'},{'name': 'DescuentosComponent', 'selector': 'app-descuentos'},{'name': 'DesvinculadosComponent', 'selector': 'app-desvinculados'},{'name': 'DetalleReunionComponent', 'selector': 'app-detalle-reunion'},{'name': 'DirectorioComponent', 'selector': 'app-directorio'},{'name': 'DirectorioSocioComponent', 'selector': 'app-directorio-socio'},{'name': 'EditarReunionComponent', 'selector': 'app-editar-reunion'},{'name': 'FallecimientoBienestarComponent', 'selector': 'app-fallecimiento-bienestar'},{'name': 'FondosMutuosSocioComponent', 'selector': 'app-fondos-mutuos-socio'},{'name': 'FormularioBeneficiosAuthSocioComponent', 'selector': 'app-formulario-beneficios-auth-socio'},{'name': 'FormularioBeneficiosBeneficiarioAuthSocioComponent', 'selector': 'app-formulario-beneficios-beneficiario-auth-socio'},{'name': 'FormularioBeneficiosBeneficiarioComponent', 'selector': 'app-formulario-beneficios-beneficiario'},{'name': 'FormularioBeneficiosCargasAuthSocioComponent', 'selector': 'app-formulario-beneficios-cargas-auth-socio'},{'name': 'FormularioBeneficiosCargasComponent', 'selector': 'app-formulario-beneficios-cargas'},{'name': 'FormularioBeneficiosConyugeAuthSocioComponent', 'selector': 'app-formulario-beneficios-conyuge-auth-socio'},{'name': 'FormularioBeneficiosConyugeComponent', 'selector': 'app-formulario-beneficios-conyuge'},{'name': 'FormularioBeneficiosPadresSuegrosAuthSocioComponent', 'selector': 'app-formulario-beneficios-padres-suegros-auth-socio'},{'name': 'FormularioBeneficiosPadresSuegrosComponent', 'selector': 'app-formulario-beneficios-padres-suegros'},{'name': 'FormularioBeneficiosSocioComponent', 'selector': 'app-formulario-beneficios-socio'},{'name': 'FormularioBienestarComponent', 'selector': 'app-formulario-bienestar'},{'name': 'FormularioCajaChicaBienestarComponent', 'selector': 'app-formulario-caja-chica-bienestar'},{'name': 'FormularioFallecimientoBienestarComponent', 'selector': 'app-formulario-fallecimiento-bienestar'},{'name': 'FormularioFondoMutuoComponent', 'selector': 'app-formulario-fondo-mutuo'},{'name': 'FormularioGastosMedicosBienestarComponent', 'selector': 'app-formulario-gastos-medicos-bienestar'},{'name': 'FormularioNacimientoBienestarComponent', 'selector': 'app-formulario-nacimiento-bienestar'},{'name': 'FormularioSindicalComponent', 'selector': 'app-formulario-sindical'},{'name': 'FormularioSociosComponent', 'selector': 'app-formulario-socios'},{'name': 'GastosMedicosBienestarComponent', 'selector': 'app-gastos-medicos-bienestar'},{'name': 'GastosOperacionalesComponent', 'selector': 'app-gastos-operacionales'},{'name': 'GeneralReunionComponent', 'selector': 'app-general-reunion'},{'name': 'GraficoComponenteComponent', 'selector': 'app-grafico-componente'},{'name': 'HaberesComponent', 'selector': 'app-haberes'},{'name': 'HistorialDetalleReunionComponent', 'selector': 'app-historial-detalle-reunion'},{'name': 'HistorialLiquidacionesComponent', 'selector': 'app-historial-liquidaciones'},{'name': 'HistorialReunionComponent', 'selector': 'app-historial-reunion'},{'name': 'InicioCierreMensualComponent', 'selector': 'app-inicio-cierre-mensual'},{'name': 'InteresPrestamoApuroEconomicoComponent', 'selector': 'app-interes-prestamo-apuro-economico'},{'name': 'LeyesLaboralesComponent', 'selector': 'app-leyes-laborales'},{'name': 'LeyesSocioComponent', 'selector': 'app-leyes-socio'},{'name': 'LiquidacionComponent', 'selector': 'app-liquidacion'},{'name': 'ListarSociosComponent', 'selector': 'app-listar-socios'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MenuComponent', 'selector': 'app-menu'},{'name': 'ModalCajaChicaComponent', 'selector': 'app-modal-caja-chica'},{'name': 'ModalCampingComponent', 'selector': 'app-modal-camping'},{'name': 'ModalDetallePagoConsorcioComponent', 'selector': 'app-modal-detalle-pago-consorcio'},{'name': 'ModalGastosOperacionalesComponent', 'selector': 'app-modal-gastos-operacionales'},{'name': 'ModalInicioMesComponent', 'selector': 'app-modal-inicio-mes'},{'name': 'ModalPrestamosSociosComponent', 'selector': 'app-modal-prestamos-socios'},{'name': 'NacimientoBienestarComponent', 'selector': 'app-nacimiento-bienestar'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavbarSocioComponent', 'selector': 'app-navbar-socio'},{'name': 'NoEncontradoComponent', 'selector': 'app-no-encontrado'},{'name': 'NuevaReunionComponent', 'selector': 'app-nueva-reunion'},{'name': 'PerfilSocioComponent', 'selector': 'app-perfil-socio'},{'name': 'PrestamosSociosComponent', 'selector': 'app-prestamos-socios'},{'name': 'PublicMasterComponent', 'selector': 'app-public-master'},{'name': 'SecretariaComponent', 'selector': 'app-secretaria'},{'name': 'SindicalComponent', 'selector': 'app-sindical'},{'name': 'SociosMasterComponent', 'selector': 'app-socios-master'},{'name': 'TablaBeneficiosAuthConyugeComponent', 'selector': 'app-tabla-beneficios-auth-conyuge'},{'name': 'TablaBeneficiosAuthSocioComponent', 'selector': 'app-tabla-beneficios-auth-socio'},{'name': 'TablaBeneficiosBeneficiarioAuthSocioComponent', 'selector': 'app-tabla-beneficios-beneficiario-auth-socio'},{'name': 'TablaBeneficiosBeneficiarioComponent', 'selector': 'app-tabla-beneficios-beneficiario'},{'name': 'TablaBeneficiosCargasAuthSocioComponent', 'selector': 'app-tabla-beneficios-cargas-auth-socio'},{'name': 'TablaBeneficiosCargasComponent', 'selector': 'app-tabla-beneficios-cargas'},{'name': 'TablaBeneficiosConyugeComponent', 'selector': 'app-tabla-beneficios-conyuge'},{'name': 'TablaBeneficiosPadresSuegrosAuthSocioComponent', 'selector': 'app-tabla-beneficios-padres-suegros-auth-socio'},{'name': 'TablaBeneficiosPadresSuegrosComponent', 'selector': 'app-tabla-beneficios-padres-suegros'},{'name': 'TablaBeneficiosSocioComponent', 'selector': 'app-tabla-beneficios-socio'},{'name': 'TablaBienestarComponent', 'selector': 'app-tabla-bienestar'},{'name': 'TablaCajaChicaBienestarComponent', 'selector': 'app-tabla-caja-chica-bienestar'},{'name': 'TablaCajaChicaComponent', 'selector': 'app-tabla-caja-chica'},{'name': 'TablaDesvinculadosConsorcioComponent', 'selector': 'app-tabla-desvinculados-consorcio'},{'name': 'TablaFallecimientoBienestarComponent', 'selector': 'app-tabla-fallecimiento-bienestar'},{'name': 'TablaFondoMutuoComponent', 'selector': 'app-tabla-fondo-mutuo'},{'name': 'TablaGastosMedicosBienestarComponent', 'selector': 'app-tabla-gastos-medicos-bienestar'},{'name': 'TablaInicioMesComponent', 'selector': 'app-tabla-inicio-mes'},{'name': 'TablaNacimientoBienestarComponent', 'selector': 'app-tabla-nacimiento-bienestar'},{'name': 'TablaPrestamosHistoricosSociosComponent', 'selector': 'app-tabla-prestamos-historicos-socios'},{'name': 'TablaPrestamosSociosComponent', 'selector': 'app-tabla-prestamos-socios'},{'name': 'TablaResumenSocioComponent', 'selector': 'app-tabla-resumen-socio'},{'name': 'TablasBeneficiosComponent', 'selector': 'app-tablas-beneficios'},{'name': 'TablaSindicalComponent', 'selector': 'app-tabla-sindical'},{'name': 'TemasComponent', 'selector': 'app-temas'},{'name': 'TotalCajaChicaComponent', 'selector': 'app-total-caja-chica'},{'name': 'TotalCuentaSindicalComponent', 'selector': 'app-total-cuenta-sindical'},{'name': 'VotacionesComponent', 'selector': 'app-votaciones'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ArchivadorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ArchivadorComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

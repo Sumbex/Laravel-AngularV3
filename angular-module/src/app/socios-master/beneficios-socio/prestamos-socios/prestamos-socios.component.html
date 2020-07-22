@@ -6,10 +6,12 @@
         <div *ngIf="datosPrestamos?.vigente.length > 0">
           <div class="table-responsive">
             <br>
-            <h3 class="text-center table-danger">Prestamos iniciados sin pagar</h3>
             <table class="table table-hover table-bordered">
               <thead>
-                <tr class="text-center">
+                <tr>
+                  <th class="text-center" colspan="6" id="demoFont2">Prestamos iniciados sin pagar</th>
+                </tr>
+                <tr class="text-center" id="demoFont2">
                   <th scope="col">Fecha Prestamo</th>
                   <th scope="col">ID Prestamo</th>
                   <th scope="col">Comprobante</th>
@@ -19,9 +21,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemPrestamo of datosPrestamos?.vigente" class="table-success text-center"
-                  style="cursor: pointer"
-                  [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}">
+                <tr *ngFor="let itemPrestamo of datosPrestamos?.vigente" class="text-center"
+                  style="cursor: pointer">
                   <th
                     (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,1); getPagosAbonos(itemPrestamo?.id,2); getPagosAbonos(itemPrestamo?.id,3); openModalHistorialPagos(historialPagos)">
                     {{itemPrestamo?.fecha}}</th>
@@ -150,10 +151,13 @@
         <div *ngIf="datosPrestamos?.pagando.length > 0">
           <div class="table-responsive">
             <br>
-            <h3 class="text-center table-warning">Prestamos con cuotas pagadas</h3>
+            <!-- <h3 class="text-center">Prestamos con cuotas pagadas</h3> -->
             <table class="table table-hover table-bordered">
               <thead>
-                <tr class="text-center">
+                <tr>
+                  <th class="text-center" colspan="6" id="demoFont2">Prestamos con cuotas pagadas</th>
+                </tr>
+                <tr class="text-center" id="demoFont2">
                   <th scope="col">Fecha Prestamo</th>
                   <th scope="col">ID Prestamo</th>
                   <th scope="col">Comprobante</th>
@@ -163,9 +167,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemPrestamo of datosPrestamos?.pagando" class="table-success text-center"
-                  style="cursor: pointer"
-                  [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}">
+                <tr *ngFor="let itemPrestamo of datosPrestamos?.pagando" class="text-center"
+                  style="cursor: pointer">
                   <th
                     (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,1); getPagosAbonos(itemPrestamo?.id,2); getPagosAbonos(itemPrestamo?.id,3); openModalHistorialPagos(historialPagos)">
                     {{itemPrestamo?.fecha}}</th>
@@ -291,10 +294,13 @@
         <div *ngIf="datosPrestamos?.finalizado.length > 0">
           <div class="table-responsive">
             <br>
-            <h3 class="text-center table-success">Prestamos pagados</h3>
+            <!-- <h3 class="text-center">Prestamos pagados</h3> -->
             <table class="table table-hover table-bordered">
               <thead>
-                <tr class="text-center">
+                <tr>
+                  <th class="text-center" colspan="6" id="demoFont2">Prestamos Pagados</th>
+                </tr>
+                <tr class="text-center" id="demoFont2">
                   <th scope="col">Fecha Prestamo</th>
                   <th scope="col">ID Prestamo</th>
                   <th scope="col">Comprobante</th>
@@ -304,9 +310,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemPrestamo of datosPrestamos?.finalizado" class="table-success text-center"
-                  style="cursor: pointer"
-                  [ngClass]="{'table-danger': itemPrestamo?.estado_prestamo == 'vigente', 'table-warning': itemPrestamo?.estado_prestamo == 'pagando'}">
+                <tr *ngFor="let itemPrestamo of datosPrestamos?.finalizado" class="text-center"
+                  style="cursor: pointer">
                   <th
                     (click)="getPagosPrestamos(itemPrestamo?.id,itemPrestamo?.tipo_id); getPagosAbonos(itemPrestamo?.id,1); getPagosAbonos(itemPrestamo?.id,2); getPagosAbonos(itemPrestamo?.id,3);; openModalHistorialPagos(historialPagos)">
                     {{itemPrestamo?.fecha}}</th>

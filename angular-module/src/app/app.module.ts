@@ -141,6 +141,7 @@ import { from } from 'rxjs';
 import { HistorialLiquidacionesComponent } from './auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component';
 import { TemasComponent } from './auth-master/secretaria/temas/temas.component';
 import { VotacionesComponent } from './socios-master/secretaria/votaciones/votaciones.component';
+import { ActividadesDirectorioComponent } from './auth-master/secretaria/actividades-directorio/actividades-directorio.component';
 
 @NgModule({
   declarations: [
@@ -260,7 +261,8 @@ import { VotacionesComponent } from './socios-master/secretaria/votaciones/votac
     LiquidacionComponent,
     HistorialLiquidacionesComponent,
     TemasComponent,
-    VotacionesComponent
+    VotacionesComponent,
+    ActividadesDirectorioComponent,
   ],
   imports: [
     BrowserModule,

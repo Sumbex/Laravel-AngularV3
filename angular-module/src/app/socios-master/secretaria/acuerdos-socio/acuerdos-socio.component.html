@@ -1,12 +1,12 @@
 <br>
 
-    
-    <div class="card-header" id="demoFont2">
-        <h6 class="card-title">Detalles Cuentas Sindical</h6>
-    </div>
-    
-    <div class="card">
-        <div class="container mt-4">
+
+<div class="card-header" id="demoFont2">
+  <h6 class="card-title">Detalles Cuentas Sindical</h6>
+</div>
+
+<div class="card">
+  <div class="container mt-4">
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
@@ -18,68 +18,91 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table table-hover table-bordered table-dark text-center">
-        <thead>
+      <table class="table table-hover text-center">
+        <thead class="theadazul">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Titulo</th>
             <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let itemAcuerdos of tablaAcuerdos">
-            <th>{{itemAcuerdos.id}}</th>
+          <tr *ngFor="let itemAcuerdos of acuerdos">
+            <td class="firsttd">{{itemAcuerdos.nuevo}}</td>
+            <td>{{itemAcuerdos.fecha | date:'shortTime'}}</td>
             <td>{{itemAcuerdos.titulo}}</td>
-            <td>{{itemAcuerdos.fecha}}</td>
-            <td><button class="btn btn-primary" (click)="abrirModalAcuerdos(hojaAcuerdo)">Visualizar</button>
-              <ng-template #hojaAcuerdo let-modal>
-                <!-- Header Del Modal -->
-                <div class="modal-header" id="demoFont">
-                  <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle de la Reunion {{listar.id}}</strong>
-                  </h6>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <!-- Cuerpo del modal -->
-                <div class="modal-body" id="printJS-table">
-                  <h3 style="text-align: center;">
-                    <b>{{listar.titulo | titlecase}}</b>
-                  </h3>
-
-                  <p><b>Directiva asistida:</b></p>
-                  <pre *ngFor="let listar2 of listarDirectorioDetalle">{{listar2.descripcion}}</pre>
-
-                  <div *ngIf="listar.asistencia != null">
-                    <p><b>Sub-Gerencia asistida:</b></p>
-                    <pre>{{listar.asistencia}}</pre>
-                  </div>
-
-                  <p><b>Temas a tratar:</b></p>
-                  <pre>{{listar.temas}}</pre>
-
-                </div>
-                <!-- Patitas del Modal -->
-                <div class="modal-footer">
-
-                  <button type="button" class="btn btn-success" onclick="printJS({
-                    printable: 'printJS-table',
-                    type:'html',
-                    style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'
-                  })">
-                    <i class="fas fa-print"></i> Imprimir Datos
-                  </button>
-
-                  <button type="button" id="botonCerrarModal" class="btn btn-info"
-                    (click)="modal.close('Close click')"><i class="far fa-arrow-alt-circle-left"></i> Volver</button>
-                </div>
-              </ng-template>
+            <td>
+              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 0">Pendiente</span>
+              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 1">Aprobado</span>
+              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 2">Rechazado</span>
             </td>
+            <td><button class="btn btn-primary"
+                (click)="abrirModalTest(hojaAcuerdo, itemAcuerdos.id)">Visualizar</button></td>
           </tr>
         </tbody>
       </table>
 
     </div>
+  </div>
 </div>
-</div>
+
+<ng-template #hojaAcuerdo let-modal>
+  <!-- Header Del Modal -->
+  <div class="modal-header" id="demoFont">
+    <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle del Acuerdo</strong>
+    </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- Cuerpo del modal -->
+  <div class="modal-body">
+
+    <div *ngIf="!acuerdo.id" class="loader"></div>
+
+    <div *ngIf="acuerdo.id">
+
+      <h3 style="text-align: center;">
+        <b>{{acuerdo.titulo | titlecase}}</b>
+      </h3>
+
+      <p><b>Creado Por:</b></p>
+      <p>{{acuerdo.nombre}}</p>
+
+      <p><b>Fecha:</b></p>
+      <p>{{acuerdo.fecha}}</p>
+
+      <div>
+        <p><b>Tipo de Acta:</b></p>
+        <p>
+          <span *ngIf="acuerdo.id_tipo_acuerdo == 1">Ordinaria</span>
+          <span *ngIf="acuerdo.id_tipo_acuerdo == 2">Extraordinaria</span>
+        </p>
+      </div>
+
+      <div>
+        <p><b>Estado del Acta:</b></p>
+        <p>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 0" class="text-primary">Pendiente</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 1" class="text-success">Aprobado</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 2" class="text-danger">Rechazado</span>
+        </p>
+      </div>
+
+      <p><b>Temas a tratar:</b></p>
+      <p>{{acuerdo.contenido}}</p>
+
+      <p><b>Motivo de <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span></b></p>
+      <p>{{acuerdo.descripcion_cambio_estado}}</p>
+      <br>
+    </div>
+  </div>
+  <!-- Patitas del Modal -->
+  <div class="modal-footer">
+    <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+  </div>
+</ng-template>

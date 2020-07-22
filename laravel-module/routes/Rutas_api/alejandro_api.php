@@ -163,7 +163,9 @@ Route::post('actualizar_cpds','CuentaConsorcioController@actualizar_cpds');
 //SECRETARIA - ACTAS
 
 Route::post('registrar_acta','ActasController@crear');
-Route::get('listar_acta','ActasController@listar');
+Route::get('listar_acta/{anio_id}','ActasController@listar');
+Route::post('actualizar_acta', 'ActasController@actualizar_acta');
+Route::post('actualizar_acta2', 'ActasController@actualizar_acta2');
 
 //liquidacion - haberes
 

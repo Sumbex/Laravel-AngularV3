@@ -1,71 +1,264 @@
 <div>
     <div class="row justify-content-center">
-    <div class="col-md-3"><h3 style="color:darkgray">Redactar nueva acta</h3></div>
-    </div>
-<hr>
-
-  <div class="row justify-content-center">
-      <div class="col-md-10">
-        <p>
-          En <input [(ngModel)]="ubicacion" type="text" class="innputt"> a <input [(ngModel)]="fecha" type="text" class="innputt"> siendo las <input [(ngModel)]="hora" type="text" class="innputt"> hrs.
-          Se da inicio a la asamblea general 
-        <!-- <select class="innputt">
-          <option value="">Seleccione..</option>
-          <option value="1">Ordinaria</option>
-          <option value="2">Extraordinaria</option>
-        </select>.  -->
-          de socios siendo dirigida por el <input [(ngModel)]="dirigente" type="text" class="innputt">, se hace lectura al Acta anterior la que es aprobada sin observaciones.
-        </p>
-
+        <div class="col-md-7"><h3 style="color:darkgray">Redactar nuevo desarrollo de asamblea</h3></div>
+        <div class="col-md-3">
+          <button (click)="modaltabla(modalt);cargar_select();" _ngcontent-uni-c20="" class="float-right btn btn btn-info btn-sm"
+            type="button"><i _ngcontent-uni-c20="" class="fas fa-table" aria-hidden="true"></i> Ver desarrollo de
+            asamblea</button>
+        </div>
       </div>
-  </div>
-  <hr>
-  <div class="row justify-content-center">
-    <div class="col-md-11">
-      <p>Miembros:</p>
-      <textarea [(ngModel)]="miembros" class="ta2 form-control" placeholder="Miembros...."></textarea>
-  
-  
-    </div>
-  </div>
- <hr>
-  <div class="row justify-content-center">
-    <div class="col-md-11">
-      <p>Orden del día:</p>
-      <textarea [(ngModel)]="orden_dia" class="ta form-control" placeholder="Ordenes del día......"></textarea>
-      
-    
-    </div>
-  </div>
-
-  <hr>
-  <div class="row justify-content-center">
-    <div class="col-md-11">
-      <p>Puntos a tratar (Ordenes del día):</p>
-      <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea>
-  
-  
-    </div>
-  </div>
 <hr>
-<div class="row justify-content-center">
-  <div class="col-md-2">
-    <button (click)="enviar()" _ngcontent-fcl-c4="" class="btn btn btn-success btn-block btn-sm" value="ingresar"><i
-        _ngcontent-fcl-c4="" class="fas fa-save" aria-hidden="true"
-        
-        ></i> Guardar
-      <!--bindings={
-      "ng-reflect-ng-if": "false"
-    }--></button>
-  </div>
 
-  <div class="col-md-2">
-    <button (click)="modaltabla(modalt)" _ngcontent-uni-c20="" class="btn btn btn-primary btn-block btn-sm" type="button"><i _ngcontent-uni-c20=""
-        class="fas fa-table" aria-hidden="true"></i> Ver Actas</button>
-  </div>
+
+      <div class="row justify-content-center">
+          <div class="col-md-10">
+            <b>
+              En <input [(ngModel)]="ubicacion" type="text" class="innputt"> a <input [(ngModel)]="fecha" type="text" class="innputt"> siendo las <input [(ngModel)]="hora" type="text" class="innputt"> hrs.
+              Se da inicio al desarrollo de asamblea de caracter 
+              <select [(ngModel)]="caracter" class="innputt">
+                <option value="">Seleccione..</option>
+                <option value="ordinaria">Ordinaria</option>
+                <option value="extraordinaria">Extraordinaria</option>
+              </select>, en la cual se dicta lo siguiente:
+            <!-- <select class="innputt">
+              <option value="">Seleccione..</option>
+              <option value="1">Ordinaria</option>
+              <option value="2">Extraordinaria</option>
+            </select>.  -->
+
+
+              <!-- de socios siendo dirigida por el <input [(ngModel)]="dirigente" type="text" class="innputt">, se hace lectura al Acta anterior la que es aprobada sin observaciones. -->
+          </b>
+
+          </div>
+      </div>
+      
+      <!-- <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <p>Miembros:</p>
+          <textarea [(ngModel)]="miembros" class="ta2 form-control" placeholder="Miembros...."></textarea>
+      
+      
+        </div>
+      </div> -->
+<div *ngIf="caracter == 'ordinaria' ">
+    <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Tabla:</b>
+          <textarea [(ngModel)]="tabla" class="ta form-control" placeholder="Redactar tabla......"></textarea>
+          
+        
+        </div>
+      </div>
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Resumen "desarrollo de asamblea" anterior y observaciones:</b>
+          <textarea [(ngModel)]="resumen_anterior" class="ta form-control"
+            placeholder="Resumen desarrollo de asamblea anterior y observaciones......"></textarea>
+          <!-- <p>Puntos a tratar (Ordenes del día):</p>
+          <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea> -->
+      
+      
+        </div>
+      </div>
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Rendición de cuentas:</b>
+          <textarea [(ngModel)]="rendicion_cuentas" class="ta form-control"
+            placeholder="Resumen desarrollo de asamblea anterior y observaciones......"></textarea>
+          <!-- <p>Puntos a tratar (Ordenes del día):</p>
+                <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea> -->
+      
+      
+        </div>
+      </div>
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Rendiciones de camping:</b>
+          <textarea [(ngModel)]="rendicion_camping" class="ta form-control"
+            placeholder="Rendiciones de camping......"></textarea>  
+        </div>
+      </div>
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Rendiciones de bienestar:</b>
+          <textarea [(ngModel)]="rendicion_bienestar" class="ta form-control"
+            placeholder="Rendiciones de bienestar......"></textarea>
+        </div>
+      </div>
+
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Rendición de cuentas del directorio (actividades del directorio):</b>
+          <textarea [(ngModel)]="rendicion_directorio" class="ta form-control"
+            placeholder="Rendición de cuentas del directorio......"></textarea>
+        </div>
+      </div>
+
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Consultas a la asamblea:</b>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <p>Ayudas o aportes:</p>
+              <textarea [(ngModel)]="ayuda_aporte" class="ta form-control"
+                placeholder="Rendición de cuentas del directorio......"></textarea>
+            </div>
+            <div class="col-md-6">
+              <p>Socios nuevos:</p>
+              <textarea [(ngModel)]="socios_nuevos" class="ta form-control"
+                placeholder="Rendición de cuentas del directorio......"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Varios:</b>
+          <textarea [(ngModel)]="varios" class="ta form-control"
+            placeholder="Varios......"></textarea>
+        </div>
+      </div>
+
+
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Control de asistencia:</b>
+          <div class="row justify-content-center">
+            <div class="col-md-3">
+              <p>Total de socios:</p>
+              <input [(ngModel)]="total_socios" class="form-control"
+                placeholder="Total de socios" />
+            </div>
+
+            <div class="col-md-3">
+            <p>Asistidos:</p>
+            <input [(ngModel)]="total_asistidos" class="form-control" placeholder="¿Cuantos asistieron?" />
+            </div>
+
+            <div class="col-md-3">
+              <p>justificados:</p>
+              <input [(ngModel)]="total_justificados" class="form-control" placeholder="¿Cuantos se justificaron?" />
+            </div>
+
+            <div class="col-md-3">
+              <p>sin justificar:</p>
+              <input [(ngModel)]="sin_justificar" class="form-control" placeholder="¿Cuantos sin justificar?" />
+            </div>
+          </div>
+        </div>
+      </div>
+    <hr>
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+        <button [disabled]="guardar_load" (click)="enviar()" _ngcontent-fcl-c4="" class="btn btn btn-success btn-block btn-sm" value="ingresar"><i
+            _ngcontent-fcl-c4="" class="fas fa-save" aria-hidden="true"
+            
+            ></i> Guardar
+
+            <div *ngIf="guardar_load" class="spinner-border spinner-border-sm text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          <!--bindings={
+          "ng-reflect-ng-if": "false"
+        }--></button>
+      </div>
+
+      <div class="col-md-3">
+        <button (click)="modaltabla(modalt);cargar_select();" _ngcontent-uni-c20="" class="btn btn btn-info btn-block btn-sm" type="button"><i _ngcontent-uni-c20=""
+            class="fas fa-table" aria-hidden="true"></i> Ver desarrollo de asamblea</button>
+      </div>
+    </div>
+
 </div>
 
 
+<div *ngIf="caracter == 'extraordinaria' ">
+
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-md-11">
+      <b>Tabla:</b>
+      <textarea [(ngModel)]="tabla" class="ta form-control" placeholder="Redactar tabla......"></textarea>
+  
+  
+    </div>
+  </div>
+
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-md-11">
+      <b>Puntos a tratar:</b>
+      <textarea [(ngModel)]="puntos_a_tratar" class="ta form-control" placeholder="Puntos a tratar......"></textarea>
+  
+  
+    </div>
+  </div>
+
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-md-11">
+      <b>Control de asistencia:</b>
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <p>Total de socios:</p>
+          <input [(ngModel)]="total_socios" class="form-control" placeholder="Total de socios" />
+        </div>
+  
+        <div class="col-md-3">
+          <p>Asistidos:</p>
+          <input [(ngModel)]="total_asistidos" class="form-control" placeholder="¿Cuantos asistieron?" />
+        </div>
+  
+        <div class="col-md-3">
+          <p>justificados:</p>
+          <input [(ngModel)]="total_justificados" class="form-control" placeholder="¿Cuantos se justificaron?" />
+        </div>
+  
+        <div class="col-md-3">
+          <p>sin justificar:</p>
+          <input [(ngModel)]="sin_justificar" class="form-control" placeholder="¿Cuantos sin justificar?" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-md-2">
+      <button [disabled]="guardar_load" (click)="enviar2()" _ngcontent-fcl-c4="" class="btn btn btn-success btn-block btn-sm" value="ingresar"><i
+          _ngcontent-fcl-c4="" class="fas fa-save" aria-hidden="true"></i> Guardar
+
+          <div *ngIf="guardar_load" class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        <!--bindings={
+            "ng-reflect-ng-if": "false"
+          }--></button>
+    </div>
+  
+    <div class="col-md-3">
+      <button (click)="modaltabla(modalt);cargar_select();" _ngcontent-uni-c20="" class="btn btn btn-info btn-block btn-sm"
+        type="button"><i _ngcontent-uni-c20="" class="fas fa-table" aria-hidden="true"></i> Ver desarrollo de asamblea</button>
+    </div>
+  </div>
+</div>
 
 
 
@@ -74,152 +267,508 @@
   <!--Modal validar user-->
   <ng-template #modalt let-modal>
     <div class="modal-header sticky-top" id="demoFont">
-      <h6 class="modal-title"><strong><i class="fas fa-table"></i> Lista de actas</strong></h6>
+      <h6 class="modal-title"><strong><i class="fas fa-table"></i> Lista de desarrollo de asamblea</strong></h6>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <!--Cuerpo del body inicio y cierre mensual-->
-    <div class="modal-body" id="printJS-table">
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th class="th_sec" scope="col">Fecha</th>
-            <th class="th_sec" scope="col">Hora</th>
-            <th class="th_sec" scope="col">Nª Acta</th>
-            <th class="th_sec" scope="col">Encabezado</th>
-            <th class="th_sec" scope="col">Opción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let acta of actas; let i = index" [attr.data-index]="i">
-            <th class="color-right" scope="row">{{ acta.fecha }}</th>
-            <td>{{ acta.hora }}</td>
-            <td>Nº{{i + 1 }}</td>
-            <td>{{ acta.encabezado }}</td>
-            <td> <button (click)="modal_detalle(detallem)" class="btn btn-success btn-sm">Ver</button> </td>
-            <!-- <td>{{ acta.dirigente }}</td> --><!--Modal validar user-->
-            <ng-template #detallem let-modal>
-              <div class="modal-header sticky-top" id="demoFont">
-                <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle Acta Nº{{i+1}}</strong></h6>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <!--Cuerpo del body inicio y cierre mensual-->
-              <div class="modal-body" id="printJS-table">
-                <div class="container" id="printJS-form">
-                  <div class="d-flex justify-content-start">
-                    <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
-                  </div>
-                 
-                  
-                    <h4 align="center">Acta de reunión Nº{{ i+1 }}</h4>
-                  
-                  <br>
-                  <div class="">
-                    <pre>{{acta.encabezado}}</pre>
-                  </div>
-                  <br>
-                  <div class="">
-                    <pre>Miembros:<br>{{acta.miembros}}</pre>
-                  </div>
-                  <br>
-                  <div class="">
-                    <pre>Orden del día:<br>{{acta.orden_dia}}</pre>
-                  </div>
-                  <br>
-                  <div class="">
-                    <pre>Detalle Orden del día:<br>{{acta.detalle_orden_dia}}</pre>
-                  </div>
-                  <br>
-                  <div class="">
-                    <pre>Redactor:<br>{{acta.dirigente}}</pre>
-                  </div>
-                </div>
-            
-              </div>
-              <!-- <button type="button" onclick="printJS('printJS-form', 'html')">
-                 Imprimir PDF
-              </button> -->
-
-              <button type="button" class="btn btn-success" onclick="printJS({
-                printable: 'printJS-form',
-                type:'html',
-                style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'})">
-                <i class="fas fa-print"></i> Imprimir Datos
-              </button>
-            </ng-template>
-          </tr>
-       
-        </tbody>
-      </table>
-
-
-
-      <!-- <div class="datagrid">
-        <table>
+    
+      <div class="modal-body" id="printJS-table">
+        <div class="table-responsive">
+        <table class="table table-hover">
           <thead>
             <tr>
-              <th>header</th>
-              <th>header</th>
-              <th>header</th>
-              <th>header</th>
+              <th colspan="1" class="th_sec" scope="col">
+              
+                <select (change)="changeAnio($event)" [(ngModel)]="valorAnio.descripcion" class="form-control" name="" id="">
+                  <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+                </select>
+              </th>
+              <th colspan="4" class="th_sec" scope="col">
+                <div *ngIf="anio_load" class="spinner-border text-primary" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <!-- <select class="form-control" name="" id="">
+                  <option value="">kkck</option>
+                </select> -->
+              </th>
+              
+              
+            </tr>
+            <tr>
+              <th class="th_sec" scope="col">Fecha</th>
+              <th class="th_sec" scope="col">Hora</th>
+              <!-- <th class="th_sec" scope="col">Nª Acta</th> -->
+              <th class="th_sec" scope="col">Encabezado</th>
+              <th colspan="2" class="th_sec" scope="col">Opción</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <td colspan="4">
-                <div id="paging">
-                  <ul>
-                    <li><a href="#"><span>Previous</span></a></li>
-                    <li><a href="#" class="active"><span>1</span></a></li>
-                    <li><a href="#"><span>2</span></a></li>
-                    <li><a href="#"><span>3</span></a></li>
-                    <li><a href="#"><span>4</span></a></li>
-                    <li><a href="#"><span>5</span></a></li>
-                    <li><a href="#"><span>Next</span></a></li>
-                  </ul>
-                </div>
-            </tr>
-          </tfoot>
           <tbody>
-            <tr>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
+            <tr *ngFor="let acta of actas; let i = index" [attr.data-index]="i">
+              <th class="color-right" scope="row">{{ acta.fecha }}</th>
+              <td>{{ acta.hora }}</td>
+              <!-- <td>Nº{{i + 1 }}</td> -->
+              <td>{{ acta.encabezado }}</td>
+              <td> <button (click)="modal_detalle(detallem)" class="btn btn-success btn-sm">Ver</button> </td>
+              <td> <button (click)="modal_detalle(editar);
+                                    desarrollo_asamblea_id=acta.id;
+                                    e_caracter=acta.tipo; 
+                                    e_hora=acta.hora; 
+                                    e_fecha=acta.fecha; 
+                                    e_ubicacion=acta.ubicacion;
+                                    e_tabla=acta.tabla; 
+                                    e_resumen_anterior=acta.resumen_anterior; 
+                                    e_rendicion_cuentas=acta.rendicion_cuentas;
+                                    e_rendicion_camping=acta.rendicion_camping;
+                                    e_rendicion_bienestar=acta.rendicion_bienestar;
+                                    e_rendicion_directorio=acta.rendicion_directorio;
+                                    e_ayuda_aporte=acta.ayuda_aporte; 
+                                    e_socios_nuevos=acta.socios_nuevos;
+                                    e_varios=acta.varios;
+                                    e_total_socios=acta.total_socios;
+                                    e_total_asistidos=acta.total_asistidos;
+                                    e_total_justificados=acta.total_justificados;
+                                    e_sin_justificar=acta.sin_justificar;
+
+                                    e_puntos_a_tratar=acta.puntos_a_tratar;
+                                    " 
+                    class="btn btn-info btn-sm">Editar</button> </td>
+              <!-- <td>{{ acta.dirigente }}</td> --><!--Modal validar user-->
+              <ng-template #detallem let-modal>
+                <div class="modal-header sticky-top" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle de desarrollo de asamblea</strong></h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!--ORDINARIA--------------------------------------------------------------------------------------->
+                <div *ngIf="acta.tipo =='ordinaria' " class="modal-body" id="printJS-table">
+                  <div class="container" id="printJS-form">
+                    <div class="d-flex justify-content-start">
+                      <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                    </div>
+                  
+                    
+                      <h4 align="center">Desarrollo de asamblea</h4>
+                    
+                    <br>
+                    <div class="">
+                      <pre>{{acta.encabezado}}</pre>
+                    </div>
+                    <br>
+                    <div *ngIf="acta.tabla">
+                      <pre><b>Tabla:</b><br>{{acta.tabla}}</pre>
+                    </div>
+                    <br>
+                    <div *ngIf="acta.resumen_anterior">
+                      <pre><b>Resumen desarrollo de asamblea anterior y observaciones:</b><br>{{acta.resumen_anterior}}</pre>
+                    </div>
+                    <br>
+                    <div *ngIf="acta.rendicion_cuentas">
+                      <pre><b>Rendición de cuentas:</b><br>{{acta.rendicion_cuentas}}</pre>
+                    </div>
+                    <br>
+                    <div *ngIf="acta.rendicion_camping">
+                      <pre><b>Rendiciones de camping:</b><br>{{acta.rendicion_camping}}</pre>
+                    </div>
+                    <br>
+                    <div *ngIf="acta.rendicion_bienestar">
+                      <pre><b>Rendiciones de bienestar:</b><br>{{acta.rendicion_bienestar}}</pre>
+                    </div>
+                    <br>
+                    <div *ngIf="acta.rendicion_directorio">
+                      <pre><b>Rendición de cuentas del directorio:</b><br>{{acta.rendicion_directorio}}</pre>
+                    </div>
+                    <br>
+                    <div >
+                      <pre><b *ngIf="acta.ayuda_aporte || acta.socios_nuevos" >Consultas a la asamblea:<br></b><label *ngIf="acta.ayuda_aporte">Ayuda o aporte: <br>{{acta.ayuda_aporte}}</label><br><label *ngIf="acta.socios_nuevos">Socios nuevos: <br>{{acta.socios_nuevos}} <br></label> </pre>
+                    </div>
+                    
+                    <div class="" *ngIf="acta.varios">
+                      <pre><b>Varios:</b><br>{{acta.varios}}</pre>
+                    </div>
+
+
+
+                    <br>
+                    <div class="">
+                      <pre><b>Control de asistencia:</b><br>Total de socios: {{acta.total_socios}}<br>Asistidos: {{acta.total_asistidos}}<br>Justificados: {{acta.total_justificados}}<br>Sin justificar: {{acta.sin_justificar}}<br>
+                      </pre>
+                    </div>
+                  </div>
+              
+                </div>
+
+
+
+                <!--EXTRAORDINARIA ------------------------------------------------------------------------------------------- -->
+                <div  *ngIf="acta.tipo =='extraordinaria' " class="modal-body" id="printJS-table">
+                  <div class="container" id="printJS-form">
+                    <div class="d-flex justify-content-start">
+                      <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                    </div>
+                
+                
+                    <h4 align="center">Desarrollo de asamblea</h4>
+                
+                    <br>
+                    <div class="">
+                      <pre>{{acta.encabezado}}</pre>
+                    </div>
+                    <br>
+                    <div class="">
+                      <pre><b>Tabla:</b><br>{{acta.tabla}}</pre>
+                    </div>
+                    <br>
+                    <div class="">
+                      <pre><b>Puntos a tratar:</b><br>{{acta.puntos_a_tratar}}</pre>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="">
+                      <pre><b>Control de asistencia:</b><br>Total de socios: {{acta.total_socios}}<br>Asistidos: {{acta.total_asistidos}}<br>Justificados: {{acta.total_justificados}}<br>Sin justificar: {{acta.sin_justificar}}<br>
+                                    </pre>
+                    </div>
+                  </div>
+                
+                </div>
+
+
+
+                <!-- <button type="button" onclick="printJS('printJS-form', 'html')">
+                  Imprimir PDF
+                </button> -->
+
+                <button type="button" class="btn btn-success" onclick="printJS({
+                  printable: 'printJS-form',
+                  type:'html',
+                  style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'})">
+                  <i class="fas fa-print"></i> Imprimir Datos
+                </button>
+              </ng-template>
+
+
+
+              <ng-template #editar let-modal>
+                <div class="modal-header sticky-top" id="demoFont">
+                  <h6 class="modal-title"><strong><i class="fas fa-table"></i> Editar desarrollo de asamblea</strong></h6>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <br>
+                <!-- {{acta.tipo}} -->
+                    <div class="row justify-content-center">
+                      <div class="col-md-10">
+                        <b>
+                          En <input [(ngModel)]="e_ubicacion" type="text" class="innputt"> a <input [(ngModel)]="e_fecha" type="text"
+                            class="innputt"> siendo las <input [(ngModel)]="e_hora" type="text" class="innputt"> hrs.
+                          Se da inicio al desarrollo de asamblea de caracter
+                          <select [disabled]="true" [(ngModel)]="e_caracter" class="innputt">
+                            <option value="">Seleccione..</option>
+                            <option value="ordinaria">Ordinaria</option>
+                            <option value="extraordinaria">Extraordinaria</option>
+                          </select>, en la cual se dicta lo siguiente:
+                          <!-- <select class="innputt">
+                                  <option value="">Seleccione..</option>
+                                  <option value="1">Ordinaria</option>
+                                  <option value="2">Extraordinaria</option>
+                                </select>.  -->
+                    
+                    
+                          <!-- de socios siendo dirigida por el <input [(ngModel)]="dirigente" type="text" class="innputt">, se hace lectura al Acta anterior la que es aprobada sin observaciones. -->
+                        </b>
+                    
+                      </div>
+                    </div>
+                    <div *ngIf="acta.tipo == 'ordinaria' ">
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Tabla:</b>
+                          <textarea [(ngModel)]="e_tabla" class="ta3 form-control" placeholder="Redactar tabla......"></textarea>
+                    
+                    
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Resumen "desarrollo de asamblea" anterior y observaciones:</b>
+                          <textarea [(ngModel)]="e_resumen_anterior" class="ta3 form-control"
+                            placeholder="Resumen desarrollo de asamblea anterior y observaciones......"></textarea>
+                          <!-- <p>Puntos a tratar (Ordenes del día):</p>
+                              <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea> -->
+                    
+                    
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Rendición de cuentas:</b>
+                          <textarea [(ngModel)]="e_rendicion_cuentas" class="ta3 form-control"
+                            placeholder="Resumen desarrollo de asamblea anterior y observaciones......"></textarea>
+                          <!-- <p>Puntos a tratar (Ordenes del día):</p>
+                                    <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea> -->
+                    
+                    
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Rendiciones de camping:</b>
+                          <textarea [(ngModel)]="e_rendicion_camping" class="ta3 form-control"
+                            placeholder="Rendiciones de camping......"></textarea>
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Rendiciones de bienestar:</b>
+                          <textarea [(ngModel)]="e_rendicion_bienestar" class="ta3 form-control"
+                            placeholder="Rendiciones de bienestar......"></textarea>
+                        </div>
+                      </div>
+                    
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Rendición de cuentas del directorio (actividades del directorio):</b>
+                          <textarea [(ngModel)]="e_rendicion_directorio" class="ta3 form-control"
+                            placeholder="Rendición de cuentas del directorio......"></textarea>
+                        </div>
+                      </div>
+                    
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Consultas a la asamblea:</b>
+                          <div class="row justify-content-center">
+                            <div class="col-md-6">
+                              <p>Ayudas o aportes:</p>
+                              <textarea [(ngModel)]="e_ayuda_aporte" class="ta3 form-control"
+                                placeholder="Rendición de cuentas del directorio......"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                              <p>Socios nuevos:</p>
+                              <textarea [(ngModel)]="e_socios_nuevos" class="ta3 form-control"
+                                placeholder="Rendición de cuentas del directorio......"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Varios:</b>
+                          <textarea [(ngModel)]="e_varios" class="ta3 form-control" placeholder="Varios......"></textarea>
+                        </div>
+                      </div>
+                    
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Control de asistencia:</b>
+                          <div class="row justify-content-center">
+                            <div class="col-md-3">
+                              <p>Total de socios:</p>
+                              <input [(ngModel)]="e_total_socios" class="form-control" placeholder="Total de socios" />
+                            </div>
+                    
+                            <div class="col-md-3">
+                              <p>Asistidos:</p>
+                              <input [(ngModel)]="e_total_asistidos" class="form-control" placeholder="¿Cuantos asistieron?" />
+                            </div>
+                    
+                            <div class="col-md-3">
+                              <p>justificados:</p>
+                              <input [(ngModel)]="e_total_justificados" class="form-control" placeholder="¿Cuantos se justificaron?" />
+                            </div>
+                    
+                            <div class="col-md-3">
+                              <p>sin justificar:</p>
+                              <input [(ngModel)]="e_sin_justificar" class="form-control" placeholder="¿Cuantos sin justificar?" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-2">
+                          <button (click)="actualizar()" _ngcontent-fcl-c4="" class="btn btn btn-success btn-block btn-sm" value="ingresar"><i
+                              _ngcontent-fcl-c4="" class="fas fa-save" aria-hidden="true"></i> Actualizar
+                            <!--bindings={
+                              "ng-reflect-ng-if": "false"
+                            }--></button>
+                        </div>
+                    
+                      <br><br>
+                      </div>
+                    
+                    </div>
+                    
+                    
+                    <div *ngIf="acta.tipo == 'extraordinaria' ">
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Tabla:</b>
+                          <textarea [(ngModel)]="e_tabla" class="ta3 form-control" placeholder="Redactar tabla......"></textarea>
+                    
+                    
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Puntos a tratar:</b>
+                          <textarea [(ngModel)]="e_puntos_a_tratar" class="ta3 form-control" placeholder="Puntos a tratar......"></textarea>
+                    
+                    
+                        </div>
+                      </div>
+                    
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Control de asistencia:</b>
+                          <div class="row justify-content-center">
+                            <div class="col-md-3">
+                              <p>Total de socios:</p>
+                              <input [(ngModel)]="e_total_socios" class="form-control" placeholder="Total de socios" />
+                            </div>
+                    
+                            <div class="col-md-3">
+                              <p>Asistidos:</p>
+                              <input [(ngModel)]="e_total_asistidos" class="form-control" placeholder="¿Cuantos asistieron?" />
+                            </div>
+                    
+                            <div class="col-md-3">
+                              <p>justificados:</p>
+                              <input [(ngModel)]="e_total_justificados" class="form-control" placeholder="¿Cuantos se justificaron?" />
+                            </div>
+                    
+                            <div class="col-md-3">
+                              <p>sin justificar:</p>
+                              <input [(ngModel)]="e_sin_justificar" class="form-control" placeholder="¿Cuantos sin justificar?" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row justify-content-center">
+                        <div class="col-md-2">
+                          <button (click)="actualizar2()" _ngcontent-fcl-c4="" class="btn btn btn-success btn-block btn-sm" value="ingresar"><i
+                              _ngcontent-fcl-c4="" class="fas fa-save" aria-hidden="true"></i> Actualizar
+                            <!--bindings={
+                                "ng-reflect-ng-if": "false"
+                              }--></button>
+                        </div>
+                    
+                        <br><br>
+                      </div>
+                    </div>
+                
+
+              
+              
+              
+                <!-- <button type="button" onclick="printJS('printJS-form', 'html')">
+                              Imprimir PDF
+                            </button> -->
+              
+                <!-- <button type="button" class="btn btn-success"
+                  onclick="printJS({
+                              printable: 'printJS-form',
+                              type:'html',
+                              style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'})">
+                  <i class="fas fa-print"></i> Imprimir Datos
+                </button> -->
+              </ng-template>
             </tr>
-            <tr class="alt">
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-            </tr>
-            <tr class="alt">
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-              <td>data</td>
-            </tr>
+        
           </tbody>
         </table>
-      </div> -->
+        </div>
 
-    </div>
+
+        <!-- <div class="datagrid">
+          <table>
+            <thead>
+              <tr>
+                <th>header</th>
+                <th>header</th>
+                <th>header</th>
+                <th>header</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td colspan="4">
+                  <div id="paging">
+                    <ul>
+                      <li><a href="#"><span>Previous</span></a></li>
+                      <li><a href="#" class="active"><span>1</span></a></li>
+                      <li><a href="#"><span>2</span></a></li>
+                      <li><a href="#"><span>3</span></a></li>
+                      <li><a href="#"><span>4</span></a></li>
+                      <li><a href="#"><span>5</span></a></li>
+                      <li><a href="#"><span>Next</span></a></li>
+                    </ul>
+                  </div>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+              </tr>
+              <tr class="alt">
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+              </tr>
+              <tr class="alt">
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
+
+      </div>
+    
   </ng-template>
 
 </div> 
@@ -251,6 +800,15 @@
     padding:3px;
   }
 
+  .ta3{
+    /* border: 0; */
+    outline: 0;
+    width:100%;
+    height: 250px;
+    margin:5px 0;
+    padding:3px;
+  }
+
  .th_sec{
       background: #27AE60;
       color:white;
@@ -274,3 +832,6 @@
   }
 
 </style>
+
+
+<!-- extraordinaria - inputs: tabla, puntos a tratar, control de asistencia -->

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { global } from './global';
 import { Observable } from 'rxjs';
 import { Actividades } from '../modelos/actividadesDirecctorio.model';
+import { Anios } from '../modelos/anios.model';
+import { Meses } from '../modelos/meses.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +27,8 @@ export class ActividadesDirectorioService {
     });
   }
 
-  traerActividadesActivas(): Observable<any> {
-    return this._http.get(this.url + "traer_actividades_activas", {
+  traerActividades(anio: Anios, mes: Meses): Observable<any> {
+    return this._http.get(this.url + "traer_actividades/" + anio + '/' + mes, {
       headers: new HttpHeaders(
         {
           'Authorization': 'Bearer' + this.token,
@@ -36,4 +38,14 @@ export class ActividadesDirectorioService {
     })
   }
 
+  traerTiposAct(): Observable<any> {
+    return this._http.get(this.url + "traer_tipos_actividades", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
 }

@@ -2,14 +2,20 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class ActividadesDirectorio extends Model
 {
     protected $table = "sec_actividades_directorio";
+
+    protected function anio($value)
+    {
+        return DB::table('anio')->where('id', $value)->first()->descripcion;
+    }
 
     public function validarDatos($request)
     {
@@ -53,9 +59,10 @@ class ActividadesDirectorio extends Model
         }
     }
 
-    protected function traerActividadesActivas()
+    protected function traerActividades($anio, $mes)
     {
-        $activas = DB::table('sec_actividades_directorio as sad')
+        $anioD = $this->anio($anio);
+        $actividades = DB::table('sec_actividades_directorio as sad')
             ->select([
                 'sad.id',
                 'sad.fecha',
@@ -68,11 +75,33 @@ class ActividadesDirectorio extends Model
             ->where([
                 'sad.activo' => 'S'
             ])
+            ->whereRaw("extract(year from sad.fecha) ='" . $anioD . "'and extract(month from sad.fecha) ='" . $mes . "'")
+            ->orderByDesc('sad.fecha')
             ->get();
-        if (!$activas->isEmpty()) {
-            return ['estado' => 'success', 'activas' => $activas];
+        if (!$actividades->isEmpty()) {
+            foreach ($actividades as $key) {
+                /* setlocale(LC_TIME, 'es'); */
+                setlocale(LC_TIME, 'es_CL.UTF-8');
+                $key->fecha = Carbon::parse($key->fecha)->formatLocalized('%d de %B del %Y');
+            }
+            return ['estado' => 'success', 'actividades' => $actividades];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'No hay actividades activas.'];
+            return ['estado' => 'failed', 'mensaje' => 'No hay actividades creadas en la fecha seleccionada.'];
+        }
+    }
+
+    protected function traerTiposActividades()
+    {
+        $tipos = DB::table('sec_estado_actividades_directorio')
+            ->select([
+                'id',
+                'descripcion'
+            ])
+            ->get();
+        if (!$tipos->isEmpty()) {
+            return ['estado' => 'success', 'tipos' => $tipos];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'No hay Tipos creados.'];
         }
     }
 }

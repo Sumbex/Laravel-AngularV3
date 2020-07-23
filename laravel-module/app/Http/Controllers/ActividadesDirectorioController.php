@@ -12,8 +12,13 @@ class ActividadesDirectorioController extends Controller
         return ActividadesDirectorio::ingresarActividad($request);
     }
 
-    public function TraerActividadesActivas()
+    public function TraerActividades($anio, $mes)
     {
-        return ActividadesDirectorio::traerActividadesActivas();
+        return ActividadesDirectorio::traerActividades($anio, $mes);
+    }
+
+    public function TraerTiposActividades()
+    {
+        return ActividadesDirectorio::traerTiposActividades();
     }
 }

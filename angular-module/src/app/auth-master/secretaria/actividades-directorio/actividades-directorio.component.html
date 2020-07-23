@@ -1,26 +1,19 @@
 <div class="row">
-    <div class="col-md-6 mt-4">
+    <div class="col-md-6 mt-4 mb-4">
         <div (click)="abrirModalIngreso(ingreso)" class="card card-body text-white text-center bg-primary" style="cursor: pointer">
             <h3><i class="fas fa-vote-yea"></i> Crear Nueva Actividad</h3>
             <p>Aqui se crearan nuevas Actividades.</p>
         </div>
     </div>
 
-    <div class="col-md-6 mt-4">
-        <div (click)="abrirModalActivos(activos)" class="card card-body text-white text-center bg-success" style="cursor: pointer">
-            <h3><i class="fas fa-hourglass-end"></i> Actividades Activas</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <div class="col-md-6 mt-4 mb-4">
+        <div (click)="abrirModalActividades(activ)" class="card card-body text-white text-center bg-success" style="cursor: pointer">
+            <h3><i class="fas fa-hourglass-end"></i> Actividades</h3>
+            <p>Aqui se veran todas las actividades creadas.</p>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12 mt-4 mb-4">
-        <div class="card card-body text-white text-center bg-danger" style="cursor: pointer">
-            <h3><i class="fas fa-list"></i> Historial de Actividades</h3>
-            <p>Ver las Actividades finalizadas.</p>
-        </div>
-    </div>
-</div>
+
 
 <!-- Formulario Ingreso -->
 <ng-template #ingreso let-c="close" let-d="dismiss">
@@ -56,7 +49,7 @@
                             <textarea class="form-control resize-none" name="actividad" [(ngModel)]="actividad.actividad" required></textarea>
                         </div>
                     </div>
-                    <button type="submit" [disabled]="actividadForm.invalid || ingresandoAct" class="btn btn-block btn-success">Ingresar Actividad <img *ngIf="ingresandoAct" height="20"
+                    <button type="submit" [disabled]="actividadForm.invalid || ingresandoAct" class="btn btn-block btn-success"><span [hidden]="ingresandoAct">Ingresar Actividad </span> <span [hidden]="!ingresandoAct">Guardando Actividad </span> <img *ngIf="ingresandoAct" height="20"
                         src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                 </div>
             </form>
@@ -68,59 +61,68 @@
     </div>
 </ng-template>
 
-<!-- Tabla Activos -->
-<ng-template #activos let-c="close" let-d="dismiss">
+<!-- Tabla Actividades -->
+<ng-template #activ let-c="close" let-d="dismiss">
     <div class="modal-header sticky-top" id="demoFont">
         <h6 class="modal-title"><strong>
-                <!-- <i class="fas fa-archive"></i> --> Actividades Del Directorio / Actividades Activas</strong></h6>
+                <!-- <i class="fas fa-archive"></i> --> Actividades Del Directorio / Actividades</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
+        <div class="row text-center">
+            <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+                <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡IMPORTANTE!</strong> 
+                    Si desea ver todo el contenido de una actividad, debe de hacer <b>click</b> sobre ella.</small>
+            </ngb-alert>
+        </div>
         <div class="card">
             <div class="row centrar">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
-                        <thead text-sm class="text-center">
+                    <table class="table table-hover text-center">
+                        <thead class="text-center" id="demoFont2">
                             <tr>
-                                <th colspan="5" class="ColorThCS">Actividades Activas</th>
-                                <th colspan="3"><button class="btn btn-info" (click)="traerActividadesActivas()">Actualizar</button></th>
-
+                                <th style="width:25%" colspan="3"><label><strong>Filtro por Año <i
+                                    class="fas fa-calendar-check"></i></strong></label><select name="anio" (change)="changeAnio($event)" #anio="ngModel" [(ngModel)]="anioId" class="form-control form-control-sm">
+                                    <option *ngFor="let anio of selectAnios" [value]="anio.id">{{anio.descripcion}}</option>
+                                  </select></th>
+                                <th style="width:25%" colspan="3"><label><strong>Filtro por Mes <i
+                                    class="fas fa-calendar-check"></i></strong></label><select name="mes" (change)="changeMes($event)" #mes="ngModel" [(ngModel)]="mesId" class="form-control form-control-sm">
+                                    <option *ngFor="let mes of selectMeses" [value]="mes.id">{{mes.descripcion}}</option>
+                                  </select></th>
+                                <th tyle="width:25%" colspan="3"><label><strong>Filtro por Estado <i
+                                    class="fas fa-calendar-check"></i></strong></label><select name="filtro" (change)="changeFiltro($event)" #filtro="ngModel" [(ngModel)]="filtroId" class="form-control form-control-sm">
+                                    <option value="0">Todos</option>
+                                    <option *ngFor="let filtro of selectFiltro" [value]="filtro.id">{{filtro.descripcion}}</option>
+                                  </select></th>
+                                <th tyle="width:25%" colspan="3"><button class="btn btn-info" (click)="traerActividades()"> <span [hidden]="cargandoTabla">Actualizar </span> <span [hidden]="!cargandoTabla">Cargando </span> <img *ngIf="cargandoTabla" height="20"
+                                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button></th>
                             </tr>
                             <tr>
-                                <th colspan="2">
+                                <th style="width:15%" colspan="3">
                                     <!-- <i class="far fa-calendar-alt"></i> -->Fecha</th>
-                                <th colspan="3">
+                                <th style="width:50%" colspan="3">
                                     <!-- <i class="fas fa-user-circle"></i> -->Actividad</th>
-                                <th colspan="3">
+                                <th style="width:20%" colspan="3">
+                                    <!-- <i class="fas fa-user-circle"></i> -->Responsable</th>
+                                <th style="width:15%" colspan="3">
                                     <!-- <i class="fas fa-user-circle"></i> -->Estado</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center" *ngFor="let item of actividades">
-                                <td colspan="2">{{item?.fecha}}</td>
-                                <td [hidden]="item.actividad.length > 100" colspan="3">{{item?.actividad}}</td>
-                                <td [hidden]="item.actividad.length < 100" colspan="3">{{item?.actividad | slice:0:100}}...</td>
-                                <td colspan="3">{{item?.estado}}</td>
-                                <!-- <td colspan="3">
-                                    <div class="form-check form-check-inline">
-                                        <input [(ngModel)]="item.estado_actividad_id" name="estado" class="form-check-input" type="checkbox" id="pendiente" value="1">
-                                        <label class="form-check-label" for="pendiente">Pendiente</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input [(ngModel)]="item.estado_actividad_id" name="estado" class="form-check-input" type="checkbox" id="proceso" value="2">
-                                        <label class="form-check-label" for="proceso">En Proceso</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input [(ngModel)]="item.estado_actividad_id" name="estado" class="form-check-input" type="checkbox" id="ejecutada" value="3">
-                                        <label class="form-check-label" for="ejecutada">Ejecutada</label>
-                                    </div>
-                                </td> -->
-                                <!-- <td colspan="2"><button type="button" class="btn btn-info">Ver</button>
-                                </td> -->
-                                <!-- <td colspan="2"><button (click)="abrirModalActualizar(editar,item)" type="button" class="btn btn-info">Ver</button>
-                                </td> -->
+                            <tr class="text-center noselect" *ngFor="let item of actividadesFiltro">
+                                <td class="firsttdg align-middle" colspan="3">{{item?.fecha}}</td>
+                                <td class="align-middle" [hidden]="item.actividad.length > 230" colspan="3">{{item?.actividad}}</td>
+                                <td class="pointer align-middle" (click)="mostarTexto()" [hidden]="item.actividad.length < 230 || mostrar" colspan="3">{{item?.actividad | slice:0:230}}...</td>
+                                <td class="pointer align-middle" (click)="mostarTexto()" [hidden]="item.actividad.length < 230 || !mostrar" colspan="3">{{item?.actividad}}</td>
+                                <td class="align-middle" colspan="3">{{item?.responsable}}</td>
+                                <!-- <td colspan="2">{{item?.estado}}</td> -->
+                                <td class="align-middle" colspan="3">
+                                    <span placement="top" [ngClass]="{'rojo' : item?.estado == 'Pendiente', 'rojoos': item?.estado != 'Pendiente'}" ngbTooltip="Pendiente" class="dot pointer"></span>
+                                    <span placement="top" [ngClass]="{'naranja' : item?.estado == 'En Proceso', 'naranjaos': item?.estado != 'En Proceso'}" ngbTooltip="En Proceso" class="dot pointer"></span>
+                                    <span placement="top" [ngClass]="{'verde' : item?.estado == 'Ejecutada', 'verdeos': item?.estado != 'Ejecutada'}" ngbTooltip="Ejecutada" class="dot pointer"></span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

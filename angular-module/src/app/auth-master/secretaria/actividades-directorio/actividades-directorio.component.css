@@ -93,14 +93,53 @@ hr {
     height: 10px;
 }
 
-.cancelada {
-    color: red;
+.pointer {
+    cursor: pointer;
 }
 
-.abierta {
-    color: blue;
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
 }
 
-.aprobado {
-    color: #138D75;
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.verde {
+    background-color: limegreen;
+}
+
+.naranja {
+    background-color: orange;
+}
+
+.rojo {
+    background-color: red;
+}
+
+.verdeos {
+    background-color: rgb(25, 53, 25);
+}
+
+.naranjaos {
+    background-color: rgb(59, 46, 28);
+}
+
+.rojoos {
+    background-color: rgb(63, 29, 29);
 }

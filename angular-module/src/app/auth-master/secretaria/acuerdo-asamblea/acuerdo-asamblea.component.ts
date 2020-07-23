@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AcuerdoAsambleaService } from 'src/app/servicios/acuerdo-asamblea.service';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { Acuerdo } from 'src/app/modelos/acuerdo.model';
 
 @Component({
   selector: 'app-acuerdo-asamblea',
@@ -18,6 +19,8 @@ export class AcuerdoAsambleaComponent implements OnInit {
     contenidoActa: '',
     estadoActa: '1'
   }
+
+  acuerdo: Acuerdo = new Acuerdo();
 
   //Tabla de Acuerdos
   tablaAcuerdos;
@@ -46,8 +49,16 @@ export class AcuerdoAsambleaComponent implements OnInit {
     this.cargarFechasActuales();
   }
 
-  abrirModalTest(modalMenutest){
+  abrirModalTest(modalMenutest, acuerdoId: string){
+    this.acuerdo = new Acuerdo();
     this.modalVariabletest = this.modalService.open(modalMenutest, {size: 'xl'});
+    this._acuerdoService.getAcuerdoPorId(acuerdoId).subscribe(response => {
+      this.acuerdo = response.acuerdo;
+      this.acuerdo.fecha = this.acuerdo.fecha.replace(/ /g, 'T');
+      console.log(this.acuerdo.fecha);
+    }, error => {
+      console.log(error);
+    });
   }
 
   cargarFechasActuales() {
@@ -67,7 +78,6 @@ export class AcuerdoAsambleaComponent implements OnInit {
   }
 
   limpiarFormulario(){
-    console.log(this.datosActa);
     this.datosActa.tituloActa = '';
     this.datosActa.fechaActa = '';
     this.datosActa.tipoActa = '1';
@@ -90,28 +100,26 @@ export class AcuerdoAsambleaComponent implements OnInit {
     });
   }
 
-  // getAcuerdoAsamblea(){
-  //   this._acuerdoService.getAcuerdoAsamblea('id').subscribe(response => {
-  //     if(response.estado == 'failed' || response.estado == 'failed_v'){
-  //       alert(response.mensaje);
-  //     }else{
-  //       console.log("Hola amigos del yutu");
-  //     }
-  //   }, error => {
-  //     console.log(error);
-  //   });
-  // }
-
   getListaAcuerdosAsamblea(){
     this._acuerdoService.getAcuerdosAsamblea().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
-        this.tablaAcuerdos = response;
+        this.tablaAcuerdos = response.acuerdos;
         console.log(this.tablaAcuerdos);
       }
     }, error => {
       console.log(error);
+    });
+  }
+
+  actualizarAcuerdo(){
+    this._acuerdoService.updateAcuerdo(this.acuerdo).subscribe(response => {
+      alert(response.mensaje);
+      this.modalVariabletest = this.modalService.dismissAll();
+      this.getListaAcuerdosAsamblea();
+    }, error=> {
+      console.log(error);      
     });
   }
 

@@ -11,7 +11,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label for="anio">Seleccione Año</label>
-          <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual">
+          <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual" (change)="changeAnio($event)">
             <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
           </select>
         </div>
@@ -23,6 +23,7 @@
           <tr>
             <th scope="col">Fecha</th>
             <th scope="col">Hora</th>
+            <th scope="col">N° Reunión</th>
             <th scope="col">Titulo</th>
             <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
@@ -32,11 +33,12 @@
           <tr *ngFor="let itemAcuerdos of acuerdos">
             <td class="firsttd">{{itemAcuerdos.nuevo}}</td>
             <td>{{itemAcuerdos.fecha | date:'shortTime'}}</td>
+            <td>{{itemAcuerdos.id}}</td>
             <td>{{itemAcuerdos.titulo}}</td>
             <td>
-              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 0">Pendiente</span>
-              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 1">Aprobado</span>
-              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 2">Rechazado</span>
+              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 0" class="text-primary">Pendiente</span>
+              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 1" class="text-success">Aprobado</span>
+              <span *ngIf="itemAcuerdos.id_estado_acuerdo == 2" class="text-danger">Rechazado</span>
             </td>
             <td><button class="btn btn-primary"
                 (click)="abrirModalTest(hojaAcuerdo, itemAcuerdos.id)">Visualizar</button></td>
@@ -64,6 +66,10 @@
 
     <div *ngIf="acuerdo.id">
 
+      <div class="d-flex justify-content-start">
+        <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+      </div>
+
       <h3 style="text-align: center;">
         <b>{{acuerdo.titulo | titlecase}}</b>
       </h3>
@@ -72,7 +78,7 @@
       <p>{{acuerdo.nombre}}</p>
 
       <p><b>Fecha:</b></p>
-      <p>{{acuerdo.fecha}}</p>
+      <p>{{acuerdo.nuevo}}</p>
 
       <div>
         <p><b>Tipo de Acta:</b></p>
@@ -85,9 +91,9 @@
       <div>
         <p><b>Estado del Acta:</b></p>
         <p>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 0" class="text-primary">Pendiente</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 1" class="text-success">Aprobado</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 2" class="text-danger">Rechazado</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 0">Pendiente</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span>
         </p>
       </div>
 

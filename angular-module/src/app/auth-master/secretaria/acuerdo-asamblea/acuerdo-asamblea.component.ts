@@ -3,6 +3,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AcuerdoAsambleaService } from 'src/app/servicios/acuerdo-asamblea.service';
 import { AniosService } from 'src/app/servicios/anios.service';
 import { Acuerdo } from 'src/app/modelos/acuerdo.model';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 
 @Component({
   selector: 'app-acuerdo-asamblea',
@@ -28,10 +29,14 @@ export class AcuerdoAsambleaComponent implements OnInit {
   //Variables para los select de año y mes
   selectAnio;
   idAnioActual;
+  textSelectAnio: string;
 
   //variable para asociar al modal
   modalVariable;
   modalVariabletest;
+
+  // Variable cargas
+  loading = false;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _acuerdoService: AcuerdoAsambleaService, private _fechasService: AniosService) {
     config.backdrop = 'static';
@@ -45,7 +50,7 @@ export class AcuerdoAsambleaComponent implements OnInit {
 
   abrirModalAcuerdos(modalMenu){
     this.modalVariable = this.modalService.open(modalMenu, {size: 'xl'});
-    this.getListaAcuerdosAsamblea();
+    // this.getListaAcuerdosAsamblea();
     this.cargarFechasActuales();
   }
 
@@ -66,6 +71,8 @@ export class AcuerdoAsambleaComponent implements OnInit {
     this._fechasService.getAnioActual().subscribe(
       response => {
         this.idAnioActual = response.id;
+        this.textSelectAnio = response.descripcion;
+        this.getListaAcuerdosAsamblea();
       },
       error => {
         console.log(error);
@@ -74,7 +81,9 @@ export class AcuerdoAsambleaComponent implements OnInit {
   }
 
   changeAnio(valorSelect){
+    this.textSelectAnio = valorSelect.target.selectedOptions[0].text;
     this.idAnioActual = valorSelect.target.value;
+    this.getListaAcuerdosAsamblea();
   }
 
   limpiarFormulario(){
@@ -88,6 +97,7 @@ export class AcuerdoAsambleaComponent implements OnInit {
   }
 
   setAcuerdoAsamblea(){
+    this.loading = true;
     this._acuerdoService.setAcuerdoAsamblea(this.datosActa).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
@@ -95,13 +105,16 @@ export class AcuerdoAsambleaComponent implements OnInit {
         this.limpiarFormulario();
         alert(response.mensaje);
       }
+      this.loading = false;
     }, error=>{
       console.log(error);
+      this.loading = false;
     });
   }
 
   getListaAcuerdosAsamblea(){
-    this._acuerdoService.getAcuerdosAsamblea().subscribe(response => {
+    this.tablaAcuerdos = [];
+    this._acuerdoService.getAcuerdosAsamblea(this.textSelectAnio).subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
         alert(response.mensaje);
       }else{
@@ -114,11 +127,14 @@ export class AcuerdoAsambleaComponent implements OnInit {
   }
 
   actualizarAcuerdo(){
+    this.loading = true;
     this._acuerdoService.updateAcuerdo(this.acuerdo).subscribe(response => {
       alert(response.mensaje);
       this.modalVariabletest = this.modalService.dismissAll();
+      this.loading = false;
       this.getListaAcuerdosAsamblea();
     }, error=> {
+      this.loading = false;
       console.log(error);      
     });
   }

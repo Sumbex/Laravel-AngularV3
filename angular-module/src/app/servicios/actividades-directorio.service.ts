@@ -48,4 +48,28 @@ export class ActividadesDirectorioService {
       )
     })
   }
+
+  /* Socios */
+
+  traerActividadesSocios(anio: Anios, mes: Meses): Observable<any> {
+    return this._http.get(this.url + "traer_actividades_socios/" + anio + '/' + mes, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
+
+  traerTiposActSocios(): Observable<any> {
+    return this._http.get(this.url + "traer_tipos_actividades_socios", {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token,
+          'Content-Type': 'application/json'
+        }
+      )
+    })
+  }
 }

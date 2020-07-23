@@ -119,9 +119,9 @@
                                 <td class="align-middle" colspan="3">{{item?.responsable}}</td>
                                 <!-- <td colspan="2">{{item?.estado}}</td> -->
                                 <td class="align-middle" colspan="3">
-                                    <span placement="top" [ngClass]="{'rojo' : item?.estado == 'Pendiente', 'rojoos': item?.estado != 'Pendiente'}" ngbTooltip="Pendiente" class="dot pointer"></span>
-                                    <span placement="top" [ngClass]="{'naranja' : item?.estado == 'En Proceso', 'naranjaos': item?.estado != 'En Proceso'}" ngbTooltip="En Proceso" class="dot pointer"></span>
-                                    <span placement="top" [ngClass]="{'verde' : item?.estado == 'Ejecutada', 'verdeos': item?.estado != 'Ejecutada'}" ngbTooltip="Ejecutada" class="dot pointer"></span>
+                                    <span placement="top" [ngClass]="{'rojo' : item?.estado == 'Pendiente', 'rojoos': item?.estado != 'Pendiente'}" ngbTooltip="Pendiente" class="dot pointer mx-2"></span>
+                                    <span placement="top" [ngClass]="{'naranja' : item?.estado == 'En Proceso', 'naranjaos': item?.estado != 'En Proceso'}" ngbTooltip="En Proceso" class="dot pointer mx-2"></span>
+                                    <span placement="top" [ngClass]="{'verde' : item?.estado == 'Ejecutada', 'verdeos': item?.estado != 'Ejecutada'}" ngbTooltip="Ejecutada" class="dot pointer mx-2"></span>
                                 </td>
                             </tr>
                         </tbody>

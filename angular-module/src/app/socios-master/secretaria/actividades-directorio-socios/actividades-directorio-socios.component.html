@@ -1,0 +1,56 @@
+<div class="row text-center">
+    <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
+        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡IMPORTANTE!</strong> 
+            Si desea ver todo el contenido de una actividad, debe de hacer <b>click</b> sobre ella.</small>
+    </ngb-alert>
+</div>
+<div class="row centrar">
+    <div class="table-responsive">
+        <table class="table table-hover text-center">
+            <thead class="text-center" id="demoFont">
+                <tr>
+                    <th style="width:25%" colspan="3"><label><strong>Filtro por Año <i
+                        class="fas fa-calendar-check"></i></strong></label><select name="anio" (change)="changeAnio($event)" #anio="ngModel" [(ngModel)]="anioId" class="form-control form-control-sm">
+                        <option *ngFor="let anio of selectAnios" [value]="anio.id">{{anio.descripcion}}</option>
+                      </select></th>
+                    <th style="width:25%" colspan="3"><label><strong>Filtro por Mes <i
+                        class="fas fa-calendar-check"></i></strong></label><select name="mes" (change)="changeMes($event)" #mes="ngModel" [(ngModel)]="mesId" class="form-control form-control-sm">
+                        <option *ngFor="let mes of selectMeses" [value]="mes.id">{{mes.descripcion}}</option>
+                      </select></th>
+                    <th tyle="width:25%" colspan="3"><label><strong>Filtro por Estado <i
+                        class="fas fa-calendar-check"></i></strong></label><select name="filtro" (change)="changeFiltro($event)" #filtro="ngModel" [(ngModel)]="filtroId" class="form-control form-control-sm">
+                        <option value="0">Todos</option>
+                        <option *ngFor="let filtro of selectFiltro" [value]="filtro.id">{{filtro.descripcion}}</option>
+                      </select></th>
+                    <th tyle="width:25%" colspan="3"><button class="btn btn-info" (click)="traerActividades()"> <span [hidden]="cargandoTabla">Actualizar </span> <span [hidden]="!cargandoTabla">Cargando </span> <img *ngIf="cargandoTabla" height="20"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button></th>
+                </tr>
+                <tr>
+                    <th style="width:15%" colspan="3">
+                        <!-- <i class="far fa-calendar-alt"></i> -->Fecha</th>
+                    <th style="width:50%" colspan="3">
+                        <!-- <i class="fas fa-user-circle"></i> -->Actividad</th>
+                    <th style="width:20%" colspan="3">
+                        <!-- <i class="fas fa-user-circle"></i> -->Responsable</th>
+                    <th style="width:15%" colspan="3">
+                        <!-- <i class="fas fa-user-circle"></i> -->Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center noselect" *ngFor="let item of actividadesFiltro">
+                    <td class="firsttd align-middle" colspan="3">{{item?.fecha}}</td>
+                    <td class="align-middle" [hidden]="item.actividad.length > 230" colspan="3">{{item?.actividad}}</td>
+                    <td class="pointer align-middle" (click)="mostarTexto()" [hidden]="item.actividad.length < 230 || mostrar" colspan="3">{{item?.actividad | slice:0:230}}...</td>
+                    <td class="pointer align-middle" (click)="mostarTexto()" [hidden]="item.actividad.length < 230 || !mostrar" colspan="3">{{item?.actividad}}</td>
+                    <td class="align-middle" colspan="3">{{item?.responsable}}</td>
+
+                    <td class="align-middle" colspan="3">
+                        <span placement="top" [ngClass]="{'rojo' : item?.estado == 'Pendiente', 'rojoos': item?.estado != 'Pendiente'}" ngbTooltip="Pendiente" class="dot pointer mx-2"></span>
+                        <span placement="top" [ngClass]="{'naranja' : item?.estado == 'En Proceso', 'naranjaos': item?.estado != 'En Proceso'}" ngbTooltip="En Proceso" class="dot pointer mx-2"></span>
+                        <span placement="top" [ngClass]="{'verde' : item?.estado == 'Ejecutada', 'verdeos': item?.estado != 'Ejecutada'}" ngbTooltip="Ejecutada" class="dot pointer mx-2"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

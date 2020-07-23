@@ -12,21 +12,27 @@
                     <a class="nav-link" id="formVotaciones-tab" data-toggle="tab" href="#formVotaciones" role="tab" aria-controls="formVotaciones" aria-selected="true">Asamblea Online</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#actas" role="tab" aria-controls="actas" aria-selected="false">Desarrollo de Asamblea</a>
+                    <!-- href="#actas" id="actas-tab" -->
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#acuerdos" role="tab" aria-controls="acuerdos" aria-selected="false">Acuerdos de Asamblea</a>
                     <!-- href="#acuerdos" id="acuerdos-tab" -->
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#actas" role="tab" aria-controls="actas" aria-selected="false">Actas</a>
-                    <!-- href="#actas" id="actas-tab" -->
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#directorio" role="tab" aria-controls="directorio" aria-selected="false">Directorio</a>
                     <!-- href="#directorio" id="directorio-tab" -->
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#leyes" role="tab" aria-controls="leyes" aria-selected="false">Leyes Laborales</a>
-                    <!-- href="#leyes" id="leyes-tab" -->
+                    <a class="nav-link" id="actividades-tab" data-toggle="tab" href="#actividades" role="tab" aria-controls="actividades" aria-selected="false">Actividades Del Directorio</a>
+                    <!-- href="#leyes"href="#leyes" -->
                 </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#leyes" role="tab" aria-controls="leyes" aria-selected="false">Leyes Laborales</a>
+                    
+                </li> -->
 
             </ul>
         </div>
@@ -199,8 +205,28 @@
         </div>
 
         <!-- Leyes -->
-        <div class="tab-pane fade show" id="leyes" role="tabpanel" aria-labelledby="leyes-tab">
+        <!-- <div class="tab-pane fade show" id="leyes" role="tabpanel" aria-labelledby="leyes-tab">
             <app-leyes-socio></app-leyes-socio>
+        </div> -->
+
+        <!-- Actividades -->
+        <div class="tab-pane fade" id="actividades" role="tabpanel" aria-labelledby="actividades-tab">
+            <div class="card mt-4">
+                <div class="card-header" id="demoFont">
+                    <strong class="text-center">
+              <h6><i class="fas fa-file-invoice-dollar"></i> Estado Actividades Del Directorio </h6>
+            </strong>
+                </div>
+                <div class="card-body">
+                    <div class="col-12 col-md-12">
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <app-actividades-directorio-socios></app-actividades-directorio-socios>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

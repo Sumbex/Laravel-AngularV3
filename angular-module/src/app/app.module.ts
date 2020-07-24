@@ -142,6 +142,7 @@ import { HistorialLiquidacionesComponent } from './auth-master/liquidaciones/his
 import { TemasComponent } from './auth-master/secretaria/temas/temas.component';
 import { VotacionesComponent } from './socios-master/secretaria/votaciones/votaciones.component';
 import { ActividadesDirectorioComponent } from './auth-master/secretaria/actividades-directorio/actividades-directorio.component';
+import { ActividadesDirectorioSociosComponent } from './socios-master/secretaria/actividades-directorio-socios/actividades-directorio-socios.component';
 
 @NgModule({
   declarations: [
@@ -263,6 +264,7 @@ import { ActividadesDirectorioComponent } from './auth-master/secretaria/activid
     TemasComponent,
     VotacionesComponent,
     ActividadesDirectorioComponent,
+    ActividadesDirectorioSociosComponent,
   ],
   imports: [
     BrowserModule,

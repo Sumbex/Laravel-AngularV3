@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form #f="ngForm" (submit)="setAcuerdoAsamblea()">
   <div class="row">
     <div class="col-md-12">
@@ -18,13 +19,35 @@
       <div class="form-group">
         <label for="tipo"><b>Seleccione el tipo de Acuerdo</b></label>
         <select class="form-control" name="tipo" [(ngModel)]="datosActa.tipoActa" required>
+=======
+<form>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group text-center">
+                <label for="titulo"><b>Ingrese titulo del acuerdo</b></label>
+                <input type="text" name="titulo" class="form-control" [(ngModel)]="datosActa.tituloActa">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="fecha"><b>Seleccione Fecha</b></label>
+                <input type="datetime-local" name="fecha" class="form-control" [(ngModel)]="datosActa.fechaActa">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="tipo"><b>Seleccione el tipo de Acuerdo</b></label>
+                <select class="form-control" name="tipo" [(ngModel)]="datosActa.tipoActa">
+>>>>>>> bryanm
           <option value="1">Ordinaria</option>
           <option value="2">Extraordinaria</option>
         </select>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- <div class="row">
+    <!-- <div class="row">
     <div class="col-md-12">
       <div class="form-group">
         <label for="estado"><b>Seleccione el estado del Acuerdo</b></label>
@@ -35,6 +58,7 @@
       </div>
     </div>
   </div> -->
+<<<<<<< HEAD
   <div class="row">
     <div class="col-md-12">
       <div class="form-group text-center">
@@ -53,13 +77,30 @@
     <div class="col-md-6">
       <button type="button" class="btn btn-secondary btn-block" (click)="abrirModalAcuerdos(menuAdministrarReunion)">Ver
         Acuerdos de
-        Asamblea</button>
+=======
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group text-center">
+                <label for="cuerpo"><b>Contenido del Acuerdo</b></label>
+                <textarea class="form-control" name="cuerpo" id="" rows="10" [(ngModel)]="datosActa.contenidoActa"></textarea>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-block" (click)="setAcuerdoAsamblea()">Ingresar</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-secondary btn-block" (click)="abrirModalAcuerdos(menuAdministrarReunion)">Ver Acuerdos de
+>>>>>>> bryanm
+        Asamblea</button>
+        </div>
+    </div>
 </form>
 
 <!-- LISTA ACUERDOS ASAMBKLEA -->
 <ng-template #menuAdministrarReunion let-modal>
+<<<<<<< HEAD
   <!-- Header Del Modal -->
   <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
@@ -116,63 +157,138 @@
             </tr>
           </tbody>
         </table>
-
-      </div>
+=======
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
+        </h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
     </div>
-  </div>
-  <!-- Patitas del Modal -->
-  <div class="modal-footer">
-    <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="anio">Seleccione Año</label>
+                        <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual">
+              <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+            </select>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover text-center">
+                    <thead id="demoFont2">
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">N° Reunión</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let itemAcuerdos of tablaAcuerdos">
+                            <th class="firsttdg">{{itemAcuerdos.nuevo}}</th>
+                            <td>{{itemAcuerdos.fecha | date:'shortTime'}}</td>
+                            <td>{{itemAcuerdos.id}}</td>
+                            <td>{{itemAcuerdos.titulo}}</td>
+                            <td>
+                                <span *ngIf="itemAcuerdos.id_estado_acuerdo == 0">Pendiente</span>
+                                <span *ngIf="itemAcuerdos.id_estado_acuerdo == 1">Aprobado</span>
+                                <span *ngIf="itemAcuerdos.id_estado_acuerdo == 2">Rechazado</span>
+                            </td>
+                            <td>
+                                <button *ngIf="itemAcuerdos.id_estado_acuerdo != 0" class="btn btn-primary m-1" (click)="abrirModalTest(imprimirAcuerdo, itemAcuerdos.id)">Visualizar</button>
+                                <button *ngIf="itemAcuerdos.id_estado_acuerdo == 0" class="btn btn-primary m-1" (click)="abrirModalTest(visualizarAcuerdo, itemAcuerdos.id)">Aprobar/Rechazar</button>
+                                <button (click)="abrirModalTest(editarAcuerdo, itemAcuerdos.id)" *ngIf="itemAcuerdos.id_estado_acuerdo == 0" class="btn btn-danger m-1">Editar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+>>>>>>> bryanm
+
+            </div>
+        </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+        <button type="button" id="cerrarMenu" class="btn btn-info" (click)="modal.close('Close click')"><i
         class="far fa-arrow-alt-circle-left"></i> Volver</button>
-  </div>
+    </div>
 </ng-template>
 
 <!-- VISUALIZAR ACUERDO -->
 <ng-template #visualizarAcuerdo let-modal>
+<<<<<<< HEAD
   <!-- Header Del Modal -->
   <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+=======
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
+        </h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+>>>>>>> bryanm
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <!-- Cuerpo del modal -->
-  <div class="modal-body">
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
 
-    <div *ngIf="!acuerdo.id" class="loader"></div>
+        <div *ngIf="!acuerdo.id" class="loader"></div>
 
+<<<<<<< HEAD
     <div *ngIf="acuerdo.id">
       <h3 style="text-align: center;">
         <b>{{acuerdo.titulo | titlecase}}</b>
       </h3>
+=======
+        <div *ngIf="acuerdo.id">
+            <h3 style="text-align: center;">
+                <b>{{acuerdo.titulo}}</b>
+            </h3>
+>>>>>>> bryanm
 
-      <p><b>Creado Por:</b></p>
-      <pre>{{acuerdo.nombre}}</pre>
+            <p><b>Creado Por:</b></p>
+            <pre>{{acuerdo.nombre}}</pre>
 
+<<<<<<< HEAD
       <p><b>Fecha:</b></p>
       <pre>{{acuerdo.nuevo}}</pre>
+=======
+            <p><b>Fecha:</b></p>
+            <pre>{{acuerdo.fecha}}</pre>
+>>>>>>> bryanm
 
-      <div>
-        <p><b>Tipo de Acta:</b></p>
-        <p>
-          <span *ngIf="acuerdo.id_tipo_acuerdo == 1">Ordinaria</span>
-          <span *ngIf="acuerdo.id_tipo_acuerdo == 2">Extraordinaria</span>
-        </p>
-      </div>
+            <div>
+                <p><b>Tipo de Acta:</b></p>
+                <p>
+                    <span *ngIf="acuerdo.id_tipo_acuerdo == 1">Ordinaria</span>
+                    <span *ngIf="acuerdo.id_tipo_acuerdo == 2">Extraordinaria</span>
+                </p>
+            </div>
 
-      <div>
-        <p><b>Estado del Acta:</b></p>
-        <p>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 0">Pendiente</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span>
-        </p>
-      </div>
+            <div>
+                <p><b>Estado del Acta:</b></p>
+                <p>
+                    <span *ngIf="acuerdo.id_estado_acuerdo == 0">Pendiente</span>
+                    <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
+                    <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span>
+                </p>
+            </div>
 
-      <p><b>Temas a tratar:</b></p>
-      <pre>{{acuerdo.contenido}}</pre>
+            <p><b>Temas a tratar:</b></p>
+            <pre>{{acuerdo.contenido}}</pre>
 
+<<<<<<< HEAD
       <form #f="ngForm" (submit)="actualizarAcuerdo()">
         <div class="row">
           <div class="col-12">
@@ -193,18 +309,34 @@
           Guardar <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif" [hidden]="!loading">
         </button>
       </form>
+=======
+            <div class="row">
+                <div class="col-12">
+                    <label><b>Motivo de apruebo o rechazo:</b></label>
+                    <textarea [(ngModel)]="acuerdo.descripcion_cambio_estado" name="descrice" class="form-control" cols="30" rows="5"></textarea>
+                    <label><b>Estado:</b></label>
+                    <select [(ngModel)]="acuerdo.id_estado_acuerdo" class="form-control">
+            <option value="1">Aprobada</option>
+            <option value="2">Rechazada</option>
+          </select>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-primary btn-block" (click)="actualizarAcuerdo()">Guardar</button>
+        </div>
+>>>>>>> bryanm
     </div>
-  </div>
 
-  <!-- Patitas del Modal -->
-  <div class="modal-footer">
-    <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+        <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
         class="far fa-arrow-alt-circle-left"></i> Volver</button>
-  </div>
+    </div>
 </ng-template>
 
 <!-- EDITAR ACUERDO -->
 <ng-template #editarAcuerdo let-modal>
+<<<<<<< HEAD
   <!-- Header Del Modal -->
   <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Editar Acuerdo</strong>
@@ -244,10 +376,48 @@
           class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
   </form>
+=======
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Editar Acuerdo</strong>
+        </h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body">
+        <div *ngIf="!acuerdo.id" class="loader"></div>
+        <div *ngIf="acuerdo.id" class="container">
+            <form #f="ngForm">
+                <div class="row">
+                    <label>Titulo:</label>
+                    <input [(ngModel)]="acuerdo.titulo" name="titulo" class="form-control" type="text">
+                    <label>Fecha:</label>
+                    <input [(ngModel)]="acuerdo.fecha" name="fecha2" class="form-control" type="datetime-local">
+                    <label>Tipo de Acta:</label>
+                    <select [(ngModel)]="acuerdo.id_tipo_acuerdo" name="tipo" class="form-control" name="tipo" [(ngModel)]="datosActa.tipoActa">
+            <option value="1">Ordinaria</option>
+            <option value="2">Extraordinaria</option>
+          </select>
+                    <label>Temas a tratar:</label>
+                    <textarea [(ngModel)]="acuerdo.contenido" name="tema" class="form-control" rows="10"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="this.actualizarAcuerdo()">Actualizar</button>
+        <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+>>>>>>> bryanm
 </ng-template>
 
 <!-- IMPRIMIR ACUERDO -->
 <ng-template #imprimirAcuerdo let-modal>
+<<<<<<< HEAD
   <!-- Header Del Modal -->
   <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
@@ -292,13 +462,61 @@
       <pre><b>Motivo de <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span><span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span></b></pre>
       <pre>{{acuerdo.descripcion_cambio_estado}}</pre>
       <br>
+=======
+    <!-- Header Del Modal -->
+    <div class="modal-header" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
+        </h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
     </div>
-  </div>
+    <!-- Cuerpo del modal -->
+    <div class="modal-body" id="printJS-table">
+        <div *ngIf="!acuerdo.id" class="loader"></div>
+        <div *ngIf="acuerdo.id">
+            <h3 style="text-align: center;">
+                <b>{{acuerdo.titulo}}</b>
+            </h3>
 
-  <!-- Patitas del Modal -->
-  <div class="modal-footer">
+            <p><b>Creado Por:</b></p>
+            <pre>{{acuerdo.nombre}}</pre>
 
-    <button type="button" class="btn btn-success" onclick="printJS({
+            <p><b>Fecha:</b></p>
+            <pre>{{acuerdo.fecha}}</pre>
+
+            <div>
+                <p><b>Tipo de Acta:</b></p>
+                <p>
+                    <span *ngIf="acuerdo.id_tipo_acuerdo == 1">Ordinaria</span>
+                    <span *ngIf="acuerdo.id_tipo_acuerdo == 2">Extraordinaria</span>
+                </p>
+            </div>
+
+            <div>
+                <p><b>Estado del Acta:</b></p>
+                <p>
+                    <span *ngIf="acuerdo.id_estado_acuerdo == 0" class="text-primary">Pendiente</span>
+                    <span *ngIf="acuerdo.id_estado_acuerdo == 1" class="text-success">Aprobado</span>
+                    <span *ngIf="acuerdo.id_estado_acuerdo == 2" class="text-danger">Rechazado</span>
+                </p>
+            </div>
+
+            <p><b>Temas a tratar:</b></p>
+            <pre>{{acuerdo.contenido}}</pre>
+
+            <p><b>Motivo de <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
+          <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span></b></p>
+            <pre>{{acuerdo.descripcion_cambio_estado}}</pre>
+            <br>
+        </div>
+>>>>>>> bryanm
+    </div>
+
+    <!-- Patitas del Modal -->
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-success" onclick="printJS({
       printable: 'printJS-table',
       type:'html',
       style: 'pre{font-family: Arial;font-size: 15px;width: 100%;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}'
@@ -306,7 +524,7 @@
       <i class="fas fa-print"></i> Imprimir Datos
     </button>
 
-    <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
+        <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
         class="far fa-arrow-alt-circle-left"></i> Volver</button>
-  </div>
+    </div>
 </ng-template>

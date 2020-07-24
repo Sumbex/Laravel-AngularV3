@@ -116,6 +116,7 @@ class SecDirectorio extends Model
         ])
             ->join('sec_tipo_reunion as str', 'str.id', 'sec_directorio.sec_tipo_reunion_id')
             ->orderby('sec_directorio.id', 'desc')
+            ->where('sec_directorio.activo','S')
             ->whereRaw("extract(year from sec_directorio.fecha) ='" . $anio ."'")
             ->get();
             // dd($listar);

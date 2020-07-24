@@ -8,7 +8,10 @@
         </div>
       </div>
 <hr>
-
+<div class="alert alert-warning" role="alert">
+  <small><i class="fas fa-exclamation-circle"></i> LLenar el encabezado es obligatorio, todos los demas campos son opcionales</small><br>
+  <small><i class="fas fa-exclamation-circle"></i> Cuando ingrese una fecha, respete el formato de fecha, ejemplo: 02/02/2020 o 02 de febrero de 2020</small>
+</div>
 
       <div class="row justify-content-center">
           <div class="col-md-10">
@@ -285,7 +288,7 @@
                   <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
                 </select>
               </th>
-              <th colspan="4" class="th_sec" scope="col">
+              <th colspan="5" class="th_sec" scope="col">
                 <div *ngIf="anio_load" class="spinner-border text-primary" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
@@ -299,7 +302,7 @@
             <tr>
               <th class="th_sec" scope="col">Fecha</th>
               <th class="th_sec" scope="col">Hora</th>
-              <!-- <th class="th_sec" scope="col">Nª Acta</th> -->
+              <th class="th_sec" scope="col">Nª Acta</th>
               <th class="th_sec" scope="col">Encabezado</th>
               <th colspan="2" class="th_sec" scope="col">Opción</th>
             </tr>
@@ -308,7 +311,7 @@
             <tr *ngFor="let acta of actas; let i = index" [attr.data-index]="i">
               <th class="color-right" scope="row">{{ acta.fecha }}</th>
               <td>{{ acta.hora }}</td>
-              <!-- <td>Nº{{i + 1 }}</td> -->
+              <td class="tab_td">Nº{{acta.id}}</td>
               <td>{{ acta.encabezado }}</td>
               <td> <button (click)="modal_detalle(detallem)" class="btn btn-success btn-sm">Ver</button> </td>
               <td> <button (click)="modal_detalle(editar);
@@ -337,7 +340,7 @@
               <!-- <td>{{ acta.dirigente }}</td> --><!--Modal validar user-->
               <ng-template #detallem let-modal>
                 <div class="modal-header sticky-top" id="demoFont">
-                  <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle de desarrollo de asamblea</strong></h6>
+                  <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle de desarrollo de asamblea Nº{{acta.id}}</strong></h6>
                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -350,7 +353,7 @@
                     </div>
                   
                     
-                      <h4 align="center">Desarrollo de asamblea</h4>
+                      <h4 align="center"><pre><b>Desarrollo de asamblea</b></pre></h4>
                     
                     <br>
                     <div class="">
@@ -410,7 +413,7 @@
                     </div>
                 
                 
-                    <h4 align="center">Desarrollo de asamblea</h4>
+                    <h4 align="center"><pre><b>Desarrollo de asamblea</b></pre></h4>
                 
                     <br>
                     <div class="">
@@ -428,8 +431,7 @@
                     <br>
                     
                     <div class="">
-                      <pre><b>Control de asistencia:</b><br>Total de socios: {{acta.total_socios}}<br>Asistidos: {{acta.total_asistidos}}<br>Justificados: {{acta.total_justificados}}<br>Sin justificar: {{acta.sin_justificar}}<br>
-                                    </pre>
+                      <pre><b>Control de asistencia:</b><br>Total de socios: {{acta.total_socios}}<br>Asistidos: {{acta.total_asistidos}}<br>Justificados: {{acta.total_justificados}}<br>Sin justificar: {{acta.sin_justificar}}<br></pre>
                     </div>
                   </div>
                 
@@ -453,7 +455,7 @@
 
               <ng-template #editar let-modal>
                 <div class="modal-header sticky-top" id="demoFont">
-                  <h6 class="modal-title"><strong><i class="fas fa-table"></i> Editar desarrollo de asamblea</strong></h6>
+                  <h6 class="modal-title"><strong><i class="fas fa-table"></i> Editar desarrollo de asamblea Nº{{acta.id}}</strong></h6>
                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>

@@ -3,9 +3,24 @@
 <table class="table table-hover">
     <thead>
         <tr>
+            <th colspan="1" class="th_sec" scope="col">
+        
+                <select (change)="changeAnio($event)" [(ngModel)]="valorAnio.descripcion" class="form-control" name="" id="">
+                    <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+                </select>
+            </th>
+            <th colspan="4" class="th_sec" scope="col">
+                <div *ngIf="anio_load" class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </th>
+        
+        
+        </tr>
+        <tr>
             <th class="th_sec" scope="col">Fecha</th>
             <th class="th_sec" scope="col">Hora</th>
-            <th class="th_sec" scope="col">Nª Acta</th>
+            <th class="th_sec" scope="col">Nª ID</th>
             <th class="th_sec" scope="col">Encabezado</th>
             <th class="th_sec" scope="col">Opción</th>
         </tr>
@@ -14,14 +29,14 @@
         <tr *ngFor="let acta of actas; let i = index" [attr.data-index]="i">
             <th class="color-right" scope="row">{{ acta.fecha }}</th>
             <td class="tab_td">{{ acta.hora }}</td>
-            <td class="tab_td">Nº{{i + 1 }}</td>
+            <td class="tab_td">Nº{{acta.id}}</td>
             <td class="tab_td">{{ acta.encabezado }}</td>
             <td class="tab_td"> <button (click)="modal_detalle(detallem)" class="btn btn-primary btn-sm">Ver</button> </td>
             <!-- <td>{{ acta.dirigente }}</td> -->
             <!--Modal validar user-->
             <ng-template #detallem let-modal>
                 <div class="modal-header sticky-top" id="demoFont">
-                    <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle Acta Nº{{i+1}}</strong></h6>
+                    <h6 class="modal-title"><strong><i class="fas fa-table"></i> Detalle Acta Nº{{acta.id}}</strong></h6>
                     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,33 +44,99 @@
                 <!--Cuerpo del body inicio y cierre mensual-->
                 <div class="modal-body" id="printJS-table">
                     <div class="container" id="printJS-form">
-                        <div class="d-flex justify-content-start">
-                            <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                    <!--ORDINARIA--------------------------------------------------------------------------------------->
+                    <div *ngIf="acta.tipo =='ordinaria' " class="modal-body" id="printJS-table">
+                        <div class="container" id="printJS-form">
+                            <div class="d-flex justify-content-start">
+                                <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                            </div>
+                    
+                    
+                            <h4 align="center">Desarrollo de asamblea</h4>
+                    
+                            <br>
+                            <div class="">
+                                <pre>{{acta.encabezado}}</pre>
+                            </div>
+                            <br>
+                            <div *ngIf="acta.tabla">
+                                <pre><b>Tabla:</b><br>{{acta.tabla}}</pre>
+                            </div>
+                            <br>
+                            <div *ngIf="acta.resumen_anterior">
+                                <pre><b>Resumen desarrollo de asamblea anterior y observaciones:</b><br>{{acta.resumen_anterior}}</pre>
+                            </div>
+                            <br>
+                            <div *ngIf="acta.rendicion_cuentas">
+                                <pre><b>Rendición de cuentas:</b><br>{{acta.rendicion_cuentas}}</pre>
+                            </div>
+                            <br>
+                            <div *ngIf="acta.rendicion_camping">
+                                <pre><b>Rendiciones de camping:</b><br>{{acta.rendicion_camping}}</pre>
+                            </div>
+                            <br>
+                            <div *ngIf="acta.rendicion_bienestar">
+                                <pre><b>Rendiciones de bienestar:</b><br>{{acta.rendicion_bienestar}}</pre>
+                            </div>
+                            <br>
+                            <div *ngIf="acta.rendicion_directorio">
+                                <pre><b>Rendición de cuentas del directorio:</b><br>{{acta.rendicion_directorio}}</pre>
+                            </div>
+                            <br>
+                            <div>
+                                <pre><b *ngIf="acta.ayuda_aporte || acta.socios_nuevos" >Consultas a la asamblea:<br></b><label *ngIf="acta.ayuda_aporte">Ayuda o aporte: <br>{{acta.ayuda_aporte}}</label><br><label *ngIf="acta.socios_nuevos">Socios nuevos: <br>{{acta.socios_nuevos}} <br></label> </pre>
+                            </div>
+                    
+                            <div class="" *ngIf="acta.varios">
+                                <pre><b>Varios:</b><br>{{acta.varios}}</pre>
+                            </div>
+                    
+                    
+                    
+                            <br>
+                            <div class="">
+                                <pre><b>Control de asistencia:</b><br>Total de socios: {{acta.total_socios}}<br>Asistidos: {{acta.total_asistidos}}<br>Justificados: {{acta.total_justificados}}<br>Sin justificar: {{acta.sin_justificar}}<br>
+                                          </pre>
+                            </div>
                         </div>
+                    
+                    </div>
+                    
+                    
+                    
+                    <!--EXTRAORDINARIA ------------------------------------------------------------------------------------------- -->
+                    <div *ngIf="acta.tipo =='extraordinaria' " class="modal-body" id="printJS-table">
+                        <div class="container" id="printJS-form">
+                            <div class="d-flex justify-content-start">
+                                <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                            </div>
+                    
+                    
+                            <h4 align="center">Desarrollo de asamblea</h4>
+                    
+                            <br>
+                            <div class="">
+                                <pre>{{acta.encabezado}}</pre>
+                            </div>
+                            <br>
+                            <div class="">
+                                <pre><b>Tabla:</b><br>{{acta.tabla}}</pre>
+                            </div>
+                            <br>
+                            <div class="">
+                                <pre><b>Puntos a tratar:</b><br>{{acta.puntos_a_tratar}}</pre>
+                            </div>
+                    
+                            <br>
+                    
+                            <div class="">
+                                <pre><b>Control de asistencia:</b><br>Total de socios: {{acta.total_socios}}<br>Asistidos: {{acta.total_asistidos}}<br>Justificados: {{acta.total_justificados}}<br>Sin justificar: {{acta.sin_justificar}}<br>
+                                                        </pre>
+                            </div>
+                        </div>
+                    
+                    </div>
 
-
-                        <h4 align="center">Acta de reunión Nº{{ i+1 }}</h4>
-
-                        <br>
-                        <div class="">
-                            <pre>{{acta.encabezado}}</pre>
-                        </div>
-                        <br>
-                        <div class="">
-                            <pre>Miembros:<br>{{acta.miembros}}</pre>
-                        </div>
-                        <br>
-                        <div class="">
-                            <pre>Orden del día:<br>{{acta.orden_dia}}</pre>
-                        </div>
-                        <br>
-                        <div class="">
-                            <pre>Detalle Orden del día:<br>{{acta.detalle_orden_dia}}</pre>
-                        </div>
-                        <br>
-                        <div class="">
-                            <pre>Redactor:<br>{{acta.dirigente}}</pre>
-                        </div>
                     </div>
 
                 </div>

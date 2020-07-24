@@ -83,6 +83,7 @@ Route::get('/traer_votos_tema/{tema}', 'SecTemasController@TraerVotos');
 
 //------------------------------------------->Actividades Directorio
 Route::post('/ingresar_actividad', 'ActividadesDirectorioController@IngresarActividad');
+Route::post('/actualizar_estado_actividad', 'ActividadesDirectorioController@CambiarEstadoActividad');
 Route::get('/traer_actividades/{anio}/{mes}', 'ActividadesDirectorioController@TraerActividades');
 Route::get('/traer_tipos_actividades', 'ActividadesDirectorioController@TraerTiposActividades');
 //------------------------------------------->Actividades Directorio

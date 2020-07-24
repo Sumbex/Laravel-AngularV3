@@ -27,6 +27,16 @@ export class ActividadesDirectorioService {
     });
   }
 
+  actualizarEstadoActividad(actividad: Actividades): Observable<any> {
+    return this._http.post(this.url + "actualizar_estado_actividad", actividad, {
+      headers: new HttpHeaders(
+        {
+          'Authorization': 'Bearer' + this.token
+        }
+      )
+    });
+  }
+
   traerActividades(anio: Anios, mes: Meses): Observable<any> {
     return this._http.get(this.url + "traer_actividades/" + anio + '/' + mes, {
       headers: new HttpHeaders(

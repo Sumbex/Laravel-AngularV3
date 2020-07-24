@@ -31,6 +31,7 @@ export class ActividadesDirectorioComponent implements OnInit {
   cargandoTabla: boolean = false;
 
   actividad: Actividades = new Actividades;
+  cambiarEstado: Actividades = new Actividades;
   actividades: Actividades[];
   actividadesFiltro: Actividades[];
 
@@ -154,6 +155,29 @@ export class ActividadesDirectorioComponent implements OnInit {
         }
       }, error => {
         this.ingresandoAct = false;
+        console.log(error);
+      }
+    )
+  }
+
+  limpiarEstado() {
+    this.cambiarEstado.id = '';
+    this.cambiarEstado.estado_actividad_id = '';
+  }
+
+  cambiarEstadoAct(id, estado) {
+    this.cambiarEstado.id = id;
+    this.cambiarEstado.estado_actividad_id = estado;
+    this._actividad.actualizarEstadoActividad(this.cambiarEstado).subscribe(
+      res => {
+        if (res.estado == 'success') {
+          this.limpiarEstado();
+          this.traerActividades();
+          alert(res.mensaje)
+        } else {
+          alert(res.mensaje);
+        }
+      }, error => {
         console.log(error);
       }
     )

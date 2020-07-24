@@ -122,24 +122,33 @@ hr {
 
 .verde {
     background-color: limegreen;
+    -webkit-box-shadow: -1px 1px 27px 5px rgba(48, 171, 48, 1);
+    -moz-box-shadow: -1px 1px 27px 5px rgba(48, 171, 48, 1);
+    box-shadow: -1px 1px 27px 5px rgba(48, 171, 48, 1);
 }
 
 .naranja {
     background-color: orange;
+    -webkit-box-shadow: -1px 1px 27px 5px rgba(171, 116, 50, 1);
+    -moz-box-shadow: -1px 1px 27px 5px rgba(171, 116, 50, 1);
+    box-shadow: -1px 1px 27px 5px rgba(171, 116, 50, 1);
 }
 
 .rojo {
     background-color: red;
+    -webkit-box-shadow: -1px 1px 27px 5px rgba(173, 48, 48, 1);
+    -moz-box-shadow: -1px 1px 27px 5px rgba(173, 48, 48, 1);
+    box-shadow: -1px 1px 27px 5px rgba(173, 48, 48, 1);
 }
 
 .verdeos {
-    background-color: rgb(25, 53, 25);
+    background-color: rgb(33, 100, 33);
 }
 
 .naranjaos {
-    background-color: rgb(59, 46, 28);
+    background-color: rgb(102, 75, 38);
 }
 
 .rojoos {
-    background-color: rgb(63, 29, 29);
+    background-color: rgb(97, 37, 37);
 }

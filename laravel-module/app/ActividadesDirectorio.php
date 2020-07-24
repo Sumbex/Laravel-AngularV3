@@ -59,6 +59,48 @@ class ActividadesDirectorio extends Model
         }
     }
 
+    protected function cambiarEstadoActividad($request)
+    {
+        $actividad = ActividadesDirectorio::find($request->id);
+        if (!is_null($actividad)) {
+            if ($actividad->estado_actividad_id == 3) {
+                return ['estado' => 'failed', 'mensaje' => 'La actividad ya esta ejecutada, no puedes cambiar su estado.'];
+            } else {
+                switch ($request->estado_actividad_id) {
+                    case 1:
+                        $actividad->estado_actividad_id = $request->estado_actividad_id;
+                        if ($actividad->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Estado actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+                    case 2:
+                        $actividad->estado_actividad_id = $request->estado_actividad_id;
+                        if ($actividad->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Estado actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+                    case 3:
+                        $actividad->estado_actividad_id = $request->estado_actividad_id;
+                        if ($actividad->save()) {
+                            return ['estado' => 'success', 'mensaje' => 'Estado actualizado correctamente.'];
+                        } else {
+                            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+                        }
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+        }
+    }
+
     protected function traerActividades($anio, $mes)
     {
         $anioD = $this->anio($anio);

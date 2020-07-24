@@ -151,7 +151,7 @@
         <b>Historial de Reuniones</b>
       </label>
       <button class="btn btn-primary btn-block btn-sm" type="button"
-        (click)="abrirModal(modalDirectorio); visualizarDirectorio()">Historial</button>
+        (click)="abrirModal(modalDirectorio)">Historial</button>
     </div>
   </div>
 </form>
@@ -167,13 +167,27 @@
   </div>
   <!-- Cuerpo del modal -->
   <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="anio">Seleccione Año</label>
+          <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+            (change)="changeAnio($event)">
+            <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
     <div class="table-responsive-sm">
 
       <table class="table text-center">
-        <thead>
-          <tr class="bg-info" style="color: #ffff;">
-            <th scope="col">Fecha</th> 
-            <th scope="col">Hora</th> 
+        <thead class="theadverde">
+          <tr style="color: #ffff;">
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
             <th scope="col">N° Reunion</th>
             <th scope="col">Tipo de Reunion</th>
             <th scope="col">Titulo</th>
@@ -192,8 +206,9 @@
               <!-- detalle del modal -->
               <ng-template #modalDetalle let-modal>
                 <!-- Header Del Modal -->
-                <div class="modal-header" id="demoFont">
-                  <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle de la Reunion {{listar.id}}</strong>
+                <div class="modal-header" id="modalHeaderBlue">
+                  <h6 class="modal-title"><strong><i class="fas fa-briefcase"></i> Detalle de la Reunion
+                      {{listar.id}}</strong>
                   </h6>
                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <span aria-hidden="true">&times;</span>
@@ -201,11 +216,16 @@
                 </div>
                 <!-- Cuerpo del modal -->
                 <div class="modal-body" id="printJS-table">
+
+                  <div class="d-flex justify-content-start">
+                    <img src="/assets/logo-sindicato-transparente-2.png" width="90px" height="70px">
+                  </div>
+
                   <h3 style="text-align: center;">
-                    <b>{{listar.titulo | titlecase}}</b>
+                    <pre><b><h2>{{listar.titulo | titlecase}}</h2></b></pre>
                   </h3>
 
-                  <p><b>Directiva asistida:</b></p>
+                  <pre><b>Directiva asistida:</b></pre>
                   <pre *ngFor="let listar2 of listarDirectorioDetalle">{{listar2.descripcion}}</pre>
 
                   <div *ngIf="listar.asistencia != null">
@@ -213,10 +233,10 @@
                     <pre>{{listar.asistencia}}</pre>
                   </div>
 
-                  <p><b>Temas tratados:</b></p>
+                  <pre><b>Temas tratados:</b></pre>
                   <pre>{{listar.temas}}</pre>
 
-                  <p><b>Acuerdos:</b></p>
+                  <pre><b>Acuerdos:</b></pre>
                   <pre>{{listar.acuerdos}}</pre>
 
                 </div>

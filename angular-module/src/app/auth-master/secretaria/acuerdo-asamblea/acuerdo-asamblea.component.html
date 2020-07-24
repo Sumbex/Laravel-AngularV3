@@ -61,7 +61,7 @@
 <!-- LISTA ACUERDOS ASAMBKLEA -->
 <ng-template #menuAdministrarReunion let-modal>
   <!-- Header Del Modal -->
-  <div class="modal-header" id="demoFont">
+  <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -130,7 +130,7 @@
 <!-- VISUALIZAR ACUERDO -->
 <ng-template #visualizarAcuerdo let-modal>
   <!-- Header Del Modal -->
-  <div class="modal-header" id="demoFont">
+  <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -144,7 +144,7 @@
 
     <div *ngIf="acuerdo.id">
       <h3 style="text-align: center;">
-        <b>{{acuerdo.titulo}}</b>
+        <b>{{acuerdo.titulo | titlecase}}</b>
       </h3>
 
       <p><b>Creado Por:</b></p>
@@ -188,7 +188,8 @@
           </div>
         </div>
         <br>
-        <button [disabled]="f.invalid || acuerdo.id_estado_acuerdo == 0 || loading" type="submit" class="btn btn-primary btn-block">
+        <button [disabled]="f.invalid || acuerdo.id_estado_acuerdo == 0 || loading" type="submit"
+          class="btn btn-primary btn-block">
           Guardar <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif" [hidden]="!loading">
         </button>
       </form>
@@ -205,7 +206,7 @@
 <!-- EDITAR ACUERDO -->
 <ng-template #editarAcuerdo let-modal>
   <!-- Header Del Modal -->
-  <div class="modal-header" id="demoFont">
+  <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Editar Acuerdo</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -214,9 +215,9 @@
   </div>
   <!-- Cuerpo del modal -->
   <form #f="ngForm" (submit)="actualizarAcuerdo()">
-  <div class="modal-body">
-    <div *ngIf="!acuerdo.id" class="loader"></div>
-    <div *ngIf="acuerdo.id" class="container">
+    <div class="modal-body">
+      <div *ngIf="!acuerdo.id" class="loader"></div>
+      <div *ngIf="acuerdo.id" class="container">
         <div class="row">
           <label>Titulo:</label>
           <input [(ngModel)]="acuerdo.titulo" name="titulo" class="form-control" type="text" required>
@@ -236,18 +237,19 @@
     <!-- Patitas del Modal -->
     <div class="modal-footer">
       <button [disabled]="f.invalid || loading" type="submit" class="btn btn-primary">
-        Actualizar <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif" [hidden]="!loading">
+        Actualizar <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+          [hidden]="!loading">
       </button>
       <button type="button" id="botonCerrarModal" class="btn btn-info" (click)="modal.close('Close click')"><i
-        class="far fa-arrow-alt-circle-left"></i> Volver</button>
-      </div>
-    </form>
-    </ng-template>
-    
+          class="far fa-arrow-alt-circle-left"></i> Volver</button>
+    </div>
+  </form>
+</ng-template>
+
 <!-- IMPRIMIR ACUERDO -->
 <ng-template #imprimirAcuerdo let-modal>
   <!-- Header Del Modal -->
-  <div class="modal-header" id="demoFont">
+  <div class="modal-header" id="modalHeaderBlue">
     <h6 class="modal-title"><strong><i class="fas fa-cash-register"></i> Lista de Acuerdos de Asamblea</strong>
     </h6>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -265,37 +267,29 @@
       </div>
 
       <h3 style="text-align: center;">
-        <b>{{acuerdo.titulo}}</b>
+        <pre><b><h3>{{acuerdo.titulo | titlecase}}</h3></b></pre>
       </h3>
 
-      <p><b>Creado Por:</b></p>
+      <pre><b>Creado Por:</b></pre>
       <pre>{{acuerdo.nombre}}</pre>
 
-      <p><b>Fecha:</b></p>
+      <pre><b>Fecha:</b></pre>
       <pre>{{acuerdo.nuevo}}</pre>
 
       <div>
-        <p><b>Tipo de Acta:</b></p>
-        <p>
-          <span *ngIf="acuerdo.id_tipo_acuerdo == 1">Ordinaria</span>
-          <span *ngIf="acuerdo.id_tipo_acuerdo == 2">Extraordinaria</span>
-        </p>
+        <pre><b>Tipo de Acta:</b></pre>
+        <pre><span *ngIf="acuerdo.id_tipo_acuerdo == 1">Ordinaria</span><span *ngIf="acuerdo.id_tipo_acuerdo == 2">Extraordinaria</span></pre>
       </div>
 
       <div>
-        <p><b>Estado del Acta:</b></p>
-        <p>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 0">Pendiente</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span>
-        </p>
+        <pre><b>Estado del Acta:</b></pre>
+        <pre><span *ngIf="acuerdo.id_estado_acuerdo == 0">Pendiente</span><span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span><span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span></pre>
       </div>
 
-      <p><b>Temas a tratar:</b></p>
+      <pre><b>Temas a tratar:</b></pre>
       <pre>{{acuerdo.contenido}}</pre>
 
-      <p><b>Motivo de <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span>
-          <span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span></b></p>
+      <pre><b>Motivo de <span *ngIf="acuerdo.id_estado_acuerdo == 1">Aprobado</span><span *ngIf="acuerdo.id_estado_acuerdo == 2">Rechazado</span></b></pre>
       <pre>{{acuerdo.descripcion_cambio_estado}}</pre>
       <br>
     </div>

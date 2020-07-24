@@ -130,7 +130,7 @@ export class AcuerdoAsambleaComponent implements OnInit {
     this.loading = true;
     this._acuerdoService.updateAcuerdo(this.acuerdo).subscribe(response => {
       alert(response.mensaje);
-      this.modalVariabletest = this.modalService.dismissAll();
+      this.modalVariabletest.close();
       this.loading = false;
       this.getListaAcuerdosAsamblea();
     }, error=> {

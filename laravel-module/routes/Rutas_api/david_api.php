@@ -6,7 +6,7 @@ Route::get("documento_certificado_nacimiento/{idCarga}","ArchivosSocioController
 
 //Secretaria Directorio
 Route::Post("registro_directorio","SecDirectorioController@registroDirectorio");
-Route::get("visualizar_directorio","SecDirectorioController@visualizarDirectorio");
+Route::get("visualizar_directorio/{anio}","SecDirectorioController@visualizarDirectorio");
 Route::get("visualizar_directorio_detalle/{id}","SecDirectorioController@visualizarDirectorioDetalle");
 
 // LIQUIDACION EMPLEADO

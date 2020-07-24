@@ -36,24 +36,13 @@ export class DirectorioService {
 }
 
 
-visualizarDirectorio(): Observable<any>{
-  let token = localStorage.getItem('token').replace(/['"]+/g, '');
-  return this._http.get(this.url + "visualizar_directorio", {headers: new HttpHeaders(
-      {
-          'Authorization': 'Bearer' + token,
-          'Content-Type': 'applcation/json'
-      }
-  )});
+visualizarDirectorio(anio): Observable<any>{
+// console.log(anio);
+  return this._http.get(`${this.url}visualizar_directorio/${anio}`);
 }
 
 visualizarDirectorioDetalle(id): Observable<any>{
-  let token = localStorage.getItem('token').replace(/['"]+/g, '');
-  return this._http.get(this.url + "visualizar_directorio_detalle" +'/'+ id, {headers: new HttpHeaders(
-      {
-          'Authorization': 'Bearer' + token,
-          'Content-Type': 'applcation/json'
-      }
-  )});
+  return this._http.get(this.url + "visualizar_directorio_detalle" +'/'+ id,);
 }
 
 }

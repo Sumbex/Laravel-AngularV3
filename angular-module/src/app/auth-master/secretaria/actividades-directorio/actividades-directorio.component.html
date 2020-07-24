@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-md-6 mt-4">
+        <div (click)="abrirModalIngreso(ingreso)" class="card card-body text-white text-center bg-primary" style="cursor: pointer">
+            <h3><i class="fas fa-vote-yea"></i> Crear Nueva Actividad</h3>
+            <p>Aqui se crearan nuevas Actividades.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 mt-4">
+        <div (click)="abrirModalActivos(activos)" class="card card-body text-white text-center bg-success" style="cursor: pointer">
+            <h3><i class="fas fa-hourglass-end"></i> Actividades Activas</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 mt-4 mb-4">
+        <div class="card card-body text-white text-center bg-danger" style="cursor: pointer">
+            <h3><i class="fas fa-list"></i> Historial de Actividades</h3>
+            <p>Ver las Actividades finalizadas.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Formulario Ingreso -->
+<ng-template #ingreso let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong>
+                <!-- <i class="fas fa-archive"></i> --> Actividades Del Directorio / Crear Actividad</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="modal-header" id="demoFont2">
+            <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
+        </div>
+        <div class="card">
+            <form #actividadForm="ngForm" (ngSubmit)="ingresarActividad()">
+                <div class="row centrar">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input class="form-control" type="date" name="fecha" [(ngModel)]="actividad.fecha" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Responsable</label>
+                            <input class="form-control" type="text" name="responsable" [(ngModel)]="actividad.responsable" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">Actividad a ejecutar</label>
+                            <textarea class="form-control resize-none" name="actividad" [(ngModel)]="actividad.actividad" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" [disabled]="actividadForm.invalid || ingresandoAct" class="btn btn-block btn-success">Ingresar Actividad <img *ngIf="ingresandoAct" height="20"
+                        src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+                class="far fa-arrow-alt-circle-left"></i> Volver a Actividades Del Directorio</button>
+    </div>
+</ng-template>
+
+<!-- Tabla Activos -->
+<ng-template #activos let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong>
+                <!-- <i class="fas fa-archive"></i> --> Actividades Del Directorio / Actividades Activas</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="row centrar">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded">
+                        <thead text-sm class="text-center">
+                            <tr>
+                                <th colspan="5" class="ColorThCS">Actividades Activas</th>
+                                <th colspan="3"><button class="btn btn-info" (click)="traerActividadesActivas()">Actualizar</button></th>
+
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <!-- <i class="far fa-calendar-alt"></i> -->Fecha</th>
+                                <th colspan="3">
+                                    <!-- <i class="fas fa-user-circle"></i> -->Actividad</th>
+                                <th colspan="3">
+                                    <!-- <i class="fas fa-user-circle"></i> -->Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" *ngFor="let item of actividades">
+                                <td colspan="2">{{item?.fecha}}</td>
+                                <td [hidden]="item.actividad.length > 100" colspan="3">{{item?.actividad}}</td>
+                                <td [hidden]="item.actividad.length < 100" colspan="3">{{item?.actividad | slice:0:100}}...</td>
+                                <td colspan="3">{{item?.estado}}</td>
+                                <!-- <td colspan="3">
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]="item.estado_actividad_id" name="estado" class="form-check-input" type="checkbox" id="pendiente" value="1">
+                                        <label class="form-check-label" for="pendiente">Pendiente</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]="item.estado_actividad_id" name="estado" class="form-check-input" type="checkbox" id="proceso" value="2">
+                                        <label class="form-check-label" for="proceso">En Proceso</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input [(ngModel)]="item.estado_actividad_id" name="estado" class="form-check-input" type="checkbox" id="ejecutada" value="3">
+                                        <label class="form-check-label" for="ejecutada">Ejecutada</label>
+                                    </div>
+                                </td> -->
+                                <!-- <td colspan="2"><button type="button" class="btn btn-info">Ver</button>
+                                </td> -->
+                                <!-- <td colspan="2"><button (click)="abrirModalActualizar(editar,item)" type="button" class="btn btn-info">Ver</button>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" id="cerrarActivos" class="btn btn-info" (click)="d('Cross click')"><i
+                class="far fa-arrow-alt-circle-left"></i> Volver a Actividades Del Directorio</button>
+    </div>
+</ng-template>

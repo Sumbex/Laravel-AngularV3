@@ -101,24 +101,8 @@ class SecDirectorio extends Model
         }
     }
 
-    protected function visualizar_directorio()
+    protected function visualizar_directorio($anio)
     {
-
-        // $listar2 = DB::select("SELECT
-        //                         sd.id, 
-        //                         sd.fecha, 
-        //                         sd.titulo, 
-        //                         sd.asistencia, 
-        //                         sd.temas, 
-        //                         str.descripcion,
-        //                         sd2.descripcion
-                                
-        //                         from sec_directorio as sd
-        //                         inner join sec_tipo_reunion as str on str.id = sd.sec_tipo_reunion_id
-        //                         inner join sec_directiva_asistida as sda on sda.sec_directorio_id = sd.id
-        //                         inner join sec_directiva as sd2 on sd2.id = sda.sec_directiva_id
-        //                         where sd.activo = 'S' 
-        //                         order by id asc");
 
         $listar = SecDirectorio::select([
                                 'sec_directorio.id', 
@@ -128,13 +112,11 @@ class SecDirectorio extends Model
                                 'sec_directorio.temas',
                                 'sec_directorio.acuerdos', 
                                 'str.descripcion as tipo',
-                                // 'sd.descripcion as directiva'
 
         ])
             ->join('sec_tipo_reunion as str', 'str.id', 'sec_directorio.sec_tipo_reunion_id')
-            // ->join('sec_directiva_asistida as sda','sda.sec_directorio_id','sec_directorio.id')
-            // ->join('sec_directiva as sd','sd.id','sda.sec_directiva_id')     
             ->orderby('sec_directorio.id', 'desc')
+            ->whereRaw("extract(year from sec_directorio.fecha) ='" . $anio ."'")
             ->get();
             // dd($listar);
         if (count($listar) > 0) {

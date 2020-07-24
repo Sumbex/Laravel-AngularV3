@@ -1,10 +1,22 @@
-<div class="col-md-2">
-    <label>
-        <b>Historial de Reuniones</b>
-    </label>
-    <button class="btn btn-primary btn-block btn-sm" type="button"
-        (click)="abrirModal(modalDirectorio); visualizarDirectorio()">Historial</button>
+<div class="card-header mt-4" id="demoFont2">
+    <h6 class="card-title">Directorio</h6>
 </div>
+
+
+<div class="card">
+    <div class="container m-4">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 mt-4">
+                <div (click)="abrirModal(modalDirectorio)" class="card card-body text-white text-center bg-success"
+                    style="cursor: pointer">
+                    <h3><i class="fas fa-vote-yea"></i> Historial de Directorio</h3>
+                    <p>Visualizar todos las reuniones de directorio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <ng-template #modalDirectorio let-modal>
     <!-- Header Del Modal -->
@@ -17,6 +29,19 @@
     </div>
     <!-- Cuerpo del modal -->
     <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="anio">Seleccione Año</label>
+                    <select name="anio" class="form-control" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+                        (change)="changeAnio($event)">
+                        <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
         <div class="table-responsive-sm">
 
             <table class="table text-center">
@@ -103,3 +128,24 @@
                 class="far fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
 </ng-template>
+
+
+<div class="tab-pane fade" id="directorio" role="tabpanel" aria-labelledby="directorio-tab">
+    <div class="card mt-4">
+        <div class="card-header" id="demoFont">
+            <strong class="text-center">
+                <h6><i class="fas fa-file-invoice-dollar"></i> Directorio </h6>
+            </strong>
+        </div>
+        <div class="card-body fondo">
+            <div class="col-12 col-md-12">
+                <div class="row">
+                    <div class="col-12 col-md-12 mt-4">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

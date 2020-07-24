@@ -40,13 +40,8 @@ getAcuerdosAsambleaMesAnio(anio): Observable<any>{
     )});
 }
 
-getAcuerdosAsamblea(): Observable<any>{
-  return this._http.get(this.url + "get_acuerdos", {headers: new HttpHeaders(
-      {
-          'Authorization': 'Bearer' + this.token,
-          'Content-Type': 'applcation/json'
-      }
-  )});
+getAcuerdosAsamblea(idAnio: string): Observable<any>{
+  return this._http.get(this.url + "get_acuerdos/" + idAnio);
 }
 
 getAcuerdoPorId(id: string): Observable<any>{

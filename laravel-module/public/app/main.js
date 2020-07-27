@@ -1002,6 +1002,17 @@ module.exports = "<div>\n    <div class=\"row justify-content-center\">\n    <di
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.html":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.html ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col-md-6 mt-4\">\n        <div (click)=\"abrirModalIngreso(ingreso)\" class=\"card card-body text-white text-center bg-primary\" style=\"cursor: pointer\">\n            <h3><i class=\"fas fa-vote-yea\"></i> Crear Nueva Actividad</h3>\n            <p>Aqui se crearan nuevas Actividades.</p>\n        </div>\n    </div>\n\n    <div class=\"col-md-6 mt-4\">\n        <div (click)=\"abrirModalActivos(activos)\" class=\"card card-body text-white text-center bg-success\" style=\"cursor: pointer\">\n            <h3><i class=\"fas fa-hourglass-end\"></i> Actividades Activas</h3>\n            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>\n        </div>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-md-12 mt-4 mb-4\">\n        <div class=\"card card-body text-white text-center bg-danger\" style=\"cursor: pointer\">\n            <h3><i class=\"fas fa-list\"></i> Historial de Actividades</h3>\n            <p>Ver las Actividades finalizadas.</p>\n        </div>\n    </div>\n</div>\n\n<!-- Formulario Ingreso -->\n<ng-template #ingreso let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>\n                <!-- <i class=\"fas fa-archive\"></i> --> Actividades Del Directorio / Crear Actividad</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <div class=\"modal-header\" id=\"demoFont2\">\n            <h6 class=\"modal-title\"><strong>Formulario de Ingreso</strong></h6>\n        </div>\n        <div class=\"card\">\n            <form #actividadForm=\"ngForm\" (ngSubmit)=\"ingresarActividad()\">\n                <div class=\"row centrar\">\n                    <div class=\"col-md-6\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Fecha</label>\n                            <input class=\"form-control\" type=\"date\" name=\"fecha\" [(ngModel)]=\"actividad.fecha\" required>\n                        </div>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Responsable</label>\n                            <input class=\"form-control\" type=\"text\" name=\"responsable\" [(ngModel)]=\"actividad.responsable\" required>\n                        </div>\n                    </div>\n                    <div class=\"col-md-12\">\n                        <div class=\"form-group\">\n                            <label for=\"\">Actividad a ejecutar</label>\n                            <textarea class=\"form-control resize-none\" name=\"actividad\" [(ngModel)]=\"actividad.actividad\" required></textarea>\n                        </div>\n                    </div>\n                    <button type=\"submit\" [disabled]=\"actividadForm.invalid || ingresandoAct\" class=\"btn btn-block btn-success\">Ingresar Actividad <img *ngIf=\"ingresandoAct\" height=\"20\"\n                        src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\"></button>\n                </div>\n            </form>\n        </div>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\n                class=\"far fa-arrow-alt-circle-left\"></i> Volver a Actividades Del Directorio</button>\n    </div>\n</ng-template>\n\n<!-- Tabla Activos -->\n<ng-template #activos let-c=\"close\" let-d=\"dismiss\">\n    <div class=\"modal-header sticky-top\" id=\"demoFont\">\n        <h6 class=\"modal-title\"><strong>\n                <!-- <i class=\"fas fa-archive\"></i> --> Actividades Del Directorio / Actividades Activas</strong></h6>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <div class=\"card\">\n            <div class=\"row centrar\">\n                <div class=\"table-responsive\">\n                    <table class=\"table table-bordered table-hover table-sm shadow p-3 mb-5 bg-white rounded\">\n                        <thead text-sm class=\"text-center\">\n                            <tr>\n                                <th colspan=\"5\" class=\"ColorThCS\">Actividades Activas</th>\n                                <th colspan=\"3\"><button class=\"btn btn-info\" (click)=\"traerActividadesActivas()\">Actualizar</button></th>\n\n                            </tr>\n                            <tr>\n                                <th colspan=\"2\">\n                                    <!-- <i class=\"far fa-calendar-alt\"></i> -->Fecha</th>\n                                <th colspan=\"3\">\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Actividad</th>\n                                <th colspan=\"3\">\n                                    <!-- <i class=\"fas fa-user-circle\"></i> -->Estado</th>\n                            </tr>\n                        </thead>\n                        <tbody>\n                            <tr class=\"text-center\" *ngFor=\"let item of actividades\">\n                                <td colspan=\"2\">{{item?.fecha}}</td>\n                                <td [hidden]=\"item.actividad.length > 100\" colspan=\"3\">{{item?.actividad}}</td>\n                                <td [hidden]=\"item.actividad.length < 100\" colspan=\"3\">{{item?.actividad | slice:0:100}}...</td>\n                                <td colspan=\"3\">{{item?.estado}}</td>\n                                <!-- <td colspan=\"3\">\n                                    <div class=\"form-check form-check-inline\">\n                                        <input [(ngModel)]=\"item.estado_actividad_id\" name=\"estado\" class=\"form-check-input\" type=\"checkbox\" id=\"pendiente\" value=\"1\">\n                                        <label class=\"form-check-label\" for=\"pendiente\">Pendiente</label>\n                                    </div>\n                                    <div class=\"form-check form-check-inline\">\n                                        <input [(ngModel)]=\"item.estado_actividad_id\" name=\"estado\" class=\"form-check-input\" type=\"checkbox\" id=\"proceso\" value=\"2\">\n                                        <label class=\"form-check-label\" for=\"proceso\">En Proceso</label>\n                                    </div>\n                                    <div class=\"form-check form-check-inline\">\n                                        <input [(ngModel)]=\"item.estado_actividad_id\" name=\"estado\" class=\"form-check-input\" type=\"checkbox\" id=\"ejecutada\" value=\"3\">\n                                        <label class=\"form-check-label\" for=\"ejecutada\">Ejecutada</label>\n                                    </div>\n                                </td> -->\n                                <!-- <td colspan=\"2\"><button type=\"button\" class=\"btn btn-info\">Ver</button>\n                                </td> -->\n                                <!-- <td colspan=\"2\"><button (click)=\"abrirModalActualizar(editar,item)\" type=\"button\" class=\"btn btn-info\">Ver</button>\n                                </td> -->\n                            </tr>\n                        </tbody>\n                    </table>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" id=\"cerrarActivos\" class=\"btn btn-info\" (click)=\"d('Cross click')\"><i\n                class=\"far fa-arrow-alt-circle-left\"></i> Volver a Actividades Del Directorio</button>\n    </div>\n</ng-template>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component.html":
 /*!*******************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component.html ***!
@@ -1886,6 +1897,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_liquidaciones_historial_liquidaciones_historial_liquidaciones_component__WEBPACK_IMPORTED_MODULE_136__ = __webpack_require__(/*! ./auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component */ "./src/app/auth-master/liquidaciones/historial-liquidaciones/historial-liquidaciones.component.ts");
 /* harmony import */ var _auth_master_secretaria_temas_temas_component__WEBPACK_IMPORTED_MODULE_137__ = __webpack_require__(/*! ./auth-master/secretaria/temas/temas.component */ "./src/app/auth-master/secretaria/temas/temas.component.ts");
 /* harmony import */ var _socios_master_secretaria_votaciones_votaciones_component__WEBPACK_IMPORTED_MODULE_138__ = __webpack_require__(/*! ./socios-master/secretaria/votaciones/votaciones.component */ "./src/app/socios-master/secretaria/votaciones/votaciones.component.ts");
+/* harmony import */ var _auth_master_secretaria_actividades_directorio_actividades_directorio_component__WEBPACK_IMPORTED_MODULE_139__ = __webpack_require__(/*! ./auth-master/secretaria/actividades-directorio/actividades-directorio.component */ "./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.ts");
+
 
 
 
@@ -2146,7 +2159,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_liquidaciones_liquidacion_liquidacion_component__WEBPACK_IMPORTED_MODULE_135__["LiquidacionComponent"],
             _auth_master_liquidaciones_historial_liquidaciones_historial_liquidaciones_component__WEBPACK_IMPORTED_MODULE_136__["HistorialLiquidacionesComponent"],
             _auth_master_secretaria_temas_temas_component__WEBPACK_IMPORTED_MODULE_137__["TemasComponent"],
-            _socios_master_secretaria_votaciones_votaciones_component__WEBPACK_IMPORTED_MODULE_138__["VotacionesComponent"]
+            _socios_master_secretaria_votaciones_votaciones_component__WEBPACK_IMPORTED_MODULE_138__["VotacionesComponent"],
+            _auth_master_secretaria_actividades_directorio_actividades_directorio_component__WEBPACK_IMPORTED_MODULE_139__["ActividadesDirectorioComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -12608,6 +12622,126 @@ ActasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.css":
+/*!****************************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.css ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".centrar {\n    padding: 2em;\n}\n\n.resize-none {\n    resize: none;\n    height: 100px;\n}\n\n.dark-modal .modal-content {\n    background-color: #292b2c;\n    color: white;\n}\n\n.dark-modal .close {\n    color: white;\n}\n\n.light-blue-backdrop {\n    background-color: #5cb3fd;\n}\n\nlabel,\ninput,\nbutton {\n    font-size: 14px;\n}\n\ntr,\nth {\n    font-size: 14px;\n}\n\nth {\n    color: white;\n    background: #138D75;\n}\n\n#demoFont {\n    color: #fff;\n    background: #2C3E50;\n    /* fallback for old browsers */\n    /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to right, #4CA1AF, #2C3E50);\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n\n#demoFont2 {\n    color: #fff;\n    background: #52c234;\n    /* fallback for old browsers */\n    /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to left, #061700, #52c234);\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n\n.nav-item a {\n    color: #fff;\n    background: #093028;\n    /* fallback for old browsers */\n    /* Chrome 10-25, Safari 5.1-6 */\n    background: linear-gradient(to top, #237A57, #093028);\n    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n\n.margen {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n}\n\n.card {\n    background: rgba(255, 255, 255, 0.8);\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n\n.card-header {\n    border-top-left-radius: 20px;\n    border-top-right-radius: 20px;\n}\n\n#myTab {\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n\nhr {\n    border-top: 1px solid #000000 !important;\n    margin-bottom: 5px !important;\n    margin-top: 5px !important;\n    height: 10px;\n}\n\n.cancelada {\n    color: red;\n}\n\n.abierta {\n    color: blue;\n}\n\n.aprobado {\n    color: #138D75;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvc2VjcmV0YXJpYS9hY3RpdmlkYWRlcy1kaXJlY3RvcmlvL2FjdGl2aWRhZGVzLWRpcmVjdG9yaW8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osYUFBYTtBQUNqQjs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLHlCQUF5QjtBQUM3Qjs7QUFFQTs7O0lBR0ksZUFBZTtBQUNuQjs7QUFFQTs7SUFFSSxlQUFlO0FBQ25COztBQUVBO0lBQ0ksWUFBWTtJQUNaLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxtQkFBbUI7SUFDbkIsOEJBQThCO0lBRTlCLCtCQUErQjtJQUMvQix1REFBdUQ7SUFDdkQscUVBQXFFO0FBQ3pFOztBQUVBO0lBQ0ksV0FBVztJQUNYLG1CQUFtQjtJQUNuQiw4QkFBOEI7SUFFOUIsK0JBQStCO0lBQy9CLHNEQUFzRDtJQUN0RCxxRUFBcUU7QUFDekU7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsbUJBQW1CO0lBQ25CLDhCQUE4QjtJQUU5QiwrQkFBK0I7SUFDL0IscURBQXFEO0lBQ3JELHFFQUFxRTtBQUN6RTs7QUFFQTtJQUNJLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsV0FBVztBQUNmOztBQUVBO0lBQ0ksb0NBQW9DO0lBQ3BDLDBFQUEwRTtBQUM5RTs7QUFFQTtJQUNJLDRCQUE0QjtJQUM1Qiw2QkFBNkI7QUFDakM7O0FBRUE7SUFDSSwwRUFBMEU7QUFDOUU7O0FBRUE7SUFDSSx3Q0FBd0M7SUFDeEMsNkJBQTZCO0lBQzdCLDBCQUEwQjtJQUMxQixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksVUFBVTtBQUNkOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksY0FBYztBQUNsQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL3NlY3JldGFyaWEvYWN0aXZpZGFkZXMtZGlyZWN0b3Jpby9hY3RpdmlkYWRlcy1kaXJlY3RvcmlvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudHJhciB7XG4gICAgcGFkZGluZzogMmVtO1xufVxuXG4ucmVzaXplLW5vbmUge1xuICAgIHJlc2l6ZTogbm9uZTtcbiAgICBoZWlnaHQ6IDEwMHB4O1xufVxuXG4uZGFyay1tb2RhbCAubW9kYWwtY29udGVudCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcbiAgICBjb2xvcjogd2hpdGU7XG59XG5cbi5kYXJrLW1vZGFsIC5jbG9zZSB7XG4gICAgY29sb3I6IHdoaXRlO1xufVxuXG4ubGlnaHQtYmx1ZS1iYWNrZHJvcCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzVjYjNmZDtcbn1cblxubGFiZWwsXG5pbnB1dCxcbmJ1dHRvbiB7XG4gICAgZm9udC1zaXplOiAxNHB4O1xufVxuXG50cixcbnRoIHtcbiAgICBmb250LXNpemU6IDE0cHg7XG59XG5cbnRoIHtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbn1cblxuI2RlbW9Gb250IHtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBiYWNrZ3JvdW5kOiAjMkMzRTUwO1xuICAgIC8qIGZhbGxiYWNrIGZvciBvbGQgYnJvd3NlcnMgKi9cbiAgICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7XG4gICAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApO1xuICAgIC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbn1cblxuI2RlbW9Gb250MiB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZDogIzUyYzIzNDtcbiAgICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7XG4gICAgLyogQ2hyb21lIDEwLTI1LCBTYWZhcmkgNS4xLTYgKi9cbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gbGVmdCwgIzA2MTcwMCwgIzUyYzIzNCk7XG4gICAgLyogVzNDLCBJRSAxMCsvIEVkZ2UsIEZpcmVmb3ggMTYrLCBDaHJvbWUgMjYrLCBPcGVyYSAxMissIFNhZmFyaSA3KyAqL1xufVxuXG4ubmF2LWl0ZW0gYSB7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZDogIzA5MzAyODtcbiAgICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQodG8gdG9wLCAjMjM3QTU3LCAjMDkzMDI4KTtcbiAgICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICMyMzdBNTcsICMwOTMwMjgpO1xuICAgIC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbn1cblxuLm1hcmdlbiB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICB3aWR0aDogMTAwJTtcbn1cblxuLmNhcmQge1xuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KTtcbiAgICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDEpLCAwIDZweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE5KTtcbn1cblxuLmNhcmQtaGVhZGVyIHtcbiAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAyMHB4O1xuICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAyMHB4O1xufVxuXG4jbXlUYWIge1xuICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xufVxuXG5ociB7XG4gICAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICMwMDAwMDAgIWltcG9ydGFudDtcbiAgICBtYXJnaW4tYm90dG9tOiA1cHggIWltcG9ydGFudDtcbiAgICBtYXJnaW4tdG9wOiA1cHggIWltcG9ydGFudDtcbiAgICBoZWlnaHQ6IDEwcHg7XG59XG5cbi5jYW5jZWxhZGEge1xuICAgIGNvbG9yOiByZWQ7XG59XG5cbi5hYmllcnRhIHtcbiAgICBjb2xvcjogYmx1ZTtcbn1cblxuLmFwcm9iYWRvIHtcbiAgICBjb2xvcjogIzEzOEQ3NTtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.ts":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.ts ***!
+  \***************************************************************************************************/
+/*! exports provided: ActividadesDirectorioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActividadesDirectorioComponent", function() { return ActividadesDirectorioComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_modelos_actividadesDirecctorio_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/modelos/actividadesDirecctorio.model */ "./src/app/modelos/actividadesDirecctorio.model.ts");
+/* harmony import */ var src_app_servicios_actividades_directorio_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/servicios/actividades-directorio.service */ "./src/app/servicios/actividades-directorio.service.ts");
+/* harmony import */ var src_app_votaciones_bryanm_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/votaciones-bryanm.service */ "./src/app/votaciones-bryanm.service.ts");
+
+
+
+
+
+
+let ActividadesDirectorioComponent = class ActividadesDirectorioComponent {
+    constructor(config, modalService, _actividad, _votaciones) {
+        this.modalService = modalService;
+        this._actividad = _actividad;
+        this._votaciones = _votaciones;
+        this.ingresandoAct = false;
+        this.actividad = new src_app_modelos_actividadesDirecctorio_model__WEBPACK_IMPORTED_MODULE_3__["Actividades"];
+        config.backdrop = 'static';
+        config.keyboard = false;
+    }
+    ngOnInit() {
+    }
+    abrirModalIngreso(modal) {
+        this.cargarFecha();
+        this.modalService.open(modal, { size: 'xl' });
+    }
+    abrirModalActivos(modal) {
+        this.traerActividadesActivas();
+        this.modalService.open(modal, { size: 'xl' });
+    }
+    cargarFecha() {
+        this._votaciones.traerDatos().subscribe(res => {
+            if (res.estado == 'success') {
+                this.actividad.fecha = res.datos.fecha;
+            }
+            else {
+                console.log(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+    limpiarActividad() {
+        this.actividad.fecha = '';
+        this.actividad.responsable = '';
+        this.actividad.actividad = '';
+    }
+    ingresarActividad() {
+        this.ingresandoAct = true;
+        this._actividad.ingresarActividad(this.actividad).subscribe(res => {
+            if (res.estado == 'success') {
+                this.ingresandoAct = false;
+                this.limpiarActividad();
+                alert(res.mensaje);
+            }
+            else {
+                this.ingresandoAct = false;
+                alert(res.mensaje);
+            }
+        }, error => {
+            this.ingresandoAct = false;
+            console.log(error);
+        });
+    }
+    traerActividadesActivas() {
+        this.actividades = [];
+        this._actividad.traerActividadesActivas().subscribe(res => {
+            if (res.estado == 'success') {
+                this.actividades = res.activas;
+            }
+            else {
+                alert(res.mensaje);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+};
+ActividadesDirectorioComponent.ctorParameters = () => [
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: src_app_servicios_actividades_directorio_service__WEBPACK_IMPORTED_MODULE_4__["ActividadesDirectorioService"] },
+    { type: src_app_votaciones_bryanm_service__WEBPACK_IMPORTED_MODULE_5__["VotacionesBryanmService"] }
+];
+ActividadesDirectorioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-actividades-directorio',
+        template: __webpack_require__(/*! raw-loader!./actividades-directorio.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.html"),
+        styles: [__webpack_require__(/*! ./actividades-directorio.component.css */ "./src/app/auth-master/secretaria/actividades-directorio/actividades-directorio.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModalConfig"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], src_app_servicios_actividades_directorio_service__WEBPACK_IMPORTED_MODULE_4__["ActividadesDirectorioService"], src_app_votaciones_bryanm_service__WEBPACK_IMPORTED_MODULE_5__["VotacionesBryanmService"]])
+], ActividadesDirectorioComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component.css":
 /*!****************************************************************************************!*\
   !*** ./src/app/auth-master/secretaria/acuerdo-asamblea/acuerdo-asamblea.component.css ***!
@@ -14499,6 +14633,38 @@ ModalGastosOperacionalesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decora
 
 /***/ }),
 
+/***/ "./src/app/modelos/actividadesDirecctorio.model.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/modelos/actividadesDirecctorio.model.ts ***!
+  \*********************************************************/
+/*! exports provided: Actividades */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Actividades", function() { return Actividades; });
+class Actividades {
+    constructor(id, fecha, responsable, actividad, estado_actividad_id, estado) {
+        this.id = id;
+        this.fecha = fecha;
+        this.responsable = responsable;
+        this.actividad = actividad;
+        this.estado_actividad_id = estado_actividad_id;
+        this.estado = estado;
+    }
+}
+Actividades.ctorParameters = () => [
+    { type: String },
+    { type: String },
+    { type: String },
+    { type: String },
+    { type: String },
+    { type: String }
+];
+
+
+/***/ }),
+
 /***/ "./src/app/modelos/usuarios.model.ts":
 /*!*******************************************!*\
   !*** ./src/app/modelos/usuarios.model.ts ***!
@@ -14890,6 +15056,60 @@ SafePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
 ], SafePipe);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/actividades-directorio.service.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/servicios/actividades-directorio.service.ts ***!
+  \*************************************************************/
+/*! exports provided: ActividadesDirectorioService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActividadesDirectorioService", function() { return ActividadesDirectorioService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let ActividadesDirectorioService = class ActividadesDirectorioService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    ingresarActividad(actividad) {
+        return this._http.post(this.url + "ingresar_actividad", actividad, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token
+            })
+        });
+    }
+    traerActividadesActivas() {
+        return this._http.get(this.url + "traer_actividades_activas", {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+};
+ActividadesDirectorioService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+ActividadesDirectorioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], ActividadesDirectorioService);
 
 
 

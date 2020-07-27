@@ -81,6 +81,12 @@ Route::get('/traer_tipos_temas', 'SecTemasController@TraerTiposTemas');
 Route::get('/traer_votos_tema/{tema}', 'SecTemasController@TraerVotos');
 //------------------------------------------->Temas/Votos
 
+//------------------------------------------->Actividades Directorio
+Route::post('/ingresar_actividad', 'ActividadesDirectorioController@IngresarActividad');
+Route::get('/traer_actividades_activas', 'ActividadesDirectorioController@TraerActividadesActivas');
+//------------------------------------------->Actividades Directorio
+
+
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 
 

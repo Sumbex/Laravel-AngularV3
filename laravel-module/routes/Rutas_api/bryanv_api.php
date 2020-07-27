@@ -1,7 +1,7 @@
 <?php
 // RUTAS PARA LOS ACUERDOS DE ASAMBLEA
 Route::post('set_acuerdo', 'SecAcuerdosController@setAcuerdo');
-Route::get('get_acuerdos', 'SecAcuerdosController@getAcuerdos');
+Route::get('get_acuerdos/{idAnio}', 'SecAcuerdosController@getAcuerdos');
 Route::get('getAcuerdoId/{id}', 'SecAcuerdosController@getAcuerdoPorId');
 Route::post('updateAcuerdo', 'SecAcuerdosController@updateAcuerdo');
 

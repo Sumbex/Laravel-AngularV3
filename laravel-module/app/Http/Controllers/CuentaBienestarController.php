@@ -332,6 +332,7 @@ class CuentaBienestarController extends Controller
 					$return['consorcio']=[];
 					$return['cuota_extraordinaria']=[];
 					$return['no_sindicalizados']=[];
+					$return['aporte']=[];
 
                     foreach ($listar as $key) {
                         switch ($key->tipo_cuenta_bienestar_id) {
@@ -348,6 +349,7 @@ class CuentaBienestarController extends Controller
 							case '10': $return['consorcio'][] = $key;  break;
 							case '11': $return['cuota_extraordinaria'][] = $key;  break;
 							case '12': $return['no_sindicalizados'][] = $key;  break;
+							case '13': $return['aporte'][] = $key;  break;
                             
                             default:
                                 # code...

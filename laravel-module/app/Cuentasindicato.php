@@ -18,51 +18,50 @@ class Cuentasindicato extends Model
     {
     	$get_anio = DB::table('mes as m')->select('m.descripcion')->where('id',$mes)->first();
 
-    	$interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
+    	// $interes = Detalleinteresprestamo::item_interes_a_cs($anio, $mes);
 		$prestamo_egreso = $this->item_prestamo_e_cs($anio, $mes);
 		$consorcio_egreso = Consorciopagodiasueldo::item_cpds($anio, $mes);
 
 		
     	//$prestamo_ingreso = $this->item_prestamo_i_cs($anio, $mes); este se comenta por peticion del tio emilio
 
-    	//dd($prestamo_ingreso);
 
-		if($interes != null){ // si existe interes de prestamo
-			$verify_interes = $this->where([
-				'interes' => 'S', // si es un automatico de interes
-				'activo' => 'S',
-				'tipo_cuenta_sindicato' => '1',//cuenta tipo fijo
-				'anio_id' => $anio,
-				'mes_id' => $mes
-			])->first();
+		// if($interes != null){ // si existe interes de prestamo
+		// 	$verify_interes = $this->where([
+		// 		'interes' => 'S', // si es un automatico de interes
+		// 		'activo' => 'S',
+		// 		'tipo_cuenta_sindicato' => '1',//cuenta tipo fijo
+		// 		'anio_id' => $anio,
+		// 		'mes_id' => $mes
+		// 	])->first();
 
 			
 
-			if(empty($verify_interes)){
+		// 	if(empty($verify_interes)){
 
-				$this->numero_documento = '--';
-				$this->archivo_documento = '--';
-				$this->tipo_cuenta_sindicato = 1; //fijo
-				$this->descripcion = $interes['descripcion'];
-				$this->monto_ingreso = $interes['monto_ingreso'];
-				$this->monto_egreso = null;
-				$this->saldo_actual = null;
-				$this->definicion = 1;
-				$this->user_crea = Auth::user()->id;
-				$this->activo = 'S';
-				$this->anio_id = $anio;
-				$this->mes_id = $mes;
-				$this->dia = '1';
-				$this->interes = 'S';
-				$this->save();
+		// 		$this->numero_documento = '--';
+		// 		$this->archivo_documento = '--';
+		// 		$this->tipo_cuenta_sindicato = 1; //fijo
+		// 		$this->descripcion = $interes['descripcion'];
+		// 		$this->monto_ingreso = $interes['monto_ingreso'];
+		// 		$this->monto_egreso = null;
+		// 		$this->saldo_actual = null;
+		// 		$this->definicion = 1;
+		// 		$this->user_crea = Auth::user()->id;
+		// 		$this->activo = 'S';
+		// 		$this->anio_id = $anio;
+		// 		$this->mes_id = $mes;
+		// 		$this->dia = '1';
+		// 		$this->interes = 'S';
+		// 		$this->save();
 
-			}else{
+		// 	}else{
 
-				$verify_interes->monto_ingreso = $interes['monto_ingreso'];
-				$verify_interes->save();
+		// 		$verify_interes->monto_ingreso = $interes['monto_ingreso'];
+		// 		$verify_interes->save();
 				
-			}
-		}
+		// 	}
+		// }
 			$i = new Cuentasindicato;
 			$e = new Cuentasindicato;
 

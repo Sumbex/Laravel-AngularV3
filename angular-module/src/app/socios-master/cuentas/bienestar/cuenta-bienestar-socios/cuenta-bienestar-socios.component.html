@@ -9,15 +9,13 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Año</strong></label>
-                <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
-                    class="form-control form-control-sm">
+                <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual" class="form-control form-control-sm">
                     <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
                 </select>
             </div>
 
             <div class="col-12 col-md-4 col-lg-4"><br><label><strong>Mes</strong></label>
-                <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
-                    class="form-control form-control-sm">
+                <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual" class="form-control form-control-sm">
                     <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
                 </select>
             </div>
@@ -50,8 +48,8 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> Cuenta del
-                            Gas</th>
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Cuenta del Gas
+                        </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
                         <td class="text-center"><strong> {{ montoInicio | currency:"CLP" : "symbol-narrow":'1.0'}}
@@ -66,8 +64,7 @@
                         <td class="text-center"><b>{{itemGas?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorGas)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
                         <!--MODAL VISOR PDF-->
@@ -76,19 +73,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemGas.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemGas.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +100,7 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> Inasistencia
-                            por reunion
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Inasistencia por reunion
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -120,8 +112,7 @@
                         <td class="text-center"><b>{{itemReunion?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorReunion)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -131,19 +122,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemReunion.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemReunion.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -166,8 +153,7 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> Inasistencia
-                            por votacion
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Inasistencia por votacion
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -179,8 +165,7 @@
                         <td class="text-center"><b>{{itemVotacion?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorVotacion)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -190,19 +175,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemVotacion.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemVotacion.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -237,8 +218,7 @@
                         <td class="text-center"><b>{{itemCajaChica?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorCajaChica)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -248,19 +228,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemCajaChica.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemCajaChica.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -294,48 +270,43 @@
                     <tr *ngFor="let itemNacimiento of datosNacimiento">
                         <td colspan="3" class="text-center"><b>{{ itemNacimiento?.fecha }}</b></td>
                         <td class="text-center"><b>{{itemNacimiento?.numero_documento}}</b>
-                        <td colspan="2" class="text-center">
-                            <a (click)="openPDF(visorNacimiento)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
-                            </a>&nbsp;
-                        </td>
+                            <td colspan="2" class="text-center">
+                                <a (click)="openPDF(visorNacimiento)" style="cursor: pointer" class="btn-primary-outline">
+                                    <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                </a>&nbsp;
+                            </td>
 
-                        <!--MODAL VISOR PDF-->
-                        <ng-template #visorNacimiento let-c="close" let-d="dismiss">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="modal-header text-center" id="demoFont">
-                                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                            <!--MODAL VISOR PDF-->
+                            <ng-template #visorNacimiento let-c="close" let-d="dismiss">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="modal-header text-center" id="demoFont">
+                                            <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                            <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemNacimiento.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                    <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe width="100%" height="500px" [src]="  '../' + itemNacimiento.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                        <div class="modal-footer" [hidden]="true">
+                                            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ng-template>
-                        <!--MODAL VISOR PDF-->
+                            </ng-template>
+                            <!--MODAL VISOR PDF-->
 
-                        <td colspan="4"><b>{{itemNacimiento?.descripcion}}</b></td>
-                        <td class="text-center">
-                            <b>{{ itemNacimiento?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
-                        </td>
-                        <td class="text-center">
-                            <b>{{ itemNacimiento?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
-                        </td>
-                        <td class="text-center">
-                            <b>{{ itemNacimiento?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
-                        </td>
+                            <td colspan="4"><b>{{itemNacimiento?.descripcion}}</b></td>
+                            <td class="text-center">
+                                <b>{{ itemNacimiento?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                            </td>
+                            <td class="text-center">
+                                <b>{{ itemNacimiento?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                            </td>
+                            <td class="text-center">
+                                <b>{{ itemNacimiento?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                            </td>
                     </tr>
 
                     <!-- FALLECIMIENTO -->
@@ -345,8 +316,7 @@
                         <th>N° Doc</th>
                         <th><i class="far fa-file-pdf"></i> PDF 1</th>
                         <th><i class="far fa-file-pdf"></i> PDF 2</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i>
-                            Fallecimientos
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Fallecimientos
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -358,8 +328,7 @@
                         <td class="text-center"><b>{{itemFallecimiento?.numero_documento}}</b></td>
                         <td class="text-center">
                             <a (click)="openPDF(visorFallecimiento1)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -369,19 +338,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemFallecimiento.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemFallecimiento.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -390,8 +355,7 @@
 
                         <td class="text-center">
                             <a (click)="openPDF(visorFallecimiento2)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -401,19 +365,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemFallecimiento.archivo_2 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemFallecimiento.archivo_2 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -438,8 +398,7 @@
                         <th>N° Doc</th>
                         <th><i class="far fa-file-pdf"></i> PDF 1</th>
                         <th><i class="far fa-file-pdf"></i> PDF 2</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> Gastos
-                            Medicos
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Gastos Medicos
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -451,8 +410,7 @@
                         <td class="text-center"><b>{{itemMedico?.numero_documento}}</b></td>
                         <td colspan="1" class="text-center">
                             <a (click)="openPDF(visorMedico)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -462,19 +420,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemMedico.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemMedico.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -483,8 +437,7 @@
 
                         <td colspan="1" class="text-center">
                             <a (click)="openPDF(visorMedicamento2)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -494,19 +447,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemFallecimiento.archivo_2 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemFallecimiento.archivo_2 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -529,8 +478,7 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> 10% cuota
-                            sindical
+                        <th colspan="4"><i class="fas fa-file-signature"></i> 10% cuota sindical
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -542,8 +490,7 @@
                         <td class="text-center"><b>{{itemSocioCuota?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorCuotaSocio)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -553,19 +500,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemSocioCuota.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemSocioCuota.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -589,8 +532,7 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> inasistencia
-                            por Elecciones
+                        <th colspan="4"><i class="fas fa-file-signature"></i> inasistencia por Elecciones
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -602,8 +544,7 @@
                         <td class="text-center">{{itemElecciones?.numero_documento}}</td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorElecciones)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -613,19 +554,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemElecciones.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemElecciones.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -661,8 +598,7 @@
                         <td class="text-center"><b>{{itemConsorcio?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorConsorcio)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -672,19 +608,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemConsorcio.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemConsorcio.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -708,8 +640,7 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> Cuota
-                            Extraordinaria
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Cuota Extraordinaria
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -721,8 +652,7 @@
                         <td class="text-center"><b>{{itemExtraordinaria?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorExtraordinaria)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -732,19 +662,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemExtraordinaria.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemExtraordinaria.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -768,8 +694,7 @@
                         <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
                         <th>N° Doc</th>
                         <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
-                        <th colspan="4"><i class="fas fa-file-signature"></i> No
-                            Sindicalizados
+                        <th colspan="4"><i class="fas fa-file-signature"></i> No Sindicalizados
                         </th>
                         <th><i class="fas fa-plus-circle"></i> Ingresos</th>
                         <th><i class="fas fa-minus-circle"></i> Egresos</th>
@@ -781,8 +706,7 @@
                         <td class="text-center"><b>{{itemNoSindicalizados?.numero_documento}}</b></td>
                         <td colspan="2" class="text-center">
                             <a (click)="openPDF(visorNoSindicalizado)" style="cursor: pointer" class="btn-primary-outline">
-                                <i class="far fa-file-alt" placement="top"
-                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                             </a>&nbsp;
                         </td>
 
@@ -792,19 +716,15 @@
                                 <div class="col">
                                     <div class="modal-header text-center" id="demoFont">
                                         <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
-                                        <button id="closeModalButton" type="button" class="close" aria-label="Close"
-                                            (click)="d('Cross click')">
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <iframe width="100%" height="500px"
-                                            [src]="  '../' + itemNoSindicalizados.archivo_1 | safeUrl" frameborder="0"
-                                            allowfullscreen></iframe>
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemNoSindicalizados.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                     <div class="modal-footer" [hidden]="true">
-                                        <button type="button" class="btn btn-outline-dark"
-                                            (click)="c('Save click')">OK</button>
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                                     </div>
                                 </div>
                             </div>
@@ -823,16 +743,69 @@
                         </td>
                     </tr>
 
+                    <!--  Aporte -->
+                    <tr class="text-center">
+                        <th colspan="3"><i class="far fa-calendar-alt"></i> Fecha</th>
+                        <th>N° Doc</th>
+                        <th colspan="2"><i class="far fa-file-pdf"></i> PDF</th>
+                        <th colspan="4"><i class="fas fa-file-signature"></i> Aporte económico de prestamos
+                        </th>
+                        <th><i class="fas fa-plus-circle"></i> Ingresos</th>
+                        <th><i class="fas fa-minus-circle"></i> Egresos</th>
+                        <td class="text-center"><strong> </strong></td>
+                    </tr>
+
+                    <tr *ngFor="let itemInteres of datosInteres">
+                        <td colspan="3" class="text-center"><b>{{ itemInteres?.fecha }}</b></td>
+                        <td class="text-center"><b>{{itemInteres?.numero_documento}}</b></td>
+                        <td colspan="2" class="text-center">
+                            <a style="cursor: pointer" class="btn-primary-outline">
+                                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                            </a>&nbsp;
+                        </td>
+
+                        <!--MODAL VISOR PDF-->
+                        <ng-template #visorInteres let-c="close" let-d="dismiss">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="modal-header text-center" id="demoFont">
+                                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                        <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe width="100%" height="500px" [src]="  '../' + itemInteres.archivo_1 | safeUrl" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="modal-footer" [hidden]="true">
+                                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <!--MODAL VISOR PDF-->
+
+                        <td colspan="4"><b>{{itemInteres?.descripcion}}</b></td>
+                        <td class="text-center">
+                            <b>{{ itemInteres?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                        </td>
+                        <td class="text-center">
+                            <b>{{ itemInteres?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                        </td>
+                        <td class="text-center">
+                            <b>{{ itemInteres?.saldo_actual | currency:"CLP" : "symbol-narrow":'1.0'}}</b>
+                        </td>
+                    </tr>
+
                     <!--Cierre del mes-->
                     <tr>
-                        <th colspan="12" class="text-right"><i class="fas fa-dollar-sign"></i> Total
-                            Cierre del Mes</th>
+                        <th colspan="12" class="text-right"><i class="fas fa-dollar-sign"></i> Total Cierre del Mes</th>
                         <td scope="col" class="text-center">
                             <strong><b>{{ montosTotales?.cierre_mes | currency:"CLP" : "symbol-narrow":'1.0'}}</b></strong>
                         </td>
                     </tr>
 
-                    <!--total del cierre de mes--> <br>
+                    <!--total del cierre de mes--><br>
                     <tr>
                         <th colspan="10" class="text-right"><i class="fas fa-plus-circle"></i> INGRESOS
                         </th>
@@ -850,8 +823,7 @@
                     </tr>
 
                     <tr>
-                        <th colspan="10" class="text-right"><i class="fas fa-dollar-sign"></i> CIERRE
-                            MENSUAL ACTUAL (INGRESO - EGRESO)</th>
+                        <th colspan="10" class="text-right"><i class="fas fa-dollar-sign"></i> CIERRE MENSUAL ACTUAL (INGRESO - EGRESO)</th>
                         <td colspan="2" class="text-center">
                             <strong>{{ montosTotales?.total | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                     </tr>
@@ -869,6 +841,5 @@
 </ng-template>
 
 <!--Boton Para llamar al Modal inicio y cierre mensual-->
-<button class="btn btn-primary btn-block btn-lg" type="button"
-    (click)="openModalCajaChica(bienestarSocio)"><b>Bienestar</b>
+<button class="btn btn-primary btn-block btn-lg" type="button" (click)="openModalCajaChica(bienestarSocio)"><b>Bienestar</b>
 </button>

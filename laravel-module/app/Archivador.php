@@ -99,7 +99,7 @@ class Archivador extends Model
 
     protected function validarAct($archivo)
     {
-        $extensions = array("pdf", "application/pdf", "xls", "xlsx", "xlm", "xla", "xlc", "xlt", "xlw");
+        $extensions = array("pdf", "application/pdf", "xls", "xlsx");
         $result = array($archivo->getClientOriginalExtension());
         if (in_array($result[0], $extensions)) {
             return ['estado' => true];
@@ -112,7 +112,13 @@ class Archivador extends Model
     {
         $validarDatos = $this->validarDatos($request);
         if ($validarDatos['estado'] == 'success') {
-            if ($request->tipo == 4) {
+            $validarArchivo = $this->validarAct($request->archivo);
+            if ($validarArchivo['estado'] == true) {
+                return $this->setArchivo($request);
+            } else {
+                return $validarArchivo;
+            }
+            /* if ($request->tipo == 4) {
                 $validarPDF = $this->validarPDF($request->archivo);
                 if ($validarPDF['estado'] == true) {
                     return $this->setArchivo($request);
@@ -126,7 +132,7 @@ class Archivador extends Model
                 } else {
                     return $excel;
                 }
-            }
+            } */
         } else {
             return $validarDatos;
         }

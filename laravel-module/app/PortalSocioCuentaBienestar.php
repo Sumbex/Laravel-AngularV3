@@ -3,6 +3,7 @@
 namespace App;
 
 use App\PortalSocio;
+use App\Cuentabienestar;
 use App\CajaChicaBienestar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -61,6 +62,45 @@ class PortalSocioCuentaBienestar extends Model
 
     protected function traerCuentaBienestar($IM, $anio, $mes, $totales)
     {
+        $interes = $this->item_interes_a_be($anio, $mes);
+
+
+        if ($interes != null) { // si existe interes de prestamo
+            $verify_interes = DB::table('cuenta_bienestar')->where([
+                // 'interes' => 'S', // si es un automatico de interes
+                'activo' => 'S',
+                'tipo_cuenta_bienestar_id' => '13', //cuenta tipo interes de prestamo
+                'anio_id' => $anio,
+                'mes_id' => $mes
+
+            ])->first();
+            /* dd($verify_interes); */
+
+
+            if (empty($verify_interes)) {
+                $cB = new Cuentabienestar;
+                $cB->numero_documento_1 = '--';
+                $cB->archivo_documento_1 = '--';
+                $cB->tipo_cuenta_bienestar_id = 13; //interes
+                $cB->descripcion = $interes['descripcion'];
+                $cB->monto_ingreso = $interes['monto_ingreso'];
+                $cB->monto_egreso = null;
+                // $this->saldo_actual = null;
+                $this->definicion = 1;
+                // $this->user_crea = Auth::user()->id;
+                $cB->activo = 'S';
+                $cB->anio_id = $anio;
+                $cB->mes_id = $mes;
+                $cB->dia = '1';
+                // $this->interes = 'S';
+                $cB->save();
+            } else {
+                $vICB = Cuentabienestar::find($verify_interes->id);
+                $vICB->monto_ingreso = $interes['monto_ingreso'];
+                $vICB->save();
+            }
+        }
+
         $bienestar = DB::table('cuenta_bienestar as cb')
             ->select([
                 'cb.id',
@@ -88,6 +128,8 @@ class PortalSocioCuentaBienestar extends Model
 
         if (!$bienestar->isEmpty()) {
             $tomar = true;
+
+
 
             for ($i = 0; $i < count($bienestar); $i++) {
                 switch ($bienestar[$i]->definicion) {
@@ -127,6 +169,7 @@ class PortalSocioCuentaBienestar extends Model
             $return['consorcio'] = [];
             $return['cuota_extra'] = [];
             $return['no_sindicalizados'] = [];
+            $return['interes'] = [];
 
             foreach ($bienestar as $key) {
                 switch ($key->tipo) {
@@ -178,6 +221,10 @@ class PortalSocioCuentaBienestar extends Model
                         $return['no_sindicalizados'][] = $key;
                         break;
 
+                    case 13:
+                        $return['interes'][] = $key;
+                        break;
+
                     default:
                         # code...
                         break;
@@ -188,6 +235,60 @@ class PortalSocioCuentaBienestar extends Model
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Aun no hay datos ingresados en la fecha ingresada.'];
         }
+    }
+
+    protected function item_interes_a_be($anio, $mes) //este item esta listo para irse a la cuenta bienestar cuando se llame este metodo
+    {
+
+        $get_mes = DB::table('mes as m')->select(['m.descripcion', 'm.id'])->where('id', $mes)->first();
+        $get_anio = DB::table('anio as a')->select('a.descripcion')->where('id', $anio)->first();
+
+
+        if ($get_anio->descripcion == 2020) {
+
+            // dd($get_mes->id);
+            if ($get_mes->id >= 6) {
+
+                $list = DB::select("SELECT COALESCE(sum(interes_mensual),0) as interes_mensual  from p_apuro_economico_retornable
+								where mes_id = $mes and anio_id = $anio and definicion = 1 and activo = 'S';");
+
+                return [
+                    'id' => '',
+                    'numero_documento' => '',
+                    'fecha' => '',
+                    'archivo_documento' => '',
+                    'tipo_cuenta_sindicato' => 1,
+                    'descripcion' =>  'Aporte de prestamo de apuro económico del mes de ' . $get_mes->descripcion,
+                    'monto_ingreso' =>    (int)$list[0]->interes_mensual,
+                    'monto_egreso' => '',
+                    'definicion' => 1,
+                    'saldo_actual_raw' => 0
+                ];
+            }
+        }
+
+        if ($get_anio->descripcion > 2020) {
+
+            if ($get_mes->descripcion > 0) {
+                $list = DB::select("SELECT COALESCE(sum(interes_mensual),0) as interes_mensual  from p_apuro_economico_retornable
+								where mes_id = $mes and anio_id = $anio and definicion = 1 and activo = 'S';");
+
+                return [
+                    'id' => '',
+                    'numero_documento' => '',
+                    'fecha' => '',
+                    'archivo_documento' => '',
+                    'tipo_cuenta_sindicato' => 1,
+                    'descripcion' =>  'Aporte de prestamo de apuro económico del mes de ' . $get_mes->descripcion,
+                    'monto_ingreso' =>    (int)$list[0]->interes_mensual,
+                    'monto_egreso' => '',
+                    'definicion' => 1,
+                    'saldo_actual_raw' => 0
+                ];
+            }
+        }
+
+        return null;
     }
 
     protected function totalesCuentaSindical($anio, $mes)

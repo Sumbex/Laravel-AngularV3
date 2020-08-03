@@ -195,8 +195,8 @@
                                 la tabla, debe de hacer <b>click</b> en el campo seleccionado. Si desea cambiar el archivo, debe
                                 de hacer <b>click</b> el icono <i class="far fa-copy" placement="top"></i></small>
                         <br>
-                        <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡OBSERVACION!</strong> 
-                                Si desea cambiar un archivo <b>PDF por uno Excel o viceversa</b>, recuerde cambiarlo por el tipo que corresponda para que este pueda ser visualizado.</small>
+                        <!-- <small><i class="fas fa-exclamation-circle fa-2x"></i> <strong> ¡OBSERVACION!</strong> 
+                                Si desea cambiar un archivo <b>PDF por uno Excel o viceversa</b>, recuerde cambiarlo por el tipo que corresponda para que este pueda ser visualizado.</small> -->
                     </ngb-alert>
                 </div>
 
@@ -418,14 +418,14 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="modal-header text-center" id="demoFont">
-                                                        <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                                        <h4 class="modal-title" id="modal-basic-title">Visor de Excel</h4>
                                                         <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- item?.archivo -->
-                                                        <iframe width="100%" height="500px" [src]="  '../' + item.archivo | safeUrl" frameborder="0" allowfullscreen></iframe>
+                                                        <ngx-doc-viewer [url]="url + item?.archivo" viewer="google" style="width:100%;height:50vh;"></ngx-doc-viewer>
                                                     </div>
                                                     <div class="modal-footer" [hidden]="true">
                                                         <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>

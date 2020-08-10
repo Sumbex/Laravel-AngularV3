@@ -35,6 +35,7 @@ export class CuentaBienestarSociosComponent implements OnInit {
   datosConsorcio;
   datosExtraordinaria;
   datosSindicalizados;
+  datosInteres;
   montosTotales;
 
   //variable para asociar al modal
@@ -129,6 +130,7 @@ export class CuentaBienestarSociosComponent implements OnInit {
         this.datosConsorcio = response.CB.consorcio;
         this.datosExtraordinaria = response.CB.cuota_extra;
         this.datosSindicalizados = response.CB.no_sindicalizados;
+        this.datosInteres = response.CB.interes;
         this.montosTotales = response.totales;
         this.cargandoTabla = false;
       }
@@ -153,6 +155,7 @@ export class CuentaBienestarSociosComponent implements OnInit {
     this.datosConsorcio = null;
     this.datosExtraordinaria = null;
     this.datosSindicalizados = null;
+    this.datosInteres = null;
     this.montosTotales = '';
   }
 

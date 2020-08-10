@@ -97,7 +97,7 @@ class Detalleinteresprestamo extends Model
 		if ($get_anio->descripcion == 2020) {
 
 			// dd($get_mes->id);
-			if ($get_mes->id >= 6 ) {
+			if ($get_mes->id >= 8 ) {
 				
 				$list = DB::select("SELECT COALESCE(sum(interes_mensual),0) as interes_mensual  from p_apuro_economico_retornable
 								where mes_id = $mes and anio_id = $anio and definicion = 1 and activo = 'S';");

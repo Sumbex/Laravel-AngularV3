@@ -5982,8 +5982,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\Lenovo\Desktop\Sindicato-Cmpc\angular-module\src\polyfills.ts */"./src/polyfills.ts");
 module.exports = __webpack_require__(/*! C:\Users\Lenovo\Desktop\Sindicato-Cmpc\angular-module\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+=======
+__webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+>>>>>>> faea758b7aa22e276b5e2c7975c27ac0f4d20b3f
 
 
 /***/ })

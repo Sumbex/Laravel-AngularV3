@@ -598,13 +598,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\Lenovo\Desktop\Sindicato-Cmpc\angular-module\src\styles.css */"./src/styles.css");
 module.exports = __webpack_require__(/*! C:\Users\Lenovo\Desktop\Sindicato-Cmpc\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-=======
-__webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\src\styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! C:\Users\bryan\Desktop\Proyectos\Proyecto CMCP\Laravel-AngularV3\angular-module\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
->>>>>>> faea758b7aa22e276b5e2c7975c27ac0f4d20b3f
 
 
 /***/ })

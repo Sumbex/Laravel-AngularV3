@@ -2829,6 +2829,129 @@
             </td>
           </tr>
 
+
+
+          <!-- APORTE ECONOMICO DE PRESTAMOS -->
+          <tr class="text-center">
+            <th colspan="3" style="background: #138D75"><i class="far fa-calendar-alt"></i> Fecha</th>
+            <th style="background: #138D75">N° Doc</th>
+            <th colspan="2" style="background: #138D75"><i class="far fa-file-pdf"></i> PDF</th>
+            <th colspan="4" style="background: #138D75;"><i class="fas fa-file-signature"></i> Aporte económico de prestamos
+            </th>
+            <th style="background: #138D75"><i class="fas fa-plus-circle"></i> Ingresos</th>
+            <th style="background: #138D75"><i class="fas fa-minus-circle"></i> Egresos</th>
+            <td class="text-center"><strong> </strong></td>
+          </tr>
+          
+          <tr *ngFor="let item of aporte">
+            <td colspan="3" class="text-center">
+              {{item?.fecha}}
+              <ng-template #fechaNoSindicalizadosModal let-c="closeFecha" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Fecha</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+          
+                  <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
+                      value="{{item?.fecha}}" disabled></label>
+                  <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaNoSindicalizados
+                      type="date"></label>
+          
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                  <button type="button" class="btn btn-outline-success"
+                    (click)="actualizar(item?.id,'fecha',fechaNoSindicalizados,modalUsuario)">Guardar
+                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                  </button>
+                </div>
+              </ng-template>
+            </td>
+            <td class="text-center" >
+              {{item?.numero_documento_1}}
+              <ng-template #numeroDocNoSindicalizadosModal let-c="close" let-d="dismiss">
+                <div class="modal-header" id="demoFont">
+                  <h4 class="modal-title" id="modal-basic-title">Numero Documento</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label><strong>N° Documento Actual</strong></label>
+                    <input type="text" class="form-control form-control-sm" value="{{item?.numero_documento_1}}" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label> <strong>Nuevo N° Documento</strong></label>
+                    <input class="form-control form-control-sm" #numeroDocNoSindicalizados type="text">
+                  </div>
+                </div>
+          
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
+                  <button type="button" class="btn btn-outline-success"
+                    (click)="actualizar(item?.id,'numero_documento_1',numeroDocNoSindicalizados,modalUsuario)">Guardar
+                    <img *ngIf="actualizarLoad" padding-left="20px" height="12"
+                      src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                  </button>
+                </div>
+              </ng-template>
+            </td>
+          
+            <!--MODAL VISOR PDF-->
+            <!-- <ng-template #visorSindicalNoSindicalizados1 let-c="close" let-d="dismiss">
+              <div class="row">
+                <div class="col">
+                  <div class="modal-header text-center" id="demoFont">
+                    <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                    <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <iframe width="100%" height="500px" [src]="  '../' + item?.archivo_documento_1 | safeUrl" frameborder="0"
+                      allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer" [hidden]="true">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template> -->
+            <!--MODAL VISOR PDF-->
+          
+            <td colspan="2" class="text-center">
+              <a style="cursor: pointer" class="btn-primary-outline">
+                <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
+              </a>&nbsp;
+              <a class="btn-primary-outline" style="cursor: pointer" >
+                
+                <i class="far fa-copy" placement="top" ngbTooltip="Presione aqui para modificar documento PDF"></i>
+              </a>
+            </td>
+            <td colspan="4">
+              {{item?.descripcion}}  
+            </td>
+          
+            <td class="text-center" >
+              {{ item?.monto_ingreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+    
+            </td>
+          
+          
+            <td class="text-center" >
+              {{ item?.monto_egreso | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+            <!--acumulado cierre del mes actual-->
+            <td class="text-center">
+              {{ item?.saldo_actual_raw | currency:"CLP" : "symbol-narrow":'1.0'}}
+            </td>
+          </tr>
+
           <!--Cierre del mes-->
           <tr>
             <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-dollar-sign"></i> Total

@@ -6,7 +6,9 @@ use App\SocioConyuge;
 use App\CbeNacimiento;
 use App\CbeFallecimiento;
 use App\SocioPadresSuegros;
+use App\Detalleinteresprestamo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
@@ -375,6 +377,50 @@ class Cuentabienestar extends Model
 
     protected function listar($anio, $mes)
     {
+
+        $interes = Detalleinteresprestamo::item_interes_a_be($anio, $mes);
+
+        // dd($interes);
+
+        if($interes != null){ // si existe interes de prestamo
+			$verify_interes = $this->where([
+				// 'interes' => 'S', // si es un automatico de interes
+				'activo' => 'S',
+				'tipo_cuenta_bienestar_id' => '13',//cuenta tipo interes de prestamo
+				'anio_id' => $anio,
+                'mes_id' => $mes
+                
+			])->first();
+
+			
+
+			if(empty($verify_interes)){
+
+				$this->numero_documento_1 = '--';
+				$this->archivo_documento_1 = '--';
+				$this->tipo_cuenta_bienestar_id = 13; //interes
+				$this->descripcion = $interes['descripcion'];
+				$this->monto_ingreso = $interes['monto_ingreso'];
+				$this->monto_egreso = null;
+				// $this->saldo_actual = null;
+				$this->definicion = 1;
+				// $this->user_crea = Auth::user()->id;
+				$this->activo = 'S';
+				$this->anio_id = $anio;
+				$this->mes_id = $mes;
+				$this->dia = '1';
+				// $this->interes = 'S';
+				$this->save();
+
+			}else{
+
+				$verify_interes->monto_ingreso = $interes['monto_ingreso'];
+				$verify_interes->save();
+				
+			}
+		}
+
+
         $list = DB::select("SELECT 
                         cbe.id,
                         concat(cbe.dia,' de ',m.descripcion,',',a.descripcion) as fecha,

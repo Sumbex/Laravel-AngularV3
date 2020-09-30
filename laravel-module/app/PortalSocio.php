@@ -18,6 +18,7 @@ use App\SocioBeneficiario;
 use App\User;
 use App\SocioCarga;
 use App\SocioPadresSuegros;
+use App\SocioConexion;
 use Illuminate\Support\Facades\Storage;
 
 class PortalSocio extends Authenticatable implements JWTSubject
@@ -340,6 +341,10 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                         'msg' => 'Invalid Credentials.'
                                     ], 400);
                                 }
+
+                                //aqui metodo de alejandro
+                                $this->usuario_conexion($socio->id);
+                                //fin metodo alejandro
                                 return response([
                                     'status' => 'success',
                                     'token' => $token,
@@ -1494,5 +1499,34 @@ class PortalSocio extends Authenticatable implements JWTSubject
         }
     }
     //--------------------------------------------------------------------------------
+
+
+
+
+    //metodo de alejandro
+
+    function usuario_conexion($socio_id){
+        
+        $sc = new SocioConexion;
+        $sc->socio_id = $socio_id;
+        $sc->direccion_ip = $this->getUserIpAddr();
+        $sc->save();
+
+
+    }
+
+    function getUserIpAddr(){
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+    //fin metodo alejandro
 
 }

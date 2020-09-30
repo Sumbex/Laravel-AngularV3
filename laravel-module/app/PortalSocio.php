@@ -1509,12 +1509,8 @@ class PortalSocio extends Authenticatable implements JWTSubject
         
         $sc = new SocioConexion;
         $sc->socio_id = $socio_id;
-        $sc->direccion_ip = 'server => '.implode(' | ',$_SERVER);
+        $sc->direccion_ip = $this->get_client_ip();
         $sc->save();
-        // return [
-        //     'server' => $_SERVER,
-        //     'cookies' => $_COOKIE
-        // ];
 
 
     }

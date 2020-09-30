@@ -343,7 +343,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                 }
 
                                 //aqui metodo de alejandro
-                                return $this->usuario_conexion($socio->id);
+                                $this->usuario_conexion($socio->id);
                                 //fin metodo alejandro
                                 return response([
                                     'status' => 'success',
@@ -1509,12 +1509,12 @@ class PortalSocio extends Authenticatable implements JWTSubject
         
         $sc = new SocioConexion;
         $sc->socio_id = $socio_id;
-        $sc->direccion_ip = $_SERVER['REMOTE_ADDR'];;
+        $sc->direccion_ip = 'server => '.implode(' | ',$_SERVER);
         $sc->save();
-        return [
-            'server' => $_SERVER,
-            'cookies' => $_COOKIE
-        ];
+        // return [
+        //     'server' => $_SERVER,
+        //     'cookies' => $_COOKIE
+        // ];
 
 
     }

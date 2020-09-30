@@ -343,7 +343,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
                                 }
 
                                 //aqui metodo de alejandro
-                                $this->usuario_conexion($socio->id);
+                                return $this->usuario_conexion($socio->id);
                                 //fin metodo alejandro
                                 return response([
                                     'status' => 'success',

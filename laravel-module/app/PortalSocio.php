@@ -1509,7 +1509,7 @@ class PortalSocio extends Authenticatable implements JWTSubject
         
         $sc = new SocioConexion;
         $sc->socio_id = $socio_id;
-        $sc->direccion_ip = $this->getUserIpAddr();
+        $sc->direccion_ip = $this->get_client_ip();
         $sc->save();
 
 
@@ -1526,6 +1526,25 @@ class PortalSocio extends Authenticatable implements JWTSubject
             $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
+    }
+
+    function get_client_ip() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+           $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
     }
     //fin metodo alejandro
 

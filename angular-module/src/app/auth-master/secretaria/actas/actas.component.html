@@ -72,9 +72,15 @@
       <hr>
       <div class="row justify-content-center">
         <div class="col-md-11">
-          <b>Rendición de cuentas:</b>
+          <h3 style="color:darkgray">Cuentas</h3>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <b>Rendición de tesorería:</b>
           <textarea [(ngModel)]="rendicion_cuentas" class="ta form-control"
-            placeholder="Resumen desarrollo de asamblea anterior y observaciones......"></textarea>
+            placeholder="Rendición de tesorería......"></textarea>
           <!-- <p>Puntos a tratar (Ordenes del día):</p>
                 <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea> -->
       
@@ -82,7 +88,7 @@
         </div>
       </div>
 
-      <hr>
+      
       <div class="row justify-content-center">
         <div class="col-md-11">
           <b>Rendiciones de camping:</b>
@@ -91,7 +97,7 @@
         </div>
       </div>
 
-      <hr>
+      
       <div class="row justify-content-center">
         <div class="col-md-11">
           <b>Rendiciones de bienestar:</b>
@@ -101,7 +107,7 @@
       </div>
 
 
-      <hr>
+      
       <div class="row justify-content-center">
         <div class="col-md-11">
           <b>Rendición de cuentas del directorio (actividades del directorio):</b>
@@ -119,12 +125,12 @@
             <div class="col-md-6">
               <p>Ayudas o aportes:</p>
               <textarea [(ngModel)]="ayuda_aporte" class="ta form-control"
-                placeholder="Rendición de cuentas del directorio......"></textarea>
+                placeholder="Ayudas o aportes......"></textarea>
             </div>
             <div class="col-md-6">
               <p>Socios nuevos:</p>
               <textarea [(ngModel)]="socios_nuevos" class="ta form-control"
-                placeholder="Rendición de cuentas del directorio......"></textarea>
+                placeholder="Socios nuevos......"></textarea>
             </div>
           </div>
         </div>
@@ -208,8 +214,8 @@
   <hr>
   <div class="row justify-content-center">
     <div class="col-md-11">
-      <b>Puntos a tratar:</b>
-      <textarea [(ngModel)]="puntos_a_tratar" class="ta form-control" placeholder="Puntos a tratar......"></textarea>
+      <b>Acuerdos:</b>
+      <textarea [(ngModel)]="puntos_a_tratar" class="ta form-control" placeholder="Acuerdos......"></textarea>
   
   
     </div>
@@ -368,8 +374,10 @@
                       <pre><b>Resumen desarrollo de asamblea anterior y observaciones:</b><br>{{acta.resumen_anterior}}</pre>
                     </div>
                     <br>
+                    <pre><b>Cuentas</b></pre>
+                    <br>
                     <div *ngIf="acta.rendicion_cuentas">
-                      <pre><b>Rendición de cuentas:</b><br>{{acta.rendicion_cuentas}}</pre>
+                      <pre><b>Rendición de tesorería:</b><br>{{acta.rendicion_cuentas}}</pre>
                     </div>
                     <br>
                     <div *ngIf="acta.rendicion_camping">
@@ -425,7 +433,7 @@
                     </div>
                     <br>
                     <div class="">
-                      <pre><b>Puntos a tratar:</b><br>{{acta.puntos_a_tratar}}</pre>
+                      <pre><b>Acuerdos:</b><br>{{acta.puntos_a_tratar}}</pre>
                     </div>
                     
                     <br>
@@ -512,9 +520,14 @@
                       <hr>
                       <div class="row justify-content-center">
                         <div class="col-md-11">
-                          <b>Rendición de cuentas:</b>
+                          <h3><b>Cuentas</b></h3>
+                        </div>
+                      </div>
+                      <div class="row justify-content-center">
+                        <div class="col-md-11">
+                          <b>Rendición de tesorería:</b>
                           <textarea [(ngModel)]="e_rendicion_cuentas" class="ta3 form-control"
-                            placeholder="Resumen desarrollo de asamblea anterior y observaciones......"></textarea>
+                            placeholder="Rendición de tesorería......"></textarea>
                           <!-- <p>Puntos a tratar (Ordenes del día):</p>
                                     <textarea [(ngModel)]="detalle_orden_dia" class="ta form-control" placeholder="Puntos a tratar (Ordenes del día)......"></textarea> -->
                     
@@ -559,12 +572,12 @@
                             <div class="col-md-6">
                               <p>Ayudas o aportes:</p>
                               <textarea [(ngModel)]="e_ayuda_aporte" class="ta3 form-control"
-                                placeholder="Rendición de cuentas del directorio......"></textarea>
+                                placeholder="Ayudas o aportes......"></textarea>
                             </div>
                             <div class="col-md-6">
                               <p>Socios nuevos:</p>
                               <textarea [(ngModel)]="e_socios_nuevos" class="ta3 form-control"
-                                placeholder="Rendición de cuentas del directorio......"></textarea>
+                                placeholder="Socios nuevos......"></textarea>
                             </div>
                           </div>
                         </div>
@@ -637,8 +650,8 @@
                       <hr>
                       <div class="row justify-content-center">
                         <div class="col-md-11">
-                          <b>Puntos a tratar:</b>
-                          <textarea [(ngModel)]="e_puntos_a_tratar" class="ta3 form-control" placeholder="Puntos a tratar......"></textarea>
+                          <b>Acuerdos:</b>
+                          <textarea [(ngModel)]="e_puntos_a_tratar" class="ta3 form-control" placeholder="Acuerdos......"></textarea>
                     
                     
                         </div>

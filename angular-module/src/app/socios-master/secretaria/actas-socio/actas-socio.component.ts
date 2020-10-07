@@ -16,7 +16,7 @@ export class ActasSocioComponent implements OnInit {
   modal_tabla = null;
   public url: string;
 
-  actas;
+  actas = [];
 
   token = localStorage.getItem('token').replace(/['"]+/g, '');
 

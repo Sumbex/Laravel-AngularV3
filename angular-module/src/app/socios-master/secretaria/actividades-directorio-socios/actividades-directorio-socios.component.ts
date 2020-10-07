@@ -125,7 +125,7 @@ export class ActividadesDirectorioSociosComponent implements OnInit {
           this.actividadesFiltro = res.actividades;
         } else {
           this.cargandoTabla = false;
-          alert(res.mensaje);
+          // alert(res.mensaje);
         }
       }, error => {
         this.cargandoTabla = false;

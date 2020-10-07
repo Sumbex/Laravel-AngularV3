@@ -21,6 +21,26 @@ class PortalSocioSecTemas extends Model
         return PortalSocio::verificarSocio($id);
     }
 
+    protected function devolverHash($tema)
+    {
+        $hash = DB::table('sec_votos')
+            ->select([
+                'id',
+                'socio_id'
+            ])
+            ->where([
+                'activo' => 'S',
+                'tema_id' => $tema,
+                'voto_id' => 4
+            ])
+            ->get();
+        foreach ($hash as $key) {
+            if (Hash::check($this->socioID(), $key->socio_id)) {
+                return ['id' => $key->socio_id];
+            }
+        }
+    }
+
     protected function temasActivos()
     {
         $verificarSocio = $this->verificarSocio($this->socioID());
@@ -60,7 +80,7 @@ class PortalSocioSecTemas extends Model
 
     protected function traerVotoSocio($tema)
     {
-
+        $hash = $this->devolverHash($tema);
         $voto = DB::table('sec_votos as sv')
             ->select([
                 'sv.id',
@@ -70,7 +90,7 @@ class PortalSocioSecTemas extends Model
             ->where([
                 'sv.activo' => 'S',
                 'sv.tema_id' => $tema,
-                'sv.socio_id' => bcrypt($this->socioID())
+                'sv.socio_id' => $hash['id']
             ])
             ->where('sv.voto_id', '<>', 4)
             ->first();
@@ -88,6 +108,7 @@ class PortalSocioSecTemas extends Model
             $verificarVoto = $this->verificarVoto($request->tema);
             if ($verificarVoto['estado'] == 'success') {
                 $voto = SecVotos::find($verificarVoto['id']);
+                return $voto;
                 if (!is_null($voto)) {
                     $voto->voto_id = $request->voto;
                     $voto->activo = 'S';
@@ -104,9 +125,10 @@ class PortalSocioSecTemas extends Model
                     ->where([
                         'activo' => 'S',
                         'tema_id' => $request->tema,
-                        'socio_id' => bcrypt($this->socioID()),
+                        'socio_id' => $verificarVoto['hash'],
                     ])
                     ->first();
+
                 if (!is_null($existe)) {
                     return $verificarVoto;
                 } else {
@@ -120,6 +142,8 @@ class PortalSocioSecTemas extends Model
 
     protected function verificarVoto($tema)
     {
+        $hash = $this->devolverHash($tema);
+        /* dd($hash['id']); */
         $voto = DB::table('sec_votos')
             ->select([
                 'id',
@@ -128,12 +152,12 @@ class PortalSocioSecTemas extends Model
             ->where([
                 'activo' => 'S',
                 'tema_id' => $tema,
-                'socio_id' => bcrypt($this->socioID()),
+                'socio_id' => $hash['id'],
                 'voto_id' => 4
             ])
             ->first();
         if (!is_null($voto)) {
-            return ['estado' => 'success', 'id' => $voto->id];
+            return ['estado' => 'success', 'id' => $voto->id, 'hash' => $hash['id']];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'Ya has ingresado tu voto, no puedes cambiarlo.'];
         }

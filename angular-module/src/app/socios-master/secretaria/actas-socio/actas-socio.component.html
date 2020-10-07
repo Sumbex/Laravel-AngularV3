@@ -159,6 +159,11 @@
             </tbody>
         </table>
     </div>
+
+    <div *ngIf="actas.length==0" class="alert alert-dark" role="alert">
+        No existen desarrollos de asambleas en la fecha seleccionada
+      </div>
+    
 </div>
 
 <style>

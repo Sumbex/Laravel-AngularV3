@@ -62,6 +62,8 @@ export class VotacionesComponent implements OnInit {
   temasActivos = [];
   temasHistorial = [];
 
+  loading: boolean = false;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal, private _votaciones: VotacionesBryanmService, private _fechasService: PortalSociosService) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -260,17 +262,20 @@ export class VotacionesComponent implements OnInit {
   }
 
   traerHistorial() {
+    this.loading = true;
     this.temasHistorial = [];
     this._votaciones.traerHistorialSocios(this.idAnioActual, this.idMesActual, this.idTipoActual).subscribe(
       res => {
         if (res.estado == 'success') {
           this.temasHistorial = res.temas;
         } else {
-          alert(res.mensaje);
+          // alert(res.mensaje);
         }
+        this.loading = false;
       },
       error => {
         console.log(error);
+        this.loading = false;
       }
     )
   }

@@ -128,6 +128,7 @@ class PortalSocioSecTemas extends Model
                     ->first();
 
                 if (!is_null($existe)) {
+                    unset($verificarVoto['hash']);
                     return $verificarVoto;
                 } else {
                     return ['estado' => 'failed', 'mensaje' => 'No puedes votar en este tema porque tu registro en el Sindicato/Sistema es posterior a su creación.'];

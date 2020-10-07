@@ -75,7 +75,7 @@ export class AcuerdosSocioComponent implements OnInit {
       if (response.estado == 'success') {
         this.acuerdos = response.acuerdos;
       } else {
-        alert(response.mensaje);
+        // alert(response.mensaje);
       }
     }, error => {
       console.log(error);

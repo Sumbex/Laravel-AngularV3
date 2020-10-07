@@ -47,7 +47,8 @@ export class GeneralReunionComponent implements OnInit {
   getHistorialReuniones(){
     this._reunionesService.getHistorialReunion().subscribe(response => {
       if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(response.mensaje);
+        // alert(response.mensaje);
+        console.log(this.datosReunionPasada);
       }else{
         this.datosReunionPasada = response.reuniones;
         console.log(this.datosReunionPasada);

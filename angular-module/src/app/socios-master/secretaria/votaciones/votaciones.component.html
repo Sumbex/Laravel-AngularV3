@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-12 mt-4">
-        <div (click)="abrirModalActivos(activos)" class="card card-body text-white text-center bg-success" style="cursor: pointer">
+        <div (click)="abrirModalActivos(activos)" class="card card-body text-white text-center bg-success"
+            style="cursor: pointer">
             <h3><i class="fas fa-hourglass-end"></i> Votaciones Activas</h3>
             <p>Votar y ver los temas a tratar que esten activos.</p>
         </div>
@@ -10,28 +11,32 @@
     <div class="col-md-12 mt-4">
         <div class="row centrar text-center">
             <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Año <i
-                        class="fas fa-calendar-check"></i></strong></label>
-                <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual" class="form-control form-control-sm">
+                            class="fas fa-calendar-check"></i></strong></label>
+                <select (change)="changeAnio($event)" name="anio" #anio="ngModel" [(ngModel)]="idAnioActual"
+                    class="form-control form-control-sm">
                     <option *ngFor="let anio of selectAnio" [value]="anio.id">{{anio.descripcion}}</option>
-                  </select>
+                </select>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Mes <i
-                        class="fas fa-calendar-check"></i></strong></label>
-                <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual" class="form-control form-control-sm">
+                            class="fas fa-calendar-check"></i></strong></label>
+                <select (change)="changeMes($event)" name="mes" #mes="ngModel" [(ngModel)]="idMesActual"
+                    class="form-control form-control-sm">
                     <option *ngFor="let mes of selectMes" [value]="mes.id">{{mes.descripcion}}</option>
-                  </select>
+                </select>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-3"><br><label><strong>Filtro por Tipo <i
-                    class="fas fa-calendar-check"></i></strong></label>
-                <select (change)="changeTipo($event)" name="tipo" #tipo="ngModel" [(ngModel)]="idTipoActual" class="form-control form-control-sm">
-                        <option value="0">Todos</option>
-                        <option *ngFor="let tipo of selectTipo" [value]="tipo.id">{{tipo.tipo}}</option>
-                    </select>
+                            class="fas fa-calendar-check"></i></strong></label>
+                <select (change)="changeTipo($event)" name="tipo" #tipo="ngModel" [(ngModel)]="idTipoActual"
+                    class="form-control form-control-sm">
+                    <option value="0">Todos</option>
+                    <option *ngFor="let tipo of selectTipo" [value]="tipo.id">{{tipo.tipo}}</option>
+                </select>
             </div>
             <div class="col-md-3"><br><label>
-                  <strong>Recargar tabla </strong>
+                    <strong>Recargar tabla </strong>
                 </label><br>
-                <button class="btn btn-info" (click)="traerHistorial()">Actualizar</button>
+                <button class="btn btn-info" (click)="traerHistorial()">Actualizar <img *ngIf="loading" height="20"
+                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
             </div>
         </div>
         <div class="row centrar">
@@ -66,11 +71,17 @@
                             <td colspan="2">{{item?.estado}}</td>
                             <td colspan="2">{{item?.aprobado}}</td>
                             <td colspan="2">{{item?.nombre}}</td>
-                            <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button" class="btn btn-info">Ver</button>
+                            <td colspan="2"><button (click)="abrirModalDetalle(detalle, item)" type="button"
+                                    class="btn btn-info">Ver</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="col-12">
+                <div *ngIf="temasHistorial.length==0" class="alert alert-primary" role="alert">
+                    No hay votaciones en la fecha seleccionada
+                </div>
             </div>
         </div>
     </div>
@@ -78,10 +89,11 @@
 
 <ng-template #activos let-c="close" let-d="dismiss">
     <div class="modal-header sticky-top" id="demoFont">
-        <h6 class="modal-title"><strong><!-- <i class="fas fa-archive"></i> --> Asamblea Online / Temas Activos</strong></h6>
+        <h6 class="modal-title"><strong>
+                <!-- <i class="fas fa-archive"></i> --> Asamblea Online / Temas Activos</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body">
         <div class="card">
@@ -91,7 +103,8 @@
                         <thead text-sm class="text-center">
                             <tr>
                                 <th colspan="8" class="ColorThCS">Temas Activos</th>
-                                <th colspan="2"><button class="btn btn-info" (click)="traerTemasActivos()">Actualizar</button></th>
+                                <th colspan="2"><button class="btn btn-info"
+                                        (click)="traerTemasActivos()">Actualizar</button></th>
                             </tr>
                             <tr>
                                 <th colspan="2">
@@ -112,7 +125,8 @@
                                 <td colspan="2">{{item?.titulo}}</td>
                                 <td colspan="2">{{item?.estado}}</td>
                                 <td colspan="2">{{item?.nombre}}</td>
-                                <td colspan="2"><button (click)="abrirModalTema(editar,item)" type="button" class="btn btn-info">Ver</button>
+                                <td colspan="2"><button (click)="abrirModalTema(editar,item)" type="button"
+                                        class="btn btn-info">Ver</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -123,16 +137,17 @@
     </div>
     <div class="modal-footer">
         <button type="button" id="cerrarActivos" class="btn btn-info" (click)="d('Cross click')"><i
-            class="far fa-arrow-alt-circle-left"></i> Volver a Asamblea Online</button>
+                class="far fa-arrow-alt-circle-left"></i> Volver a Asamblea Online</button>
     </div>
 </ng-template>
 
 <ng-template #grafico let-c="close" let-d="dismiss">
     <div class="modal-header sticky-top" id="demoFont">
-        <h6 class="modal-title"><strong><!-- <i class="fas fa-archive"></i> --> Asamblea Online / Votos</strong></h6>
+        <h6 class="modal-title"><strong>
+                <!-- <i class="fas fa-archive"></i> --> Asamblea Online / Votos</strong></h6>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body">
         <div class="row justify-center mt-2">
@@ -150,7 +165,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
-            class="far fa-arrow-alt-circle-left"></i> Volvere</button>
+                class="far fa-arrow-alt-circle-left"></i> Volvere</button>
     </div>
 </ng-template>
 
@@ -208,21 +223,25 @@
                     </label>
                     <div class="row mb-4">
                         <div class="col-md-6 mt-3">
-                            <select (change)="changeVoto($event)" name="voto" #tipo="ngModel" [(ngModel)]="idVotoActual" class="form-control form-control-sm">
+                            <select (change)="changeVoto($event)" name="voto" #tipo="ngModel" [(ngModel)]="idVotoActual"
+                                class="form-control form-control-sm">
                                 <option value="0">Seleccione</option>
                                 <option *ngFor="let item of selectVoto" [value]="item.id">{{item.voto}}</option>
                             </select>
                         </div>
                         <div class="col-md-6 mt-3">
-                            <button type="button" (click)="ingresarVoto()" [disabled]="ingresandoVoto || mostrarVotos" class="btn btn-block btn-success">Votar <img *ngIf="ingresandoVoto"
-                            height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                            <button type="button" (click)="ingresarVoto()" [disabled]="ingresandoVoto || mostrarVotos"
+                                class="btn btn-block btn-success">Votar <img *ngIf="ingresandoVoto" height="20"
+                                    src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                         </div>
                     </div>
                     <hr>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <button (click)="traerVotosTema(datosVotarTemas.id, grafico, false)" type="button" [disabled]="mostrarVotos || ingresandoVoto" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
-                            height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                    <button (click)="traerVotosTema(datosVotarTemas.id, grafico, false)" type="button"
+                        [disabled]="mostrarVotos || ingresandoVoto" class="btn btn-block btn-info">Ver Votos <img
+                            *ngIf="mostrarVotos" height="20"
+                            src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                 </div>
             </div>
         </div>
@@ -282,7 +301,8 @@
                         </h5>
                     </label>
                     <h6>
-                        <span [ngClass]="{'cancelada' : datosDetTemas?.estado != 'Publicado' , 'cancelada' : datosDetTemas?.estado != 'Publicado' , 'aprobado' : datosDetTemas?.estado == 'Publicado'}">
+                        <span
+                            [ngClass]="{'cancelada' : datosDetTemas?.estado != 'Publicado' , 'cancelada' : datosDetTemas?.estado != 'Publicado' , 'aprobado' : datosDetTemas?.estado == 'Publicado'}">
                             {{datosDetTemas.estado}}</span>
                     </h6>
                 </div>
@@ -293,7 +313,8 @@
                         </h5>
                     </label>
                     <h6>
-                        <span [ngClass]="{'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'aprobado' : datosDetTemas?.aprobado == 'Aprobado'}">
+                        <span
+                            [ngClass]="{'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'cancelada' : datosDetTemas?.aprobado != 'Aprobado' , 'aprobado' : datosDetTemas?.aprobado == 'Aprobado'}">
                             {{datosDetTemas.aprobado}}
                         </span>
                     </h6>
@@ -333,7 +354,8 @@
                     <hr>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button" [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
+                    <button (click)="traerVotosTema(datosDetTemas.id, grafico, true)" type="button"
+                        [disabled]="mostrarVotos" class="btn btn-block btn-info">Ver Votos <img *ngIf="mostrarVotos"
                             height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
                 </div>
             </div>

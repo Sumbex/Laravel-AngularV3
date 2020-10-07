@@ -126,6 +126,7 @@ class PortalSocioSecTemas extends Model
                         'socio_id' => $verificarVoto['hash'],
                     ])
                     ->first();
+                    return $existe;
 
                 if (!is_null($existe)) {
                     return $verificarVoto;

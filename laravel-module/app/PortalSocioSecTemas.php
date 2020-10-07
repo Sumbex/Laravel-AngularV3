@@ -30,9 +30,7 @@ class PortalSocioSecTemas extends Model
             ])
             ->where([
                 'activo' => 'S',
-                'tema_id' => $tema,
-                'voto_id' => 4
-            ])
+                'tema_id' => $tema            ])
             ->get();
         foreach ($hash as $key) {
             if (Hash::check($this->socioID(), $key->socio_id)) {

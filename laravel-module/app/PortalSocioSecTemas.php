@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\PortalSocio;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class PortalSocioSecTemas extends Model
 {
@@ -59,6 +60,7 @@ class PortalSocioSecTemas extends Model
 
     protected function traerVotoSocio($tema)
     {
+
         $voto = DB::table('sec_votos as sv')
             ->select([
                 'sv.id',
@@ -68,7 +70,7 @@ class PortalSocioSecTemas extends Model
             ->where([
                 'sv.activo' => 'S',
                 'sv.tema_id' => $tema,
-                'sv.socio_id' => $this->socioID()
+                'sv.socio_id' => bcrypt($this->socioID())
             ])
             ->where('sv.voto_id', '<>', 4)
             ->first();
@@ -102,7 +104,7 @@ class PortalSocioSecTemas extends Model
                     ->where([
                         'activo' => 'S',
                         'tema_id' => $request->tema,
-                        'socio_id' => $this->socioID(),
+                        'socio_id' => bcrypt($this->socioID()),
                     ])
                     ->first();
                 if (!is_null($existe)) {
@@ -126,7 +128,7 @@ class PortalSocioSecTemas extends Model
             ->where([
                 'activo' => 'S',
                 'tema_id' => $tema,
-                'socio_id' => $this->socioID(),
+                'socio_id' => bcrypt($this->socioID()),
                 'voto_id' => 4
             ])
             ->first();

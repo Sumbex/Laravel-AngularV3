@@ -39,7 +39,7 @@ class SecVotos extends Model
             foreach ($socios['socios'] as $key) {
                 $voto = new SecVotos;
                 $voto->tema_id = $tema_id;
-                $voto->socio_id = $key->id;
+                $voto->socio_id = bcrypt($key->id);
                 $voto->voto_id = 4;
                 $voto->activo = "S";
                 if ($voto->save()) {

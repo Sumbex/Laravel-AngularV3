@@ -119,7 +119,6 @@ class PortalSocioSecTemas extends Model
                     return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente 1.'];
                 }
             } else {
-                return $verificarVoto;
                 $existe = DB::table('sec_votos')
                     ->where([
                         'activo' => 'S',
@@ -127,7 +126,6 @@ class PortalSocioSecTemas extends Model
                         'socio_id' => $verificarVoto['hash'],
                     ])
                     ->first();
-
 
                 if (!is_null($existe)) {
                     return $verificarVoto;
@@ -159,7 +157,7 @@ class PortalSocioSecTemas extends Model
         if (!is_null($voto)) {
             return ['estado' => 'success', 'id' => $voto->id, 'hash' => $hash['id']];
         } else {
-            return ['estado' => 'failed', 'mensaje' => 'Ya has ingresado tu voto, no puedes cambiarlo.'];
+            return ['estado' => 'failed', 'mensaje' => 'Ya has ingresado tu voto, no puedes cambiarlo.', 'hash' => $hash['id']];
         }
     }
 

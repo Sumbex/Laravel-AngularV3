@@ -30,7 +30,8 @@ class PortalSocioSecTemas extends Model
             ])
             ->where([
                 'activo' => 'S',
-                'tema_id' => $tema            ])
+                'tema_id' => $tema,
+            ])
             ->get();
         foreach ($hash as $key) {
             if (Hash::check($this->socioID(), $key->socio_id)) {
@@ -106,7 +107,6 @@ class PortalSocioSecTemas extends Model
             $verificarVoto = $this->verificarVoto($request->tema);
             if ($verificarVoto['estado'] == 'success') {
                 $voto = SecVotos::find($verificarVoto['id']);
-                return $voto;
                 if (!is_null($voto)) {
                     $voto->voto_id = $request->voto;
                     $voto->activo = 'S';

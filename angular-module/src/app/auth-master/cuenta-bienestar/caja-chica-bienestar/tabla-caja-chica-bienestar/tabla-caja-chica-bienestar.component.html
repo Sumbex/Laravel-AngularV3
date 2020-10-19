@@ -21,7 +21,7 @@
             <button [disabled]="cargandoTabla" class="btn btn-info" (click)="recargarTabla()">Actualizar</button>
             <div *ngIf="cargandoTabla">
                 <img height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">&nbsp;
-                <label>Cargando tabla de Caja Chica</label>
+                <label>Cargando tabla Caja Chica</label>
             </div>
         </div>
     </div><br>
@@ -32,7 +32,7 @@
                 <tr>
                     <th colspan="11" style="background: #138D75;" class="ColorThCS">Tabla caja chica</th>
                     <th colspan="2" style="background: #138D75;" class="ColorThCS">Monto Inicial</th>
-                    <td colspan="2"><strong *ngIf="!cajaChicaError">{{ montoInicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
+                    <td colspan="2"><strong>{{ montoInicio | currency:"CLP" : "symbol-narrow":'1.0'}}</strong></td>
                 </tr>
                 <tr>
                     <th colspan="2" style="background: #138D75;"><i class="far fa-calendar-alt"></i> Fecha</th>

@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm); estado='ingresar_cch'" enctype="multipart/form-data">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" enctype="multipart/form-data">
   <br>
   <div class="row centrarCajaChica">
           <ngb-alert type="warning" [dismissible]="false" class="col-12 align-self-center">
@@ -52,7 +52,7 @@
     </div>
 
     <div class="col-sm-6 col-md-4 col-lg-4"><br><label><strong>Seleccione Tipo</strong></label>
-      <select (change)="changeDefinicion($event)" class="form-control form-control-sm">
+      <select class="form-control form-control-sm">
           <option value="2">Egreso</option>
       </select>
     </div>
@@ -64,7 +64,7 @@
               ngbTooltip="Para guardar debe completar todos los campos."></i>
           </label><br>
           <button class="btn btn btn-success btn-block btn-sm" type="submit" value="ingresar"
-            [disabled]="loginForm.invalid || blockCajaChica"><i class="fas fa-save"></i> Guardar</button>
+            [disabled]="loginForm.invalid"><i class="fas fa-save"></i> Guardar</button>
         </div>
       </div>
     </div>

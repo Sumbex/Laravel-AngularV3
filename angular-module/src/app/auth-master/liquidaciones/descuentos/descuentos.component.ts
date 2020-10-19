@@ -49,10 +49,10 @@ export class DescuentosComponent implements OnInit {
   actualizarLoad: boolean = false;
   formula='';
 
-  resumen:object={
-    'sueldo_base': {monto:0},
-    'suma_i':0,
-    'suma_h':0
+  resumen:{
+    sueldo_base: {monto:0},
+    suma_i:0,
+    suma_h:0
   };
 
 

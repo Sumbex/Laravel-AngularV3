@@ -66,9 +66,9 @@ export class BryanBienestarService{
     updateCampoCajaChica(valor, campo, input) : Observable<any>{
         let token = localStorage.getItem('token').replace(/['"]+/g, '');
         const body = new FormData();
-        body.append('input', valor);
-        body.append('nombre_campo', campo);
-        body.append('valor', input);
+        body.append('id', valor);
+        body.append('campo', campo);
+        body.append('input', input);
 
         return this._http.post(this.url + "modificar_caja_chica_bienestar",body, {headers: new HttpHeaders(
             {

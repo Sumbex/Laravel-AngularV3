@@ -26,6 +26,7 @@ import { DetalleReunionComponent } from './socios-master/reuniones/detalle-reuni
 import { SecretariaComponent } from './auth-master/secretaria/secretaria.component';
 import { MenuComponent } from './auth-master/liquidaciones/menu/menu.component';
 import { CrearEmpleadoComponent } from './auth-master/liquidaciones/crear-empleado/crear-empleado.component';
+import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -44,7 +45,9 @@ const routes: Routes = [
     { path: 'BeneficiosSocios', component: BeneficiosSociosComponent },
     { path: 'Secretaria', component: SecretariaComponent },
     { path: 'Liquidaciones', component: MenuComponent },
-    { path: 'CrearEmpleado', component: CrearEmpleadoComponent }
+    { path: 'CrearEmpleado', component: CrearEmpleadoComponent },
+    { path: 'TutorialesMaster', component: TutorialMasterComponent }
+
 
   ]},
 

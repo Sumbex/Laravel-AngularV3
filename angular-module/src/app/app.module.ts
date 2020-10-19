@@ -143,6 +143,7 @@ import { TemasComponent } from './auth-master/secretaria/temas/temas.component';
 import { VotacionesComponent } from './socios-master/secretaria/votaciones/votaciones.component';
 import { ActividadesDirectorioComponent } from './auth-master/secretaria/actividades-directorio/actividades-directorio.component';
 import { ActividadesDirectorioSociosComponent } from './socios-master/secretaria/actividades-directorio-socios/actividades-directorio-socios.component';
+import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
 
 @NgModule({
   declarations: [
@@ -265,6 +266,7 @@ import { ActividadesDirectorioSociosComponent } from './socios-master/secretaria
     VotacionesComponent,
     ActividadesDirectorioComponent,
     ActividadesDirectorioSociosComponent,
+    TutorialMasterComponent,
   ],
   imports: [
     BrowserModule,

@@ -144,6 +144,7 @@ import { VotacionesComponent } from './socios-master/secretaria/votaciones/votac
 import { ActividadesDirectorioComponent } from './auth-master/secretaria/actividades-directorio/actividades-directorio.component';
 import { ActividadesDirectorioSociosComponent } from './socios-master/secretaria/actividades-directorio-socios/actividades-directorio-socios.component';
 import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
+import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
 
 @NgModule({
   declarations: [
@@ -267,6 +268,7 @@ import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-
     ActividadesDirectorioComponent,
     ActividadesDirectorioSociosComponent,
     TutorialMasterComponent,
+    TutorialesSociosComponent,
   ],
   imports: [
     BrowserModule,

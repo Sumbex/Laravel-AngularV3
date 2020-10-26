@@ -27,6 +27,7 @@ import { SecretariaComponent } from './auth-master/secretaria/secretaria.compone
 import { MenuComponent } from './auth-master/liquidaciones/menu/menu.component';
 import { CrearEmpleadoComponent } from './auth-master/liquidaciones/crear-empleado/crear-empleado.component';
 import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
+import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -57,7 +58,8 @@ const routes: Routes = [
     { path: 'Configuracion', component: ConfiguracionSocioComponent },
     { path: 'Cuentas', component: CuentasComponent },
     { path: 'Grafico', component: GraficoComponenteComponent },
-    { path: 'Reuniones', component: GeneralReunionComponent }
+    { path: 'Reuniones', component: GeneralReunionComponent },
+    { path: 'TutorialesSocios', component: TutorialesSociosComponent }
   ]},
 
   { path: '**', component: NoEncontradoComponent }

@@ -9096,9 +9096,9 @@ let DescuentosComponent = class DescuentosComponent {
         this.actualizarLoad = false;
         this.formula = '';
         this.resumen = {
-            'sueldo_base': { monto: 0 },
-            'suma_i': 0,
-            'suma_h': 0
+            sueldo_base: { monto: 0 },
+            suma_i: 0,
+            suma_h: 0
         };
     }
     ngOnInit() {

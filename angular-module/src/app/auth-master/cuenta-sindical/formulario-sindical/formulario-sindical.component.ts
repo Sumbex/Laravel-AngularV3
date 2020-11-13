@@ -20,6 +20,8 @@ export class FormularioSindicalComponent implements OnInit {
   selectMes: Meses[] = [];
   selectDefinicion: Definicion[] = [];
 
+  selectorDefinicion:any;
+
  
   selectDetalle = [
     {id: 1,descripcion: 'Fijo'},
@@ -70,7 +72,11 @@ export class FormularioSindicalComponent implements OnInit {
     this.selectMes = JSON.parse(localStorage.getItem('meses'));
 
     //Cargar definiciones
-    this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+    // this.selectDefinicion = JSON.parse(localStorage.getItem('definicion'));
+    this.selectorDefinicion = [
+      {id:1, descripcion:'Ingreso'},
+      {id:2, descripcion:'Egreso'}
+    ];
 
     //Cargar detalles
     //this.selectDetalle = JSON.parse(localStorage.getItem('detalle'));

@@ -170,6 +170,7 @@ class PortalSocioCuentaBienestar extends Model
             $return['cuota_extra'] = [];
             $return['no_sindicalizados'] = [];
             $return['interes'] = [];
+            $return['arreglo_floral'] = [];
 
             foreach ($bienestar as $key) {
                 switch ($key->tipo) {
@@ -223,6 +224,10 @@ class PortalSocioCuentaBienestar extends Model
 
                     case 13:
                         $return['interes'][] = $key;
+                        break;
+
+                    case 14:
+                        $return['arreglo_floral'][] = $key;
                         break;
 
                     default:

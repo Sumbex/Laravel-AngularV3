@@ -1,0 +1,67 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header sticky-top" id="demoFont">
+        <h6 class="modal-title"><strong><i class="fas fa-archive"></i> Cuenta Bienestar / Archivador</strong></h6>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+            <li class="nav-item active">
+                <a class="nav-link" id="notas-tab" data-toggle="tab" href="#notas" role="tab" aria-controls="notas" aria-selected="true">Notas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="archivos-tab" data-toggle="tab" href="#archivos" role="tab" aria-controls="archivos" aria-selected="false">Archivador</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="notas" role="tabpanel" aria-labelledby="notas-tab">
+                <div class="modal-header mt-4" id="demoFont2">
+                    <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
+                </div>
+                <div class="card">
+                    <form #notasForm="ngForm" (ngSubmit)="ingresarNota()">
+                        <div class="row centrar">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Fecha</label>
+                                    <input class="form-control" type="date" name="fecha" [(ngModel)]="datosNotas.fecha" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Remitente</label>
+                                    <input class="form-control" disabled type="text" name="remitente" [(ngModel)]="remitente" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Nota</label>
+                                    <textarea class="form-control resize-none" name="nota" [(ngModel)]="datosNotas.nota" required></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" [disabled]="notasForm.invalid || ingresandoNota" class="btn btn-block btn-success">Ingresar Nota <img *ngIf="ingresandoNota" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button>
+                            <!-- <button [disabled]="ingresandoDatos" type="submit" class="btn btn-block btn-success" [disabled]="loginForm.invalid">Guardar <img *ngIf="ingresandoDatos" height="20" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"></button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="archivos" role="tabpanel" aria-labelledby="archivos-tab">
+                <div class="modal-header mt-4" id="demoFont2">
+                    <h6 class="modal-title"><strong>Formulario de Ingreso</strong></h6>
+                </div>
+                <div class="card">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <!--Boton para salir del modal caja chica-->
+        <button type="button" class="btn btn-info" (click)="d('Cross click')"><i
+        class="far fa-arrow-alt-circle-left"></i> Volver a Cuenta Bienestar</button>
+    </div>
+</ng-template>
+
+<label><strong>Archivador</strong></label><br>
+<button class="btn btn btn-success btn-block btn-sm" (click)="openModal(content)">Ingresar</button>

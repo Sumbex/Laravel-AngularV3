@@ -145,6 +145,7 @@ import { ActividadesDirectorioComponent } from './auth-master/secretaria/activid
 import { ActividadesDirectorioSociosComponent } from './socios-master/secretaria/actividades-directorio-socios/actividades-directorio-socios.component';
 import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
 import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
+import { ArchivadorBienestarComponent } from './auth-master/cuenta-bienestar/archivador-bienestar/archivador-bienestar.component';
 
 @NgModule({
   declarations: [
@@ -269,6 +270,7 @@ import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tut
     ActividadesDirectorioSociosComponent,
     TutorialMasterComponent,
     TutorialesSociosComponent,
+    ArchivadorBienestarComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,14 @@ class CreateCbArchivadorTable extends Migration
     {
         Schema::create('cb_archivador', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('anio_id');
+            $table->integer('mes_id');
+            $table->integer('dia');
+            $table->text('titulo');
+            $table->integer('tipo_archivo_id');
+            $table->text('archivo');
+            $table->integer('user_crea');
+            $table->char('activo', 1);
             $table->timestamps();
         });
     }

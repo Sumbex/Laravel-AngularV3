@@ -15,6 +15,13 @@ class CreateCbNotasTable extends Migration
     {
         Schema::create('cb_notas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('cuenta_id');
+            $table->integer('anio_id');
+            $table->integer('mes_id');
+            $table->integer('dia');
+            $table->text('descripcion');
+            $table->integer('user_crea');
+            $table->char('activo', 1);
             $table->timestamps();
         });
     }

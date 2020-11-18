@@ -226,6 +226,15 @@ class CuentaBienestarController extends Controller
 					return $validar;
 				break;
 
+				case '14': // Arreglo floral
+					$validar = $this->validar_datos_bienestar($r);
+					if ($validar['estado'] == "success") {
+						$cuenta_be = Cuentabienestar::insertar_cuenta_sindical($r);
+						return $cuenta_be;
+					}
+					return $validar;
+				break;
+
 				//-------------------------------------------------------------------------------------------------
 				case '4': //Fallecimiento
 					$validar = $this->validar_datos_fallecimiento($r);
@@ -291,11 +300,13 @@ class CuentaBienestarController extends Controller
                         case '1':  
 
                             if ($tomar == true) {
-                                $listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
+								$listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
+								//  dump($listar[$i]->saldo_actual_raw);
                                 $tomar = false;
 
                             }else{
-                                $listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw  + $listar[$i]->monto_ingreso;
+								$listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw  + $listar[$i]->monto_ingreso;
+								//  dump( $listar[$i-1]->saldo_actual_raw." + ".$listar[$i]->monto_ingreso." = ".$listar[$i]->saldo_actual_raw);
                             }
 
                         break;
@@ -316,7 +327,7 @@ class CuentaBienestarController extends Controller
 
                 }
 
-                //return $listar;
+                // return $listar;
 
                 $return = [];
                     $return['Cuenta_gas']=[];
@@ -333,6 +344,7 @@ class CuentaBienestarController extends Controller
 					$return['cuota_extraordinaria']=[];
 					$return['no_sindicalizados']=[];
 					$return['aporte']=[];
+					$return['arreglo_floral']=[];
 
                     foreach ($listar as $key) {
                         switch ($key->tipo_cuenta_bienestar_id) {
@@ -350,12 +362,14 @@ class CuentaBienestarController extends Controller
 							case '11': $return['cuota_extraordinaria'][] = $key;  break;
 							case '12': $return['no_sindicalizados'][] = $key;  break;
 							case '13': $return['aporte'][] = $key;  break;
+							case '14': $return['arreglo_floral'][] = $key;  break;
                             
                             default:
                                 # code...
                             break;
                         }
-                    }
+					}
+					return $return;
                     $return['resultado'] = Cuentabienestar::resultado_cuenta_sindical($anio, $mes);
 
                     return $return;

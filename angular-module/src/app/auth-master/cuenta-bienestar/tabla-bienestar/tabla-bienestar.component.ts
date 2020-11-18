@@ -60,6 +60,7 @@ export class TablaBienestarComponent implements OnInit {
   cuotaExtraordinaria;
   noSindicalizados;
   aporte;
+  arreglo_floral;
   resultado: any = ["total_final"];
 
   constructor(config: NgbModalConfig,
@@ -161,6 +162,7 @@ export class TablaBienestarComponent implements OnInit {
     this.cuotaExtraordinaria = [];
     this.noSindicalizados = [];
     this.aporte = [];
+    this.arreglo_floral = [];
     this._bienestarService.getTablaBienestar(this.anio, this.mes).subscribe(
       response => {
         if (response == null) {
@@ -180,6 +182,7 @@ export class TablaBienestarComponent implements OnInit {
           this.cuotaExtraordinaria = [];
           this.noSindicalizados = [];
           this.aporte = [];
+          this.arreglo_floral = [];
         } else {
           this.tablaBienestar = response;
           this.gas = this.tablaBienestar.Cuenta_gas;
@@ -196,6 +199,7 @@ export class TablaBienestarComponent implements OnInit {
           this.cuotaExtraordinaria = this.tablaBienestar.cuota_extraordinaria;
           this.noSindicalizados = this.tablaBienestar.no_sindicalizados;
           this.aporte = this.tablaBienestar.aporte;
+          this.arreglo_floral = this.tablaBienestar.arreglo_floral;
         }
         this.loading = false;
       },

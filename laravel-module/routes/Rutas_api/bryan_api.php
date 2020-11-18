@@ -89,6 +89,21 @@ Route::get('/traer_tipos_actividades', 'ActividadesDirectorioController@TraerTip
 //------------------------------------------->Actividades Directorio
 
 
+//------------------------------------------->notas bienestar
+Route::post('/ingresar_notas_cb', 'NotasBienestarController@IngresarNota');
+Route::post('/actualizar_nota_cb', 'NotasBienestarController@ActualizarNota');
+Route::get('/traer_notas_cb/{anio}/{mes}', 'NotasBienestarController@TraerNotas');
+Route::get('/traer_datos_archivador_cb', 'NotasBienestarController@DatosBasicos');
+
+//------------------------------------------->notas bienestar
+
+//------------------------------------------->archivador bienestar
+Route::post('/ingresar_archivos_cb', 'ArchivadorBienestarController@IngresarArchivo');
+Route::post('/actualizar_archivo_cb', 'ArchivadorBienestarController@ActualizarArchivo');
+Route::get('/traer_archivos_cb/{anio}/{mes}', 'ArchivadorBienestarController@TraerArchivos');
+Route::get('/traer_tipos_archivador_cb', 'ArchivadorBienestarController@TraerTipos');
+//------------------------------------------->archivador bienestar
+
 /* Route::post('login_socios', 'PortalSocioController@LoginSocios'); */
 
 

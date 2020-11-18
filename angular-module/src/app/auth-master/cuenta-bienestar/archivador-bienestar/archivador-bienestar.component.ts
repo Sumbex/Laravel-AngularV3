@@ -25,16 +25,8 @@ export class ArchivadorBienestarComponent implements OnInit {
 
   selectTipo = [
     {
-      id: 1,
-      tipo: "Reporte"
-    },
-    {
-      id: 2,
-      tipo: "Descuento"
-    },
-    {
-      id: 4,
-      tipo: "Otros"
+      id: 3,
+      tipo: "Conciliacion Bancaria"
     }
   ];
 

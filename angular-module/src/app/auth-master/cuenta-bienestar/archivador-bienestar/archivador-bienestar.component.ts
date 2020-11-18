@@ -23,7 +23,20 @@ export class ArchivadorBienestarComponent implements OnInit {
   idMesActualA
   cargarDatos = 0
 
-  selectTipo
+  selectTipo = [
+    {
+      id: 1,
+      tipo: "Reporte"
+    },
+    {
+      id: 2,
+      tipo: "Descuento"
+    },
+    {
+      id: 4,
+      tipo: "Otros"
+    }
+  ];
 
   ingresandoNota = false;
   ingresandoArchivo = false;
@@ -68,7 +81,7 @@ export class ArchivadorBienestarComponent implements OnInit {
     this.modalService.open(content, { size: 'xl' });
     this.cargarFecha();
     this.cargarFechasActuales();
-    this.traerTipos();
+    /* this.traerTipos(); */
   }
 
   openExcel(content) {

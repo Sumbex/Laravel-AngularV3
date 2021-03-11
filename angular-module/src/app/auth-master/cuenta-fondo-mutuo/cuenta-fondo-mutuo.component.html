@@ -1,52 +1,54 @@
 <br>
-<div class="row">
-    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+<div class="animate__animated animate__fadeIn">
+  <div class="row">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
 
-        <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
+          <ul class="nav nav-tabs nav-fill flex-column flex-sm-row" id="myTab" role="tablist">
 
-            <li class="nav-item active">
-                <a class="nav-link" id="formConsorcio-tab" data-toggle="tab" href="#formConsorcio" role="tab"
-                    aria-controls="formConsorcio" aria-selected="true">Formulario Consorcio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="TablaConsorcio-tab" data-toggle="tab" href="#TablaConsorcio" role="tab"
-                    aria-controls="TablaConsorcio" aria-selected="false">Tabla Consorcio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="TablaDesvinculado-tab" data-toggle="tab" href="#TablaDesvinculado" role="tab"
-                    aria-controls="TablaDesvinculado" aria-selected="false">Tabla Desvinculados</a>
-            </li>
-            <!-- <li class="nav-item">
-          <a class="nav-link" id="med-tab" data-toggle="tab" href="#med" role="tab" aria-controls="med"
-             aria-selected="false">Gastos Medicos</a>
-        </li> -->
-        </ul> <br>
+              <li class="nav-item active">
+                  <a class="nav-link" id="formConsorcio-tab" data-toggle="tab" href="#formConsorcio" role="tab"
+                      aria-controls="formConsorcio" aria-selected="true">Formulario Consorcio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="TablaConsorcio-tab" data-toggle="tab" href="#TablaConsorcio" role="tab"
+                      aria-controls="TablaConsorcio" aria-selected="false">Tabla Consorcio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="TablaDesvinculado-tab" data-toggle="tab" href="#TablaDesvinculado" role="tab"
+                      aria-controls="TablaDesvinculado" aria-selected="false">Tabla Desvinculados</a>
+              </li>
+              <!-- <li class="nav-item">
+            <a class="nav-link" id="med-tab" data-toggle="tab" href="#med" role="tab" aria-controls="med"
+              aria-selected="false">Gastos Medicos</a>
+          </li> -->
+          </ul> <br>
 
-        <div class="tab-content" id="myTabContent">
+          <div class="tab-content" id="myTabContent">
 
-            <div class="tab-pane fade" id="formConsorcio" role="tabpanel" aria-labelledby="formConsorcio-tab">
-                <app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>
-            </div>
+              <div class="tab-pane fade" id="formConsorcio" role="tabpanel" aria-labelledby="formConsorcio-tab">
+                  <app-formulario-fondo-mutuo></app-formulario-fondo-mutuo>
+              </div>
 
-            <div class="tab-pane fade" id="TablaConsorcio" role="tabpanel" aria-labelledby="TablaConsorcio-tab">
-                <!--formulario fallecimiento-->
+              <div class="tab-pane fade" id="TablaConsorcio" role="tabpanel" aria-labelledby="TablaConsorcio-tab">
+                  <!--formulario fallecimiento-->
 
-                <div class="card-header" id="demoFont">
-                    <h6 class="card-title text-center"><strong>Tabla Consorcio</strong></h6>
-                </div>
-                <app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>
-            </div>
+                  <div class="card-header" id="demoFont">
+                      <h6 class="card-title text-center"><strong>Tabla Consorcio</strong></h6>
+                  </div>
+                  <app-tabla-fondo-mutuo></app-tabla-fondo-mutuo>
+              </div>
 
-            <div class="tab-pane fade" id="TablaDesvinculado" role="tabpanel" aria-labelledby="TablaDesvinculado-tab">
-                <!--formulario gastos medicos-->
+              <div class="tab-pane fade" id="TablaDesvinculado" role="tabpanel" aria-labelledby="TablaDesvinculado-tab">
+                  <!--formulario gastos medicos-->
 
-                <div class="card-header" id="demoFont">
-                    <h6 class="card-title text-center"><strong>Tabla Desvinculados</strong></h6>
-                </div>
-                <app-tabla-desvinculados-consorcio></app-tabla-desvinculados-consorcio>
+                  <div class="card-header" id="demoFont">
+                      <h6 class="card-title text-center"><strong>Tabla Desvinculados</strong></h6>
+                  </div>
+                  <app-tabla-desvinculados-consorcio></app-tabla-desvinculados-consorcio>
 
-            </div>
+              </div>
 
-        </div>
-    </div>
+          </div>
+      </div>
+  </div>
 </div>

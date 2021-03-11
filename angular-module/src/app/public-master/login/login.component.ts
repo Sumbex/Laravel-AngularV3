@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.token));
         localStorage.setItem('usuario', JSON.stringify(this.usuario.email));
         this.lockLogin = false;
-        this.router.navigate(['/AuthMaster']);
+        this.router.navigate(['/AuthMaster/Index']);
         console.log("estoy despues del navigate");
         document.getElementById("closeModalLogin").click();
       }else{

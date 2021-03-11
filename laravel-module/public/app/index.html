@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Sindicato CMPC Santa Fe</title>
-  <base href="http://www.sindicatoptastafe.cl/app/">
-
+  <base href="http://127.0.0.1:8000/app/">
   <meta name="googlebot" content="noarchive, noimageindex" />
   <meta name="description" content="¡Bienvenido al portal del Sindicato CMPC Santa Fe!" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +11,42 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <script src="https://kit.fontawesome.com/ebfc476978.js"></script>
   <script src="  https://printjs-4de6.kxcdn.com/print.min.js"></script>
-  <script src=" https://printjs-4de6.kxcdn.com/print.min.css"></script>   
-<link rel="stylesheet" href="styles.ed4c52c37796bf07662b.css"></head>
+  <script src=" https://printjs-4de6.kxcdn.com/print.min.css"></script>
+</head>
 <body>
-  <app-root></app-root>
-<script src="runtime-es2015.858f8dd898b75fe86926.js" type="module"></script><script src="polyfills-es2015.27661dfa98f6332c27dc.js" type="module"></script><script src="runtime-es5.741402d1d47331ce975c.js" nomodule></script><script src="polyfills-es5.4e06eb653a3c8a2d581f.js" nomodule></script><script src="scripts.dda2d1846184eca6c160.js"></script><script src="main-es2015.a7d7e69fc08ddf1d7970.js" type="module"></script><script src="main-es5.400b223a69f8a6d0b1f6.js" nomodule></script></body>
+  <img class="animate__animated animate__bounce" id="imagen" style="height: 100%; width: 100%; z-index: -1;
+  text-align: center;" src="https://clubjunkogolf.com/wp-content/uploads/2019/12/loadin_gif.gif" alt="">
+  <app-root id="app"></app-root>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $("#app").hide();
+    $(window).load(function() {
+
+        $("#imagen").remove();
+        $("#app").show();
+    });
+
+  $( document ).ready(function() {
+    console.log( "ready to die!" );
+    $('.navbar-collapse ul li a').click(function(){
+
+      $(".navbar-collapse").collapse('hide');
+  });
+  });
+
+
+</script>
+
+<!-- <script>
+  $('.navbar-collapse a').click(function(){
+    alert("cierra la wea")
+      $(".navbar-collapse").collapse('hide');
+  });
+</script> -->
+<script src="runtime.js"></script><script src="polyfills.js"></script><script src="styles.js"></script><script src="scripts.js"></script><script src="vendor.js"></script><script src="main.js"></script></body>
 </html>

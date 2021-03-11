@@ -1,9 +1,10 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
-
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
 <!--MODAL DE ESPERA CARGA DATOS-->
 <ng-template #content let-c="close" let-d="dismiss">
-    
+
         <div class="row">
             <div class="col">
                 <div class="modal-header text-center" id="demoFont">
@@ -15,13 +16,13 @@
                 <div class="modal-body">
                     <h3>{{bodyMensaje}}</h3>
                     <div *ngIf="tiempoEspera > 0" class="loader">Loading...</div>
-                </div> 
+                </div>
                 <div class="modal-footer" [hidden]="true">
                     <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
                 </div>
             </div>
         </div>
-    
+
 </ng-template>
 <button id="openModalButton" class="btn btn-lg btn-outline-primary" [hidden]="true" (click)="open(content)">Launch demo
     modal</button>

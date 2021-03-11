@@ -1,5 +1,5 @@
 <br>
-<div>
+<div class="animate__animated animate__fadeIn">
 	<!-- MODAL PARA VALIDAR USUARIO -->
 	<ng-template #validar let-modal>
       <div class="modal-header" id="demoFont">
@@ -13,11 +13,11 @@
         <br>
         <input [(ngModel)]="pass" class="form-control form-control-sm" type="password" placeholder="Ingrese su contraseña" name="">
         <br>
-		<!-- 
+		<!--
 		<button  (click)="currentLesson = '1'"
          [disabled]="currentLesson !== '1'" class="primair">
            Start lesson</button>
-		
+
 		<button (click)="currentLesson = '2'"
          [disabled]="currentLesson !== '2'" class="primair">
            Start lesson</button> -->
@@ -44,20 +44,20 @@
 	                <tr>
 	                	<th style="background: #138D75"><label class="float-right"> BUSCAR SOCIO:</label></th>
 	                	<td style="background: #138D75" colspan="3">
-	                		<input 
-	                			class="form-control form-control-sm" 
+	                		<input
+	                			class="form-control form-control-sm"
 	                			placeholder="Buscar por nombre......"
 	                			[(ngModel)]="search"
 	                			>
 						</td>
-						
+
 						<td style="background: #138D75" colspan="2">
 	                		<button (click)="filtrar()" class="btn btn-secondary btn-sm">
 								BUSCAR <i [hidden]="blockLoad" class="fas fa-search"></i>
 								<img [hidden]="!blockLoad" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
 	                		</button>
 						</td>
-	                	<td style="background: #138D75" colspan="5"> 
+	                	<td style="background: #138D75" colspan="5">
 						<button (click)="listar(); search=''; blockLoad2=true; " class="btn btn-secondary btn-sm">
 								REFRESCAR TABLA &nbsp; <i [hidden]="blockLoad2" class="fas fa-sync"></i>
 								<img [hidden]="!blockLoad2" height="15" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -70,10 +70,10 @@
 	                  	<th style="background: #138D75"><i class="fas fa-user"></i> APELLIDOS</th>
 	                  	<th style="background: #138D75"><i class="fas fa-calendar-alt"></i> FECHA DE NACIMIENTO</th>
 	                  	<th style="background: #138D75"><i class="fas fa-user-plus"></i> FECHA DE INGRESO</th>
-	                  	<th style="background: #138D75"><i class="fas fa-user-minus"></i> FECHA DE EGRESO</th>    
+	                  	<th style="background: #138D75"><i class="fas fa-user-minus"></i> FECHA DE EGRESO</th>
 	                  	<th style="background: #138D75"><i class="fas fa-edit"></i> EDITAR</th>
-						<th style="background: #138D75"><i class="fas fa-edit"></i> OPCION</th> 
-						<th style="background: #138D75"><i class="fas fa-unlock"></i></th>          
+						<th style="background: #138D75"><i class="fas fa-edit"></i> OPCION</th>
+						<th style="background: #138D75"><i class="fas fa-unlock"></i></th>
 	                </tr>
               </thead>
               <tbody>
@@ -90,7 +90,7 @@
 				        (click)="modal_editar(editar);">
 				        <i class="fas fa-pencil-alt"></i>
 				        </button>
-              			
+
 
               			<ng-template #editar let-modal>
 						     <div class="modal-header" id="demoFont">
@@ -193,17 +193,17 @@
 										</button>
 									</div>
 								</div>
-						        
+
 						      </div>
 						  </ng-template>
               		</td>
 
               		<td>
-              			
+
               			<button class="btn btn-primary btn-sm"
 				        (click)="modal_opcion(opcion,item.id);">
 				        <i class="fas fa-wrench"></i>
-				        </button>	
+				        </button>
 
               			<ng-template #opcion let-modal>
 						     <div class="modal-header" id="demoFont">
@@ -234,7 +234,7 @@
 	                  							<label *ngIf="ver_estado_soc">{{estado_socio}}</label>
 	                  						</td>
 										</tr>
-										
+
 										<tr class="text-center">
 											<th style="background: #138D75">
 												Reestablecer contraseña
@@ -248,12 +248,12 @@
 												Descripcion
 											</th>
 											<td>
-												
+
 												<p>Cuando reestablece una contraseña, esta será por defecto: <strong>123456</strong></p>
 											</td>
 										</tr>
 									 </table>
-								
+
 						      </div>
 						  </ng-template>
 					  </td>

@@ -1,3 +1,4 @@
+
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PublicMasterComponent } from './public-master/public-master.component';
@@ -28,6 +29,7 @@ import { MenuComponent } from './auth-master/liquidaciones/menu/menu.component';
 import { CrearEmpleadoComponent } from './auth-master/liquidaciones/crear-empleado/crear-empleado.component';
 import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
 import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
+import { IndexComponent } from './auth-master/index/index.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -47,7 +49,8 @@ const routes: Routes = [
     { path: 'Secretaria', component: SecretariaComponent },
     { path: 'Liquidaciones', component: MenuComponent },
     { path: 'CrearEmpleado', component: CrearEmpleadoComponent },
-    { path: 'TutorialesMaster', component: TutorialMasterComponent }
+    { path: 'TutorialesMaster', component: TutorialMasterComponent },
+    { path: 'Index', component:IndexComponent },
 
 
   ]},

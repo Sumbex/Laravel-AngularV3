@@ -12,11 +12,42 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <script src="https://kit.fontawesome.com/ebfc476978.js"></script>
   <script src="  https://printjs-4de6.kxcdn.com/print.min.js"></script>
-  <script src=" https://printjs-4de6.kxcdn.com/print.min.css"></script>   
+  <script src=" https://printjs-4de6.kxcdn.com/print.min.css"></script>
 </head>
 <body>
-  <app-root></app-root>
+  <img class="animate__animated animate__bounce" id="imagen" style="height: 100%; width: 100%; z-index: -1;
+  text-align: center;" src="https://clubjunkogolf.com/wp-content/uploads/2019/12/loadin_gif.gif" alt="">
+  <app-root id="app"></app-root>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $("#app").hide();
+    $(window).load(function() {
+
+        $("#imagen").remove();
+        $("#app").show();
+    });
+
+  $( document ).ready(function() {
+    console.log( "ready to die!" );
+    $('.navbar-collapse ul li a').click(function(){
+
+      $(".navbar-collapse").collapse('hide');
+  });
+  });
+
+
+</script>
+
+<!-- <script>
+  $('.navbar-collapse a').click(function(){
+    alert("cierra la wea")
+      $(".navbar-collapse").collapse('hide');
+  });
+</script> -->
 </body>
 </html>

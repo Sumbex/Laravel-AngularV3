@@ -147,6 +147,7 @@ import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-
 import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
 import { ArchivadorBienestarComponent } from './auth-master/cuenta-bienestar/archivador-bienestar/archivador-bienestar.component';
 import { IndexComponent } from './auth-master/index/index.component';
+import { AdminCumpleaniosComponent } from './auth-master/admin-cumpleanios/admin-cumpleanios.component';
 
 
 @NgModule({
@@ -274,6 +275,7 @@ import { IndexComponent } from './auth-master/index/index.component';
     TutorialesSociosComponent,
     ArchivadorBienestarComponent,
     IndexComponent,
+    AdminCumpleaniosComponent,
 
   ],
   imports: [

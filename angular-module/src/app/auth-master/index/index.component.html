@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-md-4">
-          <div class="box" [routerLink]="['/AuthMaster/CuentaConsorcio']">
+            <div class="box" [routerLink]="['/AuthMaster/CuentaConsorcio']">
 
               <div class="text-center">
                 <i class="fas fa-piggy-bank fa-5x"></i>
@@ -36,7 +36,20 @@
               </div>
             </div>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="box" [routerLink]="['/AuthMaster/Cumpleanios']">
+
+            <div class="text-center">
+              <i class="fas fa-birthday-cake fa-5x"></i>
+
+                <p> Cumpleaños <span class="badge badge-pill badge-danger">{{count_cumpleanios}}</span></p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <br>

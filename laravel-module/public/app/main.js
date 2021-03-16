@@ -320,6 +320,17 @@ module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet><
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>admin-cumpleanios works!</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/auth-master.component.html":
 /*!**********************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/auth-master.component.html ***!
@@ -822,7 +833,7 @@ module.exports = "<p>\n  tablas-beneficios works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\n<div class=\"animate__animated animate__fadeIn\">\n  <div class=\"card\" style=\" height: 600px;\">\n    <div class=\"card-header\">\n      <h3 class=\"text-center\"><i class=\"fas fa-home\"></i> Inicio</h3>\n    </div>\n    <div class=\"card-body\" style=\"margin-top: 10px;\">\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">\n            <div class=\"text-center\">\n              <i class=\"fas fa-calculator fa-5x\"></i>\n\n                  <p> Cuenta sindical</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-money-check-alt fa-5x\"></i>\n\n                  <p> Cuenta bienestar</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n          <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-piggy-bank fa-5x\"></i>\n\n                  <p> Cuenta consorcio</p>\n              </div>\n            </div>\n        </div>\n        </div>\n    </div>\n\n    <br>\n  </div>\n</div>\n"
+module.exports = "<br>\n<div class=\"animate__animated animate__fadeIn\">\n  <div class=\"card\" style=\" height: 600px;\">\n    <div class=\"card-header\">\n      <h3 class=\"text-center\"><i class=\"fas fa-home\"></i> Inicio</h3>\n    </div>\n    <div class=\"card-body\" style=\"margin-top: 10px;\">\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">\n            <div class=\"text-center\">\n              <i class=\"fas fa-calculator fa-5x\"></i>\n\n                  <p> Cuenta sindical</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-money-check-alt fa-5x\"></i>\n\n                  <p> Cuenta bienestar</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-piggy-bank fa-5x\"></i>\n\n                  <p> Cuenta consorcio</p>\n              </div>\n            </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n          <div class=\"box\" [routerLink]=\"['/AuthMaster/Cumpleanios']\">\n\n            <div class=\"text-center\">\n              <i class=\"fas fa-birthday-cake fa-5x\"></i>\n\n                <p> Cumpleaños <span class=\"badge badge-pill badge-danger\">{{count_cumpleanios}}</span></p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <br>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1692,6 +1703,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_tutorial_master_tutorial_master_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./auth-master/tutorial-master/tutorial-master.component */ "./src/app/auth-master/tutorial-master/tutorial-master.component.ts");
 /* harmony import */ var _socios_master_tutoriales_socios_tutoriales_socios_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./socios-master/tutoriales-socios/tutoriales-socios.component */ "./src/app/socios-master/tutoriales-socios/tutoriales-socios.component.ts");
 /* harmony import */ var _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./auth-master/index/index.component */ "./src/app/auth-master/index/index.component.ts");
+/* harmony import */ var _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./auth-master/admin-cumpleanios/admin-cumpleanios.component */ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.ts");
+
 
 
 
@@ -1742,6 +1755,7 @@ const routes = [
             { path: 'CrearEmpleado', component: _auth_master_liquidaciones_crear_empleado_crear_empleado_component__WEBPACK_IMPORTED_MODULE_27__["CrearEmpleadoComponent"] },
             { path: 'TutorialesMaster', component: _auth_master_tutorial_master_tutorial_master_component__WEBPACK_IMPORTED_MODULE_28__["TutorialMasterComponent"] },
             { path: 'Index', component: _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_30__["IndexComponent"] },
+            { path: 'Cumpleanios', component: _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_31__["AdminCumpleaniosComponent"] }
         ] },
     { path: 'SociosMaster', component: _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__["SociosMasterComponent"], canActivate: [_guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_19__["AuthGuardSocioService"]], children: [
             { path: 'Perfil', component: _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__["PerfilSocioComponent"] },
@@ -1967,6 +1981,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_tutoriales_socios_tutoriales_socios_component__WEBPACK_IMPORTED_MODULE_142__ = __webpack_require__(/*! ./socios-master/tutoriales-socios/tutoriales-socios.component */ "./src/app/socios-master/tutoriales-socios/tutoriales-socios.component.ts");
 /* harmony import */ var _auth_master_cuenta_bienestar_archivador_bienestar_archivador_bienestar_component__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/archivador-bienestar/archivador-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/archivador-bienestar/archivador-bienestar.component.ts");
 /* harmony import */ var _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./auth-master/index/index.component */ "./src/app/auth-master/index/index.component.ts");
+/* harmony import */ var _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./auth-master/admin-cumpleanios/admin-cumpleanios.component */ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.ts");
+
 
 
 
@@ -2240,6 +2256,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _socios_master_tutoriales_socios_tutoriales_socios_component__WEBPACK_IMPORTED_MODULE_142__["TutorialesSociosComponent"],
             _auth_master_cuenta_bienestar_archivador_bienestar_archivador_bienestar_component__WEBPACK_IMPORTED_MODULE_143__["ArchivadorBienestarComponent"],
             _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_144__["IndexComponent"],
+            _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_145__["AdminCumpleaniosComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -2273,6 +2290,49 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.css":
+/*!*******************************************************************************!*\
+  !*** ./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.css ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2FkbWluLWN1bXBsZWFuaW9zL2FkbWluLWN1bXBsZWFuaW9zLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: AdminCumpleaniosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminCumpleaniosComponent", function() { return AdminCumpleaniosComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let AdminCumpleaniosComponent = class AdminCumpleaniosComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+AdminCumpleaniosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-admin-cumpleanios',
+        template: __webpack_require__(/*! raw-loader!./admin-cumpleanios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.html"),
+        styles: [__webpack_require__(/*! ./admin-cumpleanios.component.css */ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], AdminCumpleaniosComponent);
 
 
 
@@ -9326,7 +9386,7 @@ TablasBeneficiosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".box{\n  background: #52BE80;\n  margin-bottom:4px;\n  padding: 9px 0px 9px 0px;\n  width: 100%;\n  border-radius: 3px;\n  color:white;\n  transition: all .3s ease-in-out;\n  /* box-shadow: 5px 2px 2px #145A32; */\n  box-shadow: 0 0 15px #145A32;\n  border: 1px solid #117864;\n}\n.box:hover {\n  -webkit-transform: scale(1.01);\n          transform: scale(1.01);\n  border: 2px solid #16A085;\n  cursor: pointer;\n}\nh3{\n  color: green;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvaW5kZXgvaW5kZXguY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFtQjtFQUNuQixpQkFBaUI7RUFDakIsd0JBQXdCO0VBQ3hCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLCtCQUErQjtFQUMvQixxQ0FBcUM7RUFDckMsNEJBQTRCO0VBQzVCLHlCQUF5QjtBQUMzQjtBQUNBO0VBQ0UsOEJBQXNCO1VBQXRCLHNCQUFzQjtFQUN0Qix5QkFBeUI7RUFDekIsZUFBZTtBQUNqQjtBQUVBO0VBQ0UsWUFBWTs7QUFFZCIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2luZGV4L2luZGV4LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYm94e1xuICBiYWNrZ3JvdW5kOiAjNTJCRTgwO1xuICBtYXJnaW4tYm90dG9tOjRweDtcbiAgcGFkZGluZzogOXB4IDBweCA5cHggMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBjb2xvcjp3aGl0ZTtcbiAgdHJhbnNpdGlvbjogYWxsIC4zcyBlYXNlLWluLW91dDtcbiAgLyogYm94LXNoYWRvdzogNXB4IDJweCAycHggIzE0NUEzMjsgKi9cbiAgYm94LXNoYWRvdzogMCAwIDE1cHggIzE0NUEzMjtcbiAgYm9yZGVyOiAxcHggc29saWQgIzExNzg2NDtcbn1cbi5ib3g6aG92ZXIge1xuICB0cmFuc2Zvcm06IHNjYWxlKDEuMDEpO1xuICBib3JkZXI6IDJweCBzb2xpZCAjMTZBMDg1O1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbmgze1xuICBjb2xvcjogZ3JlZW47XG5cbn1cbiJdfQ== */"
+module.exports = ".box{\n  background: #52BE80;\n  margin-bottom:8px;\n  padding: 9px 0px 9px 0px;\n  width: 100%;\n  border-radius: 3px;\n  color:white;\n  transition: all .3s ease-in-out;\n  /* box-shadow: 5px 2px 2px #145A32; */\n  box-shadow: 0 0 15px #145A32;\n  border: 1px solid #117864;\n}\n.box:hover {\n  -webkit-transform: scale(1.01);\n          transform: scale(1.01);\n  border: 2px solid #16A085;\n  cursor: pointer;\n}\nh3{\n  color: green;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvaW5kZXgvaW5kZXguY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFtQjtFQUNuQixpQkFBaUI7RUFDakIsd0JBQXdCO0VBQ3hCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLCtCQUErQjtFQUMvQixxQ0FBcUM7RUFDckMsNEJBQTRCO0VBQzVCLHlCQUF5QjtBQUMzQjtBQUNBO0VBQ0UsOEJBQXNCO1VBQXRCLHNCQUFzQjtFQUN0Qix5QkFBeUI7RUFDekIsZUFBZTtBQUNqQjtBQUVBO0VBQ0UsWUFBWTs7QUFFZCIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2luZGV4L2luZGV4LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYm94e1xuICBiYWNrZ3JvdW5kOiAjNTJCRTgwO1xuICBtYXJnaW4tYm90dG9tOjhweDtcbiAgcGFkZGluZzogOXB4IDBweCA5cHggMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBjb2xvcjp3aGl0ZTtcbiAgdHJhbnNpdGlvbjogYWxsIC4zcyBlYXNlLWluLW91dDtcbiAgLyogYm94LXNoYWRvdzogNXB4IDJweCAycHggIzE0NUEzMjsgKi9cbiAgYm94LXNoYWRvdzogMCAwIDE1cHggIzE0NUEzMjtcbiAgYm9yZGVyOiAxcHggc29saWQgIzExNzg2NDtcbn1cbi5ib3g6aG92ZXIge1xuICB0cmFuc2Zvcm06IHNjYWxlKDEuMDEpO1xuICBib3JkZXI6IDJweCBzb2xpZCAjMTZBMDg1O1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbmgze1xuICBjb2xvcjogZ3JlZW47XG5cbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -9341,21 +9401,35 @@ module.exports = ".box{\n  background: #52BE80;\n  margin-bottom:4px;\n  padding
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexComponent", function() { return IndexComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _servicios_cumpleanio_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../servicios/cumpleanio.service */ "./src/app/servicios/cumpleanio.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
 
 
 let IndexComponent = class IndexComponent {
-    constructor() { }
+    constructor(cumpleanio) {
+        this.cumpleanio = cumpleanio;
+        this.count_cumpleanios = 0;
+    }
     ngOnInit() {
+        this.traer_cantidad_cumpleanios();
+    }
+    traer_cantidad_cumpleanios() {
+        this.cumpleanio.cantidad_cumpleanios().subscribe((res) => {
+            this.count_cumpleanios = res;
+        });
     }
 };
+IndexComponent.ctorParameters = () => [
+    { type: _servicios_cumpleanio_service__WEBPACK_IMPORTED_MODULE_1__["CumpleanioService"] }
+];
 IndexComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-index',
         template: __webpack_require__(/*! raw-loader!./index.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/index/index.component.html"),
         styles: [__webpack_require__(/*! ./index.component.css */ "./src/app/auth-master/index/index.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_cumpleanio_service__WEBPACK_IMPORTED_MODULE_1__["CumpleanioService"]])
 ], IndexComponent);
 
 
@@ -17043,6 +17117,51 @@ CsDetalleCampingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], CsDetalleCampingService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/cumpleanio.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/servicios/cumpleanio.service.ts ***!
+  \*************************************************/
+/*! exports provided: CumpleanioService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CumpleanioService", function() { return CumpleanioService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let CumpleanioService = class CumpleanioService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    cantidad_cumpleanios() {
+        return this._http.get(this.url + "cantidad_cumpleanios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token,
+                'Content-Type': 'applcation/json'
+            }) });
+    }
+};
+CumpleanioService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+CumpleanioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], CumpleanioService);
 
 
 

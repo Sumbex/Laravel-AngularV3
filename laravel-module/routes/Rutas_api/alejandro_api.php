@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 //CUENTA SINDICATO--------------------------------------------------------------------------------
@@ -193,3 +193,7 @@ Route::post('actualizar_conf_descuento','DescuentosController@actualizar_conf_de
 Route::get('traer_total_h_i/{empleado?}','DescuentosController@traer_total_h_i');
 
 Route::get('formula_desc/{id_desc}','DescuentosController@formula_desc');
+
+
+//Cumpleanios
+Route::get('cantidad_cumpleanios', 'CumpleanioController@contador_cumpleanieros');

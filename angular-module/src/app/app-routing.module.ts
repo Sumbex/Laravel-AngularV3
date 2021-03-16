@@ -1,4 +1,3 @@
-
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PublicMasterComponent } from './public-master/public-master.component';
@@ -30,6 +29,7 @@ import { CrearEmpleadoComponent } from './auth-master/liquidaciones/crear-emplea
 import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-master.component';
 import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
 import { IndexComponent } from './auth-master/index/index.component';
+import { AdminCumpleaniosComponent } from './auth-master/admin-cumpleanios/admin-cumpleanios.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -51,6 +51,7 @@ const routes: Routes = [
     { path: 'CrearEmpleado', component: CrearEmpleadoComponent },
     { path: 'TutorialesMaster', component: TutorialMasterComponent },
     { path: 'Index', component:IndexComponent },
+    { path: 'Cumpleanios', component:AdminCumpleaniosComponent }
 
 
   ]},

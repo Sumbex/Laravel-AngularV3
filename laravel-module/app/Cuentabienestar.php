@@ -22,17 +22,17 @@ class Cuentabienestar extends Model
         $f = $this->div_fecha($r->fecha);
         $anio = $this->anio_tipo_id($f['anio']);
 
-         // PRIMERO VERIFICAR SI EXISTE 
+         // PRIMERO VERIFICAR SI EXISTE
         $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
 								'activo'  => 'S',
 								'anio_id' => $anio->id/*$f['anio']*/,
 								'mes_id'  => $f['mes'],
                         ])->first();
-        
+
         if(empty($exis_monto_init)){
 			//$borrar = Storage::delete('/'.$archivo);
 			return [
-				"estado"  => "failed", 
+				"estado"  => "failed",
 				"mensaje" => "No existe monto inicial, primero calcule"
 			];
 
@@ -49,12 +49,12 @@ class Cuentabienestar extends Model
         if (!empty($verify)) {
                 return ['estado'=>'failed', 'mensaje'=>'Ya existe la cuenta del gas para este mes'];
         }
-        
+
         $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
 
 		if($file['estado'] == "success"){
                 $archivo = $file['archivo'];
-                
+
 
                 $cbe = $this;
                 $cbe->anio_id = $anio->id;
@@ -70,7 +70,7 @@ class Cuentabienestar extends Model
                 if ($r->definicion == '2') { $cbe->monto_egreso = $r->monto; }
 
                 $cbe->descripcion = $r->descripcion;
-                
+
                 if ($cbe->save()) {
                     return [ 'estado'=>'success', 'mensaje'=> 'Cuenta del gas ingresada correctamente' ];
                 }
@@ -102,17 +102,17 @@ class Cuentabienestar extends Model
             }
         }
 
-         // PRIMERO VERIFICAR SI EXISTE 
+         // PRIMERO VERIFICAR SI EXISTE
         $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
 								'activo'  => 'S',
 								'anio_id' => $anio->id/*$f['anio']*/,
 								'mes_id'  => $f['mes'],
                         ])->first();
-        
+
         if(empty($exis_monto_init)){
 			//$borrar = Storage::delete('/'.$archivo);
 			return [
-				"estado"  => "failed", 
+				"estado"  => "failed",
 				"mensaje" => "No existe monto inicial, primero calcule"
 			];
 
@@ -152,7 +152,7 @@ class Cuentabienestar extends Model
 		}else{
 			return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
 		}
-        
+
     }
 
     protected function insertar_fall_nac_gm($r)
@@ -169,8 +169,8 @@ class Cuentabienestar extends Model
             case '5':
                  $verify = $this->verificar_existencia_nacimiento($r->socio_id, $rut_limpio);
                  if (!$verify) {
-                    return [ 
-                        'estado'=>'failed', 
+                    return [
+                        'estado'=>'failed',
                         'mensaje'=> 'El rut del recien nacido puede que no esté asociado al socio o el cobro del beneficio ya esta adquirido'
                      ];
                  }
@@ -178,13 +178,13 @@ class Cuentabienestar extends Model
             case '4':
                 $verify = $this->verificar_existencia_fallecido($r->socio_id, $rut_limpio);
                 if (!$verify) {
-                    return [ 
-                        'estado'=>'failed', 
+                    return [
+                        'estado'=>'failed',
                         'mensaje'=> 'El rut del fallecido puede que no exista en los beneficios o ya esta asociado al item Fallecimiento segun el socio'
                      ];
                 }
             break;
-            
+
             default:
                 # code...
             break;
@@ -192,19 +192,19 @@ class Cuentabienestar extends Model
 
         $f = $this->div_fecha($r->fecha);
         $anio = $this->anio_tipo_id($f['anio']);
-        
 
-         // PRIMERO VERIFICAR SI EXISTE 
+
+         // PRIMERO VERIFICAR SI EXISTE
         $exis_monto_init =  DB::table('cbe_cierre_mensual')->where([
 								'activo'  => 'S',
 								'anio_id' => $anio->id/*$f['anio']*/,
 								'mes_id'  => $f['mes'],
                         ])->first();
-        
+
         if(empty($exis_monto_init)){
 			// $borrar = Storage::delete('/'.$archivo);
 			return [
-				"estado"  => "failed", 
+				"estado"  => "failed",
 				"mensaje" => "No existe monto inicial, primero calcule"
 			];
 
@@ -214,13 +214,13 @@ class Cuentabienestar extends Model
         if ($r->tipo_cuenta_bienestar_id == '4') { // tipo fallecido
 
             $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
-            $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/defuncion/');    
-        
+            $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/defuncion/');
+
             if($file['estado'] == "success" && $file2['estado'] == "success"){
 
                 $archivo = $file['archivo'];
                 $archivo2 = $file2['archivo'];
-                
+
 
                 $cbe = $this;
                 $cbe->anio_id = $anio->id;
@@ -250,7 +250,7 @@ class Cuentabienestar extends Model
                         case '7'://Gastos medicos
                             return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
                         break;
-                        
+
                         default:
                             # code...
                         break;
@@ -264,22 +264,22 @@ class Cuentabienestar extends Model
 
         }
         if ($r->tipo_cuenta_bienestar_id == '7') { // tipo gastos medicos
-           
+
             // $validar_pdf_gm = $this->validar_pdf_gm($r);
             // if($valida_pdf['estado'] == 'failed_v'){
-            //     return ['estado'=>'failed', 
+            //     return ['estado'=>'failed',
             //             'mensaje'=>'El documento del gasto medico puede que no sea un PDF o no exista'];
             // }
 
 
             $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
-            $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/gastosmedicos/');    
-        
+            $file2 = $this->guardarArchivo($r->archivo_documento_2,'archivos_bienestar/gastosmedicos/');
+
             if($file['estado'] == "success" && $file2['estado'] == "success"){
 
                 $archivo = $file['archivo'];
                 $archivo2 = $file2['archivo'];
-                
+
 
                 $cbe = $this;
                 $cbe->anio_id = $anio->id;
@@ -309,7 +309,7 @@ class Cuentabienestar extends Model
                         case '7'://Gastos medicos
                             return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
                         break;
-                        
+
                         default:
                             # code...
                         break;
@@ -325,10 +325,10 @@ class Cuentabienestar extends Model
         else{ // o si no guardado normal para nacimiento o gastos medicos
 
             $file = $this->guardarArchivo($r->archivo_documento_1,'archivos_bienestar/');
-        
+
             if($file['estado'] == "success"){
                 $archivo = $file['archivo'];
-                
+
 
                 $cbe = $this;
                 $cbe->anio_id = $anio->id;
@@ -357,7 +357,7 @@ class Cuentabienestar extends Model
                         case '7'://Gastos medicos
                             return CbeGastosMedicos::insertar($cbe->id, $r->socio_id);
                         break;
-                        
+
                         default:
                             # code...
                         break;
@@ -372,7 +372,7 @@ class Cuentabienestar extends Model
         }
 
 
-            
+
     }
 
     protected function listar($anio, $mes)
@@ -389,10 +389,10 @@ class Cuentabienestar extends Model
 				'tipo_cuenta_bienestar_id' => '13',//cuenta tipo interes de prestamo
 				'anio_id' => $anio,
                 'mes_id' => $mes
-                
+
 			])->first();
 
-			
+
 
 			if(empty($verify_interes)){
 
@@ -416,12 +416,12 @@ class Cuentabienestar extends Model
 
 				$verify_interes->monto_ingreso = $interes['monto_ingreso'];
 				$verify_interes->save();
-				
+
 			}
 		}
 
 
-        $list = DB::select("SELECT 
+        $list = DB::select("SELECT
                         cbe.id,
                         concat(cbe.dia,' de ',m.descripcion,',',a.descripcion) as fecha,
                         numero_documento_1,
@@ -433,31 +433,31 @@ class Cuentabienestar extends Model
                         tcb.id as tipo_cuenta_bienestar_id,
                         tcb.descripcion as tipo_cuenta,
                         upper(cbe.descripcion) descripcion,
-                        tcb.orden 
+                        tcb.orden
                     from cuenta_bienestar cbe
                     inner join anio as a on a.id = cbe.anio_id
                     inner join mes as m on m.id = cbe.mes_id
                     inner join tipo_cuenta_bienestar as tcb on tcb.id = cbe.tipo_cuenta_bienestar_id
                     where cbe.mes_id = $mes and cbe.anio_id= $anio and cbe.activo ='S'
-                    --order by tcb.id ASC 
+                    --order by tcb.id ASC
                     order by tcb.orden ASC, cbe.dia asc "
         );
-        
+
         if ($list > 0 ) {
             return $list;
         }
-        
+
     }
 
-    public function div_fecha($value)//funciona con input type date 
+    public function div_fecha($value)//funciona con input type date
     {
     	$fecha = $value;
 		$ano = substr($fecha, -10, 4);
 		$mes = substr($fecha, -5, 2);
 		$dia = substr($fecha, -2, 2);
 		return [
-			'anio' => $ano, 
-			'mes'  => $mes, 
+			'anio' => $ano,
+			'mes'  => $mes,
 			'dia'  => $dia
 		];
     }
@@ -469,9 +469,9 @@ class Cuentabienestar extends Model
     	if(!empty($data)){
 
     	 	return $data;
-        } 
+        }
         return ['id'=>0];
-    		
+
     }
 
      protected function resultado_cuenta_sindical($anio, $mes)
@@ -504,7 +504,7 @@ class Cuentabienestar extends Model
 
     public function validar_pdf($request)
 	{
-		$val = Validator::make($request->all(), 
+		$val = Validator::make($request->all(),
 		 	[
 
 	            'input' => 'required|mimes:pdf',
@@ -514,13 +514,13 @@ class Cuentabienestar extends Model
 	        	'input.mimes' => 'El archivo no es PDF',
 	        ]);
 
- 
+
 	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
     public function validar_pdf_gm($request)
 	{
-		$val = Validator::make($request->all(), 
+		$val = Validator::make($request->all(),
 		 	[
 
 	            'archivo_documento_2' => 'required|mimes:pdf',
@@ -530,11 +530,11 @@ class Cuentabienestar extends Model
 	        	'archivo_documento_2.mimes' => 'El archivo no es PDF',
 	        ]);
 
- 
+
 	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
-    
+
     protected function guardarArchivo($archivo, $ruta)
     {
     	try{
@@ -560,7 +560,7 @@ class Cuentabienestar extends Model
     {
         $exist_beneficiario = false;
         $existe_carga = false;
-        
+
         $benef = SocioBeneficiario::where([
                     'socio_id' => $socio_id,
                     //'rut' => $rut,
@@ -594,7 +594,7 @@ class Cuentabienestar extends Model
         if ($exist_beneficiario || $existe_carga) {
 
             $very = CbeNacimiento::where([
-                'activo'=>'S','socio_id'=>$socio_id, 
+                'activo'=>'S','socio_id'=>$socio_id,
                 //'rut_nacimiento'=>$rut
             ])
             ->whereRaw("LOWER(regexp_replace(rut_nacimiento, '[^\w]+','','g')) = LOWER('".$rut."')")
@@ -605,11 +605,11 @@ class Cuentabienestar extends Model
             }else{
                 return false;
             }
-            
+
         }
         return false;
 
-        
+
     }
 
     public function verificar_existencia_fallecido($socio_id, $rut)
@@ -618,7 +618,7 @@ class Cuentabienestar extends Model
         $exist_carga = false;
         $exist_cony = false;
         $exist_p_s = false;
-        
+
         $benef = SocioBeneficiario::where([
                     'socio_id' => $socio_id,
                     //'rut' => $rut,
@@ -662,16 +662,16 @@ class Cuentabienestar extends Model
         ])
         ->whereRaw("LOWER(regexp_replace(rut, '[^\w]+','','g')) = LOWER('".$rut."')")
         ->first();
-            
+
          if (!empty($p_s)) {
                 $exist_p_s = true;
             }
-        
-            
+
+
         if ($exist_beneficiario || $exist_carga || $exist_cony || $exist_p_s) {
 
             $very = CbeFallecimiento::where([
-                'activo'=>'S','socio_id'=>$socio_id, 
+                'activo'=>'S','socio_id'=>$socio_id,
                 //'rut_fallecido'=>$rut
             ])
              ->whereRaw("LOWER(regexp_replace(rut_fallecido, '[^\w]+','','g')) = LOWER('".$rut."')")
@@ -682,7 +682,7 @@ class Cuentabienestar extends Model
             }else{
                 return false;
             }
-            
+
         }
         return false;
     }
@@ -703,7 +703,7 @@ class Cuentabienestar extends Model
                 ++$i;
             }
             $dvr = 11 - ($suma % 11);
-            
+
             if($dvr == 11)
                 $dvr = 0;
             if($dvr == 10)
@@ -717,30 +717,30 @@ class Cuentabienestar extends Model
             return false;
         }
     }
-    
 
-    function limpiar($s) 
-    { 
-        $s = str_replace('á', 'a', $s); 
-        $s = str_replace('Á', 'A', $s); 
-        $s = str_replace('é', 'e', $s); 
-        $s = str_replace('É', 'E', $s); 
-        $s = str_replace('í', 'i', $s); 
-        $s = str_replace('Í', 'I', $s); 
-        $s = str_replace('ó', 'o', $s); 
-        $s = str_replace('Ó', 'O', $s); 
-        $s = str_replace('Ú', 'U', $s); 
-        $s= str_replace('ú', 'u', $s); 
 
-        //Quitando Caracteres Especiales 
-        $s= str_replace('"', '', $s); 
-        $s= str_replace(':', '', $s); 
-        $s= str_replace('.', '', $s); 
-        $s= str_replace(',', '', $s); 
-        $s= str_replace(';', '', $s); 
-        $s= str_replace('-', '', $s); 
-        return $s; 
+    function limpiar($s)
+    {
+        $s = str_replace('á', 'a', $s);
+        $s = str_replace('Á', 'A', $s);
+        $s = str_replace('é', 'e', $s);
+        $s = str_replace('É', 'E', $s);
+        $s = str_replace('í', 'i', $s);
+        $s = str_replace('Í', 'I', $s);
+        $s = str_replace('ó', 'o', $s);
+        $s = str_replace('Ó', 'O', $s);
+        $s = str_replace('Ú', 'U', $s);
+        $s= str_replace('ú', 'u', $s);
+
+        //Quitando Caracteres Especiales
+        $s= str_replace('"', '', $s);
+        $s= str_replace(':', '', $s);
+        $s= str_replace('.', '', $s);
+        $s= str_replace(',', '', $s);
+        $s= str_replace(';', '', $s);
+        $s= str_replace('-', '', $s);
+        return $s;
     }
-    
+
 
 }

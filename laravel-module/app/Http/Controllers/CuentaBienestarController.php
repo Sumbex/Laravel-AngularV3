@@ -14,7 +14,7 @@ class CuentaBienestarController extends Controller
 
     public function validar_datos_bienestar($request)
 	{
-		 $validator = Validator::make($request->all(), 
+		 $validator = Validator::make($request->all(),
 		 	[
 	            'fecha' => 'required',
 	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
@@ -36,13 +36,13 @@ class CuentaBienestarController extends Controller
                 'archivo_documento_1.mimes' =>'El documento debe ser un PDF'
 	        ]);
 
- 
+
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
     public function validar_datos_nacimiento($request)
 	{
-		 $validator = Validator::make($request->all(), 
+		 $validator = Validator::make($request->all(),
 		 	[
 	            'fecha' => 'required',
 	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
@@ -68,13 +68,13 @@ class CuentaBienestarController extends Controller
                 'socio_id.required' => 'El socio es necesario'
 	        ]);
 
- 
+
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
     public function validar_datos_fallecimiento($request)
 	{
-		 $validator = Validator::make($request->all(), 
+		 $validator = Validator::make($request->all(),
 		 	[
 	            'fecha' => 'required',
                 'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
@@ -104,13 +104,13 @@ class CuentaBienestarController extends Controller
                 'socio_id.required' => 'El socio es necesario'
 	        ]);
 
- 
+
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 	 public function validar_datos_gm($request)
 	{
-		 $validator = Validator::make($request->all(), 
+		 $validator = Validator::make($request->all(),
 		 	[
 	            'fecha' => 'required',
 	            'numero_documento_1' => 'required|unique:cuenta_bienestar,numero_documento_1',
@@ -135,7 +135,7 @@ class CuentaBienestarController extends Controller
                 'archivo_documento_2.mimes' =>'El documento debe ser un PDF'
 	        ]);
 
- 
+
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
@@ -182,7 +182,7 @@ class CuentaBienestarController extends Controller
 					}
 					return $validar;
 				break;
-				
+
 				case '8': // 10% cuota socio
 					$validar = $this->validar_datos_bienestar($r);
 					if ($validar['estado'] == "success") {
@@ -191,7 +191,7 @@ class CuentaBienestarController extends Controller
 					}
 					return $validar;
 				break;
-				
+
 				case '9': // Inasistencia por elecciones
 					$validar = $this->validar_datos_bienestar($r);
 					if ($validar['estado'] == "success") {
@@ -200,7 +200,7 @@ class CuentaBienestarController extends Controller
 					}
 					return $validar;
 				break;
-				
+
 				case '10': // Consorcio
 					$validar = $this->validar_datos_bienestar($r);
 					if ($validar['estado'] == "success") {
@@ -261,30 +261,30 @@ class CuentaBienestarController extends Controller
 					return $validar;
 				break;
 				default:
-					
+
 				break;
 			}
 		}catch(QueryException $e){
 			return[
-				'estado'  => 'failed', 
+				'estado'  => 'failed',
 				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
 			];
 		}
 		catch(\Exception $e){
 			return[
-				'estado'  => 'failed', 
+				'estado'  => 'failed',
 				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
 			];
-		}	
+		}
 
     }
 
     public function listar_cuenta($anio, $mes)
     {
         $cm_txt = 'cbe_cierre_mensual';
-			
+
 		$c_m=DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes])->first();
-      
+
 		if(!empty($c_m->inicio_mensual)){
 			$s_a = $c_m->inicio_mensual;
 
@@ -294,10 +294,10 @@ class CuentaBienestarController extends Controller
 
                 $tomar = true;
 
-                for ($i=0; $i < count($listar); $i++) { 
-                
+                for ($i=0; $i < count($listar); $i++) {
+
                     switch ($listar[$i]->definicion) {
-                        case '1':  
+                        case '1':
 
                             if ($tomar == true) {
 								$listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
@@ -310,19 +310,19 @@ class CuentaBienestarController extends Controller
                             }
 
                         break;
-                        case '2':  
+                        case '2':
                             if ($tomar == true) {
                                 $listar[$i]->saldo_actual_raw = $s_a - $listar[$i]->monto_egreso;
                                 $tomar = false;
                                 $ultimo_valor = $listar[$i]->saldo_actual_raw;
 
                             }else{
-                                        
+
                                 $listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw - $listar[$i]->monto_egreso;
 
                             }
                         break;
-                    
+
                     }
 
                 }
@@ -337,7 +337,7 @@ class CuentaBienestarController extends Controller
                     $return['nacimiento']=[];
                     $return['fallecimiento']=[];
 					$return['gastos_medicos']=[];
-					
+
 					$return['socio_cuota']=[];
 					$return['inasistencia_elecciones']=[];
 					$return['consorcio']=[];
@@ -355,7 +355,7 @@ class CuentaBienestarController extends Controller
                             case '5': $return['nacimiento'][] = $key; break;
                             case '4': $return['fallecimiento'][] = $key; break;
 							case '7': $return['gastos_medicos'][] = $key; break;
-							
+
 							case '8': $return['socio_cuota'][] = $key; break;
 							case '9': $return['inasistencia_elecciones'][] = $key; break;
 							case '10': $return['consorcio'][] = $key;  break;
@@ -363,13 +363,13 @@ class CuentaBienestarController extends Controller
 							case '12': $return['no_sindicalizados'][] = $key;  break;
 							case '13': $return['aporte'][] = $key;  break;
 							case '14': $return['arreglo_floral'][] = $key;  break;
-                            
+
                             default:
                                 # code...
                             break;
                         }
 					}
-					return $return;
+
                     $return['resultado'] = Cuentabienestar::resultado_cuenta_sindical($anio, $mes);
 
                     return $return;
@@ -377,13 +377,13 @@ class CuentaBienestarController extends Controller
             return ['estado'=>'failed','mensaje'=>'No hay datos en la tabla'];
         }
         return ['estado'=>'failed','mensaje'=>'No hay monto inicial en este mes'];
-       
+
 	}
-	
+
 	 public function actualizar_dato_cbe(Request $r)
     {
     	$valida_pdf = $this->validar_pdf($r);
-    
+
 
     	$cs = Cuentabienestar::where('id',$r->id)->first();
     	//dd($cs);
@@ -412,13 +412,13 @@ class CuentaBienestarController extends Controller
     				}else{
     				return ['estado'=>'failed','mensaje'=>'La fecha ingresada no pertenece al mes correspondiente'];
     				}
-						
+
 
     		break;
     		case 'numero_documento_1':
 
     				$exist = Cuentabienestar::where([
-    					'activo'=>'S', 
+    					'activo'=>'S',
     					'numero_documento_1'=>$r->input,
     					//'id'=>$r->id
     				])->first();
@@ -432,9 +432,9 @@ class CuentaBienestarController extends Controller
     				}
 
 			break;
-			
+
     		case 'tipo_cuenta_bienestar':
-    			
+
     			$mes =	$cs->mes_id;
     			$anio = $cs->anio_id;
 
@@ -471,7 +471,7 @@ class CuentaBienestarController extends Controller
 
     		break;
     		case 'descripcion':
-    			
+
     			$cs->descripcion = $r->input;
     			if ($cs->save()) {
     				return ['estado'=>'success','mensaje'=>'Descripción actualizada'];
@@ -507,13 +507,13 @@ class CuentaBienestarController extends Controller
     				}
     				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
     			}
-    			
+
 
 
     		break;
-    		
+
     		case 'monto':
-    			
+
     			if ($cs->definicion == 1) {
     				$cs->monto_ingreso = $r->input;
     				if ($cs->save()) {
@@ -535,7 +535,7 @@ class CuentaBienestarController extends Controller
     			if($valida_pdf['estado'] == 'success'){
     			 $ruta = substr($cs->archivo_documento_1, 8);
 				//$ruta = $cs->archivo_documento;
-					
+
                     $borrar = Storage::delete($ruta);
 
                     if ($borrar) {
@@ -563,7 +563,7 @@ class CuentaBienestarController extends Controller
     			if($valida_pdf['estado'] == 'success'){
     			 $ruta = substr($cs->archivo_documento_2, 8);
 				//$ruta = $cs->archivo_documento;
-					
+
                     $borrar = Storage::delete($ruta);
 
                     if ($borrar) {
@@ -591,7 +591,7 @@ class CuentaBienestarController extends Controller
     			if($valida_pdf['estado'] == 'success'){
     			 $ruta = substr($cs->archivo_documento_2, 8);
 				//$ruta = $cs->archivo_documento;
-					
+
                     $borrar = Storage::delete($ruta);
 
                     if ($borrar) {
@@ -616,7 +616,7 @@ class CuentaBienestarController extends Controller
 
     		break;
 
-    		
+
     		default:
     			# code...
     			break;
@@ -624,7 +624,7 @@ class CuentaBienestarController extends Controller
     }
     //este metodo recibe el año como tal
 	public function existe_dinero_mes_anterior_caja_chica($anio = '', $mes = '')
-	{	
+	{
 		if ($anio == '' && $mes == '') {
 			return ['estado'=>'success', 'monto'=>0];
 		}
@@ -636,10 +636,10 @@ class CuentaBienestarController extends Controller
 		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;
 			$anio_anterior = $anio - 1;
-			
+
 			try{
 				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
-				
+
 				$monto = DB::table('cb_caja_chica')->where([
 							'activo' => 'S',
 							'anio_id' => $anio->id,
@@ -653,7 +653,7 @@ class CuentaBienestarController extends Controller
 				}
 
 				return ['estado'=>'success', 'monto'=>$monto_a_guardar];
-			
+
 			}catch (\Exception $e)
 		    {
 
@@ -680,7 +680,7 @@ class CuentaBienestarController extends Controller
                     return ['estado'=>'success', 'monto'=>0];
                 }
                 return ['estado'=>'success', 'monto'=>$monto_a_guardar];
-            
+
             }catch (\Exception $e)
 		    {
 
@@ -689,11 +689,11 @@ class CuentaBienestarController extends Controller
 
 
 		}
-		
+
     }
-    
+
      public function dinero_mes_anterior_caja_chica_2($anio, $mes)
-	{	
+	{
 
 		$convert = DB::table('anio')->where('id', $anio)->first();
 		$anio = $convert->descripcion;
@@ -701,16 +701,16 @@ class CuentaBienestarController extends Controller
 
 		$mes_anterior = $mes - 1;
         $anio_anterior = $anio;
-        
-        
+
+
 
 		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;
 			$anio_anterior = $anio - 1;
-			
+
 			try{
 				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
-				
+
 				$monto = DB::table('cb_caja_chica')->where([
 							'activo' => 'S',
 							'anio_id' => $anio->id,
@@ -766,14 +766,14 @@ class CuentaBienestarController extends Controller
 		        return ['estado'=>"failed",'monto'=>0];
 		    }
 
-		}		
+		}
 
 	}
 
 
     public function validar_pdf($request)
 	{
-		$val = Validator::make($request->all(), 
+		$val = Validator::make($request->all(),
 		 	[
 
 	            'input' => 'required|mimes:pdf',
@@ -783,11 +783,11 @@ class CuentaBienestarController extends Controller
 	        	'input.mimes' => 'El archivo no es PDF',
 	        ]);
 
- 
+
 	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
-    
+
     protected function guardarArchivo($archivo, $ruta)
     {
     	try{
@@ -808,15 +808,15 @@ class CuentaBienestarController extends Controller
     			return ['estado' =>  'failed', 'mensaje' => 'error al guardar el archivo, posiblemente este dañado o no exista.'];
 		}
     }
-	 public function div_fecha($value)//funciona con input type date 
+	 public function div_fecha($value)//funciona con input type date
     {
     	$fecha = $value;
 		$ano = substr($fecha, -10, 4);
 		$mes = substr($fecha, -5, 2);
 		$dia = substr($fecha, -2, 2);
 		return [
-			'anio' => $ano, 
-			'mes'  => $mes, 
+			'anio' => $ano,
+			'mes'  => $mes,
 			'dia'  => $dia
 		];
     }
@@ -828,7 +828,7 @@ class CuentaBienestarController extends Controller
     	if(!empty($data)){
 
     	 	return $data;
-    	} 
-    		
+    	}
+
     }
 }

@@ -327,7 +327,7 @@ module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet><
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\n<div class=\"card\">\n  <div class=\"card-header\" id=\"demoFont\">\n    <strong class=\"text-center\">\n      <h6><i class=\"fas fa-birthday-cake\"></i> Cumpleaños de hoy</h6>\n    </strong>\n  </div>\n\n  <div class=\"card-body\">\n\n      <div class=\"row justify-content-center\">\n        <div class=\"col-md-7\">\n           <div style=\"margin-bottom: 13px;\" class=\"card\" *ngFor=\"let item of cumpleanios\">\n              <div class=\"card-body\">\n\n                    <p align=\"center\" style=\"color:green;\"><i class=\"fas fa-child fa-2x\"></i> {{item.nombres+' '+item.a_paterno+' '+item.a_materno}}</p>\n\n                  <div align=\"center\">\n                    <b>Fecha de nacimiento: </b>{{item.fecha_nacimiento | date: 'dd/MM/yyyy'}}\n                    <br>\n                    <b>Cumple:</b> {{ item.edad+' años.' }}\n                  </div>\n              </div>\n            </div>\n        </div>\n      </div>\n\n  </div>\n\n</div>\n"
+module.exports = "<br>\n<div class=\"card\">\n  <div class=\"card-header\" id=\"demoFont\">\n    <strong class=\"text-center\">\n      <h6><i class=\"fas fa-birthday-cake\"></i> Cumpleaños de hoy</h6>\n    </strong>\n  </div>\n\n  <div class=\"card-body\">\n\n    <div *ngIf=\"load\" align=\"center\" class=\"spinner-border text-success\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>\n\n      <div *ngIf=\"!load\" class=\"row justify-content-center\">\n        <div class=\"col-md-7\">\n           <div style=\"margin-bottom: 13px;\" class=\"card\" *ngFor=\"let item of cumpleanios\">\n              <div class=\"card-body\">\n\n                    <p align=\"center\" style=\"color:green;\"><i class=\"fas fa-child fa-2x\"></i> {{item.nombres+' '+item.a_paterno+' '+item.a_materno}}</p>\n\n                  <div align=\"center\">\n                    <b>Fecha de nacimiento: </b>{{item.fecha_nacimiento | date: 'dd/MM/yyyy'}}\n                    <br>\n                    <b>Cumple:</b> {{ item.edad+' años.' }}\n                  </div>\n              </div>\n            </div>\n        </div>\n      </div>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -2325,6 +2325,7 @@ __webpack_require__.r(__webpack_exports__);
 let AdminCumpleaniosComponent = class AdminCumpleaniosComponent {
     constructor(cumpleanio) {
         this.cumpleanio = cumpleanio;
+        this.load = true;
         this.cumpleanios = [
             {
                 'nombres': '',
@@ -2338,8 +2339,10 @@ let AdminCumpleaniosComponent = class AdminCumpleaniosComponent {
         this.listado();
     }
     listado() {
+        this.load = true;
         this.cumpleanio.listado().subscribe((res) => {
             this.cumpleanios = res;
+            this.load = false;
         });
     }
 };

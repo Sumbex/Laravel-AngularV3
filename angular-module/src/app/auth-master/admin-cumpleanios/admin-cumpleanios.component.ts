@@ -10,6 +10,7 @@ export class AdminCumpleaniosComponent implements OnInit {
 
   constructor(public cumpleanio: CumpleanioService) { }
 
+  load=true;
   cumpleanios=[
     {
       'nombres':'',
@@ -24,8 +25,10 @@ export class AdminCumpleaniosComponent implements OnInit {
   }
 
   listado(){
+    this.load = true;
     this.cumpleanio.listado().subscribe((res)=>{
       this.cumpleanios = res;
+      this.load = false;
     });
   }
 

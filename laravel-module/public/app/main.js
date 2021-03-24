@@ -327,7 +327,7 @@ module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet><
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>admin-cumpleanios works!</p>\n"
+module.exports = "<br>\n<div class=\"card\">\n  <div class=\"card-header\" id=\"demoFont\">\n    <strong class=\"text-center\">\n      <h6><i class=\"fas fa-birthday-cake\"></i> Cumpleaños de hoy</h6>\n    </strong>\n  </div>\n\n  <div class=\"card-body\">\n\n      <div class=\"row justify-content-center\">\n        <div class=\"col-md-7\">\n           <div style=\"margin-bottom: 13px;\" class=\"card\" *ngFor=\"let item of cumpleanios\">\n              <div class=\"card-body\">\n\n                    <p align=\"center\" style=\"color:green;\"><i class=\"fas fa-child fa-2x\"></i> {{item.nombres+' '+item.a_paterno+' '+item.a_materno}}</p>\n\n                  <div align=\"center\">\n                    <b>Fecha de nacimiento: </b>{{item.fecha_nacimiento | date: 'dd/MM/yyyy'}}\n                    <br>\n                    <b>Cumple:</b> {{ item.edad+' años.' }}\n                  </div>\n              </div>\n            </div>\n        </div>\n      </div>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -833,7 +833,7 @@ module.exports = "<p>\n  tablas-beneficios works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br>\n<div class=\"animate__animated animate__fadeIn\">\n  <div class=\"card\" style=\" height: 600px;\">\n    <div class=\"card-header\">\n      <h3 class=\"text-center\"><i class=\"fas fa-home\"></i> Inicio</h3>\n    </div>\n    <div class=\"card-body\" style=\"margin-top: 10px;\">\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">\n            <div class=\"text-center\">\n              <i class=\"fas fa-calculator fa-5x\"></i>\n\n                  <p> Cuenta sindical</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-money-check-alt fa-5x\"></i>\n\n                  <p> Cuenta bienestar</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-piggy-bank fa-5x\"></i>\n\n                  <p> Cuenta consorcio</p>\n              </div>\n            </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n          <div class=\"box\" [routerLink]=\"['/AuthMaster/Cumpleanios']\">\n\n            <div class=\"text-center\">\n              <i class=\"fas fa-birthday-cake fa-5x\"></i>\n\n                <p> Cumpleaños <span class=\"badge badge-pill badge-danger\">{{count_cumpleanios}}</span></p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <br>\n  </div>\n</div>\n"
+module.exports = "<br>\n<div class=\"animate__animated animate__fadeIn\">\n  <div class=\"card\" style=\" height: auto;\">\n    <div class=\"card-header\">\n      <h3 class=\"text-center\"><i class=\"fas fa-home\"></i> Inicio</h3>\n    </div>\n    <div class=\"card-body\" style=\"margin-top: 10px;\">\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaSindical']\">\n            <div class=\"text-center\">\n              <i class=\"fas fa-calculator fa-5x\"></i>\n\n                  <p> Cuenta sindical</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaBienestar']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-money-check-alt fa-5x\"></i>\n\n                  <p> Cuenta bienestar</p>\n              </div>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/AuthMaster/CuentaConsorcio']\">\n\n              <div class=\"text-center\">\n                <i class=\"fas fa-piggy-bank fa-5x\"></i>\n\n                  <p> Cuenta consorcio</p>\n              </div>\n            </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n          <div class=\"box\" [routerLink]=\"['/AuthMaster/Cumpleanios']\">\n\n            <div class=\"text-center\">\n              <i class=\"fas fa-birthday-cake fa-5x\"></i>\n\n                <p> Cumpleaños <span class=\"badge badge-pill badge-danger\">{{count_cumpleanios}}</span></p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <br>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2302,7 +2302,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgtbWFzdGVyL2FkbWluLWN1bXBsZWFuaW9zL2FkbWluLWN1bXBsZWFuaW9zLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "#demoFont {\n  color: #fff;\n  background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  }\n  .margen{\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n  .card{\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n  background: rgba(255, 255, 255, 0.8);\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n  .card-header{\n  border-top-left-radius: 20px;\n  border-top-right-radius: 20px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvYWRtaW4tY3VtcGxlYW5pb3MvYWRtaW4tY3VtcGxlYW5pb3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVc7RUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7RUFDakcsdURBQXVELEVBQUUscUVBQXFFO0VBQzlIO0VBQ0E7SUFDRSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLFdBQVc7RUFDYjtFQUNGO0VBQ0UsNEJBQTRCO0VBQzVCLDZCQUE2QjtFQUM3QixvQ0FBb0M7RUFDcEMsMEVBQTBFO0FBQzVFO0VBRUE7RUFDRSw0QkFBNEI7RUFDNUIsNkJBQTZCO0FBQy9CIiwiZmlsZSI6InNyYy9hcHAvYXV0aC1tYXN0ZXIvYWRtaW4tY3VtcGxlYW5pb3MvYWRtaW4tY3VtcGxlYW5pb3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNkZW1vRm9udCB7XG4gIGNvbG9yOiAjZmZmO1xuICBiYWNrZ3JvdW5kOiAjMkMzRTUwOyAgLyogZmFsbGJhY2sgZm9yIG9sZCBicm93c2VycyAqL1xuICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7ICAvKiBDaHJvbWUgMTAtMjUsIFNhZmFyaSA1LjEtNiAqL1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM0Q0ExQUYsICMyQzNFNTApOyAvKiBXM0MsIElFIDEwKy8gRWRnZSwgRmlyZWZveCAxNissIENocm9tZSAyNissIE9wZXJhIDEyKywgU2FmYXJpIDcrICovXG4gIH1cbiAgLm1hcmdlbntcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIHdpZHRoOiAxMDAlO1xuICB9XG4uY2FyZHtcbiAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XG4gIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KTtcbiAgYm94LXNoYWRvdzogMCA0cHggOHB4IDAgcmdiYSgwLCAwLCAwLCAxKSwgMCA2cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xOSk7XG59XG5cbi5jYXJkLWhlYWRlcntcbiAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMjBweDtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -2317,21 +2317,42 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminCumpleaniosComponent", function() { return AdminCumpleaniosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _servicios_cumpleanio_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../servicios/cumpleanio.service */ "./src/app/servicios/cumpleanio.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
 
 
 let AdminCumpleaniosComponent = class AdminCumpleaniosComponent {
-    constructor() { }
+    constructor(cumpleanio) {
+        this.cumpleanio = cumpleanio;
+        this.cumpleanios = [
+            {
+                'nombres': '',
+                'a_paterno': '',
+                'a_materno': '',
+                'fecha_nacimiento': ''
+            }
+        ];
+    }
     ngOnInit() {
+        this.listado();
+    }
+    listado() {
+        this.cumpleanio.listado().subscribe((res) => {
+            this.cumpleanios = res;
+        });
     }
 };
+AdminCumpleaniosComponent.ctorParameters = () => [
+    { type: _servicios_cumpleanio_service__WEBPACK_IMPORTED_MODULE_1__["CumpleanioService"] }
+];
 AdminCumpleaniosComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-admin-cumpleanios',
         template: __webpack_require__(/*! raw-loader!./admin-cumpleanios.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.html"),
         styles: [__webpack_require__(/*! ./admin-cumpleanios.component.css */ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_cumpleanio_service__WEBPACK_IMPORTED_MODULE_1__["CumpleanioService"]])
 ], AdminCumpleaniosComponent);
 
 
@@ -17144,13 +17165,17 @@ let CumpleanioService = class CumpleanioService {
     constructor(_http) {
         this._http = _http;
         this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.head = {
+            'Authorization': 'Bearer' + this.token,
+            'Content-Type': 'applcation/json'
+        };
         this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
     }
     cantidad_cumpleanios() {
-        return this._http.get(this.url + "cantidad_cumpleanios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Authorization': 'Bearer' + this.token,
-                'Content-Type': 'applcation/json'
-            }) });
+        return this._http.get(this.url + "cantidad_cumpleanios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
+    }
+    listado() {
+        return this._http.get(this.url + "lista_cumpleanios", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
     }
 };
 CumpleanioService.ctorParameters = () => [

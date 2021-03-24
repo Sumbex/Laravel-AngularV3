@@ -57,7 +57,6 @@ class enviarCumpleanios extends Command
                 var_dump($mail);
             }
 
-
         }
     }
 }

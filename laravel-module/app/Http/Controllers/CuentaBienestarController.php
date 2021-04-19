@@ -384,7 +384,6 @@ class CuentaBienestarController extends Controller
     {
     	$valida_pdf = $this->validar_pdf($r);
 
-
     	$cs = Cuentabienestar::where('id',$r->id)->first();
     	//dd($cs);
 

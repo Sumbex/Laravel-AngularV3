@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Acta extends Model
 {
     // protected $table = 'sec_actas';
+    //test
      protected $table = 'sec_desarrollo_asamblea';
 
     protected function insertar($r)

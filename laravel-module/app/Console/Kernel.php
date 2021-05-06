@@ -73,7 +73,7 @@ class Kernel extends ConsoleKernel
             }
         });
 
-        $schedule->command('command:cumpleanio')->daily();/*->everyMinute();*/
+        $schedule->command('command:cumpleanio')->dailyAt('06:00');/*->everyMinute();*/
     }
 
     /**

@@ -198,3 +198,6 @@ Route::get('formula_desc/{id_desc}','DescuentosController@formula_desc');
 //Cumpleanios
 Route::get('cantidad_cumpleanios', 'CumpleanioController@contador_cumpleanieros');
 Route::get('lista_cumpleanios', 'CumpleanioController@lista_cumpleanios');
+
+//mails
+Route::post('enviar_correo','CumpleanioController@enviar_correo');

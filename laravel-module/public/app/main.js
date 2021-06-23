@@ -1156,6 +1156,17 @@ module.exports = "<div class=\"animate__animated animate__fadeIn\">\n <div class
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/mail/mail/mail.component.html":
+/*!*************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/mail/mail/mail.component.html ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<br>\n<div class=\"card\">\n    <div class=\"card-body\">\n        <label>Email:</label>\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"email\">\n\n        <br>\n        <button (click)=\"enviar_correo();\" class=\"btn btn-success\">Enviar</button>\n    </div>\n</div>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/modal-gastos-operacionales/modal-gastos-operacionales.component.html":
 /*!****************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/modal-gastos-operacionales/modal-gastos-operacionales.component.html ***!
@@ -1704,6 +1715,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _socios_master_tutoriales_socios_tutoriales_socios_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./socios-master/tutoriales-socios/tutoriales-socios.component */ "./src/app/socios-master/tutoriales-socios/tutoriales-socios.component.ts");
 /* harmony import */ var _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./auth-master/index/index.component */ "./src/app/auth-master/index/index.component.ts");
 /* harmony import */ var _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./auth-master/admin-cumpleanios/admin-cumpleanios.component */ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.ts");
+/* harmony import */ var _mail_mail_mail_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./mail/mail/mail.component */ "./src/app/mail/mail/mail.component.ts");
+
 
 
 
@@ -1755,7 +1768,8 @@ const routes = [
             { path: 'CrearEmpleado', component: _auth_master_liquidaciones_crear_empleado_crear_empleado_component__WEBPACK_IMPORTED_MODULE_27__["CrearEmpleadoComponent"] },
             { path: 'TutorialesMaster', component: _auth_master_tutorial_master_tutorial_master_component__WEBPACK_IMPORTED_MODULE_28__["TutorialMasterComponent"] },
             { path: 'Index', component: _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_30__["IndexComponent"] },
-            { path: 'Cumpleanios', component: _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_31__["AdminCumpleaniosComponent"] }
+            { path: 'Cumpleanios', component: _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_31__["AdminCumpleaniosComponent"] },
+            { path: 'mail', component: _mail_mail_mail_component__WEBPACK_IMPORTED_MODULE_32__["MailComponent"] }
         ] },
     { path: 'SociosMaster', component: _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__["SociosMasterComponent"], canActivate: [_guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_19__["AuthGuardSocioService"]], children: [
             { path: 'Perfil', component: _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__["PerfilSocioComponent"] },
@@ -1982,6 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_cuenta_bienestar_archivador_bienestar_archivador_bienestar_component__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./auth-master/cuenta-bienestar/archivador-bienestar/archivador-bienestar.component */ "./src/app/auth-master/cuenta-bienestar/archivador-bienestar/archivador-bienestar.component.ts");
 /* harmony import */ var _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./auth-master/index/index.component */ "./src/app/auth-master/index/index.component.ts");
 /* harmony import */ var _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./auth-master/admin-cumpleanios/admin-cumpleanios.component */ "./src/app/auth-master/admin-cumpleanios/admin-cumpleanios.component.ts");
+/* harmony import */ var _mail_mail_mail_component__WEBPACK_IMPORTED_MODULE_146__ = __webpack_require__(/*! ./mail/mail/mail.component */ "./src/app/mail/mail/mail.component.ts");
+
 
 
 
@@ -2257,6 +2273,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_cuenta_bienestar_archivador_bienestar_archivador_bienestar_component__WEBPACK_IMPORTED_MODULE_143__["ArchivadorBienestarComponent"],
             _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_144__["IndexComponent"],
             _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_145__["AdminCumpleaniosComponent"],
+            _mail_mail_mail_component__WEBPACK_IMPORTED_MODULE_146__["MailComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -15259,6 +15276,62 @@ AuthGuardSocioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/mail/mail/mail.component.css":
+/*!**********************************************!*\
+  !*** ./src/app/mail/mail/mail.component.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21haWwvbWFpbC9tYWlsLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/mail/mail/mail.component.ts":
+/*!*********************************************!*\
+  !*** ./src/app/mail/mail/mail.component.ts ***!
+  \*********************************************/
+/*! exports provided: MailComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MailComponent", function() { return MailComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_servicios_mail_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicios/mail.service */ "./src/app/servicios/mail.service.ts");
+
+
+
+let MailComponent = class MailComponent {
+    constructor(_mail) {
+        this._mail = _mail;
+        this.email = "alejandro.e.g.t29@gmail.com";
+    }
+    ngOnInit() {
+    }
+    enviar_correo() {
+        this._mail.enviar_correo(this.email).subscribe(res => {
+            alert(res.estado);
+        });
+    }
+};
+MailComponent.ctorParameters = () => [
+    { type: src_app_servicios_mail_service__WEBPACK_IMPORTED_MODULE_2__["MailService"] }
+];
+MailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-mail',
+        template: __webpack_require__(/*! raw-loader!./mail.component.html */ "./node_modules/raw-loader/index.js!./src/app/mail/mail/mail.component.html"),
+        styles: [__webpack_require__(/*! ./mail.component.css */ "./src/app/mail/mail/mail.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_mail_service__WEBPACK_IMPORTED_MODULE_2__["MailService"]])
+], MailComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/modal-gastos-operacionales/modal-gastos-operacionales.component.css":
 /*!*************************************************************************************!*\
   !*** ./src/app/modal-gastos-operacionales/modal-gastos-operacionales.component.css ***!
@@ -17652,6 +17725,52 @@ LiquidacionMarroService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
 ], LiquidacionMarroService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/mail.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/servicios/mail.service.ts ***!
+  \*******************************************/
+/*! exports provided: MailService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MailService", function() { return MailService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./global */ "./src/app/servicios/global.ts");
+
+
+
+
+let MailService = class MailService {
+    constructor(_http) {
+        this._http = _http;
+        this.token = localStorage.getItem('token').replace(/['"]+/g, '');
+        this.url = _global__WEBPACK_IMPORTED_MODULE_3__["global"].url;
+    }
+    enviar_correo(correo) {
+        const body = new FormData();
+        body.append('correo', correo);
+        return this._http.post(this.url + "enviar_correo", body, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                'Authorization': 'Bearer' + this.token
+            }) });
+    }
+};
+MailService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
+];
+MailService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+], MailService);
 
 
 

@@ -30,6 +30,7 @@ import { TutorialMasterComponent } from './auth-master/tutorial-master/tutorial-
 import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tutoriales-socios.component';
 import { IndexComponent } from './auth-master/index/index.component';
 import { AdminCumpleaniosComponent } from './auth-master/admin-cumpleanios/admin-cumpleanios.component';
+import { MailComponent } from './mail/mail/mail.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -51,7 +52,8 @@ const routes: Routes = [
     { path: 'CrearEmpleado', component: CrearEmpleadoComponent },
     { path: 'TutorialesMaster', component: TutorialMasterComponent },
     { path: 'Index', component:IndexComponent },
-    { path: 'Cumpleanios', component:AdminCumpleaniosComponent }
+    { path: 'Cumpleanios', component:AdminCumpleaniosComponent },
+    { path: 'mail', component:MailComponent }
 
 
   ]},

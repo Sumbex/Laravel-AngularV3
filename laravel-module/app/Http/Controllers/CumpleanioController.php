@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Socios;
+use App\Mail\correo;
+use Illuminate\Support\Facades\Mail;
 
 class CumpleanioController extends Controller
 {
@@ -55,5 +57,21 @@ class CumpleanioController extends Controller
         if ($dia_diferencia < 0 || $mes_diferencia < 0)
           $ano_diferencia--;
         return $ano_diferencia;
-      }
+    }
+
+    public function enviar_correo(Request $r){
+        // return $r->all();
+        try{
+
+        
+            $email = 'Marii.96.solar@gmail.com';
+            $mail = Mail::to($r->correo)->send(new correo());
+
+            if($mail==NULL){
+                return ["estado"=>"success"];
+            };
+        }catch(\Exception $e){
+            return ["estado"=>"failed","error"=>$e];
+        }
+    }
 }

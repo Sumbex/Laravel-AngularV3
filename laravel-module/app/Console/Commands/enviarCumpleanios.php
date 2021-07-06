@@ -54,13 +54,13 @@ class enviarCumpleanios extends Command
                 $sdb = Socio_datos_basicos::where(['socio_id'=>$key->id])->first();
                 
                 if($sdb){
-                    var_dump($sdb->email_1);
+                    var_dump($sdb->email_2);
                     // return false;
                     var_dump('hora server: '.Carbon::now());
                     var_dump('nombre:'.$key->nombres.' '.$key->a_paterno.$nacimiento.' === '.$hoy.' = '. ($nacimiento === $hoy));
                     $nac = Carbon::parse($key->fecha_nacimiento)->format('d-m-Y');
                     $now = Carbon::now()->format('d/m/Y');
-                    $mail = Mail::to($sdb->email_1)->send(new MailCumpleanios($key, $nac, $now));
+                    $mail = Mail::to($sdb->email_2)->send(new MailCumpleanios($key, $nac, $now));
 
                     var_dump($mail);
                 }else{

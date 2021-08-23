@@ -201,3 +201,5 @@ Route::get('lista_cumpleanios', 'CumpleanioController@lista_cumpleanios');
 
 //mails
 Route::post('enviar_correo','CumpleanioController@enviar_correo');
+
+// Route::post('documentacion_sindical/insert', 'DocumentacionSindicalController@insert');

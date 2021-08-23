@@ -31,6 +31,9 @@ import { TutorialesSociosComponent } from './socios-master/tutoriales-socios/tut
 import { IndexComponent } from './auth-master/index/index.component';
 import { AdminCumpleaniosComponent } from './auth-master/admin-cumpleanios/admin-cumpleanios.component';
 import { MailComponent } from './mail/mail/mail.component';
+import { DocumentacionSindicalComponent } from './auth-master/documentacion-sindical/documentacion-sindical.component';
+import { IndexComponent as IndexSocio } from './socios-master/index/index.component';
+import { DocumentacionComponent } from './socios-master/documentacion/documentacion.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -53,7 +56,8 @@ const routes: Routes = [
     { path: 'TutorialesMaster', component: TutorialMasterComponent },
     { path: 'Index', component:IndexComponent },
     { path: 'Cumpleanios', component:AdminCumpleaniosComponent },
-    { path: 'mail', component:MailComponent }
+    { path: 'mail', component:MailComponent },
+    { path: 'DocumentacionMaster', component:DocumentacionSindicalComponent}
 
 
   ]},
@@ -65,7 +69,9 @@ const routes: Routes = [
     { path: 'Cuentas', component: CuentasComponent },
     { path: 'Grafico', component: GraficoComponenteComponent },
     { path: 'Reuniones', component: GeneralReunionComponent },
-    { path: 'TutorialesSocios', component: TutorialesSociosComponent }
+    { path: 'TutorialesSocios', component: TutorialesSociosComponent },
+    { path: 'Index', component:IndexSocio },
+    { path: 'Documentacion/:tipo', component:DocumentacionComponent },
   ]},
 
   { path: '**', component: NoEncontradoComponent }

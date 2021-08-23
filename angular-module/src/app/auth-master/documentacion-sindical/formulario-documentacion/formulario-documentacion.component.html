@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header" id="demoFont">
+      <strong class="text-center">
+        <h6><i class="fas fa-file-invoice"></i> Documentación sindical</h6>
+      </strong>
+    </div>
+
+    <div class="card-body">
+        <form [formGroup]='form'>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Titulo</label>
+                    <input formControlName='titulo' class="form-control" type="text">
+                </div>
+                <div class="col-md-6">
+                    <label>Documento</label>
+                    <input formControlName='archivo' class="form-control form-file-input" type="file" (change)="onSelectImage($event)" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Tipo de documento</label>
+                    <select formControlName='tipo_documento' placeholder="seleccione" class="form-control" name="" id="">
+                        <option value="">--seleccione--</option>
+                        <option *ngFor="let i of tipos" value="{{i.id}}">{{i.descripcion}}</option>
+                        
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="">&nbsp;</label><br>
+                    <button (click)="register();" class="btn btn-success">Registrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

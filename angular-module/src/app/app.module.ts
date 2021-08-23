@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxDocViewerModule} from 'ngx-doc-viewer';
 
@@ -149,6 +149,12 @@ import { ArchivadorBienestarComponent } from './auth-master/cuenta-bienestar/arc
 import { IndexComponent } from './auth-master/index/index.component';
 import { AdminCumpleaniosComponent } from './auth-master/admin-cumpleanios/admin-cumpleanios.component';
 import { MailComponent } from './mail/mail/mail.component';
+import { DocumentacionSindicalComponent } from './auth-master/documentacion-sindical/documentacion-sindical.component';
+import { FormularioDocumentacionComponent } from './auth-master/documentacion-sindical/formulario-documentacion/formulario-documentacion.component';
+import { ListaDocumentacionComponent } from './auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component';
+import { IndexComponent as IndexSocio } from './socios-master/index/index.component';
+import { DocumentacionComponent } from './socios-master/documentacion/documentacion.component';
+
 
 
 @NgModule({
@@ -276,8 +282,13 @@ import { MailComponent } from './mail/mail/mail.component';
     TutorialesSociosComponent,
     ArchivadorBienestarComponent,
     IndexComponent,
+    IndexSocio,
     AdminCumpleaniosComponent,
     MailComponent,
+    DocumentacionSindicalComponent,
+    FormularioDocumentacionComponent,
+    ListaDocumentacionComponent,
+    DocumentacionComponent,
 
   ],
   imports: [
@@ -285,6 +296,7 @@ import { MailComponent } from './mail/mail/mail.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     NgxDocViewerModule
   ],

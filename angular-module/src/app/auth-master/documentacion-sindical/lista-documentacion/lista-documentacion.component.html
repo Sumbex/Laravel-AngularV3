@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-header" id="demoFont">
+        <strong class="text-center">
+            <h6><i class="fas fa-file-invoice"></i> Lista</h6>
+        </strong>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <label for="">Tipo de documento</label>
+                <select class="form-control" [(ngModel)]="tipo" name="" id="">
+                    <option value="all">todos</option>
+                    <option *ngFor="let i of tipos" value="{{i.id}}">{{i.descripcion}}</option>
+                </select>
+
+            </div>
+            <div class="col-md-2">
+                <label for="">&nbsp;</label><br>
+                <button class="btn btn-success" (click)="listar();">listar</button>
+            </div>
+        </div>
+
+        <div class="table-responsive mt-2">
+            <table *ngIf="count_listado > 0" class="table table-striped table-bordered table-sm">
+                <thead text-sm>
+                    <!--Titulo Tabla-->
+                    <!--<tr>
+                        <th colspan="14" class=" text-center"  id="demoFont"><h6>Movimiento mensual</h6></th>
+                      </tr>-->
+                    <!--Cuenta Sindical-->
+                    <tr class="text-center">
+                        <th colspan="4" style="background: #138D75;">Documentación Sindical</th>
+
+                    </tr>
+                </thead>
+                <thead>
+                    <!--Fijos-->
+                    <tr class="text-center">
+                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Titulo</th>
+                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Tipo Documento</th>
+                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Documento</th>
+                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Opción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let i of listado" class="text-center">
+                        <td>{{i.titulo}}</td>
+                        <td>{{i.descripcion}}</td>
+                        <td>
+                            <a (click)="open(visorSindicalFijo)" style="cursor: pointer" class="btn-primary-outline">
+                                <i class="far fa-file-alt" placement="top"
+                                    ngbTooltip="Presione aqui visualizar documento PDF"></i>
+                            </a>&nbsp;
+
+
+                            <!--MODAL VISOR PDF-->
+                            <ng-template #visorSindicalFijo let-c="close" let-d="dismiss">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="modal-header text-center" id="demoFont">
+                                            <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                            <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                                                (click)="d('Cross click')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe width="100%" height="500px" [src]="  '../' + i.documento | safeUrl"
+                                                frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                        <div class="modal-footer" [hidden]="true">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                (click)="c('Save click')">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <!--MODAL VISOR PDF-->
+                        </td>
+                        <td>
+                            <button (click)="suspender(i.id);" class="btn btn-warning"><i class="fas fa-power-off"></i> Suspender</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

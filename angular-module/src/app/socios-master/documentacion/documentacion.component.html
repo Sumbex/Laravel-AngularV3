@@ -1,0 +1,42 @@
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <h4>{{ tipo_txt }}</h4>
+        </div>
+        <div *ngIf="count > 0" class="card-body">
+            <ul *ngFor="let i of listado" class="list-group">
+                <li (click)="open(visor)" class="list-group-item">
+                    <button class="btn btn-block btn-link"><i class="fas fa-file-pdf"></i> {{i.titulo}}</button>
+                </li>
+                <!--MODAL VISOR PDF-->
+                <ng-template #visor let-c="close" let-d="dismiss">
+                    <div class="row">
+                        <div class="col">
+                            <div class="modal-header text-center" id="demoFont">
+                                <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                                <button id="closeModalButton" type="button" class="close" aria-label="Close"
+                                    (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <iframe width="100%" height="500px" [src]="  '../' + i.documento | safeUrl"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="modal-footer" [hidden]="true">
+                                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <!--MODAL VISOR PDF-->
+            </ul>
+        </div>
+        <div *ngIf="count == 0" class="card-body">
+            <div align="center">No hay datos</div>
+        </div>
+    </div>
+
+
+</div>

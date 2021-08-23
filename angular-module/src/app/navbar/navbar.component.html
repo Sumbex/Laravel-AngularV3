@@ -50,6 +50,7 @@
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="animate__animated animate__flipInY" >
                         <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/Configuracion']"><i class="fas fa-user-cog"></i> Configuracion Cuenta</a>
                         <a *ngIf="rol == 5" class="selectColor" ngbDropdownItem [routerLink]="['/SociosMaster']"><i class="fas fa-users-cog"></i> Cambiar a Portal Socios</a>
+                        <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/DocumentacionMaster']"><i class="fas fa-passport"></i> Documentacion sindical</a>
                         <a class="selectColor" ngbDropdownItem [routerLink]="['/AuthMaster/TutorialesMaster']"><i class="fas fa-question"></i> Ayuda</a>
                         <button class="selectColor" ngbDropdownItem (click)="logOut()"><i class="fas fa-sign-out-alt"></i> &nbsp;Cerrar Sesion</button>
                     </div>

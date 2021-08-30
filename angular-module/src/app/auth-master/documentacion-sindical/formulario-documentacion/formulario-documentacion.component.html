@@ -29,7 +29,10 @@
                 </div>
                 <div class="col-md-6">
                     <label for="">&nbsp;</label><br>
-                    <button (click)="register();" class="btn btn-success">Registrar</button>
+                    <button [disabled]="btn" (click)="register();" class="btn btn-success">
+                        Registrar
+                        <img *ngIf="btn" padding-left="20px" height="12" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+                    </button>
                 </div>
             </div>
         </form>

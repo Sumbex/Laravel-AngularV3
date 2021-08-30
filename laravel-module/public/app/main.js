@@ -316,7 +316,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet></router-outlet>\n <br> <br>\n\n<!-- Footer -->\n<footer class=\"fondo-footer fixed-bottom estilo-footer\">\n    <div class=\"row\">\n        <div class=\"col-12\">\n            <div class=\"footer-copyright estilo-footer py-2\">\n                <div class=\"text-center\">\n                    Desarrollado por:\n                    <a class=\"estilo-footer\" href=\"https://neofox.cl/\" target=\"_blank\">\n                        <img src=\"/assets/NeoFox_SF.png\" width=\"20\" height=\"20\"> NeoFox</a>\n                    <span class=\"ml-4\">v1.1.8</span>\n                </div>\n            </div>\n        </div>\n    </div>\n</footer>\n<!-- Footer -->\n\n"
+module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet></router-outlet>\n <br> <br>\n\n<!-- Footer -->\n<footer class=\"fondo-footer fixed-bottom estilo-footer\">\n    <div class=\"row\">\n        <div class=\"col-12\">\n            <div class=\"footer-copyright estilo-footer py-2\">\n                <div class=\"text-center\">\n                    Desarrollado por:\n                    <a class=\"estilo-footer\" href=\"https://neofox.cl/\" target=\"_blank\">\n                        <img src=\"/assets/NeoFox_SF.png\" width=\"20\" height=\"20\"> NeoFox</a>\n                    <span class=\"ml-4\">v1.2.0</span>\n                </div>\n            </div>\n        </div>\n    </div>\n</footer>\n<!-- Footer -->\n\n"
 
 /***/ }),
 
@@ -844,7 +844,7 @@ module.exports = "<br>\n<div class=\"container\">\n\n    <app-formulario-documen
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n      <strong class=\"text-center\">\n        <h6><i class=\"fas fa-file-invoice\"></i> Documentación sindical</h6>\n      </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <form [formGroup]='form'>\n            <div class=\"row\">\n                <div class=\"col-md-6\">\n                    <label>Titulo</label>\n                    <input formControlName='titulo' class=\"form-control\" type=\"text\">\n                </div>\n                <div class=\"col-md-6\">\n                    <label>Documento</label>\n                    <input formControlName='archivo' class=\"form-control form-file-input\" type=\"file\" (change)=\"onSelectImage($event)\" required>\n                </div>\n            </div>\n    \n            <div class=\"row\">\n                <div class=\"col-md-6\">\n                    <label>Tipo de documento</label>\n                    <select formControlName='tipo_documento' placeholder=\"seleccione\" class=\"form-control\" name=\"\" id=\"\">\n                        <option value=\"\">--seleccione--</option>\n                        <option *ngFor=\"let i of tipos\" value=\"{{i.id}}\">{{i.descripcion}}</option>\n                        \n                    </select>\n                </div>\n                <div class=\"col-md-6\">\n                    <label for=\"\">&nbsp;</label><br>\n                    <button (click)=\"register();\" class=\"btn btn-success\">Registrar</button>\n                </div>\n            </div>\n        </form>\n    </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n      <strong class=\"text-center\">\n        <h6><i class=\"fas fa-file-invoice\"></i> Documentación sindical</h6>\n      </strong>\n    </div>\n\n    <div class=\"card-body\">\n        <form [formGroup]='form'>\n            <div class=\"row\">\n                <div class=\"col-md-6\">\n                    <label>Titulo</label>\n                    <input formControlName='titulo' class=\"form-control\" type=\"text\">\n                </div>\n                <div class=\"col-md-6\">\n                    <label>Documento</label>\n                    <input formControlName='archivo' class=\"form-control form-file-input\" type=\"file\" (change)=\"onSelectImage($event)\" required>\n                </div>\n            </div>\n    \n            <div class=\"row\">\n                <div class=\"col-md-6\">\n                    <label>Tipo de documento</label>\n                    <select formControlName='tipo_documento' placeholder=\"seleccione\" class=\"form-control\" name=\"\" id=\"\">\n                        <option value=\"\">--seleccione--</option>\n                        <option *ngFor=\"let i of tipos\" value=\"{{i.id}}\">{{i.descripcion}}</option>\n                        \n                    </select>\n                </div>\n                <div class=\"col-md-6\">\n                    <label for=\"\">&nbsp;</label><br>\n                    <button [disabled]=\"btn\" (click)=\"register();\" class=\"btn btn-success\">\n                        Registrar\n                        <img *ngIf=\"btn\" padding-left=\"20px\" height=\"12\" src=\"https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif\">\n                    </button>\n                </div>\n            </div>\n        </form>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1471,7 +1471,7 @@ module.exports = "  <div class=\"card\">\n<div style=\"width: 100%\">\n  <canvas
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<br>\n<div class=\"animate__animated animate__fadeIn\">\n  <div class=\"card\" style=\" height: auto;\">\n    <div class=\"card-header\">\n      <h3 class=\"text-center\"><i class=\"fas fa-home\"></i> Inicio</h3>\n    </div>\n    <div class=\"card-body\" style=\"margin-top: 10px;\">\n\n      <div class=\"row\">\n        <div *ngFor=\"let i of tipos\" class=\"col-md-4\">\n            <div class=\"box\" [routerLink]=\"['/SociosMaster/Documentacion/'+i.id]\">\n            <div class=\"text-center\">\n              \n              <i class=\"fas fa-folder fa-5x\"></i>\n                  <p>{{i.descripcion}}</p>\n              </div>\n            </div>\n        </div>\n\n      </div>\n\n    </div>\n\n    <br>\n  </div>\n</div>\n\n"
+module.exports = "\n<br>\n<div class=\"container-fluid animate__animated animate__fadeIn\">\n  <div class=\"card\" style=\" height: auto;\">\n    <div class=\"card-header\">\n      <h3 class=\"text-center\"><i class=\"fas fa-home\"></i> Inicio</h3>\n    </div>\n    <div class=\"card-body\" style=\"margin-top: 10px;\">\n\n      <div class=\"row\">\n        <div *ngFor=\"let i of tipos; let numero = index\" class=\"col-md-4\">\n          <div *ngIf=\"numero < 4\" class=\"box\" [routerLink]=\"[i.ruta]\">\n            <div class=\"text-center\">\n              \n            <i class=\"{{i.icono}}\"></i>\n                  <p>{{i.descripcion}}</p>\n              </div>\n          </div>\n          <div *ngIf=\"numero >= 4\" class=\"box\" [routerLink]=\"['/SociosMaster/Documentacion/'+i.id]\">\n            <div class=\"text-center\">\n              \n              <i class=\"fas fa-folder fa-5x\"></i>\n                  <p>{{i.descripcion}}</p>\n              </div>\n          </div>\n        </div>\n\n      </div>\n\n    </div>\n\n    <br>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -9577,6 +9577,7 @@ let FormularioDocumentacionComponent = class FormularioDocumentacionComponent {
         this.fb = fb;
         this._documentacion = _documentacion;
         this.archivo = null;
+        this.btn = false;
         this.construir_form();
     }
     ngOnInit() {
@@ -9590,6 +9591,7 @@ let FormularioDocumentacionComponent = class FormularioDocumentacionComponent {
         });
     }
     register() {
+        this.btn = true;
         if (this.form.valid) {
             console.log(this.form.value);
             const fd = new FormData();
@@ -9598,12 +9600,19 @@ let FormularioDocumentacionComponent = class FormularioDocumentacionComponent {
             fd.append('tipo_documento', this.form.controls.tipo_documento.value);
             this._documentacion.registro(fd).subscribe(res => {
                 if (res.estado) {
+                    this.construir_form();
+                    this.archivo = null;
                     alert(res.mensaje);
+                    this.btn = false;
                 }
+            }, error => {
+                alert("Error de servidor");
+                this.btn = false;
             });
         }
         else {
             alert("faltan campos por llenar");
+            this.btn = false;
         }
     }
     listado_tipos() {
@@ -21365,13 +21374,25 @@ __webpack_require__.r(__webpack_exports__);
 let IndexComponent = class IndexComponent {
     constructor(_doc) {
         this._doc = _doc;
+        this.num = 0;
     }
     ngOnInit() {
         this.tipos_documentacion();
     }
     tipos_documentacion() {
+        const menu = [
+            { descripcion: "Secretaria", icono: "fas fa-calendar fa-5x", ruta: "/SociosMaster/Reuniones" },
+            { descripcion: "Mi Perfil", icono: "fas fa-users fa-5x", ruta: "/SociosMaster/Perfil" },
+            { descripcion: "Mis Beneficios", icono: "fas fa-medal fa-5x", ruta: "/SociosMaster/Beneficios" },
+            { descripcion: "Cuentas", icono: "fas fa-money-bill fa-5x", ruta: "/SociosMaster/Cuentas" },
+        ];
         this._doc.listado_tipos().subscribe(res => {
             this.tipos = res;
+            this.tipos[5] = menu[0];
+            this.tipos[6] = menu[1];
+            this.tipos[7] = menu[2];
+            this.tipos[8] = menu[3];
+            this.tipos.reverse();
         });
     }
 };

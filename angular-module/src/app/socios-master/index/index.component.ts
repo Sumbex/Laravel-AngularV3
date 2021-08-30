@@ -9,6 +9,7 @@ import { DocuemntacionSindicalService } from '../../servicios/docuemntacion-sind
 export class IndexComponent implements OnInit {
 
   tipos:any;
+  num=0;
   constructor(private _doc:DocuemntacionSindicalService) { }
 
   ngOnInit() {
@@ -16,8 +17,20 @@ export class IndexComponent implements OnInit {
   }
 
   tipos_documentacion(){
+    const menu = [
+      {descripcion:"Secretaria", icono:"fas fa-calendar fa-5x", ruta:"/SociosMaster/Reuniones"},
+      {descripcion:"Mi Perfil", icono:"fas fa-users fa-5x", ruta:"/SociosMaster/Perfil"},
+      {descripcion:"Mis Beneficios", icono:"fas fa-medal fa-5x", ruta:"/SociosMaster/Beneficios"},
+      {descripcion:"Cuentas", icono:"fas fa-money-bill fa-5x", ruta:"/SociosMaster/Cuentas"},
+    ];
     this._doc.listado_tipos().subscribe(res=>{
       this.tipos = res;
+      this.tipos[5] = menu[0];
+      this.tipos[6] = menu[1];
+      this.tipos[7] = menu[2];
+      this.tipos[8] = menu[3];
+
+      this.tipos.reverse();
     });
   }
 

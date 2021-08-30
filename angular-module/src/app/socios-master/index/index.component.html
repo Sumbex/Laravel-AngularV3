@@ -1,6 +1,6 @@
 
 <br>
-<div class="animate__animated animate__fadeIn">
+<div class="container-fluid animate__animated animate__fadeIn">
   <div class="card" style=" height: auto;">
     <div class="card-header">
       <h3 class="text-center"><i class="fas fa-home"></i> Inicio</h3>
@@ -8,14 +8,21 @@
     <div class="card-body" style="margin-top: 10px;">
 
       <div class="row">
-        <div *ngFor="let i of tipos" class="col-md-4">
-            <div class="box" [routerLink]="['/SociosMaster/Documentacion/'+i.id]">
+        <div *ngFor="let i of tipos; let numero = index" class="col-md-4">
+          <div *ngIf="numero < 4" class="box" [routerLink]="[i.ruta]">
+            <div class="text-center">
+              
+            <i class="{{i.icono}}"></i>
+                  <p>{{i.descripcion}}</p>
+              </div>
+          </div>
+          <div *ngIf="numero >= 4" class="box" [routerLink]="['/SociosMaster/Documentacion/'+i.id]">
             <div class="text-center">
               
               <i class="fas fa-folder fa-5x"></i>
                   <p>{{i.descripcion}}</p>
               </div>
-            </div>
+          </div>
         </div>
 
       </div>

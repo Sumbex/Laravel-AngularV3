@@ -12,6 +12,7 @@ export class FormularioDocumentacionComponent implements OnInit {
   form:FormGroup;
   archivo=null;
   tipos:any;
+  btn:boolean=false;
   constructor(private fb:FormBuilder, private _documentacion:DocuemntacionSindicalService) {
     this.construir_form();
    }
@@ -27,6 +28,7 @@ export class FormularioDocumentacionComponent implements OnInit {
     });
   }
   register(){
+    this.btn = true;
    if(this.form.valid){
     console.log(this.form.value);
     const fd = new FormData();
@@ -35,11 +37,19 @@ export class FormularioDocumentacionComponent implements OnInit {
     fd.append('tipo_documento',this.form.controls.tipo_documento.value);
     this._documentacion.registro(fd).subscribe(res=>{
       if(res.estado){
+
+        this.construir_form();
+        this.archivo = null;
         alert(res.mensaje);
+        this.btn = false;
       }
+    }, error =>{
+      alert("Error de servidor");
+      this.btn = false;
     });
    }else{
      alert("faltan campos por llenar")
+     this.btn = false;
    }
   }
   listado_tipos(){

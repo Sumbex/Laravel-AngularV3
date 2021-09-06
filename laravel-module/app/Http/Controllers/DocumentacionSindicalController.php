@@ -63,7 +63,7 @@ class DocumentacionSindicalController extends Controller
         
     } 
 
-    public function list($tipo){
+    public function list($tipo, $activo){
         if($tipo =='all'){
             $list = DB::select("SELECT
                                     ds.id,
@@ -72,7 +72,7 @@ class DocumentacionSindicalController extends Controller
                                     descripcion,
                                     to_char(ds.created_at, 'dd/MM/yyyy') as fecha
                                 from documentacion_sindical as ds
-                                inner join tipo_documentacion_sindical as tds on tds.id = ds.tipo_documento where ds.activo = 'S'");
+                                inner join tipo_documentacion_sindical as tds on tds.id = ds.tipo_documento where ds.activo = '$activo'");
 
             return $list;
         }else{
@@ -85,7 +85,7 @@ class DocumentacionSindicalController extends Controller
                                     to_char(ds.created_at, 'dd/MM/yyyy') as fecha
                                 from documentacion_sindical as ds
                                 inner join tipo_documentacion_sindical as tds on tds.id = ds.tipo_documento
-                                where tipo_documento = $tipo and ds.activo = 'S'");
+                                where tipo_documento = $tipo and ds.activo = '$activo'");
 
             
             return $list;
@@ -130,6 +130,21 @@ class DocumentacionSindicalController extends Controller
         return [
             'estado'=>false,
             'mensaje'=>'No se ha podido suspender el documento'
+        ];
+    }
+
+    public function activar($doc){
+        $s = DocumentacionSindical::find($doc);
+        $s->activo='S';
+        if($s->save()){
+            return [
+                'estado'=>true,
+                'mensaje'=>'Documento activado!'
+            ];
+        }
+        return [
+            'estado'=>false,
+            'mensaje'=>'No se ha podido activar el documento'
         ];
     }
 }

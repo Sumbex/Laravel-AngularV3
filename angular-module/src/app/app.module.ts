@@ -154,6 +154,8 @@ import { FormularioDocumentacionComponent } from './auth-master/documentacion-si
 import { ListaDocumentacionComponent } from './auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component';
 import { IndexComponent as IndexSocio } from './socios-master/index/index.component';
 import { DocumentacionComponent } from './socios-master/documentacion/documentacion.component';
+import { HistorialComponent } from './auth-master/documentacion-sindical/historial/historial.component';
+
 
 
 
@@ -289,6 +291,8 @@ import { DocumentacionComponent } from './socios-master/documentacion/documentac
     FormularioDocumentacionComponent,
     ListaDocumentacionComponent,
     DocumentacionComponent,
+    HistorialComponent,
+   
 
   ],
   imports: [

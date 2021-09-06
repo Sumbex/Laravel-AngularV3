@@ -848,6 +848,17 @@ module.exports = "<div class=\"card\">\n    <div class=\"card-header\" id=\"demo
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/documentacion-sindical/historial/historial.component.html":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/auth-master/documentacion-sindical/historial/historial.component.html ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<br>\n<div class=\"container\">\n    <div class=\"card\">\n        <div class=\"card-header\" id=\"demoFont\">\n            <strong class=\"text-center\">\n                <h6><i class=\"fas fa-file-invoice\"></i> Historial de documentación sindical</h6>\n            </strong>\n        </div>\n        <div class=\"card-body\">\n            <div class=\"row\">\n                <div class=\"col-md-8\">\n                    <label for=\"\">Tipo de documento</label>\n                    <select class=\"form-control\" [(ngModel)]=\"tipo\" name=\"\" id=\"\">\n                        <option value=\"all\">todos</option>\n                        <option *ngFor=\"let i of tipos\" value=\"{{i.id}}\">{{i.descripcion}}</option>\n                    </select>\n\n                </div>\n                <div class=\"col-md-1\">\n                    <label for=\"\">&nbsp;</label><br>\n                    <button class=\"btn btn-success\" (click)=\"listar();\">\n                        <i class=\"fas fa-search\"></i>\n                    </button>\n                </div>\n\n                <div class=\"col-md-2\">\n                    <label for=\"\">&nbsp;</label><br>\n                    <button class=\"btn btn-info\" [routerLink]=\"['/AuthMaster/DocumentacionMaster']\">\n                        <i class=\"fas fa-undo\"></i> Volver\n                    </button>\n                </div>\n            </div>\n\n            <div class=\"table-responsive mt-2\">\n                <table *ngIf=\"count_listado > 0\" class=\"table table-striped table-bordered table-sm\">\n                    <thead text-sm>\n                        <!--Titulo Tabla-->\n                        <!--<tr>\n                            <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual</h6></th>\n                        </tr>-->\n                        <!--Cuenta Sindical-->\n                        <tr class=\"text-center\">\n                            <th colspan=\"4\" style=\"background: #138D75;\">Documentación Sindical</th>\n\n                        </tr>\n                    </thead>\n                    <thead>\n                        <!--Fijos-->\n                        <tr class=\"text-center\">\n                            <th style=\"background: #138D75\"><i class=\"fas fa-text-width\"></i> Titulo</th>\n                            <th style=\"background: #138D75\"><i class=\"fas fa-passport\"></i> Tipo Documento</th>\n                            <th style=\"background: #138D75\"><i class=\"far fa-file-pdf\"></i> Documento</th>\n                            <th style=\"background: #138D75\"><i class=\"fas fa-filter\"></i> Opción</th>\n\n                        </tr>\n                    </thead>\n                    <tbody>\n\n                        <tr *ngFor=\"let i of listado\" class=\"text-center\">\n                            <td>{{i.titulo}}</td>\n                            <td>{{i.descripcion}}</td>\n                            <td>\n                                <a (click)=\"open(visorSindicalFijo)\" style=\"cursor: pointer\" class=\"btn-primary-outline\">\n                                    <i class=\"far fa-file-alt\" placement=\"top\"\n                                        ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n                                </a>&nbsp;\n\n\n                                <!--MODAL VISOR PDF-->\n                                <ng-template #visorSindicalFijo let-c=\"close\" let-d=\"dismiss\">\n                                    <div class=\"row\">\n                                        <div class=\"col\">\n                                            <div class=\"modal-header text-center\" id=\"demoFont\">\n                                                <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                                                <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                                                    (click)=\"d('Cross click')\">\n                                                    <span aria-hidden=\"true\">&times;</span>\n                                                </button>\n                                            </div>\n                                            <div class=\"modal-body\">\n                                                <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + i.documento | safeUrl\"\n                                                    frameborder=\"0\" allowfullscreen></iframe>\n                                            </div>\n                                            <div class=\"modal-footer\" [hidden]=\"true\">\n                                                <button type=\"button\" class=\"btn btn-outline-dark\"\n                                                    (click)=\"c('Save click')\">OK</button>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </ng-template>\n                                <!--MODAL VISOR PDF-->\n                            </td>\n                            <td>\n                                <button (click)=\"activar(i.id);\" class=\"btn btn-success\"><i class=\"fas fa-power-off\"></i> Activar</button>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component.html":
 /*!*************************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component.html ***!
@@ -855,7 +866,7 @@ module.exports = "<div class=\"card\">\n    <div class=\"card-header\" id=\"demo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i> Lista</h6>\n        </strong>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"row\">\n            <div class=\"col-md-8\">\n                <label for=\"\">Tipo de documento</label>\n                <select class=\"form-control\" [(ngModel)]=\"tipo\" name=\"\" id=\"\">\n                    <option value=\"all\">todos</option>\n                    <option *ngFor=\"let i of tipos\" value=\"{{i.id}}\">{{i.descripcion}}</option>\n                </select>\n\n            </div>\n            <div class=\"col-md-2\">\n                <label for=\"\">&nbsp;</label><br>\n                <button class=\"btn btn-success\" (click)=\"listar();\">listar</button>\n            </div>\n        </div>\n\n        <div class=\"table-responsive mt-2\">\n            <table *ngIf=\"count_listado > 0\" class=\"table table-striped table-bordered table-sm\">\n                <thead text-sm>\n                    <!--Titulo Tabla-->\n                    <!--<tr>\n                        <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual</h6></th>\n                      </tr>-->\n                    <!--Cuenta Sindical-->\n                    <tr class=\"text-center\">\n                        <th colspan=\"4\" style=\"background: #138D75;\">Documentación Sindical</th>\n\n                    </tr>\n                </thead>\n                <thead>\n                    <!--Fijos-->\n                    <tr class=\"text-center\">\n                        <th style=\"background: #138D75\"><i class=\"far fa-calendar-alt\"></i>Titulo</th>\n                        <th style=\"background: #138D75\"><i class=\"far fa-calendar-alt\"></i>Tipo Documento</th>\n                        <th style=\"background: #138D75\"><i class=\"far fa-calendar-alt\"></i>Documento</th>\n                        <th style=\"background: #138D75\"><i class=\"far fa-calendar-alt\"></i>Opción</th>\n\n                    </tr>\n                </thead>\n                <tbody>\n\n                    <tr *ngFor=\"let i of listado\" class=\"text-center\">\n                        <td>{{i.titulo}}</td>\n                        <td>{{i.descripcion}}</td>\n                        <td>\n                            <a (click)=\"open(visorSindicalFijo)\" style=\"cursor: pointer\" class=\"btn-primary-outline\">\n                                <i class=\"far fa-file-alt\" placement=\"top\"\n                                    ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n                            </a>&nbsp;\n\n\n                            <!--MODAL VISOR PDF-->\n                            <ng-template #visorSindicalFijo let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"row\">\n                                    <div class=\"col\">\n                                        <div class=\"modal-header text-center\" id=\"demoFont\">\n                                            <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                                            <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                                                (click)=\"d('Cross click')\">\n                                                <span aria-hidden=\"true\">&times;</span>\n                                            </button>\n                                        </div>\n                                        <div class=\"modal-body\">\n                                            <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + i.documento | safeUrl\"\n                                                frameborder=\"0\" allowfullscreen></iframe>\n                                        </div>\n                                        <div class=\"modal-footer\" [hidden]=\"true\">\n                                            <button type=\"button\" class=\"btn btn-outline-dark\"\n                                                (click)=\"c('Save click')\">OK</button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </ng-template>\n                            <!--MODAL VISOR PDF-->\n                        </td>\n                        <td>\n                            <button (click)=\"suspender(i.id);\" class=\"btn btn-warning\"><i class=\"fas fa-power-off\"></i> Suspender</button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>"
+module.exports = "<div class=\"card\">\n    <div class=\"card-header\" id=\"demoFont\">\n        <strong class=\"text-center\">\n            <h6><i class=\"fas fa-file-invoice\"></i> Lista</h6>\n        </strong>\n    </div>\n    <div class=\"card-body\">\n        <div class=\"row\">\n            <div class=\"col-md-8\">\n                <label for=\"\">Tipo de documento</label>\n                <select class=\"form-control\" [(ngModel)]=\"tipo\" name=\"\" id=\"\">\n                    <option value=\"all\">todos</option>\n                    <option *ngFor=\"let i of tipos\" value=\"{{i.id}}\">{{i.descripcion}}</option>\n                </select>\n\n            </div>\n            <div class=\"col-md-1\">\n                <label for=\"\">&nbsp;</label><br>\n                <button class=\"btn btn-success\" (click)=\"listar();\">\n                    <i class=\"fas fa-search\"></i>\n                </button>\n            </div>\n\n            <div class=\"col-md-1\">\n                <label for=\"\">&nbsp;</label><br>\n                <button class=\"btn btn-info\" [routerLink]=\"['/AuthMaster/DocumentacionHistorial']\">Historial</button>\n            </div>\n        </div>\n\n        <div class=\"table-responsive mt-2\">\n            <table *ngIf=\"count_listado > 0\" class=\"table table-striped table-bordered table-sm\">\n                <thead text-sm>\n                    <!--Titulo Tabla-->\n                    <!--<tr>\n                        <th colspan=\"14\" class=\" text-center\"  id=\"demoFont\"><h6>Movimiento mensual</h6></th>\n                      </tr>-->\n                    <!--Cuenta Sindical-->\n                    <tr class=\"text-center\">\n                        <th colspan=\"4\" style=\"background: #138D75;\">Documentación Sindical</th>\n\n                    </tr>\n                </thead>\n                <thead>\n                    <!--Fijos-->\n                    <tr class=\"text-center\">\n                        <th style=\"background: #138D75\"><i class=\"fas fa-text-width\"></i> Titulo</th>\n                        <th style=\"background: #138D75\"><i class=\"fas fa-passport\"></i> Tipo Documento</th>\n                        <th style=\"background: #138D75\"><i class=\"far fa-file-pdf\"></i> Documento</th>\n                        <th style=\"background: #138D75\"><i class=\"fas fa-filter\"></i> Opción</th>\n\n                    </tr>\n                </thead>\n                <tbody>\n\n                    <tr *ngFor=\"let i of listado\" class=\"text-center\">\n                        <td>{{i.titulo}}</td>\n                        <td>{{i.descripcion}}</td>\n                        <td>\n                            <a (click)=\"open(visorSindicalFijo)\" style=\"cursor: pointer\" class=\"btn-primary-outline\">\n                                <i class=\"far fa-file-alt\" placement=\"top\"\n                                    ngbTooltip=\"Presione aqui visualizar documento PDF\"></i>\n                            </a>&nbsp;\n\n\n                            <!--MODAL VISOR PDF-->\n                            <ng-template #visorSindicalFijo let-c=\"close\" let-d=\"dismiss\">\n                                <div class=\"row\">\n                                    <div class=\"col\">\n                                        <div class=\"modal-header text-center\" id=\"demoFont\">\n                                            <h4 class=\"modal-title\" id=\"modal-basic-title\">Visor de PDF</h4>\n                                            <button id=\"closeModalButton\" type=\"button\" class=\"close\" aria-label=\"Close\"\n                                                (click)=\"d('Cross click')\">\n                                                <span aria-hidden=\"true\">&times;</span>\n                                            </button>\n                                        </div>\n                                        <div class=\"modal-body\">\n                                            <iframe width=\"100%\" height=\"500px\" [src]=\"  '../' + i.documento | safeUrl\"\n                                                frameborder=\"0\" allowfullscreen></iframe>\n                                        </div>\n                                        <div class=\"modal-footer\" [hidden]=\"true\">\n                                            <button type=\"button\" class=\"btn btn-outline-dark\"\n                                                (click)=\"c('Save click')\">OK</button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </ng-template>\n                            <!--MODAL VISOR PDF-->\n                        </td>\n                        <td>\n                            <button (click)=\"suspender(i.id);\" class=\"btn btn-warning\"><i class=\"fas fa-power-off\"></i> Suspender</button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1774,6 +1785,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_documentacion_sindical_documentacion_sindical_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./auth-master/documentacion-sindical/documentacion-sindical.component */ "./src/app/auth-master/documentacion-sindical/documentacion-sindical.component.ts");
 /* harmony import */ var _socios_master_index_index_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./socios-master/index/index.component */ "./src/app/socios-master/index/index.component.ts");
 /* harmony import */ var _socios_master_documentacion_documentacion_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./socios-master/documentacion/documentacion.component */ "./src/app/socios-master/documentacion/documentacion.component.ts");
+/* harmony import */ var _auth_master_documentacion_sindical_historial_historial_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./auth-master/documentacion-sindical/historial/historial.component */ "./src/app/auth-master/documentacion-sindical/historial/historial.component.ts");
+
 
 
 
@@ -1831,7 +1844,8 @@ const routes = [
             { path: 'Index', component: _auth_master_index_index_component__WEBPACK_IMPORTED_MODULE_30__["IndexComponent"] },
             { path: 'Cumpleanios', component: _auth_master_admin_cumpleanios_admin_cumpleanios_component__WEBPACK_IMPORTED_MODULE_31__["AdminCumpleaniosComponent"] },
             { path: 'mail', component: _mail_mail_mail_component__WEBPACK_IMPORTED_MODULE_32__["MailComponent"] },
-            { path: 'DocumentacionMaster', component: _auth_master_documentacion_sindical_documentacion_sindical_component__WEBPACK_IMPORTED_MODULE_33__["DocumentacionSindicalComponent"] }
+            { path: 'DocumentacionMaster', component: _auth_master_documentacion_sindical_documentacion_sindical_component__WEBPACK_IMPORTED_MODULE_33__["DocumentacionSindicalComponent"] },
+            { path: 'DocumentacionHistorial', component: _auth_master_documentacion_sindical_historial_historial_component__WEBPACK_IMPORTED_MODULE_36__["HistorialComponent"] },
         ] },
     { path: 'SociosMaster', component: _socios_master_socios_master_component__WEBPACK_IMPORTED_MODULE_17__["SociosMasterComponent"], canActivate: [_guardianes_authSocio_guard_service__WEBPACK_IMPORTED_MODULE_19__["AuthGuardSocioService"]], children: [
             { path: 'Perfil', component: _socios_master_perfil_socio_perfil_socio_component__WEBPACK_IMPORTED_MODULE_18__["PerfilSocioComponent"] },
@@ -2066,6 +2080,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_master_documentacion_sindical_lista_documentacion_lista_documentacion_component__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component */ "./src/app/auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component.ts");
 /* harmony import */ var _socios_master_index_index_component__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./socios-master/index/index.component */ "./src/app/socios-master/index/index.component.ts");
 /* harmony import */ var _socios_master_documentacion_documentacion_component__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! ./socios-master/documentacion/documentacion.component */ "./src/app/socios-master/documentacion/documentacion.component.ts");
+/* harmony import */ var _auth_master_documentacion_sindical_historial_historial_component__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! ./auth-master/documentacion-sindical/historial/historial.component */ "./src/app/auth-master/documentacion-sindical/historial/historial.component.ts");
+
 
 
 
@@ -2353,6 +2369,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _auth_master_documentacion_sindical_formulario_documentacion_formulario_documentacion_component__WEBPACK_IMPORTED_MODULE_148__["FormularioDocumentacionComponent"],
             _auth_master_documentacion_sindical_lista_documentacion_lista_documentacion_component__WEBPACK_IMPORTED_MODULE_149__["ListaDocumentacionComponent"],
             _socios_master_documentacion_documentacion_component__WEBPACK_IMPORTED_MODULE_151__["DocumentacionComponent"],
+            _auth_master_documentacion_sindical_historial_historial_component__WEBPACK_IMPORTED_MODULE_152__["HistorialComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -9641,6 +9658,91 @@ FormularioDocumentacionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 
 /***/ }),
 
+/***/ "./src/app/auth-master/documentacion-sindical/historial/historial.component.css":
+/*!**************************************************************************************!*\
+  !*** ./src/app/auth-master/documentacion-sindical/historial/historial.component.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n    .dark-modal .modal-content {\n        background-color: #292b2c;\n        color: white;\n      }\n      .dark-modal .close {\n        color: white;\n      }\n      .light-blue-backdrop {\n        background-color: #5cb3fd;\n      }\n      label,input, button{\n        font-size: 14px;\n      }\n      tr,th{\n        font-size: 14px;\n      }\n      th{\n        color: white;\n        background: #138D75;\n      }\n      #demoFont {\n        color: #fff;\n        background: #2C3E50;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */\n        background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n        }\n      .margen{\n          display: flex;\n          justify-content: center;\n          width: 100%;\n        }\n      .card{\n          border-top-left-radius: 20px;\n          border-top-right-radius: 20px;\n          background: rgba(255, 255, 255, 0.8);\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n        }\n      .card-header{\n          border-top-left-radius: 20px;\n          border-top-right-radius: 20px;\n        }\n      #myTab{\n          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n        }\n  \n  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC1tYXN0ZXIvZG9jdW1lbnRhY2lvbi1zaW5kaWNhbC9oaXN0b3JpYWwvaGlzdG9yaWFsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtJQUNJO1FBQ0kseUJBQXlCO1FBQ3pCLFlBQVk7TUFDZDtNQUNBO1FBQ0UsWUFBWTtNQUNkO01BQ0E7UUFDRSx5QkFBeUI7TUFDM0I7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFFQTtRQUNFLGVBQWU7TUFDakI7TUFDQTtRQUNFLFlBQVk7UUFDWixtQkFBbUI7TUFDckI7TUFFQTtRQUNFLFdBQVc7UUFDWCxtQkFBbUIsR0FBRyw4QkFBOEIsR0FDYywrQkFBK0I7UUFDakcsdURBQXVELEVBQUUscUVBQXFFO1FBQzlIO01BQ0E7VUFDRSxhQUFhO1VBQ2IsdUJBQXVCO1VBQ3ZCLFdBQVc7UUFDYjtNQUVBO1VBQ0UsNEJBQTRCO1VBQzVCLDZCQUE2QjtVQUM3QixvQ0FBb0M7VUFDcEMsMEVBQTBFO1FBQzVFO01BRUE7VUFDRSw0QkFBNEI7VUFDNUIsNkJBQTZCO1FBQy9CO01BQ0E7VUFDRSwwRUFBMEU7UUFDNUUiLCJmaWxlIjoic3JjL2FwcC9hdXRoLW1hc3Rlci9kb2N1bWVudGFjaW9uLXNpbmRpY2FsL2hpc3RvcmlhbC9oaXN0b3JpYWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgIC5kYXJrLW1vZGFsIC5tb2RhbC1jb250ZW50IHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzI5MmIyYztcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgfVxuICAgICAgLmRhcmstbW9kYWwgLmNsb3NlIHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgfVxuICAgICAgLmxpZ2h0LWJsdWUtYmFja2Ryb3Age1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWNiM2ZkO1xuICAgICAgfVxuICBcbiAgICAgIGxhYmVsLGlucHV0LCBidXR0b257XG4gICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgIH1cbiAgXG4gICAgICB0cix0aHtcbiAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgfVxuICAgICAgdGh7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgYmFja2dyb3VuZDogIzEzOEQ3NTtcbiAgICAgIH1cbiAgICAgIFxuICAgICAgI2RlbW9Gb250IHtcbiAgICAgICAgY29sb3I6ICNmZmY7XG4gICAgICAgIGJhY2tncm91bmQ6ICMyQzNFNTA7ICAvKiBmYWxsYmFjayBmb3Igb2xkIGJyb3dzZXJzICovXG4gICAgICAgIGJhY2tncm91bmQ6IC13ZWJraXQtbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjNENBMUFGLCAjMkMzRTUwKTsgIC8qIENocm9tZSAxMC0yNSwgU2FmYXJpIDUuMS02ICovXG4gICAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzRDQTFBRiwgIzJDM0U1MCk7IC8qIFczQywgSUUgMTArLyBFZGdlLCBGaXJlZm94IDE2KywgQ2hyb21lIDI2KywgT3BlcmEgMTIrLCBTYWZhcmkgNysgKi9cbiAgICAgICAgfVxuICAgICAgICAubWFyZ2Vue1xuICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIH1cbiAgXG4gICAgICAgIC5jYXJke1xuICAgICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDIwcHg7XG4gICAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XG4gICAgICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xuICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xuICAgICAgICB9XG4gICAgICBcbiAgICAgICAgLmNhcmQtaGVhZGVye1xuICAgICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDIwcHg7XG4gICAgICAgICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDIwcHg7XG4gICAgICAgIH1cbiAgICAgICAgI215VGFie1xuICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCAwIHJnYmEoMCwgMCwgMCwgMSksIDAgNnB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTkpO1xuICAgICAgICB9XG4gIFxuICAiXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/auth-master/documentacion-sindical/historial/historial.component.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/app/auth-master/documentacion-sindical/historial/historial.component.ts ***!
+  \*************************************************************************************/
+/*! exports provided: HistorialComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistorialComponent", function() { return HistorialComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var src_app_servicios_docuemntacion_sindical_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicios/docuemntacion-sindical.service */ "./src/app/servicios/docuemntacion-sindical.service.ts");
+
+
+
+
+let HistorialComponent = class HistorialComponent {
+    constructor(_documentacion, modalService) {
+        this._documentacion = _documentacion;
+        this.modalService = modalService;
+        this.tipo = 'all';
+        this.count_listado = 0;
+    }
+    ngOnInit() {
+        this.listado_tipos();
+    }
+    listado_tipos() {
+        this._documentacion.listado_tipos().subscribe(res => {
+            this.tipos = res;
+        });
+    }
+    listar() {
+        this._documentacion.listado(this.tipo, 'N').subscribe(res => {
+            this.listado = res;
+            this.count_listado = res.length;
+        });
+    }
+    open(content) {
+        this.modalService.open(content, { size: 'lg' });
+    }
+    activar(doc) {
+        var dialog = confirm('¿Quiere activar este documento?');
+        if (dialog) {
+            this._documentacion.activar(doc).subscribe(res => {
+                if (res.estado) {
+                    alert(res.mensaje);
+                    this.listar();
+                }
+                else {
+                    alert(res.mensaje);
+                }
+            });
+        }
+    }
+};
+HistorialComponent.ctorParameters = () => [
+    { type: src_app_servicios_docuemntacion_sindical_service__WEBPACK_IMPORTED_MODULE_3__["DocuemntacionSindicalService"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
+];
+HistorialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-historial',
+        template: __webpack_require__(/*! raw-loader!./historial.component.html */ "./node_modules/raw-loader/index.js!./src/app/auth-master/documentacion-sindical/historial/historial.component.html"),
+        styles: [__webpack_require__(/*! ./historial.component.css */ "./src/app/auth-master/documentacion-sindical/historial/historial.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_servicios_docuemntacion_sindical_service__WEBPACK_IMPORTED_MODULE_3__["DocuemntacionSindicalService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+], HistorialComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component.css":
 /*!**********************************************************************************************************!*\
   !*** ./src/app/auth-master/documentacion-sindical/lista-documentacion/lista-documentacion.component.css ***!
@@ -9681,7 +9783,7 @@ let ListaDocumentacionComponent = class ListaDocumentacionComponent {
         this.listado_tipos();
     }
     listar() {
-        this._documentacion.listado(this.tipo).subscribe(res => {
+        this._documentacion.listado(this.tipo, 'S').subscribe(res => {
             this.listado = res;
             this.count_listado = res.length;
         });
@@ -17670,11 +17772,14 @@ let DocuemntacionSindicalService = class DocuemntacionSindicalService {
                 'Authorization': 'Bearer' + this.token,
             }) });
     }
-    listado(tipo) {
-        return this._http.get(this.url + "documentacion_sindical/list/" + tipo + "", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
+    listado(tipo, activo) {
+        return this._http.get(this.url + "documentacion_sindical/list/" + tipo + "/" + activo + "", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
     }
     suspender(doc) {
         return this._http.get(this.url + "documentacion_sindical/suspender/" + doc, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
+    }
+    activar(doc) {
+        return this._http.get(this.url + "documentacion_sindical/activar/" + doc, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
     }
     listado_tipos() {
         return this._http.get(this.url + "documentacion_sindical/tipos/list", { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"](this.head) });
@@ -21201,21 +21306,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DocumentacionComponent = class DocumentacionComponent {
-    constructor(config, route, _doc, modalService) {
+    constructor(config, route, _doc, modalService, router) {
         this.route = route;
         this._doc = _doc;
         this.modalService = modalService;
+        this.router = router;
         this.count = 0;
         config.backdrop = 'static';
         config.keyboard = false;
     }
     ngOnInit() {
         this.tipo = this.route.snapshot.params.tipo;
-        this.nombre_tipo();
-        this.traer_documento();
+        if (this.tipo == 5) {
+            this.router.navigate(['/SociosMaster/Index']);
+        }
+        else {
+            this.nombre_tipo();
+            this.traer_documento();
+        }
     }
     traer_documento() {
-        this._doc.listado(this.tipo).subscribe((res) => {
+        this._doc.listado(this.tipo, 'S').subscribe((res) => {
             console.log(res);
             this.listado = res;
             this.count = res.length;
@@ -21234,7 +21345,8 @@ DocumentacionComponent.ctorParameters = () => [
     { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
     { type: _servicios_docuemntacion_sindical_service__WEBPACK_IMPORTED_MODULE_4__["DocuemntacionSindicalService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] }
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 DocumentacionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -21245,7 +21357,8 @@ DocumentacionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModalConfig"],
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
         _servicios_docuemntacion_sindical_service__WEBPACK_IMPORTED_MODULE_4__["DocuemntacionSindicalService"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
 ], DocumentacionComponent);
 
 
@@ -21387,12 +21500,13 @@ let IndexComponent = class IndexComponent {
             { descripcion: "Cuentas", icono: "fas fa-money-bill fa-5x", ruta: "/SociosMaster/Cuentas" },
         ];
         this._doc.listado_tipos().subscribe(res => {
-            this.tipos = res;
-            this.tipos[5] = menu[0];
-            this.tipos[6] = menu[1];
-            this.tipos[7] = menu[2];
-            this.tipos[8] = menu[3];
+            this.tipos = res.filter(function (x) { return x.id < 5; });
+            this.tipos[4] = menu[0];
+            this.tipos[5] = menu[1];
+            this.tipos[6] = menu[2];
+            this.tipos[7] = menu[3];
             this.tipos.reverse();
+            console.log(this.tipos);
         });
     }
 };

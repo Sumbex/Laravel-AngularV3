@@ -55,6 +55,7 @@ Route::group(['middleware' => ['jwt.auth', 'cors']], function () {
 });
 
 Route::post('documentacion_sindical/insert', 'DocumentacionSindicalController@insert');
-Route::get('documentacion_sindical/list/{tipo}', 'DocumentacionSindicalController@list');
+Route::get('documentacion_sindical/list/{tipo}/{activo}', 'DocumentacionSindicalController@list');
 Route::get('documentacion_sindical/tipos/list', 'DocumentacionSindicalController@tipo_documentacion_sindical');
 Route::get('documentacion_sindical/suspender/{doc}','DocumentacionSindicalController@suspender');
+Route::get('documentacion_sindical/activar/{doc}','DocumentacionSindicalController@activar');

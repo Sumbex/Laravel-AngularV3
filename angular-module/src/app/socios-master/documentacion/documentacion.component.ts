@@ -3,6 +3,7 @@ import { ActivatedRoute, Route, Router } from "@angular/router";
 import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
 import { DocuemntacionSindicalService } from "../../servicios/docuemntacion-sindical.service";
 
+
 @Component({
   selector: "app-documentacion",
   templateUrl: "./documentacion.component.html",
@@ -17,20 +18,30 @@ export class DocumentacionComponent implements OnInit {
     config: NgbModalConfig,
     private route: ActivatedRoute,
     private _doc: DocuemntacionSindicalService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
+    
   }
 
   ngOnInit() {
     this.tipo = this.route.snapshot.params.tipo;
-    this.nombre_tipo();
-    this.traer_documento();
+    
+    if(this.tipo == 5){
+      this.router.navigate(['/SociosMaster/Index'])
+    }else{
+      this.nombre_tipo();
+      this.traer_documento();
+    }
+    
+
+    
   }
 
   traer_documento() {
-    this._doc.listado(this.tipo).subscribe((res) => {
+    this._doc.listado(this.tipo, 'S').subscribe((res) => {
       console.log(res);
       this.listado = res;
       this.count = res.length

@@ -3,11 +3,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DocuemntacionSindicalService } from 'src/app/servicios/docuemntacion-sindical.service';
 
 @Component({
-  selector: 'app-lista-documentacion',
-  templateUrl: './lista-documentacion.component.html',
-  styleUrls: ['./lista-documentacion.component.css']
+  selector: 'app-historial',
+  templateUrl: './historial.component.html',
+  styleUrls: ['./historial.component.css']
 })
-export class ListaDocumentacionComponent implements OnInit {
+export class HistorialComponent implements OnInit {
 
   tipo:string='all';
   count_listado=0;
@@ -19,8 +19,14 @@ export class ListaDocumentacionComponent implements OnInit {
     this.listado_tipos();
   }
 
+  listado_tipos(){
+    this._documentacion.listado_tipos().subscribe(res =>{
+      this.tipos = res;
+    })
+  }
+
   listar(){
-    this._documentacion.listado(this.tipo,'S').subscribe(res=>{
+    this._documentacion.listado(this.tipo,'N').subscribe(res=>{
       this.listado = res;
       this.count_listado = res.length
     })
@@ -29,16 +35,12 @@ export class ListaDocumentacionComponent implements OnInit {
   open(content) {
     this.modalService.open(content, {size: 'lg'});
   }
-  listado_tipos(){
-    this._documentacion.listado_tipos().subscribe(res =>{
-      this.tipos = res;
-    })
-  }
-  suspender(doc){
-    var dialog = confirm('¿Quiere suspender este documento?');
+
+  activar(doc){
+    var dialog = confirm('¿Quiere activar este documento?');
 
     if(dialog){
-      this._documentacion.suspender(doc).subscribe(res=>{
+      this._documentacion.activar(doc).subscribe(res=>{
         if(res.estado){
           alert(res.mensaje);
           this.listar();

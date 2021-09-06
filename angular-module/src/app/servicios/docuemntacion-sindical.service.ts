@@ -25,14 +25,19 @@ export class DocuemntacionSindicalService {
     )});
     }
 
-    listado(tipo:string): Observable<any>{
-      return this._http.get(this.url + "documentacion_sindical/list/"+tipo+"", {headers: new HttpHeaders(
+    listado(tipo:string, activo:string): Observable<any>{
+      return this._http.get(this.url + "documentacion_sindical/list/"+tipo+"/"+activo+"", {headers: new HttpHeaders(
            this.head
         )});
     }
 
     suspender(doc:string): Observable<any>{
       return this._http.get(this.url + "documentacion_sindical/suspender/"+doc, {headers: new HttpHeaders(
+           this.head
+        )});
+    }
+    activar(doc:string): Observable<any>{
+      return this._http.get(this.url + "documentacion_sindical/activar/"+doc, {headers: new HttpHeaders(
            this.head
         )});
     }

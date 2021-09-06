@@ -14,9 +14,16 @@
                 </select>
 
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <label for="">&nbsp;</label><br>
-                <button class="btn btn-success" (click)="listar();">listar</button>
+                <button class="btn btn-success" (click)="listar();">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="col-md-1">
+                <label for="">&nbsp;</label><br>
+                <button class="btn btn-info" [routerLink]="['/AuthMaster/DocumentacionHistorial']">Historial</button>
             </div>
         </div>
 
@@ -36,10 +43,10 @@
                 <thead>
                     <!--Fijos-->
                     <tr class="text-center">
-                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Titulo</th>
-                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Tipo Documento</th>
-                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Documento</th>
-                        <th style="background: #138D75"><i class="far fa-calendar-alt"></i>Opción</th>
+                        <th style="background: #138D75"><i class="fas fa-text-width"></i> Titulo</th>
+                        <th style="background: #138D75"><i class="fas fa-passport"></i> Tipo Documento</th>
+                        <th style="background: #138D75"><i class="far fa-file-pdf"></i> Documento</th>
+                        <th style="background: #138D75"><i class="fas fa-filter"></i> Opción</th>
 
                     </tr>
                 </thead>
@@ -87,3 +94,4 @@
             </table>
         </div>
     </div>
+</div>

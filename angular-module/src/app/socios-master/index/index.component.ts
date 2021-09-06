@@ -24,13 +24,14 @@ export class IndexComponent implements OnInit {
       {descripcion:"Cuentas", icono:"fas fa-money-bill fa-5x", ruta:"/SociosMaster/Cuentas"},
     ];
     this._doc.listado_tipos().subscribe(res=>{
-      this.tipos = res;
-      this.tipos[5] = menu[0];
-      this.tipos[6] = menu[1];
-      this.tipos[7] = menu[2];
-      this.tipos[8] = menu[3];
+      this.tipos = res.filter(function(x) { return x.id < 5});
+      this.tipos[4] = menu[0];
+      this.tipos[5] = menu[1];
+      this.tipos[6] = menu[2];
+      this.tipos[7] = menu[3];
 
       this.tipos.reverse();
+      console.log(this.tipos)
     });
   }
 

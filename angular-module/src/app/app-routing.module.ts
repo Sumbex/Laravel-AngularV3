@@ -34,6 +34,7 @@ import { MailComponent } from './mail/mail/mail.component';
 import { DocumentacionSindicalComponent } from './auth-master/documentacion-sindical/documentacion-sindical.component';
 import { IndexComponent as IndexSocio } from './socios-master/index/index.component';
 import { DocumentacionComponent } from './socios-master/documentacion/documentacion.component';
+import { HistorialComponent } from './auth-master/documentacion-sindical/historial/historial.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -57,7 +58,8 @@ const routes: Routes = [
     { path: 'Index', component:IndexComponent },
     { path: 'Cumpleanios', component:AdminCumpleaniosComponent },
     { path: 'mail', component:MailComponent },
-    { path: 'DocumentacionMaster', component:DocumentacionSindicalComponent}
+    { path: 'DocumentacionMaster', component:DocumentacionSindicalComponent},
+    { path: 'DocumentacionHistorial', component:HistorialComponent},
 
 
   ]},

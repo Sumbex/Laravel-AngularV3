@@ -15363,8 +15363,8 @@ let TemasComponent = class TemasComponent {
     }
     ingresarTema() {
         this.ingresandoTema = true;
-        // console.log(this.datosTema)
-        // return false;
+        console.log(this.datosTema);
+        //return false;
         this._votaciones.ingresarTema(this.datosTema).subscribe(res => {
             if (res.estado == 'success') {
                 this.limpiarTema();
@@ -24004,6 +24004,7 @@ let VotacionesBryanmService = class VotacionesBryanmService {
     }
     ingresarTema(data) {
         const datos = new FormData();
+        datos.append('tipo_votacion', data.tipo_votacion);
         datos.append('fecha', data.fecha);
         datos.append('titulo', data.titulo);
         datos.append('descripcion', data.descripcion);

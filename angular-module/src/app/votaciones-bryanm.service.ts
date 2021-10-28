@@ -29,6 +29,7 @@ export class VotacionesBryanmService {
 
   ingresarTema(data): Observable<any> {
     const datos = new FormData();
+    datos.append('tipo_votacion', data.tipo_votacion);
     datos.append('fecha', data.fecha);
     datos.append('titulo', data.titulo);
     datos.append('descripcion', data.descripcion);

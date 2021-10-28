@@ -209,8 +209,8 @@ export class TemasComponent implements OnInit {
 
   ingresarTema() {
     this.ingresandoTema = true;
-    // console.log(this.datosTema)
-    // return false;
+    console.log(this.datosTema)
+    //return false;
     this._votaciones.ingresarTema(this.datosTema).subscribe(
       res => {
         if (res.estado == 'success') {

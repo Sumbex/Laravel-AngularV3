@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\SecTemas;
+use App\SecVotos;
 use Illuminate\Http\Request;
 
 class SecTemasController extends Controller
@@ -45,5 +46,10 @@ class SecTemasController extends Controller
     public function TraerVotos($tema)
     {
         return SecTemas::traerVotos($tema);
+    }
+
+    // test
+    public function traerSociosActivos($tipo){
+        return SecVotos::traerSociosActivos($tipo);
     }
 }

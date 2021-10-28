@@ -59,3 +59,5 @@ Route::get('documentacion_sindical/list/{tipo}/{activo}', 'DocumentacionSindical
 Route::get('documentacion_sindical/tipos/list', 'DocumentacionSindicalController@tipo_documentacion_sindical');
 Route::get('documentacion_sindical/suspender/{doc}','DocumentacionSindicalController@suspender');
 Route::get('documentacion_sindical/activar/{doc}','DocumentacionSindicalController@activar');
+
+Route::get('traer_socios_activos/{tipo}','SecTemasController@traerSociosActivos');

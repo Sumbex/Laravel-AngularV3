@@ -58,8 +58,9 @@ class SecTemas extends Model
             $tema->estado_aprobacion_id = 1;
             $tema->user_id = Auth::user()->id;
             $tema->activo = "S";
+            $tema->tipo_votacion = $request->tipo_votacion;
             if ($tema->save()) {
-                $voto = SecVotos::ingresarVotosNulos($tema->id);
+                $voto = SecVotos::ingresarVotosNulos($tema->id, $request->tipo_votacion);
                 if ($voto['estado'] == "success") {
                     DB::commit();
                     return ['estado' => 'success', 'mensaje' => 'Tema publicado con exito.'];

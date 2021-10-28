@@ -10,19 +10,57 @@ class SecVotos extends Model
 {
     protected $table = "sec_votos";
 
-    protected function traerSociosActivos()
+    protected function traerSociosActivos($tipo)
     {
-        $socios = DB::table('socios')
-            ->select([
-                'id',
-                'rut'
-            ])
-            ->where([
-                'activo' => 'S',
-                'fecha_egreso' => null
-            ])
-            ->get();
-
+        $socios;
+        switch ($tipo) {
+            case 1:
+                $socios = DB::table('socios as s')
+                ->select([
+                    's.id',
+                    's.rut',
+                    'sdb.rol_turno'
+                ])
+                ->join('socios_datos_basicos as sdb', 'sdb.socio_id', 's.id')
+                ->whereNotNull('sdb.rol_turno')
+                ->whereIn('sdb.rol_turno', ['1', '2','3','4'])
+                ->where([
+                    's.activo' => 'S',
+                    's.fecha_egreso' => null,
+                ])
+                ->get();
+                break;
+            case 2:
+                $socios = DB::table('socios as s')
+                ->select([
+                    's.id',
+                    's.rut',
+                    'sdb.rol_turno'
+                ])
+                ->join('socios_datos_basicos as sdb', 'sdb.socio_id', 's.id')
+                ->whereNotNull('sdb.rol_turno')
+                ->where([
+                    's.activo' => 'S',
+                    's.fecha_egreso' => null,
+                    'sdb.rol_turno' => '5'
+                ])
+                ->get();
+                break;
+            case 3:
+                $socios = DB::table('socios as s')
+                ->select([
+                    's.id',
+                    's.rut',
+                ])
+                ->where([
+                    's.activo' => 'S',
+                    's.fecha_egreso' => null,
+                ])
+                ->get();
+                break;
+            default:
+                break;
+        }
         if (!$socios->isEmpty()) {
             return ['estado' => 'success', 'socios' => $socios];
         } else {
@@ -30,9 +68,9 @@ class SecVotos extends Model
         }
     }
 
-    protected function ingresarVotosNulos($tema_id)
+    protected function ingresarVotosNulos($tema_id, $tipo)
     {
-        $socios = $this->traerSociosActivos();
+        $socios = $this->traerSociosActivos($tipo);
         if ($socios['estado'] == 'success') {
             $count = 0;
             DB::beginTransaction();

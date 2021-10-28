@@ -40,7 +40,7 @@ export class TemasComponent implements OnInit {
     fecha: '',
     titulo: '',
     descripcion: '',
-    tipo_votacion: '1',
+    tipo_votacion: '3',
   };
 
   datosActTemas = {
@@ -204,7 +204,7 @@ export class TemasComponent implements OnInit {
   limpiarTema() {
     this.datosTema.titulo = '';
     this.datosTema.descripcion = '';
-    this.datosTema.tipo_votacion = '1';
+    this.datosTema.tipo_votacion = '3';
   }
 
   ingresarTema() {

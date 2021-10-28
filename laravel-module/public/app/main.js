@@ -15226,7 +15226,7 @@ let TemasComponent = class TemasComponent {
             fecha: '',
             titulo: '',
             descripcion: '',
-            tipo_votacion: '1',
+            tipo_votacion: '3',
         };
         this.datosActTemas = {
             id: '',
@@ -15359,7 +15359,7 @@ let TemasComponent = class TemasComponent {
     limpiarTema() {
         this.datosTema.titulo = '';
         this.datosTema.descripcion = '';
-        this.datosTema.tipo_votacion = '1';
+        this.datosTema.tipo_votacion = '3';
     }
     ingresarTema() {
         this.ingresandoTema = true;

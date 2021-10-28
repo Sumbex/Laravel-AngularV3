@@ -316,7 +316,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet></router-outlet>\n <br> <br>\n\n<!-- Footer -->\n<footer class=\"fondo-footer fixed-bottom estilo-footer\">\n    <div class=\"row\">\n        <div class=\"col-12\">\n            <div class=\"footer-copyright estilo-footer py-2\">\n                <div class=\"text-center\">\n                    Desarrollado por:\n                    <a class=\"estilo-footer\" href=\"https://neofox.cl/\" target=\"_blank\">\n                        <img src=\"/assets/NeoFox_SF.png\" width=\"20\" height=\"20\"> NeoFox</a>\n                    <span class=\"ml-4\">v1.2.0</span>\n                </div>\n            </div>\n        </div>\n    </div>\n</footer>\n<!-- Footer -->\n\n"
+module.exports = "<!--<router-outlet></router-outlet>-->\n\n    <router-outlet></router-outlet>\n <br> <br>\n\n<!-- Footer -->\n<footer class=\"fondo-footer fixed-bottom estilo-footer\">\n    <div class=\"row\">\n        <div class=\"col-12\">\n            <div class=\"footer-copyright estilo-footer py-2\">\n                <div class=\"text-center\">\n                    Desarrollado por:\n                    <a class=\"estilo-footer\" href=\"https://neofox.cl/\" target=\"_blank\">\n                        <img src=\"/assets/NeoFox_SF.png\" width=\"20\" height=\"20\"> NeoFox</a>\n                    <span class=\"ml-4\">v1.2.1</span>\n                </div>\n            </div>\n        </div>\n    </div>\n</footer>\n<!-- Footer -->\n\n"
 
 /***/ }),
 

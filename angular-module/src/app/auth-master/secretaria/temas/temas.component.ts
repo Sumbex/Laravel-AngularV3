@@ -39,7 +39,8 @@ export class TemasComponent implements OnInit {
   datosTema = {
     fecha: '',
     titulo: '',
-    descripcion: ''
+    descripcion: '',
+    tipo_votacion: '1',
   };
 
   datosActTemas = {
@@ -203,10 +204,13 @@ export class TemasComponent implements OnInit {
   limpiarTema() {
     this.datosTema.titulo = '';
     this.datosTema.descripcion = '';
+    this.datosTema.tipo_votacion = '1';
   }
 
   ingresarTema() {
     this.ingresandoTema = true;
+    // console.log(this.datosTema)
+    // return false;
     this._votaciones.ingresarTema(this.datosTema).subscribe(
       res => {
         if (res.estado == 'success') {

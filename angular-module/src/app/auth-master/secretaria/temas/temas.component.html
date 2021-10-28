@@ -36,7 +36,19 @@
         </div>
         <div class="card">
             <form #temasForm="ngForm" (ngSubmit)="ingresarTema()">
+                
                 <div class="row centrar">
+                    <div class="col-md-12">
+                      <div class="form-group"> 
+                        <label for="">Tipo de votación</label>
+                    
+                        <select name="tipo_votacion" [(ngModel)]="datosTema.tipo_votacion" class="form-control">  
+                            <option value="1">Todos</option>
+                            <option value="2">Turno</option>
+                            <option value="3">Administración</option>
+                        </select>
+                      </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Fecha</label>

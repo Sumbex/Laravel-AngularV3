@@ -53,7 +53,7 @@ class CuentaConsorcioController extends Controller
                 $ds = CuentaConsorcio::insertar_cex($r);
                 return $ds;
             break;
-            
+
             default:
                 # code...
                 break;
@@ -75,8 +75,8 @@ class CuentaConsorcioController extends Controller
 
         $ds = CuentaConsorcio::insertar_cex_desde_table($r);
         return $ds;
-    
-        
+
+
     }
 
     public function cuenta_consorcio($anio_id)
@@ -84,7 +84,7 @@ class CuentaConsorcioController extends Controller
         $listar = CuentaConsorcio::tabla_consorcio($anio_id);
         if ($listar != '') {
             foreach ($listar as $key) {
-                
+
                 if ($key->vinculado == 'N') {
                     $ultimo_ds = CuentaConsorcio::calcular_dia_sueldo($key->socio_id);
                     //$key->monto_total_menos_ds = (int)$key->monto_total_socio - (int)$ultimo_ds['dia_sueldo'];
@@ -96,7 +96,7 @@ class CuentaConsorcioController extends Controller
 
             return $listar;
         }
-        
+
     }
     public function totales_cuenta_consorcio($anio_id)
     {
@@ -140,7 +140,7 @@ class CuentaConsorcioController extends Controller
         $ds = (int)$dia_sueldo->dia_sueldo;
         $mult = $ds * $porc;
         $result = $ds - $mult;
-        echo $result; 
+        echo $result;
          return ['ds' => $ds,'porc ' => $result];
 
         // content
@@ -151,7 +151,7 @@ class CuentaConsorcioController extends Controller
         $ds = (int)$dia_sueldo;
         $mult = $ds * $porc;
         $result = $ds - $mult;
-        echo $result; 
+        echo $result;
          return ['ds' => $ds,'porc ' => $result];
 
         // content
@@ -181,23 +181,23 @@ class CuentaConsorcioController extends Controller
         ->where([
             'anio_id' => $anio
         ])->get();
-        
+
         $sum=0;
         $monto_beneficio =0;
 
         foreach ($cc as $key) {
 
-            $sin_benef = DB::select("SELECT * from socios 
+            $sin_benef = DB::select("SELECT * from socios
                                 where (retiro_pago_beneficio ='N'
-                                or retiro_pago_beneficio is null)   
+                                or retiro_pago_beneficio is null)
                                 and id = $key->socio_id");
 
 
-                        
-                            
+
+
             if (count($sin_benef) > 0) {
                 if ($key['monto_mes_ds_'.$mes] != 0 || $key['monto_mes_ds_'.$mes] != null ) {
-                        
+
                         $update = CuentaConsorcio::where([
                             'socio_id' => $key->socio_id,
                             'anio_id' => $anio
@@ -216,10 +216,10 @@ class CuentaConsorcioController extends Controller
                 }
             }
 
-            
+
         }
 
-    
+
         if ($sum > 0) {
             return [
                 'estado'=>'success',
@@ -239,15 +239,15 @@ class CuentaConsorcioController extends Controller
 
 
             DB::beginTransaction();
-            
+
             $sum =0;
             $verify = CcPagoBeneficio::where([
                         'anio_id' =>$anio,
                         'mes_id' => $mes,
                         'socio_id' => $socio_id
                     ])->first();
-            
-            if ($verify) {  
+
+            if ($verify) {
 
                 // if ($verify->descripcion != $desc) {
                 //     return ['estado'=>'failed','mensaje'=>'Ya no puede cambiar el tipo de descuento'];
@@ -296,14 +296,14 @@ class CuentaConsorcioController extends Controller
         }catch(QueryException $e){
             DB::rollBack();
 			return[
-				'estado'  => 'failed', 
+				'estado'  => 'failed',
 				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
 			];
 		}
 		catch(\Exception $e){
             DB::rollBack();
 			return[
-				'estado'  => 'failed', 
+				'estado'  => 'failed',
 				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos'
 			];
 		}
@@ -340,11 +340,11 @@ class CuentaConsorcioController extends Controller
         $t_pb = CuentaConsorcio::listar_pago_beneficios($anio); // tabla desvinculados
 
         if ($t_pb != '') {
-           
+
             foreach ($t_pb as $key) {
-                
+
                 $ds = CuentaConsorcio::desvincular_sumar_totales($anio, $key->socio_id);
-    
+
                  $key->monto_h = $ds->monto_h;
                  $key->total = $key->monto_v + $ds->monto_h;
             }
@@ -364,7 +364,7 @@ class CuentaConsorcioController extends Controller
                 $ano = DB::table("anio")->select([
                     DB::raw("(CAST(coalesce(descripcion, '0') AS integer) + 1) anio_sig")
                 ])->where("id",$anio_actual)->first();
-              
+
                 $a = DB::table("anio")->select("id")->where("descripcion",$ano->anio_sig)->first();
                 if(!$a){
                     return ['estado'=>'failed','mensaje'=>'El año siguiente no existe en la base de datos'];
@@ -374,21 +374,21 @@ class CuentaConsorcioController extends Controller
 
                 $sum = 0;
                 $act_sum = 0;
-                
+
                 if ($listar != '') {
                     foreach ($listar as $key) {
                         if ($key->vinculado == 'S' || $key->vinculado == 'N') {
-                            
+
                         //valido si exite ya el proximo periodo
                         $cc = CuentaConsorcio::where(['socio_id' => $key->socio_id,'anio_id' => $a->id])->first();
-                        
+
                         if ($cc) {
                             // $cc->vinculado = $key->vinculado;
                             $cc->acumulado_anterior_socio = $key->monto_total_socio;
                             $cc->save();
                             $act_sum++;
                             DB::commit();
-                            
+
                         }else{
 
                             $ncc = new CuentaConsorcio;
@@ -419,28 +419,28 @@ class CuentaConsorcioController extends Controller
 
 
 
-            
+
             }catch(QueryException $e){
                 DB::rollBack();
                 return[
-                    'estado'  => 'failed', 
+                    'estado'  => 'failed',
                     'mensaje' => 'QEx: No se ha podido seguir con el proceso, intente nuevamente o verifique sus datos'
                 ];
             }
 		catch(\Exception $e){
                 DB::rollBack();
                 return[
-                    'estado'  => 'failed', 
+                    'estado'  => 'failed',
                     'mensaje' => 'Ex: No se ha podido seguir con el proceso, intente nuevamente o verifique sus datos'
                 ];
 		}
-          
-        
+
+
     }
     //monto total de los desvinculados segun periodo
 
     public function total_desvinculados($anio)// tabla desvinculados
-    {   
+    {
         $tipo='sin_tipo';
 
         //responsables de mostrar el TOTAL DESCUENTOS DIA DE AHORRO seguhn rango de fecha
@@ -458,7 +458,7 @@ class CuentaConsorcioController extends Controller
 
         switch ($tipo) {
             case 'inicio_periodo':
-                
+
                 $i=0;
                 $print=[];
                 $total=0;
@@ -466,11 +466,11 @@ class CuentaConsorcioController extends Controller
                 $t_pb = CuentaConsorcio::listar_pago_beneficios($periodo_init->anio_id_inicio); // tabla desvinculados
 
                 if ($t_pb != '') {
-                
+
                     foreach ($t_pb as $key) {
-                        
+
                         $ds = CuentaConsorcio::desvincular_sumar_totales($periodo_init->anio_id_inicio, $key->socio_id);
-            
+
                         $key->monto_h = $ds->monto_h;
                         $key->total = $key->monto_v + $ds->monto_h;
 
@@ -487,20 +487,20 @@ class CuentaConsorcioController extends Controller
             break;
 
             case 'fin_periodo':
-                
+
                 $i=0;
                 $print=[];
                 $total=0;
-                
+
 
                 $t_pb = CuentaConsorcio::listar_pago_beneficios_2($periodo_fin->anio_id_inicio, $periodo_fin->anio_id_fin); // tabla desvinculados
-               
+
                 if ($t_pb != '') {
                     //  dd($t_pb);
                     foreach ($t_pb as $key) {
-                        
+
                         $ds = CuentaConsorcio::desvincular_sumar_totales_2($periodo_fin->anio_id_inicio, $periodo_fin->anio_id_fin, $key->socio_id);
-            
+
                         $key->monto_h = $ds->monto_h;
                         $key->total = $key->monto_v + $ds->monto_h;
 
@@ -518,22 +518,22 @@ class CuentaConsorcioController extends Controller
 
 
             break;
-            
+
             default:
                 return ['total'=>0];
                 break;
         }
 
     }
-    public function div_fecha($value)//funciona con input type date 
+    public function div_fecha($value)//funciona con input type date
     {
     	$fecha = $value;
 		$ano = substr($fecha, -10, 4);
 		$mes = substr($fecha, -5, 2);
 		$dia = substr($fecha, -2, 2);
 		return [
-			'anio' => $ano, 
-			'mes'  => $mes, 
+			'anio' => $ano,
+			'mes'  => $mes,
 			'dia'  => $dia
 		];
     }
@@ -545,8 +545,8 @@ class CuentaConsorcioController extends Controller
     	if(!empty($data)){
 
     	 	return $data;
-    	} 
-    		
+    	}
+
     }
 
     public function insertar_dia_sueldo_socio(Request $r)
@@ -559,7 +559,7 @@ class CuentaConsorcioController extends Controller
 
         $validacion = $this->validar_datos_cs($r);
         $valida_pdf = $this->validar_pdf($r);
-				
+
 		if($validacion['estado'] == 'failed_v'){
             //return $validacion;
             return [
@@ -591,7 +591,7 @@ class CuentaConsorcioController extends Controller
             ];
 
         }else{
-        
+
             //insercion//////////////////////////////////////////////////////////////
             //
             $file = $this->guardarArchivo($r->documento,'consorcio_dia_sueldos/');
@@ -601,7 +601,7 @@ class CuentaConsorcioController extends Controller
             }else{
                 return ['estado'=>'failed','mensaje'=>'el archivo no se subio correctamente'];
             }
-            
+
 
             $cpds = new Consorciopagodiasueldo;
             $cpds->socio_id = $r->socio_id;
@@ -630,11 +630,11 @@ class CuentaConsorcioController extends Controller
 
             //insercion//////////////////////////////////////////////////////////////
         }
-        
-    }
-    public function listar_consorcio_pago_dia_sueldo($anio/*$directiva*/){
 
-    $listar = Consorciopagodiasueldo::tabla($anio/*$directiva*/);
+    }
+    public function listar_consorcio_pago_dia_sueldo($anio, $directiva){
+
+    $listar = Consorciopagodiasueldo::tabla($anio, $directiva);
 
         return $listar;
     }
@@ -653,7 +653,7 @@ class CuentaConsorcioController extends Controller
                         ];
                     }else{
                         $ruta = substr($c->documento,8);
-                            
+
                         $borrar = Storage::delete('/'.$ruta);
                         if ($borrar) {
                             $guardarArchivo = $this->guardarArchivo($r->valor, 'consorcio_dia_sueldos/');
@@ -703,7 +703,7 @@ class CuentaConsorcioController extends Controller
                         return ['estado' => 'failed', 'mensaje' => 'No fue posible actualizar el número de documento'];
                     }
                 break;
-                
+
                 case 'monto':
                      if ($r->valor == '') {
                         return [
@@ -735,18 +735,18 @@ class CuentaConsorcioController extends Controller
                 break;
 
                 default:
-                    
+
                 break;
             }
         }
 
-        
+
     }
 
 
     public function validar_pdf($request)
 	{
-		$val = Validator::make($request->all(), 
+		$val = Validator::make($request->all(),
 		 	[
 
 	            'documento' => 'required|mimes:pdf',
@@ -756,13 +756,13 @@ class CuentaConsorcioController extends Controller
 	        	'documento.mimes' => 'El archivo no es PDF',
 	        ]);
 
- 
+
 	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
     public function validar_update_pdf($request)
 	{
-		$val = Validator::make($request->all(), 
+		$val = Validator::make($request->all(),
 		 	[
 
 	            'valor' => 'required|mimes:pdf',
@@ -772,13 +772,13 @@ class CuentaConsorcioController extends Controller
 	        	'valor.mimes' => 'El archivo no es PDF',
 	        ]);
 
- 
+
 	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 	public function validar_datos_cs($request)
 	{
-		 $validator = Validator::make($request->all(), 
+		 $validator = Validator::make($request->all(),
 		 	[
 	            'fecha' => 'required',
 	            'numero_documento' => 'required|unique:consorcio_pago_dia_sueldo,numero_documento',
@@ -797,11 +797,11 @@ class CuentaConsorcioController extends Controller
                 'documento.required' => 'El documento es necesario',
 	        ]);
 
- 
+
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
     }
-    
+
      protected function guardarArchivo($archivo, $ruta)
     {
     	try{
@@ -823,33 +823,35 @@ class CuentaConsorcioController extends Controller
 		}
     }
 
-    public function traer_total_ahorro_dia_sueldo($anio/*$directiva*/)
+    public function traer_total_ahorro_dia_sueldo($anio, $directiva)
     {
-       
-        $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
-        $anio_ = $g_anio->descripcion; 
 
-        // $ahorro = DB::select("SELECT 
+        $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
+        $anio_ = $g_anio->descripcion;
+
+        // $ahorro = DB::select("SELECT
         //                             cs.id,
         //                             cs.monto_ingreso as total_ahorro_dia_sueldo,
-        //                             descripcion 
-        //                     from cuenta_sindicato cs 
+        //                             descripcion
+        //                     from cuenta_sindicato cs
         //                     inner join estado_dia_sueldos eds on eds.cuenta_sindicato_id = cs.id
         //                     where tipo_cuenta_sindicato = 8 and anio_id = $anio order by eds.id desc limit 1");
-        $ahorro = DB::select("SELECT sum(total_ahorro_dia_sueldo) total_ahorro_dia_sueldo 
-                            from(SELECT 
+        $ahorro = DB::select("SELECT sum(total_ahorro_dia_sueldo) total_ahorro_dia_sueldo
+                            from(SELECT
                                 cs.id,
                                 cs.monto_ingreso as total_ahorro_dia_sueldo,
-                                descripcion 
-                            from cuenta_sindicato cs 
+                                descripcion
+                            from cuenta_sindicato cs
                             inner join estado_dia_sueldos eds on eds.cuenta_sindicato_id = cs.id
-                            where tipo_cuenta_sindicato = 8 and anio_id = 2 order by eds.id desc )x");
-        
-        $cpds = DB::select("SELECT sum(suma) total from (select 
-                                monto, 
-                                prestamo, 
-                                (monto + prestamo) suma 
-                                from consorcio_pago_dia_sueldo where EXTRACT(YEAR FROM fecha) = '$anio_') x");
+                            where tipo_cuenta_sindicato = 8 and anio_id = $anio /*2*/ order by eds.id desc )x");
+
+        $cpds = DB::select("SELECT sum(suma) total from (select
+                                monto,
+                                prestamo,
+                                (monto + prestamo) suma,
+                                directiva_id
+                                from consorcio_pago_dia_sueldo
+                                where EXTRACT(YEAR FROM fecha) = '$anio_' AND directiva_id = $directiva ) x");
 
         if (count($ahorro)>0 && count($cpds)>0) {
             return [
@@ -876,11 +878,11 @@ class CuentaConsorcioController extends Controller
         return ['estado' => 'failed'];
     }
 
-    public function listar_socio_consorcio_pago_dia_sueldo($nombre, $anio)
+    public function listar_socio_consorcio_pago_dia_sueldo($nombre, $anio, $directiva)
     {
-        $listar = Consorciopagodiasueldo::tabla_filtro_socio($nombre, $anio/*$directiva*/);
+        $listar = Consorciopagodiasueldo::tabla_filtro_socio($nombre, $anio, $directiva);
 
         return $listar;
     }
-   
+
 }

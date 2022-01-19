@@ -20,7 +20,7 @@ class CuentaSindicatoController extends Controller
 
 	public function validar_pdf($request)
 	{
-		$val = Validator::make($request->all(), 
+		$val = Validator::make($request->all(),
 		 	[
 
 	            'input' => 'required|mimes:pdf',
@@ -30,13 +30,13 @@ class CuentaSindicatoController extends Controller
 	        	'input.mimes' => 'El archivo no es PDF',
 	        ]);
 
- 
+
 	        if ($val->fails()){ return ['estado' => 'failed_v', 'mensaje' => $val->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
 	public function validar_datos_cs($request)
 	{
-		 $validator = Validator::make($request->all(), 
+		 $validator = Validator::make($request->all(),
 		 	[
 	            'fecha' => 'required',
 	            'n_documento' => 'required|unique:cuenta_sindicato,numero_documento',
@@ -56,19 +56,19 @@ class CuentaSindicatoController extends Controller
 	        	'monto.required' => 'El monto es necesario'
 	        ]);
 
- 
+
 	        if ($validator->fails()){ return ['estado' => 'failed_v', 'mensaje' => $validator->errors()];}
 	        return ['estado' => 'success', 'mensaje' => 'success'];
 	}
-	public function div_fecha($value)//funciona con input type date 
+	public function div_fecha($value)//funciona con input type date
     {
     	$fecha = $value;
 		$ano = substr($fecha, -10, 4);
 		$mes = substr($fecha, -5, 2);
 		$dia = substr($fecha, -2, 2);
 		return [
-			'anio' => $ano, 
-			'mes'  => $mes, 
+			'anio' => $ano,
+			'mes'  => $mes,
 			'dia'  => $dia
 		];
     }
@@ -80,8 +80,8 @@ class CuentaSindicatoController extends Controller
     	if(!empty($data)){
 
     	 	return $data;
-    	} 
-    		
+    	}
+
     }
     // guardando aqui desde el formulario de html
     public function guardar_item_cuenta_sindicato(Request $r)
@@ -108,7 +108,7 @@ class CuentaSindicatoController extends Controller
 
 
 			$f = $this->div_fecha($r->fecha);
-			
+
 			$anio = $this->anio_tipo_id($f['anio']);
 
 			//si existe caja chica, no volver a ingresar
@@ -118,8 +118,8 @@ class CuentaSindicatoController extends Controller
 			return [ 'estado' =>'failed', 'mensaje'=>'Ya existe item caja chica en este mes' ];
 
 			}
-			
-			
+
+
 			else{
 
 				//$caja_ch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
@@ -128,7 +128,7 @@ class CuentaSindicatoController extends Controller
 
 				$validacion = $this->validar_datos_cs($r);
 
-				
+
 				if($validacion['estado'] == 'success'){
 
 					$c_m_txt = 'c_s_cierre_mensual';
@@ -141,12 +141,12 @@ class CuentaSindicatoController extends Controller
 											'anio_id' => $anio->id/*$f['anio']*/,
 											'mes_id'  => $f['mes'],
 						    			])->first();
-							
+
 					// si no existe, primero calcular o insertar manual el monto inicial(toma de mes anterior)
 					if(empty($exis_monto_init)){
 						$borrar = Storage::delete('/'.$archivo);
 						return [
-							"estado"  => "failed", 
+							"estado"  => "failed",
 							"mensaje" => "No existe monto inicial, primero calcule"
 						];
 
@@ -159,17 +159,17 @@ class CuentaSindicatoController extends Controller
 							'mes_id'  => $f['mes']
 						])->orderby('created_at','DESC')->take(1)->get();
 
-								
-								
+
+
 						$c_m = DB::table($c_m_txt)->where([
 							'activo'  => 'S',
 							'anio_id' => $anio->id,
 							'mes_id'  => $f['mes'],
 						])->first();
-								
+
 								//valido si no hay registros en este mes (items)
 						$s_a = (empty($saldo_actual[0]['saldo_actual'])? $c_m->inicio_mensual : $saldo_actual[0]['saldo_actual']);
-						
+
 
 						if ($r->tipo_cuenta_sindicato == '6') {// si el item entrante es gasto operacional
 							if ($this->existe_item_go($anio->id, $f['mes'])) {
@@ -182,10 +182,10 @@ class CuentaSindicatoController extends Controller
 
 						//COMENTAMOS AQUI PARA EVITAR VALIDAR SI EXISTE YA UN MONTO PARA LOS MILLONES EN CONSORCIO
 						// if ($r->tipo_cuenta_sindicato == '8') {
-							
+
 						// 	$eds = $this->estado_dia_sueldo();
 
-							
+
 						// 	if ($eds['estado'] == 'failed') {
 						// 		return [
 						// 			'estado' => 'failed',
@@ -194,7 +194,7 @@ class CuentaSindicatoController extends Controller
 						// 	}
 						// }
 
-								
+
 						$cs = new Cuentasindicato;
 						$cs->anio_id = $anio->id/*$f['anio']*/;
 						$cs->mes_id  = $f['mes'];
@@ -204,7 +204,7 @@ class CuentaSindicatoController extends Controller
 						$cs->tipo_cuenta_sindicato = $r->tipo_cuenta_sindicato;
 						$cs->descripcion = $r->descripcion;
 
-						$cs->archivo_documento = 'storage/'.$archivo; 
+						$cs->archivo_documento = 'storage/'.$archivo;
 						if ($r->tipo_cuenta_sindicato == 5) {
 							//si el tipo de cuenta es camping
 							$cs->detalle_camping = 'S';
@@ -212,44 +212,44 @@ class CuentaSindicatoController extends Controller
 
 						// dd($r->definicion);
 						switch ($r->definicion) {// si es ingreso o egreso
-							case '1':  
-								$cs->monto_ingreso = $r->monto; 
+							case '1':
+								$cs->monto_ingreso = $r->monto;
 								$cs->saldo_actual  = $s_a + $r->monto;
 
 							break;
 
-							case '2':  
-								
+							case '2':
+
 								//si el item entrante es un caja
 								if ($r->tipo_cuenta_sindicato == 3){
-									
+
 									if($r->monto > $this->global_caja_chica ){
-										
+
 										$borrar = Storage::delete('/'.$archivo);
 										return [
-										'estado'  => 'failed', 
+										'estado'  => 'failed',
 										'mensaje' => 'el monto ingresado supera los '.number_format($this->global_caja_chica,0,'.',',').' pesos'
 										];
 									}
 									$cch_monto_anterior = $this->existe_dinero_mes_anterior_caja_chica($f['anio'], $f['mes']);
 									// dd("$r->monto > ".$cch_monto_anterior['monto'].'= '.$r->monto > $cch_monto_anterior['monto']);
 									if($r->monto > $cch_monto_anterior['monto']){
-										
-											$cs->monto_egreso = $r->monto; 
-											$cs->saldo_actual = $s_a - ($r->monto); 								
+
+											$cs->monto_egreso = $r->monto;
+											$cs->saldo_actual = $s_a - ($r->monto);
 										//return ['estado' => 'failed', 'mensaje'=>'el monto ingresado ('.$r->monto.')'];
-										
+
 									}else{
-										$cs->monto_egreso = /*$caja_ch_monto_anterior['monto'] +*/ $r->monto; 
-									
-										$cs->saldo_actual = $s_a - (/*$caja_ch_monto_anterior['monto'] +*/ $r->monto); 
+										$cs->monto_egreso = /*$caja_ch_monto_anterior['monto'] +*/ $r->monto;
+
+										$cs->saldo_actual = $s_a - (/*$caja_ch_monto_anterior['monto'] +*/ $r->monto);
 									}
-									
+
 												//var_dump("paso por cuenta 3 con su monto");
 								}
 
 								else{
-									$cs->monto_egreso = $r->monto; 
+									$cs->monto_egreso = $r->monto;
 									$cs->saldo_actual = $s_a - $r->monto;
 								}
 
@@ -261,11 +261,11 @@ class CuentaSindicatoController extends Controller
 						$cs->user_crea  = Auth::user()->id;
 
 						if ($cs->save()) {
-							
+
 							if($cs->tipo_cuenta_sindicato == "5"){
 								switch ($cs->definicion) {
 									case '1':
-											
+
 										//aqui muestra si existe un camping en esta fecha
 										$v_existe_cmp = Cuentasindicato::where([
 											'mes_id' => $f['mes'],
@@ -320,9 +320,9 @@ class CuentaSindicatoController extends Controller
 													$v_existe_cmp_i_total->save();
 												}
 
-												
+
 											}
-									
+
 									break;
 									case '2':
 
@@ -381,10 +381,10 @@ class CuentaSindicatoController extends Controller
 												$v_existe_cmp_e_total->save();
 											}
 
-												
+
 											}
 									break;
-										
+
 									default:
 											# code...
 								    break;
@@ -395,19 +395,19 @@ class CuentaSindicatoController extends Controller
 								if($this->guardar_monto_detalle_go($anio->id, $f['mes'], $r->monto, $cs->id)){
 									DB::commit();
 									return [
-										'estado'  => 'success', 
+										'estado'  => 'success',
 										'mensaje' => "Item de cuenta sindical añadido"
 									];
 								}
 								return [
-										'estado'  => 'success', 
+										'estado'  => 'success',
 										'mensaje' => "Item de cuenta sindical añadido, pero el detalle de los gastos operacionales so se ha ingresado"
 									];
 							}
-							
-							
+
+
 							if ($cs->tipo_cuenta_sindicato == "8") {//tipo consorcio
-								
+
 								 $eds = $this->estado_dia_sueldo();
 
 								// 	 //dd($eds);
@@ -424,14 +424,14 @@ class CuentaSindicatoController extends Controller
 
 							DB::commit();
 							return [
-								'estado'  => 'success', 
+								'estado'  => 'success',
 								'mensaje' => "Item de cuenta sindical añadido"
 							];
 						}
 						DB::rollBack();
 						$borrar = Storage::delete('/'.$archivo);
 						return [
-							'estado'  => 'failed', 
+							'estado'  => 'failed',
 							'mensaje' => 'Algo salió mal, intente nuevamente'];
 							}
 
@@ -440,14 +440,14 @@ class CuentaSindicatoController extends Controller
 					DB::rollBack();
 					return $this->validar_datos_cs($r);
 				}
-		
 
-					
+
+
 			}
 		}catch(QueryException $e){
 			DB::rollBack();
 			return[
-				'estado'  => 'failed', 
+				'estado'  => 'failed',
 				'mensaje' => 'QEx: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
 				'error' => $e
 			];
@@ -455,12 +455,12 @@ class CuentaSindicatoController extends Controller
 		catch(\Exception $e){
 			DB::rollBack();
 			return[
-				'estado'  => 'failed', 
+				'estado'  => 'failed',
 				'mensaje' => 'Ex: No se ha podido seguir con el proceso de guardado, intente nuevamente o verifique sus datos',
 				'error' => $e
 			];
 		}
-		
+
 	}
 
 	public function listar_cuenta_sindicato($anio, $mes)
@@ -469,30 +469,30 @@ class CuentaSindicatoController extends Controller
 		// try{
 
 			$cm_txt = 'c_s_cierre_mensual';
-			
+
 			$c_m = DB::table($cm_txt)->where(['activo' => 'S','anio_id' => $anio,'mes_id' => $mes,
 		    	])->first();
-			
+
 
 			if(!empty($c_m->inicio_mensual)){
 				$s_a = $c_m->inicio_mensual;
 
 				$data = $this->cuenta_sindical($s_a, $anio, $mes);
-			    
+
 
 				return $data;
 			}
 		// }
 		// catch(QueryException $e){
 		// 	return[
-		// 		'estado'  => 'failed', 
+		// 		'estado'  => 'failed',
 		// 		'mensaje' => 'QEx: No se ha podido traer la lista cuenta sindical',
 		// 		'exception' => $e //este es solo pal desarrollador;
 		// 	];
 		// }
 		// catch(\Exception $e){
 		// 	return[
-		// 		'estado'  => 'failed', 
+		// 		'estado'  => 'failed',
 		// 		'mensaje' => 'Ex: No se ha podido traer la lista cuenta sindical',
 		// 		'exception' => $e //este es solo pal desarrollador;
 		// 	];
@@ -504,10 +504,10 @@ class CuentaSindicatoController extends Controller
 		$listar = Cuentasindicato::traer($anio, $mes);
 		$tomar = true;
 
-			for ($i=0; $i < count($listar); $i++) { 
-			
+			for ($i=0; $i < count($listar); $i++) {
+
 						switch ($listar[$i]->definicion) {
-							case '1':  
+							case '1':
 								if ($tomar == true) {
 									$listar[$i]->saldo_actual_raw = $s_a + $listar[$i]->monto_ingreso;
 									$tomar = false;
@@ -517,14 +517,14 @@ class CuentaSindicatoController extends Controller
 								}
 
 							break;
-							case '2':  
+							case '2':
 								if ($tomar == true) {
 									$listar[$i]->saldo_actual_raw = $s_a - $listar[$i]->monto_egreso;
 									$tomar = false;
 									$ultimo_valor = $listar[$i]->saldo_actual_raw;
 
 								}else{
-									
+
 									$listar[$i]->saldo_actual_raw = $listar[$i-1]->saldo_actual_raw - $listar[$i]->monto_egreso;
 
 								}
@@ -551,7 +551,7 @@ class CuentaSindicatoController extends Controller
 					// case '6': $return['gasto_operacional'][] = $key; break;
 					case '6': $return['gastosOp'][] = $key; break;
 					case '8': $return['consorcio'][] = $key; break;
-					
+
 					default:
 						# code...
 						break;
@@ -568,7 +568,7 @@ class CuentaSindicatoController extends Controller
 		if($tipo_cuenta == 3){
 
 			$existe = Cuentasindicato::where([
-				'activo' => 'S', 
+				'activo' => 'S',
 				'tipo_cuenta_sindicato' => $tipo_cuenta ,//caja_chica
 				'mes_id' => $mes, 'anio_id' => $anio
 			])->first();
@@ -584,7 +584,7 @@ class CuentaSindicatoController extends Controller
 			}
 			return false;
 
-			
+
 		}else{
 			return false;
 		}
@@ -595,7 +595,7 @@ class CuentaSindicatoController extends Controller
 
 	//este metodo recibe el año como tal
 	public function existe_dinero_mes_anterior_caja_chica($anio ='', $mes ='')
-	{	
+	{
 		if ($anio =='' && $mes=='') {
 			return ['estado'=>"failed",'monto'=>0];
 		}
@@ -606,10 +606,10 @@ class CuentaSindicatoController extends Controller
 		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;
 			$anio_anterior = $anio - 1;
-			
+
 			try{
 				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
-				
+
 				$monto = DB::table('cs_caja_chica')->where([
 							'activo' => 'S',
 							'anio_id' => $anio->id,
@@ -632,7 +632,7 @@ class CuentaSindicatoController extends Controller
 
 		        return ['estado'=>"failed",'monto'=>0];
 			}
-			
+
 
 		}
 		else
@@ -673,12 +673,12 @@ class CuentaSindicatoController extends Controller
 		// }else{
 		// 	return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
 		// }
-		
+
 
 	}
 
 	// public function guardarArchivo($archivo, $ruta){
-        
+
  //        $filenameext = $archivo->getClientOriginalName();
  //        $filename = pathinfo($filenameext, PATHINFO_FILENAME);
  //        $extension = $archivo->getClientOriginalExtension();
@@ -718,11 +718,11 @@ class CuentaSindicatoController extends Controller
     }
     public function DescargarArchivo($archivo)
     {
-    
+
 
     		return Storage::download($archivo);
-    		
-    
+
+
     }
 
     //metodos para actualizar datos en la cuenta sindical
@@ -731,7 +731,7 @@ class CuentaSindicatoController extends Controller
     public function actualizar_dato_cs(Request $r)
     {
     	$valida_pdf = $this->validar_pdf($r);
-    
+
 
     	$cs = Cuentasindicato::where('id',$r->id)->first();
     	//dd($cs);
@@ -760,13 +760,13 @@ class CuentaSindicatoController extends Controller
     				}else{
     				return ['estado'=>'failed','mensaje'=>'La fecha ingresada no pertenece al mes correspondiente'];
     				}
-						
+
 
     		break;
     		case 'numero_documento':
 
     				$exist = Cuentasindicato::where([
-    					'activo'=>'S', 
+    					'activo'=>'S',
     					'numero_documento'=>$r->input,
     					//'id'=>$r->id
     				])->first();
@@ -779,12 +779,12 @@ class CuentaSindicatoController extends Controller
     					}
     				}
 
-    				
+
 
 
     		break;
     		case 'tipo_cuenta_sindicato':
-    			
+
     			$mes =	$cs->mes_id;
     			$anio = $cs->anio_id;
 
@@ -821,7 +821,7 @@ class CuentaSindicatoController extends Controller
 
     		break;
     		case 'descripcion':
-    			
+
     			$cs->descripcion = $r->input;
     			if ($cs->save()) {
     				return ['estado'=>'success','mensaje'=>'Descripción actualizada'];
@@ -857,7 +857,7 @@ class CuentaSindicatoController extends Controller
     				}
     				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
     			}
-    			
+
 
 
     		break;
@@ -896,12 +896,12 @@ class CuentaSindicatoController extends Controller
     				}
     				return ['estado'=>'failed','mensaje'=>'error al actualizar'];
     			}
-    			
+
 
 
     		break;
     		case 'monto':
-    			
+
     			if ($cs->definicion == 1) {
     				$cs->monto_ingreso = $r->input;
     				if ($cs->save()) {
@@ -923,7 +923,7 @@ class CuentaSindicatoController extends Controller
     			if($valida_pdf['estado'] == 'success'){
     			 $ruta = substr($cs->archivo_documento, 8);
 				//$ruta = $cs->archivo_documento;
-					
+
                     $borrar = Storage::delete($ruta);
 
                     if ($borrar) {
@@ -951,19 +951,19 @@ class CuentaSindicatoController extends Controller
 			case 'monto_go':
 
 				$cs->monto_egreso = $r->monto_go;
-				
+
 
 			break;
-    		
+
     		default:
     			# code...
     			break;
     	}
 	}
-	
+
 	// public function actualizar_dato_cs(Request $r)
     // {
-    
+
 
     // 	$cs = Cuentasindicato::where('id',$r->id)->first();
     // 	//dd($cs);
@@ -973,10 +973,10 @@ class CuentaSindicatoController extends Controller
     // 	}
 
     // 	switch ($r->campo) {
-    		
-    		
+
+
     // 		case 'monto':
-    			
+
     // 			if ($cs->definicion == 1) {
     // 				$cs->monto_ingreso = $r->input;
     // 				if ($cs->save()) {
@@ -994,8 +994,8 @@ class CuentaSindicatoController extends Controller
 
     // 		break;
 
-    		
-    		
+
+
     // 		default:
     // 			# code...
     // 			break;
@@ -1005,8 +1005,8 @@ class CuentaSindicatoController extends Controller
 
 
     public function dinero_mes_anterior_caja_chica_2($anio, $mes)
-	{	
-		
+	{
+
 		$convert = DB::table('anio')->where('id', $anio)->first();
 		$anio = $convert->descripcion;
 
@@ -1017,10 +1017,10 @@ class CuentaSindicatoController extends Controller
 		if ($mes_anterior == 0) { //si la fecha capta el mes anterior (diciembre )tomar el valor del año tambien
 			$mes_anterior = 12;
 			$anio_anterior = $anio - 1;
-			
+
 			try{
 				$anio = DB::table('anio')->where(['activo'=>'S', 'descripcion'=> "$anio_anterior" ])->get();
-				
+
 				$monto = DB::table('cs_caja_chica')->where([
 							'activo' => 'S',
 							'anio_id' => $anio->id,
@@ -1083,7 +1083,7 @@ class CuentaSindicatoController extends Controller
 		// }else{
 		// 	return ['estado'=>'failed', 'monto'=> 'monto muy elevado a '.$this->global_caja_chica ];
 		// }
-		
+
 
 	}
 
@@ -1097,7 +1097,7 @@ class CuentaSindicatoController extends Controller
 		if($cs->tipo_cuenta_sindicato == "5"){
 								switch ($cs->definicion) {
 									case '1':
-											
+
 										//aqui muestra si existe un camping en esta fecha
 										$v_existe_cmp = Cuentasindicato::where([
 											'mes_id' => $cs->mes_id,
@@ -1152,9 +1152,9 @@ class CuentaSindicatoController extends Controller
 													$v_existe_cmp_i_total->save();
 												}
 
-												
+
 											}
-									
+
 									break;
 									case '2':
 
@@ -1213,10 +1213,10 @@ class CuentaSindicatoController extends Controller
 												$v_existe_cmp_e_total->save();
 											}
 
-												
+
 											}
 									break;
-										
+
 									default:
 											# code...
 								    break;
@@ -1231,7 +1231,9 @@ class CuentaSindicatoController extends Controller
 			'mes_id' => $mes,
 			'anio_id' => $anio,
 			'tipo_cuenta_sindicato' => '6'
-		])->first();
+		])
+        ->where('activo', 'S')
+        ->first();
 
 		if ($go) {
 			return true;
@@ -1258,7 +1260,7 @@ class CuentaSindicatoController extends Controller
 		return false;
 
 	}
-	
+
 
 	public function directiva()
 	{
@@ -1271,7 +1273,7 @@ class CuentaSindicatoController extends Controller
 		$directiva = DB::table('directiva')->where('activo','S')->first();
 
 		$eds = DB::table('estado_dia_sueldos')->get()->last();
-		
+
 			if (empty($eds)) {
 				return [ 'estado' => 'success', 'directiva' => $directiva->id ];
 			}else{
@@ -1285,8 +1287,8 @@ class CuentaSindicatoController extends Controller
 				}
 
 			}
-	
-		
+
+
 	}
 
 
@@ -1318,7 +1320,7 @@ class CuentaSindicatoController extends Controller
 		}
 	}
 
-	
+
 
 
 }

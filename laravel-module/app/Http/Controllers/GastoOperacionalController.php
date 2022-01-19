@@ -12,8 +12,8 @@ class GastoOperacionalController extends Controller
         return $go;
     }
 
-    public function listar($anio, $mes){
-        return Cs_gastos_operacionales::listar($anio, $mes);
+    public function listar($anio, $mes, $directiva){
+        return Cs_gastos_operacionales::listar($anio, $mes, $directiva);
     }
 
     public function actualizar(Request $value){
@@ -26,8 +26,8 @@ class GastoOperacionalController extends Controller
         return $go;
     }
 
-    public function validarMontoInicio(){
-        $go = Cs_gastos_operacionales::validar_monto_inicio();
+    public function validarMontoInicio($directiva){
+        $go = Cs_gastos_operacionales::validar_monto_inicio($directiva);
         return $go;
     }
 

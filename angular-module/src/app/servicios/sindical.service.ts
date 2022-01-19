@@ -13,7 +13,7 @@ export class SindicalService{
     }
 
     ingresarValor(form): Observable<any>{
-    
+
         const body = new FormData();
         body.append('fecha', form.fecha);
         body.append('n_documento', form.nDocumento);
@@ -39,7 +39,7 @@ export class SindicalService{
         )});
     }
 
-    
+
     getTablaSindicalMontoInicial(anio: string, mes: string): Observable<any>{
         return this._http.get(this.url + "traer_monto_inicial_cs/" + anio + "/" + mes, {headers: new HttpHeaders(
             {
@@ -193,7 +193,7 @@ export class SindicalService{
             }
         )});
     }
-    
+
     lista_ultima_prestamos(anio, mes): Observable<any>{
 
         return this._http.get(this.url + "tabla_final_prestamo/" + anio + "/" + mes, {headers: new HttpHeaders(
@@ -246,7 +246,7 @@ export class SindicalService{
     }
 
     calcular_cuota(id): Observable<any>{
-        
+
         return this._http.get(this.url + "calcular_cuota_prestamo/"+id, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
@@ -256,7 +256,7 @@ export class SindicalService{
     }
 
     calcular_abono(id, abono_id): Observable<any>{
-        
+
         return this._http.get(this.url + "calcular_abono/"+id+"/"+abono_id, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
@@ -301,9 +301,9 @@ export class SindicalService{
     }
 
     //servicio para treaer los datos de gastos operacionales
-    getGastosOperacionales(anio, mes): Observable<any>{
-        
-        return this._http.get(this.url + "listar_detalle_gasto_operacional/"+anio+"/"+mes, {headers: new HttpHeaders(
+    getGastosOperacionales(anio, mes, directiva): Observable<any>{
+
+        return this._http.get(this.url + "listar_detalle_gasto_operacional/"+anio+"/"+mes+'/'+directiva, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
@@ -328,13 +328,13 @@ export class SindicalService{
     }
 
     //Servicio para verificar si existe el monto base de gasto operacional
-    getMontoBase() : Observable<any>{
-        return this._http.get(this.url + "getMontoBase", {headers: new HttpHeaders(
+    getMontoBase(directiva:any) : Observable<any>{
+        return this._http.get(this.url + "getMontoBase/"+directiva, {headers: new HttpHeaders(
             {
                 'Authorization': 'Bearer' + this.token,
                 'Content-Type': 'applcation/json'
             }
         )});
     }
-    
+
 }

@@ -5,6 +5,7 @@ import { global } from '../../servicios/global';
 import { ThrowStmt } from '@angular/compiler';
 import { ValidarUsuarioService } from 'src/app/servicios/validar-usuario.service';
 import { AniosService } from 'src/app/servicios/anios.service';
+import { DirectivasService } from 'src/app/servicios/directivas.service';
 
 @Component({
   selector: 'app-modal-detalle-pago-consorcio',
@@ -44,25 +45,27 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
   nombre:string = '';
   constructor(config: NgbModalConfig,
      private modalService: NgbModal,
-    public _http: HttpClient, 
+    public _http: HttpClient,
     private _validarusuario: ValidarUsuarioService,
     private _fechasService: AniosService,
-     ) { 
+    private _directiva: DirectivasService
+     ) {
     this.url = global.url;
      }
-  
-  
+
+
   ngOnInit() {
     console.log('el kkck',this.tabla)
     this.usuario_logeado()
 
     this.anios = JSON.parse(localStorage.getItem('anios'));
+    this.traer_directivas();
   }
 
   openModal(modal) {
     this.modal = this.modalService.open(modal, { size: 'xl' });
     this.cargar_select();
-  
+
   }
   open(content) {
     this.modalService.open(content, { size: 'lg' });
@@ -139,7 +142,7 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
   tablita(){
     console.log(this.directiva)
     if(this.cargar == true){
-      this._http.get(this.url + "listar_consorcio_pago_dia_sueldo/" + this.anio , {
+      this._http.get(this.url + "listar_consorcio_pago_dia_sueldo/" + this.anio +"/"+this.directiva , {
           headers: new HttpHeaders(
             {
               'Authorization': 'Bearer' + this.token,
@@ -171,12 +174,12 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
   }
 
   tabla_filtro(){
-    
+
     if(this.nombre == ''){
       alert('No hay nombre para buscar'); return false;
     }
 
-    this._http.get(this.url + "listar_socio_consorcio_pago_dia_sueldo/"+this.nombre+'/'+ this.anio, {
+    this._http.get(this.url + "listar_socio_consorcio_pago_dia_sueldo/"+this.nombre+'/'+ this.anio+"/"+this.directiva, {
       headers: new HttpHeaders(
         {
           'Authorization': 'Bearer' + this.token,
@@ -207,7 +210,7 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
   }
 
   resultados() {
-    this._http.get(this.url + "traer_total_ahorro_dia_sueldo/"+this.anio, {
+    this._http.get(this.url + "traer_total_ahorro_dia_sueldo/"+this.anio+"/"+this.directiva, {
       headers: new HttpHeaders(
         {
           'Authorization': 'Bearer' + this.token,
@@ -286,7 +289,7 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
           form.append('valor', /*input.value*/this.entrada);
 
           this.actualizarLoad = true;
-          
+
          //post aqui
           this._http.post(this.url + "actualizar_cpds", form,{
             headers: new HttpHeaders(
@@ -375,9 +378,17 @@ export class ModalDetallePagoConsorcioComponent implements OnInit {
           console.log("The POST observable is now completed.");
         });
     } else {
-      
+
     }
-      
+
+  }
+
+  traer_directivas() {
+    this._directiva.listar_directivas().subscribe(res=>{
+      this.directivas = res.data;
+      this.directiva = res.actual.id;
+      console.log("directiva", this.directiva)
+    });
   }
 
 

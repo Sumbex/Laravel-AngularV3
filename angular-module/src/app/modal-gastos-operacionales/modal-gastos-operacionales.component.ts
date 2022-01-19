@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SindicalService } from '../servicios/sindical.service';
-import { AniosService } from '../servicios/anios.service';
-import { UsuarioService } from '../servicios/usuarios.service';
+import { Component, OnInit } from "@angular/core";
+import { NgbModalConfig, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { SindicalService } from "../servicios/sindical.service";
+import { AniosService } from "../servicios/anios.service";
+import { UsuarioService } from "../servicios/usuarios.service";
+import { DirectivasService } from '../servicios/directivas.service';
 
 @Component({
-  selector: 'app-modal-gastos-operacionales',
-  templateUrl: './modal-gastos-operacionales.component.html',
-  styleUrls: ['./modal-gastos-operacionales.component.css']
+  selector: "app-modal-gastos-operacionales",
+  templateUrl: "./modal-gastos-operacionales.component.html",
+  styleUrls: ["./modal-gastos-operacionales.component.css"],
 })
 export class ModalGastosOperacionalesComponent implements OnInit {
-
   //Variables para los select de año y mes
   selectAnio;
   selectMes;
@@ -37,18 +37,18 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   /*Variables que rescatan el nuevo valor a ingresar*/
   loadingModificacion = false;
   blockCajaChica = false;
-  valorInput = '';
+  valorInput = "";
   edicionArchivo;
 
   //Datos del Formulario
   datosFormulario = {
-    numero_documento: '',
+    numero_documento: "",
     archivo_documento: null,
-    fecha: '',
-    descripcion: '',
-    definicion: '2',
-    monto: null
-  }
+    fecha: "",
+    descripcion: "",
+    definicion: "2",
+    monto: null,
+  };
 
   //Rut del usuario
   rutUsuario;
@@ -59,45 +59,58 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   pass;
   estado;
 
-  //variabes para determinar si se guarda archivo o texto 
+  //variabes para determinar si se guarda archivo o texto
   edText;
   edFile;
 
   //Datos para la tabla
-  datosGastosOperacionales = '';
+  datosGastosOperacionales = "";
   montoBase;
+  directivas: any;
+  directiva: any;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private _usuariosSevice: UsuarioService, private _service: SindicalService, private _fechasService: AniosService) {
-    config.backdrop = 'static';
+  constructor(
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private _usuariosSevice: UsuarioService,
+    private _service: SindicalService,
+    private _fechasService: AniosService,
+    private _directiva: DirectivasService
+  ) {
+    config.backdrop = "static";
     config.keyboard = false;
   }
 
   ngOnInit() {
     //Cargar Años
-    this.selectAnio = JSON.parse(localStorage.getItem('anios'));
+    this.selectAnio = JSON.parse(localStorage.getItem("anios"));
 
     //Cargar Meses
-    this.selectMes = JSON.parse(localStorage.getItem('meses'));
+    this.selectMes = JSON.parse(localStorage.getItem("meses"));
+
+    // cargar directivas
+
+    this.traer_directivas();
 
     //Obtener Rut
-    this.rutUsuario = JSON.parse(localStorage.getItem('usuario'));
+    this.rutUsuario = JSON.parse(localStorage.getItem("usuario"));
   }
 
   //Abrir visor de PDF
   openPDF(content) {
-    this.modalService.open(content, { size: 'lg' });
+    this.modalService.open(content, { size: "lg" });
   }
 
   //Abrir confirmacion contraseña
   openEdicionModal(edicion) {
-    this.modalService.open(edicion, { size: 'sm' });
+    this.modalService.open(edicion, { size: "sm" });
   }
 
   cargarFechasActuales() {
     this.cargarDatos = 0;
     //Cargar id del Año actual
     this._fechasService.getAnioActual().subscribe(
-      response => {
+      (response) => {
         this.idAnioActual = response.id;
         this.cargarDatos++;
         console.log(this.cargarDatos);
@@ -105,13 +118,13 @@ export class ModalGastosOperacionalesComponent implements OnInit {
           /* this.recargarTabla(); */
         }
       },
-      error => {
+      (error) => {
         console.log(error);
       }
-    )
+    );
     //Cargar id del Mes actual
     this._fechasService.getMesActual().subscribe(
-      response => {
+      (response) => {
         this.idMesActual = response.id;
         this.cargarDatos++;
         console.log(this.cargarDatos);
@@ -119,20 +132,20 @@ export class ModalGastosOperacionalesComponent implements OnInit {
           /* this.recargarTabla(); */
         }
       },
-      error => {
+      (error) => {
         console.log(error);
       }
-    )
+    );
   }
 
   openModal(CajaChica) {
-    this.modalService.open(CajaChica, { size: 'xl' });
+    this.modalService.open(CajaChica, { size: "xl" });
     this.cargarFechasActuales();
-    this.getMontoBaseCuentaOperacional();
+    this.getMontoBaseCuentaOperacional(this.directiva);
   }
 
   openModalAgregar(modalRecargas) {
-    this.modalService.open(modalRecargas, { size: 'lg' });
+    this.modalService.open(modalRecargas, { size: "lg" });
   }
 
   onSelectImage(event) {
@@ -156,16 +169,16 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   limpiarTabla() {
-    this.datosGastosOperacionales = '';
-    this.montoBase = '';
+    this.datosGastosOperacionales = "";
+    this.montoBase = "";
   }
 
-  limpiarFormulario(){
+  limpiarFormulario() {
     this.datosFormulario.archivo_documento = null;
-    this.datosFormulario.descripcion = '';
-    this.datosFormulario.fecha = '';
-    this.datosFormulario.monto = '';
-    this.datosFormulario.numero_documento = '';
+    this.datosFormulario.descripcion = "";
+    this.datosFormulario.fecha = "";
+    this.datosFormulario.monto = "";
+    this.datosFormulario.numero_documento = "";
   }
 
   recargarTabla() {
@@ -176,24 +189,28 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
   cargarTablaCajaChica() {
     this.cargandoTabla = true;
-    this._service.getGastosOperacionales(this.idAnioActual, this.idMesActual).subscribe(response => {
-      if (response.estado == 'failed' || response.estado == 'failed_v') {
-        //alert(response.mensaje);
-        this.cargandoTabla = false;
-      } else {
-        this.datosGastosOperacionales = response;
-        this.montoBase = response.montoInicial;
-        this.cargandoTabla = false;
-      }
-    },
-      error => {
-        console.log(error);
-        this.cargandoTabla = false;
-      });
+    this._service
+      .getGastosOperacionales(this.idAnioActual, this.idMesActual, this.directiva)
+      .subscribe(
+        (response) => {
+          if (response.estado == "failed" || response.estado == "failed_v") {
+            //alert(response.mensaje);
+            this.cargandoTabla = false;
+          } else {
+            this.datosGastosOperacionales = response;
+            this.montoBase = response.montoInicial;
+            this.cargandoTabla = false;
+          }
+        },
+        (error) => {
+          console.log(error);
+          this.cargandoTabla = false;
+        }
+      );
   }
 
   //INGRESO DE DATOS
-  solicitarIngreso(){
+  solicitarIngreso() {
     this.edicionTexto = false;
     this.edicionArchivo = false;
     this.edicionDocumento = false;
@@ -203,20 +220,23 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
   ingresarValor() {
     this.ingresandoDatos = true;
-    this._service.setGastoSindical(this.datosFormulario).subscribe(response => {
-      if (response.estado == 'failed' || response.estado == 'failed_v') {
-        alert(JSON.stringify(response.mensaje));
-        this.ingresandoDatos = false;
-      } else {
-        alert(response.mensaje);
-        this.limpiarFormulario();
-        this.recargarTabla();
+    this._service.setGastoSindical(this.datosFormulario).subscribe(
+      (response) => {
+        if (response.estado == "failed" || response.estado == "failed_v") {
+          alert(JSON.stringify(response.mensaje));
+          this.ingresandoDatos = false;
+        } else {
+          alert(response.mensaje);
+          this.limpiarFormulario();
+          this.recargarTabla();
+          this.ingresandoDatos = false;
+        }
+      },
+      (error) => {
+        console.log(error);
         this.ingresandoDatos = false;
       }
-    }, error => {
-      console.log(error);
-      this.ingresandoDatos = false;
-    });
+    );
   }
 
   //almacenar datos al querer editar un valor
@@ -224,20 +244,20 @@ export class ModalGastosOperacionalesComponent implements OnInit {
     this.idEdicion = id;
     this.campoEdicion = campo;
     this.parametroEdicion = valor;
-    if (this.campoEdicion == 'fecha') {
-      console.log('Estoy pasando por fecha');
-      this.varType = 'date';
+    if (this.campoEdicion == "fecha") {
+      console.log("Estoy pasando por fecha");
+      this.varType = "date";
       this.edicionDocumento = false;
       this.edicionTexto = true;
       this.nuevoIngreso = false;
-    } else if (this.campoEdicion == 'archivo_documento') {
-      console.log('Estoy pasando por archivo');
+    } else if (this.campoEdicion == "archivo_documento") {
+      console.log("Estoy pasando por archivo");
       this.edicionDocumento = true;
       this.edicionTexto = false;
       this.nuevoIngreso = false;
     } else {
-      console.log('Estoy pasando por text');
-      this.varType = 'text';
+      console.log("Estoy pasando por text");
+      this.varType = "text";
       this.edicionDocumento = false;
       this.edicionTexto = true;
       this.nuevoIngreso = false;
@@ -265,33 +285,35 @@ export class ModalGastosOperacionalesComponent implements OnInit {
 
   validarUsuario(pass) {
     this.loadingValidacion = true;
-    this._usuariosSevice.validarUsuario(this.rutUsuario, pass.value, this.estado).subscribe(
-      response => {
-        if(response > 0){
-          this.loadingValidacion = false;
-          document.getElementById("closeModalButtonValidacion").click();
-          //llamar a la función para ingresar la kkck de modificación
-          if (this.edicionTexto) {
-            this.modificacionAprobada();
-          } else if (this.edicionArchivo) {
-            this.modificacionAprobadaArchivo();
-          } else if(this.nuevoIngreso){
-            this.ingresarValor();
+    this._usuariosSevice
+      .validarUsuario(this.rutUsuario, pass.value, this.estado)
+      .subscribe(
+        (response) => {
+          if (response > 0) {
+            this.loadingValidacion = false;
+            document.getElementById("closeModalButtonValidacion").click();
+            //llamar a la función para ingresar la kkck de modificación
+            if (this.edicionTexto) {
+              this.modificacionAprobada();
+            } else if (this.edicionArchivo) {
+              this.modificacionAprobadaArchivo();
+            } else if (this.nuevoIngreso) {
+              this.ingresarValor();
+            }
+          } else {
+            this.loadingValidacion = false;
+            document.getElementById("closeModalButtonValidacion").click();
+            this.blockCajaChica = false;
+            this.loadingModificacion = false;
+            alert("Acceso denegado");
+            document.getElementById("closeModalButtonEdicion").click();
           }
-        }else{
+        },
+        (error) => {
           this.loadingValidacion = false;
-          document.getElementById("closeModalButtonValidacion").click();
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert("Acceso denegado");
-          document.getElementById("closeModalButtonEdicion").click();
+          console.log(error);
         }
-      },
-      error => {
-        this.loadingValidacion = false;
-        console.log(error);
-      }
-    )
+      );
     /* if (this.edicionTexto) {
       this.modificacionAprobada();
     } else if (this.edicionArchivo) {
@@ -300,92 +322,135 @@ export class ModalGastosOperacionalesComponent implements OnInit {
   }
 
   modificacionAprobada() {
-    this._service.updateCampoOperacional(this.idEdicion, this.campoEdicion, this.valorInput).subscribe(
-      response => {
-        if (response.estado == "failed" || response.estado == "failed_v") {
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(JSON.stringify(response.mensaje));
-        } else {
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(response.mensaje);
-          this.cargarTablaCajaChica();
-          document.getElementById("closeModalButtonEdicion").click();
+    this._service
+      .updateCampoOperacional(
+        this.idEdicion,
+        this.campoEdicion,
+        this.valorInput
+      )
+      .subscribe(
+        (response) => {
+          if (response.estado == "failed" || response.estado == "failed_v") {
+            this.blockCajaChica = false;
+            this.loadingModificacion = false;
+            alert(JSON.stringify(response.mensaje));
+          } else {
+            this.blockCajaChica = false;
+            this.loadingModificacion = false;
+            alert(response.mensaje);
+            this.cargarTablaCajaChica();
+            document.getElementById("closeModalButtonEdicion").click();
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      error => {
-        console.log(error);
-      }
-    )
+      );
   }
 
   modificacionAprobadaArchivo() {
-    this._service.updateCampoOperacional(this.idEdicion, this.campoEdicion, this.edicionArchivo).subscribe(
-      response => {
-        if (response.estado == "failed" || response.estado == "failed_v") {
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(JSON.stringify(response.mensaje));
-        } else {
-          this.blockCajaChica = false;
-          this.loadingModificacion = false;
-          alert(response.mensaje);
-          this.cargarTablaCajaChica();
-          document.getElementById("closeModalButtonEdicion").click();
+    this._service
+      .updateCampoOperacional(
+        this.idEdicion,
+        this.campoEdicion,
+        this.edicionArchivo
+      )
+      .subscribe(
+        (response) => {
+          if (response.estado == "failed" || response.estado == "failed_v") {
+            this.blockCajaChica = false;
+            this.loadingModificacion = false;
+            alert(JSON.stringify(response.mensaje));
+          } else {
+            this.blockCajaChica = false;
+            this.loadingModificacion = false;
+            alert(response.mensaje);
+            this.cargarTablaCajaChica();
+            document.getElementById("closeModalButtonEdicion").click();
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      error => {
-        console.log(error);
-      }
-    )
+      );
   }
 
-  solicitarMonto(descripcionRecarga, montoSolicitado){
+  solicitarMonto(descripcionRecarga, montoSolicitado) {
     this.ingresandoDatos = true;
-    this._service.updateSaldoDisponible(this.idAnioActual, this.idMesActual, descripcionRecarga, montoSolicitado).subscribe(response=>{
-      if(response.estado == 'failed' || response.estado == 'failed_v'){
-        alert(JSON.stringify(response.mensaje));
-        this.ingresandoDatos = false;
-      }else{
-        alert(response.mensaje);
-        document.getElementById('closeModalButtonRecarga').click();
-        this.recargarTabla();
-        this.ingresandoDatos = false;
+    this._service
+      .updateSaldoDisponible(
+        this.idAnioActual,
+        this.idMesActual,
+        descripcionRecarga,
+        montoSolicitado
+      )
+      .subscribe(
+        (response) => {
+          if (response.estado == "failed" || response.estado == "failed_v") {
+            alert(JSON.stringify(response.mensaje));
+            this.ingresandoDatos = false;
+          } else {
+            alert(response.mensaje);
+            document.getElementById("closeModalButtonRecarga").click();
+            this.recargarTabla();
+            this.ingresandoDatos = false;
+          }
+        },
+        (error) => {
+          console.log(error);
+          this.ingresandoDatos = false;
+        }
+      );
+  }
+
+  getMontoBaseCuentaOperacional(get_directiva) {
+    this._service.getMontoBase(get_directiva).subscribe(
+      (response) => {
+        if (response.estado == "success") {
+          console.log(response);
+          this.montoBase = response.totales;
+          this.cargarTablaCajaChica();
+        } else {
+          alert(
+            "No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical"
+          );
+          document.getElementById("cerrarGastosOperacionalModal").click();
+        }
+      },
+      (error) => {
+        console.log(error);
       }
-    },error=>{
-      console.log(error);
-      this.ingresandoDatos = false;
+    );
+  }
+
+  getMontoBaseCuentaOperacional2() {
+    this._service.getMontoBase(this.directiva).subscribe(
+      (response) => {
+        if (response.estado == "success") {
+          console.log(response);
+          this.montoBase = response.totales;
+        } else {
+          alert(
+            "No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical"
+          );
+          document.getElementById("cerrarGastosOperacionalModal").click();
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  traer_directivas() {
+    this._directiva.listar_directivas().subscribe(res=>{
+      this.directivas = res.data;
+      this.directiva = res.actual.id;
+      console.log("directiva", this.directiva)
     });
   }
 
-  getMontoBaseCuentaOperacional(){
-    this._service.getMontoBase().subscribe(response => {
-      if(response.estado == 'success'){
-        console.log(response);
-        this.montoBase = response.totales;
-        this.cargarTablaCajaChica();
-      }else{
-        alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
-        document.getElementById('cerrarGastosOperacionalModal').click();
-      }
-    }, error=>{
-      console.log(error);
-    })
+  cambiar_directiva(){
+    this.recargarTabla();
   }
-
-  getMontoBaseCuentaOperacional2(){
-    this._service.getMontoBase().subscribe(response => {
-      if(response.estado == 'success'){
-        console.log(response);
-        this.montoBase = response.totales;
-      }else{
-        alert('No hay ningún monto base en Cuenta Operacional, debe de crear uno desde Cuenta Sindical');
-        document.getElementById('cerrarGastosOperacionalModal').click();
-      }
-    }, error=>{
-      console.log(error);
-    })
-  }
-
 }

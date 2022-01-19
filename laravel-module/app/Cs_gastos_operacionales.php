@@ -158,13 +158,14 @@ class Cs_gastos_operacionales extends Model
             $consultaDetalles = $this->totalesGO($consulta['totales']);
             /* dd($consulta); */
             if ($consulta['estado'] == 'success') {
+
                 if($consultaDetalles['estado'] == 'success'){
                     if($value->monto > $consultaDetalles['totales'][0]->cierre_mes){
-                       return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible'];
+                       return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible 1'];
                     }
                 }else{
                     if($value->monto > $consulta['totales']->monto_egreso){
-                        return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible'];
+                        return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible 2'];
                     }
                 }
                 $go = $this;
@@ -213,7 +214,7 @@ class Cs_gastos_operacionales extends Model
         }
     }
 
-    public function div_fecha($value) //funciona con input type date 
+    public function div_fecha($value) //funciona con input type date
     {
         $fecha = $value;
         $ano = substr($fecha, -10, 4);
@@ -241,14 +242,19 @@ class Cs_gastos_operacionales extends Model
 		return $data;
 	}
 
-    protected function validar_monto_inicio()
+    protected function validar_monto_inicio($directiva)
     {
-        $sumaDetalle = Cs_gastos_operacionales_detalle::where('directiva',$this->directiva()->id)->sum('monto');
+        $sumaDetalle = Cs_gastos_operacionales_detalle::where(
+            'directiva', $directiva
+            // 'directiva',$this->directiva()->id
+            )
+        ->where('activo', 'S')
+        ->sum('monto');
         /* dd($sumaDetalle); */
         if ($sumaDetalle) {
             return ['estado' => 'success', 'totales' => $sumaDetalle];
         }
-        return ['estado' => 'failed', 'mensaje' => 'No hay monto Inicial']; 
+        return ['estado' => 'failed', 'mensaje' => 'No hay monto Inicial'];
     }
 
     //proceso para guadar el archivo
@@ -280,12 +286,13 @@ class Cs_gastos_operacionales extends Model
             ->where([
                 /* 'anio_id' => $anio,
                 'mes_id' => $mes, */
-                'activo' => 'S'
+                'activo' => 'S',
+                'directiva_id'=>2
             ])
             ->get();
 
         if (!$totales->isEmpty()) {
-            //dd($mi); 1
+
             $totales[0]->cierre_mes = $totales[0]->total + $mi;
             return ['estado' => 'success', 'totales' => $totales];
         } else {
@@ -293,10 +300,12 @@ class Cs_gastos_operacionales extends Model
         }
     }
 
-    protected function listar($anio, $mes)
+    protected function listar($anio, $mes, $get_directiva)
     {
 
-        $directiva = $this->directiva();
+        // $directiva = $this->directiva();
+        $directiva = DB::table('directiva')->select('id', 'directiva')->where('id', $get_directiva)->first();
+
         $cs = Cs_gastos_operacionales::select([
             DB::raw("concat(dia,' de ',m.descripcion,' del ',a.descripcion) as fecha"),
             'cs_gastos_operacionales.id',
@@ -314,6 +323,9 @@ class Cs_gastos_operacionales extends Model
                 'anio_id' => $anio,
                 'mes_id' => $mes
             ]) */
+            ->where([
+                'cs_gastos_operacionales.directiva_id'=>$get_directiva
+            ])
             ->orderby('a.descripcion','asc')
             ->orderby('mes_id', 'asc')
             ->orderby('dia', 'asc')
@@ -330,7 +342,7 @@ class Cs_gastos_operacionales extends Model
                     'tipo_cuenta_sindicato' => 6
                 ])
                 ->get(); */
-            $gomi = $this->validar_monto_inicio();
+            $gomi = $this->validar_monto_inicio($get_directiva);
             /* dd($gomi); */
             $totales = $this->totalesGO($gomi['totales']);
 
@@ -358,7 +370,7 @@ class Cs_gastos_operacionales extends Model
                 }
             }
 
-            return ['estado' => 'success', 'gastosOperacionales' => $cs, 'montoInicial' => $gomi['totales'], 'totales' => $totales['totales'][0], 'directiva' => $directiva];
+            return ['estado' => 'success', 'gastosOperacionales' => $cs, 'montoInicial' => $gomi['totales'], 'totales' => $totales['totales'][0], 'directiva' => $directiva ];
         }
         return ['estado' => 'failed', 'mensaje' => 'No hay gastos operacionales en el mes o año seleccionado'];
     }
@@ -367,7 +379,7 @@ class Cs_gastos_operacionales extends Model
     {
         /* dd($request->all()); */
         $validarDatos = $this->validarGoModificacion($request);
-        if ($validarDatos['estado'] == 'success') { 
+        if ($validarDatos['estado'] == 'success') {
             $modificar = Cs_gastos_operacionales::find($request->input);
 
             if (!is_null($modificar)) {
@@ -448,10 +460,13 @@ class Cs_gastos_operacionales extends Model
 
     protected function actualizarSaldoDisponible($request)
     {
+        $directiva = DB::table('directiva')->where('activo', 'S')->first();
+        $dir_id = (!$directiva)? 0 : $directiva->id ;
+
         $validador = $this->validarSolicitarMonto($request);
         if ($validador['estado'] == 'success') {
         //OBTENER EL SALDO DISPONIBLE DE GASTO OPERACIONAL
-        $montoBaseDetalle = $this->validar_monto_inicio();
+        $montoBaseDetalle = $this->validar_monto_inicio($dir_id);//continuar aqui
         $consultaDetalles = $this->totalesGO($request->idAnio, $request->idMes, $montoBaseDetalle['totales']);
         $saldoDisponible = $consultaDetalles['totales'][0]->cierre_mes;
         /* dd($request->valor + $saldoDisponible); */
@@ -465,6 +480,7 @@ class Cs_gastos_operacionales extends Model
             ])->first();
             //si existe item go en el mes y año de los inputs enmtrantes, entrar a if
             if($consulta){
+                // precaucion, editar aqui hacia abajo
                 //$consulta->monto_egreso = ($request->valor + $saldoDisponible);
                 $consulta->monto_egreso += ($request->valor);
                 if($consulta->save()){
@@ -492,7 +508,7 @@ class Cs_gastos_operacionales extends Model
                 $cs->descripcion = $request->descripcion;
                 $cs->monto_egreso = $request->valor;
                 $cs->definicion=2;
-                $cs->user_crea = Auth::user()->id; 
+                $cs->user_crea = Auth::user()->id;
                 $cs->dia = 1; // por defecto el primer dia
                 $cs->mes_id = $request->idMes;
                 $cs->anio_id = $request->idAnio;
@@ -507,7 +523,7 @@ class Cs_gastos_operacionales extends Model
                       $god->activo = 'S';
                       $god->monto = $request->valor;
                       $god->directiva = $this->directiva()->id;//directiva 1 de tio emilio
-                     
+
                       if($god->save()){
                         return ['estado' => 'success', 'mensaje' => 'Monto actualizado correctamente.'];
                       }

@@ -41,18 +41,28 @@
 <div class="card">
     <div class="">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <label for="">Filtrar año del pago</label>
                 <!-- <select [(ngModel)]="directiva"  class="form-control" (change)="tablita()">
                     <option *ngFor="let item of directivas" [ngValue]="item.id">{{ item.directiva}}</option>
                 </select> -->
-               
+
                 <select [(ngModel)]="anio" class="form-control" (change)="tablita()">
                     <option *ngFor="let anio of anios" [value]="anio.id">{{anio.descripcion}}</option>
                 </select>
             </div>
 
             <div class="col-md-4">
+              <label for="">Filtrar por directiva</label>
+
+              <select [(ngModel)]="directiva" (change)="tablita()" class="form-control">
+                <option *ngFor="let i of directivas" value="{{i.id}}">
+                  {{ i.directiva }} {{ (i.activo=='S')?'(Actual)':'' }}
+                </option>
+              </select>
+          </div>
+
+            <div class="col-md-3">
                 <label for="">Filtrar socio</label>
                 <input type="text" placeholder="Buscar socio por nombre o apellidos..." class="form-control"[(ngModel)]="nombre" >
             </div>
@@ -92,10 +102,10 @@
                         <th colspan="2" style="background: #138D75;"><i class="fas fa-money-bill-wave"></i> Monto devolucion (egreso)</th>
 
                         <!-- <th colspan="2" style="background: #138D75;"><i class="far fa-file-pdf"></i> Monto actual (egreso)</th> -->
-                        
+
                     </tr>
                 </thead>
-                
+
 
 
 
@@ -112,11 +122,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                            
+
                                     <label><strong>Fecha Actual</strong> <input type="text" class="form-control form-control-sm"
                                             value="{{item.fecha}}" disabled></label>
                                     <label> <strong>Nueva Fecha</strong> <input class="form-control form-control-sm" #fechaFijo type="date"></label>
-                            
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
@@ -148,7 +158,7 @@
                                         <input class="form-control form-control-sm" #numeroDocFijo type="text">
                                     </div>
                                 </div>
-                            
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                                     <button type="button" class="btn btn-outline-success"
@@ -158,7 +168,7 @@
                                     </button>
                                 </div>
                             </ng-template>
-                            
+
                         </td>
                         <td colspan="2">
                             <a (click)="open(visorSindicalFijo)" style="cursor: pointer" class="btn-primary-outline">
@@ -173,13 +183,13 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                            
+
                                         <div class="form-group">
                                             <label> <strong>Reemplazar Documento Actual </strong></label><i class="far fa-file-pdf"></i>
                                             <input class="form-control-file form-control-file-sm" #DocFijo type="file"
                                                 (change)="onSelectImage($event)">
                                         </div>
-                            
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
@@ -235,7 +245,7 @@
                                         <input class="form-control form-control-sm" #monto type="text">
                                     </div>
                                 </div>
-                            
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                                     <button type="button" class="btn btn-outline-success"
@@ -264,7 +274,7 @@
                                         <input class="form-control form-control-sm" #prestamo type="text">
                                     </div>
                                 </div>
-                            
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info" (click)="cerrarActualizar()">Salir </button>
                                     <button type="button" class="btn btn-outline-success"
@@ -278,9 +288,9 @@
                         </td>
                         <td colspan="2">{{item.total | currency:"CLP" : "symbol-narrow":'1.0'}}</td>
 
-                        
+
                     </tr>
-                
+
                 </tbody>
             </table>
         </div>
@@ -296,7 +306,7 @@
                         <td colspan="3" class="text-center">
                             <strong>{{ ahorro.total_ahorro_dia_sueldo | currency:"CLP" : "symbol-narrow":'1.0' }}</strong></td>
                     </tr>
-            
+
                     <tr>
                         <th colspan="12" style="background: #138D75;" class="text-right"><i class="fas fa-minus-circle"></i> TOTAL
                             MONTO DEVOLUCION
@@ -310,7 +320,7 @@
                         <td colspan="3" class="text-center">
                             <strong>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }}<!-- <i
                                     (click)="openMontoRestante(monto_restante)" class="fas fa-pen-square"></i>--></strong>
-            
+
                             <ng-template #monto_restante let-c="closeFecha" let-d="dismiss">
                                 <div class="modal-header" id="demoFont">
                                     <h4 class="modal-title" id="modal-basic-title">MONTO RESTANTE (T.A.D.S - T.M.D)</h4>
@@ -319,11 +329,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-            
+
                                     <label style="text-align:center">TOTAL AHORRO DIA DE SUELDO:
                                         <b>{{ total | currency:"CLP" : "symbol-narrow":'1.0' }}</b></label>
-            
-            
+
+
                                     <div class="alert alert-warning" role="alert">
                                         Alerta, cuando el <b>TOTAL AHORRO DIA DE SUELDO</b> de arriba <i
                                             class="fas fa-arrow-up"></i> llegue a "0", cerrar su estado de devolucion de dias de
@@ -352,7 +362,7 @@
                 </tbody>
             </table>
         </div>
-       
+
     </div>
 </div>
 </div>

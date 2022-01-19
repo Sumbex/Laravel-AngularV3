@@ -35,12 +35,12 @@ Route::get('listar_interes_prestamo/{anio}/{mes}','CuentaSindicatoController@lis
 
 
 Route::post('guardar_detalle_gasto_operacional','GastoOperacionalController@guardar');
-Route::get('listar_detalle_gasto_operacional/{anio}/{mes}','GastoOperacionalController@listar');
+Route::get('listar_detalle_gasto_operacional/{anio}/{mes}/{directiva}','GastoOperacionalController@listar');
 Route::post('modificar_detalle_gasto_operacional','GastoOperacionalController@actualizar');
 Route::post('actualizarSaldoDisponible','GastoOperacionalController@actualizarSaldoDisponible');
-Route::get('getMontoBase','GastoOperacionalController@validarMontoInicio');
+Route::get('getMontoBase/{directiva}','GastoOperacionalController@validarMontoInicio');
 
-Route::get('traer_total_ahorro_dia_sueldo/{anio}','CuentaConsorcioController@traer_total_ahorro_dia_sueldo');
+Route::get('traer_total_ahorro_dia_sueldo/{anio}/{directiva}','CuentaConsorcioController@traer_total_ahorro_dia_sueldo');
 
 Route::get('cerrar_estado_dia_sueldo/{anio}','CuentaSindicatoController@cerrar_estado_dia_sueldo');
 //-------------------------------------------------------------------------------------------------
@@ -154,8 +154,8 @@ Route::get('total_desvinculados/{anio}','CuentaConsorcioController@total_desvinc
 Route::get('proximo_periodo/{anio_actual}','CuentaConsorcioController@proximo_periodo');
 
 Route::post('insertar_dia_sueldo_socio','CuentaConsorcioController@insertar_dia_sueldo_socio');
-Route::get('listar_consorcio_pago_dia_sueldo/{anio}','CuentaConsorcioController@listar_consorcio_pago_dia_sueldo');
-Route::get('listar_socio_consorcio_pago_dia_sueldo/{nombre}/{anio}','CuentaConsorcioController@listar_socio_consorcio_pago_dia_sueldo');
+Route::get('listar_consorcio_pago_dia_sueldo/{anio}/{directiva}','CuentaConsorcioController@listar_consorcio_pago_dia_sueldo');
+Route::get('listar_socio_consorcio_pago_dia_sueldo/{nombre}/{anio}/{directiva}','CuentaConsorcioController@listar_socio_consorcio_pago_dia_sueldo');
 
 
 Route::post('actualizar_cpds','CuentaConsorcioController@actualizar_cpds');

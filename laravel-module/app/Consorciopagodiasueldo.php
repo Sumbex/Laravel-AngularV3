@@ -11,10 +11,10 @@ class Consorciopagodiasueldo extends Model
     protected $table = "consorcio_pago_dia_sueldo";
 
 
-    protected function tabla($anio/*$directiva*/)
+    protected function tabla($anio, $directiva)
     {
         $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
-        $anio_ = $g_anio->descripcion; 
+        $anio_ = $g_anio->descripcion;
 
         $listar = DB::select("SELECT
                                 c.id,
@@ -29,6 +29,7 @@ class Consorciopagodiasueldo extends Model
                             from consorcio_pago_dia_sueldo  c
                             inner join socios s on s.id = c.socio_id
                             where  EXTRACT(YEAR FROM fecha) = '$anio_'
+                            and directiva_id = $directiva
                             order by c.fecha desc
         ");
 
@@ -44,10 +45,10 @@ class Consorciopagodiasueldo extends Model
         ];
     }
 
-    protected function tabla_filtro_socio($nombre, $anio){
-        
+    protected function tabla_filtro_socio($nombre, $anio, $directiva){
+
         $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
-        $anio_ = $g_anio->descripcion; 
+        $anio_ = $g_anio->descripcion;
 
         $listar = DB::select("SELECT
                                 c.id,
@@ -58,10 +59,12 @@ class Consorciopagodiasueldo extends Model
                                 prestamo,
                                 numero_documento,
                                 documento,
-                                (monto + prestamo) total
+                                (monto + prestamo) total,
+                                directiva_id
                             from consorcio_pago_dia_sueldo  c
                             inner join socios s on s.id = c.socio_id
                             where  EXTRACT(YEAR FROM fecha) = '$anio_'
+                            and directiva_id = $directiva
                             and upper(concat(s.nombres,' ',s.a_paterno,' ',s.a_materno)) like upper('%$nombre%')
                             order by c.fecha desc
         ");
@@ -84,28 +87,28 @@ class Consorciopagodiasueldo extends Model
         $dir_id = (!$directiva)? 0 : $directiva->id ;
 
         $g_anio = DB::table('anio')->where(['activo'=>'S','id'=>$anio])->first();
-        $anio_ = $g_anio->descripcion; 
+        $anio_ = $g_anio->descripcion;
 
         $item = DB::select("SELECT
                                 concat('1 de ',m.descripcion,', ',a.descripcion) fecha,
                                 '--' numero_documento,
                                 '--' archivo_documento,
-                                concat('Pago de dia de sueldos a socios - consorcio - mes ', m.descripcion,' de ', a.descripcion) as descripcion, 
-                                sum(suma) monto_egreso 
-                            from (select 
+                                concat('Pago de dia de sueldos a socios - consorcio - mes ', m.descripcion,' de ', a.descripcion) as descripcion,
+                                sum(suma) monto_egreso
+                            from (select
                                 fecha,
-                                monto, 
-                                prestamo, 
-                                (monto + prestamo) suma 
+                                monto,
+                                prestamo,
+                                (monto + prestamo) suma
                                 from consorcio_pago_dia_sueldo where directiva_id = $dir_id
-                                and EXTRACT(MONTH FROM fecha) = '$mes' 
+                                and EXTRACT(MONTH FROM fecha) = '$mes'
                                 and  EXTRACT(YEAR FROM fecha) = '$anio_') x
-                                inner join mes m on m.id = EXTRACT(MONTH FROM fecha) 
+                                inner join mes m on m.id = EXTRACT(MONTH FROM fecha)
                                 inner join anio a on a.id = $anio
                                 group by m.descripcion , a.descripcion");
-        
+
         if (count($item) > 0) {
-            
+
             $verify_exist = Cuentasindicato::where([
                 'anio_id' => $anio,
                 'mes_id' => $mes,
@@ -140,7 +143,7 @@ class Consorciopagodiasueldo extends Model
 
         }
 
-        
+
 
 
     }

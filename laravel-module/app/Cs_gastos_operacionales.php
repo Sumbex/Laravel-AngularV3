@@ -252,9 +252,9 @@ class Cs_gastos_operacionales extends Model
         ->sum('monto');
         /* dd($sumaDetalle); */
         if ($sumaDetalle) {
-            return ['estado' => 'success', 'totales' => $sumaDetalle];
+            return ['estado' => 'success', 'totales' => $sumaDetalle ];
         }
-        return ['estado' => 'failed', 'mensaje' => 'No hay monto Inicial'];
+        return ['estado' => 'success', 'totales' => 0 ];
     }
 
     //proceso para guadar el archivo
@@ -343,7 +343,7 @@ class Cs_gastos_operacionales extends Model
                 ])
                 ->get(); */
             $gomi = $this->validar_monto_inicio($get_directiva);
-            /* dd($gomi); */
+
             $totales = $this->totalesGO($gomi['totales']);
 
             for ($i = 0; $i < count($cs); $i++) {

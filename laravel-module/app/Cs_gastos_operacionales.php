@@ -159,15 +159,15 @@ class Cs_gastos_operacionales extends Model
             /* dd($consulta); */
             if ($consulta['estado'] == 'success') {
 
-                if($consultaDetalles['estado'] == 'success'){
-                    if($value->monto > $consultaDetalles['totales'][0]->cierre_mes){
-                       return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible 1'];
-                    }
-                }else{
-                    if($value->monto > $consulta['totales']->monto_egreso){
-                        return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible 2'];
-                    }
-                }
+                // if($consultaDetalles['estado'] == 'success'){
+                //     if($value->monto > $consultaDetalles['totales'][0]->cierre_mes){
+                //        return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible 1'];
+                //     }
+                // }else{
+                //     if($value->monto > $consulta['totales']->monto_egreso){
+                //         return ['estado' => 'failed', 'mensaje' => 'El monto solicitado es mayor a lo disponible 2'];
+                //     }
+                // }
                 $go = $this;
                 $go->dia = $f['dia'];
                 $go->mes_id = $f['mes'];

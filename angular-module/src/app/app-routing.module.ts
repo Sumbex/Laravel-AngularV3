@@ -35,6 +35,8 @@ import { DocumentacionSindicalComponent } from './auth-master/documentacion-sind
 import { IndexComponent as IndexSocio } from './socios-master/index/index.component';
 import { DocumentacionComponent } from './socios-master/documentacion/documentacion.component';
 import { HistorialComponent } from './auth-master/documentacion-sindical/historial/historial.component';
+import { VacacionesComponent } from './auth-master/vacaciones/vacaciones.component';
+import { FormularioHistorialComponent } from './auth-master/vacaciones/formulario-historial/formulario-historial.component';
 
 const routes: Routes = [
   { path: '', component: PublicMasterComponent, children:[
@@ -60,6 +62,15 @@ const routes: Routes = [
     { path: 'mail', component:MailComponent },
     { path: 'DocumentacionMaster', component:DocumentacionSindicalComponent},
     { path: 'DocumentacionHistorial', component:HistorialComponent},
+    { path: 'Vacaciones',
+      component:VacacionesComponent,
+      children:[
+        {
+          path:'formulario-historial',
+          component:FormularioHistorialComponent
+        }
+      ]
+    },
 
 
   ]},

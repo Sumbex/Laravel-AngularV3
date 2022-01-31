@@ -1,0 +1,87 @@
+<div class="container">
+  <!-- tabla del formulario -->
+<div class="card-header mt-4" id="demoFont">
+  <h6 class="card-title text-center"><strong>Historial feriados</strong></h6>
+</div>
+
+<div class="card">
+
+  <div class="container mt-3 mb-3">
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-sm">
+
+        <thead>
+          <tr>
+            <th style="background: #138D75">Rut </th>
+            <td colspan="6">18805652-0</td>
+          </tr>
+          <tr>
+            <th style="background: #138D75">Nombre </th>
+            <td colspan="6">Alejandro Godoy</td>
+          </tr>
+          <tr>
+            <th style="background: #138D75">Fecha de ingreso </th>
+            <td colspan="2">02/05/2012</td>
+
+            <th style="background: #138D75">Fecha base progresiva ?? </th>
+            <td colspan="3">02/05/2012 ??</td>
+          </tr>
+          <tr>
+            <th style="background: #138D75">D. Básicos devengados </th>
+            <td colspan="2">19.5</td>
+
+            <th style="background: #138D75">D. progresivos devengados </th>
+            <td colspan="3">0</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <td colspan="7"></td>
+          </tr>
+        </thead>
+        <thead>
+          <!--Fijos-->
+          <tr class="text-center">
+            <th style="background: #138D75">
+              Solicitud
+            </th>
+            <th style="background: #138D75">
+              Inicio
+            </th>
+            <th style="background: #138D75">
+              Termino
+            </th>
+            <th style="background: #138D75">
+              Días legales
+            </th>
+            <th style="background: #138D75">
+              Días progresivos
+            </th>
+            <th style="background: #138D75">
+              Documento
+            </th>
+            <th style="background: #138D75">
+              OPC.
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let i of feriados">
+            <td>{{ i.solicitud  }}</td>
+            <td>{{ i.inicio  }}</td>
+            <td>{{ i.termino  }}</td>
+            <td>{{ i.d_legales  }}</td>
+            <td>{{ i.d_progresivos  }}</td>
+            <td>{{ i.doc  }}</td>
+            <td>
+              <button (click)="open_modal(mimodal);" class="btn btn-sm btn-success">Ver detalle</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

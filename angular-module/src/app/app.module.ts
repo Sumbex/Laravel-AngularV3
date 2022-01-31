@@ -155,6 +155,10 @@ import { ListaDocumentacionComponent } from './auth-master/documentacion-sindica
 import { IndexComponent as IndexSocio } from './socios-master/index/index.component';
 import { DocumentacionComponent } from './socios-master/documentacion/documentacion.component';
 import { HistorialComponent } from './auth-master/documentacion-sindical/historial/historial.component';
+import { VacacionesComponent } from './auth-master/vacaciones/vacaciones.component';
+import { FormularioHistorialComponent } from './auth-master/vacaciones/formulario-historial/formulario-historial.component';
+import { FormularioSolicitudVacacionesComponent } from './auth-master/vacaciones/components/formulario-solicitud-vacaciones/formulario-solicitud-vacaciones.component';
+import { ListadoHistorialFeriadosComponent } from './auth-master/vacaciones/components/listado-historial-feriados/listado-historial-feriados.component';
 
 
 
@@ -292,6 +296,10 @@ import { HistorialComponent } from './auth-master/documentacion-sindical/histori
     ListaDocumentacionComponent,
     DocumentacionComponent,
     HistorialComponent,
+    VacacionesComponent,
+    FormularioHistorialComponent,
+    FormularioSolicitudVacacionesComponent,
+    ListadoHistorialFeriadosComponent,
    
 
   ],

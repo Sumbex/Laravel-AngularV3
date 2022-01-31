@@ -12,4 +12,8 @@ export class VacacionesComponent implements OnInit {
   ngOnInit() {
   }
 
+  ocultarBuscadorSocio(buleano){
+    return buleano;
+  }
+
 }

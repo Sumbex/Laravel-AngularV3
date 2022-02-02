@@ -4,50 +4,54 @@
   </div>
 
   <div class="card">
+    <!-- <pre>{{ vh | json}}</pre> -->
+    <form [formGroup]="form">
+      <div class="container mt-3 mb-3">
+        <div class="row">
 
-    <div class="container mt-3 mb-3">
-      <div class="row">
+          <div class="col-md-4">
+            <strong>Fecha de solicitud</strong>
+            <input formControlName="fecha_solicitud" type="date" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <strong>Fecha de inicio</strong>
+            <input formControlName="fecha_inicio" type="date" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <strong>Fecha de termino</strong>
+            <input formControlName="fecha_termino" type="date" class="form-control form-control-sm">
+          </div>
+        </div>
 
-        <div class="col-md-4">
-          <strong>Fecha de solicitud</strong>
-          <input type="date" class="form-control form-control-sm">
+        <div class="row">
+
+          <div class="col-md-4">
+            <strong>Días legales</strong>
+            <input formControlName="dias_legales" type="text" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <strong>Días progresivos</strong>
+            <input formControlName="dias_progresivos" type="text" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <strong>Subir documento(PDF)</strong>
+            <input type="file" (change)="archivo($event)" class="form-control form-control-sm">
+          </div>
         </div>
-        <div class="col-md-4">
-          <strong>Fecha de inicio</strong>
-          <input type="date" class="form-control form-control-sm">
-        </div>
-        <div class="col-md-4">
-          <strong>Fecha de termino</strong>
-          <input type="text" class="form-control form-control-sm">
+
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <button class="btn btn btn-success btn-block btn-sm"
+              (click)="enviar();"
+            >
+              Guardar
+              <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
+                src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="row">
-
-        <div class="col-md-4">
-          <strong>Días legales</strong>
-          <input type="text" class="form-control form-control-sm">
-        </div>
-        <div class="col-md-4">
-          <strong>Días progresivos</strong>
-          <input type="text" class="form-control form-control-sm">
-        </div>
-        <div class="col-md-4">
-          <strong>Subir documento(PDF)</strong>
-          <input type="file" class="form-control form-control-sm">
-        </div>
-      </div>
-
-      <div class="row mt-3">
-        <div class="col-md-12">
-          <button class="btn btn btn-success btn-block btn-sm">
-            Guardar
-            <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
-              src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
-          </button>
-        </div>
-      </div>
-    </div>
-
+    </form>
   </div>
 </div>

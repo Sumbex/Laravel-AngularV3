@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { VacacionesService } from '../../../../servicios/vacaciones.service';
 
 @Component({
   selector: "app-listado-historial-feriados",
@@ -6,90 +8,37 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./listado-historial-feriados.component.css"],
 })
 export class ListadoHistorialFeriadosComponent implements OnInit {
-  feriados : Object[] = [
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "16/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
+  vh:any;
+  ventana: any;
+  @Input() set vacaciones_historial(data:any){
+    if(data){
+      this.vh = data;
+    }
+  }
+  @Input() set nueva_data(dato:boolean){
+    if(dato==true){
+      console.log("refreshh");
+      this.listar();
+    }
+  }
+  @Output() salida:EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-    {
-      solicitud: "19/01/2022",
-      inicio: "21/01/2022",
-      termino: "08/01/2022",
-      d_legales: "17",
-      d_progresivos: "0",
-      doc: "documento.pdf",
-    },
-  ];
-  constructor() {}
+  solicitudes:any;
+  constructor(private _vacacionesService:VacacionesService, private modalService2: NgbModal,) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.listar();
+  }
+
+  listar(){
+    this._vacacionesService.listar_solicitud_vacaciones(this.vh.id).subscribe(res =>{
+      if(res){
+        this.solicitudes = res.solicitudes;
+        this.salida.emit(false);
+      }
+    })
+  }
+  open_modal(modal){
+    this.ventana = this.modalService2.open(modal, { size: 'lg' });
+  }
 }

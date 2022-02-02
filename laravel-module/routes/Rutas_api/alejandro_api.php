@@ -203,3 +203,13 @@ Route::get('lista_cumpleanios', 'CumpleanioController@lista_cumpleanios');
 Route::post('enviar_correo','CumpleanioController@enviar_correo');
 
 // Route::post('documentacion_sindical/insert', 'DocumentacionSindicalController@insert');
+
+// VACACIONES
+
+Route::post('vacaciones/historial/crear', 'VacacionesHistorialController@crear');
+Route::get('vacaciones/historial/listar', 'VacacionesHistorialController@listar');
+Route::get('vacaciones/historial/listar/{vac_historial}', 'VacacionesHistorialController@listar_por_vacacion_historial');
+
+Route::post('vacaciones/solicitud/crear', 'VacacionesHistorialController@crear_solicitud_vacaciones');
+Route::get('vacaciones/solicitud/listar/{vac_historial}', 'VacacionesHistorialController@listar_solicitud_vacaciones');
+

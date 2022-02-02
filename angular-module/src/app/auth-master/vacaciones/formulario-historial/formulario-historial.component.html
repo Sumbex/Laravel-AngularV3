@@ -7,27 +7,31 @@
   <div class="card">
 
     <div class="container mt-3 mb-3">
-      <div class="row">
-        <div class="col-md-4">
-          <strong>Trabajador</strong>
-          <select class="form-control form-control-sm">
-            <option value="">--SELECCIONE--</option>
-            <option *ngFor="let i of empleados" value="{{i.id}}">{{i.nombre_trabajador}}</option>
-          </select>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-md-4">
+            <strong>Trabajador</strong>
+            <select formControlName="empleado" class="form-control form-control-sm">
+              <option value="">--SELECCIONE--</option>
+              <option *ngFor="let i of empleados" value="{{i.id}}">{{i.nombre_trabajador}}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <strong>d. básicos devengados</strong>
+            <input formControlName="d_basicos_devengadp" type="text" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-4">
+            <strong>d. progresivos devengados</strong>
+            <input formControlName="d_progresivos_dvengados" type="text" class="form-control form-control-sm">
+          </div>
         </div>
-        <div class="col-md-4">
-          <strong>d. básicos devengados</strong>
-          <input type="text" class="form-control form-control-sm">
-        </div>
-        <div class="col-md-4">
-          <strong>d. progresivos devengados</strong>
-          <input type="text" class="form-control form-control-sm">
-        </div>
-      </div>
+      </form>
 
       <div class="row mt-3">
         <div class="col-md-12">
-          <button class="btn btn btn-success btn-block btn-sm">
+          <button class="btn btn btn-success btn-block btn-sm"
+          (click)="enviar();"
+          >
             Guardar
             <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
               src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
@@ -79,12 +83,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="text-center">
-              <td>Alejandro Godoy</td>
-              <td>19.5</td>
-              <td>0.0</td>
+            <tr *ngFor="let i of tabla;" class="text-center">
+              <td>{{ i.nombre_trabajador }}</td>
+              <td>{{ i.d_basicos_devengados }}</td>
+              <td>{{ i.d_progresivos_devengados }}</td>
               <td>
-                <button (click)="open_modal(mimodal);" class="btn btn-sm btn-success">Ver detalle</button>
+                <button (click)="open_modal(mimodal);vh=i;" class="btn btn-sm btn-success">Ver detalle</button>
               </td>
             </tr>
           </tbody>
@@ -99,9 +103,18 @@
             </button>
           </div>
           <div class="modal-body">
-            <app-formulario-solicitud-vacaciones></app-formulario-solicitud-vacaciones>
+            <app-formulario-solicitud-vacaciones
+              [vacaciones_historial]="vh"
+              (salida)="capturar($event)"
+            >
+            </app-formulario-solicitud-vacaciones>
 
-            <app-listado-historial-feriados></app-listado-historial-feriados>
+            <app-listado-historial-feriados
+              [vacaciones_historial]="vh"
+              [nueva_data]="comunicar"
+              (salida)="capturar2($event)"
+            >
+            </app-listado-historial-feriados>
           </div>
         </ng-template>
       </div>

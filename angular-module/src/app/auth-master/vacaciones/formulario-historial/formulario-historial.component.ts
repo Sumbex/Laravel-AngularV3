@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Self } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LiquidacionJuanitoService } from '../../../servicios/liquidacion-juanito.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { VacacionesService } from '../../../servicios/vacaciones.service';
 
 @Component({
   selector: 'app-formulario-historial',
@@ -12,10 +14,28 @@ export class FormularioHistorialComponent implements OnInit {
   blockIngreso: boolean = false;
   empleados: any;
   ventana: any;
-  constructor(private liq:LiquidacionJuanitoService, private modalService2: NgbModal) { }
+  form:FormGroup;
+  tabla:any;
+  comunicar: boolean = false;
+  constructor(
+    private liq:LiquidacionJuanitoService,
+    private modalService2: NgbModal,
+    private fb:FormBuilder,
+    private _vacaciones:VacacionesService
+    ) { }
 
   ngOnInit() {
     this.traer_empleados();
+    this.crear_form();
+    this.listar_historial();
+  }
+
+  crear_form(){
+    this.form = this.fb.group({
+      empleado:['',Validators.required],
+      d_basicos_devengadp:['', Validators.required],
+      d_progresivos_dvengados:['', Validators.required],
+    })
   }
 
   traer_empleados(){
@@ -25,11 +45,45 @@ export class FormularioHistorialComponent implements OnInit {
       }
     });
   }
+  listar_historial(){
+    this._vacaciones.listar_historial().subscribe(res=>{
+      if(res){
+        this.tabla = res.lista;
+      }
+    })
+  }
 
   open_modal(modal){
 
     this.ventana = this.modalService2.open(modal, { size: 'xl' });
 
+  }
+
+  enviar(){
+
+    if(this.form.valid){
+      const fd = new FormData();
+      fd.append('empleado', this.form.controls.empleado.value );
+      fd.append('d_basicos_devengadp', this.form.controls.d_basicos_devengadp.value );
+      fd.append('d_progresivos_dvengados', this.form.controls.d_progresivos_dvengados.value );
+      this._vacaciones.crear_historial(fd).subscribe(res => {
+        if(res){
+          this.listar_historial();
+          alert(res.mensaje);
+        }
+      })
+    }else{
+      alert("Faltan campos por llenar");
     }
+  }
+
+  capturar(evento){
+    this.comunicar = evento;
+    console.log(evento);
+  }
+  capturar2(evento){
+    this.comunicar = evento;
+    console.log(evento);
+  }
 
 }

@@ -35,6 +35,8 @@ export class FormularioHistorialComponent implements OnInit {
       empleado:['',Validators.required],
       d_basicos_devengadp:['', Validators.required],
       d_progresivos_dvengados:['', Validators.required],
+      fecha_ingreso:['', Validators.required],
+      fecha_base_progresiva:['', Validators.required],
     })
   }
 
@@ -66,6 +68,8 @@ export class FormularioHistorialComponent implements OnInit {
       fd.append('empleado', this.form.controls.empleado.value );
       fd.append('d_basicos_devengadp', this.form.controls.d_basicos_devengadp.value );
       fd.append('d_progresivos_dvengados', this.form.controls.d_progresivos_dvengados.value );
+      fd.append('fecha_ingreso', this.form.controls.fecha_ingreso.value);
+      fd.append('fecha_base_progresiva', this.form.controls.fecha_base_progresiva.value);
       this._vacaciones.crear_historial(fd).subscribe(res => {
         if(res){
           this.listar_historial();

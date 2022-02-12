@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\VacacionesSolicitud;
 use App\VacacionHistorial;
+use App\VacDiasBasicosDevengados;
 use Illuminate\Http\Request;
 
 class VacacionesHistorialController extends Controller
@@ -28,5 +29,9 @@ class VacacionesHistorialController extends Controller
 
     public function listar_solicitud_vacaciones($id){
         return VacacionesSolicitud::listar_vac_solicitud_por_vac_historial($id);
+    }
+
+    public function detectar_incremento_mensaul_diasbasicos($id_vac_historial){
+        return VacDiasBasicosDevengados::detectar_incremento_de_dias_basicos($id_vac_historial);
     }
 }

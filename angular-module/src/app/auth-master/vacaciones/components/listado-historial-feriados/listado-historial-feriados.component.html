@@ -1,7 +1,7 @@
 <div class="container">
   <!-- tabla del formulario -->
   <div class="card-header mt-4" id="demoFont">
-    <h6 class="card-title text-center"><strong>Historial feriados</strong></h6>
+    <h6 class="card-title text-center"><strong>Historial feriados xx</strong></h6>
   </div>
 
   <div class="card">
@@ -22,14 +22,14 @@
             </tr>
             <tr>
               <th style="background: #138D75">Fecha de ingreso </th>
-              <td colspan="2">{{vh.created_at}}</td>
+              <td colspan="2">{{vh.fecha_ingreso}}</td>
 
               <th style="background: #138D75">Fecha base progresiva ?? </th>
-              <td colspan="3">02/05/2012 ??</td>
+              <td colspan="3">{{vh.fecha_base_progresiva }}</td>
             </tr>
             <tr>
               <th style="background: #138D75">D. Básicos devengados </th>
-              <td colspan="2">{{vh.d_basicos_devengados}}</td>
+              <td colspan="2">{{ dias_basicos_devengados }}</td>
 
               <th style="background: #138D75">D. progresivos devengados </th>
               <td colspan="3">{{vh.d_progresivos_devengados}}</td>
@@ -75,13 +75,13 @@
               <td>{{ i.dias_legales }}</td>
               <td>{{ i.dias_progresivos }}</td>
               <td>
-                <a *ngIf="i.documento" (click)="open_modal(visor);vdoc=i.documento;" style="cursor: pointer" class="btn-primary-outline">
+                <button (click)="open_modal(generar);solicitud=i;" class="btn btn-sm btn-success">Generar PDF</button>
+                <!-- <a *ngIf="i.documento" (click)="open_modal(visor);vdoc=i.documento;" style="cursor: pointer" class="btn-primary-outline">
                   <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
-                </a>&nbsp;
+                </a>&nbsp; -->
               </td>
               <!-- <td>
-                <button (click)="open_modal(visor);vdoc=i.documento;" class="btn btn-sm btn-success">Ver
-                  detalle</button>
+                <button (click)="open_modal(visor);vdoc=i.documento;" class="btn btn-sm btn-success">Generar PDF</button>
               </td> -->
             </tr>
           </tbody>
@@ -100,6 +100,34 @@
               <div class="modal-body">
                 <iframe width="100%" height="500px" [src]="  '../' + vdoc | safeUrl" frameborder="0"
                   allowfullscreen></iframe>
+              </div>
+              <div class="modal-footer" [hidden]="true">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!--MODAL VISOR PDF-->
+
+        <!--MODAL VISOR PDF-->
+        <ng-template #generar let-c="close" let-d="dismiss">
+          <div class="row">
+            <div class="col">
+              <div class="modal-header text-center" id="demoFont">
+                <h4 class="modal-title" id="modal-basic-title">Visor de PDF</h4>
+                <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <app-generar-pdf
+                   [solicitud]="solicitud"
+                   [empleado]="vh"
+                   [dias_basicos_devengados]="dias_basicos_devengados"
+                >
+                </app-generar-pdf>
+
               </div>
               <div class="modal-footer" [hidden]="true">
                 <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>

@@ -1,0 +1,50 @@
+<div>
+
+  <pre>{{ s | json}}</pre>
+
+  <pre>{{ e | json}}</pre>
+
+  <hr>
+  {{ dias_pendientes }}
+
+  <hr>
+
+  <div class="container-fluid">
+
+    <table class="table table-bordered">
+      <thead class="">
+        <tr>
+          <th style="background: #229954; width:100px ;">
+            <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+          </th>
+          <td colspan="3" class="text-center">
+            SOLICITUD DE VACACIONES
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th style="background: #229954; ">TRABAJADOR</th>
+          <td>{{ e.nombre_trabajador }}</td>
+
+          <th style="background: #229954;">RUT</th>
+          <td>{{ e.rut_trabajador }}</td>
+        </tr>
+        <tr>
+          <th style="background: #229954; ">FECHA INGRESO</th>
+          <td>{{ e.fecha_ingreso }}</td>
+          <th style="background: #229954; ">FECHA SOLICITUD</th>
+          <td>{{ s.fecha_solicitud }}</td>
+        </tr>
+
+        <tr>
+          <th style="background: #229954; ">FECHA COMEINZO</th>
+          <td>{{ s.fecha_inicio }}</td>
+          <th style="background: #229954; ">FECHA TERMINO</th>
+          <td>{{ s.fecha_termino }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

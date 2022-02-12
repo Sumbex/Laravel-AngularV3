@@ -10,6 +10,7 @@ import { VacacionesService } from '../../../../servicios/vacaciones.service';
 export class ListadoHistorialFeriadosComponent implements OnInit {
   vh:any;
   ventana: any;
+  dias_basicos_devengados: any;
   @Input() set vacaciones_historial(data:any){
     if(data){
       this.vh = data;
@@ -28,6 +29,7 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
 
   ngOnInit() {
     this.listar();
+    this.detectar_incremento_diasbasicos();
   }
 
   listar(){
@@ -40,5 +42,11 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
   }
   open_modal(modal){
     this.ventana = this.modalService2.open(modal, { size: 'lg' });
+  }
+
+  detectar_incremento_diasbasicos(){
+    this._vacacionesService.detectar_incremento_mensaual_diasbasicos(this.vh.id).subscribe(res=>{
+       this.dias_basicos_devengados = Number(res[0].dias_basicos) - Number(res[0].dias_progresivos);
+    })
   }
 }

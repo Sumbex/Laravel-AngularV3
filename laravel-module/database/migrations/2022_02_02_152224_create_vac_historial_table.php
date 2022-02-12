@@ -18,6 +18,8 @@ class CreateVacHistorialTable extends Migration
             $table->integer('liq_empleado_id');
             $table->float('d_basicos_devengados', 8, 2)->nullable();
             $table->float('d_progresivos_devengados', 8, 2)->nullable();
+            $table->date('fecha_ingreso')->nullable();
+            $table->date('fecha_base_progresiva')->nullable();
             $table->char('activo',1);
             $table->timestamps();
         });

@@ -212,4 +212,4 @@ Route::get('vacaciones/historial/listar/{vac_historial}', 'VacacionesHistorialCo
 
 Route::post('vacaciones/solicitud/crear', 'VacacionesHistorialController@crear_solicitud_vacaciones');
 Route::get('vacaciones/solicitud/listar/{vac_historial}', 'VacacionesHistorialController@listar_solicitud_vacaciones');
-
+Route::get('vacaciones/solicitud/detectar_incremento_mensaual_diasbasicos/{vac_historial}', 'VacacionesHistorialController@detectar_incremento_mensaul_diasbasicos');

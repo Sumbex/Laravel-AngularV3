@@ -12,35 +12,72 @@ class VacacionesSolicitud extends Model
 
     protected function crear($r)
     {
-        $crear = $this;
-        $crear->vac_historial_id = $r->vacaciones_historial_id;
-        $crear->fecha_solicitud = $r->fecha_solicitud;
-        $crear->fecha_inicio = $r->fecha_inicio;
-        $crear->fecha_termino = $r->fecha_termino;
-        $crear->dias_legales = $r->dias_legales;
-        $crear->dias_progresivos = $r->dias_progresivos;
+       $verify = $this->validar_dias_basicos_mayor_a_dias_legales($r);
+    //    $ultimo_dia_basico = VacDiasBasicosDevengados::where('vac_historial_id',$r->vacaciones_historial_id)->latest()->first();
+    //    return $ultimo_dia_basico;
+       if($verify['estado']){
 
-        if ($r->documento != "null") {
-            $guardarArchivo = $this->guardarArchivo($r->documento, 'ArchivosLiquidaciones/');
-            // el documento de solicitud de vacaciones se almacenara en ArchivosLiquidaciones/
-            if ($guardarArchivo['estado'] == "success") {
-                $crear->documento = $guardarArchivo['documento'];
-            } else {
-                return $guardarArchivo;
+
+
+            DB::beginTransaction();
+           $crear = $this;
+           $crear->vac_historial_id = $r->vacaciones_historial_id;
+           $crear->fecha_solicitud = $r->fecha_solicitud;
+           $crear->fecha_inicio = $r->fecha_inicio;
+           $crear->fecha_termino = $r->fecha_termino;
+           $crear->dias_legales = $r->dias_legales;
+           $crear->dias_progresivos = $r->dias_progresivos;
+
+           // if ($r->documento != "null") {
+           //     $guardarArchivo = $this->guardarArchivo($r->documento, 'ArchivosLiquidaciones/');
+           //     // el documento de solicitud de vacaciones se almacenara en ArchivosLiquidaciones/
+           //     if ($guardarArchivo['estado'] == "success") {
+           //         $crear->documento = $guardarArchivo['documento'];
+           //     } else {
+           //         return $guardarArchivo;
+           //     }
+           // }
+
+           $crear->activo = 'S';
+           if ($crear->save()) {
+            $ultimo_dia_basico = VacDiasBasicosDevengados::where('vac_historial_id',$r->vacaciones_historial_id)->latest()->first();
+            $ultimo_dia_basico->dias_progresivos = $r->dias_legales;
+            if($ultimo_dia_basico->save()){
+                DB::commit();
+                return [
+                    'estado'=>true,
+                    'mensaje'=>'Solicitud ingresada con exito'
+                ];
             }
-        }
-
-        $crear->activo = 'S';
-        if ($crear->save()) {
+            DB::rollBack();
             return [
-                'estado'=>true,
-                'mensaje'=>'Solicitud ingresada con exito'
+                'estado'=>false,
+                'mensaje'=>'No se ha registrado la solicitud'
             ];
-        }
-        return [
-            'estado'=>false,
-            'mensaje'=>'No se ha registrado la solicitud'
-        ];
+           }
+           DB::rollBack();
+           return [
+               'estado'=>false,
+               'mensaje'=>'No se ha registrado la solicitud'
+           ];
+       }else{
+           return $verify;
+       }
+    }
+
+    protected function validar_dias_basicos_mayor_a_dias_legales($r){
+
+        $dias_b = DB::select("SELECT sum(coalesce(dias_basicos,0)) dias_basicos,
+            sum(coalesce(dias_progresivos, 0)) dias_progresivos
+                             from vac_dias_basicos_devengados where vac_historial_id = ?",
+                        [$r->vacaciones_historial_id]);
+
+       $dias_b_disponibles =  $dias_b[0]->dias_basicos - $dias_b[0]->dias_progresivos;
+       if($dias_b_disponibles <  $r->dias_legales ){
+           return ["estado"=>false,"mensaje"=>"Los días que solicita no estan en el rango de sus dias básicos devengados"];
+       }
+       return ["estado"=>true];
+
     }
 
     protected function listar_vac_solicitud_por_vac_historial($id){

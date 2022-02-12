@@ -56,4 +56,12 @@ export class VacacionesService {
       headers: this.header,
     });
   }
+  detectar_incremento_mensaual_diasbasicos(id):Observable<any>{
+    let url = `${this.url}vacaciones/solicitud/detectar_incremento_mensaual_diasbasicos/${id}`;
+    return this._http.get(url, {
+      headers: this.header,
+    });
+  }
+
+
 }

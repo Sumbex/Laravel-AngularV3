@@ -25,6 +25,7 @@ export class FormularioSolicitudVacacionesComponent implements OnInit {
 
   ngOnInit() {
     this.construir_form();
+    this.detectar_incremento_diasbasicos();
   }
   construir_form() {
     this.form = this.fb.group({
@@ -52,7 +53,7 @@ export class FormularioSolicitudVacacionesComponent implements OnInit {
           alert(res.mensaje)
           this.salida.emit(true);
         }else{
-          alert(res.estado)
+          alert(res.mensaje)
           this.salida.emit(false);
         }
       })
@@ -62,5 +63,11 @@ export class FormularioSolicitudVacacionesComponent implements OnInit {
   }
   archivo(event) {
     this.doc = event.srcElement.files[0];
+  }
+
+  detectar_incremento_diasbasicos(){
+    this._vacacionesService.detectar_incremento_mensaual_diasbasicos(this.vh.id).subscribe(res=>{
+
+    })
   }
 }

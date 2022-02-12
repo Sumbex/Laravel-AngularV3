@@ -9,20 +9,29 @@
     <div class="container mt-3 mb-3">
       <form [formGroup]="form">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-12">
             <strong>Trabajador</strong>
             <select formControlName="empleado" class="form-control form-control-sm">
               <option value="">--SELECCIONE--</option>
               <option *ngFor="let i of empleados" value="{{i.id}}">{{i.nombre_trabajador}}</option>
             </select>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <strong>d. básicos devengados</strong>
             <input formControlName="d_basicos_devengadp" type="text" class="form-control form-control-sm">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <strong>d. progresivos devengados</strong>
             <input formControlName="d_progresivos_dvengados" type="text" class="form-control form-control-sm">
+          </div>
+
+          <div class="col-md-6">
+            <strong>Fecha de ingreso</strong>
+            <input formControlName="fecha_ingreso" type="date" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-6">
+            <strong>Fecha base progresiva </strong>
+            <input formControlName="fecha_base_progresiva" type="date" class="form-control form-control-sm">
           </div>
         </div>
       </form>

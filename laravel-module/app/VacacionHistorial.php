@@ -11,20 +11,32 @@ class VacacionHistorial extends Model
 
     protected function crear($r)
     {
-
-
+        DB::beginTransaction();
         $vh = $this;
         $vh->liq_empleado_id = $r->empleado;
         $vh->d_basicos_devengados = $r->d_basicos_devengadp;
         $vh->d_progresivos_devengados = $r->d_progresivos_dvengados;
+        $vh->fecha_ingreso = $r->fecha_ingreso;
+        $vh->fecha_base_progresiva = $r->fecha_base_progresiva;
         $vh->activo = 'S';
         if ($vh->save()) {
+            $insertar_dbd =  VacDiasBasicosDevengados::registrar($vh);
+            if($insertar_dbd){
+                DB::commit();
+                return [
+                    'estado' => true,
+                    'mensaje' => 'Registro exitoso',
+                    'listado' => $this->all()
+                ];
+            }
+            DB::rollBack();
             return [
-                'estado' => true,
-                'mensaje' => 'Registro exitoso',
-                'listado' => $this->all()
+                'estado' => false,
+                'mensaje' => 'No se ha podido hacer el registro'
             ];
+
         }
+        DB::rollBack();
         return [
             'estado' => false,
             'mensaje' => 'No se ha podido hacer el registro'
@@ -38,6 +50,8 @@ class VacacionHistorial extends Model
                                vh.id,
                                vh.d_basicos_devengados,
                                vh.d_progresivos_devengados,
+                               TO_CHAR(vh.fecha_ingreso,'dd/mm/yyyy') fecha_ingreso,
+                               TO_CHAR(vh.fecha_base_progresiva,'dd/mm/yyyy') fecha_base_progresiva,
                                em.rut_trabajador,
                                em.nombre_trabajador,
                                em.cargo,
@@ -67,6 +81,8 @@ class VacacionHistorial extends Model
                                 vh.id,
                                 vh.d_basicos_devengados,
                                 vh.d_progresivos_devengados,
+                                TO_CHAR(vh.fecha_ingreso,'dd/mm/yyyy') fecha_ingreso,
+                                TO_CHAR(vh.fecha_base_progresiva,'dd/mm/yyyy') fecha_base_progresiva ,
                                 em.rut_trabajador,
                                 em.nombre_trabajador,
                                 em.cargo,

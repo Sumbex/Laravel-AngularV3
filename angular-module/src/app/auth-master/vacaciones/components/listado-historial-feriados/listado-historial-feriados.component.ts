@@ -11,6 +11,9 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
   vh:any;
   ventana: any;
   dias_basicos_devengados: any;
+  dias_pro_dev: any;
+  resultado_dias_pro_dev: number;
+  vac_his_id:any;
   @Input() set vacaciones_historial(data:any){
     if(data){
       this.vh = data;
@@ -20,6 +23,8 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
     if(dato==true){
       console.log("refreshh");
       this.listar();
+      this.detectar_incremento_diasbasicos();
+      this.dias_progresivos_devengados_disponibles();
     }
   }
   @Output() salida:EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -30,6 +35,16 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
   ngOnInit() {
     this.listar();
     this.detectar_incremento_diasbasicos();
+    this.dias_progresivos_devengados_disponibles();
+  }
+  dias_progresivos_devengados_disponibles() {
+    this._vacacionesService.dias_progresivos_devengados_disponibles(this.vh.id).subscribe(res =>{
+      if(res.estado){
+        this.dias_pro_dev = res.valores[0];
+
+        this.resultado_dias_pro_dev = Number(this.dias_pro_dev.dias_progresivos_devengados||0) - Number(this.dias_pro_dev.dias_progresivos_solicitud||0)
+      }
+    })
   }
 
   listar(){
@@ -41,7 +56,7 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
     })
   }
   open_modal(modal){
-    this.ventana = this.modalService2.open(modal, { size: 'lg' });
+    this.ventana = this.modalService2.open(modal, { size: 'xl' });
   }
 
   detectar_incremento_diasbasicos(){

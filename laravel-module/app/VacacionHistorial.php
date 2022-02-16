@@ -20,8 +20,10 @@ class VacacionHistorial extends Model
         $vh->fecha_base_progresiva = $r->fecha_base_progresiva;
         $vh->activo = 'S';
         if ($vh->save()) {
-            $insertar_dbd =  VacDiasBasicosDevengados::registrar($vh);
-            if($insertar_dbd){
+            $insertar_dbd =  VacDiasBasicosDevengados::registrar($vh, 'historial');
+            $insertar_dpd = VacDiasProgresivosDevengados::registrar($vh,'historial');
+
+            if($insertar_dbd && $insertar_dpd){
                 DB::commit();
                 return [
                     'estado' => true,

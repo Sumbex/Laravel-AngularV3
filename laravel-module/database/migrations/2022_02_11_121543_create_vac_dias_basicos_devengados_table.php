@@ -18,8 +18,8 @@ class CreateVacDiasBasicosDevengadosTable extends Migration
             $table->bigInteger('vac_historial_id');
             $table->bigInteger('anio');
             $table->integer('mes');
-            $table->float('dias_basicos');
-            $table->float('dias_progresivos')->nullable();
+            $table->float('dias_basicos')->nullable();
+            $table->float('dias_progresivos')->nullable();//estos son los dias legales de la solicitud no progresivos
             $table->char('activo',1);
 
             $table->timestamps();

@@ -1,0 +1,23 @@
+<div class="container">
+  <!-- <pre>{{  listado | json }}</pre> -->
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-light">
+          <th style="background: #138D75">Año</th>
+          <th style="background: #138D75">Mes</th>
+          <th style="background: #138D75">Dias progresivos devengados</th>
+          <th style="background: #138D75">Días progresivos tomados</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let i of lista;">
+        <tr>
+          <td>{{ i?.anio }}</td>
+          <td>{{ metodo_mes(i?.mes) }}</td>
+          <td>{{ i?.dias_progresivos_devengados }}</td>
+          <td>{{ i?.dias_progresivos_solicitud }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

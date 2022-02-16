@@ -34,4 +34,8 @@ class VacacionesHistorialController extends Controller
     public function detectar_incremento_mensaul_diasbasicos($id_vac_historial){
         return VacDiasBasicosDevengados::detectar_incremento_de_dias_basicos($id_vac_historial);
     }
+
+    public function historial_mensaul_dias_basicos_devengados($vac_historial_id){
+        return VacDiasBasicosDevengados::historial_mensaul_dias_basicos_devengados($vac_historial_id);
+    }
 }

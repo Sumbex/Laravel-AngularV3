@@ -9,7 +9,7 @@ class VacDiasBasicosDevengados extends Model
 {
     protected $table = "vac_dias_basicos_devengados";
 
-    protected function registrar($r)
+    protected function registrar($r, $condicion)
     {
         $datos = [
             'anio'=> $this->anio_actual(),
@@ -18,17 +18,39 @@ class VacDiasBasicosDevengados extends Model
         $anio = $datos['anio']->original->descripcion;
         $mes  = $datos['mes']['id'];
 
-        $dbd = $this;
-        $dbd->vac_historial_id = $r->id;
-        $dbd->anio = $anio;
-        $dbd->mes = $mes;
-        $dbd->dias_basicos = $r->d_basicos_devengados;
-        // aqui se iran registrando los dias solicitados para luego restarlos a los dias basicos
-        // $dbd->dias_progresivos = $r->d_progresivos_devengados;
-        $dbd->activo = 'S';
+        if($condicion=='historial'){
+            $dbd = $this;
+            $dbd->vac_historial_id = $r->id;
+            $dbd->anio = $anio;
+            $dbd->mes = $mes;
+            $dbd->dias_basicos = $r->d_basicos_devengados;
+            // aqui se iran registrando los dias solicitados para luego restarlos a los dias basicos
+            // $dbd->dias_progresivos = $r->d_progresivos_devengados;
+            $dbd->activo = 'S';
 
-        if($dbd->save()){
-            return true;
+            if($dbd->save()){
+                return true;
+            }
+            return false;
+        }
+        if($condicion=='solicitud'){
+
+            if((int)$r->dias_legales > 0){
+                $dbd = $this;
+                $dbd->vac_historial_id = $r->vac_historial_id;
+                $dbd->anio = $anio;
+                $dbd->mes = $mes;
+                $dbd->dias_progresivos = $r->dias_legales;
+                // aqui se iran registrando los dias solicitados para luego restarlos a los dias basicos
+                // $dbd->dias_progresivos = $r->d_progresivos_devengados;
+                $dbd->activo = 'S';
+
+                if($dbd->save()){
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
         return false;
 
@@ -89,6 +111,17 @@ class VacDiasBasicosDevengados extends Model
             return true;
         }
         return false;
+    }
+
+    protected function historial_mensaul_dias_basicos_devengados($vac_historial_id){
+        $listado = DB::select("SELECT * FROM vac_dias_basicos_devengados where vac_historial_id = ? order by anio desc ,
+        mes desc",
+         [$vac_historial_id]);
+
+         if(count($listado)>0){
+            return ['estado'=>true,'listado'=>$listado ];
+         }
+         return ['estado'=>false, 'listado'=>[]];
     }
 
 

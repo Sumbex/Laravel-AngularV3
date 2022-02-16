@@ -160,6 +160,8 @@ import { FormularioHistorialComponent } from './auth-master/vacaciones/formulari
 import { FormularioSolicitudVacacionesComponent } from './auth-master/vacaciones/components/formulario-solicitud-vacaciones/formulario-solicitud-vacaciones.component';
 import { ListadoHistorialFeriadosComponent } from './auth-master/vacaciones/components/listado-historial-feriados/listado-historial-feriados.component';
 import { GenerarPdfComponent } from './auth-master/vacaciones/components/generar-pdf/generar-pdf.component';
+import { HistorialDiasBasicosDevengadosComponent } from './auth-master/vacaciones/components/historial-dias-basicos-devengados/historial-dias-basicos-devengados.component';
+import { HistorialDiasProgresivosDevengadosComponent } from './auth-master/vacaciones/components/historial-dias-progresivos-devengados/historial-dias-progresivos-devengados.component';
 
 
 
@@ -302,6 +304,8 @@ import { GenerarPdfComponent } from './auth-master/vacaciones/components/generar
     FormularioSolicitudVacacionesComponent,
     ListadoHistorialFeriadosComponent,
     GenerarPdfComponent,
+    HistorialDiasBasicosDevengadosComponent,
+    HistorialDiasProgresivosDevengadosComponent,
    
 
   ],

@@ -79,12 +79,12 @@
               <th style="background: #138D75">
                 Trabajador
               </th>
-              <th style="background: #138D75">
+              <!-- <th style="background: #138D75">
                 D. Basicos devengados
               </th>
               <th style="background: #138D75">
                 D. Progresivos devengados
-              </th>
+              </th> -->
               <th style="background: #138D75">
                 OPC.
               </th>
@@ -94,10 +94,10 @@
           <tbody>
             <tr *ngFor="let i of tabla;" class="text-center">
               <td>{{ i.nombre_trabajador }}</td>
-              <td>{{ i.d_basicos_devengados }}</td>
-              <td>{{ i.d_progresivos_devengados }}</td>
+              <!-- <td>{{ i.d_basicos_devengados }}</td>
+              <td>{{ i.d_progresivos_devengados }}</td> -->
               <td>
-                <button (click)="open_modal(mimodal);vh=i;" class="btn btn-sm btn-success">Ver detalle</button>
+                <button (click)="open_modal(mimodal);vh=i;" class="btn btn-sm btn-success">Solicitudes</button>
               </td>
             </tr>
           </tbody>
@@ -106,7 +106,7 @@
         <!-- modal detalle -->
         <ng-template #mimodal let-modal>
           <div class="modal-header" id="demoFont">
-            <h6 class="modal-title"> <strong> Detalle</strong></h6>
+            <h6 class="modal-title"> <strong> Solicitudes</strong></h6>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>

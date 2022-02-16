@@ -1,50 +1,113 @@
 <div>
 
-  <pre>{{ s | json}}</pre>
+  <!-- <pre>{{ s | json}}</pre>
 
   <pre>{{ e | json}}</pre>
 
   <hr>
-  {{ dias_pendientes }}
+  {{ dias_pendientes }} -->
 
-  <hr>
 
   <div class="container-fluid">
 
-    <table class="table table-bordered">
-      <thead class="">
-        <tr>
-          <th style="background: #229954; width:100px ;">
-            <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
-          </th>
-          <td colspan="3" class="text-center">
-            SOLICITUD DE VACACIONES
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th style="background: #229954; ">TRABAJADOR</th>
-          <td>{{ e.nombre_trabajador }}</td>
+    <div class="table-responsive" id="printJS-table">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-12">
+          <table class="tg table table-bordered">
+            <thead class="">
+              <tr>
+                <th style="background: #229954; width:150px;">
+                  <img src="/assets/logo-sindicato-transparente.png" width="90px" height="70px">
+                </th>
+                <td colspan="3">
+                  <b class="ml-5">SOLICITUD DE VACACIONES</b>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="background: #229954; color:white; ">TRABAJADOR</th>
+                <td>{{ e.nombre_trabajador }}</td>
 
-          <th style="background: #229954;">RUT</th>
-          <td>{{ e.rut_trabajador }}</td>
-        </tr>
-        <tr>
-          <th style="background: #229954; ">FECHA INGRESO</th>
-          <td>{{ e.fecha_ingreso }}</td>
-          <th style="background: #229954; ">FECHA SOLICITUD</th>
-          <td>{{ s.fecha_solicitud }}</td>
-        </tr>
+                <th style="background: #229954;color:white; width:100px;">RUT</th>
+                <td>{{ e.rut_trabajador }}</td>
+              </tr>
+              <tr>
+                <th style="background: #229954;color:white; ">FECHA INGRESO</th>
+                <td>{{ e.fecha_ingreso }}</td>
+                <th style="background: #229954;color:white; ">FECHA SOLICITUD</th>
+                <td>{{ s.fecha_solicitud }}</td>
+              </tr>
 
-        <tr>
-          <th style="background: #229954; ">FECHA COMEINZO</th>
-          <td>{{ s.fecha_inicio }}</td>
-          <th style="background: #229954; ">FECHA TERMINO</th>
-          <td>{{ s.fecha_termino }}</td>
-        </tr>
-      </tbody>
-    </table>
+              <tr>
+                <th style="background: #229954; color:white;">FECHA COMEINZO</th>
+                <td>{{ s.fecha_inicio }}</td>
+                <th style="background: #229954; color:white;">FECHA TERMINO</th>
+                <td>{{ s.fecha_termino }}</td>
+              </tr>
+
+              <tr>
+                <th style="background: #229954;color:white; ">DIAS SOLICITADOS</th>
+                <td>{{ s.dias_legales }}</td>
+                <th style="background: #229954;color:white; ">DIAS PENDIENTES</th>
+                <td>________</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+
+
+
+        </div>
+      </div>
+
+      <br><br><br><br><br><br><br>
+                    <div class="test">
+                      <div class="row justify-content-center">
+                        <div class="col-lg-12 col-12">
+                          <table class="tg table">
+                            <thead >
+                              <tr class="text-center" style="border: none;">
+                                <th rowspan="2" style="background: #229954;color:white; width: 100px; ">APROBADO POR: </th>
+                                <td style="height: 55px;">
+                                  <p></p>
+
+                                </td>
+                                <td style="height: 55px;">
+                                    <p></p>
+
+                                </td>
+
+                                <td style="height: 55px;">
+                                  <p></p>
+
+                              </td>
+                              </tr>
+                              <tr class="text-center" style="border: none;">
+
+                                <td><p>Nombre</p></td>
+                                <td><p>Firma</p></td>
+                                <td><p>Firma del trabajador</p></td>
+                              </tr>
+                            </thead>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+    </div>
+
+    <hr>
+    <button type="button" class="btn btn-success btn-block mt-4" onclick="printJS({
+      printable: 'printJS-table',
+      type:'html',
+      style: '*{text-align:center} table{width:100%;table-layout: fixed;overflow-wrap: break-word;} .tg {border-collapse:collapse;border-spacing:0;}.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 5px;border-width:1px;overflow:hidden;word-break:normal;}.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-vm9s{text-align:center;vertical-align:top}.tg .tg-73oq{text-align:left;vertical-align:top}.tg .tg-mcqj{font-weight:bold;text-align:left;vertical-align:top}.tg .tg-0lax{text-align:left;vertical-align:top} input{width: 100%;background: transparent; border: none;} .titulo-hoja{font-size: 1.7rem; font-weight:bold;} tr, td, th{border: 1px solid black} p{display: block;margin-top: 0em;margin-bottom: 0em;margin-left: 0;margin-right: 0;} .test{position:fixed;bottom:20px;}'
+    })">
+      <i class="fas fa-print"></i> Imprimir Datos
+  </button>
 
   </div>
 </div>

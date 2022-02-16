@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
+import { map } from "rxjs/operators";
 import { global } from "./global";
 
 @Injectable({
@@ -62,6 +63,28 @@ export class VacacionesService {
       headers: this.header,
     });
   }
+
+  historial_dias_basicos_devengados(vac_historial_id):Observable<any>{
+    let url = `${this.url}vacaciones/solicitud/historia-mensual-dias-basicos-devengados/${vac_historial_id}`;
+    return this._http.get(url, {
+      headers: this.header,
+    });
+  }
+  dias_progresivos_devengados_disponibles(vac_historial_id):Observable<any>{
+    let url = `${this.url}vacaciones/solicitud/dias_progresivos_devengados_disponibles/${vac_historial_id}`;
+    return this._http.get(url, {
+      headers: this.header,
+    });
+  }
+
+  historial_dias_progresivos_devengados(vac_historial_id):Observable<any>{
+    let url = `${this.url}vacaciones/solicitud/historial_dias_progresivos_devengados/${vac_historial_id}`;
+    return this._http.get(url, {
+      headers: this.header,
+    });
+  }
+
+
 
 
 }

@@ -1,7 +1,7 @@
 <div class="container">
   <!-- tabla del formulario -->
   <div class="card-header mt-4" id="demoFont">
-    <h6 class="card-title text-center"><strong>Historial feriados xx</strong></h6>
+    <h6 class="card-title text-center"><strong>Historial feriados </strong></h6>
   </div>
 
   <div class="card">
@@ -29,10 +29,10 @@
             </tr>
             <tr>
               <th style="background: #138D75">D. Básicos devengados </th>
-              <td colspan="2">{{ dias_basicos_devengados }}</td>
+              <td colspan="2">{{ dias_basicos_devengados }} <button (click)="open_modal(historial);vac_his_id=vh?.id" class="btn btn-sm btn-light"><i class="fas fa-info-circle"></i></button></td>
 
               <th style="background: #138D75">D. progresivos devengados </th>
-              <td colspan="3">{{vh.d_progresivos_devengados}}</td>
+              <td colspan="3">{{ resultado_dias_pro_dev }} <button (click)="open_modal(historial_dias_pro);vac_his_id=vh?.id" class="btn btn-sm btn-light"><i class="fas fa-info-circle"></i></button></td>
             </tr>
           </thead>
           <thead>
@@ -127,6 +127,58 @@
                    [dias_basicos_devengados]="dias_basicos_devengados"
                 >
                 </app-generar-pdf>
+
+              </div>
+              <div class="modal-footer" [hidden]="true">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!--MODAL VISOR PDF-->
+
+         <!--MODAL VISOR PDF-->
+         <ng-template #historial let-c="close" let-d="dismiss">
+          <div class="row">
+            <div class="col">
+              <div class="modal-header text-center" id="demoFont">
+                <h4 class="modal-title" id="modal-basic-title">Historial mensual de días básicos devengados</h4>
+                <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <app-historial-dias-basicos-devengados
+                [vac_historial_id]="vac_his_id"
+                >
+                </app-historial-dias-basicos-devengados>
+
+              </div>
+              <div class="modal-footer" [hidden]="true">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">OK</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!--MODAL VISOR PDF-->
+
+        <!--MODAL VISOR PDF-->
+        <ng-template #historial_dias_pro let-c="close" let-d="dismiss">
+          <div class="row">
+            <div class="col">
+              <div class="modal-header text-center" id="demoFont">
+                <h4 class="modal-title" id="modal-basic-title">Historial anual de días progresivos devengados</h4>
+                <button id="closeModalButton" type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <app-historial-dias-progresivos-devengados
+                [vac_historial_id]="vac_his_id"
+                >
+                </app-historial-dias-progresivos-devengados>
 
               </div>
               <div class="modal-footer" [hidden]="true">

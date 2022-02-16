@@ -40,9 +40,11 @@ class VacacionesSolicitud extends Model
 
            $crear->activo = 'S';
            if ($crear->save()) {
-            $ultimo_dia_basico = VacDiasBasicosDevengados::where('vac_historial_id',$r->vacaciones_historial_id)->latest()->first();
-            $ultimo_dia_basico->dias_progresivos = $r->dias_legales;
-            if($ultimo_dia_basico->save()){
+            //$ultimo_dia_basico = VacDiasBasicosDevengados::where('vac_historial_id',$r->vacaciones_historial_id)->latest()->first();
+            //$ultimo_dia_basico->dias_progresivos = $r->dias_legales;
+            $insert_dbd = VacDiasBasicosDevengados::registrar($crear, 'solicitud');
+            $insert_vdpd = VacDiasProgresivosDevengados::registrar($crear,'solicitud');
+            if($insert_dbd || $insert_vdpd){
                 DB::commit();
                 return [
                     'estado'=>true,

@@ -85,7 +85,7 @@
               <th style="background: #138D75">
                 D. Progresivos devengados
               </th> -->
-              <th style="background: #138D75">
+              <th colspan="2" style="background: #138D75">
                 OPC.
               </th>
 
@@ -99,6 +99,10 @@
               <td>
                 <button (click)="open_modal(mimodal);vh=i;" class="btn btn-sm btn-success">Solicitudes</button>
               </td>
+              <td>
+                <button (click)="open_modal_sm(diasprogresivos);vh=i;" class="btn btn-sm btn-success">Días progresivos</button>
+              </td>
+
             </tr>
           </tbody>
         </table>
@@ -124,6 +128,24 @@
               (salida)="capturar2($event)"
             >
             </app-listado-historial-feriados>
+          </div>
+        </ng-template>
+
+
+        <!-- modal detalle -->
+        <ng-template #diasprogresivos let-modal>
+          <div class="modal-header" id="demoFont">
+            <h6 class="modal-title"> <strong> Días progresivos</strong></h6>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-dias-progresivos
+              [vacaciones_historial]="vh"
+              (salida)="capturar($event)"
+            >
+            </app-dias-progresivos>
           </div>
         </ng-template>
       </div>

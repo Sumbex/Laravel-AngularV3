@@ -217,3 +217,7 @@ Route::get('vacaciones/solicitud/historia-mensual-dias-basicos-devengados/{vac_h
 
 Route::get('vacaciones/solicitud/dias_progresivos_devengados_disponibles/{vac_historial}','VacDiasProgresivosDevengadosController@dias_progresivos_devengados_disponibles');
 Route::get('vacaciones/solicitud/historial_dias_progresivos_devengados/{vac_historial}','VacDiasProgresivosDevengadosController@historial_dias_progresivos_devengados');
+
+// ultimos ervicios a ejecutar
+Route::get('vacaciones/listado_dias_progresivos/{vac_historial}','VacDiasProgresivosDevengadosController@listado_dias_progresivos');
+Route::post('vacaciones/dias_progresivos/registrar','VacDiasProgresivosDevengadosController@registrar');

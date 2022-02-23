@@ -61,6 +61,12 @@ export class FormularioHistorialComponent implements OnInit {
 
   }
 
+  open_modal_sm(modal){
+
+    this.ventana = this.modalService2.open(modal, { size: 'lg' });
+
+  }
+
   enviar(){
 
     if(this.form.valid){

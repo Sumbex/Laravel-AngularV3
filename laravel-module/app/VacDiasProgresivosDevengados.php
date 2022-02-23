@@ -27,6 +27,7 @@ class VacDiasProgresivosDevengados extends Model
 
 
         if ($condicion == 'historial') {
+
             $dpd = $this;
             $dpd->vac_historial_id = $r->id;
             $dpd->anio = $anio;
@@ -36,9 +37,11 @@ class VacDiasProgresivosDevengados extends Model
 
             if ($dpd->save()) {
 
-                return true;
+                return ['estado'=> true, 'mensaje'=>'Dias agregados correctamente'];
+                // return true;
             }
-            return false;
+            return ['estado'=> false, 'mensaje'=>'No se ha podido registrar dias progresivos'];
+            // return false;
         }
         if ($condicion == 'solicitud') {
             if ((int)$r->dias_progresivos > 0) {
@@ -56,7 +59,6 @@ class VacDiasProgresivosDevengados extends Model
                 return false;
             }
             return false;
-
         }
         return false;
     }
@@ -88,17 +90,19 @@ class VacDiasProgresivosDevengados extends Model
 
     protected function historial_dias_progresivos_devengados($vac_historial_id)
     {
-        $list = DB::select("SELECT * from vac_dias_progresivos_devengados where vac_historial_id = ?",
-         [$vac_historial_id]);
+        $list = DB::select(
+            "SELECT * from vac_dias_progresivos_devengados where vac_historial_id = ?",
+            [$vac_historial_id]
+        );
 
-         if(count($list) > 0){
-             return [
-                 'estado'=>true,
-                 'tabla' => $list
-             ];
-         }
-         return [
-            'estado'=>false,
+        if (count($list) > 0) {
+            return [
+                'estado' => true,
+                'tabla' => $list
+            ];
+        }
+        return [
+            'estado' => false,
             'tabla' => []
         ];
     }
@@ -160,5 +164,46 @@ class VacDiasProgresivosDevengados extends Model
         }
 
         return $mes;
+    }
+
+    protected function listado_dias_progresivos($vac_historial_id)
+    {
+
+
+        $listado = DB::select("SELECT
+        vac_historial_id,
+        anio, dias_progresivos_devengados as dpd
+        from vac_dias_progresivos_devengados
+        where dias_progresivos_devengados is not null and vac_historial_id = ? order by id asc",
+         [$vac_historial_id]);
+
+        if(count($listado) > 0){
+            return $this->modelar_total_parcial($listado);
+        }
+    }
+    protected function modelar_total_parcial($listado){
+
+       $json = [];
+       $i=0;
+        foreach ($listado as $key) {
+
+
+                $json[$i]['anio'] = $key->anio;
+                $json[$i]['vac_historial_id'] = $key->vac_historial_id;
+                $json[$i]['dpd'] = (int)$key->dpd;
+                $json[$i]['parcial'] = $json[$i]['dpd'];
+
+            // if($i==1){
+            //     $json[$i]['parcial'] = $json[$i]['dpd'] + $json[$i-1]['dpd'];
+
+            // }
+            if($i>0){
+                $json[$i]['parcial'] = $json[$i-1]['parcial'] + $json[$i]['dpd'];
+            }
+            $i++;
+        }
+
+        return $json;
+
     }
 }

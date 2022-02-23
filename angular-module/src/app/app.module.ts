@@ -162,6 +162,7 @@ import { ListadoHistorialFeriadosComponent } from './auth-master/vacaciones/comp
 import { GenerarPdfComponent } from './auth-master/vacaciones/components/generar-pdf/generar-pdf.component';
 import { HistorialDiasBasicosDevengadosComponent } from './auth-master/vacaciones/components/historial-dias-basicos-devengados/historial-dias-basicos-devengados.component';
 import { HistorialDiasProgresivosDevengadosComponent } from './auth-master/vacaciones/components/historial-dias-progresivos-devengados/historial-dias-progresivos-devengados.component';
+import { DiasProgresivosComponent } from './auth-master/vacaciones/components/dias-progresivos/dias-progresivos.component';
 
 
 
@@ -306,6 +307,7 @@ import { HistorialDiasProgresivosDevengadosComponent } from './auth-master/vacac
     GenerarPdfComponent,
     HistorialDiasBasicosDevengadosComponent,
     HistorialDiasProgresivosDevengadosComponent,
+    DiasProgresivosComponent,
    
 
   ],

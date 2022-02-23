@@ -83,8 +83,20 @@ export class VacacionesService {
       headers: this.header,
     });
   }
+  lista_dias_progresivos(vac_historial_id):Observable<any>{
+    let url = `${this.url}vacaciones/listado_dias_progresivos/${vac_historial_id}`;
+    return this._http.get(url, {
+      headers: this.header,
+    });
 
+  }
 
+  crear_dia_progresivo(form):Observable<any>{
+    let url = `${this.url}vacaciones/dias_progresivos/registrar`;
+    return this._http.post(url, form, {
+      headers: this.header,
+    });
+  }
 
 
 }

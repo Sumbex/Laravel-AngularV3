@@ -221,3 +221,4 @@ Route::get('vacaciones/solicitud/historial_dias_progresivos_devengados/{vac_hist
 // ultimos ervicios a ejecutar
 Route::get('vacaciones/listado_dias_progresivos/{vac_historial}','VacDiasProgresivosDevengadosController@listado_dias_progresivos');
 Route::post('vacaciones/dias_progresivos/registrar','VacDiasProgresivosDevengadosController@registrar');
+Route::post('vacaciones/solicitud/subir_archivo','VacacionesHistorialController@subir_archivo');

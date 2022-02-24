@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { VacacionesService } from '../../../../servicios/vacaciones.service';
 
@@ -14,6 +14,9 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
   dias_pro_dev: any;
   resultado_dias_pro_dev: number;
   vac_his_id:any;
+  archivo: File[]=[];
+  exist_file:boolean[]=[false];
+  @ViewChildren("file") idfile:Array<ElementRef>;
   @Input() set vacaciones_historial(data:any){
     if(data){
       this.vh = data;
@@ -63,5 +66,38 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
     this._vacacionesService.detectar_incremento_mensaual_diasbasicos(this.vh.id).subscribe(res=>{
        this.dias_basicos_devengados = Number(res[0].dias_basicos) - Number(res[0].dias_progresivos);
     })
+  }
+
+  captar(event,id,i){
+    this.exist_file[i] = false;
+    console.log(event.target.files[0]);
+    console.log(this.archivo)
+    this.archivo[i] = event.target.files[0];
+    const confirmar = window.confirm("¿Quiere subir el archivo '"+this.archivo[i].name+"'?");
+    console.log(confirmar)
+    if(confirmar){
+      this.exist_file[i] = true;
+      const fd = new FormData();
+      fd.append('id',id);
+      fd.append('archivo',this.archivo[i]);
+      this._vacacionesService.subir_comprobante(fd).subscribe(res=>{
+        if(res.estado){
+          this.exist_file[i] = false;
+          this.listar();
+          alert(res.mensaje);
+
+        }else{
+          alert(res.mensaje);
+          this.exist_file[i] = false;
+        }
+      }, error =>{
+
+      })
+
+    }else{
+      this.exist_file[i] = false;
+      this.idfile['_results'][i].nativeElement.value = null;
+      return false;
+    }
   }
 }

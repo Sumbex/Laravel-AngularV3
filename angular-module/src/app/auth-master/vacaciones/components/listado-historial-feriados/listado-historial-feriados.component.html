@@ -58,7 +58,7 @@
               <th style="background: #138D75">
                 Días progresivos
               </th>
-              <th style="background: #138D75">
+              <th colspan="3" style="background: #138D75">
                 Documento
               </th>
               <!-- <th style="background: #138D75">
@@ -68,7 +68,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="text-center" *ngFor="let i of solicitudes;">
+            <tr class="text-center" *ngFor="let i of solicitudes; let ix = index;">
               <td>{{ i.fecha_solicitud }}</td>
               <td>{{ i.fecha_inicio }}</td>
               <td>{{ i.fecha_termino }}</td>
@@ -80,9 +80,14 @@
                   <i class="far fa-file-alt" placement="top" ngbTooltip="Presione aqui visualizar documento PDF"></i>
                 </a>&nbsp; -->
               </td>
-              <!-- <td>
-                <button (click)="open_modal(visor);vdoc=i.documento;" class="btn btn-sm btn-success">Generar PDF</button>
-              </td> -->
+              <td>
+                <!-- {{ix}} -->
+                <input type="file" #file [disabled]="exist_file[ix]" (change)="captar($event,i.id, ix)" class="form-control-file" >
+                <!-- {{archivo[ix]?.name}} -->
+              </td>
+              <td>
+                <button (click)="open_modal(visor);vdoc=i.documento;" class="btn btn-sm btn-success">Visor PDF</button>
+              </td>
             </tr>
           </tbody>
         </table>

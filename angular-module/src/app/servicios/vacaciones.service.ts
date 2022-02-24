@@ -98,5 +98,12 @@ export class VacacionesService {
     });
   }
 
+  subir_comprobante(data):Observable<any>{
+    let url = `${this.url}vacaciones/solicitud/subir_archivo`;
+    return this._http.post(url, data, {
+      headers: this.header,
+    });
+  }
+
 
 }

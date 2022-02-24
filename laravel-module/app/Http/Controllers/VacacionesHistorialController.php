@@ -38,4 +38,10 @@ class VacacionesHistorialController extends Controller
     public function historial_mensaul_dias_basicos_devengados($vac_historial_id){
         return VacDiasBasicosDevengados::historial_mensaul_dias_basicos_devengados($vac_historial_id);
     }
+
+    public function subir_archivo(Request $r){
+        return VacacionesSolicitud::subir_archivo($r);
+    }
+
+
 }

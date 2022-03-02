@@ -11,6 +11,7 @@ export class FormularioSolicitudVacacionesComponent implements OnInit {
   form: FormGroup;
   vh: any;
   doc: any;
+  btn=false;
   @Input() set vacaciones_historial(data: any) {
     if (data) {
       this.vh = data;
@@ -38,6 +39,7 @@ export class FormularioSolicitudVacacionesComponent implements OnInit {
   }
 
   enviar() {
+    this.btn = true;
     if (this.form.valid) {
       console.log(this.form.value);
       const fd = new FormData();
@@ -50,14 +52,18 @@ export class FormularioSolicitudVacacionesComponent implements OnInit {
       fd.append("documento", this.doc || null);
       this._vacacionesService.crear_solicitud_vacaciones(fd).subscribe(res=>{
         if(res.estado){
+          this.construir_form();
+          this.btn =false;
           alert(res.mensaje)
           this.salida.emit(true);
         }else{
+          this.btn =false;
           alert(res.mensaje)
           this.salida.emit(false);
         }
       })
     } else {
+      this.btn =false;
       alert("Faltan campos por llenar");
     }
   }

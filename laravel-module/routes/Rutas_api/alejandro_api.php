@@ -211,6 +211,7 @@ Route::get('vacaciones/historial/listar', 'VacacionesHistorialController@listar'
 Route::get('vacaciones/historial/listar/{vac_historial}', 'VacacionesHistorialController@listar_por_vacacion_historial');
 
 Route::post('vacaciones/solicitud/crear', 'VacacionesHistorialController@crear_solicitud_vacaciones');
+Route::put('vacaciones/solicitud/editar', 'VacacionesHistorialController@edita_solicitud_vacaciones');
 Route::get('vacaciones/solicitud/listar/{vac_historial}', 'VacacionesHistorialController@listar_solicitud_vacaciones');
 Route::get('vacaciones/solicitud/detectar_incremento_mensaual_diasbasicos/{vac_historial}', 'VacacionesHistorialController@detectar_incremento_mensaul_diasbasicos');
 Route::get('vacaciones/solicitud/historia-mensual-dias-basicos-devengados/{vac_historial}', 'VacacionesHistorialController@historial_mensaul_dias_basicos_devengados');

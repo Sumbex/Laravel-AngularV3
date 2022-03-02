@@ -11,7 +11,7 @@ import { VacacionesService } from '../../../servicios/vacaciones.service';
 })
 export class FormularioHistorialComponent implements OnInit {
 
-  blockIngreso: boolean = false;
+  btn: boolean = false;
   empleados: any;
   ventana: any;
   form:FormGroup;
@@ -68,7 +68,7 @@ export class FormularioHistorialComponent implements OnInit {
   }
 
   enviar(){
-
+    this.btn = true;
     if(this.form.valid){
       const fd = new FormData();
       fd.append('empleado', this.form.controls.empleado.value );
@@ -78,11 +78,15 @@ export class FormularioHistorialComponent implements OnInit {
       fd.append('fecha_base_progresiva', this.form.controls.fecha_base_progresiva.value);
       this._vacaciones.crear_historial(fd).subscribe(res => {
         if(res){
+          this.btn = false;
           this.listar_historial();
           alert(res.mensaje);
         }
+      }, error =>{
+        this.btn = false;
       })
     }else{
+      this.btn = false;
       alert("Faltan campos por llenar");
     }
   }

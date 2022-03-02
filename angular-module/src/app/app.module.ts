@@ -163,6 +163,7 @@ import { GenerarPdfComponent } from './auth-master/vacaciones/components/generar
 import { HistorialDiasBasicosDevengadosComponent } from './auth-master/vacaciones/components/historial-dias-basicos-devengados/historial-dias-basicos-devengados.component';
 import { HistorialDiasProgresivosDevengadosComponent } from './auth-master/vacaciones/components/historial-dias-progresivos-devengados/historial-dias-progresivos-devengados.component';
 import { DiasProgresivosComponent } from './auth-master/vacaciones/components/dias-progresivos/dias-progresivos.component';
+import { EditarSolicitudComponent } from './auth-master/vacaciones/components/editar-solicitud/editar-solicitud.component';
 
 
 
@@ -308,7 +309,8 @@ import { DiasProgresivosComponent } from './auth-master/vacaciones/components/di
     HistorialDiasBasicosDevengadosComponent,
     HistorialDiasProgresivosDevengadosComponent,
     DiasProgresivosComponent,
-   
+    EditarSolicitudComponent,
+
 
   ],
   imports: [

@@ -16,6 +16,7 @@ class CreateVacDiasProgresivosDevengados extends Migration
         Schema::create('vac_dias_progresivos_devengados', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('vac_historial_id');
+            $table->bigInteger('vac_solicitud_id')->nullable();
             $table->bigInteger('anio');
             $table->integer('mes');
             $table->float('dias_progresivos_devengados')->nullable();

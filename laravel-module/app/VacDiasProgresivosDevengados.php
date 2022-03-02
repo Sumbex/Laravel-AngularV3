@@ -44,9 +44,10 @@ class VacDiasProgresivosDevengados extends Model
             // return false;
         }
         if ($condicion == 'solicitud') {
-            if ((int)$r->dias_progresivos > 0) {
+            if ((int)$r->dias_progresivos != 0) {
                 $dpd = $this;
                 $dpd->vac_historial_id = $r->vac_historial_id;
+                $dpd->vac_solicitud_id = $r->id;
                 $dpd->anio = $anio;
                 $dpd->mes = $mes;
                 $dpd->dias_progresivos_solicitud = $r->dias_progresivos;

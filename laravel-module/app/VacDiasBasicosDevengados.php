@@ -18,6 +18,7 @@ class VacDiasBasicosDevengados extends Model
         $anio = $datos['anio']->original->descripcion;
         $mes  = $datos['mes']['id'];
 
+        // formulario inicial de historial del trabajador
         if($condicion=='historial'){
             $dbd = $this;
             $dbd->vac_historial_id = $r->id;
@@ -33,11 +34,13 @@ class VacDiasBasicosDevengados extends Model
             }
             return false;
         }
+        // formulario solicitud de vacaciones
         if($condicion=='solicitud'){
 
-            if((int)$r->dias_legales > 0){
+            if((int)$r->dias_legales != 0){
                 $dbd = $this;
                 $dbd->vac_historial_id = $r->vac_historial_id;
+                $dbd->vac_solicitud_id = $r->id;
                 $dbd->anio = $anio;
                 $dbd->mes = $mes;
                 $dbd->dias_progresivos = $r->dias_legales;

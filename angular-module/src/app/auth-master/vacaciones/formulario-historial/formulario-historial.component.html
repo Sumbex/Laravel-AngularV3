@@ -38,11 +38,11 @@
 
       <div class="row mt-3">
         <div class="col-md-12">
-          <button class="btn btn btn-success btn-block btn-sm"
+          <button [disabled]="btn" class="btn btn btn-success btn-block btn-sm"
           (click)="enviar();"
           >
             Guardar
-            <img *ngIf="blockIngreso == true" padding-left="20px" height="15px"
+            <img *ngIf="btn == true" padding-left="20px" height="15px"
               src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
           </button>
         </div>

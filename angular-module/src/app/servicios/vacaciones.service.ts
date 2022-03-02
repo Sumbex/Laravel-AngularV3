@@ -18,6 +18,11 @@ export class VacacionesService {
     Authorization: "Bearer" + this.token,
   });
 
+  header_put:HttpHeaders = new HttpHeaders({
+    Authorization: "Bearer" + this.token,
+  })
+  // .set('Content-Type', 'application/x-www-form-urlencoded');
+
   constructor(
     public _http: HttpClient,
     public jwtHelper: JwtHelperService,
@@ -49,6 +54,12 @@ export class VacacionesService {
     let url = `${this.url}vacaciones/solicitud/crear`;
     return this._http.post(url, form, {
       headers: this.header,
+    });
+  }
+  editar_solicitud_vacaciones(form):Observable<any>{
+    let url = `${this.url}vacaciones/solicitud/editar`;
+    return this._http.put(url,form, {
+      headers: this.header_put,
     });
   }
   listar_solicitud_vacaciones(id):Observable<any>{

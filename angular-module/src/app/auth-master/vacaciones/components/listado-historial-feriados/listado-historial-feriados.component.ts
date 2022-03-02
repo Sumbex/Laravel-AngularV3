@@ -100,4 +100,12 @@ export class ListadoHistorialFeriadosComponent implements OnInit {
       return false;
     }
   }
+  recibe(event){
+    if(event){
+      this.listar();
+      this.detectar_incremento_diasbasicos();
+      this.dias_progresivos_devengados_disponibles();
+      this.ventana.close();
+    }
+  }
 }

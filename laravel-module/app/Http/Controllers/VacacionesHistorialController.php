@@ -27,6 +27,12 @@ class VacacionesHistorialController extends Controller
         return VacacionesSolicitud::crear($r);
     }
 
+    public function edita_solicitud_vacaciones(Request $r){
+
+        return VacacionesSolicitud::editar($r);
+    }
+
+
     public function listar_solicitud_vacaciones($id){
         return VacacionesSolicitud::listar_vac_solicitud_por_vac_historial($id);
     }

@@ -10,6 +10,7 @@ export class DiasProgresivosComponent implements OnInit {
   @Input() vacaciones_historial;
   listado: any;
   input: string="";
+  btn=false;
   constructor(private vacaciones: VacacionesService) {}
 
   ngOnInit() {
@@ -26,7 +27,9 @@ export class DiasProgresivosComponent implements OnInit {
   }
 
   agregar() {
+    this.btn = true;
     if(this.input.trim() == ""){
+      this.btn = false;
       alert("Ingrese una cantidad");
       return false;
     }else{
@@ -37,10 +40,14 @@ export class DiasProgresivosComponent implements OnInit {
       };
       this.vacaciones.crear_dia_progresivo(data).subscribe((res) => {
         if(res.estado){
+          this.btn = false;
           alert(res.mensaje);
           this.input="";
           this.listar();
         }
+      }, error =>{
+        this.input="";
+        this.btn = false;
       });
     }
   }

@@ -10,7 +10,7 @@ import { VacacionesService } from '../../../../servicios/vacaciones.service';
 export class EditarSolicitudComponent implements OnInit {
   private _sol: any;
   @Output() salida: EventEmitter<boolean> = new EventEmitter<boolean>();
-  btn: boolean = true;
+  btn: boolean = false;
 
   @Input() set solicitud(data: any) {
     if (data) {
